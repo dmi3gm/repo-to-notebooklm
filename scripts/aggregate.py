@@ -31,29 +31,40 @@ def get_md_files(repo_path):
     md_files.sort(key=sort_key)
     return md_files
 
-def split_content(content, repo_name):
-    lines = content.splitlines()
-    total_lines = len(lines)
-    # Примерный расчет количества частей на основе размера
-    size_mb = len(content.encode('utf-8')) / (1024 * 1024)
-    parts_count = int(size_mb // LIMIT_SIZE_MB) + 1
+def split_content_by_words(content, max_words=450000):
+    words = content.split()
+    total_words = len(words)
     
-    if parts_count <= 1:
+    if total_words <= max_words:
         return [content]
 
-    # Ищем заголовки ## для красивого разреза
-    candidates = [i for i, line in enumerate(lines) if re.match(r'^##\s', line)]
-    if not candidates:
-        candidates = [i for i, line in enumerate(lines) if re.match(r'^#\s', line)]
-
+    log(f"Обнаружено слов: {total_words}. Превышение лимита {max_words}, режем...")
+    
+    # Считаем, сколько примерно символов в одном куске
+    # (Длина контента / кол-во слов) * лимит слов
+    avg_char_per_word = len(content) / total_words
+    chars_per_chunk = int(avg_char_per_word * max_words)
+    
     chunks = []
-    last_idx = 0
-    for i in range(1, parts_count):
-        target = (total_lines // parts_count) * i
-        split_idx = min(candidates, key=lambda x: abs(x - target))
-        chunks.append("\n".join(lines[last_idx:split_idx]))
-        last_idx = split_idx
-    chunks.append("\n".join(lines[last_idx:]))
+    start_idx = 0
+    
+    while start_idx < len(content):
+        end_idx = start_idx + chars_per_chunk
+        
+        # Если это не конец файла, ищем ближайший заголовок ##, чтобы не рвать по живому
+        if end_idx < len(content):
+            # Ищем ближайший ## в радиусе 10% от размера чанка
+            search_area = content[end_idx - 5000 : end_idx + 5000]
+            header_match = list(re.finditer(r'\n##\s', search_area))
+            
+            if header_match:
+                # Берем последний найденный заголовок в этой области
+                relative_split = header_match[-1].start()
+                end_idx = (end_idx - 5000) + relative_split
+        
+        chunks.append(content[start_idx:end_idx].strip())
+        start_idx = end_idx
+        
     return chunks
 
 def process_repo(repo_url):
