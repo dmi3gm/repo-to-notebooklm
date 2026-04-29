@@ -6,9 +6,8 @@
 
 Игнорит папки начинающиеся с ".".
 
-По расписанию или по кнопке [Run workflow](https://github.com/dmi3gm/repo-to-notebooklm/actions/workflows/aggregate.yml) Запускается [workflow](.github/workflows/aggregate.yml). Форкайте, копируйте, пользуйтесь. 
+По расписанию или по кнопке [Run workflow](https://github.com/dmi3gm/repo-to-notebooklm/actions/workflows/aggregate.yml) Запускается [workflow](.github/workflows/aggregate.yml) и [скриптом](scripts/aggregate.py) обрабатывает список ниже
 
-Чтобы добавить репо в обработку нужно указать его в списке под этим заголовком
 ## Repo list
 - <https://github.com/dmi3gm/DS-ecosystem-development.git>
 - <https://github.com/ailev/FPF.git>
