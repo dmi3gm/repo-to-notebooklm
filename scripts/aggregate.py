@@ -4,7 +4,7 @@ import subprocess
 import re
 
 # Настройки
-OUT_DIR = "out_ntbklm"
+OUT_DIR = "."
 
 def log(msg):
     print(f"--- [INFO] {msg}")
