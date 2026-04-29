@@ -1,9 +1,12 @@
-name: Sync and Split for NotebookLM
+name: FPF for NotebookLM
 
 on:
   schedule:
     - cron: '0 0 * * 0' # Каждое воскресенье в 00:00
   workflow_dispatch:      # Кнопка для ручного запуска
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: write
