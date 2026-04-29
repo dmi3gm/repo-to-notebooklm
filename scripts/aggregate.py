@@ -98,7 +98,29 @@ def process_repo(repo_url):
 
     shutil.rmtree(tmp_path)
 
+def get_repos_from_readme():
+    repos = []
+    try:
+        with open("README.md", "r", encoding="utf-8") as f:
+            in_repo_list = False
+            for line in f:
+                line = line.strip()
+                if line.lower().startswith("## repo list"):
+                    in_repo_list = True
+                    continue
+                if in_repo_list and line.startswith("##"):
+                    break
+                if in_repo_list and line.startswith("- http"):
+                    repo_url = line.lstrip("- ").strip()
+                    repos.append(repo_url)
+    except Exception as e:
+        log(f"Ошибка чтения README.md: {e}")
+    return repos
+
 if __name__ == "__main__":
     repos = os.getenv("REPOS", "").split()
+    if not repos:
+        repos = get_repos_from_readme()
+        
     for r in repos:
         if r: process_repo(r)
