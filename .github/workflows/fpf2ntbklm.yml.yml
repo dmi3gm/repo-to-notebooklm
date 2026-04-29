@@ -20,8 +20,7 @@ jobs:
 
       - name: Download source file
         run: |
-          # ЗАМЕНИТЕ URL НИЖЕ НА ВАШ (RAW ссылка)
-          curl -sSL "https://github.com/ailev/FPF/blob/main/FPF-Spec.md" -o source.md
+          curl -sSL "https://raw.githubusercontent.com/ailev/FPF/main/FPF-Spec.md" -o source.md
           if [ ! -s source.md ]; then echo "🟥 ERR: Download failed"; exit 1; fi
 
       - name: Execute split script
