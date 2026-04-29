@@ -1,15 +1,12 @@
 # Агрегатор документов из репозиториев
+Для загрузки в блокнот notebooklm.google.com.
+Скачивает, объединяет и режет .md что бы вписаться в 500 000 слов.
+Игнорит папки начинающиеся с ".".
 
-для загрузки в блокнот notebooklm.google.com
-скачивает, объединяет и режет .md что бы вписаться в 500 000 слов
-игнорит папки начинающиеся с "."
+Работает на основе [workflow](.github/workflows/aggregate.yml)  aggregate.yml по расписанию или по кнопке Actions -> Run workflow.
 
-Работает на основе workflow aggregate.yml по расписанию или по кнопке Actions -> Run workflow.
-
-Чтобы добавить репо в обработку нужно указать его в этом списке
-
+Чтобы добавить репо в обработку нужно указать его в списке под этим заголовком
 ## Repo list
-
 - <https://github.com/dmi3gm/DS-ecosystem-development.git>
 - <https://github.com/ailev/FPF.git>
 - <https://github.com/TserenTserenov/ZP.git>
