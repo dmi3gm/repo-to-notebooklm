@@ -6,7 +6,7 @@
 
 Игнорит папки начинающиеся с ".".
 
-По расписанию или по кнопке [Run workflow](https://github.com/dmi3gm/repo-to-notebooklm/actions/workflows/aggregate.yml) Запускается [workflow](.github/workflows/aggregate.yml) и [скриптом](scripts/aggregate.py) обрабатывает список ниже
+По расписанию или по кнопке [Run workflow](https://github.com/dmi3gm/repo-to-notebooklm/actions/workflows/aggregate.yml) запускается [workflow](.github/workflows/aggregate.yml) и [скриптом](scripts/aggregate.py) обрабатывает список ниже
 
 ## Repo list
 
