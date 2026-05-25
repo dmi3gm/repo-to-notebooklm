@@ -1,3 +1,1258 @@
+## C.3 - Kinds, Intent/Extent, and Typed Reasoning (Kind‑CAL)
+
+> **One‑line summary.** Establishes **`U.Kind`** as the **minimal, context‑local intensional carrier** of “what a statement is about,” separates **intent** (KindSignature + its own **F**) from **extent** (*which* instances belong to the kind **in a given Context slice**), and situates **typed reasoning** alongside **USM Scope (G)** and **F–G–R** without conflation. Details of the core objects and operations live in **C.3.1–C.3.5**; guard shapes are standardized in **C.3.A**.
+
+**Status.** Normative in **Part C**. Identifier **C.3**. This pattern lays the **architectural invariant** and manager‑level guidance. The **mechanics** are defined by its child patterns.
+
+**Readers.** Engineering managers, architects, and assurance leads who must reason about *typed claims* across Contexts without mixing up **describedEntity** (Kinds), **applicability** (**G**), and **assurance** (**R**).
+
+**Depends on.**
+— **A.2.6 USM** (Context slices & Scopes): **`U.ClaimScope` = G**, **`U.WorkScope`**, ∈/∩/**SpanUnion**/translate, **Γ\_time** policy, Bridges + **CL** (scope).
+— **C.2.2 F–G–R**: weakest‑link composition; penalties to **R** for Cross‑context congruence (CL).
+— **C.2.3 Unified Formality F**: F0…F9 as an **ordinal Characteristic** (expression rigor).
+
+**Sub‑patterns (normative unless noted).**
+— **C.3.1** - `U.Kind` & `U.SubkindOf` (partial order).
+— **C.3.2** - `KindSignature` (**intent**, with **F**) & `Extension/MemberOf` (**extent** in a slice).
+— **C.3.3** - **KindBridge** & **`CL^k`** (type‑congruence; penalties route to **R**).
+— **C.3.4** - **RoleMask** (context‑local adaptation without cloning kinds).
+— **C.3.5** - **KindAT** (K0…K3, **informative facet**, not a Characteristic).
+— **C.3.A** - **Typed Guard Macros** (annex): admit/compose, masks, Cross‑context reuse; AT is **forbidden** in guards.
+
+**Deprecations.**
+— “**Generality ladder**” for **G**; **G is Scope** only (set‑valued over `U.ContextSlice`).
+— Any “**Kind scope**” characteristic (Kinds carry **intent/extent**, not Scope).
+— **Mark as legacy** any uses of **‘validity’ as a Characteristic** or **‘operation’ as a Scope‑like Characteristic**; **redirect** to **`U.ClaimScope`** / **`U.WorkScope`** (A.2.6) for applicability. Editors SHOULD add glossary redirects in Part E.
+
+**Editorial note (cut‑over).** Content formerly in C.3 that defined guard shapes, decision trees, and macro anti‑patterns now resides in **C.3.A**. Membership **evaluation obligations** live in **C.3.2** with `MemberOf`.
+
+
+### C.3:1 - Purpose & Rationale
+
+**What you get.**
+
+1. A **neutral typed layer**: name *what* a claim quantifies over (**Kinds**) without binding to any particular “type technology” (OWL, PL types, shapes…).
+2. A clean **split of characteristics**:
+   – **Scope (G)** = *where* a claim holds (USM, set‑valued over **Context slices**).
+   – **Kind extent** = *which instances* belong to a kind **inside** a given slice.
+   – **F** = *how strictly* content is expressed (C.2.3).
+   – **R** = *how well supported* (evidence & congruence penalties).
+3. **Typed reuse across Contexts**: a dedicated **KindBridge** with **`CL^k`** (type‑congruence), so you can predict risk **without** touching F or G.
+4. **Manager‑oriented maps**: when to invest in **formalization** (F), when to expand/narrow **Scope** (ΔG), when to test across **subkinds** (R), and what kind of **bridge** you should expect.
+
+**Why it helps.**
+Teams routinely overspend on proofs for **instance‑level** questions and underspecify scope for **class‑level** claims. By naming the **Kind**, you plan **ΔF/ΔR** correctly and keep **G honest**. Typed checks also block unsafe compositions (“we were talking about different things”).
+
+
+### C.3:2 - Context
+
+Cross‑disciplinary work mixes artifacts that *look like “types”* but behave differently: ontology classes, schema “shapes,” programming types, BORO super/sub categories, ad‑hoc labels. At the same time, **USM** made “scope” precise. What was missing was a *small, neutral* notion of **describedEntity** that (a) **does not** re‑invent a global “type system,” (b) composes with USM and F–G–R, and (c) lets Contexts keep their idioms—**with bridges** when crossing boundaries.
+
+
+### C.3:3 - Problem
+
+1. **Scope–type conflation.** Authors try to widen **G** by “abstracting the wording,” yielding claims that *sound* general but are only supported on a thin slice.
+2. **Silent drift across Contexts.** A “vehicle” here is not the same as a “transport unit” there; reuse proceeds without a declared mapping or risk accounting.
+3. **Wasteful planning.** Without a signal about the *kind‑level*, teams either over‑formalize single‑slice decisions or under‑test class‑level claims (no variant coverage along subkinds).
+4. **Unsafe composition.** Claims about incompatible “things” get composed because the describedEntity was implicit in prose.
+
+
+### C.3:4 - Forces
+
+| Force                             | Tension to resolve                                                                                 |
+| --------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Local freedom vs global sense** | Contexts need their own vocabularies; Cross‑context work needs a common skeleton for **describedEntity**.      |
+| **Minimality vs utility**         | The notion of kind must be tiny yet powerful enough to guide ΔF/ΔR/bridges/composition.            |
+| **Intent vs extent**              | Kinds come with a **definition** and a **population in place**; both are needed and must not mix.  |
+| **Typed discipline vs F–G–R**     | Typed safety must not distort **G** (Scope) nor introduce a parallel “assurance math.”             |
+| **Abstraction vs applicability**  | “Higher abstraction” is **not** “wider applicability”; the framework must make this split obvious. |
+
+
+### C.3:5 - Solution — Architectural Decisions (overview)
+
+**C.3‑D1 — `U.Kind` is intensional and context‑local.**
+Kinds name *what a claim quantifies over*. They form a partial order **`⊑`** (**SubkindOf**). *(See C.3.1.)*
+
+**C.3‑D2 — Separate **intent** and **extent**.**
+— **KindSignature(k)**: the intensional content (predicates/invariants/Standards). It carries its **own F** (C.2.3).
+— **Extension(k, slice)**/**MemberOf**: which instances belong to `k` **in a given `U.ContextSlice`**. *(See C.3.2.)*
+
+**C.3‑D3 — Kinds do **not** carry Scope.**
+**Scope** lives with **claims/capabilities** (USM): a set of **Context slices** where the statement holds. Kinds carry **intent/extent** only. *(USM A.2.6 + C.3.2.)*
+
+**C.3‑D4 — Typed reuse across Contexts is explicit.**
+Use a **KindBridge** with **`CL^k`** (type‑congruence) and loss notes. Its effect is **only via R** penalties; **F/G remain unchanged**. *(See C.3.3.)*
+
+**C.3‑D5 — Local adaptation without cloning.**
+Use a **RoleMask** to bind a kind to Context‑specific constraints/aliases; promote to a **subkind** if the mask becomes stable and widely reused. *(See C.3.4.)*
+
+**C.3‑D6 — An **informative** “abstraction tier” exists for Kinds (AT: K0…K3).**
+A facet (not a Characteristic) that helps plan **ΔF/ΔR** and forecast bridge style; **AT never appears in guards**. *(See C.3.5.)*
+
+**C.3‑D7 — Guard shapes are standardized and fail‑closed.**
+Typed compatibility first (same‑Context **`⊑`** or **KindBridge**), then **Scope coverage** (USM), then **R** penalties and freshness. *(See C.3.A.)*
+
+> **Manager’s picture — Two characteristics (keep them separate).**
+> – **characteristic 1 (USM, G):** *Where* the claim holds → set of **Context slices**; composed by ∈ (membership) / ∩ (intersection) / **SpanUnion** (union across independent lines) / translate (scope mapping).
+> – **characteristic 2 (Kind extent):** *Which instances* in a **given slice** belong to the kind → `MemberOf(e, k, slice)`.
+> **Never “widen G” by abstract wording; widen only by ΔG with support.**
+
+
+### C.3:6 - Core Concepts (informative summary; authoritative norms live in C.3.1–C.3.5)
+
+
+> This section fixes the **Standard** of terms used in C.3 and points to the sub‑patterns for complete mechanics. All “**SHALL/MUST**” statements here are normative.
+
+**Editorial note.** This section is **informative**. It restates manager-level takeaways and **points to** the canonical, normative rules in **C.3.1-C.3.5**. Where this section summarizes a rule, treat the cited sub-pattern and rule ID as the governing source.
+
+
+#### C.3:6.1 - `U.Kind` & `U.SubkindOf (⊑)`
+
+**Definition.** `U.Kind` is a **context‑local intensional object** naming a “kind of thing” that claims may quantify over.
+**Order.** `U.SubkindOf (⊑)` is a **partial order** (reflexive, transitive, antisymmetric). We write `k₁ ⊑ k₂`.
+
+**Summary of norms** *(authoritative text: **C.3.1 K‑01–K‑02**)*.
+— Contexts treat `⊑` as a partial order and document any computed meets/joins if they provide them.
+— Kinds do not carry Scope; Scope remains on claims/capabilities (USM).
+
+> *Full treatment:* **C.3.1** (definitions, invariants, examples).
+
+
+#### C.3:6.2 - **KindSignature** (intent) & **F**
+
+**Definition.** `KindSignature(k)` is the **intent**: predicates/invariants/Standards that define the kind in the Context. Its expression rigor has an explicit **`U.Formality`** (C.2.3).
+
+**Summary of norms** *(authoritative text: **C.3.2 K‑03–K‑04**)*.
+— `KindSignature(k)` declares its F (C.2.3). Claim‑level F does **not** auto‑inherit; weakest‑link applies on the claim’s own support paths.
+— If a signature change alters membership, treat it as a content change (Contexts may version kinds).
+
+> *Full treatment:* **C.3.2** (signature/intent with F; relation to claims).
+
+
+#### C.3:6.3 - **Extension** & **MemberOf** (extent in a slice)
+
+**Definition.** `Extension(k, slice) ⊆ EntitySet(slice)` = set of instances that belong to `k` **in the given `U.ContextSlice`**. `MemberOf(e, k, slice)` is the membership predicate: `e ∈ Extension(k, slice)`.
+
+**Summary of norms** *(authoritative text: **C.3.2 K‑05–K‑08**)*.
+— Membership is deterministic for a fixed `(k, slice)` (no hidden “latest”).
+— If `k₁ ⊑ k₂`, then `Extension(k₁,slice) ⊆ Extension(k₂,slice)` for all slices.
+— Definedness may be bounded; outside it, guards fail closed.
+— Keep **Scope (G)** and **MemberOf** as distinct guard predicates.
+
+> *Full treatment:* **C.3.2** (extent semantics, examples, authoring hints).
+
+
+#### C.3:6.4 - **KindBridge** & **`CL^k`** (type‑congruence)
+
+**Summary of norms** *(authoritative text: **C.3.3 KB‑01–KB‑12**)*.
+— A KindBridge states Contexts/versions, kind mapping/rules, preserved order links, **`CL^k`** anchors, loss notes, and definedness.
+— No inversions of preserved subkind links; collapses must be declared.
+— When classification depends on a KindBridge, apply a monotone penalty **Ψ(`CL^k`)** to **R** (scope‑bridge **Φ(CL)** applies separately). **F** and **G** remain unchanged.
+— Chaining uses weakest‑link on **`CL^k`**.
+
+> *Full treatment:* **C.3.3** (bridge shape, anchors, examples).
+
+
+#### C.3:6.5 - **RoleMask** (adaptation without cloning)
+
+**Definition.** `U.RoleMask(kind, Context)` is a **named binding** that carries constraints (optional **narrowing** of membership), vocabulary/notation aliases, and intended use for local procedures—**without** creating a new Kind.
+
+**Summary of norms** *(authoritative text: **C.3.4 RM‑01–RM‑08**)*.
+— Masks are registered/versioned; constraints are observable/deterministic at guard time.
+— Do not treat masks as kind synonyms; promote frequently reused constraint masks to explicit subkinds (`⊑`).
+
+
+> *Full treatment:* **C.3.4** (mask taxonomy, guard discipline, promotion rule).
+
+
+#### C.3:6.6 - **KindAT (K0…K3)** — *informative facet*
+
+**Status.** A **facet** attached to `U.Kind`, not a Characteristic: no algebra, **never** used in guards or composition.
+
+**Anchors (intentional view).**
+**K0** Instance; **K1** Behavioral pattern; **K2** Formal kind/class; **K3** Up‑to‑Iso.
+
+**Use.** Helps plan **ΔF/ΔR** and forecast bridge style (e.g., K3↔K3 suggests up‑to‑iso mapping). Do **not** conflate AT with **G** or **R**.
+
+> *Full treatment:* **C.3.5** (manager heuristics, anti‑misuse).
+
+
+#### C.3:6.7 - Quick examples (two‑characteristic awareness)
+
+**E‑Sketch 1 — Policy over `Vehicle`.**
+Claim: “For all `x ∈ Vehicle`: brakeDistance(x) ≤ 50 m (dry), ≤ 40 m (wet).”
+– **describedEntity:** `Vehicle` (Kind, typically K2) — *what* we quantify over.
+– **Scope (G):** `{surface∈{dry,wet}, speed≤50, rig=v3, Γ_time=rolling 180d}` — *where* the claim holds.
+– **Extent in slice:** which instances the lab currently classifies as `Vehicle` (via `MemberOf`).
+Typed checks happen **before** Scope intersection; **G** is not widened by “abstract wording.”
+
+**E‑Sketch 2 — API rule over `AuthenticatedRequest`.**
+Producer A emits `Request`; consumer B expects `AuthenticatedRequest`.
+– If `Request ⊑ AuthenticatedRequest` **does not** hold, add an **adapter** or adopt a **subkind**; do **not** force fit by widening **G**.
+– Scope remains independent (API version, Γ\_time policy); evidence/freshness sits in **R**.
+
+### C.3:7 - How to use typed reasoning
+
+### C.3:7.1 How typed reasoning plugs into **F–G–R & USM**
+
+#### C.3:7.1.1 - The basic shape of a typed claim (manager view)
+
+A typed claim has two independent parts:
+
+1. **describedEntity (Kind).** *Which things the statement talks about.*
+   “For every item of kind **k** in the **target context** (the selected **TargetSlice**) …”.
+   — The **definition** of kind **k** lives in **KindSignature(k)** (with its **F**, C.3.2).
+   — **Which items count as “k”** is evaluated in the **TargetSlice** (C.3.2) by a deterministic membership check.
+
+2. **Applicability (Scope, G).** *Where the statement holds.*
+   `U.ClaimScope(Claim)` is the **collection of contexts** where the claim is valid (USM A.2.6). Guards test: “Scope **covers** the TargetSlice”.
+
+**Discipline.** The guard first checks **typed compatibility** (in the same Context: “is‑a / subkind‑of”; across Contexts: a **KindBridge**, C.3.3), then **Scope coverage** (USM), then **R** freshness and any bridge congruence penalties. See **C.3.A Guard\_TypedClaim**.
+
+
+#### C.3:7.1.2 - Composition of typed claims
+
+**Rule C‑T‑1 (typed pre‑check).** To compose a **producer claim** with a **consumer claim**, where the producer quantifies over kind **k (source)** and the consumer expects kind **k (expected)**:
+
+* **same Context:** require **“is‑a / subkind‑of”** to hold (the source kind is a subkind of the expected kind) (C.3.1).
+* **Cross‑context:** require a **KindBridge** that maps the source kind to a **local kind that is a subkind of the expected kind** in the target Context (C.3.3). If neither holds, the composition is **unsafe**; introduce a subkind, add an adapter (or a RoleMask), or decline.
+
+* **Role‑aware option (same Context):** if the consumer expects a **RoleMask** over the expected kind, you may satisfy the mask’s explicit constraints (C.3.4) instead of changing kinds, provided those constraints are observable at gate time.
+
+**Rule C‑T‑2 (scope after type).** After typed compatibility is satisfied, compute Scope as in USM:
+
+* **Serial path:** take the **intersection** of the contributors’ claim scopes.
+* **Parallel independent lines:** use **SpanUnion** of the serial scopes (only if independence is justified).
+
+**Rule C‑T‑3 (no type‑by‑scope).** A kind mismatch **MUST NOT** be “fixed” by widening **G**. Changes in describedEntity require **subkind introduction**, **signature edits**, or a **KindBridge**—not a scope change.
+
+**Manager hint.** First confirm the **port shape** matches (kinds line up), then check the **operating area** (scope), and finally look at **confidence** (evidence freshness plus any bridge congruence penalties).
+
+
+#### C.3:7.1.3 - F–G–R with typed claims (what changes, what doesn’t)
+
+* **F (Formality).**
+  – **Claim‑level F** follows C.2.3 (weakest‑link along the claim’s support paths).
+  – **KindSignature F** is declared **on the kind** (C.3.2) and influences claims **only** if the claim essentially depends on those predicates (weakest‑link again).
+  – **Raising F** can *reveal* hidden assumptions (which may trigger ΔG in the claim), but **does not change G** by itself.
+
+* **G (Scope).**
+  – Always **set‑valued over Context slices** (USM A.2.6).
+  – Typed reasoning does not alter G’s algebra (∈/∩/SpanUnion/translate).
+  – Never infer Scope from “how general the wording sounds.”
+
+* **R (Reliability).**
+  – Evidence freshness/decay (validation windows) remains separate from Scope coverage.
+  – **Cross‑context penalties** split cleanly: a **scope‑bridge penalty** (USM) and a **kind‑bridge penalty** (C.3.3). Both **reduce R only**; neither changes **F** or **G**.
+
+**Manager rule of thumb.**
+Start with the reliability from your support; then **apply the scope‑bridge penalty**; then **apply the kind‑bridge penalty**. Each step can only reduce reliability.
+You never add or average **F/G**: you **compose scope** per USM rules and apply **weakest‑link** for F/R along support paths.
+
+
+#### C.3:7.1.4 - ESG gating with typed claims
+
+* **Gate on F**, if your Context requires rigor before use (e.g., `U.Formality(Claim) ≥ F4`).
+* **Gate on Scope coverage** (USM) and an explicit **time selector** (Γ_time) policy.
+* **Gate on R freshness** and **minimum congruence** for bridges (e.g., `CL ≥ 2`, `CL^k ≥ 2`).
+* **Do not** gate on **AT** (C.3.5); it is an informative facet only.
+* Use **C.3.A guard macros** to keep guards short and auditable.
+
+#### C.3:7.2 - How typed reasoning plugs into the CAL chain (Lang‑CHR → Role‑CAL)
+
+> **Intent.** Show a clear, end‑to‑end path a manager can follow to take a typed claim from words to safe reuse across Contexts—without any tool or data‑governance assumptions. Each stage says **what it supplies**, **what it needs**, and **what it hands off** to the next stage.
+
+
+##### C.3:7.2.1 - **Lang‑CHR** — stable words first
+
+**What it supplies.** A disciplined vocabulary and controlled phrasing so that terms like *Vehicle*, *AuthenticatedRequest*, *AdultPatient* have **one meaning** in the Context.
+
+**What it requires.** Authors use controlled narrative (C.2.3 **F3**) at minimum: single‑meaning terms, explicit “shall / if / then”, and no drifting synonyms.
+
+**Hand‑off.** A small, curated lexicon entry for each candidate *Kind‑word*; these become **`U.Kind` names** in the next step.
+
+> *Manager hint.* If two teams cannot agree on the noun, you are not ready to type the claim. Resolve the noun in Lang‑CHR before introducing a Kind.
+
+
+##### C.3:7.2.2 - **Kind‑CAL** (this Part) — name the *describedEntity*
+
+**What it supplies.**
+• **`U.Kind`** objects for those nouns; a partial order **`⊑`** (subkind‑of).
+• **KindSignature(k)** (intent), with declared **F**.
+• **Extension(k, slice)** and **`MemberOf(e,k,slice)`** (extent).
+• (Optional) **AT (K0…K3)** as an **informative facet**.
+
+**What it requires.**
+• Deterministic membership (no “latest” defaults) and a clear rule for where membership is defined in each context.
+• No “Kind scope”: Scope remains with claims/capabilities (USM).
+
+> *Manager hint.* Use the kind’s **AT tag** only as a planning signal (where to invest rigor and tests). AT never gates decisions and never widens scope.
+
+**Hand‑off.** Typed quantifier sites for claims: “∀ x ∈ **Extension(k, slice)** …”, plus a visible **`⊑`** lattice for compatibility checks down the line. Typed claim sites written in Plain language: “for every item of kind **k** in the **target context** …”, plus a visible **subkind‑of** lattice for compatibility checks down the line.
+
+> *Manager hint.* Decide early whether your Kind is K0 (instance‑ish) or K2 (formal class). It sets your **ΔF/ΔR** budget expectations.
+
+
+##### C.3:7.2.3 - **Structure‑CAL** — give Kinds usable shape
+
+**What it supplies.** Structural building blocks **on Kinds**:
+• **combinations** (“and”),
+• **alternatives** (“either/or”),
+• **records** (named fields),
+• **functions** (inputs to outputs),
+plus relations like **has‑attribute** and **part‑kind**, and the minimal invariants those structures must respect.
+
+**What it requires.**
+• Do not hide Scope inside structure.
+• Put structural rules into the **KindSignature** as checkable statements (ideally **F4+**).
+
+**Hand‑off.** Typed *ports and shapes* of claims/specifications (“this policy expects `PassengerCar × ControllerConfig`”), making compatibility checks crisp before any Scope math.
+
+> *Manager hint.* If two claims expect different shapes (for example, one needs “Vehicle with ABS”, the other just “Vehicle”), plan a **subkind** or an **adapter**. Do not “solve” it by rewording the claim.
+
+**Note (informative).** If a Context declares structural constructors on kinds (e.g., product/sum/record/function), editors SHOULD document the corresponding **Extension** inclusion laws for those constructors. Keep Scope in USM; do not hide it in structure.
+
+
+##### C.3:7.2.4 - **Compose‑CAL** — compose with typed pre‑checks
+
+**What it supplies.** The **order of checks** you must follow for safe composition:
+
+1. **Typed compatibility**: in the same Context, the producer’s kind **is a subkind of** the consumer’s kind; across Contexts, a **KindBridge** maps the producer’s kind to a local kind that fits, with an acceptable **kind‑bridge congruence level** (C.3.3).
+2. **Scope checks** (USM): along dependency paths, take the **intersection** of scopes; use **SpanUnion** only when support lines are truly independent.
+3. **Assurance wiring**: apply the **scope‑bridge penalty** and the **kind‑bridge penalty** to **R**; check evidence freshness separately.
+
+**What it requires.** Independence justification for **SpanUnion**; no “type‑by‑scope” fixes.
+
+**Hand‑off.** A typed, scope‑checked composition that survives audit because each risk is accounted for in **R**.
+
+> *Manager hint.* Run the **typed pre‑check** first. It is the cheapest failure to catch and prevents “scope gymnastics” that mask a type mismatch.
+
+
+##### C.3:7.2.5 - **CT2R‑LOG** — speak the logic, keep the math honest
+
+**What it supplies.**
+• A clear logical reading of your typed claim: “for every item of kind **K**, condition **φ** holds” (or “there exists an item …”).
+• Rules for refinement and substitution that respect the **subkind‑of** relation.
+• When appropriate (K3), reasoning that treats structures as **equivalent up to isomorphism** (useful where exact identity is the wrong notion).
+
+**What it requires.**
+• Pick a logic that matches the **Formality** you declare (e.g., machine‑checked logic for higher **F**).
+• When the logic travels across Contexts, use a **KindBridge** to keep meaning aligned; any mismatch is reflected as a **kind‑bridge penalty** in **R**.
+
+**Hand‑off.** Proof obligations or reasoning templates that are consistent with your Kind/Structure setup and do not alter **G**.  **Shall‑note CT2R‑1.** Transferring typed formulas that depend on `MemberOf` across Contexts **uses a KindBridge**; any mismatch is accounted as **Ψ(`CL^k`)** in **R**. **F** and **G** remain unchanged. For **up‑to‑iso** situations, see **C.3.5 (AT)** for when K3 is appropriate.
+
+> *Manager hint.* If your proof keeps failing when you move between Contexts, add a **bridge at the Kind level**; do not try to “fix” it by changing scope.
+
+
+##### C.3:7.2.6 - **Role‑CAL** — adapt without cloning
+
+**What it supplies.** **RoleMask(kind, Context)**: a named, registered adaptation (extra constraints or local aliases, with optional narrowing) that reuses the **same** kind instead of creating a new one.
+
+**What it requires.**
+• Constraints must be testable at gate time and give deterministic answers.
+• If a constraint mask is reused often, **promote it to a subkind**.
+
+**Hand‑off.** Context‑specific views that keep identity intact and make typed guards practical (“use `PaymentAccount@PCI` mask in these steps”).
+
+> *Manager hint.* If the same mask appears in several guards, **promote** it to a subkind. This reduces future bridge and audit effort.
+
+
+##### C.3:7.2.7 - Mini end‑to‑end example (manager‑oriented)
+
+> **Scenario.** A risk gate for API requests must be reused by another program across Contexts.
+
+**Lang‑CHR.** Settle on *Request*, *AuthenticatedRequest*, *RiskScore*, *BudgetSlack*; write them in controlled phrases (F3).
+
+**Kind‑CAL.**
+• Define `Kind Request` (K2) and a **subkind** `AuthenticatedRequest ⊑ Request`;  publish a **KindBridge** for the PCI taxonomy with **kind‑bridge congruence level 2** (loss note: token class is collapsed).
+• Membership `MemberOf(e, AuthenticatedRequest, slice)` is deterministic under API v2.3 and Γ\_time policy.
+
+**Structure‑CAL.**
+• `AuthenticatedRequest` is a **record kind** with fields (headers, tokenProof, body); invariants relate tokenProof to headers.
+
+**Compose‑CAL.**
+• Policy P says in Plain terms: “for every **AuthenticatedRequest** in the **target context**, deny the call when **riskScore** is at or above the set **risk threshold** and **budgetSlack** is at or below the set **budget limit**.”
+• Another service S expects `PCIRequest`. Typed pre‑check: does `AuthenticatedRequest ⊑ PCIRequest`? No.
+• Remedy: adapter A proves `AuthenticatedRequest → PCIRequest` in this Context; if reusing across Contexts, publish a **KindBridge** for the PCI taxonomy with **`CL^k=2`** (loss: token class collapsed).
+
+**CT2R‑LOG.**
+• State P in a state P in a proof‑checked logic (where appropriate for F7+), so that changes to token rules break proofs. Proofs rely on the **AuthenticatedRequest** definition, not on the consumer’s scope.
+
+**Role‑CAL.**
+• Register a **RoleMask** over `PCIRequest` for the consuming team; guards must be able to test the mask’s constraints at gate time.
+
+**Outcome.**
+• **Typed guard** approves only when: (i) the type pre‑check passes (same‑Context subkind‑of or a KindBridge with an acceptable congruence level), (ii) **Scope** covers the target context (API v2.3, explicit time selector), and (iii) **R** reflects the **scope‑bridge** and **kind‑bridge** penalties and evidence is fresh.
+• No one widened Scope to hide a type mismatch; the adapter + bridge made the semantics explicit and auditable.
+
+
+> **Takeaway.** If you keep these six hand‑offs in view—words → kinds → structure → composition → logic → roles—you get **predictable reviews**, **clean risk accounting**, and **reusable claims** that travel across Contexts without silent meaning drift.
+
+#### C.3:7.3 - Compliance & Regulatory Alignment — profile
+
+Treat regulatory categories as **Kinds**, carry their **intent** in `KindSignature` with declared **F**, move them across Contexts with a **KindBridge** (type‑congruence **`CL^k`** + loss notes), and express applicability as **Claim scope** over `U.ContextSlice` (with explicit **Γ_time**). Any Cross‑context uncertainty is routed to **R** via **Ψ(`CL^k`)** (kind) and **Φ(CL)** (scope); **F** and **G** remain unchanged.
+
+> **Authoritative obligations and guard macros** (C‑REG‑1…8, Guard_RegAdopt / Guard_RegChange / Guard_RegXContextUse) and worked scenarios live in **C.3.A, Annex A (Regulatory adoption profile)**.
+
+
+#### C.3:7.4 - How typed reasoning plugs into **Assurance Lanes (VA/LA/TA) & Evidence design**
+
+**Intent (manager’s view).** Typed reasoning turns “prove/test/qualify” into a **repeatable plan** by making *what the rule talks about* explicit (named **Kinds**, their **subkinds**, optional **RoleMasks**) and keeping **Scope (G)** over `U.ContextSlice` separate from **membership** inside the slice. Cross‑context uncertainty (Scope Bridge **CL**, KindBridge **`CL^k`**) always routes to **R** as penalties **Φ/Ψ**; it never changes **F** or **G**.
+
+**Evidence matrix (sketch).**
+
+| Row set                       | Column set                                                   | Cell content                                                                                                           |
+| ----------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **Kinds** (subkinds or masks) | **Context slices** (Standard versions, env ranges, `Γ_time`) | **Evidence unit** (proof fragment, test batch, monitoring window), with **Scope** and **MemberOf** predicates attached |
+
+*Tip.* For formal kinds and “up‑to‑iso” kinds (AT K2/K3), expect **more rows** (variants). For instance‑like kinds (AT K0), expect **fewer rows** and **tighter columns** (narrow slices, stricter freshness).
+
+> **Authoritative evidence obligations and guard macros** (planning/attachment, VA/LA/TA duties, anti‑patterns) are in **C.3.A, Annex B**.
+
+#### C.3:7.5 - How typed reasoning plugs into **ESG and Method–Work gating**
+
+> Intent. Make state changes and work admissions deterministic, auditable, and safe by separating (1) **typed compatibility** (what the statement or capability is about) from (2) **scope coverage** (where it holds or can run). Any Cross‑context uncertainty is routed to **R** (reliability) only—never to **F** (form) or **G** (scope).
+
+
+##### C.3:7.5.1 - Scope & fit
+
+This subsection defines **normative guard obligations** for:
+
+* **ESG** (Episteme State Graph) transitions whose assertions **quantify over kinds**, and
+* **Method–Work** admissions where a **capability** expects inputs and outputs of specified kinds.
+
+It reuses:
+
+* **USM** (A.2.6): `U.ClaimScope` (G) and `U.WorkScope` coverage + `Γ_time`,
+* **Kind‑CAL core** (C.3.1–C.3.2): `U.Kind`, `MemberOf(e,k,slice)`, `⊑`,
+* **KindBridge** (C.3.3) with **`CL^k`** and loss notes,
+* **Scope Bridge** (Part B) with **CL** and loss notes,
+* **RoleMask** (C.3.4) when local adaptations of a kind are used,
+* **Formality F** (C.2.3) when transitions gate on rigor,
+* **Assurance R** (C.2.2) for evidence freshness and penalties Φ/Ψ.
+
+**Guard macros.** The **normative guard shapes** for ESG and Method–Work (**Guard_TypedClaim**, **Guard_TypedJoin**, **Guard_MaskedUse**, **Guard_XContext_Typed**) are specified in **Annex C.3.A**. Use those shapes; the present section is a manager‑level overview only.
+
+##### C.3:7.5.2 - Inputs & roles (at guard time)
+
+* **TargetSlice** — the specific context you are deciding for: Context, versioned Standards, environment parameters, and an explicit **time selector (Γ_time)**.
+* **Typed carriers**
+
+  * **ESG:** the **Claim** quantifies over one or more **Kinds** (e.g., “for all vehicles in the target context …”).
+  * **Method–Work:** the **Capability** declares expected input and output kinds (and possibly RoleMasks).
+* **Thresholds** (context‑local policy):
+
+  * Minimum **F** level for the Claim (if the Context gates on rigor),
+  * Minimum **congruence** for **scope bridges**,
+  * Minimum **type‑congruence** for **KindBridges**,
+  * Evidence **freshness windows** (R‑lane).
+* **Evidence bundle** (if the transition implies trust): references, dates, windows.
+
+
+##### C.3:7.5.3 - Manager’s 7‑step checklist (operational)
+
+1. **Name the slice.** Write the full `TargetSlice`/`JobSlice` tuple including **`Γ_time`**.
+2. **Check coverage.** Claim/Work scope **covers** the slice (USM).
+3. **Check typed definedness.** A deterministic membership check is available in this context for every kind you use (and any masks are registered).
+4. **Check typed compatibility.** same Context: `⊑` (or mask constraints met). Cross‑context: **KindBridge** with **`CL^k ≥ c`**.
+5. **Bridge scope if needed.** Scope Bridge with **CL ≥ c** for Cross‑context scope.
+6. **Apply penalties to R.** Apply the **scope‑bridge penalty** and the **kind‑bridge penalty**; then check evidence **freshness** windows.
+7. **(If gated) Check F.** Enforce `Formality ≥ F_k` for the transition.
+
+> **Remember:** **F** and **G** never change because of bridges; only **R** is penalized. AT (K0…K3) is informative and **not** used in guards.
+
+
+##### C.3:7.5.4 - Cross‑references
+
+* **USM / A.2.6:** Scope coverage, `Γ_time`, serial **∩**, **SpanUnion**, Bridge+CL.
+* **Kind‑CAL / C.3.1–C.3.4:** `U.Kind`, `⊑`, `MemberOf`, RoleMask, KindBridge + **`CL^k`**.
+* **Formality / C.2.3:** `U.Formality` thresholds (when ESG gates on rigor).
+* **Assurance / C.2.2:** Freshness windows; **Φ(CL)** and **Ψ(`CL^k`)** penalties to **R** (weakest‑link on paths).
+
+This subsection is **normative** for guards in ESG and Method–Work that **use kinds**.
+
+### C.3:8 - Cross‑context typed reuse & assurance accounting
+
+#### C.3:8.1 - The **two‑bridge rule** (mandatory)
+
+When any part of the use crosses Contexts:
+
+1. **Scope Bridge** (USM/Part B) with **CL** → penalty **Φ(CL)** to **R**.
+2. **KindBridge** (C.3.3) with **`CL^k`** → penalty **Ψ(`CL^k`)** to **R**.
+
+Both bridges carry **loss notes**; neither changes **F** or **G**. See **C.3.A Guard\_XContext\_Typed**.
+
+
+#### C.3:8.2 - Narrowing after mapping (best practice)
+
+If a bridge’s loss notes indicate material mismatch (dropped invariants, collapsed subkinds):
+
+* **Narrow the mapped Scope** to areas where those losses are benign.
+* **Or** introduce an **adapter** (plus evidence) that restores the needed properties in the target Context.
+* Document the decision; the penalties still land in **R**.
+
+
+#### C.3:8.3 - Typical Cross‑context patterns (manager’s catalog)
+
+* **Name‑level overlap only (low `CL^k`).**
+  Expect significant Ψ penalty. Limit quantification, add local checks, or refuse reuse until the kind mapping is improved.
+
+* **Up‑to‑iso mapping (high `CL^k`).**
+  Often seen for K3 kinds. Ψ penalty is small; treat as “shape‑preserving” transfer. Still apply the appropriate **Φ(CL)** for Scope.
+
+* **Mask‑to‑subkind evolution.**
+  If receivers repeatedly use the same **RoleMask** to make a transfer safe, promote it to an explicit **subkind** and update the bridge to preserve that link.
+
+
+#### C.3:8.4 - Decision pattern (fast path)
+
+1. **Typed pre‑check:** `k_A ⊑ k_B` (same Context) **or** `KindBridge(k_A → k′_B)` with acceptable **`CL^k`**.
+2. **Scope coverage:** `translate(Scope_A)` covers `TargetSlice_B`.
+3. **Apply penalties:** **Φ(CL\_scope)** and **Ψ(`CL^k`)** to **R**.
+4. **Freshness:** windows/decay for all bound evidence.
+5. **Publish:** a short “Bridge and Loss Notes” box; include any **narrowing** or **adapters** used.
+
+
+### C.3:9 - Authoring guidance (engineers‑managers)
+
+#### C.3:9.1 - When to mint a `U.Kind`
+
+Create a Kind when:
+
+* multiple claims refer to the **same “describedEntity”** using unstable labels;
+* you need **subkinds** (refinement) or repeated **RoleMasks**;
+* different Contexts must **map** this “describedEntity” via bridges;
+* you need to **quantify** over a population (and plan variant coverage) instead of over a single exemplar.
+
+Avoid creating a Kind for **one‑off** instance references—prefer a clear **K0** facet or just a literal exemplar in the claim.
+
+
+#### C.3:9.2 - Writing a **KindSignature** (and picking **F**)
+
+* Start with a concise **intent**: the invariants/constraints that make membership meaningful.
+* Aim for **F4** (predicate‑like) if the kind is intended for reuse; rise to **F7+** only where proof‑grade is justified.
+* Use **observable** terms (no “latest”); if a Standard matters, **name its version**.
+* If defining a Kind reveals systematic **narrowings** in use, introduce explicit **subkinds** (`⊑`) rather than accumulating opaque masks.
+
+> **Example (sketch).**
+> `Kind Vehicle` — intent: “has VIN; has brake system; has propulsion {ICE, EV, Hybrid}; …” (F4 predicates).
+> Subkind: `PassengerCar ⊑ Vehicle`.
+> RoleMask: `Vehicle@ABSRequired` for processes that demand ABS (deterministic constraints; candidates for promotion to subkind if widely reused).
+
+
+#### C.3:9.3 - Setting the **AT** facet (K0…K3)
+
+Use **AT** to **aim effort**, not to gate:
+
+* **K0**: instance/cohort — focus **R** on the TargetSlice; don’t over‑formalize.
+* **K1**: behavioral pattern — clarify Standards; plan ΔF (F3→F4).
+* **K2**: formal class — invest in F4–F7; plan **variant coverage** across subkinds in **R**.
+* **K3**: up‑to‑iso — expect high‑quality bridges; consider F7–F9 for critical invariants.
+
+Never treat **AT** as “wider/narrower” **G**.
+
+
+#### C.3:9.4 - Writing a typed claim (with USM blocks)
+
+**Skeleton.**
+
+* **Kinds used:** `Vehicle` (K2), subkinds `PassengerCar`.
+* **Claim scope (G):** `surface∈{dry,wet}; speed≤50; rig=v3; Γ_time=rolling 180d`.
+* **Statement:** `∀ x ∈ Extension(Vehicle, TargetSlice) …`
+* **Guards:** use **C.3.A Guard\_TypedClaim**; if Cross‑context, add **Guard\_XContext\_Typed** (two‑bridge rule).
+
+**Tip.** Keep **Scope**, **MemberOf definedness**, **F thresholds**, and **freshness** as **separate** guard predicates—the auditor should be able to tick each box independently.
+
+
+#### C.3:9.5 - Minimal “Kind card” contents (Context catalog)
+
+* **Name** and **intent summary** (KindSignature snippet + **F**).
+* **`⊑` links** (parents/children).
+* **Examples of `MemberOf@slice`** (what membership looks like in practice).
+* **Known RoleMasks** (type, constraints, determinism).
+* **Known KindBridges** (source Contexts, target Contexts, **`CL^k`**, loss notes, definedness).
+* *(Optional)* **AT** facet with one‑line rationale.
+
+
+### 10 - Review & integration guidance
+
+#### C.3:10.1 - Reviewer’s 8‑point checklist
+
+1. **Named describedEntity.** Does the claim state **what** it quantifies over (`U.Kind`)?
+2. **Scope explicit.** Is **G** declared (no “domain” placeholders, no implicit “latest”)?
+3. **Typed compatibility.** For compositions, do we have `⊑` (same Context) or a **KindBridge**?
+4. **RoleMasks.** If used, are they **registered**, **deterministic**, and not masquerading as kinds?
+5. **Two‑bridge rule.** For Cross‑context use, do we have **both** Scope Bridge (**CL**) and **KindBridge** (**`CL^k`**)?
+6. **Penalties.** Are **Φ(CL)** and **Ψ(`CL^k`)** applied to **R**, not smuggled into F/G?
+7. **Freshness.** Are validation/monitoring windows separate from Scope coverage?
+8. **Evidence fit.** For class‑level claims, does the test plan cover **subkinds/variants**?
+
+
+#### C.3:10.2 - Integrator’s composition playbook (typed first, then scope)
+
+* **Step 1:** Check `k_A ⊑ k_B` (or KindBridge).
+* **Step 2:** Compute **Scope\_serial** = `Scope(A) ∩ Scope(B)` (USM).
+* **Step 3:** If parallel supports exist, **SpanUnion** them (only where independent).
+* **Step 4:** Apply **Φ**/**Ψ** penalties to **R**; enforce freshness.
+* **Step 5:** If a **mask** is repeatedly required, consider promoting it to a **subkind**.
+
+
+#### C.3:10.3 - Assurance lead: wiring penalties and windows
+
+* Identify channels used: **Scope bridge? KindBridge?**
+* Apply **Φ(CL)** and **Ψ(`CL^k`)** to **R** (monotone; higher congruence ⇒ smaller penalty).
+* Verify **freshness windows** for all bound evidence (independent of bridges).
+* Publish a **one‑box summary**: bridges, levels, loss notes, any narrowing/adapters, net impact on **R**.
+
+
+#### C.3:10.4 - Red flags (stop‑the‑line)
+
+* “**We widened G because we reworded the type.**” → **Reject**; redo as subkind/bridge or revise Scope honestly.
+* “**Mask equals kind.**” → **Refactor**; register mask properly or promote to subkind.
+* “**Cross‑context without KindBridge.**” → **Block**; demand mapping and **`CL^k`**.
+* “**No Γ\_time.**” → **Block**; add explicit time policy (point/window/rolling).
+
+
+### C.3:11 - Worked examples (end‑to‑end)
+
+> *Each example shows the typed pre‑check, Scope composition, penalties to **R**, and the managerial decision. Full guard clauses for these scenarios are in **Annex C.3.A**.*
+
+#### C.3:11.1 - Cyber‑physical braking policy across labs and plants
+
+**Claim (Lab Context).**
+“∀ `x ∈ Vehicle`: brakingDistance(x) ≤ 50 m (dry), ≤ 40 m (wet).”
+**Kinds.** `Vehicle` (K2, KindSignature F4); subkind `PassengerCar ⊑ Vehicle`.
+**Scope (Lab).** `{surface∈{dry,wet}, speed≤50, rig=v3, Γ_time=rolling 180d}`.
+
+**Reuse at Plant B.**
+– **KindBridge:** `Vehicle ↦ TransportUnit` with **`CL^k=2`** (loss: EV subkind collapsed).
+– **Scope Bridge:** `Lab → PlantB` with **CL=2** (rig bias ±2 %).
+– **Narrowing:** loss notes indicate wet‑surface bias; Plant B **narrows** mapped Scope to temp/adhesion ranges with acceptable bias.
+
+**Decision.**
+Typed pre‑check: **OK** via KindBridge. Scope coverage after translate/narrow: **OK**.
+Penalties: apply **Φ(2)** and **Ψ(2)** to **R**; freshness windows checked.
+**Outcome:** Adopt with reduced **R**; action item: qualify rig v4 to raise CL in the future.
+
+
+#### C.3:11.2 - API decision rule with adapter and subkind promotion
+
+**Consumer claim.**
+“∀ `x ∈ AuthenticatedRequest`: deny if riskScore(x) ≥ θ ∧ budgetSlack ≤ β.”
+
+**Producer reality.**
+Service A emits `Request` (no auth guarantee).
+**Option A:** A proves it emits `AuthenticatedRequest` (introduce subkind or strengthen Standard).
+**Option B:** Insert **adapter** that filters/annotates `Request → AuthenticatedRequest`.
+
+**Typed check.**
+Before: no `Request ⊑ AuthenticatedRequest`. After **Option B**: adapter supplies the guarantee; repeated use leads to promoting **mask** to **subkind**.
+
+**Scope.**
+API v2.3; Γ\_time = rolling 30 d.
+**R.**
+No Cross‑context reuse; no Φ/Ψ. Evidence: adapter correctness on the TargetSlice.
+
+**Outcome.**
+Adopt via Option B; open task: generalize producer to subkind and remove adapter later.
+
+
+#### C.3:11.3 - Clinical dosage rule across jurisdictions (bridge + mask)
+
+**Claim (Hospital X).**
+“∀ `x ∈ AdultPatient`: dosage ≤ D per kg for drug M.”
+**Kind.** `AdultPatient` (K2, F4).
+**Mask.** `AdultPatient@ClinicMask` narrows to the clinic’s cohort (deterministic DOB policy).
+
+**Reuse in Jurisdiction Y.**
+– **KindBridge:** `AdultPatient ↦ AdultPerson_Y`, **`CL^k=1`** (18 vs 21 years boundary).
+– **Scope Bridge:** coding systems differ (CL depends on mapping quality).
+– **Narrowing:** restrict Scope to datasets where DOB granularity supports boundary reconciliation.
+
+**Decision.**
+Typed pre‑check via KindBridge: **OK**. Scope coverage after translate/narrow: **OK**.
+Penalties: **Φ(CL\_scope)** and **Ψ(1)** applied to **R**.
+**Outcome:** Adopt with strong **R** penalty; plan: negotiate a harmonized boundary to raise `CL^k`.
+
+
+#### C.3:11.4 - ML fairness constraint with typed quantification
+
+**Claim (Product Context).**
+“∀ `x ∈ EligiblePerson`: TPR difference ≤ δ across groups `G`.”
+
+**Kind.** `EligiblePerson` transitions from **K1→K2** as attributes and cohorts are formalized (KindSignature F4).
+**Scope.** `{pipeline=P, features=F, Γ_time=rolling 180 d}`.
+
+**Cross‑context use.**
+Model team Context has `Resident` with different feature basis.
+– **KindBridge:** `EligiblePerson ↦ Resident` with **`CL^k=1`** (feature loss).
+– **Scope Bridge:** `pipeline P → P′`, **CL=2**.
+
+**Decision.**
+Typed pre‑check **OK** via bridges; mapped Scope **covers** the subset where features align.
+Apply **Φ(2)** and **Ψ(1)** to **R**; restrict groups to mapped subset; require monitoring freshness.
+**Outcome:** Adopt with reduced **R** and a mitigation note; action items: improve feature mapping and raise KindSignature F.
+
+### C.3:12 - Anti‑patterns & how to fix them
+
+> *Use this section as a “red flags” sheet in reviews. Each item links to a concrete remedy that preserves F–G–R & USM discipline (F/G/R separation, USM algebra, typed pre‑checks).*
+
+| Anti‑pattern (what goes wrong)                                   | Why it’s wrong (conceptual fault)                                                               | The fix (normative/informative pointers)                                                                                                              |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **“We widened G because we reworded the type.”**                 | Confuses **describedEntity** (kind) with **applicability** (scope). Abstract wording ≠ broader scope. | Keep typed pre‑check separate (C.3.1 `⊑` or C.3.3 KindBridge). Widen **G** only via **ΔG+** with support (USM A.2.6).                                 |
+| **“Kind scope” block attached to a Kind.**                       | Kinds don’t carry Scope; they carry **intent/extent**.                                          | Remove the block. Scope stays on claims/capabilities (USM). If you meant classifier definedness, state it via **K‑07** (C.3.2).                       |
+| **Inferring scope from extension size.**                         | **Scope ≠ Extension**; extension is “which instances in a slice,” not “where the claim holds.”  | Keep **G** set‑valued over `U.ContextSlice` (USM). Use `MemberOf` only inside the typed quantifier.                                                   |
+| **Mask used as a hidden kind (“just call it the masked kind”).** | Opaque drift; reviewers can’t see constraints.                                                  | Register a **RoleMask** (C.3.4). If reused across guards, **promote to subkind** with `⊑`.                                                            |
+| **Cross‑context reuse with only one bridge.**                       | Contexts differ on two characteristics: Scope **and** Kind.                                                   | Apply the **two‑bridge rule**: Scope Bridge (**CL** → Φ) **and** KindBridge (**`CL^k`** → Ψ). Both penalties land in **R**.                           |
+| **Using AT (K0…K3) as a gate/threshold.**                        | AT is an **informative facet**, not a Characteristic; gating on AT recreates a G‑ladder.        | Remove AT from guards. Use it only to **aim ΔF/ΔR** and to set **bridge expectations** (C.3.5).                                                       |
+| **“Automated execution success proves the type claim.”**                            | Execution success (F5/6) is not proof (F7+); also confuses **R** with **F**.                    | If you need proof‑grade properties, raise **F** for the claim/KindSignature (C.2.3) or restrict the claim. Keep **R** as evidence freshness/coverage. |
+| **Hidden “latest” in membership or scope checks.**               | Non‑deterministic evaluation; unverifiable audit trail.                                         | Declare **Γ\_time** explicitly in Scope (USM). Membership must be **deterministic** (C.3.2 K‑05/K‑07).                                                |
+| **Fixing type mismatch by “unioning scopes.”**                   | G‑union cannot repair **describedEntity** mismatches.                                                 | Introduce a **subkind**, add an **adapter** (+evidence), or define a **KindBridge**.                                                                  |
+| **Collapsing subkinds silently in a bridge.**                    | Reviewers don’t see lost distinctions → false confidence.                                       | Record **loss notes** on the KindBridge (C.3.3 KB‑11); consider **narrowing** mapped Scope or adding an adapter.                                      |
+
+
+### C.3:13 - Governance & conformance pull‑ups
+
+> *Contexts adopt Kind‑CAL by meeting the **Context‑level** obligations below. They summarize, not duplicate, the formal requirements in **C.3.1–C.3.5** and **C.3.A**. Use this as an adoption checklist.*
+
+#### C.3:13.1 - Context‑level obligations (must‑haves)
+
+1. **Kinds & order.** Maintain a Context catalog of `U.Kind` with an explicit **partial order** `⊑`.
+   – Conformance: **C.3.1** (K‑01/K‑02).
+
+2. **Kind signatures (intent).** For each Kind, publish a **KindSignature** with declared **F** (C.2.3).
+   – Conformance: **C.3.2** (K‑03/K‑04).
+
+3. **Deterministic membership.** Ensure `MemberOf(e,k,slice)` is **deterministic**; declare any definedness domain.
+   – Conformance: **C.3.2** (K‑05/K‑07).
+
+4. **Typed guards.** When a claim quantifies over kinds, guards SHALL use the **typed guard macros** (or equivalents) from **C.3.A**; **Scope coverage** and **typed checks** are separate predicates.
+
+5. **Role masks.** If a local projection is needed, register a **RoleMask** (type: constraint/vocabulary/composite); avoid cloning kinds.
+   – Conformance: **C.3.4** (RM‑01…RM‑06).
+
+6. **Two‑bridge rule for Cross‑context use.**
+   – **Scope Bridge** (Part B) with **CL** → Φ(CL) to **R**.
+   – **KindBridge** (C.3.3) with **`CL^k`** → Ψ(`CL^k`) to **R**.
+   – Conformance: **C.3.3** (KB‑01…KB‑10).
+
+7. **Decision records.** For each typed state change, record: **TargetSlice tuple**, typed compatibility outcome (`⊑` or KindBridge), **Scope coverage**, applied **Φ/Ψ** penalties to **R**, and **freshness** checks.
+
+#### C.3:13.2 - ESG / Method‑Work template inserts (normative snippets)
+
+* **Kinds used:** list `U.Kind` and any expected **subkinds** or **RoleMasks**.
+* **Claim scope (G):** explicit predicates over `U.ContextSlice` inc. **Γ\_time**.
+* **Typed guard lines:**
+  – same Context: `k_A ⊑ k_B` *checked*.
+  – Cross Context: `KindBridge(k_A → k′_B)`, `CL^k ≥ c_k` *checked*.
+* **Scope bridge lines:** `Bridge(Context_A → Context_B)`, `CL ≥ c_s` *checked*.
+* **Assurance lines:** `Φ(CL)`, `Ψ(CL^k)` applied to **R**; **freshness windows** hold.
+
+#### C.3:13.3 - Audits & levels of adoption (informative)
+
+* **USM‑Typed‑Ready.** Catalog exists; `⊑` declared; guard macros installed.
+* **USM‑Typed‑Guarded.** All typed claims use **C.3.A** guard shapes; **Γ\_time** explicit; two‑bridge rule enforced.
+* **USM‑Typed‑Auditable.** Decision records capture **TargetSlice**, typed checks, bridges, penalties, freshness.
+* **USM‑Typed‑Composed.** Compositions use typed pre‑check before Scope algebra; independence justified for **SpanUnion**.
+
+
+### C.3:14 - Migration & editorial impact
+
+> *Apply these edits incrementally; you do not need to stop other work. The aim is to eliminate synonym drift, restore F/G/R separation, and make typed reasoning routine.*
+
+#### C.3:14.1 - Inventory & refactor (steps)
+
+1. **Inventory** claims that implicitly talk about “things” (vehicles, requests, accounts, cohorts…).
+2. **Name kinds** for recurring “describedEntity”; start at **K1**; promote to **K2** as invariants stabilize.
+3. **Extract KindSignature** (aim **F4**); declare **F**.
+4. **Refactor claims** to typed quantification: `∀ x ∈ Extension(k, slice) …` plus **Scope (G)** predicates.
+5. **Publish bridges** where reuse is Cross‑context: Scope Bridge (**CL**) and KindBridge (**`CL^k`**) with loss notes; wire penalties **Φ/Ψ** to **R**.
+6. **Normalize masks**: register RoleMasks; if reused, promote to subkinds (`⊑`).
+
+#### C.3:14.2 - Edits to other parts (normative redirects, no new math)
+
+* **A.2.6 (USM).**
+  – Add “no Scope on kinds” note.
+  – In typed examples, show `MemberOf` definedness + Scope coverage.
+  – Two‑bridge rule for Cross‑context typed reuse.
+
+* **C.2.2 (F–G–R).**
+  – Replace any “generality/abstraction” wording with **Claim scope (G)**.
+  – Before scope composition, require typed pre‑check (`⊑` or KindBridge).
+  – Distinguish penalties: **Φ(CL)** vs **Ψ(`CL^k`)** → both to **R**.
+
+* **C.2.3 (F).**
+  – Add note: **KindSignature** has its own **F**; claim‑level F remains by weakest‑link.
+
+* **Part B (Bridges).**
+ – Introduce **KindBridge** with **`CL^k`**, monotone order preservation, loss notes; determinism.
+ – Chaining uses **min** of levels (weakest‑link) **for both** **CL** (Scope bridges) **and** **`CL^k`** (KindBridges).
+
+
+* **Role‑CAL.**
+  – Add **RoleMask** for kinds; determinism; promotion rule to subkind when reused.
+
+* **Compose‑CAL.**
+  – Add typed pre‑check before Scope algebra; forbid “type‑by‑scope”.
+
+* **Part E (Lexicon).**
+  – Add: `U.Kind`, `U.SubkindOf (⊑)`, `KindSignature`(+F), `Extension`, `MemberOf`, `U.RoleMask`, **KindBridge**, `CL^k`, **AT (kinds, facet)**.
+  – Mark as **deprecated aliases** (not characteristic names): *generality (as ladder), kind scope, validity (as characteristic), capability envelope*; redirect to **Claim/Work scope** or **Kind** entries.
+
+#### C.3:14.3 - Alias and record continuity
+
+* Archived prose and cited older records may keep deprecated aliases as labels. **Guards, conformance text, and state assertions** MUST use the Kind‑CAL/USM vocabulary and guard shapes.
+* When annotating older records, add a small “typed note” box: **Kinds**, **Scope**, **Bridges (CL/`CL^k`)**, **loss notes**, **penalties to R**.
+
+
+### C.3:15 - Extended rationale & design notes  \[I]
+
+> *This section explains the design choices that keep Kind‑CAL compact and interoperable with F–G–R & USM without drifting into tooling or technology stacks.*
+
+#### C.3:15.1 - Why **no Scope on kinds**
+
+Scope answers **“where the claim holds”** (set of Context slices, USM); kinds answer **“what the claim is about”**. Putting Scope on kinds would either (a) duplicate claim Scope, or (b) smuggle applicability into a classifier. We prevent both by: **intent/extent on kinds** (C.3.2), **Scope on claims/capabilities** (USM).
+
+#### C.3:15.2 - Why **two bridges** (Scope vs Kind)
+
+Contexts diverge along **context** (Standards, parameters, time) and **classification** (what counts as a member). A single bridge hides which characteristic is mismatched. Two explicit bridges keep fixes targeted: **ΔG / narrowing** for context misfit; **subkind/adapter** for classification misfit. Both risks land in **R** as separate penalties (**Φ/Ψ**).
+
+#### C.3:15.3 - Why **AT is a facet**
+
+AT (K0…K3) improves **planning** (ΔF/ΔR, bridge style) and **navigation** without introducing new algebra. Making AT a Characteristic would recreate a “G‑ladder,” blur applicability with abstraction, and invite gating on AT. As a facet, AT remains helpful but **toothless in math**, which is precisely what we want.
+
+#### C.3:15.4 - Why **RoleMask** and not “clone a kind”
+
+Operational tweaks (extra constraints, local aliases) are real but temporary. Cloning kinds creates drift and duplicate bridges. **RoleMask** documents the tweak **without breaking identity**; promotion to subkind occurs when practice stabilizes. This keeps catalogs small and bridges honest.
+
+#### C.3:15.5 - Fit with **Compose‑CAL** and **LOG‑CAL**
+
+Typed pre‑checks (same‑Context `⊑` or KindBridge) act like **port compatibility** before any Scope arithmetic. LOG‑CAL benefits from explicit quantification `∀ x : Kind` with substitution rules aligned to `⊑`. Neither alters F/G/R algebra; they prevent category mistakes before we do trust math.
+
+#### C.3:15.6 - CT2R lens (intuition)
+
+A **KindBridge** behaves like a **functor** that (approximately) preserves structure between Contexts; **`CL^k`** is a practical knob for “how functorial” it is. At **K3** (up‑to‑iso), this is literal: we expect bridges to preserve equivalences, hence higher `CL^k` and smaller Ψ penalties.
+
+### C.3:15bis - Rationale (Part E form)
+
+**Problem.** (recap)
+— Authors conflate *describedEntity* with *applicability*, widening G by abstract wording.
+— Cross‑context reuse drifts semantically without declared mappings or risk accounting.
+— Planning misfires: over‑formalization for instance claims; under‑testing for class claims.
+— Unsafe compositions when describedEntity is implicit.
+
+**Forces.** (recap)
+— Local freedom vs global sense; minimality vs utility; intent vs extent; typed discipline vs F–G–R; abstraction vs applicability.
+
+**Decision (C.3‑D1…D7).**
+— D1: `U.Kind` is intensional and context‑local (`⊑` partial order).
+— D2: Separate intent (KindSignature + F) and extent (Extension/MemberOf@slice).
+— D3: No Scope on kinds (Scope lives with claims/capabilities via USM).
+— D4: Typed reuse is explicit: KindBridge + `CL^k`, penalties route to **R** only.
+— D5: Local adaptation via RoleMask; promote stable masks to subkinds.
+— D6: AT (K0…K3) as **facet**, not a Characteristic; never used in guards.
+— D7: Guard shapes: typed pre‑check → scope coverage → penalties/freshness.
+
+**Consequences.**
+(+) Predictable Cross‑context reuse: two‑bridge rule, separate penalties (Φ/Ψ) to **R**.
+(+) Manager‑friendly planning: AT guides ΔF/ΔR; typed pre‑check blocks category mistakes.
+(+) Clean F–G–R discipline: no “G‑ladder,” no hidden scope inside classifiers.
+(−) Editorial discipline required: no “Kind scope”; masks must be cataloged; promote when stable.
+(−) Initial bridge authoring cost; mitigated by loss‑notes and reuse.
+
+**Alternatives considered.**
+— *Global U.Type*: rejected as either too thin or too prescriptive across Contexts.
+— *“Kind scope” in USM*: rejected; duplicates/obscures Scope vs Extension split.
+
+**Known uses.**
+— §11.1 (cyber‑physical braking); §11.2 (API with adapter); §11.3 (clinical dosage); §11.4 (ML fairness).
+— ESG guard shapes in **C.3.A**; typed pre‑check in Compose‑CAL (§7.2.4).
+
+**Related patterns.**
+A.2.6 (USM), C.2.2 (F–G–R), C.2.3 (F), Part B (Bridges), Role‑CAL, Compose‑CAL, C.3.1–C.3.5, C.3.A.
+
+### C.3:16 - Quick reference for managers
+
+#### C.3:16.1 - 10‑minute start
+
+1. Name the **Kind** your claim talks about.
+2. Write **Scope (G)** as slice predicates (with **Γ\_time**).
+3. If composing, check **`⊑`** or **KindBridge** first.
+4. Use the **typed guard macro** (C.3.A).
+5. Route bridge levels to **R** (Φ/Ψ); check freshness.
+
+#### C.3:16.2 - 30‑day rollout plan
+
+Week 1: Inventory & name Kinds (K1); adopt guard macros.
+Week 2: Draft **KindSignature** for the top 5 Kinds (aim **F4**); register masks.
+Week 3: Wire **two‑bridge rule** into ESG; add CL/`CL^k` lines to decision templates.
+Week 4: Promote repeated masks to subkinds; publish first **KindBridge** records with loss notes.
+
+
+### C.3:17 - Local glossary (reading aid)
+
+> *Canonical definitions live in sub‑patterns; this list is for quick recall while reading C.3.*
+
+* **`U.Kind`** — Minimal intensional “type/kind” object; carries **KindSignature** and **`⊑`** (C.3.1/C.3.2).
+* **`U.SubkindOf (⊑)`** — Partial order on kinds (C.3.1).
+* **KindSignature(k)** — Predicate‑like intent that defines the kind; has its own **F** (C.3.2).
+* **Extension(k, slice)** — Set of instances of `k` **inside** a `U.ContextSlice` (C.3.2).
+* **MemberOf(e, k, slice)** — Boolean membership predicate (C.3.2).
+* **RoleMask(k, Context)** — Registered adaptation (constraints/aliases; optional narrowing), no new kind (C.3.4).
+* **KindBridge** — Cross‑context mapping for kinds (intent/order) with **`CL^k`** and loss notes (C.3.3).
+* **`CL^k`** — Kind‑congruence level; penalty **Ψ(`CL^k`)** goes to **R** (C.3.3).
+* **AT (K0…K3)** — Informative facet of a Kind; aids planning/navigation; never used in guards (C.3.5).
+* **Guard macros** — Typed guard shapes for ESG/composition (C.3.A).
+
+> *End of C.3. See **C.3.1–C.3.5** and **C.3.A** for the referenced mechanics and guard macros.*
+
+### C.3:End
+
+
+## C.3.1 - U.Kind & SubkindOf (Core)
+
+> **One‑line summary.** Defines **`U.Kind`** as a **minimal, context‑local intensional carrier** for “what a claim is about,” and **`U.SubkindOf (⊑)`** as a **partial order** over kinds. **Kinds do not carry Scope.** Scope remains on **claims/capabilities** (USM). This core pattern supplies only identity, locality, and ordering; **intent & membership** (`KindSignature`, `Extension/MemberOf`) are specified in **C.3.2**, bridges & congruence in **C.3.3**, masks in **C.3.4**, and the AT facet in **C.3.5**.
+
+**Status.** Normative in **Part C**. Identifier **C.3.1**.
+**Audience.** Engineering managers, architects, assurance leads.
+
+**Dependencies.**
+
+* **A.2.6 USM (Unified Scope Mechanism).** *Scope* is a set‑valued **USM property** over `U.ContextSlice` on **claims/capabilities**; algebra: `∈` (membership), `∩` (intersection), `SpanUnion` (union across independent lines), `translate` (scope mapping).
+* **C.2.2 F–G–R.** F = formality of expression; **G = Claim scope**; R = assurance/evidence; weakest‑link for F/R; CL penalties feed **R**, not **F/G**.
+* **C.2.3 U.Formality (F).** Ordinal F0…F9; no arithmetic; applies to all content, including Kind signatures (defined in **C.3.2**).
+* **Part B Bridges & CL.** Generic (scope) bridges and CL; **Kind bridges** are specialized in **C.3.3**.
+
+**Non‑goals.**
+
+* No data governance or repository/notation mandates.
+* No membership or signature semantics here (defined in **C.3.2**).
+* No Cross‑context mapping/congruence here (defined in **C.3.3**).
+* No role/mask mechanics here (defined in **C.3.4**).
+* No AT facet mechanics here (defined in **C.3.5**).
+
+### C.3.1:1 - Purpose & Audience
+
+This pattern gives **one small, stable vocabulary** to say *what* a claim ranges over (its **describedEntity**) without entangling that with *where it applies* (Scope) or *how well it is supported* (R). For managers:
+
+* It prevents the costly mistake “more abstract wording ⇒ wider scope.”
+* It enables **typed composition** (you cannot combine claims about incompatible “things”).
+* It keeps **Scope** and **Assurance** math unchanged and predictable.
+
+
+### C.3.1:2 - Context
+
+across Contexts, “type” means OWL class, SHACL shape, code type, BORO category, etc. A **neutral, minimal** object is needed to name *the kind of entities* a claim quantifies over **without** importing a full type system or altering USM. **`U.Kind`** fills that role; **ordering** between kinds captures “is‑a/refines” relationships a Context relies on.
+
+
+### C.3.1:3 - Problem
+
+1. **Scope–Type conflation.** Teams broaden G by “abstracting” prose, not by adding supported slices.
+2. **Unsafe composition.** Claims are joined though they talk about different “things.”
+3. **Cross‑context drift.** Without an explicit core notion of kind, bridges blur describedEntity vs applicability.
+
+
+### C.3.1:4 - Forces
+
+| Force                          | Tension to resolve                                                        |
+| ------------------------------ | ------------------------------------------------------------------------- |
+| **Minimality vs utility**      | Keep the core tiny yet sufficient for composition and governance.         |
+| **Locality vs reuse**          | Kinds are context‑local, but projects reuse claims across Contexts via bridges. |
+| **describedEntity vs applicability** | Ordering should not leak into Scope; kinds must not carry G.              |
+| **Neutrality vs specificity**  | Avoid committing to any particular type/ontology stack or notation.       |
+
+
+### C.3.1:5 - Solution — Core Objects (overview)
+
+* **`U.Kind`** — a **context‑local intensional** object naming a “kind of thing” claims may quantify over.
+* **`U.SubkindOf (⊑)`** — a **partial order** on kinds (reflexive, transitive, antisymmetric). `k₁ ⊑ k₂` reads “`k₁` refines `k₂`.”
+
+> **No Scope on kinds.** Scope is for **claims/capabilities** (USM). Kinds supply **describedEntity only**; **membership** and **signature** live in **C.3.2**.
+
+
+### C.3.1:6 - Norms & Invariants (normative)
+
+**C3.1‑K‑01 (Partial order).** `U.SubkindOf (⊑)` **SHALL** be a **partial order** on `U.Kind`: reflexive, transitive, antisymmetric. Editors **SHALL** document any Context‑specific meets/joins if they supply them (optional).
+
+**C3.1‑K‑02 (No Scope on kinds).** A `U.Kind` **MUST NOT** carry a Scope value. Scope lives with **claims** (`U.ClaimScope` = **G**) and **capabilities** (`U.WorkScope`) per **A.2.6**.
+*Rationale pointer:* see **C.3.2** for the **intent/extent vs Scope** split.
+
+**C3.1‑K‑03 (Identity & locality).** A `U.Kind` is **context‑local**. Cross‑context mapping of kinds is handled by **KindBridge** (see **C.3.3**); such mapping **MUST NOT** be conflated with Scope bridging.
+
+**C3.1‑K‑04 (Naming).** A Context **SHALL** assign stable identifiers to kinds and **SHOULD** catalog parent/child `⊑` links. Synonyms/aliases **SHALL** point to the canonical kind id.
+
+**C3.1‑K‑05 (Separation of concerns).** This core **does not** define kind intent or membership; those are specified in **C.3.2** (`KindSignature` with its own F; `Extension/MemberOf` and determinism).
+
+
+### C.3.1:7 - Interactions (informative)
+
+* **With USM (A.2.6).** Guards that quantify over a kind use **two** predicates: “Scope covers TargetSlice” (USM) **and** whatever **membership** predicate is defined for the kind (see **C.3.2**). Kinds themselves carry **no Scope**.
+* **With F–G–R (C.2.2).** This pattern does not alter the triple; typed checks happen **before** scope algebra, preventing invalid compositions.
+* **Order of checks reference.** See **Annex C.3.A §5 (E‑01)** for the normative evaluation order: typed compatibility first, then Scope coverage, then penalties to **R** and freshness.
+* **With Formality (C.2.3).** A **KindSignature** (C.3.2) declares its **F**; claims retain their own F via weakest‑link.
+* **With Bridges (Part B).** Use **KindBridge** (C.3.3) for describedEntity; use **Scope Bridge** (Part B) for applicability. Penalties land in **R** via different channels.
+
+
+### C.3.1:8 - Authoring & Review (informative)
+
+**When to mint a kind.**
+Mint a `U.Kind` when claims repeatedly quantify over “the same sort of thing” and you need: (i) safe composition, (ii) clear Cross‑context mapping, (iii) a place to collect invariants (in **C.3.2**).
+
+**Don’t over‑mint.**
+If a local constraint is temporary or purely procedural, prefer a **RoleMask** (C.3.4) over a new subkind.
+
+**Review prompts.**
+
+1. Does the draft introduce a new *describedEntity* concept? → consider a kind.
+2. Does prose hint at “is‑a” relationships? → capture as `⊑`, not as scope widening.
+3. Are authors trying to widen scope by abstracting wording? → stop; widen **G** only via **ΔG** (USM) with support.
+
+
+### C.3.1:9 - Examples (informative, technology‑neutral)
+
+1. **Vehicle/PassengerCar.**
+   Mint `Kind Vehicle`. Later add `PassengerCar ⊑ Vehicle`. Claims about **Vehicle** may be reused by narrowing to **PassengerCar** without touching **G**. Scope remains an independent predicate over `U.ContextSlice`.
+
+2. **Request/AuthenticatedRequest.**
+   If multiple policies speak about “authenticated requests,” declare `AuthenticatedRequest ⊑ Request`. Do **not** widen G to compensate for missing authentication; either change the producer’s kind or insert an adapter (C.3.2/C.3.4) while keeping G honest.
+
+
+### C.3.1:10 - Conformance checklist (normative)
+
+| ID            | Requirement                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| **C3.1‑K‑01** | `U.SubkindOf (⊑)` is a **partial order** (reflexive, transitive, antisymmetric).                        |
+| **C3.1‑K‑02** | `U.Kind` **does not carry Scope**. Scope remains on claims/capabilities per **A.2.6**.                  |
+| **C3.1‑K‑03** | Kinds are **context‑local**; Cross‑context mapping uses **KindBridge** (C.3.3), not Scope bridges.            |
+| **C3.1‑K‑04** | Kinds have **stable ids**; synonyms redirect; Contexts catalog `⊑` links.                                  |
+| **C3.1‑K‑05** | **No intent/membership** in this core; refer to **C.3.2** for `KindSignature` and `Extension/MemberOf`. |
+
+
+### C.3.1:11 - Rationale (informative)
+
+**Why a tiny core?**
+Contexts differ wildly in “type” practice. A large, prescriptive core would either (a) force one Tradition’s semantics on all, or (b) become an empty label. The **smallest powerful** core—identity + ordering—gives managers and integrators what they need (safe composition, predictable edits) and leaves intent/membership/bridges/masks to focused sub‑patterns.
+
+**Why “no Scope on kinds”?**
+**Scope** (USM) answers “**where** a claim/capability holds” over `U.ContextSlice`. Kinds answer “**what** the claim ranges over.” Blending them recreates the failure mode we are removing (“higher abstraction ⇒ wider scope”). The right split is:
+
+* **Kind**: intensional name + order (`⊑`) *(this pattern)*; intent & membership *(C.3.2)*.
+* **Scope**: set of context slices *(A.2.6)*.
+* **Assurance**: evidence & penalties *(C.2.2 / Part B)*.
+
+### C.3.1:End
+
+## C.3.2 - KindSignature (+F) & Extension/MemberOf
+
+> **One‑line summary.** Specifies the **intent and extent** of kinds: (**i**) a **`KindSignature(k)`** (the intensional definition of kind `k`) that **declares its own Formality F**; (**ii**) an **`Extension(k, slice) ⊆ U.EntitySet(slice)`** and the **membership predicate** `MemberOf(e, k, slice)` that are **deterministic per `U.ContextSlice`**; (**iii**) **monotonicity** of extension under `SubkindOf`; (**iv**) a **definedness policy** that fails **closed** outside its domain. **Kinds still carry no Scope** (that rule lives in C.3.1); Scope stays on **claims/capabilities** (USM). This pattern gives managers and reviewers the **observable basis** to check “what counts as a member here and now” without entangling applicability (G) or assurance (R).
+
+**Status.** Normative in **Part C**. Identifier **C.3.2**.
+**Audience.** Engineering managers, architects, assurance leads, editors.
+
+**Depends on.**
+
+* **C.3.1** (*U.Kind & SubkindOf Core*): kinds are context‑local; `⊑` is a partial order; kinds carry **no Scope**.
+* **A.2.6 USM** (*Context slices & Scopes*): Claim scope (G) and Work scope live on claims/capabilities; algebra `∈` (membership), `∩` (intersection), `SpanUnion` (union across independent lines), `translate` (scope mapping).
+* **C.2.3 U.Formality (F)**: ordinal F0…F9; no arithmetic; weakest‑link composition applies to content that depends on the signature.
+* **C.2.2 F–G–R**: assurance calculus; CL penalties feed **R**, not **F/G**.
+* **Part B (Scope Bridges & CL).** CL (scope congruence) and scope translation live in Part B/USM; **kind‑congruence `CL^k`** and kind mapping live in **C.3.3** (KindBridge).
+
+**Non‑goals.**
+
+* No Scope semantics here (USM); no bridge semantics here (C.3.3).
+* No repository/notation mandates; this is concept‑level, not tooling.
+
+### C.3.2:1 - Purpose & Audience
+
+This pattern makes **describedEntity testable** in a Context:
+
+* Authors get a place to write **what defines a kind** (`KindSignature`) and at **what rigor (F)**.
+* Reviewers can ask **deterministic** questions: *“Given this `TargetSlice`, which entities are in `k`?”*
+* Managers can plan **ΔF** (raise signature rigor) and **ΔR** (evidence over members) **without** changing **G** (applicability).
+
+**No tooling assumption.** The pattern is **conceptual** and notation‑neutral (no OWL/SHACL/type‑system requirement); it specifies reviewer‑checkable obligations that managers can read in plain language.
+
+### C.3.2:2 - Context
+
+Different Contexts encode “type” intent differently (predicates, schemas, ontologies, Standards). Regardless of notation, a team must be able to answer, reproducibly: **who belongs to the kind at this slice?** If this is not stable, claims quantified over the kind are unverifiable, bridges are opaque, and composition becomes unsafe.
+
+
+### C.3.2:3 - Problem
+
+1. **Ambiguous membership.** Membership depends on tacit “latest” states or unwritten defaults.
+2. **Signature opacity.** A kind’s definition is scattered; no single place to declare rigor (**F**) or assumptions.
+3. **Order violations.** Subkind hierarchies do not guarantee subset behavior in practice.
+4. **Scope leakage.** Teams smuggle applicability (G) into kind definitions, recreating G‑ladders by another name.
+
+
+### C.3.2:4 - Forces
+
+| Force                              | Tension to resolve                                                                                   |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Local freedom vs comparability** | Contexts need their own notations, but membership must be checkable in a common style.                  |
+| **Expressivity vs determinism**    | Rich intent is welcome, but membership must be deterministic given `slice`.                          |
+| **Intent vs applicability**        | Define “what counts” (intent/extent) without encoding “where valid” (G).                             |
+| **Rigor vs cost**                  | Raising signature F has cost; the framework must support low‑F drafts and high‑F safety cores alike. |
+
+
+### C.3.2:5 - Solution — Objects & Standards (overview)
+
+* **`KindSignature(k)`** — the **intensional** definition of kind `k` in the Context; it **declares `U.Formality`** per C.2.3.
+* **`U.EntitySet(slice)`** — the set (or well‑defined universe) of **entities addressable in a given `U.ContextSlice`**.
+* **`Extension(k, slice) ⊆ U.EntitySet(slice)`** — **which entities** belong to `k` **at** `slice`.
+* **`MemberOf(e, k, slice)`** — membership predicate: `e ∈ Extension(k, slice)`.
+
+**Design split.**
+
+* **Intent** lives in **`KindSignature`** (with F).
+* **Extent** is **computed per `slice`** via `MemberOf`.
+* **Applicability** (where a **claim** holds) remains a **Scope** on the claim (USM) and **MUST NOT** be encoded into `KindSignature`.
+
+
+### C.3.2:6 - Norms & Invariants (normative)
+
+> IDs **C3.2‑K‑03…K‑08** correspond to the rules announced in C.3; additional local rules use **C3.2‑S‑\***.
+
+#### C.3.2:6.1 - Signature & Formality
+
+**C3.2‑K‑03 (Signature F).** Every `KindSignature(k)` **SHALL declare `U.Formality`** per C.2.3 (F0…F9).
+— *Note:* Raising signature F **does not** automatically raise claim‑level F; claims follow weakest‑link along their **own** support paths.
+
+**C3.2‑K‑04 (Signature change = content change).** Any change to `KindSignature(k)` that **alters membership** (i.e., would change `Extension(k, slice)` for some `slice`) **SHALL** be recorded as a **content change** (Contexts may version kinds).
+
+#### C.3.2:6.2 - Extension & Membership
+
+**C3.2‑K‑05 (Deterministic membership).** For fixed `(k, slice)`, `MemberOf(e, k, slice)` **MUST** be deterministically evaluable **from observable content in `slice`**.
+— Implication: **“latest” is forbidden**; `Γ_time` must be explicit on `slice` (A.2.6).
+— If a classifier makes external assumptions, they **MUST** be named in `KindSignature`.
+
+**C3.2‑K‑06 (Monotone in `⊑`).** If `k₁ ⊑ k₂`, then for **every** `slice`:
+`Extension(k₁, slice) ⊆ Extension(k₂, slice)`.
+
+**C3.2‑K‑07 (Definedness & fail‑closed).** Each Context **MAY** restrict the **domain of definedness** for `MemberOf(–, k, –)` (e.g., only when a Standard or dataset is present at a given version). Outside that domain, `MemberOf` **MUST** be treated as **not defined** for guard purposes, and guards **MUST fail closed** (deny). Implementations MAY internally return `False`, but there **MUST** be no path where undefined membership yields implicit success.
+
+**C3.2‑K‑08 (Separation from G).** Guards **SHALL** keep **Scope coverage** (USM) and **membership** **as separate predicates**:
+“`U.ClaimScope(Claim) covers TargetSlice` **AND** `MemberOf(?, k, TargetSlice)` is defined/used”.
+
+#### C.3.2:6.3 - Entity set & time
+
+**C3.2‑S‑01 (`U.EntitySet`).** A Context **SHALL** document what counts as `U.EntitySet(slice)` (e.g., “rows in dataset D at version v,” “live objects in service S at build b,” “ontology individuals at vocabulary v”). This documentation **MUST** be stable and addressable via the `slice` tuple.
+**C3.2‑S‑02 (Time).** `slice` **SHALL** specify **`Γ_time`** (point/window/policy). Membership **MUST NOT** rely on implicit recency.
+
+`U.EntitySet(slice)` **MUST NOT** expand implicitly via external defaults or time; its extent is fixed by the `slice` tuple (see **C3.2‑S‑02**).
+
+### C.3.2:7 - Interactions & Placement (informative)
+
+* **With C.3.1.** Kinds carry identity and `⊑`; **no Scope** on kinds. This pattern adds the **intent/extent** layer under those constraints.
+* **With A.2.6 (USM).** A typed claim’s guard normally evaluates, in the order specified by **Annex C.3.A §5 (E‑01)**: (1) typed compatibility, (2) **Scope coverage** at `TargetSlice`, (3) **`MemberOf(?, k, TargetSlice)`** definedness and any instantiation, followed by penalties to **R** and freshness checks. Use **Guard_TypedClaim** / **Guard_TypedJoin** rather than ad‑hoc shapes.
+* **With C.2.3 (F).** Signature F influences claims **only if** the claim **depends on** the signature content; weakest‑link min applies along the claim’s support path.
+* **With C.3.3 (KindBridge).** When `MemberOf` is computed via a **kind mapping across Contexts**, kind‑congruence `CL^k` contributes a **monotone penalty to **R** only (Ψ(`CL^k`)); **F/G MUST NOT** be adjusted.
+* **With Role‑CAL (C.3.4).** A **RoleMask** may **narrow** membership (context‑local adaptation). Frequent masks that encode stable narrowing **SHOULD** be promoted to subkinds (`⊑`).
+
+
+### C.3.2:8 - Authoring & Review Guidance (informative)
+
+#### C.3.2:8.1 - Authoring `KindSignature`
+
+* **Be explicit and observable.** Prefer predicate‑like clauses over prose (“has VIN format …”; “axles ≥ 2”).
+* **Bind to versions.** Name Standards/schemas by version; avoid “current.”
+* **Declare F honestly.** F3 for controlled narrative is fine in early phases; aim F4+ for durable kinds; consider F7+ for safety‑critical cores.
+* **Name assumptions.** If membership requires external conditions (e.g., calibrated rig), put them in the signature.
+
+#### C.3.2:8.2 - Authoring membership
+
+* **Define `U.EntitySet(slice)`.** Write it down once per Context, make it addressable via the `slice` tuple, and reuse.
+* **Determinism first.** No hidden IO, no implicit time; membership must be recomputable from the slice.
+* **Document definedness.** If `MemberOf` is undefined without a Standard, say so; guards will fail closed.
+* **Respect `⊑`.** If you declare `k₁ ⊑ k₂`, verify subset behavior (C3.2‑K‑06).
+
+#### C.3.2:8.3 - Review checklist (10 minutes)
+
+1. Is **signature F** declared? Is the signature sufficient to evaluate membership?
+2. Is **`U.EntitySet(slice)`** documented and addressable?
+3. Is **membership deterministic** with explicit `Γ_time` (no “latest”)?
+4. If `⊑` links exist, does **subset behavior** hold at sample slices?
+5. Are **Scope** and **membership** kept **separate** in guards?
+6. Any **Cross‑context** classification? If yes, is **KindBridge** referenced (C.3.3)?
+
+
+### C.3.2:9 - Worked Examples (informative)
+
+#### C.3.2:9.1 - Vehicle (signature F4) and membership
+
+**KindSignature(Vehicle)** *(F4)*:
+
+* `hasVIN(x)` is true and parseable;
+* `axles(x) ≥ 2`;
+* `hasBrakeSystem(x)`;
+* Standards: `registryAPI v1.4`; `Γ_time` policy: rolling 365 d for registry fields.
+
+**`U.EntitySet(slice)`**: “records in `registryAPI v1.4` for plant `A` at build `b`, as of `Γ_time`.”
+**`Extension(Vehicle, slice)`**: all records satisfying the predicates **in that `slice`**.
+**Monotonicity:** `PassengerCar ⊑ Vehicle` ⇒ `Extension(PassengerCar, s) ⊆ Extension(Vehicle, s)`.
+
+#### C.3.2:9.2 - AuthenticatedRequest (definedness & fail‑closed)
+
+**KindSignature(AuthenticatedRequest)** *(F4)*:
+
+* `Request` with `authHeader` present and `authSignature` valid according to `AuthStandard v2.3`;
+* `Γ_time`: point in time for key validity check.
+
+**Definedness:** `MemberOf(–, AuthenticatedRequest, slice)` is **undefined** if `AuthStandard v2.3` is **absent** in `slice` ⇒ guards **fail closed** (C3.2‑K‑07).
+
+#### C.3.2:9.3 - Clinical cohort (low‑F signature; deterministic membership)
+
+**KindSignature(AdultPatient)** *(F3→F4 as it hardens)*:
+
+* `ageYears(x, Γ_time) ≥ N` (jurisdictional N varies; recorded in the Context’s signature note).
+* `EntitySet(slice)`: EHR `ehr‑east v7.5` @ `Γ_time`;
+* Membership deterministic if DOB present; undefined otherwise (fail closed).
+
+
+### C.3.2:10 - Anti‑patterns & Remedies (informative)
+
+| Anti‑pattern                                         | Why it’s wrong                        | Remedy                                                              |
+| ---------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------- |
+| Using “latest” implicitly in membership              | Non‑deterministic; unreproducible     | Require explicit `Γ_time`; treat freshness separately in **R**      |
+| Encoding Scope (“only in EU plant”) in the signature | Confuses applicability with describedEntity | Move such conditions to **Claim scope (G)**; keep signature general |
+| Declaring `k₁ ⊑ k₂` but not ensuring subset behavior | Breaks typed reasoning                | Tighten `KindSignature` or drop the `⊑` link                        |
+| Treating RoleMask as a different kind                | Catalog sprawl; hidden semantics      | Keep mask as adaptation; promote to subkind if widely reused        |
+| Membership relying on external, unnamed assumptions  | Hidden dependencies; review fatigue   | Name assumptions in the signature; point to Standards/versions      |
+
+
+### C.3.2:11 - Rationale (informative)
+
+#### C.3.2:11.1 - Why give **F** to `KindSignature`?
+
+Because rigor in the **definition of a kind** materially affects how safely teams can quantify over it. A signature at **F4** (predicate‑like) makes membership checkable in principle; **F7+** (machine‑checked) can support proof‑carrying development. Keeping this **separate from claim‑level F** prevents “signature formalization” from inflating unrelated claims.
+
+#### C.3.2:11.2 - Why **Extension** is not **Scope**
+
+* **Extension** answers: *“Which entities count as `k` **in this slice**?”*
+* **Scope (G)** answers: *“In which slices does **this claim** hold?”*
+  Blending the two recreates the old failure mode where “more abstract wording” was treated as “wider applicability.” USM already gives the set‑algebra for G; Kind‑CAL supplies the **typed universe** the claim quantifies over.
+
+#### C.3.2:11.3 - Why **determinism** and **fail‑closed**?
+
+Guards must be **reproducible** and **auditable**: same `slice` ⇒ same membership result. If inputs are missing (undefinedness), the safest default is **deny** (fail closed), prompting either a richer slice or a scope/claim change.
+
+
+### C.3.2:12 - Conformance checklist (normative)
+
+| ID            | Requirement                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------------- |
+| **C3.2‑K‑03** | Every `KindSignature(k)` **declares `U.Formality`** (F0…F9).                                    |
+| **C3.2‑K‑04** | Signature changes that alter membership are **content changes** (Contexts may version kinds).      |
+| **C3.2‑K‑05** | `MemberOf(e, k, slice)` is **deterministic** for fixed `(k, slice)` (no “latest”).              |
+| **C3.2‑K‑06** | **Monotonicity:** if `k₁ ⊑ k₂` then `Extension(k₁, s) ⊆ Extension(k₂, s)` for all `s`.          |
+| **C3.2‑K‑07** | **Definedness:** outside domain, membership **fails closed**; guards deny use.                  |
+| **C3.2‑K‑08** | **Separation:** guards keep **Scope coverage** (USM) and **membership** as distinct predicates. |
+| **C3.2‑S‑01** | The Context **documents `U.EntitySet(slice)`** (stable, addressable via `slice`).                |
+| **C3.2‑S‑02** | `slice` **specifies `Γ_time`**; membership **must not** rely on implicit recency.               |
+
+
+### C.3.2:End
+
 ## C.3.3 - KindBridge & CL^k — Cross‑context Mapping of Kinds
 
 > **One‑line summary.** Defines **`KindBridge`** as the normative mechanism for moving **kinds** (their **intent** and selected **subkind‑of** links) between bounded contexts (“Contexts”). A bridge declares **how a source kind maps to a target kind**, which parts of the **`⊑`** order are preserved or collapsed, and publishes a **type‑congruence level `CL^k`** with **loss notes** and a **definedness area**. **`CL^k` penalties apply only to Reliability (R)** when a claim depends on Cross‑context classification; **F** (formality) and **G** (Claim scope) remain unchanged. Scope translation continues to use the **USM Bridge + CL** channel; **KindBridge** is a **separate, parallel channel** for describedEntity.
@@ -4233,7 +5488,7 @@ Export a **Discipline.ESG** with named states and guarded transitions (e.g., *Em
 | **CC‑C20‑4 (Γ_disc integrity).** | `Γ_disc` **MUST** record lane tags and freshness windows for all imported evidence; **Φ(CL)** **MUST** be monotone and table‑backed per policy. | Deterministic assurance; hygiene of penalties. |
 | **CC‑C20‑5 (Edition & DRR).** | Discipline editions **SHALL** be recorded via **UTS edition-continuity records** with DRR links; no silent rewrites or renames. | Traceable evolution. |
 | **CC‑C20‑6 (LEX/I‑D‑S).** | `U.Discipline` names **SHALL** follow **LEX** (twin labels; registers; banned heads). **Domain** mentions are catalog‑only. | Register hygiene; avoid “Domain = Discipline”. |
-| **CC‑C20‑7 (Crossing visibility hooks).** | Any **cross‑stance / cross‑Context / cross‑plane** reference in Discipline materials **SHALL** publish a **CrossingBundle** for the crossing (**E.18**; Bridge+UTS **A.27**; BridgeCard **F.9**) and expose it via `Expose_CrossingHooks` (**G.10‑3**). Published crossings **MUST** be checkable for **LanePurity** (CL→R only; F/G invariant; Φ tables present) and **Lexical SD** (**E.10**) under the active GateProfile / GateChecks (**A.21**). | Prevents implied crossings; makes provenance auditable & replayable. |
+| **CC‑C20‑7 (Crossing visibility hooks).** | Any **cross‑stance / cross‑Context / cross‑plane** reference in Discipline materials **SHALL** publish a **CrossingBundle** for the crossing (**E.18**; Bridge+UTS through **F.9**, **F.17**, **E.17**, and **E.18**) and expose it via `Expose_CrossingHooks` (**G.10‑3**). Published crossings **MUST** be checkable for **LanePurity** (CL→R only; F/G invariant; Φ tables present) and **Lexical SD** (**E.10**) under the active GateProfile / GateChecks (**A.21**). | Prevents implied crossings; makes provenance auditable & replayable. |
 | **CC‑C20‑8 (Discipline column is didactic).** | Any use of a “discipline column” in tables is **didactic only**; semantics are carried by **UTS rows + Bridges**; **Domain** remains a catalog stitch (**E.10/F.17**). |  |
 | **CC‑C20‑9 (Lexical firewall).** | Normative sections remain **notation/tool‑neutral**; vendor/tool tokens are avoided (see **E.5.1**). |  |
 
@@ -4471,205 +5726,216 @@ Publish: UTS twin labels; RSCR triggers on method edition change.
 
 ## C.22 - Problem Typing & TaskSignature Assignment (Problem-CHR)
 
-**Purpose.** Give FPF a **lawful, minimal, and portable** way to speak about “the problem we face” so that the **selector** (G.5) can legally admit/abstain without prose or guesswork. We do this by (i) **typing problems** with CHR‑grounded traits and (ii) **attaching** them to a **TaskSignature (S2)** record that downstream patterns can consume. The Standard is **Context‑local**, evidence‑anchored, tri‑state‑aware, and bridge‑savvy. TaskSignature is *minimal* but sufficient for **eligibility**, **acceptance**, and **policy‑governed** choice.
+**Purpose.** Give FPF an **admissible, minimal, and portable** way to type a problem for downstream selector-facing use after the problem-side representation is stable enough for Principles-to-Work, eligibility, acceptance, or policy-governed choice. `C.22.2`-governed use carries the first problem-framing record for a messy signal; `C.22`-governed use attaches the stabilized problem to CHR-grounded traits and a minimal `TaskSignature (S2)` record for downstream selector-facing use. The `TaskSignature` attachment is **Context-local**, evidence-anchored, tri-state-aware, and bridge-visible. TaskSignature is *minimal* but sufficient for **eligibility**, **acceptance**, and **policy-governed** choice.
 
-**Status & placement.** Part C (Kernel Extentions Specifications) → Cluster C.I (Core CHRs/CALs).
-**Depends on:** **C.16 MM‑CHR** (measurement legality), **G.5** (selector S2/S3), **G.0** (CG‑Spec invariants).
-**Coordinates with:** **G.4** (Acceptance/Evidence profiles), **C.23** (MethodFamily admissibility & maturity), **C.18 NQD‑CAL** (QD/illumination), **C.19 E/E‑LOG** (emitters/policies), **E.10** (LEX).
+**Status & placement.** Part C (Kernel Extensions Specifications) → Cluster C.I (Core CHRs/CALs).
+**Depends on:** **C.16 MM‑CHR** (measurement admissibility), **G.5** (selector S2/S3), **G.0** (CG‑Spec invariants).
+**Coordinates with:** **G.4** (Acceptance and Evidence profiles), **C.23** (MethodFamily admissibility and maturity), **C.18 NQD‑CAL** (QD and illumination), **C.19 E/E‑LOG** (emitters and policies), **E.10** (LEX).
 
 ### C.22:1 - Intent
 
-Operationalise No‑Free‑Lunch discipline in selection by ensuring every run‑time decision sees a **typed TaskSignature (S2)**, not a paragraph, and that **“problem”** (method unknown) is cleanly separated from **“task”** (method known; signature bound). The signature is the **smallest CHR‑typed set** sufficient to drive **Eligibility → Acceptance → policy‑governed selection** without illegal arithmetic or silent coercions; crossings are auditable (Bridge+CL → **R_eff only**).
+Operationalise No-Free-Lunch discipline in selection by making every run-time decision against a **typed TaskSignature (S2)**, not a paragraph. A problem reaches `C.22` when its problem-side representation is stable enough for a selector-facing typed anchor; a task or work target is ready for selection only when that anchor can attach to a declared `TaskKind`, task family, or work target without pre-binding a method. Method absence, method contestability, or method-family ambiguity is a common practical cue for this transition, but it is not the ontology of problemhood. The signature is the **smallest CHR-typed set** sufficient to drive **Eligibility -> Acceptance -> policy-governed selection** without inadmissible arithmetic or silent coercions; crossings are reviewable (Bridge+CL -> **R_eff only**).
 
 #### C.22:1.1 - Term split used in this pattern
 
 - `TaskSignature` attachment means attaching one typed problem record to one declared task family or work target; it does **not** pre-bind a method.
-- `ScopeSlice(G)` means the claim-bounding scope cut over `describedEntity/scope`; it is not an evidence-path slice and not a baseline-set slice.
+- `ScopeSlice(G)` means the claim-bounding scope cut over `describedEntity` and scope; it is not an evidence-path slice and not a baseline-set slice.
 - `threshold` is not one undifferentiated family here:
   - articulation and closure thresholds stay with cue or prompt governing patterns such as `B.4.1` and `B.5.2.0`
   - acceptance-gate thresholds stay with `G.4`
   - the work-measure threshold target used in specialization claims is only the declared success mark for the current task family or work target
+#### C.22:1.2 - ProblemCard@Context relation
+
+`ProblemCard@Context` is the `C.22.2`-governed problem-side record shape for stabilizing one context-bound problem representation before downstream Principles-to-Work (P2W).
+
+A `ProblemCard@Context` record can be used to prepare `ProblemProfile`, `TaskKind`, or candidate `TaskSignature` material for later use. Binding to one `TaskSignature` is admissible only when the downstream selector-facing object is ready. If several downstream signatures remain plausible, keep them as candidate signatures rather than binding one chosen `TaskSignature`.
+
+This relation does not move problem-card fields into `TaskSignature`. `TaskSignature` remains the minimal `C.22` anchor for eligibility, acceptance, and selection. `ProblemCard@Context` remains the reviewable problem-side record that carries the reason this problem, in this context, can proceed to P2W, characterization, comparison, search, refresh, retirement, or another receiving pattern.
+
+The corresponding claims are governed by their named receiving patterns.
+
 ### C.22:2 - Problem Frame (DesignRunTag split; crossing-visible)
 
-**method‑first stance**
-In FPF a **Problem** exists when a Holder or external **Transformer** cannot cite a known **Method** (or specialisation thereof) that satisfies the current **TaskSignature** under the declared **ScopeSlice(G)**. Problem‑solving therefore entails **strategizing** (selecting or synthesising a method). The resulting **strategy/policy** is a composition under **G.5/E/E‑LOG** and **is not** a new kernel type.
+**Selector-facing problem case**
+For selector-facing `C.22` use, a problem case is live when the problem-side representation is stable enough to attach or emit a minimal `TaskSignature` for eligibility, acceptance, and policy-governed selection. Method absence, method contestability, or method-family ambiguity is a common downstream reason for `C.22` use, but it is not the only reason a `ProblemCard@Context` may be needed upstream. `C.22` therefore does not define problemhood by method absence; it defines the downstream typed anchor used once problem-side readiness is truthful. When the live question is still a symptom, contested framing, stale context, set-derived candidate, opportunity cue, or preselected work item, use `C.22.2` before binding one chosen `TaskSignature`. When selection or synthesis of a method becomes live, strategy or policy is governed by `G.5` and `E/E-LOG`; `C.22` use does not introduce a strategy or policy kernel type.
 **Unknown‑first discipline.** Author S2 with `unknown` traits rather than coercions; **SoS‑LOG** branches MUST specify `{admit|degrade|abstain|sandbox}` handling for `unknown` via closed enums registered at UTS.
 
-Un‑typed "problems" collapse into **informal prose**; selectors cannot **filter or abstain** admissibly; acceptance-gate thresholds leak into scoring; cross‑Context reuse is by name, not Bridge. We need a Context‑local descriptor that (i) obeys **MM‑CHR legality** (Scale/Unit/Polarity proven before any aggregation), (ii) records **Assurance lanes (TA/VA/LA)** per **A.10** and **ReferencePlane**, (iii) carries **tri‑state unknowns** explicitly, and (iv) **publishes crossing attestations** (**BridgeCard + UTS row**) with **Φ(CL)/Φ_plane** policy‑ids.
+Un‑typed "problems" collapse into **informal prose**; selectors cannot **filter or abstain** admissibly; acceptance-gate thresholds leak into scoring; cross‑Context reuse is by name, not Bridge. We need a Context‑local descriptor that (i) obeys **MM‑CHR admissibility** (Scale/Unit/Polarity proven before any aggregation), (ii) records **Assurance lanes (TA/VA/LA)** per **A.10** and **ReferencePlane**, (iii) carries **tri‑state unknowns** explicitly, and (iv) records crossing attestations (**BridgeCard + UTS row**) with **Φ(CL)/Φ_plane** policy‑ids.
 
 ### C.22:3 - Problem
 
-Without typed descriptors, **Eligibility/Acceptance** degenerate into prose; **illegal ops** creep in (ordinal means; unit mixing); **cross‑plane comparisons** lose **CL/Φ** routing (**penalties to R_eff only**).
+Without typed descriptors, **Eligibility and Acceptance** degenerate into prose; **inadmissible operations** creep in (ordinal means; unit mixing); **cross‑plane comparisons** lose **CL/Φ** penalty assignment (**penalties to R_eff only**).
 
 ### C.22:4 - Forces
 
 | Force                        | Tension                                                                                                                           |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Parsimony vs sufficiency** | Fewer fields to avoid ceremony **vs** enough to drive lawful gating.                                                              |
-| **Unknowns**                 | Many traits are **unknown** at intake → tri‑state semantics must propagate to Acceptance without silent coercions.                |
-| **CHR legality**             | **No mean on ordinals; no unit mixing**; polarity & scale type must be declared *before* aggregation.                             |
+| **Parsimony vs sufficiency** | Fewer fields to avoid ceremony **vs** enough to drive admissible gating.                                                              |
+| **Unknowns**                 | Many traits are **unknown** in the initial problem record → tri‑state semantics must propagate to Acceptance without silent coercions.                |
+| **CHR admissibility**             | **No mean on ordinals; no unit mixing**; polarity & scale type must be declared *before* aggregation.                             |
 | **Locality vs portability**  | Problem is **in‑room**; still must cross **via Bridges**, with **CL** and (if planes differ) **CL^plane** penalties → **R** only. |
-
 
 ### C.22:5 - Solution — **Problem‑CHR** (fields) + **TaskSignature (S2) attachment** *(normative)*
 
 #### C.22:5.1 - Minimal CHR fields (tri‑state aware).
-Each field is **CHR‑typed** (Characteristic/Scale/Unit/Polarity; MM‑CHR discipline). Every predicate admits `unknown` (tri‑state). Unknowns must propagate to {degrade|abstain|sandbox} per Acceptance/EvidenceProfile policy (recorded in SCR). (G.4/G.6 alignment)
+**Selector-side field boundary.** The fields below are live only after problem framing has been stabilized enough to ask eligibility, acceptance, selection, method-family, or policy-governed choice questions. They are not a universal problem-framing checklist and must not replace the `C.22.2` Thin `ProblemCard@Context` pass for a messy signal. Each live field is **CHR-typed** (Characteristic, Scale, Unit, Polarity; MM-CHR discipline). Every predicate admits `unknown` (tri-state). Unknown-handling policy propagates `{degrade|abstain|sandbox}` per Acceptance profile or EvidenceProfile policy (recorded in SCR). (G.4/G.6 alignment)
 
-* **`DataShape`** — data regime & admissible transforms (e.g., tabular, sequence, graph; density; stationarity claims).
-* **`NoiseModel`** — uncertainty class / robustness envelope (e.g., iid Gaussian; heavy‑tailed; adversarial budget).
-* **`ObjectiveProfile`** — objective heads (**Scale/Unit/Polarity** and **ReferencePlane** declared), polarity, and **admissible order relations** (lexicographic, Pareto, medoid/median where legal). **Weighted sums across mixed scale types are forbidden**; ordinal heads use order‑only guards. For QD tasks, explicitly enumerate **Q (quality)**, **D (diversity)**, and **QD‑score** heads; see **DominanceRegime** below.
-* `RegularityTraits` — method‑relevant structure (**convexity/differentiability/separability/monotonicity**) as CHR‑typed predicates with guard‑macros (e.g., `ORD_COMPARE_ONLY`, `UNIT_CHECK`, `POLARITY_CHECK`). Include `ConditionClass` (e.g., stiffness/κ‑proxies) where applicable.
-* **`Constraints`** — explicit hard/soft constraint classes (feasibility predicates; **ResourceEnvelope**/**RiskEnvelope**). **Acceptance-gate thresholds live in `G.4` only; never inside CHR or code paths.**
-* **`ShiftClass/Stationarity`** — CHR‑typed claims about regime stability (iid | covariate‑shift | concept‑drift | adversarial). Default=`unknown`. Acceptance/Flows MUST honor this in gating or abstain.
+**Optional extension absence rule.** If QD, OEE, archive, generator, parity, specialization, or another optional relation is not live for the current case, the corresponding optional fields are absent, not `unknown`. Use `unknown` only for a live field whose value is currently unknown. An absent non-live extension does not trigger `{degrade|abstain|sandbox}` propagation.
+
+* **`DataShape`** — data regime and admissible transforms (e.g., tabular, sequence, graph; density; stationarity claims).
+* **`NoiseModel`** — uncertainty class and robustness envelope (e.g., iid Gaussian; heavy‑tailed; adversarial budget).
+* **`ObjectiveProfile`** — objective heads (**Scale, Unit, Polarity** and **ReferencePlane** declared), polarity, and **admissible order relations** (lexicographic, Pareto, medoid or median where admissible). **Weighted sums across mixed scale types are forbidden**; ordinal heads use order-only guards. For QD tasks, explicitly enumerate quality heads, diversity or descriptor-space heads, and any policy-authorized QD contribution heads; see **DominanceRegime** below. Do not introduce a default QD score. If a scalar or set-scalarization policy is live, cite the governing CAL policy and keep dominance and telemetry roles explicit.
+* `RegularityTraits` — method‑relevant structure (**convexity, differentiability, separability, monotonicity**) as CHR‑typed predicates with guard‑macros (e.g., `ORD_COMPARE_ONLY`, `UNIT_CHECK`, `POLARITY_CHECK`). Include `ConditionClass` (e.g., stiffness/κ‑proxies) where applicable.
+* **`Constraints`** — explicit hard and soft constraint classes (feasibility predicates; **ResourceEnvelope** and **RiskEnvelope**). **Acceptance-gate thresholds live in `G.4` only; never inside CHR or code paths.**
+* `ShiftClass` and stationarity — CHR‑typed claims about regime stability (iid | covariate‑shift | concept‑drift | adversarial). Default=`unknown`. Acceptance or flow use is governed by this field in gating; otherwise abstain.
 * `EvidenceGraphRef (A.10)` — carriers & **lane tags (TA/VA/LA)** with **freshness windows**; **no self‑evidence**; default Γ‑fold = **weakest‑link** unless CAL proves an alternative.
-* `ScopeSlice(G)` — the **USM claim-bounding scope cut** over **describedEntity/scope** (discipline governance in **CG‑Spec**; Domain is a catalog mark only).
-* `Size/Scale` — size/condition proxies (**n, m, κ, sparsity**) with **declared units**; unit mismatch ⇒ {sandbox|refuse}.
+* `ScopeSlice(G)` — the **USM claim-bounding scope cut** over **describedEntity and scope** (discipline governance in **CG‑Spec**; Domain is a catalog mark only).
+* `Size/Scale` — size and condition proxies (**n, m, κ, sparsity**) with **declared units**; unit mismatch ⇒ {sandbox|refuse}.
 * **`Freshness`** — validity window for descriptors.
-* `Missingness` — **MCAR/MAR/MNAR** (or mapped equivalents) per **CHR.Missingness**; MUST be honoured by Acceptance/Flows.
+* `Missingness` — **MCAR, MAR, or MNAR** (or mapped equivalents) per **CHR.Missingness**; MUST be honoured by Acceptance and Flows.
 * `KindSet` — **`U.Kind[]`** for the described entities addressed by the TaskKind; separates **describedEntity Kind** from **Scope (USM)**.
 
-**QD / Illumination extensions (normative; ties to C.18 and C.19).**
+**QD and Illumination extensions (normative; ties to C.18 and C.19).**
+
+Use this extension block only when QD, illumination archive, set-return, or OEE generator relation is live for the current case. It is not part of every `TaskSignature`.
+
 * **`CharacteristicSpaceRef`** — reference to **`U.CharacteristicSpace`**, with declared **d≥2**; **characteristics are CHR‑typed**; **ReferencePlane** per characteristic; pin edition via **`CharacteristicSpaceRef.edition`**.
-* **`ArchiveConfig`** — archive **topology** (grid/CVT/graph), **resolution** (bins/centroids), **K‑capacity**, **`InsertionPolicyRef`** (elite replacement/dedup/novelty), and **`DistanceDefRef.edition`** (declare **metric/pseudometric** status and invariances; any normalisation **MUST** cite lawful scale transforms in **CG‑Spec**); legality follows CG‑Spec.
+* **`ArchiveConfig`** — archive **topology** (grid, CVT, or graph), **resolution** (bins or centroids), **K‑capacity**, **`InsertionPolicyRef`** (elite replacement, dedup, or novelty), and **`DistanceDefRef.edition`** (declare **metric or pseudometric** status and invariances; any normalisation **MUST** cite admissible scale transforms in **CG‑Spec**); admissibility follows CG‑Spec.
 * **`EmitterPolicyRef`** — pointer to emitter/governor policy (C.19) applicable to this TaskSignature; **edition id** recorded.
 * **`DominanceRegime`** — `{ParetoOnly | ParetoPlusIllumination}`. **Default = `ParetoOnly`** (illumination remains report‑only telemetry unless CAL explicitly authorises `ParetoPlusIllumination`, policy‑id cited).
-* **`IlluminationSummary`** — a **telemetry summary over `Diversity_P`**; **published** by default; excluded from dominance unless a CAL enables `ParetoPlusIllumination` (policy‑id cited).
-* **`IlluminationMap`** *(parity‑run)* — required **publication artefact** (grid/CVT/graph per `ArchiveConfig`) recording coverage per niche/cell with `DescriptorMapRef`/`DistanceDefRef.edition`. **Leaderboards as single‑score lists are forbidden**; comparisons **MUST** be under CG‑frames.
+* **`IlluminationSummary`** — a **telemetry summary over `Diversity_P`**; reported by default; excluded from dominance unless a CAL enables `ParetoPlusIllumination` (policy‑id cited).
+* **`IlluminationMap`** *(parity‑run)* — required **IlluminationMap publication** (grid, CVT, or graph per `ArchiveConfig`) recording coverage per niche or cell with `DescriptorMapRef` and `DistanceDefRef.edition`. **Leaderboards as single‑score lists are forbidden**; comparisons **MUST** be under CG‑frames.
 * **`PortfolioMode`** — `{Pareto | Archive}`. **Default = `Archive`**: selectors preserve retained archive evidence (QD archives) rather than a single “best” set; ε‑fronts remain admissible for local decisions under CG‑Spec.
-* **`Budgeting`** — evaluation/time/batch **budgets**, including **E/E‑LOG exploration budget** id; units declared (CG‑Spec).
-* **`TelemetryHooks`** — **PathSliceId**, **decay/refresh policy ids**, and **edition counters** to record **U.DescriptorMap** and **policy‑id** updates upon illumination gains.
-* **`GeneratorIntent`** (OEE) — optional intent to invoke a **`GeneratorFamily`** (G.5) with pointers to **`EnvironmentValidityRegion`**, **`TransferRulesRef`**, and **coverage/regret** reporting expectations.
+* **`Budgeting`** — evaluation, time, and batch **budgets**, including **E/E‑LOG exploration budget** id; units declared (CG‑Spec).
+* **`TelemetryHooks`** — **PathSliceId**, **decay and refresh policy ids**, and **edition counters** to record **U.DescriptorMap** and **policy‑id** updates upon illumination gains.
+* **`GeneratorIntent`** (OEE) — optional intent to use a registered **`GeneratorFamily`** (G.5), with pointers to **`EnvironmentValidityRegion`**, **`TransferRulesRef`**, and **coverage and regret** reporting expectations.
 
-**Legality.** Before any numeric comparison/aggregation, **prove CSLC legality** (Scale/Unit/Polarity) and **cite CG‑Spec.Characteristics**; publish **ReferencePlane**. **Unknowns** propagate as {degrade|abstain|sandbox}; **no `unknown→0/false` coercions**.
+**Admissibility.** Before any numeric comparison or aggregation, **prove CSLC admissibility** (Scale, Unit, Polarity) and **cite CG‑Spec.Characteristics**; record **ReferencePlane**. **Unknowns** propagate as {degrade|abstain|sandbox}; **no `unknown→0/false` coercions**.
 
 #### C.22:5.2 - TaskSignature (S2) — attachment definition (design‑time + run‑time).
-A TaskSignature is a minimal typed record the selector consumes:
+A TaskSignature is the minimal typed record read by selector-facing use:
 `⟨Context, TaskKind, TaskFamilyRef?, KindSet:U.Kind[], DataShape, NoiseModel, ObjectiveProfile, Constraints{incl. Resource/Risk Envelopes}, ScopeSlice(G), EvidenceGraphRef, Size/Scale, Freshness, Missingness, ShiftClass?, BehaviorSpaceRef?, ArchiveConfig?, EmitterPolicyRef?, DominanceRegime?, PortfolioMode?, Budgeting?, TelemetryHooks?, GeneratorIntent?⟩`
 
+**Minimality rule.** S2 carries only fields required for **Eligibility→Acceptance→admissible selection**; any additional traits derived at design‑time are recorded as provenance (UTS) but **do not expand S2**.
 
-**Minimality rule.** S2 carries only fields required for **Eligibility→Acceptance→lawful selection**; any additional traits derived at design‑time are published as provenance (UTS) but **do not expand S2**.
-
-Values are **CHR‑typed** with **provenance**; traits may be **inferred** from CHR/CAL bindings (e.g., *convexity known? differentiable? ordinal vs interval scales?*) and from **USM** scope metadata. Unknowns are tri‑state; **Missingness semantics MUST align with CHR.Missingness** and be honored by Acceptance/Flows.
+Values are **CHR‑typed** with **provenance**; traits may be **inferred** from CHR and CAL bindings (e.g., *convexity known? differentiable? ordinal vs interval scales?*) and from **USM** scope metadata. Unknowns are tri‑state; **Missingness semantics MUST align with CHR.Missingness** and be honored by Acceptance and Flows.
 
 `TaskKind` names the governing kind of work or problem under this context. `TaskFamilyRef?` names one comparison-relevant family inside that task kind when specialization, transfer, or parity question is live. `TaskSignature` is the context-bound typed attachment record for one current case under that kind and scope cut. `KindSet` continues to name the described entities governed by the task kind; it is not a substitute for the task family anchor.
 
-**DesignRunTag hygiene.** Do not mix DesignRunTag in one signature; **publish GateCrossings** as **CrossingBundles** (**E.18**; Bridge+UTS **A.27**; BridgeCard **F.9**) when importing design‑time traits into run‑time.
+**DesignRunTag hygiene.** Do not mix DesignRunTag in one signature; record **GateCrossings** as **CrossingBundles** (**E.18**; Bridge+UTS through **F.9**, **F.17**, **E.17**, and **E.18**) when importing design‑time traits into run‑time.
 
 ##### C.22:5.2.1 - Specialization-claim anchoring (normative)
-Any claim that one holder, dyad, team, or explicitly scoped specialist portfolio acquired usable specialization **SHALL** anchor that claim to one declared `TaskFamilyRef` or `TaskSignature`, one named work-measure threshold target, an adaptation budget, and the freshness or provenance basis for reuse. A method may be selected, refined, or retired as part of that story, but the method is not the bearer of the specialization claim. The attached task-family record should stay rich enough for `C.22.1` adaptation signatures, `G.5` specialization profiles, and `G.9` adaptation parity to attach to the same task family and work target without reconstructing the claim from narrative prose.
+Any claim that one holder, dyad, team, or explicitly scoped specialist portfolio acquired usable specialization **SHALL** anchor that claim to one declared `TaskFamilyRef` or `TaskSignature`, one named work-measure threshold target, an adaptation budget, and the freshness or provenance basis for reuse. A method may be selected, refined, or retired as part of that story, but the method is not the bearer of the specialization claim. The attached task-family record should stay rich enough for the same task family and work target to remain admissible in `C.22.1` adaptation signatures, `G.5` specialization profiles, and `G.9` adaptation parity without reconstructing the claim from narrative prose.
 
 Low-human-overlap or newly discovered task families remain admissible when those anchors are explicit by value.
 #### C.22:5.3 - Provenance & planes.
-Record **Context**, **ReferencePlane** for each value; on any cross-Context or cross-plane reuse, attach BridgeDescription + UTS row, apply **CL** (and, if planes differ, **CL^plane**) penalties to **R_eff only**; both **Φ(CL)** and (if used) **Φ_plane** MUST be **monotone, bounded, and table‑backed**; **no “distance” language; penalties never mutate F/G.** Publish policy‑ids in SCR and cite Bridge ids on crossings.
+Record **Context** and **ReferencePlane** for each value; on any cross-Context or cross-plane reuse, attach BridgeDescription + UTS row, apply **CL** (and, if planes differ, **CL^plane**) penalties to **R_eff only**; both **Φ(CL)** and (if used) **Φ_plane** MUST be **monotone, bounded, and table‑backed**; **no “distance” language; penalties never mutate F/G.** Record policy‑ids in SCR and cite Bridge ids on crossings.
 
 #### C.22:5.4 - Attachment & use.
 
 * **Eligibility** gates read TaskSignature against each **MethodFamily.Eligibility** (C.23) and **CG‑Spec.MinimalEvidence** for referenced characteristics.
 * **Acceptance** clauses (G.4) use these fields for **acceptance-gate threshold predicates** (acceptance-gate thresholds live in Acceptance only).
-* **Selection kernel** (G.5.S3) applies a **lawful order** (often partial); **weighted sums across mixed scale types are forbidden**. If only a partial order remains, **return a Pareto (non‑dominated) set** with tie notes. If `PortfolioMode=Archive`, the selector **may** return a **QD archive** (per `ArchiveConfig`) **in addition to** or **instead of** a Pareto set. **Illumination** enters dominance **only** if `DominanceRegime=ParetoPlusIllumination` is **enabled by CAL** (policy id cited); otherwise, QD metrics are **reported** but **excluded** from dominance.
-* When `GeneratorIntent` is present, G.5 may dispatch to a registered **`GeneratorFamily`** (POET‑class); the selection surface becomes **pairs** `{environment, method}`, with Environment guarded by **`EnvironmentValidityRegion`** and **`TransferRulesRef`** (C.23 wiring). Report **`IlluminationSummary`** as a **telemetry summary over `Diversity_P`** (report‑only by default) in telemetry; dominance remains unaffected unless policy changes as above.
+* **Selection kernel** (G.5.S3) applies an **admissible order** (often partial); **weighted sums across mixed scale types are forbidden**. If only a partial order remains, **return a Pareto (non‑dominated) set** with tie notes. If `PortfolioMode=Archive`, the selector **may** return a **QD archive** (per `ArchiveConfig`) **in addition to** or **instead of** a Pareto set. **Illumination** enters dominance **only** if `DominanceRegime=ParetoPlusIllumination` is **enabled by CAL** (policy id cited); otherwise, QD telemetry values are **reported** but **excluded** from dominance.
+* When `GeneratorIntent` is present, G.5-governed selection may use a registered **`GeneratorFamily`** (POET‑class); the selection domain becomes **pairs** `{environment, method}`, with Environment guarded by **`EnvironmentValidityRegion`** and **`TransferRulesRef`** (C.23 wiring). Report **`IlluminationSummary`** as a **telemetry summary over `Diversity_P`** (report‑only by default) in telemetry; dominance remains unaffected unless policy changes as above.
 
 #### C.22:5.5 - Unknowns.
-Every field supports `unknown`; downstream **degrade/abstain/sandbox** behavior is explicit per Acceptance/EvidenceProfile; no implicit coercions.
+Every field supports `unknown`; downstream **degrade, abstain, or sandbox** behavior is explicit per Acceptance profile or EvidenceProfile; no implicit coercions.
 
 #### C.22:5.6 - Publication.
-Emit a **ProblemProfile** (…Description) that carries the bound TaskSignature, **UTS** Name Cards for any minted values (twin labels), and SCR‑visible provenance (A.10 anchors, lane tags, freshness, **ReferencePlane**). **Mark any vendor/tool examples as Plain‑register only (LEX V‑4); they are non‑normative.**
+Output a **ProblemProfile** (...Description) that carries the bound TaskSignature, **UTS** Name Cards for any minted values (twin labels), and SCR‑visible provenance (A.10 anchors, lane tags, freshness, **ReferencePlane**). **Mark any vendor or tool examples as Plain‑register only (LEX V‑4); they are non‑normative.**
 
 #### C.22:5.7 - Open‑Ended tasks (GeneratorFamily) *(normative)*.
-If the problem requires **open‑ended generation** of tasks/environments, S2 **SHALL** include `GeneratorIntent` with pointers to **`EnvironmentValidityRegion`** (lawful support of generated environments), **`TransferRulesRef`** (cross‑environment transfer constraints), and **coverage/regret** telemetry expectations. Selector outputs are then declared sets over **{environment, method}**; **coverage/regret** are **telemetry metrics** (reported) and **IlluminationSummary** is a **telemetry summary** (reported), excluded from dominance unless a **CAL** policy promotes them (policy‑id recorded in SCR; see `DominanceRegime`). Edition increments of **CharacteristicSpaceRef.edition**/**DescriptorMapRef.edition**/**DistanceDefRef.edition** and (OEE) **`TransferRulesRef.edition`**, and the **policy‑id** that caused illumination increases **SHALL** be recorded in SCR.
-
+If the problem requires **open‑ended generation** of tasks or environments, S2 **SHALL** include `GeneratorIntent` with pointers to **`EnvironmentValidityRegion`** (admissible support of generated environments), **`TransferRulesRef`** (cross‑environment transfer constraints), and **coverage and regret** telemetry expectations. Selector outputs are then declared sets over **{environment, method}**; **coverage and regret** are reported telemetry values and **IlluminationSummary** is a **telemetry summary** (reported), excluded from dominance unless a **CAL** policy promotes them (policy‑id recorded in SCR; see `DominanceRegime`). Edition increments of **CharacteristicSpaceRef.edition**, **DescriptorMapRef.edition**, **DistanceDefRef.edition**, and (OEE) **`TransferRulesRef.edition`**, and the **policy‑id** associated with illumination increases **SHALL** be recorded in SCR.
 
 ### C.22:6 - Archetypal Grounding (Tell–Show–Show)
 
-*Tell–Show–Show hook (per E.8):* label examples as **Show‑1 (continuous ODE)** and **Show‑2 (MIP)** and cite CHR guard‑macros in‑line so engineers can see **which field drove which gate**.  **Explicitly annotate which S2 fields triggered each Eligibility/Acceptance decision** (e.g., `service_level@ordinal → ORD_COMPARE_ONLY`, `budget@ratio → unit alignment check`).
+*Tell–Show–Show hook (per E.8):* label examples as **Show‑1 (continuous ODE)** and **Show‑2 (MIP)** and cite CHR guard‑macros in‑line so engineers can see **which field supplied which Eligibility or Acceptance input**.  **Explicitly annotate which S2 fields triggered each Eligibility and Acceptance decision** (e.g., `service_level@ordinal → ORD_COMPARE_ONLY`, `budget@ratio → unit alignment check`).
 
 **A. Differential equations (continuous systems, solver choice).**
 *ProblemProfile.* `DataShape=ODE, stiff?=unknown, Size/Scale={n≈10^3}, ObjectiveProfile={↓error@ratio, ↑throughput@ratio}, Constraints={budget≤X, safety_gate@ordinal}, RegularityTraits={Lipschitz known?=unknown, Jacobian sparsity=high}, Missingness=MAR`.
 *Attachment.* Selector reads TaskSignature; **eligibility** filters MethodFamilies that require known stiffness or differentiability (unknown ⇒ **degrade/abstain** per family); **Acceptance** enforces `safety_gate` as **ordinal predicate**, not averaged (ORD\_COMPARE\_ONLY), and budgets with **unit‑aligned sums** (ratio). The selector returns a **Pareto set**; no cross‑ordinal weighting.
 
-**B. Mixed‑integer optimisation (planning/scheduling).**
+**B. Mixed‑integer optimisation (planning and scheduling).**
 *ProblemProfile.* `DataShape=MIP, NoiseModel=deterministic, ObjectiveProfile={↓cost@ratio, ↑service_level@ordinal}, Constraints={SLA hard, workforce soft}, RegularityTraits={convex_relaxation=available}, Size/Scale={vars~10^5}, Missingness=MCAR`.
-*Attachment.* **CG‑Spec** forbids means over **service\_level** (ordinal); **Acceptance** holds acceptance-gate thresholds; **Eligibility** checks convex‑relaxation availability; **Selection** applies **lexicographic** guard (assumption‑fit ≻ evidence‑fit ≻ resource), compute **R\_eff** with Γ‑fold, route **CL** to **R** only; if partial order remains, return a **Pareto set**.
+*Attachment.* **CG‑Spec** forbids means over **service\_level** (ordinal); **Acceptance** holds acceptance-gate thresholds; **Eligibility** checks convex‑relaxation availability; **Selection** applies **lexicographic** guard (assumption‑fit ≻ evidence‑fit ≻ resource), compute **R\_eff** with Γ‑fold, apply **CL** penalty to **R** only; if partial order remains, return a **Pareto set**.
 
-> *Contemporary anchors (informative):* modern **Julia** ecosystems illustrate the “**general call outside, specialised implementations inside**” ethos (e.g., DifferentialEquations.jl, JuMP), aligning with C.22→G.5 multi‑method dispatch under NFL.
+> *Contemporary anchors (informative):* modern **Julia** ecosystems illustrate a registered outer interface with specialised implementations inside (e.g., DifferentialEquations.jl, JuMP), aligning with C.22→G.5 multi‑method selection under NFL.
 
-**C. Quality-Diversity archive / declared set (illumination).**
+**C. Quality-Diversity archive and declared set (illumination).**
 *ProblemProfile.* `DataShape=policy‑search; ObjectiveProfile={↑reward@ratio, ↑coverage@ratio (report‑only)}, DominanceRegime=ParetoOnly, PortfolioMode=Archive, CharacteristicSpaceRef(d=3, characteristics=CHR‑typed), ArchiveConfig(grid, res=32×32×16, K=1, InsertionPolicyRef=elite‑replace, DistanceDefRef.edition=v1), EmitterPolicyRef=v2, Budgeting{eval=1e6}, TelemetryHooks{PathSliceId=…}`.
-*Binding.* Selector may return an **archive**; **coverage/illumination** are **reported** but **excluded** from dominance (default). Any change of `DistanceDefRef.edition`/Emitter policy is **editioned** and logged in SCR.
+*Binding.* Selector may return an **archive**; **coverage and illumination** are **reported** but **excluded** from dominance (default). Any change of `DistanceDefRef.edition` or Emitter policy is **editioned** and logged in SCR.
 
 **D. Open‑ended environment generation (POET‑class).**
 *ProblemProfile.* `GeneratorIntent{GeneratorFamilyRef=…, EnvironmentValidityRegion=… (CHR‑typed), TransferRulesRef=…, CoverageMetric=…}`, `PortfolioMode=Archive`.
-*Binding.* Selector outputs **{environment, method}** pairs that pass Eligibility; **TransferRules** govern cross‑environment policy reuse; telemetry reports **coverage/regret** and **IlluminationSummary** with **edition/policy‑id** when improved.
+*Binding.* Selector outputs **{environment, method}** pairs that pass Eligibility; **TransferRules** govern cross‑environment policy reuse; telemetry reports **coverage and regret** and **IlluminationSummary** with **edition and policy‑id** when improved.
 
 ### C.22:7 - Bias‑Annotation (LEX/discipline guards)
 
-* **No minted “Strategy” head.** “Strategy/policy” are *roles/lenses* inside G.5; do **not** introduce a new `U.Type` “Strategy”.
-* **No minted `U.Type` “Strategy”.** Strategy/policy are roles/lenses inside G.5 Compose under E/E‑LOG; keep “strategy” as Plain where pedagogically needed.
+* **No minted `U.Type` “Strategy”.** Strategy and policy remain roles inside `G.5`; keep “strategy” as Plain-register wording where it helps recognition, but do not introduce a new `U.Type` or strategy head.
 * **Transdiscipline vs domain.** Comparability flows through **`U.Discipline` CG‑Spec**; “Domain” is a catalog mark stitched to D.CTX + UTS; do **not** attach norms to Domain labels.
-* **Plain twins & head‑anchoring.** Use Description/Spec morphology correctly (I/D/S; E.10.D2).
+* **Plain twins and head‑anchoring.** Use Description and Spec morphology correctly (I, D, S; E.10.D2).
 
 ### C.22:8 - Anti‑patterns (normative):
-* **AP‑1** Pre‑binding a Method into S2 (“problem as if task”); **Remedy:** keep S2 method‑agnostic; bind only lawful traits.
-* **AP‑2** Silent `unknown→false/0` in Eligibility/Acceptance.
-* **AP‑3** Cross‑ordinal averaging / ordinal–interval scalar mixes.
+* **AP‑1** Pre‑binding a Method into S2 (“problem as if task”); **Remedy:** keep S2 method‑agnostic; bind only admissible traits.
+* **AP‑2** Silent `unknown→false` or `unknown→0` in Eligibility and Acceptance.
+* **AP‑3** Cross‑ordinal averaging or ordinal–interval scalar mixes.
 * **AP‑4** **DesignRunTag chimera** signatures (mixing stances).
-* **AP‑5** **Domain** treated as governance (attach governance to **U.Discipline/CG‑Spec**, not Domain).
+* **AP‑5** **Domain** treated as governance (attach governance to **U.Discipline** and **CG‑Spec**, not Domain).
 * **AP‑6** Implicit handling of data‑shift (assume iid); **Remedy:** declare `ShiftClass` (or `unknown`) and gate via Acceptance.
-* **AP‑7** Tool/vendor tokens in normative text; **Remedy:** move to Plain‑register note; keep Tech anchors on CHR/CAL ids (LEX V‑4).
-**Remedies:** tri-state predicates; admissible order relations (lexi/Pareto/median/medoid); **GateCrossing visibility** via Bridge+UTS+CL/CL^plane (penalties → R only); Domain stitched to **D.CTX + UTS** only.
-**Remedies:** tri‑state predicates; admissible order relations (lexi/Pareto/median/medoid); explicit **GateCrossing** publication via **CrossingBundle** (BridgeCard + UTS row + `CL/Φ` policy‑ids; **E.18/A.27/F.9**); Domain stitched to **D.CTX + UTS** only.
+* **AP‑7** Tool or vendor tokens in normative text; **Remedy:** move to Plain‑register note; keep Tech anchors on CHR and CAL ids (LEX V‑4).
+
+**Remedies:** tri‑state predicates; admissible order relations (lexi, Pareto, median, or medoid); explicit **GateCrossing** visibility through **CrossingBundle** (BridgeCard + UTS row + `CL/Φ` policy‑ids; **E.18**, **F.9**, **F.17**, **E.17**, and **A.21** where live); Domain stitched to **D.CTX + UTS** only.
 
 ### C.22:9 - Conformance Checklist (normative)
 
-0. **Minimal S2.** S2 contains only fields necessary for Eligibility/Acceptance/selection; any extra derived traits remain provenance.
-1. **TaskSignature present (S2).** All TaskKinds **publish** a TaskSignature with all fields declared and **CHR‑typed**; `unknown` supported for each.
-2. **CHR legality proven.** Any numeric comparison/aggregation **cites CG‑Spec** by **Characteristic id** and proves **CSLC legality**; **no mean on ordinals; no unit mixing**.
-3. **Unknowns propagate.** Unknowns **must** map to {pass|degrade|abstain} in **Acceptance**/**Eligibility**; no implicit coercions; behavior recorded in **SCR**.
+0. **Minimal S2.** S2 contains only fields necessary for Eligibility, Acceptance, and selection; any extra derived traits remain provenance.
+1. **TaskSignature present (S2).** Every exported TaskKind has a TaskSignature with all fields declared and **CHR‑typed**; `unknown` supported for each.
+2. **CHR admissibility proven.** Any numeric comparison or aggregation **cites CG‑Spec** by **Characteristic id** and proves **CSLC admissibility**; **no mean on ordinals; no unit mixing**.
+3. **Unknowns propagate.** Unknowns **must** map to {pass|degrade|abstain} in **Acceptance** and **Eligibility**; no implicit coercions; behavior recorded in **SCR**.
 4. **Evidence lanes.** **A.10 anchors** + **Assurance lanes (TA/VA/LA)** + **freshness windows** recorded; **Γ‑fold** default=weakest‑link unless proved otherwise.
 5. **ReferencePlane guarded.**  ReferencePlane noted **per value and per ObjectiveProfile head**; on crossings apply **CL** (and **CL^plane** if planes differ); **Φ(CL)/Φ_plane** are **monotone, bounded, table‑backed and documented in the `CG‑Spec`**; penalties → **R_eff only** (F/G invariant).
 6. **Acceptance thresholds live in CAL.** No acceptance-gate thresholds in CHR or code paths; only in **G.4 AcceptanceClauses**.
-7. **Selector legality.** Selection uses **admissible (possibly partial) orders**; **weighted sums across mixed scale types are forbidden**; return a **Pareto set** when appropriate.
-8. **Crossings published (visibility).** Any cross-stance/cross-Context reuse emits **BridgeCard/BridgeDescription + UTS row** with CL notes and (if planes differ) CL^plane + Φ_plane.
-9. **UTS twin labels.** All exported cards publish **Name Cards** with twin labels; Bridges carry loss notes.
-10. **GateCrossing checks.** Published TaskSignature and any referenced crossings satisfy: (i) stance tagging (if used; informative only), (ii) **CrossingBundle** presence/consistency (**E.18**; **A.27**; **F.9**), (iii) **LanePurity** (CL→R only; F/G invariant; Φ tables present), and (iv) **Lexical SD** (**E.10**). Failures are **blocking** under the active GateProfile / GateChecks (**A.21**).
+7. **Selector admissibility.** Selection uses **admissible (possibly partial) orders**; **weighted sums across mixed scale types are forbidden**; return a **Pareto set** when appropriate.
+8. **Crossings visible.** Any cross-stance/cross-Context reuse records **BridgeCard/BridgeDescription + UTS row** with CL notes and (if planes differ) CL^plane + Φ_plane.
+9. **UTS twin labels.** All exported cards include **Name Cards** with twin labels; Bridges carry loss notes.
+10. **GateCrossing checks.** Exported TaskSignature and any referenced crossings satisfy: (i) stance tagging (if used; informative only), (ii) **CrossingBundle** presence/consistency (**E.18**; **F.9**; **F.17**; **E.17**; **A.21** when gate checks are live), (iii) **LanePurity** (CL→R only; F/G invariant; Φ tables present), and (iv) **Lexical SD** (**E.10**). Failures are **blocking** under the active GateProfile / GateChecks (**A.21**).
 11. **QD fields (when QD is in scope).** If `PortfolioMode=Archive` or QD heads are present, **CharacteristicSpaceRef** (d>=2), **ArchiveConfig** (topology, resolution, K, `InsertionPolicyRef`, `DistanceDefRef.edition`), and **EmitterPolicyRef** **SHALL** be present and CHR-typed; characteristics declare **ReferencePlane**.
-12. **DominanceRegime default.** `DominanceRegime` **defaults to `ParetoOnly`**; inclusion of illumination in dominance **MUST** be enabled by a **CAL.Acceptance policy**; the policy id **SHALL** be published in SCR.
-13. **Telemetry.** **PathSliceId**, **refresh/decay policies**, and **edition counters** for **CharacteristicSpaceRef**/**DistanceDefRef**/**EmitterPolicyRef** **SHALL** be recorded; any illumination increase **SHALL** log the **policy-id** that triggered it.
-14. **GeneratorIntent (when OEE is in scope).** `GeneratorIntent` **SHALL** cite **`EnvironmentValidityRegion`** and **`TransferRulesRef`** (ids resolvable in G.5/C.23); absence => `Abstain` for OEE dispatch.
-15. **Budgets.** `Budgeting` (eval/time/batch) **SHALL** declare units and E/E-LOG exploration budget id when used.
-16. **Archive legality.** `DistanceDefRef.edition` and any novelty measures **SHALL** be CSLC-lawful and **editioned**; illegal ops => **Abstain**.
+12. **DominanceRegime default.** `DominanceRegime` **defaults to `ParetoOnly`**; inclusion of illumination in dominance **MUST** be enabled by a **CAL.Acceptance policy**; the policy id **SHALL** be recorded in SCR.
+13. **Telemetry.** **PathSliceId**, **decay and refresh policy ids**, and **edition counters** for **CharacteristicSpaceRef**, **DistanceDefRef**, and **EmitterPolicyRef** **SHALL** be recorded; any illumination increase **SHALL** log the **policy-id** that triggered it.
+14. **GeneratorIntent (when OEE is in scope).** `GeneratorIntent` **SHALL** cite **`EnvironmentValidityRegion`** and **`TransferRulesRef`** (ids resolvable in G.5/C.23); absence => `Abstain` for OEE generator-family use.
+15. **Budgets.** `Budgeting` (evaluation, time, and batch) **SHALL** declare units and E/E-LOG exploration budget id when used.
+16. **Archive admissibility.** `DistanceDefRef.edition` and any novelty measures **SHALL** be CSLC-admissible and **editioned**; inadmissible operations => **Abstain**.
 17. **Planes.** **ReferencePlane** **SHALL** be declared for all QD heads or characteristics; plane crossings apply **Phi\_plane** (penalty to **R** only).
 18. **Unknowns.** Unknown QD fields **map** to `{degrade|abstain|sandbox}`; no coercions.
 
-19. **Specialization claims anchored.** Any declared specialization on this TaskSignature **SHALL** name the task family/work target, named work-measure threshold target, adaptation budget, freshness or provenance basis for reuse, and enough attachment detail for `C.22.1`, `G.5`, and `G.9` to consume the same claim admissibly.
+19. **Specialization claims anchored.** Any declared specialization on this TaskSignature **SHALL** name the task family/work target, named work-measure threshold target, adaptation budget, freshness or provenance basis for reuse, and enough attachment detail for the same claim to remain admissible in `C.22.1`, `G.5`, and `G.9` use.
 
 ### C.22:10 - Interfaces & Data Paths
 
-*Inputs.* `ProblemProfile` (…Description), CG-Spec ids, Evidence Graph Ref (A.10), D.CTX; (if QD) CharacteristicSpaceRef/ArchiveConfig/EmitterPolicyRef configs; (if OEE) GeneratorIntent.
- *Produces.* `TaskSignature@Context` (S2) with provenance; **SCR-visible** fields; UTS Name Cards for any minted traits; (if QD/OEE) archive / `PortfolioMode` semantics and telemetry hooks declared.
- *Consumed by.* **G.5** (Eligibility/Selection kernel), **G.4** (Acceptance/Evidence), **C.23** (admit/degrade/abstain rules; maturity ladder).
+*Inputs.* `ProblemProfile` (...Description), CG-Spec ids, Evidence Graph Ref (A.10), D.CTX; CharacteristicSpaceRef, ArchiveConfig, and EmitterPolicyRef configs when QD is live; GeneratorIntent when OEE is live.
+*Produces.* `TaskSignature` under a declared `Context` field (S2) with provenance; **SCR-visible** fields; UTS Name Cards for any minted traits; archive, `PortfolioMode` semantics, and telemetry hooks declared when QD is live. Do not introduce `TaskSignature@Context` as a separate kind.
+*Used by.* **G.5** (Eligibility and Selection kernel), **G.4** (Acceptance and Evidence), **C.23** (admit, degrade, and abstain rules and method-family maturity checks).
 
 ### C.22:11 - Consequences (informative)
 
-* **Lawful selection.** Dispatch is **explainable** and **audit-ready**; every reason in/out cites TaskSignature fields, CG-Spec rows, and Gamma-fold contributors.
+* **Admissible selection.** Selection is **explainable** and **review-ready**; every reason in/out cites TaskSignature fields, CG-Spec rows, and Gamma-fold contributors.
 * **Local first, portable later.** Context-local semantics are primary; Bridges make portability **deliberate and costed** (penalties to **R** only).
-* **Frictionless downstream.** G.1-G.5 consume a **single, typed** Standard; thresholds are cleanly separated into **Acceptance**; unknowns are not guessed.
-* **QD/OEE-ready.** Typed QD and GeneratorIntent fields make **declared set-surface** and **open-ended** workflows **first-class**, with lawful dominance, editioned distances, and policy-aware illumination.
+* **Frictionless downstream.** G.1-G.5 use one **single, typed** TaskSignature; thresholds are cleanly separated into **Acceptance**; unknowns are not guessed.
+* **QD and OEE-ready.** Typed QD and GeneratorIntent fields make **declared returned-set structure** and **open-ended** generation contexts **explicit**, with admissible dominance, editioned distances, and policy-aware illumination.
 
 ### C.22:12 - Relations
-**Builds on:** **C.16 MM-CHR**, **G.0 CG-Spec**. **Coordinates with:** **G.4 Acceptance**, **G.5 Selector**, **C.18 NQD-CAL**, **C.19 E/E-LOG**, **C.23 Method-SoS-LOG**. **Constrained by:** **E.10 (LEX/I/D/S)**, **E.18 (GateCrossing visibility and publication gating)**.
+**Builds on:** **C.16 MM-CHR**, **G.0 CG-Spec**. **Coordinates with:** **G.4 Acceptance**, **G.5 Selector**, **C.18 NQD-CAL**, **C.19 E/E-LOG**, **C.23 Method-SoS-LOG**. **Constrained by:** **E.10 (LEX, I, D, and S)**, **E.18 (GateCrossing visibility and publication gating)**.
 
 ### C.22:13 - Practical reading checks
 
-- If two candidate approaches are answering different `TaskKind`s or different `ScopeSlice(G)` cuts, this pattern does not yet license a direct comparison.
+- If two candidate approaches are answering different `TaskKind`s or different `ScopeSlice(G)` cuts, a direct comparison is not admissible yet.
 - If specialization is the live specialization question, the task-family anchor, threshold target, adaptation budget, and provenance basis should already be recoverable from the attached `TaskSignature`.
-- If crossing, normalization, or missingness changes what comparison means, publish that in the signature and its cited refs rather than hiding it in code, local memory, or later prose.
+- If crossing, normalization, or missingness changes what comparison means, state that in the signature and its cited refs rather than hiding it in code, local memory, or later prose.
 - If `QD` or `OEE` heads are in scope, archive and generator fields belong in the same typed signature rather than in a detached explanatory appendix.
 
 ### C.22:14 - Goldilocks hook (design‑time)
 
-When generating candidate solutions for a **TaskKind**, target **“goldilocks”** slots (feasible‑but‑hard) so that the TaskSignature is informative (neither trivial nor impossible); this aligns with **G.1** (target goldilocks, abductive provenance) and ensures the **TaskSignature is informative** (neither trivial nor impossible) for **G.5** selection.
+When generating candidate solutions for a **TaskKind**, aim for **“goldilocks”** slots (feasible‑but‑hard) so that the TaskSignature is informative (neither trivial nor impossible); this aligns with **G.1** (goldilocks target, abductive provenance) and ensures the **TaskSignature is informative** (neither trivial nor impossible) for **G.5** selection.
 
 ### C.22:End
 
@@ -4819,6 +6085,830 @@ The reader needs one place where the adaptation claim stays whole. `C.22` keeps 
 - `CC-C22.1-5` Downstream selector/parity surfaces **SHALL** cite or consume the same published adaptation-signature field set rather than silently redefining threshold, prior-exposure, transfer, retention, downside, or corridor-entry terms.
 
 ### C.22.1:End
+
+## C.22.2 - ProblemCard@Context
+
+> **Type:** Calculus (C)
+> **Status:** Stable
+> **Normativity:** Normative
+
+**Plain-name.** Context-bound problem card.
+
+**Intent.** Give a practitioner one compact problem-side record that can turn a messy problem signal into a reviewable problem-side record before downstream Principles-to-Work (P2W), without moving archive, portfolio, selected-set, evidence, autonomy, gate, method, or work authority into the card.
+
+**Use this when.** Use this pattern when a signal, anomaly, drift, risk, hypothesis, stakeholder pressure, set-derived candidate, underused capability, new constraint, new environment, opportunity-like cue, or solution-shaped request must become reviewable before task typing, method-family selection, work planning, evidence use, gate passage, autonomy control, or P2W. Also use it when P2W would otherwise receive a slogan, wish, ticket-shaped task, preselected work item, or solution-shaped task.
+
+**Do not use this when.** Do not use this pattern as a work plan, method selection, evidence pack, gate decision, autonomy permission, archive, portfolio, selected set, parity report, mathematical adequacy record, or general discussion note. Use the neighboring pattern that carries the live relation.
+
+**Builds on.** `E.2`, `E.9`, `E.10`, `E.10.SEMIO`, `A.6.P`, `A.6.Q`, `C.16`, `A.19`, `C.22`, `C.25`, `C.29`, `G.5`, `G.9`, `A.6.3.RT`, and `A.6.4`.
+
+**Coordinates with.** `C.11`, `C.18`, `C.19`, `C.22.1`, `C.24`, `C.27`, `C.28`, `A.15`, `A.21`, `E.16`, `G.6`, `G.11`, `A.10`, `B.3`, `E.17`, `E.17.ID.CR`, `A.6.3`, `F.9`, and `E.18`.
+
+**Boundary summary.** `C.22.2` use starts from messy problem-side signals and yields one reviewable `ProblemCard@Context`, a `P2W-ready` problem-side input for downstream `C.22`, or a named neighboring exit. `C.22` keeps the selector-facing `TaskSignature`; neighboring patterns keep authority for characterization, comparison, acceptance, archive and set relations, evidence, gate, autonomy, work, representation, temporal, causal, and mathematical relations. `C.22.2` does not govern those receiving relations.
+
+### C.22.2:1 - Problem Frame
+
+A working team can reach the beginning of development with symptoms, anomalies, stakeholder signals, constraints, risks, old solution evidence, comparison ideas, solution temptations, underused capabilities, new environments, and opportunity-like cues. Opportunity-like signals still need context, scope cut, not-wish reason, improvement or acceptance probe, and honest next move; they do not turn this pattern into ideation authority. If FPF only says "type the task" or "choose a method", P2W can receive a slogan, a ticket-shaped wish, or a solution-shaped task before the problem itself is reviewable.
+
+Problematization becomes useful for FPF use when it makes the problem side explicit. A problem needs symptom detection, improvement check, acceptance probe or candidate acceptance basis, mandatory constraints, risk posture, support posture, validation boundary, freshness or expiry, and a relation to candidate solution search. Many problems also arrive from a retained set: candidates, anomalies, hypotheses, non-dominated fronts, shortlists, selected sets, live pools, and retained stepping stones.
+
+Current FPF already has patterns for archive, pool, front, selected set, parity, refresh, method selection, evidence, autonomy, gate, representation transition, bridge, and mathematical adequacy. The missing piece is a compact problem-side output that lets a practitioner see what is present before P2W receives the problem and which current FPF pattern carries each heavier question.
+
+The first-minute working question is:
+
+> Can I write or review a problem-side record that is specific enough to guide P2W, selection, acceptance, evidence, and first-principles support, while keeping archives, fronts, pools, selected sets, parity, evidence, autonomy, and work planning in their existing FPF patterns?
+
+### C.22.2:2 - Thin First Use and Output Kind
+
+#### C.22.2:2.1 - Thin First-Use Form
+
+The first substantive use of this pattern is the Thin form. It is a practitioner-facing prompt for writing the smallest reviewable problem card, not a demand to complete a field list.
+
+A `ProblemCard@Context` is complete for its current use when it states:
+
+1. why this signal matters now;
+2. what problem representation is being carried under which context and scope;
+3. why this is not merely a wish, ticket, slogan, or preselected work item;
+4. what would count as improvement or an acceptance probe;
+5. what the honest next move is.
+
+The Thin form asks for:
+
+- the problem signal or selected-problem cue: what made the practitioner stop before downstream task typing or work selection;
+- context grounding and scope cut, including what is outside the current problem;
+- the reason this is not merely a wish, slogan, ticket, or preselected work item;
+- a provisional improvement check or acceptance probe;
+- one honest next move: `P2W-ready`, characterize, compare, search, refresh, retire, archive, `abstain/no-change`, or a named neighboring-pattern exit.
+
+If the Thin form lacks an improvement check or acceptance probe, it may preserve the signal or exit to characterization, comparison, search, refresh, retirement, archive, `abstain/no-change`, or a neighboring pattern, but it must not declare `P2W-ready`.
+
+Only after the Thin pass is legible, recover the output-kind boundary:
+
+`C.22.2 - ProblemCard@Context` is the compact problem-side output under current `C.22`.
+
+`C.22.2 - ProblemCard@Context` is the pattern heading. `ProblemCard@Context` is the `C.22.2`-governed problem-side record shape; an instance is a reviewable problem-side record before P2W. `ProblemCard@ContextRef` may be used as a reference form when downstream text cites such an instance, but it is not a separate durable kind unless a separate naming or kind decision approves one under `F.18` and `A.6.P`. The Tech heading remains `C.22.2 - ProblemCard@Context`. Plain-register glosses or section-local practitioner labels may appear in this pattern, but those labels do not replace the Tech heading.
+
+Local labels in this pattern are local to the `C.22.2` record shape unless a separate accepted FPF naming or kind decision assigns them a broader FPF kind or authority. This includes `support posture`, `validation boundary`, `risk posture`, `solvability band`, `P2W-ready`, `reviewable`, `sentToNeighbor`, `stale`, `refreshed`, `retired`, `archived`, `abstain/no-change`, and `firstPrinciplesCue`; they do not create FPF kinds, gate statuses, state-machine kinds, or local mathematical-lens objects. When a mathematical or first-principles cue is live, cite `C.29`; local `support posture` names only why the problem formulation or structure cue is worth reviewing or moving onward from `C.22.2`; `C.29` carries mathematical-lens adequacy and the support posture for that lens.
+
+Reference labels ending in `Ref` are reference roles, not object names. This includes `ProblemCard@ContextRef`, `setContextRef`, `rivalProblemFormulationRef`, and `semioRelationRef`; do not shorten or promote them into local object kinds such as `ProblemCardRef`, `SetContext`, `RivalFrame`, or `SemioRelation`.
+
+`@Context` means that the card is bound to declared context grounding: a named `U.BoundedContext`, a project-side context reference, or an explicitly bounded practice situation with recoverable local meaning. Domain or practice wording may identify the informative locus of the problem, but it does not replace context grounding. A broad label such as healthcare, education, engineering, research, or operations is not context grounding by itself. When domain or practice wording carries semantic load, recover the named bounded context, project-side context reference, or explicit bounded practice situation and state what local meaning or rule is being used. The card does not assert global problem identity outside that declared context grounding.
+
+Plain gloss for `P2W-ready`: problem-side input ready. It means ready as input to downstream P2W or selector reasoning, not ready to execute work, pass a gate, or select a method.
+
+#### C.22.2:2.2 - Required Solution Moves
+
+The `C.22.2` Solution is organized around practitioner moves from signal to reviewable problem to one admissible next move, not around schema completion.
+
+1. Capture the symptom, anomaly, risk, stakeholder cue, drift, hypothesis, or other source signal before naming the problem.
+2. Stabilize the cheap problem-side record: context grounding, scope cut, described entity when load-bearing, primary viewpoint or role concern, and provisional problem framing.
+3. Make action possible by separating the symptom detector, improvement check, candidate acceptance basis, optimization target when live, monitored risk signal when live, and proxy-distortion risk when an indicator can be gamed or substitute for value; then state mandatory constraints, risk posture when live, and intended next move before downstream selection.
+4. Pay only for live complexity: add conditional fields only when their relation is live, and otherwise name the neighboring-pattern exit or stop at the lighter card.
+5. Run the representation-continuity check: if the problem formulation changes the described entity, representation scheme, diagram, functional description, or TGA path reading, name the SEMIO exit before using inherited support.
+6. Close by the honest next move rather than by a completed form. A filled card without a truthful next move is not a successful `C.22.2` result.
+
+Cheap-stop rule: the smallest card that gives a truthful next move is sufficient. A conforming `C.22.2` use must not require heavier fields merely because the full field list exists.
+
+First practitioner pass before neighboring exits:
+
+1. Capture the problem signal or selected-problem cue, context grounding, and scope cut.
+2. State why it is not merely a wish, slogan, ticket, or preselected work item.
+3. State the provisional improvement check or acceptance probe.
+4. Choose the honest next move.
+Use the neighboring-exit aid only when a conditional relation is live.
+
+This is the Thin-form writing order, not a completion sequence for the whole pattern. It adds no fields; it keeps the practitioner on the smallest truthful card before Standard or High-load relations are paid for.
+
+#### C.22.2:2.3 - Neighboring-Exit Aid
+
+Use this exit aid when a live relation appears while writing or reviewing a `ProblemCard@Context`.
+
+Neighboring exits are authority boundaries, not orchestration steps. The aid names the receiving pattern where authority already lives; it does not give `C.22.2` authority over that pattern or make the neighboring relation local to the card.
+
+Cue and abductive-entry boundary: use `C.22.2` only when the cue can be scoped as a problem-side representation with an improvement check, acceptance probe, or honest next move. If the material is still only a partly stated cue, several candidate meanings, or an explanation-ready prompt without problem-side scope, preserve it under `A.16.1`, `B.4.1`, or `B.5.2.0` before forcing `ProblemCard@Context`.
+
+When `A.16.1`, `B.4.1`, or `B.5.2.0` has preserved or typed the cue, `C.22.2` may receive that cue only to stabilize one problem-side record with context, scope, improvement check or acceptance probe, and honest next move. It does not replace cue preservation, entry-load typing, or abductive prompt handling.
+Failure mode: receiving-table over-capture. The practitioner spends the pattern use classifying neighboring patterns, or trying to fill every receiving-pattern column, while the problem signal, context grounding, scope cut, not-wish reason, improvement or acceptance probe, and honest next move remain unstable.
+
+Repair: return to the Thin problem-side action. State the signal, context and scope, why this is not merely a wish, ticket, slogan, or preselected work item, the improvement check or acceptance probe, and the honest next move. Use the exit aid only after that Thin record exposes a live relation that needs a receiving pattern.
+
+| Live relation | Receiving pattern | Permitted local cue or reference | Forbidden local decision |
+|---|---|---|---|
+| Characterization or measurement basis | `C.16` | Characterization basis, measurement cue, or current reason characterization is not live. | Measurement admission, full characterization protocol, or comparison authority. |
+| Characteristics, indicators, scale, unit, or polarity | `A.19` | Characteristic or indicator cue, indicator role, and needed scale or polarity reference. | Indicator admission, scale repair, unit discipline, or characteristic ontology. |
+| Q-bundle or multi-characteristic acceptance basis | `C.25` | Q-bundle cue, acceptance-basis cue, or need for multi-characteristic treatment. | Local Q-bundle definition, acceptance settlement, or quality scalarization. |
+| Parity, comparability, comparator, budget, or window | `G.9` | Parity basis reference, comparator or window cue, or explicit reason parity is not live. | Fair-comparison claim or parity result. |
+| Selected set, shortlist, archive, pool, front, or set-return | `G.5`, `C.18`, `C.19`, `G.11`, `A.6.P:7a`, `A.6.Q` | `setContextRef`, source set kind, selection or retention basis, and non-scalar next move. | Portfolio or archive governance, selected-set authority, single winner, or one readiness score. |
+| Local choice among explicit options | `C.11` | Local choice cue and option-set reference when the live issue is choice rather than problem-card completion. | Choice record, chooser authority, or option evaluation. |
+| Method-family selection or method cue | `G.5`, `E.18`, `A.15` | Method-family cue and reason method selection is not yet local work. | Method selection, method description, or selected method authority. |
+| Work planning, performed work, or result record | `A.15`, `A.10`, `G.6`, `B.3` | Work need, performed-work cue, result-record cue, or work-authority exit. | Work plan, work authorization, performed-work record, or result certification. |
+| Evidence need or evidence-looking source | `A.10` | Evidence cue, support posture, source reference, or evidence exit. | Evidence proof, evidence sufficiency, or self-evidence. |
+| Provenance or source lineage | `G.6` | Provenance cue, source reference, or relation to a provenance record. | Provenance claim or lineage certification. |
+| Assurance, safety reliance, or confidence | `B.3`, with `A.10` or `G.6` when support is live | Validation boundary, support posture, and assurance exit. | Assurance claim, safety-case acceptance, confidence marker, or proof. |
+| Gate passage or gate decision | `A.21` | Gate cue, gate need, or relation to a gate record. | Gate passage, gate decision, release permission, or work authorization. |
+| Autonomy permission or autonomy budget | `E.16` | Autonomy cue, autonomy risk, or need for autonomy governance. | Autonomy permission, autonomy budget, or delegated authority. |
+| Refresh, expiry, stale signal, or unknown handling | `G.11` plus the affected receiving pattern | Freshness or expiry disposition, unknown handling, refresh, retire, bounded-use, or `abstain/no-change` cue. | Silent current validity after expiry or unknown-blocked P2W readiness. |
+| Temporal claim: speed, cadence, recovery, adoption, lead time, rhythm, or learning rate | `C.27` | Temporal cue and reason it changes the next move. | Intervention model, trend-as-proof, or effort or rhythm doctrine. |
+| Cause-theory, intervention, counterfactual, responsibility, or expected effect | `C.28` plus support or evidence patterns when live | Cause-theory cue that focuses formulation. | Causal-use claim, causal evidence, or transfer license. |
+| Agentic call planning or safe probe | `C.24`, `E.16`, `A.21`, `A.15`, `A.10`, `G.6`, `B.3` as applicable | Probe need, call-planning cue, risk posture, and authority exit. | Tool-call permission, delegation authority, world-affecting action, or safety reliance. |
+| Representation transition or changed described entity | `A.6.3.RT`, `A.6.4`, `E.17`, `E.18` | `semioRelationRef`, representation-change cue, and support-inheritance boundary. | Same-entity proof or inherited support by wording continuity. |
+| Retargeting | `A.6.4`, `E.18` | Retargeting cue and current described-entity boundary. | Claim that the old and new target are interchangeable. |
+| Bridge, cross-context reuse, same, equivalent, or aligned wording | `F.9`, `E.17`, `E.18` | Bridge cue, context grounding, loss or congruence need. | Equivalence, alignment, or reuse authority by label alone. |
+| Structural reinterpretation | `E.18`, with `C.29` when mathematical structure is live | Structural-reinterpretation cue and receiving-pattern exit. | Local proof that the reinterpretation preserves the problem. |
+| Structure cue that improves formulation, including first-principles or mathematical structure when live | `C.29` | `firstPrinciplesCue`, candidate structure, practical formulation payoff, preserved and lost structure when live, support posture, and stop condition. | Mathematical adequacy proof, formalism choice, method selection, or decorative mathematics. |
+
+#### C.22.2:2.4 - Use Boundaries and Profiles
+
+Use this pattern when a signal, anomaly, drift, risk, hypothesis, or stakeholder pressure has appeared and the team must decide whether a problem-side record is needed before downstream task typing. Also use it when P2W would otherwise receive a slogan, wish, ticket-shaped task, preselected work item, or solution-shaped task; when the method is unknown, contested, or not specific enough for task typing, method-family selection, or work planning; or when the problem must become reviewable before method selection or P2W can honestly receive it.
+
+Do not use this pattern as a work-planning record. If the method is already accepted and only work planning is live, use `A.15`. If evidence, proof, provenance, or assurance is central, use `A.10`, `G.6`, or `B.3`; `C.22.2` may name only a support cue or support posture. If gate passage or a gate decision is central, use `A.21`; `C.22.2` may name only a gate cue or neighboring exit. If the live issue is a local choice among explicit options, use `C.11` rather than treating the choice as problem-card completion. If archive, front, pool, selected-set, or portfolio governance is central, use `C.18`, `C.19`, or `G.5`; `C.22.2` may only preserve the `setContextRef` or set-source cue needed for the singleton problem-side record. If the conversation is only ordinary discussion with no downstream project-side move, do not use `C.22.2`.
+
+Use profiles:
+
+- Thin profile: signal, context grounding and scope cut, not-wish, not-slogan, not-ticket, or not-preselected-work reason, provisional improvement check or acceptance probe, and one honest next move.
+- Standard profile: the Thin profile plus live fields needed when P2W or selector-facing use is likely: comparison-and-acceptance cue or acceptance-basis reference, mandatory constraints, risk posture, support posture, validation boundary, freshness or expiry, unknown handling, and named neighboring exits.
+- High-load profile: conditional for public, disputed, high-risk, set-derived, cross-context, semio-transformed, evidence-adjacent, autonomy-adjacent, gate-adjacent, agentic, or Part-G-facing cases. It adds references and exits such as `setContextRef`, characterization, parity, support, evidence, gate, autonomy, work, temporal, causal, agentic call-planning, semio relation, and refresh references; it does not locally certify those relations.
+
+Thin is not an immature profile. When it gives the honest next move, Thin is a final conforming result for the current use. High-load is not a higher maturity claim; it is a conditional profile required when public, disputed, high-risk, set-derived, cross-context, semio-transformed, evidence-adjacent, autonomy-adjacent, gate-adjacent, agentic, or Part-G-facing relations are live in the case.
+
+The profile order is a reading aid, not a required transition sequence. Thin is the default entry; Standard and High-load add only liveness-triggered fields; neighboring exits are consulted after the Thin next move exposes a live relation.
+
+Stop at Thin when the honest next move is local stabilization, local characterization, source reread, or another early problem-side clarification before P2W readiness is claimed. Stop at Standard when it is sufficient to emit or bind a minimal `TaskSignature`, `TaskKind`, or `ProblemProfile` for downstream selector-facing use without carrying high-load relations locally. Exit immediately instead of continuing the card when the live issue is work, evidence, provenance, assurance, gate, autonomy, bridge, representation transition, retargeting, structural reinterpretation, causal-use claim, temporal claim, agentic call planning, or refresh.
+
+#### C.22.2:2.5 - Field Labels and Liveness
+
+The governed move is to make one problem usable before P2W by stating these field labels when they are live for the case:
+
+- problem signal;
+- source signal basis: prior solution-use evidence, environmental drift observation, new constraint, new environment, underused capability, opportunity-like cue, risk signal, anomaly, hypothesis, stakeholder signal, accepted local theory, or safe-probe or environment cue;
+- domain or practice locus when helpful, plus the context grounding that carries local meaning;
+- described entity or exact project-side FPF kind or reference when load-bearing;
+- context grounding;
+- primary viewpoint or role concern;
+- scope cut;
+- symptom detection;
+- problem hypothesis or cause-theory cue;
+- rival-frame reference when multiple plausible problem frames remain live;
+- improvement check;
+- comparison-and-acceptance cue or acceptance-basis reference;
+- characterization basis;
+- characteristic or Q-bundle basis;
+- indicator selection;
+- comparability or parity basis, or explicit current reason it is not needed;
+- mandatory constraints;
+- risk posture;
+- support posture;
+- validation boundary;
+- freshness or expiry condition;
+- unknown handling;
+- `setContextRef` when a set, pool, front, archive, shortlist, selected set, or portfolio context is live;
+- `firstPrinciplesCue` for a first-principles or mathematical structure cue that changes problem formulation;
+- neighboring-pattern exit.
+
+Field liveness for `C.22.2` is determined as follows:
+
+| Field liveness class | Required treatment |
+|---|---|
+| Always-core problem-card identity fields | State the problem signal or selected problem cue, context grounding, described entity when load-bearing, scope cut, and the current reason this is not just a wish, slogan, ticket, or preselected task. |
+| Conditional-live fields | State source signal basis, domain or practice locus when helpful plus the context grounding that carries local meaning, viewpoint or role concern, symptom detection, problem hypothesis or cause cue, rival-frame reference when multiple plausible frames remain live, improvement check, comparison-and-acceptance cue or acceptance-basis reference, characterization or comparability basis, characteristic or Q-bundle basis, indicator selection and indicator role, mandatory constraints, risk posture, support posture, validation boundary, freshness or expiry, unknown handling, `setContextRef` or set-source cue, first-principles cue, and accepted `SEMIO-03` relation exit when that relation affects reviewability. |
+| Exit-only fields | Evidence proof, gate passage, autonomy control, method selection, work planning, performed work, result record, and result measurement are not problem-card fields. `C.22.2` may carry only the cue or exit that sends the practitioner to the receiving pattern. |
+
+Field absence rule: if a conditional relation is not live, the field is absent, not `unknown`. Use `unknown` only for a live relation whose value is currently unknown. If a live value is unavailable, state whether the next move is blocked, degraded, sandboxed, or sent to the receiving pattern. If a value is stale, use the freshness or expiry disposition in `C.22.2:12` and `G.11`. If a field is intentionally omitted, state the record-budget reason and do not imply that the omitted relation has been checked. Exit-only material is never completed locally; it is named as cue, reference, or exit. This split is part of the local answer. A minimal `ProblemCard@Context` contains the always-core fields; conditional fields are added when live; exit-only material is named as a neighboring-pattern exit instead of being absorbed into the card.
+
+When the card compares options, selected-set members, retained candidates, or rival problem formulations, it must state the live comparison or parity basis, or state why comparison is not live for the current move. Absence of a parity basis is not automatically a defect; it is a disposition. The admissible result is either parity not live for the current card, or exit to `G.9` before `P2W-ready` is claimed. A local fair-comparison result or selected-set result is not admissible inside `C.22.2`.
+
+A conforming `C.22.2` use includes minimal source and context witness material when source, set, selection, characterization, parity, freshness, or semio relation is live. Otherwise a Thin card may cite the observed signal in plain form. The field-group label `problemCardSource` may be used inside the pattern, but it is not a new FPF object and not an evidence graph. It is a recoverability field group for the source and neighboring references that make the problem-side record reviewable:
+
+```text
+problemCardSource:
+  sourceSignalRef?
+  setContextRef?
+  selectionOrRetentionBasis?
+  characterizationBasisRef?
+  parityBasisRef?
+  freshnessRef?
+  semioRelationRef?
+```
+
+Generated problem variants, evaluator feedback, and open-ended problem mutation may be recorded only as `sourceSignalRef`, `selectionOrRetentionBasis`, or `setContextRef` when they make the problem-side record reviewable. They do not provide problem authority, evidence sufficiency, or permission to probe or act.
+
+#### C.22.2:2.6 - Anti-Pattern Checks and Worked Slices
+
+Anti-pattern checks begin with card-as-work-item: treating the card as work to execute while the method remains unselected is non-conformant. Filling every field merely to satisfy the form is also non-conformant; fields are required only by liveness, profile, and next-move need. Declaring `P2W-ready` from signal and scope alone is non-conformant when no improvement check or acceptance probe is present.
+
+A preselected solution or work item such as "implement X" is non-conformant as a problem card unless a problem-side signal, context, scope, and candidate acceptance basis are recovered. Evidence, provenance, assurance, gate, and autonomy references inside the card are non-conformant if they are read as proof, gate passage, safety acceptance, or permission instead of a cue, reference, or exit to the receiving pattern.
+
+Treating a problem portfolio, archive, pool, front, shortlist, or selected set as a task queue inside `C.22.2` is non-conformant; the card may only preserve `setContextRef` or a set-source cue and exit. Replacing Goldilocks, NQD, OEE, set-return, partial-order, or stepping-stone reasoning with one readiness score is non-conformant. A first-principles or mathematical cue without practical payoff, preserved and lost structure when live, support posture, and stop condition is non-conformant.
+
+A conforming `C.22.2` use is testable against at least one Thin worked slice, such as repeated task rework or another compact source signal, showing signal, context, not-preselected-work reason, improvement check, and next move. It is also testable against at least one High-load worked slice from a set, archive, pool, front, shortlist, selected set, or portfolio context, showing `setContextRef`, candidate acceptance basis, risk posture, and neighboring exits without creating a local portfolio or archive kind.
+
+#### C.22.2:2.7 - Conformance Checklist Requirements
+
+Checklist role boundary: this checklist protects against overread after the practitioner has written or reviewed the card. It is not the writing order, not a mandatory field-completion sequence, and not a gate. The writing order remains Thin form, honest next move, and live exits only when their relation is live.
+
+| Check | Required test |
+|---|---|
+| Name and kind identity | A conforming `C.22.2` use keeps the pattern heading as `C.22.2 - ProblemCard@Context` and treats the governed output as a problem-side record shape, not `U.Problem`, `TaskSignature`, `U.WorkPlan`, an evidence object, a gate object, or an autonomy object. |
+| Pattern scope boundary | A conforming `C.22.2` use does not present a complete problematization methodology, process model, method model, or work model. It governs the problem-side record before P2W; method, work, evidence, gate, autonomy, organization-capability, and other heavier concerns exit to the receiving patterns named for this pattern. |
+| No new `U.` kind | A conforming `C.22.2` use does not introduce `U.ProblemCard@Context`, `U.ProblemCard`, or another `U.`-prefixed problem-card kind. `ProblemCard@Context` remains the `C.22.2`-governed problem-side record shape used by this pattern. |
+| Core card identity | A conforming `ProblemCard@Context` states the problem signal or selected-problem cue, context grounding, scope cut including outside scope, described entity when that entity is load-bearing, and the current reason the record is not merely a wish, slogan, ticket, or preselected work item. |
+| Cue, reference, and exit discipline | A conforming `C.22.2` use marks heavy neighboring relations as cue, reference, or exit rather than local governing content. Support posture, validation boundary, gate need, evidence need, `setContextRef` or set-source cue, work need, autonomy cue, refresh need, and semio relation may be named only in the role that sends the practitioner to the receiving pattern or preserves the needed reference. |
+| No pre-binding by card | A conforming `ProblemCard@Context` does not by itself select a method, plan work, record performed work, pass a gate, prove evidence, grant autonomy, or select a solution. It may mention a work need, but it does not create a WorkPlan-shaped `PlanItem`. It may name only the problem-side cue, reference, or neighboring-pattern exit needed before those relations are handled elsewhere. |
+| `P2W-ready` basis | A conforming `ProblemCard@Context` marked `P2W-ready` states an improvement check or acceptance probe and the intended downstream move. `P2W-ready` means sufficient problem-side record for downstream P2W or selector-facing use; it is not work-authorized, not gate-passed, and not method-selected. If that basis is absent, the card may remain reviewable or exit elsewhere, but it must not claim `P2W-ready`. |
+| Readiness disposition | A conforming `ProblemCard@Context` states whether it is reviewable-only, `P2W-ready`, or sent to a neighboring pattern. A reviewable-only card must not bind `TaskSignature`. |
+| Minimal downstream anchor | When `ProblemCard@Context` emits or binds `ProblemProfile`, `TaskKind`, or `TaskSignature`, a conforming result keeps the downstream `C.22` object minimal and selector-facing. It must not copy the full card fields into `TaskSignature` or make the downstream anchor a work plan. |
+| Source-local term recovery | A conforming `C.22.2` use treats source-local terms such as problem factory, solution factory, passport, rule-of-choice card, evidence pack, autonomy budget, logs, gates, and portfolio wording as ordinary source wording or maps them to named receiving patterns. It must not mint them as `C.22.2` subkinds. |
+| Acceptance and comparability exits | A conforming `ProblemCard@Context` may state an acceptance probe, candidate acceptance basis, comparison-and-acceptance cue, or acceptance-basis reference, but it does not create local acceptance authority. It sends comparison-frame or CG-Spec governance to `G.0`, acceptance clauses and threshold predicates to `G.4`, parity or comparability questions to `G.9`, and characterization, characteristic, indicator-admissibility, or Q-bundle basis to `C.16`, `A.19`, or `C.25` when those relations are live, instead of settling that basis locally. |
+| Detector, check, criterion, and optimization-target distinction | A conforming `ProblemCard@Context` distinguishes symptom detector, improvement check, candidate acceptance basis, optimization target, monitored risk signal, and proxy-distortion risk when those relations are live. A measured value or observed improvement is not by itself an acceptance result for P2W. |
+| Set-source reference preservation | When a `ProblemCard@Context` comes from an archive, pool, front, shortlist, selected set, or portfolio, a conforming card cites the existing receiving pattern such as `C.18`, `C.19`, or `G.5` when the set relation is live, preserves `setContextRef` and the selection or retention basis, and does not turn that reference into a new `C.22.2` portfolio or archive kind or task queue. |
+| Causal cue boundary | A conforming `ProblemCard@Context` treats local cause-theory wording as a formulation cue unless a causal-use claim is explicitly made. Any causal-use claim exits to `C.28` and the needed support or evidence pattern when live; a local cause-theory cue is not evidence of cause and does not license causal transfer by itself. |
+| Temporal claim exit | If speed, cadence, throughput, recovery, adoption, learning rate, review rhythm, lead time, freshness window, or expiry wording changes the next move, a conforming `ProblemCard@Context` names the temporal claim and exits to `C.27`. The card may preserve the cue; it does not turn a trend, cadence note, or freshness field into an intervention model. |
+| Representation-relation exit | When representation transition, retargeting, bridge, structural reinterpretation, or changed described entity is live, a conforming `ProblemCard@Context` names the receiving relation in `A.6.3.RT`, `A.6.4`, `E.17`, `F.9`, or `E.18` as appropriate. Wording continuity is not same-entity proof, and the card must not inherit support across the changed representation by wording continuity alone. |
+| Posture and authority boundary | A conforming `ProblemCard@Context` keeps support posture, validation boundary, risk posture, and next move as problem-side fields or neighboring exits. Support posture means the current reason the problem formulation is worth reviewing or moving onward. It is not a confidence marker, evidence sufficiency, evidence proof, provenance, assurance claim, engineering justification, gate passage, safety-case acceptance, release permission, autonomy permission, or work authority. Validation boundary is not an assurance claim or safety-case acceptance; risk posture is not autonomy permission; next move is not work authority. |
+| Support-posture citation boundary | A `ProblemCard@Context` citation is non-conformant if it is used as evidence, gate passage, safety acceptance, assurance, release permission, autonomy permission, or work authorization without naming the receiving pattern record that carries that relation. |
+| Freshness and unknown disposition | A conforming `ProblemCard@Context` states whether freshness and unknown handling permit the intended use, require bounded or degraded use, require `abstain/no-change`, require sandbox treatment, require refresh, or block P2W. Expiry or unknowns may not remain as passive notes. |
+| Record-budget invariant | A conforming `ProblemCard@Context` is as small as the next move permits. A Thin card is valid when it prevents wish, ticket, or solution-shaped-task collapse and names the next move honestly. The full field set is used only when the corresponding relation is live. |
+| No scalar readiness shortcut | A conforming `ProblemCard@Context` does not turn Goldilocks, NQD, OEE, set-return, partial-order, or stepping-stone wording into one local readiness score or a local QD or OEE vocabulary. Those terms may appear only as cue or exit to the current receiving patterns when their relation is live. |
+| First-principles and mathematical cue payoff | A conforming first-principles or mathematical cue states the practical payoff for problem formulation, the preserved and lost structure when live, the support posture, and the stop condition or `C.29` exit. A cue without those recoverable elements is not load-bearing action guidance. |
+
+Do not treat a compact card template or worked example as a separate FPF object or pattern.
+
+### C.22.2:3 - Problem Reading and Kind Recovery
+
+For this decision, `problem` remains an ordinary word in non-load-bearing prose. Recovery is required only when the wording changes an admissible move, FPF relation, downstream anchor, support, evidence, causal, bridge, assurance, decision, admissibility load, or neighboring-pattern exit. The preferred center is the framed problem representation: a problem-side representation of a described entity under context, scope, viewpoint or role concern, constraints, and improvement or acceptance probe. When `problem` carries FPF work, selection, evidence, causal, bridge, assurance, decision, or admissibility load, it must be recoverable through this table:
+
+| Load-bearing reading | Current FPF reading | `C.22.2` disposition |
+|---|---|---|
+| Symptom, anomaly, deviation, risk signal, or stakeholder signal | Problem signal or source signal basis | May trigger a `ProblemCard@Context`, but is not yet a problem-side representation by itself. |
+| Problematic situation | Context-bound situation under a viewpoint, domain, constraints, risks, and candidate described entity | Captured only through fields that make the situation reviewable. |
+| Framed problem representation | Problem-side representation of a described entity under context and acceptance constraints | Center of `ProblemCard@Context`; representation-change claims exit to `A.6.3.RT`, `A.6.4`, `E.17`, `F.9`, or `E.18` when live. |
+| Candidate problem in archive or live pool | Member of a retained candidate set, pool, archive, or front | Must preserve source set or reference, declared set relation when that exact FPF relation is live, retention basis, budget or window, and review cadence when live. |
+| Selected problem from a set-return treatment | Selected set member or emitted problem-side record under selection basis | `ProblemCard@Context` may carry the selected problem, but selected-set semantics remain with `G.5`, `C.18`, `C.19`, `G.9`, `G.11`, `A.6.P:7a`, and `A.6.Q`. |
+| Problem ready for selector-facing use | Problem-side record sufficient to emit or bind `TaskSignature` or `TaskKind` | `C.22` use reads the typed anchor; `C.22.2` does not expand `TaskSignature` into a problem-card dump. |
+| Downstream task or execution target | Method known enough for task typing, method-family selection, planning, or performed work | Exits to `G.5`, `A.15`, `E.18`, `A.10`, `G.6`, `B.3`, gates, or evidence patterns as applicable. |
+| E.8 pattern `Problem frame` | Practitioner-recognition section inside a pattern | Not the C.22 problem-side representation. |
+| E.9 DRR `Problem frame` | Decision-support section in a design-rationale record | Not the C.22 problem-side representation. |
+
+Blocked readings: `ProblemCard@Context` is not `U.Problem`, not `ProblemProfile`, not `TaskSignature`, not `TaskKind`, not `U.WorkPlan`, not `U.Work`, not the problem-side representation itself, not a general ticket format, not an archive, not a portfolio, not an evidence object or proof, not a gate decision or gate passage, and not an autonomy object or work-plan item.
+
+### C.22.2:4 - Problem, Task, Method, Work, and Result Split
+
+`ProblemCard@Context` is admissible while the method is unknown, contested, not yet selected, or not yet specific enough for downstream work. A known method does not by itself make the problem ready: if the proposed method is known but the problem signal, scope, acceptance probe, or described entity remains unstable, `C.22.2` remains live. If both the problem representation and the method are already accepted and the remaining question is planned execution, exit to `A.15`. The card may carry method-search exits and method-family cues, but it must not present downstream work as already known task execution.
+
+Use this split:
+
+| Term or object | Current FPF reading | Local disposition |
+|---|---|---|
+| `Problem` | Problem-side representation of the described entity of concern under context | Center of `C.22.2` only after problem-kind recovery. |
+| ProblemCard@Context | Compact problem-side record before P2W | `C.22.2`-governed record shape under `C.22`; stabilizes a problem-side representation under declared context. |
+| ProblemProfile | C.22-facing profile prepared or bound from a problem-side representation when sufficient | Downstream profile anchor; not the card itself and not a work item. |
+| `TaskKind` | Selector-facing task kind in `C.22` | Downstream typed anchor; not a plan item. |
+| `TaskFamilyRef` | Reference to a family of task kinds or method-consumption classes | Used only when current `C.22` selector logic requires it. |
+| `TaskSignature` | Minimal selector-facing signature read for eligibility, acceptance, and selection | May be emitted or bound from `ProblemCard@Context`; must stay minimal. |
+| Method-family selection object | Comparison or selection among method families | Receiving pattern `G.5`; not a problem-card field. |
+| `U.Method`, `U.MethodDescription` | Method and method description | Receiving pattern family `A.15` and related method-description anchors. |
+| `U.WorkPlan`, `SlotFillingsPlanItem` | Planned work and plan item | Receiving pattern family `A.15`; not a C.22 task signature. |
+| `U.Work` | Performed work | Receiving pattern family `A.15`, with evidence, provenance, and assurance exits when live. |
+| Result record and result measurement | Evidence, provenance, measurement characterization, assurance, or refresh material depending on use | Receiving patterns `A.10`, `G.6`, `B.3`, `C.16`, `G.11`, and neighbors. |
+
+Transition condition: `ProblemCard@Context` may prepare a candidate `ProblemProfile`, bind an existing `ProblemProfile`, emit a candidate `TaskSignature`, or bind a `TaskSignature` only when P2W or selector readiness is declared. If several downstream signatures remain plausible, keep them as candidate signatures instead of binding one chosen `TaskSignature`. When method-family selection, selected method, planned work, performed work, result record, or result measurement becomes live, use the receiving pattern; `C.22.2` does not absorb that pattern's authority.
+
+### C.22.2:5 - Relation to C.22
+
+`C.22` remains the foundation for `ProblemProfile`, `TaskKind`, `TaskFamilyRef`, and `TaskSignature`. `ProblemCard@Context` is earlier and more explicit: it explains why this problem, under this context, is admissible for P2W, search, comparison, characterization, refresh, retirement, or a neighboring exit.
+
+A `ProblemCard@Context` may prepare a candidate `ProblemProfile`, bind an existing `ProblemProfile`, emit a candidate `TaskSignature`, or bind a `TaskSignature` only when P2W or selector readiness is declared. If several downstream signatures remain plausible, keep them as candidate signatures instead of binding one chosen `TaskSignature`.
+
+This relation does not move problem-card field detail into `TaskSignature`. `TaskSignature` stays minimal for eligibility, acceptance, and selection. Method-family selection, selected method, planned work, performed work, result record, result measurement, evidence, gate, autonomy, archive, portfolio, and selected-set authority remain with their receiving patterns.
+
+### C.22.2:6 - Characterization, Indicators, and Comparability
+
+`ProblemCard@Context` must state either a recoverable `characterization basis` and `comparability or parity basis`, or an explicit current reason why the problem can proceed without one.
+
+The heavy content stays with existing FPF patterns:
+
+- `C.16` carries measurement characterization, backing, and comparability discipline;
+- `A.19` carries characteristic, scale, unit, polarity, and indicator admissibility discipline;
+- `C.25` carries Q-bundles and quality-like multi-characteristic bundles;
+- `G.9` carries parity, comparison-window, comparator, budget, unit, repeatability, and reproducibility pins;
+- `G.0` carries comparison-frame and CG-Spec governance;
+- `G.4` carries acceptance clauses and threshold predicates;
+- `G.5` governs selected-set publication when the problem enters a selected set.
+
+Missing characterization or parity basis is a current disposition. The record exits to characterization, parity, or search or pool work under the receiving pattern instead of pretending the problem is ready for P2W.
+
+The `C.22.2` candidate acceptance basis must distinguish functional check, constraint compliance, risk or safety boundary, parity or comparison basis, and freshness window when those relations are live. Comparison frame, CG-Spec, or comparability governance exits to `G.0`. Acceptance clauses and acceptance threshold predicates exit to `G.4`; `C.22.2` may name only the need, cue, or reference. Passing a test, improving one observed indicator value, or naming an acceptance phrase is not by itself admissible acceptance for P2W.
+
+### C.22.2:7 - Source Record-Form Receiving Map
+
+These are source-form recovery rows, not a taxonomy of FPF forms or `C.22.2` subkinds. This map keeps source wording from becoming local `C.22.2` subobjects. A form may enrich the problem card only when it supplies problem-side source, set, characterization, or comparison material. Authority, evidence, gate, autonomy, work, method, and result forms remain neighboring exits.
+
+Problem-side and set-source forms:
+
+| Source record form | Current disposition | FPF receiving pattern and content obligation |
+|---|---|---|
+| Problem card | Carried by this pattern. | Use `C.22.2 - ProblemCard@Context`. |
+| Problematization passport | Absorbed as the compact support template inside `C.22.2`. | Do not mint a new FPF object. |
+| Problem archive | Assigned to archive, pool, and provenance patterns. | Use `C.18`, `C.19`, `A.10`, and `G.6`; do not create a local portfolio or archive kind in `C.22.2`. |
+| Problem portfolio | Assigned to selected-set, pool-policy, parity, and refresh patterns. | Use `G.5`, `C.19`, `G.9`, and `G.11` according to the live relation. |
+| Selected set, shortlist, front, archive, pool, or Goldilocks source | Preserved only as source or set-source cue. | Use `setContextRef`, source set kind, source-set form, selection or retention basis, non-scalar next move, and the receiving pattern when live. |
+| Solution search | Assigned to archive, pool, or selection patterns according to state. | Use `C.18`, `C.19`, `C.11`, or `G.5`; `C.22.2` names only the search exit. |
+| Solution portfolio | Assigned to selected-set, archive, front, and method-family selection patterns. | Use `G.5`, `C.18`, `C.19`, and `G.9`; `C.22.2` only carries the candidate acceptance-basis reference and set-return exits that make downstream solution selection reviewable. |
+
+Comparison and characterization forms:
+
+| Source record form | Current disposition | FPF receiving pattern and content obligation |
+|---|---|---|
+| Characterization passport | Assigned to characterization and comparison patterns. | Use `C.16`, `A.19`, and `C.25` where live; `C.22.2` cites the basis. |
+| Characteristic card | Assigned to characteristic and scale discipline. | Use `A.19` and `C.16`; problem-card use appears through `indicator selection` and `characteristic or Q-bundle basis`. |
+| Parity plan or report | Assigned to parity harness. | Use `G.9`; `C.22.2` names the need for parity only as a neighboring-pattern exit. |
+| Rule-of-choice card | Assigned to local choice or selected-set patterns when a chooser and option set are live. | Use `C.11` for local choice records; use `G.5` for selected-set publication and `C.19` for pool policy. |
+
+Neighboring authority, evidence, work, method, and result forms:
+
+| Source record form | Current disposition | FPF receiving pattern and content obligation |
+|---|---|---|
+| ADR-like decision record | Assigned by the decision being recorded. | Use `E.9` for FPF content decisions, `C.11` for local choice records, and `A.21` for gate decision logs. |
+| Evidence pack | Assigned to evidence, provenance, and assurance patterns. | Use `A.10`, `G.6`, and `B.3`; `C.22.2` names support posture and validation boundary without certifying evidence. |
+| Autonomy budget declaration | Assigned to autonomy governance. | Use `E.16`; `C.22.2` carries only risk or autonomy cues that point to this pattern. |
+| Autonomy ledger | Assigned to autonomy, work, and gate patterns. | Use `E.16` with `A.15` and `A.21` when work or gates are live. |
+| Gate decision log | Assigned to gate decision recording. | Use `A.21`; if the same record also carries evidence or provenance load, that load exits to `A.10`, `G.6`, or `B.3`. |
+| Override protocol | Assigned by the live autonomy, gate, work, evidence, or control relation. | Use `E.16`, `A.21`, `A.15`, `A.10`, `G.6`, or `B.3` as applicable. Use `A.2.8` only when an explicit deontic relation is live. |
+| Deontic commitment, permission, or obligation | Assigned only when the commitment, permission, or obligation is explicit. | Use `A.2.8`; do not apply it to logs or override-looking wording by appearance. |
+| Method selection | Assigned to method-family selection. | Use `G.5` and `A.15`; `C.22.2` carries only method-family cues. |
+| Work planning | Assigned to work-planning patterns. | Use `A.15` and `SlotFillingsPlanItem`; not `TaskSignature`. |
+| Performed work | Assigned to work, evidence, and provenance patterns. | Use `A.15`, `A.10`, `G.6`, and `B.3` according to use. |
+| Result record and result measurement | Assigned to evidence, provenance, assurance, measurement characterization, and refresh patterns. | Use `A.10`, `G.6`, `B.3`, `C.16`, and `G.11`; `C.22.2` does not certify results. |
+| Candidate solution or described system | Assigned to selection, method, work, evidence, and system-description patterns according to live use. | Use `G.5`, `A.15`, `E.17`, `E.18`, `A.10`, `G.6`, and `B.3`; do not treat selected solution publication as the problem card. |
+| Runbook and rollback plan | Assigned to work-planning, gate, autonomy, evidence, and control patterns. | Use `A.15`, `A.21`, `E.16`, `A.10`, `G.6`, and `B.3`; `C.22.2` may name reversibility or containment as a risk or validation boundary only. |
+
+Source-local exposition terms:
+
+| Source wording | Current disposition | FPF receiving pattern and content obligation |
+|---|---|---|
+| Problem factory, solution factory, or factory-of-factories | Source exposition for related work families, not FPF process kinds. | `C.22.2` covers only the problem-side output. Solution and P2W work exits to `G.5`, `A.15`, `E.18`, `A.10`, `G.6`, `B.3`, `A.21`, `E.16`, or `G.11` when those relations are live. |
+| Ordinary log | Assigned by the relation the log is used to support. | Use `A.10`, `G.6`, or `B.3` when evidence, provenance, assurance, or support posture is live; use `G.11` when the log supports refresh or update discipline. `C.22.2` may cite the cue, but does not treat a log as problem evidence by appearance. |
+| Passport, card, budget, ledger, protocol, plan, and pack wording | Recovered by use, not by label shape. | If the source term carries problem-side material, recover it through the relevant `C.22.2` field. If it carries authority, evidence, gate, autonomy, work, method, result, selection, or assurance load, send that relation to the receiving pattern. |
+### C.22.2:8 - Portfolio, Archive, and Set-Return Treatment
+
+Archive, portfolio, pool, front, shortlist, selected-set, and set-return material remain source and set cues for the current problem-side record. `ProblemCard@Context` preserves `setContextRef`, source-set kind, selection or retention basis, and the non-scalar next move when live; portfolio and archive governance stays with the named receiving patterns and does not become a local problem-card kind.
+
+Archive, portfolio, palette, front, shortlist, ranked shortlist, selected set, live pool, and set-return material remain live source distinctions, but their current FPF receiving patterns are already available:
+
+| Source wording | Current FPF receiving pattern | Required problem-card preservation when live |
+|---|---|---|
+| Problem archive | `C.18`, `C.19`, `A.10`, `G.6` | Preserve source set or reference, retention basis, candidate status, and provenance relation. |
+| Problem portfolio | `G.5`, `C.19`, `G.9`, `G.11` | Preserve selection or retention basis, budget or window, review cadence, and selected-set or live-pool relation. |
+| Palette | `C.18`, `C.19`, `G.5` | Preserve candidate-family or option-set reading without turning it into evidence or approval. |
+| Front | `C.18`, `A.19`, `C.25`, `G.5` | Preserve declared characteristics and non-dominated set reading. |
+| Shortlist | `G.5`, with `G.9` when comparison pins matter | Preserve selected-set basis and downstream use. |
+| Ranked shortlist | `G.5` only when an admissible order is declared | Preserve ranking basis or narrow to selected set with tie notes. |
+| Selected set | `G.5` | Preserve selected-set output, basis pins, and unknown handling. |
+| Live pool | `C.19` | Preserve pool policy, current treatment, and change trigger. |
+| Set-return | `G.5`, `C.18`, `A.6.Q`, declared comparison records | Preserve set-valued result when total order is not admissible. |
+
+A singleton problem card is the degenerate case. If it came from a portfolio, front, archive, or pool, the selected problem remains traceable through `setContextRef`: the lightweight reference to the source set kind, source reference, selection or retention basis, budget or window, review cadence, and receiving pattern when live. `setContextRef` is a reference field, not a new `SetContext` kind, and is not evidence, gate passage, approval, portfolio object, or work authority.
+
+`setContextRef` must preserve the recoverable source-set form when live: `Palette`, `Front`, `Archive`, `ExplorationArchive`, `Shortlist`, `RankedShortlist`, `SelectedSet`, `LivePool`, or another accepted source-set form. If the source-set form is not recoverable, the card may keep a source cue, but it must not claim selected-set readiness or archive-derived readiness.
+
+When multiple plausible problem formulations remain live, `C.22.2` must not bind one `TaskSignature` prematurely. Each optional `rivalProblemFormulationRef` must state the rival formulation, described entity, context, preserved concern, lost concern, reason not selected yet, and next discrimination move. It is not a `CG-Frame`, not the E.8 `Problem Frame`, and not a representation-frame object.
+The next discrimination move may be to characterize, compare, retarget, reopen the source, choose a local problem formulation, or exit to the relation-bearing pattern. Reframing is triggered when context grounding, described entity, viewpoint, scope cut, or cause-theory cue changes the problem representation enough that support or readiness cannot be inherited by wording continuity.
+
+### C.22.2:9 - Goldilocks and Set-Return Docking
+
+Goldilocks problem selection is the problem-side adaptation of the current NQD, OEE, and set-return family. It is not direct QD or OEE vocabulary import, not a new scalar readiness doctrine, not a local QD or OEE vocabulary, and not a single score. `C.22.2` must not mint `GoldilocksProblem`, `GoldilocksScore`, `GoldilocksReadiness`, or any equivalent local kind; Goldilocks remains a readiness and selection reading carried by current receiving patterns.
+
+A Goldilocks, stepping-stone, or archive-derived problem must be represented as source context or set context, selection or retention basis, and current next move, not as problem difficulty, priority, or readiness score.
+
+`ProblemCard@Context` carries only the problem-side readiness fields and exits:
+
+- source set kind when archive, pool, front, shortlist, selected set, or portfolio language is live;
+- solvability band;
+- characteristic-space, declared problem-side characteristic descriptor, or Q-bundle basis;
+- declared difference-reading basis when novelty or diversity is claimed, or an exit to the receiving characterization or comparison pattern;
+- non-scalar trade-off, dominance, partial-order, or set-return basis when live;
+- measurability or explicit unknown handling;
+- reversibility or containment for safe probing when live;
+- stepping-stone option value when retention matters;
+- expiry or refresh condition;
+- selected-set, archive, pool, front, or parity exit when live.
+
+The local `solvability band` label means a context-bound, non-scalar reading of feasible-but-not-trivial fit under current capability, constraints, support, and optional set-return basis. It is not a universal difficulty claim, not a hidden readiness scale, and not a single-score ranking.
+
+If the band is not supported by a characteristic, Q-bundle, comparison, retention, or capability-context cue, treat Goldilocks wording as informal recognition only and send any selection, set-return, or parity claim to the receiving pattern.
+
+The current receiving family is `C.18`, `C.19`, `G.5`, `G.9`, `G.11`, `A.6.P:7a`, and `A.6.Q`. The relation to `C.22:14` is a role and timing relation inside the same family: `C.22.2` uses the family before P2W, while `C.22:14` uses it downstream when candidate solutions for a `TaskKind` make `TaskSignature` informative.
+
+### C.22.2:10 - Structure Cue That Improves Formulation
+
+`C.29` carries the neighboring adequacy check for first-principles or mathematical structure cues used by `ProblemCard@Context`.
+
+`firstPrinciplesCue` is a local cue label for a formulation-changing structure and an exit to `C.29`; it is not a local mathematical-lens kind or a substitute for `C.29` lens adequacy.
+
+The problem card may ask whether a first-principles or mathematical structure helps find or improve the problem formulation, not only whether an already-mentioned mathematical object is admissible. Useful cues include state space, graph, boundary, topology, symmetry, invariant, variational or constrained-optimization structure, probability or information structure, resource bound, obstruction, scale window, composition, or coarse-graining choice.
+
+The admissible practitioner move is:
+
+> State the structure that improves the problem formulation, the preserved structure, the lost structure, the practical payoff, the support posture, and the stop condition.
+
+Distribution by principles:
+
+| Source pressure | Current receiving pattern | `C.22.2` use |
+|---|---|---|
+| Zero-principles and first-principles invariants, constraints, symmetry, composition, multi-scale description, variational structure, probability or information, and resource limits | `C.29`, with `A.19`, `C.16`, `C.25`, and `G.9` when characteristics, measurement characterization, quality bundles, or parity are live | Carry a first-principles or mathematical structure cue and exit to the receiving pattern. |
+| Second-principles method-family implications | `G.5`, `A.15`, `E.18`, `A.19` as applicable | Name the method-family cue; do not perform method selection in the problem card. |
+| Third-principles reproducibility, checks, templates, records, logs, rollback, evidence | `A.10`, `G.6`, `B.3`, `A.21`, `G.11`, `E.16` as applicable | Name the reproducibility or evidence obligation as a neighboring-pattern exit. |
+
+When no useful mathematical structure survives, record that absence and proceed without forcing mathematical prose into the problem card.
+
+### C.22.2:11 - Support, Validation, AI-Agent Pressure, and Safe Probing
+
+`ProblemCard@Context` exposes support posture and validation boundary; it does not certify evidence, assurance, gate passage, safety, or autonomy control.
+
+Plain definition: support posture names the current reason this problem formulation is worth keeping, reviewing, discriminating, or moving onward now. Typical bases include an observed signal, stakeholder cost or risk, repeated rework, violated constraint, stale or changed environment, selected-set retention basis, cheap probe value, first-principles structure that changes formulation, or stale but still useful archive or refresh cue. It is not evidence sufficiency, proof, confidence, provenance, assurance, gate passage, safety-case acceptance, release permission, autonomy permission, or work authority.
+
+Plain definition: validation boundary states what has and has not been checked for the current next move, what the current problem formulation may be used for now, what it cannot yet support, and where any validation, evidence, assurance, gate, autonomy, or work claim beyond this local boundary is assigned. It is not an assurance claim, safety-case acceptance, release permission, or work authorization.
+
+Plain definition: risk posture names the monitored risk, risk condition, cost-of-error concern, or containment concern that may change the safe next move. It is not the validation boundary, not the support reason, not evidence of danger by itself, and not permission to probe, delegate, or act.
+
+Local-label boundary: `support posture`, `validation boundary`, and `risk posture` are local problem-card field labels unless a separate accepted FPF decision assigns a different governing kind. When mathematical-lens support is live, cite `C.29` and do not read local support posture as `LensSupportPosture`. When assurance, evidence, or provenance support is live, exit to `B.3`, `A.10`, or `G.6` as applicable.
+
+Detector, check, and optimization-target discriminator:
+
+- symptom detector: what revealed the possible problem; not an acceptance criterion.
+- improvement check: what would show that the problem formulation became better.
+- acceptance probe: what downstream acceptance may need to inspect; not local acceptance authority.
+- optimization target: what a later selector may improve under comparison-governance or selection-governance patterns; not a local method choice.
+- monitored risk signal: what may worsen, distort value, or change the safe next move; not proof by itself.
+- acceptance authority: carried by `G.4` or another receiving acceptance pattern, not by `C.22.2`.
+
+Reliance-disposition rule for P2W receiving use:
+
+Use this rule when support posture or validation boundary may enter P2W as evidence-like, confidence-like, conformance-like, proxy-like, safety-looking, redress-bearing, or currentness-bearing support. The first C.22.2 move is to keep the result problem-side: name the P2W receiving use, unsupported use, and any live receiving-pattern exit. This rule does not add a default field family to `ProblemCard@Context`. If the Thin card already gives an honest next move and live exits, no additional reliance record is required.
+
+Support role: the disposition table below is a local P2W-reliance recognition and minimum local record aid, and the worked P2W reliance slices are regression/review slices. They are not card field lists, project checklists, or hidden SEMIO state machines. Use them only to state the supported P2W receiving use, unsupported use, and receiving-pattern exit when support posture or validation boundary is actually being relied on. This local section returns the attempted P2W use to the C.22.2 problem-side relation and named receiving-pattern exits; it does not create an extra SEMIO authority or shared relation family.
+
+Affordability card: orientation, discussion, or source-finding can remain an ordinary problem-side cue; bounded P2W reliance states the supported receiving use, unsupported use, window, and exit; threshold reliance names the receiving evidence, assurance, gate, autonomy, control, work, temporal, or representation relation instead of making the card larger. Plain wording remains ordinary unless it changes admissible use, support, evidence, gate, assurance, work, decision, or neighboring-pattern exit.
+
+Common wrong first reading: `P2W-ready` means proof, safety acceptance, gate passage, method selection, work authorization, or release permission. First honest entry: keep the result problem-side; name the P2W receiving use and any exact evidence, assurance, gate, autonomy, control, work, temporal, or representation exit when live.
+
+| Attempted P2W use | Local card move | Receiving-pattern exit when live | Forbidden overread |
+| --- | --- | --- | --- |
+| Support posture is enough for the next P2W receiving use | State `RelianceDisposition=pass` only for the named P2W receiving use, unsupported attempted P2W use, support posture, validation boundary, context, and window. | Open `A.10`, `B.3`, `A.21`, `C.16`, `C.27`, `G.11`, `A.6.3.RT`, or `A.6.4` only when that relation carries part of the support. | Treating `P2W-ready` as proof, safety acceptance, gate passage, method selection, work authorization, portfolio authority, or release permission. |
+| Support is useful but narrower than the attempted P2W use | State `RelianceDisposition=degrade`, the narrowed P2W use, the unsupported attempted use, and the stop condition. | Open measurement, evidence, temporal, refresh, representation, or assurance loci only for the live dependency. | Quietly broadening a weak support posture into full P2W readiness. |
+| Source, confidence, or validation is stale, conflicted, uncalibrated, or not tied to the live relation | State `RelianceDisposition=abstain` or `RelianceDisposition=evidence-needed`, plus the missing evidence kind or receiving relation and the decision point. | `A.10` for evidence/currentness, `C.16` for measurement or marker support, `C.27`/`G.11` for time, expiry, refresh, or monitoring. | Letting uncertainty become indefinite delay or silent permission to continue. |
+| Contest, redress request, changed representation, retargeting, or changed described entity defeats support inheritance | State `RelianceDisposition=reopen`, the relation being reopened, and the card use that is no longer supported. | `A.6.3.RT`, `A.6.4`, `E.17`, `F.9`, `E.18`, `A.10`, `B.3`, or another exact relation when the represented problem, evidence path, or support source changed. | Treating an older card as still current merely because its text was preserved. |
+| Safety-looking, release-looking, compliance-looking, public-behavior, resource, people/status, autonomy, gate, or control-bearing use is attempted from the card | State `RelianceDisposition=safety-case-required`, `RelianceDisposition=no-supported-current-use`, or a named exit; do not authorize the use locally. | `B.3` for assurance and the minimum reliance safety support record, `A.21` for gate decision, `E.16` for autonomy, `A.15` for work, `B.2.5` only when a controlled object is regulated through a feedback channel, evidence channel, cadence, window, or supervisory/control relation, `A.10`/`G.6` for evidence/provenance. | Reading a problem-side card as safety acceptance, tool-call permission, delegated-agent authority, release permission, work plan, performed work, or control authority. |
+
+Minimum P2W support statement when this rule is live: support posture, validation boundary, `RelianceDisposition`, supported P2W receiving use, unsupported use, currentness or window when relevant, contest or redress path when relevant, and live receiving-pattern exits. Do not copy evidence, gate, assurance, work, autonomy, or control fields into the card unless the card is explicitly naming a live exit to the receiving pattern.
+
+Misuse guard: `RelianceDisposition=abstain` and `RelianceDisposition=degrade` must state the condition for reopening, narrowing, or closing the P2W use; do not use uncertainty to block valid P2W receiving use indefinitely or to hide a full pass behind a narrower label.
+
+False-negative reliance guard: a blocked, abstained, or evidence-needed P2W use is not final if admissible challenge evidence, missing affected-party evidence, changed source, changed representation, or redress can materially change the disposition.
+
+Support-inheritance guard: support does not inherit across representation scheme, episteme-lane view, publication face, described entity, retargeting relation, or source-basis change merely because the same card text, dashboard label, source phrase, support cue, generated explanation, coarsened or redacted rendering, screenshot, or copied approval survived. Use A.6.3.RT, A.6.3.CSC, A.6.4, E.17, F.9, or E.18 only when that relation is live; otherwise keep the local card use bounded.
+
+Positive repaired path: a messy support cue becomes useful when the card states what P2W may receive now, what P2W must not infer, and which exact neighboring pattern carries any evidence, assurance, gate, temporal, representation, autonomy, control, or work relation. A successful result can be `P2W-ready`, degraded P2W use, evidence-needed, refresh, reopen, `abstain/no-change`, or a named neighboring exit; it need not become a bigger card.
+
+Worked P2W reliance slices:
+
+| Slice | Local card move | Boundary |
+| --- | --- | --- |
+| An archive or portfolio retention cue supports looking at a problem again. | State the support posture, validation boundary, source-set or retention basis, currentness/window, and `RelianceDisposition=degrade`, `RelianceDisposition=evidence-needed`, or `refresh` when the cue is stale or incomplete. | Retention is not proof, safety acceptance, method selection, or work authorization. |
+| Confidence-looking support is enough for one reversible exploration step. | State `RelianceDisposition=pass` only for that P2W receiving use, unsupported attempted use, context, window, and stop condition. | The same card does not become full readiness, release permission, or assurance. |
+| A problem card is cited as safety acceptance or tool-call permission. | State `RelianceDisposition=safety-case-required`, `RelianceDisposition=no-supported-current-use`, or a named exit to `B.3`, `E.16`, `A.21`, `A.15`, or `A.10`. | `ProblemCard@Context` does not authorize action, autonomy, gate passage, work, or release. |
+| A contest, redress request, or changed described entity defeats inherited support. | State `RelianceDisposition=reopen`, the relation being reopened, and which previous P2W use is no longer supported. | Preserved card text does not preserve currentness when representation or evidence changed. |
+| A selected-set or portfolio basis is used before P2W. | Keep the set-source, selection, retention, and not-selected disposition as source cues and name the receiving set patterns when live. | The card is not portfolio authority, selected-set proof, or scalar readiness. |
+
+A cause-theory cue may focus problem formulation inside `ProblemCard@Context`. If that cue is used to claim association, intervention, counterfactual, responsibility, expected effect, or causal evidence, the relation exits to `C.28` plus `A.10`, `G.6`, or `B.3` when support, provenance, or assurance is live.
+
+The AI-agent and autonomy material from the source material is received as neighboring pressure:
+
+- autonomy budget and delegated-agent control exit to `E.16`;
+- gate decisions and gate logs exit to `A.21`;
+- method selection and work execution exit to `G.5` and `A.15`;
+- evidence, provenance, and assurance exit to `A.10`, `G.6`, and `B.3`;
+- freshness, monitoring, decay, and update triggers exit to `G.11`.
+
+Environment design and safe probing may appear as source signal basis, validation boundary, risk posture, or neighboring-pattern exit. When the next move requires probe planning, autonomy control, gate authority, evidence, assurance, or work authority, an honest card may record `safe-probe-needed` and name `C.24`, `E.16`, `A.21`, or another live receiving pattern; this records a probe need and receiving-pattern relation, not local probe authorization. `C.22.2` does not create a separate problem-environment pattern. If the next move may affect the world, spend resources, call tools, delegate to agents, change an operational state, or require agentic tool-call scouting, tool-call plan selection, checkpoint return, or bounded call plan, `ProblemCard@Context` may only name the probe need. The authority to probe or act exits to `C.24`, `E.16`, `A.21`, `A.15`, `A.10`, `G.6`, or `B.3` when those relations are live.
+
+### C.22.2:12 - Freshness, Expiry, and Unknown Handling
+
+`C.22.2` includes a section-local state and disposition vocabulary for `ProblemCard@Context`; this vocabulary is not a new FPF kind. These labels describe the card's current admissible use; they are not required states in a transition sequence, event kinds, or gate records. The local labels are:
+
+| State or disposition label | Required reading |
+|---|---|
+| `draftSignal` | A source signal has been captured, but the card is not yet reviewable. |
+| `reviewable` | The problem-side record can be inspected, challenged, sent onward, or refined, but it is not necessarily P2W-ready. |
+| `P2W-ready` | Local disposition label with plain gloss: problem-side input ready. The problem-side record is sufficient for downstream P2W or selector-facing use; it is not `ReadyForWork`, `GateReady`, `MethodReady`, `AutonomyReady`, or work authorization. |
+| `sentToNeighbor` | A live relation has exited to the named receiving pattern. |
+| `stale` | Freshness or expiry blocks the intended downstream use until refreshed, retired, or otherwise disposed. |
+| `refreshed` | The relevant source, context, characterization, parity, support, or semio relation has been updated enough for the named use. |
+| `retired` | The problem-side record should no longer be used as a live problem for downstream work. |
+| `archived` | The record is retained under the relevant archive, pool, front, or selected-set pattern without being live for P2W. |
+| `abstain/no-change` | No downstream project-side move is selected because the signal is stale, duplicate, already solved, already absorbed, unnecessary, or not worth current downstream work. |
+
+Freshness must name the affected locus: problem signal, context, characterization or parity basis, support or source, set-source reference, or semio relation. For the problem-signal locus, ask whether the original signal is still present, recurring, solved, absorbed, duplicate, unnecessary, or no longer worth downstream work. For context, ask whether the local context or scope cut has changed enough to alter the formulation. For characterization or parity, ask whether measurement, comparison, and parity bases are current enough for the intended next move. For support or source, ask whether cited sources, provenance, and support references are fresh enough for the stated support posture. For set-source reference, ask whether archive, front, pool, shortlist, or selected-set membership and the selection or retention basis are still current. For semio relation, ask whether wording, diagram, functional description, TGA path, bridge, retargeting, or representation change alters the described entity, support inheritance, context grounding, viewpoint or role concern, scope cut, comparison basis, admissible next move, or relation needed for inheritance.
+
+A stale support reference does not always retire the problem; it may send the card to refresh while the problem remains reviewable. A stale problem signal may support refresh, retire, archive, abstain or no-change, or another named neighboring disposition.
+
+Freshness or expiry failure is a current disposition. A stale or unknown-bearing problem card may remain reviewable as a problem-side record, but it does not become P2W-ready unless freshness and unknown handling permit the intended downstream move. A stale problem card does not silently remain admissible for P2W.
+
+When freshness, expiry, or unknown handling fails, the record exits to one of these current dispositions:
+
+- refresh the problem card or its characterization or comparison basis under `G.11`, `C.16`, `A.19`, `C.25`, or `G.9`;
+- retire or deprecate the problem-side record under the relevant archive, pool, selected-set, or refresh pattern;
+- continue only as explicitly governed bounded-risk use under the relevant authority, evidence, gate, autonomy, or work pattern.
+
+Unknown-handling fields must state whether they permit use, require degraded use, abstention, or sandbox treatment, or make the current problem formulation inadmissible. No P2W, no change, or abstain-for-now may be a successful next move when the signal is stale, duplicate, already solved, already absorbed, unnecessary, or not currently worth downstream work. Before `ProblemCard@Context` emits or binds `TaskSignature`, it must check whether the problem signal is still present and whether prior work has already solved or removed the problem.
+
+### C.22.2:13 - SEMIO Relation and Representation Continuity
+
+The accepted `SEMIO-03` result is part of the current FPF basis. `C.22.2` uses `A.6.3.RT`, `A.6.4`, `E.17`, `F.9`, and `E.18` as exits when changed problem formulations, diagrams, functional descriptions, TGA paths, or `PathSlice` examples carry relation load.
+
+Framing is not wording repair. A framing change is live when described entity, context grounding, scope cut, viewpoint, comparison basis, support inheritance, or honest next move changes. SEMIO material is triggered only when wording, diagram, functional description, TGA path, bridge, retargeting, or representation change alters the carried problem-side representation, described entity, support inheritance, context grounding, viewpoint or role concern, scope cut, comparison basis, admissible next move, or live receiving pattern. Ordinary wording cleanup does not trigger a SEMIO exit and does not block a Thin `ProblemCard@Context`.
+
+| Pattern or pattern family | Problem-card relation | SEMIO-03 effect | Current disposition |
+|---|---|---|---|
+| `C.22` | Relate problem-side record, `ProblemProfile`, and `TaskSignature`. | Changed problem formulations can either preserve the described entity, retarget it, or require a representation-transition witness. | `C.22` carries only the relation and the explicit exit to `A.6.3.RT`, `A.6.4`, `E.17`, `F.9`, or `E.18` when relation load appears. |
+| `C.22.2` | Carry the problem-side output. | A problem card may cite transformed representations only with recoverable support posture and the correct relation exit. | `C.22.2` may use SEMIO-03 terms as exits, not as local proof. |
+| `C.16` | Characterization and comparability support. | Measurement representation changes can need representation-transition or retargeting checks. | Inherited unchanged; cite as receiving pattern. |
+| `A.19` | Characteristics, indicators, scales, units, polarity. | Changing a characteristic representation can change the described entity or comparison basis. | Inherited unchanged; cite as receiving pattern. |
+| `C.25` | Q-bundle or multi-characteristic acceptance basis. | Bundle representations must not hide a retargeting or loss. | Inherited unchanged; cite as receiving pattern. |
+| `C.29` | First-principles and mathematical structure cue. | Mathematical representations can preserve, coarsen, or retarget the described entity or the problem-side representation. | Inherited unchanged; `C.22.2` uses `C.29` output and semio exits when structure changes entity reading. |
+| `C.18` | Archive, front, diversity, stepping-stone retention. | Retained representations must not be treated as the same problem without continuity support. | Inherited unchanged; cite as receiving pattern. |
+| `C.19` | Live pool and exploration and exploitation policy. | Pool members may be related variants, retargeted problems, or transformed representations. | Inherited unchanged; cite as receiving pattern. |
+| `G.5` | Selected set, shortlist, method-family or selected-set output. | Selection over transformed representations must preserve the declared object of selection. | Inherited unchanged; cite as receiving pattern. |
+| `G.9` | Parity and comparability. | Comparators and windows must not silently compare different described entities. | Inherited unchanged; cite as receiving pattern. |
+| `G.11` | Freshness, decay, refresh, retirement. | Refresh may preserve, update, or retarget the represented problem under context. | Inherited unchanged; cite as receiving pattern. |
+| `A.6.P` and `A.6.Q` | Restore broad source wording and quality wording. | Semio-heavy source terms require kind and relation recovery before use. | Inherited unchanged; cite as receiving pattern. |
+| `E.17`, `F.9`, `E.18` | Multi-view, bridge, and structural reinterpretation exits. | They carry the relation work when same-entity continuity, bridge, or reinterpretation is live. | Inherited unchanged; cite as receiving pattern. |
+| `A.10`, `G.6`, `B.3`, `A.21`, `E.16`, `A.15` | Evidence, provenance, assurance, gate, autonomy, method, and work exits. | Transformed evidence or work records need the correct relation witness before support is inherited. | Inherited unchanged; cite as receiving patterns. |
+
+`C.22.2` may not treat changed-problem examples as support unless the appropriate accepted FPF relation is named.
+
+### C.22.2:14 - Source and P2W Carry-Forward
+
+The source presentation is not compressed into a generic problem-card summary. The following source details become carry-forward constraints for `C.22.2` use and for the P2W-facing exit from `C.22.2`.
+
+| Source detail | Current FPF reading | `C.22.2` carry-forward or exit |
+|---|---|---|
+| Source examples: person, team, organization, system, community, episteme, and work project | Source-local recognition examples for the domain or practice locus when that locus helps identify use, and for the described entity or exact project-side FPF kind or reference when load-bearing; not a new FPF kind taxonomy | `ProblemCard@Context` may state the domain or practice locus when it affects time horizon, indicators, cost of error, role concern, or admissible comparison, but it must also state the context grounding that carries local meaning. The listed examples are not minted here as a new taxonomy of FPF kinds. |
+| Engineering language for reproducibility and management language for coordination, rights, resources, and responsibility | Verification and reproducibility, and coordination and authority, are different FPF relations | `C.22.2` may name reproducibility, role, budget, right, or responsibility pressure only as a field or exit; gate, autonomy, work, evidence, and authority relations stay with their receiving patterns. |
+| Problem factory, solution factory, and factory-of-factories | Source exposition for three related work families, not FPF process kinds | `C.22.2` covers only the problem-side output. Solution and P2W work exits to `G.5`, `A.15`, `E.18`, `A.10`, `G.6`, `B.3`, `A.21`, `E.16`, and `G.11`; organizational-development or platform-capability questions are outside this pattern. |
+| Characterization protocol: context or slice, compared set, role or viewpoint characteristics, scale, polarity, measurement method, freshness, repeatability, budget, missing data, and comparison rules | `C.16`, `A.19`, `C.25`, and `G.9` receiving patterns | `ProblemCard@Context` must cite characterization and comparability basis when live; it must not treat available measurement as admitted indicator. |
+| Indicator roles: admission constraints, optimization objectives for the current cycle, and risk signals | Characteristic and Q-bundle use under selected comparison or acceptance | `C.22.2` must preserve whether an indicator is a mandatory constraint, an optimization objective, or a monitored risk signal when that distinction affects acceptance. |
+| Problem portfolio as period-bounded selected set with budget, role assignment, review cadence, and not-selected disposition | `G.5`, `C.19`, `G.9`, `G.11`, `A.6.P:7a`, and `A.6.Q` | `ProblemCard@Context` must preserve source set or reference, selection or retention basis, budget or window, review cadence, and not-selected or stepping-stone disposition when the set-source relation is live. |
+| Goldilocks as zone-of-growth selection calibrated to current capability and context | Problem-side entry to current NQD, OEE, and set-return family | `C.22.2` must not turn Goldilocks into one global difficulty scale or scalar readiness score. |
+| Stepping stones as option value: new actions, tools, data, interfaces, environments, or experiment modes that may expand downstream search | Retained archive, front, or pool member, or selected-set reason | `C.22.2` may record stepping-stone value only with a receiving set-return, archive, or pool pattern and a retention or tie-break basis. |
+| P2W chain: signatures and principles help select formalism, ontology, characterization, and method-family material | `A.6.0`, `A.6.1`, `C.16`, `A.19`, `C.29`, `G.5`, and `E.18` | `C.22.2` supplies problem-side cues and exits; it does not select the formalism, ontology, mechanism, or method family by itself. |
+| P2W chain: condition measurement and comparison help select a concrete method | `C.16`, `A.19`, `C.25`, `G.9`, `G.5`, and `A.15` | State the comparison-and-acceptance cue or acceptance-basis reference and parity and characterization exits needed by downstream method selection. |
+| P2W chain: work planning makes planned work inspectable | `A.15`, `A.15.3`, and `SlotFillingsPlanItem` | `C.22.2` may emit or bind `TaskSignature`, but planned work stays in work-planning patterns. |
+| P2W chain: performed work produces work-result records | `A.15`, `A.10`, `G.6`, and `B.3` | `C.22.2` must not read performed work or result records as problem-card fields beyond support cues or named exits. |
+| P2W chain: result measurement can trigger refresh or return to earlier source material | `C.16`, `G.11`, `A.10`, `G.6`, `B.3`, `C.18`, and `C.19` | `C.22.2` must state freshness or expiry and unknown-handling exits that let downstream result measurement refresh, retire, or re-open the problem-side record. |
+| Runbook, rollback plan, canary, SafeStop, error budget, and override protocol | Work, gate, autonomy, evidence, and control records | These source forms are not `C.22.2` subobjects; they are exits to `A.15`, `A.21`, `E.16`, `A.10`, `G.6`, and `B.3` when live. |
+| Trust debt after validity expiry | Freshness and decay indicator and bounded-risk continuation question | Treat trust debt as an indicator or support posture cue, not as punishment, proof failure, or gate passage by itself. |
+
+This carry-forward preserves detail, not broader scope. `C.22.2` remains the problem-side output; P2W receives it with enough fields and exits to select method families, plans, performed work, and result measurement without making the problem card a P2W pattern.
+
+### C.22.2:15 - SoTA Decision Support
+
+The following external anchors are adopted or adapted only where they change this pattern's local answer by value.
+
+| Current support line | Anchor | Pattern use | Disposition |
+|---|---|---|---|
+| Problem framing turns an ill-structured situation into a solvable design problem and requires care because "framing" is ambiguous. | 2025 CEEA paper "Towards a Theoretical Framework of Framing in Engineering Design", `https://doi.org/10.24908/pceea.2025.19713` | Supports deconfliction of symptom, situation, framed problem representation, and task. | Adopted as field and kind-recovery pressure; wording is expressed in current FPF terms. |
+| Strategic problem framing distinguishes symptoms and attention allocation from causal problem formulation. | 2025 Organization Science article "Looking at the Trees to See the Forest: Construal Level Shift in Strategic Problem Framing and Formulation", DOI suffix `2024.19134`, `https://doi.org/10.1287/orsc.2024.19134` | Supports the fields for problem signal, problem hypothesis/cause-theory cue, and improvement check. | Adapted; causal claims still exit to `C.28` plus evidence and support patterns when live. |
+| QD and OEE work supports collections, fronts, archive retention, set-return, and non-single-winner treatment. | 2026 survey "A survey on Quality-Diversity optimization: Approaches, applications, and challenges", `https://www.sciencedirect.com/science/article/pii/S2210650225003979`; QD-as-MOO anchor `https://arxiv.org/abs/2602.00478` checked 2026-05-20 | Supports set-source-reference and Goldilocks docking into current `C.18`, `C.19`, `G.5`, `G.9`, `G.11`, `A.6.P:7a`, and `A.6.Q`. | Adopted as field and exit pressure; no local QD or OEE vocabulary or scalar readiness score is introduced. |
+| Open-ended coding agents use archives, self-improvement, problem variants, evaluator feedback, and stepping-stone retention. | Darwin Godel Machine `https://arxiv.org/abs/2505.22954`, FrontierSmith `https://arxiv.org/abs/2605.14445`, and AlphaEvolve `https://arxiv.org/abs/2506.13131`, all checked 2026-05-20 | Supports record-form, set-source reference, Goldilocks, safe-probe, and freshness fields and exits for archive, problem generation, safe probes, evaluator feedback, no-change and abstain dispositions, and autonomy and evidence boundaries. | Adapted as recent stress/trend pressure; `C.22.2` is not turned into AI-agent doctrine or an AI-agent management pattern. |
+| External AI-agent and autonomy practice increases pressure for evidence, logs, gates, autonomy budgets, and update discipline. | Source presentation plus current FPF autonomy, evidence, and gate patterns | Supports receiving-pattern assignment for support, validation, AI-agent pressure, and safe probing. | Non-load-bearing for the center of `C.22.2`; load-bearing content remains with `E.16`, `A.21`, `A.10`, `G.6`, `B.3`, `A.15`, and `G.11`. |
+
+If a `C.22.2` use carries a wider external claim than these dispositions, the claim is outside this pattern and requires a separate content decision or demotion to a non-load-bearing example.
+
+Each load-bearing SoTA use is recovered as a local test: source idea, FPF invariant, practitioner check, and popular shortcut rejected. A source citation without that local test is not enough to carry pattern authority.
+
+Local SoTA-to-action tests:
+
+| Support pressure | Popular shortcut rejected | Required local result | Reopen condition |
+|---|---|---|---|
+| Problem framing is ambiguous and abstraction shifts matter. | Symptom, root-cause story, request, or ticket is treated as the problem. | Recover source signal, framed problem representation, context and scope, viewpoint or role concern, improvement check, and rival frame when live. | Reopen when context, scope, viewpoint, rival frame, evidence need, or improvement or acceptance probe changes. |
+| P2W receives only a reviewable problem-side record. | `P2W-ready` is treated as work authorization, gate passage, method selection, evidence proof, assurance, or selected solution. | State support posture, validation boundary, readiness disposition, supported P2W use, unsupported use, and named neighboring exit when live. | Reopen when the signal, context, scope, acceptance probe, support posture, validation boundary, freshness, or named exit changes. |
+| QD, OEE, and set-return work produce archives, fronts, pools, and selected sets. | Priority score, single winner, local problem portfolio, or local selected-set authority. | Preserve `setContextRef`, source set kind, selection or retention basis, and a non-scalar next move; exit to the receiving set, parity, archive, pool, or refresh pattern when live. | Reopen when the source set, retention basis, parity basis, archive, pool, front, selected set, budget, window, or freshness disposition changes. |
+| Open-ended agents, problem variants, evaluator feedback, and stepping stones change source pressure. | Agent output, evaluator trace, or generated variant is treated as authority to act. | Record generator, evaluator, variant, or stepping-stone basis only as a source cue; name support, validation, freshness, and authority exits before probe or action. | Reopen when generator, evaluator, variant, stepping-stone basis, safety/probe condition, or authority condition changes. |
+| First-principles or mathematical structure can improve formulation. | A named formalism or mathematical or ontological prestige is treated as adequacy or rigor. | Record the candidate structure, mapping or `C.29` exit, preserved and lost structure when live, practical formulation payoff, support posture, and stop condition. | Reopen when candidate structure, preserved or lost structure, support posture, stop condition, or `C.29` result changes. |
+| Early class or kind taxonomy looks available. | A class list or ontology-first taxonomy is treated as the problem formulation. | Keep the formulation question live; record candidate structure, preserved and lost structure when live, and representation or retargeting exits before freezing kind structure. | Reopen when formulation question, kind structure, relation, representation support, or retargeting support changes. |
+| Object model looks clarifying. | Object-model clarity freezes the wrong described entity or relation. | Keep described entity and relation reviewable; name representation-transition, retargeting, or bridge exits before inheriting support or readiness. | Reopen when described entity, relation, view, bridge support, or representation-transition support changes. |
+
+### C.22.2:16 - Rationale
+
+`ProblemCard@Context` gives the practitioner one compact problem-side record between vague problem talk and downstream P2W. The card is useful because it is light enough for ordinary use and exact enough to show when comparison, characterization, evidence, selection, mathematical support, method, work, gate, autonomy, bridge, representation transition, or refresh must exit to another FPF pattern.
+
+The card gives the practitioner one thing to write, inspect, and challenge. A practitioner can see whether a problem is ready without first assembling the problem-side record from `TaskSignature`, Q-bundle, parity report, evidence note, selected-set output, and refresh record. At the same time, the card stays outside archive, portfolio, decision, autonomy, work, gate, evidence, bridge, and assurance authority.
+
+The archive and portfolio distinctions remain live when they matter because the card preserves `setContextRef` and exits to the current receiving patterns. Changed problem formulations, diagrams, functional descriptions, or TGA path readings require the accepted representation or retargeting exits before support is inherited. Current SoTA and first-principles cues matter only when they change fields, exits, boundaries, or the problem formulation itself.
+
+### C.22.2:17 - Problem-Card Use Invariants
+
+These invariants govern use of one `ProblemCard@Context`; they do not add card fields.
+
+| Invariant | Required reading |
+|---|---|
+| One card, one current problem-side representation | One `ProblemCard@Context` instance carries one problem-side representation under one declared context. If the represented problem changes, the card states the changed representation or exits to the representation pattern that carries the change. |
+| No hidden companion records | A card may mature, but it does not fork into hidden `TaskSignature`, `WorkPlan`, evidence, gate, autonomy, archive, portfolio, selected-set, or mathematical adequacy records. |
+| Heavy relations exit | Evidence, provenance, assurance, gate, autonomy, work, archive, selected-set, comparison, acceptance, representation-transition, temporal, causal, and mathematical adequacy authority stays with the receiving pattern that owns the live relation. |
+| `P2W-ready` is problem-side readiness | `P2W-ready` means problem-side input ready, not work ready, not gate-passed, not method-selected, and not evidence-proved. |
+| Stale or blocked cards need a disposition | A stale, unknown-blocked, changed-representation, or missing-basis card cannot silently remain `P2W-ready`; it states refresh, retirement, bounded use, `abstain/no-change`, or a named neighboring exit. |
+| Smallest truthful card wins | The smallest card that gives an honest next move is sufficient. Full field completion is not required when a Thin card already gives the truthful next move. |
+
+### C.22.2:18 - Misuse Modes and Repairs
+
+| Misuse mode | Non-conforming reading | Repair |
+|---|---|---|
+| Content creep | The card starts carrying evidence, gate, work, autonomy, or portfolio state instead of cue, reference, and exit relations. | Return the live relation to the receiving pattern and leave only the local cue, reference, or exit in the card. |
+| Selector leakage | `ProblemCard@Context` becomes a pre-`TaskSignature`, selects a method family, selects a formalism, creates a work plan, or copies card fields into `C.22` `TaskSignature` by default. | Return to the problem-side record. If downstream readiness is declared, name only a candidate `ProblemProfile`, `TaskKind`, or `TaskSignature` basis and the relation to `C.22`; selector-facing anchor authority stays with `C.22`. |
+| Hidden scalarization | Goldilocks or readiness becomes one score instead of a declared set-return, partial-order, descriptor, characteristic, or retention basis. | Preserve `setContextRef`, source-set kind, selection or retention basis, and non-scalar next move; exit to the receiving set, parity, archive, pool, or refresh pattern when live. |
+| Silent retargeting | A changed problem formulation changes the described entity, representation scheme, diagram, functional description, or TGA path reading without naming the required relation exit. | Name the representation-transition, retargeting, bridge, structural reinterpretation, or SEMIO relation before inheriting support or readiness. |
+| Support overread | Support posture is read as evidence proof, provenance, assurance, gate passage, or safety acceptance. | Treat support posture as the local reason to keep, review, discriminate, or move the formulation onward; evidence, provenance, assurance, gate, and safety reliance exit to their receiving patterns. |
+| Refresh dead end | Expiry or unknown handling is recorded, but no current disposition is made. | State refresh, retirement, bounded use, `abstain/no-change`, or the named neighboring exit before claiming `P2W-ready`. |
+| Cognitive overload | Every field is treated as mandatory and the card becomes form-compliance work. | Return to Thin use: signal, context and scope, reason the record is not a wish, ticket, slogan, or preselected work item, improvement check or acceptance probe, and honest next move. |
+
+### C.22.2:19 - Use-Quality Checks
+
+A practitioner checking one `ProblemCard@Context` use should be able to find these results in the card, its stated next move, and its named exits. These checks protect use quality; they do not add fields to the card.
+
+| Use-quality check | Practitioner-visible result |
+|---|---|
+| Problem frame | The working situation is recognizable before internal field taxonomy or neighboring-pattern exits take over. |
+| Solution moves | The card shows practitioner moves from messy signal to reviewable problem-side record to honest next move, not only a field schema. |
+| Use profiles | Thin, Standard, and High-load use stay distinct, so added fields follow live relation need. |
+| Conformance review | The card can be checked for output kind, scope, readiness, cue, reference, exit, `setContextRef`, causal cue, representation continuity, freshness, scalarization, first-principles payoff, and record budget. |
+| Anti-pattern resistance | The card resists card-as-work-item, fill-every-field, premature P2W readiness, preselected solution or work item, evidence, gate, and autonomy overread, portfolio-as-task-queue, scalar readiness, and sterile first-principles cue. |
+| Validation use | At least the provided golden and anti-case slices can be used to test whether the card produces a usable next move without overclaiming. |
+| Entry support | A practitioner can find `C.22.2` through first-entry phrases and tempting-wrong-pattern boundaries without reading the whole neighboring pattern network first. |
+| P2W export rule | The card states what it exports to downstream P2W or selector-facing use and what it must not decide: method family, work authorization, gate passage, evidence proof, autonomy permission, or selected solution. |
+| P2W reliance rule | When support posture or validation boundary is used for P2W receiving use, the card states `RelianceDisposition`, supported use, unsupported use, and live exits without adding default evidence, assurance, gate, autonomy, control, or work fields. |
+| Neighboring-exit aid | The card user can look up the live relation, receiving pattern, permitted local cue, and forbidden local decision in one aid near the start without treating the aid as the main action engine. |
+| Non-bureaucracy invariant | The card remains as small as the honest next move permits and does not require full-form completion when lighter reviewability is enough. |
+
+### C.22.2:20 - Worked Slices and Anti-Cases
+
+These worked slices and anti-cases support local use-quality validation. They are not a benchmark suite, scorecard, or completeness test; they test entry support, wrong-pattern boundary, and admissible stop for a `C.22.2` result.
+
+#### C.22.2:20.1 - Five-Case Worked Slices
+
+Five messy source signals serve as worked slices for use-quality validation, not as a benchmark suite: AI and human task rework, musical mastery tempo drift, problem set or Goldilocks selection, customer-support escalation after a policy or interface change, and literature-synthesis anomaly before method selection.
+
+Thin card slices:
+
+| Micro-slice | Problem signal | Context and scope cut | Not-wish or not-preselected-work reason | Improvement check or acceptance probe |
+|---|---|---|---|---|
+| AI and human task transfer rework | Repeated AI-agent task rework after transfer between human and agent. | Development or review setting where transfer produces avoidable rework; outside scope is selecting the agentic call plan, tool policy, or performed work. | The signal is not "ask the agent again" or "implement X"; the problem may be unclear task framing, missing candidate acceptance basis, unsafe delegation, or stale context. | The next task transfer is better only if the problem signal, context, acceptance probe, and safe-call or work-authority exit are recoverable. |
+| Musical mastery tempo drift | Practice tempo drifts away from the intended mastery band. | Skill-development setting where tempo, recovery, rhythm, or learning rate changes the next move; outside scope is certifying a training method. | The signal is not "play faster" as a wish; the problem may be an untyped temporal claim, unsuitable acceptance probe, or missing recovery boundary. | The formulation improves only if the temporal claim, practice context, acceptance probe, and `C.27` exit are named when live. |
+| Problem set or Goldilocks selection | A candidate problem is selected from an archive, pool, front, shortlist, selected set, or portfolio because it appears to fit a Goldilocks reading. | Problem-selection setting with retained candidates and possible stepping stones; outside scope is redefining QD or OEE semantics or selected-set semantics. | The signal is not a priority score or task queue item; the problem remains tied to `setContextRef`, source-set form, and selection or retention basis. | The card is usable only if `setContextRef`, characteristic or Q-bundle basis, partial-order or set-return cue, and non-scalar next move are recoverable. |
+| Customer-support escalation after a policy or interface change | Support escalation volume rises after the change. | Product or operations setting where a changed promise, interface path, policy, or support script may have changed user behavior; outside scope is choosing the fix, staffing plan, or release decision. | The signal is not "reduce escalations" as a wish; the problem may be unclear interface promise, changed user path, stale support documentation, wrong acceptance probe, or a causal-use claim that needs another pattern. | The next revision is better only if the cause cue, acceptance probe, risk boundary, measurement or characterization exit, and evidence or causal-use exit are recoverable when live. |
+| Literature-synthesis anomaly before method selection | A repeated anomaly in a literature synthesis does not fit the current category labels. | Named research or review context; outside scope is accepting a new theory, choosing a research method, or settling evidence sufficiency. | The signal is not "explain the anomaly" as a ready task, proof, or theory change; the problem may be an unstable described entity, rival frame, evidence need, or bridge or representation boundary. | The formulation improves only if `rivalProblemFormulationRef`, described entity, evidence need, and bridge, representation, or mathematical-structure exits are recoverable when live. |
+
+Next move and tempting wrong-pattern check:
+
+| Micro-slice | Honest next move | Tempting wrong pattern |
+|---|---|---|
+| AI and human task transfer rework | Stabilize the problem-side record; if agentic call planning or world-affecting action is live, exit to `C.24`, `E.16`, `A.21`, `A.15`, `A.10`, `G.6`, or `B.3` before action. | Treat repeated rework as a work item, a prompt retry instruction, or permission to delegate again. |
+| Musical mastery tempo drift | Name the temporal claim and exit to `C.27` when tempo, rhythm, recovery, lead time, or learning rate changes the next move. | Treat drift or a trend line as an intervention model, method success, or evidence of mastery. |
+| Problem set or Goldilocks selection | Preserve `setContextRef`; send set, parity, refresh, or set-return questions to `C.18`, `C.19`, `G.5`, `G.9`, `G.11`, `A.6.P:7a`, or `A.6.Q` when live. | Treat Goldilocks as one readiness score, priority rank, or local selected-set authority. |
+| Customer-support escalation after a policy or interface change | Stabilize the problem-side record; characterize the signal through `C.16` and `A.19`, and exit to `C.28` if the card claims causal use. | Treat escalation volume as an automatic fix request, staffing plan, release rollback, or evidence that the policy was wrong. |
+| Literature-synthesis anomaly before method selection | Preserve `rivalProblemFormulationRef` when rival frames remain live; exit to `A.10`, `B.3`, `F.9`, `E.18`, or `C.29` when evidence, assurance, bridge, representation, or mathematical structure is live. | Treat the anomaly as proof for a new theory, an accepted research task, or a selected method. |
+
+P2W-ready disposition check:
+
+| Micro-slice | P2W-ready disposition | Why |
+|---|---|---|
+| AI and human task transfer rework | Not P2W-ready until the acceptance probe and any agentic, work, safety, evidence, provenance, assurance, or gate exit are named. | The signal may still be a prompt retry, work-authority question, or unsafe delegation cue rather than a reviewable problem for downstream task typing. |
+| Musical mastery tempo drift | Not P2W-ready while the temporal claim is untyped; exit to `C.27` when the tempo, rhythm, recovery, or learning-rate claim changes action. | A drift observation does not by itself state effort, window, resistance, basis, or reopen discipline. |
+| Problem set or Goldilocks selection | Conditionally P2W-ready only when `setContextRef`, selection or retention basis, characteristic or Q-bundle basis, and non-scalar next move are present. | Without those fields, the case collapses into priority ranking, selected-set authority, or local QD or OEE vocabulary. |
+| Customer-support escalation after a policy or interface change | Not P2W-ready until scope, affected user path, acceptance probe, risk boundary, and measurement or causal-use exits are explicit. | Escalation volume alone may reflect documentation, interface promise, staffing, policy, causal evidence, or measurement changes rather than one ready downstream task. |
+| Literature-synthesis anomaly before method selection | Not P2W-ready until described entity, rival formulations, evidence need, and bridge, representation, or mathematical-structure exits are explicit when live. | An anomaly in synthesis may still be a cue, an abductive prompt, a bridge problem, or a representation problem rather than one ready downstream task. |
+
+Additional validation cases:
+
+| Validation case | What it checks | Expected result |
+|---|---|---|
+| Wish-to-problem | A wish-like input such as "I want to improve X" is not yet a reviewable problem for P2W. | The card requires a problem signal, improvement check or acceptance probe, and mandatory constraints before P2W readiness can be claimed. |
+| Preselected work item | An input such as "implement X" may be a solution-shaped task rather than a problem. | The card blocks P2W readiness until a problem-side signal, context, scope, and candidate acceptance basis are stated. |
+| Set-derived problem | A problem comes from an archive, pool, front, shortlist, selected set, or portfolio. | The card preserves `setContextRef` and the selection or retention basis, cites the receiving set pattern when live, and does not create a local portfolio or archive kind. |
+| Agentic safe probe | An agentic next move may affect the world, spend resources, call tools, delegate to agents, or change operational state while authority is unclear. | The card names the risk or probe cue and exits to `C.24`, `E.16`, `A.21`, `A.15`, or the needed evidence, provenance, or assurance pattern; it does not authorize the probe locally. |
+| Useful first-principles or mathematical cue | A first-principles or mathematical structure cue changes the problem formulation instead of merely decorating the card. | The card records the formulation payoff, preserved and lost structure when live, support posture, stop condition, and `C.29` exit. |
+| Citation misuse | A later practitioner cites the card as proof, gate passage, safety acceptance, work authorization, or autonomy permission. | The citation is admissible only as cue, reference, or exit; gate passage needs `A.21`, evidence, provenance, or assurance needs `A.10`, `G.6`, or `B.3`, autonomy needs `E.16`, and work authority needs `A.15`. |
+| Backlog-intake overread | Every ticket, idea, support request, or backlog item is forced through a full `ProblemCard@Context` before ordinary local work can continue. | Use `C.22.2` only when the signal must become reviewable before P2W, task typing, method-family selection, evidence use, gate passage, autonomy control, set-return handling, or first-principles support; the Thin form is sufficient when it gives the honest next move. |
+| Already-solved or stale | The signal is stale, duplicate, already solved, already absorbed, unnecessary, or not currently worth downstream work. | A successful result may be refresh, retire, archive, `abstain/no-change`, bounded use under authority, or another named neighboring exit; the card must not silently remain `P2W-ready`. |
+
+### C.22.2:21 - Machine-Assisted Drafting Boundary
+
+Machine-assisted `ProblemCard@Context` drafting is admissible only as draft support. The practitioner remains responsible for verifying the governing fields and neighboring exits before the card is used for P2W, selection, evidence, gate, autonomy, or work.
+
+For AI-assisted entry or retrieval, a `C.22.2` hit is only a candidate-pattern hit. The practitioner or assistant must still check the first honest entry load: problem-side record before P2W, work plan, evidence claim, local choice, safe probe, mathematical-lens adequacy, or ordinary discussion.
+
+Required practitioner checks for a machine-assisted draft:
+
+- source signal;
+- improvement check or acceptance probe;
+- support posture;
+- unknown handling;
+- freshness or expiry disposition;
+- neighboring exits;
+- no evidence, gate, work, or autonomy overread.
+
+### C.22.2:22 - First Practical Entry Support
+This section is discoverability support only. It helps a practitioner or assistant find a candidate pattern; it does not prescribe a transition sequence and does not require opening `C.22.2` for every problem-sounding text.
+
+These likely practitioner entry phrases point to `C.22.2`:
+
+- "We have a problem, but it is not yet clear what work should be done."
+- "This looks like a ticket, but I am not sure the problem is stated."
+- "A signal or anomaly keeps recurring before method selection."
+- "We selected this candidate from a front, archive, pool, or selected set, but need to state why it is a problem now."
+- "P2W would otherwise receive 'implement X'."
+- "There is a symptom, but we do not yet know what to solve."
+- "We need to know whether this problem is ready for P2W or should exit elsewhere."
+
+Tempting wrong first patterns:
+
+- Do not start at `C.11` if the live issue is not yet a local choice among available options.
+- Do not start at `C.16` or `A.19` if the live issue is not only measurement, characterization, or indicator admissibility.
+- Do not start at `C.18`, `C.19`, or `G.5` if the live object is one selected singleton problem card rather than the archive, pool, front, or selected-set object.
+- Do not start at `A.15` if no method or work plan is ready.
+- Do not start at `A.10`, `G.6`, or `B.3` if evidence, provenance, or assurance is not the center.
+- Do not start at `A.21` or `E.16` if no gate or autonomy authority is being decided.
+
+Not `C.22.2` anti-cases:
+
+- "The method is accepted; now schedule the work." Use `A.15`.
+- "We need proof this result is reliable." Use `A.10`, `G.6`, or `B.3`.
+- "Which option should we choose among explicit options?" Use `C.11`, or `G.5` when set publication or selected-set semantics are live.
+- "Can the agent call the tool?" Use `C.24`, `E.16`, or `A.21`; `ProblemCard@Context` may only name the problem-side cue or exit and does not grant tool-call, autonomy, or gate authority.
+- "This is ordinary discussion with no downstream project-side move." Do not use `C.22.2`.
+
+First-use Thin-card test:
+
+Given a messy signal, a practitioner must be able to produce a Thin `ProblemCard@Context` in under one page and correctly choose one admissible next move: `P2W-ready`, characterize, compare or parity, search or pool, refresh, retire, `abstain/no-change`, or named neighboring-pattern exit.
+
+Entry relation:
+
+The entry relation is local: `C.22.2` is introduced under `C.22`, and `C.22` names the `ProblemCard@Context` relation. The `C.22.2` body carries the Problem frame, first-entry phrases, tempting-wrong-pattern boundaries, and first-use Thin-card test needed for ordinary discovery.
+
+### C.22.2:23 - Downstream Boundary Exports
+A downstream citation of `ProblemCard@ContextRef` is admissible only for the local cue or reference named by the downstream relation. For `C.22` use, cite problem-side readiness and candidate `TaskSignature` basis only. For `G.5` use, cite selected-set or search cues only as source cues. For `A.15` use, cite work need only after work planning is live. For `A.10`, `G.6`, and `B.3` use, cite support or evidence cues only as cues, not proof. For `C.29` use, cite `firstPrinciplesCue` only for mathematical-lens adequacy, not method or acceptance authority. No downstream citation inherits full-card authority by reference.
+
+P2W export from `ProblemCard@Context` includes:
+
+- problem-side representation.
+- context grounding and scope cut.
+- not-wish, not-ticket, not-slogan, or not-preselected-work reason.
+- improvement check or acceptance probe.
+- readiness disposition: reviewable-only, `P2W-ready`, no-work or abstain, or sent to a named neighbor.
+- candidate `TaskSignature` basis only when downstream selector or P2W readiness is declared.
+- named neighboring exits and references, without importing neighboring authority into the card.
+
+P2W export from `ProblemCard@Context` does not include:
+
+- method-family selection or selected method.
+- `WorkPlan`, work authorization, performed work, result record, or result measurement.
+- evidence proof, evidence sufficiency, provenance certification, or assurance claim.
+- gate passage, gate decision, release permission, or safety-case acceptance.
+- autonomy permission, delegated-agent authority, tool-call permission, or permission to spend resources.
+- selected solution, portfolio authority, selected-set authority, or mathematical adequacy proof.
+
+| Downstream relation | Exportable local cue or reference | Forbidden local settlement |
+|---|---|---|
+| Evidence and safety-reliance follow-on work | Support posture and validation boundary. | Proof, conformance, safety-case reliance, confidence, release permission, gate passage, or work authorization. |
+| P2W follow-on work | Problem-side cues sufficient for P2W receiving use or selector-facing use. | Formalism, ontology, method family, `WorkPlan`, performed Work, method selection, or work authorization. |
+| Decision, NQD, and OEE follow-on work | `setContextRef`, Goldilocks, and stepping-stone cues relevant to selected-set or set-return follow-on work. | QD or OEE definitions, selected-set docking, Q-front, set-return semantics, decision-quality admissibility, or the selected set itself. |
+
+### C.22.2:24 - Consequences
+
+#### C.22.2:24.1 - Benefits
+
+- FPF gains a clear problem-side output for problematization as the input P2W can use.
+- P2W receives a typed problem-side record rather than a slogan, ticket-shaped wish, or preselected method.
+- `C.22.2` has practical value for FPF when it reduces at least one expensive failure: a wish enters P2W as `TaskSignature`; a preselected work item is treated as the problem; method selection happens before the problem is reviewable; a problem from a set loses `setContextRef`; an indicator is used without admission; support posture is cited as proof; a stale problem remains active; scalar readiness replaces set-return; or support is inherited across a changed representation without a SEMIO witness.
+- Current archive, pool, front, shortlist, set-return, parity, refresh, evidence, and `C.29` patterns are reused instead of duplicated.
+- The positive role of mathematical and first-principles thinking is preserved: it can find missing structure, not only check already-written mathematics.
+- Characterization and parity are no longer optional background when they are prerequisites for problem reviewability.
+- Representation-change support is handled through named relation exits rather than local proof inside the problem card.
+
+#### C.22.2:24.2 - Costs of Use
+
+- A `ProblemCard@Context` adds a small writing step before P2W. The cost is justified only when the signal must become reviewable before task typing, method-family selection, evidence use, gate passage, autonomy control, set-return handling, or first-principles support.
+- The practitioner must keep the card small: preserve the split between problem, task, method, work, and result; keep `TaskSignature` minimal; and add conditional fields only when their relation is live.
+- For problems emitted from archives, pools, fronts, selected sets, or portfolios, the practitioner must preserve `setContextRef` or the set-source relation without turning the card into a portfolio, archive, selected-set, or work-planning object.
+- External or source-local terms may guide recognition only when they change a concrete boundary, field, exit, or validation obligation. Otherwise they remain examples or source cues, not local authority.
+
+### C.22.2:25 - Relations
+
+- Builds on: `E.2`, `E.9`, `E.10`, `E.10.SEMIO`, `A.6.P`, `A.6.Q`, `C.16`, `A.19`, `C.22`, `C.25`, `C.29`, `G.5`, `G.9`, `A.6.3.RT`, and `A.6.4`.
+- Coordinates with: `C.11`, `C.18`, `C.19`, `C.22.1`, `A.15`, `A.21`, `E.16`, `G.6`, `G.11`, `A.10`, `B.3`, `E.17`, `E.17.ID.CR`, `A.6.3`, `F.9`, and `E.18`.
+
+### C.22.2:End
+
 ## C.23 - MethodFamily Evidence & Maturity (Method‑SoS‑LOG)
 
 *LOG (logic) for deductive shells for admissibility*
@@ -4995,7 +7085,7 @@ Publish a **`MethodFamily.MaturityCardDescription@Context`** (UTS enum ids; **Sc
 | **CC‑C23.5** | Cross-Context or cross-plane use **MUST** cite a **Bridge**; **Φ(CL)**/**Φ\_plane** **MUST** be monotone, bounded, table‑backed; penalties **→ `R_eff` only**.                                      | Keeps F/G invariant; legal CL routing.        |                                                                    |                        |
 | **CC‑C23.6** | **No thresholds** in CHR or Maturity; thresholds **live only** in **AcceptanceClauses** (G.4).                                                                                             | Separation of concerns.                       |                                                                    |                        |
 | **CC‑C23.7** | `MaturityCard` **SHALL NOT** be turned into a global scalar; treat as **poset**; any ordering **MUST** be lawful over CHR types.                                                           | Forbids cross‑scale scalarisation.            |                                                                    |                        |
-| **CC‑C23.8** | Publish to **UTS** with twin labels; run **GateCrossing visibility checks** on cited crossings: **CrossingBundle** attestation (**E.18/A.27/F.9**), **LanePurity**, and **Lexical SD** (**E.10**) under GateChecks/GateProfile (**A.21**). | Publication & crossing visibility hygiene. |                                                                    |                        |
+| **CC‑C23.8** | Publish to **UTS** with twin labels; run **GateCrossing visibility checks** on cited crossings: **CrossingBundle** attestation (**E.18/F.9/F.17/E.17/A.21** where live), **LanePurity**, and **Lexical SD** (**E.10**) under GateChecks/GateProfile (**A.21**). | Publication & crossing visibility hygiene. |                                                                    |                        |
 | **CC‑C23.9** | All enumerations (e.g., `Degrade(mode)`, Maturity rungs) **SHALL** declare a **closed value set** and **Scale kind**, and be registered at UTS (LEX enum clarity).                          | Avoids lexical drift; lawful typing.          |                                                                    |                        |
 | **CC‑C23.10** | **RSCR tests** cover negative/refusal paths (illegal CHR ops; CG‑Spec gate fail; Bridge missing; **Φ table/policy‑id missing**; **Lexical SD violations (E.10)**); ensure **branch coverage** (Admit/Degrade/Abstain, unknown). |
 | **CC‑C23.11** | If QD fields are in scope, **R0.QD** **MUST** pass: lawful **CharacteristicSpaceRef** (d≥2, characteristics typed, planes declared per characteristic), **ArchiveConfig** (topology/resolution/K, `InsertionPolicyRef`, **editioned** `DistanceDef`), **EmitterPolicyRef** present. | QD legality gate. | |
@@ -12021,7 +14111,7 @@ This section defines an **extensible family of autonomy oversight profiles** for
   * **L0–L1:** execution MAY start only after an explicit **GateDecision** authorizing the CallPlan is present in the declared window.
   * **L2:** sentinels MUST be able to pause execution; resumption requires a new **GateDecision** recorded in the DecisionLog.
   * **L3:** the profile MUST declare periodic review windows; continued execution across a review boundary requires an explicit **GateDecision**.
-  * **L4:** continuous telemetry review; the default execution context is **sandboxed**; leaving the sandbox requires an explicit **GateCrossing** with a published CrossingBundle (E.18 + F.9/A.27).
+  * **L4:** continuous telemetry review; the default execution context is **sandboxed**; leaving the sandbox requires an explicit **GateCrossing** with a published CrossingBundle (`E.18` + `F.9`/`F.17`/`E.17`, with `A.21` when a gate decision is live).
 
 **Gate‑decision authority map (default signers; who may author GateDecisions).**
 * **L0:** EoR or appointed maintainer.
@@ -12753,13 +14843,13 @@ A pattern can satisfy a checklist and still be practically unreadable. It may op
 
 ### E.8:0.2 - What this buys
 
-`E.8` gives FPF authors one shared pattern shape and one shared authoring discipline: recognition surface first, assurance surface second, canonical sections present, terminology kept stable, SoTA used as live support rather than decoration, and practical consequences visible before a reader has to reconstruct the architecture.
+`E.8` gives FPF authors one shared pattern shape and one shared authoring discipline: recognition text first, assurance text second, canonical sections present, terminology kept stable, SoTA used as live support rather than decoration, and practical consequences visible before a reader has to reconstruct the architecture.
 
-**First useful move.** Put the working situation, first action-guiding move, practical payoff, ordinary boundary, and heavier-support condition into the recognition surface before tightening template details or conformance material.
+**First useful move.** Put the working situation, first action-guiding move, practical payoff, ordinary boundary, and heavier-support condition into the recognition text before tightening template details or conformance material.
 
 **Cheap stop.** If the draft already gives a cold reader the working situation, first useful move, practical payoff, ordinary boundary, and nearest heavier support condition, do not add more authoring apparatus just to look mature. Use conformance material to verify that guidance; do not let it replace the guidance.
 
-**Load-bearing authoring extension.** Add heavier assurance, conformance, SoTA, or relation-support material only when the light recognition surface would leave a live false claim, unstable governed object, hidden neighbouring-pattern boundary, unsupported practical payoff, or misleading admissible use.
+**Load-bearing authoring extension.** Add heavier assurance, conformance, SoTA, or relation-support material only when the light recognition text would leave a live false claim, unstable governed object, hidden neighbouring-pattern boundary, unsupported practical payoff, or misleading admissible use.
 
 **Maturity rule.** Section completeness is not pattern maturity. A pattern matures when its `Problem frame`, `Solution`, worked cases, boundaries, and conformance checks all point to the same usable action guidance.
 
@@ -12870,7 +14960,7 @@ The colon (`:`) is **reserved** for section paths and **MUST NOT** appear in pat
 
 **H-8 (Normative keywords).** The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in RFC 2119, as clarified by RFC 8174 (only when capitalised). Authors **SHOULD** avoid informal deontic phrasing (“need to”, “is required to”) in normative clauses.
 
-**Deontics vs admissibility.** Use RFC keywords only for **deontic obligations** (requirements on authors, reviewers, implementers/tooling, or published artefacts) — i.e., things an agent can choose to do or omit. Do **not** use RFC keywords to state **definitions**, **structural invariants**, **typing rules**, or other **admissibility conditions** of the modeled world.
+**Deontics vs admissibility.** Use RFC keywords only for **deontic obligations** (requirements on authors, reviewers, implementers/tooling, or published pattern or support texts) — i.e., things an agent can choose to do or omit. Do **not** use RFC keywords to state **definitions**, **structural invariants**, **typing rules**, or other **admissibility conditions** of the modeled world.
 
 When you need an enforceable constraint that is *mathematical* rather than *deontic*, express it as a non‑deontic predicate using one of: `Definition:`, `Invariant:`, or `Well‑formedness constraint:` (optionally with formal quantifiers). Prefer mathematical terms like `cardinality 1..1 (total)` / `0..1 (partial)` / `0..n` over deontic adjectives like “mandatory or optional” when the intent is cardinality, not duty.
 
@@ -12931,17 +15021,17 @@ Brief explanations:
 | **Close**  | End with a quotable line or payoff that reinforces memory. |
 
 Narrative Flow Heuristic also operationalises S-1 (Density w/o Jargon), S-2 (Internal Cohesion), S-4 (Contextualisation), and S-6 (Quotable Closers).
-#### E.8:4.2.1 - Recognition surface and assurance surface
-Every canonical pattern SHALL stabilise one governed object early enough that a cold reader can tell what kind of thing the pattern is actually governing. If ordinary forms vary (`note`, `sheet`, `guided UI`, `rendering`, `review aid`), the text must make explicit which of those are merely presentation forms of one governed object and which would instead name a different act, process, work-result record, or governing support companion. Recognition and assurance surfaces may refine that object differently, but they must not silently swap the central object kind.
+#### E.8:4.2.1 - Recognition text and assurance text
+Every canonical pattern SHALL stabilise one governed object early enough that a cold reader can tell what kind of thing the pattern is actually governing. If ordinary forms vary (`note`, `sheet`, `guided UI`, `rendering`, `review aid`), the text must make explicit which of those are merely presentation forms of one governed object and which would instead name a different act, process, work-result record, or governing support companion. Recognition and assurance texts may refine that object differently, but they must not silently swap the central object kind.
 
 If a pattern uses a broad umbrella or head together with a narrower operative branch, the text must also make the stack explicit early enough for first reading: what the broad head names, what the current narrowed branch is, what governed object is actually in play, what move is being carried by that object, and what wider work or process remains outside the pattern. A qualifier alone does not restore that stack.
 
-Under `F.18` local-first naming, the canonical pair here is **recognition surface** and **assurance surface**.
+Under `F.18` local-first naming, the canonical pair here is **recognition text** and **assurance text**.
 The earlier provisional `recognition shell / assurance shell` wording is retired.
 These names refer to two reading-order roles carried by existing sections or projections inside one pattern; they do **not** mint new `authoritySourceRef` targets, governing-pattern relations, publication-form/face kinds, `SurfaceKind`s, or a second face family.
 A third didactic support role remains optional and is justified only when the family is especially easy to misuse, easy to over-read, or hard to teach without extra scaffolding.
 
-The **recognition surface** is the first reading surface.
+The **recognition text** is the first reading text.
 It is the part of the pattern that lets a cold working reader recognise the situation quickly enough to decide whether to keep reading.
 It should start from a subject-domain or practice moment before internal taxonomy whenever the pattern is meant to help real work rather than only internal canon maintenance.
 In practice it usually lives in an early `Use this when` line or equivalent opening, plus the upper parts of `Problem frame`, `Problem`, `Solution`, `Consequences`, and nearby worked slices.
@@ -12953,7 +15043,7 @@ Its job is to make visible:
 - what governed object is actually being kept stable;
 - and, when technical terms must appear early, a pairwise plain gloss for each early load-bearing term.
 
-The **assurance surface** is the second reading surface.
+The **assurance text** is the second reading text.
 It carries the heavier load-bearing material that makes the pattern reviewable and auditable:
 - declaration blocks and typed fields when those are part of the pattern's declared conformance or boundary claim;
 - representation ontology, described-entity discipline, or governed-object discipline;
@@ -12962,15 +15052,15 @@ It carries the heavier load-bearing material that makes the pattern reviewable a
 - `SoTA-Echoing` when it is carrying live explanatory load;
 - and the review hooks that let a broader or more consequential reading be checked explicitly.
 
-The assurance surface may sharpen, justify, and discipline the recognition surface.
-It must **not** silently replace, strengthen, or universalize the claim that the recognition surface made visible.
-If the recognition surface says “this pattern helps with a bounded working situation”, the assurance surface must not quietly turn that into an unsupported carrier claim, unsupported guarantee, or broader universality claim.
+The assurance text may sharpen, justify, and discipline the recognition text.
+It must **not** silently replace, strengthen, or universalize the claim that the recognition text made visible.
+If the recognition text says “this pattern helps with a bounded working situation”, the assurance text must not quietly turn that into an unsupported carrier claim, unsupported guarantee, or broader universality claim.
 
-If a pattern claims **universal** or **transdisciplinary** status, that claim must already be visible in the recognition surface.
+If a pattern claims **universal** or **transdisciplinary** status, that claim must already be visible in the recognition text.
 It is not enough for universality to appear only later in a guidance/check sheet, declaration block, or `SoTA-Echoing` rationale.
-A broad claim should therefore be demonstrated in the recognition surface through at least **three heterogeneous reader or domain situations**.
+A broad claim should therefore be demonstrated in the recognition text through at least **three heterogeneous reader or domain situations**.
 When a compact matrix helps, `F.16` is the preferred template for showing that breadth.
-If `SoTA-Echoing` is load-bearing, the practical implication of those rows should be recoverable from the recognition surface and case bank rather than remaining a late-only justification layer.
+If `SoTA-Echoing` is load-bearing, the practical implication of those rows should be recoverable from the recognition text and case bank rather than remaining a late-only justification layer.
 
 A **third didactic support role** means enough didactic and operational support that the pattern survives without nearby project documents. Typical indicators include:
 - at least one concrete source and resulting-publication slice in Archetypal Grounding when the pattern governs transforms or publication change;
@@ -12996,7 +15086,7 @@ This is a cross-cutting review discipline, not a replacement for local pattern l
 - **suite** = a coordinated set of members with explicit suite semantics under the governing FPF pattern or named authority reference;
 - **pack** = an editorial or review grouping, not automatically a semantic-authority claim;
 - **kit** = a reusable coordinated publication or boundary-description package with kit-level semantics under the governing FPF pattern or named authority reference;
-- **record** = a case/report/review artefact;
+- **record** = a case, report, or review record;
 - **umbrella** = a provisional or review-stage head spanning possible subfamilies before a final governing FPF pattern, accepted `DRR`, or pattern-body decision.
 
 These words are not interchangeable. In particular, authors must not let `cluster`, `bundle`, `suite`, `family`, `profile`, `overlay`, or `umbrella` do the work of an unnamed governing-pattern relation. When that relation matters, it must be stated directly: `specialization under ...`, `profile governed by ...`, `overlay over ...`, `bundle under ...`, or another equally explicit formulation.
@@ -13020,15 +15110,15 @@ If architecture-placement commentary is still helpful, the default place is a se
 A live pattern may include a short optional informative subsection such as `Architectural placement note (informative)` only when that placement materially helps users avoid misuse; even then, it must stay clearly separated from the user-facing solution and rationale rather than replacing them.
 
 #### E.8:4.2.4 - Human-facing fit beyond role correctness
-Human-facing fit is also subject-domain fit. A recognition surface that starts from internal taxonomy, pattern-placement convenience, or package-architecture wording before the problem-domain moment is still under-authored even if its later guidance/check text is correct. When a broader umbrella name and a narrower operative branch are both live, the recognition surface should also tell the reader which stack is actually active rather than leaving that reconstruction to a later declaration block or companion note.
+Human-facing fit is also subject-domain fit. A recognition text that starts from internal taxonomy, pattern-placement convenience, or package-architecture wording before the problem-domain moment is still under-authored even if its later guidance/check text is correct. When a broader umbrella name and a narrower operative branch are both live, the recognition text should also tell the reader which stack is actually active rather than leaving that reconstruction to a later declaration block or companion note.
 
 A pattern can already be role-clean, boundary-clean, and reader-role-clean, yet still fail the first minute of use for a cold working reader.
 That failure usually appears when the text is admissible but does not yet make the working situation, practical payoff, governed object, non-use boundary, or first action-guiding move visible enough.
 
-**P-2 semantic cleanup check.** When `E.10.SEMIO` is used to repair pattern prose, the first admissible action-guiding move must survive as a remaining admissible reader move or be replaced by a named neighboring-pattern handoff that now carries the live claim. This is a direct `E.2` `P-2` and `E.12` requirement, not an optional style preference. Intentional didactic metaphors and vivid Plain recognition lines are admissible when they are ordinary recognition aids or when their load maps back to Tech under `E.10:6.2`. A semantically corrected rewrite that leaves the recognition surface inert is still under-authored.
+**P-2 semantic cleanup check.** When `E.10.SEMIO` is used to repair pattern prose, the first admissible action-guiding move must survive as a remaining admissible reader move or be replaced by a named neighboring-pattern handoff that now carries the live claim. This is a direct `E.2` `P-2` and `E.12` requirement, not an optional style preference. Intentional didactic metaphors and vivid Plain recognition lines are admissible when they are ordinary recognition aids or when their load maps back to Tech under `E.10:6.2`. A semantically corrected rewrite that leaves the recognition text inert is still under-authored.
 
 
-For canonical patterns, the first reading surface should behave as a **recognition surface** and the heavier review load should remain in an **assurance surface**.
+For canonical patterns, the first reading text should behave as a **recognition text** and the heavier review load should remain in an **assurance text**.
 
 When a pattern claims practice guidance or is meant to be used by engineers, managers, researchers, or other working readers, authors should make the following visible before the heavier harness takes over:
 - a recognisable `Use this when` or equivalent first-minute recognition cue;
@@ -13041,7 +15131,7 @@ When a pattern claims practice guidance or is meant to be used by engineers, man
 - when a typed declaration block, formal lens, or other compact modeling support is load-bearing, a short user-facing statement of what kind of object the pattern is governing and what minimal lens keeps that object reviewable;
 - pairwise plain glosses for any load-bearing technical terms that must appear before the heavier declaration role arrives;
 - when `SoTA-Echoing` is carrying live explanatory load, a short working-reader implication for each row or cluster of rows and a visible link back to the case bank or worked slices that those rows discipline;
-- a visible split between the recognition surface and the heavier assurance surface or support companion;
+- a visible split between the recognition text and the heavier assurance text or support companion;
 - and, if the draft implicitly serves several working-reader situations, an explicit primary working reader, primary concern, or primary viewpoint.
 
 **Problem-frame recognition signature (informative).** A canonical pattern should
@@ -13070,14 +15160,14 @@ Cross-pattern comparison belongs in `J.4`; expanded case reading belongs in
 
 If the prose points to neighbouring patterns or other governing support roles, it should present them as neighboring FPF patterns, exact project-side FPF kinds and references, or `E.11` entry-load reclassifications rather than as hidden co-authorities of the current pattern.
 
-If the pattern claims broad, universal, or transdisciplinary usefulness, that breadth should already be visible in the recognition surface.
-At minimum the recognition surface should show at least three heterogeneous reader or domain situations rather than one narrow case family with a later broad claim attached.
+If the pattern claims broad, universal, or transdisciplinary usefulness, that breadth should already be visible in the recognition text.
+At minimum the recognition text should show at least three heterogeneous reader or domain situations rather than one narrow case family with a later broad claim attached.
 When a compact matrix helps, `F.16` is the preferred template for making that breadth legible.
 
 This is not a request to flatten the pattern into plain language only.
-It is a rule about ordering, layering, and surface consistency: the recognition surface must help a working reader recognise the pattern early, while the assurance surface continues to carry the full semantic load.
-If the pattern uses technical lexicon, ontological distinctions, or a mathematical lens, those supports must remain recoverable, but the first reading surface should not require the reader to decode that full stack before recognising the working situation.
-The assurance surface may tighten or discipline the recognition surface; it must not silently shift what the recognition surface claimed.
+It is a rule about ordering, layering, and text consistency: the recognition text must help a working reader recognise the pattern early, while the assurance text continues to carry the full semantic load.
+If the pattern uses technical lexicon, ontological distinctions, or a mathematical lens, those supports must remain recoverable, but the first reading text should not require the reader to decode that full stack before recognising the working situation.
+The assurance text may tighten or discipline the recognition text; it must not silently shift what the recognition text claimed.
 
 **Illustrative migration example (informative).**
 
@@ -13136,7 +15226,7 @@ This guidance biases toward **Did** (readability, narrative flow) and **Arch** (
 ### E.8:7 - Conformance Checklist
 
 **CC style (canonical).**
-Conformance Checklist items are checks in the **authoring plane**: they test whether the pattern guidance has been applied and authored correctly in an artefact that claims conformance. They do not replace `Solution`, do not make the pattern a control form, and do not state deontic obligations about the modeled world. A CC clause of the form “X SHALL ...” is to be read as “In a conforming artefact, X SHALL ...”.
+Conformance Checklist items are authoring checks: they test whether the pattern guidance has been applied and written correctly in a pattern or support text that claims conformance. They do not replace `Solution`, do not make the pattern a control form, and do not state deontic obligations about the modeled world. A CC clause of the form “X SHALL ...” is to be read as “In a conforming pattern or support text, X SHALL ...”.
 
 **Preferred wording for new or edited CC items:** start with an explicit conformance subject (e.g., “Authors ...”, “Reviewers ...”, “A conforming implementation ...”, “A validator ...”). If a CC item is enforcing an admissibility predicate, it **SHOULD** cite the predicate’s identifier (from a `Definition:` / `Invariant:` / `Well-formedness constraint:` block) rather than restating the predicate as “X MUST ...”. For boundary/interface/protocol/declaration patterns, prefer A.6.B-governed claim IDs (L/A/D/E) or cite an existing Claim Register (A.6.B:7) instead of restating mixed prose.
 
@@ -13161,9 +15251,9 @@ Conformance Checklist items are checks in the **authoring plane**: they test whe
 | **CC-SG.15 (Package-form and governing-pattern relation role-word discipline).** | When a pattern names a package-form or the governing-pattern relation of a family (`primary carrier`, `specialization`, `profile`, `overlay`, `family`, `bundle`, `cluster`, `suite`, `pack`, `kit`, `record`, `umbrella`), the chosen role word **MUST** match the intended ontology and **MUST NOT** be swapped for stylistic variety or left to implication. | Prevents semantic blur in pattern prose and keeps governing-pattern relations auditable. |
 | **CC-SG.16 (Reader-role discipline).** | Authors **MUST** keep live pattern sections user-facing. FPF-development or package-architecture reasoning about isolation, overlay or carrier choice, freeze, merge posture, or planned evolution **MUST NOT** occupy `Problem`, `Solution`, `Consequences`, `Rationale`, or worked slices; if such placement reasoning is still needed, it **MUST** live in a separate companion note or a clearly marked informative placement note. | Keeps pattern prose aligned with its intended reader and prevents package-governance leakage into live use guidance. |
 | **CC-SG.16a (Referent-index discipline in live prose).** | Live pattern sections **MUST** keep run-time/domain referents, standard-plane referents, and design-time/control-plane referents distinct. In ordinary live prose, sentence truth **MUST** depend on the governed run-time/domain object or on the pattern's declared normative claim set, not on the current draft state, author action, reviewer action, or control-plane posture. If a sentence is true only because of the current writing/review pass or text arrangement, it is design-time residue and belongs in carriers or companion notes, not in the live pattern body. | Prevents Conway/process leakage and reduces late cleanup before review or landing. |
-| **CC-SG.17 (Recognition surface and assurance surface).** | Admission or substantial revision runs **MUST** check that a canonical pattern exposes a recognition surface early enough for the intended working reader and an assurance surface that carries declaration, guidance/check, modeling, and review load without silently shifting the recognition-surface claim. The recognition surface **MUST** surface a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, and a clear ordinary `not this pattern when` boundary. Any load-bearing typed declaration or modeling lens **MUST** be exposed by a short user-facing statement of the governed object, early load-bearing technical terms **MUST** receive nearby pairwise plain glosses, and any `SoTA-Echoing` used as live explanatory support **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If the pattern claims universal or transdisciplinary reach, the recognition surface **MUST** demonstrate that claim through at least three heterogeneous reader or domain situations, preferably using an `F.16`-style example matrix or an equally explicit alternative. | Prevents surface-clean but reader-opaque patterns and keeps broad claims visible where cold readers actually enter the text. |
-| **CC-SG.17a (Problem-frame recognition signature and E.11 boundary).** | Authors **SHOULD** express a pattern's concrete working situation through the pattern's `Problem frame`, not through a separate navigation block. The `Problem frame` should make recoverable the governed object or stabilized concern, what goes wrong if the pattern is missed or misread, the ordinary not-this-pattern boundary, the first admissible action-guiding move, and the result that move buys. Only when an `E.11` pattern-entry discoverability problem is live should the same surface add candidate-pattern, tempting-wrong-pattern, entry-load reclassification, or first admissible entry-stop cues. Cross-pattern comparison belongs in `J.4`; expanded case reading belongs in `I.2`; lexical-query support belongs under the lexical/naming patterns and support companions that already govern it. Pattern-local `Start here when`, `First output`, neighboring-pattern lists, and `Common wrong escalations and boundary transfers` blocks **SHOULD NOT** replace the action-guiding `Problem frame` and `Solution`. | Keeps working-use recognition inside the canonical pattern frame while preventing navigation/workflow language from becoming local pattern structure. |
-| **CC-SG.17b (Semantic repair preserves action guidance).** | When authors edit pattern prose under `E.10.SEMIO`, the repaired recognition surface **MUST** preserve or restore the first admissible action-guiding move as a remaining admissible reader move, or explicitly name the neighboring FPF pattern that now carries the live claim. When both Tech and Plain registers are live, any Plain or didactic wording **MUST** map back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load. More engaging recognition wording remains admissible as ordinary Plain prose only when it does not carry such load, or as a recognition aid whose load is recoverable through the recovered Tech reading or named handoff. Type-correct but inert wording is not mature pattern prose. | Prevents semio cleanup from leaving pattern guidance inert while also preventing expressive prose from reintroducing overread. |
+| **CC-SG.17 (Recognition text and assurance text).** | Admission or substantial revision runs **MUST** check that a canonical pattern exposes a recognition text early enough for the intended working reader and an assurance text that carries declaration, guidance/check, modeling, and review load without silently shifting the recognition-text claim. The recognition text **MUST** expose a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, and a clear ordinary `not this pattern when` boundary. Any load-bearing typed declaration or modeling lens **MUST** be exposed by a short user-facing statement of the governed object, early load-bearing technical terms **MUST** receive nearby pairwise plain glosses, and any `SoTA-Echoing` used as live explanatory support **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If the pattern claims universal or transdisciplinary reach, the recognition text **MUST** demonstrate that claim through at least three heterogeneous reader or domain situations, preferably using an `F.16`-style example matrix or an equally explicit alternative. | Prevents text-clean but reader-opaque patterns and keeps broad claims visible where cold readers actually enter the text. |
+| **CC-SG.17a (Problem-frame recognition signature and E.11 boundary).** | Authors **SHOULD** express a pattern's concrete working situation through the pattern's `Problem frame`, not through a separate navigation block. The `Problem frame` should make recoverable the governed object or stabilized concern, what goes wrong if the pattern is missed or misread, the ordinary not-this-pattern boundary, the first admissible action-guiding move, and the result that move buys. Only when an `E.11` pattern-entry discoverability problem is live should the same recognition text add candidate-pattern, tempting-wrong-pattern, entry-load reclassification, or first admissible entry-stop cues. Cross-pattern comparison belongs in `J.4`; expanded case reading belongs in `I.2`; lexical-query support belongs under the lexical/naming patterns and support companions that already govern it. Pattern-local `Start here when`, `First output`, neighboring-pattern lists, and `Common wrong escalations and boundary transfers` blocks **SHOULD NOT** replace the action-guiding `Problem frame` and `Solution`. | Keeps working-use recognition inside the canonical pattern frame while preventing navigation/workflow language from becoming local pattern structure. |
+| **CC-SG.17b (Semantic repair preserves action guidance).** | When authors edit pattern prose under `E.10.SEMIO`, the repaired recognition text **MUST** preserve or restore the first admissible action-guiding move as a remaining admissible reader move, or explicitly name the neighboring FPF pattern that now carries the live claim. When both Tech and Plain registers are live, any Plain or didactic wording **MUST** map back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load. More engaging recognition wording remains admissible as ordinary Plain prose only when it does not carry such load, or as a recognition aid whose load is recoverable through the recovered Tech reading or named handoff. Type-correct but inert wording is not mature pattern prose. | Prevents semio cleanup from leaving pattern guidance inert while also preventing expressive prose from reintroducing overread. |
 
 | **CC-SG.18 (Precision before relaxation).** | In load-bearing prose, authors **MUST NOT** leave a generic head noun or load-bearing qualifier uninterpreted when that phrase carries semantic, boundary, or authority load. A narrowing qualifier by itself does **not** restore the head kind. Authors **MUST** restore head kind first, then qualifier load, then any comparison/escalation basis before downstream claim or effect. If a later Plain, didactic, or coarsened rendering is kept, the more precise upstream reading **MUST** remain recoverable. | Prevents ambiguity from being hidden inside ordinary-looking phrases and keeps softened prose subordinate to an explicit authoritative reading. |
 
@@ -13250,8 +15340,6 @@ International and industry standards often speak in terms of *conformance criter
 * **Constrains:** All patterns; the DRR template references the same section order.
 
 ### E.8:End
-
-
 ## E.9 - Design‑Rationale Record (DRR) Method
 
 > **Type:** Governance / authoring pattern
@@ -13476,7 +15564,7 @@ The `DRR` names:
 - the source-use result for that passage or basis: exact quote, narrowed scope, instantiated case, decision-bearing use, draft-guidance source, example-only use, or retired source use;
 - any meaning loss or addition created by that source-use result: changed scope, relation, evidence basis, admissible use, non-admissible use, reader move, or recoverability condition;
 - the first improved FPF use that the admitted method gives to an author, reviewer, or downstream FPF user;
-- the current disposition: selected now, inherited sufficient, rejected now, or outside the current decision with the named receiving pattern or accepted decision source.
+- the current disposition: selected now, inherited sufficient, rejected now, or outside the current decision with the named receiving pattern, accepted `DRR`, or accepted basis named by value.
 
 
 Reusable process-source method is not limited to semio wording or pattern-authoring language. It may enter FPF only when it is separable from local process mechanics, improves FPF use, and has one exact receiving pattern. After the method lands in FPF, process documents should cite the receiving FPF pattern instead of keeping a parallel long-form rule.
@@ -13609,6 +15697,8 @@ Use `E.10` when a word, head, or local phrase in conformant FPF text is starting
 **First useful move.** Restore the head kind and register of the local wording, then either keep the lighter ordinary wording with its exact FPF anchor or move to the specific neighboring pattern that governs the live object: `E.10.SEMIO` for semio-heavy episteme/publication wording, `F.18` for durable reusable names, `A.6.P` for relation precision, and the exact domain pattern for work, evidence, gate, decision, or project-side use. `E.10` governs the lexical repair; the recovered object or project-side effect is governed by its own exact FPF pattern.
 
 **Cheap stop.** If one local lexical repair restores kind, relation, and admissible use without changing the normative meaning of FPF, stop with the repaired wording; do not open a Name Card, DRR, review profile, or larger semantic recovery note by habit.
+
+
 
 
 ### E.10:1 - Problem context
@@ -13860,7 +15950,7 @@ It is **not** a USM scope and carries **no** truth/validity semantics.
 **DA‑D1 (kind anchoring, MUST).** The head noun names the **FPF kind being classified** (e.g., *Sense*, *Context*, *Role*, *Bridge*, *Characteristic*). Readers can answer “**X of what?**” without external context.
 **DA‑D2 (Characteristic, not axis, MUST).** Enumerated properties are named as **Characteristic**  within a **CharacteristicSpace** (MM‑CAL). Avoid spatial metaphors (*axis, dimension, plane, lane, tier, layer*) unless the metaphor is a **pattern‑defined primitive** in this spec.
 **DA‑D3 (Enum clarity, MUST).** If the term denotes an enumeration, (a) the value set is **small and closed**, (b) membership criteria are obvious from the definition, (c) the **kind being classified** is explicit in the name (e.g., `SenseFamily`, not bare *Family*, *RowPlane* or overly general *Facet*).
-**DA‑D4 (Anti‑recipe, MUST).** Do not bake *how‑to* or local methods into discriminator names; those belong in `U.Method or U.MethodDescription` or **Capability**.
+**DA‑D4 (Anti‑recipe, MUST).** Do not bake *how-to* or local methods into discriminator names; those belong in `U.Method` or `U.MethodDescription`, or in `U.Capability` when the live object is an ability envelope.
 **DA‑D5 (Mapping discipline, MUST).** Cross‑context readings go through a **Bridge** (F.9). Discriminator names must not suggest global identity.
 **DA‑D6 (Register discipline, SHOULD).** Keep normative tokens stable; synonyms live in **Plain** register only and must not appear in constraints/tests.
 **DA‑D7 (Ban generic combinators, MUST).** Reject vague composites like *NameUseMode*, *NamingScope*, *RowFacet/RowPlane/RowLane*. Each candidate must pass **DA‑D1** and **DA‑D3** (kind-anchored head and explicit **CharacteristicSpace**).
@@ -14169,7 +16259,7 @@ Example: using a `KernelToken` in a Context constraint may require a Bridge/alia
 | **L‑ACT**    | *activity*, *action*, or *task* as type           | `U.Work` (execution); **steps** belong to `U.MethodDescription` (with `requiredRoles`, capability bounds)                                                                                       | run vs D                                                                             | Context                                     | Reserve verbs: *enact* (role/RSG), *execute* (Work), *actuate* (System), *approve* (SpeechAct Work). |
 | **L‑AGENT**  | *agent / actor / doer* (bare)                     | say “system **bearing** `…Role`”; use `U.AgentialRole` where needed                                                                                                                             | I                                                                                    | Kernel/Context                              | Org titles (Owner/Operator/Reviewer) live as **roles in a Context**.                                 |
 | **L‑OWNER**  | *owner of X* (global)                             | Ownership is a **Role** inside a `U.BoundedContext` (e.g., `OwnerRole:ITIL_2020`); SoD via `⊥`                                                                                                  | I                                                                                    | Context                                     | No global “owner” property in Kernel.                                                                |
-| **L‑CAP**    | *capability* for assignment, recipe, run, or promise | `U.Capability` only = ability with envelope; assignments are `…Role`; recipes `Method or MethodDescription`; runs `Work`; promises `U.PromiseContent` (service promise clause or offering)                                                       | I vs D vs run                                                                        | Kernel/Context                              | Holder of a Capability is a `U.System`.                                                              |
+| **L‑CAP**    | *capability* for assignment, recipe, run, or promise | `U.Capability` only = ability with envelope; assignments are `…Role`; recipes `U.Method` or `U.MethodDescription`; runs `Work`; promises `U.PromiseContent` (service promise clause or offering)                                                       | I vs D vs run                                                                        | Kernel/Context                              | Holder of a Capability is a `U.System`.                                                              |
 | **L‑DYN**    | *process of diffusion, growth, or learning*       | `U.Dynamics` (law/model of change)                                                                                                                                                              | I                                                                                    | Kernel/Context                              | Reserve for uncaused change models.                                                                  |
 | **L‑EVID**   | “paper/dataset proves/ensures”                    | `…#EvidenceRole:Context` on an **Episteme**; claims/scopes/polarity/timespan; provenance from `Work`                                                                                            | D/S                                                                                  | Context/Discriminator                       | Evidence is a **role binding**, not an actor.                                                        |
 | **L‑CTX**    | *context* (fuzzy trope)                           | `U.BoundedContext` (named card)                                                                                                                                                                 | —                                                                                    | Context                                     | Never use “depends on context” in Core; **name** the Context.                                        |
@@ -14432,6 +16522,7 @@ Use it especially when wording around claim-bearing epistemes, described entitie
 **Do not punish clarity.** Prefer the clearest ordinary head that preserves kind, relation, and admissible use. Do not replace a clear plain phrase with a technical phrase unless the technical phrase blocks a live false reading or is needed for accepted stable FPF naming. In an ordinary case, `reader help`, `source-pointer-only`, or `comparison only` may be better than a more technical phrase.
 
 
+
 **Not this pattern when.** `E.10.SEMIO` is not the governing pattern for every recovered construct. General lexical discipline stays under `E.10`; stable reusable naming under `F.18`; relation precision under `A.6.P`; A.6.B law-, admissibility-, deontic-, and effect-claim boundary splitting under `A.6.B`; object-description-carrier separation under `A.7`; view and publication discipline under `E.17` and `E.17.0`; project work, evidence, gate, decision, method, action-invitation, assurance, and engineering-justification claims under their exact FPF patterns. When one of those claims is live, this pattern supplies only the semio trigger, recovery, and rewrite profile; the neighboring named pattern supplies its invariant.
 
 **First output.** The ordinary first move is to repair one overloaded phrase, row, field, or sentence so the reader can tell which exact FPF kind, relation, publication construction, or project-side value is live. If that one local repair restores kind, relation, and admissible use without changing work, evidence, gate, release, policy, assurance, adjudication, or bridge use, stop there. Use a compact pattern-local `SemioRewriteRecord` or equivalent local rewrite note only when the phrase carries load that must remain inspectable after the repair.
@@ -14449,7 +16540,8 @@ The immediate cost is not only ugly terminology. Engineers and FPF authors start
 
 `E.10.SEMIO` gives authors and reviewers one small semantic-rewrite action: recover the FPF kind stack first, then write exact wording that preserves the needed distinction without adding another claim. It prevents string-replacement cleanup, keeps FPF-side and project-side episteme and publication work separate, and blocks unclear text from becoming current FPF content by author guesswork.
 
-**Successful repair condition.** Semantic repair is not closed by type-correct wording alone. It is governed by `E.2` Pillars, especially `P-2 Didactic Primacy`, together with `E.12` and the register rule in `E.10:6.2`. It closes only when the repaired text preserves or restores one remaining admissible reader move: a usable action, a recognition reason that tells the working reader why the distinction matters, or a named neighboring-pattern handoff that now carries the live claim. When both Tech and Plain registers are live, the Tech reading must remain recoverable and any Plain or didactic line must map back to that Tech reading. A Plain, more expressive line, or intentional didactic metaphor may stay ordinary when it carries no FPF load; when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load, that load must be recoverable through the Tech fields, exact FPF kind, recovered relation, project-side source reference, or disposition named by the repair. If a repair in a load-bearing Problem frame, Problem section, recognition surface, example, or worked slice makes the text more exact but less able to show the working situation, why it matters, or what action remains, the repair is incomplete unless a named neighboring FPF pattern now carries that live claim. Overread removal is only half of semantic repair; the other half is surviving admissible action under the Pillars.
+**Successful repair condition.** Semantic repair is not closed by type-correct wording alone. It is governed by `E.2` Pillars, especially `P-2 Didactic Primacy`, together with `E.12` and the register rule in `E.10:6.2`. It closes only when the repaired text preserves or restores one remaining admissible reader move: a usable action, a recognition reason that tells the working reader why the distinction matters, or a named neighboring-pattern handoff that now carries the live claim. When both Tech and Plain registers are live, the Tech reading must remain recoverable and any Plain or didactic line must map back to that Tech reading. A Plain, more expressive line, or intentional didactic metaphor may stay ordinary when it carries no FPF load; when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load, that load must be recoverable through the Tech fields, exact FPF kind, recovered relation, project-side source reference, or disposition named by the repair. If a repair in a load-bearing Problem frame, Problem section, recognition text, example, or worked slice makes the text more exact but less able to show the working situation, why it matters, or what action remains, the repair is incomplete unless a named neighboring FPF pattern now carries that live claim. Overread removal is only half of semantic repair; the other half is surviving admissible action under the Pillars.
+
 
 
 **Governed object in plain terms.** The governed object is one semio-heavy wording use inside conformant text: the word or phrase, the sentence function it carries, the FPF kind or relation it must recover, and the admissible remaining use after recovery.
@@ -14509,11 +16601,12 @@ A successful rewrite satisfies these field-validity constraints:
 3. a relation, comparison, dependency, support, sameness, grounding, mapping, or endpoint claim has `A.6.P` relation precision, with admissibility and project-side support questions split into their own fields;
 4. a claim-bearing episteme, exact episteme species, episteme-lane view, or exact project-side FPF kind and reference has the needed `C.2.1` or neighboring FPF reading;
 5. publication, view, face, and carrier distinctions satisfy `E.17.0`, `E.17`, and MVPK;
-6. the repaired text satisfies `E.2` Pillars, especially `P-2 Didactic Primacy`, by preserving or restoring one remaining admissible reader move: a usable action, a recognition reason that tells the working reader why the distinction matters, or a named neighboring-pattern handoff that now carries the live claim; when both Tech and Plain registers are live, the Plain or didactic line maps back to the recovered Tech kind, relation, or neighboring-pattern handoff under `E.10:6.2`; ordinary Plain wording and intentional didactic metaphor stay light when they carry no FPF load, but ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load in a more expressive Plain line must be recoverable through the repaired Tech fields; load-bearing Problem frames, Problem sections, recognition surfaces, examples, and worked slices must still show the broad working situation and first useful move, or the rewrite is incomplete;
+6. the repaired text satisfies `E.2` Pillars, especially `P-2 Didactic Primacy`, by preserving or restoring one remaining admissible reader move: a usable action, a recognition reason that tells the working reader why the distinction matters, or a named neighboring-pattern handoff that now carries the live claim; when both Tech and Plain registers are live, the Plain or didactic line maps back to the recovered Tech kind, relation, or neighboring-pattern handoff under `E.10:6.2`; ordinary Plain wording and intentional didactic metaphor stay light when they carry no FPF load, but ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load in a more expressive Plain line must be recoverable through the repaired Tech fields; load-bearing Problem frames, Problem sections, recognition texts, examples, and worked slices must still show the broad working situation and first useful move, or the rewrite is incomplete;
 7. the final phrase preserves the distinction without adding another claim;
 8. unrecoverable meaning, kind, register mapping, or remaining reader move fails closed.
 
 The detailed solution below carries the glossary and rewrite rules as ordinary pattern subsections. It is not an external container: these subsections are the pattern's detailed semantic-rewrite guidance.
+
 
 
 #### E.10.SEMIO:4.0a - SemioRewriteRecord
@@ -14539,6 +16632,7 @@ Recover by claim force, not word form. For words such as `source`, `support`, `s
 | `selectedRewrite` | The final exact wording or record-shaped value. | This pattern plus the exact governing FPF pattern named above. |
 | `remainingAdmissibleReaderMove` | One short line, Plain-facing when the text serves a working reader, naming what the reader may now do, why the distinction still matters, or which named neighboring FPF pattern now carries the live claim. This field is the local `E.2` `P-2` preservation check for load-bearing semio repair, not an optional commentary line. When both Tech and Plain registers are live, this line must map back to the recovered Tech kind, relation, or neighboring-pattern handoff. It may be more readable or memorable than the Tech line, and may use an intentional didactic metaphor, but any ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load must remain recoverable through that repaired Tech reading. If no such line can be stated, the rewrite is incomplete or must fall to a non-transfer disposition. | This pattern, `E.2`, `E.8`, `E.10:6.2`, `E.12`, and the named neighboring FPF pattern when a handoff is live. |
 | `disposition` | Local recovery outcome: recovered by value, quote-only wording, reduced-use cue, understandable FPF extension candidate, blocked current transfer, rewrite incomplete, or not triggered. This slot is not a recovered FPF kind. | This pattern. |
+
 
 
 Use the short form when only one field is live. Use the full record when several fields are live or when the phrase might otherwise create a grouped kind, hidden authority claim, project-side overclaim, conflict among publication, describedEntity, and project-side action claims, contested source-meaning transfer, or procedure-like ordering of pattern applications.
@@ -14579,6 +16673,7 @@ Fail closed:
 - if the recovered wording is type-correct but leaves no remaining admissible reader move, recognition reason, Tech-to-Plain mapping when both registers are live, or neighboring-pattern handoff, or if a Plain or didactic line supplies practical force through unrecovered ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load, mark the rewrite incomplete or demote the phrase to quote-only wording, reduced-use cue, or blocked current transfer before using it as current pattern, architecture, `DRR`, or project text.
 
 
+
 ##### E.10.SEMIO:4.1.1 - Slash Discipline
 
 In many standards, a slash can mark near-synonyms or parallel labels.
@@ -14612,6 +16707,7 @@ Classify the case explicitly:
 - **reduced-use cue:** the phrase is kept only as a recognition cue or anti-case, not as a claim-bearing architecture decision;
 - **blocked current transfer:** the phrase is not admissible for claim-bearing architecture, `DRR`, pattern, or project text until a new source, author clarification, or accepted architecture decision supplies the missing meaning, kind, or relation.
 - **rewrite incomplete:** the repaired wording may be kind-correct, but it does not yet state a remaining admissible reader move, recognition reason, Tech-to-Plain mapping when both registers are live, or neighboring-pattern handoff, or a Plain or didactic line carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load that cannot be recovered from the Tech reading; continue repair or demote to a non-transfer disposition before treating the text as landed.
+
 
 
 These dispositions are recovery results, not a meta-governance authority over all of `FPF`.
@@ -15187,7 +17283,7 @@ These terms often mix navigation, recognition, movement, and authority.
 
 Split:
 - entry publication or navigation support;
-- first-use recognition surface;
+- first-use recognition text;
 - navigation-bearing publication;
 - movement, control, and temporal relation;
 - process sequence;
@@ -15312,6 +17408,7 @@ Compact semantic rewrite row:
   remaining admissible reader move:
   distinction disposition: preserved, split, intentionally retired, still missing
 ```
+
 
 
 ##### E.10.SEMIO:4.5.3 - Full semantic rewrite check
@@ -15440,7 +17537,7 @@ High-risk residue classes:
 | Group-kind list | Leave a list such as `pattern, record, relation, or action` as if the list names one kind. | Decide whether the sentence needs one kind, a relation record, a tuple-like record, alternative cases, or a blocked ontology. |
 | Type-correct but inert rewrite | All overread is removed, all heads are typed, and no practical force remains: the reader can see that local checks passed but cannot tell why the distinction matters, what to do, or where the live claim moved. | Recover the didactic or recognition function in admissible wording, keep any Plain line mapped to the recovered Tech reading when both registers are live, state the remaining admissible reader move, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete instead of pretending the repair landed. |
 | Expressive overread rebound | A repair tries to restore practical force with a memorable Plain or didactic line, but that line carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load not recoverable from the Tech fields, exact FPF kind, recovered relation, project-side source reference, disposition, or named handoff. | Rewrite the line as ordinary recognition aid mapped to the recovered Tech reading under `E.10:6.2`, recover the load through the exact Tech fields, name the neighboring-pattern handoff that carries the live claim, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
-| Pillar-blind precision pass | A broad cleanup proves trigger removal and kind recovery, but never checks whether `E.2` `P-2`, `E.6`, `E.8`, or `E.12` still let the intended reader see the working situation, why it matters, and what first useful move remains. | For load-bearing Problem frames, Problem sections, recognition surfaces, examples, and worked slices, state the remaining admissible reader move or named neighboring-pattern handoff. Preserve intentional didactic metaphors when they are ordinary recognition aids or when their load maps back to Tech. If the didactic function was harmed, repair the wording in admissible Plain mapped to Tech, or mark the rewrite incomplete instead of accepting type-correct but inert wording. |
+| Pillar-blind precision pass | A broad cleanup proves trigger removal and kind recovery, but never checks whether `E.2` `P-2`, `E.6`, `E.8`, or `E.12` still let the intended reader see the working situation, why it matters, and what first useful move remains. | For load-bearing Problem frames, Problem sections, recognition texts, examples, and worked slices, state the remaining admissible reader move or named neighboring-pattern handoff. Preserve intentional didactic metaphors when they are ordinary recognition aids or when their load maps back to Tech. If the didactic function was harmed, repair the wording in admissible Plain mapped to Tech, or mark the rewrite incomplete instead of accepting type-correct but inert wording. |
 | Source-status leakage | Carry a source-companion header into a pattern and let `Authority: none` or `Current use` define the new pattern. | State current pattern status in the pattern header and relations. |
 | Pattern as procedure | Say the pattern is called, routed, invoked, or chained as if it were executable code. | Say the FPF pattern is applied in a problem situation; name exact project-side `U.Work` occurrence, `U.Method`, `C.11` decision value, or `A.6.A` action invitation when project activity is live. |
 | Strength metaphor | Say a claim is strong or weak without a characteristic, threshold, evidence class, scope, gate, or admissibility relation. | Name the exact comparison basis or replace the metaphor with the recovered admissibility relation. |
@@ -15536,7 +17633,6 @@ Internal support details:
 * **Coordinates with:** `E.6`, `E.7`, `E.8`, `E.9`, `E.12`, `E.19`, `A.10`, `A.15`, `A.15.4`, `B.3`, `A.20`, `A.21`, `A.6.3.CSC`, `A.6.3.CR`, `A.6.3.RT`, `E.17.EFP`, and `E.17.ID.CR`.
 * **Does not replace:** `E.10` general lexical rules, `F.18` naming protocol, `A.6.P` relation precision, or local semio patterns. It tells authors when those patterns must be applied to semio-heavy wording.
 ### E.10.SEMIO:End
-
 ## E.10.P - Conceptual Prefixes policy & registry
  **Intent.** Provide a compact, **notation‑neutral** registry and **minting policy** for *conceptual prefixes* — short shorthands that signal **cognitive namespaces** used throughout the Core.
 
@@ -17050,26 +19146,26 @@ This pattern dovetails with the framework’s unification stance (**small Workin
 ### E.14:4 - Solution
 
 #### E.14:4.1 - Human-Centric principles
-##### E.14:4.1.1 - Recognition surface and assurance surface
-Human-facing patterns also need governed-object stability across the two surfaces. The working reader should not meet one object in the recognition surface and a different ontological kind in the assurance surface. If the pattern distinguishes a governed object, the interpretive or operational move applied to that object, and the wider review or work process around it, those distinctions should be made explicit rather than hidden behind stylistic noun-swapping.
+##### E.14:4.1.1 - Recognition text and assurance text
+Human-facing patterns also need governed-object stability across recognition text and assurance text. The working reader should not meet one object in the recognition text and a different ontological kind in the assurance text. If the pattern distinguishes a governed object, the interpretive or operational move applied to that object, and the wider review or work process around it, those distinctions should be made explicit rather than hidden behind stylistic noun-swapping.
 
-Working-Model-first drafting therefore also means subject-domain-first drafting. If a pattern is meant to help with a real review, design, cultural, research, or operational problem, the recognition surface should open from that problem-owning moment before internal taxonomy or package architecture. If a broader umbrella head and a narrower operative branch are both live, the pattern should state that stack plainly enough that a cold reader can tell what the umbrella names, what branch is current, what object is governed, what move is being carried, and what wider work remains outside.
+Working-Model-first drafting therefore also means subject-domain-first drafting. If a pattern is meant to help with a real review, design, cultural, research, or operational problem, the recognition text should open from that problem-owning moment before internal taxonomy or package architecture. If a broader umbrella head and a narrower operative branch are both live, the pattern should state that stack plainly enough that a cold reader can tell what the umbrella names, what branch is current, what object is governed, what move is being carried, and what wider work remains outside.
 
-Under `F.18` local-first naming, the canonical pair here is **recognition surface** and **assurance surface**.
+Under `F.18` local-first naming, the canonical pair here is **recognition text** and **assurance text**.
 The earlier provisional `...shell` wording is retired.
 These names refer to two reading-order surfaces inside one pattern, not to new publication-surface kinds or owner kinds.
 
 For human-facing canonical patterns, Working-Model-first discipline should appear in a two-surface reading order.
-The **recognition surface** is the working surface that a cold practitioner, manager, or researcher should be able to understand first: what situation this pattern is for, what it buys, what it is not for, and what ordinary mistake it helps prevent.
-The **assurance surface** is the heavier surface that carries declaration, object discipline, modeling lens, law, reroute conditions, and other review work.
+The **recognition text** is the working text that a cold practitioner, manager, or researcher should be able to understand first: what situation this pattern is for, what it buys, what it is not for, and what ordinary mistake it helps prevent.
+The **assurance text** is the heavier text that carries declaration, object discipline, modeling lens, law, reroute conditions, and other review work.
 
-The assurance surface may justify, tighten, or audit the working surface, but it must not silently replace or strengthen the recognition-surface claim.
-Where semio-heavy or transform-heavy patterns need a compact ontological account, the assurance surface should surface three things explicitly:
+The assurance text may justify, tighten, or audit the working text, but it must not silently replace or strengthen the recognition-text claim.
+Where semio-heavy or transform-heavy patterns need a compact ontological account, the assurance text should make three things explicit:
 - the ontic target or governed object;
 - the modeling substrate or mathematical lens when one is load-bearing;
 - the publication or working surface by which the claim is presented.
 
-This is a reading-order rule rather than a demand that every reader consume the assurance surface first.
+This is a reading-order rule rather than a demand that every reader read the assurance text first.
 The point is to keep the human-facing Working-Model surface primary while preserving a recoverable, auditable second surface beneath it.
 > **E.14‑P.1 – Working‑Model first, stance explicit.**  **
 > Operate one **Working‑Model** for all human‑facing discussion. For **each** assertion, the author **SHALL declare** a justification stance (`validationMode`) and choose the **appropriate assurance shoulder(s)**: **Mapping** (term↔kind alignment via **Lang‑CHR** / D‑Projection), **Logical** (CT2R alias semantics, scope/constraints), **Constructive** (Γₘ generative trace), and **Empirical Validation** (evidence via `U.EvidenceRole` in a declared `U.BoundedContext`).
@@ -17213,7 +19309,7 @@ The **Working‑Model layer remains the canonical publication surface** for auth
 | **CC‑E14‑11 (Empirical bindings).**        | When `validationMode=postulate` (or when adding real‑world confirmation), authors **SHALL** bind evidence via `U.EvidenceRole` in a declared `U.BoundedContext` with an explicit **timespan** and provenance anchors. | Aligns with Evidence Graph Referring and empirical ageing policies. |
 | **CC-E14-12 (F-declaration).**             | Normative Working-Model publications **SHALL** declare `U.Formality = Fk` per **C.2.3** (**recommended F ≥ F3** for readable surfaces). Assurance publications or records **MAY** carry higher F; **min-F** applies to composites. | Aligns E.14 with the unified Formality characteristic; avoids legacy “tiers/modes”. |
 | **CC‑E14‑13 (Light records, not thin prose).** | Authors **SHALL NOT** use the Working‑Model-first stance as a reason to strip problem framing, rationale, or worked slices out of the pattern text. Ordinary use may stay light, but readers **MUST** still be able to understand the pattern without nearby project notes. | Keeps human-facing economy from collapsing into under-explained prose. |
-| **CC‑E14‑14 (Working surface before assurance surface).** | When a pattern claims a Working‑Model or other human-facing benefit, authors **SHALL** keep a recognition-first working surface distinct from the heavier assurance surface. The assurance surface **MAY** refine and justify the working surface, but it **SHALL NOT** silently change the recognition-surface claim. If the pattern claims broad or transdisciplinary reach, the working surface **SHOULD** show heterogeneous situations early, preferably through an `F.16`-style example matrix or an equally explicit alternative. | Keeps Working‑Model-first drafting from collapsing into either thin prose or late-only universality. |
+| **CC‑E14‑14 (Recognition text before assurance text).** | When a pattern claims a Working‑Model or other human-facing benefit, authors **SHALL** keep recognition-first working text distinct from the heavier assurance text. The assurance text **MAY** refine and justify the working text, but it **SHALL NOT** silently change the recognition-text claim. If the pattern claims broad or transdisciplinary reach, the working text **SHOULD** show heterogeneous situations early, preferably through an `F.16`-style example matrix or an equally explicit alternative. | Keeps Working‑Model-first drafting from collapsing into either thin prose or late-only universality. |
 
 *All obligations above are **conceptual** and apply to thought and prose; they introduce no notational or data‑processing requirements.*
 
@@ -18872,9 +20968,9 @@ As SoTA evolves, new bundles can be added or TEVB can gain a new edition with a 
 
 **Use this when.** The engineering team needs a plain view, technical card, interoperability card, or assurance lane that helps people read, inspect, exchange, or cite the same source-backed relation without turning the face into work occurrence, evidence, gate passage, engineering justification, control architecture, or release permission by presentation alone.
 
-**First output.** One source-pinned publication face with the underlying `U.Episteme`, `D` episteme, or `S` episteme, publication scope, face kind, admissible publication use, and any required project-side FPF kind and reference named only as far as the current use needs.
+**First output.** One source-pinned publication face with the underlying `U.Episteme`, `D` episteme, or `S` episteme, publication scope, face kind, admissible publication use, and any live downstream typed value named only as far as the current use needs, such as a `GateDecision`, evidence path, work occurrence, status source, or authority-reference relation.
 
-**Working action spine.** Publish one source-pinned face -> separate source episteme or episteme-lane view, face, carrier, admissible publication use, and any live project-side FPF kind and reference -> use the face for inspection, source-finding, review, exchange, or planning preparation -> output one source-pinned publication face -> apply the exact neighboring FPF pattern if work, evidence, gate, engineering-justification, control, or release use becomes live.
+**Working action spine.** Publish one source-pinned face -> separate source episteme or episteme-lane view, face, carrier, admissible publication use, and any live downstream typed value plus its governing FPF pattern/reference -> use the face for inspection, source-finding, review, exchange, or planning preparation -> output one source-pinned publication face -> apply the exact neighboring FPF pattern if work, evidence, gate, engineering-justification, control, or release use becomes live.
 
 **Ordinary formality rule.** If the face only supports orientation, source-finding, review, comparison, or planning preparation, keep the publication light: one pinned face or compact card plus a clear admissible-use line is enough.
 
@@ -18891,14 +20987,14 @@ As SoTA evolves, new bundles can be added or TEVB can gain a new edition with a 
 
 **Boundary aid pointer.** If one encountered publication-facing item is easy to read as work, evidence, gate, approval, status, explanation, comparison, or narrower-use rendering, handle one live claim or effect at a time using `E.17:5.1d`.
 
-Here in the first-screen read, keep only the MVPK publication move: one source-pinned face, one admissible publication use, and exact neighboring FPF patterns or exact project-side FPF kinds and references only as far as the current use needs.
+Here in the first-screen read, keep only the MVPK publication move: one source-pinned face, one admissible publication use, and exact neighboring FPF patterns or typed downstream values only as far as the current use needs.
 
 
 **Not this pattern when.** Not this pattern when the live issue is performed `U.Work`, a work plan, evidence path, provenance path, engineering justification, gate decision, control architecture, carrier work, OCR work, or a narrower-use rendering that needs its own source-bearing return. Use the exact FPF pattern that governs that issue.
 
 > **Tech‑name:** `U.MultiViewPublicationKit` (**MVPK**)
 > **Plain‑name:** Multi‑view publication kit. The morphism-publication profile is the canonical formal profile.
-> **General publication-face form:** one MVPK face is a `U.View` emitted over one source `U.Episteme` or episteme-lane `U.View`, under one publication `U.Viewpoint`, one `U.PublicationScope`, declared pins where needed, one face kind, and one admissible publication use. The face adds no claim by readable form. Evidence use, authority use, gate use, work use, release use, and engineering-justification use require the exact neighboring FPF pattern and exact project-side FPF kind and reference that carry that downstream use.
+> **General publication-face form:** one MVPK face is a `U.View` emitted over one source `U.Episteme` or episteme-lane `U.View`, under one publication `U.Viewpoint`, one `U.PublicationScope`, declared pins where needed, one face kind, and one admissible publication use. The face adds no claim by readable form. Evidence use, authority use, gate use, work use, release use, and engineering-justification use require the exact neighboring FPF pattern and typed project-side value/reference that carry that downstream use, such as a `GateDecision`, evidence path, work occurrence, status source, or authority-reference relation.
 > **Canonical morphism profile (conceptual form):**  `MVPK : (U.Morphism, Σ_viewpoints) ↦ U.ViewFamily` with per‑viewpoint components
 > `ViewObj_s : U.Object → U.ViewObj_s` and `Emit_s(-) : U.Morphism → U.ViewMorph_s`,
 > such that `(ViewObj_s, Emit_s)` forms a functor `U → View_s(U)`. For each `s ⪯ t`, a **reindexing coercion**
@@ -18965,7 +21061,7 @@ Provide a disciplined way to publish one source episteme or episteme-lane view a
     * **Rendering** = display layout of a carrier, purely graphical formatting; **`U.Work` on carriers** (A.7), not a `SurfaceKind`.
     * **Representation** = episteme↔referent relation (`C.2.1`, `A.6.2` through `A.6.4`); **not** a publication operation and not a `SurfaceKind` operation. Use **publication** and **view** here; treat presentation and rendering as **`U.Work` on carriers** (`A.7`).
 * **ISO mapping note.** ISO **viewpoint** → `PublicationVPId` (publication lane); **engineering viewpoint** → `EngineeringVPId` (E.TGA E.18:5.12). An ISO **view** may be a single MVPK face; “bundles” are packaging only.
-* **No‑mechanism equivalence:** MVPK **is not** a mechanism; any operational toil, such as build, render, or upload work, is **separate `U.Work` by a system on carriers** (A.7; see **Rule 5 — No Γ-leakage** in §6).
+* **No‑mechanism equivalence:** MVPK **is not** a mechanism; any operational activity, such as build, render, or upload work, is **separate `U.Work` by a system on carriers** (A.7; see **Rule 5 — No Γ-leakage** in §6).
 * **ViewpointSpec (`U.Viewpoint`)** — a typed specification that declares stakeholders, concerns, conformance rules, allowed **Publication Characteristics**, and pinning requirements per profile. The index set `Σ` consists of identifiers of `U.Viewpoint` instances, typically drawn from `U.ViewpointBundle` species (E.17.1 or E.17.2) (see §5.3).
 * **Explanation-use profile values.** Existing faces may state an explanation-use profile value as `SourcePinnedExplanation`, `SourceLinkedExplanationReconstruction`, `DidacticRetelling`, or `SpeculativeRetelling`, but those are local profile values over already existing MVPK faces rather than new face kinds, explanation kinds, or carrier-rendering kinds. Per-face pins, provenance anchors, and no-new-A.6.B-boundary-claims discipline still apply.
 
@@ -18977,11 +21073,11 @@ For functional-description publications, MVPK governs the publication lane only.
 
 **Unsupported neighboring claims.** The publication does not by itself assert performed `U.Work`, gate passage, evidence, engineering justification, supervisory relation or control relation, release permission, or a new TGA kind.
 
-**Interface and protocol proximity.** When interface, protocol, schema, boundary, or API wording appears beside a functional-flow description, keep the operational boundary, interface, or protocol claim with its own project claim set and exact project-side FPF kind and reference, governed by the relevant FPF pattern such as `A.6.B`, `A.6.C`, or `E.18`. Do not absorb it into the functional-flow publication by layout proximity.
+**Interface and protocol proximity.** When interface, protocol, schema, boundary, or API wording appears beside a functional-flow description, keep the operational boundary, interface, or protocol claim with its own project claim set and exact typed project-side value and reference, governed by the relevant FPF pattern such as `A.6.B`, `A.6.C`, or `E.18`. Do not absorb it into the functional-flow publication by layout proximity.
 
 **Retargeting.** If the publication changes the governed target from an already described component, process, material `U.Entity`, or source claim into a functional, control, or flow architecture claim, this is not a same-entity publication-use change. Use `A.6.4`, `OntologicalReframing`, or `E.18` as applicable.
 
-**Source recovery.** When a requested use requires an exact project-side FPF kind and reference beyond the publication face, the engineer first recovers the corresponding existing project-side FPF value if one already carries the needed claim:
+**Source recovery.** When a requested use requires an exact typed project-side value and reference beyond the publication face, the engineer first recovers the corresponding existing project-side FPF value if one already carries the needed claim:
 
 - work-relevant source restoration under `A.15.4`;
 - project `U.Method`, `U.WorkPlan`, or work-result record under `A.15`;
@@ -18994,7 +21090,7 @@ For functional-description publications, MVPK governs the publication lane only.
 - representation relation under `A.6.3.RT`;
 - reduced-use-rendering relation under `A.6.3.CSC`.
 
-**No backdating.** If no existing exact project-side FPF kind and reference carries a claim that was supposed to be already supported, do not create a backdated source. Create only a prospective repair request, decision request, future work-plan entry, or explicit source-gap note, and treat the earlier claim or effect as unsupported until the required source exists.
+**No backdating.** If no existing exact typed project-side value and reference carries a claim that was supposed to be already supported, do not create a backdated source. Create only a prospective repair request, decision request, future work-plan entry, or explicit source-gap note, and treat the earlier claim or effect as unsupported until the required source exists.
 
 Ordinary orientation and source-finding can stay as an inline note.
 
@@ -19009,11 +21105,11 @@ When a morphism publication is encountered or reused, name the relevant lane bef
 * the publication form used by the local pattern, if one is live;
 * the `U.View`-typed MVPK face (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) that renders the publication for a viewpoint;
 * the SCR/RSCR carrier or rendering work that holds or displays it;
-* the exact project-side FPF kind and reference or authority-reference relation when the next work or reliance claim depends on that named authority-reference relation, approval source, gate source, release source, or exact project-side FPF kind and reference.
+* the exact typed project-side value and reference or authority-reference relation when the next work or reliance claim depends on that named authority-reference relation, approval source, gate source, release source, or exact typed project-side value and reference.
 
-The practical payoff is that a reader can recover exactly what may be relied on: the episteme claim, the published form, the view, the carrier, the exact project-side FPF kind and reference, or the authority-reference relation. A dashboard tile, generated explanation, card face, credential view, or carrier can guide source-finding, but it does not by itself become the source claim or effect, gate decision, evidence relation, assurance claim, role or status, work occurrence, or permission.
+The practical payoff is that a reader can recover exactly what may be relied on: the episteme claim, the published form, the view, the carrier, the exact typed project-side value and reference, or the authority-reference relation. A dashboard tile, generated explanation, card face, credential view, or carrier can guide source-finding, but it does not by itself become the source claim or effect, gate decision, evidence relation, assurance claim, role or status, work occurrence, or permission.
 
-**Source-exposure rule.** A publication face, carrier, rendering, dashboard tile, credential view, status view, comparison unit, explanation rendering, signed decision memo, release decision record, approval speech-act publication, or gate dashboard may expose, cite, or carry an exact project-side FPF kind and reference only when that value is recoverable under its governing FPF pattern and exact source relation. It does not become that value by readability, layout, title, color, fluency, proximity, copying, generation, or reuse. When the exposed value is a real `SpeechAct`, `GateDecision`, evidence path, credential source, status source, `U.Work` occurrence record, `U.Episteme`, or `U.EpistemePublication`, rely on that typed and recoverable value and its FPF-governed source relation; otherwise treat the face, carrier, display, or rendering as orientation or source-finding only.
+**Source-exposure rule.** A publication face, carrier, rendering, dashboard tile, credential view, status view, comparison unit, explanation rendering, signed decision memo, release decision record, approval speech-act publication, or gate dashboard may expose, cite, or carry an exact typed project-side value and reference only when that value is recoverable under its governing FPF pattern and exact source relation. It does not become that value by readability, layout, title, color, fluency, proximity, copying, generation, or reuse. When the exposed value is a real `SpeechAct`, `GateDecision`, evidence path, credential source, status source, `U.Work` occurrence record, `U.Episteme`, or `U.EpistemePublication`, rely on that typed and recoverable value and its FPF-governed source relation; otherwise treat the face, carrier, display, or rendering as orientation or source-finding only.
 
 **No retroactive source creation.** When required source support is missing, a new entry can be only a prospective repair request, future decision request, prospective work-plan entry, or explicit source-gap note. It must not be read as earlier evidence, approval, gate passage, instituting speech act, `U.Work` occurrence, release permission, engineering justification, or assurance for the unsupported past claim or effect.
 
@@ -19032,7 +21128,7 @@ Use this vocabulary when a publication face, rendering, generated text, comparis
 | `source-retrieved` | The cited source has actually been recovered for the current check. This still does not show that it was used correctly or supports the local claim. |
 | `source-used` | The inspectable generation, rewrite, rendering, comparison, work, or reliance source-use relation actually used the named source rather than only similar background. If that relation is unavailable, treat the item as pointer-only or orientation-only until a source-use relation is recovered. |
 | `source-faithful` | The item stays within the source claim relation or source support relation for the stated use; omissions, declared source-loss modes, and additions are visible enough to inspect. |
-| `claim-supported` | The local claim is recoverable from the source, declared correspondence support, or required exact project-side FPF kind and reference for the stated use. |
+| `claim-supported` | The local claim is recoverable from the source, declared correspondence support, or required exact typed project-side value and reference for the stated use. |
 | `claim-unsupported` | The local claim is not recoverable from the source support currently available. |
 | `claim-contradicted` | The local claim conflicts with the available source support. |
 | `claim-plausible-only` | The claim may sound reasonable, but the source support currently available does not carry it. |
@@ -19041,9 +21137,9 @@ Use this vocabulary when a publication face, rendering, generated text, comparis
 | `claim-widened` | The item turns a source possibility, hypothesis, bounded condition, low-confidence statement, narrower permission, or source-finding cue into a wider claim or use. |
 | `added-linkage` | The item adds a causal, explanatory, bridge, comparison, work, evidence, gate, or authority relation not already carried by the source support. |
 | `independent-verification-present` | A separate check supports the local claim or use independently of the item only through a named governing pattern and exact record, such as an `A.10` evidence path, `B.3` assurance claim, `A.21` `GateDecision`, `A.20` constraint profile, `A.15` `U.WorkPlan`, `A.15.1` dated `U.Work` occurrence, or `F.9` Bridge Card. |
-| `admissible-for-this-use` | The item is admissible for the named use only; wider downstream use still needs the exact neighboring FPF pattern and exact project-side FPF kind and reference. |
+| `admissible-for-this-use` | The item is admissible for the named use only; wider downstream use still needs the exact neighboring FPF pattern and exact typed project-side value and reference. |
 | `downstream-use-forbidden` | The item must not be used for the named downstream claim or effect because the needed source support is absent, source-loss-declared, contradicted, or outside scope. |
-| `reopen-trigger-present` | A stated change, dispute, use escalation, source update, context shift, missing support, or contradiction forces return to the source-bearing side or to the governing FPF pattern and exact project-side FPF kind and reference. |
+| `reopen-trigger-present` | A stated change, dispute, use escalation, source update, context shift, missing support, or contradiction forces return to the source-bearing side or to the governing FPF pattern and exact typed project-side value and reference. |
 
 Patterns may use shorter local field names such as `sourceSupportPosture`, `explanationSourcePosture`, or `representationValiditySupportPosture` when the local object is clear. Comparative patterns split source-support posture from comparative-relation posture instead of using one overloaded field. The local field must still be interpretable through the vocabulary above, and the admissible use must be named beside it when downstream reliance could change.
 
@@ -19057,11 +21153,11 @@ Use these terms when a publication face, rendering, narrower-use rendering, expl
 | --- | --- |
 | `orientation use` | The item helps a reader find, inspect, triage, compare, teach, discuss, or prepare planning while the item itself does not support a downstream work, reliance, claim, or effect. |
 | `reliance use` | The item is used as support for an engineering claim or effect that changes a next work or reliance move, such as method choice, work plan, performed-work claim, release, gate, approval, role or status, evidence, assurance, or external-impact move. |
-| `work, reliance, claim, or effect` | A claim or instituted effect about method selection, selected method, `U.WorkPlan`, performed `U.Work`, work result, gate or release, role or status, evidence, assurance, boundary or policy effect, or another exact project-side FPF kind and reference. |
-| `operative claim` | A claim whose acceptance would change the next admissible work or reliance move, the exact project-side FPF kind and reference to recover, or the cross-context use of the item. Explanatory prose, examples, and source-finding cues are not operative claims unless they are used that way. |
-| `non-admissible downstream use` | A wider use that the current item source relation does not carry. It requires narrowing the use, returning to the source-bearing side, recovering source support, or using the exact neighboring FPF pattern and exact project-side FPF kind and reference that governs the wider claim or effect. |
+| `work, reliance, claim, or effect` | A claim or instituted effect about method selection, selected method, `U.WorkPlan`, performed `U.Work`, work result, gate or release, role or status, evidence, assurance, boundary or policy effect, or another exact typed project-side value and reference. |
+| `operative claim` | A claim whose acceptance would change the next admissible work or reliance move, the exact typed project-side value and reference to recover, or the cross-context use of the item. Explanatory prose, examples, and source-finding cues are not operative claims unless they are used that way. |
+| `non-admissible downstream use` | A wider use that the current item source relation does not carry. It requires narrowing the use, returning to the source-bearing side, recovering source support, or using the exact neighboring FPF pattern and exact typed project-side value and reference that governs the wider claim or effect. |
 | `reopen trigger` | A dispute, use escalation, missing, stale, or contradictory source support, source update, context or window change, or wider claim or effect that requires source-bearing return, source refresh, re-expansion, or use of the governing pattern. |
-| `authority-looking case` | A recognition phrase for an encountered item that may be over-read as permission, approval, evidence, gate passage, role or status, work occurrence, assurance, or release support. It is not a `U.*` kind, not an exact project-side FPF kind and reference, and not a governing pattern. |
+| `authority-looking case` | A recognition phrase for an encountered item that may be over-read as permission, approval, evidence, gate passage, role or status, work occurrence, assurance, or release support. It is not a `U.*` kind, not an exact typed project-side value and reference, and not a governing pattern. |
 
 #### E.17:5.1d - Compact Boundary Aid For The Live Claim or Effect
 
@@ -19077,7 +21173,7 @@ When a publication-facing item, publication face, rendering, narrower-use render
 
 | Live claim or effect question | Apply or recover |
 | --- | --- |
-| Is the item being used to guide a work or reliance move by appearance, while the acting user still needs the exact project-side FPF kind and reference before proceeding? | `A.15.4` for the restoration step; the recovered value may then be `A.15`, `A.15.1`, `A.10`, `B.3`, `A.20`, `A.21`, `A.2.8`, `A.2.9`, `A.6.B`, or another exact project-side FPF kind and reference. If that exact value is already the live question, use it directly. |
+| Is the item being used to guide a work or reliance move by appearance, while the acting user still needs the exact typed project-side value and reference before proceeding? | `A.15.4` for the restoration step; the recovered value may then be `A.15`, `A.15.1`, `A.10`, `B.3`, `A.20`, `A.21`, `A.2.8`, `A.2.9`, `A.6.B`, or another exact typed project-side value and reference. If that exact value is already the live question, use it directly. |
 | Is the item being used as evidence, provenance, attestation, currentness, freshness, or claim-bound support? | `A.10` evidence, provenance, or currentness path for the exact claim. |
 | Is the item being used as engineering justification, assurance, confidence, readiness, or limitations support? | `B.3` assurance or engineering-justification claim with evidence, limits, and decay explicit. |
 | Is the item being used as gate passage, constraint validity, adjudication, or release decision support? | `A.20` or `A.21` project records, including gate profile, constraint profile, decision record, log reference, scope, window, replay support, and freshness support. |
@@ -19090,13 +21186,13 @@ When a publication-facing item, publication face, rendering, narrower-use render
 | Is the item being used as bridge, substitution, equivalence, "same", "equivalent", "align", or "map" wording, or cross-context comparison support? | Use Part F and `A.6.9` for repairing "same", "equivalent", "align", or "map" wording into explicit bridge work; use `F.9` or `F.9.1` for Bridge Cards, bridge kind, direction, `CL`, loss notes, admissible use, and stance overlays. Comparison alone is not a bridge. |
 | Is the live question carrier, export, OCR, screen, front-end behavior, or work on carriers? | `A.7` and the exact carrier relation, front-end relation, or work-on-carrier record. |
 
-**Evidence-path boundary.** An `A.10` evidence, provenance, attestation, freshness, or currentness path supports only the exact claim it instantiates. It does not approve or authorize work, pass a gate, perform work, supply release permission, or raise assurance or engineering-justification posture unless the exact project-side FPF kind and reference that carries that downstream claim is also instantiated, such as `A.15.4`, `A.15`, `A.20`, `A.21`, or `B.3`.
+**Evidence-path boundary.** An `A.10` evidence, provenance, attestation, freshness, or currentness path supports only the exact claim it instantiates. It does not approve or authorize work, pass a gate, perform work, supply release permission, or raise assurance or engineering-justification posture unless the exact typed project-side value and reference that carries that downstream claim is also instantiated, such as `A.15.4`, `A.15`, `A.20`, `A.21`, or `B.3`.
 
 **Gate-display boundary.** A dashboard tile, status view, or release screen may expose a gate decision only when the `GateDecisionRef`, gate or constraint profile version, target release or work scope, time window, currentness, freshness or replay support, and evidence path are recoverable. Without that exact gate support, the display remains orientation or source-finding only; it is not a gate decision, gate passage, release permission, or performed-work record by color, label, layout, or proximity.
 
 #### E.17:5.1e - Local review fields are not FPF kinds
 
-Local review fields and values in CR, RT, CSC, EFP, ID.CR, or a neighboring publication-use pattern are local review aids for one case. They are not `U.Kind`, `SurfaceKind`, `RelationKind`, `KindBridge`, `EvidenceKind`, `SlotKind`, `GateDecision`, `SpeechAct`, `Commitment`, `U.Work`, publication face, `authoritySourceRef` target, or exact project-side FPF kind and reference unless another governing FPF pattern explicitly instantiates that object. When a local field starts carrying one of those loads, cite or apply the governing FPF pattern and exact project-side FPF kind and reference that carry it.
+Local review fields and values in CR, RT, CSC, EFP, ID.CR, or a neighboring publication-use pattern are local review aids for one case. They are not `U.Kind`, `SurfaceKind`, `RelationKind`, `KindBridge`, `EvidenceKind`, `SlotKind`, `GateDecision`, `SpeechAct`, `Commitment`, `U.Work`, publication face, `authoritySourceRef` target, or exact typed project-side value and reference unless another governing FPF pattern explicitly instantiates that object. When a local field starts carrying one of those downstream claims, cite or apply the governing FPF pattern and exact typed project-side value and reference that carry it.
 
 #### E.17:5.1f - Shared anti-overread invariants for publication-facing items
 
@@ -19108,9 +21204,14 @@ Use the exact FPF pattern that governs the live claim or effect. Keep any local 
 
 **Most-likely careful reading constraint.** Design and word a publication-facing item so its most likely careful reading does not exceed its named source relation, admissible use, and governing FPF pattern. A visible head such as `Approved` needs a visible `GateDecision` or a different head; a sorted comparison needs its comparator or sorting basis visible if no recommendation claim is intended; a generated explanation separates inferred links from pinned source claims by wording, label, or source anchor.
 
-**Visual cue load.** Layout, order, color, prominence, icon, grouping, and proximity are carrier or front-end cues that can carry publication-move load even when the words do not. Green color may imply readiness, top position may imply preference, grouping may imply equivalence, proximity to evidence may imply support, a badge form may imply approval, and a lock or checkmark may imply verification. If the visual cue would make the reader treat the item as evidence, gate passage, decision, recommendation, reliance support, bridge support, or approval, recover the exact governing FPF pattern and exact project-side kind and reference, or redesign the publication face so the overread is no longer invited.
+**Visual cue claim pressure.** Layout, order, color, prominence, icon, grouping, and proximity are carrier or front-end cues that can carry publication-move pressure even when the words do not. Green color may imply readiness, top position may imply preference, grouping may imply equivalence, proximity to evidence may imply support, a badge form may imply approval, and a lock or checkmark may imply verification. If the visual cue would make the reader treat the item as evidence, gate passage, decision, recommendation, reliance support, bridge support, or approval, recover the exact governing FPF pattern and exact project-side kind and reference, or redesign the publication face so the overread is no longer invited.
+
 
 **Extraction survival.** When a `PublicationUnit` is excerpted, quoted, screenshotted, summarized, copied into a tutorial, retold by a generator, or moved to a slide, it keeps only the claims, source pins, boundary line, exact references, and admissible use carried in that extracted item. Any use that depended on hidden neighboring context is lost unless that context is carried by source pins, a boundary line, or an exact reference. A dashboard screenshot does not carry the underlying gate record, a quoted comparison row does not carry the full comparison basis unless the basis is included or referenced, a copied explanation paragraph does not carry source pins unless pins remain recoverable, and a pattern excerpt does not carry the whole pattern boundary unless the excerpt states or cites it.
+
+
+
+
 
 
 **No-extra-pattern case.** If a publication-facing item only supports ordinary orientation, learning, source-finding, review, comparison, or planning preparation, and no operative work or reliance, evidence, gate, assurance, bridge, source-dispute, or release claim is live, keep the existing publication source relation and proceed with ordinary use. The visible closure may be: no operative work or reliance, evidence, gate, assurance, bridge, source-dispute, release, durable naming, or project-side support claim recovered; ordinary publication wording remains admissible for the current use.
@@ -19119,7 +21220,7 @@ Use the exact FPF pattern that governs the live claim or effect. Keep any local 
 
 **Strategic overread invariant.** Apply the same anti-overread rules whether the misleading reading is accidental, conventional, incentive-driven, or intentionally induced by publication design. Green status color without `GateDecisionRef`, reviewed-looking wording without approval, selective source links without operative-claim support, comparison ordering without selection decision, hidden caveats behind a source link, or pins for trivial claims beside unpinned causal linkage do not create evidence, gate, decision, assurance, work, release, or bridge support by design pressure.
 
-**Carrier-travel invariant.** A copied, exported, screenshotted, summarized, generated, translated, or re-rendered publication-facing item may carry orientation or source-finding cues. It does not carry evidence support, authority-reference support, gate passage, approval, engineering-justification support, work occurrence, currentness, or release support unless the governing FPF pattern and exact project-side FPF kind and reference remain recoverable for that exact use.
+**Carrier-travel invariant.** A copied, exported, screenshotted, summarized, generated, translated, or re-rendered publication-facing item may carry orientation or source-finding cues. It does not carry evidence support, authority-reference support, gate passage, approval, engineering-justification support, work occurrence, currentness, or release support unless the governing FPF pattern and exact typed project-side value and reference remain recoverable for that exact use.
 
 **Derivative-chain decay.** A second-order rendering inherits at most the admissible use that is explicitly carried from the prior source relation. It does not inherit source faithfulness, source support, currentness, authority-reference support, gate support, work support, or reliance support by default.
 
@@ -19132,21 +21233,22 @@ Use the exact FPF pattern that governs the live claim or effect. Keep any local 
 This preservation rule also applies across extraction, translation, screenshotting, summary, and generated retelling. A translated permission is not wider permission, a screenshot of approval-looking display is not an approval record, a summary of evidence is not an evidence path, and a generated retelling of a decision is not the decision record unless the exact governing source relation and source pins survive in the new publication-facing item.
 
 
-**Reader position is not project role.** Reader position, audience, target user model, verifier position, reviewer position, and learner position do not become project roles, role assignments, decision authority, gate authority, issuer roles, or work roles unless a project-side FPF kind and reference instantiates that role relation.
+**Reader position is not project role.** Reader position, audience, target user model, verifier position, reviewer position, and learner position do not become project roles, role assignments, decision authority, gate authority, issuer roles, or work roles unless a typed project-side value and reference instantiates that role relation.
 
 **Source-gap states.** When support is missing, say which gap is live: source not named; source named but unavailable; source available but not used; source used but insufficient; source stale or outside its window; source contradicted; source accountable role or register mismatch. Block only the unsupported effect and keep any reduced admissible use available.
 
-**Metric and display overread.** A number, score, percentage, color, rank, confidence value, similarity value, dashboard state, or metric display is orientation only until the measurement source, aggregation rule, validity window, population or scope, calibration or evidence path, and intended use are governed by the exact project-side FPF kind and reference. Evidence-like use applies `A.10`; assurance-like use applies `B.3`; gate-like use applies `A.20` or `A.21`; work or reliance use applies `A.15.4` and then the recovered exact project-side FPF kind and reference; bridge or substitution use applies `F.9` or `F.9.1`.
+**Measure and display overread.** A number, score, percentage, color, rank, confidence value, similarity value, dashboard state, or measurement display is orientation only until the measurement source, aggregation rule, validity window, population or scope, calibration or evidence path, and intended use are governed by the exact typed project-side value and reference. Evidence-like use applies `A.10`; assurance-like use applies `B.3`; gate-like use applies `A.20` or `A.21`; work or reliance use applies `A.15.4` and then the recovered exact typed project-side value and reference; bridge or substitution use applies `F.9` or `F.9.1`.
 
-**World-contact stop.** Publication-facing items do not self-refresh after source update, revocation, policy change, system-state change, incident, model update, environmental change, or new external observation. A live outside change requires source refresh, reissued publication, or a new governed exact project-side FPF kind and reference before work, evidence, gate, control, carrier, or other downstream use continues.
 
-**Functional-description boundary.** A functional, architectural, descriptive, representational, or explanatory fit claim does not create permission, obligation, approval, gate passage, release support, performed-work evidence, or engineering justification. Those uses require the exact neighboring FPF pattern and exact project-side FPF kind and reference.
+**World-contact stop.** Publication-facing items do not self-refresh after source update, revocation, policy change, system-state change, incident, model update, environmental change, or new external observation. A live outside change requires source refresh, reissued publication, or a new governed exact typed project-side value and reference before work, evidence, gate, control, carrier, or other downstream use continues.
+
+**Functional-description boundary.** A functional, architectural, descriptive, representational, or explanatory fit claim does not create permission, obligation, approval, gate passage, release support, performed-work evidence, or engineering justification. Those uses require the exact neighboring FPF pattern and exact typed project-side value and reference.
 
 **Mixed bundle no-shared-evidence-support rule.** A bundle with source-pinned, reduced-use, speculative, didactic, comparison, and evidence-facing parts cannot be read under one shared evidence-support class or admissible-use posture borrowed from another member. Each operative claim keeps its own source relation and non-admissible downstream use.
 
 **Educational usefulness.** Didactic, onboarding, tutorial, and workshop usefulness is real orientation support. It is not evidence, gate passage, approval, work occurrence, engineering justification, release permission, or bridge support.
 
-**Comparison exposes conflict; it does not adjudicate it.** A comparison note may expose contradiction, asymmetry, different foregrounding, or unresolved residue. It does not settle the conflict, select an option, approve release, pass a gate, or create bridge or substitution support unless the exact neighboring FPF pattern and exact project-side FPF kind and reference carry that result.
+**Comparison exposes conflict; it does not adjudicate it.** A comparison note may expose contradiction, asymmetry, different foregrounding, or unresolved residue. It does not settle the conflict, select an option, approve release, pass a gate, or create bridge or substitution support unless the exact neighboring FPF pattern and exact typed project-side value and reference carry that result.
 
 **Same publication-facing item, multiple readings.** A green release dashboard can be one MVPK face for source-finding, an `A.10` currentness path or evidence path when the evidence query is recoverable, an `A.21` gate-decision view when the `GateDecisionRef` is recoverable, or an unsupported release cue when those sources are missing. A generated comparative explanation can be an `E.17.EFP` explanation-use case, an `E.17.ID.CR` comparison case, a `A.6.3.CR` generated-summary case, or source-finding only; it is never all of those under one shared evidence-support class or admissible-use posture by fluency alone.
 
@@ -19155,7 +21257,7 @@ This preservation rule also applies across extraction, translation, screenshotti
 - **Green dashboard tile.** A tile says `Model ready`. Treat the tile as the `PublicationUnit` when that tile carries the live release overread. The useful action is source-finding and status orientation unless an exact `GateDecisionRef`, gate profile, source relation, and evidence or currentness support are recoverable. Without those, the tile is not release permission or gate passage by green color or placement.
 - **Generated explanation with source links.** A generated text explains a method and cites sources. The explanation rendering is not source replacement. Source links support only the pinned operative claims they actually carry. If work or reliance is live, use `A.10` for the exact evidence path or keep the rendering as reader help; if the rendering is deliberately reduced-use, use `A.6.3.CSC`.
 - **Comparison table.** A table compares two methods and places one first. Ordering is not selection. The comparison basis, source anchors, shared review frame, and unsupported downstream claim remain visible. Choice or decision needs `C.11`; equivalence or bridge support needs `F.9` or `F.9.1`.
-- **Unrecovered source wording.** A draft uses source-object wording, support-view shorthand, or generic unit wording without naming the FPF kind. Recover the FPF kind stack instead of minting support-object or support-view pseudo-kinds. Use `PublicationUnit` only when a bounded reader-inspected unit inside a publication is live; otherwise use the exact episteme, view, publication, carrier relation, section of a named non-pattern FPF publication form whose support function and reference are recoverable, `A.6.P` relation claim, or exact project-side FPF kind and reference.
+- **Unrecovered source wording.** A draft uses source-object wording, support-view shorthand, or generic unit wording without naming the FPF kind. Recover the FPF kind stack instead of minting support-object or support-view pseudo-kinds. Use `PublicationUnit` only when a bounded reader-inspected unit inside a publication is live; otherwise use the exact episteme, view, publication, carrier relation, section of a named non-pattern FPF publication form whose support function and reference are recoverable, `A.6.P` relation claim, or exact typed project-side value and reference.
 
 - **Translated tutorial.** A translated tutorial may improve reader access to an FPF pattern. It is a derivative rendering, not the original source. Operative claims need source mapping for reliance, translated heads may need `E.17.AUD.LHR` or `E.10.SEMIO`, and `F.18` is live only when durable naming, UTS, Core-facing, or cross-context naming work is intended.
 
@@ -19257,7 +21359,7 @@ The catalog **MAY** be extended (see “Extensibility” below); PCs **must** re
 * **E17‑PC‑3 (No hidden arithmetic).** Faces **MUST NOT** smuggle aggregation or normalization; any such logic lives in **CG‑Spec** (UNM or NormalizationMethod) and is cited by **…Ref.edition**.
 * **E17‑PC‑4 (Plane & crossing).** When a PC depends on **ReferencePlane** or crosses ReferencePlane crossings or Context crossings, the face **SHALL** cite `BridgeId` and **CL** policy‑ids; penalties apply to the **R‑channel only**.
 * **E17‑PC‑5 (Edition pinning).** PCs that rely on maps or distances **SHALL** pin `DescriptorMapRef.edition`, `DistanceDefRef.edition`, and, if used, both `CharacteristicSpaceRef.edition` and `TransferRulesRef.edition`.
-* **E17‑PC‑6 (Viewpoint scope).** Each PC instance declares the **Viewpoint** under which it is valid; promotion `PromoteView[s→t]` **MUST NOT** strengthen claims; at most, it reindexes or annotates.
+* **E17‑PC‑6 (Viewpoint scope).** Each PC instance declares the **Viewpoint** under which it is valid; promotion `PromoteView[s→t]` **MUST NOT** add or widen claims; at most, it reindexes or annotates.
 * **E17‑PC‑7 (Comparator or SetSemantics edition).** `PC.ComparatorSetRef` and any `SetSemanticsRef` **SHALL carry edition identifiers**; cards MUST be re‑emitted upon edition change with migration notes.
 
 **Publication faces and responsibilities.**
@@ -19281,7 +21383,7 @@ The catalog **MAY** be extended (see “Extensibility” below); PCs **must** re
 **Adding invariants.**
 1) Place **new invariants** for PCs in **CG-Spec** (specification lane), not on faces; supply acceptance tests.
 2) Version any affected **CharacteristicSpace**; publish embeddings if semantics change; never mutate slots in place.
-3) Update the relevant **GateChecks** or **GateProfiles** (`A.21`, `A.26`, including GateCrossing and CrossingSurface checks from `E.18` and `A.27`) to warn or block on invariant violations; never weaken functorial invariants.
+3) Update the relevant **GateChecks** or **GateProfiles** (`A.21`, including GateCrossing checks and crossing-visibility checks from `E.18`, `F.9`, and relevant Part G bridge or crossing wiring) to warn or block on invariant violations; never weaken functorial invariants.
 4) **Document** edition and migration rules; extend §9 with a conformance item and provide **Lean‑profile downgrade** (advisory vs block) where applicable.
 
 #### E.17:5.6 - Author ergonomics (non‑normative)
@@ -19301,6 +21403,7 @@ The catalog **MAY** be extended (see “Extensibility” below); PCs **must** re
 3. `no-new-claim diff`: red-line against the governing D-side or S-side episteme shows formatting, indexing, pinning, or view-refinement work only.
 4. `monotone promotion`: promotion from a plainer face to a richer face adds fields, pins, or typing without retracting or strengthening the source claim.
 5. `scope non-widening`: `PublicationScope` stays within the relevant `ClaimScope` or `WorkScope`, and promotion does not widen it.
+
 
 
 For any composable arrows `X —f→ Y —g→ Z` in `U`, and any `s, t ∈ Σ_viewpoints`:
@@ -19325,7 +21428,7 @@ For any composable arrows `X —f→ Y —g→ Z` in `U`, and any `s, t ∈ Σ_v
 4. **Pin discipline (Part F and Part G).**
      * Any numeric or comparable content in a view SHALL pin {UnitType, ScaleKind, ReferencePlane}. **EditionId MAY be coarse at Lean profiles**; if units and scale are unknown, **declare ordinal compare-only** and **forbid arithmetic** until CHR pins are available.  Pins upgrade monotonically with profile and risk.
 5. **No Γ‑leakage (publication independence).**
-    Publication morphisms carry **no** Γ\_method, Γ\_time, or Γ_work semantics. Any build, render, or upload toil is **separate `U.Work` by a system on carriers** (`A.7`).
+    Publication morphisms carry **no** Γ\_method, Γ\_time, or Γ_work semantics. Any build, render, or upload activity is **separate `U.Work` by a system on carriers** (`A.7`).
      **Lean assurance lane:** `AssuranceLane‑Lite` MAY expose only presence bits for {PathId or PathSlice?, Γ_time window?, BridgeId?}; unknowns propagate (tri‑state) with an explicit {degrade|abstain|sandbox} policy note.
 6. **Carrier provenance.**
     Every emitted view records its **SCR/RSCR ids** on first occurrence (A.7 §5.6).
@@ -19372,7 +21475,7 @@ Read these examples as local tests for MVPK invariants, not as source citations 
     * Profunctor and optic accounts are useful only as a source idea for why compositional publication matters. The local FPF test is still the MVPK witness: emit the face for `g∘f`, compose the emitted faces for `f` and `g`, and compare them. If the comparison is not supplied or fails, the face stays non-compositional or explanatory-only; optics vocabulary does not carry the rule by analogy.
 
 4. **Functional-description publication (`PlainView` + `TechCard`).**
-    A principle scheme or functional diagram can publish a readable relation from signature or principle episteme content to method-family selection, selected method, `U.WorkPlan`, performed `U.Work`, work-result record, and result measurement. The MVPK faces may help a team inspect that relation and prepare a work plan, but they do not turn the diagram, table, screen, or export into work occurrence, gate passage, evidence, engineering justification, or supervisory or control architecture. For those uses, the team first recovers the existing exact project-side FPF kind and reference that carries the claim when available: work-relevant source restoration under `A.15.4`, project `U.Method`, `U.WorkPlan`, and dated `U.Work` occurrence under `A.15` and `A.15.1`, evidence or provenance path under `A.10`, engineering-justification record under `B.3`, gate or constraint decision under `A.20` or `A.21`, or supervisory or control architecture record under `B.2.5`. If no existing source carries the needed claim, create only a prospective repair request, future decision request, prospective work-plan entry, or explicit source-gap note; do not backdate evidence, gate passage, work occurrence, release permission, engineering justification, or assurance for the earlier claim.
+    A principle scheme or functional diagram can publish a readable relation from signature or principle episteme content to method-family selection, selected method, `U.WorkPlan`, performed `U.Work`, work-result record, and result measurement. The MVPK faces may help a team inspect that relation and prepare a work plan, but they do not turn the diagram, table, screen, or export into work occurrence, gate passage, evidence, engineering justification, or supervisory or control architecture. For those uses, the team first recovers the existing exact typed project-side value and reference that carries the claim when available: work-relevant source restoration under `A.15.4`, project `U.Method`, `U.WorkPlan`, and dated `U.Work` occurrence under `A.15` and `A.15.1`, evidence or provenance path under `A.10`, engineering-justification record under `B.3`, gate or constraint decision under `A.20` or `A.21`, or supervisory or control architecture record under `B.2.5`. If no existing source carries the needed claim, create only a prospective repair request, future decision request, prospective work-plan entry, or explicit source-gap note; do not backdate evidence, gate passage, work occurrence, release permission, engineering justification, or assurance for the earlier claim.
 
 
 ### E.17:9 - Conformance checklist (normative)
@@ -19446,7 +21549,7 @@ A conformance check is retained only if it changes the next admissible use of th
 | Joint ISO, IEC, and IEEE 42010:2022 architecture-description practice separates architecture description, stakeholder concern, viewpoint, view, model kind, correspondence, and correspondence rule instead of letting one readable model face stand in for all of them. | MVPK publishes one source-pinned face over an existing source `U.Episteme` or `U.View`; every load-bearing face names its publication `U.Viewpoint` and the `PublicationVPId` reference when that reference is used, names concerns, keeps `U.View`, viewpoint, carrier work, rendering work, correspondence support, concrete exchange envelope, and evidence envelope separate, and passes the no-new-claim diff before any work, evidence, gate, assurance, carrier, or bridge use is considered. | Adopt explicit source, concern, view, viewpoint, correspondence, and model-kind separation; reject the shortcut where a readable architecture or model face becomes evidence, work occurrence, gate passage, release permission, bridge support, or concrete exchange authority by presentation alone. |
 | Profunctor and optic accounts (2017-2019; source maturity = research or theory line, not load-bearing without local witness) support compositional views that compose like arrows. | MVPK adopts only local publication-composition tests: identity, composition witness, no-new-claim diff, monotone promotion, and scope non-widening. | Adopt the five-test publication-composition bundle; reject optics vocabulary as proof by analogy or as a replacement for local witnesses. |
 | Refinement-typed ecosystems (2016+; source maturity = widely used technical practice) keep units, scales, and type-like constraints attached to values. | MVPK publication faces carry pins and CHR and CG anchors; local test: numbers, thresholds, and characteristic claims on faces have units, scales, reference-plane support, and edition support where load-bearing. | Adapt pin discipline; reject readable numbers as self-validating values. |
-| Interoperability and evidence-envelope practice (source maturity = mature standards or practice, depending on concrete envelope) separates exchange format and carrier evidence from the claim being carried. | MVPK faces may expose evidence carriers or exchange envelopes, but concrete formats live outside Part E; local test: the face adds no claim and points back to the governing source or evidence path. | Adapt envelope discipline; reject treating envelope presence as semantic truth, evidence sufficiency, work occurrence, or gate passage. |
+| Interoperability and evidence-envelope practice (source maturity = mature standards or practice, depending on concrete envelope) separates exchange format and carrier evidence from the claim being carried. | MVPK faces may expose evidence carriers or exchange envelopes, but concrete formats live outside Part E; local test: the face adds no claim and points back to the governing source or evidence path. | Adapt envelope discipline; reject treating envelope presence as semantic authority, evidence sufficiency, work occurrence, or gate passage. |
 
 (References are selected because they support local MVPK invariants and tests; MVPK remains notation-agnostic.)
 
@@ -19454,10 +21557,10 @@ A conformance check is retained only if it changes the next admissible use of th
 ### E.17:13 - Relations
 
 * **Builds on:** `A.7` and `E.10.D2` for carrier and front-end discipline plus strict I-, D-, and S-discipline; `A.6.2`-`A.6.3` for episteme morphisms, `U.EffectFreeEpistemicMorphing`, and `U.EpistemicViewing`; `E.17.0` for `U.MultiViewDescribing`; `E.8` and `E.10` for authoring and publication-language discipline; Part F and Part G for bridge, terminology, characteristic, and pin discipline.
-* **Constrains:** publication-face-emitting automation and hand-authored publication faces. They remain species of `U.EpistemicViewing` over existing D-side and S-side epistemes and may not become a second I->D->S mechanism, evidence path, gate decision, work occurrence, assurance record, release source, or bridge declaration by readable form.
+* **Constrains:** publication-face-emitting automation and hand-written publication faces. They remain species of `U.EpistemicViewing` over existing D-side and S-side epistemes and may not become a second I->D->S mechanism, evidence path, gate decision, work occurrence, assurance record, release source, or bridge declaration by readable form.
 * **Current neighboring-pattern boundaries from `E.17:5.1d`:** work or reliance support applies `A.15.4`, with `A.15` for role, method, plan, and work alignment and `A.15.1` for one dated `U.Work` occurrence; evidence, provenance, attestation, currentness, and freshness apply `A.10`; engineering justification, assurance, confidence, readiness, and limitations apply `B.3`; gate passage, constraint validity, adjudication, and release decision support apply `A.20` or `A.21`; same-entity textual restatement applies `A.6.3.CR`; same-entity representation-scheme or reasoning-medium change applies `A.6.3.RT`; deliberately narrower-use rendering applies `A.6.3.CSC`; explanation-facing rendering applies `E.17.EFP`; bounded comparative review applies `E.17.ID.CR`; changed described entity, target, ontology frame, or governed claim applies `A.6.4`, `OntologicalReframing`, or the exact retargeting or reframing pattern; carrier, export, OCR, screen, front-end behavior, or work on carriers applies `A.7`.
-* **Part F bridge wording boundary:** when the publication face uses or invites "same", "equivalent", "align", "map", substitutable, interchangeable, attribute, entity, or profile matching, or other bridge-wording load across contexts, the wording repair belongs to Part F and `A.6.9`; the bridge support belongs to `F.9` or `F.9.1`. `E.17` does not create a local bridge taxonomy.
-* **Coordinates with:** B-operators for no Gamma-leakage, C-cluster selection or archive patterns where views remain publication faces rather than selections, CHR and UNM for measurement and normalization semantics, `F.9` or `F.9.1` for bridge support, `A.6.9` for sameness wording, and the neighboring source patterns named above. This section is relation and neighboring-pattern boundary truth for publication use, not a standing decision tree or process order.
+* **Part F bridge wording boundary:** when the publication face uses or invites "same", "equivalent", "align", "map", substitutable, interchangeable, attribute, entity, or profile matching, or other bridge-wording claim pressure across contexts, the wording repair belongs to Part F and `A.6.9`; the bridge support belongs to `F.9` or `F.9.1`. `E.17` does not create a local bridge taxonomy.
+* **Coordinates with:** B-operators for no Gamma-leakage, C-cluster selection or archive patterns where views remain publication faces rather than selections, CHR and UNM for measurement and normalization semantics, `F.9` or `F.9.1` for bridge support, `A.6.9` for sameness wording, and the neighboring source patterns named above. This section is a relation and neighboring-pattern boundary statement for publication use, not a standing decision tree or process order.
 
 ### E.17:14 - Minimal authoring template (Part E)
 
@@ -19466,7 +21569,7 @@ A conformance check is retained only if it changes the next admissible use of th
 
 ### E.17:15 - Manager’s one‑page review (copy‑paste)
 
-> “We publish every **morphism** under a declared **set of viewpoints** using **MVPK**. Each **view** that claims functorial composition carries the local composition witness; without that witness it stays non-compositional or explanatory-only. Each face **adds no new claims** and pins **unit, scale, reference‑plane, and edition** with **CHR and CG** anchors. **`InteropCard`** views clarify concerns and semantics only (concrete exchange lives outside Part E); **`AssuranceLane`** cites evidence carriers (SCR). Any cross‑Context or cross-plane view cites **Bridge+CL** (Φ→R only). Publication toil is **`U.Work` on carriers**, not a mechanism change.”
+> “We publish every **morphism** under a declared **set of viewpoints** using **MVPK**. Each **view** that claims functorial composition carries the local composition witness; without that witness it stays non-compositional or explanatory-only. Each face **adds no new claims** and pins **unit, scale, reference‑plane, and edition** with **CHR and CG** anchors. **`InteropCard`** views clarify concerns and semantics only (concrete exchange lives outside Part E); **`AssuranceLane`** cites evidence carriers (SCR). Any cross‑Context or cross-plane view cites **Bridge+CL** (Φ→R only). Publication build, render, or upload activity is **`U.Work` on carriers**, not a mechanism change.”
 
 ### E.17:End
 ## E.17.EFP - ExplanationFaithfulnessProfile — explanation-use discipline over existing MVPK faces
@@ -19497,7 +21600,7 @@ A conformance check is retained only if it changes the next admissible use of th
 
 **Working action spine.** One explanation-facing rendering is helping a reader -> separate source-pinned rendering, bounded reconstruction, didactic retelling, and speculative retelling -> use the explanation for understanding, source navigation, bounded restatement, teaching, or exploration according to class -> output one class plus safe next action -> apply the neighboring FPF pattern if reliance, evidence, work, gate, engineering justification, comparison, narrower-use rendering, or new-claim load appears. Use `E.17:5.1c` for `orientation use`, `reliance use`, `operative claim`, `non-admissible downstream use`, and `reopen trigger`; use `E.17:5.1d` when the primary live question may be same-entity rewrite, representation change, coarsening, comparison, bridge or substitution, work or reliance, gate, evidence, assurance, retargeting, or carrier work or front-end work instead of explanation-facing rendering.
 
-**Ordinary use.** If the explanation only helps reading, source-finding, review, comparison, or planning preparation, one compact review note naming the explanation class, source anchor, and non-admissible downstream claim or effect is enough.
+**Ordinary use.** If the explanation only helps reading, source-finding, review, comparison, or planning preparation, one compact review note naming the explanation class, source anchor, and non-admissible downstream claim or effect is enough. Plain wording remains ordinary unless it changes admissible use, support, evidence, gate, assurance, work, decision, or neighboring-pattern exit.
 
 **Load-bearing use.** Open the fuller explanation review only when the rendering will guide work or reliance, be externally relied on, be disputed, cross context, affect person or team status, or be cited as evidence, approval, engineering justification, gate, or release support.
 
@@ -19509,20 +21612,21 @@ A conformance check is retained only if it changes the next admissible use of th
 | --- | --- | --- |
 | A `SourcePinnedExplanation` or `SourceLinkedExplanationReconstruction` helps navigation, bounded restatement, or source inspection with pins and trace visible. | A didactic explanation helps onboarding or helps the team find the source, while operative claims still return to the source-pinned face or `A.10` evidence path. | A fluent explanation is used as assurance, evidence, approval, gate passage, release permission, or work-occurrence support. |
 
-
 **Neighboring project records and governing patterns.** `E.17.ID.CR` governs bounded comparative reading; `A.6.3.CR` or `A.6.3.RT` govern same-entity rewrite or representation change; `A.6.3.CSC` governs a rendering that stays honest only through narrower admissible claim or effect, non-admissible downstream claim or effect, and reopen to the source `U.Episteme` or source `U.EpistemePublication`; `A.6.4` or `OntologicalReframing` govern changed described entity; `A.15` and `A.15.4` govern downstream work or reliance, `B.3` governs assurance and engineering justification, and `A.20` or `A.21` govern gate-bearing claim or effect.
 
 **Common wrong escalations and boundary transfers.** Do not use this profile to hide new claims, bridge-comparison load, action-selection pressure, or gate-bearing guidance inside helpful prose. If the rendering is really a bounded comparison, apply `E.17.ID.CR`; if it is only same-entity rewriting or representation shift, apply `A.6.3.CR` or `A.6.3.RT`; if it is a deliberately coarsened rendering whose narrower admissible claim or effect, non-admissible downstream claim or effect, and source-bearing reopen now govern the case, apply `A.6.3.CSC`; if it is already making world, work or reliance, assurance, or gate-bearing claims, leave `E.17.EFP` for the more exact downstream FPF pattern or project-side record.
 
-**Generated-explanation repaired case.** When a generated explanation is used to help reliance, this profile only states the explanation relation, source-finding posture, and `E.17:5.1b` source-support posture needed for the current use. The explanation becomes usable for an operative claim only when an `A.10`-governed evidence path maps that claim to the exact source passage, carrier path, or exact project-side FPF kind and reference that supports it in the relying context. If that path or exact project-side FPF kind and reference is missing, create only a prospective repair request, explicit source-gap note, or future evidence-work plan; it does not become retroactive support for the earlier explanation-based claim. Do not open an `A.10` path for ordinary reader help; otherwise the generated explanation remains reader help, not approval, authorization, evidence, assurance, gate passage, or work-occurrence support.
+**Generated-explanation repaired case.** Use this case when a generated explanation is being relied on beyond reading help. The first E.17.EFP move is to classify the rendering as source-pinned rendering, source-linked reconstruction, didactic retelling, or speculative retelling. The profile only states the explanation relation, source-finding posture, source anchors, admissible explanation-reader use, non-admissible downstream use, and reopen condition for the current rendering. The explanation becomes usable for an operative claim only when an `A.10`-governed evidence path maps that claim to the exact source passage, carrier path, or exact project-side FPF kind and reference that supports it in the relying context. If the operative claim would raise assurance, release confidence, safety, trust, gate passage, work occurrence, work authorization, or approval, the receiving pattern must be opened for that exact claim: `B.3` for assurance, `A.21` for gate decision, `A.15`/`A.15.1` for work, `A.2.8`/`A.2.9` for commitments or speech acts, or another exact source when live. If the map or exact project-side FPF kind and reference is missing, keep only a prospective repair request, source-gap note, or narrower explanation-use note; if operative reliance is still attempted, the receiving `A.10`, `B.3`, `A.21`, or other exact relation may return evidence-needed, abstain, or no-supported-current-use for that attempted reliance. Do not open an `A.10` path for ordinary reader help; otherwise the generated explanation remains reader help, not approval, authorization, evidence, assurance, gate passage, release support, or work-occurrence support.
+
+**Common wrong first reading.** A fluent, confident, source-linked, or reliable-looking explanation is evidence. First honest entry: classify the explanation rendering and use it for reading or source-finding; only an operative claim with an A.10 evidence path or another exact receiving source can support downstream reliance.
+
+Negative result: if a generated explanation says "reliable" but no operative claim maps to source support, the E.17.EFP result is source-finding only or reader help only. If an attempted downstream reliance is still raised, the receiving `A.10`, `B.3`, `A.21`, or other exact relation may return evidence-needed or no-supported-current-use for that attempted reliance. It is not weak evidence by style, confidence, fluency, or citation-like wording.
 
 **Generated-retelling survival.** A generated retelling preserves only the reader help, source-finding cue, quoted source pins, explicitly repeated source relation, and explicitly repeated admissible-use boundary that remain inspectable in that retelling. It does not become or preserve the source `U.Episteme`, source `U.EpistemePublication`, evidence path, assurance, gate passage, decision status, permission, or source replacement merely by fluency, completeness-looking wording, or citation-like links. If the generated retelling compresses, omits, strengthens, or changes source claims, treat the result as a new explanation-use case, a narrower-use rendering under `A.6.3.CSC`, or reader help only.
 
+**Derivative rendering and adaptation source-link rule.** A fork, adaptation, abridged guide, translated rendering, generated explanation, tutorial, access-format conversion, or other derivative rendering of a source `U.Episteme` or source `U.EpistemePublication` may improve access or teaching, but it is not equivalent to the source by usefulness, fluency, or local adoption. It may expose or cite an exact project-side FPF kind and reference, but the support belongs to the exposed value and source relation, not to the explanation rendering as a face. If the derivative rendering will guide work or reliance, `A.10` must map every operative claim being relied on to the exact source passage, carrier path, or exact project-side FPF kind and reference that supports it; if the map or exact value is absent, only a prospective repair request, explicit source-gap note, or prospective evidence-work plan may be created. If simplification or format change narrows allowed use, forbids downstream use, or requires return to the source-bearing side, use `A.6.3.CSC` rather than treating the derivative as ordinary explanation.
 
-**Derivative rendering and adaptation source-link rule.** A fork, adaptation, abridged guide, translated rendering, generated explanation, tutorial, access-format conversion, or other derivative rendering of a source `U.Episteme` or source `U.EpistemePublication` may improve access or teaching, but it is not equivalent to the source by usefulness, fluency, or local adoption. It may expose or cite an exact project-side FPF kind and reference, but the support belongs to the exposed value and source relation, not to the explanation rendering as a face. If the derivative rendering will guide work or reliance, `A.10` must map every operative claim being relied on to the exact source passage, carrier path, or exact project-side FPF kind and reference that supports it; if the map or exact value is absent, only a prospective repair request, explicit source-gap note, or future evidence-work plan may be created. If simplification or format change narrows allowed use, forbids downstream use, or requires return to the source-bearing side, use `A.6.3.CSC` rather than treating the derivative as ordinary explanation.
-
-**Explanation-rendering identity over revision and regeneration.** A generated, translated, revised, or regenerated explanation-facing rendering is not the same explanation rendering merely because it uses the same source face, prompt, template, carrier, or title. For use beyond ordinary reader help, the rendering must name the preserved source anchors, changed claims, generation or authoring basis when live, and admissible use for this rendering. A translation or adaptation preserves admissible use only when the operative claims and source links survive the change; otherwise it becomes a new explanation-use case, a narrower-use rendering under `A.6.3.CSC`, or reader help only.
-
+**Explanation-rendering identity over revision and regeneration.** A generated, translated, revised, or regenerated explanation-facing rendering is not the same explanation rendering merely because it uses the same source face, prompt, template, carrier, or title. For use beyond ordinary reader help, the rendering must name the preserved source anchors, changed claims, generation or production basis when live, and admissible use for this rendering. A translation or adaptation preserves admissible use only when the operative claims and source links survive the change; otherwise it becomes a new explanation-use case, a narrower-use rendering under `A.6.3.CSC`, or reader help only.
 
 **Placement.** Profile governed by `E.17.0` and `E.17` review.
 **Builds on.** `E.17.0 U.MultiViewDescribing`; `E.17` MVPK; `A.7`; `E.10.D2`; `A.6.B`; `F.9`; `F.18`.
@@ -19914,9 +22018,10 @@ Use core ordinary checks first. Conditional rows open only when reader-fit, bund
    When bounded connective prose is doing real review work, the rendering states what link is added, why it remains bounded, and which unsupported link class is explicitly forbidden.
 8. **CC-EF-12 — Derivative renderings keep source links operative.**
    A fork, adaptation, translation, generated explanation, tutorial, access-format conversion, or other derivative rendering that will guide work or reliance maps each operative claim to the exact source passage, carrier path, or exact project-side FPF kind and reference that supports it, or else downgrades to reader help or applies `A.6.3.CSC` as appropriate.
+9. **CC-EF-13 — Generated explanation reliance boundary is explicit.**
+   A generated explanation used beyond ordinary reader help states its explanation class, source-finding posture, operative claims, receiving pattern for each relied-on claim, and non-admissible downstream use. The explanation itself is not evidence, assurance, approval, gate passage, release support, or work authority.
 
 ### E.17.EFP:8 - Common Anti-Patterns and How to Avoid Them
-
 
 | Anti-pattern | Why it is wrong | How to avoid it |
 |---|---|---|
@@ -19927,6 +22032,7 @@ Use core ordinary checks first. Conditional rows open only when reader-fit, bund
 | Letting speculative prose enter technical or assurance use | speculative retelling starts to look canonical | restrict speculative retelling to clearly marked exploratory or didactic use on existing faces |
 | Collapsing MVPK face and `PublicationSurface` or `InteropSurface` discipline | explanation appears to create a new publication family | stay on existing MVPK faces and keep named `PublicationSurface` or `InteropSurface` and carrier policy explicit |
 | Derivative rendering as source replacement | a fork, adaptation, generated explanation, tutorial, or access-format conversion is treated as the original source because it is easier to read or access | keep it as a derivative rendering, publish source links for operative claims, and use `A.10` or `A.6.3.CSC` when reliance or narrowed-use discipline is live |
+| Explanation as evidence or assurance | a fluent or source-linked explanation is cited as proof, approval, gate passage, release support, work authority, or assurance | classify the rendering, keep ordinary reader help inside E.17.EFP, and open `A.10`, `B.3`, `A.21`, `A.15`, or another exact receiving source only for the operative claim being relied on |
 
 ### E.17.EFP:9 - Consequences
 
@@ -19960,6 +22066,8 @@ Explanation help already appears on existing faces, and the nearest failure mode
 
 **Local stance.** Best-known current practice supports a narrow rule: explanation renderings are admissible only when their class, source anchoring, evidence relation, admissible faces, and forbidden downstream uses remain visible enough that reader help does not become a second semantic rule track.
 
+Action result from the explanation-faithfulness and retrieval-evaluation practice basis: fluent, source-linked, generated, retrieved, didactic, or pedagogically useful explanations do not become evidence, assurance, approval, gate passage, release support, work authority, or operative-claim support by fluency, plausibility, citation-like wording, or retrieved context. The local E.17.EFP result is explanation class, source anchor, admissible explanation use or source-finding posture, non-admissible downstream use, and operative-claim mapping to `A.10` or another exact receiving pattern only when reliance is live. Reopen the explanation-use result when the source claim set, pins, provenance, retrieved context, generated rendering, admissible face, use escalation, or support for an operative claim changes.
+
 ### E.17.EFP:12 - Relations
 
 - **Builds on:** `E.17.0`, `E.17`, `A.7`, `E.10.D2`, `A.6.B`, `F.9`, `F.18`
@@ -19971,8 +22079,8 @@ Explanation help already appears on existing faces, and the nearest failure mode
 
 > When an explanation-facing rendering uses a mathematical lens as part of an explanation, `E.17.EFP` still governs rendering class, source anchoring, evidence relation, admissible faces, and forbidden downstream uses. The applicable `C.29` output for the stated use (`MLA.LensCandidateNote`, `MLA.OneLine`, `MLA.MiniCard`, or `MLA.FullCard` when required) may be cited only for the mathematical-lens adequacy part: candidate mathematical object, lens mapping mode, preserved and lost structure, exposed invariant or distinction, `LensSupportPosture`, admissible use, non-admissible use, and stop condition. It does not make the explanation faithful, evidence-bearing, or admissible for downstream use by itself.
 
-
 ### E.17.EFP:End
+
 ## E.17.ID.CR - ComparativeReading — bounded comparative reading over comparative review units
 
 > **Status:** Stable
@@ -21805,50 +23913,89 @@ Heavier declaration comes only after the ordinary card already holds.
 ### E.18:1 - Intent
 
 Provide a **notation‑independent** architecture for graphs whose vertices are **morphisms (transductions)** and whose edges are **typed transfers**. The architecture is **agnostic to the concrete morphism set** and equips the graph with **publication, comparability, crossing, and budget** disciplines so that **flows** are **valuations over paths** within the same graph object. Faces appear via **MVPK**; numeric/comparable publication carries **pins** with **Bridge/CL** notes; Φ/CL^plane penalties remain in **R**.
-*Style note:* wording follows the **counterfactual register** of FPF: invariants are stated as model conditions, not deontic obligations (per E.8 style and the assignment).
+*Style note:* When this pattern states admissibility criteria, phrase them as model conditions: if the declared graph, path, crossing, or publication conditions hold, the E.TGA explanation applies; otherwise it does not apply. Use duty verbs only for named conformance minima.
+
+**Use this when.** Use E.TGA when the live question is whether a project description needs one transduction graph relation, one graph crossing, or one flow valuation over `U.Transfer` rather than an ordered process narrative.
+
+**First useful move.** Name the graph object, the node kinds, the single `U.Transfer` edge kind, and the exact crossing or path slice whose pins are required.
+
+**Smallest sufficient graph and path guidance.** Use the lightest graph and path guidance that preserves the next admissible reader move. Add extra pins, witnesses, `DecisionLog` detail, `CrossingBundle`, `PQG`/`RSCR`, or MIP-run material only when the live claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
+
+**Minimum sufficient next move.** For the ordinary case, name `TransductionGraph`, the active `PathId` or `PathSliceId` when a path or slice is live, the node kinds, one `U.Transfer`, and only the crossings or pins that are live. If there is no crossing, comparison, launch, or refresh claim, do not open `CrossingBundle`, `GateProfile`, or `DecisionLog`.
+
+**Do not escalate when.** Do not create a graph kind from semio wording, lineage metadata, tool-pipeline order, or reference-flow prose. Keep those as source wording or neighboring support unless a live `TransductionGraph`, path, flow valuation, or crossing relation is being governed here.
+
+**Same problem, different live question.** For a TGA-looking problem, use `E.18` for graph/flow/crossing, `A.20` for internal step validity, `A.21` for gate-decision publication, and `E.20` for mechanism-meaning placement; do not open the other three until their own claim is live.
+
+**Semantic repair return.** When E.TGA blocks a misleading word, face, alias, or source label, the repair must return to the enabled graph/path/crossing action: name the graph relation, path or flow valuation, or crossing boundary that remains admissible. Do not stop at a classification of vocabulary or publication faces.
+
+**Governed-object and relation separation.** Keep the graph object and path or crossing relation (`E.18`), MVPK publication faces (`E.17`), internal CV status and witness (`A.20`), gate decision and `DecisionLog` (`A.21`), evidence or provenance relation (`A.10`/`G.6`), work plan or work occurrence (`A.15`), and mechanism-governing definition assignment (`E.20`) distinct. An MVPK face, `DecisionLog`, evidence carrier, MIP manifest, or work witness does not carry another pattern's project-side value unless that exact governing pattern consumes it for that relation.
+
+**Smallest affected locus.** Localize the change to the smallest live locus: `PathSlice` or crossing in `E.18`, CV step in `A.20`, `GateDecision` equivalence class in `A.21`, or mechanism-governing definition in `E.20`. Do not widen to a whole flow or unrelated governed object when that locus is enough.
+
+**Ordinary success.** For ordinary E.TGA use, success is that the graph object, path or slice, single transfer edge kind, and any live crossing boundary are placed without hidden process order or hidden scalarization. A full conformance pass is needed only when the downstream claim consumes expanded assurance or conformance material.
+
+**Locality asymmetry.** `E.18` is graph-local, `A.20` is step-local, `A.21` is gate-local, and `E.20` is trigger-local. Do not normalize the four patterns into one assurance regime.
+
+**Do not merge these pairs.** Keep `CV.Status` distinct from `GateDecision`, TGA `Check` distinct from `GateCheckKind`, MIP manifest distinct from `DecisionLog`, `ViewpointMap` distinct from graph semantics, `PathSlice` distinct from a work run, and `GateProfile=Lite` distinct from `PublishMode=Lite`.
+
+**Field liveness.** Always core for E.TGA: graph object, node kinds, one `U.Transfer`, and the path or slice being governed. Conditional-live: `CrossingBundle`, `GateProfile`, `DecisionLog`, `ViewpointMap`, evidence carriers, refresh pins, and launch/work-boundary fields; open them only when the corresponding crossing, publication, evidence, refresh, gate, or work-boundary claim is live.
+
+**Retrieval trap guard.** When excerpted alone, E.TGA vocabulary must not be read as governing `GateCheckRef`, full viewpoint taxonomy, or gate publication semantics. `A.21` governs gate publication, `E.17` governs MVPK faces, and S12-style viewpoint material is conditional support, not the graph architecture itself.
+
+**Anti-Goodhart guard.** Passing E.TGA conformance is not a substitute for the governed graph result: the graph must still avoid hidden process order, hidden crossings, hidden scalarization, and unsupported path/slice currentness.
+
+**Generative side.** E.TGA preserves open-ended action by keeping set-return, archive preservation, admissible loops, and budgeted refresh visible; these are not merely assurance checks, but the reason the graph can carry multiple future paths without collapsing them into one score or one pipeline.
+
+**What goes wrong if missed.** A reader may treat a reference flow, a semio word such as `transition`, or a tool pipeline as a new graph kind or a second process order, then lose comparability, crossing evidence, and slice-local refresh boundaries.
+
+**What this buys.** E.TGA lets the reader keep graph structure, publication pins, crossings, CV/GF separation, and refresh locality in one current architecture without turning every domain path into its own flow doctrine.
+
+**Not this pattern when.** If the problem is only internal step constraint satisfaction, use `A.20`. If it is gate profile fit or gate decision aggregation, use `A.21`. If it is mechanism-intension meaning, citeable-token denotation, suite membership, planned-baseline pins, or wiring semantics, use `E.20`. If the text asserts that work occurred or should occur, use the work and enactment loci; `E.18` can locate entry to `U.WorkEnactment` as a crossing, but it does not assert work occurrence. If the text only uses semio wording such as `transition` without a live transduction relation and governed object, do not mint a graph kind; keep the phrase in the semio pattern or source-local wording that carries it.
 
 ### E.18:2 - Problem frame
 
-Teams can produce many **valid flows** over the same capability: e.g., the assignment’s reference path
+Teams can produce many **valid flows** over the same capability: e.g., the P2W reference path
 `U.FormalSubstrate → U.PrincipleFrame → U.Mechanism → U.ContextNormalization (UNM) → U.SelectionAndTuning ↔ U.WorkPlanning → U.Work → U.EvaluatingAndRefreshing`
-is one **path** among many possible domain paths. Without a common **graph‑level architecture**:
+is one **path** among many possible domain paths. Without a common **graph architecture**:
 
 * flows look ad‑hoc and **non‑comparable**;
 * cross‑Context **crossings** (plane/Context changes) are undocumented;
-* publication surfaces **smuggle arithmetic** or restate I/O;
+* MVPK faces carry **hidden arithmetic** or restate I/O;
 * set‑returning selection is silently replaced by **single scores**;
 * cycles lack **budget** discipline; refresh is **out‑of‑band**.
 
-MVPK already fixes publication drift at the **single‑arrow** level; E.TGA lifts those **publication and comparability laws** to the **graph as a whole**.
+MVPK already fixes publication drift at the **single-arrow** scope; E.TGA lifts those **publication and comparability laws** to the **graph as a whole**.
 
 ### E.18:3 - Problem
 
-1. **Morphisms ≠ Graph.** A catalog of morphism‑level patterns (e.g., UNM, Selector, Work, Refresh) does not, by itself, explain **how the whole graph is built, constrained, and audited**.
-2. **Flow proliferation.** Multiple “reference flows” can be authored; readers need **one orchestration** that keeps them legal and comparable **without privileging any single flow**.
-3. **Unsafe publication.** Faces re‑list I/O, hide scalarization, or omit edition/plane pins; cross‑Context reuse lacks **Bridge/CL** citation; **plane penalties** leak to F/G.
+1. **Morphisms ≠ Graph.** A catalog of morphism-scoped patterns (e.g., UNM, Selector, Work, Refresh) does not, by itself, explain **how the whole graph is built, constrained, and audited**.
+2. **Flow proliferation.** Multiple “reference flows” can be declared; readers need **one graph discipline** that keeps them admissible and comparable **without privileging any single flow**.
+3. **Unsafe publication.** Faces re‑list I/O, hide scalarization, or omit edition/plane pins; cross‑Context reuse lacks **Bridge/CL** citation; **plane penalties** appear in F/G instead of R.
 4. **Cycles without norms.** Selection↔Planning loops run without explicit **budget (Γ_time)**, **FreshnessRequest**, or **slice‑scoped** refresh; `FinalizeLaunchValues` (launch‑value slot filling) is performed too early (outside `U.Work` (`U.WorkEnactment`)).
 
 ### E.18:4 - Forces
 
 | Force                                            | Tension                                                                                                                                                                    |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Universality vs specialization**               | One architecture must cover supply chains, water networks, ML functionals, and the assignment’s “first‑principles → work” path, **without** baking in any one morphism set. |
+| **Universality vs specialization**               | One architecture needs to cover supply chains, water networks, ML functionals, and the P2W first-principles-to-work path, **without** baking in any one morphism set. |
 | **Publication neutrality vs auditability**       | Keep faces notation‑neutral and non‑mechanistic ↔ require **pins**, **ComparatorSet**, **Bridge/CL**, and **PublicationScope**.                                            |
-| **Set legality vs business pressure for totals** | Preserve **return‑sets / lawful partial orders** ↔ stakeholders demand single numbers.                                                                                     |
-| **Cross‑Context reuse vs safety**                | Enable reuse across `U.BoundedContext` ↔ enforce **Bridge/CL** with **R‑only penalties**.                                                                                  |
+| **Set-return discipline vs business pressure for totals** | Preserve **return sets and declared partial orders** ↔ stakeholders demand single numbers.                                                                                     |
+| **Cross‑Context reuse vs safety**                | Enable reuse across `U.BoundedContext` ↔ require **Bridge/CL** with **R‑only penalties**.                                                                                  |
 | **Agility vs reproducibility**                   | Permit evolving CG‑Spec/UNM/Comparator editions ↔ require **edition pins** and **re‑emission** on change.                                                                  |
 | **Cycles vs convergence**                        | Allow Selection↔Planning iteration ↔ impose **budget** and **slice‑scoped** refresh to prevent thrash.                                                                     |
 
 ### E.18:5 - Solution — the E.TGA kit (graph model + choreography)
+**Dominant Solution moves.** In ordinary E.TGA use, keep five moves primary: name one graph object; distinguish the graph from a flow valuation; place gates only on crossings or the `U.WorkEnactment` boundary; preserve normalize-before-compare and set-return discipline; and keep cycles under budget plus `PathSlice` refresh. S12 viewpoint mapping remains conditional support when engineering or publication viewpoint mapping is live.
 
-#### E.18::5.1 - S1 - Graph object (conceptual)
+#### E.18:5.1 - S1 - Graph object (conceptual)
 
 Define a **typed, editioned, directed multigraph**
 `TransductionGraph := (V, E, τ_V, τ_E, Γ_time, Bridge, CL, TransportRegistry^Φ)`
 with:
 
-* **Vertices `V`:** instances of `U.Morphism` (open world). Common specialisations **include but are not limited to** the assignment’s set: `U.FormalSubstrate`, `U.PrincipleFrame`, `U.Mechanism`, `U.ContextNormalization (UNM)`, `U.SelectionAndTuning`, `U.WorkPlanning`, `U.Work`, `U.EvaluatingAndRefreshing`. This list is **illustrative**, not exhaustive—the graph **does not depend** on this particular set.
-* **Edges `E`:** a **single edge kind `U.Transfer`** (typed) carrying artifacts/tokens; all **plane/Context/edition** changes occur **only at nodes via `OperationalGate(profile)`** with **Bridge + CL** annotations; penalties **→ R only**. Transport conversions pin **Φ‑policies** and editions.
+* **Vertices `V`:** instances of `U.Morphism` (open world). Common specialisations **include but are not limited to** the P2W illustrative set: `U.FormalSubstrate`, `U.PrincipleFrame`, `U.Mechanism`, `U.ContextNormalization (UNM)`, `U.SelectionAndTuning`, `U.WorkPlanning`, `U.Work`, `U.EvaluatingAndRefreshing`. This list is **illustrative**, not exhaustive—the graph **does not depend** on this particular set.
+* **Edges `E`:** a **single edge kind `U.Transfer`** (typed) carrying carrier refs and token refs; all **plane/Context/edition** changes occur **only at nodes via `OperationalGate(profile)`** with **Bridge + CL** annotations; penalties **→ R only**. Transport conversions pin **Φ‑policies** and editions.
 * **Scopes:** `Γ_time` (budgets, horizons), `PublicationScope` for faces (E.17), and **slice ids** for refresh (G.11).
 
  **CtxState (PS‑projection; closed slots):** `CtxState = ⟨L, P, E⃗, D⟩` is the **projection of E.17 Publication Scope**.
@@ -21859,19 +24006,21 @@ with:
   • `D := DesignRunTag` — `design(T^D)` or `run(T^R)`, used by **LaunchGate** and acceptance/telemetry duties.
  **Invariants.** Raw `U.Transfer` preserves `CtxState` (`⟨L,P,E⃗,D⟩`): it does **not** write/update any CtxState slot; any CtxState write/update (or entry to `U.WorkEnactment`) occurs at `OperationalGate(profile)`.
  **Extension discipline.** Any extra slot beyond ⟨L,P,E⃗,D⟩ **SHALL** be registered in the **E.17/LEX “CtxState Extension Registry”** with slot‑id, intent, partial‑order law (neutral/absorbing), and SquareLaw compatibility; unregistered extensions are non‑conformant.
- **Data‑shape location.** Concrete record shapes for `PathId/PathSliceId`, Γ‑pins, and lineage remain in A.22 `FlowSpec`; E.TGA fixes that **flow = valuation** and that `CtxState` is preserved across raw transfers.
+ **Data-shape location.** E.TGA names the graph and valuation obligations for `PathId`, `PathSliceId`, Γ-pins, and lineage: flow is a valuation over `U.Transfer`, raw transfer preserves `CtxState`, and path or slice evidence is carried through this pattern plus `A.20`, with `G.6` or `G.11` where evidence-path visibility or refresh wiring is live. Use these current loci for path and slice currentness.
+
 
  * **Kinds:** `U.Transduction(kind∈{Signature, Mechanism, Work, Check, StructuralReinterpretation})`.
   **Exact identification (no TGA‑local taxonomy):**
   — `Signature` **≡** **A.6.0** `U.Signature` (universal, law‑governed declaration).
   — `Mechanism` **≡** **A.6.1** `U.Mechanism` (law‑governed application over a SubjectKind/BaseType).
   — `Work` **≡** **A.15** `U.WorkEnactment` (world‑contact; `FinalizeLaunchValues` only here).
-  — `Check` **≡** `OperationalGate(profile)` (universal **gate**; A.* patternisation pending; CC‑TGA catalog applies).
-  — `StructuralReinterpretation` **≡** a species of **A.6.4** `U.EpistemicRetargeting` used as a graph node in E.TGA. **All retargeting semantics** (slot‑level discipline, `DescribedEntitySlot`/`GroundingHolonSlot` behaviour, invariants, Bridges, witnesses) come from **C.2.1** and **A.6.2–A.6.5**; E.TGA does **not** introduce a TGA‑local variant of retargeting.
-  `OperationalGate ≔ U.Transduction(kind=Check)` with DecisionLog aggregation.
-  The only extra discipline E.TGA adds for `StructuralReinterpretation` is **graph‑local**: CtxState and GateCrossing behaviour are governed by **CC‑TGA‑06‑EX** and **CC‑TGA‑11** (projection‑preserving w.r.t. `⟨L,P,E⃗,D⟩`, PathSlice‑local, and “no plane/unit change without a gate”).
+  — `Check` **≡** `OperationalGate(profile)` (universal **gate**; `A.21` governs gate profile, check aggregation, decision, and publication minima).
+  — `StructuralReinterpretation` **≡** the E.TGA placement of **A.6.4** `U.EpistemicRetargeting` as a graph node; it is not a new retargeting kind. **All retargeting semantics** (slot-scoped discipline, `DescribedEntitySlot`/`GroundingHolonSlot` behaviour, invariants, Bridges, witnesses) come from **C.2.1** and **A.6.2–A.6.5**; E.TGA does **not** introduce a TGA-local variant of retargeting.
 
-> **MVPK integration (import).** Every vertex with an external surface is published via **MVPK** faces (`PlainView`, `TechCard`, `AssuranceLane`, `InteropCard`) under a declared **PublicationScope** (E.17). E.TGA **reuses** MVPK’s publication laws (pins, lawful‑order discipline, “no new numeric claims / no I/O re‑listing”) and only adds graph‑level constraints in S3 and **CC‑TGA‑09/10**; it does **not** define a second, local publication semantics.
+  `OperationalGate ≔ U.Transduction(kind=Check)` with DecisionLog aggregation.
+  The only extra discipline E.TGA adds for `StructuralReinterpretation` is **graph-local**: CtxState and GateCrossing behaviour are governed by **CC-TGA-06-EX** and **CC-TGA-11** (projection-preserving w.r.t. `⟨L,P,E⃗,D⟩`, PathSlice-local, and "no plane/unit change without a gate"). `StructuralReinterpretation` is not a gate exception; it is a proof that no GateCrossing occurred. If any `CtxState` slot, plane/unit, edition, or design/run boundary changes, the case is a GateCrossing again.
+
+> **MVPK integration (import).** Every vertex with an external publication face is published via **MVPK** faces (`PlainView`, `TechCard`, `AssuranceLane`, `InteropCard`) under a declared **PublicationScope** (E.17). E.TGA **reuses** MVPK’s publication laws (pins, declared-order discipline, “no new numeric claims / no I/O re‑listing”) and only adds graph-scope constraints in S3 and **CC‑TGA‑09/10**; it does **not** define a second, local publication semantics.
 
 **GateCrossing (normative)**
 **Definition.** A **GateCrossing** is the typed transition at a node that writes/updates any of:
@@ -21889,12 +24038,12 @@ with:
 * the active penalty policy identifiers **`Φ(CL)`** (and **`Ψ(CL^k)`** if used) as **`PolicyIdRef`** bundles (policy-id + `PolicySpecRef` + `MintDecisionRef?`; F.8:8.1);
 * any additional pins mandated by the active **GateProfile** / GateChecks (A.21) for this crossing.
 
-**Obligation.** Every **GateCrossing MUST publish its CrossingBundle**. Missing or non‑conformant CrossingBundle is a **blocking** defect for downstream consumption (selectors, acceptance, audits).
+**Obligation.** Every **GateCrossing MUST publish its CrossingBundle**. Missing or non-conformant CrossingBundle is a **blocking** defect for downstream uses that rely on the crossing (selectors, acceptance, audits). A local descriptive graph with no downstream crossing consumption is not over-penalized by this CrossingBundle rule.
 
 **Term separation.** **Transfer** denotes the sole edge kind `U.Transfer` (graph edges). **Transport** denotes Φ‑governed conversion **policies/registries** (**`TransportRegistry^Φ`** under UNM). Wording “reuse via Transport” refers to registries/policies, not to an additional graph edge.
 
 #### E.18:5.2 - S2 - Flows as valuations (paths + state + guards)
-* A **Flow** is a **valuation** `ν` over `U.Transfer` edges and cut‑sets, paired with an **admissible path** `p = v₀ → … → v_k`. The valuation assigns tokens/states under `CtxState` and records publication events under a declared `PublicationScopeId`. **The concrete pins and identifiers (`PathId`, `PathSliceId`, Γ_time on compare/launch faces) are specified in A.22 `FlowSpec` and A.25 `Sentinel & SubFlow`.** This reflects the “graph ≠ flow” norm (flow = valuation), with gates placed exactly on GateCrossings.
+* A **Flow** is a **valuation** `ν` over `U.Transfer` edges and cut-sets, paired with an **admissible path** `p = v0 -> ... -> vk`. The valuation assigns tokens or states under `CtxState` and records publication events under a declared `PublicationScopeId`. The concrete pins and identifiers (`PathId`, `PathSliceId`, Γ_time on compare and launch faces) are governed here as path and slice publication obligations and by `A.20` when CV witnesses are live; use `G.6` for evidence-path visibility and `G.11` for refresh wiring. This reflects the “graph != flow” norm (flow = valuation), with gates placed exactly on GateCrossings.
 * **Admissible path (definition).** A path `p` is **admissible** iff:
   (a) node/edge types match the declared `τ_V, τ_E`;
   (b) any write/update to any member of `⟨L,P,E⃗,D⟩` (or kind‑retargeting under `StructuralReinterpretation`) appears at **exactly one** `OperationalGate(profile)`;
@@ -21906,12 +24055,12 @@ with:
 * `U.Transfer` preserves `CtxState` (`⟨L,P,E⃗,D⟩`) and carries **Assurance‑operations** only (see S3b); any crossing of locus/plane/editions or `T^D↔T^R` is placed at `OperationalGate(profile)`.
 * A **PathSlice** is a **slice‑scoped execution window** used for refresh/telemetry; faces pin `PathSliceId`; **re‑emission** happens when any pinned edition changes or `SliceRefresh` is triggered by sentinel rules.
 
-> **Consequences.** The assignment’s “reference flow” is simply one `p` in `TransductionGraph`. Other domains (supply chain, water network, NN functional) instantiate different `p` on the **same architecture**.
+> **Consequences.** The P2W reference flow is simply one `p` in `TransductionGraph`. Other domains (supply chain, water network, NN functional) instantiate different `p` on the **same architecture**.
 >
 **Why "flow = valuation" doesn't kill the "something is flowing" intuition**
 There are two complementary perspectives:
 * **Lagrangian (intuitive):** "water particles" run through pipes; you "track" tokens.
-* **Eulerian (architectural):** you define a **function on edges** ("how much/what passes through each edge under a given regime"), with gate laws. E.TGA deliberately fixes the **Eulerian semantics of flow** at the architectural level: "flow (= valuation) + publication log", while the dynamics of "movement" show up as **re-valuation** over a **PathSlice** (the execution/republishing window) under gate rules and the SquareLaw. This yields comparability, reproducibility, and slice-local refresh.
+* **Eulerian (architectural):** you define a **function on edges** ("how much/what passes through each edge under a given regime"), with gate laws. E.TGA deliberately fixes the **Eulerian semantics of flow** at the architectural scope: "flow (= valuation) + publication log", while the dynamics of "movement" show up as **re-valuation** over a **PathSlice** (the execution/republishing window) under gate rules and the SquareLaw. This yields comparability, reproducibility, and slice-local refresh.
 
 #### E.18:5.3 - S3 - Publication discipline (faces)
 
@@ -21921,87 +24070,90 @@ E.TGA **imports E.17** wholesale **and associates MVPK faces with `PublicationSc
 * pin discipline and Publication Characteristics (PC),
 * “no new numeric claims / no I/O re‑listing / no Γ‑semantics on faces”.
 
-E.TGA **does not re‑specify** these laws; it only adds **graph‑level obligations** for faces emitted over transduction paths:
+E.TGA **does not re‑specify** these laws; it only adds **graph-scope obligations** for faces emitted over transduction paths:
 
 1. **Crossings on faces.** When a face participates in a GateCrossing (S1.b/S9), it **SHALL** cite `BridgeId + UTS row + CL` and publish **Φ(CL)/Φ_plane RuleId**; **penalties remain in R‑lane**.
-2. **Gate‑requirement on cited editions.** Any face that references editions of `CG‑Spec` / `ComparatorSet` / `UNM.TransportRegistryΦ` includes **`BridgeCard + UTS row`**; faces without this are treated as **non‑consumable downstream**.  (delegated tests → A.27/A.34)
-3. **ComparatorSet & set returns (graph‑scope).** Any `ComparatorSet` and `SetSemanticsRef` used along a transduction path **SHALL** carry **edition identifiers**; flows **re‑emit** faces on edition change; faces with comparison **return sets / lawful partial orders** (no hidden scalarization), reusing MVPK’s lawful‑order discipline.
-4. **Γ_time on compare/launch faces.** All compare/launch faces on E.TGA paths pin `Γ_time`; implicit *latest* is illegal. The **shape and evaluation** of `Γ_time` live in A.26; E.TGA only mandates presence. **CHR avoids acceptance thresholds** (*NoThresholdsInCHR*); thresholding and launches surface in G‑patterns and `U.Work`.  (delegated tests → A.32/A.33). **Unknowns remain tri‑state (`pass|degrade|abstain`) and fold per GateProfile (A.21/A.26).**
+2. **Gate requirement on cited editions.** Any face that references editions of `CG-Spec`, `ComparatorSet`, or `UNM.TransportRegistryPhi` includes **`BridgeCard + UTS row`**; faces without this are treated as **non-consumable downstream**. Bridge and terminology-synchronization checks are received through `F.9`, `F.17`, `E.17`, and `E.18`; selection and comparator pressure stays with `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, or `G.11` when live.
+3. **ComparatorSet & set returns (graph‑scope).** Any `ComparatorSet` and `SetSemanticsRef` used along a transduction path **SHALL** carry **edition identifiers**; flows **re‑emit** faces on edition change; faces with comparison **return sets and declared partial orders** (no hidden scalarization), reusing MVPK’s declared-order discipline.
+4. **Γ_time on compare and launch faces.** All compare and launch faces on E.TGA paths pin `Γ_time`; implicit *latest* is not admissible. `A.21` carries current GateProfile binding and minimum profile semantics; E.TGA paths SHALL include the pin. **CHR avoids acceptance thresholds** (*NoThresholdsInCHR*); thresholding and launches are carried by `A.21`, Part G, and `U.Work` where live. Unknowns remain tri-state (`pass|degrade|abstain`) and fold per the active GateProfile (`A.21`).
 
 > **Reminder.** MVPK already bans “signature” on faces, I/O re‑listing, arithmetic on faces, and unpinned numeric content (E.17 §5.4–5.5). E.TGA **does not weaken or override** those rules; it only constrains how they are used along transduction paths.
 
-**Lean publish‑mode (AssuranceLane‑Lite).** Lean affects **faces only** (`PlainView`/`AssuranceLane` minimal), not checks; publication shows `GateProfile`, `GateCheckRef[]`, and `DecisionLogRef`; the underlying GateChecks list remains unchanged.
+**Lean publish‑mode (AssuranceLane‑Lite).** Lean changes **publication faces only** (`PlainView`/`AssuranceLane` minimal), not checks; publication shows `GateProfile`, `GateCheckRef[]`, and `DecisionLogRef`; the underlying GateChecks list remains unchanged.
 
-**Decision stability & idempotency (delegated).** Gate decisions are **idempotent** under a congruence relation over inputs; the **witness and equivalence criteria** are specified in **A.41 DecisionLog**. E.TGA **does not** prescribe storage formats, key shapes, or hashing schemes.
+**Decision stability & idempotency (gate-local).** Gate decisions are stable under a declared equivalence relation over the pins used by `A.21`; the witness is recorded as `DecisionLog` or `EquivalenceWitnessRef`, with `G.6` or `G.11` used when evidence-path visibility or refresh implications are live. E.TGA **does not** prescribe storage formats, key shapes, or hashing schemes.
 
 **KindBridge admissibility (publication).**
 Treat a step as a **describedEntity/kind** transition (including `StructuralReinterpretation` under CC‑TGA‑06‑EX) **iff** the **UTS row**:
-  — satisfies the **minimal Bridge row** obligations of A.27 (identity, `ReferencePlane`, `CL/CL^plane`, edition‑pins for `CG‑Spec` / `ComparatorSet` / `UNM.TransportRegistryΦ`, `ComparatorSetRef`, `BridgeId`, `Φ‑RuleIds`), and
+  — satisfies the minimal bridge and terminology-synchronization obligations of `F.9`, `F.17`, `E.17`, and `E.18` where live (identity, `ReferencePlane`, `CL/CL^plane`, edition pins for `CG-Spec`, `ComparatorSet`, `UNM.TransportRegistryPhi`, `ComparatorSetRef`, `BridgeId`, and `Phi-RuleIds`), and
   — is additionally marked as a **KindBridge** per C.3 (`bridgeChannel=Kind`, `CL^k`, mapping or signature‑translation, order‑preservation claims, loss notes, definedness area, determinism).
-Otherwise this KindBridge explanation does not apply (the step falls back to a gated crossing). When the gate owns the crossing, `CrossingRef` is surfaced and linked from the `DecisionLog`.
+Otherwise this KindBridge explanation does not apply (the step falls back to a gated crossing). When the crossing is gate-mediated, `CrossingRef` is cited and linked from the `DecisionLog`.
 
 #### E.18:5.4 - S4 - Assurance‑operations on `U.Transfer` (counterfactual admissibility)
 On `U.Transfer` edges, an operation is interpreted as a **declarative assurance‑operation** **iff** it is one of
 `ConstrainTo(rule)` - `CalibrateTo(map|standard)` - `CiteEvidence(anchor)` - `AttributeTo(agent|role)`; otherwise this explanation does not apply.
 Under this interpretation, `CtxState⟨L,P,E⃗,D⟩` is preserved.
-If an effect entails a plane/unit change, the assurance‑operations explanation does not apply and the step is handled as a gated crossing (`OperationalGate(profile)+Bridge+UTS`).
-If Φ assigns penalties, they appear in the R‑lane; otherwise no penalties are surfaced here.
+If a claimed assurance operation would change plane or units, the assurance-operations explanation does not apply and the step is handled as a gated crossing (`OperationalGate(profile)+Bridge+UTS`).
 
-#### E.18:6.5 - S5 - Comparability & aggregation (normalize‑then‑compare; counterfactual form)
+If Φ assigns penalties, they appear in the R‑lane; otherwise no penalties appear here.
+
+#### E.18:5.5 - S5 - Comparability & aggregation (normalize‑then‑compare; counterfactual form)
 
 The comparison explanation applies under the following admissibility conditions:
 
 * If a path segment intends to compare/aggregate, it is admissible as a comparison **only when** UNM precedes it; UNM is **method‑independent**, publishes **TransportRegistry^Φ** and **CG‑Spec** anchors, and faces cite those editions; otherwise this comparison explanation does not apply.
-* If the comparator defines a **lawful partial order**, then returns are **sets/archives** (Pareto/Archive); if a **total order** is declared, it is the one provided by the comparator; otherwise set semantics apply and covert scalarization is out of scope here.
-* If a claim is **ordinal‑only**, then only comparisons are surfaced; arithmetic transforms (e.g., means/z‑scores) are out of scope of this explanation and belong to declared comparators or downstream policy.
+* If the comparator defines a **declared partial order**, then returns are **sets/archives** (Pareto/Archive); if a **total order** is declared, it is the one provided by the comparator; otherwise set semantics apply and covert scalarization is out of scope here.
+* If a claim is **ordinal‑only**, then only comparison results are published; arithmetic transforms (e.g., means/z‑scores) are out of scope of this explanation and belong to declared comparators or downstream policy.
 
-**Edition‑aware artifacts (e.g., QD archives) MUST pin `DescriptorMapRef.edition` / `DistanceDefRef.edition` (and `CharacteristicSpaceRef.edition` when applicable); refresh is slice‑local.**  (delegated tests → A.34/A.37)
+**Edition-aware set/archive publication records (e.g., QD archives) pin `DescriptorMapRef.edition`, `DistanceDefRef.edition`, and `CharacteristicSpaceRef.edition` when applicable; refresh is slice-local. Comparator, archive, and refresh checks are received through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` when live.**
 
 #### E.18:5.6 - S6 - Cycle discipline (Selection ↔ Planning)
 
 * The architecture centers the loop between `U.SelectionAndTuning` and `U.WorkPlanning`.
 * The loop operates under a local **budget / max_iter** in `Γ_time`; at expiry, the selector emits the **current `CandidateSet`** and **`MethodTuning`** with a **partial‑optimality** flag; further improvement rolls into the **next `PathSlice`**.
-* **UNM occurs before the loop**; if measurements are missing/stale, UNM emits a **FreshnessRequest** which is **planned** in `U.WorkPlanning` and **executed** in `U.Work`. Transfers, units, and calibrations are surfaced publication‑wise as `CalibrateTo(map|standard)` and pinned to `TransportRegistry^Φ` (**R‑channel only** for penalties).
+* **UNM occurs before the loop**; if measurements are missing/stale, UNM emits a **FreshnessRequest** which is **planned** in `U.WorkPlanning` and **executed** in `U.Work`. Transfers, units, and calibrations are published as `CalibrateTo(map|standard)` and pinned to `TransportRegistry^Φ` (**R‑channel only** for penalties).
 * **WorkEnactment is the only site for launch‑value slot filling** (`FinalizeLaunchValues / FinalizeLaunchValuesOnlyInWork`).
 > **Refresh orchestration.** Telemetry from `U.WorkEnactment` and publications are **slice‑scoped**, editions re‑pinned, faces **re‑emitted**.
 
 #### E.18:5.7 - S7 - Selector semantics (G.5) & parity harness (G.9)
+E.TGA checks that set-return, archive preservation, and comparator refs remain visible along the path. It does not define selector, archive, dominance, or comparator semantics; those remain with `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` where live.
 
-* **Selectors return sets.** Default **DominanceRegime** is `ParetoOnly`; **IlluminationSummary** (telemetry summary) and any coverage/regret (telemetry metrics) are **report‑only telemetry** (reported), excluded from dominance **unless** a CAL policy promotes them (policy‑id in SCR).
+* **Selectors return sets.** Default **DominanceRegime** is `ParetoOnly`; **IlluminationSummary** (telemetry summary) and any coverage/regret telemetry quantities are **report-only telemetry** (reported), excluded from dominance **unless** a CAL policy promotes them as declared dominance inputs (policy-id in SCR).
 
-If `PortfolioMode=Archive`, a **QD archive** may be returned; when generation is in scope, pairs `{environment, method}` are managed under declared **EnvironmentValidityRegion** and **TransferRulesRef**; parity records and `PathSliceId` are pinned on publication. Details of comparator semantics and archive pinning live in **A.28/A.34**.
+If `PortfolioMode=Archive`, a **QD archive** may be returned; when generation is in scope, pairs `{environment, method}` are managed under declared **EnvironmentValidityRegion** and **TransferRulesRef**; parity records and `PathSliceId` are pinned on publication. Comparator semantics and archive pinning are received through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` when live.
 
-#### E.18:5.8 - S8 - Guard ownership and handling (USM §1.2)
-* **USM.CompareGuard**/**USM.LaunchGuard** **publish `GuardOwnerGateId`**. Guard failures are **events** aggregated by the owner gate (not GateChecks).
-* **Ownership rules:** (i) `USM.LaunchGuard.owner = LaunchGateId(U.WorkEnactment)`; (ii) inside a Subflow, `USM.CompareGuard.owner = OperationalGate(InSentinel)`; Join‑nodes cannot own guard pins.
+#### E.18:5.8 - S8 - Guard aggregation assignment and handling (USM §1.2)
+* **USM.CompareGuard**/**USM.LaunchGuard** **publish `GuardOwnerGateId`**. Guard failures are **events** aggregated by the declared gate (not GateChecks).
+* **Aggregation-assignment rules:** (i) `USM.LaunchGuard.aggregationGate = LaunchGateId(U.WorkEnactment)`; (ii) inside a Subflow, `USM.CompareGuard.aggregationGate = OperationalGate(InSentinel)`; Join-nodes cannot be assigned as guard-pin aggregation gates.
 
-**GateProfile data shape (cross‑reference).** The **entire data shape** (SoD/quorum, declassify, budgets, TOCTOU/freshness windows, editions vector, scopes) is **specified in A.26**. E.TGA **only names** the structure and keeps its fields in A.26.
+**GateProfile data shape (cross-reference).** `A.21` carries the current GateProfile binding and minimum profile semantics. E.TGA names the structure only where graph crossings need it; fuller profile-matrix support is not a separate current authority unless a current governing pattern explicitly admits it.
 
-**Bridge‑aware guards (cross‑reference).** USM guards apply bridge‑translation semantics (`translate(Bridge, Scope)`) with CL penalties in R‑lane; the conceptual macro is defined in **A.24 USM.Guards**.
+**Bridge-aware guards (cross-reference).** USM guards apply bridge-translation semantics (`translate(Bridge, Scope)`) with CL penalties in R-lane; guard vocabulary is received through **A.2.6**, while gate aggregation remains in `A.21`.
 
-**Error/timeout/unknown (profile‑bound).** GateCheck errors/timeouts fold to **`degrade`** under `Lean|Core` and to **`block`** under `SafetyCritical|RegulatedX`; `unknown` follows the GateCheck’s intensional rule (safety‑default: `degrade`). **The DecisionLog shape and the idempotency witness are defined in A.41; E.TGA does not define storage or key structures.**
+**Error/timeout/unknown (profile-bound).** GateCheck errors/timeouts fold to **`degrade`** under `Lean|Core` and to **`block`** under `SafetyCritical|RegulatedX`; `unknown` follows the GateCheck's intensional rule (safety-default: `degrade`). The `A.21` DecisionLog record and equivalence witness carry decision stability; E.TGA does not define storage or key structures.
 
 #### E.18:5.9 - S9 - Transport & crossings
-* Cross‑Context or cross‑plane edges appear as **GateCrossings** that include a **Bridge** with **CL** policy; **Φ(CL)/Φ_plane** are published; penalties route **to R only**; **Scope membership** (USM) is unchanged by crossings. **SquareLaw is checked within a single `DesignRunTag`; a `T^D↔T^R` change is modelled as a pair of coordinated gates with `DesignRunTagFrom/To` and an external enactor (see A.29).**
-* When *describedEntity/kind* changes across a boundary, declare an explicit **KindBridge (`CL^k`)** in addition to plane/context CL; cross‑context reuse of UNM **must** go via `Transport`, with any `CL^plane` penalties routed to **R‑lane** only.
+* Cross‑Context or cross‑plane edges appear as **GateCrossings** that include a **Bridge** with **CL** policy; **Φ(CL)/Φ_plane** are published; penalties appear **in R only**; **Scope membership** (USM) is unchanged by crossings. **SquareLaw is checked within a single `DesignRunTag`; a `T^D↔T^R` change is modelled as a pair of coordinated gates with `DesignRunTagFrom/To` and the selected `A.15` work or publication locus for the live case.**
+* When *describedEntity/kind* changes across a boundary, declare an explicit **KindBridge (`CL^k`)** in addition to plane/context CL; cross-context reuse of UNM **SHALL** use `Transport`, with any `CL^plane` penalties published in **R-lane** only.
 
 #### E.18:5.10 - S10 - Non‑mechanism boundary
 
-* Publication is a **typed projection**, not execution. Any build/render/upload is **Work on carriers**; **no Γ‑semantics** may leak into faces.
+* Publication is a **typed projection**, not execution. Any build/render/upload is **Work on carriers**; faces do **not** carry Γ-semantics.
 
 #### E.18:5.11 - S11 - Coordination thread (optional)
-Introduce **CoordinationFlow** as a named thread laid over `U.TransductionFlow__P2W`; crossings with production flow go via **Bridge+UTS**; coordination publishes **LexicalView** labels only and adds **no checks** or mechanisms.
+Coordination wording may be published as **LexicalView** labels over `U.TransductionFlow__P2W`; it is orientation-only unless a bridge, crossing, work, or gate relation is explicitly live. It adds no current graph node kind, checks, or mechanisms. Crossings with production flow use **Bridge+UTS** and the current bridge or crossing loci.
 
 #### E.18:5.12 - S12 - Viewpoint families → E.TGA constructs (neutral, holonic)
+**S12 status.** S12 is secondary support for a live viewpoint-family mapping claim. It is not the ordinary E.TGA core for naming a graph object, flow valuation, path slice, or crossing.
 
 E.TGA does not mint new viewpoint or view kinds. It **imports** the generic multi‑view machinery of E.17.0 `U.MultiViewDescribing`, bundles from E.17.1, and the TEVB engineering bundle from E.17.2. S12 only describes how these existing `U.Viewpoint` / `U.ViewpointBundle` ids are *used* in transduction graphs and in `UTS.ViewpointMap`; intent/concern semantics are governed by E.17.0–E.17.2.
 
-**Two‑layer use of TEVB and MVPK (ISO 42010 summary, no local re‑definition).**
+**Two-part use of TEVB and MVPK (ISO 42010 summary, no local re‑definition).**
 
 * **Engineering viewpoints.** For engineering holons, E.TGA assumes a TEVB bundle with `ViewFamilyId = VF.TEVB.ENG`. `EngineeringVPId` is one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`, and TEVB is the normative source for their semantics. E.TGA does not refine these viewpoints.
 * **Publication viewpoints.** Publication viewpoints come from MVPK (E.17); `PublicationVPId` is a `MVPK.ViewpointId` that governs faces under a `PublicationScope`.
 * **Architecture description.** Under ISO 42010, an architecture description for a holon is: (i) an E.TGA transduction graph over that holon, plus (ii) MVPK faces emitted for its morphisms, with correspondences per E.17.0 linking each face to the engineering view(s) it implements. Crossings and penalties follow E.TGA’s gating rules (S9; CC‑TGA‑11/23) but do not change viewpoint semantics.
-* **Separation of roles.** `VP.*` from TEVB are **EngineeringVPId** values only; they are not surfaces. `PublicationVPId` values live in MVPK. The mapping between them is entirely via ISO‑style correspondences and the `UTS.ViewpointMap`; E.TGA does not define a second notion of viewpoint.
+* **Separation of roles.** `VP.*` from TEVB are **EngineeringVPId** values only; they are not publication faces. `PublicationVPId` values live in MVPK. The mapping between them is entirely via ISO‑style correspondences and the `UTS.ViewpointMap`; E.TGA does not define a second notion of viewpoint.
 
 **Entities‑of‑interest (summary).**
 
@@ -22012,12 +24164,12 @@ E.TGA does not mint new viewpoint or view kinds. It **imports** the generic mult
 * `ViewFamilyId` is the `U.ViewpointBundle.viewFamilyId` (e.g. `VF.TEVB.ENG` for TEVB); its lexical and ontological discipline is governed by E.17.1.
 * `EngineeringVPId : ViewpointId` is always a `U.ViewpointId` drawn from some bundle (for TEVB, one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`). E.TGA never defines new `VP.*` ids.
 * `PublicationVPId : ViewpointId` is a `MVPK.ViewpointId` defined in E.17; TEVB viewpoints are **never** reused as publication viewpoints (per TEVB guard and MVPK).
-* The legacy unqualified column name `ViewpointId` MUST NOT be used. Where it exists, it is interpreted as `PublicationVPId` and is DEPRECATED (sunset when E.23 is published).
+* The unqualified field name `ViewpointId` is not valid in S12 rows. Use `EngineeringVPId` and/or `PublicationVPId` explicitly; any imported row with an unqualified `ViewpointId` SHALL be normalized to `PublicationVPId` before the row is used.
 
 **Terminology guards (no local semantics).**
-* Within S12, “viewpoint”, “view” and “correspondence” have exactly the meanings given in E.17.0; “publication surface” means an MVPK face (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) under some `PublicationVPId`.
+* Within S12, “viewpoint”, “view” and “correspondence” have exactly the meanings given in E.17.0; “publication face” means an MVPK face (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) under some `PublicationVPId`.
 * Faces are **carriers for views**: a face is part of a view only when linked via an ISO‑style `CorrespondenceRef` to an engineering `U.View` under some `EngineeringVPId`; S12 does not add extra conditions beyond E.17.0/E.17.2.
-* Labels such as “Functional view”, “Procedural view”, “Role‑Enactor view”, “Module‑Interface view” in this section are lexical aliases for TEVB viewpoints; they MUST NOT be interpreted as extra viewpoint kinds or as surface types.
+* Labels such as “Functional view”, “Procedural view”, “Role‑Enactor view”, “Module‑Interface view” in this section are lexical aliases for TEVB viewpoints; they MUST NOT be interpreted as extra viewpoint kinds or as publication-face types.
 
 **Purpose.** Provide a neutral (F.18) mapping from TEVB engineering *viewpoint families* — bundle `VF.TEVB.ENG` with `VP.Functional / VP.Procedural / VP.RoleEnactor / VP.ModuleInterface` — to E.TGA constructs so that the same holon can be described functionally, procedurally, structurally, or as a module‑and‑interface architecture **without changing the underlying graph**. S12 does not introduce new `U.Viewpoint` or `U.View` kinds; it reuses those defined in E.17.0/E.17.2.
 
@@ -22026,28 +24178,29 @@ E.TGA does not mint new viewpoint or view kinds. It **imports** the generic mult
 **Viewpoint family → primary E.TGA constructs (TEVB‑aligned)**
 *All four families referenced below are TEVB engineering viewpoints; the “what …” clauses are interpretive glosses for how they *use* E.TGA constructs. Formal intent/concerns/allowed episteme kinds remain in TEVB (E.17.2).*
 1) **Function‑Oriented View (`EngineeringVPId = VP.Functional`, capability‑flow)** — “what transformation is achieved under roles”
-    * **Flow substrate:** `U.TransductionFlow__P2W` through nodes `SubstrateFormalization → OntologyAuthoring → CHRAuthoring → PrincipleFraming → MechanismRealization → UNM.Usage (ContextNormalization) → SelectionAndTuning ↔ WorkPlanning → WorkEnactment → EvaluatingAndRefreshing`.
-    * **Publication:** MVPK publication surfaces per E.17; comparable claims pin to `CG‑Spec/ComparatorSet` editions; crossings surface via `Bridge+UTS` and `CL/CL^plane` (penalties → **R‑lane** only).
-    * **Checks:** A.20 (CV) inside transformations; A.21 (GateFit) at gates; enforce CSLC/No‑Hidden‑Scalarization per A.28.
+    * **Flow substrate:** `U.TransductionFlow__P2W` through nodes `U.FormalSubstrate → U.PrincipleFrame → U.Mechanism → U.ContextNormalization (UNM) → U.SelectionAndTuning ↔ U.WorkPlanning → U.Work → U.EvaluatingAndRefreshing`.
+    * **Publication:** MVPK publication faces per E.17; comparable claims pin to `CG‑Spec/ComparatorSet` editions; crossings are published through `Bridge+UTS` and `CL/CL^plane` (penalties → **R‑lane** only).
+    * **Checks:** A.20 (CV) inside transformations; A.21 (GateFit) at gates; comparator, set-return, and No-Hidden-Scalarization discipline is carried through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` when live.
     *  **Holonic note:** `U.Episteme` does not *act*; it is used by systems acting on carriers; `U.Work` appears only for `U.System`.
 2) **Procedure‑Oriented View (`EngineeringVPId = VP.Procedural`, step/time storyboard)** — “what steps occur and when”
-    * **Artifacts:** `U.WorkPlan` (A.15.2) for intent/schedule; `U.WorkEnactment` for enactment.
+    * **FPF constructs:** `U.WorkPlan` (A.15.2) for intent/schedule; `U.WorkEnactment` for enactment.
     * **Boundary:** entry into `U.WorkEnactment` is via `OperationalGate(profile)` with `USM.LaunchGuard`; `DesignRunTag` separates design time from run time; `DesignRunTagFrom/To` appear only at gates.
-    * **Holonic note:** Applies to any `U.System` scope (single holon or a supervised sub‑holon cluster); supervisory layering is handled by roles rather than structural mereology (B.2.5).
+    * **Holonic note:** Applies to any `U.System` scope (single holon or a supervised sub‑holon cluster); supervisory structure is handled by roles rather than structural mereology (B.2.5).
 3) **Role‑Enactor / Device‑Structure View (`EngineeringVPId = VP.RoleEnactor`)** — “what carrier/ports/constraints exist; who typically enacts it”
-    * **Artifacts:** Module *interfaces* are `Signature` nodes; module realizations are `MechanismRealization` nodes; inter‑module dependencies traverse `U.Transfer`, with gates on crossings.
-    * **Publication:** MVPK faces are **typed projections**, not executable artifacts; faces add **no new numeric claims** (E.17). Constraints and compatibility appear as CV checks (A.20).
+    * **FPF constructs:** Module *interfaces* are `Signature` nodes; module realizations are `Mechanism` nodes; inter‑module dependencies traverse `U.Transfer`, with gates on crossings.
+
+    * **Publication:** MVPK faces are **typed projections**, not `U.Work` records or execution carriers; faces add **no new numeric claims** (E.17). Constraints and compatibility appear as CV checks (A.20).
     * **Holonic note:** Structural mereology (part/whole of the carrier) is modeled in Part A; E.TGA ties interface/exposure semantics to morphisms and gates.
     * **Device‑View reading (Transduction↔Transductor).** The same capability‑flow MAY be read as a **device** that performs the transduction (**transductor**) without changing the graph: model with `Signature` + `Mechanism` only; do **not** introduce extra edge kinds. If describedEntity retargets (function↔element), use `StructuralReinterpretation` with a **`KindBridge (CL^k)`** on **UTS** and a **SquareLaw‑Retargeting witness**; preserve `⟨L,P,E⃗,D⟩` and treat it as a non‑crossing (**CC‑TGA‑06‑EX**; witness shape §4.7).
     * **Role‑label guard.** `TypicalEnactorRoleName` is **pedagogical only** and MUST NOT be used as a GateFit role; GateFit uses `U.Role` (A.21).
 4) **Module‑Interface View (`EngineeringVPId = VP.ModuleInterface`, physical/logical architecture)** — “what modules exist and how they specify commitments and constraints across interfaces”
-    * **Artifacts:** Module *interfaces* are `Signature` nodes; module realizations are `Mechanism` nodes; inter‑module dependencies traverse `U.Transfer`, with gates on crossings.
+    * **FPF constructs:** Module *interfaces* are `Signature` nodes; module realizations are `Mechanism` nodes; inter‑module dependencies traverse `U.Transfer`, with gates on crossings.
     * **describedEntity note:** Functional↔element reinterpretation follows the **Device‑View reading** rule above (Role‑Enactor family) and **CC‑TGA‑06‑EX**; see **§4.7** for the retargeting witness shape and CV witness linkage.
     * **Holonic note:** The same module may appear as a holon in multiple views; supervisory loops (B.2.5) remain orthogonal to structural composition.
 This is an expandable list of viewpoint families; TGA is intentionally viewpoint‑neutral. Additional engineering bundles beyond TEVB (safety, mission, information, …) are introduced as separate `U.ViewpointBundle` species via E.17.1/E.17.2; S12 does not define them.
 
 **Alias families for transduction species (LEX‑only).**
-*Scope.* Authors MAY declare `AliasesInViewFamilies[]` for `U.Transduction` species so readers can recognise familiar engineering view families. All semantics come from the referenced bundles (typically TEVB) and MVPK; aliases are purely lexical.
+*Scope.* A pattern or domain profile MAY declare `AliasesInViewFamilies[]` for `U.Transduction` species so readers can recognise familiar engineering view families. All semantics come from the referenced bundles (typically TEVB) and MVPK; aliases are purely lexical.
 
 *Norms.*
 1. Each `U.Transduction` species MAY publish `AliasesInViewFamilies[]` — an open list of records
@@ -22057,117 +24210,131 @@ This is an expandable list of viewpoint families; TGA is intentionally viewpoint
 2. Aliases are LEX‑only: **no arithmetic, no new claims, no check participation, no `CtxState` slot writes/updates (incl. `DesignRunTag`)**. They do not create MVPK faces.
 3. Aliases MUST NOT be used as `PublicationVPId`; publication viewpoints remain in MVPK.
 4. Twin registers are allowed (Tech/Plain) per E.10; naming follows F.18 local‑first discipline.
-5. Do not name transductions by operands/effects (operation ≠ operand).
+5. Do not name transductions by operands or output states (operation != operand or output state).
+
 6. `TypicalEnactorRoleName` MAY be added for pedagogy; it SHALL NOT be used as a GateFit role (GateFit uses `U.Role` only).
 7. Morphology: ASCII TitleCase; conjunctions via `And`; for composite actions use `XingAndYing` (or `XAndYing` if grammar requires).
-8. The P2W reference species table (SubstrateFormalization … EvaluatingAndRefreshing with functional/procedural aliases and `TypicalEnactorRoleName`) is **informative** and does not change kind or viewpoint semantics.
+8. The P2W illustrative species row (`U.FormalSubstrate` … `U.EvaluatingAndRefreshing` with functional/procedural aliases and `TypicalEnactorRoleName`) is **informative** and does not change kind or viewpoint semantics.
 
-**Deliverable — `UTS.ViewpointMap` (normative, TEVB‑aligned).**
-Publish a UTS block named `ViewpointMap` that ties engineering viewpoints (from bundles such as TEVB) to E.TGA constructs and MVPK faces.
+**Conditional deliverable — `UTS.ViewpointMap` (TEVB-aligned when live).**
+Publish a UTS block named `ViewpointMap` only when an engineering or publication viewpoint-family mapping claim is made or consumed. Ordinary E.TGA use does not require `UTS.ViewpointMap` when the live question is only the graph object, flow valuation, path slice, or crossing.
 
-*Minimum row schema (per row).*
+*Minimum row schema (per row, when `ViewpointMap` is live).*
 * `ViewFamilyId` — `U.ViewpointBundle.viewFamilyId` (e.g. `VF.TEVB.ENG` for TEVB, or another bundle id).
 * `EngineeringVPId : ViewpointId` — a viewpoint from that bundle (for TEVB, one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`).
 * `PublicationVPId : ViewpointId?` — MVPK publication viewpoint id that governs faces implementing this engineering view (optional if not publishing).
 * `TargetHolon ∈ {U.System, U.Episteme}` *(extended species may add `{U.PromiseContent|U.MethodFamily}`; if `TargetHolon ≠ U.System`, no `U.Work` enactment appears).*
 * `PrimaryTGAConstructs` — nodes/edges/gates actually used for this `(ViewFamilyId, EngineeringVPId, TargetHolon)` (typically one of the four families above).
-* `Crossings{BridgeId, CL/CL^plane?}` — crossings involved; penalties route to R‑lane only.
-* `EditionPins{…}` whenever comparable claims appear (bind to CG‑Spec/ComparatorSet editions; any face citing editions includes `BridgeCard + UTS` row per MVPK/UNM).
-* `SenseCells[]` (≥ 2 per row), each citing Context name + edition (F.17/E.10 discipline; UTS‑wide coverage rules still apply).
+* `Crossings{BridgeId, CL/CL^plane?}` — crossings involved; penalties appear in R-lane only.
+* `EditionPins{...}` whenever comparable claims appear (bind to CG-Spec/ComparatorSet editions; any face citing editions includes `BridgeCard + UTS` row per MVPK/UNM).
+* `SenseCells[]` (at least two per row), each citing Context name + edition (F.17/E.10 discipline; UTS-wide coverage rules still apply).
 * *(REQUIRED when publishing)* `CorrespondenceRef[]` — ISO 42010 correspondences linking emitted faces to the engineering view(s) they implement; may cross architecture descriptions.
 * *(RECOMMENDED)* `ConcernsCovered[]` — ISO 42010 stakeholder concerns addressed by this row via GateProfiles/check catalogues.
 
-**Conformance (S12‑scoped).**
-(i) `UTS.ViewpointMap` exists.
-(ii) For each holon that claims TEVB alignment, there are ≥ 4 rows whose `{ViewFamilyId, EngineeringVPId}` cover `{VF.TEVB.ENG × {VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}}` (per CC‑TEVB‑1/6).
-(iii) Rows that surface editions also include `BridgeCard + UTS` rows per A.27; edition‑bearing faces that lack such rows MUST NOT be used for downstream consumption.
-(iv) Each row has ≥ 2 `SenseCells` and the sheet meets global UTS coverage rules.
+**Conformance (S12-scoped, only when `ViewpointMap` is live).**
+(i) `UTS.ViewpointMap` exists when a viewpoint-family mapping claim is made or consumed.
+(ii) For each holon that claims TEVB alignment, there are at least four rows whose `{ViewFamilyId, EngineeringVPId}` cover `{VF.TEVB.ENG × {VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}}` (per CC-TEVB-1/6).
+(iii) Rows that carry edition identifiers also include `BridgeCard + UTS` rows through `F.9`, `F.17`, `E.17`, and `E.18`; edition-bearing faces that lack such rows are not admissible for downstream consumption.
+(iv) Each row has at least two `SenseCells` and the sheet meets global UTS coverage rules.
 (v) Any `TargetHolon = U.System` that reaches `U.Work` shows `LaunchGate` with `DesignRunTag` consistency.
-(vi) Crossings referenced in `ViewpointMap` follow CC‑TGA‑11; comparability along the mapped paths follows CC‑TGA‑10.
+(vi) Crossings referenced in `ViewpointMap` follow CC-TGA-11; comparability along the mapped paths follows CC-TGA-10.
 (vii) Rows MUST NOT use an unqualified `ViewpointId`; they MUST use `EngineeringVPId` and/or `PublicationVPId` explicitly.
 (viii) When faces are published, `CorrespondenceRef[]` MUST be present and resolvable to `U.Viewpoint` ids.
 (ix) Additional bundles (e.g. assurance, information, mission) MAY appear as extra `ViewFamilyId` values but MUST be declared as `U.ViewpointBundle` species; they do not extend `VF.TEVB.ENG`.
 
 ### E.18:6 - Archetypal Grounding (Tell–Show–Show; concise)
 
-*Show‑A (Supply chain).* Nodes: procurement → inbound QC (UNM) → selection (supplier set; lawful order) ↔ planning (lotting/schedule; budget) → execution (receipts; **WorkEnactment enacts (world‑contact)**) → refresh (quality telemetry; re‑emit faces). Crossings: vendor Context via **Bridge/CL**; penalties **→ R only**; comparators pinned to CG‑Spec edition.
+*Tell (P2W reference path).* A first-principles-to-work path is one path through the graph, not the graph itself: substrate, principle frame, mechanism, normalization, selection, planning, work enactment, and refresh become nodes linked by one `U.Transfer` edge kind, with crossings pinned where context, plane, edition, or design/run state changes.
 
-*Show‑B (Neural‑net functional).* Nodes: formal substrate (typed tensor ops) → mechanism (combinator algebra) → UNM (dataset normalization; **TransportRegistry^Φ**) → selection (architecture/hyperparam set; Pareto set over accuracy@ratio & FLOPs@ratio) ↔ planning (compute budget horizon) → Work (training runs; Δ anchored) → refresh (parity inserts; slice‑scoped). Faces pin **DescriptorMapRef.edition / DistanceDefRef.edition** when QD metrics are shown; illumination remains a **report-only telemetry metric** by default.
+*Show-A (Supply chain).* Nodes: procurement -> inbound QC (UNM) -> selection (supplier set; declared order) <-> planning (lotting/schedule; budget) -> execution (receipts; **WorkEnactment enacts (world-contact)**) -> refresh (quality telemetry; re-emit faces). Crossings: vendor Context via **Bridge/CL**; penalties appear **in R only**; comparators pinned to CG-Spec edition.
 
-> *Post‑2015 SoTA echoes (illustrative):* **TAMP/MPC**, **MAP‑Elites / QD (incl. CMA‑ME)**, **refinement‑typed stacks**, **profunctor optics**. **Worked‑examples and Tell–Show–Show vignettes move to A.31/A.34/A.37; E.TGA keeps only the carcass‑level alignment.**
+*Show-B (Neural-net functional).* Nodes: formal substrate (typed tensor ops) -> mechanism (combinator algebra) -> UNM (dataset normalization; **TransportRegistry^Phi**) -> selection (architecture/hyperparam set; Pareto set over accuracy@ratio and FLOPs@ratio) <-> planning (compute budget horizon) -> Work (training runs; Delta anchored) -> refresh (parity inserts; slice-scoped). Faces pin **DescriptorMapRef.edition** and **DistanceDefRef.edition** when QD telemetry values are shown; illumination remains **report-only telemetry** by default.
+
+**Cross-pattern boundary slice (QD archive).** A QD selector emits an archive. `E.18` says: this is one `PathSlice` in one `TransductionGraph`; selection returns a set/archive, not a hidden scalar. `A.20` says: the archive insertion or update step has a live CV class, `CV.Status`, and witness or refusal; no acceptance is inferred. `A.21` says: a comparability gate or `LaunchGate` may publish a `GateDecision` only when that gate relation is live and consumes the relevant CV result. `E.20` says: if a new selector mechanism intension is introduced, the mechanism-governing definition is the locus for the meaning while suites and wiring only cite or bind it. These are four governed objects, not one workflow.
+
+> *Post-2015 SoTA echoes (illustrative):* **TAMP and MPC**, **MAP-Elites / QD (incl. CMA-ME)**, **refinement-typed stacks**, **profunctor optics**. Worked examples and Tell-Show-Show vignettes for P2W, comparator/archive, and refresh specializations stay outside this graph-architecture core unless a current pattern explicitly selects them.
 
 ### E.18:7 - Conformance — **Unified checklist (normative)**
+
+**Conformance use.** This checklist is evidence for the graph/flow/crossing action guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; an item is applied only when its corresponding graph, crossing, publication, gate, refresh, or assurance move is live. Before applying any item, name the Solution move it tests; if no such reader move is live, treat the item as support-only or not applicable rather than expanding the applied assurance or conformance material.
+
+**Conformance groups.** Ordinary graph/path use starts with graph object, single edge kind, node typing, `CtxState` preservation, and flow valuation. Crossing/launch items apply only when a GateCrossing, `LaunchGate`, `StructuralReinterpretation`, or work-boundary crossing is live. Publication/assurance items apply only when MVPK faces, edition pins, evidence carriers, decision logs, or replay are live. Extension/change items apply only when node-kind scope, budget/refresh behavior, or UNM/comparator editions are being changed or consumed downstream.
 
 | ID | Requirement | Practical test |
 |----|-------------|----------------|
 | **CC‑TGA‑01 — Single edge kind** | The graph uses exactly one edge kind `U.Transfer`; all plane/Context/edition transitions occur only at nodes via `OperationalGate(profile)`. | Model lint finds no auxiliary edge kinds for unit/plane changes; crossings sit on declared gates. |
-| **CC‑TGA‑02 — Nodes are morphisms** | Nodes are intensional `U.Transduction(kind∈{Signature,Mechanism,Work,Check,StructuralReinterpretation})`. This enumeration is a **minimal roles baseline**. **Domain‑specific species are open‑world** and non‑exhaustive; they bind to one of these kinds. Adding a **new kind** requires an explicit E.TGA update. `StructuralReinterpretation` nodes are **projection‑preserving** (no mutation of `⟨L,P,E⃗,D⟩`) and carry CV/GF obligations per A.20/A.21/A.45. **Mapping to A.\*** (normative): the enumeration is **not** a TGA‑local taxonomy; each `kind` is identified 1‑to‑1 with its A.\* anchor: `Signature→A.6.0`, `Mechanism→A.6.1`, `Work→A.15`, `Check→OperationalGate` (until a dedicated A.\* pattern is published). | Type registry shows at least the listed kinds; additional species map to one of them; checks realized as `OperationalGate` (see CC‑TGA‑06‑EX/11). **Lint:** registry/table exposes `{species → {kind, KindDefinition}}`; missing or mismatched `KindDefinition` fails. |
+| **CC-TGA-02 — Nodes are morphisms** | Nodes are intensional `U.Transduction(kind in {Signature, Mechanism, Work, Check, StructuralReinterpretation})`. This enumeration is a **minimal kind baseline**. **Domain-specific species are open-world** and non-exhaustive; they bind to one of these kinds. Adding a **new kind** requires an explicit E.TGA update. `StructuralReinterpretation` nodes are **projection-preserving** (no mutation of `⟨L,P,E⃗,D⟩`) and carry CV/GF obligations per `A.20`, `A.21`, `A.6.4`, and E.TGA. The enumeration is **not** a TGA-local taxonomy: `Signature -> A.6.0`, `Mechanism -> A.6.1`, `Work -> A.15`, `Check -> A.21 OperationalGate`, and `StructuralReinterpretation -> A.6.4 plus E.TGA/A.20` where CV is live. | Type registry shows at least the listed kinds; additional species map to one of them; checks realized as `OperationalGate` (see CC-TGA-06-EX/11). **Lint:** registry/table exposes `{species -> {kind, KindDefinition}}`; missing or mismatched `KindDefinition` fails. |
 | **CC‑TGA‑03 — Identity, composition, functorial faces** | Identities exist; path composition associative; publication is functorial: `Emit_s(t₂∘t₁)=Emit_s(t₂)∘Emit_s(t₁)`. | Pick two‑step path; MVPK faces commute (Square witness). |
 | **CC‑TGA‑04 — Graph spec** | Spec declares `τ_V, τ_E`, `Γ_time`, Transport/Bridge registries. | Spec file shows typed registries and Γ policy. |
 | **CC‑TGA‑05 — CtxState pins** | `CtxState=⟨L,P,E⃗,D⟩` is pinned on ports/tokens; raw `U.Transfer` does **not** write/update it. | Along a raw transfer, ⟨L,P,E⃗,D⟩ is preserved. |
 | **CC‑TGA‑06 — Operational gates only** | Any write/update to any member of ⟨L,P,E⃗,D⟩ or entry into `U.WorkEnactment` is mediated by `OperationalGate(profile)` with aggregated `DecisionLog`. | Diff CtxState across edges; if any member differs, exactly one gate exists with DecisionLog. |
-| **CC‑TGA‑06‑EX (strictly limited) — Projection retargeting without gate** | A node of kind **`StructuralReinterpretation`** MAY retarget the **published projection** without invoking `OperationalGate` **only if all hold**: **(a)** `⟨L,P,E⃗,D⟩` is preserved; **(b)** any **describedEntity** change has a **KindBridge** (`CL^k`) entry on MVPK/**UTS**; **(c)** a **SquareLaw‑retargeting witness** is present (on UTS); **(d)** the operation is **PathSlice‑local** (`PathSliceId` pinned); **(e)** **no plane/unit change** occurs (plane/unit changes remain gated); **(f)** **CV.ReinterpretationEquivalence** (A.20) is `pass`; **(g)** **NoHiddenScalarization** — if the step concerns a comparable return shape, set/partial‑order semantics are preserved and comparators remain ref‑only (cf. A.28). | UTS row includes `bridgeChannel=Kind` and `CL^k`; SquareLaw‑retargeting witness present; PathSliceId pinned; CV status recorded; no scalarization detected. |
+| **CC‑TGA‑06‑EX (strictly limited) — Projection retargeting without gate** | A node of kind **`StructuralReinterpretation`** MAY retarget the **published projection** without invoking `OperationalGate` **only if all hold**: **(a)** `⟨L,P,E⃗,D⟩` is preserved; **(b)** any **describedEntity** change has a **KindBridge** (`CL^k`) entry on MVPK/**UTS**; **(c)** a **SquareLaw‑retargeting witness** is present (on UTS); **(d)** the operation is **PathSlice‑local** (`PathSliceId` pinned); **(e)** **no plane/unit change** occurs (plane/unit changes remain gated); **(f)** **CV.ReinterpretationEquivalence** (A.20) is `pass`; **(g)** **NoHiddenScalarization** — if the step concerns a comparable return shape, set/partial‑order semantics are preserved and comparators remain ref‑only (current comparator and set-return loci). | UTS row includes `bridgeChannel=Kind` and `CL^k`; SquareLaw‑retargeting witness present; PathSliceId pinned; CV status recorded; no scalarization detected. |
 | **CC‑TGA‑07 — CV⇒GF activation predicate** | Until **aggregated `ConstraintValidity` = `pass`**, all **GateFit** checks return `abstain`. | Simulate CV failure ⇒ GateFit `abstain`. |
-| **CC‑TGA‑08 — LaunchGate discipline (incl. pre‑run barrier)** | Each `U.WorkEnactment` has exactly one `LaunchGate` owning `USM.LaunchGuard`; **mandatory** checks: `FreshnessUpToDate`, `DesignRunTagConsistency`. If preceding step’s CV ≠ `pass`, LaunchGate decision is `block` (cause logged). | Owner resolution `GuardOwnerGateId = LaunchGateId(U.WorkEnactment)`; CV≠pass ⇒ `block` with log. |
-| **CC‑TGA‑09 — MVPK publication discipline** | Every surfaced node uses MVPK; faces carry `PublicationScopeId`, presence‑pins, **edition ids**, Γ pins; **no I/O duplication** or arithmetic; faces add no new numeric claims. | Cards show `PublicationScopeId`; pins present; no “signature”/math on faces. |
-| **CC‑TGA‑10 — Normalize→Compare (CSLC)** | Any comparison cites **UNM/CG‑Spec** editions and **ComparatorSetRef**; ordinal claims are compare‑only; partial orders return sets; edition‑aware artifacts (QD/archives) pin `{DescriptorMapRef, DistanceDefRef, CharacteristicSpaceRef?}.edition`; **any face citing editions includes `BridgeCard + UTS row`**. **NoHiddenScalarization — detection criteria:** (1) return shape is **set/poset**, not scalar; (2) `ComparatorSetRef` is present and edition‑pinned; (3) MVPK faces add **no new numeric claims**; (4) any summarisation is **order‑preserving & set‑valued**; otherwise conformance fails. | Faces show comparator pins; archive pins present; linter rejects edition cites without UTS; scalarisation checks pass.
-| **CC‑TGA‑11 — Crossings gated** | Cross-Context or cross-plane crossings publish **BridgeId + UTS + CL/CL^plane** and are mediated by `OperationalGate(profile)`; **Φ/Φ_plane penalties → R‑lane only**; describedEntity change publishes **KindBridge (CL^k)**. **Exception (StructuralReinterpretation):** a **projection‑only** describedEntity retargeting is surfaced **without** a gate **iff** **CC‑TGA‑06‑EX** holds; then the UTS row includes `bridgeChannel=Kind`, `CL^k`, and a **retargeting witness**; any plane/unit change falls back to a gated crossing; `PathSliceId` is pinned; UNM reuse cross‑context continues via `Transport`. | Crossing surfaces show Bridge/UTS/CL pins; penalties routing audited. |
+| **CC‑TGA‑08 — LaunchGate discipline (incl. pre‑run barrier)** | Each `U.WorkEnactment` has exactly one `LaunchGate` assigned as the aggregator for `USM.LaunchGuard`; **mandatory** checks: `FreshnessUpToDate`, `DesignRunTagConsistency`. If preceding step’s CV ≠ `pass`, LaunchGate decision is `block` (cause logged). | Aggregation assignment `GuardOwnerGateId = LaunchGateId(U.WorkEnactment)`; CV≠pass ⇒ `block` with log. |
+| **CC‑TGA‑09 — MVPK publication discipline** | Every published node uses MVPK; faces carry `PublicationScopeId`, presence‑pins, **edition ids**, Γ pins; **no I/O duplication** or arithmetic; faces add no new numeric claims. | Cards show `PublicationScopeId`; pins present; no “signature”/math on faces. |
+| **CC‑TGA‑10 — Normalize→Compare (CSLC)** | Any comparison cites **UNM/CG‑Spec** editions and **ComparatorSetRef**; ordinal claims are compare‑only; partial orders return sets; edition‑aware set/archive publication records (QD/archives) pin `{DescriptorMapRef, DistanceDefRef, CharacteristicSpaceRef?}.edition`; **any face citing editions includes `BridgeCard + UTS row`**. **NoHiddenScalarization — detection criteria:** (1) return shape is **set/poset**, not scalar; (2) `ComparatorSetRef` is present and edition‑pinned; (3) MVPK faces add **no new numeric claims**; (4) any summarisation is **order‑preserving & set‑valued**; otherwise conformance fails. | Faces show comparator pins; archive pins present; linter rejects edition cites without UTS; scalarisation checks pass.
+| **CC‑TGA‑11 — Crossings gated** | Cross-Context or cross-plane crossings publish **BridgeId + UTS + CL/CL^plane** and are mediated by `OperationalGate(profile)`; **Φ/Φ_plane penalties appear in R-lane only**; describedEntity change publishes **KindBridge (CL^k)**. **Exception (StructuralReinterpretation):** a **projection‑only** describedEntity retargeting is recorded **without** a gate **iff** **CC‑TGA‑06‑EX** holds; then the UTS row includes `bridgeChannel=Kind`, `CL^k`, and a **retargeting witness**; any plane/unit change falls back to a gated crossing; `PathSliceId` is pinned; UNM reuse cross‑context continues via `Transport`. | The crossing record shows Bridge/UTS/CL pins; penalty placement audited. |
 | **CC‑TGA‑12 — Set‑returning selection** | `U.SelectionAndTuning` returns sets/archives under declared comparators (`ParetoOnly` by default) — no covert scalarization. | Selector output is a set/archive; policy id present if escalated. |
 | **CC‑TGA‑13 — Budgeted Selection↔Planning loop** | The loop declares **budget / max_iter**; on expiry selector publishes partial‑optimal set + `MethodTuning`; next **PathSlice** scheduled. | Logs show budget stop and slice rollover. |
 | **CC‑TGA‑14 — UNM before loop and FreshnessTicket state change** | UNM runs before selection; stale/missing inputs produce **FreshnessTicket/FreshnessRequest** planned in `WorkPlanning` and executed in `WorkEnactment`; calibrations appear as `CalibrateTo(map|standard)` with Φ pins. | Ticket state machine Issued→Planned→Executed→Closed; calibrations pinned. |
 | **CC‑TGA‑15 — FinalizeLaunchValues only in WorkEnactment** | Only `U.WorkEnactment` performs `FinalizeLaunchValues` and fills launch‑value slots. | Any earlier attempt blocks at LaunchGate; a `FinalizeLaunchValues` witness is present in Work. |
-| **CC‑TGA‑16 — Guard ownership & semantics** | `USM.CompareGuard`/`USM.LaunchGuard` publish owner gate; guards are **events**, not GateChecks; failures are aggregated by owner’s gate per profile. | Guard pins show owner; GuardFail routed to owner’s DecisionLog. |
+| **CC‑TGA‑16 — Guard aggregation assignment & semantics** | `USM.CompareGuard`/`USM.LaunchGuard` publish the gate assigned to aggregate guard failures; guards are **events**, not GateChecks; failures are aggregated by that gate per profile. | Guard pins show the assigned gate; GuardFail recorded in that gate's DecisionLog. |
 | **CC‑TGA‑17 — Assurance ops on Transfer** | On `U.Transfer` only `ConstrainTo/CalibrateTo/CiteEvidence/AttributeTo`; none write/update `⟨L,P,E⃗,D⟩`. | Edge audit shows ops; CtxState unchanged across the edge. |
-| **CC‑TGA‑17a — Assurance operation specifications (normative)** | **ConstrainTo(region|policy)**: tightens declared region/policy; **pre**: region⊆current; **post**: `⟨L,P,E⃗,D⟩` unchanged; **idem.** and **monotone** under composition. **CalibrateTo(map|standard)**: attaches **editioned** calibration map/standard with Φ‑policy id; lawful per CG‑Spec; **post**: `⟨L,P,E⃗,D⟩` unchanged; **idem.** on same edition; penalties **→ R only**. **CiteEvidence(anchor)**: binds carriers via **SCR/RSCR**; adds no numeric claims; **idem.**; missing carriers ⇒ **abstain**. **AttributeTo(role|source)**: provenance only; decision algebra unaffected; **idem.** Hidden GateChecks, plane/unit changes, or edition writes on edges are **forbidden**. | Operation specifications visible on edge audit; violations fail lint. |
-| **CC‑TGA‑18 — Flow = valuation & slice‑local refresh** | A flow declares valuation `ν` over `U.Transfer` plus `PublicationScopeId` and `PathSliceId`; **sentinel‑bounded** refresh; re‑emit on edition change or sentinel rule. | FlowSpec shows ν; sentinel bump triggers slice‑local recompute. |
+| **CC-TGA-17a — Assurance operation specifications (normative)** | **ConstrainTo(region|policy)**: tightens declared region/policy; **pre**: region subset current; **post**: `⟨L,P,E⃗,D⟩` unchanged; **idem.** and **monotone** under composition. **CalibrateTo(map|standard)**: attaches **editioned** calibration map/standard with Phi-policy id; admissible per cited `CG-Spec`; **post**: `⟨L,P,E⃗,D⟩` unchanged; **idem.** on same edition; penalties appear **in R only**. **CiteEvidence(anchor)**: binds carriers via **SCR/RSCR**; adds no numeric claims; **idem.**; missing carriers => **abstain**. **AttributeTo(role|source)**: provenance only; decision algebra unaffected; **idem.** Hidden GateChecks, plane/unit changes, or edition writes on edges are **forbidden**. | Operation specifications visible on edge audit; violations fail lint. |
+| **CC-TGA-18 — Flow = valuation & slice-local refresh** | A flow declares valuation `ν` over `U.Transfer` plus `PublicationScopeId` and `PathSliceId`; refresh is bounded to the addressed slice; re-emit on edition change or selected refresh rule. | Flow publication shows `ν`; refresh trigger causes slice-local recompute. |
 | **CC‑TGA‑19 — Γ_time on compare/launch** | All compare/launch faces pin `Γ_time`; no implicit *latest*. | Face audit shows Γ pins; LaunchGate blocks on stale. |
 | **CC‑TGA‑19a — Γ_time pin shape (normative)** | The `Γ_time` pin is one of: `snapshot(t)`, `interval[t1,t2]` (closed), or `policy(Γ_timeRuleId)` that resolves to either; CV computations record the **resolved time basis** in `DecisionLog` and do not widen Γ at publication time. | DecisionLog shows basis; linter rejects missing/implicit Γ. |
-| **CC‑TGA‑20 — Lean publish‑mode ≠ weaken** | `AssuranceLane‑Lite` affects faces only; required GateChecks for the active profile remain intact. | Gate in Lean/Core shows minimal pins; GateChecks list unchanged. |
-| **CC‑TGA‑21 — Decision stability & idempotency witness** | Gate decisions are stable under the equivalence relation defined in **A.41**; a **witness of equivalence** is present on the DecisionLog surface; any change that breaks equivalence requires re‑aggregation. **Minimum lexeme (CV‑relevant surfaces):** `EquivalenceWitness := { keys, E⃗, Γ_time(basis), PathSliceId?, ReturnShapeClass, ComparatorSetRef?, profile }`. | Modify any input outside the declared equivalence ⇒ re‑aggregation; DecisionLog records the witness (A.41); lexeme present.
-| **CC‑TGA‑21a — Decision join (publication algebra)** | Aggregation over GateChecks is the **idempotent, commutative, associative join** on the lattice `abstain ≤ pass ≤ degrade ≤ block` with **neutral = `abstain`** and **absorbing = `block`**. The algebra is conceptual; publications surface only (i) the aggregated **GateDecision** and (ii) its **GateDecisionRationale** recorded in the **DecisionLog**. A **GateDecisionExplanation** is an optional human‑readable narrative derived from the GateDecisionRationale; it is **not** a decision and MUST NOT be used as one. If aggregated `ConstraintValidity ≠ pass` or the active profile suppresses narratives, any GateFit‑oriented GateDecisionExplanation **does not apply**. | Review a gate with multiple GateChecks: the aggregated decision matches the lattice join; no per‑check arithmetic is introduced on faces. |
+| **CC‑TGA‑20 — Lean publish‑mode ≠ weaken** | `AssuranceLane‑Lite` changes publication faces only; required GateChecks for the active profile remain intact. | Gate in Lean/Core shows minimal pins; GateChecks list unchanged. |
+| **CC-TGA-21 — Decision stability & idempotency witness** | Gate decisions are stable under the equivalence relation recorded by `A.21`; a **witness of equivalence** is present on the DecisionLog record; any change that breaks equivalence requires re-aggregation. **Minimum lexeme (CV-relevant witness):** `EquivalenceWitness := { keys, E⃗, Γ_time(basis), PathSliceId?, ReturnShapeClass, ComparatorSetRef?, profile }`. | Modify any input outside the declared equivalence => re-aggregation; DecisionLog records the witness; lexeme present.
+| **CC‑TGA‑21a — Decision join (publication algebra)** | Aggregation over GateChecks is the **idempotent, commutative, associative join** on the lattice `abstain ≤ pass ≤ degrade ≤ block` with **neutral = `abstain`** and **absorbing = `block`**. The algebra is conceptual; publications carry only (i) the aggregated **GateDecision** and (ii) its **GateDecisionRationale** recorded in the **DecisionLog**. A **GateDecisionExplanation** is an optional human‑readable narrative derived from the GateDecisionRationale; it is **not** a decision and MUST NOT be used as one. If aggregated `ConstraintValidity ≠ pass` or the active profile suppresses narratives, any GateFit‑oriented GateDecisionExplanation **does not apply**. | Review a gate with multiple GateChecks: the aggregated decision matches the lattice join; no per‑check arithmetic is introduced on faces. |
 | **CC‑TGA‑22 — Errors/unknowns fold by profile** | Errors/timeouts fold to `degrade` under `Lean|Core` and to `block` under `SafetyCritical|RegulatedX`; `unknown` folds per GateCheck policy (safety‑default: `degrade`). | DecisionLog shows folds; profile switch changes fold behavior accordingly. |
 | **CC‑TGA‑23 — SquareLaw on crossings** | For every GateCrossing, `gate_out ∘ transfer = transfer' ∘ gate_in`; LaunchGate case is mandatory. | MVPK shows commuting square; inconsistency yields `block|degrade` per profile. |
-| **CC‑TGA‑24 — UNM single‑writer** | `CG‑Spec`, `ComparatorSet`, `UNM.TransportRegistryΦ` editions are authored only by `UNM.Authoring` (others ref‑only). | Authorship cards: UNM is sole writer; others have refs only. |
-| **CC‑TGA‑25 — Evidence lanes & DecisionLogs** | AssuranceLane surfaces GateProfile, GateCheckRef list, edition pins, aggregated decision, `DecisionLogRef`; **evidence pins follow a two‑layer scheme**: **carriers** are pinned via **`SCR/RSCR`**, and **value annotations** are surfaced under **`VALATA (VA/LA/TA)`**. | Gate surfaces include these pins; logs retrievable. |
+| **CC‑TGA‑24 — UNM declaration locus** | `CG‑Spec`, `ComparatorSet`, `UNM.TransportRegistryΦ` editions are declared only through the UNM governing locus (others ref‑only). | Declaration records show UNM as the governing locus; others have refs only. |
+| **CC‑TGA‑25 — Evidence lanes & DecisionLogs** | AssuranceLane carries GateProfile, GateCheckRef list, edition pins, aggregated decision, `DecisionLogRef`; **evidence pins follow a two-part scheme**: **carriers** are pinned via **`SCR/RSCR`**, and **value annotations** are carried under **`VALATA (VA/LA/TA)`**. | Gate publication faces include these pins; logs retrievable. |
 
 > **Coupling note.** `CC‑TGA‑07 (CV⇒GF)` and `CC‑TGA‑21a (Decision join)` together ensure that any GateFit‑scoped GateCheckRef **returns `abstain`** until the aggregated CV status equals `pass`; CV/GF separation remains intact.
-> **Authoring note (scope of E.TGA vs A.*):** Detailed, mechanism‑level checks and most publication content are specified in the **A.* patterns** (A.20…A.42). E.TGA fixes only carcass‑level obligations above.
+> **Scope note (E.TGA vs neighbor patterns):** Detailed mechanism-scoped checks and publication obligations are governed by the current neighbor patterns named in this pattern's Relations. E.TGA fixes only graph-architecture obligations: single transfer edge, gate crossings, valuation, publication pins, CV/GF boundary, and slice-local refresh.
 
 **Glossary (additions)**
-* *Open‑world species* — non‑exhaustive domain‑level specializations of `U.Transduction` that map to the minimal kind set.
+* *Open‑world species* — non-exhaustive domain-scoped specializations of `U.Transduction` that map to the minimal kind set.
 * *Signature (TGA kind)* — `U.Transduction(kind=Signature)`; **identical to** **A.6.0** `U.Signature` (universal block). **Not** a `C.3.2 KindSignature`.
 * *KindSignature (C.3.2)* — intensional definition of a `U.Kind` (intent/extent, F); **unrelated** to TGA kinds; never a `genus`.
-* *Species (domain‑level)* — typed specialisations `speciesOf(kind=…)` that **MUST** declare `KindDefinition=A.*` id (e.g., `kind=Mechanism; KindDefinition=A.6.1`).
-* *KindBridge (`CL^k`)* — a compatibility surface on UTS for describedEntity/kind transitions; required by CC‑TGA‑06‑EX and crossings (CC‑TGA‑11).
+* *Species (domain-scoped)* — typed specialisations `speciesOf(kind=...)` that declare `KindDefinition=<current governing pattern id>` (e.g., `kind=Mechanism; KindDefinition=A.6.1`).
+* *KindBridge (`CL^k`)* — a compatibility note on UTS for describedEntity/kind transitions; required by CC‑TGA‑06‑EX and crossings (CC‑TGA‑11).
 * *Eulerian interpretation* — operational stance where a flow is treated as a valuation over `U.Transfer` and edges perform assurance‑only operations (no token‑passing semantics).
-* **GateCheckRef shape (publication lexeme, normative here).** Where GateChecks are surfaced, a **GateCheckRef** is a record
-  `GateCheckRef := { aspect, kind, edition, scope }` with:
+* **GateCheckKind boundary.** `GateCheckKind` is a publication/check lexeme used inside `GateCheckRef`, not a TGA node kind. No `GateCheckKind` becomes `U.Transduction(kind=Check)` unless an `OperationalGate(profile)` node is actually present.
+
+* **GateCheckRef shape (publication lexeme received from A.21).** Where graph faces carry GateChecks, a **GateCheckRef** is a record
+  received from `A.21`; E.TGA constrains only where graph faces must carry such refs along TGA paths.
+
+`GateCheckRef := { aspect, kind, edition, scope }` with:
   `aspect ∈ {ConstraintValidity, GateFit}`, `kind ∈ GateCheckKind`, `edition ∈ Editions`, and `scope ∈ {lane | locus | subflow | profile}`.
 * **GateDecision / GateDecisionRationale / GateDecisionExplanation (terminology).**
   — **GateDecision** — the aggregated lattice value produced by `OperationalGate(profile)` for a specific `{GateProfile, GateCheckRef[]}`.
-  — **GateDecisionRationale** — the minimal structured support **for that GateDecision**: per‑check outcomes, profile‑bound folds, and surfaced evidence/witness references on the DecisionLog; it records **why the GateDecision is admissible** under the active profile.
+  — **GateDecisionRationale** — the minimal structured support **for that GateDecision**: per‑check outcomes, profile‑bound folds, and published evidence or witness references on the DecisionLog; it records **why the GateDecision is admissible** under the active profile.
   — **GateDecisionExplanation** — an optional human‑readable narrative derived from the GateDecisionRationale; it **does not carry decision status**. While aggregated `ConstraintValidity ≠ pass`, GateFit‑scoped checks return `abstain`; any GateFit‑oriented GateDecisionExplanation **does not apply**.
 > **Clarity note.** **GateDecision ≠ GateDecisionExplanation**; narratives are optional and derivative of GateDecisionRationale.
 
 * **GateFit (aspect, not an entity).** GateFit names the **aspect** of checks that evaluate **profile‑fit**; there is no separate GateFit entity. “Gate decision under GateFit” means “the gate’s decision computed from GateChecks with `aspect=GateFit`”.
 
-  This shape is publication‑level only; it introduces no new execution steps and no arithmetic on faces.  (Couples to A.20/A.21 without duplicating their check catalogs.)
-* *VALATA (VA/LA/TA)* — value‑annotation scheme used on **AssuranceLane**; **carriers** are referenced via **SCR/RSCR**; detailed obligations live in A.10/A.29. Included here so evidence pins are self‑describing in E‑level texts.
+  This shape is publication-only; it introduces no new execution steps and no arithmetic on faces.  (Couples to A.20/A.21 without duplicating their check catalogs.)
+* *VALATA (VA/LA/TA)* — value-annotation scheme used on **AssuranceLane**; **carriers** are referenced via **SCR/RSCR**; detailed evidence obligations live in `A.10` and the named evidence, publication, or crossing pattern for the live case. Included here so evidence pins are self-describing in Part E texts.
 * *Transfer vs Transport* — **Transfer** = the sole graph edge kind `U.Transfer`. **Transport** = Φ‑policy/registry‑defined conversions (`TransportRegistry^Φ`) referenced by UNM; “reuse via Transport” refers to the latter.
 * *GateCrossing* — a typed node transition that writes/updates a CtxState slot or the kind‑channel; see **S1.b** for the normative list and required pins.
 * *Admissible path* — a typed path obeying the GateCrossing discipline (no hidden crossings; witnesses present), Γ‑pinned on compare/launch, and `T^D↔T^R` only at `LaunchGate`; see **S2**.
 
 ### E.18:8 - Gating Profiles (applied to E.TGA)
+This table is an architectural coverage table for E.TGA graph crossings and path slices. It is not the source of `GateProfile` semantics. `A.21` governs gate decision semantics, folds, `DecisionLog` minima, and the GateFit check-catalog boundary.
 
-> Gating is expressed as **publication‑gating** per E.17 profiles. The graph model aligns with the **CC items** listed for the chosen profile; higher profiles include all lower‑profile items.
+> Gating is expressed as **publication‑gating** per E.17 profiles. The graph model aligns with the **CC items** listed for the chosen profile; broader obligation profiles include all narrower-profile items.
 
 | Profile                          | Required CC‑items                                         | Additional notes                                                                               |                                                                  |
 | -------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | **Lean**                         | 01–06, 08–09, 11–12, 15, 19–21, 25                                                                                                           | Minimal MVPK presence; LaunchGate keeps `FreshnessUpToDate` & `DesignRunTagConsistency`. |
-| **Core**                         | **Lean** + 07, 10, 13–14, 16–18, 22–23, 24                                                                                                  | Adds CV⇒GF order, CSLC pins, budgeted loop, guards, valuation/sentinel refresh, error folds, SquareLaw, UNM single‑writer. |
+| **Core**                         | **Lean** + 07, 10, 13–14, 16–18, 22–23, 24                                                                                                  | Adds CV⇒GF order, CSLC pins, budgeted loop, guards, valuation/sentinel refresh, error folds, SquareLaw, and the UNM declaration locus. |
 | **Safety‑Critical / RegulatedX** | **Core** + profile‑specific GateChecks (safety envelope, regulator id/editions) with stricter folds per **CC‑TGA‑22**; SquareLaw audits tightened | — |
 
-**Recommended defaults (non‑normative, tie‑in to A.26).** Profiles inherit along a `PathSlice`; local overrides may only **add** GateChecks; weakening requires a new `PathSlice` via sentinel (cf. A.26/A.25).
+**Recommended defaults (non-normative, tie-in to `A.21` and `G.11`).** Profiles inherit along a `PathSlice`; local overrides may only **add** GateChecks; weakening requires a new `PathSlice` and refresh wiring through the current `G.11` locus when live.
 
 ### E.18:9 - TGA LEX discipline (registration)
 Register Tech tokens (ASCII) used by this architecture with twin‑labels: `U.TransductionGraph`, `U.TransductionFlow`, `StructuralReinterpretation`, `OperationalGate`, `GateProfile`, `GateCheckRef`, **`GateCheckKind`**, `DecisionLog`, `USM.CompareGuard`, `USM.LaunchGuard`, `KindBridge`, `SubflowRef`, `FlowEmbed`, `SentinelId`, `PathSliceId`, `SliceRefresh`, `FinalizeLaunchValues`, `VALATA`. Add an ASCII alias **`CLKind`** ↔ Plain `CL^k` (cf. `CLPlane` ↔ `CL^plane`). Reference MVPK E.17 naming for faces.
@@ -22177,69 +24344,56 @@ Register Tech tokens (ASCII) used by this architecture with twin‑labels: `U.Tr
 
 **Benefits.**
 
-1. **Universality with discipline:** one edge kind and explicit gates eliminate second hidden process orders and make cross‑domain flows (ML, supply‑chain, TAMP/MPC, scientific workflows) uniformly analyzable and auditable.
-2. **Comparability & replayability:** CSLC and edition‑pinned comparators prevent covert scalarization and enable lawful set returns and reproducible decisions.
+1. **Universality with discipline:** one edge kind and explicit gates eliminate second hidden process orders and make cross-domain flows (ML, supply-chain, TAMP and MPC, scientific work graphs) uniformly analyzable and auditable.
+2. **Comparability & replayability:** CSLC and edition‑pinned comparators prevent covert scalarization and enable declared set returns and reproducible decisions.
 3. **Locality of change:** sentinel subflows restrict refresh to affected `PathSlice`s; large graphs remain stable under frequent edition bumps.
 4. **Clean DesignRunTag fold:** LaunchGate and `DesignRunTagConsistency` stop premature launch‑value slot filling; acceptance and telemetry live where they occur (`U.Work`).
-5. **Assurance visibility:** MVPK makes GateProfile/DecisionLog surfaces locally checkable and cacheable for the same `{PathSlice, GateChecks, Editions}`.
+5. **Assurance visibility:** MVPK makes GateProfile/DecisionLog records locally checkable and cacheable for the same `{PathSlice, GateChecks, Editions}`.
 
 **Trade‑offs.**
 a) **Higher upfront modeling cost:** explicit Bridge/UTS pins and GateProfiles demand care; mitigated by Lean profile and templates.
-b) **Longer edge surfaces:** MVPK faces are verbose by design; Lean surfaces can be used for low‑risk segments.
-c) **Tooling alignment:** some incumbent DAG‑only orchestrators conflict with budgeted cycles and set‑return semantics; adapters must project E.TGA semantics to their interop layer (never the other way round).
+b) **Longer edge face sets:** MVPK faces are verbose by design; lean face sets can be used for low‑risk segments.
+c) **Tooling alignment:** some incumbent DAG‑only orchestrators conflict with budgeted cycles and set‑return semantics; adapters SHALL project E.TGA semantics to their interop boundary (never the other way round).
 
-### E.18:10 - Rationale
+### E.18:11 - Rationale
 
-E.TGA enforces **strict separation of concerns** (carcass‑level only); **specialized semantics are governed by A.* patterns**:
+E.TGA states **strict separation of concerns** (graph-architecture scope only); **specialized semantics are governed by the current neighboring patterns named below**:
 
 * **What the graph is:** typed intensional morphisms and a single transport edge `U.Transfer`.
-* **Where/when it may cross contexts:** **only** at `OperationalGate(profile)`, with Bridge+UTS, CL/CL^plane, and Φ routed to R‑lane.
-* **How comparability works:** UNM authors units/planes/transports (single writer) and selectors operate **only** on normalized, edition‑pinned comparators, returning sets/archives—not totals. **Edition‑aware pins and archive semantics are tested in A.28/A.34/A.37 (not repeated here).**
+* **Where/when it may cross contexts:** **only** at `OperationalGate(profile)`, with Bridge+UTS, CL/CL^plane, and Φ published in R-lane.
+* **How comparability works:** UNM is the single governing locus for unit, plane, and transport declarations, and selectors operate **only** on normalized, edition-pinned comparators, returning sets or archives rather than totals. Edition-aware pins and archive semantics are checked through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` when live.
 * **How change propagates:** sentinel‑bounded `PathSlice` refresh; editions are monotone; LaunchGate is the only binder of launch‑values.
 
-This arrangement guarantees **functorial publication** (commuting squares on crossings) and **orthogonality** of inner technical validity (ConstraintValidity) to context fit (GateFit), which in turn makes gate aggregation **order‑independent** and cements the CV⇒GF activation predicate.
+This arrangement gives checkable conditions for **functorial publication** (commuting squares on crossings) and **orthogonality** of inner technical validity (ConstraintValidity) to context fit (GateFit), which in turn keeps gate aggregation **order-independent** under the CV=>GF activation predicate.
 
-### E.18:11 - SoTA‑Echoing (post‑2015, multi‑Tradition)
+### E.18:12 - SoTA‑Echoing (post‑2015, multi‑Tradition)
 
-> Each item states **Adopt / Adapt / Reject**, and why. Vendor/tool tokens are kept as *informative*, not normative.
+> Each row states the source idea, the FPF invariant E.TGA adopts, the reader move it changes, and the shortcut it rejects. Vendor, tool, and literature tokens are informative; the invariant and reader move carry the pattern explanatory work.
 
-1. **Applied category theory (compositional open systems).**
-   **Adopt.** Monoidal composition and wiring justify “nodes as morphisms, edges as carriers” and functorial publication of faces; they also provide algebraic laws for joining subflows. (Fong & Spivak, *Seven Sketches in Compositionality*, 2019).
+| SoTA source idea | FPF invariant | Reader move | Rejected shortcut |
+|---|---|---|---|
+| **Applied category theory / compositional open systems** (Fong & Spivak, *Seven Sketches in Compositionality*, 2019) | Use one `TransductionGraph` whose nodes are typed morphism/transduction bindings and whose edges use the single graph edge kind `U.Transfer`; publication faces preserve composition rather than inventing a second publication meaning. | Name the graph object, node kinds, one `U.Transfer`, and any live path or crossing before drawing a process order. | Treating category-theory prestige, tool pipelines, lineage packages, or process narratives as graph semantics. |
+| **Operads, wiring diagrams, and hypergraph categories** (Spivak, *Operads of Wiring Diagrams*, 2021; Baez & Fong, *A Compositional Framework for Passive Linear Circuits*, 2015) | Typed ports and interface junctions motivate Bridge/CL/Phi pins at crossings; E.TGA adapts the math by requiring publication pins that the math alone does not supply. | When an interface or boundary crossing matters, publish the Bridge, UTS row, CL/CL^plane, and R-lane penalty placement instead of leaving an unpinned junction. | Reading an interface diagram, wiring diagram, or decorated cospan as sufficient crossing evidence. |
+| **Open-graph and string-diagram rewriting** (Bonchi et al., *Graphical Linear Algebra*, 2019; Kissinger survey lineage) | Rewrites and subflow refactors are admissible only with edition bumps, sentinel scopes, and `PathSlice` locality sufficient for replay. | Localize the rewrite to the affected subflow or slice, pin editions, and re-emit the affected faces. | Treating a global rewrite as replay-safe because the diagram still looks equivalent. |
+| **Research-package portability / RO-Crate-style research packaging** (RO-Crate 1.2 as current long-term release; Soiland-Reyes et al., *Packaging research artefacts with RO-Crate*, 2022, as lineage) | Portable package descriptions belong in MVPK faces and InteropCards; packages and lineage metadata do not define graph semantics. | Publish package, provenance, and source refs as publication support while keeping graph meaning in the node/gate definitions. | Treating a crate, package, file bundle, or lineage record as the semantic authority for the graph. |
+| **Reproducibility and content addressability** (Di Cosmo et al., *Referencing Source Code Artifacts: a Separate Concern in Software Citation*, 2020) | Stable identifiers become edition pins and entries in `E⃗`; they make references checkable but do not decide node, gate, or mechanism meaning. | Pin the exact editions of code, comparator, transport registry, descriptor map, or distance definition used by a face or path. | Treating an identifier, hash, or content-addressed source ref as semantic authority. |
+| **TAMP and MPC planning and control practice** (Garrett, Lozano-Perez, Kaelbling 2021 as lineage; Zhao et al., *A Survey of Optimization-based Task and Motion Planning*, 2024, as current TAMP survey anchor; named MPC survey or pack ref required when MPC is the live claim) | Iteration is allowed only as a budgeted Selection-Planning loop with freshness checks and launch values bound in `U.WorkEnactment`. | Declare the loop budget, freshness/request boundary, next `PathSlice`, and Work-only launch-value filling. | Turning E.TGA into an ordered procedure narrative, an unbounded loop, or pre-Work launch-value filling. |
+| **Quality-Diversity / illumination search** (MAP-Elites and CMA-ME as lineage; QDax JMLR 2024 for current QD library support; QDHF 2023/ICML 2024 or QDAIF 2023 refs only when feedback-guided QD is live) | Set and archive returns must stay visible; E.TGA treats covert scalarization to one winner as non-conformant while leaving selector, archive, dominance, and comparator semantics to neighboring loci. | Return the set/archive, pin comparator and descriptor/distance editions, and cite the selector/comparator loci when live. | Collapsing a partially ordered or archive-like result into a single best score. |
+| **Profunctor optics / modular projection practice** (Pickering, Gibbons, Wu, *Profunctor Optics*, 2019) | MVPK faces are projections of graph/morphism information; they carry views without adding new numeric or mechanism claims. | Publish views as MVPK faces with correspondence refs and pins, while leaving transformations and checks in their governing patterns. | Treating a view, projection, screen, or explanation as a transformation, evidence result, or gate decision. |
 
-2. **Operads / wiring diagrams / hypergraph categories.**
-   **Adopt/Adapt.** Typed ports and decorated cospans model interfaces and “Bridge” junctions; we adapt the operadic composition to require CL/Φ pins on every crossing (publication‑level requirement not present in the math). (Spivak, *Operads of Wiring Diagrams*, 2021; Baez & Fong, *A Compositional Framework for Passive Linear Circuits*, 2015).
+*Cross-tradition note.* Rows 1-3 (compositional graph practice), rows 4-5 (publication and reproducibility practice), row 6 (controls/robotics), row 7 (evolutionary search), and row 8 (PL/semantics) jointly anchor E.TGA across multiple traditions per E.8, but each row is retained only because it changes a reader move or rejected overread.
 
-3. **Open‑graph/string‑diagram rewriting.**
-   **Adapt.** Rewriting systems capture subflow refactors, but E.TGA binds rewrites to edition bumps and sentinel scopes rather than global rewrites, to preserve auditability and replay. (Bonchi et al., *Graphical Linear Algebra*, 2019; Kissinger—survey lineage).
+### E.18:13 - Bias‑Annotation (per E.8 SG‑bias slot)
 
-4. **Publication discipline & artefact portability.**
-**Adopt.** Edition-pinning and immutable registries echo contemporary reproducibility practice; E⃗ stays explicit and compositional in the published form.
-
-5. **Reproducibility & content addressability.**
-   **Adopt.** Edition-pinning and immutable registries echo modern content-addressable reproducibility (conceptual); E⃗ stays explicit and compositional in the published form.
-
-6. **TAMP/MPC (integrated planning and control).**
-   **Adopt/Adapt.** The budgeted Selection↔Planning loop follows contemporary TAMP practice; MPC‑style freshness/constraint checks motivate **FreshnessUpToDate** as a hard LaunchGate module and “bind‑in‑Work‑only”. (Garrett, Lozano‑Pérez, Kaelbling, *Integrated Task and Motion Planning*, 2021; Rawlings et al., MPC updates).
-
-7. **Quality‑Diversity (QD) search.**
-   **Adopt.** QD (e.g., CMA‑ME, 2020) justifies **set‑return** and archive semantics in `U.SelectionAndTuning`; E.TGA bans covert scalarization that would collapse archives to single “bests”.
-
-8. **Profunctor optics (modular projections).**
-   **Adopt/Adapt.** Optics motivate view and projection discipline behind MVPK faces; we adapt by forbidding MVPK faces from introducing new claims (they are pure projections, not transformations). (Pickering, Gibbons, Wu, **Profunctor Optics**, 2019).
-
-*Cross‑tradition note.* Items 1–3 (category‑theoretic), 4–5 (publication/reproducibility concepts), 6 (controls/robotics), 7 (evolutionary search), and 8 (PL/semantics) jointly anchor E.TGA across multiple traditions, per E.8.
-
-### E.18:12 - Bias‑Annotation (per E.8 SG‑bias slot)
-
-* **Acyclic‑bias risk.** Tooling accustomed to DAGs may discourage legal feedback loops; E.TGA explicitly permits loops with budget/sentinel controls (CC‑TGA‑13,‑18).
-* **Scalarization‑bias risk.** Cultural defaults to single‑score rankings can suppress Pareto/QD sets; E.TGA requires admissible order relations and return‑sets (CC‑TGA‑10,‑12).
-* **Interop‑dominance risk.** File/format ecosystems (CWL/RO‑Crate/lineage) can leak into semantics; E.TGA places them in **InteropCard** and keeps intensional semantics in nodes/gates.
+* **Acyclic‑bias risk.** Tooling accustomed to DAGs may discourage admissible feedback loops; E.TGA explicitly permits loops with budget/sentinel controls (CC‑TGA‑13,‑18).
+* **Scalarization-bias risk.** Cultural defaults to single-score rankings can suppress Pareto/QD sets; E.TGA requires declared order relations and return sets (CC-TGA-10, CC-TGA-12).
+* **Interop‑dominance risk.** File/format ecosystems (CWL/RO‑Crate/lineage) can be mistaken for semantic sources; E.TGA places them in **InteropCard** and keeps intensional semantics in nodes/gates.
 * **Over‑formalization risk.** Category‑theoretic formalisms can obscure operational guard‑rails; E.TGA grounds crossings in Bridge/UTS/CL/Φ pins and SquareLaw audits (CC‑TGA‑11,‑17).
 * **Retrospective rewrite risk.** Global rewrites break replay; E.TGA confines them to edition bumps and slice‑local refresh (CC‑TGA‑16).
 
 **Mitigations.** Profile‑gated publication, audit of `DecisionLog`, mandatory edition pins, Lean‑to‑Core upgrade paths, and conformance tests tied to PathSlice replay.
 
-### E.18:13 - Relations (explicit pattern‑to‑pattern edges)
+### E.18:14 - Relations (explicit pattern‑to‑pattern edges)
 
 > Directed edges (→) are typed as **builds_on / constrains / coordinates / specializes / publishes_on / requires / provides_checks_for**.
 
@@ -22252,33 +24406,32 @@ This arrangement guarantees **functorial publication** (commuting squares on cro
 * **E.TGA →coordinates→ A.20 U.Flow (ConstraintValidity scope).** CV checks live inside transformations; no declaration/translation of planes/units in CV; **error/timeout/unknown folds** follow **CC‑TGA‑22** as the **minimum default** (profiles may be stricter).
   **Terminology discipline (A.20 boundary).** In CV scope, publications use **status/witness** language; **GateDecisionRationale/GateDecisionExplanation** are reserved for gating and do not apply to CV.
 * **E.TGA →coordinates→ A.21 GateProfilization (GateFit scope).** **GateFit-scoped GateChecks** are aggregated by `OperationalGate(profile)` with CV⇒GF activation; the **enumeration and publication shape** of GateChecks live in **A.21**. **Equivalently:** a GateFit decision different from `abstain` appears only when aggregated `ConstraintValidity = pass`; otherwise the **GateDecisionExplanation (GateFit‑oriented)** does not apply.
-* **E.TGA →requires→ USM.CompareGuard and USM.LaunchGuard.** Guards publish scope and responsible gate; guard failures are handled by the declared gate.
-* **E.TGA →constrains→ F.* (Bridge+UTS, CL/CL^plane, Φ→R).** A transition is treated as a **Crossing** iff `Bridge+UTS` and the appropriate `CL/CL^plane` are surfaced; otherwise this crossing explanation does not apply. Where Φ defines penalties, they appear in the R‑lane only.
+* **E.TGA →uses→ USM.CompareGuard and USM.LaunchGuard.** Guards publish scope and responsible gate; guard failures are handled by the declared gate.
+* **E.TGA -> constrains -> F.9/F.17 bridge and terminology-synchronization loci (Bridge+UTS, CL/CL^plane, Phi -> R).** A transition is treated as a **Crossing** iff `Bridge+UTS` and the appropriate `CL/CL^plane` are published; otherwise this crossing explanation does not apply. Where Phi defines penalties, they appear in the R-lane only.
 * **Operational interpretation (default): Eulerian.** A flow is a **valuation** over `U.Transfer`; edges carry **assurance‑only operations** (see CC‑TGA‑17); no token‑passing semantics are assumed.
 
 **UNM & comparability**
-* **E.TGA →constrains→ UNM.Authoring / UNM.Usage.** Single‑writer for `CG‑Spec/ComparatorSet/UNM.TransportRegistryΦ`; normalize‑then‑compare is mandatory.
+* **E.TGA →constrains→ UNM declaration and use loci.** `CG‑Spec`, `ComparatorSet`, and `UNM.TransportRegistryΦ` declarations are governed by UNM; normalize-then-compare is mandatory.
 * **E.TGA →constrains→ G.5 SelectionAndTuning.** Set‑returning, comparator‑pinned decisions, no hidden scalarization; `MethodTuning` without launch‑value slot filling.
-* **E.TGA →constrains→ G.11 EvaluatingAndRefreshing.** EditionBumpProposal, two‑phase commit in UNM.Authoring, path‑local refresh.
+* **E.TGA →constrains→ G.11 EvaluatingAndRefreshing.** EditionBumpProposal, two-phase update through the UNM declaration locus, path-local refresh.
 
 **Work boundary**
-* **E.TGA →requires→ A.15 U.WorkEnactment (`FinalizeLaunchValuesOnlyInWork`).** Single point of `FinalizeLaunchValues`; `FreshnessUpToDate` hard at LaunchGate; acceptance/telemetry published here.
+* **E.TGA →coordinates with→ A.15 U.WorkEnactment (`FinalizeLaunchValuesOnlyInWork`).** Single point of `FinalizeLaunchValues`; `FreshnessUpToDate` hard at LaunchGate; acceptance/telemetry published here.
 
 **Structure & reuse**
-* **E.TGA →specializes→ U.TransductionFlow (and its family).** The graph architecture is the common substrate on which flow patterns (e.g., P2W, EvaluatingAndRefreshing) are defined; E.TGA ensures their crossings, guards, and MVPK faces are coherent.
+* **E.TGA →specializes→ U.TransductionFlow (and its family).** The graph architecture is the common substrate on which flow patterns (e.g., P2W, EvaluatingAndRefreshing) are defined; E.TGA provides coherence checks for their crossings, guards, and MVPK faces.
 * **E.TGA →publishes_on→ E.17 MVPK views** (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) for every edge/node where publication occurs; Lean mode allowed only as per profile.
 
-### E.18:14 - Conformance evidence (how to show you comply)
+### E.18:15 - Conformance evidence (how to show you comply)
 
-1. **Model lint:** run static checks for CC‑TGA‑01…25 (edge kind, gates on crossings, CV⇒GF, guard ownership, single‑writer UNM, SquareLaw).
+1. **Model lint:** run static checks for CC‑TGA‑01…25 (edge kind, gates on crossings, CV⇒GF, guard aggregation assignment, UNM declaration locus, SquareLaw).
 2. **Publication audit:** sample a commuting square and a sentinel‑bounded subflow; verify pins and DecisionLog behavior on *block/degrade*.
-3. **Replay test:** freeze editions; re‑run selection on a PathSlice; observe identical return‑sets; apply a bump; see only affected `PathSlice`s refresh.
+3. **Replay test:** hold editions fixed; re‑run selection on a PathSlice; observe identical return‑sets; apply a bump; see only affected `PathSlice`s refresh.
 4. **StructuralReinterpretation probe:** construct a minimal reinterpretation step; confirm `CL^k` with `bridgeChannel=Kind` on UTS, a SquareLaw‑retargeting witness on UTS, `PathSliceId` pinned, **CV.ReinterpretationEquivalence=pass**, and absence of hidden scalarization.
 
 [20]: https://webstore.ansi.org/preview-pages/ISO/preview_ISO%2B23247-1-2021.pdf?srsltid=AfmBOooAUXpg38IpkTlUFtcCpaMVOjivkewJWDIUd1VemIJO91abNEkG "INTERNATIONAL STANDARD ISO 23247-1"
 
 ### E.18:End
-
 ## E.19 - Pattern Quality Gates: Review & Refresh Profiles
 
 > **Type:** Architectural pattern
@@ -22295,12 +24448,11 @@ Use it especially when a draft looks structurally compliant but may still fail o
 
 ### E.19:0.1 - What goes wrong if missed
 
-
 Review collapses into heading compliance or personal taste. A draft can pass because it has the right headings while still being hard for a practitioner to recognise, too thin against current practice, unclear about its governed object, or misleading about neighbouring patterns and authority posture.
 
 ### E.19:0.2 - What this buys
 
-`E.19` gives authors, reviewers, and stewards a shared review profile: what must be checked, how deep the check should go, which defects block admission or refresh, and what evidence is needed before a pattern-quality claim is made. It also makes the recognition surface visible before the heavier assurance machinery begins.
+`E.19` gives authors, reviewers, and stewards a shared review profile: what must be checked, how deep the check should go, which defects block admission or refresh, and what evidence is needed before a pattern-quality claim is made. It also makes the recognition text visible before the heavier assurance machinery begins.
 
 **First useful move.** Name the pattern-quality review or refresh claim, run baseline triage, and add only the risk-driven profiles needed by the live ontology, usability, SoTA, boundary, naming, or authority risk.
 
@@ -22355,6 +24507,12 @@ A review **SHOULD** leave one findings-first run record against a named target p
 
 `E.19` reviewer and review-target wording is FPF pattern-quality wording. It governs FPF pattern-quality review or refresh claims, not project-side publication reading, explanation reading, comparative review-unit use, or participation in a named project-side review relation. When those project-side relations are live, use the publication or project-side pattern that names the object being read or reviewed.
 
+**Project-side reuse boundary.** Use this boundary when an `E.19` pattern-quality result is being reused as project certification, project evidence, safety support, gate input, release justification, compliance support, assurance material, work authority, or publication truth. The first E.19 move is to return the result to the exact FPF pattern-quality claim it reviews: admission, refresh, narrower use, repair return, or selected pattern-quality boundary. If that result is cited for a project-side claim, the receiving relation must be opened for that exact claim: `A.10` for evidence/currentness, `B.3` for assurance, `A.20` for local CV status, `A.21` for gate decision, `A.15` for work, or another exact governing pattern when live. The review result may be evidence about FPF pattern quality; it is not certification of the project world. Plain wording in the reviewed text remains ordinary unless it changes admissible use, support, evidence, gate, assurance, work, decision, or neighboring-pattern exit.
+
+**Common wrong first reading.** Pattern review passed means the project, release, publication, safety claim, or compliance claim is certified. First honest entry: E.19 returns only a pattern-quality result; any project-side reuse must name the receiving project relation and its evidence or assurance source.
+
+**Misuse guard.** A pattern-quality caution, return-for-repair result, or narrower-use result cannot be reused as project refusal or project approval unless a project-side receiving relation is live and states its own supported and unsupported use.
+
 Formal/template defects (e.g. non-compliance with E.8 structure or not conforming to RFC deontic terminology) have lower review priority than semantic/ontological defects or non-SoTA Solutions, but they also **MUST** be recorded with the active repair boundary named.
 
 E.g. if the header block is missing or incomplete, **continue with ontology and semantic review first**. Treat missing header fields as one mechanical defect to record with concrete repair direction (PCP-BASE #7), not as a reason to stop.
@@ -22365,17 +24523,16 @@ If the local process separates review from repair, direct target-text patching, 
 
 #### E.19:4.2 - Apply the baseline profile to every run
 
-
 Every run MUST include **PCP‑BASE** as a triage baseline. Full-depth checking
 is selected only where the relevant risk is live; reviewer depth SHOULD
 prioritize the load-bearing sections and obligations in E.19:4.2.1.
 
-1. **Internal coherence (problem ↔ conformance claim ↔ solution)**
-   The Conformance Checklist matches Problem statement and the Solution (no “orphan requirements” and no “unclaimed obligations”).
+1. **Internal coherence (problem <-> conformance claim <-> solution)**
+   The Conformance Checklist matches Problem statement and the Solution (no "orphan requirements" and no "unclaimed obligations").
 2. **Lexical discipline & reserved vocabulary**
-   Terms and registers follow lexical rules; ambiguous “everyday” synonyms do not silently replace kernel vocabulary.
-3. **SoTA‑Echoing minimum compliance (E.8)**
-   SoTA‑Echoing satisfies the E.8 obligations applicable to the pattern kind (Architectural vs Definitional), including post‑2015 sourcing and explicit adopt/adapt/reject stances. If a SoTA Synthesis Pack exists for the topic, SoTA‑Echoing binds to it rather than forking an untracked narrative; any divergence of pattern norms from contemporary practice is explicitly stated as such. SoTA‑Echoing **MUST** be non‑decorative and **MUST** reflect best-known current practice rather than merely popular defaults for the declared problem. It does not create a second rule source, but it **MUST** govern the Solution and other load-bearing sections, or those sections **MUST** justify divergence explicitly.
+   Terms and registers follow lexical rules; ambiguous "everyday" synonyms do not silently replace kernel vocabulary.
+3. **SoTA-Echoing minimum compliance (E.8)**
+   SoTA-Echoing satisfies the E.8 obligations applicable to the pattern kind (Architectural vs Definitional), including post-2015 sourcing and explicit adopt/adapt/reject stances. If a SoTA Synthesis Pack exists for the topic, SoTA-Echoing binds to it rather than forking an untracked narrative; any divergence of pattern norms from contemporary practice is explicitly stated as such. SoTA-Echoing **MUST** be non-decorative and **MUST** reflect best-known current practice rather than merely popular defaults for the declared problem. It does not create a second rule source, but it **MUST** govern the Solution and other load-bearing sections, or those sections **MUST** justify divergence explicitly.
 4. **Cross-pattern compatibility & impact radius**
    Relations are consistent with declared dependencies and dependents; declared scope/impact is compatible or explicitly limited.
 5. **Didactic grounding**
@@ -22389,6 +24546,8 @@ prioritize the load-bearing sections and obligations in E.19:4.2.1.
    Checks include: scope containment, split/refactor recommendations when warranted, and contradiction scans against neighbor patterns in Relations.
    The pattern SHOULD balance cohesion and coupling across FPF.
    If the pattern defines specialization or layering, it SHOULD NOT mix slot interfaces or parameters from different levels; use explicit `⊑/⊑⁺` or `Uses` cuts instead.
+9. **Substantive solution and locus adequacy**
+   Baseline triage includes a small target-specific question set about the actual problem and current change: does the pattern still solve the stated problem, are decision loci and neighboring returns correct, are kind boundaries and support relations preserved, did anything get worse, are SoTA rows current enough for their load, and is the applied apparatus neither too thin nor too heavy for the live claim?
 
 ##### E.19:4.2.1 - Triage: spend depth on load-bearing sections without making reviews heavier
 
@@ -22403,6 +24562,7 @@ PQG is meant to increase *semantic and ontological trust*, not to turn every rev
   * **definitions and mint/reuse decisions** (new terms, renamed terms, scope claims baked into names, names that are not overloaded and are properly chosen),
   * **cross-context and cross-plane claims** (Bridge hygiene and “sameness” assertions),
   * **SoTA** (when the pattern claims state-of-the-art rather than a popular-but-outdated solution or vocabulary),
+  * **substantive solution and locus adequacy**: one target-specific content pass checks whether the repaired text still solves the stated problem, sends live claims to the correct neighboring loci, preserves kind and support boundaries, and has not become either under-supported or over-bureaucratic,
   * **modularity and Slot discipline of A.6.5** that provide evolvability of FPF,
   * **absence of contradictions in a pattern**,
   * **Relations** that define compatibility and impact radius.
@@ -22415,11 +24575,10 @@ PQG is meant to increase *semantic and ontological trust*, not to turn every rev
 #### E.19:4.3 - Add risk-driven profiles
 
 **PCP‑PRAG (Pragmatic utility & adoption)** — Trigger: the pattern is Normative and claims practice guidance.
-Checks include: a visible first-reading recognition surface early enough for a cold working reader; a recognisable first-minute working situation; one short `Use this when` or equivalent entry; a plain statement of what goes wrong if the pattern is missed; a plain statement of what the pattern buys in practice; the first admissible action-guiding move the user should take; a visible ordinary `not this pattern when` boundary; a minimally viable example; non-decorative Consequences/Anti-Patterns; at least one worked slice when the pattern is easy to misuse; a visible assurance surface carrying declaration, guidance/check, modeling, and review-support load; reader-fit consistency so that the assurance surface does not silently widen or universalize the recognition-surface claim; explicit practical payoff in user-facing prose; a short user-facing statement of the governed object and any minimal modeling lens when typed declaration support is load-bearing; nearby pairwise plain glosses for load-bearing technical terms that appear before the heavier harness; a short working-reader implication for any `SoTA-Echoing` rows that carry live explanatory load plus visible linkage to the worked cases or boundary slices they discipline; explicit primary working reader, concern, and viewpoint fields when several working-reader situations are being served; an explicit `So what?` adoption test; and, when the pattern claims universal or transdisciplinary reach, at least three heterogeneous recognition-surface situations with `F.16` preferred as the compact example-matrix template.
+Checks include: a visible first-reading recognition text early enough for a cold working reader; a recognisable first-minute working situation; one short `Use this when` or equivalent entry; a plain statement of what goes wrong if the pattern is missed; a plain statement of what the pattern buys in practice; the first admissible action-guiding move the user should take; a visible ordinary `not this pattern when` boundary; a minimally viable example; non-decorative Consequences/Anti-Patterns; at least one worked slice when the pattern is easy to misuse; a visible assurance text carrying declaration, guidance/check, modeling, and review-support load; reader-fit consistency so that the assurance text does not silently widen or universalize the recognition-text claim; explicit practical payoff in user-facing prose; a short user-facing statement of the governed object and any minimal modeling lens when typed declaration support is load-bearing; nearby pairwise plain glosses for load-bearing technical terms that appear before the heavier harness; a short working-reader implication for any `SoTA-Echoing` rows that carry live explanatory load plus visible linkage to the worked cases or boundary slices they discipline; explicit primary working reader, concern, and viewpoint fields when several working-reader situations are being served; an explicit `So what?` adoption test; and, when the pattern claims universal or transdisciplinary reach, at least three heterogeneous recognition-text situations with `F.16` preferred as the compact example-matrix template.
 If an `E.10.SEMIO` cleanup is part of admission or refresh, `PCP-PRAG` treats type-correct-but-inert wording as a usability defect governed by `E.2` `P-2` and `E.12`: the run must name the remaining admissible reader move or the neighboring FPF pattern that now carries the live claim, and must confirm any Plain recognition line maps back to the recovered Tech reading when both registers are live. A more expressive recognition line or intentional didactic metaphor may stay ordinary when it carries no FPF load; when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load, that load must be recoverable through the recovered Tech reading or named handoff.
 
 For a broad cleanup across several patterns, or any cleanup that touches load-bearing Problem frames, Problem sections, first-use recognition text, archetypal grounding, examples, or worked slices, the run must leave a short didactic change account: improved, preserved, or harmed. `Harmed` blocks admission or refresh unless the same pass restores the working situation and first useful move, or names the neighboring FPF pattern that now carries the live claim.
-
 
 **PCP‑MOD (Modularity & layering discipline)** — Trigger: the review target shows scope creep or level-mixing (e.g., one pattern bundles universal core rules with frame-specific content and discipline-specific method semantics; or it mixes Intension/Description/Spec roles in one object).
 
@@ -22428,7 +24587,7 @@ Checks include:
 * an explicit **core vs extensions** cut (universal invariants are factored into one stable “core”, and extensions reference it rather than re-stating or mutating it),
 * no conflation of **specialization vs dependency**: use `⊑/⊑⁺` for refinement/extension and `Uses` for pipelines; do not mix their semantics,
 * no conflation of package-form, governing-pattern relation, and package-relation roles: **Pack vs Kit vs Suite vs Family vs Bundle vs Cluster vs Profile vs Overlay vs Record vs Umbrella** are not interchanged, and the review states carrier status, governing-pattern relation, and package relation explicitly instead of leaving it implicit or varying it for style,
-* level hygiene: Description-level artefacts do not grow mechanism semantics; MVPK faces remain projections and do not become “the place of truth”,
+* description-lane descriptions and their publications do not grow mechanism semantics; MVPK faces remain projections and do not become "the place of truth",
 * slot-discipline hygiene for any ordered specialization set: SlotKind invariance is preserved and inherited operations do not gain new mandatory inputs (A.6.5 / A.6.1 specialization discipline).
 
 **PCP‑REFRESH (Staleness & compatibility refresh)** — Trigger: staleness signals are present (e.g., outdated SoTA rows, renamed/superseded Relations targets, terminology drift, or an explicit refresh window in LAT/DRR).
@@ -22455,7 +24614,7 @@ Checks include:
 Checks include:
 
 * each “best practice” claim or SoTA claim in the Solution is explicitly **bound** to SoTA‑Echoing rows (or to SoTA Synthesis Pack identifiers when used), rather than floating as ungrounded prescription, and those rows identify best-known current practice rather than popularity alone,
-* the selected SoTA source family answers the declared working problem and the relevant domain or practice tradition rather than merely supporting package placement, naming neatness, or pattern clustering,
+* the selected SoTA practice or source set answers the declared working problem and the relevant domain or practice tradition rather than merely supporting package placement, naming neatness, or pattern clustering,
 * each SoTA row changes at least one load-bearing outcome for the pattern: what the user may do, what the user must not over-read, which neighboring FPF pattern must apply, or which claim cannot be raised to release, policy, assurance, gate, action-selection, or adjudication use,
 * novel synthesis is not presented as established SoTA: it is either (a) framed as a scoped hypothesis with explicit limits, or (b) promoted into or registered as a SoTA Synthesis Pack entry before the pattern is admitted as normative guidance; a merely explanatory SoTA note that leaves the load-bearing sections untouched is non-conforming,
 * where traditions disagree substantively, the pattern makes the disagreement visible and states whether it adopts, adapts, or rejects each relevant source idea instead of silently selecting one tradition,
@@ -22466,7 +24625,7 @@ Checks include:
 Checks include:
 
 * explicit Bridge usage where required (no silent identity by spelling),
-* Congruence / loss is surfaced where applicable,
+* Congruence / loss is made explicit where applicable,
 * any cross-plane reuse is explicitly acknowledged and its penalties do not leak into unrelated assurances.
 
 **PCP‑SUITE (Mechanism-suite integrity)** — Trigger: the review target introduces or revises a suite-level Description that enumerates multiple distinct mechanisms (e.g., `MechSuiteDescription` or a suite specialization) and/or changes suite obligations, conformance pins, or suite protocols.
@@ -22514,7 +24673,7 @@ Checks include:
 Checks include:
 * Deontic requirements are expressed with RFC-style keywords (see H-8);
 * obligations are not smuggled into prose as informal imperatives. Admissibility/validity constraints are stated non‑deontically as `Invariant:` / `Well‑formedness constraint:` predicates and referenced from the Conformance Checklist when enforceable.
-* **Subject discipline for RFC keywords.** If a sentence uses RFC keywords, its grammatical subject **MUST** be an agent or a publishable artefact (author, reviewer, record, published model). RFC keywords **MUST NOT** modify modeled‑world entities (e.g., “Earth”, “RoleAssignment”, “Role”, “holon”) — express those as `Invariant:` / `Well‑formedness constraint:` predicates instead, and (if needed) reference them from CC items.
+* **Subject discipline for RFC keywords.** If a sentence uses RFC keywords, its grammatical subject **MUST** be an agent or a specified published record/model whose required content is being constrained (author, reviewer, record, published model). RFC keywords **MUST NOT** modify modeled-world entities (e.g., “Earth”, “RoleAssignment”, “Role”, “holon”) — express those as `Invariant:` / `Well‑formedness constraint:` predicates instead, and (if needed) reference them from CC items.
 
 **PCP-ENTRY (Pattern-entry discoverability and entry-orientation changes)** —
 Trigger: one change substantively affects how one reader recognizes, selects,
@@ -22596,7 +24755,7 @@ Its default review load is one small core triggered check:
 
 1. **No workflow implication**
    Entry text does not imply mandatory sequence, control transfer, handoff, or
-   artefact pipeline unless another governing entry or applicable projection role
+   publication, carrier, or record sequence unless another governing entry or applicable projection role
    explicitly governs that semantics.
 
 2. **Governing-entry boundary preserved**
@@ -22639,7 +24798,7 @@ Substantial discoverability changes leave one compact pattern-local note in the 
 That pattern-local note may stop at one explicit rationale when the risk is already
 controlled by governing-entry or applicable-projection-role inspection, support-role
 partition, or one local wording repair.
-It is not a separate artefact unless the change is high-risk, disputed,
+It is not a separate review record unless the change is high-risk, disputed,
 public-facing with substantive entry risk, or retrieval-facing.
 
 When one compact pattern-local note is needed, it names only the changed support role, the
@@ -22780,10 +24939,11 @@ When one common hardening load is load-bearing, disputed, or explicitly invoked 
 
 Use triggered accounts only for the entry load that is live:
 
-1. **Usability and working-reader fit.** Record this when first-reading recognition surface, assurance surface, first-minute working-reader usability, practical payoff, worked slices, primary-reader fit, or `E.8` / `E.12` / `E.13` / `E.14` / `E.17.*` / `F.16` checks carry the finding or acceptance decision.
+1. **Usability and working-reader fit.** Record this when first-reading recognition text, assurance text, first-minute working-reader usability, practical payoff, worked slices, primary-reader fit, or `E.8` / `E.12` / `E.13` / `E.14` / `E.17.*` / `F.16` checks carry the finding or acceptance decision.
 2. **Scenario / anti-case / utility-fit basis.** Record this when a scenario pack, anti-case corpus, pilot bank, utility tree, fitness catalog, or analogous source is actually used or substantively disputed.
 3. **Packaging, governing-pattern relation, package relation, and shipping-fit.** Record this before any send-facing, landing-facing, monolith-facing, or governing-pattern relation or package-relation posture claim. Do not require it for ordinary local wording repairs.
 4. **Domain-tightened profile depth.** Record this when a domain-specific mapping note or support stack actually tightens a selected profile or resolves a live finding.
+5. **Accepted-decision or accepted-basis carry-through.** Record this when the review work states that accepted decisions from an accepted `DRR`, returned-finding set, accepted intake, architecture basis, or other accepted basis named by value are implemented in or discharged by the `E.19` review target. The run record maps accepted decisions and obligations to loci inside that review target or to a named receiving FPF pattern, support document, record, or accepted basis, and classifies each as expressed sufficiently, expressed partially, not expressed and blocking, carried by direct accepted-basis read obligation, correctly absent because rejected or not triggered, inherited unchanged, or outside the review target with a named receiving FPF pattern, support document, record, or accepted basis. This account does not rename an `E.17.ID.CR` comparative review unit, `PublicationUnit`, publication form or face, source-pinned reading case, document whose accepted-basis, evidence-basis, architecture-basis, or review-basis role is named, or project-side review relation as an `E.19` review target; when those are live, name the governing-pattern kind and reference and map carry-through to it or to a named receiving FPF pattern, support document, record, or accepted basis.
 
 For `PCP-ENTRY`, the ordinary compact pattern-local note remains enough unless one of the triggered loads above is genuinely live.
 
@@ -22803,9 +24963,8 @@ A PQG run **MUST** end with (a) one compact list of blocking findings and (b) on
 
 ### E.19:5 - Archetypal Grounding — Tell–Show–Show: System / Episteme
 
-
 | Scenario | U.System grounding | U.Episteme grounding |
-|---|---|
+|---|---|---|
 | **Tell** | A safety-critical engineering team proposes a new pattern describing how to gate a subsystem before deployment. The draft looks polished, but it quietly imports domain terms, assumes cross-team equivalences, and introduces obligations that are not listed in its own checklist. | A research group refreshes an older pattern that summarizes how to evaluate evidence-support class. The pattern still reads well, but its SoTA references and terminology no longer match current practice, and its Relations point to patterns that were renamed or superseded. |
 | **Show (failure without PQG)** | Reviewers focus on whether the idea is good and whether the template exists. The pattern is admitted, but later users disagree on what it requires because the Conformance Checklist is incomplete and key constraints are only in prose. | The pattern remains unchanged because “nothing looks broken”. Over time, it becomes a conceptual fossil: newcomers treat it as current guidance, but it encodes an outdated stance and stale vocabulary. |
 | **Show (repair with PQG profiles)** | PCP‑BASE finds missing internal coherence (requirements in prose not reflected in CC). PCP‑TERM finds naming drift and scope-smuggling in new terms. PCP‑BRIDGE finds implicit cross-context identity claims without explicit alignment. The findings-first run record then names one repair pass before admission, and the final CC becomes the canonical conformance body. | The run record leaves one explicit decision: update SoTA‑Echoing with post‑2015 guidance and appropriate Solution changes, limit the scope to “historical lineage” where appropriate, and update Relations to current dependencies. The refreshed pattern becomes trustworthy again, and any remaining historical content is clearly labeled as such. |
@@ -22835,30 +24994,30 @@ Bias risks and mitigations:
 | **CC-E19-4 (Conformance-claim coherence is enforced).** | Remediation **MUST** eliminate “orphan” obligations and “unclaimed” requirements by aligning the target pattern’s Conformance Checklist, deontic clauses, and admissibility constraints with its Solution. | Preserves the CC as the enforceable conformance check set. |
 | **CC-E19-5 (Triage & noise discipline).** | The run **SHOULD** prioritize load-bearing sections and obligations (e.g. CC, content of deontic clauses and content of admissibility constraints, definitions, Relations, SoTA, modularity) and keep purely mechanical edits (e.g. RFC-form deontic cleanup) minimal. Template defects **MUST** be fixed before admission (or before closing a refresh run) but **MUST NOT** be used to skip semantic review. | Improves semantic trust without turning review into form-only compliance. |
 | **CC-E19-6 (Findings-first remediation direction).** | The run output **MUST** include one compact list of blocking findings plus concrete remediation direction, ordered by semantic impact (load-bearing sections first). Findings stay primary; direct patch text is optional local process tactic, not the core `E.19` run record. | Ensures actionability and independent repeatability without collapsing review into repair. |
-| **CC-E19-7 (Recognition surface, assurance surface, and self-containment).** | Admission or refresh runs for new and substantially revised patterns **MUST** check that a first-reading recognition surface appears early enough for the intended reader, that the heavier assurance surface remains visibly second rather than becoming the first real point of entry, and that the assurance surface does not silently shift the recognition-surface claim. The run **MUST** check for a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, the first admissible action-guiding move the user should take, and an ordinary `not this pattern when` boundary; for any load-bearing typed declaration or modeling lens, the run **MUST** confirm that a short user-facing statement exposes the governed object and the minimal lens that keeps it reviewable; the run **MUST** also check that the governed object keeps one stable kind across title, opening role, declaration role, worked slices, and neighbouring-pattern or support-companion guidance rather than drifting between the named governed object, an act, a work-result record, and carrier-placement labels. When a broader umbrella name and a narrower operative branch are both live, the run **MUST** check that the recognition surface makes that stack explicit enough to identify the umbrella, the active branch, the governed object, the move, and the wider work or process that still remains outside. The recognition surface **MUST** start from a recognisable problem-owning domain or practice moment whenever that can be done without loss of precision, rather than opening first with internal package architecture or taxonomy language. Early load-bearing technical terms **MUST** receive nearby pairwise plain glosses; transform-like families **MUST** carry concrete worked slices plus ordinary-vs-load-bearing guidance where needed; and any `SoTA-Echoing` used as live explanatory support **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If SoTA or practice tradition is load-bearing, the run **MUST** check that governed-object choice, narrowed-branch choice, and practical payoff remain answerable to the relevant domain or practice rather than only to internal package architecture. If a pattern claims universal or transdisciplinary usefulness, the run **MUST** check that this breadth is already demonstrated in the recognition surface through at least three heterogeneous situations, with `F.16` preferred as the example-matrix template. | Prevents architecturally correct but reader-opaque patterns and keeps broad claims from appearing only late in the assurance surface. |
-| **CC-E19-7a (Semantic cleanup cannot leave inert recognition).** | If admission or refresh includes `E.10.SEMIO` cleanup, the run **MUST** check that the recognition surface remains useful after overread removal under `E.2` `P-2` and `E.12`. The run fails this check when repaired wording is typed and semantically repaired but no longer tells the intended working reader why the distinction matters, what remaining admissible reader move exists, or which neighboring FPF pattern now carries the live claim. When the cleanup touches load-bearing Problem frames, Problem sections, first-use recognition text, examples, or worked slices, the run **MUST** also state whether the didactic function was improved, preserved, or harmed. When both Tech and Plain registers are live, the run **MUST** check that Plain or didactic recognition wording either stays ordinary because it carries no FPF load, or maps back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load. The run must preserve intentional didactic metaphors when they are ordinary recognition aids or when their load remains recoverable from the recovered Tech reading. The run also fails this check when more expressive recognition wording carries such load without recovery through the recovered Tech reading or named handoff. | Prevents pattern admission or refresh from accepting semantically repaired but practically inert prose, and prevents readability repair from reintroducing overread. |
-
+| **CC-E19-7 (Recognition text, assurance text, and self-containment).** | Admission or refresh runs for new and substantially revised patterns **MUST** check that a first-reading recognition text appears early enough for the intended reader, that the heavier assurance text remains visibly second rather than becoming the first real point of entry, and that the assurance text does not silently shift the recognition-text claim. The run **MUST** check for a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, the first admissible action-guiding move the user should take, and an ordinary `not this pattern when` boundary; for any load-bearing typed declaration or modeling lens, the run **MUST** confirm that a short user-facing statement exposes the governed object and the minimal lens that keeps it reviewable; the run **MUST** also check that the governed object keeps one stable kind across title, opening role, declaration role, worked slices, and neighbouring-pattern or support-companion guidance rather than drifting between the named governed object, an act, a work-result record, and carrier-placement labels. When a broader umbrella name and a narrower operative branch are both live, the run **MUST** check that the recognition text makes that stack explicit enough to identify the umbrella, the active branch, the governed object, the move, and the wider work or process that still remains outside. The recognition text **MUST** start from a recognisable problem-owning domain or practice moment whenever that can be done without loss of precision, rather than opening first with internal package architecture or taxonomy language. Early load-bearing technical terms **MUST** receive nearby pairwise plain glosses; transform-like families **MUST** carry concrete worked slices plus ordinary-vs-load-bearing guidance where needed; and any `SoTA-Echoing` used as live explanatory support **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If SoTA or practice tradition is load-bearing, the run **MUST** check that governed-object choice, narrowed-branch choice, and practical payoff remain answerable to the relevant domain or practice rather than only to internal package architecture. If a pattern claims universal or transdisciplinary usefulness, the run **MUST** check that this breadth is already demonstrated in the recognition text through at least three heterogeneous situations, with `F.16` preferred as the example-matrix template. | Prevents architecturally correct but reader-opaque patterns and keeps broad claims from appearing only late in the assurance text. |
+| **CC-E19-7a (Semantic cleanup cannot leave inert recognition).** | If admission or refresh includes `E.10.SEMIO` cleanup, the run **MUST** check that the recognition text remains useful after overread removal under `E.2` `P-2` and `E.12`. The run fails this check when repaired wording is typed and semantically repaired but no longer tells the intended working reader why the distinction matters, what remaining admissible reader move exists, or which neighboring FPF pattern now carries the live claim. When the cleanup touches load-bearing Problem frames, Problem sections, first-use recognition text, examples, or worked slices, the run **MUST** also state whether the didactic function was improved, preserved, or harmed. When both Tech and Plain registers are live, the run **MUST** check that Plain or didactic recognition wording either stays ordinary because it carries no FPF load, or maps back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load. The run must preserve intentional didactic metaphors when they are ordinary recognition aids or when their load remains recoverable from the recovered Tech reading. The run also fails this check when more expressive recognition wording carries such load without recovery through the recovered Tech reading or named handoff. | Prevents pattern admission or refresh from accepting semantically repaired but practically inert prose, and prevents readability repair from reintroducing overread. |
 | **CC-E19-8 (Sentence-level precision restoration).** | Load-bearing sentences **MUST** be reviewed for generic heads, semantic-load-carrying qualifiers, overloaded trigger words, bare relation shorthand, and hidden process/API metaphors. A narrowing qualifier does **not** by itself restore head kind. The default repair order is head kind first, qualifier semantic load second, comparison-basis homogeneity third. When broad umbrella words such as `interpretation`, `reading`, `review`, `surface`, `document`, or `artifact` are carrying live architectural or semantic load, the run **MUST** also restore whether the text names an umbrella, a narrowed branch, a governed object, a move, or a wider work or process outside the governed object before that wording is allowed to carry architectural load. When naming or terminology repair is load-bearing, the run record **MUST** leave one explicit `F.18 -> A.6.P` account on disk: candidate heads or phrases reviewed, mint-vs-reuse decision, provisional F.18 winner plus rejected candidates, any kind-conflict / lexical-conflict findings, the `A.6.P` survival result on the repaired phrase, and the resulting governed object / governed move / outside-work reading if the wording still carries architectural load. | Keeps controlled technical writing from collapsing into free shorthand or false precision. |
 | **CC-E19-9 (Package-form, governing-pattern relation, and package-relation role-word discipline).** | Reviews **MUST** check that role words such as `primary carrier`, `specialization`, `profile`, `overlay`, `family`, `bundle`, `cluster`, `suite`, `pack`, `kit`, `record`, and `umbrella` match the actual ontology of the case and do not drift by stylistic substitution. When naming or ontology repair introduces or retains one head already occupied elsewhere in FPF, the run **MUST** explicitly account for that occupied-kind / occupied-head conflict and say whether the same occupied meaning is intentionally reused or instead blocked as a collision. | Keeps governing-pattern relations and package relations, review roles, and package forms semantically legible. |
 | **CC-E19-10 (Reader-role discipline).** | Reviews **MUST** check that live pattern sections are written for the intended FPF user, that any multi-reader draft makes its primary working reader, concern, and viewpoint explicit enough, and that package-development reasoning about isolation, landing form, freeze, merge posture, later promotion, safest move, blast radius, or defer posture stays in separate companions or clearly marked informative placement notes. The run record **MUST** name the user-facing sections scanned for this leak family and any repaired or still-informative exceptions. | Keeps reviews from accepting conceptually correct but role-confused patterns. |
 | **CC-E19-11 (Precision before relaxation).** | If remediation preserves or introduces a Plain, didactic, or coarsened restatement of a repaired load-bearing sentence, the run **MUST** keep a more precise upstream reading recoverable and must not let the softened form become the only wording with authority-reference load. | Keeps later readability aids subordinate to an explicit more precise reading. |
 | **CC-E19-12 (Integration impact is accounted for).** | Before send or monolith-facing motion for one new or substantially revised pattern subset, the run record **MUST** explicitly account for neighboring patterns, governing-pattern constraints, companion notes, Relations targets, or current monolith sections that now require aligned edits. The run **MUST** say which such updates are inside the claimed boundary now and which therefore remain outside that claimed boundary. | Prevents one local pattern carrying release, gate, or authority-reference load from landing as an isolated mismatch in the wider FPF pattern set. |
-| **CC-E19-13 (Usability account is explicit).** | For one new or substantially revised live pattern subset, the run record **MUST** leave one explicit usability / working-reader-fit account by value: recognition surface vs assurance surface verdict, first-minute working situation, practical payoff, ordinary boundary, worked-slice coverage, primary reader or viewpoint, and the applicable pattern-side human-facing checks used (`E.8`, `E.12`, `E.13`, `E.14`, `E.17.*`, `F.16`, or clearly named local equivalents). | Prevents cold-reader usability from being treated as something the reviewer “just kept in mind”. |
+| **CC-E19-13 (Usability account is explicit).** | For one new or substantially revised live pattern subset, the run record **MUST** leave one explicit usability / working-reader-fit account by value: recognition text vs assurance text verdict, first-minute working situation, practical payoff, ordinary boundary, worked-slice coverage, primary reader or viewpoint, and the applicable pattern-side human-facing checks used (`E.8`, `E.12`, `E.13`, `E.14`, `E.17.*`, `F.16`, or clearly named local equivalents). | Prevents cold-reader usability from being treated as something the reviewer “just kept in mind”. |
 | **CC-E19-14 (Scenario / anti-case / utility-fit account is explicit).** | When the current domain or workstream has a scenario pack, anti-case corpus, pilot bank, utility tree, fitness catalog, or analogous common check source, the run record **MUST** explicitly state which of those sources were consulted, which scenarios or anti-cases were actually checked, which qualities or fitness pressures were load-bearing, and what remains outside the claimed review boundary. | Prevents scenario, anti-case, and fitness checks from disappearing into reviewer memory or external-review folklore. |
 | **CC-E19-15 (Packaging, governing-pattern relation, package relation, and shipping-fit account is explicit).** | Before any send-facing, landing-facing, or monolith-facing posture claim, the run record **MUST** explicitly account for governing-pattern relation and package relation, package form, publication role with named authority-reference relation, send posture, landing posture, monolith posture, and other shipping-facing claims that matter for this target. It **MUST** say what was checked, what was blocked, what was cleared, and why the claimed boundary is valid now. | Keeps packaging and shipping checks from being inferred loosely after one local text improvement. |
 | **CC-E19-16 (Domain-tightened profile depth is explicit).** | When a domain-specific mapping note or support stack exists under `E.19` (for example semio `FIT-*` or equivalent local depth checks), the run record **MUST** explicitly state which such local checks were used, which PCP load they tightened, and what they found or explicitly did not find. | Keeps local review depth auditable and prevents domain-specific checks from becoming optional folklore around the PCP stack. |
-| **CC-E19-17 (support-object survival is justified).** | When a new or refreshed pattern subset keeps a long-lived support companion, profile, check sheet, pattern-local support row, review harness, or analogous selected non-pattern FPF kind-reference pair, the result **MUST** make its support role explicit: support question, governing pattern or selected non-pattern FPF kind-reference pair, admissible support-only use, one real breakage if absent, and demotion or deletion condition when no such breakage exists. | Prevents support material from surviving by inertia or becoming hidden authority after the pattern body already carries the usable guidance. |
-
+| **CC-E19-17 (Support-material retention is justified).** | When a new or refreshed pattern subset keeps a long-lived support companion, profile, check sheet, pattern-local support row, review harness, or analogous selected non-pattern FPF kind-reference pair, the result **MUST** make its support role explicit: support question, governing pattern or selected non-pattern FPF kind-reference pair, admissible support-only use, one real breakage if absent, and retention, accepted-basis-only, or removal condition when no such breakage exists. | Prevents support material from remaining by inertia or becoming hidden authority after the pattern body already carries the usable guidance. |
+| **CC-E19-18 (Substantive solution and locus adequacy is explicit).** | A pattern-quality closure claim over a new, refreshed, or materially repaired pattern or subset **MUST** include one target-specific substantive adequacy pass unless the change is purely mechanical and no content-bearing claim changes. The account **MUST** name the local questions and checked loci, then state whether the text still solves the stated problem, sends live claims to the correct neighboring loci, preserves kind and support boundaries, keeps SoTA support current enough for its load, remains usable without excess apparatus, and did not make any content relation worse. If the check exposes a needed wider edit, the declared boundary is widened by value or a named receiving FPF pattern, support document, record, or accepted basis is recorded. | Prevents clean checklists, clean terminology, or successful profile selection from hiding wrong content, shadow authority, lost support relations, or accidental regression. |
+| **CC-E19-19 (Accepted-decision carry-through is explicit).** | If the review work states that accepted decisions from an accepted `DRR`, returned-finding set, accepted intake, architecture basis, or other accepted basis named by value are implemented in or discharged by the `E.19` review target, the run record **MUST** include a decision-carry-through discharge. It maps accepted decisions, accepted-basis slices, terminology/ontology repairs, rejected or not-triggered options, selected validation banks, and support obligations to loci inside that review target or to a named receiving FPF pattern, support document, record, or accepted basis. Each item is classified as expressed sufficiently, expressed partially, not expressed and blocking, carried by direct accepted-basis read obligation, correctly absent because rejected or not triggered, inherited unchanged, or outside the review target with a named receiving FPF pattern, support document, record, or accepted basis. A generic statement that the `DRR` or accepted basis was used is nonconforming. If the live case is an `E.17.ID.CR` comparative review unit, `PublicationUnit`, publication form or face, source-pinned reading case, document whose accepted-basis, evidence-basis, architecture-basis, or review-basis role is named, or project-side review relation, the run **MUST** name that governing-pattern kind and reference rather than collapsing it into `E.19` review-target wording. | Prevents accepted decisions or accepted-basis obligations from disappearing after later wording, profile, or release checks focus only on the text that happened to be changed, without letting `E.19` swallow other review or reading patterns. |
+| **CC-E19-20 (Pattern-quality review is not project certification).** | If an `E.19` result is reused outside FPF pattern-quality review, the run record **MUST** state the exact project-side claim and the receiving relation that carries it. `E.19` alone **MUST NOT** be treated as project evidence, safety support, gate input, release justification, compliance support, assurance material, work authority, or publication truth. | Prevents pattern-quality conformance from supplying false project-world certification, gate passage, evidence sufficiency, or safety acceptance. |
 
 ### E.19:8 - Common Anti-Patterns and How to Avoid Them
-
 
 | Anti-pattern | Symptom | Why it fails (force violated) | How to avoid / repair |
 | ---------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------- |
 | **Governed-object drift** | The draft appears to govern one thing in the opening, another in the declaration block, and a third in the examples or neighbouring-pattern or support-companion guidance. | Review cannot tell whether the pattern governs a `PublicationUnit`, a reading move, a work-result record, or a whole process, so later naming and boundary decisions become unstable. | Stabilise one governed object early, keep its head kind explicit, and mark note, sheet, UI, rendering, or process labels as either examples of that object or separate neighbouring entities rather than stylistic substitutes. |
-| **Role-clean but pragmatically foggy** | The draft is addressed to the right reader in principle, but cold working readers still cannot recognise the situation, practical payoff, governed object, or first useful move early enough. | The run passes role hygiene while still failing pragmatic fit and first-minute usability. | Pull a recognisable working situation upward, add one minimally viable worked case, make the practical payoff explicit in nearby user-facing prose, expose the governed object and any minimal modeling lens in plain terms, add plain glosses for early load-bearing terms, and require `SoTA-Echoing` rows that carry live load to name the practitioner or manager implication plus the case they discipline. |
-| **Architecture-clean but domain-thin** | The text is internally well placed in the package, but the governed object, narrowed branch, or practical payoff are justified mainly through package architecture while the problem-owning domain, practice, or SoTA appears late or decoratively. | The pattern passes internal architecture checks while drifting away from the domain whose work it claims to improve. | Pull the problem-owning domain moment into the recognition surface, make the narrowed branch and governed object answerable to the relevant domain or practice, and require load-bearing `SoTA-Echoing` to discipline the practical cases rather than merely bless them after the fact. |
-| **Type-correct but inert semio cleanup** | An `E.10.SEMIO` pass removes the overread and restores kind language, but the recognition surface no longer tells the reader why the distinction matters, what move remains, where the live claim moved, or how a Plain recognition line maps back to the recovered Tech reading when both registers are live. | The review accepts typed wording while losing action guidance. | Return the draft to same-boundary repair: restore a remaining admissible reader move, name the neighboring FPF handoff, repair the Tech-to-Plain mapping, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
+| **Role-clean but pragmatically foggy** | The draft is addressed to the right reader in principle, but cold working readers still cannot recognise the situation, practical payoff, governed object, or first useful move early enough. | The run passes role hygiene while still failing pragmatic fit and first-minute usability. | Pull a recognisable working situation upward, add one minimally viable worked case, make the practical payoff explicit in nearby user-facing prose, expose the governed object and any minimal modeling lens in plain terms, add plain glosses for early claim-bearing terms, and require `SoTA-Echoing` rows that carry live claim force or explanatory work to name the practitioner or manager implication plus the case they discipline. |
+| **Architecture-clean but domain-thin** | The text is internally well placed in the package, but the governed object, narrowed branch, or practical payoff are justified mainly through package architecture while the problem-owning domain, practice, or SoTA appears late or decoratively. | The pattern passes internal architecture checks while drifting away from the domain whose work it claims to improve. | Pull the problem-owning domain moment into the recognition text, make the narrowed branch and governed object answerable to the relevant domain or practice, and require load-bearing `SoTA-Echoing` to discipline the practical cases rather than merely bless them after the fact. |
+| **Type-correct but inert semio cleanup** | An `E.10.SEMIO` pass removes the overread and restores kind language, but the recognition text no longer tells the reader why the distinction matters, what move remains, where the live claim moved, or how a Plain recognition line maps back to the recovered Tech reading when both registers are live. | The review accepts typed wording while losing action guidance. | Return the draft to same-boundary repair: restore a remaining admissible reader move, name the neighboring FPF handoff, repair the Tech-to-Plain mapping, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
 | **Expressive overread rebound after semio cleanup** | The pass makes the text more engaging after cleanup, but the added Plain or didactic force carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility load not recoverable from the Tech reading or named handoff. | The review mistakes readability for recovered semantic force. | Rewrite the expressive line as ordinary recognition aid, recover its load through the Tech fields under `E.10:6.2`, name the neighboring FPF handoff that carries the live claim, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
 | **Verdict-only review** | The run ends with “pass/fail” and prose complaints, but no precise findings-first repair direction. | Raises editorial cost; reduces repeatability. | Require one findings-first run record plus concrete remediation direction; do not rely on direct patch text as the primary review output. |
 | **Single giant checklist** | Review becomes a long, unfocused ritual that few complete. | Increases cost; reduces fit and rigor in practice. | Use a minimal baseline plus triggered profiles. |
@@ -22866,6 +25025,7 @@ Bias risks and mitigations:
 | **SoTA name-dropping** | SoTA-Echoing is a list of buzzwords with no stance. | Breaks evidence lineage; invites monoculture. | Require adopt/adapt/reject with reasons per item. |
 | **Terminology drift by “synonym”** | Authors swap kernel terms for nicer-sounding words. | Increases ambiguity; harms cross-pattern composability. | Apply PCP-TERM and require explicit mini-definitions on first use. |
 | **Form-only review** | Review time goes to formatting and micro-edits while the normative content, terms, Bridges, modularity, slot discipline and SoTA stance are barely checked. | Raises editorial cost without raising semantic trust. | Use the triage rule: treat load-bearing sections as depth targets and keep mechanical cleanup subordinate to semantic correction. |
+| **Checklist-clean but content-wrong** | The named profiles, lexical checks, and conformance rows are marked complete, but the repaired text no longer solves the stated problem, sends a live claim to the wrong locus, creates shadow authority, loses a support relation, or adds needless apparatus. | Review accepts a locally tidy pattern while weakening the actual `FPF` guidance. | Apply substantive solution and locus adequacy: name local content questions, check the actual problem and neighboring loci, ask what became worse, and widen the declared boundary by value when the fix belongs outside the first target. |
 | **Architecturally right, didactically thin** | The family is admissible, but readers still need project notes to understand what the pattern really governs. | Trust in the monolith depends on external context rather than the pattern text. | Add the missing problem frame, worked slices, local definitions, and exact neighboring-pattern or exact project-side FPF kind and reference guidance before admission. |
 | **Scenario-name grounding** | Grounding names a situation but does not show what the source and resulting publication actually look like. | Readers cannot tell why the case stays in the family or where it leaves the family. | Add concrete source and resulting-publication slices, especially for transform families and easy boundary confusions. |
 | **Generic-head underspecification** | A load-bearing phrase uses a generic head such as `note`, `view`, `guidance`, `output`, or `artifact`, but the run leaves that head uninterpreted. | Review discusses the sentence before the object kind is even stable. | Restore the head kind first in pattern-local terms before accepting or comparing the sentence. |
@@ -22874,8 +25034,8 @@ Bias risks and mitigations:
 | **Sentence-level shorthand drift** | A few innocent-looking words (“species”, “branch”, “flow”, “input/output”) quietly carry the semantic load. | Review passes while key relations remain implicit or wrong. | Inspect load-bearing sentences one by one and replace shorthand with explicit governing-pattern relations and package relations or publication language. |
 | **Package-form, governing-pattern relation, and package-relation drift** | The text slides between `family`, `bundle`, `cluster`, `profile`, `overlay`, `suite`, `kit`, or `record` without showing that the ontology changed. | Reviews miss governing-pattern or authority-reference blur because each local sentence still sounds plausible. | Require one intended role word, check governing-pattern relation and package relation explicitly, and treat stylistic noun-swapping as a semantic defect. |
 | **Reader-role leakage** | Live sections explain why the pattern was isolated, what landing form is safest, or why merge/freeze is premature. | Review accepts a package memo disguised as a user pattern. | Move package-development reasoning to companions; rewrite live sections in terms of what the user may do, must avoid, and which exact neighboring FPF pattern or named project-side FPF kind and reference governs the release, policy, assurance, gate, action-selection, or adjudication case. |
-| **Support object by inertia** | A companion note, profile, check sheet, support row, or review harness remains attached to a pattern family after the pattern body already carries the usable guidance, but the text does not say what real breakage returns if that support object is absent. | Support material becomes permanent local folklore, hidden authority, or reader cost without a corresponding use gain. | State the support question, governing source, support-only use, real breakage if absent, and demotion or deletion condition; otherwise fold the useful example into the pattern or demote the object. |
-
+| **Support material retained by inertia** | A companion note, profile, check sheet, support row, or review harness remains attached to a pattern family after the pattern body already carries the usable guidance, but the text does not say what real breakage returns if that support material is absent. | Support material becomes permanent local folklore, hidden authority, or reader cost without a corresponding use gain. | State the support question, governing source, support-only use, real breakage if absent, and retention, accepted-basis-only, or removal condition; otherwise fold the useful example into the pattern or keep it only in the accepted basis. |
+| **Pattern-quality result as project certificate** | An `E.19` pass is cited as proof that a project release, safety claim, compliance posture, work result, publication, or gate has passed. | Collapses FPF pattern-quality review into project-world evidence or gate authority. | Keep `E.19` as pattern-quality review; open `A.10`, `B.3`, `A.20`, `A.21`, `A.15`, or another exact receiving pattern for the project-side claim being made. |
 
 ### E.19:9 - Consequences
 
@@ -22904,6 +25064,8 @@ The baseline profile protects cross-pattern comparability and editorial sanity. 
 | “Living” guidance needs refresh discipline.                            | Reporting and review guidance is updated and versioned; reviewers track changes and report deltas clearly. | Page et al. (2021), PRISMA 2020 statement and explanation papers.                           | Runs require explicit decisions and deltas in SoTA‑Echoing. | **Adapt.** Use the “versioned guidance + explicit deltas” principle without importing implementation or process mandates. |
 | Retrieval-facing entry changes need selected evidence dimensions, not universal benchmarks. | RAG evaluation practice separates context relevance, answer faithfulness, answer relevance, and support quality. | Es et al. (2023), `RAGAS`; Saad-Falcon et al. (2023), `ARES`. | `PCP-ENTRY-E4` and related evidence modes select tiny retrieval fixtures only when retrieval-facing behavior or observed misretrieval is live; the row does not authorize a universal benchmark for every pattern entry. | **Adopt lightly.** Keep hit, support, authority, and faithfulness dimensions only when retrieval-facing behavior is live; ordinary entry prose remains prose-only. |
 
+Action result from the pattern-review and validation practice basis: an `E.19` pass, caution, return-for-repair result, narrower-use result, clean checklist, or clean retrieval-entry check does not become project certification, project evidence, safety support, gate input, release justification, compliance support, assurance material, work authority, publication truth, or project refusal/approval. The local E.19 result is a pattern-quality review or refresh claim over the named target pattern, selected profile, defects found or cleared, admission, refresh, narrower-use, repair-return, or selected pattern-quality boundary. Reopen the pattern-quality result when the reviewed text, accepted-basis decision, SoTA support, neighboring pattern, support relation, profile trigger, target boundary, or attempted project-side reuse changes.
+
 ### E.19:12 - Relations
 
 * **Builds on:**
@@ -22927,9 +25089,7 @@ The baseline profile protects cross-pattern comparability and editorial sanity. 
 
 ### E.19:End
 
-
 ## E.20 - Mechanism Introduction Protocol
-
 
 > **Type:** Architectural pattern
 > **Status:** Draft
@@ -22937,15 +25097,53 @@ The baseline profile protects cross-pattern comparability and editorial sanity. 
 
 ### E.20:1 - Problem frame
 
-FPF is intentionally **open‑ended**: new `U.Mechanism.*` intensions, suite compositions, and SoTA‑driven wiring modules can be added over time. This flexibility creates a recurrent authoring problem: introducing a new mechanism (or revising an existing one) tends to touch multiple governing patterns, spec surfaces, and extension blocks across Parts A/E/F/G and can easily create drift:
+FPF is intentionally **open‑ended**: new `U.Mechanism.*` intensions, suite compositions, and SoTA‑driven wiring modules can be added over time. This flexibility creates a recurrent authoring problem: introducing a new mechanism (or revising an existing one) tends to touch multiple governing patterns, specification loci, and extension blocks across Parts A/E/F/G and can easily create drift:
 
-* semantics leak into the wrong plane (e.g., Part G wiring starts carrying mechanism meaning),
+* semantics appear in the wrong governing locus (e.g., Part G wiring starts carrying mechanism meaning),
 * suites degrade into “meta‑mechanisms” or hidden gates,
 * planned baselines (WorkPlanning) are conflated with execution witnesses (WorkEnactment),
 * token drift breaks public references, or
-* the corpus accumulates dangling references and “workpad commitments” without a governing definition.
+* the corpus accumulates dangling references and non-normative drafting commitments without a governing definition.
 
-This pattern defines a **repeatable, governing-definition assignment protocol** for introducing mechanisms that keeps the kernel coherent while remaining extensible.
+This pattern provides a **repeatable, governing-definition assignment protocol** for introducing mechanisms. It supports kernel coherence by keeping extension points and governing definitions explicit.
+
+**Use this when.** Use E.20 when a proposed FPF change introduces or revises mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
+
+**First useful move.** Classify the edit with MIP trigger triage: `MIP not triggered`, `local wording or alias-docking only`, or `MIP-run manifest required`. If a manifest is required, name exactly one governing definition for each changed item before writing the pattern text.
+
+**Smallest sufficient governing-definition assignment guidance.** Use the lightest governing-definition assignment guidance that preserves the next admissible reader move. Add MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, or deprecation-continuity material only when the live mechanism-intension or citeable-token claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
+
+**Minimum sufficient next move.** If the edit does not change citeable-token denotation, mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, or governing-definition assignment, a MIP-run manifest is not opened; name the current governing locus or alias-docking relation and stop.
+
+**Do not escalate when.** Do not create a MIP-run manifest when alias docking or local wording repair preserves denotation. Do not treat a suite, plan, wiring module, or lexical cleanup as mechanism meaning unless the changed item needs a new or revised governing definition.
+
+**Same problem, different live question.** For a TGA-looking problem, use `E.18` for graph/flow/crossing, `A.20` for internal step validity, `A.21` for gate-decision publication, and `E.20` for mechanism-meaning placement; do not open the other three until their own claim is live.
+
+**Semantic repair return.** When E.20 blocks a misleading word, face, alias, or source label, the repair must return to the enabled authoring move: name the governing definition, canonical location, alias-docking relation, or non-trigger stop that remains admissible. Do not stop at a classification of vocabulary or publication faces.
+
+**Governed-object and relation separation.** Keep the graph object and path or crossing relation (`E.18`), MVPK publication faces (`E.17`), internal CV status and witness (`A.20`), gate decision and `DecisionLog` (`A.21`), evidence or provenance relation (`A.10`/`G.6`), work plan or work occurrence (`A.15`), and mechanism-governing definition assignment (`E.20`) distinct. An MVPK face, `DecisionLog`, evidence carrier, MIP manifest, or work witness does not carry another pattern's project-side value unless that exact governing pattern consumes it for that relation.
+
+**Smallest affected locus.** Localize the change to the smallest live locus: `PathSlice` or crossing in `E.18`, CV step in `A.20`, `GateDecision` equivalence class in `A.21`, or mechanism-governing definition in `E.20`. Do not widen to a whole flow or unrelated governed object when that locus is enough.
+
+**Ordinary success.** For ordinary E.20 use, success is that the edit is classified, the current governing locus or alias-docking relation is named, and no MIP-run manifest is opened unless denotation, mechanism meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planning pins, wiring semantics, or governing-definition assignment actually changes.
+
+**Locality asymmetry.** `E.18` is graph-local, `A.20` is step-local, `A.21` is gate-local, and `E.20` is trigger-local. Do not normalize the four patterns into one assurance regime.
+
+**Do not merge these pairs.** Keep `CV.Status` distinct from `GateDecision`, TGA `Check` distinct from `GateCheckKind`, MIP manifest distinct from `DecisionLog`, `ViewpointMap` distinct from graph semantics, `PathSlice` distinct from a work run, and `GateProfile=Lite` distinct from `PublishMode=Lite`.
+
+**Field liveness.** Always core for E.20: trigger triage and the current governing locus or alias-docking relation. Conditional-live: MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, and deprecation continuity; open them only when the corresponding denotation, mechanism-meaning, suite, planning, wiring, lexical, refresh, review, or retirement claim is live.
+
+**Retrieval trap guard.** When excerpted alone, E.20 manifest language must not be read as requiring a full MIP-run for every mechanism-adjacent edit. Pure currentness cleanup, alias docking, optional suite-member citation of an already-defined mechanism, and local wording repair stop at the current governing locus unless denotation, mechanism meaning, suite closure, suite obligations, suite pins, suite protocol semantics, planning pins, wiring semantics, or governing-definition assignment changes.
+
+**Anti-Goodhart guard.** A complete MIP-run manifest is not a substitute for the governed mechanism result: the mechanism-governing definition must still carry the operation, law, admissibility, slot, transport, applicability, and audit meaning needed for the claim.
+
+**Generative side.** E.20 preserves open-ended action by allowing new mechanism intensions, suite variants, wiring, and citeable tokens to enter FPF with a named governing definition; the discipline prevents semantic drift so new work can be added rather than merely blocked.
+
+**What goes wrong if missed.** A suite can start defining mechanism meaning, a plan item can start carrying enactment witnesses or gate decisions, a wiring module can carry kernel semantics, or a token rename can break citations while looking like harmless cleanup.
+
+**What this buys.** E.20 gives the reader one current authoring move: assign the change to the right governing definition and keep mechanism, suite, planning, wiring, and lexical continuity distinct.
+
+**Not this pattern when.** If the edit is only pure currentness, typo, reference, or old-label cleanup and changes no semantics or citeable-token denotation, record the current governing locus and stop. If the live question is runtime gate passage, gate decision, approval, suite-as-mechanism, plan-as-enactment, or performed work, use the gate, suite, planning, or work loci that own that question. A MIP-run manifest is not a runtime gate, gate passage, approval packet, or binary pass/fail decision.
 
 ### E.20:2 - Problem
 
@@ -22961,18 +25159,27 @@ When a new mechanism (or mechanism family) is introduced without an explicit aut
 
 | Force | Tension |
 |---|---|
-| **Extensibility vs Kernel stability** | New mechanisms must be addable ↔ kernel surfaces must remain citeable and minimal. |
-| **One governing definition vs cross-cutting impact** | Each mechanism-intension meaning, suite change, plan item, wiring module, or token migration needs one governing definition while a mechanism introduction often spans suites, plans, wiring, and lexicon. |
-| **Didactic usability vs auditability** | Humans need clear “cards” and examples ↔ obligations/pins must remain checkable and non-leaky. |
-| **SoTA evolution vs semantic integrity** | Methods evolve fast ↔ mechanism meaning must not silently shift via wiring updates. |
-| **Local naming freedom vs global reference continuity** | Context‑local labels are necessary ↔ references must remain stable across editions and refactors. |
+| **Extensibility vs Kernel stability** | New mechanisms need to be addable ↔ kernel reference loci need to remain citeable and minimal. |
+| **One governing definition vs cross-locus reach** | Each mechanism-intension meaning, suite change, plan item, wiring module, or token migration needs one governing definition while a mechanism introduction often spans suites, plans, wiring, and lexicon. |
+| **Didactic usability vs auditability** | Humans need clear “cards” and examples ↔ obligations and pins need to remain checkable and governing-locus bounded. |
+| **SoTA evolution vs semantic integrity** | Methods evolve fast ↔ mechanism meaning SHALL NOT silently shift via wiring updates. |
+| **Local naming freedom vs global reference continuity** | Context-local labels are necessary ↔ references need to remain stable across editions and refactors. |
 
 ### E.20:4 - Solution — the Mechanism Introduction Protocol (MIP)
 
 #### E.20:4.0 - Terminology note (disambiguation)
 
-*This protocol is an authoring-plane governing-definition assignment map.* It is **not** a suite protocol (`SuiteProtocol` in `MechSuiteDescription`) and is **not** a runtime gating mechanism (`OperationalGate(profile)` or any gate-level decision log).
+*This protocol and any MIP-run manifest are authoring-side semantic-governing-definition assignment maps.* A manifest is not an approval packet, gate, runtime decision, or pass/fail result. It names where mechanism meaning lives and what must not be inferred from suites, plans, wiring, aliases, or gates.
+
 MIP governs **how changes are assigned to their governing definitions**, not how systems execute.
+
+**MIP trigger triage.** Not every reference cleanup is a MIP-run. Classify the proposed edit before requiring a manifest:
+
+* **MIP not triggered:** pure currentness, reference, typo, or old-label cleanup that changes no mechanism, suite, planned-baseline, wiring, governing-definition, or citeable-token semantics.
+* **Local wording or alias-docking only:** wording clarifies an already-governed mechanism relation, or `F.18` alias docking preserves citeability of an old token without changing what the token denotes.
+* **MIP-run manifest required:** the edit changes mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
+
+Only the third outcome uses the manifest in `E.20:4.2`. The first two still name the current governing locus or alias-docking relation when the text will be published. When the only live result is no denotation change, the published content should not carry MIP-run vocabulary except as a short non-trigger note.
 
 #### E.20:4.0.1 - Mint vs reuse
 
@@ -22987,8 +25194,8 @@ MIP governs **how changes are assigned to their governing definitions**, not how
 
 A MIP-run SHALL first classify the change, because different classes have different governing definitions:
 
-1. **New mechanism kind or new archetypal grounding** (new `U.Mechanism.Intension` archetype).
-2. **New mechanism intension within an existing kind** (new `…IntensionRef`, new canonical card).
+1. **New mechanism family, species, or archetypal grounding** (new `U.Mechanism.Intension` archetype).
+2. **New mechanism intension within an existing A.6.1 mechanism kind** (new `…IntensionRef`, new canonical card).
 3. **Mechanism revision** (signature/laws/slots/transport/audit semantics change).
 4. **Suite change** (membership, obligations, spec pins, suite protocols, suite audit obligations).
 5. **Planned-baseline change** (new or revised `SlotFillingsPlanItem` specialization, or changes to its pins).
@@ -22996,18 +25203,30 @@ A MIP-run SHALL first classify the change, because different classes have differ
 7. **Terminology migration** (renames, token splits/merges, register changes).
 8. **Deprecation / supersession / retirement** (marking mechanisms/suites/plan items as deprecated, declaring successors, and preserving citeability; apply E.20:4.9.1).
 
+**Mechanism kind boundary.** A MIP-run may introduce a new `U.Mechanism.IntensionRef`. It does not introduce a new `U.Transduction(kind=...)` unless `E.18` is explicitly updated, and it does not introduce a new C.3 `U.Kind` unless C.3 and `A.6.5` discipline is explicitly live.
+
+**A.6.1 compatibility.** MIP assigns mechanism meaning to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, slot interface, transport or bridge regime, applicability, and audit. Suites, planned-baseline records, and Part-G wiring modules may cite or bind that meaning; they do not supply or redefine it.
+
+**New mechanism-family criterion.** Treat a change as a new mechanism family, species, or archetypal grounding only when the existing mechanism-governing pattern cannot express the operation algebra, law set, admissibility conditions, slot interface, transport boundary, or audit semantics without changing its kind invariants. Otherwise classify the change as a new mechanism intension or `…IntensionRef` within an existing A.6.1 mechanism kind.
+
 A single MIP-run MAY span multiple classes, but SHALL treat each class with its correct governing-definition assignment (below).
 
 #### E.20:4.2 - Step 2: Declare the governing-definition assignment map (mandatory)
 
-For every new or modified change item, the MIP-run SHALL name **exactly one governing definition** and assign the change there. In FPF, that governing definition is a citeable, patchable `PatternId`, `PatternId:SectionPath`, `PatternScopeId = G.x:Ext.*`, or `DRRId` (E.9). The declaration SHALL be captured as a **MIP-run manifest** in a citeable change record (typically DRR-linked) listing, at minimum:
+For every new or modified change item, the MIP-run SHALL name **exactly one governing definition** and assign the change there. In FPF, that governing definition is a citeable, patchable `PatternId`, `PatternId:SectionPath`, `PatternScopeId = G.x:Ext.*`, or `DRRId` (E.9). The core MIP-run manifest in a citeable change record is limited to:
 
-* the change class(es) from E.20:4.1,
-* each changed item, its governing definition, and its canonical location (expressed as `PatternId:SectionPath`, `PatternScopeId`, or `DRRId`, not as prose),
-* any new/changed citeable tokens (`…IntensionRef`, `SlotKind` tokens, `PatternScopeId`, etc.),
-* the best-known Delta-Class (Δ‑0…Δ‑3) and an impact radius estimate (E.15) when the run is plausibly Δ‑2/Δ‑3,
-* intended RSCR trigger types, and
-* the PQG (E.19) profile set used to review the run.
+* each changed item,
+* its governing definition,
+* its canonical location (expressed as `PatternId:SectionPath`, `PatternScopeId`, or `DRRId`, not as prose), and
+* the forbidden overread or forbidden move blocked by that assignment.
+
+Conditional support fields appear only when live:
+
+* the change class(es) from E.20:4.1 when needed to disambiguate the assignment,
+* new or changed citeable tokens (`…IntensionRef`, `SlotKind` tokens, `PatternScopeId`, etc.) when token denotation or citeability changes,
+* the best-known Delta-Class (`Δ-0` to `Δ-3`) and impact radius estimate (E.15) when the run is plausibly `Δ-2` or `Δ-3`,
+* intended RSCR trigger types when refresh or regression wiring is live, and
+* the PQG (E.19) profile set when the run crosses an E.19-governed review boundary.
 
 **Note (normative).** If the canonical location is a Part‑G wiring module, it SHALL be cited as a `PatternScopeId` (`G.x:Ext.*`) and the module SHALL declare `GoverningPatternId` (wiring is binding-only; meaning remains governed by its cited pattern).
 
@@ -23016,7 +25235,7 @@ For every new or modified change item, the MIP-run SHALL name **exactly one gove
 | Change kind | Governing definition | Canonical location | Forbidden move |
 |---|---|---|---|
 | Mechanism intension meaning (operations, laws, invariants, admissibility, slot interface, transport, audit semantics) | **Mechanism-governing pattern** | Designated mechanism-governing pattern | SHALL NOT “define” the mechanism inside a suite or a wiring module. |
-| Suite membership, obligations, spec pins, and suite protocols | **Suite-governing pattern** | `A.6.7` or `A.6.7.<FamilyKey>` | SHALL NOT smuggle mechanism semantics, acceptance thresholds, gate criteria, DecisionLogs, or publication tails into the suite. |
+| Suite membership, obligations, spec pins, and suite protocols | **Suite-governing pattern** | `A.6.7` or `A.6.7.<FamilyKey>` | SHALL NOT carry mechanism semantics, acceptance thresholds, gate criteria, DecisionLogs, or publication tails into the suite. |
 | Planned baseline pins (planned slot fillings, edition-pinned refs, explicit time selector) | **WorkPlanning governing pattern** | `A.15.3` plus suite-specific specialization when needed | SHALL NOT embed launch values, witnesses, or gate decisions in planning. |
 | SoTA method, comparator, or generator **definitions**, including provenance and evaluation semantics | **SoTA-pack governing pattern** | `G.2` (SoTA synthesis packs) | SHALL NOT rephrase SoTA evolution as kernel semantics. |
 | Wiring that binds SoTA packs into flows or tasks | **Extension module governing definition** | `G.x:Ext.*` (`GPatternExtension` with explicit `PatternScopeId`) | SHALL NOT mint new semantics; SHALL bind only. |
@@ -23024,16 +25243,17 @@ For every new or modified change item, the MIP-run SHALL name **exactly one gove
 | Change-cause taxonomy and regression triggers | **RSCR governing pattern** | `G.Core` | SHALL NOT invent ad hoc “reason kinds” scattered in patterns. |
 | Project specializations of a mechanism | **Project specialization pattern** | `P.*` patterns (using `⊑/⊑⁺`) | SHALL NOT mutate kernel membership to express project variants. |
 
-**Guard (normative).** Any proposed change that cannot name a governing definition from the table above SHALL be treated as non-normative workpad content and SHALL NOT be relied upon as an architectural commitment. Such content MAY exist only as explicitly-marked workpad material until assigned to its governing definition.
+**Guard (normative).** Any proposed change that cannot name a governing definition from the table above SHALL be treated as a non-normative drafting note or candidate intake and SHALL NOT be relied upon as an FPF architectural commitment. Such material may exist only in an explicitly marked non-normative source carrier until assigned to its governing definition.
 
 #### E.20:4.3 - Step 3: Card-first canonicalization (eliminate dangling refs)
 
 If the introduction adds a new `U.Mechanism.IntensionRef` anywhere (especially inside a suite):
 
-1. The MIP-run SHALL first create a **canonical mechanism card** at the governing pattern location that publishes the `…IntensionRef` and the minimal identity surface (names, intent, and “this is a distinct mechanism”).
+1. The MIP-run SHALL first create a **canonical mechanism card** at the governing pattern location that publishes the `…IntensionRef` and the minimal identity fields (names, intent, and “this is a distinct mechanism”).
 2. The card MAY be a **stub** initially, but SHALL reserve:
   * the stable `…IntensionRef` (and its lexical register entry per E.10/F.17),
-   * the intended kind/species placement, and
+   * the intended mechanism family or species placement,
+ and
   * a DRR pointer for completing semantics (including any missing register/twin-label work).
 
 Only after (1) is in place MAY suites or protocols enumerate the new `…IntensionRef`.
@@ -23042,28 +25262,32 @@ Only after (1) is in place MAY suites or protocols enumerate the new `…Intensi
 
 **Definition-of-done note (delegated).** MIP uses two completion checkpoints for mechanism cards:
 
-* **Stub done** — a *resolvable canonical target* created to eliminate dangling references (E.20:4.3). A stub **SHALL** (i) exist at the mechanism-governing pattern's canonical location, (ii) reserve and publish the stable `…IntensionRef` (and its lexical/register entries), (iii) set `IntensionHeader.status = draft`, and (iv) carry an explicit DRR pointer for completing semantics. A stub **SHALL** also list the *A.6.1* conformance checklist item IDs it does **not** yet satisfy (without duplicating that checklist here). A stub is sufficient to unblock suite/protocol enumeration, but **MUST NOT** be treated as an “introduced” mechanism for reuse/import decisions.
+* **Stub done** — a citeability stub for a `U.Mechanism.IntensionRef`: a resolvable canonical target created only to prevent dangling references (E.20:4.3), not semantic completion.
+
+ A stub **SHALL** (i) exist at the mechanism-governing pattern's canonical location, (ii) reserve and publish the stable `…IntensionRef` (and its lexical/register entries), (iii) set `IntensionHeader.status = draft`, and (iv) carry an explicit DRR pointer for completing semantics. A stub **SHALL** also list the *A.6.1* conformance checklist item IDs it does **not** yet satisfy (without duplicating that checklist here). A stub may preserve citeability for suite or protocol enumeration, but it does not authorize suite closure, gate checks, planned baselines, wiring consumption, reuse, or import unless the fields required for that use are present and marked current.
+
 * **Introduced done** — a mechanism card that can be relied upon as a `U.Mechanism.Intension`. “Introduced done” is defined by *A.6.1* conformance: the card **SHALL** satisfy the applicable *A.6.1:7 Conformance Checklist* items (**CC‑UM.\***), with the baseline items designated by *A.6.1* (e.g., **CC‑UM.0** and **CC‑UM.1**) being the minimum requirement.
 
 The list below is **informative** only (semantic orientation); the normative structure and “done” criteria are delegated to *A.6.1*’s CC items to avoid drift between this protocol and the canonical mechanism definition.
 
-To be considered “introduced” (beyond a stub), a mechanism card SHOULD make the following semantic surfaces explicit:
+For an “introduced” mechanism beyond a stub, the useful completion target is to make the following semantic fields explicit:
 
-* **Operation surface**: the named operations that the mechanism provides (signature-level intent).
-* **Law / invariant surface**: the invariants that govern the operations (incl. legality constraints when applicable).
-* **Admissibility surface**: preconditions/eligibility predicates for valid operation (not a gate decision log, and not per-run outcomes).
+* **Operation field**: the named operations that the mechanism provides (signature-scoped intent).
+* **Law/invariant field**: the invariants that govern the operations, including admissibility constraints when applicable.
+* **Admissibility field**: preconditions or eligibility predicates for admissible operation (not a gate decision log, and not per-run outcomes).
 * **Slot interface**: required input and output slot kinds, with stable kinds and explicit ref modes.
 * **Specialisation discipline (when `⊑/⊑⁺` is declared):** explicit parent+morphism kind; SlotKind invariance; monotone ValueKind narrowing; no new mandatory inputs to inherited operations (per A.6.1:4.2.1 / CC‑UM.8).
-* **Transport**: declarative transport semantics (no hidden crossings; crossings are surfaced via Bridges where required).
-* **Audit obligations**: which evidence anchors must exist when the mechanism is used.
+* **Transport**: declarative transport semantics (no hidden crossings; crossings are published via Bridges where required).
+* **Audit obligations**: which evidence anchors are required when the mechanism is used.
 
 If the mechanism introduces new slot kinds shared across a family/suite, apply E.20:4.5.
 
-#### E.20:4.5 - Step 5: SlotKind lexicon discipline (prevent slot drift)
+#### E.20:4.5 - Step 5: Suite-scoped slot-token lexicon discipline (prevent slot drift)
 
 If the mechanism belongs to a suite or family where multiple member mechanisms share slot vocabulary:
 
-1. The suite-governing pattern SHALL provide a **suite-level SlotKind lexicon** (or update it if already present) in the suite-governing pattern's canonical location (`A.6.7` / `A.6.7.<FamilyKey>`), or as a dedicated lexicon card explicitly referenced from there.
+1. The suite-governing pattern SHALL provide a **suite-scoped slot-token lexicon** referencing `A.6.5` SlotSpecs (or update it if already present) in the suite-governing pattern's canonical location (`A.6.7` / `A.6.7.<FamilyKey>`), or as a dedicated lexicon card explicitly referenced from there. The lexicon cites and organizes SlotKind tokens; it does not create new SlotKind semantics.
+
 2. Mechanism cards SHALL cite slot kinds from that lexicon (rather than minting local near-duplicates).
 3. New slot kinds SHALL be introduced into the lexicon first, then referenced by member mechanisms. If any citeable `SlotKind` tokens are minted/renamed, apply E.20:4.9.
 
@@ -23071,20 +25295,20 @@ This step is specifically intended to prevent the “same idea, different slot t
 
 #### E.20:4.6 - Step 6: Suite integration (if the mechanism is a suite member)
 
-If the introduction affects a suite (`MechSuiteDescription` or specialization):
+If the introduction changes a suite (`MechSuiteDescription` or specialization):
 
 1. **Membership set semantics (WF‑MS‑1).** `mechanisms` is a set: duplicates are nonconformant and list order carries no semantics.
 2. **Ordering is only in protocols.** If ordering matters, express it only in `suite_protocols`.
 3. **Protocol closure (WF‑MS‑2).** If `suite_protocols` is present, then for every `ProtocolStep` in every `SuiteProtocol`, `step.mechanism ∈ mechanisms`.
 4. **No hidden tails.** Required stages (e.g., normalization/aggregation/Γ‑fold) are explicit protocol steps; do not hide them inside other steps.
-5. **Guard/gate separation.** Suites and mechanisms SHALL NOT publish `GateDecision`/`DecisionLog`. `AdmissibilityConditions` and tri‑state `GuardDecision` remain governed by the mechanism definition; `OperationalGate(profile)` acceptance thresholds and pass/fail criteria remain gate/acceptance-level concerns.
-6. **Suite is descriptive only (WF‑MS‑3/4).** Any publish/telemetry continuation is outside the suite protocol and terminates via publication surfaces (packs/modules); suites SHALL NOT define mechanism blocks (`OperationAlgebra`, `LawSet`, `Transport`, `Audit`, …).
+5. **Guard/gate separation.** Suites and mechanisms SHALL NOT publish `GateDecision`/`DecisionLog`. `AdmissibilityConditions` and tri‑state `GuardDecision` remain governed by the mechanism definition; `OperationalGate(profile)` acceptance thresholds and pass/fail criteria remain gate/acceptance concerns.
+6. **Suite is descriptive only (WF‑MS‑3/4).** Any publish/telemetry continuation is outside the suite protocol and terminates via publication faces, packs, or modules; suites SHALL NOT define mechanism blocks (`OperationAlgebra`, `LawSet`, `Transport`, `Audit`, …).
 
 **Kernel stability rule (recommended).** If the suite is a kernel suite, and the change adds a new required stage, prefer creating a **suite variant** rather than mutating the kernel membership. If mutation is unavoidable, pair it with terminology continuity (E.20:4.9) and RSCR triggers (E.20:4.10).
 
-#### E.20:4.7 - Step 7: Planned baseline & P2W seam (if planning is affected)
+#### E.20:4.7 - Step 7: Planned baseline & P2W seam (if planning changes)
 
-If the mechanism introduction changes what a WorkPlanning baseline must pin (e.g., selected comparator specs, method descriptions, time selector, guard pins):
+If the mechanism introduction changes what a WorkPlanning baseline pins (e.g., selected comparator specs, method descriptions, time selector, guard pins):
 
 1. Introduce or revise a `SlotFillingsPlanItem` specialization under the WorkPlanning governing pattern.
 2. The plan item SHALL remain planning-only:
@@ -23093,7 +25317,7 @@ If the mechanism introduction changes what a WorkPlanning baseline must pin (e.g
    * no `FinalizeLaunchValues` witnesses,
    * no gate decisions or decision logs.
    * time is explicit: include `Γ_time_selector` or `Γ_time_rule_ref` (XOR); implicit “latest/current” is nonconformant.
-3. The plan item SHALL target exactly one **Description-level, edition-addressable** slot-bearing description via `target_slot_bearing_description_ref` (typically a kit or suite) and SHALL NOT target a `U.Mechanism.IntensionRef`. If a “standalone mechanism baseline” is required, introduce an explicit Description-level slot-bearing description wrapper (e.g., a mech kit or a suite-of-one) and target that.
+3. The plan item SHALL target exactly one **Description-scoped, edition-addressable** slot-bearing description via `target_slot_bearing_description_ref` (typically a kit or suite) and SHALL NOT target a `U.Mechanism.IntensionRef`. If a “standalone mechanism baseline” is needed, introduce an explicit Description-scoped slot-bearing description wrapper (e.g., a mech kit or a suite-of-one) and target that.
 
 This step exists to keep the P2W seam crisp: planning defines **planned fillers**, enactment witnesses **actual runs**.
 
@@ -23101,10 +25325,11 @@ This step exists to keep the P2W seam crisp: planning defines **planned fillers*
 
 If the introduction involves methods, comparators, selectors, or other SoTA-sensitive choices:
 
-1. Put method/comparator family semantics in **SoTA packs** (G.2) and reference them by edition‑pinned refs.
+1. Put method/comparator family semantics in **SoTA packs** (G.2) and reference them by edition-pinned refs.
 2. Pin the chosen SoTA refs for a baseline in WorkPlanning plan items (E.20:4.7); wiring consumes pins rather than silently overriding them.
 3. Put flow/task binding logic in **wiring modules** (`GPatternExtension`), with an explicit `PatternScopeId` and declared governing pattern.
-4. If a SoTA update requires changing a mechanism’s signature/laws, that semantic change SHALL be performed in the mechanism-governing pattern, under the A.6.1 mechanism-intension template; the change SHALL emit RSCR triggers (E.20:4.10).
+4. Wiring may bind, select, dispatch, or cite SoTA method packs; it may not redefine the operation, law, admissibility, transport, slot, or audit meaning of the mechanism it wires.
+5. If a SoTA update changes a mechanism's signature/laws, that semantic change SHALL be performed in the mechanism-governing pattern, under the A.6.1 mechanism-intension template; the change SHALL emit RSCR triggers (E.20:4.10).
 
 #### E.20:4.9 - Step 9: Terminology continuity (alias docking)
 
@@ -23112,7 +25337,7 @@ If the introduction renames any public token or changes canonical naming:
 
 1. Use lexical alias docking (F.18) so old tokens remain citeable.
 2. Update registers and twin labels per lexical discipline.
-3. Avoid silent rewrites: the MIP-run SHALL make the migration explicit.
+3. Avoid silent rewrites: the MIP-run SHALL make the alias relation and successor relation explicit.
 
 #### E.20:4.9.1 - Deprecation / supersession / retirement (preserve citeability)
 
@@ -23121,7 +25346,7 @@ If the change class includes deprecation/supersession/retirement (E.20:4.1 #8), 
 1. **Preserve the canonical target.** The deprecated mechanism card, suite description, plan item, or wiring module SHALL remain resolvable at its canonical location; deprecation MUST NOT be implemented by removal that would break citations.
 2. **Keep the public token citeable.** The deprecated token (`…IntensionRef`, suite token, plan-item token, etc.) SHALL remain citeable. If a successor token/name is introduced, the old token SHALL be alias-docked per F.18 (E.20:4.9).
 3. **Declare successor (or “no successor”).** The deprecated mechanism card, suite description, plan item, or wiring module SHALL declare a successor pointer (or explicitly declare that there is none) using the project’s established deprecation/supersession fields.
-4. **Assign downstream updates to governing definitions.** Any required suite membership, protocol changes, WorkPlanning pins, or wiring changes SHALL be performed in their respective governing definitions (E.20:4.2), preferably by introducing a suite variant rather than silently swapping kernel membership.
+4. **Assign downstream updates to governing definitions.** Any needed suite denotation, closure, obligation, pin, protocol-semantic, WorkPlanning-pin, or wiring-semantic change SHALL be performed in its respective governing definition (E.20:4.2), preferably by introducing a suite variant rather than silently swapping kernel membership.
 5. **Emit RSCR triggers.** Deprecation/supersession SHALL emit typed RSCR triggers and extend the regression envelope (E.20:4.10), including checks for dangling refs and alias coverage.
 
 #### E.20:4.10 - Step 10: RSCR triggers + regression envelope
@@ -23131,8 +25356,8 @@ A MIP-run that changes any of:
 * suite membership/protocols,
 * planned baseline pins,
 * slot vocabulary / SlotKind lexicon,
-* terminology/alias docking affecting citeable tokens,
-* or other reference surfaces
+* terminology/alias docking that changes citeable tokens,
+* or other reference loci
 
 SHALL emit typed RSCR triggers via the RSCR governing pattern and SHALL extend the regression envelope to include, at minimum:
 
@@ -23151,8 +25376,8 @@ Every MIP-run SHALL be reviewed using PQG (E.19) with:
 
 * **PCP‑BASE** always, and
 * the triggered profiles implied by the change class (at least):
-  * **PCP‑SUITE** if any suite surface changed,
-  * **PCP‑P2W** if any planned-baseline surface changed,
+  * **PCP‑SUITE** if any suite locus changed,
+  * **PCP‑P2W** if any planned-baseline locus changed,
   * **PCP‑TERM** if any new terms/renames are introduced,
   * **PCP‑SOTA** if SoTA packs are introduced/modified,
   * **PCP‑NORM** if the run introduces/changes normative requirements or conformance items,
@@ -23165,18 +25390,22 @@ Every MIP-run SHALL be reviewed using PQG (E.19) with:
 A reviewed MIP-run SHALL be closed as one of:
 
 1. **Proceed (single change set).**
-2. **Proceed via governing-definition split** (mandatory when semantics were placed under the wrong governing definition; the change is split into governing-definition-correct patches).
+2. **Proceed via governing-definition split** (mandatory when semantics were placed under the wrong governing definition; the change is split into governing-definition-correct edits).
 3. **Proceed via suite variant** (preferred when kernel stability is threatened by adding new required stages).
 4. **Block with explicit missing condition** (insufficient semantics; stub exists but completion condition is DRR-tracked).
 5. **Reject** (violates invariants such as suite-as-gate, plan-as-enactment, or governing-definition ambiguity).
 
 ### E.20:5 - Archetypal Grounding *(Tell–Show–Show)*
 
+**Show 0 (suite member, no new mechanism meaning).** A suite adds an already-defined `U.Mechanism.IntensionRef` as an optional member and changes no operation, law set, admissibility condition, slot interface, transport boundary, audit semantics, planned-baseline pins, or wiring semantics. E.20 records the suite-governing locus and stops; no new mechanism-governing card and no MIP-run manifest are opened.
+
 |  | Tell | Show #1 — add a mechanism to an existing suite *variant* | Show #2 — introduce a new mechanism family + suite |
 |---|---|---|---|
-| **Scene** | Mechanisms evolve: new stages appear, methods mature, and planning records must remain citeable. | A team wants an additional “stage” in a characterization pipeline, but does not want to mutate the kernel suite. | A new domain needs a mechanism kind not yet present in any existing mechanism-profile cluster (for characterization: `A.19.*`), plus a suite that composes several distinct mechanisms with a P2W hook. |
+| **Scene** | Mechanisms evolve: new stages appear, methods mature, and planning records need to remain citeable. | A team wants an additional “stage” in a characterization pipeline, but does not want to mutate the kernel suite. | A new domain needs a mechanism family or species not yet present in any existing mechanism-profile cluster (for characterization: `A.19.*`), plus a suite that composes several distinct mechanisms with a P2W hook. |
+
 | **Governing-definition assignment** | Each change item has one governing definition; changes are assigned there, not smeared. | 1) Add the new mechanism card under the mechanism-governing pattern. 2) Add a suite variant under the suite-governing pattern. 3) Pin the variant via a planned-baseline specialization. 4) Wire the variant via a `GPatternExtension`. | 1) Add a new archetypal grounding under the governing pattern. 2) Add `A.6.7.<FamilyKey>` describing the suite. 3) Add a suite-specific `SlotFillingsPlanItem` specialization. 4) Add SoTA packs and wiring modules. |
-| **Card-first** | No suite enumerates a missing `…IntensionRef`. | Create the new `…IntensionRef` card stub first; then update the suite variant membership. | Create the new kind’s canonical card(s) first; then publish suite membership by `…IntensionRef`. |
+| **Card-first** | No suite enumerates a missing `…IntensionRef`. | Create the new `…IntensionRef` card stub first; then update the suite variant membership. | Create the new mechanism-governing card(s) first; then publish suite membership by `…IntensionRef`.
+ |
 | **Suite discipline** | Suites are descriptive: membership, obligations, pins, protocols; not mechanisms and not gates. | The variant’s `suite_protocols` explicitly names the new stage; publish/telemetry remains outside the suite. | The new suite defines shared obligations and allowed pipelines without embedding mechanism semantics. |
 | **P2W seam** | Planning pins refs; enactment witnesses runs. | The plan item pins the chosen suite variant and any method/spec refs; no launch values or decision logs. | The plan item specialization defines the planned fillers/pins that downstream flows cite. |
 | **SoTA updates** | Methods change faster than kernel meaning; wiring is where choices live. | A `GPatternExtension` selects a post-2015 scoring method by edition‑pinned ref; no kernel mutation required. | The family ships method packs and wiring modules; kernel cards remain the semantic source of mechanism meaning. |
@@ -23187,17 +25416,25 @@ Lenses tested: **Governance** (governing-definition assignment, continuity), **A
 
 ### E.20:7 - Conformance Checklist (normative)
 
+**Conformance use.** This checklist is evidence for the governing-definition assignment guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; an item is applied only when its corresponding trigger triage, manifest, card, suite, planning, wiring, lexical, RSCR, PQG, or deprecation move is live. Before applying any item, name the Solution move it tests; if no such reader move is live, treat the item as support-only or not applicable rather than expanding the applied assurance or conformance material.
+
+**Conformance groups.** Ordinary E.20 use starts with trigger triage and stops at the current governing locus when no denotation or mechanism-meaning change is live. Manifest-core items apply only when a MIP-run is actually triggered. Publication/assurance items apply only when citeability, card stubs, alias docking, RSCR, PQG, or deprecation continuity are live. Crossing, launch, and work-enactment checks are not governed by E.20; if they become live, use the gate, planning, or work loci and keep E.20 to governing-definition assignment.
+
 | ID | Requirement | Purpose |
 |---|---|---|
-| **CC‑E20‑1 (Governing-definition assignment declared).** | Every MIP-run **SHALL** provide a MIP-run manifest that lists each changed item, exactly one governing definition, and the canonical location; each changed item **SHALL** be authored in that canonical location. | Prevents “floating commitments” and semantic leakage. |
+| **CC-E20-0 (MIP trigger triage).** | Every proposed mechanism, suite, planned-baseline, wiring, governing-definition, or citeable-token edit is classified as `MIP not triggered`, `local wording or alias-docking only`, or `MIP-run manifest required` before E.20 is cited to start a MIP-run. | Prevents pure currentness cleanup from becoming a false runtime gate or expanded authoring event. |
+
+| **CC-E20-1 (Governing-definition assignment declared).** | Every MIP-run **SHALL** provide a MIP-run manifest that lists each changed item, exactly one governing definition, and the canonical location; each changed item **SHALL** be written in that canonical location. | Prevents “floating commitments” and semantic placement errors. |
 | **CC‑E20‑2 (Card-first canonicalization).** | Any new `U.Mechanism.IntensionRef` enumerated anywhere **SHALL** resolve to a canonical mechanism card (stub allowed) before suite/protocol enumeration. | Eliminates dangling refs. |
-| **CC‑E20‑3 (Suite discipline preserved).** | If a suite is touched, it **SHALL** preserve: membership set semantics, protocol closure, no hidden tails, no gate decisions/logs, no publication payloads. | Prevents suite-as-gate and suite-as-mechanism drift. |
-| **CC‑E20‑4 (SlotKind lexicon used when shared).** | If mechanisms share slot vocabulary in a family/suite, a suite-level lexicon **SHALL** exist and member mechanisms **SHALL** cite it. | Stops slot token drift. |
-| **CC‑E20‑5 (P2W seam preserved).** | If planned baselines are touched, plan items **SHALL** remain WorkPlanning-only (pins/refs only), **SHALL** target exactly one Description-level slot-bearing description via `target_slot_bearing_description_ref` (and **SHALL NOT** target a `U.Mechanism.IntensionRef`), and **SHALL NOT** contain enactment witnesses, launch values, or gate decisions. | Keeps planning and enactment separable and auditable. |
-| **CC‑E20‑6 (Kernel stability handled).** | If a kernel suite would gain a new required stage, the change **SHOULD** be expressed as a suite variant; if mutation occurs, it **SHALL** include continuity measures (alias docking and explicit delta). | Minimizes blast radius of kernel edits. |
-| **CC‑E20‑7 (SoTA wiring, not kernel semantics).** | Method/comparator choices **SHALL** be represented via SoTA packs and wiring modules; if a SoTA update requires semantic change, it **SHALL** be made in the mechanism-governing pattern and not by wiring. | Prevents silent semantic shifts. |
-| **CC‑E20‑8 (Terminology continuity).** | Any rename affecting citeable tokens **SHALL** use alias docking and register updates; silent rewrites are non‑conformant. | Preserves reference stability. |
-| **CC‑E20‑9 (RSCR triggers + regressions).** | Any semantic or reference-surface change **SHALL** emit RSCR triggers and extend the regression envelope to cover dangling refs + suite closure + guard/gate separation + P2W seam. | Makes change impact explicit and testable. |
+| **CC‑E20‑3 (Suite discipline preserved).** | If a suite is edited, it **SHALL** preserve: membership set semantics, protocol closure, no hidden tails, no gate decisions/logs, no publication records. | Prevents suite-as-gate and suite-as-mechanism drift. |
+| **CC‑E20‑4 (SlotKind lexicon used when shared).** | If mechanisms share slot vocabulary in a family/suite, a suite-scoped lexicon **SHALL** exist and member mechanisms **SHALL** cite it. | Stops slot token drift. |
+| **CC‑E20‑5 (P2W seam preserved).** | If planned baselines are edited, plan items **SHALL** remain WorkPlanning-only (pins/refs only), **SHALL** target exactly one Description-scoped slot-bearing description via `target_slot_bearing_description_ref` (and **SHALL NOT** target a `U.Mechanism.IntensionRef`), and **SHALL NOT** contain enactment witnesses, launch values, or gate decisions. | Keeps planning and enactment separable and auditable. |
+| **CC‑E20‑6 (Kernel stability handled).** | If a kernel suite would gain a new required stage, the change **SHOULD** be expressed as a suite variant; if mutation occurs, it **SHALL** include continuity measures (alias docking and explicit delta). | Minimizes E.15 impact radius of kernel edits. |
+
+| **CC‑E20‑7 (SoTA wiring, not kernel semantics).** | Method/comparator choices **SHALL** be represented via SoTA packs and wiring modules; if a SoTA update changes mechanism semantics, that change **SHALL** be made in the mechanism-governing pattern and not by wiring. | Prevents silent semantic shifts. |
+| **CC‑E20‑8 (Terminology continuity).** | Any rename changing citeable tokens **SHALL** use alias docking and register updates; silent rewrites are non‑conformant. | Preserves reference stability. |
+| **CC‑E20‑9 (RSCR triggers + regressions).** | Any semantic or reference-change **SHALL** emit RSCR triggers and extend the regression envelope to cover dangling refs + suite closure + guard/gate separation + P2W seam. | Makes changed loci and regression obligations explicit and testable. |
+
 | **CC‑E20‑10 (PQG coverage).** | Every MIP-run **SHALL** be reviewed under PQG (E.19) with PCP‑BASE and the triggered profiles implied by the change. | Normalizes review and refresh. |
 | **CC‑E20‑11 (Deprecation preserves citeability).** | Any deprecation/supersession/retirement action **SHALL** preserve citeability of the deprecated token (alias docking if renamed), keep the canonical mechanism card, suite description, plan item, or wiring module resolvable, and declare a successor pointer or “no successor” explicitly (E.20:4.9.1). | Prevents broken citations and orphaned semantics during evolution. |
 
@@ -23206,40 +25443,42 @@ Lenses tested: **Governance** (governing-definition assignment, continuity), **A
 | Anti-pattern | Symptom | Why it fails | Repair |
 |---|---|---|---|
 | **Wiring carries semantics** | Part G extensions start redefining what a mechanism “means”. | Meaning becomes edition-fragile and non-local. | Move semantics back to the mechanism-governing pattern; keep extensions as binding only. |
-| **Suite becomes a meta-mechanism** | Suite text defines ops/laws or embeds thresholds/decisions. | Breaks level separation; creates hidden gate behavior. | Restore suite as description-only; push thresholds to acceptance/gate level. |
+| **Suite becomes a meta-mechanism** | Suite text defines ops/laws or embeds thresholds/decisions. | Collapses suite, mechanism, and gate kinds; creates hidden gate behavior. | Restore suite as description-only; push thresholds to acceptance/gate kind. |
 | **Plan becomes enactment** | Plan items contain launch values, witnesses, or decisions. | Destroys P2W seam; breaks audit semantics. | Strip enactment content; pin only refs/policies/time selectors. |
-| **Kernel churn by convenience** | New required stage is added directly to kernel suite membership. | Expands blast radius; destabilizes citations. | Prefer suite variant; if not possible, pair with alias docking and explicit deltas. |
-| **Token drift by silent rename** | “Just rename UNM to …” without aliasing. | Breaks citations and downstream reasoning. | Use F.18 alias docking; update registers explicitly. |
-| **Owner ambiguity** | “We’ll put it somewhere later.” | Guarantees incompleteness and drift. | Name the governing definition up front; otherwise treat as non-normative. |
+| **Kernel churn by convenience** | New required stage is added directly to kernel suite membership. | Expands the E.15 impact radius; destabilizes citations. | Prefer suite variant; if not possible, pair with alias docking and explicit deltas. |
+
+| **Token drift by silent rename** | “Just rename UNM to ...” without aliasing. | Breaks citations and downstream reasoning. | Use F.18 alias docking; update registers explicitly. |
+| **MIP as gate surrogate** | A MIP-run manifest is treated as a runtime pass/fail result or gate passage. | Governing-definition assignment is being mistaken for project execution or gate decision. | Keep MIP as authoring-side governing-definition assignment; use `A.21` for gate decisions and `A.15` for work or enactment claims. |
+| **Governing-definition ambiguity** | “We’ll put it somewhere later.” | Leaves incompleteness and drift invisible. | Name the governing definition up front; otherwise treat as non-normative. |
 
 ### E.20:9 - Consequences
 
 **Benefits**
 * Mechanism introductions become **trainable and reviewable** (a repeatable governing-definition map).
-* Reduces drift by requiring one governing pattern for each mechanism-intension meaning and preventing semantic leakage.
+* Reduces drift by requiring one governing pattern for each mechanism-intension meaning and keeping semantics in their governing pattern.
 * Keeps suites descriptive and the P2W seam crisp, improving auditability.
 * Supports SoTA evolution without destabilizing kernel meaning.
 
 **Costs**
-* Introductions require more explicit assignment records (governing-definition map, PQG coverage).
-* Some changes will be split into multiple patches (by design), which increases authoring overhead.
+* Introductions use more explicit assignment records (governing-definition map, PQG coverage).
+* Some changes will be split into multiple governed edits (by design), which increases authoring overhead.
 * Kernel stability discipline can feel “slow” when a team wants a quick mutation.
 
 ### E.20:10 - Rationale
 
-Mechanisms are high-leverage semantic units: a small change can affect suites, planned baselines, wiring modules, and audits. Without a protocol, the corpus tends toward **semantic smearing** (meaning duplicated across planes) and **non-local correctness** (you can’t know what changed without reading everything).
+Mechanisms are high-leverage semantic units: a small change can touch suites, planned baselines, wiring modules, and audits. Without a protocol, the corpus tends toward **semantic duplication across governing loci** and **non-local correctness** (you can’t know what changed without reading everything).
 
-Governing-definition-directed authoring is a pragmatic compromise: it does not require tooling, yet it produces a stable “map of truth” that makes future review and refresh feasible.
+Governing-definition-directed authoring is a pragmatic compromise: it does not depend on tooling, yet it gives a stable governing-definition map that supports subsequent review and refresh.
 
 ### E.20:11 - SoTA-Echoing
 
-| Need | SoTA practice (post‑2015) | Primary source (post‑2015) | How MIP aligns |
-|---|---|---|---|
-| Explicit concerns and viewpoints for architecture evolution | Architecture descriptions separate concerns, viewpoints, and stakeholder needs | ISO/IEC/IEEE 42010:2022 | MIP forces explicit governing-definition assignment and separates semantic planes (kernel vs wiring vs planning). |
-| Repeatable evaluation of pattern quality and change admission | Pattern validation uses explicit criteria and review profiles | Riehle et al., 2020 | MIP requires PQG coverage with triggered profiles rather than ad hoc review. |
-| Grounding abstract guidance in teachable vignettes | Pattern languages emphasize grounded, repeatable “Tell–Show–Show” teaching | Iba, 2021 | MIP includes archetypal grounding to make the protocol teachable. |
-| Bounded context ownership and boundary hygiene | Context mapping emphasizes ownership and explicit boundary agreements | Vernon, 2016 | MIP’s governing-definition assignment map is a boundary discipline applied to spec authoring. |
-| Modular vocabularies for knowledge systems | Knowledge graph practice emphasizes modular vocabulary control and stable identifiers | Hogan et al., 2021 | MIP’s lexicon discipline + alias docking preserve stable references under evolution. |
+| SoTA source idea | FPF invariant | Reader move | Rejected shortcut |
+| --- | --- | --- | --- |
+| Mechanism semantics in A.6.1, effects-handler practice, and refinement-style signature discipline require an explicit operation/signature/law/admissibility locus. | Mechanism meaning is assigned to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, slot interface, transport/bridge regime, applicability, and audit. | When a mechanism is introduced or changed, name the mechanism-governing definition that carries those semantic fields before suites, plans, or wiring cite it. | Treating suite text, wiring prose, or a MIP manifest as mechanism semantics. |
+| SoTA method evolution is carried by SoTA synthesis packs, shipping boundaries, and refresh wiring rather than silent kernel mutation. | `G.2`, `G.10`, and `G.11` own method-evolution support: SoTA packs, release/shipping boundary, and refresh wiring. If the SoTA change alters mechanism meaning, the mechanism-governing definition changes. Current-source examples are only admissible through named pack refs, such as SLSA v1.2 for provenance and attestation support, RO-Crate 1.2 for research-package publication support, QDax JMLR 2024 for QD-library support, or a named current domain survey or source when that domain is live. | Tie a mechanism-changing SoTA update to the exact SoTA pack or source ref and refresh or shipping locus, then edit the mechanism-governing pattern if semantics changed. | Rephrasing a fashionable method update as kernel semantics or hiding it in wiring. |
+| Open-ended and set-valued method evolution may return candidate sets, archives, or selector outputs. | C.18, C.19, and G.5 preserve set-return and selection boundaries; MIP must not force one approved mechanism too early. | Keep candidate mechanisms, selected sets, abstain/reject states, and archive semantics in their receiving loci until a mechanism-governing definition is actually selected for introduction. | Collapsing open-ended exploration or selector output into one prematurely approved mechanism. |
+| Mechanism-related refresh uses explicit pins and trigger kinds rather than restating method semantics. | G.11-style refresh uses edition pins, policy pins, `PathSliceId`, and RSCR trigger kinds; refresh wiring supports comparable reruns but does not redefine the method. | When a mechanism change affects refresh, name the pins and RSCR trigger kinds and keep method semantics in the mechanism or SoTA-pack locus. | Letting refresh wiring become a second method definition. |
+| Stable identifiers and modular vocabularies preserve reference continuity. | Names, aliases, lexicons, and stable identifiers preserve citeability; they do not establish mechanism law, admissibility, evidence, or gate fit. Mechanism meaning and admissibility belong in governing definitions, signature/law/admissibility patterns, suite boundaries, SoTA packs, and wiring modules according to their exact roles. | Use alias docking and lexicon updates to keep references alive, then return mechanism meaning to the governing definition that governs it. | Treating ontology or vocabulary modularity as sufficient mechanism introduction. |
 
 ### E.20:12 - Relations
 
@@ -23259,10 +25498,9 @@ Governing-definition-directed authoring is a pragmatic compromise: it does not r
 * **G.x:Ext.\*** (wiring modules via `GPatternExtension`)
 
 **Constrains:**
-* Any change set that introduces or revises mechanisms, suites, planned baselines, or wiring in a way that affects citeable surfaces.
+* Any change set that introduces or revises mechanisms, suites, planned baselines, or wiring in a way that changes citeable loci.
 
 ### E.20:End
-
 # **Part F — The Unification Suite (U‑Suite): Concept‑Sets, SenseCells & Contextual Role Assignment**
 
 # Cluster F.I — Context of Meaning and Lexical Inputs
@@ -29697,7 +31935,7 @@ When P1 uses **NQD-CAL (C.18)**, treat the **Quality vector** over candidates as
 
 * **MorphologicalActionFit (O — Morphological/action alignment).**
   *Question.* Does the morphology of the label hint at its role in **methods/morphisms** (object vs process vs result) and support the required derivational family (noun/verb/participial forms)?
-  *Scale (ordinal; ↑ better).* `{Opaque, Role‑hinting, Action‑aligned}`. Action‑aligned labels make it obvious whether we are naming an **actor**, an **activity**, or an **authored result** (e.g., *Author* vs *Authoring* vs *AuthoredArtifact*).
+  *Scale (ordinal; ↑ better).* `{Opaque, Role‑hinting, Action‑aligned}`. Action‑aligned labels make it obvious whether we are naming an **actor**, an **activity**, or a **publication result** (e.g., *ReviewerRole* vs *Reviewing* vs *ReviewRecord*).
   *Kind-sensitive cues.* When the **Kind** on the Card is a **Role**, prefer agentive/holder morphology (*…Role*, *…er*, *…or* or local equivalents); when the Kind is **Method or MethodDescription**, prefer verbal or gerundive forms; when the Kind is **Holon**, prefer result nouns, when **Work**, prefer verb. Misaligned morphology (e.g., a Role named with a pure process noun) should be treated as a **penalty on MorphologicalActionFit** and, if retained for legacy or regulatory reasons, called out explicitly in **Card notes**. See F.5/F.11/F.12 and **LEX-BUNDLE §8**.
 
 * **AliasRisk (A — Lexical overload).**
@@ -29756,7 +31994,7 @@ The canonical settlement table for this amendment is:
 | --- | --- | --- | --- |
 | `pattern-entry discoverability` | composite entry quality over one entry-recognition stack | `E.11` | broad `discoverability` alone |
 | `description recognition signature` | first-contact cue structure of one description-bearing unit | `A.6.RSIG` | `discoverability of descriptions` |
-| `recognition surface` | existing first reading surface inside one pattern | `E.8` | invented `discoverability surface` |
+| `recognition text` | existing first reading text inside one pattern | `E.8` | invented `discoverability surface` |
 | `entry neighborhood` | entry-load-oriented grouping of plausible patterns, tempting wrong patterns, entry-load reclassifications, and admissible stops | `E.11`; `J.4` only when the entry grouping is a pattern-language map | `route` |
 | `entry lexeme support` | lexical and query support without alias minting | `F.17`, `F.18`, and `E.10`, coordinated by `E.11` | `lexical discoverability`, bare `search support` |
 | `worked entry reading` | bounded interpretive case reading | `I.2` | `workflow`, `scenario script`, `route` |
@@ -30202,6 +32440,7 @@ When a Name Card or worked naming note uses support-view or atlas wording, it **
 | A7 | “One mega‑row for everything service‑like.”             | Bundles distinct concepts; harms teachability.                  | “One **Concept‑Set per idea**; group with a **Block Plan** for pedagogy.” (F.17 §7)                                 |
 
 
+
 #### F.18:16.1 - Canonical semantic unpacking for “contract” language (normative; used across FPF)
 
 In FPF, everyday “contract” talk is treated as shorthand for a bundle of distinct roles. When precision matters (architecture, audit, compliance), authors **SHALL** avoid mapping “contract” to a single concept and instead disambiguate at least:
@@ -30423,7 +32662,6 @@ All patterns that propose or consume unified names and rows in Part F; any Part 
 **A.17/A.18** for measurement lexicon when rows concern measurable notions (Characteristic/Scale/Level/Coordinate vocabulary), ensuring neutral naming aligns with canonical terms and eases external alignment via Bridges.
 
 ### F.18:End
-
 # Part G – Discipline SoTA Patterns Kit
 
 ## G.Core - Part G Core Invariants
@@ -32602,7 +34840,7 @@ This pattern aligns with post‑2015 best practice by:
 UTS entries (Name Cards with twin labels and public-id continuity notes, including deprecations and lexical-continuity notes),
 RSCR tests, Worked‑Examples, and a `TaskMap@Context` (`TaskMap`; handoff record consumed by `G.5`).
 
-**Primary hooks.** `G.Core` (Part‑G invariants + RSCR trigger catalogue + Default Governing Definition Index), `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust / freshness / decay), `E.18` + `A.21` + `A.27` (GateCrossing / CrossingBundle harnesses), `F.9` (BridgeCard / CL), `G.6` (EvidenceGraph / PathId / PathSliceId; wired via Extensions), `G.5` (Selector & Dispatch), `G.10` (shipping), `G.11` (refresh orchestration), plus Contexts/UTS/LEX disciplines already fixed elsewhere in the spec.
+**Primary hooks.** `G.Core` (Part‑G invariants + RSCR trigger catalogue + Default Governing Definition Index), `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust / freshness / decay), `E.18` + `A.21` + `F.9`/`F.17`/`E.17` (GateCrossing / CrossingBundle harnesses), `G.6` (EvidenceGraph / PathId / PathSliceId; wired via Extensions), `G.5` (Selector & Dispatch), `G.10` (shipping), `G.11` (refresh orchestration), plus Contexts/UTS/LEX disciplines already fixed elsewhere in the spec.
 
 **Non‑duplication note.** Universal Part‑G invariants (no shadow specs, crossing visibility, tri‑state guard, penalties→`R_eff`‑only, set‑return semantics, P2W split, typed RSCR causes, Default Governing Definition Index, shipping boundary) are governed in `G.Core` and are pulled into `G.4` only through the `G.Core linkage` manifest in **G.4:4.1** (and via explicit delegations in CC).
 
@@ -32795,7 +35033,7 @@ Each `CAL.Acceptance` is a UTS‑published predicate with:
 * `UnknownHandling` as a tri‑state choice (via `G.Core` semantics),
 * `FailureBehaviorRef` (policy‑bound) for degrade/abstain behavior.
 * `GateCrossingId[]` / `CrossingBundleId[]` **iff** the clause relies on cross-context, cross-plane, or cross-edition imports (no “silent reuse”).
-  Missing required crossing artefacts is a conformance failure and blocks publication of the affected clause/flow (GateCrossing harness: `E.18`/`A.21`/`A.27`; crossing invariants: `G.Core`).
+  Missing required crossing artefacts is a conformance failure and blocks publication of the affected clause/flow (GateCrossing harness: `E.18`/`A.21`/`F.9`/`F.17`/`E.17`; crossing invariants: `G.Core`).
 
 **C4 — Aggregation & comparison flows (safe by construction).**
 `CAL.Flow` composes operators into legality‑checked DAGs and declares:
@@ -33050,7 +35288,7 @@ All of these remain method‑specific semantics and therefore belong in `Extensi
 
 **Builds on:** `G.Core` (and the pattern template discipline in `E.8`).
 
-**Uses:** `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust/freshness/decay), `E.18` + `A.21` + `A.27` (GateCrossing harness), `F.9` (BridgeCard/CL).
+**Uses:** `G.1` (CG‑FrameContext), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.0` (CG‑Spec legality gate), `A.19` (CN‑Spec), `A.18` (CSLC), `A.10` (provenance anchors), `B.3` (trust/freshness/decay), `E.18` + `A.21` + `F.9`/`F.17`/`E.17` (GateCrossing harness).
 
 **Uses (via Extensions):** `G.6` (EvidenceGraph/Path citation; when `G.4:Ext.EvidenceGraphWiring` is present), `C.18` (NQD), `C.19` (E/E‑LOG), `C.23` (SoS‑LOG).
 
@@ -34377,2991 +36615,4 @@ A conformant G.7 publication:
 * **PatternScopeId:** `G.7:Ext.AcceptanceHooks`
 * **GPatternExtensionId:** `AcceptanceHooks`
 * **GPatternExtensionKind:** `MethodSpecific`
-* **GoverningPatternId:** `G.4` *(Acceptance/threshold/unknown handling; G.7 does not define thresholds)*
-* **Uses:** `{G.4}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `AcceptanceClauseId[]` *(or governing definition‑equivalent ids)*
-  * `AcceptancePolicyId?` *(policy id when acceptance behavior is pinned)*
-  * `BridgeCardId[]` (bridges whose calibrated status is being used as a gate input)
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.BaselineBindingEdit, RSCRTriggerKindId.LegalitySurfaceEdit}`
-* **Notes (wiring‑only):** When bridges are used as selector gates, thresholds and unknown-handling remain governed by Acceptance; this module only pins the linkage and refresh relevance.
-
-**GPatternExtension: AdvancedCalibrationProcedures (Phase‑3 seed)**
-
-* **PatternScopeId:** `G.7:Ext.AdvancedCalibrationProcedures`
-* **GPatternExtensionId:** `AdvancedCalibrationProcedures`
-* **GPatternExtensionKind:** `Phase3Seed`
-* **GoverningPatternId:** `governing pattern not yet selected`
-* **Uses:** `{ }`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins:** `pending governing-pattern selection`
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.ReferencePlaneEdit}`
-* **Notes (seed; non‑normative):** Placeholder for domain‑specific / statistical calibration families beyond the minimal auditable procedure (e.g., uncertainty‑aware calibration, probabilistic mapping). No Part‑G‑wide norms are introduced.
-
-### G.7:5 - Archetypal Grounding (System / Episteme)
-
-**System (Γ_sys):** *Cross‑standard safety assurance comparison (bridge‑first).*
-A team must compare a safety assurance claim across two regulatory Traditions (e.g., a “functional safety case” tradition and a “ML system testing” tradition) for the *same physical system scope*. `G.7` forces explicit SenseCell‑level bridges (what exactly is the “hazard”, what is the “evidence carrier”, what is the “pass criterion”), records losses, pins planes, and provides sentinels so that changes in the safety evidence protocol editions trigger path‑local RSCR rather than re‑authoring the entire safety case.
-
-**Episteme (Γ_epist):** *Benchmark protocol pluralism (post‑2015 evaluation practice).*
-A research group wants to compare “state‑of‑the‑art” across multiple evaluation Traditions (IID performance, shift robustness, preference‑based evaluation). `G.7` turns “these are comparable” into explicit BridgeCards with declared row scope, pins the evaluation protocol editions, and emits sentinels so that when a benchmark protocol or policy pin changes, downstream selector decisions can be re‑audited by re‑citing the same PathSlice‑scoped evidence.
-
-### G.7:6 - Bias‑Annotation
-
-Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
-Scope: Universal for the bridge calibration kit; any method‑family or discipline‑specific calibration technique is modularized as `GPatternExtension` and cited to its governing patterns.
-
-### G.7:7 - Conformance Checklist (normative) — **CC‑G7**
-
-| ConformanceId             | Requirement                                                                                                                                                                                                                                                                               | Purpose                                                                        |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| **CC‑G7‑CoreRef**         | `G.7` is conformant only if it satisfies the effective `G.Core` obligations declared by the `GCoreLinkageManifest` in **§4.1** (after nil‑elision and expansion of profile/set/pinset ids), including any explicit deltas listed there. | Make universal invariants one governing definition and enforce citation‑based reuse.       |
-| **CC‑G7‑BCT‑1**           | For any active `TradPairId` with cross‑Tradition reuse, a `BridgeCalibrationTable (BCT)` **MUST** exist, declare a `FreshnessWindowRef`, and provide `RowEntry` records that cite, at minimum: `RowEntryId`, `ComparableConstructId`, `RowScopeId`, `BridgeCardId[]`, `RowCL_min`, `PlanePins {ReferencePlane(src), ReferencePlane(tgt)}`, `PolicyPins {Φ(CL)}` (and `Ψ(CL^k)?`, `Φ_plane?` when applicable), plus `{RegressionSetId, SentinelSetId}`. | Ensure the kit exists as an auditable object rather than a prose matrix.       |
-| **CC‑G7‑BridgeCard‑1**    | Any bridge published by G.7 **MUST** be consumable as an **F.9** `BridgeCard` and **MUST** be SenseCell‑anchored (directly or via explicit SenseCell anchor refs).                                                                                                                        | Prevent “Context‑only” or ambiguous bridges.                                   |
-| **CC‑G7‑UTS‑1**           | G.7 outputs **MUST** mint/publish UTS‑citable ids (NameCards/twin labels as applicable) for (a) each BridgeCard (or its NameCard) and (b) each GateCrossing/crossing row that makes bridge use checkable; and **MUST** expose the resulting `UTSRowId[]` in the BCT/Ledger/crossing bundles. *(UTS discipline is delegated to `CC‑GCORE‑UTS‑1`.)* | Make bridge calibration externally citable and checkable.                      |
-| **CC‑G7‑RowScope‑1**      | Every BCT row **MUST** declare its `RowScopeId` (what notion of “sameness” is claimed), and any loss notes **MUST** be recorded as citable artefacts (refs/ids), not only narrative text.                                                                                                 | Keep reuse honest and locally bounded.                                         |
-| **CC‑G7‑CLRegime‑1**      | Every BCT row **MUST** record `RowCL_min` (and `RowCL_k_min?`, `RowCL_plane_min?` where applicable) and apply the admissibility regime from §4.2.1: `≥2` admissible; `=1` only with cited `WaiverRef[]`; `=0` forbidden for reuse. The honesty rule must be satisfied: ≥1 counterexample for `≤2`, and an explicit stated‑absence disclosure for `=3` when no counterexample is cited. | Make CL/waiver/plane regimes explicit and auditable at kit level.              |
-| **CC‑G7‑SCRLinkage‑1**    | Whenever bridge calibration is cited in SCR/Evidence surfaces, the citation **MUST** include `{BridgeCardId[]}` (or `UTSRowId[]` for the bridge artefacts), an explicit row locator (`RowEntryId` or equivalent), `{BCT.id, RegressionSetId}`, and the active policy id pins `{Φ(CL), Ψ(CL^k)?, Φ_plane?}` (ids only; representation governed elsewhere). | Prevent “pins exist but are not visible/auditable” failure mode.               |
-| **CC‑G7‑SoSLOG‑Pins‑1**   | When `G.7:Ext.SoSLogClauses` is in use, G.7 outputs **MUST** expose the cited SoS‑LOG rule ids and the relevant `PathId/PathSliceId` evidence citations; any change in those pins **MUST** be RSCR‑relevant per `CC‑GCORE‑TRIG‑1…TRIG‑4`.                                               | Keep cross‑Tradition reuse explainable without embedding C.23 semantics.        |
-| **CC‑G7‑Acceptance‑1**    | When `G.7:Ext.AcceptanceHooks` is in use, G.7 outputs **MUST** expose the Acceptance clause ids/policy ids used as gates; thresholds/unknown handling remain governed by Acceptance; any change **MUST** be RSCR‑relevant per `CC‑GCORE‑TRIG‑1…TRIG‑4`.                                           | Keep thresholds and unknowns out of bridges while preserving auditability.     |
-| **CC‑G7‑RowBottleneck‑1** | If a comparable construct row aggregates multiple bridge cells, row summaries (e.g., `RowCL_min`) **MUST** follow bottleneck discipline (F.7) and cite a counterexample whenever a cell carries a loss note.                                                                              | Forbid “CL averaging” and enforce loss‑aware summaries.                        |
-| **CC‑G7‑PolicyPins‑1**    | G.7 outputs **MUST** publish the *policy id pins* required to audit penalty routing and plane effects (ids only), as required by `CC‑GCORE‑LINK‑1/2` and `CC‑GCORE‑PEN‑1`. G.7 MUST NOT duplicate policy tables or redefine penalty semantics.                                           | Keep penalty routing auditable while preserving single‑governing-pattern policy semantics. |
-| **CC‑G7‑GateCrossing‑1**  | Any published crossing rows that rely on bridges **MUST** be checkable via GateCrossing/CrossingBundle harnesses (E.18/A.21): required pins are present; lexical constraints and lane purity checks are runnable.                                                                        | Make crossings checkable, not narrative.                                       |
-| **CC‑G7‑Sentinels‑1**     | G.7 **MUST** register `BridgeSentinel` entries for bridges used by live scopes and **MUST** emit typed RSCR triggers (canonical `RSCRTriggerKindId`; see `CC‑GCORE‑TRIG‑1…TRIG‑4`) on calibration‑relevant edits, scoped to the watched `PathSliceId[]` or `PatternScopeId[]`, with the minimum payload pins from §4.1. | Enable targeted refresh rather than pack‑wide reruns.                          |
-| **CC‑G7‑QD‑Pins‑1**       | When `G.7:Ext.QDParityPins` is in use, G.7 outputs **MUST** include `{DescriptorMapRef.edition, DistanceDefRef.edition, InsertionPolicyRef}` and treat any change to those pins as RSCR‑relevant per `CC‑GCORE‑TRIG‑1…TRIG‑4`.                                                          | Prevent silent QD telemetry drift.                                             |
-| **CC‑G7‑DHC‑Units‑1**     | When AlignmentDensity (or related DHC accounts) are reported, G.7 outputs **MUST** (a) restrict the counted bridge set to rows with `RowCL_min ≥ 2` (treat `CL=3` as “free substitution”, `CL=2` as “guarded” for reporting), (b) include declared units, and (c) cite the relevant DHC method semantics (C.21). G.7 MUST NOT invent arithmetic over ordinal/illegal surfaces. | Keep dashboards and discipline‑health metrics lawful and interpretable.        |
-
-### G.7:8 - Common Anti-Patterns and How to Avoid Them
-
-* **Bridge‑by‑prose (“they have the same sense”).**
-  **Avoid:** publish BCT rows + BridgeCards + UTS rows; require SenseCell anchoring and row scopes.
-* **SenseFamily jump (scope‑bridge used as kind‑bridge).**
-  **Avoid:** keep channel/sense‑family constraints governed by **F.9** visible; use `RowScopeId` to state which channel is claimed, and require `CL^k` + `Ψ(CL^k)` pins when a kind‑channel bridge is invoked (do not “upgrade” a scope‑channel bridge into kind substitution).
-* **Plane blindness (“concept = world”).**
-  **Avoid:** record plane pins and policy id pins; keep plane effects auditable and separable from CL/CL^k semantics.
-* **CL smoothing / averaging.**
-  **Avoid:** enforce row bottleneck summaries and counterexample citations for loss‑noted cells.
-* **Pack‑wide refresh on a local bridge edit.**
-  **Avoid:** register sentinels scoped to `PathSliceId` and emit typed RSCR triggers with minimal payload pins.
-* **QD metric drift by unpinned artefacts.**
-  **Avoid:** enable `G.7:Ext.QDParityPins` only when needed and require edition/policy pins when enabled.
-
-### G.7:9 - Consequences
-
-* **Auditable pluralism.** Cross‑Tradition reuse becomes explicit, loss‑aware, and checkable.
-* **Targeted, edition‑aware refresh.** Calibration drift triggers path‑scoped RSCR rather than expensive global reruns.
-* **Downstream cleanliness.** Selectors/logging/shipping can cite bridges and policy pins without inventing local crossing rules or shadow specs.
-
-### G.7:10 - Rationale
-
-* **Why a kit (not a new governance card or legality gate)?** Bridge calibration must support many downstream consumers without becoming a competing legality gate; governing-spec semantics remain governed by `CG‑Spec`/`CN‑Spec`.
-* **Why BCT + RegressionSet + SentinelSet?** Because calibration without regression tests drifts silently, and regression without sentinels is operationally unusable (refresh becomes global).
-* **Why row scopes?** Because “comparable” is not one thing; scope must be explicit to avoid accidental substitution.
-
-### G.7:11 - SoTA‑Echoing (post‑2015, for orientation; non‑normative)
-
-* **Edition‑aware evaluation and dataset shift practice.** Post‑2018 evaluation culture (robustness and shift benchmarks, protocol pinning, reproducibility checklists) motivates treating protocol versions and “what changed” as first‑class pins rather than prose.
-* **Preference‑based optimisation families.** Modern preference‑learning lines (late‑2010s → 2020s) show how neighbouring objectives can share intent but diverge in assumptions—an archetypal case for row scope + loss notes.
-* **Quality‑Diversity and differentiable QD.** MAP‑Elites successors (CVT variants, CMA‑ME line, differentiable QD ecosystems) emphasise archive/descriptor/distance artefacts whose editions must be pinned for comparability.
-* **Open‑ended evolution and transfer‑rule portfolios.** POET‑class work motivates explicit transfer rule editions and environment validity regions as pins when bridges are used for cross‑tradition reporting.
-
-### G.7:12 - Relations
-
-**Builds on:** `G.Core`, `G.2`, `F.3`, `F.7`, `F.9`, `B.3`, `E.10`, `E.18`, `A.21`, `G.6`, `C.21`.
-**Optionally uses via Extensions:** **G.4** (Acceptance hooks), **C.23** (SoS‑LOG clauses), **C.18 and C.19** (QD/OEE pins).
-**Used by / prerequisite for:** **G.5** (cross‑Tradition eligibility/selection), **G.11** (refresh orchestration), **G.9** (parity across Traditions where bridges are required), **G.10** (shipping surfaces that must cite bridge calibration ids), **G.12** (DHC dashboards when bridge counts/units are surfaced).
-**Publishes to:** **UTS** (bridge and crossing rows; twin labels as applicable) and emits RSCR‑ready telemetry/trigger payloads for **G.11**.
-**Constrains:** Any downstream consumer that claims cross‑Context/Tradition reuse must use the calibrated bridge artefacts/pins surfaced by this kit (governed by G.Core crossing invariants apply).
-
-### G.7:End
-
-## G.8 - SoS‑LOG Bundles & Maturity Ladders
-
-**Tag.** Architectural pattern (packaging kit).
-**Stage.** Design‑time packaging (authoring & publication) with a run‑time consumption facade for `G.5` (selector/registry).
-**Primary hooks:** `G.Core` (Part‑G invariants), `C.23` (SoS‑LOG semantics), `C.22` (TaskSignature), `G.4` (Acceptance & EvidenceProfiles), `G.6` (EvidenceGraph & `PathId/PathSliceId`), `G.5` (registry/selector), `G.11` (refresh orchestration), `G.10` (shipping boundary), `F.9` (BridgeCard & CL), `G.7` (bridge calibration & Φ/Ψ/Φ_plane), `F.8` (Policy pins: `PolicySpecRef`/`MintDecisionRef` resolvability), `A.10` (anchors), `E.10` (LEX twin registers), `E.5.2` (notational independence), `E.18/A.21/A.27` (GateCrossing visibility).
-
-**Non‑duplication note (Phase‑2 universalization).** This pattern introduces **kit-governed packaging surfaces** for SoS‑LOG bundles and maturity ladders. All **Part‑G‑wide invariants** (no shadow specs, Bridge‑only crossings + visibility, tri‑state guard domain, penalties→`R_eff`‑only, set‑return semantics, P2W split, typed RSCR triggers + alias docking, defaults with one governing definition, shipping boundary) are **pinned through `G.Core`** and are not restated here.
-
-**Modularity note (policy‑id pins are reference‑only).** This kit may pin/cite policy ids (e.g., `Φ/Ψ/Φ_plane` policies, `FailureBehaviorPolicyId`, illumination‑promotion policy ids, and E/E‑LOG policy ids) **as references only**. Conformance relies on the policy‑pin resolvability discipline of `F.8:8.1` (i.e., policy ids are not “inlined”; and when newly minted, they are backed by resolvable `PolicySpecRef` + `MintDecisionRef`). `G.8` does not define policy semantics and MUST NOT silently mint policy ids.
-
-### G.8:1 - Problem frame
-
-Method families compete within a `CG‑Frame`, but dispatch is only lawful if (i) admissibility decisions remain **tri‑state** and auditable, (ii) evidence and crossings are **explicitly citable** (by ids, not prose), and (iii) selection preserves **set-return semantics** under partial orders. In practice, SoS‑LOG rules (`C.23`) and “maturity stories” are often distributed across prose, dashboards, and ad‑hoc checklists, with thresholds embedded where they do not belong and with missing pins for evidence paths, crossings, and editions.
-
-This pattern provides the missing packaging kit: a **selector‑facing, UTS‑citable bundle** that binds **(a)** rule ids (semantics governed by `C.23`), **(b)** an ordinal/poset maturity ladder (published as a citable card), and **(c)** explicit wiring to Acceptance (`G.4`), EvidenceGraph (`G.6`), selection/registry (`G.5`), and refresh (`G.11`)—without creating any shadow governing spec refs.
-
-### G.8:2 - Problem
-
-1. **Selector needs a stable input artefact.** `G.5` cannot consume “maturity narratives” and scattered SoS‑LOG snippets without re‑authoring semantics or inventing implicit defaults.
-2. **Thresholds leak into LOG.** Numeric gates are often embedded directly into rule text or ladder rungs, blurring the boundary between LOG decisions (`C.23`) and Acceptance thresholds (`G.4`).
-3. **Auditability is brittle.** Decisions (`pass/degrade/abstain`) lack stable, citable links to evidence paths (`G.6`) and crossing pins (Bridge/CL/Φ policy ids), so later re‑checks and RSCR become ad‑hoc.
-4. **Telemetry contaminates decision semantics.** QD/OEE/illumination signals are frequently treated as dominance inputs without explicit policy pins; edition drift then silently changes outcomes.
-5. **Refresh is under‑specified.** Bundle evolution (rules, ladders, pins, policies, editions) must be RSCR‑addressable via typed trigger kinds, not by free‑text “reasons”.
-
-### G.8:3 - Forces
-
-| Force                                        | Tension                                                                                                      |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| **Pluralism vs. dispatchability**            | Preserve multiple method families and partial orders ↔ still provide a consumable artefact for `G.5`.        |
-| **Auditability vs. authoring friction**      | Fine‑grained pins and citations ↔ keeping authoring lightweight and notation‑independent.                    |
-| **Maturity as poset vs. scalar ranking**     | Maturity is inherently non‑scalar ↔ teams want a “single readiness number”.                                  |
-| **Telemetry richness vs. decision hygiene**  | Rich QD/OEE telemetry ↔ avoid illegitimate promotion into dominance without explicit policy.                 |
-| **Design‑time packaging vs. run‑time trace** | Authoring produces stable bundles ↔ run‑time produces branch‑specific path traces and admissibility ledgers. |
-| **Interoperability vs. crossing discipline** | Reuse across contexts or planes ↔ prevent implicit crossings (Bridge‑only + visible).                           |
-
-### G.8:4 - Solution — Publish SoS‑LOG bundles and maturity cards as UTS‑citable kit
-
-#### G.8:4.1 - G.Core linkage (normative)
-
-**Builds on:** `G.Core` (Part‑G core invariants; citation/delegation hub)
-
-**GCoreLinkageManifest (normative; size‑controlled).**
-*(Canonical shape, Nil‑elision, and Expansion rule are per `G.Core:4.2`.)*
-
-**Separation rule (Phase‑2).** Method‑/generator‑specific pins are **normatively specified** only inside `Extensions` as `GPatternExtension` modules (see `G.8:5.*`). The bundle/ledger schema may mention such fields only as **extension‑gated optionals**, with the authoritative pin/edition/policy requirements stated in the corresponding extension block. The core linkage manifest lists only base‑kit pins and Part‑G‑wide linkage.
-
-`GCoreLinkageManifest := ⟨
-CoreConformanceProfileIds := {
-GCoreConformanceProfileId.PartG.AuthoringBase,
-GCoreConformanceProfileId.PartG.TriStateGuard,
-GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted,
-GCoreConformanceProfileId.PartG.ShippingBoundary
-},
-
-RSCRTriggerSetIds := { GCoreTriggerSetId.EvidenceGraphKit },
-
-CorePinSetIds := {
-GCorePinSetId.PartG.AuthoringMinimal,
-},
-
-CorePinsRequired := {
-  // Public ids governed by this pattern (strengthen conditional pins where G.8 publishes UTS publication units)
-  UTSRowId[],                    // bundle/ledger/card rows + any referenced UTS rows
-  SoS‑LOGBundleRef,
-  SoSLogRuleId[],
-  MethodFamilyId,
-  RegistrationContext,
-
-  // Closed value sets (ids only; UTS-registered)
-  DegradeModeEnum,
-  MaturityRungs,
-
-  // Maturity ladder pins
-  MaturityCardRef,               // required; recommended: published as separate UTS artefact
-  MaturityRungId?,               // iff a specific rung is asserted at packaging/run-time
-
-  // Evidence / provenance pins
-  A10EvidenceGraphRef?[],        // packaging-time A.10 carriers (when PathId/PathSliceId not yet available)
-  EvidenceGraphId?,              // iff resolvable to G.6 EvidenceGraph
-  PathId[]/PathSliceId[]?,       // run-time ledgers typically have them
-
-  // Authoring traceability (SoTA-of-description)
-  AuthoringMethodDescriptionRefs?[],  // edition-pinned method-description refs
-},
-
-DefaultsConsumed := {
-DefaultId.PortfolioMode,
-DefaultId.DominanceRegime,
-DefaultId.GammaFoldForR_eff
-},
-⟩`
-
-*(RSCR payload pins typically include: `SoS‑LOGBundleRef`, `SoSLogRuleId[]`, `MaturityRungId?`, and `EvidenceGraphId/PathId/PathSliceId?`.
-Crossing payload pins (Bridge/CL/Φ/Ψ/Φ_plane) are introduced **only when reuse is asserted**, via `G.8:Ext.BridgeReuseWiring`.
-Method-/generator‑specific payload pins are listed only inside the relevant `GPatternExtension` blocks in `G.8:5`.)*
-
-*(Conditionality note for defaults.)* Include `DefaultId.GammaFoldForR_eff` in `DefaultsConsumed` **only if** the bundle/ledger exports aggregated `R_eff` summaries (otherwise Nil‑elide it).
-
-#### G.8:4.2 - Kit: objects and naming discipline (LEX heads; twin‑register safe)
-
-**Objects / surfaces (pattern-governed).**
-
-* **`SoS‑LOG.Rule`**
-  A rule id that denotes an executable tri‑state decision schema `{pass | degrade(mode) | abstain}` for `(TaskSignature, MethodFamily)`. *(“pass” may be described as “admit” in prose, but the normative tri‑state vocabulary is `G.Core`’s `{pass|degrade|abstain}`.)*
-  **Semantics are governed by `C.23`.** `G.8` only packages rule ids and binding pins.
-
-* **`SoS‑LOGBundle@Context`**
-  A selector‑facing, notation‑independent packaging object published to UTS.
-
-* **`AdmissibilityLedger@Context`**
-  A run‑time ledger view that records admissibility outcomes, cited evidence paths, branch tokens, and the pins required for audit/refresh.
-
-* **`MethodFamily.MaturityCardDescription@Context`**
-  A maturity ladder description published as a citable artefact: **ordinal/poset**, closed rungs, `ReferencePlane` declared; no thresholds inside.
-
-**Naming discipline (E.10 + “Spaces ≠ Maps”).**
-
-* Technical heads are normative; Plain twins are didactic only and MUST NOT cross kinds.
-* Do **not** alias `CharacteristicSpace` and `DescriptorMap`.
-
-  * `DescriptorMapRef` is a **map‑reference** (typically used with QD archives).
-  * `CharacteristicSpaceRef` is a **space‑reference** (grid/cell semantics, if used).
-* Editions are pinned on `…Ref.edition` fields (not on informal names).
-
-#### G.8:4.3 - `SoS‑LOGBundle@Context` schema (conceptual; notation‑independent)
-
-A conforming bundle is a UTS‑published object whose internal representation is free, but whose **field meanings** are stable:
-
-```
-SoS-LOGBundle@Context :=
-⟨
-  UTS.id := SoS‑LOGBundleRef,
-  Edition,
-
-  // Scope + spec pins (from GCorePinSetId.PartG.AuthoringMinimal)
-  CG-FrameContext,
-  describedEntity := ⟨GroundingHolon, ReferencePlane⟩,
-  CNSpecRef.edition,
-  CGSpecRef.edition,
-
-  MethodFamilyId,
-  RegistrationContext,
-
-  SoSLogRuleId[] ,               // ids only; semantics governed by C.23
-  ClosedEnums: {DegradeModeEnum, MaturityRungs},  // ids only; UTS-registered closed value sets
-  A10EvidenceGraphRef?[] ,        // packaging-time evidence carriers (A.10 anchors) when paths are not yet stable
-  MaturityCardRef ,               // UTS ref to maturity card (required; may be embedded but MUST be citable)
-  MaturityRungId? ,               // if a specific rung is asserted at packaging time
-
-  // Optional: Acceptance wiring (thresholds remain governed by G.4)
-  AcceptanceClauseId[]? ,
-
-  // Optional: Evidence wiring (for later audit & rung transition justification)
-  EvidenceGraphId? ,
-  PathId[]/PathSliceId[]? ,
-
-  // Optional: cross-context or cross-plane wiring (only when reuse is asserted)
-  BridgeId/BridgeCardId? ,
-  CL/CL^k/CL^plane? ,
-  Φ/Ψ/Φ_plane policy-ids? ,
-
-  // Optional: selector semantics pins (explicit value or resolved via DefaultGoverningDefinitionIndex)
-  PortfolioMode? ,
-  DominanceRegime? ,
-
-  // Optional: QD / OEE pins (only when those surfaces are declared)
-  CharacteristicSpaceRef.edition? ,
-  DescriptorMapRef.edition? ,
-  DistanceDefRef.edition? ,
-  EmitterPolicyRef? ,
-  InsertionPolicyRef? ,
-  // Optional: Open-ended pins (only when those surfaces are declared)
-  GeneratorFamilyId? ,
-  EnvironmentValidityRegionId? ,
-  CouplerPolicyId? ,
-  TransferRulesRef.edition? ,
-
-  // Optional: branch/failure wiring (policy-bound)
-  FailureBehaviorPolicyId? ,
-  SoSLogBranchId[]? ,
-
-  // Optional: authoring traceability (SoTA-of-description)
-  AuthoringMethodDescriptionRefs?[] ,
-
-  Notes
-⟩
-```
-
-**Bundle discipline (normative intent; semantics delegated):**
-
-* `SoS‑LOGBundle@Context` **does not introduce** new legality or normalization rules; it cites the pinned references above.
-* Thresholds and numeric gates are cited by id from `G.4` Acceptance (no embedding inside the bundle).
-* If cross-context or cross-plane reuse is asserted, crossing pins are made explicit (Bridge/CL/Φ policy ids), and evidence paths are citable when available.
-
-**Binding obligations B1–B5 (packaging‑only; wiring‑only; semantics delegated):**
-
-* **B1 — Evidence wiring.** At packaging time the bundle SHOULD provide resolvable evidence refs (typically `A10EvidenceGraphRef?[]` and/or `EvidenceGraphId?`). At run time, admissibility outcomes SHOULD cite `PathId/PathSliceId` when available (`G.6`), so rung transitions and `degrade/abstain` traces are audit‑stable.
-* **B2 — CL/plane routing pins.** When reuse across Context or plane is asserted, the bundle/ledger MUST pin the relevant Bridge/CL/Φ/Ψ/Φ_plane policy ids (reference‑only; resolvable per `F.8:8.1`) and MUST respect the core penalty routing (penalties affect `R_eff` only; `F/G` invariance via `G.Core`).
-* **B3 — `PortfolioMode`/QD fields.** If the bundle/ledger exposes `PortfolioMode`/QD fields (e.g., `PortfolioMode=Archive`), it MUST pin the descriptor/distance/insertion/emitter artefacts (editions/policies as applicable). Illumination remains **report‑only** unless explicitly promoted by a `G.4` governing-pattern policy id that is pinned and recorded in the run‑time trace.
-* **B4 — Open‑ended fields.** If the bundle binds an open‑ended generator family, it MUST pin `GeneratorFamilyId` and `TransferRulesRef.edition` (and any validity region/coupler policy ids when used). Unknown transfer validity MUST be recorded as `degrade`/branching, not as an ad‑hoc fourth status.
-* **B5 — Telemetry hooks.** On any material telemetry event (illumination increase, archive insertion, probe accounting update, open‑ended coverage/regret proxy update), the emitted telemetry pins SHOULD include the controlling policy ids plus the relevant edition pins (e.g., `DescriptorMapRef.edition`, `DistanceDefRef.edition`, `TransferRulesRef.edition`) and, when available, `PathSliceId` to keep RSCR planning auditable.
-
-#### G.8:4.4 - `AdmissibilityLedger@Context` (run‑time view; selector‑facing)
-
-A conforming ledger is a UTS‑published view (or a view‑projection of a Work/Audit artefact) with rows of the form:
-
-`⟨ MethodFamilyId, SoSLogRuleId, GuardDecision ∈ {pass|degrade|abstain}, DegradeMode?/SoSLogBranchId[]?, MaturityRungId?, AcceptanceClauseId[]?, EvidencePathRefs?, CrossingPins?, PortfolioMode?, DominanceRegime?, Edition ⟩`
-
-Where `EvidencePathRefs` are typically `PathId[]/PathSliceId[]` when `G.6` is in use (or resolvable), and “CrossingPins” are the explicit Bridge/CL/Φ policy pins when reuse is asserted.
-
-#### G.8:4.5 - Maturity ladder as a citable poset (published card)
-
-`MethodFamily.MaturityCardDescription@Context` is published with:
-
-* closed rungs (UTS‑registered identifiers),
-* `Scale kind = ordinal` and a declared `ReferencePlane`,
-* (optional) explicit poset edges / precedence constraints,
-* rung transition justifications that cite evidence paths (typically `G.6` paths).
-
-This card is a **description** suitable for dispatch/audit and refresh; it is not a competing governing spec ref.
-
-#### G.8:4.6 - Interfaces (minimal I/O standard; conceptual)
-
-| Interface                               | Consumes                                                                                   | Produces                                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| **G.8‑1 `Publish_LOGBundle`**           | `MethodFamilyId`, `SoSLogRuleId[]` (C.23), pins to Acceptance/Evidence/Crossings (as applicable) | `SoS‑LOGBundle@Context` (UTS row)                                                     |
-| **G.8‑2 `Publish_AdmissibilityLedger`** | Bundle + run‑time branch outcomes + evidence path refs (when available)                    | `AdmissibilityLedger@Context` (UTS row or UTS‑citable view)                           |
-| **G.8‑3 `Publish_MaturityCard`**        | Ladder description + (optional) evidence path refs for rung transitions                    | `MaturityCardDescription@Context` (UTS row; editioned)                                |
-| **G.8‑4 `Expose_TelemetryHooks`**       | QD/OEE/archive/open‑ended telemetry signals (when declared)                                | telemetry pins for refresh (`…Ref.edition`, policy‑ids, `PathSliceId` when available) |
-
-### G.8:5 - Extensions (pattern‑scoped; non‑core)
-
-`G.8` keeps method/generator specificity out of the core kit. Any such specificity appears as `GPatternExtension` blocks with stable **PatternScopeId**s.
-
-#### G.8:5.1 - `G.8:Ext.SoSLOGWiring`
-
-**PatternScopeId:** `G.8:Ext.SoSLOGWiring`
-**GPatternExtensionId:** `SoSLOGWiring`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.23`
-**Uses:** `{C.23}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `SoSLogRuleId[]`
-* `SoSLogBranchId[]?`
-* `FailureBehaviorPolicyId?` *(when degrade behaviour is policy‑bound)*
-
-**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.8:4.1`)*
-**Notes (wiring‑only):**
-* Rule meaning, branch taxonomy, and “probe/sandbox” semantics are governed by `C.23`; this module only binds ids and pins.
-
-#### G.8:5.2 - `G.8:Ext.AcceptanceWiring`
-
-**PatternScopeId:** `G.8:Ext.AcceptanceWiring`
-**GPatternExtensionId:** `AcceptanceWiring`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `G.4`
-**Uses:** `{G.4}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `AcceptanceClauseId[]`
-* `EvidenceProfileId[]?` *(if the ledger/bundle cites evidence profile ids rather than only paths)*
-* `PromotionPolicyId?` *(only if telemetry may be promoted into dominance by explicit CAL policy)*
-
-**RSCRTriggerKindIds (optional delta):** `{RSCRTriggerKindId.PolicyPinChange}` *(only if acceptance policies are pinned as ids in the bundle/ledger)*
-**Notes (wiring‑only):**
-* Thresholds remain governed by `G.4` Acceptance; this module carries only clause ids and policy pins.
-
-#### G.8:5.3 - `G.8:Ext.BridgeReuseWiring`
-
-**PatternScopeId:** `G.8:Ext.BridgeReuseWiring`
-**GPatternExtensionId:** `BridgeReuseWiring`
-**GPatternExtensionKind:** `InteropSpecific`
-**GoverningPatternId:** `G.7`
-**Uses:** `{G.7, F.9}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `BridgeId/BridgeCardId`
-* `CL/CL^k/CL^plane`
-* `Φ/Ψ/Φ_plane policy-ids`
-* `BridgeCalibrationTableId?`, `RegressionSetId?` *(if cited as calibration evidence)*
-
-**RSCRTriggerSetIds:** `{GCoreTriggerSetId.BridgeCalibrationKit}` *(only if the bundle/ledger explicitly binds calibration records by id)*
-**Notes (wiring‑only):**
-* Present only when `SoS‑LOGBundle@Context` asserts cross-Context or cross-plane reuse. No additional crossing semantics are defined here.
-
-#### G.8:5.4 - `G.8:Ext.QDArchiveTelemetry`
-
-**PatternScopeId:** `G.8:Ext.QDArchiveTelemetry`
-**GPatternExtensionId:** `QDArchiveTelemetry`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.18`
-**Uses:** `{C.18, G.5}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `DescriptorMapRef.edition`
-* `DistanceDefRef.edition`
-* `EmitterPolicyRef`
-* `InsertionPolicyRef`
-* `CharacteristicSpaceRef.edition?` *(required iff cell boundaries / de‑dup / parity depend on the space definition)*
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
-**Notes (wiring‑only):**
-* Archive/illumination signals are telemetry; promotion into dominance is only via explicit `G.4` policy pins.
-
-#### G.8:5.5 - `G.8:Ext.ExploreExploitTelemetry`
-
-**PatternScopeId:** `G.8:Ext.ExploreExploitTelemetry`
-**GPatternExtensionId:** `ExploreExploitTelemetry`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.19`
-**Uses:** `{C.19}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `ExploreExploitBudgetPolicyId?`
-* `ProbeAccountingId?`
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.PolicyPinChange}`
-**Notes (wiring‑only):**
-* When “probe/sandbox” is used, the controlling policy ids are pinned and recorded in the ledger/bundle trace.
-
-#### G.8:5.6 - `G.8:Ext.OpenEndedWiring`
-
-**PatternScopeId:** `G.8:Ext.OpenEndedWiring`
-**GPatternExtensionId:** `OpenEndedWiring`
-**GPatternExtensionKind:** `GeneratorSpecific`
-**GoverningPatternId:** `G.5` *(generator family registry surface; algorithm semantics remain external to Part‑G core)*
-**Uses:** `{G.5}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `GeneratorFamilyId`
-* `TransferRulesRef.edition`
-* `EnvironmentValidityRegionId?`
-* `CouplerPolicyId?`
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta}`
-**Notes (wiring‑only):**
-* Open‑ended coverage/regret (or similar) remains telemetry unless explicitly promoted by a governing-pattern policy.
-
-### G.8:6 - Archetypal Grounding (System / Episteme)
-
-**Show‑A — Tri‑state admissibility with set‑valued selection (multi‑criteria).**
-A CG‑Frame carries multiple offline/robust decision families (e.g., conservative offline RL and transformer‑based policy models post‑2020). The bundle publishes `RuleId[]` (SoS‑LOG semantics in `C.23`), cites `AcceptanceClauseId[]` for any floors (governed by `G.4`), and emits an `AdmissibilityLedger` whose rows cite `PathSliceId` (when available) for each `pass/degrade/abstain`. `G.5` consumes the ledger and returns a **selected set** under the declared partial order—no scalar “winner”.
-**Show‑A — Tri‑state admissibility with set‑valued selection (multi‑criteria).**
-A CG‑Frame carries multiple offline/robust decision families (e.g., conservative offline RL and transformer‑based policy models post‑2020). The bundle publishes `SoSLogRuleId[]` (SoS‑LOG semantics in `C.23`), cites `AcceptanceClauseId[]` for any floors (governed by `G.4`), and emits an `AdmissibilityLedger` whose rows cite `PathSliceId` (when available) for each `pass/degrade/abstain`. `G.5` consumes the ledger and returns a **selected set** under the declared partial order—no scalar “winner”.
-
-**Show‑B — QD archive dispatch with edition‑pinned descriptors (post‑2015 QD families).**
-A method family uses a modern QD line (e.g., CMA‑ES‑driven archives, differentiable QD variants, and large‑scale JAX‑style QD toolchains). The bundle pins `DescriptorMapRef.edition` and `DistanceDefRef.edition`, plus insertion/emitter policies. Illumination metrics are logged as telemetry; any promotion into dominance is only via explicit CAL policy pins (recorded in the admissibility trace).
-
-**Show‑C — Open‑ended environment–method co‑evolution (post‑2018 open‑ended families).**
-A generator family operates in an open‑ended setting (e.g., POET‑style and PAIRED‑style regimes). The bundle carries `TransferRulesRef.edition` and validity region pins; unknown transfer validity triggers a `degrade` branch rather than an ad‑hoc fourth status. Telemetry (coverage/regret proxies) is emitted for refresh planning, not silently turned into dominance.
-
-### G.8:7 - Bias‑Annotation
-
-Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
-Scope: packaging kit only. Rule semantics remain governed by `C.23`; thresholds remain governed by `G.4`; evidence path semantics remain governed by `G.6`; selection semantics remain governed by `G.5`.
-
-### G.8:8 - Conformance Checklist (CC‑G8)
-
-* **CC‑G8‑CoreRef (G.Core conformance bridge).**
-  A conforming `G.8` SHALL satisfy the **effective** set of `CC‑GCORE‑*` obligations implied by `G.8:4.1` (expanded per `G.Core:4.2`), including required pins, trigger sets, and Default Governing Definition Index citation.
-
-* **CC‑G8‑1 (No thresholds in LOG).**
-  Any numeric gate, maturity floor, or threshold SHALL be authored as a `G.4` Acceptance artefact and cited by id; the LOG bundle/ladder SHALL NOT embed thresholds.
-
-* **CC‑G8‑2 (Tri‑state discipline; delegated).**
-  Guard outcomes SHALL obey the tri‑state domain and unknown handling defined in `G.Core` (delegation to `CC‑GCORE‑GUARD‑1`).
-  Any sandbox/probe‑only behaviour SHALL be represented as an explicit `C.23` branch and MUST pin (and record) the controlling policy id (typically an E/E‑LOG policy id via `C.19`), rather than inventing a fourth status or silently coercing unknowns.
-
-* **CC‑G8‑3 (Path citation when evidence is path‑addressable).**
-  When `G.6` is in use (or resolvable), every recorded `pass/degrade/abstain` outcome in the `AdmissibilityLedger` MUST cite `PathId/PathSliceId` (run‑time). At packaging time, the bundle/ledger SHALL at minimum provide resolvable evidence refs (e.g., `EvidenceGraphId?` + anchor refs).
-
-* **CC‑G8‑4 (Crossing visibility and penalty routing; delegated).**
-  Any cross-Context or cross-plane reuse asserted by the bundle/ledger SHALL satisfy the core crossing visibility and penalty routing invariants (delegation to `CC‑GCORE‑CROSS‑1` and `CC‑GCORE‑PEN‑1`).
-
-* **CC‑G8‑5 (PortfolioMode/dominance hygiene; delegated).**
-  The bundle/ledger SHALL treat `PortfolioMode` and dominance fields as pinned inputs and SHALL cite the governing definition for each omitted default through `G.Core.DefaultGoverningDefinitionIndex` (delegation to `CC‑GCORE‑DEF‑1` and `CC‑GCORE‑SET‑1`; governing definitions include `CC‑G5.23` for `DefaultId.PortfolioMode` and `CC‑G5.28` for `DefaultId.DominanceRegime`). It MUST NOT restate default values locally.
-  If the bundle/ledger records telemetry that could influence dispatch (e.g., illumination/QD/OEE/open‑ended proxies), such telemetry SHALL remain report‑only unless explicitly promoted by a `G.4` governing-pattern policy id that is pinned and recorded in the run‑time trace.
-
-* **CC‑G8‑6 (QD/OEE edition discipline).**
-  When QD/OEE surfaces are declared, the bundle/ledger MUST pin the relevant editions and policies (`DescriptorMapRef.edition`, `DistanceDefRef.edition`, insertion/emitter policies, and `TransferRulesRef.edition` when applicable).
-  `CharacteristicSpaceRef.edition` is **required iff** cell boundaries / de‑dup rules / parity depend on the space definition, and MUST NOT be used as a substitute for `DescriptorMapRef.edition`.
-
-* **CC‑G8‑7 (Maturity is ordinal/poset).**
-  Maturity ladders SHALL be authored as ordinal/poset descriptions with **closed** rung ids (`MaturityRungs`, UTS‑registered) and a declared `ReferencePlane`, and SHALL be published as a citable UTS artefact (editioned; twin‑register safe).
-  Rung transitions, when asserted, MUST be justifiable by citable evidence paths (when available).
-
-* **CC‑G8‑8 (Spaces ≠ Maps).**
-  `CharacteristicSpace` and `DescriptorMap` SHALL remain strictly distinct kinds; naming and twin‑register discipline must be respected.
-
-* **CC‑G8‑9 (Notational independence).**
-  The bundle, ledger, and maturity card SHALL remain notation‑independent (per `E.5.2`); any serialization choice is non‑normative and belongs outside Part‑G core.
-
-* **CC‑G8‑10 (MOO cross‑reference).**
-  When a LOG bundle is used to drive or justify a produced selected-set outcome, the producing Work/Audit artefact SHOULD cite the controlling mechanism ids (e.g., parity/shipping/refresh artefact ids) and relevant policy pins; no “black box” provenance.
-
-* **CC‑G8‑11 (SoTA‑of‑description trace).**
-  If authoring methods (e.g., discovery, clustering, summarisation) materially shaped rule text or rung definitions, the bundle/card SHOULD cite their method description refs (edition‑pinned) to support cross‑stance traceability.
-
-### G.8:9 - Common Anti‑Patterns and How to Avoid Them
-
-* **Anti‑pattern:** Embedding thresholds inside SoS‑LOG rules or ladder rungs.
-  **Avoid:** thresholds live in `G.4` Acceptance; bundle only cites clause ids.
-
-* **Anti‑pattern:** Treating illumination/QD telemetry as a hidden scalar score that changes dominance.
-  **Avoid:** keep telemetry report‑only unless explicitly promoted by a governing-pattern policy pin.
-
-* **Anti‑pattern:** Publishing a bundle that “implies” cross‑context reuse without Bridge/CL/Φ pins.
-  **Avoid:** if reuse is asserted, publish the crossing pins; otherwise downstream must abstain from reuse.
-
-* **Anti‑pattern:** Re‑defining `PortfolioMode`/`DominanceRegime` defaults in the bundle text.
-  **Avoid:** cite each default's governing definition through `G.Core.DefaultGoverningDefinitionIndex`.
-
-* **Anti‑pattern:** Recording RSCR “reasons” as prose labels only.
-  **Avoid:** emit canonical `RSCRTriggerKindId` values per `G.Core`.
-
-### G.8:10 - Consequences
-
-* **Positive:** `G.5` receives a stable, citable, selector‑facing artefact without importing rule semantics or threshold logic.
-* **Positive:** Audit and refresh become tractable: pins, crossings, evidence paths, and trigger kinds are explicit.
-* **Positive:** Maturity remains non‑scalar, reducing illegitimate aggregation and “readiness theater”.
-* **Negative:** Requires stricter authoring discipline (UTS publication, pin completeness, explicit wiring).
-* **Negative:** If evidence paths are not maintained (`G.6` absent), auditability degrades and downstream must rely on references with lower evidence-support class, or abstain.
-
-### G.8:11 - Rationale
-
-`C.23` governs **rule semantics**, `G.4` governs **thresholding/acceptance**, `G.6` governs **path‑addressable provenance**, and `G.5` governs **selection/registry semantics**. Without a dedicated packaging kit, projects either (i) duplicate semantics inside ad‑hoc “decision bundles” (creating shadow specs), or (ii) leave dispatch un‑auditable. `G.8` keeps these boundaries strict while providing a single, consumable surface.
-
-### G.8:12 - SoTA‑Echoing (informative; post‑2015 practice alignment)
-
-This pattern’s separation of **decision rules**, **acceptance thresholds**, **provenance paths**, and **set‑valued outputs** echoes post‑2015 practice in:
-
-* **Set‑valued / set-returning selection** (multi‑objective and uncertainty‑aware regimes; avoiding forced scalar winners).
-* **Quality‑Diversity and archive‑based evaluation** (post‑2015 QD variants emphasize edition‑pinned descriptors/distances and telemetry‑driven refresh).
-* **Open‑endedness / curriculum generation** (post‑2018 lines emphasize explicit transfer rules, safe degrade branches, and telemetry‑driven orchestration rather than hidden gates).
-* **Reproducibility‑aware publishing** (explicit identifiers, pinned editions/policies, citable traces rather than prose‑only decision rationales).
-
-*(Examples are illustrative; they do not introduce new Part‑G‑wide norms.)*
-
-### G.8:13 - Relations
-
-**Builds on:** `G.Core`, `C.23`, `G.4`, `G.6`, `G.5`, `C.22`
-**Uses:** `A.10` (anchors), `F.8` (policy-id resolvability), `F.9` + `G.7` (when cross-Context or cross-plane reuse is asserted), `G.11` (refresh planning/trigger consumption), `G.10` (shipping boundary; if bundled artefacts are shipped), `E.10` (LEX twin registers), `E.5.2` (notation independence), `E.18/A.21/A.27` (GateCrossing visibility); optional `C.18` (QD) / `C.19` (E/E‑LOG) when those surfaces are declared.
-**Publishes to:** `UTS` (bundle/ledger/card), `G.5` (selector/registry consumption), `G.11` (refresh via typed triggers and pinned telemetry)
-**Constrains:** any SoS‑LOG packaging that claims FPF conformance for selector‑facing dispatch across method families.
-
-### G.8:14 - Author’s quick checklist (informative)
-
-* [ ] `RuleId[]` are ids only; rule semantics are governed by `C.23` (no re-definition in this bundle).
-* [ ] `SoSLogRuleId[]` are ids only; rule semantics are governed by `C.23` (no re-definition in this bundle).
-* [ ] Any numeric gates/thresholds are `G.4` Acceptance artefacts cited by id (no thresholds embedded in LOG or rungs).
-* [ ] Evidence is citable: at run time use `PathId/PathSliceId` when available; at packaging time provide resolvable `A10EvidenceGraphRef?[]` / `EvidenceGraphId?`.
-* [ ] Any cross-Context or cross-plane reuse is explicit: `BridgeId/BridgeCardId`, `CL/CL^k/CL^plane`, and `Φ/Ψ/Φ_plane` policy ids are pinned (policy ids resolvable per `F.8:8.1`).
-* [ ] `PortfolioMode` and dominance defaults are not restated: cite each default's governing definition through `G.Core.DefaultGoverningDefinitionIndex` (governing definitions live outside `G.8`, typically `G.5`).
-* [ ] QD pins are edition/policy pinned (`DescriptorMapRef.edition`, `DistanceDefRef.edition`, insertion/emitter policies); `CharacteristicSpaceRef.edition` is pinned iff cell boundaries/de‑dup/parity depend on it; **Spaces ≠ Maps**.
-* [ ] If open‑ended surfaces are declared, pin `GeneratorFamilyId`, `TransferRulesRef.edition`, and any validity/coupler policy ids; unknown transfer validity is recorded as `degrade`/branching (no “fourth status”).
-* [ ] `MaturityRungs` is a closed, UTS‑registered set; the maturity ladder is ordinal/poset with a declared `ReferencePlane`; rung transitions cite evidence.
-* [ ] RSCR triggers are emitted as canonical `RSCRTriggerKindId` values (no prose-only “reasons”).
-* [ ] Notation independence (`E.5.2`) and twin‑register discipline (`E.10`) are respected for all published heads/ids.
-* [ ] If authoring tools materially shaped rule/rung content, cite `AuthoringMethodDescriptionRefs?[]` (edition‑pinned) for cross‑stance traceability.
-
-### G.8:End
-
-## G.9 — Parity / Benchmark Harness
-
-> **Status:** Stable
-
-### G.9:0 — Use this when
-
-- rival method families, method sets, or adaptation paths must be compared under one declared baseline set and freshness window
-- you need parity to publish one reproducible report rather than one opaque benchmark score
-- downstream selection must recover comparator, normalization, bridge, and evidence pins without relying on one hidden scoring sheet
-
-### G.9:0.1 — What goes wrong if missed
-
-- benchmark numbers mix different windows, baselines, or comparator editions and still pretend to be comparable
-- cross-context reuse or normalization mapping stays hidden until a disagreement appears downstream
-- parity flattens a partial order into one scalar winner and silently changes what the comparison means
-
-### G.9:0.2 — What this buys
-
-- one `ParityPlan@Context` that fixes baseline, freshness, comparator, and bridge discipline up front
-- one `ParityReport@Context` that echoes the active pins, outcomes, and evidence trace by value
-- one harness that downstream selection can consume without inventing new legality gates or shadow governance cards
-
-Illumination, coverage, and regret remain telemetry by default. If they are promoted into dominance, that promotion must be one explicit policy-bound choice rather than one hidden scoring convenience.
-
-### G.9:1 — Intent
-
-Provide a **notation‑independent** harness that:
-
-* plans parity runs with explicit scope (`describedEntity`, `ReferencePlane`, window), explicit governance, legality, and comparator references (`CNSpecRef`, `CGSpecRef`, `ComparatorSpecRef`) and explicit reproducibility pins (editions + policy‑ids);
-* executes parity in a way that is consumable by **G.5** (selected-set outcomes, DRR/SCR evidence trace);
-* publishes **ParityReport@Context** suitable for downstream consumption, shipping, and refresh/RSCR wiring.
-
-### G.9:2 — Problem frame
-
-Parity claims become non‑reproducible or non‑comparable when any of the following are implicit:
-
-* evidence window / freshness regime,
-* comparator semantics (including any normalization / comparability mapping),
-* method‑family “measurement” edition pins (incl. DHC method/spec),
-* cross‑Context reuse (bridges / plane routing / CL penalties),
-* dominance and `PortfolioMode` interpretation rules,
-* gate outcomes (why a run abstained or degraded).
-
-G.9’s role is to force these to be **pinned and publishable** as a *method of obtaining outputs* (MOO) without introducing new governing spec refs.
-
-### G.9:3 — Forces
-
-* **Pluralism vs comparability.** Multiple Traditions must be comparable *without semantic collapse*.
-* **Partial orders.** Many targets are only partially ordered; parity reporting must preserve lawful outcome shape (often selected sets or archives rather than a single scalar).
-* **Edition sensitivity.** Parity must be robust to silent drift in measurement/comparator definitions. When DHC/QD/OEE modes are used, the required definition pins are introduced only via the corresponding `Extensions` blocks (nil‑elision when unused).
-* **Telemetry vs objectives.** IlluminationSummary and coverage/regret are telemetry: **report‑only by default**; dominance changes require explicit CAL policy ids (recorded in audit pins).
-* **GateCrossing visibility.** Any crossings/gates used by parity must be visible and auditable via CrossingBundle + GateCrossing checks; failures block parity publication/consumption.
-* **Cross‑Context reuse.** Any reuse across contexts or planes must be explicit, auditable, and penalty‑routed.
-* **Refreshability.** Parity must emit RSCR‑relevant causes as canonical ids, with enough pins to re‑run.
-
-### G.9:4 — Solution
-#### G.9:4.6a - Causal method rung parity
-
-Parity reports comparing causal methods start with a cheap screen. The screen may stop at degraded parity or abstain when methods plainly answer different causal uses.
-
-```text
-CausalRungParityScreen:
-  comparedMethodsRef: ComparedMethodSetRef
-  targetCausalityLadderRungSet: {CausalityLadderRung...}
-  causalEvidenceSupportBasisSet: {CausalEvidenceSupportBasis...}
-  sameEstimand: yes | no | unclear
-  sameOutcomeWindow: yes | no | unclear
-  cheapParityStop: CausalRungParityScreenOutcome
-```
-
-```text
-CausalRungParityScreenOutcome =
-    comparableEnoughForFullRecord |
-    crossRungDegrade |
-    crossSupportBasisDegrade |
-    differentEstimandAbstain |
-    differentOutcomeWindowAbstain |
-    rerouteToC28
-```
-
-Open the full `CausalMethodRungParityRecord` only when `CausalRungParityScreenOutcome = comparableEnoughForFullRecord`. Other outcomes are admissible cheap stops: degraded parity, abstain, or apply `C.28`, without fabricating a full parity record.
-
-`targetCausalityLadderRungSet` is the first parity check. If the set has more than one causality-ladder rung and no declared bridge and loss makes the comparison meaningful, the screen returns `crossRungDegrade` rather than treating the methods as peers.
-
-`causalEvidenceSupportBasisSet` is the second parity check. If methods depend on different causal support bases and no declared support-loss or bridge makes the comparison meaningful, the screen returns `crossSupportBasisDegrade`.
-
-`sameEstimand = no` returns `differentEstimandAbstain` unless the report names a shared estimand, a bridge and loss relation, or a reason the comparison is intentionally non-parity. A scalar parity result is not admissible across different estimands by default.
-
-`sameOutcomeWindow = no` returns `differentOutcomeWindowAbstain` unless the report pins a common follow-up window or declares the window loss. A method that wins at one horizon is not parity-superior at another horizon by default.
-
-Parity reports comparing causal methods then carry a `CausalMethodRungParityRecord`:
-
-```text
-CausalMethodRungParityRecord:
-  comparedMethodsRef
-  causalUseQuestionRef?: U.CausalUseQuestion
-  targetCausalUseClaimKind: CausalUseClaimKind
-  targetCausalityLadderRung: CausalityLadderRung
-  estimandRef: U.CausalEstimand
-  declaredCausalityLadderBridgeOrLossRef?
-  interventionBudgetOrActionSetRef?
-  causalEvidenceSupportBasis: CausalEvidenceSupportBasis
-  declaredCausalEvidenceSupportLossRef?
-  causalUseSupportRecordRef?
-  causalUseSupportVerdict?: CausalUseSupportVerdict
-  causalFollowUpWindowRef
-  outcomeMeasureRef
-  sourcePopulationRef?
-  targetPopulationRef?
-  causalTransportabilityProfileRef?
-  estimationValidityClassRef?
-  causalParameterEstimationProfileRef?
-  parityVerdict: parityEstablished | degraded | abstain
-  supportedParityUse
-  unsupportedParityUse
-```
-
-Parity reports comparing causal methods fill this record so the "same" claims are checkable by fields rather than prose:
-
-- comparedMethodsRef;
-- targetCausalityLadderRung;
-- targetCausalUseClaimKind: CausalUseClaimKind;
-- estimandRef;
-- interventionBudgetOrActionSetRef;
-- causalEvidenceSupportBasis;
-- causalUseSupportRecordRef and causalUseSupportVerdict when a `C.28` support record or verdict is being consumed;
-- causalFollowUpWindowRef;
-- outcomeMeasureRef;
-- declaredCausalityLadderBridgeOrLossRef where causality-ladder rungs differ;
-- causalTransportabilityProfileRef where source population, target population, domain, context, or evidence regime differs;
-- causalParameterEstimationProfileRef where estimation validity, uncertainty, nuisance handling, or sensitivity differs;
-- degraded or abstain posture where parity cannot be established.
-
-Causality-ladder parity is a degrade/abstain condition, not a universal comparison ban. Cross-rung method comparisons must name `declaredCausalityLadderBridgeOrLossRef` and cannot become superiority claims by default.
-
-What changes in practice: one benchmark cannot compare a predictive model, an interventional action/effect question optimizer, and a counterfactual comparison question strategy as one undifferentiated "method improvement" set.
-
-What this does not authorize: `G.9` does not decide causal identification, causal fairness, or counterfactual sampling realizability; it keeps parity/benchmark harness authority and sends causal-use support to `C.28`.
-
-
-#### G.9:4.0 — G.Core linkage (normative)
-
-This pattern is **core‑invariant‑bearing** and therefore binds to **G.Core** by declaration (not by restating invariants here).
-
-**GCoreLinkageManifest (G.9)** *(normative; expands per `G.Core:4.2`)*
-Effective obligations/pins/triggers are computed as **union(expand(sets), explicit deltas)** under `Nil‑elision`.
-
-* `CoreConformanceProfileIds` := {
-  `GCoreConformanceProfileId.PartG.AuthoringBase`,
-  `GCoreConformanceProfileId.PartG.TriStateGuard`,
-  `GCoreConformanceProfileId.PartG.ShippingBoundary`,
-  `GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted`
-  }
-
-* `RSCRTriggerSetIds` := {
-  `GCoreTriggerSetId.CGSpecGate`
-  }
-* `RSCRTriggerKindIds` := {
-  `RSCRTriggerKindId.EvidenceSurfaceEdit`,
-  `RSCRTriggerKindId.PenaltyPolicyEdit`,
-  `RSCRTriggerKindId.BaselineBindingEdit`,
-  `RSCRTriggerKindId.TelemetryDelta`
-  }
-  *(Pattern‑local deltas; cross‑tradition / bridge‑calibration causes are wired via `G.9:Ext.CrossTraditionParity` and MUST NOT over‑trigger baseline (within‑context) parity runs.)*
-
-* `DefaultsConsumed` := {
-  `DefaultId.DominanceRegime`,
-  `DefaultId.PortfolioMode`,
-  `DefaultId.GammaFoldForR_eff`
-  }
-  *(Defaults are cited through `G.Core.DefaultGoverningDefinitionIndex` (not restated here); the expected default governing definitions are `CC‑G5.28`, `CC‑G5.23`, and `CC‑G5.4` respectively.)*
-
-* `CorePinSetIds` := {
-  `GCorePinSetId.PartG.AuthoringMinimal`,
-  `GCorePinSetId.PartG.CrossingVisibilityPins`
-  }
-
-* `CorePinsRequired` *(pattern delta; pin names only; all are id‑valued unless noted)* := {
-  `ComparatorSpecRef.edition`,
-  `FreshnessWindows`,
-  `BaselineSet`, `BaselineBindingRef`,
-  `ParityPinSet`,
-  `PlanItemRefs[]?`,
-  `EvidenceGraphId`,
-  `Budgeting?`,
-  `EpsilonDominance?`,
-  `UNM_id?`, `NormalizationMethodId[]?`, `NormalizationMethodInstanceId[]?`,
-  `SCPRef.edition?`, `MinimalEvidenceRef.edition?`
-  }
-*(Nil‑elision applies; mode‑specific definition pins are introduced only by the corresponding `GPatternExtension` blocks.)*
-
-* `TriggerAliasMapRef` := `∅`
-
-#### G.9:4.1 — Objects and surfaces
-
-All objects below are **notation‑independent**; serialisations (if any) are handled in shipping/interop surfaces, not here.
-
-**(1) `ParityPlan@Context`** *(WorkPlanning record)*
-A plan that fixes *what is being compared* and *under what pinned conditions*.
-
-Minimal fields (conceptual; ids/pins only):
-
-`ParityPlan@Context := ⟨
-  ParityPlanId(UTS),
-  CGFrameId?,                              // or CG-FrameContext id/scope anchor cited by the referenced frame surfaces
-  describedEntity := ⟨GroundingHolon, ReferencePlane⟩,
-  UNM_id?, NormalizationMethodId[]?, NormalizationMethodInstanceId[]?, // when “normalize, then compare” is required (ids only; semantics come from CN‑Spec / UNM)
-  EpsilonDominance?,                       // optional ε-front thinning (ε≥0; id/param; pinned when used)
-  PortfolioMode?, DominanceRegime?,         // may be explicit or inherited via DefaultGoverningDefinition (semantics follow G.5)
-  ParityContextId,
-  BaselineSet,                            // method-family / generator-family baseline scope (ids; notation-independent)
-  BaselineBindingRef,                      // evidence-backed baseline-set reference that says what counts as baseline
-  FreshnessWindows,
-  CNSpecRef.edition, CGSpecRef.edition, ComparatorSpecRef.edition, // edition-pinned refs
-  SCPRef.edition?,                         // optional (when a specific SCP profile must be pinned/cited)
-  MinimalEvidenceRef.edition?,             // optional (when CG-Spec exposes minima profiles by ref)
-  Budgeting?,
-  ParityPinSet,
-  PlanItemRefs[]?                          // references to A.15.3 SlotFillingsPlanItem (planned baseline), when parity depends on planned slot fillings
-⟩`
-
-**(2) `ParityPinSet`** *(surface)*
-A declared set of pins required for reproducibility and audit (editions + policy‑ids + UTS/Path pins).
-The concrete contents are *pattern-local* (G.9 carries the surface), but must satisfy the *core pin discipline* via `G.Core`.
-
-**(3) `ParityReport@Context`** *(Work / Audit surface)*
-A publication object produced by executing a ParityPlan.
-
-`ParityReport@Context := ⟨
-  ParityReportId(UTS),
-  ParityPlanId,
-  BaselineSet, FreshnessWindows,
-  CNSpecRef.edition, CGSpecRef.edition, ComparatorSpecRef.edition,
-  SCPRef.edition?, MinimalEvidenceRef.edition?,             // echoed iff used/pinned in the plan
-  UNM_id?, NormalizationMethodId[]?, NormalizationMethodInstanceId[]?, // echoed iff used in the plan
-  OutcomeRefs,                              // selected-set / archive outcomes (as refs to selector outputs)
-  EpsilonDominance?,                        // echoed when used
-  AbstainReasons[]?,                        // ids/labels (policy-bound) for abstain/degrade; refusal paths included
-  TelemetrySummary? := ⟨IlluminationSummary?, coverage?, regret?⟩,  // report-only by default; promotion requires CAL policy-id pins
-  GuardOutcomeTraceRef?,                    // pass/degrade/abstain trace + cited reasons (policy-bound)
-  EvidenceTrace := ⟨EvidenceGraphId, PathId[], PathSliceId?⟩,
-  CrossingPins?,                            // Bridge/CL/Φ/Ψ/Φ_plane pins, when crossings are invoked
-  EditionPinsDelta?,                        // explicit list of edition pins actually active during the run
-  PolicyPinsDelta?,                         // explicit list of policy-ids actually active during the run
-  RSCRRefs[]                                // parity RSCR test ids / trigger emissions
-⟩`
-
-**Naming discipline.**
-
-* Heads reuse existing U‑types and LEX discipline; no new “strategy” primitive is minted here.
-* Tech/Plain twins follow E.10 rules (no drift‑inducing synonyms in Tech).
-
-#### G.9:4.2 — Parity planning (design‑time / WorkPlanning)
-
-Planning is the act of making the parity run *reproducible by construction*:
-
-1. **Fix the baseline set.** Choose the `BaselineSet` (MethodFamilies, and optionally GeneratorFamilies) to compare; where parity context matters, cite `SoS‑LOGBundleId?` / maturity‑rung ids by reference (acceptance-gate thresholds remain in `G.4` Acceptance).
-2. **Bind scope.** Fix `describedEntity := ⟨GroundingHolon, ReferencePlane⟩` and record it in the plan (no silent widening/narrowing).
-3. **Define baseline-set reference.** Declare what counts as “baseline set” and how it is cited (e.g., `BaselineBindingRef`, the evidence-backed baseline-set reference, pointing to an EvidenceGraph path slice or an upstream shipped artefact id).
-4. **Equalise window (and budget, if pinned).** Declare a single `FreshnessWindows` and apply it across all baselines; if `Budgeting` is used/pinned, it MUST be shared/pinned across baselines as well.
-
-When specialization is part of the parity claim, the same plan should also hold constant the declared task family or target scope cut, the work-measure threshold target, adaptation budget, prior exposure declaration, and freshness window; if transfer, retention, downstream exploitation efficiency, downside field, or corridor entry are part of the claim, those pins should be explicit as well, including the baseline relative to which corridor entry is being claimed.
-
-5. **Pin governance, legality, and comparator references.** `CNSpecRef`, `CGSpecRef`, and `ComparatorSpecRef` are referenced with explicit edition pins.
-6. **Pin measurement/comparator definitions (conditional).** Where parity depends on mode‑specific artefacts (e.g., DHC/QD/OEE), pin the relevant definition ids/editions/policies. The minimum required pins are declared by the applicable `Extensions` blocks (e.g., `G.9:Ext.DHCParityPins`, `G.9:Ext.QDArchiveParity`, `G.9:Ext.OEEParity`) and the referenced surfaces they cite.
-7. **Bind comparator choice to CG‑Spec (legality).** Any numeric comparison/aggregation MUST be CSLC‑lawful and cite the corresponding CG‑Spec entry (via `ComparatorSpecRef`). If Characteristics differ by unit, scale, or space, the plan MUST declare the ids used for “normalize, then compare” (`UNM_id?`, `NormalizationMethodId[]?`, `NormalizationMethodInstanceId[]?`) — ids only; semantics are defined elsewhere.
-8. **Declare order & PortfolioMode semantics.** Parity MUST preserve set‑return semantics; `PortfolioMode` and `DominanceRegime` are either explicitly pinned or cited through `G.Core.DefaultGoverningDefinitionIndex`. IlluminationSummary/coverage/regret remain telemetry unless a CAL policy explicitly promotes them (policy‑id pinned & recorded).
-9. **Attach planned baselines (when applicable).** If parity depends on planned slot fillings, the plan cites the relevant `SlotFillingsPlanItem` refs (A.15.3) via `PlanItemRefs[]` rather than embedding a competing baseline object (nil‑elision when unused).
-10. **Publish crossing pins (when invoked).** Cross-Context or cross-plane/Kind reuse requires explicit Bridge/CL/Φ pins; penalties affect `R_eff` only (invariants pinned through `G.Core`).
-
-#### G.9:4.3 — Execution protocol (run‑time / selector‑adjacent)
-
-Execution is **one run** under the pinned plan:
-
-1. **Gate on legality & pins.** Validate pins and legality‑gate availability; run eligibility/acceptance checks under the plan’s `TaskSignature (S2)` and refuse/abstain on illegal ops (record trace; no “fourth status”).
-2. **Invoke selection/dispatch.** Apply **G.5** under the plan’s pinned refs and emit selector outputs in a form consistent with G.5’s `PortfolioMode` and selected-set semantics.
-
-When parity is comparing bounded specialization, the report should echo the active specialization profiles or equivalent pins so readers can recover the work-measure threshold target, prior exposure, budget-to-threshold, post-threshold efficiency when relevant, transfer, retention, downside field, and any corridor-entry baseline or evidence note from the parity object itself rather than from later narrative explanation.
-
-3. **Record comparability mapping (when used).** If `UNM_id?` / `NormalizationMethodId[]?` / `NormalizationMethodInstanceId[]?` were declared, **echo them** in `ParityReport@Context` (or in its explicit pins deltas) and record their ids (and any scoped notes required by the cited governing spec ref) in audit pins/SCR; cite the applicable `PathId`s.
-4. **Publish trace.** Emit `ParityReport@Context` with EvidenceGraph citations and all active pins (editions/policy‑ids), so the run can be re‑checked and re‑run.
-5. **Emit telemetry hooks (optional, report‑only).** When telemetry is produced, it is emitted as telemetry pins/events for refresh wiring (not as a silent change in dominance interpretation).
-
-#### G.9:4.3a — Worked parity slice
-
-- Two agentic search setups both claim bounded specialization on the same declared task family.
-- The `ParityPlan` pins the same freshness window, threshold target, adaptation budget, prior-exposure declaration, comparator editions, and corridor-entry baseline. One setup reaches threshold sooner but shows low retention and no transfer. The other reaches threshold later, but carries reusable transfer and lower downside field.
-- A lawful `ParityReport@Context` therefore states what was held constant, which signals remained telemetry, and why the outcome stays a governed selected set or partial order rather than collapsing into a scalar winner. The reader can recover the practical comparison from the parity slice itself before reading any optional wiring blocks.
-
-#### G.9:4.9 — Extensions (pattern‑scoped; non‑core)
-
-Most working readers can stop after `G.9:4.3a`. The blocks below are binding-only wiring records used only when the corresponding parity mode is actually active.
-
-The following blocks store **wiring only** (pins/refs/policy‑ids, relevant triggers, and `Uses`), while semantics remains defined in the referenced patterns.
-
-**GPatternExtension block: `G.9:Ext.CrossTraditionParity`**
-**GPatternExtension: CrossTraditionParity**
-* **PatternScopeId:** `G.9:Ext.CrossTraditionParity`
-* **GPatternExtensionId:** `CrossTraditionParity`
-* **GPatternExtensionKind:** `DisciplineSpecific`
-* **GoverningPatternId:** `G.7`
-* **Uses:** `{G.7, F.9, E.18, A.21}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `BridgeId/BridgeCardId[]`
-  * `BridgeMatrixId?`
-  * `CalibrationLedgerId?` / `BCT.id?`
-  * `RegressionSetId?` / `SentinelId[]?` *(when sentinel wiring is used)*
-  * `CL/CL^k/CL^plane`
-  * `Φ(CL) policy-id`, `Φ_plane policy-id`, `Ψ(CL^k) policy-id?`
-  * `CrossingBundleId?`
-* **RSCRTriggerSetIds:** `{GCoreTriggerSetId.BridgeCalibrationKit}` *(preferred; expands in `G.Core`)*
-* **RSCRTriggerKindIds (delta, if any):** `∅`
-* **Notes (wiring-only):** This block does not define CL/Φ/Ψ semantics; it only requires the pins needed to cite calibration records and crossing visibility bundles.
-
-**GPatternExtension block: `G.9:Ext.SoSLogGuardNarration`**
-**GPatternExtension: SoSLogGuardNarration**
-* **PatternScopeId:** `G.9:Ext.SoSLogGuardNarration`
-* **GPatternExtensionId:** `SoSLogGuardNarration`
-* **GPatternExtensionKind:** `MethodSpecific`
-* **GoverningPatternId:** `C.23`
-* **Uses:** `{C.23, G.6, G.4}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `SoSLogRuleId[]` / `BranchId[]` *(ids as cited labels; semantics come from `C.23`)*
-  * `FailureBehaviorPolicyId/SoSLogBranchId`
-  * `EvidenceTrace.PathId[]` / `PathSliceId?`
-  * `AcceptanceClauseId[]` *(when referenced)*
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.TelemetryDelta}`
-* **Notes (wiring-only):** Explains **why** a parity run degraded/abstained by citing SoS‑LOG ids and evidence paths; does not redefine guard semantics.
-
-**GPatternExtension block: `G.9:Ext.DHCParityPins`**
-**GPatternExtension: DHCParityPins**
-* **PatternScopeId:** `G.9:Ext.DHCParityPins`
-* **GPatternExtensionId:** `DHCParityPins`
-* **GPatternExtensionKind:** `MethodSpecific`
-* **GoverningPatternId:** `C.21`
-* **Uses:** `{C.21}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `DHCMethodRef.edition`
-  * `DHCMethodSpecRef.edition?` *(when the cited DHC method spec distinguishes method vs method-spec editions)*
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.EvidenceSurfaceEdit}`
-* **Notes (wiring-only):** Declares the pins required to make DHC‑based parity reproducible and RSCR‑refreshable; semantics of DHC lives in `C.21`.
-
-**GPatternExtension block: `G.9:Ext.QDArchiveParity`**
-**GPatternExtension: QDArchiveParity**
-* **PatternScopeId:** `G.9:Ext.QDArchiveParity`
-* **GPatternExtensionId:** `QDArchiveParity`
-* **GPatternExtensionKind:** `MethodSpecific`
-* **GoverningPatternId:** `C.18`
-* **Uses:** `{C.18, C.19, G.5}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `DescriptorMapRef.edition`
-  * `DistanceDefRef.edition`
-  * `CharacteristicSpaceRef.edition?` *(when discretisation/topology is referenced)*
-  * `EmitterPolicyRef`
-  * `InsertionPolicyRef`
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta}`
-* **Notes (wiring-only):** Post‑2015 QD families are referenced here only as wiring + edition/policy pin obligations (semantics come from `C.18`/`C.19`/`G.5`).
-
-**GPatternExtension block: `G.9:Ext.OEEParity`**
-**GPatternExtension: OEEParity**
-* **PatternScopeId:** `G.9:Ext.OEEParity`
-* **GPatternExtensionId:** `OEEParity`
-* **GPatternExtensionKind:** `MethodSpecific`
-* **GoverningPatternId:** `C.19`
-* **Uses:** `{C.19, G.5}`
-* **⊑/⊑⁺:** `∅`
-* **RequiredPins/EditionPins/PolicyPins (minimum; conditional on use):**
-  * `TransferRulesRef.edition`
-  * `EnvironmentValidityRegionId`
-  * `ExplorationBudgetPolicyId?`
-  * `EvidenceTrace.PathSliceId?` *(for transfer‑keyed events)*
-* **RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta}`
-* **Notes (wiring-only):** Open‑ended parity is expressed as policy/edition pins + telemetry wiring, not as new core norms.
-
-### G.9:5 — Interfaces (minimal I/O; conceptual)
-
-| Interface                          | Consumes                                                                                                                                         | Produces                                                                                        |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| **G.9‑1 `Plan_Parity`**            | `BaselineSet`, `BaselineBindingRef`, `FreshnessWindows`, `Budgeting?`, `EpsilonDominance?`, `CNSpecRef.edition`, `CGSpecRef.edition`, `ComparatorSpecRef.edition`, `SCPRef.edition?`, `MinimalEvidenceRef.edition?`, `UNM_id?`, `NormalizationMethodId[]?`, `NormalizationMethodInstanceId[]?`, `ParityPinSet`, `PlanItemRefs[]?` | `ParityPlan@Context` (UTS entry; edition‑pinned)                                                |
-| **G.9‑2 `Run_Parity`**             | `ParityPlan@Context`, `TaskSignatureRef` (S2), **G.5‑3 Select**                                                                                  | Selector outputs (selected sets / archives / sets as refs), DRR+SCR pins with `PathId[]`/`PathSliceId?` |
-| **G.9‑3 `Publish_ParityReport`**   | Run artefacts + trace + active pins                                                                                                              | `ParityReport@Context` (UTS entry; audit‑addressable; emits canonical RSCR ids)                 |
-| **G.9‑4 `Expose_ParityTelemetry`** | Telemetry deltas (archive changes, coverage/regret signals, etc.)                                                                                | Telemetry events carrying `PathSliceId?`, policy‑ids, and edition pins for refresh wiring       |
-
-*Surfaces are conceptual; serialisations belong in shipping/interop surfaces (see `G.10` / interop annexes), not in `G.9`.*
-
-### G.9:6 — Conformance Checklist (CC‑G9)
-
-**CC‑G9‑CoreRef (normative; mandatory).**
-G.9 conforms only if it satisfies the **effective** set of `CC‑GCORE‑*` declared in **G.9:4.0 GCoreLinkageManifest** (including trigger typing, Default Governing Definition Index links, and P2W split).
-
-1. **CC‑G9.1 — Equal windows (and budgets) & pinned spec editions (local).**
-   A ParityPlan **SHALL** declare a single `FreshnessWindows` shared across baselines. If `Budgeting` is used/pinned, it **SHALL** be shared across baselines as well. `ParityPinSet` **SHALL** include the edition pins required by the referenced governing spec and comparator refs (at minimum `CNSpecRef.edition`, `CGSpecRef.edition`, `ComparatorSpecRef.edition`).
-   If the parity run depends on planned slot fillings (WorkPlanning baseline), the plan **SHALL** cite the relevant `SlotFillingsPlanItem` refs via `PlanItemRefs[]` (nil‑elision when not applicable).
-
-2. **CC‑G9.2 — Mode‑specific definition pins are declared via Extensions (local; conditional).**
-   When parity depends on mode‑specific artefacts beyond the pinned governing spec refs (e.g., DHC/QD/OEE), the ParityPlan/Report **SHALL** include the corresponding `GPatternExtension` blocks and satisfy their `RequiredPins/EditionPins/PolicyPins` (typically carried inside `ParityPinSet`, and echoed via pins deltas in audit):
-   * DHC parity → `G.9:Ext.DHCParityPins`
-   * QD archive parity → `G.9:Ext.QDArchiveParity`
-   * OEE parity → `G.9:Ext.OEEParity`
-
-3. **CC‑G9.3 — Lawful orders & lawful arithmetic (delegation point + local constraint).**
-   Delegated to `CC‑GCORE‑SET‑1` (and the relevant G.5 `PortfolioMode` / selected-set semantics). Additionally: any numeric comparison/aggregation invoked by parity **SHALL** be CSLC‑lawful and cite the corresponding CG‑Spec entry; illegal operations (e.g., ordinal means / mixed‑scale weighted sums) **SHALL** be refused or abstained with path‑cited trace (citation only; arithmetic legality comes from `CG‑Spec`/`MM‑CHR`).
-
-4. **CC‑G9.4 — Normalization discipline (local citation only).**
-   If Characteristics differ by unit, scale, or space, the ParityPlan **SHALL** cite the lawful comparability mapping by id (`UNM_id?`, `NormalizationMethodId[]?`, `NormalizationMethodInstanceId[]?`) and compare only after that mapping is applied (“normalize, then compare”).
-   If such mapping ids are used, the ParityReport **SHALL** echo the same ids (directly or via explicit pins deltas) so the run is reproducible/auditable without out‑of‑band context.
-   The harness **SHALL NOT** define a local mapping.
-
-5. **CC‑G9.5 — Dominance/PortfolioMode interpretation & telemetry separation (local).**
-   ParityPlan/ParityReport **SHALL** either (i) explicitly pin the applicable regime/mode via refs/policy‑ids, or (ii) cite the corresponding defaults for `DefaultId.DominanceRegime` and `DefaultId.PortfolioMode` via `G.Core.DefaultGoverningDefinitionIndex`. Any non‑default “promotion” behaviour must be policy‑bound and recorded via policy‑id pins.
-   IlluminationSummary/coverage/regret **SHALL** be treated as telemetry (report‑only by default); any promotion into dominance is an explicitly pinned CAL policy and MUST be recorded in audit pins/SCR.
-
-5a. **CC‑G9.5a — Adaptation parity disclosure (local; conditional).**
-   When the parity claim concerns bounded specialization, the ParityPlan and ParityReport **SHALL** pin the declared task family or target scope cut, the work-measure threshold target, adaptation budget, prior exposure declaration, and any transfer, retention, downstream exploitation efficiency, downside field, or corridor-entry baseline/evidence note that materially affects comparison.
-
-6. **CC‑G9.6 — Epsilon‑front thinning (local; conditional).**
-   If ε‑front thinning is used, `EpsilonDominance (ε≥0)` **SHALL** be explicit in the plan/report and pinned (param/id) such that the same ε is reproducible.
-
-7. **CC‑G9.7 — Crossing routing (delegation point).**
-   Delegated to `CC‑GCORE‑CROSS‑1` and `CC‑GCORE‑PEN‑1`. This item remains as a stable delegation point for Bridge/plane routing visibility and penalty routing discipline.
-
-8. **CC‑G9.8 — Evidence trace completeness (local).**
-   A ParityReport **SHALL** include an EvidenceTrace with `EvidenceGraphId` and the relevant `PathId[]` (and `PathSliceId?` when needed), covering both inclusions and refusals/abstains/degrades.
-
-9. **CC‑G9.9 — Telemetry hooks are emitted with pins (local).**
-   When parity emits telemetry for refresh, emitted telemetry **SHALL** carry the active edition pins and policy‑ids needed to re‑run parity (including the active subset of `ParityPinSet` relevant to the emitted event).
-   In particular, telemetry items SHOULD cite `PathSliceId` when available, and **SHALL** include the policy id governing the telemetry interpretation.
-   Mode‑specific definition pins **SHALL** be included as declared by the active `Extensions` blocks (e.g., `G.9:Ext.QDArchiveParity`, `G.9:Ext.OEEParity`, including `EnvironmentValidityRegionId` when OEE parity is in scope).
-
-10. **CC‑G9.10 — RSCR parity tests are published (local).**
-   Parity publication **SHALL** include RSCR parity tests (via `F.15` harness refs) that cover negative/refusal paths relevant to this plan (missing pins, edition drift, missing bridge calibration refs, etc.).
-
-11. **CC‑G9.11 — GateCrossing visibility (delegation point).**
-    Delegated to `CC‑GCORE‑CROSS‑1` and the applicable GateCrossing/CrossingBundle harness checks (E.18/A.21/A.27). This remains a stable delegation point.
-
-12. **CC‑G9.12 — Tech‑register lexical discipline (local).**
-    Tech prose and heads **SHALL** follow E.10: do not introduce drift‑prone primitives (e.g., “metric” as a Tech primitive); reference the source pattern's canonical terms and pinned refs.
-
-13. **CC‑G9.13 — MOO disclosure for parity (local).**
-    `Run_Parity` / `Publish_ParityReport` **SHALL** record the ParityHarness identity (UTS ids) and the active pins required to interpret the outcome (editions + policy‑ids), so parity remains auditable without relying on “decision logs”.
-
-14. **CC-G9-CLP-1 - Causal method rung parity.** If a parity report compares causal methods, it SHALL first run `CausalRungParityScreen`; when full parity remains plausible, it SHALL declare target causality-ladder rung, causal-use claim kind, `estimandRef`, interventional-action basis, causal evidence support basis, transportability basis for the source population and target population when needed, estimation-validity basis when needed, bridge and loss relation where rungs differ, `causalUseSupportRecordRef` and `causalUseSupportVerdict` when relevant `C.28` support is consumed, and degraded or abstain posture where parity cannot be established.
-
-
-### G.9:7 — Anti‑patterns and remedies
-
-* **AP‑1 Hidden edition drift.** Remedy: require edition pins in `ParityPinSet`; treat changes as RSCR‑relevant via canonical trigger kinds.
-* **AP‑2 Baseline set is informal prose.** Remedy: require `BaselineBindingRef` and EvidenceTrace pins.
-* **AP‑3 Comparator semantics are “whatever the code did”.** Remedy: `ComparatorSpecRef.edition` (and any normalization/comparability refs) must be cited and pinned.
-* **AP‑4 Cross‑Context reuse without visible crossing pins.** Remedy: cite bridge/plane artefacts and crossing visibility surfaces (delegated to G.Core).
-* **AP‑5 Parity report becomes a hidden scoring sheet.** Remedy: preserve lawful outcome shape and keep telemetry as telemetry unless explicitly policy‑promoted by the governing policy pattern.
-* **AP‑6 “Metric” as a primitive in Tech.** Remedy: use `DHCMethodRef`/`U.Measure`/`DistanceDefRef` with editions; “metric” may appear only in Plain with an explicit pointer to canonical terms.
-* **AP‑7 Hidden spec drift (spec‑level pins missing).** Remedy: pin `DHCMethodSpecRef.edition` and register RSCR tests that fail on spec edition changes; refuse parity reuse on unpinned spec editions.
-
-### G.9:8 — Archetypal grounding (informative; SoTA‑oriented)
-
-**Show‑A — Multi‑tradition parity for decision systems (post‑2015 practice).**
-ParityPlan pins a rolling evidence window and comparator refs; ParityReport publishes a selected-set outcome plus the evidence trace. Typical “rival families” include modern preference‑learning comparators, causal decision pipelines, offline‑RL evaluation pipelines, and robust BO‑style selectors—compared without collapsing everything into a single scalar.
-
-**Show‑B — QD parity (MAP‑Elites lineage → CMA‑ME / DQD / QDax‑class).**
-ParityPlan pins descriptor/distance definitions and archive insertion policy editions. ParityReport includes archive outcomes and telemetry deltas needed for refresh, without silently converting illumination summaries into dominance.
-
-**Show‑C — Open‑ended parity (POET lineage and modern open‑ended generator families).**
-ParityPlan pins transfer rule editions and exploration policy refs. ParityReport publishes selected-set outcomes plus transfer‑keyed traces (PathSlice), enabling refresh reruns when any pinned policy changes.
-
-**Show-D — Causal method rung parity.**
-A team compares an observational predictor, an intervention optimizer, and a counterfactual policy strategy under one "best causal method" headline. `G.9` first runs `CausalRungParityScreen`: if rungs, support bases, estimands, or outcome windows differ, the screen returns degraded parity or abstain before a full record is fabricated. When full parity remains plausible, `G.9` requires `CausalMethodRungParityRecord`: each method declares `targetCausalUseClaimKind`, target `CausalityLadderRung`, `estimandRef`, interventional-action basis, `CausalEvidenceSupportBasis`, relevant `C.28` support record and verdict when consumed, follow-up window, outcome measure, source population and target population basis, and estimation-validity basis. If those fields differ, the parity report names `declaredCausalityLadderBridgeOrLossRef`, transportability or estimation refs where available, and degraded or abstain posture. The admissible output may be a selected set by comparable rung, not one scalar winner.
-
-### G.9:9 — Payload (what this pattern exports)
-
-**Exports (UTS‑publishable, edition‑pinned):**
-
-* `ParityPlan@Context` (WorkPlanning plan item)
-* `ParityReport@Context` (Work or Audit record)
-* DRR+SCR refs (by id) and (when applicable) `PortfolioPackRef?`/selector output refs (by id), for downstream consumption.
-* Telemetry pins/events (by id), for refresh wiring (`G.11`) and RSCR harnesses (`F.15`).
-
-### G.9:10 — Relations
-
-**C.27 temporal-claim relation.**
-
-- C.27 may flag: dynamic parity when a benchmark actually compares rate-change, rhythm change, recovery speed, intervention effect, effort budget, or dynamic outcome.
-- This pattern keeps: baseline, freshness, comparator edition, effort/budget parity, bridge discipline, parity plan, parity report, and reproducible benchmark publication.
-- Non-admissible use: faster improvement is not benchmark superiority, and `dyn2BenchmarkParityBlock?` is a benchmark input declaration, not a benchmark harness.
-- Exit: when live, recover `dynOrderCompared`, baseline window, adaptation/intervention window, effort or budget parity reference, rate/rate-change measure, `G9ParityPlanRef`, and optional `G9ParityReportRef`; G.5 is relevant only if selector publication consumes such a benchmark result.
-
-**C.29 mathematical-lens adequacy relation.**
-
-- C.29 may flag: parity or benchmark input whose comparator, distance, descriptor geometry, embedding, normalization, surrogate model, learned representation, parity metric, model-family label, or model-selection basis carries a load-bearing mathematical lens that is missing, under-specified, or overread.
-- This pattern keeps: baseline set, freshness, comparator edition, normalization ids, bridge discipline, parity plan, parity report, and reproducible benchmark publication.
-- Non-admissible use: a `C.29` output does not publish a benchmark report, create benchmark superiority, supply selector output, or supply parity-metric admissibility by itself.
-- Exit: for an under-lensed or overread parity input, cite the applicable `C.29` output for the stated use: `NoMLANeeded`, `MLA.LensCandidateNote`, `MLA.OneLine`, `MLA.MiniCard`, `MLA.FullCard`, or `NeighborGoverningLocusNote`. Use the cheap output that changes the next admissible parity move; full-card work is only required when the live parity or benchmark claim needs it.
-
-
-**Builds on:** `G.Core`, `G.5`, `G.6`, `G.4`, `F.15`, `E.18`, `A.21`, `A.27`, `E.5.2`, `E.10`.
-**Publishes to:** **UTS** (plan/report ids), **G.11** (refresh wiring), **G.10** (shipping surface; parity records are cited payloads).
-**Uses:** **G.0**, **A.19**, **F.9**, and `C.28` when parity compares causal methods or causal-use claims.
-**Uses (optional, via Extensions):** **G.7**, **C.18 and C.19** (QD/OEE wiring), **C.23** (SoS‑LOG narration and failure‑policy pins).
-
-### G.9:11 — Working reading checks
-
-- If two baselines are being compared under different freshness windows, comparator editions, or silent normalization rules, this pattern has not yet been satisfied.
-- If parity cannot tell the reader what was held constant, what remained telemetry, and what crossings or penalties were active, the report is not yet usable.
-- If a scalar winner is being claimed where only a selected set or partial order is lawful, parity is overclaiming and should publish the lawful outcome shape instead.
-
-### G.9:End
-## G.10 - SoTA Pack Shipping
-
-**Tag:** Architectural pattern (conceptual; notation‑independent; pack‑boundary governing definition)
-**Stage:** release‑time composition and publication; edition‑aware; **GateCrossing‑gated** via `E.18` CrossingBundle (and the relevant GateCrossing harness patterns).
-**Builds on:** `G.Core` (Part‑G core invariants and delegation); upstream pack/kit governing definitions as cited publications or records (not redefined here).
-**Governs (scope boundary):** *shipping* of Part‑G outputs as a **pack** (`SoTA‑Pack(Core)`), including the pack‑level publication kit: (i) selector‑facing selection/parity roster, (ii) PathId/PathSlice citation surface, (iii) telemetry pins for refresh planning, and (iv) optional interop ingestion as citation‑only notes.
-**Does not govern:** governing spec refs (`CN‑Spec`, `CG‑Spec`), CHR/CAL semantics, selection semantics, evidence semantics, bridge calibration semantics, refresh orchestration (these remain with their governing definitions and are **cited**).
-
-### G.10:1 - Problem frame — Shipping without smuggling semantics
-
-Part G produces many **kit-governed** and **suite-governed** publications or records (harvest packs, CHR/CAL packs, evidence graphs, bridge calibration records, log bundles, parity reports). Without an explicit **pack-boundary governing definition**, “shipping” tends to become:
-
-* an ad‑hoc folder/export ritual (tool‑locked, not citable), or
-* a silent re‑specification layer (shipping accidentally redefines legality, defaults, or selection semantics), or
-* a brittle hand‑off that cannot support RSCR/refresh (no actionable pins/editions/policies attached).
-
-`G.10` fixes the pack boundary: it defines the **single, normative shipping surface** for Part‑G outputs — **`SoTA‑Pack(Core)`** — and a minimal choreography for making shipped artefacts **selector‑ready** and **audit‑citable**, while delegating all Part‑G‑wide invariants to `G.Core` (citation/delegation, not restatement).
-
-### G.10:2 - Problem — Why naive shipping breaks reuse, legality, and refresh
-
-Naive shipping fails (conceptually) when any of the following occurs:
-
-1. **Format-as-governing-spec.** A concrete export format is treated as “the pack,” turning a tool choice into a governing pack definition.
-2. **Editionless hand‑offs.** Shipped artefacts omit the edition/policy pins required to replay or compare outcomes, so parity and RSCR become non‑actionable.
-3. **Pack smuggles semantics.** Shipping reintroduces “convenience” rules (hidden scalarisation, competing defaults, private gate decisions), fragmenting the governing spec ref.
-4. **Invisible crossings.** Cross-context or cross-plane reuse is present, but the pack does not expose the crossing bundles and penalty policy pins needed for audit and refresh planning.
-5. **No method‑of‑obtaining‑output disclosure.** Consumers receive outcomes without a minimal, citable trail of *which mechanisms/policies/editions produced them*.
-6. **Refresh orphaning.** Telemetry and decay signals exist, but the shipped artefact provides no stable scope keys (`PathId` / `PathSliceId`) and no payload pins for RSCR triggers.
-
-### G.10:3 - Forces
-
-| Force                                              | Tension                                                                                          |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Notation independence**                          | Make packs portable across tools ↔ still make them concrete enough to be used.                   |
-| **Completeness vs minimality**                     | Ship enough to be selector‑ready ↔ avoid duplicating governing definition semantics.                            |
-| **Continuity vs evolvability**                     | Preserve public IDs across edition bumps ↔ allow legitimate upgrades and deprecations.           |
-| **Cross‑context reuse vs honesty**                 | Enable reuse across Traditions/contexts ↔ keep crossings explicit and auditable.                 |
-| **Telemetry usefulness vs semantic contamination** | Export useful signals ↔ avoid turning telemetry into dominance/acceptance without pinned policy. |
-| **Fast shipping vs refreshability**                | Ship quickly ↔ ensure RSCR triggers can be planned and scoped (P2W‑path aware).                  |
-
-### G.10:4 - Solution — `SoTA‑Pack(Core)` as the shipping object and publication kit
-
-`G.10` defines a **pack-governed** shipping surface: a notation‑independent object that **cites** all upstream artefacts by stable ids/refs and exposes the minimum pins required to (a) consume the result via selection, (b) audit it via path citations and crossing bundles, and (c) refresh it via typed RSCR triggers.
-
-#### G.10:4.1 - G.Core linkage (normative)
-
-**Builds on:** `G.Core` (Part‑G core invariants; Default Governing Definition Index citation)
-
-**GCoreLinkageManifest (G.10)** *(normative; expands per `G.Core:4.2`; `Nil‑elision` applies)*
-Effective obligations/pins/triggers are computed as **union(expand(sets), explicit deltas)** under `Nil‑elision`.
-
-* `CoreConformanceProfileIds` := {
-  `GCoreConformanceProfileId.PartG.AuthoringBase`,
-  `GCoreConformanceProfileId.PartG.TriStateGuard`,
-  `GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted`,
-  `GCoreConformanceProfileId.PartG.ShippingBoundary`
-  }
-
-* `RSCRTriggerSetIds` := { `GCoreTriggerSetId.RefreshOrchestration` }
-  *(payload pins: `PackId(UTS)`, `publicationScopeId`, `CNSpecRef.edition`, `CGSpecRef.edition`, `PlanItemRefs := SlotFillingsPlanItemRef[]`, `AuditPins`, `UTSRowId[]`, `PathId/PathSliceId`, crossing policy pins, `TelemetryPinIds`, relevant upstream artefact ids)*
-
-* `DefaultsConsumed` := {
-  `DefaultId.PortfolioMode`,
-  `DefaultId.DominanceRegime`,
-  `DefaultId.GammaFoldForR_eff`
-  }
-  *(Governing definitions are resolved through `G.Core.DefaultGoverningDefinitionIndex` and are not restated here.)*
-
-* `CorePinSetIds` := {
-  `GCorePinSetId.PartG.AuthoringMinimal`,
-  `GCorePinSetId.PartG.CrossingVisibilityPins`
-  }
-
-* `CorePinsRequired` *(pattern delta; pin names only; id‑valued unless noted)* := {
-  `PackId(UTS)`,
-  `publicationScopeId`,
-  `contextSliceId?`,
-
-  `PlanItemRefs := SlotFillingsPlanItemRef[]?` *(WorkPlanning planned baseline refs)*,
-  `AuditPins` *(pack‑level pin bundle: edition pins (only on `…Ref.edition`), policy‑ids, UTS/Path pins; ids only)*,
-
-  `UTSRowId[]`,
-  `PathId[]?`, `PathSliceId[]?`,
-  `CrossingBundleIds := CrossingBundleId[]?`,
-  `TelemetryPinIds := TelemetryPinId[]?`,
-  `PortfolioRosterId?`,
-
-  `MOOManifestId?` *(method‑of‑obtaining‑output disclosure; conceptual object id)*
-  }
-  *(Optional pins from `CrossingVisibilityPins` MAY be strengthened to unconditional by listing them above; `G.10` typically strengthens `UTSRowId[]` and path/crossing bundles when the pack is publicly shipped.)*
-
-* `TriggerAliasMapRef` := `∅` *(no local trigger tokens in Phase‑2)*
-
-> **Mode‑specific definition pins.** Any additional pins required for QD/OEE/interop shipping are introduced only by `GPatternExtension` blocks in `G.10:4.6` (never smuggled into the core linkage).
-
-#### G.10:4.2 - `SoTA‑Pack(Core)` object model (normative; notation‑independent)
-
-`SoTA‑Pack(Core)` is a **shipment object** (a *pack*, not a kit and not a suite) that **cites** upstream artefacts and exposes pack‑level pins required for downstream use.
-
-```
-SoTA‑Pack(Core) :=
-⟨
-  PackId(UTS),
-  publicationScopeId,
-  contextSliceId?,
-  CG-FrameContext,
-  describedEntity := ⟨GroundingHolon, ReferencePlane⟩,
-
-  // Governing spec refs (refs + edition pins; semantics governed by their patterns)
-  CNSpecRef := ⟨A.19 ref, CNSpecRef.edition⟩,
-  CGSpecRef := ⟨G.0 ref,  CGSpecRef.edition⟩,
-
-  // Selector-facing selection/parity roster token (conceptual; no formats mandated)
-  PortfolioRosterId?,        // produced by `G.10‑1` as part of composition; may cite ε and the applicable pinned regime/mode refs
-
-  // Cited payload packs/kits (ids only; semantics governed by the cited governing patterns)
-  SoTAHarvestPackId?          // e.g., G.2 output id
-  CHRPackId?                  // G.3 output id
-  CALPackId?                  // G.4 output id
-  EvidenceGraphId?            // G.6 output id
-  BridgeMatrixId?             // G.2/G.7 cited id
-  BridgeCalibrationTableId?   // G.7 output id
-  SoSLOGBundleId?             // G.8 output id
-  ParityReportId?             // G.9 output id
-  DashboardSliceId?           // G.12 output id (optional)
-  InteropSurfaceId?           // G.13 output id (optional)
-
-  // Path citation surface (ids only; semantics governed by A.10/G.6)
-  PathIds := PathId[]?,
-  PathSliceIds := PathSliceId[]?,
-
-  // Planned baseline + audit pins (P2W-aware; ids only)
-  PlanItemRefs := SlotFillingsPlanItemRef[]?,
-  AuditPins := { id pins… },                 // editions only on `…Ref.edition`; includes policies, UTS/Path pins, crossing pins
-
-  // Crossing visibility surface (per GateCrossing; ids only)
-  CrossingBundleIds := CrossingBundleId[]?,
-
-  // Telemetry hooks for refresh planning (ids only; PathSlice-keyed; policy-id pinned)
-  TelemetryPinIds := TelemetryPinId[]?,
-
-  // Method-of-obtaining-output (MOO) disclosure (conceptual; ids only)
-  MOOManifestId?,
-
-  Notes?
-⟩
-```
-
-#### G.10:4.2.1 - Portfolio roster (normative; pack-governed; governing-definition delegating)
-
-`PortfolioRosterId` identifies the **selector‑facing** pack roster token. The corresponding `PortfolioRoster@Context` is one citation-and-binding roster record inside the shipped publication surface, not a `Surface` or `SurfaceKind` value:
-it MUST NOT redefine selection / selected-set semantics (governed by `G.5`) or parity semantics (governed by `G.9`).
-Mode‑specific definition pins (QD/OEE/interop) are introduced only via `G.10:Ext.*` blocks.
-
-```
-PortfolioRoster@Context :=
-⟨
-  PortfolioRosterId,
-  PackId(UTS),
-  CG-FrameContext,
-  describedEntity,
-
-  // Selector operation and default-resolution support
-  portfolioMode?,
-  dominanceRegime?,
-  ε?,
-
-  // Published selector outcome and set-surface declaration (metadata fields, not local semantics)
-  selectorOutcomeKind?,
-  setSurfaceKind?,
-  handoffKind?,
-  subjectKind?,
-  sourceSurfaceKind?,
-  derivedViewKind?,
-  sourceSurfaceComposition?,
-  basePaletteRef?,
-  lensId?,
-  shortlistId?,
-  promotionPolicyRef?,
-  retentionIntent?,
-
-  // Selector-facing roster + provenance hooks (ids only)
-  MethodFamilyIds := MethodFamilyId[]?,
-  GeneratorFamilyIds := GeneratorFamilyId[]?,
-  ParityReportId?,
-  SCRId[]?, DRRId[]?,
-
-  // Pin reuse: prefer referencing the enclosing pack’s AuditPins bundle
-  AuditPins?,
-  Notes?
-⟩
-```
-
-*Presence rule:* `PortfolioRosterId` MAY be omitted only when the shipped pack is *inputs‑only*
-(e.g., shipping CHR/CAL/evidence without any selector‑consumable selected-set/shortlist output).
-
-The `selectorOutcomeKind`, `setSurfaceKind`, `handoffKind`, `sourceSurfaceKind`, `sourceSurfaceComposition`, `derivedViewKind`, `basePaletteRef`, `lensId`, and `shortlistId` fields in this roster are payload metadata fields or refs inside the shipped publication surface. They do not define new Part-E `SurfaceKind` values and they do not let `G.10` re-govern `G.5`, `C.18`, `C.19`, or `G.2` semantics.
-
-**Interpretation constraints (normative by delegation).** Any universal invariants governing (i) CN/CG spec-ref governing-definition assignment, (ii) crossing visibility and penalty routing, (iii) tri‑state guards, (iv) set‑return semantics, (v) P2W split, (vi) defaults, and (vii) RSCR trigger typing are **not restated here** and are enforced via `G.Core` conformance (see `CC‑G10‑CoreRef`).
-
-#### G.10:4.3 - Shipping choreography (normative; governing-definition delegating)
-
-`G.10` prescribes a minimal, governing-definition delegating sequence for composing a shipped pack:
-
-1. **S‑1 — Gather & pin.** Collect upstream artefact ids and verify the **required pins** implied by the linkage manifest (edition pins, policy pins, UTS/Path pins).
-2. **S‑2 — Compose `SoTA‑Pack(Core)` + MOO disclosure.** Assemble the pack object and attach a **`MOOManifest`** that lists the referenced mechanisms/policies/editions that produced the shipped outcomes (ids only; semantics stay with governing definitions).
-3. **S‑3 — Publish selection/parity roster (selector‑facing).** Produce a selector‑readable `PortfolioRosterId` with the parity/definition pins required for reproducibility; do not mandate formats.
-4. **S‑4 — Anchor and publish path citations.** Ensure A.10 anchors exist and publish/record `PathId/PathSliceId` citations required for downstream explainability (e.g., `C.23/H4`) and maturity rung changes.
-5. **S‑5 — Expose CrossingBundle.** For each GateCrossing relevant to the shipped artefacts, expose the required `CrossingBundle` references (fail fast on missing or non‑conformant bundles when required).
-6. **S‑6 — Emit telemetry pins for refresh planning.** Whenever illumination increases or archive/OEE pin state changes, emit PathSlice‑keyed telemetry with policy‑id and the active `…Ref.edition` pins (and QD `EmitterPolicyRef`/`InsertionPolicyRef` when applicable).
-7. **S‑7 — Publish to UTS (twin labels).** Mint/refresh UTS Name Cards needed to cite the pack and shipped heads (Tech/Plain twins when required); cross‑Context identity travels only via Bridges with CL and loss notes.
-8. **S‑8 — Optional: ingest interop surface.** If `G.13` interop is in use, ingest/cite `InteropSurface@Context` as annotation-only notes, pinning external index editions; do not redefine interop semantics.
-
-#### G.10:4.4 - Interfaces & hooks (selector‑ and audit‑facing)
-
-| ID         | Interface (conceptual)     | Consumes                                                          | Produces                                                |
-| ---------- | -------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- |
-| **G.10‑1** | `Compose_SoTA_Pack`        | G.* outputs, ComparatorSet, Bridges, editions, SCR/DRR deltas     | `SoTA‑Pack(Core)` (UTS row + surfaces) + `AuditPins` (+ `MOOManifestId?`) (+ `PortfolioRosterId?`) |
-| **G.10‑2** | `Publish_UTS`              | `PackId(UTS)`, `UTSRowId[]`, deprecation/edition‑bump notes       | UTS rows/Name Cards for the pack and shipped heads (incl. twins when required) |
-| **G.10‑3** | `Expose_CrossingHooks`     | GateCrossings, lanes/planes/contexts                              | **CrossingBundle** (**E.18:CrossingBundle**) per GateCrossing; **fail** on missing/non‑conformant bundles |
-| **G.10‑4** | `Pack_MOO`                 | referenced mechanism/policy/edition ids                           | `MOOManifestId` (ids only; governing-definition delegating) |
-| **G.10‑5** | `Emit_TelemetryPins`       | Illumination/archive/OEE events                                   | PathSlice‑keyed telemetry: `policy‑id`, `…Ref.edition` (+ QD/OEE pins when applicable) |
-| **G.10‑6** | `Publish_PathCitations`    | A.10 anchors, PathIds                                             | PathId/PathSlice citations for `C.23/H4` & rung changes |
-| **G.10‑7** | `Ingest_InteropSurface?`   | (optional) `G.13 InteropSurface@Context`                          | Annotated pack notes citing external‑index editions     |
-
-*Surfaces remain **conceptual** per **E.5.2**; RO‑Crate/ORKG/OpenAlex mappings belong to **Annex/Interop** and do not affect Core conformance.*
-
-> **Note.** Any concrete serialisation/export is *not* part of this interface set. Serialisation belongs to interop/annex governing-definition assignment and must not become the governing definition.
-
-#### G.10:4.5 - Consequence of governing-definition assignment (normative boundary statement)
-
-`G.10` is the **one governing definition** of “shipping” in Part G *(by delegation to `CC‑GCORE‑SKP‑1`)*.
-Other `G.x` patterns may produce artefacts that are shipped, but they must not embed shipping obligations; they cite `G.10` shipping surfaces instead.
-
-#### G.10:4.6 - Extensions (pattern‑scoped; non‑core)
-
-All method‑/generator‑/interop‑specific shipping extension declarations live here as `GPatternExtension` blocks.
-
-##### GPatternExtension — `G.10:Ext.QDArchiveShippingPins`
-
-**PatternScopeId:** `G.10:Ext.QDArchiveShippingPins`
-**GPatternExtensionId:** `QDArchiveShippingPins`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.18`
-**Uses:** `{C.18, G.5, G.8, G.11}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `DescriptorMapRef.edition`
-* `DistanceDefRef.edition`
-* `DHCMethodRef.edition?`
-* `DHCMethodSpecRef.edition?`
-* `EmitterPolicyRef` *(policy‑id / ref)*
-* `InsertionPolicyRef` *(policy‑id / ref)*
-* `CharacteristicSpaceRef` *(id/ref; iff archive partitioning is declared)*
-* `CharacteristicSpaceRef.edition?` *(iff partitioning depends on an editioned space definition)*
-* `PathSliceId[]` *(to bind telemetry/refresh scope when archive behaviour is present)*
-
-**RSCRTriggerSetIds:** `∅` *(covered by `G.10` core linkage via `GCoreTriggerSetId.RefreshOrchestration`)*
-**Notes (shipping-pin discipline):**
-* This block never redefines archive semantics; it only states which pins must be present in the shipped pack when QD archive fields are present.
-
-##### GPatternExtension — `G.10:Ext.OEEShippingPins`
-
-**PatternScopeId:** `G.10:Ext.OEEShippingPins`
-**GPatternExtensionId:** `OEEShippingPins`
-**GPatternExtensionKind:** `GeneratorSpecific`
-**GoverningPatternId:** `G.5`
-**Uses:** `{G.5, G.11}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `TransferRulesRef.edition`
-* `EnvironmentValidityRegion?` *(id/ref; iff an explicit region is declared as part of generator-family support)*
-* `PathSliceId[]` *(scope key for refreshable generator telemetry when present)*
-
-**RSCRTriggerSetIds:** `∅` *(covered by the core trigger set)*
-**Notes (shipping-pin discipline):**
-* “Open‑endedness” semantics remain defined by the governing pattern; the pack only carries the pins required to make the shipped claim replayable/auditable.
-
-##### GPatternExtension — `G.10:Ext.InteropCitation`
-
-**PatternScopeId:** `G.10:Ext.InteropCitation`
-**GPatternExtensionId:** `InteropCitation`
-**GPatternExtensionKind:** `InteropSpecific`
-**GoverningPatternId:** `G.13`
-**Uses:** `{G.13}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `InteropSurfaceId`
-* `ExternalIndexRef.edition`
-* `ClaimMapperRef.edition`
-* `PlaneMapRef.edition?`
-* `MappingPolicyRef`
-
-**RSCRTriggerSetIds:** `∅` *(covered by the core trigger set)*
-**Notes (shipping-pin discipline):**
-* This block only records that an interop surface contributed to the shipped pack’s provenance; it does not redefine any crosswalk semantics.
-
-#### G.10:4.7 - Published surfaces must ship kind, source, derivation, lens, and shortlist token
-
-- Published surfaces should carry the selector outcome kind and, when applicable, the set-surface kind or handoff kind, plus the subject kind, source surface kind, and relevant declared surface pins.
-- These are publication payload metadata fields inside `SoTA-Pack(Core)`, not new Part-E `SurfaceKind` values.
-- Good publication fields include `selectorOutcomeKind`, `setSurfaceKind`, `handoffKind`, `subjectKind`, `sourceSurfaceKind`, `sourceSurfaceComposition`, `dominanceRegime`, `lensId`, `shortlistId`, and any declared archive or promotion-policy ids that the reader needs to interpret the visible set.
-- Those payload fields should use controlled tokens, cited ids, or already-declared head labels rather than shipping-local prose values.
-- When the visible surface or the shortlisted source is one derived tradition view, also publish the derivation explicitly.
-- Useful additional fields there include `derivedViewKind`, `basePaletteRef`, and the declared `qId` or reachability rule id that disciplined that derivation.
-- `portfolioMode` may remain as one support field about selector operation, but it should not stand in for the public set label.
-- A published surface should mirror semantics that are already declared in the governing palette, front, archive, or shortlist language.
-- It should not redefine that semantics locally.
-- When one shipped surface still needs a plain-language label, use the declared set-surface kind and source surface rather than falling back to `portfolioMode`.
-
-#### G.10:4.7.1 - Worked publication slice
-
-- If the visible surface is one tradition front under the declared `Q`, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Front`, `sourceSurfaceKind=Front`, `derivedViewKind=TraditionFront`, and keep `basePaletteRef=SoTAPaletteDescriptionId` recoverable instead of pretending that the palette itself already was that front.
-- If one shortlist is emitted from that derived tradition front, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Shortlist`, `sourceSurfaceKind=Front`, `derivedViewKind=TraditionFront`, `basePaletteRef=SoTAPaletteDescriptionId`, and the named `lensId` together.
-- If that same shortlisted surface is emitted as one stable public object, also publish `shortlistId=<...>` and keep it recoverable that the token names that shortlist rather than replacing it.
-- If one retained tradition archive view is shown, publish `selectorOutcomeKind=SetSurfaceOutcome`, `setSurfaceKind=Archive`, `sourceSurfaceKind=Archive`, `derivedViewKind=TraditionArchive`, and keep the same `basePaletteRef` recoverable.
-- If the shortlist is later ordered, publish `setSurfaceKind=RankedShortlist` and keep the declared source surface visible.
-- Do not publish `setSurfaceKind=ChoiceSet` unless the shipped object is explicitly one mathematical analysis artifact rather than the public selected surface.
-- Do not publish `sourceSurfaceKind=TraditionPalette` alone when the visible object is already one derived tradition view; readers need to know which view is on the surface and which base palette it depends on.
-- Do not publish `TraditionFront` or `TraditionArchive` as if they were the default meaning of `Tradition`.
-- Do not ask `portfolioMode` to tell the reader whether they are seeing one palette, one front, one archive, or one shortlist.
-
-### G.10:5 - Consequences
-
-**Benefits**
-
-* A shipped result becomes **selector‑ready** and **audit‑citable** without turning file formats into governing specifications.
-* Shipping is no longer a semantic “backdoor”: pack‑level semantics remain governing-definition delegated.
-* RSCR/refresh becomes operationally viable because pack‑level scope keys and payload pins are present.
-
-**Costs / trade‑offs**
-
-* Shipping becomes more explicit (more pins and explicit surfaces), which raises authoring overhead.
-* If upstream governing definitions fail to provide citable ids/pins, `G.10` cannot paper over the gap; shipping will block or ship a visibly incomplete pack (depending on policy‑bound failure behaviour, governed by cited definitions).
-
-### G.10:6 - Bias‑Annotation (informative)
-
-Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
-
-* **Format bias (Arch/Prag).** A popular export format is tempting to treat as “the pack”.
-  *Mitigation:* keep Core surfaces conceptual (E.5.2); move serialisation recipes to Annex/Interop; keep conformance on semantics.
-* **Centralisation bias (Gov).** A single pattern governing shipping semantics can become a bottleneck.
-  *Mitigation:* keep shipping as one explicit governing-pattern responsibility, but push mode/method specifics into explicit `G.10:Ext.*` extension blocks and cite governing patterns.
-* **Telemetry→dominance bias (Onto/Prag).** Shipping pipelines often “promote” telemetry proxies (illumination/coverage) into ranking.
-  *Mitigation:* preserve the telemetry/order separation and require explicit CAL policy‑id for any promotion; record the policy‑id in audit pins/telemetry.
-* **Interop authority bias (Onto/Epist).** External indexes can silently override local legality/typing.
-  *Mitigation:* `G.10‑6` ingests interop only as cited notes (editions + mapping policy refs), never as a replacement governing spec ref.
-
-### G.10:7 - Archetypal grounding (informative; post‑2015 method families)
-
-**World‑plane (benchmark shipping).**
-A CG‑Frame ships a selected set that includes a QD archive (e.g., MAP‑Elites‑class / CMA‑ME‑class families) and a generator family (e.g., POET‑class environment generation). The shipped `SoTA‑Pack(Core)` cites the CHR/CAL packs and records the QD/OEE extension-required pins through the extension blocks so that downstream parity and refresh can be scoped to the affected `PathSliceId`s rather than forcing a global rebuild.
-
-**Episteme‑plane (synthesis shipping).**
-A CG‑Frame ships a pluralistic set of admissible methods gathered from post‑2015 literature streams (living review + synthesis pack). The shipped pack carries explicit CN/CG spec refs, evidence path citations, and method‑of‑obtaining‑output disclosure; downstream selection uses set‑valued outcomes and can schedule refresh when the synthesis pack or key pins change.
-
-### G.10:8 - Conformance checklist (CC‑G10)
-
-This pattern inherits order/illumination, evidence, and bridge/penalty legality from the cited governing patterns (not restated here). Shipping‑specific requirements:
-
-| ID  | Statement   | Verification notes (conceptual)  |
-| --- | ----------- | -------------------------------- |
-| **CC‑G10‑CoreRef** | The pattern satisfies the **effective** `G.Core` obligations declared by `G.10:4.1` (after profile/set/pin‑set expansion under `Nil‑elision`). | Check that the linkage manifest is present and that the expanded obligations are not contradicted. |
-| **CC‑G10.1 (Notation‑independent).** | The pack MUST NOT rely on any specific file syntax; cards/tables are conceptual; tool serialisations are informative only. | Look for format‑free conceptual fields; any serialisation is explicitly non‑normative. |
-| **CC‑G10.2 (Pack parity pins).** | If QD/OEE fields are present, pin `DescriptorMapRef.edition`, `DistanceDefRef.edition`, (optional) `DHCMethodRef.edition` / `DHCMethodSpecRef.edition` when used, and (OEE) `TransferRulesRef.edition`; include `CharacteristicSpaceRef` (+ `CharacteristicSpaceRef.edition` when it affects partitioning reproducibility); for QD archive semantics also pin `EmitterPolicyRef` and `InsertionPolicyRef`. | Verify the corresponding `G.10:Ext.*` block is present and the pins appear in AuditPins and (when relevant) in telemetry pins. |
-| **CC‑G10.3 (Telemetry discipline).** | Any illumination increase or archive edit SHALL log `PathSliceId`, the active `policy‑id`, the active editions of the pinned `…Ref` fields (incl. OEE `TransferRulesRef.edition`), and the active `EmitterPolicyRef`/`InsertionPolicyRef` when applicable. | Verify emitted telemetry is PathSlice‑keyed and carries the required pins; ensure causes are recorded using canonical trigger kinds (alias labels optional only). |
-| **CC‑G10.4 (UTS publication & twins).** | All shipped heads appear on UTS with Tech/Plain twins **per delegated UTS discipline**; cross‑Context identity (when present) is routed via Bridges with CL and loss notes **per delegated crossing discipline**. | Verify UTS rows exist and that any cross‑Context identity is routed via Bridge artefacts with visible CL/loss notes. |
-| **CC‑G10.5 (MOO surfaced in shipping).** | For every declared selector set-surface or archive published, the pack SHALL list the applicable generation/parity mechanism ids (e.g., QD `EmitterPolicyRef`/`InsertionPolicyRef`, parity harness ids, method refs where the method definition is generative) and the active policy‑id(s) in SCR‑visible bindings and telemetry pins (ids only; governing-definition delegating). | Verify `MOOManifestId` is present when outcomes are intended for downstream use and does not redefine semantics. |
-| **CC‑G10.6 (Pack completeness as a citation surface).** | The pack cites all included upstream artefacts by id/ref and exposes the required pins (`AuditPins`, UTS/Path pins, CrossingBundleIds when required). | Verify all present payload artefacts have ids and the pins needed to cite/replay them. |
-| **CC‑G10.7 (CrossingBundle exposure).** | For each GateCrossing relevant to shipped artefacts, the pack exposes the relevant `CrossingBundleIds` (or records that no such crossings exist) **per delegated crossing visibility discipline**, and shipping fails fast on missing/non‑conformant crossing bundles when required. | Verify crossing bundle presence/absence is honest and aligned with the shipped artefacts’ declared crossings. |
-| **CC‑G10.8 (Baseline binding is explicit when used).** | If the shipped pack claims a planned baseline, `PlanItemRefs := SlotFillingsPlanItemRef[]` are present (WorkPlanning plan items, cited; no execution logs). | Verify plan items are cited by id and the pack does not treat decision records or execution logs as authoritative plan items. |
-| **CC‑G10.9 (Extension‑scoped pin declaration).** | If QD/OEE/interop fields are present, the corresponding `GPatternExtension` block is present and its required pins/editions/policies are recorded in AuditPins and in emitted telemetry pins when those pins affect refreshability. | Verify conditional extension pins are not silently omitted when the mode is used. |
-| **CC‑G10.10 (Derived tradition-view shipping).** | If the visible shipped surface or shortlisted source is one derived tradition view such as `TraditionFront` or `TraditionArchive`, the pack **MUST** publish the declared `sourceSurfaceKind`, keep `basePaletteRef=SoTAPaletteDescriptionId` recoverable, and carry the derivation basis (`derivedViewKind`, declared `Q`, or reachability/coverage rule id) with enough explicitness that the visible surface cannot be mistaken for the default palette semantics. | Verify derived tradition views are shipped as derived views, not as silent redefinitions of the base palette. |
-
-### G.10:8.1 - Anti‑patterns and remedies
-
-* **AP‑1 Format‑as‑governing‑specification.** Remedy: keep Core surfaces conceptual (E.5.2); move serialisation to Annex/Interop; enforce `CC‑G10.1`.
-* **AP‑2 Hidden edition drift.** Remedy: require `…Ref.edition` pins in AuditPins and treat edition changes as RSCR‑relevant via canonical trigger kinds.
-* **AP‑3 “QD archive present” but missing definition pins.** Remedy: enforce `CC‑G10.2` and the `G.10:Ext.QDArchiveShippingPins` pin declarations.
-* **AP‑4 Telemetry silently becomes dominance.** Remedy: keep telemetry report‑only unless an explicit CAL policy promotes it; require policy‑id recorded (ties to `CC‑G10.3` and MOO discipline).
-* **AP‑5 No PathSlice key → refresh becomes global.** Remedy: enforce PathSlice‑keyed telemetry and path citations (`G.10‑4`, `G.10‑5`).
-* **AP‑6 Cross‑Context reuse without visible crossing pins.** Remedy: require `CrossingBundleIds` + Bridge/CL policy pins; fail fast on missing/non‑conformant bundles (`CC‑G10.7`).
-* **AP‑7 Interop ingestion rewrites semantics.** Remedy: ingest interop as cited notes only; semantics remain in `G.13` (`G.10‑6`, `G.10:Ext.InteropCitation`).
-* **AP‑8 Derived-view collapse.** Remedy: ship `sourceSurfaceKind`, `derivedViewKind`, `basePaletteRef`, and the declared `Q` or reachability basis with enough explicitness that one derived tradition view cannot masquerade as the default palette meaning.
-
-### G.10:8.2 - SoTA‑Echoing (post‑2015, for orientation)
-
-* **Research‑object packaging & provenance.** Post‑2015 practice increasingly treats “release artefacts” as *packages with explicit provenance, versions, and minimal replay pins* (e.g., modern research‑object and RO‑Crate‑class approaches). `G.10` mirrors the “package‑as‑citation‑surface” idea while keeping semantics governing-definition delegated.
-* **Reproducibility regimes in ML/AI.** Contemporary reproducibility checklists, artifact evaluation/badging, and benchmark reporting norms motivate: explicit version pins, explicit method disclosure, and separating telemetry summaries from decision criteria unless policy‑promoted.
-* **Scholarly KG interoperability.** ORKG/OpenAlex‑class ecosystems highlight the need to treat external mappings as *interop notes with editions*, not as replacement governing spec refs — matching the `G.10‑6` and `G.10:Ext.InteropCitation` stance.
-
-### G.10:9 - Relations
-
-**Builds on:** `G.Core`; consumes/cites artefacts governed by cited patterns from `G.2` (harvest pack), `G.3` (CHR pack), `G.4` (CAL pack), `G.6` (EvidenceGraph), `G.7` (bridge calibration), `G.8` (SoS‑LOG bundle), `G.9` (parity report), optional `G.12` (dashboard slice), optional `G.13` (interop surface).
-**Publishes to / used by:** UTS (pack identity), selector‑facing consumers (via `G.5`), audit and assurance publications (SCR/RSCR), refresh orchestration (`G.11`).
-**Constrains:** tooling exports are downstream; serialisation and repository integration are explicitly non‑normative here.
-
-### G.10:End
-
----
-
-## G.11 - Telemetry-Driven Refresh & Decay Orchestrator
-
-**Tag.** Architectural pattern (architectural; notation-independent)
-**Status.** Stable
-**Normativity.** Normative (unless explicitly marked informative)
-
-**Stage.** run-time + maintenance-time (selective re-computation, republication, and controlled deprecation)
-
-**Primary outputs (kit publication units and records).** `RefreshQueue`, `RefreshPlan@Context` (WorkPlanning plan item), `RefreshReport@Context` (Work or Audit record), `DeprecationNotice@Context`, `EditionBumpLog@Context`.
-
-**Primary hooks.** `G.Core` (RSCR trigger catalogue + alias docking + Default Governing Definition Index), `G.6` (EvidenceGraph; `PathId`/`PathSliceId`), `G.7` (Bridge Sentinels; CL/Φ/plane policy pins), `G.5` (set-returning selection/dispatch), `G.8` (SoS-LOGBundle telemetry hooks), `G.9` (parity reruns), `G.10` (shipping hooks and pack-level telemetry pins), `G.12` (dashboard telemetry pins), `B.3.4` (freshness/decay), `E.18` (GateCrossing/CrossingBundle visibility), optional `C.18 and C.19` (QD/E–E policy pins), `C.23` (SoS-LOG branches / maturity ladders), `C.28` (causal-use support records whose SoTA-sensitive fields can change downstream support).
-
-**Non-duplication note (Phase-2).**
-This pattern **does not** (i) define the meaning of RSCR trigger kinds, (ii) introduce “shadow specs” for CN/CG legality, (iii) redefine tri-state guards / penalties / set-return semantics, (iv) re-govern shipping or harvesting, or (v) mint new `RSCRTriggerKindId` / default governing definitions (design-time changes live in `G.Core` and are recorded via DRR, `E.9`).
-All such universal norms are **cited via `G.Core`** and enforced through **delegation** in this pattern’s conformance checklist.
-
-### G.11:1 - Problem frame — Keeping shipped SoTA current without global rebuilds
-
-Part G produces shipped, selector-ready publication units and records: packs, bundles, evidence graphs, parity reports, and dashboards. Once shipped, they are exposed to:
-
-* **telemetry** (illumination/archive changes, parity outcomes, dashboard deltas),
-* **decay** (freshness windows expire; epistemic debt grows),
-* **edition drift** (descriptor/distance/transfer rules bump; policy pins evolve),
-* **bridge evolution** (CL/plane penalties or calibrations update).
-
-Without an explicit orchestration kit, refresh becomes either:
-
-* a brittle set of ad-hoc “full rerun” rituals, or
-* an audit-only posture that silently accumulates drift.
-
-`G.11` is the **Part G governing definition** of the **refresh orchestration kit**: it turns typed refresh causes into **scoped plans** and **auditable execution reports**, while delegating all cause semantics and universal invariants to `G.Core`.
-
-### G.11:2 - Problem — Why naive refresh breaks comparability and legality
-
-A refresh loop fails (conceptually) when any of the following happens:
-
-1. **Full-rerun mania.** Minor edits (e.g., a single Bridge calibration) trigger pack-wide rebuilds without a traceable scope rationale.
-2. **Editionless telemetry.** Telemetry signals are recorded without edition pins, making reruns non-comparable and parity-unreplayable.
-3. **Alias-as-semantics.** Deprecated trigger labels (e.g., `T0…T7`) are treated as if they define meaning, fragmenting refresh semantics across patterns.
-4. **Silent crossings.** Refresh actions implicitly change crossing assumptions (UTS/Path/policy pins) without a visible CrossingBundle.
-5. **Orchestration smuggles semantics.** Refresh introduces new default behaviors (dominance/`PortfolioMode`/Γ-fold) or coerces partial orders into scalars “for convenience.”
-
-### G.11:3 - Forces — Minimal recomputation under strict invariants
-
-* **Minimal scope vs. completeness.** Refresh must be *as local as possible* (slice-scoped), but still include a defensible dependency closure over evidence and crossings.
-* **Operational urgency vs. auditability.** Refresh is triggered by run-time telemetry and decay, yet must remain auditable as Work (pins, refs, paths), not as opaque “decisions.”
-* **Alias stability vs. semantic unification.** Existing trigger labels must remain usable, but their meaning must be one governing definition and id-based.
-* **Modularity vs. orchestration power.** `G.11` must coordinate harvesting/parity/shipping without re-implementing them or importing discipline-specific method semantics into core.
-* **Policy-bound behavior vs. “smart defaults.”** Ordering of refresh, priority heuristics, and budget handling are valuable—but must live as policy-bound extensions, not as hidden universal rules.
-
-### G.11:4 - Solution — RSCR-driven refresh as a P2W-scoped orchestration kit
-
-#### G.11:4.1 - G.Core linkage (normative)
-
-**GCoreLinkageManifest (normative; canonical shape per `G.Core`; Nil‑elision permitted).**
-
-`GCoreLinkageManifest := ⟨
-  CoreConformanceProfileIds := {
-    GCoreConformanceProfileId.PartG.AuthoringBase,
-    GCoreConformanceProfileId.PartG.TriStateGuard,
-    GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted,
-    GCoreConformanceProfileId.PartG.ShippingBoundary
-  },
-
-  RSCRTriggerSetIds := {GCoreTriggerSetId.RefreshOrchestration},
-
-  CorePinSetIds := {
-    GCorePinSetId.PartG.AuthoringMinimal,
-    GCorePinSetId.PartG.CrossingVisibilityPins
-  },
-
-  CorePinsRequired := {
-    RSCRTriggerKindId,
-    RSCRTriggerAliasId?,
-    scope: PathSliceId[] | PatternScopeId,
-    payloadPins{…},
-
-    RefreshPlanId,
-    RefreshReportId,
-    DeprecationNoticeId?,
-    EditionBumpLogId?,
-
-    SlotFillingsPlanItemRef[]?
-  },
-
-  DefaultsConsumed := ∅,
-  TriggerAliasMapRef := G.Core.TriggerAliasMap.G11
-⟩`
-
-By the `G.Core` **Expansion rule**, the **effective** conformance ids / trigger‑kinds / pin‑obligations for `G.11` are the manifest expansions (profiles/sets/pin‑sets) plus the explicit deltas above.
-
-**LegacyTriggerAliasIds (visible; labels only).** `{G.11:T0…T7}` (docked via `TriggerAliasMapRef`; aliases are never semantic authorities).
-
-#### G.11:4.2 - Refresh orchestration kit (pattern-governed; conceptual artefacts)
-
-`G.11` defines a minimal kit of *authoring-plane* artefacts that make refresh explicit and auditable.
-
-1. **`RefreshQueue` (conceptual queue).**
-   A queue of refresh candidates keyed by scope (`PathSliceId` preferred; `PatternScopeId` permitted).
-   Ordering, prioritization, and batching are policy-bound (and therefore extension-scoped), but every queue item carries canonical trigger kind ids.
-
-2. **`RefreshPlan@Context` (WorkPlanning plan item).**
-   A planned refresh is a WorkPlanning object that **does not execute Work** and **does not embed gate decisions**. It declares:
-
-* `RefreshPlanId` (UTS-published id; editioned)
-* `describedEntity` and `ReferencePlane` pins (by ref; no implicit widening)
-* `TargetScope := PathSliceId[] | PatternScopeId[]`
-* `PlannedTriggers := RSCRTrigger[]` (canonical trigger kind ids + scope + payload pins)
-* `PlannedActions := RefreshAction[]` (each action delegates to a governing pattern)
-* `RequiredPins := {EditionPins, PolicyPins, UTS/Path pins}` for replayability
-* `PlanItemRefs := SlotFillingsPlanItemRef[]` (when planning baselines or reruns requires explicit planned slot fillings)
-
-3. **`RefreshReport@Context` (Work/Audit artefact).**
-   An execution report (Work or Audit artefact) that records:
-
-* `RefreshReportId` (UTS-published id; editioned)
-* `ExecutedActions[]` with links to cited artefacts governed by cited patterns (e.g., new parity report id, new pack id)
-* `ObservedDeltas` (telemetry deltas, legality changes, evidence-path changes) as refs/pins—not as untyped prose
-* `RSCRRefs[]` (any RSCR / regression harness artefacts invoked)
-* `EmittedNotices[] := DeprecationNoticeId[]` and `EditionBumpLogId[]`
-* the canonical trigger kinds actually applied (not only aliases)
-
-4. **`DeprecationNotice@Context` and `EditionBumpLog@Context`.**
-   Controlled evolution artefacts that preserve ID-continuity:
-
-* **DeprecationNotice** explains scope, reason class (canonical trigger kind ids), and successor refs.
-* **EditionBumpLog** records edition increments and the pins that justify them.
-
-> *Note (normative by delegation).* ID continuity and alias discipline are governed by `G.Core` (do not restate as local rules here).
-
-#### G.11:4.3 - Orchestration semantics (conceptual; delegating to governing definitions)
-
-`G.11` turns typed causes into scoped actions without governing the semantics of those actions.
-
-**4.3.1 Ingestion.**
-Consume RSCR triggers from:
-
-* telemetry hooks (e.g., `G.8`, `G.10`, `G.12`),
-* freshness/decay events (`B.3.4`),
-* evidence/bridge/policy/edition edits (from the respective governing patterns’ publication surfaces).
-
-Every ingested signal is normalized into an `RSCRTrigger` (canonical id, scope, payload pins), with optional alias labels.
-
-**4.3.2 Scope closure (EvidenceGraph-first).**
-Compute the minimal dependency closure over:
-
-* cited evidence paths (`G.6` `PathId/PathSliceId`),
-* declared crossings (`G.7` sentinels; `CrossingBundle` visibility),
-* and pinned references (editions/policies).
-
-The closure is a *planning-time claim* (“these slices are affected”), not a Work-time output.
-
-**4.3.3 Planning (P2W seam).**
-Produce `RefreshPlan@Context` that schedules actions of the form:
-
-* `RerunHarvest` (delegates to `G.2`/`G.1`/governing definition; if used)
-* `RerunParity` (delegates to `G.9`)
-* `RecomputeSelectionOrSetSurface` (delegates to `G.5`)
-* `RebindBridgeOrCrossing` (delegates to `G.7` and visibility harnesses)
-* `UpdateEvidenceBindings` (delegates to `G.6`)
-* `ReshipPack` (delegates to `G.10`)
-* `UpdateBundle` (delegates to `G.8`)
-* `UpdateDashboardSlice` (delegates to `G.12`)
-* `EmitDeprecationNotice` / `EmitEditionBumpLog` (publication surfaces governed by this pattern)
-
-**4.3.4 Execution + audit.**
-Execute planned actions as Work (or Work-bound audit) and publish `RefreshReport@Context`.
-Gating outcomes (admit / degrade / abstain) follow `G.Core` tri-state semantics and are recorded via policy ids and cited evidence paths, rather than as local bespoke statuses.
-
-#### G.11:4.3a - Causal-use refresh sentinels
-
-When a shipped pack, parity report, evidence path, dashboard slice, fairness audit, policy evaluation, or selector surface consumes `C.28`, refresh planning includes causal-use sentinel causes when they can change supported use, unsupported use, support verdict, or downstream assurance:
-
-| Causal-use sentinel | Typical affected support | Refresh payload pins |
-| --- | --- | --- |
-| counterfactual-realizability shift | `CounterfactualSamplingRealizabilityProfile`, `realizedCounterfactualSampleSupportBasis`, causal evidence design | profile refs, action-primitive refs, work-plan refs, physical, ethical, and operational constraint refs, target counterfactual distribution refs, admissible-use refs, and unadmissible-use refs |
-| counterfactual-data identification/bounding shift | `CausalIdentificationProfile`, `identifiedCounterfactualEstimateSupportBasis`, bounds/partial-identification posture | available data regime set refs, realized counterfactual data refs, counterfactual-data identification method refs, counterfactual-data bound refs, assumption refs |
-| target-trial reporting shift | `TargetTrialProtocolRecord`, `TargetTrialEmulationMappingRecord`, applied intervention-effect support | protocol refs, observational data source refs, eligibility, treatment, time-zero, and assignment mappings, follow-up and outcome mappings, emulation-gap refs, residual-confounding and sensitivity refs and additional-analysis refs |
-| causal-fairness shift | `CausalFairnessUseAuditCard`, causal fairness support verdict, fairness assurance | protected-variable refs, decision-variable refs, and outcome-variable refs, permitted-path refs and prohibited-path refs, fairness estimand refs, causal-use question refs, support basis refs, support record refs and verdict refs |
-| causal-representation-validation shift | `CausalVariableRepresentationRecord`, learned causal variable support | intervention-validity, mechanism-invariance, abstraction-fidelity, counterfactual-query-preservation, representation-shift refs, OOD refs, supported-causal-variable-use refs, and unsupported-causal-variable-use refs |
-| off-policy or causal-RL evaluation shift | `OffPolicyCausalEvaluationProfile`, causal action-policy support, policy parity | behavior-policy refs and evaluation-policy refs, sequential horizon refs, adaptive policy class refs, unit-history conditioning refs, overlap refs and support refs, policy transportability refs, estimator and uncertainty refs |
-| simulation-validation shift | `simulationOnlyCounterfactualOutputBasis`, bounded model-supported counterfactual use | counterfactual model assumption refs, simulation validation refs, `CausalUseSupportStatement` / `CausalUseUnsupportedStatement` refs, sensitivity and rival-cause refs |
-
-These sentinels do not mint new `RSCRTriggerKindId` values. They are domain-facing payload distinctions carried under the canonical trigger kinds governed by `G.Core`, usually evidence-surface edit, edition-pin change, policy-pin change, telemetry delta, freshness/decay event, or tokenization/name change.
-
-#### G.11:4.4 - Extensions (pattern-scoped; non-core)
-
-All discipline-specific refresh strategies, scheduling heuristics, and generator-specific wiring live as `GPatternExtension` blocks.
-
-##### G.11:Ext.LegacyTriggers
-
-**PatternScopeId:** `G.11:Ext.LegacyTriggers`
-**GPatternExtensionId:** `LegacyTriggers`
-**GPatternExtensionKind:** `InteropSpecific` (alias docking)
-**GoverningPatternId:** `G.Core`
-**Uses:** `{G.Core}` (cites `G.Core.TriggerAliasMap.G11`)
-**⊑/⊑⁺:** `∅`
-**RequiredPins / EditionPins / PolicyPins (minimum):**
-
-* `RSCRTriggerKindId[]` (canonical ids recorded on triggers)
-* `RSCRTriggerAliasId?` (e.g., `G.11:T0…T7` as labels only)
-* `scope: PathSliceId[] | PatternScopeId`
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.EvidenceSurfaceEdit}`
-**Notes (wiring-only):** This block **does not define** what `T0…T7` mean; it only preserves the labels and requires docking via `G.Core.TriggerAliasMap.G11`.
-
-##### G.11:Ext.DecayAndDebt
-
-**PatternScopeId:** `G.11:Ext.DecayAndDebt`
-**GPatternExtensionId:** `DecayAndDebt`
-**GPatternExtensionKind:** `DisciplineSpecific`
-**GoverningPatternId:** `B.3.4` (freshness/decay semantics)
-**Uses:** `{B.3.4, G.6}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins / EditionPins / PolicyPins (minimum):**
-
-* `FreshnessWindowDeclRef` (or equivalent window pin, as defined by the governing definition)
-* `DecayPolicyIdRef` / `EpistemicDebtBudgetRef` (policy-bound)
-* `PathSliceId[]` (affected evidence carriers)
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EvidenceSurfaceEdit, RSCRTriggerKindId.BaselineBindingEdit}`
-**Notes (wiring-only):** Any budget/priority logic remains policy-bound; `G.11` only wires decay events to refresh planning.
-
-##### G.11:Ext.QDRefreshWiring
-
-**PatternScopeId:** `G.11:Ext.QDRefreshWiring`
-**GPatternExtensionId:** `QDRefreshWiring`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.18` (QD semantics; descriptor/distance/insertion)
-**Uses:** `{C.18, C.19, G.5, G.8}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins / EditionPins / PolicyPins (minimum):**
-
-* `DescriptorMapRef.edition`, `DistanceDefRef.edition`
-* `CharacteristicSpaceRef.edition?` (required when a domain-family coordinate is declared by the QD governing definition)
-* `InsertionPolicyRef`, `EmitterPolicyRef` (policy-bound)
-* `PathSliceId` (archive/illumination scope) + `policy-id` for emitted telemetry triggers
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
-**Notes (wiring-only):** `G.11` does not restate QD semantics; it ensures pins are present so reruns are comparable.
-
-##### G.11:Ext.OEERefreshWiring
-
-**PatternScopeId:** `G.11:Ext.OEERefreshWiring`
-**GPatternExtensionId:** `OEERefreshWiring`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.19` (open-ended exploration / E–E logistics)
-**Uses:** `{C.19, G.5, G.8, G.9}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins / EditionPins / PolicyPins (minimum):**
-
-* `TransferRulesRef.edition`, `EnvironmentValidityRegion` (when OEE is declared by the governing patterns)
-* `GeneratorFamilyId` / `TransferRulesRef` wiring pins (as published by the governing definitions)
-* telemetry scope pins (`PathSliceId`, `policy-id`)
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.PolicyPinChange}`
-**Notes (wiring-only):** Any OEE method semantics live with the governing definition; this module only wires refresh triggers to comparable reruns.
-
-##### G.11:Ext.SchedulingHeuristics (Phase-3 seed)
-
-**PatternScopeId:** `G.11:Ext.SchedulingHeuristics`
-**GPatternExtensionId:** `SchedulingHeuristics`
-**GPatternExtensionKind:** `Phase3Seed`
-**GoverningPatternId:** `governing pattern not yet selected`
-**Uses:** `{G.11}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins / EditionPins / PolicyPins (minimum):**
-
-* `RefreshPriorityPolicyIdRef` (policy-bound)
-* `BudgetDeclRef` (time/compute/cost/risk ceilings; policy-bound)
-
-**RSCRTriggerKindIds:** `{RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.MaturityRungChange}`
-**Notes (seed, non-normative):** Scheduling strategies (bandit-style, queueing, cadence policies) are valuable but must not become Part‑G‑wide norms.
-
-### G.11:5 - Archetypal Grounding — System / Episteme (informative; Tell–Show–Show)
-
-**`U.System` illustration — Safety-critical maintenance loop (pump + calibration).**
-A centrifugal pump is serviced under a documented procedure (method description). Sensors report vibration drift (telemetry), and a calibration standard is updated (edition bump). `G.11` does not “rebuild the whole maintenance doctrine”: it emits a refresh plan scoped to the affected inspection slices (paths) and publishes a refresh report with pins to the updated standard edition and the evidence paths. Deprecation notices are issued for obsolete thresholds in the procedure’s acceptance clauses (by governing pattern), preserving ID continuity.
-
-**`U.Episteme` illustration — Living review and benchmark pack (claims + parity).**
-A claim sheet behind a shipped SoTA pack changes (new evidence, retraction, or revised measurement definition). Bridges are recalibrated, affecting CL/plane penalties. `G.11` ingests canonical trigger kinds, computes the minimal closure over affected `PathSliceId`s, schedules targeted parity reruns, then re-ships the pack through the pattern governing shipping semantics while publishing an edition bump log that makes the evolution replayable.
-
-### G.11:6 - Bias-Annotation (informative)
-
-Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**.
-
-* **Arch bias (toward explicit wiring).** Risk: authors feel “over-pinned.” Mitigation: keep the minimum pin set small; push scheduling sophistication into extensions/policies.
-* **Gov bias (toward audit over speed).** Risk: refresh becomes bureaucratic. Mitigation: the kit is intentionally thin (queue/plan/report), while action semantics remain delegated to governing definitions.
-* **Onto/Epist bias (toward one governing definition semantics).** Risk: teams try to localize trigger meaning for convenience. Mitigation: alias docking is allowed, but semantics stay in `G.Core`.
-* **Prag bias (toward minimal recomputation).** Risk: under-refresh if closure is too narrow. Mitigation: require closure rationale and allow explicit “scope wideners” as policy-bound pins.
-* **Did bias (toward readable, reusable artefacts).** Risk: oversimplified examples. Mitigation: maintain System+Episteme grounding and keep SoTA-echoing explicit.
-
-### G.11:7 - Conformance Checklist (normative)
-
-| ID                                                    | Requirement                                                                                                                                                                                                                                                                                                                                     | Purpose / Notes                                                                                                            |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **CC‑G11‑CoreRef**                                    | A conforming `G.11` artefact **MUST** satisfy the **effective** core conformance set implied by the `GCoreLinkageManifest` in `G.11:4.1` (profile expansion + explicit deltas; delegated to `G.Core`).                                                                                                                                       | Phase‑2 bridge clause: `G.11` is conformant only if the relevant `G.Core` invariants and trigger discipline are satisfied. |
-| **CC‑G11.1 (Slice-scoped planning).**                 | A conforming `RefreshPlan@Context` **SHALL** be scoped to `PathSliceId[]` (preferred) or `PatternScopeId[]` and **SHALL** record canonical `RSCRTriggerKindId` for each planned cause. Pack-wide reruns **MAY** occur only if the declared dependency closure spans all slices; the closure rationale **SHALL** be recorded.                    | Prevents full-rerun mania while keeping a safety escape hatch explicit and auditable.                                      |
-| **CC‑G11.2 (Edition discipline; QD/OEE wiring).**     | When QD and/or OEE are active, a conforming `RefreshPlan@Context` and `RefreshReport@Context` **SHALL** satisfy the required pin/edition/policy wiring of the applicable extension blocks (`G.11:Ext.QDRefreshWiring` and/or `G.11:Ext.OEERefreshWiring`). **`.edition` SHALL apply only on `…Ref`.** Missing required pins **SHALL** block publication. | Keeps replayability strict while moving method‑specific pin lists into `Extensions` (Phase‑2 modularity).                  |
-| **CC‑G11.3 (Telemetry‑metric legality).**             | If a refresh publishes Illumination/QD/OEE outcomes, it **SHALL** publish **Q/D/QD‑score** (and any coverage/regret) as **telemetry metrics** and **IlluminationSummary** as a **telemetry summary**; these values **SHALL be excluded from dominance** unless a CAL policy explicitly promotes them, and the promoting **policy‑id SHALL be recorded** in SCR‑visible evidence bindings (via the cited governing patterns).                                                                                                      | Prevents covert scalarisation and keeps “telemetry vs order” separation explicit.                                          |
-| **CC‑G11.4 (Bridge penalties).**                      | Any refresh reacting to Bridge/plane changes **SHALL** satisfy `CC‑GCORE‑PEN‑1` (delegation), and **SHALL** publish `CL/CL^k/CL^plane` and the relevant `Φ/Ψ/Φ_plane` policy‑ids with loss notes so penalties route to `R_eff` only (F/G invariant).                                                                                                                                | Keeps penalty routing auditable during refresh.                                                                            |
-| **CC‑G11.5 (Selector invariants).**                   | Any orchestrated re‑selection or selected-set/archive update **SHALL** (i) satisfy `CC‑GCORE‑SET‑1` (delegation), and (ii) cite the selector governing definition (`G.5`) under an unchanged admissible `ComparatorSet` (edition‑pinned where applicable), returning **sets** (Pareto/Archive) and introducing **no scalarisation** inside `G.11`.                                                                                                                       | Prevents refresh from changing order semantics.                                                                            |
-| **CC‑G11.6 (Crossing visibility).**                   | All refresh actions that touch cross‑context reuse **SHALL** satisfy `CC‑GCORE‑CROSS‑1` (delegation) and the GateCrossing visibility harness (e.g., `E.18`): `CrossingRef` + BridgeCard + UTS + `CL/Φ_plane` policy‑ids. Missing/non‑conformant crossings **SHALL** block publication.                                                                                                                                 | Prevents “silent crossings” under refresh.                                                                                 |
-| **CC‑G11.7 (Decay governance).**                      | When refresh is triggered by freshness/decay events, the refresh outputs **SHALL** choose and record a governance outcome (**Refresh / Deprecate / Waive**) with **budget notes** (policy‑bound), and **SHALL** publish the decision via `DeprecationNotice@Context` (and related pins) and SCR‑visible evidence bindings (via `G.6` / cited governing patterns).                                                                                                                                                | Turns epistemic debt into explicit, comparable governance artefacts.                                                       |
-| **CC‑G11.8 (No default smuggling).**                  | A conforming `G.11` refresh artefact **SHALL NOT** introduce new defaults for `PortfolioMode`/dominance/Γ‑fold/guard behavior. If orchestrated steps rely on defaults, the artefact **SHALL** cite each default's governing definition (via `G.Core.DefaultGoverningDefinitionIndex` and the applicable governing patterns) rather than restating defaults inside `G.11`.                                                                                                                                            | Protects default definition-citation discipline under orchestration pressure.                                                     |
-| **CC‑G11.9 (Targeted RSCR before republication).**    | Before any refresh result is republished downstream (e.g., parity report updates, pack re‑shipping, dashboard slice updates), the execution **SHALL** run or cite a targeted RSCR/regression check for the affected scope and record `RSCRRefs[]` (or equivalent) in `RefreshReport@Context`; exceptions **SHALL** be expressed as `degrade/abstain` outcomes (policy‑bound) rather than silent skips.                                                                                         | Preserves “refresh ≠ vibes” by making regression gating explicit and slice‑scoped.                                         |
-| **CC-G11.10 (Causal-use refresh sentinels).**          | When a refreshed surface consumes `C.28`, a conforming `RefreshPlan@Context` **SHALL** include causal-use sentinel payload distinctions when counterfactual realizability, counterfactual-data identification/bounding, target-trial reporting, causal fairness, causal representation validation, off-policy/causal-RL evaluation, or simulation validation can change supported use, unsupported use, support verdict, assurance, parity, or downstream selection. | Keeps moving causal SoTA from silently invalidating shipped support while preserving `G.Core` trigger governance. |
-
-### G.11:8 - Common Anti-Patterns and How to Avoid Them (informative)
-
-| Anti-pattern                       | Symptom                                                           | Why it fails                                             | Repair                                                                            |
-| ---------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| **Full-rerun mania**               | Any edit triggers a global rebuild                                | Costs explode; drift hides (no scope rationale)          | Enforce slice-scoped plans (CC‑G11.1); require closure rationale for global scope |
-| **Editionless telemetry**          | Telemetry lacks `…Ref.edition`                                    | Reruns are non-comparable; parity breaks                 | Block publication on missing pins (CC‑G11.2)                                      |
-| **Alias-as-semantics**             | `T*` labels are treated as meaning                                | Trigger meaning fragments; regressions become untestable | Dock aliases via `G.Core.TriggerAliasMap.G11`; record canonical ids               |
-| **Silent crossing during refresh** | Refresh changes context or plane assumptions without crossings       | Violates crossing visibility; penalties become hidden    | Require crossing pins + E.18 visibility; block publication (CC‑G11.6)             |
-| **Default smuggling**              | Refresh introduces “helpful” default dominance/PortfolioMode behavior | Competing defaults appear; downstream arguments drift    | Cite governing definitions through `G.Core.DefaultGoverningDefinitionIndex` (CC‑G11.8)                              |
-| **Debt-by-prose**                  | “We decided not to refresh” exists only in narrative              | Not comparable; cannot be tested                         | Emit a DeprecationNotice (incl. a Waive outcome, if used) with pins (CC‑G11.7)    |
-
-### G.11:9 - Consequences (informative)
-
-* **Selective, replayable upkeep.** Refresh becomes a controlled planning/execution loop rather than an implicit “maintenance vibe.”
-* **Stable semantics with flexible operations.** Trigger meaning is centralized (`G.Core`), while scheduling sophistication can evolve as policy-bound extensions.
-* **Clear governing-definition assignment boundaries.** Orchestration coordinates governing definitions; it does not redefine their semantics (shipping remains `G.10`, selection remains `G.5`, etc.).
-* **Cost: pin discipline overhead.** Authors must carry enough ids/editions/policies to make refresh comparable. This is intentional: it replaces hidden drift with explicit wiring.
-
-### G.11:10 - Rationale (informative)
-
-`G.11` is intentionally a **thin orchestration governing definition**:
-
-* The refresh loop is powerful enough to coordinate reruns and republishing, but **too thin to become a second spec**. That is why trigger semantics, invariants, and defaults are delegated to `G.Core`.
-* The kit is split across the **P2W seam** so that WorkPlanning plan items remain planning references and executed work remains auditably executed work.
-* Alias stability is maintained by allowing trigger aliases (`T0…T7`) while prohibiting them from becoming semantic authorities.
-
-### G.11:11 - SoTA-Echoing — Post‑2015 practices aligned (informative)
-
-Each entry follows: **claim → practice → source → alignment → adoption status**.
-
-1. **Continuous refresh is necessary in deployed evaluation pipelines.**
-   Practice: production ML systems use monitoring + retraining / reevaluation triggers and insist on reproducibility hooks.
-   Source: Breck et al., *The ML Test Score* (2017); Amershi et al., *Software Engineering for Machine Learning* (2019).
-   Alignment: `G.11` formalizes triggers as typed causes and forces edition/policy pins for replay.
-   Adoption: **Adopt/Adapt** (adapted to id-based, PathSlice-scoped refresh rather than “retrain everything”).
-
-2. **Non-stationarity requires explicit drift/decay handling, not ad-hoc updates.**
-   Practice: continual learning emphasizes non-stationarity as a first-class maintenance condition.
-   Source: Parisi et al., *Continual Lifelong Learning with Neural Networks* (2019); De Lange et al., *A Continual Learning Survey* (2021).
-   Alignment: `B.3.4` supplies decay semantics; `G.11` wires decay events into refresh planning and controlled deprecation.
-   Adoption: **Adapt** (refresh of conceptual artefacts and evidence closures, not untracked model mutation).
-
-3. **Quality-Diversity requires archive semantics and comparability under descriptor/distance evolution.**
-   Practice: QD methods treat the archive as the primary result and track changes under policy/edition conditions.
-   Source: contemporary QD families such as CMA‑ME (post‑2018) and differentiable QD lines (post‑2019).
-   Alignment: QD-specific meaning lives with the governing patterns; `G.11:Ext.QDRefreshWiring` ensures edition pins and scope pins exist so targeted archive refresh is admissible.
-   Adoption: **Adopt** (set/archive preservation; no covert scalarization).
-
-4. **Open-endedness co-evolves environments and agents; transfer rules must be versioned.**
-   Practice: POET-class open-ended systems require explicit transfer rules and environment validity constraints.
-   Source: Wang et al., POET (2019) and subsequent POET extensions (2020+).
-   Alignment: `G.11:Ext.OEERefreshWiring` requires `TransferRulesRef.edition` and scope pins so refresh reruns remain comparable and auditable.
-   Adoption: **Adopt/Adapt** (adapted to Part‑G pin/UTS publication discipline).
-
-5. **Efficient orchestration benefits from bandit/early-stopping scheduling—but it must not become semantics.**
-   Practice: modern hyperparameter/experiment scheduling uses bandit-style resource allocation and asynchronous early stopping.
-   Source: Async Hyperband / BOHB-style work (2018+) as representative post‑2015 scheduling practice.
-   Alignment: scheduling lives as policy-bound extension (`G.11:Ext.SchedulingHeuristics`) so core semantics remain stable.
-   Adoption: **Adapt** (useful practice, but quarantined outside core norms).
-
-### G.11:12 - Relations
-
-**Builds on:** `G.Core` (Part‑G invariants; RSCR trigger catalogue; alias docking; Default Governing Definition Index), `G.6` (EvidenceGraph, `PathId/PathSliceId`), `G.7` (Bridge sentinels; CL/Φ/plane pins), `G.5` (selector & set-return), `G.8` (bundle telemetry hooks), `G.9` (parity), `G.10` (shipping hooks), `B.3.4` (freshness/decay), `E.18` (GateCrossing visibility).
-**Coordinates with:** `G.12` (dashboard telemetry pins), optional `C.18 and C.19` (QD/E–E pins), `C.23` (SoS-LOG branches and maturity ladders), `C.28` (causal-use support records and SoTA-sensitive causal-use sentinel payloads), `F.15` (RSCR harness surfaces, when present).
-**Publishes to:** UTS (refresh plan/report, deprecations, edition bumps), and to the relevant governing patterns’ publication surfaces via delegated actions.
-
-### G.11:End
-
-
-## G.12 — DHC Dashboards (Discipline‑Health time‑series; admissible telemetry; generation‑first)
-
-**Tag:** Architectural kit pattern (conceptual; notation‑independent; dashboard‑kit governing definition)
-
-**Stage:** design‑time authoring **→** run‑time computation & publication (series and slices); **refresh/RSCR‑wired**
-
-**Primary hooks:** **G.Core** (core invariants, linkage catalogues, RSCR trigger catalogue, Default Governing Definition Index), **C.21** (DHC slots + `DHCPack` / `DHCMethodSpec` / `DHCSeries` artefacts), **G.6** (EvidenceGraph; `PathId`/`PathSliceId` citation), **G.7** (Bridge calibration / CL & `Φ/Ψ/Φ_plane` policy surfaces; when crossings/plane routing is used), **G.11** (telemetry‑driven refresh/decay orchestration), **G.5** (selector set-surface / set‑returning outputs, when dashboard consumes performance trade‑offs), **A.19** (CN‑Spec governance card), **G.0** (CG‑Spec legality gate), **F.17/F.18** (UTS + twin labels), **E.5.2** (notation independence), **E.10** (LEX discipline).
-*(Optional, extension‑gated hooks:* **G.2** (SoTA palette & DHC alignment hooks), **C.18 and C.19** (QD / E‑E / OEE telemetry pins), **G.8** (SoS‑LOG bundle & maturity ladder view), **G.10** (shipping inclusion of dashboard slices).)*
-
-**Why this exists.** **C.21** defines *what* lawful “discipline health” slots are (CHR‑typed; scale/legality aware; freshness‑windowed), but it does not, by itself, provide a **generation‑first** method for producing **edition‑pinned, evidence‑citable DHC time series** that remain refreshable under RSCR.
-**G.12** is that dashboard method: it defines the **dashboard kit surfaces** (`DHCSeries@Context`, `DHCRow@Context`, `DashboardSlice@Context`, telemetry pins) and a pipeline for computing and publishing DHC readings **without shadow specs**, **without illicit arithmetic**, and **without smuggling scalar winners** out of partial orders or telemetry.
-
-**Modularity note.** G.12 governs **dashboard publication units and wiring** only. It **does not** govern CN-Spec, CG-Spec, CHR, CAL, selection semantics, evidence semantics, shipping, or refresh heuristics. It binds to those governing definitions via refs/pins/editions/policy‑ids and keeps any method‑/generator‑specific panels strictly inside **Extensions** (`GPatternExtension` blocks).
-
-### G.12:1 — Intent
-
-Produce **admissible, reproducible, refresh-aware discipline-health dashboards** by turning **C.21** DHC definitions into:
-
-1. a **UTS‑published** time series (`DHCSeries@Context`) whose rows are evidence‑citable by **`PathId`/`PathSliceId`**,
-2. a dashboard slice view (`DashboardSlice@Context`) that is **view‑only** (no hidden re‑aggregation or “new objectives”), and
-3. **telemetry pins** that allow **G.11** to plan **slice‑scoped refresh** (rather than “rerun everything”).
-
-### G.12:2 — Problem frame
-
-Dashboards routinely drift or become illegal when they:
-
-* mix scales (ordinal treated as interval; “average maturity level”),
-* hide normalization and re‑parameterization (“normalized score” with no CN‑Spec pins),
-* silently cross Contexts or planes (implicit reuse without explicit Bridge/Plane routing),
-* fail to pin editions of computation methods, descriptor spaces, or distances,
-* turn selected sets or archives into a single scalar “winner” by dashboard fiat,
-* cannot refresh selectively (no actionable telemetry pins; only narrative “this changed”).
-
-We need a **dashboard kit** that makes the *method of obtaining dashboard values* explicit and auditable, while keeping universal invariants governed in **G.Core**.
-
-### G.12:3 — Forces
-
-* **Legality and comparability are governed by CN-Spec and CG-Spec.** Dashboards must not invent local legality/acceptance/normalization “mini‑specs”; they pin and cite **CN‑Spec** and **CG‑Spec** surfaces as required by **G.Core** conformance.
-* **Ordinal discipline is non‑negotiable.** The most common dashboard failure mode is illicit arithmetic on ranks/categories; the kit must make “compare‑only” enforceable.
-* **Set‑returning discipline survives into views.** Dashboards must not silently scalarize partial orders or selector selected-set surfaces; any scalarization/promotion is an explicit governing-pattern policy cited through **G.Core** conformance; semantics are governed by the relevant pattern or policy.
-* **Edition‑awareness is the difference between “trend” and “drift”.** If the method definition changes, the dashboard must either (i) fork series edition, or (ii) emit telemetry and refresh slices under pinned conditions.
-* **RSCR must be actionable.** Causes are emitted as **canonical ids** (typed trigger kinds + id‑valued pins), not prose.
-
-### G.12:4 — Solution — Compute and publish DHC series admissibly, with RSCR-ready telemetry
-
-#### G.12:4.0 — G.Core linkage (normative)
-
-This pattern is **core‑invariant‑bearing** and therefore binds to **G.Core** by declaration (not by restating invariants here).
-
-**GCoreLinkageManifest (G.12)** *(normative; expands per `G.Core:4.2`)*
-Effective obligations/pins/triggers are computed as **union(expand(sets), explicit deltas)** under `Nil‑elision`.
-
-* `CoreConformanceProfileIds` := {
-  `GCoreConformanceProfileId.PartG.AuthoringBase`,
-  `GCoreConformanceProfileId.PartG.TriStateGuard`,
-  `GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted`,
-  `GCoreConformanceProfileId.PartG.ShippingBoundary`
-  }
-
-* `RSCRTriggerSetIds` := {
-  `GCoreTriggerSetId.BridgeCalibrationKit`
-  }
-
-* `RSCRTriggerKindIds` := {
-  `RSCRTriggerKindId.LegalitySurfaceEdit`
-  }
-  *(Any additional causes required by optional dashboard panels MUST be introduced only by the corresponding `GPatternExtension` blocks in `G.12:4.9`.)*
-
-* `DefaultsConsumed` := `∅`
-  *(Default-citation discipline for `DefaultId.PortfolioMode` and `DefaultId.DominanceRegime` is only relevant when selection outputs with `PortfolioMode` are consumed; see `G.12:Ext.PortfolioTelemetry`.)*
-
-* `CorePinSetIds` := {
-  `GCorePinSetId.PartG.AuthoringMinimal`,
-  `GCorePinSetId.PartG.CrossingVisibilityPins`
-  }
-
-* `CorePinsRequired` *(pattern delta; pin names only; all are id‑valued unless noted)* := {
-  `DHCSeriesId`,
-  `TargetSlice` *(USM tuple; varies only by `Γ_time` across rows; no implicit “latest”)*,
-  `Γ_time` *(time selector / freshness window; required per row; series MAY additionally declare a window‑family spec)*,
-  `DHCSlotId[]` *(typed DHC slots governed by C.21; each resolves to `CharacteristicId` + scale/unit/polarity + reference plane binding + lane discipline)*,
-  `DHCMethodSpecRef.edition`,
-  `DHCMethodRef.edition`,
-  `PathSliceId[]`
-  }
-  *(Nil‑elision applies. All other definition pins are conditional: they MUST appear only when actually used and when their governing pattern/extension is present (e.g., UNM/normalization pins, QD/OEE telemetry pins, transfer rules pins, pack inclusion pins).)*
-
-* `TriggerAliasMapRef` := `∅`
-
-#### G.12:4.1 — Objects (LEX heads; twin‑register discipline)
-
-All objects below are **notation‑independent**; serialisations (if any) live under shipping or interop governance, not here.
-
-**(1) `DHCSeries@Context`** *(UTS‑published dashboard series; C.21‑grounded)*
-A time‑indexed publication of computed DHC readings for a `Discipline × ContextSlice`, aligned with `U.DHCSeries` semantics from **C.21** and pinned to method/governing spec refs.
-
-Minimal fields (conceptual; ids/pins only):
-
-`DHCSeries@Context := ⟨
-  DHCSeriesId,
-  CG-FrameContext,
-  describedEntity := ⟨GroundingHolon, ReferencePlane⟩,
-  TargetSlice,                         // USM tuple; time series varies Γ_time across rows (explicit, no implicit “latest”)
-  DHCSlotId[],                         // slot set selected from C.21 (typed DHC slots; not “just Characteristic ids”)
-  DHCPackRef.edition?,
-  DHCMethodSpecRef.edition,
-  WindowSpec?,                         // optional window-family spec used to generate per-row Γ_time
-  CNSpecRef.edition, CGSpecRef.edition,
-  EvidenceGraphId?,                    // if resolvable; else row-level Path pins suffice
-  DashboardSliceId[]?,                 // published view slices (optional)
-  TelemetryPinSetId?                   // wiring to refresh (conceptual)
-⟩`
-
-**(2) `DHCRow@Context`** *(one timepoint / window reading; Work/Audit‑citable)*
-A single computed row of the series.
-
-`DHCRow@Context := ⟨
-  DHCRowId,
-  DHCSeriesId,
-  Γ_time,
-  DesignRunTag = run,
-  DHCSlotId,
-  value, units/scaleRef?, compareOnly?,
-  stance ∈ {pass|degrade|abstain},
-  DHCMethodRef.edition, DHCMethodSpecRef.edition,
-  PathSliceId[], PathId[]?, EvidenceGraphId?,
-  evidenceLaneTags? := {TA|VA|LA},
-  crossingPins? := ⟨BridgeId[], PlaneMapRef.edition?, CL/CL^k/CL^plane?, Φ/Ψ/Φ_plane policy‑ids…⟩
-⟩`
-
-**(3) `DashboardSlice@Context`** *(view; non‑semantic)*
-A view‑friendly grouping over one or more series/rows. It MUST NOT introduce new aggregation/legality semantics; it is a projection over already computed, pinned, citable rows.
-
-`DashboardSlice@Context := ⟨
-  DashboardSliceId(UTS),
-  DHCSeriesId(UTS)[],
-  SliceAnnotations?,                  // labels, grouping metadata, explanatory text
-  ViewSpecId?,                        // view template id (policy‑bound; no semantics implied)
-  IncludedRowIds?
-⟩`
-
-**(4) `DHCTelemetryPin`** *(refresh wiring pin; id‑based causes)*
-A conceptual telemetry pin emitted to refresh/orchestration (governed by **G.11**) with canonical trigger kind ids.
-
-`DHCTelemetryPin := ⟨
-  triggerKindId: RSCRTriggerKindId,
-  scope: PathSliceId[] | PatternScopeId,
-  payloadPins: { …ids… }              // editions, policy‑ids, UTS row ids, window ids, etc.
-⟩`
-
-**Ref discipline.** `.edition` SHALL appear only on `…Ref` (per **E.10**). Dashboard artefacts that mint public ids publish **Tech/Plain twins** (UTS discipline).
-
-#### G.12:4.2 — Method‑of‑Obtaining Output (generation‑first; design‑time → run‑time)
-
-**Stage A — Author & bind (design‑time)**
-
-A1. **Select the DHC slot set (governed by C.21).**
-Choose `DHCSlotId[]` from **C.21** (typed DHC slots), and declare the series scope explicitly as `TargetSlice` (USM tuple) plus an explicit time selector (`Γ_time` per row; optionally a `WindowSpec` that generates the row windows). Do not restate slot semantics in the dashboard kit; cite the C.21 governing definitions.
-
-A2. **Bind governance card and legality gate (governing definitions: A.19, G.0).**
-Pin `CNSpecRef.edition` and `CGSpecRef.edition`. Any normalization or numeric comparability assumptions are expressed by explicit CN‑Spec artefacts (ids/refs) and any numeric legality requirements cite CG‑Spec artefacts (SCP / MinimalEvidence / Γ‑fold pins as applicable). The dashboard does not introduce local “shadow specs”.
-If the dashboard series/slice actually uses cross‑Context or cross‑plane routing, it MUST additionally pin the relevant crossing and penalty‑policy surfaces as ids (Bridge/CL/plane ids, `Φ/Ψ/Φ_plane` policy‑ids, `PlaneMapRef.edition?`) and cite their governing patterns (typically `G.7` for bridge calibration/CL kits, pinned through `G.Core`). The dashboard MUST NOT encode a dashboard‑local “penalty regime”.
-
-A3. **Pin computation methods (governed by C.21).**
-For each slot/method used to compute a time series value, record `DHCMethodSpecRef.edition` and `DHCMethodRef.edition` (table‑backed, per C.21). The dashboard series is edition‑aware: if a method spec changes, the dashboard either forks the series edition or emits telemetry and refreshes under explicit pins.
-
-A4. **Declare optional panels via Extensions only.**
-If the dashboard depends on (i) selector set-surface outputs, (ii) QD illumination / archive telemetry, (iii) open‑endedness telemetry, (iv) maturity ladder views, or (v) pack inclusion, then the relevant `GPatternExtension` block(s) in `G.12:4.9` MUST be present and their pins MUST be satisfied.
-
-**Stage B — Compute rows (run‑time; Work/Audit)**
-
-B1. **Resolve evidence by Path (governed by G.6).**
-Compute rows from evidence cited as `PathSliceId[]` (and `PathId[]` when needed), under the declared window/freshness regime. Preserve lane discipline and handle missingness using tri‑state stances governed by **G.Core**.
-
-B2. **Compute slot values using pinned methods (governed by C.21).**
-Compute each slot value by applying the pinned `DHCMethodRef.edition`/`DHCMethodSpecRef.edition` under the pinned governance card and legality gate. Enforce “no illicit arithmetic” for ordinals/categoricals as a dashboard‑kit obligation (see CC‑G12.\*).
-Any cross-Context or cross-plane use is expressed only via explicit crossing pins (Bridge/Plane routing) and policy ids governed by **G.Core**.
-
-B3. **Emit RSCR‑actionable telemetry pins (governing definition: G.11).**
-When any of the declared pins/editions/policies/windows/evidence slices change, emit `DHCTelemetryPin` events with canonical `RSCRTriggerKindId` and payload pins sufficient for **slice‑scoped** refresh planning.
-
-**Stage C — Publish series & slices (run‑time; publication)**
-
-C1. **Publish `DHCRow@Context` and `DHCSeries@Context` as UTS publication units.**
-Mint/publish UTS rows with Tech/Plain twins and include the required pins (window, reference plane, method editions, evidence paths).
-
-C2. **Publish `DashboardSlice@Context` as a view‑only projection.**
-Slices are groupings/annotations over already computed rows; they must not redefine legality, acceptance, or scalarization.
-
-C3. **Wire refresh via telemetry pins (no orchestration governance).**
-Dashboards emit pins; refresh orchestration remains governed by **G.11**.
-
-#### G.12:4.9 — Extensions (pattern‑scoped; non‑core)
-
-> **Extension rule (Phase‑2).** Anything method‑, generator‑, or view‑family‑specific belongs here, as `GPatternExtension` modules. These modules may add **mode‑specific definition pins** and additional RSCR trigger kinds, but MUST NOT redefine Part‑G‑wide invariants or defaults.
-
-##### `G.12:Ext.SoTAPalette` — SoTA palette & DHC alignment hooks (optional)
-
-**PatternScopeId:** `G.12:Ext.SoTAPalette`
-**GPatternExtensionId:** `SoTAPalette`
-**GPatternExtensionKind:** `InteropSpecific`
-**GoverningPatternId:** `G.2` *(SoTA palette + DHC alignment hooks semantics are governed by G.2; G.12 only wires them)*
-**Uses:** `{G.2}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `SoTA_PackRef.edition?`
-* `DHC-SenseCellId[]?` *(when series pins to DHC alignment hooks / sense‑cell inventories)*
-* `DHCAlignmentHookId[]?`
-
-**RSCRTriggerKindIds (delta):** `∅`
-
-##### `G.12:Ext.PortfolioTelemetry` — selector set-surface integration panel
-
-**PatternScopeId:** `G.12:Ext.PortfolioTelemetry`
-**GPatternExtensionId:** `PortfolioTelemetry`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `G.5` *(`PortfolioMode` citation plus selected-set semantics and set‑return discipline)*
-**Uses:** `{G.5, G.6}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `TaskSignatureRef?` *(when `PortfolioMode` semantics depend on TaskSignature traits)*
-* `DominanceRegime` *(cite the governing definition for `DefaultId.DominanceRegime`; publish the resolved regime, do not invent a local default)*
-* `PortfolioMode` *(cite the governing definition for `DefaultId.PortfolioMode`; publish the resolved mode)*
-* `SCRId/DRRId` *(or equivalent selector evidence pins, when dashboard row depends on selector outcomes)*
-
-**DefaultsConsumed:** {`DefaultId.DominanceRegime`, `DefaultId.PortfolioMode`} *(cite governing definitions through `G.Core.DefaultGoverningDefinitionIndex`; no local defaults)*
-
-**RSCRTriggerKindIds (delta):** `∅` *(base triggers suffice; any extra triggers must be explicit)*
-
-**Notes (wiring‑only):**
-
-* The dashboard may visualise selected-set / Archive telemetry, but MUST keep set‑returning semantics; any scalar “headline number” is a view projection, not a legality‑bearing decision.
-
-##### `G.12:Ext.QDTelemetry` — illumination / archive telemetry panel
-
-**PatternScopeId:** `G.12:Ext.QDTelemetry`
-**GPatternExtensionId:** `QDTelemetry`
-**GPatternExtensionKind:** `MethodSpecific`
-**GoverningPatternId:** `C.18` *(QD / NQD‑CAL semantics; descriptor/distance/insertion policy)*
-**Uses:** `{C.18, G.5, G.11}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `DescriptorMapRef.edition`
-* `DistanceDefRef.edition`
-* `CharacteristicSpaceSpecRef.edition?` *(iff the descriptor or characteristic space is editioned as a published surface; required for view reproducibility)*
-* `InsertionPolicyRef`
-* `EmitterPolicyRef?`
-* `ArchiveSnapshotRef?` *(id/pin for the published archive snapshot, if any)*
-* `PathSliceId[]` *(scope for refresh; slice‑keyed)*
-
-**RSCRTriggerKindIds (delta):** `∅` *(base trigger set already includes `RSCRTriggerKindId.TelemetryDelta`; add only genuinely additional kinds here)*
-
-**Notes (wiring‑only):**
-
-* Illumination/coverage signals are treated as telemetry. Any promotion of telemetry into selection dominance is governed elsewhere (typically CAL policy; pinned through `G.Core`).
-* If descriptor characteristics are surfaced as published identifiers (not just local UI text), they MUST follow the Tech/Plain twin-label discipline (UTS Name Cards); otherwise they remain non-normative view annotations.
-
-##### `G.12:Ext.OpenEndedTelemetry` — open‑endedness / transfer telemetry panel
-
-**PatternScopeId:** `G.12:Ext.OpenEndedTelemetry`
-**GPatternExtensionId:** `OpenEndedTelemetry`
-**GPatternExtensionKind:** `GeneratorSpecific`
-**GoverningPatternId:** `C.19` *(E/E‑LOG & exploration accounting; generator/transfer telemetry wiring)*
-**Uses:** `{C.19, G.5, G.11}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `TransferRulesRef.edition` *(when transfer rules are part of the telemetry interpretation)*
-* `EnvironmentValidityRegionId?`
-* `ProbeBudgetPolicyId?`
-* `PathSliceId[]`
-
-**RSCRTriggerKindIds (delta):** `∅` *(base trigger set already includes `RSCRTriggerKindId.TelemetryDelta`; add only genuinely additional kinds here)*
-
-**Notes (wiring‑only):**
-
-* Open‑endedness metrics are telemetry‑level artefacts; dashboards must not silently convert them into “dominance objectives”.
-
-##### `G.12:Ext.MaturityLadderPanel` — maturity ladder view (optional)
-
-**PatternScopeId:** `G.12:Ext.MaturityLadderPanel`
-**GPatternExtensionId:** `MaturityLadderPanel`
-**GPatternExtensionKind:** `DisciplineSpecific`
-**GoverningPatternId:** `G.8` *(maturity ladder semantics in SoS‑LOG bundle/maturity cards)*
-**Uses:** `{G.8, G.6, G.11}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `MaturityCardRef`
-* `MaturityRungId?`
-* `PathId/PathSliceId` *(evidence citations for rung claims)*
-
-**RSCRTriggerKindIds (delta):** `{RSCRTriggerKindId.MaturityRungChange}`
-
-##### `G.12:Ext.PackInclusion` — shipping inclusion stub (optional)
-
-**PatternScopeId:** `G.12:Ext.PackInclusion`
-**GPatternExtensionId:** `PackInclusion`
-**GPatternExtensionKind:** `InteropSpecific`
-**GoverningPatternId:** `G.10` *(shipping semantics are governed by G.10)*
-**Uses:** `{G.10}`
-**⊑/⊑⁺:** `∅`
-
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `SoTA‑PackId`
-* `DashboardSliceId(UTS)` *(or `DHCSeriesId(UTS)` when shipping series directly)*
-* `CNSpecRef.edition`, `CGSpecRef.edition` *(as shipped pins, per G.10 wiring)*
-
-**RSCRTriggerKindIds (delta):** `∅`
-
-**Notes (wiring‑only):**
-
-* This module is a wiring stub: it does not define shipping behaviour; it only states which dashboard artefacts may be cited by `SoTA‑Pack(Core)`.
-
-##### `G.12:Ext.ViewFamilySeed` — advanced view families (Phase‑3 seed; governing pattern TBD)
-
-**PatternScopeId:** `G.12:Ext.ViewFamilySeed`
-**GPatternExtensionId:** `ViewFamilySeed`
-**GPatternExtensionKind:** `Phase3Seed`
-**GoverningPatternId:** `governing pattern not yet selected`
-**Uses:** `{}`
-**⊑/⊑⁺:** `∅`
-
-**Notes (Phase‑3 seed; non‑normative):**
-
-* Placeholder for advanced dashboard view families (e.g., embedding‑based similarity panels, predictive drift detectors, change‑point overlays). Any such module must remain policy‑bound and must not introduce new Part‑G‑wide norms.
-
-### G.12:5 — Interfaces (conceptual; kit surface)
-
-| ID  | Interface   | Consumes   | Produces  |
-| --- | ----------- | ---------- | --------- |
-| **G.12‑1 `Create_DHCSeries`** | Create/bind a DHC series scope (C.21‑grounded; edition‑aware) | `DHCSlotId[]`, `DHCPackRef.edition?`, `DHCMethodSpecRef.edition`, `TargetSlice` (USM), `WindowSpec?`, `ReferencePlane`, `CNSpecRef.edition`, `CGSpecRef.edition` | `DHCSeries@Context` (UTS publication unit; edition‑aware) |
-| **G.12‑2 `Update_DHCSeries`** | Compute/update one or more rows under pinned conditions (run‑time; Work/Audit‑citable) | `PathSliceId[]`, `EvidenceGraphId?`, `DHCMethodRef.edition`, `DHCMethodSpecRef.edition`, `Γ_time`, crossing pins (if any) | `DHCRow@Context[]` (UTS publication units; stance and pins; `DesignRunTag = run`) |
-| **G.12‑3 `Integrate_PortfolioTelemetry`** *(extension‑gated)* | Integrate selector set-surface evidence into a slice/series | See `G.12:Ext.PortfolioTelemetry` | Extension‑gated fields / telemetry pins |
-| **G.12‑4 `Integrate_QDTelemetry`** *(extension‑gated)* | Integrate QD illumination/archive telemetry | See `G.12:Ext.QDTelemetry` | Extension‑gated fields / telemetry pins |
-| **G.12‑5 `Integrate_OEETelemetry`** *(extension‑gated)* | Integrate open‑endedness / transfer telemetry | See `G.12:Ext.OpenEndedTelemetry` | Extension‑gated fields / telemetry pins |
-| **G.12‑6 `Publish_DashboardSlice`** | Publish a view slice as a projection over computed rows | `DHCSeriesId(UTS)[]`, `DHCRowId(UTS)[]?`, `SliceAnnotations?` | `DashboardSlice@Context` (UTS publication unit; view‑only) |
-| **G.12‑7 `Emit_TelemetryPins`** | Emit RSCR‑actionable telemetry pins for refresh | `RSCRTriggerKindId`, `scope`, `payloadPins` | `DHCTelemetryPin[]` (consumed by `G.11`) |
-
-(*No file formats are introduced here; serialisation recipes live under shipping or interop governance.*)
-
-### G.12:6 — Conformance checklist (CC‑G12, normative)
-
-| CC ID   | Requirement  | Verification notes  |
-| ------- | ------------ | ------------------- |
-| **CC‑G12‑CoreRef** | The pattern satisfies the **effective** `G.Core` obligations declared by `GCoreLinkageManifest (G.12)` (profiles/sets/deltas expanded per `G.Core:4.2`).    | Evidence: the manifest is present; required pins/defaults/triggers are accounted for; no local restatement overrides core governing definitions.  |
-| **CC‑G12.1** | **DHC slot typing (C.21‑grounded).** Every published dashboard value is indexed by a **C.21‑authored** `DHCSlotId` (typed DHC slot: `CharacteristicId` + scale/unit/polarity + reference plane binding + lane discipline) and is scoped by an explicit `TargetSlice` + `Γ_time`. | Evidence: row/series references `DHCSlotId` and pins `ReferencePlane` and `Γ_time` (or a series `WindowSpec` that yields row Γ_time). |
-| **CC‑G12.2** | **Edition discipline (no drift).** Every published time‑series value carries `DHCMethodRef.edition` and any other definition‑pins actually used to obtain it (e.g., `DescriptorMapRef.edition`, `DistanceDefRef.edition`, `UNM_id`, `NormalizationMethodInstanceId[]`, `ComparatorSetRef.edition?`). No free‑text versioning. | Check that `.edition` appears only on `…Ref`; check presence of all definition pins used by the pipeline; extension pins appear only when their extension blocks are present. |
-| **CC‑G12.3** | **Spec citation for numeric operations (no shadow specs; no illicit arithmetic).** Any numeric operation in the dashboard pipeline is legal only under explicit **CG‑Spec** and **CN‑Spec** pins (e.g., `SCPRef.edition`, `MinimalEvidenceRef.edition`, `ΓFoldRef.edition?` when used), and any normalization is explicit (`UNM_id` + `NormalizationMethodInstanceId[]` etc). Ordinal/categorical slots remain **compare‑only** (no illicit arithmetic). | Check that operations cite pinned governing definitions; reject “normalize, then compare” without explicit UNM pins; reject arithmetic over ordinal slots unless the governing definition declares an admissible mapping. |
-| **CC‑G12.4** | **Set‑returning selection is preserved.** If the dashboard consumes selection / set-surface outputs, it MUST preserve set‑return semantics and MUST publish the resolved `DominanceRegime` and `PortfolioMode` by citing each default's governing definition (via `G.Core.DefaultGoverningDefinitionIndex`) rather than inventing local defaults. Any promotion of illumination/telemetry into dominance MUST cite the governing-pattern policy (typically CAL) and be auditable via evidence paths. | Check for set-surface outputs; check that any scalar headline is view‑only; check citations to default governing definitions/policies. |
-| **CC‑G12.5** | **UTS publication discipline.** `DHCSeries@Context` and its rows (and any published slices) are published as UTS publication units with Tech and Plain twins plus stable identifiers; deprecations and edition bumps follow the canonical UTS discipline. | Check stable ids and twin labels; check that publication does not smuggle `GateDecision` values as authoritative UTS publication content. |
-| **CC‑G12.6** | **Bridge/plane routing is explicit when used.** If a series crosses contexts or planes, the rows MUST cite the Bridge/PlaneMap routing (`BridgeId[]`, `CL/CL^k/CL^plane`, `Φ/Ψ/Φ_plane policy‑ids`, `PlaneMapRef.edition?`) and respect penalty routing to `R_eff` only (semantics pinned through `G.Core`). | Check presence of crossing pins when contexts or planes differ; check that any loss is expressed via R‑lane impact only. |
-| **CC‑G12.7** | **Telemetry sufficiency for slice‑scoped RSCR.** Emitted dashboard telemetry pins MUST (i) use canonical `RSCRTriggerKindId`, (ii) include `scope` (PathSliceId[] or PatternScopeId) and the touched `…Ref.edition`/policy/window pins, and (iii) block publication when required pins are missing. Each published row is evidence‑citable by `PathSliceId[]` under explicit `Γ_time`. | Check: no free‑text causes; payload includes path/window/editions/policies; missing pins block publish; row has PathSliceId[] and Γ_time. |
-| **CC‑G12.8** | **Extension gating.** If any fields and pins governed by the extension appear, the corresponding `G.12:Ext.*` module is present and satisfied. | E.g., QD pins require `G.12:Ext.QDTelemetry`; maturity panel requires `G.12:Ext.MaturityLadderPanel`; SoTA palette hooks require `G.12:Ext.SoTAPalette`; pack inclusion requires `G.12:Ext.PackInclusion`. |
-
-### G.12:7 — Bias‑Annotation (informative)
-
-* **Didactic:** dashboard publication units publish pins and paths first; views second.
-* **Architectural:** no “dashboard‑local governing spec refs”; invariant citation is via `G.Core`.
-* **Pragmatic:** slice‑scoped refresh is enabled by canonical trigger ids + payload pins.
-* **Epistemic:** compare‑only ordinals and explicit provenance prevent “trend‑as‑drift”.
-
-### G.12:8 — Consequences
-
-* **Dashboards become reproducible artefacts, not screenshots.** A `DHCRow@Context` is re‑derivable under pinned editions and evidence windows.
-* **Selective maintenance becomes possible.** Telemetry pins let `G.11` refresh what changed (path slice / window / method edition), rather than rerunning the entire pipeline.
-* **Illicit scalarization is structurally discouraged.** Set‑returning and CN/CG-governed semantics are preserved into the dashboard layer.
-
-### G.12:9 — Relations
-
-**Builds on:** `G.Core`, `C.21`, `G.6`, `G.11`, `A.19`, `G.0`, `F.17/F.18`, `E.5.2`, `E.10`.
-**Coordinates with:** `G.5` *(when selector set-surface outputs are consumed)*, `G.7` *(when crossings/plane routing or `CL/Φ/Ψ/Φ_plane` policy pins are used)*, `G.8` *(when maturity ladder view is included)*, `G.10` *(when dashboard slices are shipped)*.
-**Constrains:** dashboard consumers: dashboards are projections over pinned, evidence‑citable rows; they do not mint new governing-spec semantics.
-
-### G.12:10 — Author’s quick checklist
-
-1. Declare the dashboard series scope: `TargetSlice` (USM tuple), `ReferencePlane`, and an explicit `Γ_time` regime (per‑row; optionally a `WindowSpec` that yields the row windows).
-2. Select `DHCSlotId[]` and cite **C.21** (do not restate slot semantics).
-3. Pin `DHCMethodSpecRef.edition` and `DHCMethodRef.edition` for every computed slot/value (plus any other definition pins actually used).
-4. Ensure rows are evidence‑citable by `PathSliceId[]` and include explicit `Γ_time` (row is run‑time: `DesignRunTag = run`).
-5. Publish UTS publication units with twins and the required pins.
-6. Emit canonical telemetry pins (`RSCRTriggerKindId` + scope + payload pins) for `G.11`.
-7. If SoTA palette hooks / selection / QD / OEE / maturity / shipping panels are needed, add the corresponding `G.12:Ext.*` blocks and satisfy their pins.
-
-### G.12:11 — Worked micro‑examples (informative; SoTA‑oriented)
-
-**(A) Decision‑making discipline dashboard (multi‑tradition).**
-Slots (from **C.21**): *ReproducibilityRate* (freshness‑windowed), *StandardisationLevel* (ordinal), *AlignmentDensity* (bridge density over DHC‑SenseCells), *MetaDiversity* (operator family diversity), *DisruptionBalance* (target‑band metric).
-Evidence: citation graphs, benchmark traces, and bridge calibrations are referenced via `PathSliceId[]`.
-Optional panels:
-
-* `G.12:Ext.PortfolioTelemetry` to visualise set‑returning method selected sets without forcing a scalar winner.
-* `G.12:Ext.QDTelemetry` to include illumination/archive telemetry using modern QD families (e.g., CMA‑ME / policy‑gradient QD variants / surrogate‑assisted illumination lines) as telemetry.
-
-**(B) Evolutionary software architecture dashboard (open‑endedness‑aware).**
-Slots: stability/reproducibility metrics, standardisation stages (ordinal), cross‑paradigm alignment density, and disruption balance.
-Optional panels:
-
-* `G.12:Ext.OpenEndedTelemetry` to include open‑endedness telemetry (environment diversity / transfer events) using POET‑style and related post‑2015 open‑ended generation families, while keeping such signals in telemetry unless an explicit governing-pattern policy promotes them.
-
-### G.12:End
-
-## G.13 - External Interop Hooks for SoTA Discipline Packs (conceptual)
-
-**Tag.** Architectural kit pattern (conceptual interop kit; notation‑independent; normative when used)
-**Stage.** *design‑time registration & alignment* → *run‑time ingestion, telemetry, refresh*
-**Primary hooks.** `G.Core` (Part‑G core invariants + trigger catalogue + Default Governing Definition Index), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.4` (CAL Pack), `G.5` (selector & registries), `G.6` (EvidenceGraph + PathId/PathSliceId), `G.7` (BridgeMatrix + CL/planes), `G.8` (SoS‑LOG bundle surfaces), `G.9` (parity harness), `G.10` (shipping), `G.11` (refresh orchestration), `G.12` (dashboards), `A.19` (CN‑Spec), `A.18` (CSLC legality), `G.0` (CG‑Spec), `F.17` (UTS), `E.5.2` (notation independence), `E.18/A.21/A.27` (GateCrossing/CrossingBundle checks).
-
-**Status.** Stable (Phase‑2 universalized; `G.Core` linkage explicit)
-**Normativity.** Normative when used (when any `G.13` surface is authored/emitted/consumed); informative otherwise.
-
-**Non‑duplication note (Phase‑2 universalization).** This pattern **does not restate** Part‑G‑wide invariants (CN/CG spec-ref governing-definition assignment, crossing visibility, penalty routing, set‑return discipline, typed RSCR triggers, Default Governing Definition Index, Δ‑discipline). Those are governed in `G.Core` and referenced here via the linkage manifest and CC delegations (*cite, don’t duplicate*).
-
-### G.13:1 - Problem frame
-
-FPF already supports lawful characterization, evidence wiring, selector‑side set returns, parity, shipping, dashboards, and refresh. What remains frictionful in practice is **interoperability with external scholarly indexes and discipline repositories** (concept registries, paper/claim graphs, dataset registries, taxonomy stores, “science‑of‑science” indicator feeds), which teams routinely use as *inputs* when authoring a SoTA discipline pack.
-
-Without an explicit **conceptual interop kit**, authors tend to build one‑off pipelines whose “implied semantics” leak into the framework: edition drift becomes invisible, cross‑plane/context reuse becomes implicit, and external signals quietly start acting like a shadow governing spec ref.
-
-`G.13` provides the missing kit: **conceptual registration, alignment, and telemetry hooks** that let external sources be wired into the Part‑G pipeline (**G.2 → G.5 → G.9 → G.10 → G.11**, and optionally **G.12**) while preserving Part‑G invariants via `G.Core`.
-
-### G.13:2 - Problem
-
-External sources publish **claim‑adjacent signals** (citations, concept graphs, “task/method” tags, replication links, dataset usage, disruption‑style indicators, benchmark metadata). These are useful for *generation* (palette building, declared set-surface exploration, candidate bridge discovery), not only for audit. But typical interop practices create predictable failure modes:
-
-* **CN/CG spec-ref leakage.** External numeric signals get treated as if they were lawful “scores” without explicit binding to CHR/CAL/CG surfaces.
-* **Implicit crossings.** Cross‑context and cross‑plane reuse happens through opaque transformations, without explicit exposure of the crossing bundle pins needed downstream.
-* **Edition drift + refresh brittleness.** Snapshots change, schemas drift, indicator definitions get revised; without edition‑pinned interop surfaces and typed trigger causes, parity and dashboard stability degrade.
-* **Evidence disconnect.** “Derived features” are produced without explicit EvidenceGraph anchoring, making later refutation/repair expensive.
-* **Format‑as‑norm.** A convenient serialisation (KG export, JSON schema, RO‑Crate, etc.) becomes treated as the specification, undermining notation independence.
-
-### G.13:3 - Forces
-
-| Force                           | Tension                                                                                                |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| **Notation independence**       | Useful serialisations vs the requirement that conformance is judged on **conceptual** surfaces.        |
-| **Pluralism vs parity**         | Diverse scholarly traditions and indexes vs lawful, edition‑aware comparability and reproducibility.   |
-| **Interop as generation input** | Interop should speed SoTA authoring, not merely decorate audit reports.                                |
-| **Planes & bridges**            | Cross‑plane/context reuse must remain explicit and auditable rather than implicit in “aligners”.       |
-| **Telemetry vs dominance**      | External telemetry should inform exploration and refresh without silently changing selector semantics. |
-| **Operational drift**           | External sources evolve; interop must be refresh‑ready by construction (typed causes + payload pins).  |
-
-### G.13:4 - Solution — Conceptual interop kit: registered sources, alignment cards, feature derivations, and RSCR‑wired telemetry
-
-#### G.13:4.1 - G.Core linkage (normative)
-
-**Builds on:** `G.Core`.
-
-**GCoreLinkageManifest (normative).**
-*(Canonical form, Nil‑elision, and Expansion rule are defined in `G.Core`.)*
-
-`GCoreLinkageManifest := ⟨
-  CoreConformanceProfileIds := {
-    GCoreConformanceProfileId.PartG.AuthoringBase,
-    GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted,
-    GCoreConformanceProfileId.PartG.ShippingBoundary
-  },
-  RSCRTriggerSetIds := {GCoreTriggerSetId.SoTAHarvestSynthesis},
-  RSCRTriggerKindIds := {RSCRTriggerKindId.BaselineBindingEdit},   // delta: planned‑baseline linkage edits can be interop‑relevant
-
-  CorePinSetIds := {
-    GCorePinSetId.PartG.AuthoringMinimal,
-    GCorePinSetId.PartG.CrossingVisibilityPins
-  },
-
-  CorePinsRequired := {
-    // Interop pins (G.13‑specific; avoid duplicating `GCorePinSetId.PartG.CrossingVisibilityPins`)
-    ExternalIndexRef.edition,
-    ClaimMapperRef.edition?,
-    MappingPolicyRef?,
-    PlaneMapRef.edition?,
-    ScaleEmbeddingSpecRef.edition?,
-
-    EvidenceGraphId?,
-    InteropSurfaceId?
-  },
-
-  DefaultsConsumed := {DefaultId.PortfolioMode, DefaultId.DominanceRegime}
-⟩`
-
-**Payload‑pin note (informative).** When emitting RSCR triggers for interop‑driven changes, payload pins should include the edited edition/policy identifiers, the impacted scope, and the applicable crossing‑visibility pins (per `GCorePinSetId.PartG.CrossingVisibilityPins`) when crossings/UTS/paths are involved.
-
-#### G.13:4.2 - Interop kit objects & surfaces (pattern-governed; notation‑independent)
-
-All objects below are **conceptual**. Any concrete serialisation belongs to Annex/Interop or tooling notes and is not normative for Part‑G conformance.
-
-* **`ExternalIndexCard@Context`** — registration of an external source and its snapshot.
-
-  **Shape (conceptual):**
-  `⟨ ExternalIndexId, ProviderName?, ExternalIndexType, CoverageScope, Licence?, ExternalEdition, FreshnessWindow?, describedEntity := ⟨GroundingHolon, ReferencePlane⟩, Notes? ⟩`
-
-  **Intent.** Create a stable, citable “source card” so downstream artefacts can pin the *card edition* via `ExternalIndexRef.edition`, while the provider snapshot remains visible as `ExternalEdition` (do not echo provider snapshot ids into downstream cards; cite refs instead).
-
-* **`ClaimMapperCard@Context`** — a conceptual “mapping recipe” that yields FPF‑native artefacts from an external source.
-
-  **Shape (conceptual):**
-  `⟨ MapperId, ExternalIndexId, MappingPolicyRef, Targets{ClaimSheet|BridgeHints|SoSFeatureSet|UTSProposals}, PlaneMapRef?, ScaleEmbeddingSpecRef?, EvidenceGraphId?, CSLCProofStubs? ⟩`
-
-  **Notes.**
-
-  * This is **not** a shadow legality gate. It is an interop surface that **cites** governing definitions (`A.19`, `G.0`, `G.3`, `G.4`) and publishes the required pins for downstream audit/refresh.
-  * When cross‑plane or cross‑context reuse is implicated, the alignment outputs must use the existing crossing bundles (see `G.Core` linkage).
-  * Avoid “edition echo”: downstream artefacts cite `ExternalIndexRef.edition` and `ClaimMapperRef.edition` (and optional `PlaneMapRef.edition` / `ScaleEmbeddingSpecRef.edition`) rather than copying snapshot ids/editions as free fields.
-
-* **`SoSFeatureTransform@Context`** — declares how external signals become **CHR‑typed** SoS features (for DHC/dashboard usage and/or SoS‑LOG rule evaluation).
-
-  **Shape (conceptual):**
-  `⟨ SoSFeatureTransformId, Inputs{ClaimSheetId[] | ExternalSignalsRef}, SoSFeatureSetId, FeatureTypingRefs{CharacteristicId/ScaleId/CoordinateId}, ReferencePlane, EvidenceGraphId?, PathSliceId[]?, ProofHooks? ⟩`
-
-  **Notes.**
-
-  * The derivation is a **typing + provenance** surface; it does not introduce new comparators or new governance cards or legality gates.
-
-* **`ScaleEmbeddingSpec@Context`** — optional constraints for representation/space alignment used inside an alignment recipe.
-
-  **Shape (conceptual):**
-  `⟨ ScaleEmbeddingSpecId, IntendedUse, AllowedTransformFamily, RequiredPins{NormalizationMethodRef.edition?}, ProhibitedCoercions ⟩`
-
-  **Design intent.** Make any representation alignment *explicitly constrained* and edition‑pinned, instead of silently “creating a new scale”.
-  **LEX/UTS note (informative).** `ScaleEmbeddingSpec` is a new LEX head; when it mints a public id it must be published to UTS with twin labels (see `G.Core` / UTS profile).
-
-* **`IndexTelemetryPin`** — an emitted refresh input that makes interop changes RSCR‑visible.
-
-  **Shape (conceptual; RSCR‑typed):**
-  `⟨ triggerKindId: RSCRTriggerKindId, scope: PathSliceId[] | PathId[] | PatternScopeId, payloadPins{ExternalIndexId, ExternalIndexRef.edition, ClaimMapperRef.edition?, MappingPolicyRef?, PlaneMapRef.edition?, ScaleEmbeddingSpecRef.edition?, PathId[]?, PathSliceId[]?, UTSRowId[]?, …} ⟩`
-
-  **Publication.** Emitted to `G.11` as refresh input; recorded with canonical `RSCRTriggerKindId` causes.
-
-* **`InteropSurface@Context`** — a selector-facing or dashboard-facing summary of what interop publications and records exist and how they are pinned.
-
-  **Shape (conceptual):**
-  `⟨ InteropSurfaceId, ExternalIndexId, ExternalIndexRef.edition, MapperId?, ClaimMapperRef.edition?, MappingPolicyRef?, SoSFeatureSetId?, EvidenceGraphId?, PathSliceId[]?, PlaneMapRef.edition?, ScaleEmbeddingSpecRef.edition?, UTSRowId[] ⟩`
-
-  **Publication.** Published to UTS with twin labels as applicable.
-
-#### G.13:4.3 - Generation‑first interop flow (notation‑independent; governing-definition delegating)
-
-1. **Register source editions.** Author `ExternalIndexCard@Context` for each external source/snapshot used for SoTA authoring, including `ExternalEdition` and the `describedEntity` plane anchor.
-2. **Author mapping recipes.** Create `ClaimMapperCard@Context` describing which FPF artefacts are produced (ClaimSheets, BridgeHints, feature sets, UTS proposals), and which policies/specs constrain the mapping (policy refs + optional `PlaneMapRef` / `ScaleEmbeddingSpecRef`).
-3. **Produce FPF‑native inputs.** Use the alignment recipe outputs as inputs to:
-
-   * `G.2` harvesting (ClaimSheets / operator & object inventories / candidate bridge hints),
-   * `G.3` CHR typing (when numeric signals are formalized as CHR characteristics/scales/coordinates),
-   * `G.4` acceptance/threshold policies (when a downstream decision requires explicit CAL policy rather than telemetry),
-   * `G.12` dashboards (when derived SoS features are used as DHC slots).
-4. **Feed selection/parity/shipping without smuggling semantics.**
-
-   * `G.5` consumes the produced artefacts under its own governing spec refs and returns set‑valued outcomes (selector semantics remain governed by `G.5` + `G.Core`).
-   * `G.9` parity consumes pinned editions/windows and produces traceable parity reports.
-   * `G.10` shipping may include interop surfaces **as cited publications or records**; `G.13` does not govern shipping.
-5. **Emit telemetry and refresh causes.** Any change in external editions, alignment policies, plane maps, or embedding specs emits:
-
-   * a canonical `RSCRTriggerKindId` (per `G.Core`),
-   * a scope (`PathSliceId[]` and/or `PatternScopeId`),
-   * payload pins (editions/policies/UTS rows),
-     enabling `G.11` to plan slice‑scoped refresh.
-
-#### G.13:4.4 - Interfaces — minimal I/O standard (conceptual; kit‑only)
-
-| ID   | Interface   | Consumes  | Produces   |
-| ---- | ----------- | --------- | ---------- |
-| **G.13‑1 `Register_ExternalIndex`**  | Register `ExternalIndexCard@Context` | Provider metadata, scope, **ExternalEdition**, freshness, describedEntity anchor   | `ExternalIndexCard@Context` (+ UTS row when published)   |
-| **G.13‑2 `Map_ClaimsToFPF`**   | Apply `ClaimMapperCard@Context`   | `ExternalIndexCard@Context`, `MappingPolicyRef`, optional `PlaneMapRef`/`ScaleEmbeddingSpecRef`, optional EvidenceGraph hooks | `ClaimSheet@Context`, `BridgeHints`, optional `SoSFeatureSet@Context`, optional UTS proposals |
-| **G.13‑3 `Derive_SoSFeatures`**  | Produce CHR‑typed SoS features  | ClaimSheets / external signals refs, CHR typing refs, legality proof hooks | `SoSFeatureSet@Context` (CHR‑typed; provenance pinned)   |
-| **G.13‑4 `Publish_InteropSurface`**  | Publish interop summary | outputs of G.13‑2/‑3, UTS refs | `InteropSurface@Context` (+ UTS rows/twins) |
-| **G.13‑5 `Emit_IndexTelemetryPin`** | Emit refresh input  | edition/policy changes + scope + payload pins  | telemetry to `G.11` (typed causes + payload pins)   |
-| **G.13‑6 `Wire_To_SoTA_Pack`** | Provide shipping hook  | `InteropSurface@Context` + citations to upstream artefacts  | `G.10` pack hooks (as cited payload; no serialisation mandated)  |
-
-### G.13:5 - Extensions (pattern‑scoped; non‑core)
-
-`G.13` keeps provider/method specifics out of the kit core. Any such specificity appears as `GPatternExtension` blocks with stable **PatternScopeId**s. These modules are **wiring‑only**: they bind pins/editions/policies and cite the governing pattern rather than redefining semantics.
-
-#### G.13:5.1 - `G.13:Ext.ExternalIndexProviderWiring` *(Phase‑3 seed)*
-
-**PatternScopeId:** `G.13:Ext.ExternalIndexProviderWiring`
-**GPatternExtensionId:** `ExternalIndexProviderWiring`
-**GPatternExtensionKind:** `Phase3Seed`
-**GoverningPatternId:** `governing pattern not yet selected` *(Annex/Interop or a future dedicated interop-governing pattern)*
-**Uses:** `{G.13}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `ExternalIndexType`
-* `ExternalEdition` *(as published on `ExternalIndexCard@Context`)*
-* `Licence?`
-* `CoverageScope`
-* `ProviderChangePolicyId?` *(if provider‑specific “schema drift” handling exists)*
-
-**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
-**Notes (seed; wiring‑only):**
-
-* Provider‑specific ingestion choices (e.g., OpenAlex‑class, Crossref‑class, ORKG‑class, discipline repositories) **must not** become Part‑G‑wide norms in Phase‑2. This module only records which provider cards exist and which editions/policies are pinned.
-
-#### G.13:5.2 - `G.13:Ext.EmbeddingBasedAlignment` *(Phase‑3 seed; method‑specific wiring stub)*
-
-**PatternScopeId:** `G.13:Ext.EmbeddingBasedAlignment`
-**GPatternExtensionId:** `EmbeddingBasedAlignment`
-**GPatternExtensionKind:** `Phase3Seed`
-**GoverningPatternId:** `governing pattern not yet selected` *(Annex/Interop or a future dedicated interop-governing pattern; Phase-3 governing-pattern decision required)*
-**Uses:** `{G.13, A.19, E.5.2}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `ScaleEmbeddingSpecRef.edition`
-* `NormalizationMethodRef.edition?` *(when a declared normalization/representation transform is used)*
-* `MappingPolicyRef`
-* `EvidenceGraphId?` *(when evidence paths for alignment decisions are published)*
-
-**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
-**Notes (wiring‑only; post‑2015 practice orientation):**
-
-* “Embedding‑based” techniques are treated as **declared transforms** constrained by `ScaleEmbeddingSpec` and/or `NormalizationMethod` references, rather than as implicit semantics.
-* The module binds editions and policies; it does not define what is “similar enough”.
-
-#### G.13:5.3 - `G.13:Ext.EntityResolutionAndAliasDocking` *(interop‑specific; Phase‑3 seed)*
-
-**PatternScopeId:** `G.13:Ext.EntityResolutionAndAliasDocking`
-**GPatternExtensionId:** `EntityResolutionAndAliasDocking`
-**GPatternExtensionKind:** `Phase3Seed`
-**GoverningPatternId:** `governing pattern not yet selected` *(likely UTS-adjacent; requires Phase-3 governing-pattern decision)*
-**Uses:** `{F.17, E.10}`
-**⊑/⊑⁺:** `∅`
-**RequiredPins/EditionPins/PolicyPins (minimum):**
-
-* `UTSRowId[]` *(for externally‑sourced entities that become publicly citable)*
-* `ExternalIdAliasSetId?` *(labels only; canonical ids remain UTS ids)*
-* `TokenizationPolicyId?`
-
-**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
-**Notes (seed; wiring‑only):**
-
-* This module exists to prevent “ID drift by renaming” for externally sourced entities. It is intentionally a Phase‑3 seed until its governing pattern is selected.
-
-### G.13:6 - Archetypal grounding (informative; SoTA‑oriented)
-
-**System.** *Software architecture portfolio design.*
-Register an external scholarly index edition for “software architecture” concept neighborhoods. Align extracted technique/tactic claims into ClaimSheets and derive a CHR‑typed feature set (e.g., evidence depth, maturity). Use `G.5` to select a **set** of tactics under multi‑objective tradeoffs, and ship a SoTA pack that cites the interop surface.
-
-**Episteme.** *Science‑of‑science discipline dashboard.*
-Align external claim graphs (replication, standardisation, disruption‑style proxies) into CHR‑typed features for DHC series. Publish a dashboard slice that cites the external edition and alignment policy; refresh triggers fire when the external edition updates.
-
-**OEE/QD.** *Open‑ended environment generation.*
-Register external environment/task taxonomies as index cards. Align them into generator‑family registries (as cited publications or records), keeping coverage/regret strictly as telemetry inputs. Use refresh to re‑align when the taxonomy edition changes.
-
-### G.13:7 - Bias‑Annotation (informative)
-
-* **Vendor/tool bias.** The kit names conceptual surfaces only; it avoids vendor‑specific file formats or tooling claims.
-* **Metric‑authority bias.** External indicators are treated as *inputs* that must be typed, pinned, and evidenced; they are not authority by default.
-* **Representation bias.** Representation/embedding choices are forced into explicit `Spec` + edition pins (no hidden semantics).
-* **Discipline bias.** Interop supports pluralism by preserving explicit crossings and versioned alignments instead of forcing a single canonical external ontology.
-
-### G.13:8 - Conformance Checklist (CC‑G13; applies when G.13 surfaces are used)
-
-1. **CC‑G13‑CoreRef.** *(normative)* `G.13` implementations **MUST** satisfy the *effective* `G.Core` obligations declared by `G.13:4.1` (`GCoreLinkageManifest`), including trigger typing, Default Governing Definition Index citation, and crossing‑visibility pin discipline.
-
-2. **CC‑G13‑InteropIsNotASpecRefSurface.** *(delegated)* Interop surfaces **MUST NOT** introduce shadow legality/comparability gates; they cite `CN‑Spec`/`CG‑Spec`/CHR/CAL governing definitions and publish pins instead.
-   → delegate to `CC‑GCORE‑CN‑CG‑1`.
-
-3. **CC‑G13‑CrossingsAreExplicitWhenInteropTouchesPlanesOrContexts.** *(delegated)* Any cross‑plane/context reuse implied by alignment **MUST** be made explicit through the crossing visibility discipline.
-   → delegate to `CC‑GCORE‑CROSS‑1`.
-
-4. **CC-G13-PlanePenaltyPoliciesArePinned.** *(local; governing-definition citing)* If `PlaneMapRef` is used (or alignment implies plane‑level penalties), interop surfaces **MUST** publish the relevant policy‑id pins via the crossing‑visibility discipline, and any such policies **MUST** satisfy the constraints governed by `CG‑Spec` (cite `CC‑G0‑Φ`). Interop surfaces **MUST NOT** define interop‑local penalty functions.
-
-5. **CC‑G13‑SetReturnPreserved.** *(delegated)* Interop **MUST NOT** introduce hidden scalarisation or forced single‑winner selection.
-   → delegate to `CC‑GCORE‑SET‑1`.
-
-6. **CC‑G13‑DefaultClaimsAreCitationsOnly.** *(delegated)* Any mention of defaults (e.g., dominance regime, `PortfolioMode`) is a **citation** to the default's governing definition through `G.Core.DefaultGoverningDefinitionIndex`, not a local default statement.
-   → delegate to `CC‑GCORE‑DEF‑1`.
-
-7. **CC‑G13‑EditionDisciplineForInteropCards.** *(local)* `ExternalIndexCard@Context` and `ClaimMapperCard@Context` **MUST** expose edition pins (`ExternalIndexRef.edition`, `ClaimMapperRef.edition`). Any interop surface published to UTS **MUST** cite the relevant `…Ref.edition` values (incl. `PlaneMapRef.edition?`, `ScaleEmbeddingSpecRef.edition?`) when present.
-   FPF edition keys **MUST** appear only on `…Ref.edition` pins when a reference is present. Provider snapshot labels (e.g., `ExternalEdition` on `ExternalIndexCard@Context`) may exist on the source card, but **MUST NOT** be copied into downstream artefacts as free‑floating “edition fields”; downstream artefacts cite the corresponding `…Ref.edition` pins instead.
-   In particular, interop transforms **MUST NOT** perform illicit arithmetic on ordinal/compare‑only scales (e.g., averaging or subtraction); any aggregation must be via lawful CAL operators with explicit scale legality (cite `A.18` / `CC‑G0‑CSLC`).
-
-8. **CC‑G13‑SoSFeaturesAreCHRTypedAndLegal.** *(local; governing-definition citing)* If `SoSFeatureTransform@Context` is used, produced SoS features **MUST** be CHR‑typed via `FeatureTypingRefs{CharacteristicId/ScaleId/CoordinateId}` (governed by `G.3`) and any legality/units obligations must be satisfied via CSLC/CG governing definitions (cite `A.18` / `G.0` / `G.4`; do not invent interop‑local legality gates).
-
-9. **CC‑G13‑TelemetryEmitsCanonicalTriggerKinds.** *(delegated)* Interop‑driven changes (external edition bumps, mapping policy changes, plane‑map edits, embedding‑spec edits) **MUST** emit canonical `RSCRTriggerKindId` causes with explicit scope and payload pins.
-   → delegate to `CC‑GCORE‑TRIG‑1`, `CC‑GCORE‑TRIG‑2`, `CC‑GCORE‑TRIG‑3`, `CC‑GCORE‑TRIG‑4`.
-
-10. **CC‑G13‑IDContinuityForExternallySourcedIdentifiers.** *(delegated)* Interop publication **MUST** follow Δ‑discipline: no “renaming by meaning”; use aliases/deprecations as required.
-   → delegate to `CC‑GCORE‑ID‑1`, `CC‑GCORE‑ID‑2`.
-
-11. **CC‑G13‑NotationIndependence.** *(local)* Conformance is judged on the conceptual objects in `G.13:4.2`. Any serialisation is non‑normative and must not redefine semantics.
-   *(Cites `E.5.2` for notation independence.)*
-
-### G.13:9 - Common Anti‑Patterns and How to Avoid Them
-
-* **Anti‑pattern: “Format == spec”.** Treating an export schema (KG dump, JSON, RO‑Crate, etc.) as the normative definition.
-  **Remedy:** Keep `ExternalIndexCard` / `ClaimMapperCard` / `InteropSurface` as the conceptual specification; treat serialisation as an appendix/tooling concern.
-
-* **Anti‑pattern: Hidden scale invention.** An embedding similarity becomes a “score” without explicit typing/binding.
-  **Remedy:** Require `ScaleEmbeddingSpecRef` + edition pins and bind any derived features through CHR/CAL governing definitions.
-
-* **Anti‑pattern: Implicit plane/context reuse.** Reusing external concept graphs across contexts without explicit crossing pins.
-  **Remedy:** Publish crossing visibility pins and cite bridge/plane governing definitions; never fuse contexts “inside the aligner”.
-
-* **Anti‑pattern: Edition‑free dashboards.** Feeding externally derived rows into dashboards without pinned editions/policies.
-  **Remedy:** Pin `ExternalIndexRef.edition` and `ClaimMapperRef.edition`; emit RSCR triggers on changes.
-
-* **Anti‑pattern: Interop asserts defaults.** “Interop decides dominance regime / `PortfolioMode`.”
-  **Remedy:** Treat defaults as citations only (the relevant governing definition is cited through `G.Core.DefaultGoverningDefinitionIndex`).
-
-### G.13:10 - Consequences
-
-* **Interop becomes refresh‑ready.** External source drift produces typed RSCR causes with scopes/payload pins; refresh becomes slice‑scoped rather than global guesswork.
-* **Generation‑first authoring becomes cheaper.** External sources become controlled inputs into SoTA synthesis and declared set-surface exploration, not ad‑hoc audit decoration.
-* **Conceptual hygiene improves.** Explicit cards + edition pins reduce semantic leakage from tools/formats/providers.
-* **Cross‑tradition reuse becomes auditable.** Plane/context reuse is surfaced as crossings rather than embedded assumptions.
-
-### G.13:11 - Rationale
-
-FPF is a conceptual framework for disciplined creative work, not a data governance system. External scholarly infrastructure is valuable precisely because it provides fast, wide coverage—but without an explicit interop kit, that value is purchased by silently importing semantics (implicit comparisons, unpinned editions, hidden transformations).
-
-`G.13` resolves the tension by turning “interop” into **first‑class conceptual wiring**: cards/surfaces that pin editions, cite governing patterns, expose provenance hooks, and produce typed refresh causes, while leaving domain/tool specifics in `Extensions` (or Phase‑3 governing definitions).
-
-### G.13:12 - SoTA‑Echoing (post‑2015, for orientation; non‑normative)
-
-* **Scholarly claim graphs & open indexes.** Open research KGs and open scholarly indexes encourage claim‑level representations and concept taxonomies as interop substrates (post‑2015 ecosystem: KG‑style contribution graphs; open indexing initiatives). Treat these as *sources* registered via `ExternalIndexCard`, not as governing patterns.
-
-* **Neural representations for scientific text.** Transformer‑based scientific encoders (e.g., SciBERT‑class; citation‑aware paper representations such as SPECTER‑class; later retrieval‑oriented scientific embedding families) are useful as *alignment heuristics*. In FPF terms, they belong behind `ScaleEmbeddingSpec` + pinned editions/policies (see `G.13:Ext.EmbeddingBasedAlignment`).
-
-* **Schema matching & entity resolution (deep‑learning era).** Modern matcher families (deep entity matching, contrastive representation alignment, GNN‑assisted graph alignment) help populate interop cards, but must not become “implicit semantics”; record their use as policy‑bound wiring in extensions.
-
-* **Systematic review process modernisation.** PRISMA‑2020‑class review records (post‑2015 practice) are valuable as evidence anchors and coverage telemetry; treat them as evidenced inputs (EvidenceGraph anchors + pinned editions/windows), not as legality gates.
-
-* **QD / Illumination and OEE declared set surfaces.** Post‑2015 QD (MAP‑Elites successors, CMA‑ME line, differentiable QD toolkits) and OEE (POET‑class and related environment/method co‑evolution lines) often rely on external taxonomies and environment corpora. Interop should expose those as pinned external editions and keep coverage/regret as telemetry inputs—never as implicit dominance.
-
-### G.13:13 - Relations
-
-**Builds on:** `G.Core`.
-**Imports:** `G.2`, `G.3`, `G.4`, `G.5`, `G.6`, `G.7`, `G.9`, `G.10`, `G.11`, `A.19`, `A.18`, `G.0`, `F.17`, `E.5.2`, `E.18`.
-**Publishes to:** UTS (twin labels where applicable); refresh inputs to `G.11`; shipping hook surfaces to `G.10` (as cited publications or records).
-**Relates to:** `G.12` (dashboards), `G.8` (SoS-LOG bundle surfaces) when interop-derived publications or records are consumed there.
-
-### G.13:14 - Author’s quick checklist (informative)
-
-1. Register each external source snapshot as an `ExternalIndexCard@Context` with explicit `ExternalEdition`.
-2. Author a `ClaimMapperCard@Context` with explicit `MappingPolicyRef` and required edition pins.
-3. If you derive SoS features, declare a `SoSFeatureTransform@Context` and cite CHR typing refs and provenance hooks.
-4. Publish an `InteropSurface@Context` that cites all active `…Ref.edition` values and UTS rows.
-5. On any external edition or policy change, emit canonical RSCR trigger causes with explicit scope + payload pins.
-6. Keep provider/tool specifics in `Extensions` (or Phase‑3 seed) and do not let formats redefine semantics.
-
-### G.13:End
-
-# **Part H – Glossary & Definitional Pattern Index**
-
-| §   | ID & Title                     | Concise reminder                                               |
-| --- | ------------------------------ | ---- | -------------------------------------------------------------- |
-| H.1 | Alphabetic Glossary            |  Every `U.Type`, relation & operator with four‑register naming. |
-| H.2 | Definitional Pattern Catalogue |  One‑page micro‑stubs of every definitional pattern for quick lookup.  |
-| H.3 | Cross‑Reference Maps           |  Bidirectional links: Part A ↔ Part C ↔ Part B terms.           |
-
-
-# **Part I – Annexes & Extended Tutorials**
-
-| §   | ID & Title                  |  Concise reminder                                                |
-| --- | --------------------------- | --- | --------------------------------------------------------------- |
-| I.1 | Deprecated Aliases          |  Deprecated names kept as alias labels for continuity; aliases do not carry current semantics. |
-| I.2 | Detailed Walk-throughs | Worked entry readings for high-risk or compact-insufficient entry neighborhoods; compact-index-only is a complete admissible posture when enough. |
-| I.3 | Change‑Log (auto‑generated) |  Version history keyed to DRR ids.                               |
-| I.4 | External Standards Mappings |  Trace tables to ISO 15926, BORO, CCO, Constructor‑Theory terms. |
-
-
-## I.2 - Detailed Walk-throughs
-
-`I.2` is the canonical worked entry-reading support role in this architecture.
-An `I.2` item can serve as one entry-reading vignette, one didactic learning
-walkthrough, or both. When it serves as entry reading, its `E.11` force is
-limited to disambiguation, wrong-pattern rejection, entry-load reclassification,
-and admissible entry stop.
-
-`worked entry reading` here is an explanatory reading case. It is not
-`U.Work`, not a workflow, not a route script, and not an execution trace.
-
-`I.2` carries expanded reading only when compact `J.4` guidance plus local
-`Problem frame` recognition are insufficient for one high-risk,
-often-misclassified, repeatedly failed, retrieval-facing, or materially new
-entry neighborhood. Compact-index-only posture is a complete admissible entry result
-when the `J.4` row and pattern `Problem frame` are enough.
-
-Each worked entry reading keeps recoverable:
-
-- `Case signal`
-- `Initial uncertainty`
-- `Plausible candidate patterns`
-- `Tempting wrong pattern, wrong defining episteme, or false family`
-- `Disambiguating fact`
-- `Recognition repair or entry-load reclassification`
-- `Actual governing FPF pattern body or projection role`
-- `Admissible entry stop`
-- `What not to infer`
-
-### I.2.1 - Project alignment
-
-- **Case signal:** "We keep mixing responsibility, method, plan, and what
-  actually happened."
-- **Posture:** compact-index-only is normally sufficient.
-- **Initial uncertainty:** the reader may think FPF starts with the whole
-  specification, but the entry load is narrower: align context, roles, method vocabulary, work vocabulary,
-  and actual execution.
-- **Plausible candidate patterns:** `A.1.1`, `A.15`, `A.15.2`, `A.15.3`,
-  `B.5.1`.
-- **Nearby patterns:** `F.11` for method vocabulary and work vocabulary; `F.9` for bridge
-  discipline; `F.17` for an early term sheet when vocabulary is the live
-  stabilizing result.
-- **Tempting wrong pattern:** treat `F.17` or `E.9` as a universal first stop.
-- **Actual governing FPF pattern body or projection role:** `A.15` and its neighbors govern
-  the role, method, plan, and run split; `F.17` is a stabilizing lexical projection,
-  not the whole alignment governing pattern.
-- **Admissible entry stop:** the reader has opened the right alignment governing pattern or has
-  enough first shared vocabulary to proceed.
-- **What not to infer:** no universal first chain is implied.
-
-### I.2.2 - Partly-said cue and language-state discovery
-
-- **Case signal:** "This phrase matters, but it is not yet a claim."
-- **Initial uncertainty:** the reader can be seeing one cue, one early
-  language-state requirement, one publication seam, or one L/A/D/E-classified claim family.
-- **Plausible candidate patterns:** `C.2.LS`, `A.16`, `A.16.1`, `A.16.2`,
-  `B.4.1`, `B.5.2.0`.
-- **Tempting wrong pattern:** harden the cue into `A.6.P`, `A.6.Q`, `A.6.A`,
-  or `C.25` before it is stable enough to be a claim, action, or quality
-  object.
-- **Disambiguating fact:** the phrase still needs preservation and entry-load
-  typing; it is not yet an endpoint claim.
-- **Decision movement:** if the phrase is still a cue, stay in `C.2.LS` /
-  `A.16`; if it must be preserved across a seam, inspect `A.16.1` / `B.4.1`;
-  if it is already a boundary claim, inspect `A.6.B` / `A.6.C`; if it is being
-  forced into a quality endpoint or action-invitation endpoint too early, reject `A.6.Q`, `A.6.A`, and
-  `C.25` for now.
-
-- **Actual governing FPF pattern body or projection role:** `C.2.LS`, `A.16*`, and
-  `B.4.1` are the first governing patterns for cue preservation and entry plurality;
-  `A.6.B` / `A.6.C` become first governing patterns only after boundary claim structure is
-  actually live.
-- **Admissible entry stop:** cue preserved, entry plurality opened, or entry-load
-  reclassified into the right boundary-claim pattern.
-- **What not to infer:** do not recast the cue as a finished requirement, work
-  record, quality claim, or action invitation too early.
-
-### I.2.3 - Boundary unpacking and claim decomposition
-
-- **Case signal:** "The API or contract-language description says X."
-- **Initial uncertainty:** the reader may be seeing one boundary description,
-  an admissibility gate, a duty, an evidence claim, an action invitation, or an
-  interface/access note.
-- **Plausible candidate patterns:** `A.6`, `A.6.B`, `A.6.C`.
-- **Nearby patterns:** `A.6.RSIG` if first-contact recognition is still live;
-  `A.6.P` for relation wording; `A.6.Q` for quality wording; `A.6.A` for
-  action invitation wording; `E.17` for publication or view question.
-- **Tempting wrong pattern:** treat an API/access phrase as a promise of
-  downstream effect, or treat one boundary phrase as a complete Contract Bundle.
-- **Disambiguating fact:** the sentence mixes admissibility, gate, duty, evidence, and action-invitation
-  requirements, or the encountered description's defining `U.Episteme` is not yet
-  clear.
-- **Recognition repair or entry-load reclassification:** use `A.6.RSIG` if the
-  first question is "what description is this?"; otherwise inspect `A.6.B`
-  / `A.6.C` for atomic boundary claim structure.
-- **Actual governing FPF pattern body or projection role:** `A.6.B` and `A.6.C` govern
-  L/A/D/E-classified claim decomposition; `A.6.RSIG` only governs first-contact
-  description recognition.
-- **Admissible entry stop:** boundary claim pattern opened, or one Claim Register or
-  L/A/D/E-classified atomic claim set is ready for the next governing FPF pattern.
-- **What not to infer:** one contract-language or API cue does not by itself create one
-  work action, quality claim, or evidence relation.
-
-### I.2.4 - Admissible comparison, candidate-pool policy, selection, and selected-set publication
-
-- **Case signal:** "We need a shortlist, not one winner."
-- **Initial uncertainty:** the live entry load can be comparison substrate,
-  candidate-pool policy, one local choice, call planning, or selected-set
-  publication.
-- **Plausible candidate patterns:** `A.19.CN`, `A.17-A.19`, `C.18`, `C.19`,
-  `G.0`, `G.5`.
-- **Nearby patterns:** `C.11` if the entry load narrows to one local decision
-  doctrine; `C.24` if the next honest artifact is a call plan or checkpoint
-  return; `A.19.CPM` and `A.19.SelectorMechanism` if comparator/selector
-  structure is live.
-- **Tempting wrong pattern:** treat `C.11` as the first governing pattern while the real
-  entry load is candidate-pool policy or selected-set publication.
-- **Disambiguating fact:** the output remains one governed set, shortlist, or
-  selected-set publication question rather than one single winner.
-- **Decision movement:** if the work is still forming a candidate pool, inspect
-  `C.19`; if the set is ready to be published as a governed shortlist, inspect
-  `G.5`; if the question has narrowed to choosing one option under a local
-  decision doctrine, inspect `C.11`; if the missing object is a call plan or
-  planned comparison setup, inspect `C.24`.
-
-- **Actual governing FPF pattern body or projection role:** `C.19` for candidate-pool
-  policy, `G.5` for selected-set publication, `C.11` for local choice,
-  `C.24` for call-planning/checkpoint-return.
-- **Admissible entry stop:** the correct first governing pattern is opened, or an admissible
-  candidate-pattern set is stabilised without implying sequence.
-- **What not to infer:** do not force a one-winner answer when the honest
-  output is still a governed selected set.
-
-### I.2.5 - Generator, SoTA, or Portfolio Kit
-
-- **Case signal:** "We need a reusable search/harvest/portfolio scaffold, not
-  one recommendation."
-- **Posture:** compact-index-only is normally sufficient unless repeated
-  misclassification makes a worked reading necessary.
-- **Initial uncertainty:** the reader can confuse generator/scaffold authoring
-  with one-off recommendation, one comparison, one selected-set publication, or
-  tooling choice.
-- **Plausible candidate patterns:** `A.0`, `G.0`, `G.1`, `G.2`, `G.5`.
-- **Nearby patterns:** `B.5.2.1` and `C.17-C.19` when creative search,
-  novelty, or explore/exploit policy is already central; `G.10` or `G.11` when
-  shipping or refresh is live.
-- **Tempting wrong pattern:** jump to `G.5` publication or a local selector
-  before the reusable generator/SoTA scaffold is declared.
-- **Disambiguating fact:** the generator, SoTA, or portfolio kit must be reusable across
-  searches, portfolios, or updates.
-- **Actual governing FPF pattern body or projection role:** `G.1` and `G.2` for generator and
-  SoTA support; `G.5` only when selected-set publication is live.
-- **Admissible entry stop:** scaffold/generator pattern body opened, or portfolio
-  publication pattern identified.
-- **What not to infer:** not every generator/SoTA entry load is a tool implementation or
-  one immediate publication obligation.
-
-### I.2.6 - Same-entity rewrite, explanation, and comparative reading
-
-- **Case signal:** "We need to explain the same described entity for another audience."
-- **Initial uncertainty:** explanation, rendering, repair, representation
-  transition, and comparison are all nearby, and the reader can accidentally
-  mint one second described entity.
-- **Plausible candidate patterns:** `A.6.3.CR`, `A.6.3.RT`, `E.17.EFP`,
-  `E.17.ID.CR`.
-- **Nearby patterns:** `E.17.AUD.LHR` for pressured-head local repair;
-  `E.17.AUD.OOTD` for `PublicationUnit` stability.
-- **Tempting wrong pattern:** explanation-as-new-object or repair-as-second-rule
-  track.
-- **Disambiguating fact:** the governed object stays the same; only rendering,
-  reading posture, or explanatory framing changes.
-- **Recognition repair or entry-load reclassification:** move toward same-entity
-  rewrite or explanation-facing rendering while rejecting second-object drift.
-- **Actual governing FPF pattern body or projection role:** `A.6.3.CR` for same-entity
-  retextualization, `A.6.3.RT` for representation transition, `E.17.EFP` for
-  explanation-facing rendering, `E.17.ID.CR` for bounded comparative reading.
-- **Admissible entry stop:** same-entity rewrite opened or explanation-facing
-  rendering stabilized with source pins.
-- **What not to infer:** explanation or comparison does not by itself justify a
-  second semantic track.
-
-### I.2.7 - Temporal claim adequacy: state -> rate -> Dyn2
-
-- **Case signal:** "Adding review capacity for two sprints will double backlog reduction rate."
-- **Initial uncertainty:** the reader may be seeing ordinary prose, one state reading or snapshot, one measured rate, one intervention-sensitive temporal claim, a benchmark claim, a quality claim, a viability claim, a promise, a causal claim, an evaluation claim, a dynamics-law claim, or a residual QL question.
-- **Plausible candidate patterns:** `C.27`, `C.16`, `A.3.3`, `B.1.4`, `B.1.6`, `C.24`, `G.9`, `C.25`, `C.26.3`, `C.26`.
-- **Tempting wrong pattern:** treat every speed or rhythm word as C.27, or treat every C.27 card as benchmark proof, causal proof, service promise, quality claim, viability claim, reusable transition law, or QL activation.
-- **Disambiguating fact:** the phrase changes admissible use only when effort, window, resistance or cost, basis, and reopen condition matter for action.
-- **Recognition repair or question reclassification:** keep a snapshot as Dyn0; keep a measured trend or rate as Dyn1 and inspect `C.16` when measurement construction or comparability is live; use `Dyn2TemporalClaimAdequacyCard` when the intervention-sensitive temporal claim itself changes admissible use; move the other question to the named FPF pattern that governs it.
-- **Actual governing FPF pattern or projection role:** `C.27` carries authored temporal-claim adequacy; `C.16` carries measurement construction and comparability; `A.3.3` carries reusable transition law or formal dynamics model; `G.9` carries benchmark parity; `C.25` carries quality-family adequacy; `C.26.3` carries viability-envelope regulation; `C.26` carries residual QL reading only after ordinary temporal, measurement, work, benchmark, proxy, and dynamics readings are exhausted.
-- **Admissible entry stop:** ordinary prose, Dyn0, Dyn1 with `C.16` when measurement construction or comparability is live, a local `Dyn2TemporalClaimAdequacyCard`, a boundary-crossing `Dyn2TemporalClaimProfile`, or a named neighboring FPF pattern relation.
-- **What not to infer:** faster is not automatically better, a velocity target is not proof of improvement, a dynamic benchmark is not benchmark superiority, and a rhythm or inertia word does not by itself mint a new dynamics object.
-
-### I.2.8 - Causal-use and counterfactual-support repair
-
-- **Case signal:** "This policy would have prevented harm", "this intervention caused the improvement", "this fairness result is causal", "this method is better on counterfactual outcomes", or "these simulated counterfactuals prove the decision".
-- **Initial uncertainty:** the reader may be seeing association, a metric disparity, temporal change, method execution, work-plan use, work occurrence, simulation output, deontic boundary language, or a real causal-use claim.
-- **Plausible candidate patterns:** `C.28`, `A.10`, `B.3`, `C.11`, `C.19`, `C.24`, `C.26`, `C.27`, `D.5`, `G.5`, `G.9`, `A.15`, `A.3.2`, `A.6`, `C.16`.
-- **Tempting wrong pattern:** use `D.5` to treat metric fairness as causal fairness; use `G.9` to compare methods across different causal rungs; use `C.26` to hide causal under quantum-like wording; use `C.27` to treat rate change as causal effect; use `A.15` or `A.3.2` to treat a sampling method, intervention procedure, or target-trial recipe as causal support by itself; use `A.6` to turn causal evidence into a duty or release gate.
-- **Disambiguating fact:** the decisive question is not whether a causal-looking word appears. The decisive question is whether the claim is used to publish, choose, deploy, assure, audit, benchmark, or dispatch a causal use governed by `C.28`: effect, intervention success, counterfactual comparison, causal fairness, policy optimality, causal evidence support, off-policy/causal-RL evaluation, or causal method superiority.
-- **Recognition repair or question reclassification:** if only a measured value is live, repair in `C.16`; if only rate, trend, or temporal adequacy is live, repair in `C.27`; if only method, work, or work-plan structure is live, repair in `A.15` and `A.3.2`; if only boundary duty or agreement language is live, split with `A.6`; if only residual QL modeling language is live, use `C.26` only after ordinary measurement, temporal, work, benchmark, proxy, and dynamics readings are exhausted.
-- **Actual governing FPF pattern body or projection role:** `C.28` carries causal-use question, causality-ladder rung, claim kind, causal estimand, identification, counterfactual sampling realizability, causal evidence support basis, support record and verdict, supported use, and unsupported use. `A.10` carries evidence/provenance path, `B.3` carries assurance consequence, `D.5` carries ethical/fairness audit, `G.5` carries method dispatch, and `G.9` carries benchmark parity only as consumers of `C.28` support.
-- **Admissible entry stop:** a cheap downgrade sentence, a local `CausalUseTriageRecord`, a local or durable `CausalUseEvidenceDesignRecord`, a `CausalUseSupportVerdict`, or a named neighbor-pattern use that cites `C.28` without claiming broader authority.
-- **What not to infer:** a randomized procedure is not automatically counterfactual support; a simulation is not realized counterfactual data; a target-trial phrase is not proof of identification; a fairness metric is not causal fairness; a method benchmark is not comparable if methods sit on different causal rungs or estimands; and a causal support record does not by itself create a duty, promise, commitment, release gate, or admissibility predicate.
-
-# **Part J – Indexes & Navigation Aids**
-
-
-| §   | ID & Title               |  Concise reminder                                        |
-| --- | ------------------------ | --- | ------------------------------------------------------- |
-| J.1 | Concept‑to‑Pattern Index |  Quick jump from idea (“boundary”) to pattern (§, id).   |
-| J.2 | Pattern‑to‑Example Index |  Table listing every archetypal grounding vignette.      |
-| J.3 | Principle‑Trace Index    |  Maps each Pillar / C‑rule / P‑rule to concrete clauses. |
-| J.4 | First Practical Entry Neighborhood Index | Compact entry-neighborhood index matching the public entry families without route-state, authority-reference, or output columns. |
-
-## J.4 - First Practical Entry Neighborhood Index
-
-This index is informative navigation only.
-It helps one reader compare plausible first pattern entries under one live
-entry load. It is not one route table, not one workflow, not one learning syllabus,
-and not one pattern-local recognition role. It is one compact comparison of
-nearby starting points.
-
-Plain reading: choose by what you are really trying to decide, not by document
-order. A row names first patterns to inspect, plausible wrong first stops, and
-where entry can stop without pretending there is a required workflow.
-
-Plain column key: entry neighborhood = nearby starting-point cluster; first
-honest entry load = what you are really trying to decide or stabilize; candidate
-patterns = first patterns to inspect; admissible entry stop = enough to proceed
-without pretending there is a workflow.
-
-| Entry neighborhood | First honest entry load or case signal | Candidate patterns | Nearby patterns and entry-load reclassifications | First admissible entry stop | Not this entry when | Worked reading and lexical-query support |
-| --- | --- | --- | --- | --- | --- | --- |
-| Project alignment | "We keep mixing responsibilities, working method, plans, and what actually happened." | `A.1.1`; `A.15`; `A.15.2`; `A.15.3`; `B.5.1` | `F.11` when method vocabulary or work vocabulary is itself unstable; `F.9` when bridge discipline is live; `F.17` as a typical vocabulary-stabilizing output | the right alignment pattern is opened, or a first shared work/term form is stable enough to proceed | not when the live entry load is already comparison, boundary claim routing, or SoTA/generator scaffold design | `I.2.1` gives compact-index-only posture; ToC cues stay sparse |
-| Partly-said cue and language-state discovery | "Something important is there, but it is too early to publish as a settled claim, requirement, or work record." | `C.2.LS`; `A.16`; `A.16.1`; `A.16.2`; `B.4.1`; `B.5.2.0` | endpoint claim, action, or quality patterns become candidates only after the cue is mature enough | cue preserved, language-state cue typed, or entry plurality opened without endpoint hardening | not when the claim is already stable enough for a L/A/D/E-classified boundary claim set or endpoint record | `I.2.2` worked reading; lexical cues may mention "vague cue", "not yet a claim" |
-| Boundary unpacking and claim decomposition | "A contract, API, protocol, SLA, acceptance, or compliance sentence mixes law, gate, duty, evidence, or action." | `A.6`; `A.6.B`; `A.6.C` | `A.6.RSIG` if first-contact recognition of the boundary description is still live; `A.6.P`, `A.6.Q`, `A.6.A` when relation, quality, or action wording is live | boundary claim pattern opened, or an L/A/D/E-classified atomic claim set or Claim Register is ready for the next governing FPF pattern | not when the phrase is only a partly-said cue, or when a full L/A/D/E-classified claim set already exists | `I.2.3` worked reading; ToC cues should not turn API wording into generic contract authority |
-| Admissible comparison, candidate-pool policy, selection, and selected-set publication | "We need comparison, a shortlist, a live pool, a call-planning distinction, or a selected set without forcing one winner too early." | `A.19:0`; `A.17-A.19`; `A.19.CN`; `C.18`; `C.19`; `G.0`; `G.5` | `C.11` when the entry load narrows to one local decision doctrine; `C.24` when the next honest C.24 object is `CallPlan` or `CheckpointReturn`; `A.19.CPM` and `A.19.SelectorMechanism` when comparator/selector structure is live | candidate-pool policy, comparison substrate, local choice, call-plan, or selected-set publication pattern identified honestly | not when a selector mechanism or selected-set publication pattern is already settled elsewhere | `I.2.4` worked reading; lexical cues may include "shortlist not winner" and "acceptable option set" |
-| Generator, SoTA, or portfolio kit | "The work is to publish a reusable search, harvest, generator, selector, or portfolio scaffold, not one recommendation." | `A.0`; `G.0`; `G.1`; `G.2`; `G.5` | `B.5.2.1` and `C.17-C.19` when creative search, novelty, or explore/exploit policy is already central; `G.10` or `G.11` when shipping or refresh is live | kit or scaffold entry load opened, or portfolio or set publication pattern identified | not when the entry load is only one local comparison or one one-off recommendation | `I.2.5` gives compact-index-only posture unless repeated misclassification makes depth necessary |
-| Same-entity rewrite, explanation, and comparative reading | "We need to restate, explain, render, repair, or compare the same claim-bearing `PublicationUnit` without quietly changing what it is about." | `A.6.3.CR`; `A.6.3.RT`; `E.17.EFP`; `E.17.ID.CR` | `E.17.AUD.LHR` and `E.17.AUD.OOTD` when pressured-head repair or `PublicationUnit` stability is live | same-entity rewrite, representation transition, explanation-facing rendering, or bounded comparative reading opened | not when the entry load is one new `U.Episteme`, new rule track, or independent `PublicationUnit` | `I.2.6` worked reading; ToC cues should include "same unit, different audience" |
-| Temporal claim adequacy under effort, window, and resistance | "This should speed up, slow down, recover sooner, stabilize, keep cadence, or improve throughput under a changed effort, tool-use, rollout, or policy." | `C.27`; `C.16` when only measurement is live; `A.3.3` when reusable transition law or formal model is live | `B.1.4`, `B.1.6`, `C.18.1`, `C.19`, `C.22.1`, `C.24`, `C.25`, `C.26`, `C.26.3`, or `G.9` as the other question requires | ordinary prose, Dyn0, Dyn1 with `C.16` when measurement construction or comparability is live, `Dyn2TemporalClaimAdequacyCard`, `Dyn2TemporalClaimProfile`, or a named neighboring FPF pattern relation | not when the phrase is only a speed metaphor, one state reading or snapshot, one measured rate, a service promise, a benchmark harness, or a residual QL cue without an intervention-sensitive temporal claim | `I.2.7` state-to-rate-to-Dyn2 worked reading; lexical cues: speed, velocity, rhythm, cadence, throughput, recovery, braking, stabilization |
-| Causal-use and counterfactual-support repair | "We want to say this caused that, this intervention would work, this policy would have prevented harm, this fairness result is causal, or this method is better on a counterfactual benchmark." | `C.28`; `A.10`; `B.3`; `D.5`; `G.5`; `G.9` | `C.16` when only a metric, score, or reading is live; `C.27` when only state, rate, or intervention-sensitive temporal adequacy is live; `C.26` when the phrase is only a residual quantum-like modeling cue; `A.15` or `A.3.2` when the question is only method, work-plan, or work-occurrence structure; `A.6` when a mixed causal/deontic boundary sentence must be split | causal-use triage/card names rung, claim kind, estimand, support basis, support verdict, supported use, and unsupported use; or the wording is downgraded to association, metric, temporal, simulation-only, QL, method, work-plan, work-occurrence, or boundary-claim support | not when the sentence only records observed association, one measured metric, one process execution, one schedule, one boundary duty, or one simulation trace with no causal-use claim | `I.2.8` worked reading; lexical cues: caused, would have prevented, effect, intervention, counterfactual, target trial, policy optimality, causal fairness, causal evidence, counterfactual data, method improves |
-
-Rows are for likely first practical entries, common wrong first guesses, or
-public/retrieval-facing entry points. A pattern does not need a `J.4` row merely
-because it exists.
-Index maintainers update a row when the pattern becomes a practical entry point
-or its first-pattern choice changes; ordinary pattern authors only need the
-pattern's own `Problem frame` and any live wrong-pattern boundary to be clear.
-
-A `J.4` row usually stays bounded: `3-6` candidate patterns, `1-3` nearby or
-reclassification cues, one short not-this-entry sentence, and one short admissible
-entry-stop phrase. The row remains compact enough to read in one pass and
-specific enough not to smuggle workflow.
-
-`J.4` remains the compact projection role for these rows. It does
-not become the applicable governing pattern body for the entry loads or relations it points to. If a
-referenced pattern's own `Problem frame` does not expose its use situation, the
-pattern itself remains under-authored. If a row cannot stay compact, the depth
-belongs in `I.2`.
-
-# **Part K  – Lexical debt**
-
-## Mandatory replacement map for measurement terms
-
-> **Rule:** In all **normative** content (specifications, data schemas, etc.), the deprecated terms **“axis”** and **“dimension”** (and their plural or compound forms) **MUST NOT** be used to denote a measurable aspect. Use **Characteristic** in the Tech register instead. Other colloquial terms should be mapped to canonical terms as listed below. In **Plain** narrative, deprecated aliases may appear _only on first use_ and only if paired with their canonical equivalent for clarity.
-
-| Deprecated term (context) | **Replace with** (Tech register) | Plain register allowance | Canonical Reference |
-| --- | --- | --- | --- |
-| axis (of measurement); dimension (of a system or quality) | **(disallowed in Core prose)** → use **Characteristic** | No parenthetical allowance in Core; use **Characteristic**, **Measure**, or **Coordinate** only | A.17 (CHR-NORM) |
-| point (on an axis); data point | **Coordinate** (on a Scale) | “point” _(in explanations only, e.g. “a point on the scale”)_ | A.18 (CSLC-KERNEL) |
-| metric value; raw score | **Coordinate** (or **Value**) | “value” _(acceptable in plain usage when context is clear, but formally it’s a Coordinate tied to a Characteristic)_ | A.18, C.16 |
-| score (composite or normalized) | **Score** (produced via a **ScoringMethod**) | “score” _(if needed in narrative, ensure it’s explained as a result of a defined ScoringMethod)_ | A.17/A.18 (ScoringMethod/Score) |
-| unit dimension; unit axis | **Unit** (of a Scale) | “unit” _(plain usage okay)_ | A.18 (Scale/Unit) |
-| metric (as a noun) | **Avoid in Tech and as primitive** → use **`U.DHCMethodRef` / `U.Measure` / Score** | “metric” _(Plain only on first use, with pointer to canonical terms)_ | C.16 § 5.1 (L5), A.18 |
-
-## Temporal claim lexical debt from C.27
-
-Retire untyped velocity, acceleration, cadence, agility, rhythm, inertia, and dynamics language when it is used outside a named C.27, C.16, or A.3.3 reading. Repair each occurrence to one of: ordinary prose, Dyn0 state reading or snapshot, Dyn1 measured rate or trend, Dyn2 intervention-sensitive temporal claim, C.16 measurement construction, or A.3.3 reusable transition law or model.
-
-Russian/English Plain-Tech twins for authoring:
-
-| Russian Plain | Safe Tech reading |
-| --- | --- |
-| скорость | rate, throughput, or tempo reading |
-| ускорение | rate-change or intervention-sensitive temporal claim |
-| усилие | planned effort, work, resource, or input basis, or intervention basis |
-| инерция | resistance/inertia proxy, not a physical mass analogue by default |
-| ритм | bearer/anchor/window/proxy relation |
-| динамика второй производной | Dyn2 claim reading, not second-derivative ontology |
-
-## Migration debt from A.2.6 (Scope, ClaimScope, WorkScope)
-
-### Deprecations (normative)
-
-The following terms **MUST NOT** name scope objects in normative text, guards, or conformance blocks:
-
-* *applicability*, *envelope*, *generality*, *capability envelope*, *validity* (as a characteristic name).
-
-Use instead:
-
-* **`U.ClaimScope`** (*Claim scope*, nick **G**) for epistemes;
-* **`U.WorkScope`** (*Work scope*) for capabilities;
-* **`U.Scope`** only when explaining the abstract mechanism (not in guards).
-
-### Affected locations and required edits (normative)
-
-Editors SHALL apply the following replacements:
-
-1. **Part C.2.2 (F–G–R).**
-
-   * Replace any internal definition of “Generality” with a normative reference to **A.2.6 §6.3** (*Claim scope (G)*).
-   * Where “abstraction level” is mentioned as G, replace with “Claim scope (where the claim holds)”; keep **AT** (AbstractionTier) only as optional didactics (non‑G).
-   * Ensure composition examples use **intersection/SpanUnion** for G, not ordinal “more/less general”.
-
-2. **Part C.2.3 (Formality F).**
-
-   * No change to F itself.
-   * Any example that implies “raising F widens G” MUST be rephrased: F changes expression form; G changes only via **ΔG**.
-
-3. **Part A.2.2 (Capabilities).**
-
-   * Replace “capability envelope/applicability” with **`U.WorkScope`**.
-   * Method–Work gates MUST test **Work scope covers JobSlice**, with **measures** and **qualification windows** bound.
-
-4. **Part B (Bridges & CL).**
-
-   * Add a note: **CL penalties apply to R**, not to **F/G**; mapping MAY recommend **narrowing** the mapped scope (best practice).
-
-5. **Part E (Lexicon).**
-
-   * Add entries for **Claim scope (G)**, **Work scope**, **Scope** (mechanism).
-   * Mark listed deprecated terms as **deprecated aliases** allowed only in explanatory notes.
-
-6. **ESG & Method–Work templates.**
-
-   * Replace any “applicability”/“envelope” guard phrasing with **ScopeCoverage** (see §10).
-   * Require explicit **`Γ_time`** selectors in all scope‑sensitive guards.
-
-### Migration playbook (informative)
-
-1. **Inventory** scope‑like phrases across your Context (search: applicability, envelope, generality, capability envelope, valid\*).
-2. **Classify** each occurrence as **Claim scope** (episteme) or **Work scope** (capability); replace any “scope characteristic(s)” with “scope object”, “scope type”, or “USM scope object” depending on sentence grammar.
-3. **Rewrite** guards to use `Scope covers TargetSlice` + explicit **`Γ_time`**; remove “latest”.
-4. **Publish** any required **Bridges** with **CL** for Cross‑context usage.
-5. **Document** ΔG changes separately from evidence freshness (R).
-
-### Alias and body-prose continuity (informative)
-
-Existing body prose may keep older phrasing only when it is explanatory and carries no current requirement. All **guards, conformance checklists, and state assertions** MUST be rewritten to the USM terms and semantics.
-
-### Change Log (normative migration record)
-
-* **A.2.6 introduced.** Defines `U.ContextSlice`, `U.Scope`, `U.ClaimScope (G)`, `U.WorkScope`; sets algebra and guard patterns.
-* **Deprecated labels.** “applicability / envelope / generality / capability envelope / validity” as characteristic names.
-* **Edits required.** C.2.2 (G = Claim scope), A.2.2 (Work scope for capabilities), Part B (CL→R note), Part E (Lexicon updates), ESG/Method–Work guard templates (ScopeCoverage + `Γ_time`).
-* **No change.** C.2.3 (F) unchanged; its examples updated only for wording consistency.
+* **GoverningPatternId:** `G.4` *(Acceptance/threshold/unknown handlin
