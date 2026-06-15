@@ -1,29 +1,2229 @@
-ether the text names an umbrella, a narrowed branch, a primary `EntityOfConcern`, a first useful move, or wider work/process outside that selected EntityOfConcern or claim before that wording is allowed to carry architectural claim kind or admissible-use boundary. When naming or terminology repair has FPF-governed use, the run record **MUST** leave one explicit `F.18 -> A.6.P` account on disk: candidate heads or phrases reviewed, mint-vs-reuse decision, provisional F.18 winner plus rejected candidates, any kind-conflict findings and lexical-conflict findings, the `A.6.P` survival result on the repaired phrase, and the resulting primary `EntityOfConcern`, first useful move, slot/use-position when live, and outside-work interpretation if the wording still carries architectural claim kind or admissible-use boundary. | Keeps controlled technical writing from collapsing into free shorthand or false precision. |
+et about action approval.` |
+| Semio-heavy paragraph | `This paragraph is about the comparative review unit, not the wider architecture strategy.` |
+
+Use these starters only as local examples. If outside observations or downstream constraints change what the sentence can honestly carry, reopen with the governing FPF pattern or project-side FPF kind and reference named by value instead of treating the starter as step one of a fixed flow.
+
+### E.17.AUD.LHR:5 - Worked slices
+
+**Worked-slice status.** Read the release-boundary, publication-face, episteme-publication-heavy, bounded-comparison, publication-unit stabilization move, and outside-observation cases as a heterogeneous example bank, not as one recommended repair sequence. They show different admissible repair dispositions for this local lexical-head repair pattern: some cases stabilize after one honest lexical-head repair and stop here, some apply `E.17.ID.CR`, some apply `E.17.AUD.OOTD`, and some stop and reopen when outside observation changes what the same local sentence can honestly carry. For quickest recovery of the three main repair dispositions, read `E.17.AUD.LHR:5.2` as ordinary stay-local repair, `E.17.AUD.LHR:5.4` as bounded-comparison application under `E.17.ID.CR`, and `E.17.AUD.LHR:5.5` as publication-unit application under `E.17.AUD.OOTD`. Then read `E.17.AUD.LHR:5.6` as the separate stop-and-reopen or neighboring governing-pattern application case after outside observation changes what the same local unit can honestly carry.
+
+**Worked-slice mini-schema.** When a case turns episteme-publication-heavy or boundary-heavy, recover the same compact output in this order: `overloaded local lexical head | lexical-head kind | active local reading | primary entity/relation | carried move or question under repair | outside work | repair disposition`.
+
+#### E.17.AUD.LHR:5.1 - `review` is really carrying two jobs
+
+A note says:
+`This review establishes the release boundary for the service.`
+
+Two sentences later it says:
+`The review should therefore assign rollout responsibility to platform.`
+
+Local repair first:
+- overloaded local lexical head = `review`;
+- restored lexical-head kind = review publication unit;
+- active local reading = boundary review, not responsibility assignment;
+- primary entity/relation = the release boundary as made visible in this review unit;
+- carried move = make one boundary visible;
+- outside work = responsibility assignment.
+
+The repaired unit can now either stay with the boundary review or explicitly become a responsibility-assignment publication. Without that repair, the note quietly overclaims.
+
+#### E.17.AUD.LHR:5.2 - `text` quietly shifts into carrier or document status
+
+A paragraph says:
+`This text is the policy.`
+
+But what it really means is one publication form that describes the policy rather than being the policy object itself.
+
+Local repair:
+- overloaded local lexical head = `text`;
+- restored lexical-head kind = publication form;
+- active local reading = publication unit, not policy authority object;
+- primary entity/relation = the policy description visible in this unit;
+- carried move = describe the policy rather than claim authority for it;
+- outside work = approval, rollout, release, gate, policy, assurance, or adjudication status.
+
+This is the ordinary stay-local case. One repaired local lexical head keeps later sentences from borrowing authority from the wrong local reading without forcing publication-unit stabilization.
+
+**Recovery reading.** Stay in `E.17.AUD.LHR`: the local lexical head is now honest, the same local unit no longer shifts, and no neighboring reading has become primary.
+
+#### E.17.AUD.LHR:5.3 - Semio-heavy family name does too much work
+
+A semio note says:
+`This interpretation clarifies the package.`
+
+But the same paragraph is really about one bounded comparison over one review unit, not about `InterpretationDiscipline` as a whole and not about the whole package.
+
+Local repair:
+- overloaded local lexical head = `interpretation`;
+- restored lexical-head kind = bounded comparative review unit inside one episteme-publication-heavy paragraph;
+- active local comparison = bounded comparison, not wider-family package explanation;
+- primary entity/relation = comparative review unit;
+- stack restored = family `InterpretationDiscipline`, governing pattern `ComparativeReviewUnit`;
+- move = bounded comparison;
+- outside work = wider architecture strategy.
+
+Now the local paragraph stops pulling package-level load it never declared.
+
+#### E.17.AUD.LHR:5.4 - Local repair selects bounded comparison
+
+A comparison note says:
+`This review shows option A is safer than option B.`
+
+But the unit is really one comparative review note over already pinned source epistemes or publications, not a publication-unit reading-instability case and not yet a publication-unit stability case.
+
+Local repair:
+- overloaded local lexical head = `review`;
+- restored lexical-head kind = comparative review unit;
+- active local comparison = bounded comparative review unit, not whole release process;
+- primary entity/relation = the already pinned option contrast;
+- carried move = make one bounded contrast visible over already available source epistemes or publications;
+- outside work = rollout choice or approval.
+
+Once that local lexical head is repaired, do not keep thickening this pattern by habit. The admissible next pattern application is `E.17.ID.CR` for the now-stable unit, because the remaining question is one bounded contrast rather than publication-unit EntityOfConcern instability.
+
+**Recovery reading.** This is the honest bounded-comparison disposition: finish the local repair here, then let `E.17.ID.CR` carry the remaining bounded contrast over the now-stable unit.
+
+#### E.17.AUD.LHR:5.5 - Local repair exposes publication-unit reading instability and must apply whole-unit discipline
+
+A release note says:
+`This document records the release decision for the candidate.`
+
+After one sentence, the same unit starts talking as if it were:
+- the review publication unit that compares evidence;
+- the decision object itself;
+- and the rollout work that follows if approval is recorded.
+
+Local repair can still restore the overloaded local lexical head:
+- overloaded local lexical head = `document`;
+- restored lexical-head kind = review publication unit;
+- active local reading = publication unit, not decision object or rollout work;
+- carried move = record the current release reasoning visible in this unit;
+- outside work = actual approval, rollout execution, release, gate, policy, assurance, or adjudication question.
+
+But the repaired local lexical head does not keep the same publication unit stable. The next sentences still slide between the object being decided, the move of comparing evidence, and the wider work that happens after the decision. That means local lexical-head repair has done its job and shown the remaining defect honestly: the publication unit still cannot keep one stable object, one move, and one outside-work boundary visible.
+
+**Recovery reading.** This is the admissible publication-unit stabilization move case: stop thickening the local repair, keep the restored local lexical head as the last honest local result, and apply `E.17.AUD.OOTD` because the same unit still has unstable reading after one honest repair.
+
+#### E.17.AUD.LHR:5.6 - Outside observation changes what the same head can honestly carry
+
+A status note says:
+`This note captures the current rollback state for the candidate.`
+
+Mid-review, a new vendor bulletin changes the live failure boundary and pushes the surrounding conversation toward approval pressure.
+
+Local repair can still make the current sentence honest:
+- overloaded local lexical head = `note`;
+- restored lexical-head kind = review publication unit;
+- active local reading = current review publication unit, not downstream approval record;
+- carried move = capture the rollback state visible on the current evidence slice;
+- outside work = any new approval, adjudication, or widened authority step.
+
+But this is the stop-and-reopen case. Once outside observation changes what the same local unit can honestly stay about, do not keep appending new pressure as if the same local repair simply continued. Stop, reopen with a newly declared question, or apply the governing pattern if approval, rollout, release, gate, policy, assurance, or adjudication use, or publication-unit stabilization has become primary.
+
+**Recovery reading.** Do not keep thickening the local card here: outside observation has changed what the same local unit can honestly carry, so the admissible repair disposition is stop-and-reopen or application of the neighboring governing pattern, not one more local qualifier.
+
+### E.17.AUD.LHR:6 - Boundary dispositions
+
+**Assurance-recovery note.** Read these governing-pattern boundary dispositions as a heavier audit record over the same ordinary five-row card and the same three honest repair dispositions. They are not a second compact rule list. If a governing-pattern boundary disposition bullet starts carrying the case by itself, recover the local-repair threshold, `E.17.AUD.LHR:3.2 Row 5`, and the nearest worked slice first.
+
+Use a different governing pattern when:
+- the repaired local lexical head is no longer the real problem and the publication unit still has unstable EntityOfConcern or carried-move reading;
+- the same unit is already stable enough and the remaining question is one bounded comparative review move over already pinned source epistemes or publications;
+- the problem is really view, face, or carrier architecture;
+- the unit has already become downstream approval, gate, adjudication, or execution work;
+- outside observation or environmental change has changed what the same local unit can honestly carry, so the case now needs stop-and-reopen or application of the neighboring governing pattern rather than one more local qualifier.
+
+**Governing-pattern boundary recovery map.**
+
+| If this pattern boundary becomes primary | Recover this ordinary question first | Nearest worked recovery |
+| --- | --- | --- |
+| The repaired local lexical head is no longer the real problem and the publication unit still has unstable EntityOfConcern or carried-move reading. | `E.17.AUD.LHR:3.2 Row 5`: one honest local repair no longer stabilizes one object, one move, and one outside-work boundary. | `E.17.AUD.LHR:5.5` |
+| The same unit is already stable enough and the remaining question is one bounded comparative review move over already pinned source epistemes or publications. | `E.17.AUD.LHR:3.2 Row 5`: the local lexical head is now honest and the remaining question is the bounded comparison, not one more local repair. | `E.17.AUD.LHR:5.4` |
+| Outside observation or environmental change has changed what the same local unit can honestly carry. | The local-repair threshold plus the stop-and-reopen safeguard: do not keep appending new pressure to the same unit. | `E.17.AUD.LHR:5.6` |
+| The unit has already become downstream approval, gate, adjudication, or execution work. | `E.17.AUD.LHR:3.2 Row 4` plus the outside-work field: the sentence is no longer naming one overloaded local lexical head inside one review publication unit. | `E.17.AUD.LHR:5.5` and `E.17.AUD.LHR:5.6` |
+
+The comparison-side neighbor is `E.17.ID.CR ComparativeReviewUnit`: use that governing pattern when the local lexical head is now honest, the unit already stays about the same EntityOfConcern, and the remaining question is one bounded comparison over already available source epistemes or publications.
+
+The main publication-unit neighbor is `E.17.AUD.OOTD PublicationUnit Primary EntityOfConcern Discipline`: use that governing pattern when local lexical-head repair is no longer enough and the whole publication unit still cannot keep one stable primary entity of concern, one carried move, and one outside-work boundary visible.
+
+Treat those as neighboring recoveries, not as a required sequence. Some cases will stop after one local repair, some will apply bounded comparison under `E.17.ID.CR`, and some will apply publication-unit stabilization under `E.17.AUD.OOTD` once the honest question changes.
+
+### E.17.AUD.LHR:7 - Consequences
+
+Used well, this pattern:
+- prevents one vague local lexical head from governing a whole section by accident;
+- keeps local repair cheap instead of escalating too early;
+- makes later publication-unit stability review cleaner because the local lexical head question has already been restored;
+- gives authors and reviewers one common language for saying `the problem is still local`.
+
+Used badly, it can become one more vocabulary exercise. If the publication unit still has unstable EntityOfConcern or carried-move reading after local repair, do not keep polishing the overloaded local lexical head forever. Apply the governing pattern for the remaining problem situation.
+
+### E.17.AUD.LHR:8 - SoTA-Echoing
+
+**Assurance-recovery note.** Use these rows only after the ordinary five-row card, the local-repair threshold, and the nearest worked slices already tell you which repair disposition is primary. Each row must recover back into the same local question, repair disposition, or safeguard; if a citation starts carrying the case by itself, recover the ordinary card first.
+
+| Claim this pattern needs | Relevant practice | Primary source | Practitioner implication here | Popular shortcut rejected | Nearest recovery section | Adoption status |
+| --- | --- | --- | --- | --- | --- | --- |
+| One overloaded word should not silently switch concerns, viewpoints, or object readings inside one publication unit. | Architecture-description practice treats explicit concerns and consistency across descriptions as first-class obligations. | Joint ISO, IEC, and IEEE 42010:2022 | In `E.17.AUD.LHR:5.2` and `E.17.AUD.LHR:5.5`, repair the local lexical head by making explicit whether the sentence names a publication unit, an active primary entity or relation named by value/claim, or outside work before later sentences inherit the wrong local reading. | Reject the shortcut that a familiar word can carry several concerns merely because the surrounding document feels coherent. | `E.17.AUD.LHR:3.2 Rows 2-4`; `E.17.AUD.LHR:5.2`; `E.17.AUD.LHR:5.5` | **Adopt and adapt.** Adopt viewpoint accountability; adapt it to one overloaded local lexical head inside one publication unit. |
+| One local lexical head should not be repaired by synonym taste alone. | Terminology work separates designation, concept, definition, and term-formation practice. | ISO 704:2022 and ISO 1087:2019 | In `E.17.AUD.LHR:5.1` and `E.17.AUD.LHR:5.3`, repair the local head by naming the FPF kind or locally declared head it designates here, without importing an ISO concept system as FPF ontology. | Reject synonym substitution, dictionary taste, and global vocabulary rows as local head restoration. | `E.17.AUD.LHR:3.2 Rows 1-3`; `E.17.AUD.LHR:5.1`; `E.17.AUD.LHR:5.3` | **Adapt lightly.** Use designation discipline, not a new global vocabulary. |
+| The common sense of a word is not enough when the local context points to a rarer or narrower reading. | Word-sense disambiguation practice treats sense recovery as context-sensitive; long-tail WSD work shows why common-sense defaulting fails. | Blevins and Zettlemoyer (2020); Blevins et al. (2021); source maturity = analogy-only source use | In `E.17.AUD.LHR:5.2` and `E.17.AUD.LHR:5.4`, do not assume that `review`, `interpretation`, `text`, or `document` has its common local reading when the FPF context selects a narrower kind or neighboring pattern. | Reject common-usage defaulting as proof that the local FPF sense has been recovered. | `E.17.AUD.LHR:3.2 Row 2`; `E.17.AUD.LHR:5.2`; `E.17.AUD.LHR:5.4` | **Adapt as analogy.** Do not import machine-learning benchmarks as authoring rules. |
+| Human-readable local heads should improve comprehension rather than merely sound tidy. | Identifier and label clarity practice treats names as comprehension aids whose bad choices can mislead readers. | Hofmeister et al. (2017), identifier-name comprehension study; source maturity = empirical analogy only | In `E.17.AUD.LHR:5.1` and `E.17.AUD.LHR:5.6`, choose the lightest local head that lets the reader recover kind, active local reading, active primary entity or relation named by value/claim, move, and outside work. | Reject a nicer label when it changes kind, scope, authority, or downstream use. | `E.17.AUD.LHR:3.2`; `E.17.AUD.LHR:5.1`; `E.17.AUD.LHR:5.6` | **Adapt lightly.** Use clarity to aid local repair, not to justify renaming stable FPF heads. |
+| A working pattern should make the first useful move teachable and critique-ready, not merely correct in hindsight. | Pattern-writing practice emphasizes clear template usage, concrete consequences, and critique-ready worked guidance. | Iba (2021), “How to Write Patterns …” (PLoP 2021) | The ordinary card and worked slices are here so a practitioner can repair one overloaded local lexical head in `E.17.AUD.LHR:5.1` or `E.17.AUD.LHR:5.4` without opening publication-unit discipline too early. | Reject a skeleton-only pattern that leaves the actual local repair move to reviewer intuition. | `E.17.AUD.LHR:3.2`; `E.17.AUD.LHR:5.1`; `E.17.AUD.LHR:5.4` | **Adopt.** Keep the move teachable through one small card plus concrete slices. |
+| Review quality improves when criteria are explicit instead of left to taste. | Pattern-validation practice pushes toward explicit criteria and documented review checks. | Riehle et al. (2020), "Pattern Discovery and Validation Using Scientific Research Methods". | The local-repair threshold and the three repair dispositions keep review from collapsing into style debate: see `E.17.AUD.LHR:5.2` for stay-local, `E.17.AUD.LHR:5.4` for bounded-comparison disposition, and `E.17.AUD.LHR:5.5` for governing-pattern application. | Reject style-debate closure when the repair disposition is still not named. | local-repair threshold; `E.17.AUD.LHR:3.2 Row 5`; `E.17.AUD.LHR:5.2`; `E.17.AUD.LHR:5.4`; `E.17.AUD.LHR:5.5`; `E.17.AUD.LHR:5.6` | **Adopt.** Keep the criteria lightweight but explicit. |
+
+Read `E.17.AUD.LHR:6 - Boundary dispositions` through this table only after the repair disposition is already visible by value. The citations do not choose the repair disposition for you; they discipline why the already-recovered repair disposition is reviewable and teachable.
+
+### E.17.AUD.LHR:9 - Relations
+
+**Builds on**
+- `A.6.P Relational Precision Restoration (RPR)`
+- `E.10 Unified Lexical Rules for FPF`
+- `F.18 Local-First Unification Naming Protocol`
+- `A.7 Strict Distinction`
+
+**Nearest neighbors**
+- `E.17.AUD.OOTD PublicationUnit Primary EntityOfConcern Discipline`
+- `E.17.ID.CR ComparativeReviewUnit`
+
+### E.17.AUD.LHR:End
+
+## E.17.AUD.OOTD - PublicationUnit Stability Discipline and PublicationUnit Primary EntityOfConcern Discipline - publication-unit stability over one primary EntityOfConcern
+
+**Placement.** Narrow publication-unit stability pattern inside the broader `PublicationUnit Stability Discipline`.
+
+**Builds on.** `A.6.P`, `A.7`, `E.10`, `F.18`, `E.14`, `E.19`, `C.2.2a`, `A.16.0`.
+
+**Coordinates with.** `E.17.AUD.LHR`, `E.17.ID.CR`, `E.17.EFP`, `A.6.3`, `A.6.3.CR`, `A.6.3.RT`, `A.10`, `A.15`, `A.15.4`, `B.3`, `A.20`, `A.21`.
+
+**Plain-name.** Keep one publication unit about one primary EntityOfConcern at a time.
+
+**One-line summary.** `PublicationUnit Primary EntityOfConcern Discipline` governs one bounded publication unit at a time and keeps that unit explicit about what it is mainly about, what move it is carrying over that entity, and what wider work, non-admissible downstream decision, or reliance claim remains outside.
+**Primary EntityOfConcern discipline.** The live technical field is `publicationUnitPrimaryEntityOfConcern`: the primary EntityOfConcern, non-claim-bearing kind named by value, topic, or subject that this bounded publication unit is mainly about for the current use. When no claim-bearing episteme or episteme-lane view is live, the pattern names the non-claim-bearing kind named by value, topic, or subject without creating a false `EntityOfConcernRef`.
+
+**Publication unit under review in plain terms.** The publication unit under review is one bounded publication unit that other people are meant to read as one unit: a note, memo, sheet, review aid, screen, table, or short section. The carried publication move is to keep that unit explicit about one `publicationUnitPrimaryEntityOfConcern`, one carried move over that entity, and one outside-work boundary.
+
+**Use this when.** Use this pattern when one note, memo, sheet, screen, table, comparison aid, or other publication unit starts being interpreted as if it is still about one primary EntityOfConcern while it is quietly shifting into a different primary EntityOfConcern, a different concern, or a wider process. Use it when local word repair is not enough anymore and the publication unit needs one stable answer to: what is this unit about, what move is it making, and what still remains outside?
+
+**What goes wrong if you miss this.** One publication unit starts by talking about one primary EntityOfConcern and quietly ends by licensing a different interpretation, a different concern, or wider work. Review then gets trapped in sentence-level wording arguments while the real defect is publication-unit interpretation instability, and readers over-attribute decision weight or scope to a unit that never declared it.
+
+**What this buys you in practice.** It lets a team stop publication-unit interpretation instability before one memo, note, or review unit quietly starts carrying rollout, approval, wider architecture strategy, or another wider concern by habit. In practice that means reviewers can name the real stabilization job earlier, keep downstream work outside, and decide faster whether the current unit is stable enough to keep using at all.
+
+**Not this pattern when.** This is not the right pattern when:
+- the problem is still local lexical-head kind or qualifier repair and `E.17.AUD.LHR` (`Local Head Restoration`) is enough;
+- the same publication unit is already stable enough, and the question under repair is one bounded comparative review move over already available source epistemes or publications under `E.17.ID.CR`;
+- the question under repair is still same-entity rewrite, representation shift, explanation-face work, bridge-explication, or another neighboring pattern whose move is already primary;
+- the question under repair is view, face, carrier, or publication architecture rather than publication-unit interpretation instability;
+- the unit is already being used to approve, assign, adjudicate, or direct work and should use the more honest downstream decision, work, or reliance publication.
+
+**Quick recovery entry.** If the recognition block fits, recover the working question through the ordinary six-row card in `E.17.AUD.OOTD:4.3` and the nearest worked slices in `E.17.AUD.OOTD:5.1` through `E.17.AUD.OOTD:5.5`. If that ordinary card plus one nearest worked slice already settles the case, stop there rather than climbing into the heavier assurance sections by habit.
+
+**Quick boundary bank.** If the recognition block no longer fits, stop at the right boundary instead of opening the heavier stack by habit. One overloaded local lexical head or qualifier only -> `E.17.AUD.LHR` (`Local Head Restoration`). Same stable publication unit, but the question under repair is one bounded comparison over already pinned source epistemes or publications -> `E.17.ID.CR`. View, face, carrier, same-entity rewrite, or downstream approval, work, or reliance question -> the neighboring pattern or the more honest downstream decision publication.
+
+**Quick kind-plus-lens interpretation.** `PublicationUnit Stability Discipline` names the broader publication-unit discipline family. `PublicationUnit Primary EntityOfConcern Discipline` names the publication-unit stability pattern used when one publication unit needs its primary EntityOfConcern, carried move, and outside-work boundary made explicit together. The inherited moving lineage still remains successive `U.Episteme` publications over `U.CharacteristicSpace`; this pattern keeps explicit how one publication unit speaks about that lineage or a move over it, not a rival moving lineage.
+
+**Primary working reader.** The first-minute reader is an engineer-manager, architect, reviewer, or programme lead who needs to stop one publication unit from quietly changing what it is about. Secondary readers may include people polishing or reviewing the text itself, but the top recognition block should still read as ordinary review and writing discipline first.
+
+### E.17.AUD.OOTD:1 - Problem frame
+
+**Anti-single-sequence note.** The quick checks, ordinary six-row card, heavier extension, and worked slices in this section are local aids for one publication unit under review. They are not a canonical sequence for publication-unit repair and not a promise that admissible cases follow one fixed graph in one direction. Use the worked slices sideways rather than as one required sequence: one admissible case may stop after one publication-unit declaration, another may reopen when outside observations change the honest primary EntityOfConcern, and another may apply the governing pattern once downstream approval, work, reliance, or a neighboring-pattern question becomes primary.
+
+Teams repeatedly write one publication unit that begins by talking about one primary EntityOfConcern and ends by talking about another while still sounding like one unchanged text.
+
+Typical moments include:
+- an architecture note that starts about a system boundary and ends about rollout work;
+- an operations review note that starts about an incident episode and ends about action approval;
+- a requirements or policy note that starts about a primary EntityOfConcern and ends about its carrier or document status;
+- an episteme-publication-heavy note that starts about one pattern section or publication form and ends about wider architecture strategy;
+- a comparison sheet that starts about one primary EntityOfConcern and quietly shifts into engineering-process, approval, work, or reliance pressure.
+
+That interpretation instability is usually not caused by one bad sentence alone.
+It is caused by one whole publication unit no longer holding a stable answer to what it is about, what move it is carrying, and what wider work still stays outside.
+
+### E.17.AUD.OOTD:2 - Problem
+
+Without a named publication-unit discipline:
+1. authors repair one vague phrase at a time but still leave the unit unstable as a whole;
+2. reviewers argue about wording while missing that the unit has already shifted from primary EntityOfConcern to process or from description to decision pressure;
+3. teams quietly read one note as if it licensed a downstream move the unit never declared;
+4. local lexical discipline (`A.6.P`, `E.10`, `F.18`) gets blamed for publication-unit interpretation instability it was never meant to solve alone;
+5. unit-form confusion is mistaken for view, face, carrier, or publication architecture even when the immediate problem is simpler and closer.
+
+### E.17.AUD.OOTD:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| **Local repair vs publication-unit stability** | The pattern must not replace local precision repair, but it must become available when local repair no longer stabilizes the unit. |
+| **Primary EntityOfConcern clarity vs surrounding-work convenience** | The unit must keep one primary EntityOfConcern without forcing the whole surrounding work process into the same text. |
+| **Interpretation clarity vs overgrowth** | The section must distinguish primary EntityOfConcern, description, carrier, publication unit, process, and downstream decision use without turning into a giant ontology lecture. |
+| **User-facing discipline vs hidden assurance weight** | The ordinary recognition block must stay light enough for practice while still surviving neighboring-boundary claim-kind and review. |
+| **Publication-unit stability vs architecture replacement** | The pattern must not replace view, face, carrier, publication, or moving-lineage architecture. |
+
+### E.17.AUD.OOTD:4 - Solution - stabilize one publication unit, one primary EntityOfConcern, one move, and one outside-work boundary
+
+#### E.17.AUD.OOTD:4.1 - Manager-first entry
+
+> `PublicationUnit Primary EntityOfConcern Discipline` keeps one publication unit explicit about what it is mainly about, what move it is carrying over that entity, and what wider work remains outside.
+>
+> It becomes necessary when local repair is no longer enough and the publication unit still has unstable interpretation across primary EntityOfConcern, description, carrier, publication unit, process, or downstream decision use while sounding unchanged.
+
+In plain working terms, this section is for moments like:
+- `this memo is about the architecture boundary, not yet about the rollout plan`;
+- `this review note is about the incident episode, not yet about the action decision`;
+- `this comparison sheet is about the primary EntityOfConcern under review, not yet about approval or the downstream decision`;
+- `this semio note is about one pattern section or publication form, not the wider architecture policy around it`.
+
+If that is the clarification you need, start here.
+If the real problem is still only one vague local lexical head word, start with `E.17.AUD.LHR` (`Local Head Restoration`).
+
+#### E.17.AUD.OOTD:4.1.a - Pairwise plain glosses
+
+- **Publication unit** = one written or displayed bounded unit others are meant to read as one unit, such as a note, memo, sheet, table, or guided screen.
+- **Primary EntityOfConcern** = the local stabilization interpretation for what that unit is mainly about when it carries or exposes a claim-bearing episteme or episteme-lane `U.View`; it is not a new `C.2.1` slot. If no claim-bearing episteme or episteme-lane view is live, name the non-claim-bearing kind named by value, topic, or subject instead of inventing a `EntityOfConcernRef`.
+- **Carried move** = what the unit is doing over that entity, or that it is only stabilizing it without adding a new move.
+- **Outside-work boundary** = what wider review, execution work, non-admissible downstream decision, or reliance claim stays outside the current unit.
+- **Explicit transition** = the unit openly says it has moved from one interpretation or primary EntityOfConcern to another instead of pretending nothing changed.
+
+#### E.17.AUD.OOTD:4.1.b - Minimal modeling lens
+
+Treat the publication unit under review here as one publication unit carrying one primary EntityOfConcern interpretation over one current working concern or lineage slice. That interpretation does not make the unit itself a `U.EpistemePublication`; it stabilizes the unit's interpretation over the already identified item it carries or exposes.
+The smallest honest lens asks five entries:
+1. what publication unit is under review;
+2. what primary EntityOfConcern is active;
+3. what move over that entity is being carried;
+4. which interpretation is active;
+5. what wider work still stays outside.
+
+If that lens cannot stay stable after local repair, do not patch over the interpretation shift with a heavier declaration; reopen the unit or apply the governing pattern instead.
+
+#### E.17.AUD.OOTD:4.2 - Scope and exclusions
+
+**In scope**
+- one publication unit with unstable interpretation across multiple primary EntityOfConcern values;
+- one unit mixing move and outside work;
+- one unit quietly shifting between primary EntityOfConcern, description, carrier, publication unit, process, or downstream decision use;
+- episteme-publication-heavy texts where repair disposition, governing pattern, primary EntityOfConcern, carried move, and outside work must stay explicit across one publication unit.
+
+**Out of scope**
+- local lexical-head repair only;
+- pure view, face, or carrier architecture work;
+- entityOfConcernRef-preserving transform, explanation, bridge, ontology, or comparative-review questions whose neighboring patterns already govern the main move;
+- downstream gate, approval, execution, or decision pressure.
+
+**Ordinary stop rule.** If the ordinary six-row card plus one nearest worked slice already settle the case, stop there. Do not climb into heavier assurance just to prove that one unit now keeps one primary EntityOfConcern, one carried move, and one outside-work boundary honestly in place.
+
+#### E.17.AUD.OOTD:4.3 - Ordinary working card
+
+For ordinary use, keep at least these six rows visible:
+
+| Row | Ordinary prompt |
+| --- | --- |
+| 1 | What single publication unit am I asking people to read as one bounded unit? |
+| 2 | What is it mainly about? |
+| 3 | What move is it making over that primary EntityOfConcern, or is it only stabilizing it? |
+| 4 | What wider work or engineering process is outside this unit? |
+| 5 | Is any transition between interpretations or primary EntityOfConcern values explicit? |
+| 6 | If this remains unstable after local repair, which governing pattern applies? |
+
+If those six rows can stay stable across the same publication unit, ordinary use is usually enough.
+Treat that six-row card as the recognition block.
+
+If local repair is still enough, go back to `E.17.AUD.LHR` (`Local Head Restoration`) instead of adding more structure here.
+If the unit remains one publication unit but neighboring-boundary claim-kind, misuse risk, or cross-interpretation ambiguity becomes claim-bearing, use the heavier extension as the assurance section.
+If the same unit is already stable as one primary EntityOfConcern, one carried move, and one outside-work boundary, and the remaining question is one bounded comparative review move over already available source epistemes or publications, apply `E.17.ID.CR` before thickening this publication-unit card.
+If the unit cannot keep one stable primary EntityOfConcern, one carried move, and one outside-work boundary even after local repair, do not solve that by stacking more fields onto the heavier extension; apply or reopen the neighboring-pattern check first.
+
+#### E.17.AUD.OOTD:4.4 - Claim-bearing extension and quick boundary summary
+
+Use the heavier extension only when the ordinary six-row card already stays stable and the case is close to important seams.
+It is for heavier declaration, not for rescuing a unit that still cannot keep one primary EntityOfConcern, one carried move, and one outside-work boundary in place.
+
+Then add:
+- `publicationUnitFormCue`;
+- `primaryInterpretation`;
+- `transitionPolicy`;
+- `modelingLensPolicy`;
+- `downstreamDecisionPolicy`.
+
+These fields do not create a rival rule track. `publicationUnitFormCue` names words such as note, sheet, screen, and table as form clues only; it does not make those clues primary-entity kinds or claim named by value/relation kinds. The fields only make the heavier neighboring-boundary claim-kind visible once the ordinary card already holds.
+
+**Quick governing-pattern and project-side-reference boundary summary**
+- use `E.17.AUD.LHR` (`Local Head Restoration`) when the instability is still local to one local lexical head, qualifier, or interpretation word;
+- use `E.17.ID.CR` when the same publication unit already holds one stable primary EntityOfConcern, one carried move, and one outside-work boundary, and the question under repair is one bounded comparative review move over already available source epistemes or publications;
+- use this pattern when one publication unit still has unstable primary EntityOfConcern, carried-move, or outside-work interpretation after honest local repair;
+- use the neighboring pattern or the project-side FPF kind and reference named by value when view, face, carrier, entityOfConcernRef-preserving transform, explanation, bridge, ontology, gate, approval, or execution claim becomes primary.
+
+#### E.17.AUD.OOTD:4.5 - Boundary-rule summary
+
+This section is the canonical governing-pattern boundary summary for `PublicationUnit Primary EntityOfConcern Discipline` inside the Core.
+Companion notes may elaborate admissibility checks and review scaffolding, but they may not override this section.
+
+The practical summary is:
+1. keep one primary EntityOfConcern unless a transition is explicit;
+2. do not collapse primary EntityOfConcern, description, carrier, publication unit, process, and downstream decision use into one unchanged interpretation;
+3. keep the carried move distinct from the wider work around it;
+4. use local `E.17.AUD.LHR` (`Local Head Restoration`) first, and open this pattern when publication-unit interpretation instability remains after that;
+5. apply `E.17.ID.CR` when publication-unit stability already holds and the remaining question is one bounded comparative review move over already available source epistemes or publications;
+6. move out when the unit starts carrying downstream decision pressure or another neighboring pattern question.
+
+### E.17.AUD.OOTD:5 - Archetypal grounding
+
+**Worked-slice status.** Read the architecture, operations, episteme-publication-heavy, comparison-return-to, and changed-EntityOfConcern cases as a heterogeneous example bank, not as one recommended progression.
+
+#### E.17.AUD.OOTD:5.1 - Architecture note shifting into rollout work
+
+A short architecture memo begins with:
+`This note is about the proposed service boundary between catalog and checkout.`
+
+Three paragraphs later it says:
+`We should therefore assign rollout responsibility to platform and stage migration in two sprints.`
+
+The fix is not only lexical.
+The publication unit changed its primary EntityOfConcern from architecture boundary to rollout process and decision responsibility.
+This section forces the author to either:
+- keep the note about the boundary and push rollout outside;
+- or make the transition explicit and use a downstream decision or rollout publication.
+
+#### E.17.AUD.OOTD:5.2 - Operations note shifting into approval
+
+An incident note begins as a comparative review of timing variance and operator context.
+It ends as if it already recommends a production action.
+
+This section makes the author keep the review unit about the episode and the contrast it is surfacing, while forcing work approval into an explicit outside-work or downstream decision text.
+
+#### E.17.AUD.OOTD:5.3 - Semio-heavy text mixing one local section and wider architecture strategy
+
+A semio note starts about one selected pattern section and ends as if it had decided the packaging strategy for the whole overlay.
+
+This section forces the unit to say:
+- what the note is about now;
+- what move it is making over that primary EntityOfConcern;
+- and what wider architecture strategy remains outside the current unit.
+
+#### E.17.AUD.OOTD:5.4 - Unit stabilizes and bounded comparison becomes primary
+
+A review note first shifts between the selected interface boundary, the move it is making over the current evidence, and the rollout implications around that boundary.
+After one honest publication-unit repair it now says:
+`This review unit is about the interface boundary options and the contrast they make visible under the current incident evidence; rollout responsibility and approval remain outside this note.`
+
+At that point the same unit already holds one stable primary EntityOfConcern, one carried move, and one outside-work boundary.
+`PublicationUnit Primary EntityOfConcern Discipline` has done its job.
+If the remaining question is now one bounded comparison between the already pinned options over the same evidence, the honest next pattern application is `E.17.ID.CR` rather than keep thickening publication-unit discipline.
+
+#### E.17.AUD.OOTD:5.5 - Outside observation changes the honest primary EntityOfConcern
+
+A release-readiness note is already explicit that it is about one candidate publication or view and the risk state visible from the current evidence.
+Mid-review, an external vendor bulletin and a new field observation change the live failure boundary for that same candidate.
+
+The honest move is not to keep appending the new question while pretending the same unit still carries the same primary EntityOfConcern unchanged.
+This section forces the author to either:
+- stop the current unit at the originally declared primary EntityOfConcern and open a new downstream record for the changed question;
+- explicitly reopen the same unit with a newly declared primary EntityOfConcern, move, and outside-work boundary;
+- or apply the governing pattern once approval, execution, or another downstream decision publication becomes the more honest primary question.
+
+### E.17.AUD.OOTD:6 - Bias-Annotation
+
+Lenses tested: **Arch**, **Onto and Epist**, **Prag**, **Did**.
+This section intentionally biases toward explicit publication-unit stability and against quietly letting one unit absorb wider work or decision pressure by habit.
+The main mitigation is explicit primary EntityOfConcern, move, and outside-work surfacing, early return to `E.17.ID.CR` when publication-unit stability is already solved, and explicit governing-pattern boundary dispositions once a downstream claim becomes primary.
+
+### E.17.AUD.OOTD:7 - Conformance Checklist
+
+1. **CC-OOTD-1 - One publication unit is explicit.**
+   The publication unit under review is explicitly identifiable as one note, memo, sheet, screen, table, or section meant to be read as one unit.
+2. **CC-OOTD-2 - Primary EntityOfConcern is explicit.**
+   The unit makes its primary EntityOfConcern recoverable enough that readers are not left to infer it from tone alone.
+3. **CC-OOTD-3 - Carried move is explicit.**
+   The unit states what move it is making over that primary EntityOfConcern, or explicitly says that it is only stabilizing the primary EntityOfConcern without a new move.
+4. **CC-OOTD-4 - Outside-work boundary is explicit.**
+   Wider work, approval, execution, or non-admissible downstream decision, work, or reliance pressure is either declared outside or handled by its governing pattern rather than smuggled into the same unchanged unit.
+5. **CC-OOTD-5 - Any transition is explicit.**
+   If the unit shifts between primary EntityOfConcern, description, carrier, publication unit, process, or downstream decision use, that transition is explicit rather than quietly absorbed.
+6. **CC-OOTD-6 - Local vs publication-unit repair choice is honest.**
+   Apply `E.17.AUD.LHR` (`Local Head Restoration`) first when local repair is enough; apply this pattern only when publication-unit interpretation instability remains after local repair.
+7. **CC-OOTD-7 - Neighboring-pattern boundary is explicit.**
+   If entityOfConcernRef-preserving transform, explanation, bridge, comparative-review, ontology, gate, approval, or execution claim becomes primary, its governing pattern is applied rather than pretending this pattern still carries the case.
+8. **CC-OOTD-8 - Claim-bearing lens is stated when needed.**
+   If a minimal modeling lens or downstream-decision policy is materially claim-bearing, it is stated rather than silently assumed.
+
+### E.17.AUD.OOTD:8 - Common Anti-Patterns
+
+- **Local-repair inflation.** Opening publication-unit discipline when one overloaded local lexical head or qualifier is still the real defect.
+- **Work-process smuggling.** Letting a note begin as architecture, incident review, or comparison work and end as rollout, approval, or execution guidance without naming the transition.
+- **Admissibility-pattern replacement.** Treating this pattern as if it replaced view, face, or carrier architecture, entityOfConcernRef-preserving transform rules, explanation governance, bridge rules, or downstream decision texts.
+- **Overgrowth by declaration.** Stacking heavier fields onto a unit that still cannot keep one stable primary EntityOfConcern, one move, and one outside-work boundary in place.
+
+### E.17.AUD.OOTD:9 - Consequences
+
+Used well, this section buys three main gains:
+- authors stop smuggling wider work into one unit by accident;
+- reviewers can name publication-unit interpretation instability instead of only arguing about wording;
+- neighboring patterns and downstream decision texts stop getting blamed for confusion created one layer earlier.
+
+The cost is that some notes must become shorter, split earlier, or reopen more honestly when the primary EntityOfConcern really changes.
+That cost is deliberate.
+
+### E.17.AUD.OOTD:10 - Rationale
+
+The point of this pattern is not to create a second architecture of views, faces, carriers, or downstream decision texts.
+It is narrower: one publication unit can become misleading even when every single sentence looks locally acceptable.
+
+`A.6.P`, `A.7`, `E.10`, and `F.18` already keep kinds, distinctions, and naming precise.
+This pattern adds the missing publication-unit discipline that asks whether the same publication unit is still honestly about one primary EntityOfConcern, carrying one move, with one explicit outside-work boundary.
+
+The pattern also stays intentionally close to `E.14` and `E.19`.
+Recognition comes first through a manager-usable entry block and the ordinary six-row card.
+Heavier declaration comes only after the ordinary card already holds.
+
+### E.17.AUD.OOTD:11 - SoTA-Echoing
+
+| Publication-unit obligation | Domain or practice tradition | Working implication here | Nearest recovery section |
+| --- | --- | --- | --- |
+| One publication unit should keep one explicit concern or primary EntityOfConcern unless it declares a transition. | Architecture-description and viewpoint practice, Joint ISO, IEC, and IEEE 42010:2022 | In `E.17.AUD.OOTD:5.1`, keep the memo about the service boundary and push rollout sequencing or responsibility assignment outside before later paragraphs inherit the wrong concern. | `E.17.AUD.OOTD:4.3`, `E.17.AUD.OOTD:5.1` |
+| Under-restored local lexical heads and cross-disciplinary ambiguity should be repaired at the level where readers actually reconstruct meaning, not left to reviewer guesswork. | Terminology work, ISO 704:2022 and ISO 1087:2019, used as external practice for object, concept, definition, designation, and term-formation discipline without importing an ISO concept system as FPF ontology | In `E.17.AUD.OOTD:5.3`, restore the FPF primary EntityOfConcern, publication unit, carried move, and outside boundary before the next paragraph borrows the wrong primary EntityOfConcern or wider architecture strategy. | `E.17.AUD.OOTD:4.3`, `E.17.AUD.OOTD:5.3` |
+| Fluent prose should not be over-read as if it already licensed work, reliance, assurance, or downstream decision claim that the unit did not declare. | Faithfulness and explanation caution | In `E.17.AUD.OOTD:5.2` and `E.17.AUD.OOTD:5.5`, stop the note at one declared primary EntityOfConcern and move, then reopen or apply the governing pattern once approval, changed evidence, or downstream decision claim becomes the honest primary question. | `E.17.AUD.OOTD:4.3`, `E.17.AUD.OOTD:5.2`, `E.17.AUD.OOTD:5.5` |
+
+### E.17.AUD.OOTD:12 - Relations
+
+**Builds on**
+- `A.6.P`
+- `A.7`
+- `E.10`
+- `F.18`
+- `E.14`
+- `E.19`
+- `C.2.2a`
+- `A.16.0`
+
+**Nearest neighbors**
+- `E.17.AUD.LHR` for local lexical-head kind or qualifier repair;
+- `E.17.ID.CR` when the same unit is already stable and the remaining question is one bounded comparative review move;
+- `E.17.EFP` when explanation-face governance on existing faces is primary;
+- `A.6.3`, `A.6.3.CR`, and `A.6.3.RT` when the question under repair is same-entity rewrite or representation change;
+- `A.10` when evidence or provenance becomes primary;
+- `A.15` and `A.15.4` when work, reliance, or execution claim becomes primary;
+- `B.3` when assurance or engineering justification becomes primary;
+- `A.20` and `A.21` when approval, gate, or adjudication becomes primary.
+
+### E.17.AUD.OOTD:End
+
+## E.18 - Transformation Flow Structure
+
+> **Tech-name:** **TransformationFlowStructure** (pattern label)
+> **Plain-name:** Transformation flow structure
+> **Type:** Structural/ontic-relation pattern (E)
+> **Status:** Stable
+> **Normativity:** Normative unless explicitly marked informative
+> **Twin labels:** Tech / Plain per E.10; faces published through E.17 MVPK (no schemas in Part E).
+
+### E.18:1 - Intent
+
+Provide a notation-independent pattern for `TransformationFlowStructure`: a selected compound structure of atomic `U.Transformation` values and transformation-adjacent governed loci. The EntityOfConcern is the selected structure itself: loci for atomic transformations and adjacent governed values, one typed `U.Transfer` relation, and Eulerian/declarative valuations over paths or path slices inside the same selected structure. A locus may express, decompose, constrain, or locate a bounded transformation under `A.3.4`, or it may bind a signature, mechanism, work plan, performed work, check, structural reinterpretation, publication, evidence, result, or refresh locus that participates in or constrains transformations without becoming the transformation. Crossings appear at gates; publication faces appear through MVPK; comparable claims pin editions, reference planes, Bridge/CL notes, and refresh scope. Mathematical descriptions of this selected structure, including graph, algebra, category, tuple, path, slice, morphism, quotient, fold, refinement, factorization, or wiring expressions, are governed by `E.18.2` and `C.29` when lens adequacy matters.
+
+**Use this when.** Use E.18 when project work needs one selected transformation-flow structure, path, path slice, crossing, gate, flow valuation, or refresh locus over `U.Transfer`; use neighboring patterns when the current EntityOfConcern is a work plan, performed work, method semantics, publication face, mathematical description, or wording-use cue rather than the selected structure.
+
+**First useful move.** Name the selected transformation-flow structure, the locus kinds, the single `U.Transfer` relation, and the crossing, path, or path slice whose pins are required. For the ordinary case, this is enough: `TransformationFlowStructure`, current `PathId` or `PathSliceId` when a path or slice is the EntityOfConcern, locus kinds, one `U.Transfer`, and only the crossings or pins required by that application.
+
+First-use slice:
+
+```text
+TransformationFlowStructure:
+  selectedStructure: cooling-loop stabilization path for one reactor subsystem review.
+  loci:
+    L1: U.Transformation, cooling-loop operating-state stabilization.
+    L2: U.Mechanism, control-law mechanism governing the stabilization.
+    L3: U.WorkPlan, planned measurement and setting-change work.
+    L4: U.Work, dated test run only after work occurs.
+  transferRelationKind: U.Transfer.
+  currentPathSlice: emergency-load-change review slice.
+  crossingOrGate: safety-review gate only where context, edition, launch, or work boundary changes.
+  mathematicalDescriptionRef?: E.18.2 only if a graph, algebra, or category expression is being used.
+```
+
+This slice names the selected structure and its governed loci first. Publication faces, TEVB viewpoint mapping, GateDecision records, and conformance rows are opened only when that use actually publishes, maps viewpoints, crosses a gate, or consumes assurance checks.
+
+**Structure ontology.** E.18 keeps these distinctions primary:
+
+| Construct | What it carries | Boundary |
+|---|---|---|
+| `TransformationFlowStructure` | the selected compound structure, positioned locus kinds, one `U.Transfer` relation, and structure-wide budgets or edition pins | not a work procedure, method sequence, mathematical graph expression, or one `U.Transformation` |
+| transformation locus | an E.18 locus, path, path slice, substructure, or valuation used to express, decompose, constrain, or locate a bounded `U.Transformation` | governed by `A.3.4` for transformation identity and slots |
+| functional behavior in a flow | a required behavior/functioning claim grounded as one bounded `U.Transformation` or as a compound `TransformationFlowStructure`, with any selected flow position, path, slice, crossing, or valuation named by value | not identical with `FunctionalElement@Context`, not the transformer system, not a module allocation, and not a method/work occurrence by itself |
+| slot-filler locus | a structure-positioned signature, mechanism, work plan, performed work, check, structural reinterpretation, publication, evidence, result, refresh, or other governed value | not a transformation merely by structure membership |
+| flow valuation | an Eulerian/declarative valuation over a path, path slice, state, guard, comparator, or budget over the selected structure | not a flowing thing, imperative route, second structure kind, or performed work |
+| crossing or gate | a context, plane, edition, launch, or work-boundary change | not internal step validity or gate-decision publication by itself |
+| MVPK face | publication of selected structure, path, or crossing material | not the structure semantics and not evidence by itself |
+| refresh locus | the smallest path slice, crossing, edition pin, or publication face affected by change | not a whole-flow rewrite unless the whole flow is the changed locus |
+
+When a sentence says that a system performs a functional transformation at one point in a flow, E.18 carries only the selected flow structure, locus, path, slice, crossing, valuation, and pins. The bounded transformation, transformer or candidate bearer, input/output or functional-port boundary, functioning relation, method/algorithm, mechanism, and performed work are recovered through `A.3.4`, `A.6.F`, `C.30.ASV`, `A.6.M`, `A.6.1`, and the A.15 family as applicable. A computational algorithm may fill `MethodRef?` or `MethodDescriptionRef?`; a physical-world way of transforming may fill `U.Method`; neither is inferred from E.18 structure membership.
+
+**Not this pattern when.** Use `A.20` for internal step validity, `A.21` for gate-decision publication, `E.20` for mechanism-governing-definition placement, `A.3.4` for bounded transformation under conditions, `E.18.2` for mathematical descriptions of the selected structure, `C.27.TA` for temporal aspects, `C.27` for temporal-claim adequacy or supported-use claims, the A.15 family for work planning or performed work, `E.17` for publication faces, and `E.10` for wording-use repair when the current EntityOfConcern is not the selected structure, path, crossing, or flow valuation.
+
+**What goes wrong if missed.** A practitioner may treat a reference flow, a wording-use cue such as `transition`, or a tool pipeline as a new graph kind or a hidden prescribed workflow, then lose comparability, crossing evidence, and slice-local refresh boundaries.
+
+**What this buys.** E.18 keeps selected structure, publication pins, crossings, CV/GF separation, and refresh locality in one current structure pattern without turning every domain-specific path into its own flow doctrine or every mathematical graph description into the selected structure.
+
+### E.18:2 - Problem frame
+
+Teams can produce many **well-typed flow valuations** for transformations of the same context holon under `VP.Functional`, for example for a declared `U.Capability` or transformation claim. The holon is the described/context object; the E.18 `EntityOfConcern` remains the selected `TransformationFlowStructure` over transformations and adjacent governed loci. The P2W reference path is:
+`U.Signature(profile=FormalSubstrate) -> U.PrincipleFrame -> U.Mechanism -> U.ContextNormalization (UNM) -> SelectionAndTuning locus (G.5/selector relation) <-> WorkPlanning locus (A.15.2 U.WorkPlan or plan-item relation) -> U.Work -> EvaluatingAndRefreshing locus (G.11/refresh relation)`
+is one **path** among many possible domain-specific transformation-flow paths. Without a common **structure discipline**:
+
+* flows look ad-hoc and **non-comparable**;
+* cross‑Context **crossings** (plane/Context changes) are undocumented;
+* MVPK faces carry **hidden arithmetic** or restate I/O;
+* set‑returning selection is silently replaced by **single scores**;
+* cycles lack **budget** discipline; refresh is **out‑of‑band**.
+
+MVPK already fixes publication drift at the **single-arrow** scope; E.18 lifts those **publication and comparability laws** to the **selected transformation-flow structure as a whole**.
+
+### E.18:3 - Problem
+
+1. **Mathematical lens != selected structure.** A catalog of morphism-scoped, transformation-scoped, mechanism-scoped, work-scoped, or refresh-scoped patterns does not, by itself, explain **how the whole selected structure is built, constrained, and audited**.
+2. **Flow proliferation.** Multiple “reference flows” can be declared; practitioners need **one structure discipline** that keeps their flow relations typed and comparable **without privileging any single flow**.
+3. **Unsafe publication.** Faces re‑list I/O, hide scalarization, or omit edition/plane pins; cross‑Context reuse lacks **Bridge/CL** citation; **plane penalties** appear in F/G instead of R.
+4. **Cycles without norms.** Selection↔Planning loops run without explicit **budget (Γ_time)**, **FreshnessRequest**, or **slice‑scoped** refresh; `FinalizeLaunchValues` (launch‑value slot filling) is performed too early (outside `U.Work` (`U.WorkEnactment`)).
+
+### E.18:4 - Forces
+
+| Force                                            | Tension                                                                                                                                                                    |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Universality vs specialization**               | One architecture covers supply chains, water networks, ML functionals, and the P2W first-principles-to-work path, **without** baking in any one morphism set. |
+| **Publication neutrality vs auditability**       | Keep faces notation‑neutral and non‑mechanistic ↔ require **pins**, **ComparatorSet**, **Bridge/CL**, and **PublicationScope**.                                            |
+| **Set-return discipline vs business pressure for totals** | Preserve **return sets and declared partial orders** ↔ stakeholders demand single numbers.                                                                                     |
+| **Cross‑Context reuse vs safety**                | Enable reuse across `U.BoundedContext` ↔ require **Bridge/CL** with **R‑only penalties**.                                                                                  |
+| **Agility vs reproducibility**                   | Permit evolving CG‑Spec/UNM/Comparator editions ↔ require **edition pins** and **re‑emission** on change.                                                                  |
+| **Cycles vs convergence**                        | Allow Selection↔Planning iteration ↔ impose **budget** and **slice‑scoped** refresh to prevent thrash.                                                                     |
+
+### E.18:5 - Solution - Transformation-flow structure model and relation disciplines
+**Dominant Solution moves.** In ordinary E.18 use, keep five moves primary: name one selected transformation-flow structure; distinguish the selected structure from a flow valuation and from its mathematical descriptions; place gates only on crossings or the `U.WorkEnactment` boundary; preserve normalize-before-compare and set-return discipline; and keep cycles under budget plus `PathSlice` refresh. S12 viewpoint mapping remains conditional viewpoint-mapping input when engineering or publication viewpoint mapping is current.
+
+#### E.18:5.1 - S1 - Selected Structure (conceptual)
+
+Define a **typed, editioned transformation-flow structure**
+`TransformationFlowStructure := (Loci, Transfer, tau_L, tau_Transfer, Gamma_time, Bridge, CL, TransportRegistry^Phi)`
+with:
+
+* **Loci:** structure-positioned loci or bindings to governed FPF values (open world). Common specialisations **include but are not limited to** the P2W illustrative set: bounded `U.Transformation`, `U.Signature(profile=FormalSubstrate)`, `U.PrincipleFrame`, `U.Mechanism`, `U.ContextNormalization (UNM)`, `SelectionAndTuning` locus governed by current selector/comparator patterns, `WorkPlanning` locus governed by `A.15.2 U.WorkPlan` or a plan-item relation, `U.Work`, and `EvaluatingAndRefreshing` locus governed by current refresh/evaluation patterns. This list is **illustrative**, not exhaustive. A locus may be expressed by a morphism, graph vertex, tuple position, or category-theoretic object under a mathematical lens when that lens is current, but E.18 does not make every locus a `U.Morphism`, graph vertex, or `U.Transformation`.
+* **Transfer relation:** a **single relation kind `U.Transfer`** (typed) carrying carrier refs and token refs; all **plane/Context/edition** changes occur **only at loci via `OperationalGate(profile)`** with **Bridge + CL** annotations; penalties **-> R only**. Transport conversions pin **Phi-policies** and editions.
+* **Scopes:** `Gamma_time` (budgets, horizons), `PublicationScope` for faces (E.17), and **slice ids** for refresh (G.11).
+
+ **CtxState (PS‑projection; closed slots):** `CtxState = ⟨L, P, E⃗, D⟩` is the **projection of E.17 Publication Scope**.
+ **Slot definitions (normative):**
+  • `L := Locus` — an element of a partially ordered **ContextSlice** poset; addresses *where* claims apply (disciplinary / organizational / holonic slice).
+  • `P := ReferencePlane` — the reference plane/units registry id; **no plane/unit declarations or translations** occur in CV; crossings remain gated (A.21).
+  • `E⃗ := Edition vector` — a **partial map** `edition_key ↦ EditionId` over named families `{CG‑Spec, ComparatorSet, UNM.TransportRegistryΦ}` and optional `{DescriptorMapRef, DistanceDefRef, CharacteristicSpaceRef}` when cited.
+  • `D := DesignRunTag` — `design(T^D)` or `run(T^R)`, used by **LaunchGate** and acceptance/telemetry duties.
+ **Invariants.** Raw `U.Transfer` preserves `CtxState` (`⟨L,P,E⃗,D⟩`): it does **not** write/update any CtxState slot; any CtxState write/update (or entry to `U.WorkEnactment`) occurs at `OperationalGate(profile)`.
+ **Extension discipline.** A conforming use registers any extra slot beyond ⟨L,P,E⃗,D⟩ in the **E.17/LEX “CtxState Extension Registry”** with slot‑id, intent, partial‑order law (neutral/absorbing), and SquareLaw compatibility; unregistered extensions are non‑conformant.
+ **Data-shape location.** E.18 names the structure and valuation obligations for `PathId`, `PathSliceId`, Gamma pins, and lineage: flow is a valuation over `U.Transfer`, raw transfer preserves `CtxState`, and path or slice evidence is carried through this pattern plus `A.20`, with `G.6` or `G.11` for cases involving evidence-path visibility or refresh wiring. These are the current structure loci for path and slice currentness.
+
+ * **Locus kinds:** `Transformation`, `Signature`, `Mechanism`, `WorkPlanning`, `Work`, `Check`, and `StructuralReinterpretation` are the current minimal structure-positioned locus baseline. Domain-specific species are open-world and non-exhaustive, but each species binds to one of the locus kinds or requires an explicit E.18 update. These are positioned loci in the selected structure, not a local taxonomy of new FPF kinds.
+  **Exact identification (no local ontology):**
+  — `Transformation` **≡** **A.3.4** `U.Transformation` when the structure locus, path, path slice, substructure, or flow valuation is being used as a bounded transformation under conditions.
+  — `Signature` **≡** **A.6.0** `U.Signature` (universal, law-governed declaration).
+  — `Mechanism` **≡** **A.6.1** `U.Mechanism` (law-governed application over a SubjectKind/BaseType), with placement and stabilization relations in `E.20` when current.
+  — `WorkPlanning` **≡** **A.15.2** `U.WorkPlan` or its current plan-item relation when planning is the governed value.
+  — `Work` **≡** **A.15.1** `U.Work` / `U.WorkEnactment` (dated world-contact; `FinalizeLaunchValues` only here).
+  — `Check` **≡** `OperationalGate(profile)` (universal **gate**; `A.20` governs CV when internal step validity is current, and `A.21` governs gate profile, check aggregation, decision, and publication minima when gate fit or gate decision is current).
+  — `StructuralReinterpretation` **≡** the E.18 placement of **A.6.4** `U.EpistemicRetargeting` as a structure-positioned locus; it is not a new retargeting kind. **All retargeting semantics** (slot-scoped discipline, `EntityOfConcernSlot`/`GroundingHolonSlot` behaviour, invariants, Bridges, witnesses) come from **C.2.1** and **A.6.2–A.6.5**; E.18 does **not** introduce a local variant of retargeting.
+
+  `OperationalGate` is the E.18 check locus with DecisionLog aggregation. A check-locus label names only the current gate or check value that the selected structure positions: `A.20` governs internal constraint validity when that claim is current, `A.21` governs gate profile, aggregation, decision, and publication minima when gate fit or gate decision is current, and `A.3.4` governs the bounded transformation claim that the check constrains.
+  The only extra discipline E.18 adds for `StructuralReinterpretation` is **structure-local**: CtxState and GateCrossing behaviour are governed by **CC-E18-06-EX** and **CC-E18-11** (projection-preserving w.r.t. `⟨L,P,E⃗,D⟩`, PathSlice-local, and "no plane/unit change without a gate"). `StructuralReinterpretation` is not a gate exception; it carries a recorded witness condition for saying no GateCrossing occurred. If any `CtxState` slot, plane/unit, edition, or design/run boundary changes, the case is a GateCrossing again.
+> **MVPK integration (import).** Every locus with an external publication face is published via **MVPK** faces (`PlainView`, `TechCard`, `AssuranceLane`, `InteropCard`) under a declared **PublicationScope** (E.17). E.18 **reuses** MVPK's publication laws (pins, declared-order discipline, "no new numeric claims / no I/O re-listing") and only adds structure-scope constraints in S3 and **CC-E18-09/10**; it does **not** define a second, local publication semantics.
+
+**GateCrossing (normative)**
+**Definition.** A **GateCrossing** is the typed transition at a structure locus that writes/updates any of:
+  (i) `U.BoundedContext` (**Context**), (ii) **ReferencePlane**, (iii) any member of the **Edition vector** `E⃗` (e.g., `CG‑Spec`, `ComparatorSet`, `UNM.TransportRegistryΦ`, `DescriptorMapRef`, `DistanceDefRef`, `CharacteristicSpaceRef`), (iv) **DesignRunTag** (`T^D↔T^R`), or (v) **Kind/EntityOfConcernRef** (only under `StructuralReinterpretation` subject to **CC-E18‑06‑EX**).
+**Invariants.** Raw `U.Transfer` preserves `CtxState`; a GateCrossing occurs at exactly one `OperationalGate(profile)` (SquareLaw applies).
+**Required pins (minimum).** `BridgeCard + UTS row`; `CL` for scope bridges; `CL^plane` for plane crossings; `CL^k` with `bridgeChannel=Kind` for kind transitions; `PublicationScopeId`; `PathSliceId`; Γ‑pins on compare/launch faces.
+**Canonical reference.** `CrossingRef := ⟨GateId, channel, from, to, UTS.RowId, PathSliceId⟩`. Any DecisionLog entry whose rationale depends on a crossing cites `CrossingRef`.
+**CrossingBundle (normative)**
+**Definition.** A **CrossingBundle** is the published bundle that makes a GateCrossing **auditable and replayable** (crossing visibility). It includes:
+* the canonical **`CrossingRef`**;
+* the matching **UTS row** (**`UTS.RowId`**) for the crossing;
+* the required pins **`PublicationScopeId`** and **`PathSliceId`**;
+* where a Bridge is involved: the **BridgeCard** (F.9) and its disclosed fields (`BridgeId`, `bridgeChannel`, **CL** and loss notes; **`CL^k`** when `bridgeChannel=Kind`; **`ReferencePlane(src,tgt)`**);
+* where planes differ: **`CL^plane`** and the active **`Φ_plane`** as a **`PolicyIdRef`** (policy-id + resolvable refs; F.8:8.1);
+* the active penalty policy identifiers **`Φ(CL)`** (and **`Ψ(CL^k)`** if used) as **`PolicyIdRef`** bundles (policy-id + `PolicySpecRef` + `MintDecisionRef?`; F.8:8.1);
+* any additional pins mandated by the active **GateProfile** / GateChecks (A.21) for this crossing.
+
+**CrossingBundle rule.** Every **GateCrossing publishes its CrossingBundle**. Missing or non-conformant CrossingBundle is a **blocking** defect for downstream uses that rely on the crossing (selectors, acceptance, audits). A local descriptive graph with no downstream crossing consumption is not over-penalized by this CrossingBundle rule.
+
+**Term separation.** **Transfer** denotes the sole relation kind `U.Transfer` in the selected structure. **Transport** denotes Phi-governed conversion **policies/registries** (**`TransportRegistry^Phi`** under UNM). Wording "reuse via Transport" refers to registries/policies, not to an additional transfer relation.
+
+#### E.18:5.2 - S2 - Flows as valuations (paths + state + guards)
+* A **Flow** is a **valuation** `nu` over `U.Transfer` relations and cut-sets, paired with an **admissible path** `p = v0 -> ... -> vk` in the selected structure. The valuation maps transfer relations or cut-sets to token/state values under `CtxState` and links publication-event records to a declared `PublicationScopeId`; it is not itself the performed work. The concrete pins and identifiers (`PathId`, `PathSliceId`, Gamma_time on compare and launch faces) are governed here as path and slice publication obligations and by `A.20` when CV witnesses are current; use `G.6` for evidence-path visibility and `G.11` for refresh wiring. This reflects the "selected structure != flow" norm (flow = valuation), with gates placed exactly on GateCrossings.
+* **Multiple coupled flows.** One `TransformationFlowStructure` may contain several coupled flow valuations: a development-flow valuation over work that creates or repairs a specification, pattern, process description, mechanism description, method set, tool, or work plan; an application-flow valuation over use of that product for another `EntityOfConcern`; and an evaluation or refresh-flow valuation over evidence that identifies a problem and a repair return to the smallest affected development or application locus. The selected structure relates those flow valuations through `U.Transfer`, `PathSlice`, edition-change, refresh, return, or feedback relations, but it does not merge their governed objects, records, launch values, evidence, gates, or performed work. The same product may be a run result of one flow and a design-side input, tool, or contextual object for another flow; that flow-local relation-position change is recorded by the current flow relation and any current `DesignRunTag` crossing, not by silently changing the object kind.
+* **Admissible path (definition).** A path `p` is **admissible** iff:
+  (a) locus/transfer types match the declared `tau_L, tau_Transfer`;
+  (b) any write/update to any member of `⟨L,P,E⃗,D⟩` (or kind‑retargeting under `StructuralReinterpretation`) appears at **exactly one** `OperationalGate(profile)`;
+  (c) each GateCrossing on `p` has a **SquareLaw witness** (CC-E18‑23) and, where applicable, a **SquareLaw‑retargeting witness** (CC-E18‑06‑EX);
+  (d) no hidden crossings occur across raw transfers;
+  (e) Γ‑pins are present on compare/launch faces;
+  (f) `T^D↔T^R` occurs **only** at `LaunchGate`.
+
+* `U.Transfer` preserves `CtxState` (`⟨L,P,E⃗,D⟩`) and carries **Assurance‑operations** only (see S3b); any crossing of locus/plane/editions or `T^D↔T^R` is placed at `OperationalGate(profile)`.
+* A **PathSlice** is a **slice‑scoped execution window** used for refresh/telemetry; faces pin `PathSliceId`; **re‑emission** happens when any pinned edition changes or `SliceRefresh` is triggered by sentinel rules.
+
+> **Consequences.** The P2W reference flow is simply one `p` in `TransformationFlowStructure`. Other domains (supply chain, water network, NN functional) instantiate different `p` on the **same selected-structure pattern**.
+>
+**Why "flow = valuation" preserves the ordinary "something changes" intuition**
+There are two complementary perspectives:
+* **Lagrangian (intuitive):** track tokens or state changes through a physical, organizational, or computational network.
+* **Eulerian (structural):** define a **function on transfer relations** ("how much/what is associated with each relation under a given regime"), with gate laws. E.18 deliberately fixes the **Eulerian semantics of flow** at the selected-structure scope: "flow (= valuation) + publication log", while change over time appears as **re-valuation** over a **PathSlice** (the execution/republishing window) under gate rules and the SquareLaw. This yields comparability, reproducibility, and slice-local refresh.
+
+#### E.18:5.3 - S3 - Publication discipline (faces)
+
+E.18 **imports E.17** wholesale **and associates MVPK faces with `PublicationScope` (USM)**.
+**MVPK remains the normative source** for:
+* the set of face kinds (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`),
+* pin discipline and Publication Characteristics (PC),
+* “no new numeric claims / no I/O re‑listing / no Γ‑semantics on faces”.
+
+E.18 **does not re-specify** these laws; it only adds **structure-scope obligations** for faces published over transformation-flow paths:
+
+1. **Crossings on faces.** When a face participates in a GateCrossing (S1.b/S9), it cites `BridgeId + UTS row + CL` and publishes **Φ(CL)/Φ_plane RuleId**; **penalties remain in R‑lane**.
+2. **Gate requirement on cited editions.** Any face that references editions of `CG-Spec`, `ComparatorSet`, or `UNM.TransportRegistryPhi` includes **`BridgeCard + UTS row`**; faces without this are treated as **non-consumable downstream**. Bridge and terminology-synchronization checks are governed by `F.9`, `F.17`, `E.17`, and `E.18`; selection and comparator pressure stays with `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, or `G.11` for current selector or comparator cases.
+3. **ComparatorSet & set returns (structure-scope).** Any `ComparatorSet` and `SetSemanticsRef` used along a transformation-flow path carries **edition identifiers**; affected faces are **re-emitted** on edition change; faces with comparison **return sets and declared partial orders** (no hidden scalarization), reusing MVPK's declared-order discipline.
+4. **Gamma_time on compare and launch faces.** All compare and launch faces on E.18 paths pin `Gamma_time`; implicit *latest* is not admissible. `A.21` carries current GateProfile binding and minimum profile semantics; E.18 paths include the pin. **CHR avoids acceptance thresholds** (*NoThresholdsInCHR*); thresholding and launches are carried by `A.21`, Part G, and `U.Work` for current launch or thresholding cases. Unknowns remain tri-state (`pass|degrade|abstain`) and fold per the active GateProfile (`A.21`).
+
+> **Reminder.** MVPK already bans "signature" on faces, I/O re-listing, arithmetic on faces, and unpinned numeric content (E.17 §5.4-5.5). E.18 **does not weaken or override** those rules; it only constrains how they are used along transformation-flow paths.
+
+**Lean publish‑mode (AssuranceLane‑Lite).** Lean changes **publication faces only** (`PlainView`/`AssuranceLane` minimal), not checks; publication shows `GateProfile`, `GateCheckRef[]`, and `DecisionLogRef`; the underlying GateChecks list remains unchanged.
+
+**Decision stability & idempotency (gate-local).** Gate decisions are stable under a declared equivalence relation over the pins used by `A.21`; the witness is recorded as `DecisionLog` or `EquivalenceWitnessRef`, with `G.6` or `G.11` used for cases involving evidence-path visibility or refresh implications. E.18 **does not** prescribe storage formats, key shapes, or hashing schemes.
+
+**KindBridge admissibility (publication).**
+Treat a step as a **EntityOfConcernRef/kind** transition (including `StructuralReinterpretation` under CC-E18‑06‑EX) **iff** the **UTS row**:
+  — satisfies the minimal bridge and terminology-synchronization obligations of `F.9`, `F.17`, `E.17`, and `E.18` for the current crossing case (identity, `ReferencePlane`, `CL/CL^plane`, edition pins for `CG-Spec`, `ComparatorSet`, `UNM.TransportRegistryPhi`, `ComparatorSetRef`, `BridgeId`, and `Phi-RuleIds`), and
+  — is additionally marked as a **KindBridge** per C.3 (`bridgeChannel=Kind`, `CL^k`, mapping or signature‑translation, order‑preservation claims, loss notes, definedness area, determinism).
+Otherwise this KindBridge explanation does not apply (the step falls back to a gated crossing). When the crossing is gate-mediated, `CrossingRef` is cited and linked from the `DecisionLog`.
+
+#### E.18:5.4 - S4 - Assurance‑operations on `U.Transfer` (counterfactual admissibility)
+On `U.Transfer` relations, an operation is interpreted as a **declarative assurance-operation** **iff** it is one of
+`ConstrainTo(rule)` - `CalibrateTo(calibrationReference)` - `CiteEvidence(evidenceRef)` - `AttributeTo(provenanceReference)`; otherwise this explanation does not apply.
+Under this interpretation, `CtxState⟨L,P,E⃗,D⟩` is preserved.
+If a claimed assurance operation would change plane or units, the assurance-operations explanation does not apply and the step is handled as a gated crossing (`OperationalGate(profile)+Bridge+UTS`).
+
+If Φ assigns penalties, they appear in the R‑lane; otherwise no penalties appear here.
+
+#### E.18:5.5 - S5 - Comparability & aggregation (normalize‑then‑compare; counterfactual form)
+
+The comparison explanation applies under the following admissibility conditions:
+
+* If a path segment intends to compare/aggregate, it is admissible as a comparison **only when** UNM precedes it; UNM is **method‑independent**, publishes **TransportRegistry^Phi** and **CG-Spec** references, and faces cite those editions; otherwise this comparison explanation does not apply.
+* If the comparator defines a **declared partial order**, then returns are **sets/archives** (Pareto/Archive); if a **total order** is declared, it is the one provided by the comparator; otherwise set semantics apply and covert scalarization is out of scope here.
+* If a claim is **ordinal‑only**, then only comparison results are published; arithmetic transforms (e.g., means/z‑scores) are out of scope of this explanation and belong to declared comparators or downstream policy.
+
+**Edition-aware set/archive publication records (e.g., QD archives) pin `DescriptorMapRef.edition`, `DistanceDefRef.edition`, and `CharacteristicSpaceRef.edition` when applicable; refresh is slice-local. Comparator, archive, and refresh checks are governed by `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` for current archive or refresh cases.**
+
+#### E.18:5.6 - S6 - Cycle discipline (Selection ↔ Planning)
+
+* The selected structure may center a loop between the `SelectionAndTuning` locus governed by selector/comparator patterns and the `WorkPlanning` locus governed by `A.15.2 U.WorkPlan` or a plan-item relation.
+* The Selection-Planning loop is represented under a local **budget / max_iter** in `Γ_time`; at expiry, the selector output includes the **current `CandidateSet`** and **`MethodTuning`** with a **partial-optimality** flag; further improvement is placed in the **next `PathSlice`**.
+* **UNM occurs before the loop**; if measurements are missing or stale, UNM output includes a **FreshnessRequest** represented in `A.15.2 U.WorkPlan` or a plan-item relation and enacted only by dated work under `A.15.1 U.Work`. Transfers, units, and calibrations are published as `CalibrateTo(calibrationReference)` and pinned to `TransportRegistry^Φ` (**R-channel only** for penalties).
+* **WorkEnactment is the only site for launch‑value slot filling** (`FinalizeLaunchValues / FinalizeLaunchValuesOnlyInWork`).
+> **Refresh orchestration.** Telemetry from `U.WorkEnactment` and publications are **slice‑scoped**, editions re‑pinned, faces **re‑emitted**.
+
+#### E.18:5.7 - S7 - Selector semantics (G.5) & parity harness (G.9)
+E.18 keeps set-return, archive preservation, and comparator refs visible along the path. It does not define selector, archive, dominance, or comparator semantics; those remain with `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` for current selector or comparator cases.
+
+* **Selectors return sets.** Default **DominanceRegime** is `ParetoOnly`; **IlluminationSummary** (telemetry summary) and any coverage/regret telemetry quantities are **report-only telemetry** (reported), excluded from dominance **unless** a CAL policy promotes them as declared dominance inputs (policy-id in SCR).
+
+If `PortfolioMode=Archive`, a **QD archive** can be returned; when generation is in scope, pairs `{environment, method}` are managed under declared **EnvironmentValidityRegion** and **TransferRulesRef**; parity records and `PathSliceId` are pinned on publication. Comparator semantics and archive pinning are governed by `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` for current archive or comparator cases.
+
+#### E.18:5.8 - S8 - Guard aggregation assignment and handling (USM §1.2)
+* **USM.CompareGuard**/**USM.LaunchGuard** **publish `GuardOwnerGateId`**. Guard failures are **events** aggregated by the declared gate (not GateChecks).
+* **Aggregation-assignment rules:** (i) `USM.LaunchGuard.aggregationGate = LaunchGateId(U.WorkEnactment)`; (ii) inside a Subflow, `USM.CompareGuard.aggregationGate = OperationalGate(InSentinel)`; join loci cannot be assigned as guard-pin aggregation gates.
+
+**GateProfile data shape (cross-reference).** `A.21` carries the current GateProfile binding and minimum profile semantics. E.18 names the structure only where crossings need it; fuller profile-matrix material is not a separate current authority unless a current governing pattern explicitly admits it.
+
+**Bridge-aware guards (cross-reference).** USM guards apply bridge-translation semantics (`translate(Bridge, Scope)`) with CL penalties in R-lane; guard vocabulary is governed by **A.2.6**, while gate aggregation remains in `A.21`.
+
+**Error/timeout/unknown (profile-bound).** GateCheck errors/timeouts fold to **`degrade`** under `Lean\|Core` and to **`block`** under `SafetyCritical\|RegulatedX`; `unknown` follows the GateCheck's governing rule (safety-default: `degrade`). The `A.21` DecisionLog record and equivalence witness carry decision stability; E.18 does not define storage or key structures.
+
+#### E.18:5.9 - S9 - Transport & crossings
+* Cross-Context or cross-plane transfer relations appear as **GateCrossings** that include a **Bridge** with **CL** policy; **Phi(CL)/Phi_plane** are published; penalties appear **in R only**; **Scope membership** (USM) is unchanged by crossings. **SquareLaw is checked within a single `DesignRunTag`; a `T^D<->T^R` change is modelled as a pair of coordinated gates with `DesignRunTagFrom/To` and the selected `A.15` work or publication locus for the current case.**
+* When *EntityOfConcernRef/kind* changes across a boundary, declare an explicit **KindBridge (`CL^k`)** in addition to plane/context CL; cross-context reuse of UNM uses `Transport`, with any `CL^plane` penalties published in **R-lane** only.
+
+#### E.18:5.10 - S10 - Non‑mechanism boundary
+
+* Publication is a **typed projection**, not execution. Any build/render/upload is **Work on carriers**; faces do **not** carry Γ-semantics.
+
+#### E.18:5.11 - S11 - Coordination wording labels (when current)
+Coordination wording may be published as **LexicalView** labels over a P2W carry-through flow valuation; it is orientation-only unless a bridge, crossing, work, or gate relation is current. It adds no current structure locus kind, checks, or mechanisms. Crossings with production flow use **Bridge+UTS** and the current bridge or crossing loci.
+
+#### E.18:5.12 - S12 - Viewpoint Families To E.18 Constructs (neutral, holonic)
+**S12 status.** S12 is secondary viewpoint-mapping input for a current viewpoint-family mapping claim. It is not the ordinary E.18 core for naming a selected structure, flow valuation, path slice, or crossing.
+
+E.18 does not mint new viewpoint or view kinds. It **imports** the generic multi-view machinery of E.17.0 `U.MultiViewDescribing`, bundles from E.17.1, and the TEVB engineering bundle from E.17.2. S12 only describes how these existing `U.Viewpoint` / `U.ViewpointBundle` ids are *used* in transformation-flow structures and in `UTS.ViewpointMap`; intent/concern semantics are governed by E.17.0-E.17.2.
+
+**Two-part use of TEVB and MVPK (ISO 42010 summary, no local re‑definition).**
+
+* **Engineering viewpoints.** For engineering holons, E.18 assumes a TEVB bundle with `ViewFamilyId = VF.TEVB.ENG`. `EngineeringVPId` is one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`, and TEVB is the normative source for their semantics. E.18 does not refine these viewpoints.
+* **Publication viewpoints.** Publication viewpoints come from MVPK (E.17); `PublicationVPId` is a `MVPK.ViewpointId` that governs faces under a `PublicationScope`.
+* **Architecture relation.** E.18 can supply the selected transformation-flow structure used by an `ArchitectureOf@Context` claim when `DescriptionContext`, described holon, bounded context, and structure kind are explicit. It does not define architecture itself, and a transformation-flow structure is not the functional architecture by default. Use `C.30`, `C.30.ASV`, and the architecture transformation-flow relation pattern when the selected structure is used in an architecture-flow relation. Crossings and penalties follow E.18 gating rules (S9; CC-E18-11/23) but do not change viewpoint semantics.
+* **Separation of roles.** `VP.*` from TEVB are **EngineeringVPId** values only; they are not publication faces. `PublicationVPId` values are defined in MVPK. The mapping between them is entirely via ISO-style correspondences and the `UTS.ViewpointMap`; E.18 does not define a second notion of viewpoint.
+
+**Context object scope (summary).**
+
+* **Engineering described object.** The engineering entity described by TEVB may be a holon (`U.System` or `U.Episteme`) per TEVB's `EntityOfConcernClassSpec`. That holon is the context object whose transformations, work, interfaces, or viewpoints may be structured. E.18 does not make that holon its own EoC unless the selected transformation-flow structure itself is under concern.
+  Transformation, method, procedure/control, role-enactor structure, structural architecture, module, interface, and allocation terms are viewpoint concern/content about that holon unless a concrete E.18 use explicitly opens A.6.4 retargeting with `KindBridge (CL^k)`, retargeting witness, and the applicable species rule.
+* **Publication described object.** MVPK can treat the *architecture description* itself as an EntityOfConcern; publication viewpoints for that AD are defined in MVPK, not here. E.18 only checks that such faces honor MVPK discipline and E.18 crossing rules when they publish selected transformation-flow material.
+
+**Naming rules (aligned with E.17.0/E.17.1/E.17.2).**
+* `ViewFamilyId` is the `U.ViewpointBundle.viewFamilyId` (e.g. `VF.TEVB.ENG` for TEVB); its lexical and ontological discipline is governed by E.17.1.
+* `EngineeringVPId : ViewpointId` is always a `U.ViewpointId` drawn from some bundle (for TEVB, one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`). E.18 never defines new `VP.*` ids.
+* `PublicationVPId : ViewpointId` is a `MVPK.ViewpointId` defined in E.17; TEVB viewpoints are **never** reused as publication viewpoints (per TEVB guard and MVPK).
+* The unqualified field name `ViewpointId` is not valid in S12 rows. Use `EngineeringVPId` and/or `PublicationVPId` explicitly; any imported row with an unqualified `ViewpointId` is normalized to `PublicationVPId` before the row is used.
+
+**Terminology guards (no local semantics).**
+* Within S12, “viewpoint”, “view” and “correspondence” have exactly the meanings given in E.17.0; “publication face” means an MVPK face (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) under some `PublicationVPId`.
+* Faces are **carriers for views**: a face is part of a view only when linked via an ISO‑style `CorrespondenceRef` to an engineering `U.View` under some `EngineeringVPId`; S12 does not add extra conditions beyond E.17.0/E.17.2.
+* Labels such as “Functional view”, “Procedural view”, “Role‑Enactor view”, “Module‑Interface view” in this section are lexical aliases for TEVB viewpoints; they are not interpreted as extra viewpoint kinds or as publication-face types.
+
+**Purpose.** Provide a neutral (F.18) mapping from TEVB engineering viewpoint families - bundle `VF.TEVB.ENG` with `VP.Functional / VP.Procedural / VP.RoleEnactor / VP.ModuleInterface` - to E.18 constructs so that the same holon can be described through functional, procedural, role-enactor, or module-interface viewpoints while the E.18 construct scope remains explicit. S12 does not introduce new `U.Viewpoint` or `U.View` kinds, and it does not claim that all such views share one underlying transformation-flow structure unless the structure, EntityOfConcernRef, and correspondence refs are declared.
+
+**Holon target.** The mapping applies to any holon, with the constraint that only `U.System` enacts `U.Work` (A.3/A.15). Supervisory and structural hierarchies remain distinct (B.2.5).
+
+**Viewpoint family to primary E.18 constructs (TEVB-aligned)**
+*All four families referenced below are TEVB engineering viewpoints; the "what ..." clauses are interpretive glosses for how they *use* E.18 constructs. Formal intent/concerns/allowed episteme kinds remain in TEVB (E.17.2).*
+1) **Function-Oriented View (`EngineeringVPId = VP.Functional`, capability and transformation viewpoint)** - "what transformation is achieved under roles"
+    * **Flow valuation example:** P2W carry-through flow valuation through loci `U.Signature(profile=FormalSubstrate) -> U.PrincipleFrame -> U.Mechanism -> U.ContextNormalization (UNM) -> SelectionAndTuning locus -> WorkPlanning locus -> U.Work -> EvaluatingAndRefreshing locus`, where each illustrative locus label names a governed value or relation rather than a new `U.*` kind.
+    * **Publication:** MVPK publication faces per E.17; comparable claims pin to `CG‑Spec/ComparatorSet` editions; crossings are published through `Bridge+UTS` and `CL/CL^plane` (penalties → **R‑lane** only).
+    * **Checks:** A.20 (CV) inside transformations; A.21 (GateFit) at gates; comparator, set-return, and No-Hidden-Scalarization discipline is carried through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` for current selector or comparator cases.
+    *  **Holonic note:** `U.Episteme` does not *act*; it is used by systems acting on carriers; `U.Work` appears only for `U.System`.
+2) **Procedure‑Oriented View (`EngineeringVPId = VP.Procedural`, step/time storyboard)** — “what steps occur and when”
+    * **FPF constructs:** `U.WorkPlan` (A.15.2) for intent/schedule; `U.WorkEnactment` for enactment.
+    * **Boundary:** entry into `U.WorkEnactment` is via `OperationalGate(profile)` with `USM.LaunchGuard`; `DesignRunTag` separates design time from run time; `DesignRunTagFrom/To` appear only at gates.
+    * **Holonic note:** Applies to any `U.System` scope (single holon or a supervised sub‑holon cluster); supervisory structure is handled by roles rather than structural mereology (B.2.5).
+3) **Role‑Enactor / Device‑Structure View (`EngineeringVPId = VP.RoleEnactor`)** — “what carrier/ports/constraints exist; who typically enacts it”
+    * **FPF constructs:** Module *interfaces* are `Signature` loci; module realizations are `Mechanism` loci; inter-module dependencies traverse `U.Transfer`, with gates on crossings.
+
+    * **Publication:** MVPK faces are **typed projections**, not `U.Work` records or execution carriers; faces add **no new numeric claims** (E.17). Constraints and compatibility appear as CV checks (A.20).
+    * **Holonic note:** Structural mereology (part/whole of the carrier) is modeled in Part A; E.18 ties interface/exposure semantics to mathematical-lens expressions and gates only when those are current.
+    * **Device-view structural reinterpretation.** The same transformation-flow valuation can be described as a **device** that performs the transformation without changing the declared `TransformationFlowStructure`: model with `Signature` + `Mechanism` only; do **not** introduce extra transfer kinds. If EntityOfConcernRef retargets (function <-> element), use `StructuralReinterpretation` with a **`KindBridge (CL^k)`** on **UTS** and a **SquareLaw-Retargeting witness**; preserve `⟨L,P,E⃗,D⟩` and treat it as a non-crossing (**CC-E18-06-EX**; witness shape §4.7).
+    * **Role‑label guard.** `TypicalEnactorRoleName` is **pedagogical only** and is not used as a GateFit role; GateFit uses `U.Role` (A.21).
+4) **Module‑Interface View (`EngineeringVPId = VP.ModuleInterface`, physical/logical module structure)** — “what modules exist and how they specify commitments and constraints across interfaces”
+    * **FPF constructs:** Module *interfaces* are `Signature` loci; module realizations are `Mechanism` loci; inter-module dependencies traverse `U.Transfer`, with gates on crossings.
+    * **EntityOfConcernRef note:** Functional-view-to-element-structure reinterpretation follows the **Device‑View structural reinterpretation** rule above (Role‑Enactor family) and **CC-E18‑06‑EX**; see **§4.7** for the retargeting witness shape and CV witness linkage.
+    * **Holonic note:** The same module can appear as a holon in multiple views; supervisory loops (B.2.5) remain orthogonal to structural composition.
+This is an expandable list of viewpoint families; E.18 is intentionally viewpoint-neutral. Additional engineering bundles beyond TEVB (safety, mission, information, ...) are introduced as separate `U.ViewpointBundle` species via E.17.1/E.17.2; S12 does not define them.
+
+**View-family label discipline for transformation-flow loci (recognition-only).**
+*Scope.* When a viewpoint-family mapping claim is current, a pattern or domain profile may declare `LocusViewFamilyLabels[]` for transformation-flow locus labels so practitioners can recognize familiar engineering wording while the selected structure stays governed by E.18. Semantics come from the referenced `U.ViewpointBundle`, E.18 locus binding, and MVPK correspondences; labels are recognition aids, not loci, viewpoints, publication faces, checks, or work records.
+
+*Norms.*
+1. Each current transformation-flow locus label may publish `LocusViewFamilyLabels[]` records of the form `{ ViewFamilyId, EngineeringVPId?, Label : TechASCII }`.
+   * If `ViewFamilyId = VF.TEVB.ENG`, then `EngineeringVPId` is one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}` (TEVB; CC-TEVB-1/6).
+   * Other `ViewFamilyId` values denote `U.ViewpointBundle` instances defined elsewhere, not ad-hoc local families.
+2. Labels are recognition-only: no arithmetic, no new claims, no check participation, no `CtxState` slot writes or updates, and no `DesignRunTag` change. They do not create MVPK faces.
+3. Labels are not used as `PublicationVPId`; publication viewpoints remain in MVPK.
+4. Twin registers are allowed as Tech and Plain labels per E.10; naming follows F.18 local-first discipline.
+5. Do not name transformation-flow loci by operands or output states; an operation is not its operand or output state.
+6. `TypicalEnactorRoleName` can be added for pedagogy; it is not used as a GateFit role because GateFit uses `U.Role` only.
+7. Morphology: ASCII TitleCase; conjunctions use `And`; for composite actions use `XingAndYing` or `XAndYing` when grammar calls for it.
+8. The P2W illustrative locus row (`U.Signature(profile=FormalSubstrate)` through `EvaluatingAndRefreshing` locus with functional or procedural labels and `TypicalEnactorRoleName`) is informative and does not change kind or viewpoint semantics.
+
+**Conditional deliverable — `UTS.ViewpointMap` (TEVB-aligned when current).**
+
+Publish a UTS block named `ViewpointMap` only when an engineering or publication viewpoint-family mapping claim is made or consumed. Ordinary E.18 use does not require `UTS.ViewpointMap` when the question under repair is only the selected structure, flow valuation, path slice, or crossing.
+
+*Minimum row schema (per row, when `ViewpointMap` is current).*
+* `ViewFamilyId` — `U.ViewpointBundle.viewFamilyId` (e.g. `VF.TEVB.ENG` for TEVB, or another bundle id).
+* `EngineeringVPId : ViewpointId` — a viewpoint from that bundle (for TEVB, one of `{VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}`).
+* `PublicationVPId : ViewpointId?` — MVPK publication viewpoint id that governs faces implementing this engineering view (optional if not publishing).
+* `TargetHolon ∈ {U.System, U.Episteme}` *(extended species can add `{U.PromiseContent|U.MethodFamily}`; if `TargetHolon ≠ U.System`, no `U.Work` enactment appears).*
+* `PrimaryE18Constructs` - loci, transfer relations, and gates actually used for this `(ViewFamilyId, EngineeringVPId, TargetHolon)` (typically one of the four families above).
+* `Crossings{BridgeId, CL/CL^plane?}` — crossings involved; penalties appear in R-lane only.
+* `EditionPins{...}` whenever comparable claims appear (bind to CG-Spec/ComparatorSet editions; any face citing editions includes `BridgeCard + UTS` row per MVPK/UNM).
+* `SenseCells[]` (at least two per row), each citing Context name + edition (F.17/E.10 discipline; UTS-wide coverage rules still apply).
+* *(REQUIRED when publishing)* `CorrespondenceRef[]` — ISO 42010 correspondences linking published faces to the engineering view(s) they implement; can cross architecture descriptions.
+* *Optional relation field* `ConcernsCovered[]` — ISO 42010 stakeholder concerns addressed by this row via GateProfiles/check catalogues.
+
+**Conformance (S12-scoped, only when `ViewpointMap` is current).**
+(i) `UTS.ViewpointMap` exists when a viewpoint-family mapping claim is made or consumed.
+(ii) For each holon that claims TEVB alignment, there are at least four rows whose `{ViewFamilyId, EngineeringVPId}` cover `{VF.TEVB.ENG × {VP.Functional, VP.Procedural, VP.RoleEnactor, VP.ModuleInterface}}` (per CC-TEVB-1/6).
+(iii) Rows that carry edition identifiers also include `BridgeCard + UTS` rows through `F.9`, `F.17`, `E.17`, and `E.18`; edition-bearing faces that lack such rows are not admissible for downstream consumption.
+(iv) Each row has at least two `SenseCells` and the sheet meets global UTS coverage rules.
+(v) Any `TargetHolon = U.System` that reaches `U.Work` shows `LaunchGate` with `DesignRunTag` consistency.
+(vi) Crossings referenced in `ViewpointMap` follow CC-E18-11; comparability along the mapped paths follows CC-E18-10.
+(vii) Rows do not use an unqualified `ViewpointId`; they use `EngineeringVPId` and/or `PublicationVPId` explicitly.
+(viii) When faces are published, `CorrespondenceRef[]` is present and resolvable to `U.Viewpoint` ids.
+(ix) Additional bundles (e.g. assurance, information, mission) can appear as extra `ViewFamilyId` values but are declared as `U.ViewpointBundle` species; they do not extend `VF.TEVB.ENG`.
+
+### E.18:6 - Archetypal Grounding (Tell–Show–Show; concise)
+
+*Tell (P2W reference path).* A first-principles-to-work path is one path through the selected transformation-flow structure, not the whole structure itself: `U.Signature(profile=FormalSubstrate)` declaration, principle frame, mechanism, normalization, selection, planning, work enactment, and refresh are represented as loci linked by one `U.Transfer` relation kind, with crossings pinned where context, plane, edition, or design/run state changes.
+
+*Show-A (Supply chain).* Loci: procurement -> inbound QC (UNM) -> selection (supplier set; declared order) <-> planning (lotting/schedule; budget) -> execution (receipts; **WorkEnactment enacts world-contact**) -> refresh (quality telemetry; affected faces re-emitted). Crossings: vendor Context via **Bridge/CL**; penalties appear **in R only**; comparators pinned to CG-Spec edition.
+
+*Show-B (Neural-net functional).* Loci: `U.Signature(profile=FormalSubstrate)` declaration (typed tensor-operation declaration) -> mechanism (combinator algebra) -> UNM (dataset normalization; **TransportRegistry^Phi**) -> selection (architecture/hyperparam set; Pareto set over accuracy@ratio and FLOPs@ratio) <-> planning (compute budget horizon) -> Work (training runs; Delta recorded) -> refresh (parity inserts; slice-scoped). Faces pin **DescriptorMapRef.edition** and **DistanceDefRef.edition** when QD telemetry values are shown; illumination remains **report-only telemetry** by default.
+
+*Show-C (Developed product, then application).* One flow valuation represents development work that produces a specification, pattern, process description, mechanism description, method set, or tool through drafting, checks, projection, build, or publication. A later flow valuation represents use of that product in project work or analysis. A further flow valuation may represent another use of the result: a tool is made, then used to make a chair, then the chair supports a person writing a text. The selected structure can relate all these valuations through transfers and feedback, while each flow keeps its own governed object, `DesignRunTag`, flow-local relation position for the carried object, work occurrence, evidence, and reopened slice.
+
+*Show-D (FPF pattern development and use).* A development-flow valuation represents pattern development work: creation, evaluation, projection, publication, and later repair of a pattern. A use-flow valuation represents application of that pattern to its own `EntityOfConcern`. An evaluation or use-found defect can select the smallest development slice for repair. E.18 keeps the common selected structure visible while separating the developed pattern, the use of the pattern, the evidence found during use, and the edition or slice that is reopened.
+
+**Cross-pattern boundary slice (QD archive).** A QD selector returns an archive. Under `E.18`, this is one `PathSlice` in one `TransformationFlowStructure`; selection returns a set/archive, not a hidden scalar. Under `A.20`, the archive insertion or update step has a current CV class, `CV.Status`, and witness or refusal; no acceptance is inferred. Under `A.21`, a comparability gate or `LaunchGate` can publish a `GateDecision` only when that gate relation is current and consumes the relevant CV result. Under `E.20`, if a new selector mechanism-governing definition is introduced, the mechanism-governing definition is the locus for the meaning while suites and wiring only cite or bind it. These are four governed loci, not one prescribed work order.
+
+> *Post-2015 SoTA echoes (illustrative):* **TAMP and MPC**, **MAP-Elites / QD (incl. CMA-ME)**, **refinement-typed stacks**, **profunctor optics**. Worked examples and Tell-Show-Show vignettes for P2W, comparator/archive, coupled development/application flows, and refresh specializations stay outside this selected-structure core unless a current pattern explicitly selects them.
+
+### E.18:7 - Conformance — **Unified checklist (normative)**
+
+**Conformance use.** This checklist is evidence for the selected-structure, flow-valuation, and crossing action guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; an item is applied only when its corresponding structure, crossing, publication, gate, refresh, or assurance move is current. Before applying any item, name the Solution move it tests; if no such practitioner move is current, treat the item as auxiliary-only or not applicable rather than expanding the applied assurance or conformance material.
+
+**Conformance groups.** Ordinary E.18 use starts with selected structure, single transfer relation kind, locus typing, `CtxState` preservation, and flow valuation. Crossing/launch items apply only when a GateCrossing, `LaunchGate`, `StructuralReinterpretation`, or work-boundary crossing is current. Publication/assurance items apply only when MVPK faces, edition pins, evidence carriers, decision logs, or replay are current. Extension/change items apply only when locus-kind scope, budget/refresh behavior, or UNM/comparator editions are being changed or consumed downstream.
+
+| ID | Requirement | Practical test |
+|----|-------------|----------------|
+| **CC-E18-01 — Single transfer relation kind** | The selected structure uses exactly one relation kind `U.Transfer`; all plane/Context/edition transitions occur only at loci via `OperationalGate(profile)`. | Model lint finds no auxiliary relation kinds for unit/plane changes; crossings sit on declared gates. |
+| **CC-E18-02 — Locus kinds bind governed values** | Loci are structure-positioned bindings to governed values. The current minimal locus baseline is `{Transformation, Signature, Mechanism, WorkPlanning, Work, Check, StructuralReinterpretation}`. Domain-specific species are open-world and non-exhaustive; they bind to one of these locus kinds or require an explicit E.18 update. The baseline is **not** a local ontology: `Transformation -> A.3.4`, `Signature -> A.6.0`, `Mechanism -> A.6.1/E.20`, `WorkPlanning -> A.15.2`, `Work -> A.15.1`, `Check -> A.20 or A.21`, and `StructuralReinterpretation -> A.6.4 plus E.18/A.20` where CV is current. A morphism expression is a mathematical-lens view when current, not the FPF kind of every locus. | Type registry shows at least the listed locus kinds; additional species map to one of them; checks are realized as `OperationalGate` when a gate/check locus is present (see CC-E18-06-EX/11). **Lint:** registry/table exposes `{species -> {locusKind, governingPattern}}`; missing or mismatched governing pattern fails. |
+| **CC-E18‑03 — Identity, composition, functorial faces** | Identities exist; path composition associative; publication is functorial: `Emit_s(t₂∘t₁)=Emit_s(t₂)∘Emit_s(t₁)`. | Pick two‑step path; MVPK faces commute (Square witness). |
+| **CC-E18-04 — Structure spec** | Spec declares `tau_L`, `tau_Transfer`, `Gamma_time`, Transport/Bridge registries. | Spec file shows typed registries and Gamma policy. |
+| **CC-E18‑05 — CtxState pins** | `CtxState=⟨L,P,E⃗,D⟩` is pinned on ports/tokens; raw `U.Transfer` does **not** write/update it. | Along a raw transfer, ⟨L,P,E⃗,D⟩ is preserved. |
+| **CC-E18-06 — Operational gates only** | Any write/update to any member of `CtxState` or entry into `U.WorkEnactment` is mediated by `OperationalGate(profile)` with aggregated `DecisionLog`. | Diff CtxState across transfer relations; if any member differs, exactly one gate exists with DecisionLog. |
+| **CC-E18-06-EX (strictly limited) — Projection retargeting without gate** | A locus of kind **`StructuralReinterpretation`** retargets the **published projection** without invoking `OperationalGate` **only if all hold**: **(a)** `CtxState` is preserved; **(b)** any **EntityOfConcernRef** change has a **KindBridge** (`CL^k`) entry on MVPK/**UTS**; **(c)** a **SquareLaw-retargeting witness** is present (on UTS); **(d)** the operation is **PathSlice-local** (`PathSliceId` pinned); **(e)** **no plane/unit change** occurs (plane/unit changes remain gated); **(f)** **CV.ReinterpretationEquivalence** (A.20) is `pass`; **(g)** **NoHiddenScalarization** - if the step concerns a comparable return shape, set/partial-order semantics are preserved and comparators remain ref-only (current comparator and set-return loci). | UTS row includes `bridgeChannel=Kind` and `CL^k`; SquareLaw-retargeting witness present; PathSliceId pinned; CV status recorded; no scalarization detected. |
+| **CC-E18‑07 — CV⇒GF activation predicate** | Until **aggregated `ConstraintValidity` = `pass`**, all **GateFit** checks return `abstain`. | Simulate CV failure ⇒ GateFit `abstain`. |
+| **CC-E18‑08 — LaunchGate discipline (incl. pre‑run barrier)** | Each `U.WorkEnactment` has exactly one `LaunchGate` assigned as the aggregator for `USM.LaunchGuard`; **mandatory** checks: `FreshnessUpToDate`, `DesignRunTagConsistency`. If preceding step’s CV ≠ `pass`, LaunchGate decision is `block` (cause logged). | Aggregation assignment `GuardOwnerGateId = LaunchGateId(U.WorkEnactment)`; CV≠pass ⇒ `block` with log. |
+| **CC-E18-09 — MVPK publication discipline** | Every published locus uses MVPK; faces carry `PublicationScopeId`, presence pins, **edition ids**, Gamma pins; **no I/O duplication** or arithmetic; faces add no new numeric claims. | Cards show `PublicationScopeId`; pins present; no "signature"/math on faces. |
+| **CC-E18‑10 — Normalize→Compare (CSLC)** | Any comparison cites **UNM/CG‑Spec** editions and **ComparatorSetRef**; ordinal claims are compare‑only; partial orders return sets; edition‑aware set/archive publication records (QD/archives) pin `{DescriptorMapRef, DistanceDefRef, CharacteristicSpaceRef?}.edition`; **any face citing editions includes `BridgeCard + UTS row`**. **NoHiddenScalarization — detection criteria:** (1) return shape is **set/poset**, not scalar; (2) `ComparatorSetRef` is present and edition‑pinned; (3) MVPK faces add **no new numeric claims**; (4) any summarisation is **order‑preserving & set‑valued**; otherwise conformance fails. | Faces show comparator pins; archive pins present; linter rejects edition cites without UTS; scalarisation checks pass. |
+| **CC-E18‑11 — Crossings gated** | Cross-Context or cross-plane crossings publish **BridgeId + UTS + CL/CL^plane** and are mediated by `OperationalGate(profile)`; **Φ/Φ_plane penalties appear in R-lane only**; EntityOfConcernRef change publishes **KindBridge (CL^k)**. **Exception (StructuralReinterpretation):** a **projection‑only** EntityOfConcernRef retargeting is recorded **without** a gate **iff** **CC-E18‑06‑EX** holds; then the UTS row includes `bridgeChannel=Kind`, `CL^k`, and a **retargeting witness**; any plane/unit change falls back to a gated crossing; `PathSliceId` is pinned; UNM reuse cross‑context continues via `Transport`. | The crossing record shows Bridge/UTS/CL pins; penalty placement audited. |
+| **CC-E18‑12 — Set‑returning selection** | The selection-and-tuning locus returns sets/archives under declared comparators (`ParetoOnly` by default) through the current selector/comparator governing pattern — no covert scalarization. | Selector output is a set/archive; policy id present if escalated. |
+| **CC-E18‑13 — Budgeted Selection↔Planning loop** | The loop declares **budget / max_iter**; on expiry selector publishes partial‑optimal set + `MethodTuning`; next **PathSlice** scheduled. | Logs show budget stop and slice rollover. |
+| **CC-E18‑14 — UNM before loop and FreshnessTicket state change** | UNM runs before selection; stale/missing inputs produce **FreshnessTicket/FreshnessRequest** planned in `WorkPlanning` and executed in `WorkEnactment`; calibrations appear as `CalibrateTo(calibrationReference)` with Φ pins. | Ticket state machine Issued→Planned→Executed→Closed; calibrations pinned. |
+| **CC-E18‑15 — FinalizeLaunchValues only in WorkEnactment** | Only `U.WorkEnactment` performs `FinalizeLaunchValues` and fills launch‑value slots. | Any earlier attempt blocks at LaunchGate; a `FinalizeLaunchValues` witness is present in Work. |
+| **CC-E18‑16 — Guard aggregation assignment & semantics** | `USM.CompareGuard`/`USM.LaunchGuard` publish the gate assigned to aggregate guard failures; guards are **events**, not GateChecks; failures are aggregated by that gate per profile. | Guard pins show the assigned gate; GuardFail recorded in that gate's DecisionLog. |
+| **CC-E18‑17 — Assurance ops on Transfer** | On `U.Transfer` only `ConstrainTo/CalibrateTo/CiteEvidence/AttributeTo`; none write/update `⟨L,P,E⃗,D⟩`. | Edge audit shows ops; CtxState unchanged across the edge. |
+| **CC-E18-17a — Assurance operation specifications (normative)** | **ConstrainTo(region/policy)**: tightens declared region/policy; **pre**: region subset current; **post**: `CtxState` unchanged; **idem.** and **monotone** under composition. **CalibrateTo(calibrationReference)**: attaches an **editioned** calibration reference, such as a map or standard, with Phi-policy id; admissible per cited `CG-Spec`; **post**: `CtxState` unchanged; **idem.** on same edition; penalties appear **in R only**. **CiteEvidence(evidenceRef)**: binds evidence references via **SCR/RSCR**; adds no numeric claims; **idem.**; missing carriers => **abstain**. **AttributeTo(provenanceReference)**: provenance only; decision algebra unaffected; **idem.** Hidden GateChecks, plane/unit changes, or edition writes on transfer relations are **forbidden**. | Operation specifications visible on transfer-relation audit; violations fail lint. |
+| **CC-E18-18 — Flow = valuation, coupled-flow unity/separation, and slice-local refresh** | Each flow declares valuation `nu` over `U.Transfer` plus `PublicationScopeId` and `PathSliceId`; when several flows are coupled in one selected structure, development, application, evaluation, refresh, and repair flow valuations are related by transfer, feedback, return, or edition-change relations while keeping separate governed objects, records, evidence, gates, work occurrences, flow-local relation positions for carried objects, and `DesignRunTag` boundaries; refresh is bounded to the addressed slice; affected faces are re-emitted on edition change or selected refresh rule. | Flow publication shows `nu`; a coupled-flow case names which flow is being valued, which flow-local relation position the carried object fills, and which slice is reopened; refresh trigger causes slice-local recompute. |
+| **CC-E18‑19 — Γ_time on compare/launch** | All compare/launch faces pin `Γ_time`; no implicit *latest*. | Face audit shows Γ pins; LaunchGate blocks on stale. |
+| **CC-E18‑19a — Γ_time pin shape (normative)** | The `Γ_time` pin is one of: `snapshot(t)`, `interval[t1,t2]` (closed), or `policy(Γ_timeRuleId)` that resolves to either; CV computations record the **resolved time reference** in `DecisionLog` and do not widen Γ at publication time. | DecisionLog shows the resolved reference; linter rejects missing/implicit Γ. |
+| **CC-E18‑20 — Lean publish‑mode ≠ weaken** | `AssuranceLane‑Lite` changes publication faces only; required GateChecks for the active profile remain intact. | Gate in Lean/Core shows minimal pins; GateChecks list unchanged. |
+| **CC-E18-21 — Decision stability & idempotency witness** | Gate decisions are stable under the equivalence relation recorded by `A.21`; a **witness of equivalence** is present on the DecisionLog record; any change that breaks equivalence triggers re-aggregation. **Minimum lexeme (CV-relevant witness):** `EquivalenceWitness := { keys, E⃗, Γ_time(reference), PathSliceId?, ReturnShapeClass, ComparatorSetRef?, profile }`. | Modify any input outside the declared equivalence => re-aggregation; DecisionLog records the witness; lexeme present. |
+| **CC-E18‑21a — Decision join (publication algebra)** | Aggregation over GateChecks is the **idempotent, commutative, associative join** on the lattice `abstain ≤ pass ≤ degrade ≤ block` with **neutral = `abstain`** and **absorbing = `block`**. The algebra is conceptual; publications carry only (i) the aggregated **GateDecision** and (ii) its **GateDecisionRationale** recorded in the **DecisionLog**. A **GateDecisionExplanation** is an optional human‑readable narrative derived from the GateDecisionRationale; it is **not** a decision and is not used as one. If aggregated `ConstraintValidity ≠ pass` or the active profile suppresses narratives, any GateFit‑oriented GateDecisionExplanation **does not apply**. | Review a gate with multiple GateChecks: the aggregated decision matches the lattice join; no per‑check arithmetic is introduced on faces. |
+| **CC-E18‑22 — Errors/unknowns fold by profile** | Errors/timeouts fold to `degrade` under `Lean/Core` and to `block` under `SafetyCritical/RegulatedX`; `unknown` folds per GateCheck policy (safety‑default: `degrade`). | DecisionLog shows folds; profile switch changes fold behavior accordingly. |
+| **CC-E18‑23 — SquareLaw on crossings** | For every GateCrossing, `gate_out ∘ transfer = transfer' ∘ gate_in`; LaunchGate case is mandatory. | MVPK shows commuting square; inconsistency yields `block/degrade` per profile. |
+| **CC-E18‑24 — UNM declaration locus** | `CG‑Spec`, `ComparatorSet`, `UNM.TransportRegistryΦ` editions are declared only through the UNM governing locus (others ref‑only). | Declaration records show UNM as the governing locus; others have refs only. |
+| **CC-E18‑25 — Evidence lanes & DecisionLogs** | AssuranceLane carries GateProfile, GateCheckRef list, edition pins, aggregated decision, `DecisionLogRef`; **evidence pins follow a two-part scheme**: **carriers** are pinned via **`SCR/RSCR`**, and **value annotations** are carried under **`VALATA (VA/LA/TA)`**. | Gate publication faces include these pins; logs retrievable. |
+> **Coupling note.** `CC-E18‑07 (CV⇒GF)` and `CC-E18‑21a (Decision join)` together ensure that any GateFit‑scoped GateCheckRef **returns `abstain`** until the aggregated CV status equals `pass`; CV/GF separation remains intact.
+> **Scope note (E.18 vs neighbor patterns):** Detailed mechanism-scoped checks and publication obligations are governed by the current neighbor patterns named in this pattern's Relations. E.18 fixes only selected-structure obligations: single `U.Transfer` relation kind, gate crossings, valuation, publication pins, CV/GF boundary, and slice-local refresh.
+
+**Glossary (additions)**
+* *Open-world species* - non-exhaustive domain-scoped locus specializations that map to the minimal locus baseline and name a governing pattern.
+* *Signature locus* - structure-positioned use of **A.6.0** `U.Signature` (universal block). It is a governed value bound into the selected structure, not a local kind and not a `C.3.2 KindSignature`.
+* *KindSignature (C.3.2)* - definition of a `U.Kind` by intent, extent, and formality; **unrelated** to E.18 locus kinds; never a `genus`.
+* *Species (domain-scoped)* — typed specialisations `speciesOf(kind=...)` that declare `KindDefinition=<current governing pattern id>` (e.g., `kind=Mechanism; KindDefinition=A.6.1`).
+* *KindBridge (`CL^k`)* — a compatibility note on UTS for EntityOfConcernRef/kind transitions; required by CC-E18‑06‑EX and crossings (CC-E18‑11).
+* *Eulerian interpretation* - operational stance where a flow is treated as a valuation over `U.Transfer` and transfer relations perform assurance-only operations (no token-passing semantics).
+* **GateCheckKind boundary.** `GateCheckKind` is a publication/check lexeme used inside `GateCheckRef`, not a structure locus kind. No `GateCheckKind` becomes an E.18 `Check` locus unless an `OperationalGate(profile)` locus is actually present.
+
+* **GateCheckRef shape (publication lexeme governed by A.21).** Where publication faces over a selected structure carry GateChecks, a **GateCheckRef** is a record
+  defined by `A.21`; E.18 constrains only where such faces carry those refs along transformation-flow paths.
+
+`GateCheckRef := { aspect, kind, edition, scope }` with:
+  `aspect ∈ {ConstraintValidity, GateFit}`, `kind ∈ GateCheckKind`, `edition ∈ Editions`, and `scope ∈ {lane | locus | subflow | profile}`.
+* **GateDecision / GateDecisionRationale / GateDecisionExplanation (terminology).**
+  — **GateDecision** — the aggregated lattice value produced by `OperationalGate(profile)` for a specific `{GateProfile, GateCheckRef[]}`.
+  — **GateDecisionRationale** — the minimal structured rationale **for that GateDecision**: per‑check outcomes, profile‑bound folds, and published evidence or witness references on the DecisionLog; it records **why the GateDecision is admissible** under the active profile.
+  — **GateDecisionExplanation** — an optional human‑readable narrative derived from the GateDecisionRationale; it **does not carry decision status**. While aggregated `ConstraintValidity ≠ pass`, GateFit‑scoped checks return `abstain`; any GateFit‑oriented GateDecisionExplanation **does not apply**.
+> **Clarity note.** **GateDecision ≠ GateDecisionExplanation**; narratives are optional and derivative of GateDecisionRationale.
+
+* **GateFit (aspect, not an entity).** GateFit names the **aspect** of checks that evaluate **profile‑fit**; there is no separate GateFit entity. “Gate decision under GateFit” means “the gate’s decision computed from GateChecks with `aspect=GateFit`”.
+
+  This shape is publication-only; it introduces no new execution steps and no arithmetic on faces.  (Couples to A.20 or A.21 without duplicating their check catalogs.)
+* *VALATA (VA/LA/TA)* — value-annotation scheme used on **AssuranceLane**; **carriers** are referenced via **SCR/RSCR**; detailed evidence obligations are governed by `A.10` and the named evidence, publication, or crossing pattern for the current case. Included here so evidence pins are self-describing in Part E texts.
+* *Transfer vs Transport* - **Transfer** = the sole relation kind `U.Transfer` in the selected structure. **Transport** = Phi-policy/registry-defined conversions (`TransportRegistry^Phi`) referenced by UNM; "reuse via Transport" refers to the latter.
+* *GateCrossing* - a typed locus transition that writes/updates a CtxState slot or the kind-channel; see **S1.b** for the normative list and required pins.
+* *Admissible path* - a typed path obeying the GateCrossing discipline (no hidden crossings; witnesses present), Gamma-pinned on compare/launch, and `T^D<->T^R` only at `LaunchGate`; see **S2**.
+
+### E.18:8 - Gating Profiles (applied to E.18)
+This table is a selected-structure coverage table for E.18 crossings and path slices. It is not the source of `GateProfile` semantics. `A.21` governs gate decision semantics, folds, `DecisionLog` minima, and the GateFit check-catalog boundary.
+
+> Gating is expressed as **publication-gating** per E.17 profiles. The structure model aligns with the **CC items** listed for the chosen profile; broader obligation profiles include all narrower-profile items.
+
+| Profile                          | Required CC‑items                                         | Additional notes                                                                               |
+| -------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Lean**                         | 01–06, 08–09, 11–12, 15, 19–21, 25                                                                                                           | Minimal MVPK presence; LaunchGate keeps `FreshnessUpToDate` & `DesignRunTagConsistency`. |
+| **Core**                         | **Lean** + 07, 10, 13–14, 16–18, 22–23, 24                                                                                                  | Adds CV⇒GF order, CSLC pins, budgeted loop, guards, valuation/sentinel refresh, error folds, SquareLaw, and the UNM declaration locus. |
+| **Safety‑Critical / RegulatedX** | **Core** + profile‑specific GateChecks (safety envelope, regulator id/editions) with stricter folds per **CC-E18‑22**; SquareLaw audits tightened | — |
+
+**Recommended defaults (non-normative, tie-in to `A.21` and `G.11`).** Profiles inherit along a `PathSlice`; local overrides only **add** GateChecks; weakening uses a new `PathSlice` and refresh wiring through the current `G.11` locus when refresh wiring is current.
+
+### E.18:9 - E.18 LEX Discipline (registration)
+Register Tech tokens (ASCII) used by this pattern with twin-labels: `TransformationFlowStructure`, `TransformationFlowValuation`, `StructuralReinterpretation`, `OperationalGate`, `GateProfile`, `GateCheckRef`, **`GateCheckKind`**, `DecisionLog`, `USM.CompareGuard`, `USM.LaunchGuard`, `KindBridge`, `SubflowRef`, `FlowEmbed`, `SentinelId`, `PathSliceId`, `SliceRefresh`, `FinalizeLaunchValues`, `VALATA`. Add an ASCII alias **`CLKind`** <-> Plain `CL^k` (cf. `CLPlane` <-> `CL^plane`). Reference MVPK E.17 naming for faces.
+**CtxState Extension Registry.** Register any extra CtxState slot beyond ⟨L,P,E⃗,D⟩ with: slot id, informal intent, partial‑order law (with neutral/absorbing), SquareLaw compatibility note, and the owning Gate profile(s) that may change it. Absence of registration ⇒ **non‑conformant**.
+
+### E.18:10 - Consequences
+
+**Benefits.**
+
+1. **Universality with discipline:** one transfer relation kind and explicit gates eliminate second hidden work and method orders and make cross-domain flows (ML, supply-chain, TAMP and MPC, scientific work structures) uniformly analyzable and auditable.
+2. **Comparability & replayability:** CSLC and edition‑pinned comparators prevent covert scalarization and enable declared set returns and reproducible decisions.
+3. **Locality of change:** sentinel subflows restrict refresh to affected `PathSlice`s; large selected structures remain stable under frequent edition bumps.
+4. **Clean DesignRunTag fold:** LaunchGate and `DesignRunTagConsistency` stop premature launch-value slot filling; acceptance and telemetry belong where they occur (`U.Work`).
+5. **Assurance visibility:** MVPK makes GateProfile/DecisionLog records locally checkable and cacheable for the same `{PathSlice, GateChecks, Editions}`.
+
+**Trade‑offs.**
+a) **Higher upfront modeling cost:** explicit Bridge/UTS pins and GateProfiles demand care; mitigated by Lean profile and templates.
+b) **Longer transfer face sets:** MVPK faces are verbose by design; lean face sets can be used for low-risk segments.
+c) **Tooling alignment:** some incumbent DAG-only orchestrators conflict with budgeted cycles and set-return semantics; adapters project E.18 semantics to their interop boundary, while `E.18.2` carries the mathematical graph-description relation when that projection matters.
+
+### E.18:11 - Rationale
+
+E.18 states **strict separation of concerns** (selected-structure scope only); **specialized semantics are governed by the patterns named below for those current relations**:
+
+* **What the selected structure is:** structure-positioned transformation and slot-filler loci plus the single relation kind `U.Transfer`; graph, morphism, tuple, category, or algebra language is used only when a current mathematical description or lens expresses the relation.
+* **Where/when it crosses contexts:** **only** at `OperationalGate(profile)`, with Bridge+UTS, CL/CL^plane, and Φ published in R-lane.
+* **How comparability works:** UNM is the single governing locus for unit, plane, and transport declarations, and selectors operate **only** on normalized, edition-pinned comparators, returning sets or archives rather than totals. Edition-aware pins and archive semantics are checked through `A.19.SelectorMechanism`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` for current selector or archive cases.
+* **How change propagates:** sentinel‑bounded `PathSlice` refresh; editions are monotone; LaunchGate is the only binder of launch‑values.
+
+This arrangement gives checkable conditions for **functorial publication** (commuting squares on crossings) and **orthogonality** of inner technical validity (ConstraintValidity) to context fit (GateFit), which in turn keeps gate aggregation **order-independent** under the CV=>GF activation predicate.
+
+### E.18:12 - SoTA‑Echoing (post‑2015, multi‑Tradition)
+
+> Each row states the source idea, the FPF invariant E.18 adopts, the practitioner move it changes, and the shortcut it rejects. Vendor, tool, and literature tokens are informative; the invariant and practitioner move carry the pattern explanatory work.
+
+| SoTA source idea | FPF invariant | Practitioner move | Rejected shortcut |
+|---|---|---|---|
+| **Applied category theory / compositional open systems** (Fong & Spivak, *Seven Sketches in Compositionality*, Cambridge University Press 2019; arXiv [`1803.05316`](https://arxiv.org/abs/1803.05316) source draft). | Use one `TransformationFlowStructure` whose loci are structure-positioned transformation and slot-filler values and whose links use the single relation kind `U.Transfer`; morphism language expresses composition only when the mathematical lens is current. | Name the selected structure, locus kinds, one `U.Transfer`, and any current path or crossing before treating a work or method sequence as structure semantics. | Treating category-theory prestige, tool pipelines, lineage packages, or work and method narratives as structure semantics. |
+| **Operads, wiring diagrams, and hypergraph categories** (Spivak, *The operad of wiring diagrams*, arXiv [`1305.0297`](https://arxiv.org/abs/1305.0297); Baez & Fong, *A Compositional Framework for Passive Linear Networks*, arXiv [`1504.05625`](https://arxiv.org/abs/1504.05625)). | Typed ports and interface junctions motivate Bridge/CL/Phi pins at crossings; E.18 adapts the math by requiring publication pins that the math alone does not supply. | When an interface or boundary crossing matters, publish the Bridge, UTS row, CL/CL^plane, and R-lane penalty placement instead of leaving an unpinned junction. | Treating an interface diagram, wiring diagram, or decorated cospan as sufficient crossing evidence. |
+| **Open-graph and string-diagram rewriting** (Bonchi, Gadducci, Kissinger, Sobocinski, Zanasi, *Rewriting modulo symmetric monoidal structure*, arXiv [`1602.06771`](https://arxiv.org/abs/1602.06771); Patterson, Spivak, Vagner, *Wiring diagrams as normal forms for computing in symmetric monoidal categories*, arXiv [`2101.12046`](https://arxiv.org/abs/2101.12046)). | Rewrites and subflow refactors are admissible only with edition bumps, sentinel scopes, and `PathSlice` locality sufficient for replay. | Localize the rewrite to the affected subflow or slice, pin editions, and re-emit affected faces. | Treating a global rewrite as replay-safe because the diagram still looks equivalent. |
+| **Research-package portability / RO-Crate-style research packaging** (Soiland-Reyes et al., *Packaging research artefacts with RO-Crate*, arXiv [`2108.06503`](https://arxiv.org/abs/2108.06503); RO-Crate 1.2 as format lineage). | Portable package descriptions belong in MVPK faces and InteropCards; packages and lineage metadata do not define selected-structure semantics. | Publish package, provenance, and source refs as publication references while keeping structure meaning in the locus/gate definitions. | Treating a crate, package, file bundle, or lineage record as the semantic authority for the selected structure. |
+| **Reproducibility and content addressability** (Di Cosmo, Gruenpeter, Zacchiroli, *Referencing Source Code Artifacts: a Separate Concern in Software Citation*, arXiv [`2001.08647`](https://arxiv.org/abs/2001.08647)). | Stable identifiers become edition pins and entries in `E⃗`; they make references checkable but do not decide locus, gate, or mechanism meaning. | Pin the exact editions of code, comparator, transport registry, descriptor map, or distance definition used by a face or path. | Treating an identifier, hash, or content-addressed source ref as semantic authority. |
+| **TAMP and dynamic-planning/control practice** (Zhao et al., *A Survey of Optimization-based Task and Motion Planning*, arXiv [`2404.02817`](https://arxiv.org/abs/2404.02817); Shen et al., *Motion Planning in Dynamic Environments*, arXiv [`2606.02677`](https://arxiv.org/abs/2606.02677), as current dynamic-motion survey context). | Iteration is represented only as a budgeted Selection-Planning loop with freshness checks and launch values bound in dated `U.Work`. | Declare the loop budget, freshness/request boundary, next `PathSlice`, and Work-only launch-value filling. | Turning E.18 into an ordered work-method narrative, an unbounded loop, or pre-Work launch-value filling. |
+| **Quality-Diversity / illumination search** (Mouret & Clune, *Illuminating search spaces by mapping elites*, arXiv [`1504.04909`](https://arxiv.org/abs/1504.04909), lineage; Chalumeau et al., *QDax*, arXiv [`2308.03665`](https://arxiv.org/abs/2308.03665); Ding et al., *QDHF*, arXiv [`2310.12103`](https://arxiv.org/abs/2310.12103); Bradley et al., *QDAIF*, arXiv [`2310.13032`](https://arxiv.org/abs/2310.13032) for feedback-guided cases). | Set and archive returns stay visible; E.18 treats covert scalarization to one winner as non-conformant while leaving selector, archive, dominance, and comparator semantics to neighboring loci. | Return the set/archive, pin comparator and descriptor/distance editions, and cite the selector/comparator loci for current cases. | Collapsing a partially ordered or archive-like result into a single best score. |
+| **Profunctor optics / modular projection practice** (Pickering, Gibbons, Wu, *Profunctor Optics: Modular Data Accessors*, arXiv [`1703.10857`](https://arxiv.org/abs/1703.10857); Clarke et al., *Profunctor Optics, a Categorical Update*, arXiv [`2001.07488`](https://arxiv.org/abs/2001.07488), as later refinement). | MVPK faces are projections of selected-structure or mathematical-lens information; they carry views without adding new numeric or mechanism claims. | Publish views as MVPK faces with correspondence refs and pins, while leaving transformations and checks in their governing patterns. | Treating a view, projection, screen, or explanation as a transformation, evidence result, or gate decision. |
+
+*Cross-tradition note.* Rows 1-3 (compositional graph practice), rows 4-5 (publication and reproducibility practice), row 6 (controls/robotics), row 7 (evolutionary search), and row 8 (PL/semantics) jointly position E.18 across multiple traditions per E.8, but each row is retained only because it changes a practitioner move or rejected overread.
+
+### E.18:13 - Bias‑Annotation (per E.8 SG‑bias slot)
+
+* **Acyclic-bias risk.** Tooling accustomed to DAGs may discourage admissible feedback loops; E.18 explicitly permits loops with budget/sentinel controls (CC-E18-13, -18).
+* **Scalarization-bias risk.** Cultural defaults to single-score rankings can suppress Pareto/QD sets; E.18 keeps declared order relations and return sets visible (CC-E18-10, CC-E18-12).
+* **Interop-dominance risk.** File/format ecosystems (CWL/RO-Crate/lineage) can be mistaken for semantic sources; E.18 places them in **InteropCard** and keeps governing semantics in loci/gates.
+* **Over-formalization risk.** Category-theoretic formalisms can obscure operational guard-rails; E.18 grounds crossings in Bridge/UTS/CL/Phi pins and SquareLaw audits (CC-E18-11, -17).
+* **Retrospective rewrite risk.** Global rewrites break replay; E.18 confines them to edition bumps and slice-local refresh (CC-E18-16).
+
+**Mitigations.** Profile‑gated publication, audit of `DecisionLog`, mandatory edition pins, Lean‑to‑Core upgrade paths, and conformance tests tied to PathSlice replay.
+
+### E.18:14 - Relations (explicit pattern-to-pattern relations)
+
+> Relation rows are typed as **builds_on / constrains / coordinates / specializes / publishes_on / requires / provides_checks_for**.
+
+**Foundations**
+* **E.18 -> builds_on -> E.17 MVPK (for publications of selected structure material).** Faces, pins, lanes, functorial publication, Lean/Core/Regulated profiles.
+* **E.18 -> builds_on -> A.6.0 U.Signature / A.6.1 U.Mechanism.** Locus kinds and governing-definition content boundaries.
+* **E.18 -> builds_on -> A.7 Strict Distinction (EntityOfConcern, Description episteme, Description episteme admitted for specification use, and publication/carrier separation).** No new claims on faces; publication faces project selected structure, crossing, or flow-valuation information without becoming the governed selected structure, Description episteme, specification use, evidence, gate decision, work occurrence, or carrier.
+
+**Flow semantics & checks**
+* **E.18 -> coordinates -> A.20 U.Flow (ConstraintValidity scope).** CV checks apply inside transformations; no declaration/translation of planes/units in CV; **error/timeout/unknown folds** follow **CC-E18-22** as the **minimum default** (profiles can be stricter).
+  **Terminology discipline (A.20 boundary).** In CV scope, publications use **status/witness** language; **GateDecisionRationale/GateDecisionExplanation** are reserved for gating and do not apply to CV.
+* **E.18 -> coordinates -> A.21 GateProfilization (GateFit scope).** **GateFit-scoped GateChecks** are aggregated by `OperationalGate(profile)` with CV=>GF activation; the **enumeration and publication shape** of GateChecks are governed by **A.21**. **Equivalently:** a GateFit decision different from `abstain` appears only when aggregated `ConstraintValidity = pass`; otherwise the **GateDecisionExplanation (GateFit-oriented)** does not apply.
+* **E.18 -> uses -> USM.CompareGuard and USM.LaunchGuard.** Guards publish scope and responsible gate; guard failures are handled by the declared gate.
+* **E.18 -> constrains -> F.9/F.17 bridge and terminology-synchronization loci (Bridge+UTS, CL/CL^plane, Phi -> R).** A transition is treated as a **Crossing** iff `Bridge+UTS` and the appropriate `CL/CL^plane` are published; otherwise this crossing explanation does not apply. Where Phi defines penalties, they appear in the R-lane only.
+* **Operational interpretation (default): Eulerian.** A flow is a **valuation** over `U.Transfer`; transfer relations carry **assurance-only operations** (see CC-E18-17); no token-passing semantics are assumed.
+
+**UNM & comparability**
+* **E.18 -> constrains -> UNM declaration and use loci.** `CG-Spec`, `ComparatorSet`, and `UNM.TransportRegistryPhi` declarations are governed by UNM; normalize-then-compare is mandatory.
+* **E.18 -> constrains -> G.5 SelectionAndTuning.** Set-returning, comparator-pinned decisions, no hidden scalarization; `MethodTuning` without launch-value slot filling.
+* **E.18 -> constrains -> G.11 EvaluatingAndRefreshing.** EditionBumpProposal, two-phase update through the UNM declaration locus, path-local refresh.
+
+**Work boundary**
+* **E.18 -> coordinates with -> A.15 U.WorkEnactment (`FinalizeLaunchValuesOnlyInWork`).** Single point of `FinalizeLaunchValues`; `FreshnessUpToDate` hard at LaunchGate; acceptance/telemetry published here.
+
+**Structure & reuse**
+* **E.18 -> provides selected-structure base for transformation-flow families.** Flow patterns such as P2W and EvaluatingAndRefreshing use E.18 for selected structure, valuation, crossings, guards, MVPK faces, and slice-local refresh. The current ontology is: `A.3.4` governs each bounded `U.Transformation`, E.18 governs the selected compound structure over transformations and adjacent governed loci, and neighbor patterns govern method, work, mechanism, evidence, publication, gate, decision, and refresh claims when those claims are current.
+* **E.18 -> coordinates with -> architecture transformation-flow relation patterns.** When a selected transformation-flow structure is used in an architecture-flow relation, the architecture transformation-flow relation pattern records the relation between `TransformationFlowStructure` and `ArchitectureOf@Context`; E.18 keeps selected structure, crossing, and flow-valuation discipline.
+* **E.18 -> publishes_on -> E.17 MVPK views** (`PlainView`, `TechCard`, `InteropCard`, `AssuranceLane`) for every transfer/locus where publication occurs; Lean mode applies only as per profile.
+
+### E.18:15 - Conformance Use Checks
+
+1. **Model lint:** run static checks for CC-E18-01...25 (transfer relation kind, gates on crossings, CV=>GF, guard aggregation assignment, UNM declaration locus, SquareLaw).
+2. **Publication audit:** sample a commuting square and a sentinel‑bounded subflow; verify pins and DecisionLog behavior on *block/degrade*.
+3. **Replay test:** hold editions fixed; re‑run selection on a PathSlice; observe identical return‑sets; apply a bump; see only affected `PathSlice`s refresh.
+4. **StructuralReinterpretation probe:** construct a minimal reinterpretation step; confirm `CL^k` with `bridgeChannel=Kind` on UTS, a SquareLaw‑retargeting witness on UTS, `PathSliceId` pinned, **CV.ReinterpretationEquivalence=pass**, and absence of hidden scalarization.
+
+[20]: https://webstore.ansi.org/preview-pages/ISO/preview_ISO%2B23247-1-2021.pdf?srsltid=AfmBOooAUXpg38IpkTlUFtcCpaMVOjivkewJWDIUd1VemIJO91abNEkG "INTERNATIONAL STANDARD ISO 23247-1"
+
+Relation boundary: `E.18` governs selected transformation-flow structures for structures of atomic `U.Transformation` values and their structure-positioned slot-filler loci. It does not define a second change ontology, a work sequence, a method, a mechanism, a mathematical graph expression, or a publication record. When a selected-structure use raises bounded-transformation, dynamics-episteme, temporal-aspect, temporal-claim adequacy, work planning, performed work, evidence, assurance, gate, decision, architecture, structural-view, mechanism, selector, comparison, refresh, publication, or wording-use claims, name the governing pattern for that relation before relying on the structure.
+
+When a selected structure locus, selected path, path slice, substructure, or flow valuation expresses, decomposes, or constrains one bounded transformation relation, use `A.3.4` for the atomic `U.Transformation` claim and use `E.18` for the selected structure, containing locus, pins, locus kind, crossing, publication, comparability, and refresh discipline. E.18 locus kinds do not automatically fill neighboring slots: `Transformation` points to `A.3.4`, `Signature` points to `A.6.0`, `Mechanism` points to `A.6.1` and `E.20`, `WorkPlanning` and `Work` point to the A.15 work family, and `Check` points to `A.20` or `A.21` according to the current claim.
+
+### E.18:15a - E.18.1 P2W Child-Pattern Relation
+
+`E.18.1` is a child pattern for principles-to-work carry-through. It inherits this pattern's selected structure, path, flow-valuation, transfer, crossing, and gate minimum, then adds the local P2W relation from accepted problem-side output to the next FPF kind named by value, relation, record, or application. Pilot examples for one specialization belong in the selected child pattern that uses them; `E.18` keeps only the selected-structure law and this short child-pattern relation.
+
+### E.18:End
+
+## E.18.1 - Principles-to-Work Carry-Through
+
+> **Tech-name:** `PrinciplesToWorkCarryThrough`
+> **Plain-name:** principles-to-work carry-through relation
+> **Type:** Architectural pattern (E)
+> **Status:** Stable
+> **Normativity:** Normative unless explicitly marked informative
+> **Placement:** Part E -> E.18 child pattern
+> **Builds on:** `E.18` Transformation Flow Structure, `C.22.2` ProblemCard@Context, `A.6.0` `U.Signature`, `A.6.1` `U.Mechanism`, the A.15 work family, `C.29`, `C.16`, `F.9`, `A.20`, `A.21`, and Part G comparison, selection, and refresh patterns.
+> **Purpose:** relate accepted problem-side material to the next FPF kind named by value, relation, record, or pattern application while preserving the useful first-principles move.
+
+### E.18.1:1 - Problem frame
+
+Use this pattern when an accepted `ProblemCard@Context` is ready enough to guide work, but the next FPF use is not yet settled. The practitioner has an unsettled carry-through question: which problem-side distinction can be carried into the next FPF relation or record named by value?
+
+The primary EntityOfConcern is the P2W carry-through relation: the relation between accepted problem-side material and the next FPF use whose governing relation can be named by value. P2W keeps first-principles material usable by turning it into one recoverable next move instead of letting an inspiring explanation become an all-purpose project claim.
+
+#### E.18.1:1.1 - Use this when
+
+- an accepted `ProblemCard@Context` names a working problem and the team needs a disciplined next move toward method, planning, performed work, or result interpretation;
+- a first-principles, `U.Signature(profile=FormalSubstrate)`, `PrincipleFrame`, mechanism-position, method-position, `A.15.2 U.WorkPlan` or plan-item, performed-work, result-record, or source-currentness cue is present, but the FPF kind or relation to use next is still unsettled;
+- a transformation-flow structure, mathematical path relation in a graph-shaped description, flow diagram, principle scheme, scenario, functional description, or source publication helps the team think, while the next move must still be recovered as an FPF kind or relation named by value;
+- a result artifact, telemetry line, acceptance record, quality-evaluation record, done-state update, feedback pin, or integration claim needs to be unpacked before it can guide the next move.
+
+#### E.18.1:1.2 - What goes wrong if missed
+
+The team jumps from a convincing problem-side formulation into downstream language without naming the FPF relation being used. The work then looks connected to first principles, but the next record is unclear, the result phrase becomes too broad, and measurement or source-currentness changes have no honest return relation.
+
+#### E.18.1:1.3 - What this buys
+
+The practitioner gets one next move whose governing relation is named: write a P2W carry-through record, recover the next FPF kind or relation, write or use the governed record, stop with a reduced-use cue, or return to the earlier application whose assumption changed. The payoff is practical: first-principles thinking remains action-guiding without becoming a hidden project authorization.
+
+#### E.18.1:1.4 - Not this pattern when
+
+- there is no accepted problem-side record; use `C.22.2` or the problem-side pattern named by value first;
+- the FPF kind under repair, relation, and record to write are already settled; use that pattern directly and do not add a P2W layer;
+- the requested output is a local project procedure, schedule, or work-management method; use the relevant work, planning, method, gate, or operational-management pattern;
+- the requested record or claim is an evidence case, assurance case, gate record, decision record, architecture description, publication-use claim, or wording-use repair; use the recovered relation and its governing pattern directly.
+
+### E.18.1:2 - Problem
+
+First-principles work often becomes useful exactly when a problem-side formulation is ready to move toward work. The accepted problem card may expose an invariant, mathematical lens, functional role, mechanism-position candidate, method candidate family, planning constraint, result cue, or changed measurement assumption. Without P2W, that useful material is either overcompressed into "we have a solution" or scattered across several related FPF patterns before the working distinction is preserved.
+
+P2W solves a carry-through problem. It takes accepted problem-side material, states the distinction it can carry, selects the next FPF application, typed value, relation, or record, and records what was written, stopped, split, or reopened. The pattern succeeds only when a practitioner can replay the move from source problem to next record without importing the law of another pattern into P2W.
+
+### E.18.1:3 - Forces
+
+| Force | What P2W must preserve | Pressure to manage |
+|---|---|---|
+| First-principles usefulness | A strong problem-side insight may guide method, planning, work, or result interpretation. | The insight is tempting to treat as a completed downstream claim. |
+| Governing-kind precision | The next FPF kind or relation must be recoverable before a continuing carry-through relation is used. | Diagrams, graph-shaped expressions, and source wording can look sufficient without a record to write. |
+| Practical readability | First use needs a compact record and a quick next action. | Too much boundary prose can hide the working P2W move. |
+| Non-linear use | P2W may skip, branch, split, stop, or reopen loci in the carry-through structure. | A readable diagram or graph-shaped expression can be mistaken for a required project sequence. |
+| Result usefulness | Result phrases often point to artifacts, telemetry, acceptance, measurement, refresh, or role enactability. | One broad result word can hide several different records. |
+| Neighbor economy | Neighboring patterns keep their own law. | Repeating their non-use doctrine inside P2W creates content fanout. |
+
+### E.18.1:4 - Solution
+
+The solution has two parts: use the declarative carry-through structure below to select one relation-governed P2W move, then fill the carry-through or replay record only for the relation being made. The locus and relation vocabulary names which distinction can be preserved, which FPF relation is recovered, which record is written, which cue is stopped, and which earlier application reopens after a problem-side result becomes useful for work.
+
+#### E.18.1:4.0 - P2W Declarative Carry-Through Structure
+
+Use P2W as a declarative carry-through structure of relation-governed moves from an accepted `ProblemCard@Context` to accepted FPF applications. The structure is not a prescribed FPF-use procedure. It can be expressed as a graph-shaped description or joined with project workflow material only when the workflow or mathematical graph description is the current EntityOfConcern of a governed use: a `U.MethodDescription`, `U.WorkPlan`, `TransformationFlowStructure`, flow valuation, or `E.18.2` mathematical description. P2W itself shows which distinction can be preserved, which FPF relation is recovered, which record is written, which cue is stopped, and which earlier application reopens after a problem-side result becomes useful for work.
+
+The carry-through structure has nine recurring loci. A concrete P2W application selects a carry-through slice: it may use one locus, branch into several applications, split one source phrase into several records, stop with a reduced-use cue, or reopen an earlier locus when measurement or source currentness changes.
+
+| Locus | Question answered | Output of the P2W move |
+|---|---|---|
+| `AcceptedProblemSideOutput` | What accepted problem-side material is being preserved for the next use? | Problem-card reference plus carried distinction. |
+| `NextFPFUseQuestion` | What is the next unsettled FPF kind or relation? | One question stated in FPF vocabulary. |
+| `FirstPrinciplesLens` | What structure, invariant, loss, or payoff makes the next move worth formal treatment? | Preserved structure, lost structure, payoff, and stop condition. |
+| `DeclarationStack` | Which `U.Signature(profile=FormalSubstrate)`, `PrincipleFrame`, ontology, CHR, measurement, normalization, or bridge relation is needed? | Declaration or reference to the declaration relation named by value. |
+| `MechanismMethodCandidate` | Is the next work-facing issue mechanism-position meaning, method-position meaning, method comparison, or retained-set handling? | Mechanism cue, method cue, comparison cue, selector cue, or retained-set cue. |
+| `TransformationTemporalAspect` | Is the next issue a bounded transformation under conditions, a temporal aspect of a governed object or claim, or the adequacy of an authored temporal claim? | `A.3.4`, `C.27.TA`, or `C.27` application. |
+| `WorkPreparation` | Is a planning record, slot-filling plan item, feasibility note, evidence-reference pin, or freshness request needed? | `U.WorkPlan`, PlanItem, or `SlotFillingsPlanItem` application. |
+| `PerformedWorkAndResult` | Has dated `U.Work` occurred, and what result-related records appeared? | Work occurrence plus unpacked artifact, telemetry, acceptance, measurement, source, or role-enactability relation. |
+| `ReturnAndRefresh` | Did measurement, source currentness, reference plane, or problem-side wording change an earlier assumption? | Return to the affected application with the changed relation named. |
+
+P2W relation labels are `carry`, `recover`, `write`, `split`, `stop`, and `return`. `Carry` preserves a distinction from the problem side. `Recover` names the FPF kind or relation. `Write` creates or amends the governed record. `Split` separates one source phrase into several applications. `Stop` preserves a reduced-use cue when no relation-governed continuation is available. `Return` reopens the smallest earlier application whose assumption changed. These are carry-through relation labels for P2W use, not a project-work procedure.
+
+#### E.18.1:4.1 - Carry-through record
+
+For first-minute use, fill only `ProblemCardRef`, `CarriedDistinction`, `NextFPFUseQuestion`, and either `RecoveredFPFKindOrRelation` or `StopCondition`. Use the remaining fields only when the move continues, splits, writes a record, or returns after a changed assumption.
+
+Use one filled record when applying P2W. It is the local project-facing record of the pattern. Do not copy an empty form into project material; if a field cannot be filled with recovered claim content, state the stop condition or leave the field out.
+
+```text
+P2W carry-through record:
+  ProblemCardRef: ProblemCard@Context PC-FAB-042, accepted for a cooling-fixture deformation problem.
+  CarriedDistinction: the deformation is not one more tuning defect; the problem card identifies a conserved heat-flow structure that must survive method choice.
+  NextFPFUseQuestion: does the team need mathematical-lens use or a `U.Signature(profile=FormalSubstrate)` declaration before method selection?
+  P2WLocus: FirstPrinciplesLens -> DeclarationStack.
+  RecoveredFPFKindOrRelation: mathematical-lens use plus `U.Signature(profile=FormalSubstrate)` and `PrincipleFrame` declaration relation.
+  SelectedApplication: `C.29` for preserved and lost structure; `A.6.0` for `U.Signature(profile=FormalSubstrate)` and `PrincipleFrame` when the declaration is written.
+  WrittenRecordOrApplication: a short `U.Signature(profile=FormalSubstrate)` declaration naming the heat-flow invariant, the boundary conditions being preserved, the deformation factors left outside the model, and the payoff for later method comparison.
+  NotCarried: no method is selected by this record.
+  StopCondition: stop before method selection until comparator, measurement, and selected-set relations are named.
+  ReturnTrigger: later result measurement shows that the planned module-interface constraint used the wrong reference plane.
+  SourceCurrentnessCheck: source restoration and refresh reopen the measurement, normalization, planning, and method-comparison applications; the earlier U.Work occurrence is cited but not rewritten by P2W.
+```
+
+`ProblemCardRef` and `CarriedDistinction` locate the accepted problem-side material and the distinction being carried. `NextFPFUseQuestion`, `P2WLocus`, and `RecoveredFPFKindOrRelation` keep the next FPF kind or relation explicit before a continuing carry-through relation is used. `SelectedApplication` and `WrittenRecordOrApplication` name what is used or written.
+
+`NotCarried` is a compact field, not a place to repeat boundary doctrine from other governing patterns. It names only the local overread that would change this P2W move. `StopCondition`, `ReturnTrigger`, and `SourceCurrentnessCheck` keep stopping and reopening tied to a changed relation, measurement, source-currentness, or problem-side assumption.
+
+This record shows the complete P2W relation structure: problem-side distinction, first-principles value, selected FPF application, written record, stop condition, and return after measurement and source-currentness change.
+
+#### E.18.1:4.2 - Positive move table
+
+| Locus reached | P2W move | Record or continuation |
+|---|---|---|
+| Accepted problem-side output | State what is carried from the problem card and what question under repair remains. | P2W carry-through record begins. |
+| First-principles or mathematical cue | Name preserved structure, lost structure, payoff, and stop condition. | Mathematical-lens use or `U.Signature(profile=FormalSubstrate)` declaration. |
+| Ontology, UTS, CHR, or `PrincipleFrame` cue | Order ontology, UTS, characteristic, measurement, and principle-frame declarations before downstream use. | Declaration-stack application. |
+| Mechanism-position or method-position cue | Separate mechanism-position meaning from method-position meaning, method comparison, and retained-set handling. | Mechanism-position, method-position, method-comparison, selector, or retained-set application. |
+| Bounded transformation or temporal-aspect cue | Separate bounded transformation, temporal aspect, and temporal-claim adequacy. | `A.3.4` for bounded transformation, `C.27.TA` for temporal aspect, or `C.27` when authored temporal-claim adequacy or currentness-use is being made. |
+| Planning cue | Write or amend a planning record, plan item, evidence-reference pin, freshness request, or planned constraint. | `A.15.2 U.WorkPlan` or plan-item application. |
+| Dated performed `U.Work` | Record the work occurrence and relation to plan, gate, launch values, provenance, and later result records. | Performed-work application plus any separate entry or provenance relation. |
+| Result phrase | Split the phrase into artifact, resource, launch-value, telemetry, acceptance, measurement, source, quality, done-state, feedback, parity, refresh, or role-enactability relation. | One or more result-related applications. |
+| Changed measurement or source currentness | Return to the smallest earlier application whose assumption changed. | Measurement, normalization, source-restoration, refresh, planning, method-comparison, or problem-side correction. |
+
+#### E.18.1:4.3 - Locus Use Details
+
+Problem-side input: P2W starts only from accepted problem-side material. The record carries the distinction that matters for the next move, not the whole problem-side pattern.
+
+First-principles and declarations: mathematical-lens use, `U.Signature(profile=FormalSubstrate)`, ontology, UTS, CHR, measurement, normalization, bridge, and `PrincipleFrame` material are handled as declaration-stack applications. The P2W record names which declaration or neighboring relation is being written or cited, what structure is preserved, what is lost, and which downstream relation is still unsettled.
+
+When mathematical wording points both to a formal declaration and to a mathematical lens, P2W does not decide by vocabulary. Use the slot discipline in `A.6.0:10a.1`: `A.6.0` owns `U.Signature(profile=FormalSubstrate)` declaration, `C.29` owns mathematical-lens use, `A.6.1` owns mechanism consumption or realization, and `E.18.1` owns only the carry-through cue and next-relation selection.
+
+Mechanism and method: do not decide by noun. Recover the claim position. A mechanism-position claim names operation algebra, law set, applicability predicates, effect realization, or mechanism-description need. A method-position claim names a context-defined semantic way of doing work, candidate set, comparison, selector, retained set, or selected-record need. A shared source label, project-side name, or recognizable change concern may require linked method and mechanism typed values, but P2W records only which relation is being carried through and leaves the other typed value as a stopped cue unless its governing pattern is opened.
+
+Transformation and temporal aspects: a problem-side distinction may point to a bounded transformation, a temporal aspect, and a temporal-claim adequacy question at once. Do not fold these into method, mechanism, plan, or work. `A.3.4` owns bounded transformation under conditions, including transformed object, pre-state, post-state, condition set, and admissible effect claim. `C.27.TA` owns temporal aspects such as interval, deadline, cadence, rhythm, synchronization, currentness window, recovery timing, or stabilization timing when the aspect itself is being named. `C.27` owns adequacy, supported use, unsupported use, or source-currentness use of authored temporal claims.
+
+Planning and performed work: planning records are `A.15.2 U.WorkPlan` values or plan-item records, including evidence-reference pins, feasibility notes, freshness requests, and planned constraints. Performed work is a dated `U.Work` occurrence. P2W records which side of that boundary the carry-through record uses and which later result records have appeared.
+
+Result carry-through: a result phrase is treated as a bundle of possible records. The P2W move is to unpack it before it guides any next move.
+
+Structure, publication, function, module-interface, and integration cues: a transformation-flow structure, mathematical graph description, diagram, or publication can help classify the P2W move. Function wording continues only as an `A.6.F` function or functional-relation claim; interface, port, protocol, connection, resource limit, or integration wording continues only as a module-interface, signature-slot, reusable-structure, or architecture relation named by value through `A.6.M`, `A.6.5`, `C.31`, or the `C.30` family. Otherwise the wording remains classification material for the P2W record.
+
+#### E.18.1:4.4 - Boundary and relation discipline
+
+P2W is not a catalogue of boundary doctrines from other governing patterns. It has one local boundary rule: carry only the distinction accepted on the problem side, recover the next FPF kind or relation, and stop anything that would require a different governing relation until that relation is being made.
+
+| Source pressure | Local P2W decision | Continuation |
+|---|---|---|
+| Problem-side material | Carry only the accepted distinction and the next FPF-use question. | Continue when the next FPF kind or relation is named; otherwise stop before P2W begins. |
+| First-principles or mathematical wording | State preserved structure, lost structure, payoff, and stop condition. | Continue only as mathematical-lens use or as a `U.Signature(profile=FormalSubstrate)` declaration when that relation is being made. |
+| Declaration-stack wording | Keep the declaration being made separate from neighboring measurement, normalization, comparison, ontology, or bridge relations. | Continue through the declaration relation that changes this P2W move. |
+| Work-facing, temporal, or result wording | Recover the concrete mechanism-position, method-position, bounded-transformation, temporal, planning, performed-work, or result-related relation. | Continue through the matching application; split one source phrase only when several relations are being made. |
+| Another governed relation appears inside the source phrase | Preserve the cue as source material, but do not import its governing law into P2W. | Continue only through the relation that changes this P2W move; leave the other cue stopped until its governing relation is being made. |
+
+#### E.18.1:4.5 - Return and refresh rule
+
+P2W can reopen earlier applications without becoming a required work procedure. Reopen only the smallest application whose assumption changed:
+
+| Changed assumption | Smallest reopened application |
+|---|---|
+| measurement value, unit, scale, reference plane, or transport relation | measurement, normalization, bridge, or comparison application |
+| source record, source edition, source reference, or publication-use relation | work-relevant source restoration, publication-use, or refresh application |
+| result artifact, telemetry, acceptance, done-state, or role-enactability record | result-related split plus the evidence named by value, measurement, quality, role, or refresh relation |
+| method set, comparator, selector, retained set, or selected record | method-comparison, selector, retained-set, or selected-record application |
+| problem-side statement or accepted carried distinction | problem-side correction in the problem-card application |
+
+The earlier dated `U.Work` occurrence remains a dated occurrence. P2W may cite it during return, but the changed assumption determines which application is reopened.
+
+#### E.18.1:4.6 - Relation selection aid
+
+Use this aid after the carry-through record when several cues compete for the continuing FPF application. It names the relation family P2W must recover before another pattern can govern the claim; pattern names for those families are listed once in `E.18.1:12`.
+
+| What the source phrase makes current | Relation to recover before continuation | Local P2W move |
+|---|---|---|
+| accepted problem-side distinction | accepted `ProblemCard@Context` material plus one unsettled next relation | State what is carried and what question remains. |
+| preserved or lost structure, invariant, near-sameness, formal payoff, or formal stop condition | mathematical-lens use or `U.Signature(profile=FormalSubstrate)` declaration | Name preserved structure, lost structure, payoff, and stop condition. |
+| postulate, observability, unit, plane, comparator, threshold, ontology edition, CHR edition, normalization, bridge, or measurement | the declaration or measurement-family relation being made | Write or cite only that relation. |
+| mechanism position, method position, method candidate set, comparator, selector, retained set, or selected record | the mechanism, method, comparison, selector, retained-set, or selected-record relation being made | Keep these relation positions distinct and continue only through the recovered one. |
+| bounded transformation, temporal aspect, dynamics episteme, or temporal supported-use claim | `A.3.4`, `C.27.TA`, `A.3.3`, or `C.27` relation according to the claim being made | Split one phrase when it carries several of these relations. |
+| planning record, plan item, performed work, launch value, result artifact, telemetry, acceptance, measurement, refresh, or role enactability | `A.15.2 U.WorkPlan`, plan-item, dated `U.Work`, or the result-related relation being made | Write or cite the record being made; do not let generic result wording guide the next move. |
+| structure, transformation-flow cue, diagram, scenario, view, graph expression, publication, module-interface, function, evidence-looking, gate-looking, or decision-looking wording | the relation named by value in the source phrase, or no continuation if none is recoverable | Use the material only as classification until the relation is recovered. |
+
+#### E.18.1:4.7 - Lowering and reopen block
+
+Use this block when the carry-through record cannot preserve and continue the stronger-looking source cue. P2W succeeds when it leaves one relation-governed move. If the move is not recoverable by value, lower the cue, stop, or reopen the smallest affected application.
+
+| Claim family | Lowering or stop condition | Reopened or continuing relation |
+|---|---|---|
+| Problem-side material | No accepted `ProblemCard@Context`, or the accepted problem-side statement changes the carried distinction. | Stop before P2W begins, or return to the problem-side record named by value that changed. |
+| First-principles, mathematical, formal, or declaration-stack claim | Preserved structure, lost structure, payoff, stop condition, declaration relation, measurement relation, normalization relation, bridge relation, or comparison relation cannot be named. | Lower to a reduced-use source cue; continue only after the recovered declaration, mathematical-lens, measurement, normalization, bridge, or comparison relation is being made. |
+| Mechanism, method, selected-set, transformation, temporal, dynamics, planning, performed-work, or result claim | The source phrase blurs relation positions that change different P2W moves. | Split to the recovered relation and continue only through that relation. |
+| Another governed relation is only signaled by a label, diagram, port, module-interface phrase, publication, view, approval word, readiness word, or wording phrase | The source material classifies a possible relation but does not name the relation being made. | Preserve the cue and stop local continuation until the governed relation is recoverable by value. |
+
+#### E.18.1:4.8 - Replay and currentness record
+
+Use this compact record after source restoration, changed measurement, changed problem-side material, FPF pattern change, or a use-found defect. The record keeps replay local: it says what changed, what still carries, what no longer carries, and which application reopens.
+
+```text
+P2W replay and currentness check:
+  OriginalRecordRef:
+  ChangedInput:
+  ChangedAssumptionKind:
+  StillCarried:
+  NoLongerCarried:
+  SmallestReopenedApplication:
+  GoverningRelationChecked:
+  CurrentnessResult:
+  NextMove:
+```
+
+`ChangedAssumptionKind` names the assumption kind, such as measurement, unit, reference plane, source record, problem-side statement, method set, comparator, module-interface relation, publication-use relation, or FPF pattern change. `StillCarried` and `NoLongerCarried` prevent a source-currentness change from silently rewriting the whole carry-through slice. `SmallestReopenedApplication` keeps the repair local, and `NextMove` states whether to continue, stop, split, lower to a reduced-use cue, or return to the problem-side pattern.
+
+### E.18.1:5 - Archetypal Grounding
+
+`E.18.1` is grounded in a simple System and Episteme contrast. In System-facing work, accepted problem-side material may lead toward method choice, planning, performed work, result records, and result measurement. In Episteme-facing work, the same material may lead toward a `U.Signature(profile=FormalSubstrate)` declaration, mathematical-lens use, description, publication, evidence, or gate-related claims. The P2W move asks one question in both cases: which FPF kind or relation can carry the next claim being made?
+
+| Archetype | System-side grounding | Episteme-side grounding |
+|---|---|---|
+| Tell | A manufacturing team accepts a problem card showing that a fabrication issue is caused by a missing functional constraint. | A research team accepts a problem card showing that two descriptions may be almost the same only under a declared `U.Signature(profile=FormalSubstrate)`. |
+| Show without P2W | The team treats the principle scheme as method selection, work plan, performed work, and acceptance evidence at once. | The team treats mathematical equivalence as real-world identity, measurement validation, evidence, and decision authority. |
+| Show with P2W | The team writes a carry-through record, separates method comparison from `A.15.2 U.WorkPlan` and plan-item records, records dated `U.Work`, and unpacks result records. | The team writes a carry-through record, separates mathematical-lens use, `U.Signature(profile=FormalSubstrate)`, bridge, measurement, evidence, and provenance relations, and keeps equivalence bounded by the declared formal relation. |
+
+#### E.18.1:5.1 - Worked slices
+
+1. **Thin first-principles start.** An accepted `ProblemCard@Context` says the problem is not one more local tuning task because a conserved structure is being ignored. P2W records the carried distinction, recovers mathematical-lens use and `U.Signature(profile=FormalSubstrate)` declaration only if needed, and stops before method selection until comparator, measurement, and selected-set relations are named.
+
+2. **Planning from selected enough method.** A method family is selected enough for planning. P2W carries the planning relation; the plan records planned constraints, planned fillers, evidence-reference pins, and freshness requests.
+
+3. **Performed work after planning.** A dated work occurrence has appeared. P2W carries the performed-work relation and records which gate, release, provenance, or launch-value relation is separate from the occurrence.
+
+4. **Result interpretation without generic result.** A source says the work result proves that the approach worked. P2W unpacks artifact, telemetry, measurement, evidence, acceptance, quality-evaluation, refresh, and role-enactability candidates before any one of them guides the next move.
+
+5. **Functional explanatory order.** A source diagram places `U.Signature(profile=FormalSubstrate)`, principle frame, mechanism, normalization, method selection, planning, performed work, and result measurement in one readable order. P2W uses the diagram to classify applications while keeping material time and performed-work chronology with their own patterns.
+
+6. **Interface split before P2W use.** A source says a port-throughput limit makes a solution feasible after integration. P2W first splits the phrase: module-interface relation (`A.6.M`), `E.18` transformation-flow relation or `A.6.F` function/throughput relation when function use is being claimed, WorkPlan constraint (`A.15.2`), dated `U.Work` occurrence (`A.15.1`), evidence or gate claim (`A.10`, `G.6`, `A.20`, or `A.21`), or architecture and structural-view claim (`C.30` family). The carry-through record writes only the relation that changes the P2W move being made and leaves the other readings as stopped cues.
+
+7. **Result measurement returns to planning.** A performed `U.Work` occurrence produced telemetry and an artifact. Later measurement shows that the planned module-interface constraint was interpreted against the wrong reference plane. P2W splits measurement, reference-plane repair, source restoration, refresh, planning revision, and method-comparison claims. If the original `ProblemCard@Context` no longer states the right problem, the problem-side correction returns to the problem-side pattern.
+
+#### E.18.1:5.2 - Additional worked situations
+
+| Situation | P2W move | What changes |
+|---|---|---|
+| First-minute use | A practitioner has only an accepted `ProblemCard@Context` and the sentence "the cooling fixture violates the heat-flow invariant." Fill `ProblemCardRef`, `CarriedDistinction`, `NextFPFUseQuestion`, and `RecoveredFPFKindOrRelation` or `StopCondition`. | The next action becomes a `C.29` and `A.6.0` application, not method selection or evidence writing. |
+| Diagram and approval note in the same source | The same source contains a diagram, a test photo, and a manager note saying "approved." Keep P2W focused on the distinction carried from the problem-side result. | Diagram, evidence-looking material, and gate-looking material are separated by relation recovery; the P2W record keeps only the carried distinction and next relation. |
+| Principle story without accepted problem-side material | A source has an inspiring principle story but no accepted `ProblemCard@Context`. | P2W stops before it begins; the material remains a reduced-use cue until `C.22.2` or the problem-side pattern named by value accepts problem-side material. |
+| Acceptance label hides wrong measurement | A dashboard shows a green acceptance label, but the measurement used the wrong reference plane. | Acceptance color does not guide the next move; P2W returns to measurement, normalization, source restoration, planning, and method comparison. |
+| Changed unit after source restoration | Later source restoration changes only the unit and reference plane used by the planning constraint. | P2W reopens the smallest affected applications; the earlier dated `U.Work` occurrence is cited, not rewritten. |
+| Near-sameness under a formal declaration | A mathematical near-sameness claim preserves heat-flow structure but loses deformation factors outside the model. | P2W uses `C.29` for mathematical-lens use and `A.6.0` for `U.Signature(profile=FormalSubstrate)`, names preserved and lost structure, and prevents the lens from settling empirical truth or work authorization. |
+| FPF relation law changes after a P2W record | A governing FPF pattern changes the boundary for architecture-description, evidence, or source-restoration use. Fill the replay and currentness check: changed law, still-carried distinction, no-longer-carried cue, smallest reopened application, and next move. | The earlier carry-through record is replayed rather than trusted by age; only the affected architecture-description, evidence, source-restoration, or P2W field changes. |
+| Relation selection would over-select from one phrase | A source says "the new port contract proves integration readiness." P2W splits module-interface relation, `E.18` transformation-flow relation, dated `U.Work` occurrence, evidence cue, gate cue, and architecture-description cue. | Only the relation that changes the P2W move being made is written; the remaining readings stop as named cues until their governed relations are being made. |
+| Formal claim loses payoff | A `U.Signature(profile=FormalSubstrate)` declaration preserves a neat invariant, but no practical payoff or downstream stop condition can be stated for the accepted problem-side material. | The mathematical phrase lowers to a reduced-use cue; P2W does not open method selection, evidence, gate, or `A.15.2` planning from mathematical prestige alone. |
+| Result source becomes stale | A result-looking source is later replaced by a fresher source with a different artifact reference and measurement reference. | P2W uses `A.15.4`-style source restoration before result carry-through; stale result wording cannot continue as evidence, acceptance, or quality evaluation. |
+
+#### E.18.1:5.3 - Pilot examples for coupled transformation-flow slices
+
+These pilots are grounding checks, not source terminology to import. They exercise the same common shape: one selected `TransformationFlowStructure` can relate several transformation-flow valuations or slices, one slice may develop or select a usable product, another slice may apply it, and an evaluation or refresh slice may return to the smallest affected development or application locus. The selected structure does not merge the slice-local objects, `DesignRunTag` boundaries, evidence, gates, work occurrences, or the relation position that the carried object fills inside each slice. Use each pilot to check whether the P2W use being made can name the joined transformation-flow slices, the carried object's slice-local relation position, the `DesignRunTag` boundary, and the smallest reopened slice.
+
+| Pilot | P2W use being made | What it tests |
+|---|---|---|
+| Coffee service STF | An accepted service-quality problem carries heat or mass-balance structure through `U.Signature(profile=FormalSubstrate)`, declaration-stack, mechanism-position, normalization, method-selection, `A.15.2 U.WorkPlan` or plan-item records, dated `U.Work`, telemetry, measurement, and refresh relations. | Positive whole-chain readability, freshness, set-return selection, launch values only in performed work, and relation-local refresh. |
+| Compiler design and run | Toolchain construction, compiler use, and product execution are separate applications; design and run changes pass through the gate and work relations being used. | `DesignRunTag`, launch gate, reproducible build currentness and source currentness, and no collapse of build, run, and product work. |
+| TAMP and MPC robotics | Method selection and `A.15.2` planning records may be revised under a declared progress or budget condition before performed work. | Branching and cycle use without imposing one mandatory work procedure, and no launch-value binding before performed work. |
+| AutoML and QD | Method selection returns a Pareto, QD, front, or archive set under comparator and descriptor editions, not a hidden scalar winner. | Set-return discipline, comparator currentness, no hidden scalarization, and retained-set refresh. |
+| Freshness or material-transport case | Work planning and performed work depend on freshness windows, transport relations, units, reference planes, and source-currentness. | No implicit `latest`, no unbridged unit or plane comparison, and smallest affected refresh. |
+| Integration under module-interface constraints | After assembly, a result phrase may mean role-enactability under module-interface constraints, evidence, gate, architecture, function, or work relation. | Result carry-through is not artifact-only or telemetry-only; module-interface and integration wording must recover the relation being claimed. |
+| Tool-product-use chain | A design-tagged transformation-flow slice makes a tool; a later run or use slice uses the tool to make a chair; another slice uses the chair as context for writing a text. | One selected `TransformationFlowStructure` can relate all slices, but the same carried object may fill a run-result position in one slice and a design-side input, tool, context, or constraint position in another. The relation-position shift is explicit, tied to the `E.18` transformation-flow relation and any `DesignRunTag` being used, and does not change the object's kind by wording. |
+| FPF pattern-development / self-evolving specification | A development transformation-flow slice creates or repairs a pattern, specification, or process description through drafting, quality evaluation, publication projection, and admitted publication; a later use slice applies that product to its own `EntityOfConcern`; a defect found in use returns to the smallest development slice for repair. | Development, application, and evaluation slices are joined by transfer and return relations inside one selected `TransformationFlowStructure` while keeping objects and `DesignRunTag` boundaries separate; evaluation records or use-found evidence change the product through edits to the smallest development slice, not by entering the used publication's practitioner-facing prose. |
+
+#### E.18.1:5.4 - Filled P2W output records
+
+Use these as replayable outputs, not as new templates.
+
+```text
+P2W output record:
+  ProblemCardRef: ProblemCard@Context PC-COOL-017, accepted for a cooling-loop stabilization problem.
+  CarriedDistinction: the observed deformation is not one more tuning defect; a conserved heat-flow structure must survive method comparison.
+  NextFPFUseQuestion: which formal or mathematical relation is needed before method selection?
+  RecoveredFPFKindOrRelation: mathematical-lens use plus `U.Signature(profile=FormalSubstrate)` declaration.
+  SelectedApplication: `C.29` for preserved and lost structure; `A.6.0` for the formal-substrate declaration.
+  WrittenRecordOrApplication: declare the heat-flow invariant, boundary conditions, excluded deformation factors, and practical payoff for comparator selection.
+  LocalStop: method selection waits until comparator, measurement, and selected-set relations are named.
+```
+
+```text
+P2W output record:
+  ProblemCardRef: ProblemCard@Context PC-PORT-008, accepted for an integration-throughput problem.
+  CarriedDistinction: the port-throughput phrase may carry module-interface, `E.18` transformation-flow, work-plan, performed-work, evidence, gate, and architecture relations, but only one relation changes this P2W move.
+  NextFPFUseQuestion: which relation is being written now?
+  RecoveredFPFKindOrRelation: `A.6.M` module-interface relation plus `E.18` transformation-flow relation; `A.15.2` planning constraint is written only if the planning record is being made.
+  SelectedApplication: `A.6.M` for the port contract; `E.18` for the selected transformation-flow relation; `A.15.2` only for the planned constraint.
+  WrittenRecordOrApplication: write the module-interface constraint and `E.18` transformation-flow relation; stop evidence and gate cues until their governing relations are being made.
+  LocalStop: no readiness proof or work authorization follows from the port phrase by itself.
+```
+
+### E.18.1:6 - Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Ontological and epistemic**, **Prag**, **Did**. Scope: **accepted problem-side output moving toward FPF applications**.
+
+- **Governance bias (Gov):** permission, gate, release, assurance, and decision cues are preserved only as local cues until the relevant FPF relation is recovered.
+- **Architectural bias (Arch):** diagrams, selected structures, and module-interface language help classify the next move; they do not displace the P2W carry-through relation.
+- **Ontological and epistemic bias:** `U.Signature(profile=FormalSubstrate)`, near-sameness, source publication, and evidence-looking language are turned into recovered FPF kinds and relations.
+- **Pragmatic bias (Prag):** the carry-through structure is useful for action without becoming a required project procedure.
+- **Didactic bias (Did):** the positive carry-through structure and filled record come before the boundary table, so precision does not bury the working move.
+
+### E.18.1:7 - Conformance Checklist
+
+- `CC-E18.1-1` The P2W use starts from an accepted `ProblemCard@Context` or stops before P2W begins.
+- `CC-E18.1-2` The carry-through record states `ProblemCardRef`, `CarriedDistinction`, `NextFPFUseQuestion`, `RecoveredFPFKindOrRelation`, `SelectedApplication`, `WrittenRecordOrApplication`, `NotCarried`, `StopCondition`, `ReturnTrigger`, and `SourceCurrentnessCheck`.
+- `CC-E18.1-3` The positive carry-through structure is recoverable: accepted problem-side output, question under repair, first-principles lens, declaration stack, mechanism position, method position, planning, performed work, result records, and return or refresh.
+- `CC-E18.1-4` One source phrase may split into several FPF applications; the record does not compress them into one generic token.
+- `CC-E18.1-5` Result wording is unpacked into concrete result-related relations; a generic `WorkResult` kind is not admitted.
+- `CC-E18.1-6` `PrincipleFrame` material keeps postulates and CHR observability distinct from units, planes, comparators, thresholds, ontology editions, CHR editions, plans, work, evidence, and gates.
+- `CC-E18.1-7` Measurement, source currentness, reference-plane, method-set, comparator, or problem-side changes return to the smallest affected application.
+- `CC-E18.1-8` Non-P2W governing law appears only as a recovered relation in `E.18.1:4.6` and as a pattern list in Relations, not as repeated local doctrine.
+- `CC-E18.1-9` Local boundary wording remains only where it names a near-miss that changes the next P2W action.
+- `CC-E18.1-10` The pattern leaves one useful relation-governed action: write the carry-through record, write or use the governed record, split a source phrase, stop with a reduced-use cue, or return to a changed application.
+- `CC-E18.1-11` Archetypal grounding can replay at least one coupled transformation-flow-slice pilot from `E.18.1:5.3`; the pilot joins development, application, evaluation, and repair slices in one selected `TransformationFlowStructure` while keeping their objects, slice-local relation positions, `DesignRunTag` boundaries, and evidence distinct. The self-evolving-spec pilot keeps development-slice evidence or use-found evidence outside the used pattern, specification, or process description.
+- `CC-E18.1-12` Every carried claim family can be lowered, stopped, split, or reopened through `E.18.1:4.7`; a source cue that cannot name the recovered FPF kind or relation remains a reduced-use cue.
+- `CC-E18.1-13` Every replay after changed source, measurement, problem-side material, or FPF relation law names the changed assumption kind, what is still carried, what is no longer carried, the smallest reopened application, the governing relation checked, and the next move.
+
+### E.18.1:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Repair |
+|---|---|
+| **Boundary fanout.** The pattern repeats long lists of what P2W is not. | Keep relation discipline in `E.18.1:4.4`; make local sections state the next P2W action. |
+| **Carry-through-as-procedure.** A carry-through structure, diagram, or graph-shaped expression is read as a required project sequence. | Treat it as relation-governed carry-through over FPF applications; use `stop`, `split`, and `return` relations. |
+| **ProblemCard-as-solution.** The accepted problem card is treated as method, plan, work, evidence, or result. | Write the carried distinction and next FPF-use question before selecting an application. |
+| **Math-as-authority.** A `U.Signature(profile=FormalSubstrate)` declaration, mathematical lens, or near-sameness does all downstream work. | Record preserved structure, lost structure, payoff, and stop condition; continue through the recovered relation. |
+| **Generic result token.** "Result" becomes one local kind. | Split the phrase into artifact, telemetry, acceptance, quality, measurement, refresh, source, evidence, or role-enactability relation. |
+| **Interface shortcut.** Interface, port, protocol, connection, resource, or integration wording selects function, method, work, evidence, gate, or architecture by itself. | Recover the module-interface, signature-slot, function, architecture, work, evidence, or gate relation before continuing. |
+
+### E.18.1:9 - Consequences
+
+| Consequence | Benefit | Cost or mitigation |
+|---|---|---|
+| The carry-through record becomes the local project record. | A practitioner can replay the move from problem-side output to continuing FPF application. | The record adds a small step before downstream work. |
+| Positive carry-through structure comes before boundary. | First use is readable before the heavier relation aid. | Boundary checks are still available in one canonical section. |
+| Result language becomes unpackable. | Artifacts, telemetry, acceptance, measurement, refresh, and role enactability can be handled by their own records. | More than one application may be needed for one source phrase. |
+| P2W stays non-procedural. | The pattern can be used in many project situations without prescribing one local procedure. | Teams that want a work procedure must add method material or `A.15.2` planning material outside P2W. |
+| Related patterns keep their authority. | P2W avoids duplicating evidence, gate, decision, architecture, publication, mechanism, and work-family doctrine. | Users consult the pattern named by the recovered relation when that relation is being made. |
+
+### E.18.1:10 - Rationale
+
+`E.18.1` is a child of `E.18` because P2W uses a selected transformation-flow structure as its setting when the carry-through relation spans several transformation-flow slices, loci, or returns. It does not define graph law or prescribe performed-work order. It defines a local carry-through pattern for turning accepted problem-side material into a next FPF use whose governing relation is named.
+
+The design puts the positive move table first because repeated negative distinction sets can make a pattern whose primary EntityOfConcern is P2W behave like reference policing. P2W needs precision, but precision is useful here only when it leaves a surviving action: write the carry-through record, recover the FPF kind or relation, use the governed record, stop, split, or return.
+
+### E.18.1:11 - SoTA-Echoing
+
+**SoTA alignment rule.** P2W borrows useful distinctions from practice traditions only after they can be stated as a P2W carry-through move: accepted problem-side material, carried distinction, recovered FPF relation, written record, stop condition, and local return. Currentness has two sources. A project source can become stale or be replaced. An FPF pattern can also change the relation law used by the carry-through record. In both cases P2W reopens only the smallest affected application.
+
+| Practice tradition | Distinction kept for P2W | P2W invariant | Practitioner implication | Reopen if |
+|---|---|---|---|---|
+| Model-based engineering and systems practice separates model, view, requirement, evidence, and performed-work records because each has different authority. | A useful diagram or view can classify the next relation without changing the governed kind. | P2W separates transformation-flow structure, mathematical graph description, view, publication, evidence, gate, and work applications before the next move. | The practitioner can use a diagram as thinking material without letting the diagram authorize work, prove readiness, or settle evidence. | The project source, architecture-description relation, evidence relation, gate relation, or release relation changes. |
+| Traceability and digital-thread practice values continuity from problem, rationale, method, plan, work, and result while keeping record kinds distinct. | A trace is useful only when each record kind remains named. | P2W carries problem-side material through a replayable carry-through record while keeping problem card, work plan, performed work, evidence, provenance, result, and refresh relations distinct. | The team can replay a carry-through slice from problem to work without treating trace continuity as evidence, approval, or performed work. | Source restoration, provenance, refresh, or work-family law changes the currentness relation. |
+| Formal-methods and mathematical-modeling practice uses `U.Signature(profile=FormalSubstrate)` declarations to preserve invariants, expose lost structure, and make equivalence conditions explicit. | Mathematical value is recoverable only through preserved structure, lost structure, payoff, and stop condition. | P2W separates mathematical-lens use from the `U.Signature(profile=FormalSubstrate)` declaration and from empirical, work, evidence, or authorization claims. | A mathematical idea helps choose the next disciplined move without becoming proof of real-world identity or permission to act. | Mathematical-lens, signature, bridge, measurement, normalization, comparison, or source-currentness assumptions change. |
+| Assurance, safety, evidence, gate, and decision practice treats confidence, acceptance, validation, approval, and release as distinct relations. | Labels and readiness phrases are cues, not local authority. | P2W preserves the cue, recovers the relation, and stops local authority until the governed relation is being made. | A warning, green label, or approval note remains useful without becoming an evidence case, gate record, decision, or release. | Evidence, assurance, gate, conformance, release, work-entry, or decision relation changes. |
+
+### E.18.1:12 - Relations
+
+- `E.18` governs selected `TransformationFlowStructure`, transfer annotations, flow valuation, `ConstraintValidity`, `GateFit`, gate profile, design tags, and run tags.
+- `C.22.2` governs the accepted problem-side record and problem-side claims related to the carried distinction.
+- `C.29`, `A.6.0`, `E.14`, `F.17`, `F.9`, `C.16`, `A.19.UNM`, and Part G govern mathematical-lens use, `U.Signature(profile=FormalSubstrate)`, principle-frame, ontology, UTS, bridge, measurement, normalization, and comparison relations.
+- `A.6.1` and `E.20` govern mechanism and mechanism-method stabilization relations. `A.3.4`, `C.27.TA`, `C.27`, and `A.3.3` govern bounded transformation, temporal aspect, temporal-claim adequacy, and dynamics-episteme relations.
+- `G.5`, `G.9`, `A.19.SelectorMechanism`, `C.18`, and `C.19` govern candidate-set, comparison, selector, retained-set, and selected-record relations.
+- `A.15`, `A.15.1`, `A.15.2`, `A.15.3`, and `A.15.4` govern role-method-work alignment, performed work, planning, planned baselines, and work-relevant source restoration.
+- `A.10`, `B.3`, `G.6`, `E.19`, `A.20`, `A.21`, and `C.11` govern evidence, assurance, provenance, conformance, gate, release, work-entry, and decision claims.
+- `C.30`, `C.30.AD`, `C.30.ASV`, `C.31`, `A.6.M`, `A.6.F`, `E.10`, `E.17`, and `E.17.EFP` govern architecture, architecture-description, structural-view, reusable-structure, module-interface, function, wording-use, publication, and publication-use claims.
+
+### E.18.1:End
+
+## E.18.2 - Transformation Flow Mathematical Description
+
+> **Tech-name:** `TransformationFlowMathematicalDescription`
+> **Plain-name:** mathematical description of a transformation-flow structure
+> **Type:** Architectural pattern (E)
+> **Status:** Stable
+> **Normativity:** Normative unless explicitly marked informative
+> **Placement:** Part E -> E.18 child pattern
+> **Builds on:** `E.18` Transformation Flow Structure, `C.29` Mathematical Lens Use, `C.2.1` `U.Episteme`, `E.17` publication machinery, `A.3.4` `U.Transformation`, `A.6.0` `U.Signature`, `A.6.5` slot discipline, `A.15` work family, `A.20`, `A.21`, and `C.30` architecture family.
+> **Purpose:** record how a graph, algebraic, categorical, tuple, path, slice, morphism, quotient, fold, refinement, factorization, wiring, or related mathematical expression describes a selected `TransformationFlowStructure`: what it represents, what it preserves, what it loses, what use it supports, and which governing relation carries any stronger project claim.
+
+### E.18.2:1 - Problem frame
+
+Use this pattern when the current EntityOfConcern is a mathematical description of a selected transformation-flow structure, path, path slice, flow valuation, crossing, or compound transformation arrangement. The description may be a graph, hypergraph, category-theory object, algebra, tuple, matrix, network expression, wiring diagram, morphism family, quotient, fold, refinement, factorization, path relation, slice relation, or another formal expression.
+
+The primary EntityOfConcern is `TransformationFlowMathematicalDescription@Context`: a `C.2.1 U.Episteme` specialization whose described entity is a selected `TransformationFlowStructure` or one selected part of it. E.18.2 does not invent a second local description format. In C.2.1 slot terms, `DescribedTransformationFlowStructureRef` fills the entity-of-concern slot, `CandidateMathObject`, `ExpressionKind`, `MappingMode`, `PreservedStructure`, `LostStructure`, and `DeclaredUse` fill the claim or description-content slots, and `PublicationFaceRef?` stays a publication relation through `E.17`. E.18.2 keeps three values distinct:
+
+| Value under concern | Governing pattern | Boundary |
+|---|---|---|
+| selected compound structure of transformations and adjacent loci | `E.18` | not a mathematical expression merely because it can be described by a graph or algebra |
+| mathematical description of that selected structure | `E.18.2` | records represented structure, expression kind, mapping mode, preserved/lost structure, declared use, and the boundary to stronger project claims |
+| declared mathematical-lens use and its adequacy | `C.29` | not a local E.18.2 invention; use C.29 fields when adequacy, preserved/lost structure, payoff, or stop condition is claim-bearing |
+
+#### E.18.2:1.1 - Use this when
+
+- a selected `TransformationFlowStructure`, path, slice, crossing, or flow valuation needs a graph, algebra, category, tuple, morphism, quotient, fold, refinement, factorization, wiring, matrix, or network expression;
+- a diagram or equation set helps compare composition, decomposition, coarser/finer partitioning, transfer, crossing, refresh, or coupled-flow relations, but the mathematical expression itself must not authorize work;
+- a source says "graph", "network", "path", "morphism", "algebra", "category", "workflow", "pipeline", "dataflow", or "functional diagram" and the claim being made is the mathematical description of a selected transformation-flow structure;
+- a reader needs to know whether the mathematical expression is only a publication face, a C.29 lens-use claim, an E.18 selected structure claim, or an E.18.2 description claim.
+
+#### E.18.2:1.2 - What goes wrong if missed
+
+A project source or diagram can make a graph-shaped expression look like the flow structure itself. Then mathematical neatness silently becomes evidence, work completion, gate readiness, architecture adequacy, or permission to act. The opposite error is also common: every graph-shaped structure is demoted to "just a diagram", so the selected structure, its slices, and its refresh boundaries disappear.
+
+#### E.18.2:1.3 - What this buys
+
+The practitioner can use mathematical structure without overclaiming it. The record names the represented `TransformationFlowStructure`, the expression used, what the expression preserves, what it loses, the declared use, and the governing relation for any stronger claim.
+
+#### E.18.2:1.4 - Not this pattern when
+
+- the selected compound structure itself is the EntityOfConcern; use `E.18`;
+- one bounded transformation is the EntityOfConcern; use `A.3.4`;
+- the claim is general mathematical-lens adequacy outside transformation-flow structures; use `C.29`;
+- the claim is a publication face or view publication; use `E.17` and the relevant view or architecture-description pattern;
+- the claim is work planning, performed work, evidence, assurance, gate fit, gate decision, release, decision, or architecture adequacy; use the direct governing pattern.
+
+### E.18.2:2 - Problem
+
+Transformation-flow structures are often easiest to inspect through mathematics. A graph can expose dependency and reachability, a category can expose composition, a quotient can expose coarser structure, a fold can expose aggregation, a refinement can expose lost detail, a wiring expression can expose interface placement, and a tuple can make slot positions explicit.
+
+Those expressions are useful because they preserve selected structure while ignoring other structure. That same usefulness creates risk. If the expression is treated as the structure itself, the project may believe that a path in a graph proves a possible performed-work order, that a commutative square proves a real bridge, that a fold proves safe aggregation, or that a wiring diagram proves integration readiness.
+
+E.18.2 solves the description problem: it records a mathematical expression over a selected E.18 structure and says what that expression may be used for. It does not decide the world-side structure, the atomic transformation, the work occurrence, the gate, the evidence case, or the architecture claim.
+
+### E.18.2:3 - Forces
+
+| Force | What must be preserved | Pressure to manage |
+|---|---|---|
+| Mathematical usefulness | Graphs, categories, tuples, algebra, morphisms, paths, slices, quotients, folds, refinements, factorizations, and wiring can expose structure that prose misses. | Mathematical form can look stronger than the claim it can carry. |
+| EoC separation | The selected structure, its mathematical description, its publication, and its C.29 lens-use adequacy are different values. | One source artifact may present all of them at once. |
+| Composition and decomposition | Compound transformations need reviewable composition, factorization, slice, fold, and refinement claims. | The expression can hide which selected E.18 structure or slice is being described. |
+| Publication usability | Readers need diagrams, tables, equations, and views. | A publication face can be mistaken for evidence, gate passage, or performed work. |
+| Related-claim economy | C.29, E.18, A.3.4, E.17, A.20, A.21, A.15, and C.30 already govern related claims. | Repeating their boundary doctrine inside E.18.2 creates fanout. |
+
+### E.18.2:4 - Solution
+
+Write a `TransformationFlowMathematicalDescription@Context` only when the mathematical expression changes the current transformation-flow description move. Keep the selected structure reference and the expression relation separate. Then decide whether the C.29 lens-use card is needed for adequacy, payoff, preserved/lost structure, or boundary.
+
+#### E.18.2:4.1 - First-use record
+
+Use this compact record for ordinary cases:
+
+```text
+TransformationFlowMathematicalDescription@Context:
+  DescribedTransformationFlowStructureRef:
+  DescribedSliceOrLocusRef?:
+  CandidateMathObject:
+  ExpressionKind:
+  MappingMode:
+  PreservedStructure:
+  LostStructure:
+  DeclaredUse:
+  BoundaryStop:
+  C29LensUseRef?:
+  PublicationFaceRef?:
+  RelatedGovernedClaimRef?:
+```
+
+`DescribedTransformationFlowStructureRef` points to the selected E.18 structure. `DescribedSliceOrLocusRef?` names a path, slice, crossing, flow valuation, transformation locus, signature locus, mechanism locus, work-plan locus, work locus, evidence locus, result locus, or refresh locus when the expression describes only part of the structure. `CandidateMathObject` and `ExpressionKind` name the graph, algebra, category, tuple, morphism, quotient, fold, refinement, factorization, wiring, matrix, network, or related mathematical object. `PreservedStructure`, `LostStructure`, `DeclaredUse`, and `BoundaryStop` follow the C.29 discipline when the expression is claim-bearing. `RelatedGovernedClaimRef?` points to the separate relation record only when a stronger claim is being made; it is not a local authority slot.
+
+#### E.18.2:4.2 - Expression families
+
+| Expression family | Use when it describes | Required boundary |
+|---|---|---|
+| graph, hypergraph, network, DSM, DMM, MDM, or matrix | dependency, transfer, adjacency, interface placement, clustering, or change propagation inside a selected transformation-flow structure | not the selected structure unless E.18 says so; not work occurrence, gate passage, or evidence |
+| mathematical path or path slice | reachability, carried relation, currentness slice, refresh locality, or crossing-local replay | not a project procedure or performed sequence |
+| tuple, record, slot relation, or typed relation expression | slot positions, relation arity, locus typing, and value placement | not a new U-kind and not a replacement for A.6.5 slot discipline |
+| morphism, composition, category, operad, optic, or wiring expression | composition, interface, substitution, transfer law, or decomposition of selected transformations | not proof that the represented work can be performed or that interfaces are semantically compatible |
+| quotient, fold, coarsening, refinement, or factorization | coarser/finer partitioning, aggregation, retained/lost structure, and alternative decomposition | not an identity claim without preserved/lost structure and return condition |
+| algebra, semiring, equation system, or constraint system | operation law, conservation, admissible composition, or constraint propagation over the selected structure | not a mechanism, formal substrate, or empirical law unless A.6.0/A.6.1 and evidence patterns are current |
+| learned representation, embedding, simulation object, or differentiable surrogate | approximate structure, optimization, similarity, or predictive proxy over transformation-flow material | not architecture adequacy, OOD guarantee, causal proof, or release readiness by itself |
+
+These families are prompts for recovery, not a taxonomy of new FPF kinds. A local expression may combine several families; the record still names one selected structure, one current described slice or locus when relevant, and the declared use.
+
+#### E.18.2:4.3 - Four-way discriminator
+
+Use this discriminator before writing or accepting a mathematical description:
+
+```text
+If the claim selects or audits the compound structure in the project, use E.18.
+If the claim describes that selected structure with mathematics, use E.18.2.
+If the claim evaluates the mathematical lens use, use C.29 with an E.18.2 reference.
+If the claim publishes a view, diagram, card, table, or equation face, use E.17 and the governing view or architecture-description pattern.
+```
+
+The same source may require several records. A refrigerator principle scheme may include a publication face, a functional-architecture view, a selected transformation-flow structure, a thermodynamic mechanism claim, and a mathematical graph or equation description. E.18.2 writes only the mathematical-description relation.
+
+#### E.18.2:4.4 - Related governed claims
+
+E.18.2 does not carry authority for related governed claims. Use the direct governing pattern when the current claim is:
+
+| Current claim | Use |
+|---|---|
+| one bounded change under conditions | `A.3.4` |
+| selected compound structure, flow valuation, path, slice, crossing, or refresh locus | `E.18` |
+| mathematical-lens adequacy, preserved/lost structure, payoff, or stop condition | `C.29` |
+| method, method description, mechanism, signature, work plan, or performed work | `A.3.1`, `A.3.2`, `A.6.1`, `A.6.0`, `A.15.2`, or `A.15.1` |
+| evidence, assurance, gate, release, or decision | `A.10`, `B.3`, `A.20`, `A.21`, or `C.11` |
+| architecture, structural view, functional structure, module interface, or reusable-structure claim | `C.30`, `C.30.ASV`, `A.6.F`, `A.6.M`, or `C.31` |
+| publication face or publication use | `E.17` or `E.17.EFP` |
+
+#### E.18.2:4.5 - Worked slices
+
+**Refrigerator principle scheme.** A vapor-compression diagram can be a publication face. The cooling cycle can be a selected `TransformationFlowStructure`. The thermodynamic laws are mechanism or formal-substrate claims. The graph or equation set that describes the cycle is an E.18.2 mathematical description. It may preserve transformation order, heat-transfer constraints, and cycle closure while losing maintenance work, sensor uncertainty, and installation context. It does not prove the refrigerator works or authorize a repair.
+
+**P2W carry-through.** A P2W source may draw a graph-shaped path from formal substrate to principle frame, mechanism position, method selection, work planning, work, and evaluation. The graph-shaped expression can be an E.18.2 description of the selected carry-through structure. The P2W move itself remains `E.18.1`; work planning remains A.15; dated work remains `U.Work`.
+
+**Neural-network dataflow.** A transformer architecture diagram may describe layers, attention blocks, residual connections, and routing through a graph-like expression. If the current claim is the compound transformation organization, use E.18 or C.30 when it is an architecture claim. If the current claim is the mathematical graph, tensor-shape relation, or wiring expression that describes that organization, use E.18.2. Benchmark superiority, training work, evidence, release, and causal claims require their governing patterns.
+
+**Circuit and algorithm.** A logic-circuit schematic can describe a transformation-flow structure realizing a Boolean relation. The netlist, wiring graph, algebraic normal form, and truth table are different mathematical or formal descriptions. They do not by themselves decide whether the selected method exists, whether the CMOS mechanism is valid under voltage and timing conditions, or whether a dated powered run occurred.
+
+### E.18.2:5 - Conformance checklist
+
+- `CC-E18.2-1` The current EntityOfConcern is `TransformationFlowMathematicalDescription@Context`, not the selected `TransformationFlowStructure` itself.
+- `CC-E18.2-2` The described selected structure or slice is named by `DescribedTransformationFlowStructureRef` and, when needed, `DescribedSliceOrLocusRef`.
+- `CC-E18.2-3` The mathematical expression family is named without minting a new U-kind.
+- `CC-E18.2-4` Preserved structure, lost structure, declared use, and boundary stop are named when the expression is claim-bearing.
+- `CC-E18.2-5` C.29 is used when mathematical-lens adequacy, payoff, obstruction, preserved/lost structure, or stop condition is being evaluated beyond the local description relation.
+- `CC-E18.2-6` Graph, path, slice, morphism, algebra, category, tuple, quotient, fold, refinement, factorization, and wiring language stays mathematical-description language unless another governing pattern explicitly makes the selected structure current.
+- `CC-E18.2-7` No mathematical expression proves work occurrence, authorizes action, passes a gate, settles evidence, or establishes architecture adequacy by itself.
+- `CC-E18.2-8` Publication faces are separated from mathematical description and handled through `E.17` when publication is current.
+- `CC-E18.2-9` Work, method, mechanism, signature, evidence, gate, decision, architecture, function, module-interface, or reusable-structure claims are sent to their governing patterns.
+- `CC-E18.2-10` A source artifact that carries several claims is split into records by current EntityOfConcern and relation position, not by the artifact's name.
+
+### E.18.2:6 - Common anti-patterns
+
+| Anti-pattern | Repair |
+|---|---|
+| **Graph-as-world.** A graph-shaped expression is treated as the project-world structure because it is visually convincing. | Name whether the current EoC is E.18 selected structure, E.18.2 mathematical description, E.17 publication, or C.29 lens-use adequacy. |
+| **Path-as-procedure.** A mathematical path or path slice is read as a required project procedure. | Keep it as a mathematical relation over a selected structure; use method or work-plan patterns for procedures. |
+| **Algebra-as-mechanism.** An operation law or equation system is treated as a realized mechanism. | Use A.6.0 for formal substrate and A.6.1 for mechanism claims; keep E.18.2 to the expression relation. |
+| **Fold-as-identity.** A quotient, fold, or coarsening erases detail and is then used as if nothing was lost. | State preserved structure, lost structure, and return condition; use C.29 when the adequacy of the fold matters. |
+| **Diagram-as-architecture adequacy.** A clean diagram is treated as proof that the architecture is good. | Use C.30/C.30.ASV/C.31 for architecture and reusable-structure claims; E.18.2 only describes selected structure mathematically. |
+
+### E.18.2:7 - Consequences
+
+| Consequence | Benefit | Cost or mitigation |
+|---|---|---|
+| Mathematical descriptions get their own local record. | Graphs, paths, slices, quotients, and wiring can be used without becoming hidden ontology. | One source artifact may need several records. |
+| E.18 stays about selected structure. | Compound transformation organization remains inspectable in the project world. | Readers must choose E.18 or E.18.2 by current EoC. |
+| C.29 remains general. | E.18.2 does not duplicate the whole mathematical-lens pattern. | Claim-bearing adequacy needs a C.29 reference. |
+| Boundary to work, gates, evidence, and architecture is explicit. | Mathematical prestige does not replace project checks. | Stronger claims require the direct governing pattern. |
+
+### E.18.2:8 - Rationale
+
+Graph-shaped or morphism-shaped source labels do not carry current ontology by themselves here. They remain useful only when the current EntityOfConcern is named: E.18 keeps selected compound structure, A.3.4 keeps bounded transformation, E.18.1 keeps P2W carry-through, and E.18.2 keeps mathematical descriptions of selected transformation-flow structures.
+
+The pattern is intentionally narrower than C.29. C.29 answers the general question "is this mathematical lens use adequate for this declared purpose?" E.18.2 answers the local question "what mathematical expression describes this selected transformation-flow structure, and what use does that expression support here?" This prevents shadow math-lens doctrine while preserving the practical value of graph, path, category, tuple, and algebraic expression in transformation-flow work.
+
+### E.18.2:9 - SoTA-Echoing
+
+| Practice tradition | Distinction kept for E.18.2 | E.18.2 invariant | Practitioner implication | Return if |
+|---|---|---|---|---|
+| Model-based systems and architecture-description practice (ISO/IEC/IEEE 42010:2022, [`iso.org/standard/74393`](https://www.iso.org/standard/74393.html); SysML v2 current specification lineage). | A diagram or model can describe a selected structure without becoming the structure or evidence. | Mathematical description names described structure, expression, preserved/lost structure, declared use, and boundary stop. | A clean model can guide inspection without authorizing action. | The selected E.18 structure, publication face, evidence relation, or architecture claim changes. |
+| Applied category theory, wiring diagrams, and graph rewriting (Fong & Spivak, arXiv [`1803.05316`](https://arxiv.org/abs/1803.05316); Spivak, arXiv [`1305.0297`](https://arxiv.org/abs/1305.0297); Baez & Fong, arXiv [`1504.05625`](https://arxiv.org/abs/1504.05625); Bonchi et al., arXiv [`1602.06771`](https://arxiv.org/abs/1602.06771); Patterson/Spivak/Vagner, arXiv [`2101.12046`](https://arxiv.org/abs/2101.12046)). | Formal expression is useful because it preserves some structure and drops other structure. | Quotient, fold, refinement, factorization, and wiring claims name what survives and what is lost. | Coarser and finer descriptions can be compared without pretending they are identical. | The preserved/lost structure, mapping mode, or C.29 lens-use adequacy changes. |
+| Digital-thread, research-object, and source-reference practice (RO-Crate paper, arXiv [`2108.06503`](https://arxiv.org/abs/2108.06503); Di Cosmo/Gruenpeter/Zacchiroli, arXiv [`2001.08647`](https://arxiv.org/abs/2001.08647); ISO 23247 digital-twin lineage). | Replay works only when record kinds remain distinct. | E.18.2 descriptions cite E.18 structures and related governed records rather than absorbing work, evidence, gate, and publication claims. | A trace graph can remain useful without becoming proof, plan, or performed work. | Source currentness, work-family law, evidence, gate, or publication-use relation changes. |
+| Engineering architecture practice uses functional, dataflow, and interface diagrams under explicit view, viewpoint, and correspondence discipline. | A diagram may describe architecture, transformation-flow structure, method, mechanism, or publication face according to the current EoC. | E.18.2 keeps only the mathematical-description relation; architecture adequacy remains under C.30/C.30.ASV/C.31. | Functional and dataflow diagrams can be used without semio-bias or architecture overclaim. | The architecture selected structure, viewpoint, or correspondence relation changes. |
+
+### E.18.2:10 - Relations
+
+- `E.18` governs selected `TransformationFlowStructure`, flow valuation, path, slice, crossing, transfer annotations, and refresh locality.
+- `A.3.4` governs atomic `U.Transformation` identity and slots.
+- `C.29` governs mathematical-lens use adequacy, preserved/lost structure, payoff, obstruction, and stop condition when these claims are current.
+- `C.2.1` and `E.17` govern description episteme and publication faces.
+- `A.6.0`, `A.6.1`, `A.6.5`, and `E.20` govern formal substrate, mechanism, slot discipline, and mechanism placement.
+- `A.15.1`, `A.15.2`, `A.20`, `A.21`, `A.10`, `B.3`, and `C.11` govern performed work, work planning, step validity, gate, evidence, assurance, and decision claims.
+- `C.30`, `C.30.AD`, `C.30.ASV`, `A.6.F`, `A.6.M`, and `C.31` govern architecture, architecture description, structural view, functional structure, module interface, and reusable-structure claims.
+
+### E.18.2:End
+
+## E.19 - Pattern Quality Gates: Review and Refresh Profiles
+
+> **Type:** Architectural pattern
+> **Status:** Stable
+> **Normativity:** Normative
+
+### E.19:0 - Use this when
+
+Use `E.19` when you need to decide whether one new, substantially revised, or aging FPF pattern is ready for admission, refresh, or return for repair. It turns quality review into a repeatable pattern-quality run rather than a matter of reviewer taste.
+
+Use it especially when a draft looks structurally compliant but may still fail on first-minute usability, primary `EntityOfConcern` stability, terminology, SoTA grounding, related-pattern boundaries, examples, anti-patterns, or shipping-facing authority claims.
+
+**Not this pattern when.** Use `E.8` to write the pattern body. Use `E.9` to record the content decision that explains why FPF should change. Use `E.9.DA` when the question is whether one concrete `DRR` is adequate for a declared downstream authoring use before drafting or host amendment. Use `E.23` when the aim is repeated quality improvement against an object-under-improvement evaluation rather than one admission or refresh review profile. Use local patterns for the domain rule or constraint being reviewed. Use project gate or release patterns when the question is whether a project publication, work-result record, or release candidate passes a delivery gate rather than whether an FPF pattern is mature. `E.19` reviews whether an FPF pattern remains useful action guidance; it does not certify the world, the project, the publication, or the release.
+
+### E.19:0.1 - What goes wrong if missed
+
+Review collapses into heading compliance or personal taste. A draft can pass because it has the right headings while still being hard for a practitioner to recognise, too thin against current practice, unclear about its primary `EntityOfConcern`, relation record, or claim record, or misleading about related governing patterns and authority claims.
+
+### E.19:0.2 - What this buys
+
+`E.19` gives authors, reviewers, and stewards a shared review profile: what must be checked, how deep the check should go, which defects block admission or refresh, and what evidence is needed before a pattern-quality claim is made. It also makes the recognition text visible before the heavier assurance machinery begins.
+
+**First useful move.** Name the pattern-quality review or refresh claim, run baseline triage over the reviewed pattern or subset, and add only the risk-selected profiles needed by the present ontology, usability, SoTA, boundary, naming, or authority risk.
+
+**Local-repair boundary.** If baseline triage shows that the current review question has no present ontology, usability, SoTA, boundary, naming, or authority risk beyond a small mechanical repair, close with that repair direction. Do not run every profile just because `E.19` exists, and do not claim an `E.21` quality value unless `E.21` has evaluated the pattern version over its required coordinate set.
+
+**Primary EntityOfConcern in plain terms.** The primary `EntityOfConcern` is one FPF pattern-quality review or refresh claim: the reviewed pattern text, the selected profile, the defects found or cleared, and the boundary of the admission or refresh decision.
+
+**Primary working reader.** The first reader is an FPF reviewer, with the pattern author close behind. The review must still be answerable to the eventual practitioner or manager who will rely on the admitted pattern.
+
+### E.19:1 - Problem frame
+
+FPF evolves by adding and revising patterns. Over time, the framework accumulates two kinds of risk:
+
+1. **Admission risk** — a newly authored pattern can be structurally compliant yet still fail on ontology, semantics, terminology conflicts and vagueness, scope, SoTA in related disciplines, or cross-context hygiene.
+
+2. **Staleness risk** — older patterns can remain internally consistent while drifting away from contemporary practice and newer parts of FPF, current internal vocabulary, or updated related governing patterns. The result is “quiet decay”: the pattern still appears clear, but becomes misleading, incomplete, or incompatible.
+
+FPF already contains many checklists and constraints, but they are distributed across patterns and suites. Authors and reviewers therefore lack a single, repeatable way to answer: *What should be checked, and how deep, before a pattern is admitted or kept?*
+
+### E.19:2 - Problem
+
+Without a unified, explicit review pattern:
+
+* Different reviewers optimize for formal/template compliance and miss deeper ontological, semantic, and naming issues, producing bureaucratic output that does not improve the enforceable Conformance Checklist.
+* Authors “optimize for the visible checklist” and miss hidden requirements (lexical discipline, Bridge hygiene, SoTA‑Echoing quality, scope claims, delta‑class impact).
+* Older patterns accumulate conceptual staleness and diverge from current practice, current terminology, or current internal invariants.
+* The specification's normative content becomes harder to trust: compliance becomes a matter of reviewer taste rather than a repeatable gate.
+
+### E.19:3 - Forces
+
+| Force                                   | Tension                                                                             |
+| --------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Uniformity vs Fit**                   | One universal checklist is simple ↔ different pattern kinds carry different risks.  |
+| **Rigor vs Editorial cost**             | Deep audits increase quality ↔ they must remain feasible for routine updates.       |
+| **Stability vs Evolution**              | Canon should stay stable ↔ it must absorb new SoTA and correct mistakes.            |
+| **Conceptual purity vs Enforceability** | Core must stay implementation-agnostic ↔ gates must still be actionable and auditable.     |
+| **Local meaning vs Reuse**              | Patterns must remain context-bound ↔ authors want to reuse ideas across domains. |
+| **Freshness vs timelessness**           | Some claims should be evergreen ↔ others decay and must be refreshed on cadence.    |
+
+### E.19:4 - Solution — Profile-based gates for admission and refresh
+
+Establish **Pattern Quality Gates (PQG)**: a conceptual review mechanism that applies **profiles of checks** rather than a single monolithic checklist.
+
+A **Pattern Check Profile (PCP)** is a named bundle of check families. Profiles are **additive**: every review applies a baseline profile, then adds risk-driven profiles as needed.
+
+**Terminology note (disambiguation).** PQG and PCP are editorial review constructs in the authoring plane (Part E). They are distinct from enactment and runtime gating constructs such as `OperationalGate(profile)`, `GateProfile`, and `GateDecision` (A.21), which govern Work transitions and gate decision policies elsewhere in FPF.
+
+**Mint vs reuse.** This pattern mints **PQG**, **PCP**, and the profile IDs `PCP-BASE`, `PCP-MOD`, `PCP-PRAG`, `PCP-NORM`, `PCP-SOTA`, `PCP-BRIDGE`, `PCP-SUITE`, `PCP-P2W`, `PCP-TERM`, `PCP-DEONT`, `PCP-REFRESH`, and `PCP-ENTRY`. It reuses existing FPF terms (e.g., **Delta‑Class**, **DRR**, **Bridge**, **CL**, **SoTA Synthesis Pack**) without changing their meanings.
+
+#### E.19:4.1 - Define the reviewed pattern or subset
+
+A review **SHOULD** leave one findings-first run record against a named reviewed pattern or landing subset. The run MAY propose didactic restructuring or compact repair direction, but its primary requirement is to leave an independent review record that improves downstream usage and interoperability without relying on chat memory or reviewer taste.
+
+A nontrivial pattern-quality review SHOULD state its quality-evaluation purpose before depth is selected. Use `E.22` or an equivalent compact question frame to say whether this run is a `floorEvaluation`, `exceptionalImprovementEvaluation`, `paretoTradeoffEvaluation`, `openQuestionDiscoveryEvaluation`, `absorptionEvaluation`, or a declared combination. If the purpose is absent, `E.19` treats the run as an admission-refresh blocker read, not as a request to raise every evaluated coordinate toward exceptional expression. When coordinate values, `PatternQualityStatus`, or all-`4`/all-`5` claims are needed for one pattern version, the run opens or consumes an `E.21` result instead of assigning those values inside `E.19`.
+
+When the run opens or consumes `E.21`, `E.19` treats `E.21` as a hard pattern-quality evaluation, not as a selectable profile. The run record must reject an `E.21` claim that omits required coordinates, omits `ShortRationale`, omits `PrecisionRestorationProfile`, uses inactive/triggered-coordinate language, narrows the requested use to make the result pass, or replaces coordinate values with blocker triage. Baseline triage can close an `E.19` review-boundary result only when no `E.21` quality value, all-`4`/all-`5` claim, landing-quality claim, or pattern-improvement movement claim is being made.
+
+If the aim is repeated improvement against an object-under-improvement evaluation, use `E.23` for the repeated method. `E.19` may supply a review profile and findings inside that loop, but the profile is not the loop method and the review result is not a quality value until the object-under-improvement evaluation evaluates the changed pattern version.
+
+`E.19` reviewer and reviewed-pattern wording is FPF pattern-quality gate wording. It governs FPF admission, refresh, return-for-repair, blocker, and review-profile claims, not `E.21` coordinate assignment and not project-side publication interpretation, explanation interpretation, comparative review-unit use, or participation in a named project-side review relation. When those project-side relations are used, use the publication or project-side pattern that names the object being interpreted or reviewed.
+
+**Project-side reuse boundary.** Use this boundary when an `E.19` pattern-quality result is being reused as project certification, project evidence, safety-assurance material, gate input, release justification, compliance-assurance material, assurance material, work authority, or publication truth. The first E.19 move is to return the result to the governing FPF pattern-quality claim it reviews: admission, refresh, repair return, or selected pattern-quality boundary. If that result is cited for a project-side claim, the project-side governing relation must be opened for that claim named by value: `A.10` for evidence/currentness, `B.3` for assurance, `A.20` for local CV status, `A.21` for gate decision, `A.15` for work, or another governing pattern when that claim needs one. The review result may be evidence about FPF pattern quality; it is not certification of the project world. Plain wording in the reviewed text remains ordinary unless it changes admissible use, evidence, gate, assurance, work, decision, or FPF pattern application.
+
+**Common wrong first interpretation.** Pattern review passed means the project, release, publication, safety claim, or compliance claim is certified. First honest entry: E.19 returns only a pattern-quality result; any project-side reuse must name the project-side governing relation and its evidence or assurance source.
+
+**Misuse guard.** A pattern-quality caution, return-for-repair result, or selected pattern-quality boundary result cannot be reused as project refusal or project approval unless a project-side governing relation states admissible and non-admissible use for that relation.
+
+Formal/template defects (e.g. non-compliance with E.8 structure or not conforming to RFC deontic terminology) have lower review priority than semantic/ontological defects or non-SoTA Solutions, but they also **MUST** be recorded with the active repair boundary named.
+
+E.g. if the header block is missing or incomplete, **continue with ontology and semantic review first**. Treat missing header fields as one mechanical defect to record with concrete repair direction (PCP-BASE #7), not as a reason to stop.
+
+The run **SHOULD** give best-known **Delta-Class (Δ-0…Δ-3)** and record an initial **impact radius** (dependent patterns/tests/relations that need be changed due to pattern norms), using existing definitions where available (e.g., the LEX-AUTH protocol).
+
+If the local process separates review from repair, direct reviewed-text patching, unified-diff output, or immediate remediation edits are optional local tactics rather than part of the core `E.19` run record. The core requirement is one findings-first run record plus sufficiently precise repair direction.
+
+#### E.19:4.2 - Apply the baseline profile to every run
+
+Every run MUST include **PCP‑BASE** as a triage baseline. Full-depth checking
+is selected only where the relevant risk is present; reviewer depth SHOULD
+prioritize the FPF-governed sections and enforceable requirements in E.19:4.2.1.
+
+1. **Internal coherence (problem <-> conformance claim <-> solution)**
+   The Conformance Checklist matches Problem statement and the Solution (no "orphan requirements" and no "unclaimed requirements").
+2. **Lexical discipline & reserved vocabulary**
+   Terms and registers follow lexical rules; ambiguous "everyday" synonyms do not silently replace kernel vocabulary.
+3. **SoTA-Echoing minimum compliance (E.8)**
+   SoTA-Echoing satisfies the E.8 authoring requirements applicable to the pattern kind (Architectural vs Definitional), including explicit adopt/adapt/reject stances and the E.8 two-part SoTA test: current best-known problem-solving practice for the named practice question, and by-value incorporation into FPF-governed pattern loci. If a SoTA Synthesis Pack exists for the topic, SoTA-Echoing binds to it rather than forking an untracked narrative; any divergence of pattern norms from contemporary practice is explicitly stated as such. SoTA-Echoing **MUST** be non-decorative, **MUST** reflect best-known current practice rather than official status, source recency, institutional adoption, or merely popular defaults for the declared problem, and **MUST** govern the Solution and other FPF-governed sections, or those sections **MUST** justify divergence explicitly.
+4. **Cross-pattern compatibility & impact radius**
+   Relations are consistent with declared dependencies and dependents; declared scope/impact is compatible or explicitly limited.
+5. **Didactic grounding**
+   Archetypal Grounding is present and teaches the concept with concrete cases or references, not only abstractions.
+6. **Reader-role fit**
+   The pattern body stays addressed to the intended FPF user rather than to FPF developers, package architects, reviewers, evaluators, or release/projection carriers. FPF-governed sections explain admissible use, costs, boundaries, FPF governing patterns named by value, project-side FPF kinds and references named by value, and related relation named by values in user terms. Architecture-placement, freeze/merge state, package-boundary rationale, reference boilerplate, quality/projection evidence, corpus-entry evidence, `PatternQualityStatus`, monolith-parity evidence, landing evidence, and broader package-development rationale stay in `DRR`, architecture documents, review handoff, `E.21` result, `E.19` run record, README/ToC/E.11/I.2, cards, retrieval/projection carriers, release/landing evidence carriers, companions, or ordinary reference apparatus unless they change the working reader's first admissible move.
+7. **Template & section integrity**
+   This is lowest priority for review depth and **SHOULD NOT** consume effort that would displace ontology/semantics/modularity/slots/SoTA checks.
+8. **Modularity & contradiction hygiene**
+   The pattern **SHOULD NOT** be overloaded or significantly expand requirements or dependencies without an explicit reason and impact record.
+   Checks include: scope containment, split/refactor recommendations when warranted, and contradiction scans against neighbor patterns in Relations.
+   The pattern SHOULD balance cohesion and coupling across FPF.
+   If the pattern defines specialization or an abstraction stack, it SHOULD NOT mix slot interfaces or parameters from different abstraction positions; use explicit `⊑/⊑⁺` or `Uses` cuts instead.
+9. **Substantive solution and locus adequacy**
+   Baseline triage includes a small reviewed-pattern-specific question set about the actual problem and current change: does the pattern still solve the stated problem, are decision loci and governing-pattern applications correct, are kind boundaries and selected companion or projection roles preserved, did anything get worse, are SoTA rows current enough for the claim they discipline, and is the applied apparatus neither too thin nor too heavy for that claim?
+
+##### E.19:4.2.1 - Triage: spend depth on FPF-governed sections without making reviews heavier
+
+PQG is meant to increase *semantic and ontological trust*, not to turn every review into an exhaustive editorial audit on form. To keep reviews feasible while improving the important parts:
+
+* Treat **FPF-governed sections and deontic requirements** as the primary depth loci:
+  * the pattern’s **Problem frame**, **Rationale**, and **worked slices** when a new family/profile/specialization would otherwise be intelligible only from project context,
+  * reader-role fit in **Problem**, **Solution**, **Consequences**, **Rationale**, and worked slices whenever the draft risks mixing user guidance with package-development rationale,
+  * the pattern’s **Conformance Checklist** (the enforceable conformance check set): keep items universal, cognitively ergonomic, not overly prohibitive, and avoid duplicating checks that belong to other patterns (modularity),
+  * **deontic clauses** (`MUST/SHALL/SHOULD/MAY`) that define requirements on the authoring/validation plane (not laws of nature or mathematical facts; ensure an explicit conformance subject),
+  * **admissibility constraints** (`Invariant:` / `Well-formedness constraint:`) that define valid models (cardinality, typing/kinds, totality) and are written as non-deontic predicates (no RFC keywords inside the predicate),
+  * **definitions and mint/reuse decisions** (new terms, renamed terms, scope claims baked into names, names that are not overloaded and are properly chosen),
+  * **cross-context and cross-plane claims** (Bridge hygiene and “sameness” assertions),
+  * **SoTA** (when the pattern claims state-of-the-art rather than a popular-but-outdated solution or vocabulary),
+  * **substantive solution and locus adequacy**: one reviewed-pattern-specific content pass checks whether the repaired text still solves the stated problem, assigns claim-bearing material to the correct governing loci named by value, preserves kind boundaries and selected companion or projection roles, keeps quality/projection evidence and role-turn correspondence out of the pattern unless the pattern's own `EntityOfConcern` and user move are that evaluation/projection work, and has not become either under-grounded or over-bureaucratic,
+  * **modularity and Slot discipline of A.6.5** that provide evolvability of FPF,
+  * **absence of contradictions in a pattern**,
+  * **Relations** that define compatibility and impact radius.
+* Treat **low-signal text** as “quick-pass” unless it changes meaning: headings, micro-typos, stylistic polish, and non-FPF-governed narrative refactors, including RFC-form deontic cleanup.
+* **Do not block semantic review on template and RFC compliance defects.** Missing header block fields (E.8 H-5), missing canonical sections, or a missing footer marker are fixable integrity defects. Record them as repair items and continue with the FPF-governed section checks in the same run.
+* **Sentence-level precision matters on FPF-governed prose.** Reviewers SHOULD inspect FPF-governed sentences for generic heads, claim-bearing qualifiers, overloaded trigger words, bare relation shorthand, and hidden process/API metaphors. The default repair order is: restore head kind, then qualifier claim kind or admissible-use boundary, then comparison criterion or escalation condition homogeneity, and only then judge whether a later Plain or coarsened rendering is admissible.
+* **Precision-restoration distribution must be preserved.** When an `E.10` scan selects a non-local precision-restoration path, the run checks that `E.10` remains the trigger and applicability pattern, `E.10.ARCH` carries the shared recovery architecture, the relevant realization pattern (`A.6.P`, `C.2.P`, `C.30.P`, `C.16.P`, `C.16.Q`, `A.19.SPR`, or another selected restoration pattern) performs the ontological unpacking, and affected patterns keep thin declarative pointers rather than local trigger registries or duplicate recovery algorithms.
+* **EntityOfConcern and precision-restoration questions travel with the same triage.** When the reviewed change touches EntityOfConcern, same-referent, slot/reference, alignment-path, role-boundary, consumer-disposition wording, description/publication-use guards, phrase apparatus, repeated boundary doctrine, architecture-placement rationale, package-boundary rationale, or quality/projection evidence, the run asks before acceptance: what is the pattern's own `EntityOfConcern` and first useful move; does the text state this pattern's own subject kind, action spine, practical delta, and bounded non-use before auxiliary material; which governing pattern carries any outside claim/relation/boundary; does the prose need `F.19` before word/head/use restoration; do remaining word/head/use problems apply `E.10`, `E.10.ARCH`, `F.18`, or another relation named by value pattern; do role, method, work, evidence, assurance, gate, and decision claims remain with their governing patterns; and has every current-host consumer of the selected-family repair received a semantic, mechanical, compatibility, or not-triggered disposition. When `E.21` is active, these questions are recorded through its `PrecisionRestorationProfile` rather than as separate local E.19 rows.
+
+* **Design-time and run-time both count.** The same precision discipline applies to FPF pattern prose and to any reviewed publication text, worked slice, or performed-work exemplar when that text is being assessed for admissibility, guidance, reuse, gating, release, policy, assurance, or action-selection use.
+* **Report ordering (impact-first).** In run outputs and remediation direction, prioritize findings on ontology, semantic, modularity and SoTA-related FPF-governed sections first; group low-signal formatting/typos into one compact tail finding unless they change meaning.
+
+#### E.19:4.3 - Add risk-driven profiles
+
+**PCP‑PRAG (Pragmatic utility & adoption)** — Trigger: the pattern is Normative and claims practice guidance.
+Checks include: a visible first-reading recognition text early enough for a cold working reader; a recognisable first-minute working situation; one short `Use this when` or equivalent entry; a plain statement of what goes wrong if the pattern is missed; a plain statement of what the pattern buys in practice; the first admissible action-guiding move the user should take; a visible ordinary `not this pattern when` boundary; a minimally viable example; non-decorative Consequences/Anti-Patterns; at least one worked slice when the pattern is easy to misuse; a visible assurance text carrying declaration, guidance/check, modeling, and review/check scope; reader-fit consistency so that the assurance text does not silently widen or universalize the recognition-text claim; explicit practical payoff in user-facing prose; a short user-facing statement of the primary `EntityOfConcern`, relation record, or claim record and any minimal modeling lens when typed declaration material has FPF-governed use; nearby pairwise plain glosses for FPF-governed technical terms that appear before the heavier harness; a short working-reader implication for any `SoTA-Echoing` rows that carry explanatory work plus visible linkage to the worked cases or boundary slices they discipline; explicit primary working reader, concern, and viewpoint fields when several working-reader situations are being served; an explicit `So what?` adoption test; and, when the pattern claims universal or transdisciplinary reach, at least three heterogeneous recognition-text situations with `F.16` preferred as the compact example-matrix template.
+If an `E.10` trigger scan selects epistemic precision restoration during admission or refresh, `PCP-PRAG` treats type-correct-but-inert wording as a usability defect governed by `E.2` `P-2` and `E.12`: the run must name the remaining admissible reader move or the FPF pattern application and governing ontology that carry the claim, and must confirm any Plain recognition line maps back to the recovered Tech reading when both registers are used. A more expressive recognition line or intentional didactic metaphor may stay ordinary when it carries no FPF-governed use; when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary, that claim kind or admissible-use boundary must be recoverable through the recovered Tech reading or named FPF pattern application.
+
+For a broad cleanup across several patterns, or any cleanup that touches FPF-governed Problem frames, Problem sections, first-use recognition text, archetypal grounding, examples, or worked slices, the run must leave a short didactic change account: improved, preserved, or harmed. `Harmed` blocks admission or refresh unless the same pass restores the working situation and first useful move, or names the FPF pattern application and governing ontology that carry the claim.
+
+**PCP‑MOD (Modularity and abstraction-boundary discipline)** — Trigger: the reviewed pattern or subset shows scope creep or abstraction-boundary mixing (e.g., one pattern bundles universal core rules with frame-specific content and discipline-specific method semantics; or it mixes EntityOfConcern/Description/Spec roles in one object).
+
+Checks include:
+
+* an explicit **core vs extensions** cut (universal invariants are factored into one stable “core”, and extensions reference it rather than re-stating or mutating it),
+* no conflation of **specialization vs dependency**: use `⊑/⊑⁺` for refinement/extension and `Uses` for pipelines; do not mix their semantics,
+* no conflation of package-form, governing-pattern relation, and package-relation roles: **Pack vs Kit vs Suite vs Family vs Bundle vs Cluster vs Profile vs Overlay vs Record vs Umbrella** are not interchanged, and the review states carrier status, governing-pattern relation, and package relation explicitly instead of leaving it implicit or varying it for style,
+* description-lane descriptions and their publications do not grow mechanism semantics; MVPK faces remain projections and do not become "the place of truth",
+* slot-discipline hygiene for any ordered specialization set: SlotKind invariance is preserved and inherited operations do not gain new mandatory inputs (A.6.5 / A.6.1 specialization discipline).
+
+**PCP‑REFRESH (Staleness & compatibility refresh)** — Trigger: staleness signals are present (e.g., outdated SoTA rows, renamed/superseded Relations entries, terminology drift, or an explicit refresh window in LAT/DRR).
+Checks include:
+
+* refresh‑sensitive claims are identified (time‑bounded or ecosystem‑bounded) and either (a) updated with post‑2015 evidence **and** matching Solution changes, or (b) explicitly scope‑limited and labeled as historical lineage,
+* Relations are updated to current pattern IDs; deprecations/renames are handled via explicit continuity notes (no silent relabeling),
+* when one new or substantially revised pattern subset is being prepared for send or landing, the run explicitly checks which related governing patterns, governing-pattern constraints, companion patterns, Relations entries, or monolith-backed pattern sections require aligned edits so the subset does not land as one isolated local improvement; the run record states which of those updates are inside the claimed boundary now and which therefore remain outside that claimed boundary,
+* any long-lived companion, profile, check sheet, pattern-local companion row, review harness, or analogous selected non-pattern FPF kind-reference pair kept with the reviewed pattern or subset states its use question, governing pattern or selected non-pattern FPF kind-reference pair, admissible companion-only use, one real breakage if absent, and demotion or deletion condition when no such breakage exists.
+* the run records a Delta‑Class and impact radius; if the refresh causes Δ‑2/Δ‑3, it emits/updates a DRR pointer and triggers any required refresh and Bridge requirements defined elsewhere (E.15/F.15/F.9).
+
+Trigger overrides are permitted but intentionally rare: a run MAY override a triggered profile only when it can show the trigger’s risk is genuinely absent *in this case*, and the record MUST name (a) why the trigger is a false positive here and (b) what compensating check(s) were applied instead.
+
+**PCP‑NORM (Normative guidance integrity)** — Trigger: the pattern introduces or changes normative requirements, introduces new conformance items, or shifts downstream requirements.
+Checks include:
+
+* **Delta‑Class (Δ‑0…Δ‑3)** and **impact radius** are explicit (what breaks, who depends on this),
+* requirements are testable in principle (conceptually), scoped, and non-contradictory,
+* downstream patterns cited in Relations are compatible with the new guidance.
+* where the change is Δ‑2/Δ‑3 or a new normative pattern is being admitted: a DRR exists and references the PQG findings (pointer is sufficient; no duplicated prose).
+
+**PCP‑SOTA (Evidence and SoTA alignment)** — Trigger: the pattern’s Solution asserts “best practice”, “state-of-the-art”, or introduces new synthesis claims.
+Checks include:
+
+* each “best practice” claim or SoTA claim in the Solution is explicitly **bound** to SoTA‑Echoing rows (or to SoTA Synthesis Pack identifiers when used), rather than floating as ungrounded prescription, and those rows identify best-known current practice rather than popularity alone,
+* the selected SoTA practice or source set answers the declared working problem and the relevant domain or practice tradition rather than merely justifying package placement, naming neatness, or pattern clustering,
+* each SoTA row changes at least one FPF-governed outcome for the pattern: what the user may do, what the user must not over-read, which FPF pattern application must be named, or which claim cannot be raised to release, policy, assurance, gate, action-selection, or adjudication use,
+* novel synthesis is not presented as established SoTA: it is either (a) framed as a scoped hypothesis with explicit limits, or (b) promoted into or registered as a SoTA Synthesis Pack entry before the pattern is admitted as normative guidance; a merely explanatory SoTA note that leaves the FPF-governed sections untouched is non-conforming,
+* where traditions disagree substantively, the pattern makes the disagreement visible and states whether it adopts, adapts, or rejects each relevant source idea instead of silently selecting one tradition,
+* retrieval or benchmark methods are used only when the relevant evidence relation is present; their dimensions do not become universal pattern-quality benchmarks,
+* refresh‑sensitive claims (those likely to decay) are explicitly marked with scope limits, timespan notes, or lineage labeling when appropriate.
+
+**PCP‑BRIDGE (Cross-context or cross-plane reuse integrity)** — Trigger: the pattern imports claims, terms, or norms across contexts, disciplines, or reference planes.
+Checks include:
+
+* explicit Bridge usage where required (no silent identity by spelling),
+* Congruence / loss is made explicit where applicable,
+* any cross-plane reuse is explicitly acknowledged and its penalties do not leak into unrelated assurances.
+
+**PCP‑SUITE (Mechanism-suite integrity)** — Trigger: the reviewed pattern or subset introduces or revises a suite-level Description that enumerates multiple distinct mechanisms (e.g., `MechSuiteDescription` or a suite specialization) and/or changes suite requirements, conformance pins, or suite protocols.
+Checks include:
+
+* the suite remains a **Description-level** object: it enumerates member `U.Mechanism.EntityOfConcern` refs and declares shared requirements/pins, but does **not** define mechanism blocks (`OperationAlgebra`, `Transport`, `Audit`, …) and is not used as a mechanism node,
+* membership has **set semantics**: `mechanisms` is duplicates-free and order carries no semantics; any intended ordering is expressed only in `suite_protocols`,
+* suite protocols are **closed over membership**: if `suite_protocols` is present, each protocol step references a member mechanism (no “step points outside the suite”),
+* the suite is not a family of implementations: it MUST NOT be encoded as a `MechFamilyDescription` (families remain “many realizations of one mechanism”, not “many mechanisms”),
+* the suite does **not** mint transport exceptions: any cross-context, cross-plane, or cross-kind requirement remains Bridge-only; loss or penalty handling stays with `R/R_eff` only; the suite does not embed CL/Φ/Ψ/Φ_plane tables (references/pins only),
+* CG/CN authority pins remain explicit references to the single governance card and legality gate: if suite protocols include numeric comparison/aggregation/scoring, they cite `CG‑Spec` (SCP + Γ-fold + MinimalEvidence) and (where applicable) `CN‑Spec`, rather than duplicating “local CG‑Spec-like” content,
+* suite protocols contain **no hidden tails**: if UNM/UINDM/ULSAM are required, the protocol expresses them as explicit `Uses` steps and suite audit requirements cite the chosen mechanism ids/refs (no “implicit normalization/aggregation inside score/compare/select”),
+* gate separation is preserved: mechanisms and guards use tri-state `GuardDecision := {pass|degrade|abstain}` and MUST NOT publish `GateDecision` or `DecisionLog`; `block` remains gate-level only (`OperationalGate(profile)`),
+* defaults remain single-sourced: portfolio mode, dominance regime, and unknown/failure behavior are either pinned in `TaskSignature` or one policy-assignment record, or not claimed; the suite does not define competing defaults,
+* when the suite claims reusable outputs, publish/telemetry is explicit and terminates via existing publication forms/faces (e.g., G.10 and/or PTM), not as a hidden tail inside a selection step.
+
+**PCP‑P2W (Planned baseline & slot-fillings seam integrity)** — Trigger: the reviewed pattern or subset introduces or revises WorkPlanning records or publications that pin planned fillers for a slot-bearing description object's slots (e.g., `SlotFillingsPlanItem` or specializations), or introduces view projections of those records or publications.
+Checks include:
+
+* the PlanItem remains a **WorkPlanning baseline** (`U.WorkPlan.PlanItem`, `kind = SlotFillingsPlanItem`), not an execution log and not a mechanism,
+* planned slot filling stays **WorkPlanning-only**: plan items publish planned fillers/pins (ByValue or `<RefKind>`) and MUST NOT include launch values, `FinalizeLaunchValues` witnesses, gate decisions, or decision logs (these are `U.WorkEnactment` / gate-level only),
+* target and scope are explicit and non-leaky:
+  * the item targets exactly one slot-bearing description via `target_slot_bearing_description_ref`,
+  * `target_slot_bearing_description_ref` is a **description-lane, edition-addressable** slot-bearing ref (kit/suite) and MUST NOT be a `U.Mechanism.EntityOfConcernRef`,
+  * the item carries explicit P2W references (bounded context; and CG-frame/path-slice/scope references when used for legality/selection baselines),
+* time is explicit: the item includes `Γ_time_selector` or `Γ_time_rule_ref` (XOR); implicit “latest/current” is nonconformant,
+* `planned_fillings` is the authority: duplicate `slot_kind` rows are nonconformant unless the slot-bearing description declares the slot multi-valued; any “indices” are derivable projections and are not maintained independently,
+* crossing information is referenced, not duplicated: the plan item (and any associated views) cite CrossingBundle/Bridge/policy-id pins rather than embedding CL/Φ/Ψ/Φ_plane tables or defining transport edges,
+* MVPK projections remain projections: any `U.View` face (TechCard, PlainView, InteropCard, or AssuranceLane) over a plan item MUST NOT add new claims, MUST NOT introduce “shadow defaults”, and MUST avoid “signature” language (signatures belong to EntityOfConcerns),
+* if a view publishes edition pins or makes claims about crossing/comparability/selection/launch, it MUST also carry the required audit/slot-target pins (UTS + Path pins, crossing pins, applicable guard-source pins); missing pins are treated as downstream fail-closed nonconformance.
+
+**PCP-TERM (Terminology & naming protocol)** — Trigger: the pattern introduces new terms, new U.Types, new “unified names”, redefines existing labels, leans on FPF-governed phrases whose head kind or qualifier claim kind or admissible-use boundary is not yet restored, or uses FPF-governed trigger wording as if the word itself carried the needed kind.
+Checks include:
+
+* “mint vs reuse” decision is explicit,
+* naming follows the local-first naming protocol and avoids scope smuggling (roles/metrics/stages baked into labels; overloaded words used as terms with a local sense). Remediation **SHOULD** use F.18,
+* when PCP-TERM is selected, `F.18` winner selection and `A.6.P` follow-through are one mandatory chain rather than two optional passes: the run records candidate heads or phrases reviewed, any kind-conflict findings and lexical-conflict findings, the provisional F.18 winner plus rejected candidates, and the resulting `A.6.P` survival result on the repaired phrase,
+* FPF-governed trigger wording must be classified before acceptance by semantic area, not by a local forbidden-word list. Typical classes include admissibility/deontic terms, evidence and review-check terms, action-invitation terms, characteristic/scale and stratification source labels, state-family terms, lifecycle/process terms, pattern-application wording, publication-form terms, and local equivalents. The run names the exact admissibility, deontic, evidence, review-check, reader-task, action-invitation, characteristic or scale, state-family bearer and value frame under `A.19.SPR`, EntityOfConcern and Description-episteme boundary, specification-use gate, control-layer relation, method, work-plan, work occurrence, authority reference, declarative FPF pattern application with governing ontology named by value or conformance claim or section, publication face, publication form, publication unit, or publication carrier, or selected companion role or base declaration named by the sentence,
+* generic heads and claim-bearing qualifiers are not accepted at face value in FPF-governed prose: the review restores the head kind first, and a narrowing qualifier by itself does **not** count as that restoration; only then does the review restore the qualifier claim kind or admissible-use boundary before deciding whether the phrase is admissible,
+* if a sentence compares, escalates, downgrades, or otherwise puts pressure on a phrase after that restoration, the review checks that the comparison criterion is ontologically homogeneous,
+* the run leaves one explicit account of the resulting primary `EntityOfConcern`, first useful move, outside work, and any role-word or package-form decision when the repaired wording still carries architectural claim kind or admissible-use boundary,
+* source-side old wording and continuity rules are respected.
+
+**PCP‑DEONT (Deontic clause hygiene: RFC keywords)** — Trigger: the pattern conflates admissibility/validity constraints with deontic obligations (e.g., uses RFC keywords where a non-deontic Invariant: predicate is required).
+Checks include:
+* Deontic requirements are expressed with RFC-style keywords (see H-8);
+* obligations are not smuggled into prose as informal imperatives. Admissibility/validity constraints are stated non‑deontically as `Invariant:` / `Well‑formedness constraint:` predicates and referenced from the Conformance Checklist when enforceable.
+* **Subject discipline for RFC keywords.** If a sentence uses RFC keywords, its grammatical subject **MUST** be an agent or a specified published record/model whose required content is being constrained (author, reviewer, record, published model). RFC keywords **MUST NOT** modify modeled-world entities (e.g., “Earth”, “RoleAssignment”, “Role”, “holon”) — express those as `Invariant:` / `Well‑formedness constraint:` predicates instead, and (if needed) reference them from CC items.
+
+**PCP-ENTRY (Pattern-entry discoverability and entry-orientation changes)** —
+Trigger: one change substantively affects how one reader recognizes, selects,
+rejects, or reclassifies one applicable governing pattern body, applicable projection role,
+first-entry pattern-comparison set, Problem-frame recognition signature,
+expanded entry-disambiguation case, or entry lexical-query cue.
+
+Trigger classification:
+
+`PCP-ENTRY` is an explicit profile identifier under the existing Pattern Check Profile family. It reuses the `PCP` profile kind; it is an editorial review profile, not a runtime gate, not `GateProfile`, not a workflow state, and not a new route registry.
+PCP-ENTRY is risk-triggered rather than universal.
+Use one lead review profile for the change, and import other profiles only for
+their specific failure mode.
+
+Use this risk-trigger model:
+
+* **Trigger class 0 — micro-edit**
+  punctuation, formatting, typo repair, grammar, or meaning-preserving
+  compression with unchanged pattern-selection effect.
+  No `PCP-ENTRY`, no compact pattern-local note, no evidence mode, and no parity scan
+  are required.
+
+* **Trigger class 1 — local recognition wording repair**
+  one improved `Use this when`, `Not this pattern when`, or one removed
+  sequence-implying phrase with unchanged candidate-pattern set and unchanged
+  governing-entry or applicable-projection-role boundary.
+  Only the four-question core check is required.
+
+* **Trigger class 2 — substantive entry, companion, or projection change**
+  one new or changed README scenario, ToC query cue, `E.11` entry-distribution locus, `I.2` expanded entry-disambiguation case, pattern, or applicable projection role
+  newly treated as entry-bearing, one changed wrong-pattern or
+  governing-entry or applicable-projection-role boundary, one changed local
+  first-entry selection effect, or one substantive lexical-query cue change.
+  The author leaves one compact pattern-local note, runs the core check, and adds at
+  most one selected risk check if needed.
+
+* **Trigger class 3 — multi-role or high-risk public entry change**
+  one change affecting several selected projection or companion roles together, one
+  public-entry rewrite, one often-misclassified entry-recognition role, or one newly
+  introduced first-entry pattern-comparison set.
+  The author runs the core check and adds only the relevant selected risk
+  check, usually parity, wrong-pattern, public-entry, or expanded-entry-disambiguation-case
+  adequacy.
+
+* **Trigger class 4 — retrieval-facing, observed-failure, or measured-improvement change**
+  one retrieval-facing companion or projection role changes, one observed misretrieval or repeated
+  search failure is being repaired, or the patch itself claims measured
+  discoverability improvement.
+  One selected evidence mode may be required, but benchmark-style reporting is
+  not the default.
+
+* **Trigger class 5 — normative authority, kind, or durable-name change**
+  one entry-selection split, stable-name settlement, label-family change, or other
+  normative architectural rewrite is in scope.
+  `DRR`, `PCP-TERM`, and `PCP-MOD` are the lead decision or review profiles as applicable;
+  `PCP-ENTRY` reviews only the entry-facing effects.
+
+Ordinary non-triggers include:
+
+* punctuation, formatting, and typo fixes;
+* meaning-preserving prose tightening;
+* one bare mention of a pattern without changed entry-selection effect;
+
+* local wording repair that preserves the current first honest entry-recognition role,
+  candidate-pattern set, governing-entry or applicable-projection-role boundary,
+  and first-entry pattern-comparison-set membership.
+
+`PCP-ENTRY` stays one narrow additive review profile, not one super-profile
+that absorbs `PCP-PRAG`, `PCP-MOD`, `PCP-TERM`, `PCP-NORM`, and every other
+review/check scope.
+It composes with `PCP-PRAG`, `PCP-TERM`, and `PCP-MOD`; it does not replace
+them.
+Its distinctive object is changed pattern-selection effect, changed first-use
+entry-recognition role, changed first-entry pattern-comparison-set membership, changed tempting-wrong-pattern
+boundary, changed Problem-frame recognition role, changed expanded entry-disambiguation case
+effect, changed entry lexical-query cue, and changed semantic companion-or-projection role parity.
+
+Its default review scope is one small core triggered check:
+
+1. **No workflow implication**
+   Entry text does not imply mandatory sequence, control transfer, handoff, or
+   publication, carrier, or record sequence unless another governing entry or applicable projection role
+   explicitly governs that semantics.
+
+2. **Governing-entry boundary preserved**
+   Entry, index, and lexical-query companion roles do not redefine the governing pattern body's `Problem`
+   or `Solution`.
+
+3. **First honest entry-recognition role preserved**
+   The change does not make the first entry-recognition role or case signal misleading.
+
+4. **No duplicate high-detail companion or projection role**
+   The change does not create one new stale echo or one second high-detail
+   companion or projection role outside the one applicable governing pattern body or applicable projection role already
+   named for the claim.
+
+A change pays only the review cost of the concern it actually changes.
+Learning-order edits do not trigger `PCP-ENTRY` unless they also change
+candidate-pattern set, governing-entry or applicable-projection-role boundary,
+first honest entry-recognition role, or first-entry pattern-comparison-set membership.
+Lexical-only edits do not trigger extra entry-review scope unless they change
+pattern-selection effect or entry recognition.
+Retrieval fixtures are not required unless retrieval-facing behavior is
+explicitly claimed, one machine-consumed projection is in scope, or one
+observed misretrieval is being repaired.
+
+When the risk warrants more than that core check, the run may add only the
+relevant selected risk checks:
+
+* one parity check when more than one pattern-entry
+  discoverability-bearing projection changes;
+* one wrong-pattern check when known misclassification is present;
+* one lexical check when subject-language divergence is substantive;
+* one expanded-entry-disambiguation-case check when `I.2` changes or one high-risk
+  first-entry pattern-comparison set still lacks depth;
+* one public-entry check when coarse public entry wording substantively changes
+  entry-selection effect or carries high public-entry risk;
+* one retrieval check when the change is retrieval-facing or repairs one
+  observed retrieval failure.
+
+Substantial discoverability changes leave one compact pattern-local note in the current `DRR`, `PCP` record, patch note, or run record.
+That pattern-local note may stop at one explicit rationale when the risk is already
+controlled by governing-entry or applicable-projection-role inspection, companion-or-projection role
+partition, or one local wording repair.
+It is not a separate review record unless the change is high-risk, disputed,
+public-facing with substantive entry risk, or retrieval-facing.
+
+When one compact pattern-local note is needed, it names only the changed companion or projection role, the
+affected first-entry pattern-comparison set or pattern, the changed first-use entry-recognition role or
+recognition signature, the governing entry or applicable projection role for the
+claim or projection role, and the selected check if any.
+
+One compact risk-triggered gate is enough here:
+
+| Change shape | Default check | Acceptance signal |
+| --- | --- | --- |
+| typo, grammar, formatting, meaning-preserving compression | no evidence run beyond ordinary review | current entry-recognition role, governing-entry or applicable-projection-role boundary, and companion or projection role remains unchanged |
+| one Problem-frame recognition-signature wording change or one wrong-pattern clarification | reviewer-only entry check | no workflow implication and no governing-entry or applicable-projection-role drift |
+| one README scenario, ToC query cue, `E.11` entry-distribution locus, `I.2` expanded entry-disambiguation case, or changed candidate-pattern set | pattern-selection or wrong-pattern check | intended applicable governing pattern body or one admissible candidate-pattern set is recoverable without one false mandatory sequence |
+| one lexical-hook change | lexical query check | subject-domain phrasing recovers the governing entry or applicable projection role without uncontrolled alias drift |
+| two or more projection or companion roles change together | companion-or-projection role parity check | one governing entry or applicable projection role stays unique and the changed companion or projection roles agree on first-use entry-recognition role, wrong-pattern boundary, projection-only status, and no claim beyond the Core pattern body's admitted use; they need not share identical wording or examples |
+| one high-risk public-facing or substantively changed first-entry companion or projection role changes | cold-reader recognition task | one reader can recover the intended applicable governing pattern body or admissible candidate-pattern set under the named first honest entry-recognition role |
+| one retrieval-facing companion or projection role changes or one observed misretrieval is repaired | retrieval or `RAG` fixture | retrieval returns the governing entry or intended projection cue before one stale echo, and answer-to-governing-entry faithfulness remains intact |
+
+Empirical evidence is required only when the change is:
+
+* high-risk;
+* disputed;
+* retrieval-facing;
+* repeatedly misclassified;
+* public-facing with substantive entry-selection change, repeated failure, or one
+  measured-improvement claim;
+* or itself claims measured discoverability improvement.
+
+`PCP-ENTRY-E4` is selected only when retrieval-facing behavior is explicitly
+claimed, one machine-consumed projection is in scope, or one observed
+misretrieval is being repaired.
+Public-facing changes with substantive entry-selection risk usually select `PCP-ENTRY-E1`.
+Lexical-hook changes usually select `PCP-ENTRY-E3`.
+Changes across multiple projections or companion roles usually select `PCP-ENTRY-E5`.
+Observed search or query failures usually select `PCP-ENTRY-E6`, optionally
+together with `PCP-ENTRY-E3` or `PCP-ENTRY-E4` when the failure is lexical or
+retrieval-facing.
+
+The following evidence modes are selected high-risk tools, not one suite to
+exhaust on ordinary authoring passes.
+Selected evidence modes may include:
+
+1. **PCP-ENTRY-E1 — cold-reader recognition or pattern-selection task**
+   Given one real case signal, can one reader recover the intended applicable
+   governing pattern body or one admissible candidate-pattern set?
+   One tiny micro-task is enough:
+
+   ```text
+   Given this entry-recognition phrase, name:
+   1. the first candidate pattern,
+   2. one tempting wrong pattern,
+   3. the admissible entry stop,
+   4. the governing entry or applicable projection role.
+   ```
+
+2. **PCP-ENTRY-E2 — wrong-pattern and wrong-entry trap**
+   Does the companion or projection role actively prevent the most tempting wrong pattern or wrong
+   family?
+
+3. **PCP-ENTRY-E3 — lexical query check**
+   Does subject-domain phrasing retrieve the governing entry or applicable
+   projection role without uncontrolled aliases?
+
+4. **PCP-ENTRY-E4 — retrieval or `RAG` fixture**
+   Does retrieval recover the governing entry or applicable projection role under
+   exact-ID or keyword phrasing, under semantic paraphrase phrasing, and under
+   projection-vs-governing-entry ambiguity, while keeping retrieved companion material,
+   source faithfulness, stale echoes, and post-rationalized citation-like material distinct
+   from the applicable governing pattern body?
+
+5. **PCP-ENTRY-E5 — companion-or-projection role parity check**
+   Do the companion or projection roles, plus any explicit absence note, preserve
+   the same first-use entry-recognition role, governing entry or applicable projection role,
+   wrong-pattern boundary, projection-only status, and no-claim-beyond-Core
+   claim without requiring identical wording, rows, or examples?
+
+6. **PCP-ENTRY-E6 — observed failure or query-log capture**
+   Does one observed misretrieval, wrong-pattern loop, or repeated query miss
+   still survive after the repair, or has the failure actually been
+   removed?
+
+#### E.19:4.3.1 - Tiny golden case bank for regression and worked examples
+
+One tiny golden case bank is enough here. It is a review-regression echo, not the canonical entry inventory: rows 1-4 mirror README scenarios, `E.11` entry-distribution loci, and `I.2` expanded entry-disambiguation cases that already carry entry companion or projection roles, while rows 5-6 add review-specific search and retrieval stress cases. `E.11` and `I.2` remain the governing entry companions; this bank only tests whether a change preserved them.
+It is not one benchmark suite and does not require universal empirical review for ordinary wording or companion-or-projection role edits.
+A run may cite one relevant golden case or state that none is relevant. It does
+not need to execute the whole bank.
+It keeps a stable set of recurring entry-recognition roles recoverable across hardening
+passes:
+
+| Case | case_signal | expected_first_entry_pattern_comparison_set | candidate_patterns | tempting_wrong_pattern_or_wrong_relation | admissible_entry_stop | companion_or_projection_roles_that_help | projections_that_do_not_define_semantics |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | “we need a shortlist, not one winner” | comparison / pool / selected-set publication pattern-comparison set | `A.19.CN`, `A.17-A.19`, `C.18`, `C.19`, `G.0`, and `G.5` when selected-set publication is claimed | treating `C.11` as one one-off choice when the real entry-recognition role is selected-set publication or candidate-set stabilization | admissible candidate-pattern set stabilised or selected-set publication opened | README scenario or `E.11` entry-distribution cue, one pattern `Problem frame`, one expanded entry-disambiguation case if compact cues still fail | one README blurb, one thin echo, one lexical-query row alone |
+| 2 | “we have a vague cue, not yet a claim” | pre-articulation cue pattern-comparison set | `C.2.LS`, `A.16`, `A.16.1`, `B.4.1`, `B.5.2.0` | forcing the cue into one endpoint-claim, quality, or assurance pattern too early | `entry-recognition-reclassified` or cue preserved for the admissible next entry-recognition role | README scenario or `E.11` entry-distribution cue, one pattern `Problem frame`, one case-linked `I.2` expanded entry-disambiguation case when needed | one coarse public entry projection alone |
+| 3 | “this is the same EntityOfConcern re-expressed for another audience” | same-EntityOfConcern rewrite pattern-comparison set | `A.6.3.CR`, `A.6.3.RT`, `E.17.EFP`, `E.17.ID.CR` | minting one second `U.Episteme` for the same claim or one second competing explanatory lane instead of one same-EntityOfConcern rewrite | `wrong-pattern-rejected` or same-EntityOfConcern rewrite opened | one expanded entry-disambiguation case, one pattern `Problem frame`, governing-entry pointer | one parallel explanatory blurb treated as one second governing pattern |
+| 4 | “the API says X” | boundary-claim unpacking pattern-comparison set | `A.6`, `A.6.B`, `A.6.C`, `A.6.P`, `C.16.Q`, `A.6.A`, `E.17` | treating one boundary phrase as one agent duty, promise, quality verdict, or generic agreement paragraph without atomic claim assignment or quality-term repair with recovered characteristic and scale | `boundary-claim-pattern-opened`, `quality-term-repair-exited`, or atomic claim set opened | one boundary-focused `E.11` entry-distribution cue, one pattern `Problem frame`, one expanded entry-disambiguation case where interface/access/confused-quality wording is common | one query cue or public entry projection treated as the governing entry |
+| 5 | “I found a pattern by search, but I am not sure it is the right one” | one pattern-local recognition-signature case under the selected pattern-comparison set | one candidate applicable governing pattern body plus one case-near governing pattern when needed | one lexical near-match or same-family pattern without governing-entry fit | `non-use-confirmed` or `pattern-selected` | one pattern `Problem frame`, one `E.11` entry-distribution cue, one lexical-query hook | one search-query row alone |
+| 6 | “the LLM retrieved a helpful-looking paragraph but not the pattern” | one retrieval-facing first-entry pattern-comparison case | one applicable governing pattern body plus one applicable projection role | one stale thin echo or one projection-only companion role answered as if it were the governing entry | `governing-entry-opened` or `expanded-entry-disambiguation-case-needed` | one governing-entry reference, one projection-only status marker, one retrieval-facing pointer to the applicable governing pattern body | one thin echo chunk without governing-entry reference or projection-only cue |
+
+These six cases are enough to keep:
+
+* entry-recognition consistency;
+* wrong-pattern or wrong-entry rejection;
+* admissible entry-stop honesty;
+* lexical-query discipline;
+* thin-echo retrieval hygiene;
+* and governing-entry and projection separation recoverable as the amendment
+  lands.
+
+When one empirical or retrieval evidence run is actually selected, the run
+makes recoverable only the fields needed by that run, such as:
+
+```text
+viewpoint_class
+task_prompt_or_query
+expected_governing_entry_or_admissible_candidate_set
+near_miss_patterns_or_projection_roles_if_any
+time_budget_if_relevant
+success_criterion_if_relevant
+success_or_failure_note
+observed_failure_mode_if_any
+rationale_or_repair_action
+```
+
+When retrieval evidence is selected, keep retrieval result, answer
+faithfulness, and stale-echo result distinct without forcing benchmark-style
+reporting on ordinary edits.
+One minimal retrieval fixture checks exact ID or keyword retrieval, semantic
+paraphrase retrieval, projection-vs-governing-entry disambiguation,
+and, when thin echoes are used, thin-echo governing-entry reference presence.
+Ordinary local guidance stays prose-only rather than minting one stable
+governing-entry reference by default.
+
+#### E.19:4.3.2 - Common hardening accounts are triggered by review need
+
+When one common hardening concern has FPF-governed use, is disputed, or is explicitly invoked by the reviewed pattern or subset, the run record names the checked source and finding. Otherwise absence is ordinary and does not require a by-value absence recital.
+
+Use triggered accounts only for the selected entry-recognition role:
+
+1. **Usability and working-reader fit.** Record this when first-reading recognition text, assurance text, first-minute working-reader usability, practical payoff, worked slices, primary-reader fit, or `E.8` / `E.12` / `E.13` / `E.14` / `E.17.*` / `F.16` checks carry the finding or acceptance decision.
+2. **Scenario / anti-case / utility-fit source set.** Record this when a scenario pack, anti-case corpus, pilot bank, utility tree, fitness catalog, or analogous source is actually used or substantively disputed.
+3. **Packaging, governing-pattern relation, package relation, and shipping-fit.** Record this before any send-facing, landing-facing, monolith-facing, or governing-pattern relation or package-relation state claim. Do not require it for ordinary local wording repairs.
+4. **Domain-tightened profile depth.** Record this when a domain-specific profile-depth note actually tightens a selected profile or resolves a finding.
+5. **Accepted-decision or accepted source-material carry-through.** Record this when the review work states that accepted decisions from an accepted `DRR`, returned-finding set, accepted intake, architecture source material, or other accepted source material named by value are implemented in or discharged by the `E.19` reviewed pattern or subset. The run record assigns accepted decisions and conformance subjects to loci inside that reviewed pattern or subset or to a named governing FPF pattern, companion document, record, or accepted source material, and classifies each as expressed sufficiently, expressed partially, not expressed and blocking, carried by a direct accepted-source-material consultation condition, correctly absent because rejected or not triggered, inherited unchanged, or outside the reviewed pattern or subset with a named governing FPF pattern, companion document, record, or accepted source material. This account does not rename an `E.17.ID.CR` comparative review unit, `PublicationUnit`, publication form or face, source-pinned interpretation case, document whose accepted-source-material, evidence-source-material, architecture-source-material, or review-source-material role is named, or project-side review relation as an `E.19` reviewed pattern or subset; when those are present, name the governing-pattern kind and reference and assign carry-through to it or to a named governing FPF pattern, companion document, record, or accepted source material.
+
+For `PCP-ENTRY`, the ordinary compact pattern-local note remains enough unless one of the triggered concerns above is genuinely present.
+
+#### E.19:4.4 - Decision outcomes
+
+A PQG run **MUST** end with (a) one compact list of blocking findings and (b) one concrete remediation-direction account.
+
+**Remediation payload.** The run **MUST** provide repair direction precise enough that one independent repair pass can adopt it into the reviewed text without reinventing the diagnosis. The core requirement is findings-first traceability, not direct patch emission.
+
+**Precision-remediation order.** When a defect sentence combines a generic head, a claim-bearing qualifier, and mixed comparison-criterion pressure, remediation SHOULD repair them in that order: restore head kind, then qualifier claim kind or admissible-use boundary, then comparison-criterion homogeneity. A narrowing qualifier does **not** by itself repair the head-kind defect. Only after those repairs may the run keep or reintroduce a Plain, didactic, or coarsened restatement, and only if the more precise upstream interpretation remains recoverable.
+
+**Kind-restoration closure.** A remediation direction or accepted repair does not close a precision-restoration finding merely because the old trigger word disappeared. For every wording, naming, or phrase-apparatus repair that changes FPF-governed text, the run record must recover the pre-repair kind, relation or claim kind, admissible use, and scope, then the post-repair kind, relation or claim kind, admissible use, and scope. If the repair narrows, widens, splits, or changes the kind, the run records the accepted decision or leaves the finding blocking. A lexical substitution without this account is still an open finding.
+
+**Report ordering (impact-first).** The blocking findings are the primary review output. Remediation directions accompany them and SHOULD be listed in descending order of expected impact on semantic trust (FPF-governed sections first). Template-only issues belong at the end unless they hide missing content.
+
+**Budget discipline (anti-form-only review).** If the run identifies semantic defects in FPF-governed sections, remediation direction **MUST** prioritize those fixes; purely mechanical edits (formatting, micro-typos) **MUST** be minimized and **MUST NOT** dominate the review by volume.
+
+**Noise discipline.** The run record is a human-facing audit trail. It **SHOULD** stay sparse: list findings, boundary exceptions when any exist, repair direction, and decisions; no per-check pass recital is needed when no defect was found.
+
+### E.19:5 - Archetypal Grounding — Tell–Show–Show: System / Episteme
+
+| Scenario | U.System grounding | U.Episteme grounding |
+|---|---|---|
+| **Tell** | A safety-critical engineering team proposes a new pattern describing how to gate a subsystem before deployment. The draft looks polished, but it quietly imports domain terms, assumes cross-team equivalences, and introduces requirements that are not listed in the pattern checklist. | A research group refreshes an older pattern that summarizes how to evaluate evidence-sufficiency class. The pattern still appears clear, but its SoTA references and terminology no longer match current practice, and its Relations point to patterns that were renamed or superseded. |
+| **Show (failure without PQG)** | Reviewers focus on whether the idea is good and whether the template exists. The pattern is admitted, but later users disagree on what it requires because the Conformance Checklist is incomplete and key constraints are only in prose. | The pattern remains unchanged because “nothing looks broken”. Over time, it becomes a conceptual fossil: newcomers treat it as current guidance, but it encodes an outdated stance and stale vocabulary. |
+| **Show (repair with PQG profiles)** | PCP‑BASE finds missing internal coherence (requirements in prose not reflected in CC). PCP‑TERM finds naming drift and scope-smuggling in new terms. PCP‑BRIDGE finds implicit cross-context identity claims without explicit alignment. The findings-first run record then names one repair pass before admission, and the final CC becomes the canonical conformance body. | The run record leaves one explicit decision: update SoTA‑Echoing with post‑2015 guidance and appropriate Solution changes, limit the scope to “historical lineage” where appropriate, and update Relations to current dependencies. The refreshed pattern becomes trustworthy again, and any remaining historical content is clearly labeled as such. |
+
+### E.19:6 - Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal** (applies to all patterns and all clusters).
+
+Bias risks and mitigations:
+
+* **Governance bias (Gov):** reviewers may over-prioritize compliance signals and under-prioritize teaching value.
+  *Mitigation:* PCP‑BASE includes didactic grounding and internal coherence checks and priority for ontology and semantics, not to form.
+* **Epistemic monoculture (Onto/Epist):** SoTA‑Echoing can become single-tradition name-dropping.
+  *Mitigation:* require explicit multi-tradition coverage and usage of F.18 for neutral naming.
+* **Pragmatic bias (Prag):** a pattern can be “correct” yet unusable.
+  *Mitigation:* consequences and anti-patterns remain mandatory sections, surfacing trade-offs and misuse paths.
+* **Didactic bias (Did):** narrative quality can be mistaken for truth.
+  *Mitigation:* conformance and SoTA‑Echoing sections bind claims to explicit requirements and lineage.
+
+### E.19:7 - Conformance Checklist
+
+| ID | Requirement | Purpose |
+| --- | --- | --- |
+| **CC-E19-1 (Baseline triage is mandatory).** | Every PQG run **MUST** apply **PCP-BASE** to the reviewed pattern or subset as baseline triage. If that triage shows no present ontology, usability, SoTA, boundary, naming, or authority risk beyond a small mechanical repair, the run may close with that repair direction without opening a full-depth audit or every risk-selected profile family. This closure is an `E.19` review-boundary result, not an `E.21` quality value. It cannot support an `E.21` coordinate value, `PatternQualityStatus`, all-`4`/all-`5` claim, landing-quality claim, or improvement-movement claim unless a complete `E.21` result with required coordinates, `ShortRationale`, evidence basis, and `PrecisionRestorationProfile` is also produced or consumed. | Ensures one shared triage floor across pattern kinds without turning every run into a full audit or a substitute quality measurement. |
+| **CC-E19-2 (Profile selection is auditable).** | The run record **MUST** state (a) the selected PCPs, (b) the risk reason for each non-BASE profile, and (c) any override decisions. Any override of a risk-indicated profile **MUST** record why the risk is genuinely absent and what compensating check(s) were applied instead. The run record **MUST** account for the whole current profile set rather than only the selected profiles or the easiest visible risk family; a deontic-only or selected-stack-only recital is nonconforming. | Makes depth decisions repeatable and reviewable. |
+| **CC-E19-3 (Delta-Class & impact for breaking change levels).** | If the run proposes or accepts a change that is **Δ-2/Δ-3** (per E.15), the run record **MUST** include Delta-Class, an impact radius, and a DRR pointer; it **MUST** confirm that required refresh and Bridge requirements are triggered where applicable. | Keeps evolution controlled and compatible with downstream dependencies. |
+| **CC-E19-4 (Conformance-claim coherence is enforced).** | Remediation **MUST** eliminate “orphan” requirements and “unclaimed” requirements by aligning the reviewed pattern’s Conformance Checklist, deontic clauses, and admissibility constraints with its Solution. | Preserves the CC as the enforceable conformance check set. |
+| **CC-E19-5 (Triage & noise discipline).** | The run **SHOULD** prioritize FPF-governed sections and deontic requirements (e.g. CC, content of deontic clauses and content of admissibility constraints, definitions, Relations, SoTA, modularity) and keep purely mechanical edits (e.g. RFC-form deontic cleanup) minimal. Template defects **MUST** be fixed before admission (or before closing a refresh run) but **MUST NOT** be used to skip semantic review. | Improves semantic trust without turning review into form-only compliance. |
+| **CC-E19-6 (Findings-first remediation direction).** | The run output **MUST** include one compact list of blocking findings plus concrete remediation direction, ordered by semantic impact (FPF-governed sections first). Findings stay primary; direct patch text is optional local process tactic, not the core `E.19` run record. | Ensures actionability and independent repeatability without collapsing review into repair. |
+| **CC-E19-7 (Recognition text, assurance text, and self-containment).** | Admission or refresh runs for new and substantially revised patterns **MUST** check that a first-reading recognition text appears early enough for the intended reader, that the heavier assurance text remains visibly second rather than becoming the first real point of entry, and that the assurance text does not silently shift the recognition-text claim. The run **MUST** check for a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, the first admissible action-guiding move the user should take, and an ordinary `not this pattern when` boundary; for any FPF-governed typed declaration or modeling lens, the run **MUST** confirm that a short user-facing statement exposes the primary `EntityOfConcern`, relation record, or claim record and the minimal lens that keeps it reviewable; the run **MUST** also check that the primary `EntityOfConcern`, relation record, or claim record keeps one stable kind across title, opening role, declaration role, worked slices, and related-pattern or companion guidance named by value rather than drifting between the named primary `EntityOfConcern`, an act, a work-result record, and carrier-placement labels. When a broader umbrella name and a narrower operative branch are both used, the run **MUST** check that the recognition text makes that stack explicit enough to identify the umbrella, the active branch, the primary `EntityOfConcern`, the move, and the wider work or process that still remains outside. The recognition text **MUST** start from a recognisable problem-owning domain or practice moment whenever that can be done without loss of precision, rather than opening first with internal package architecture or taxonomy language. Early FPF-governed technical terms **MUST** receive nearby pairwise plain glosses; transform-like families **MUST** carry concrete worked slices plus ordinary-vs-FPF-governed wording guidance where needed; and any `SoTA-Echoing` used as explanatory grounding **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If SoTA or practice tradition has FPF-governed use, the run **MUST** check that primary-EntityOfConcern choice, narrowed-branch choice, and practical payoff remain answerable to the relevant domain or practice rather than only to internal package architecture. If a pattern claims universal or transdisciplinary usefulness, the run **MUST** check that this breadth is already demonstrated in the recognition text through at least three heterogeneous situations, with `F.16` preferred as the example-matrix template. | Prevents architecturally correct but reader-opaque patterns and keeps broad claims from appearing only late in the assurance text. |
+| **CC-E19-7a (Epistemic precision cleanup cannot leave inert recognition).** | If admission or refresh includes `E.10`-triggered epistemic precision restoration, the run **MUST** check that the recognition text remains useful after overread removal under `E.2` `P-2` and `E.12`. The run fails this check when repaired wording is typed and precision-repaired but no longer tells the intended working reader why the distinction matters, what remaining admissible reader move exists, or which FPF pattern application and governing ontology carry the claim. When the cleanup touches FPF-governed Problem frames, Problem sections, first-use recognition text, examples, or worked slices, the run **MUST** also state whether the didactic function was improved, preserved, or harmed. When both Tech and Plain registers are used, the run **MUST** check that Plain or didactic recognition wording either stays ordinary because it carries no FPF-governed use, or maps back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary. The run must preserve intentional didactic metaphors when they are ordinary recognition aids or when their claim kind or admissible-use boundary remains recoverable from the recovered Tech reading. The run also fails this check when more expressive recognition wording carries such claim kind or admissible-use boundary without recovery through the recovered Tech reading or named FPF pattern application. | Prevents pattern admission or refresh from accepting precision-repaired but practically inert prose, and prevents readability repair from reintroducing overread. |
+| **CC-E19-8 (Sentence-level precision restoration).** | FPF-governed sentences **MUST** be reviewed for generic heads, claim-bearing qualifiers, overloaded trigger words, bare relation shorthand, hidden slot/use-position shorthand, and hidden process/API metaphors. An `E.10` trigger scan closes sentence-level precision only for `not-triggered` and local lexical-repair outcomes. When the scan selects episteme/publication/source-use wording: episteme, publication, view, face, carrier, source text, FPF transfer, pattern application, or project-side claim kind or admissible-use boundary, the run **MUST** apply `C.2.P` or record the false-positive reason by value; `E.10` alone is then not a closed check. When the scan selects state-family wording such as `state`, `status`, `posture`, `readiness`, `stance`, or `currentness`, the run **MUST** apply `A.19.SPR` or the already-recovered governing pattern and state-like field; `E.10` alone is then not a closed check. A narrowing qualifier does **not** by itself restore head kind. The default repair order is head kind first, qualifier claim kind or admissible-use boundary second, slot/use-position third when the object appears inside a relation/signature/lens position, and comparison-criterion homogeneity fourth. A changed wording closes only with a `KindRestorationCheck`: pre-repair kind/relation/slot-or-use-position/admissible use/scope, post-repair kind/relation/slot-or-use-position/admissible use/scope, or `not triggered`/`ordinary prose`/`already satisfied`/`blocker` disposition with loci. When broad umbrella words such as `interpretation`, `reading`, `review`, `surface`, `document`, or `artifact` carry architectural claim kind or admissible-use boundary or other FPF claim kind or admissible-use boundary, the run **MUST** also restore whether the text names an umbrella, a narrowed branch, a primary `EntityOfConcern`, a first useful move, or wider work/process outside that selected EntityOfConcern or claim before that wording is allowed to carry architectural claim kind or admissible-use boundary. When naming or terminology repair has FPF-governed use, the run record **MUST** leave one explicit `F.18 -> A.6.P` account on disk: candidate heads or phrases reviewed, mint-vs-reuse decision, provisional F.18 winner plus rejected candidates, any kind-conflict findings and lexical-conflict findings, the `A.6.P` survival result on the repaired phrase, and the resulting primary `EntityOfConcern`, first useful move, slot/use-position when live, and outside-work interpretation if the wording still carries architectural claim kind or admissible-use boundary. | Keeps controlled technical writing from collapsing into free shorthand or false precision. |
 | **CC-E19-9 (Package-form, governing-pattern relation, and package-relation role-word discipline).** | Reviews **MUST** check that role words such as `primary carrier`, `specialization`, `profile`, `overlay`, `family`, `bundle`, `cluster`, `suite`, `pack`, `kit`, `record`, and `umbrella` match the actual ontology of the case and do not drift by stylistic substitution. When naming or ontology repair introduces or retains one head already occupied elsewhere in FPF, the run **MUST** explicitly account for that occupied-kind / occupied-head conflict and say whether the same occupied meaning is intentionally reused or instead blocked as a collision. | Keeps governing-pattern relations and package relations, review roles, and package forms semantically legible. |
 | **CC-E19-10 (Reader-role discipline).** | Reviews **MUST** check that every pattern host or monolith section is written for the intended FPF user, that any multi-reader draft makes its primary working reader, concern, and viewpoint explicit enough, and that package-development reasoning about isolation, landing form, freeze or merge state, later promotion, safest move, blast radius, deferral state, developer/reviewer/executor correspondence, or quality/projection state stays in separate companion, architecture, evaluation, review, projection, release, or landing carriers. The run record **MUST** name the pattern sections scanned for this leak family and any repaired or still-informative exceptions. | Keeps reviews from accepting conceptually correct but role-confused patterns. |
-| **CC-E19-10a (Quality/projection carrier leakage).** | Reviews **MUST** check whether any pattern text, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, worked slices, examples, tables, and `Conformance Checklist`, contains corpus projection, ToC/J.4 alignment, retrieval/cold-reader evidence, monolith parity, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, developer/reviewer/executor correspondence, or other quality-carrier evidence as pattern content. This is a role-based check, not a lexical search: if the sentence role is developer, reviewer, executor, evaluator, projection, landing, or release evidence about the pattern version, it belongs outside the pattern even when the words are ordinary. If the evidence does not constitute the pattern's own admissible user move, the run **MUST** return it to the `E.21` result, `E.19` run record, ToC/J.4, card/retrieval/projection carrier, or release/landing evidence carrier, and name the remaining user-facing move or boundary if one exists. | Prevents review and projection proof from becoming pattern prose. |
+| **CC-E19-10a (Quality/projection carrier leakage).** | Reviews **MUST** check whether any pattern text, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, worked slices, examples, tables, and `Conformance Checklist`, contains corpus projection, README/ToC/E.11/I.2 alignment, retrieval/cold-reader evidence, monolith parity, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, developer/reviewer/executor correspondence, or other quality-carrier evidence as pattern content. This is a role-based check, not a lexical search: if the sentence role is developer, reviewer, executor, evaluator, projection, landing, or release evidence about the pattern version, it belongs outside the pattern even when the words are ordinary. If the evidence does not constitute the pattern's own admissible user move, the run **MUST** return it to the `E.21` result, `E.19` run record, README/ToC/E.11/I.2, card/retrieval/projection carrier, or release/landing evidence carrier, and name the remaining user-facing move or boundary if one exists. | Prevents review and projection proof from becoming pattern prose. |
 | **CC-E19-11 (Precision before relaxation).** | If remediation preserves or introduces a Plain, didactic, or coarsened restatement of a repaired FPF-governed sentence, the run **MUST** keep a more precise upstream interpretation recoverable and must not let the softened form become the only wording with authority-reference claim kind or admissible-use boundary. | Keeps later readability aids subordinate to an explicit more precise interpretation. |
-| **CC-E19-12 (Integration impact is accounted for).** | Before send or monolith-facing motion for one new or substantially revised pattern subset, the run record **MUST** explicitly account for related exact patterns, governing-pattern constraints, companion notes, Relations entries, or current monolith sections that now require aligned edits. The run **MUST** say which such updates are inside the claimed boundary now and which therefore remain outside that claimed boundary. | Prevents one local pattern carrying release, gate, or authority-reference claim kind or admissible-use boundary from landing as an isolated mismatch in the wider FPF pattern set. |
-| **CC-E19-13 (Usability account is explicit).** | For one new or substantially revised pattern subset, the run record **MUST** leave one explicit usability / working-reader-fit account by value: recognition text vs assurance text verdict, first-minute working situation, practical payoff, ordinary boundary, worked-slice coverage, primary reader or viewpoint, and the applicable pattern-side human-facing checks used (`E.8`, `E.12`, `E.13`, `E.14`, `E.17.*`, `F.16`, or clearly named local equivalents). | Prevents cold-reader usability from being treated as something the reviewer “just kept in mind”. |
+| **CC-E19-12 (Integration impact is accounted for).** | Before send or monolith-facing motion for one new or substantially revised pattern subset, the run record **MUST** explicitly account for related governing patterns, governing-pattern constraints, companion notes, Relations entries, or current monolith sections that now require aligned edits. The run **MUST** say which such updates are inside the claimed boundary now and which therefore remain outside that claimed boundary. | Prevents one local pattern carrying release, gate, or authority-reference claim kind or admissible-use boundary from landing as an isolated mismatch in the wider FPF pattern set. |
+| **CC-E19-13 (Usability and proxy-to-value account is explicit).** | For one new or substantially revised pattern subset, the run record **MUST** leave one explicit usability / working-reader-fit account by value: recognition text vs assurance text verdict, first-minute working situation, practical payoff, ordinary boundary, worked-slice coverage, primary reader or viewpoint, and the applicable pattern-side human-facing checks used (`E.8`, `E.12`, `E.13`, `E.14`, `E.17.*`, `F.16`, or clearly named local equivalents). If admission, release, refresh, or improvement uses a score, coordinate value, checklist result, review result, benchmark, projection signal, or all-`5` posture as practical payoff or value evidence, the run **MUST** include an `E.13` disposition: intended value, proxy or visible measure, current proxy use, what improved, what got worse, minimally viable value slice or missing slice, and repair/stop/reopen condition. | Prevents cold-reader usability and pragmatic value from being treated as something the reviewer “just kept in mind”, and prevents visible review success from replacing practical value. |
 | **CC-E19-14 (Scenario / anti-case / utility-fit account is explicit).** | When the current domain or workstream has a scenario pack, anti-case corpus, pilot bank, utility tree, fitness catalog, or analogous common check source, the run record **MUST** explicitly state which of those sources were consulted, which scenarios or anti-cases were actually checked, which qualities or fitness pressures carried claim kind or admissible-use boundary, and what remains outside the claimed review boundary. | Prevents scenario, anti-case, and fitness checks from disappearing into reviewer memory or external-review folklore. |
 | **CC-E19-15 (Packaging, governing-pattern relation, package relation, and shipping-fit account is explicit).** | Before any send-facing, landing-facing, or monolith-facing state claim, the run record **MUST** explicitly account for governing-pattern relation and package relation, package form, publication role with named authority-reference relation, send state, landing state, monolith state, and other shipping-facing claims that matter for this reviewed pattern or subset. It **MUST** say what was checked, what was blocked, what was cleared, and why the claimed boundary is valid now. | Keeps packaging and shipping checks from being inferred loosely after one local text improvement. |
 | **CC-E19-16 (Domain-tightened profile depth is explicit).** | When a domain-specific profile-depth note exists under `E.19` (for example semio `FIT-*` or equivalent local depth checks), the run record **MUST** explicitly state which such local checks were used, which PCP check scope they tightened, and what they found or explicitly did not find. | Keeps local review depth auditable and prevents domain-specific checks from becoming optional folklore around the PCP stack. |
 | **CC-E19-17 (Companion-material retention is justified).** | When a new or refreshed pattern subset keeps a long-lived companion, profile, check sheet, pattern-local companion row, review harness, or analogous selected non-pattern FPF kind-reference pair, the result **MUST** make its companion role explicit: companion use question, governing pattern or selected non-pattern FPF kind-reference pair, admissible companion-only use, one real breakage if absent, and retention, accepted-source-material-only, or removal condition when no such breakage exists. | Prevents companion material from remaining by inertia or becoming hidden authority after the pattern body already carries the usable guidance. |
-| **CC-E19-18 (Substantive solution and locus adequacy is explicit).** | A pattern-quality closure claim over a new, refreshed, or materially repaired pattern or subset **MUST** include one reviewed-pattern-specific substantive adequacy pass unless the change is purely mechanical and no content-bearing claim changes. The account **MUST** name the local questions and checked loci, then state whether the text still solves the stated problem, assigns claims to the correct exact governing loci, preserves kind boundaries and selected companion or projection roles, keeps SoTA grounding current enough for the claim it disciplines, remains usable without excess apparatus, and did not make any content relation worse. If the check exposes a needed wider edit, the declared boundary is widened by value or a named exact FPF pattern, companion document, record, or accepted source material is recorded. | Prevents clean checklists, clean terminology, or successful profile selection from hiding wrong content, shadow authority, lost selected companion or projection roles, or accidental regression. |
+| **CC-E19-18 (Substantive solution and locus adequacy is explicit).** | A pattern-quality closure claim over a new, refreshed, or materially repaired pattern or subset **MUST** include one reviewed-pattern-specific substantive adequacy pass unless the change is purely mechanical and no content-bearing claim changes. The account **MUST** name the local questions and checked loci, then state whether the text still solves the stated problem, assigns claims to the correct governing loci named by value, preserves kind boundaries and selected companion or projection roles, keeps SoTA grounding current enough for the claim it disciplines, remains usable without excess apparatus, and did not make any content relation worse. If the check exposes a needed wider edit, the declared boundary is widened by value or a named governing FPF pattern, companion document, record, or accepted source material is recorded. | Prevents clean checklists, clean terminology, or successful profile selection from hiding wrong content, shadow authority, lost selected companion or projection roles, or accidental regression. |
 | **CC-E19-19 (Accepted-decision carry-through is explicit).** | If the review work states that accepted decisions from an accepted `DRR`, returned-finding set, accepted intake, architecture source material, or other accepted source material named by value are implemented in or discharged by the `E.19` reviewed pattern or subset, the run record **MUST** include a decision-carry-through discharge. It assigns accepted decisions, accepted-source-material slices, terminology/ontology repairs, rejected or not-triggered options, selected validation banks, and conformance subjects to loci inside that reviewed pattern or subset or to a named governing FPF pattern, companion document, record, or accepted source material. Each item is classified as expressed sufficiently, expressed partially, not expressed and blocking, carried by a direct accepted-source-material consultation condition, correctly absent because rejected or not triggered, inherited unchanged, or outside the reviewed pattern or subset with a named governing FPF pattern, companion document, record, or accepted source material. A generic statement that the `DRR` or accepted source material was used is nonconforming. If the case is an `E.17.ID.CR` comparative review unit, `PublicationUnit`, publication form or face, source-pinned interpretation case, document whose accepted-source-material, evidence-source-material, architecture-source-material, or review-source-material role is named, or project-side review relation, the run **MUST** name that governing-pattern kind and reference rather than collapsing it into `E.19` reviewed-pattern wording. | Prevents accepted decisions or accepted-source-material requirements from disappearing after later wording, profile, or release checks focus only on the text that happened to be changed, without letting `E.19` swallow other review or interpretation patterns. |
-| **CC-E19-20 (Pattern-quality review is not project certification).** | If an `E.19` result is reused outside FPF pattern-quality review, the run record **MUST** state the exact project-side claim and the project-side relation that carries it. `E.19` alone **MUST NOT** be treated as project evidence, safety-assurance material, gate input, release justification, compliance-assurance material, assurance material, work authority, or publication truth. | Prevents pattern-quality conformance from supplying false project-world certification, gate passage, evidence sufficiency, or safety acceptance. |
-| **CC-E19-21 (Precision-restoration distribution is preserved).** | When the reviewed change applies or edits `E.10`-triggered precision restoration, the run **MUST** check that the selected precision-restoration architecture remains distributed: `E.10` states trigger and applicability, `E.10.ARCH` states shared recovery architecture, realization patterns perform ontological unpacking for their exact EntityOfConcern, relation, claim, characteristic-space item, state-family field, or other selected ontological neighborhood, and affected patterns carry only thin exact pointers unless they themselves work over the recovered primary entity, relation, claim, characteristic-space item, state-like field, or exact phrase or record. A review fails this row when an affected pattern silently grows a second trigger registry, a duplicate recovery algorithm, or a local architecture that contradicts the selected restoration pattern. | Prevents pattern admission or refresh from re-centralizing wording-use restoration or duplicating `E.10.ARCH` inside affected patterns. |
-| **CC-E19-22 (EntityOfConcern and precision-restoration triage is explicit).** | When a reviewed change touches EntityOfConcern wording, old selected-family aliases, same-referent preservation, slot/reference migration, alignment-path claims, role/method/work boundaries, description/publication-use guards, semio-bias repair, phrase apparatus, architecture-placement rationale, package-boundary rationale, corpus-projection or quality-status evidence, or repeated/distributed boundary doctrine, the run record **MUST** state the pattern's own `EntityOfConcern`, first useful move, positive subject-kind/action spine, old-source-wording disposition if any, same-EntityOfConcern or retargeting result, exact alignment path or blocked-transfer result, ordinary reference apparatus used or architecture-note/evaluation-carrier locus when applicable, and the exact governing patterns for role, method, work, evidence, assurance, gate, decision, release, and publication-pragmatics claims. When `E.21` is active, its `PrecisionRestorationProfile` carries the collapsed word/head/use, phrase-apparatus, repetition/distribution, role-carrier, and pattern-application assessment. If `E.21` is not the evaluation pattern, the row names the exact object-under-review evaluation instead; no preliminary substitute or grouped statement may replace the required evaluation result. A grouped statement such as "E.10/E.19 passed" does not close this row when the touched rows themselves are not recoverable. | Keeps precision restoration auxiliary to the pattern claim and prevents selected-family migration from creating a second ontology or weakening user-facing action guidance. |
+| **CC-E19-20 (Pattern-quality review is not project certification).** | If an `E.19` result is reused outside FPF pattern-quality review, the run record **MUST** state the project-side claim and the project-side relation that carries it. `E.19` alone **MUST NOT** be treated as project evidence, safety-assurance material, gate input, release justification, compliance-assurance material, assurance material, work authority, or publication truth. | Prevents pattern-quality conformance from supplying false project-world certification, gate passage, evidence sufficiency, or safety acceptance. |
+| **CC-E19-21 (Precision-restoration distribution is preserved).** | When the reviewed change applies or edits `E.10`-triggered precision restoration, the run **MUST** check that the selected precision-restoration architecture remains distributed: `E.10` states trigger and applicability, `E.10.ARCH` states shared recovery architecture, realization patterns perform ontological unpacking for the EntityOfConcern, relation, claim, characteristic-space item, state-family field, or other selected ontological neighborhood named by value, and affected patterns carry only thin pointers named by value unless they themselves work over the recovered primary entity, relation, claim, characteristic-space item, state-like field, or phrase or record named by value. A review fails this row when an affected pattern silently grows a second trigger registry, a duplicate recovery algorithm, or a local architecture that contradicts the selected restoration pattern. | Prevents pattern admission or refresh from re-centralizing wording-use restoration or duplicating `E.10.ARCH` inside affected patterns. |
+| **CC-E19-22 (EntityOfConcern and precision-restoration triage is explicit).** | When a reviewed change touches EntityOfConcern wording, old selected-family aliases, same-referent preservation, slot/reference migration, alignment-path claims, role/method/work boundaries, description/publication-use guards, semio-bias repair, phrase apparatus, architecture-placement rationale, package-boundary rationale, corpus-projection or quality-status evidence, or repeated/distributed boundary doctrine, the run record **MUST** state the pattern's own `EntityOfConcern`, first useful move, positive subject-kind/action spine, old-source-wording disposition if any, same-EntityOfConcern or retargeting result, exact alignment path or blocked-transfer result, ordinary reference apparatus used or architecture-note/evaluation-carrier locus when applicable, and the governing patterns for role, method, work, evidence, assurance, gate, decision, release, and publication-pragmatics claims. When `E.21` is active, its `PrecisionRestorationProfile` carries the collapsed word/head/use, phrase-apparatus, repetition/distribution, role-carrier, and pattern-application assessment. If `E.21` is not the evaluation pattern, the row names the object named by value-under-review evaluation instead; no preliminary substitute or grouped statement may replace the required evaluation result. A grouped statement such as "E.10/E.19 passed" does not close this row when the touched rows themselves are not recoverable. | Keeps precision restoration auxiliary to the pattern claim and prevents selected-family migration from creating a second ontology or weakening user-facing action guidance. |
 
 ### E.19:8 - Common Anti-Patterns and How to Avoid Them
 
 | Anti-pattern | Symptom | Why it fails | How to avoid / repair |
 | ---------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------------- |
-| **Primary-EntityOfConcern drift** | The draft appears to govern one thing in the opening, another in the declaration block, and a third in the examples or exact related-pattern or companion guidance. | Review cannot tell whether the pattern governs a `PublicationUnit`, an interpretive move, a work-result record, or a whole process, so later naming and boundary decisions become unstable. | Stabilise one primary `EntityOfConcern` early, keep its head kind explicit, and mark note, sheet, UI, rendering, or process labels as either examples of that object or separate related entities rather than stylistic substitutes. |
-| **Role-clean but pragmatically foggy** | The draft is addressed to the right reader in principle, but cold working readers still cannot recognise the situation, practical payoff, primary `EntityOfConcern`, exact relation, claim record, or first useful move early enough. | The run passes role hygiene while still failing pragmatic fit and first-minute usability. | Pull a recognisable working situation upward, add one minimally viable worked case, make the practical payoff explicit in nearby user-facing prose, expose the primary `EntityOfConcern` and any minimal modeling lens in plain terms, add plain glosses for early claim-bearing terms, and require `SoTA-Echoing` rows that carry claim kind, admissible-use boundary, or explanatory work to name the practitioner or manager implication plus the case they discipline. |
+| **Primary-EntityOfConcern drift** | The draft appears to govern one thing in the opening, another in the declaration block, and a third in the examples or related-pattern or companion guidance named by value. | Review cannot tell whether the pattern governs a `PublicationUnit`, an interpretive move, a work-result record, or a whole process, so later naming and boundary decisions become unstable. | Stabilise one primary `EntityOfConcern` early, keep its head kind explicit, and mark note, sheet, UI, rendering, or process labels as either examples of that object or separate related entities rather than stylistic substitutes. |
+| **Role-clean but pragmatically foggy** | The draft is addressed to the right reader in principle, but cold working readers still cannot recognise the situation, practical payoff, primary `EntityOfConcern`, relation named by value, claim record, or first useful move early enough. | The run passes role hygiene while still failing pragmatic fit and first-minute usability. | Pull a recognisable working situation upward, add one minimally viable worked case, make the practical payoff explicit in nearby user-facing prose, expose the primary `EntityOfConcern` and any minimal modeling lens in plain terms, add plain glosses for early claim-bearing terms, and require `SoTA-Echoing` rows that carry claim kind, admissible-use boundary, or explanatory work to name the practitioner or manager implication plus the case they discipline. |
 | **Architecture-clean but domain-thin** | The text is internally well placed in the package, but the primary `EntityOfConcern`, narrowed branch, or practical payoff are justified mainly through package architecture while the problem-owning domain, practice, or SoTA appears late or decoratively. | The pattern passes internal architecture checks while drifting away from the domain whose work it claims to improve. | Pull the problem-owning domain moment into the recognition text, make the narrowed branch and primary `EntityOfConcern` answerable to the relevant domain or practice, and require FPF-governed `SoTA-Echoing` to discipline the practical cases rather than merely bless them after the fact. |
-| **Type-correct but inert epistemic precision cleanup** | An `E.10`-triggered epistemic precision restoration removes the overread and restores kind language, but the recognition text no longer tells the reader why the distinction matters, what move remains, which exact FPF pattern application now carries the claim, or how a Plain recognition line maps back to the recovered Tech reading when both registers are used. | The review accepts typed wording while losing action guidance. | Return the draft to same-boundary repair: restore a remaining admissible reader move, name the exact FPF pattern application and governing ontology, repair the Tech-to-Plain mapping, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
-| **Expressive overread rebound after epistemic precision cleanup** | The pass makes the text more engaging after cleanup, but the added Plain or didactic wording carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary not recoverable from the Tech reading or named exact FPF pattern application. | The review mistakes readability for recovered semantic work. | Rewrite the expressive line as ordinary recognition aid, recover its claim kind or admissible-use boundary through the Tech fields under `E.10:6.2`, name the exact FPF pattern application and governing ontology that carries the claim, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
+| **Type-correct but inert epistemic precision cleanup** | An `E.10`-triggered epistemic precision restoration removes the overread and restores kind language, but the recognition text no longer tells the reader why the distinction matters, what move remains, which FPF pattern application now carries the claim, or how a Plain recognition line maps back to the recovered Tech reading when both registers are used. | The review accepts typed wording while losing action guidance. | Return the draft to same-boundary repair: restore a remaining admissible reader move, name the FPF pattern application and governing ontology, repair the Tech-to-Plain mapping, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
+| **Expressive overread rebound after epistemic precision cleanup** | The pass makes the text more engaging after cleanup, but the added Plain or didactic wording carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary not recoverable from the Tech reading or named FPF pattern application. | The review mistakes readability for recovered semantic work. | Rewrite the expressive line as ordinary recognition aid, recover its claim kind or admissible-use boundary through the Tech fields under `E.10:6.2`, name the FPF pattern application and governing ontology that carries the claim, or demote the phrase to reduced-use cue, quote-only wording, blocked transfer, or rewrite incomplete. |
 | **Verdict-only review** | The run ends with “pass/fail” and prose complaints, but no precise findings-first repair direction. | Raises editorial cost; reduces repeatability. | Require one findings-first run record plus concrete remediation direction; do not rely on direct patch text as the primary review output. |
 | **Single giant checklist** | Review becomes a long, unfocused ritual that few complete. | Increases cost; reduces fit and rigor in practice. | Use a minimal baseline plus risk-selected profiles; use `E.21` only when a pattern-version quality value is being evaluated. |
 | **Template-only compliance** | All headings exist, but requirements are vague and untestable. | Looks uniform; fails enforceability and auditability. | Enforce normative clause hygiene and CC/Solution coherence. |
@@ -31,19 +2231,19 @@ ether the text names an umbrella, a narrowed branch, a primary `EntityOfConcern`
 | **Terminology drift by “synonym”** | Authors swap kernel terms for nicer-sounding words. | Increases ambiguity; harms cross-pattern composability. | Apply PCP-TERM and require explicit mini-definitions on first use. |
 | **Lexical substitution accepted as repair** | The reviewed text no longer contains the trigger word, but the replacement changes the FPF kind, relation, slot or use-position, admissible use, or scope. | The review rewards surface cleanup while ontology drift remains or gets worse. | Require a `KindRestorationCheck`; if pre/post kinds or slot/use-positions do not match or an accepted split/change decision is absent, keep the finding blocking. |
 | **Form-only review** | Review time goes to formatting and micro-edits while the normative content, terms, Bridges, modularity, slot discipline and SoTA stance are barely checked. | Raises editorial cost without raising semantic trust. | Use the triage rule: treat FPF-governed sections as depth loci and keep mechanical cleanup subordinate to semantic correction. |
-| **Checklist-clean but content-wrong** | The named profiles, lexical checks, and conformance rows are marked complete, but the repaired text no longer solves the stated problem, sends a claim to the wrong locus, creates shadow authority, loses a selected companion or projection role, or adds needless apparatus. | Review accepts a locally tidy pattern while weakening the actual `FPF` guidance. | Apply substantive solution and locus adequacy: name local content questions, check the actual problem and exact governing loci, ask what became worse, and widen the declared boundary by value when the fix belongs outside the initial reviewed pattern or subset. |
-| **Architecturally right, didactically thin** | The family is admissible, but readers still need project notes to understand what the pattern really governs. | Trust in the monolith depends on external context rather than the pattern text. | Add the missing problem frame, worked slices, local definitions, and exact governing-pattern or exact project-side FPF kind and reference guidance before admission. |
+| **Checklist-clean but content-wrong** | The named profiles, lexical checks, and conformance rows are marked complete, but the repaired text no longer solves the stated problem, sends a claim to the wrong locus, creates shadow authority, loses a selected companion or projection role, or adds needless apparatus. | Review accepts a locally tidy pattern while weakening the actual `FPF` guidance. | Apply substantive solution and locus adequacy: name local content questions, check the actual problem and governing loci named by value, ask what became worse, and widen the declared boundary by value when the fix belongs outside the initial reviewed pattern or subset. |
+| **Architecturally right, didactically thin** | The family is admissible, but readers still need project notes to understand what the pattern really governs. | Trust in the monolith depends on external context rather than the pattern text. | Add the missing problem frame, worked slices, local definitions, and governing-pattern or project-side FPF kind and reference named by value guidance before admission. |
 | **Scenario-name grounding** | Grounding names a situation but does not show what the source and resulting publication actually look like. | Readers cannot tell why the case stays in the family or where it leaves the family. | Add concrete source and resulting-publication slices, especially for transform families and easy boundary confusions. |
 | **Generic-head underspecification** | An FPF-governed phrase uses a generic head such as `note`, `view`, `guidance`, `output`, or `artifact`, but the run leaves that head uninterpreted. | Review discusses the sentence before the object kind is even stable. | Restore the head kind first in pattern-local terms before accepting or comparing the sentence. |
 | **Qualifier-smuggled claim kind or admissible-use boundary** | A modifier such as `comparative`, `safe`, `interactive`, `reliable`, or `faithful` is doing the semantic work while the run treats the phrase as already precise. | The review blesses apparent precision without recovering the actual claim kind or admissible-use boundary. | Unpack the qualifier into explicit claim kind or admissible-use boundary, comparison criterion, or downstream-use boundary before acceptance. |
 | **Mixed comparison criterion** | One sentence compares or ranks publication-form, carrier, process, authority-reference, or project-record values on one comparison criterion. | The sentence remains ontologically incoherent even after local wording is polished. | Restore head kind, then qualifier claim kind or admissible-use boundary, then rewrite the comparison through a homogeneous claim-kind criterion, threshold, or named governing-pattern/source-relation condition. |
 | **Sentence-level shorthand drift** | A few innocent-looking words (“species”, “branch”, “flow”, “input/output”) quietly carry the claim kind or admissible-use boundary. | Review passes while key relations remain implicit or wrong. | Inspect FPF-governed sentences one by one and replace shorthand with explicit governing-pattern relations and package relations or publication language. |
 | **Package-form, governing-pattern relation, and package-relation drift** | The text slides between `family`, `bundle`, `cluster`, `profile`, `overlay`, `suite`, `kit`, or `record` without showing that the ontology changed. | Reviews miss governing-pattern or authority-reference blur because each local sentence still sounds plausible. | Require one intended role word, check governing-pattern relation and package relation explicitly, and treat stylistic noun-swapping as a semantic defect. |
-| **Reader-role leakage** | Pattern sections explain why the pattern was isolated, what landing form is safest, or why merge/freeze is premature. | Review accepts a package memo disguised as a user pattern. | Move package-development reasoning to companions; rewrite pattern sections in terms of what the user may do, must avoid, and which exact FPF governing pattern or named project-side FPF kind and reference governs the release, policy, assurance, gate, action-selection, or adjudication case. |
-| **Quality-carrier leakage** | Any pattern host or monolith text explains corpus projection, ToC/J.4 alignment, retrieval or cold-reader evidence, monolith parity, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, or developer/reviewer/executor correspondence as if this were pattern content. | Review accepts quality proof, projection evidence, or role-turn communication disguised as user guidance. | Move quality/projection evidence to the `E.21` result, `E.19` run record, ToC/J.4, card/retrieval/projection carrier, or release/landing evidence carrier; keep only the user-facing move or boundary justified by that evidence. |
+| **Reader-role leakage** | Pattern sections explain why the pattern was isolated, what landing form is safest, or why merge/freeze is premature. | Review accepts a package memo disguised as a user pattern. | Move package-development reasoning to companions; rewrite pattern sections in terms of what the user may do, must avoid, and which governing FPF pattern or named project-side FPF kind and reference governs the release, policy, assurance, gate, action-selection, or adjudication case. |
+| **Quality-carrier leakage** | Any pattern host or monolith text explains corpus projection, README/ToC/E.11/I.2 alignment, retrieval or cold-reader evidence, monolith parity, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, or developer/reviewer/executor correspondence as if this were pattern content. | Review accepts quality proof, projection evidence, or role-turn communication disguised as user guidance. | Move quality/projection evidence to the `E.21` result, `E.19` run record, README/ToC/E.11/I.2, card/retrieval/projection carrier, or release/landing evidence carrier; keep only the user-facing move or boundary justified by that evidence. |
 | **Apparatus overwrap** | A simple claim, relation, object, action, or placement is wrapped in role/carrier/locus/flow/state/status/text/package/process language that adds no new kind or user move. | Review accepts bureaucratic prose as precision, or replaces it with prettier prose that loses the FPF kind. | First ask whether the extra word changes a recoverable kind, relation, claim kind, admissible use, evidence value, or user move. If yes, use precision restoration. If no, rewrite in plain FPF terms and verify kind preservation: same `EntityOfConcern`, head kind, relation or claim kind, and established FPF term. |
 | **Companion material retained by inertia** | A companion note, profile, check sheet, companion row, or review harness remains attached to a pattern family after the pattern body already carries the usable guidance, but the text does not say what real breakage returns if that companion material is absent. | Companion material becomes permanent local folklore, hidden authority, or reader cost without a corresponding use gain. | State the companion-use question, governing source, companion-only use, real breakage if absent, and retention, accepted-source-material-only, or removal condition; otherwise fold the useful example into the pattern or keep it only in the accepted source material. |
-| **Pattern-quality result as project certificate** | An `E.19` pass is cited as proof that a project release, safety claim, compliance state, work result, publication, or gate has passed. | Collapses FPF pattern-quality review into project-world evidence or gate authority. | Keep `E.19` as pattern-quality review; open `A.10`, `B.3`, `A.20`, `A.21`, `A.15`, or another exact governing pattern for the project-side claim being made. |
+| **Pattern-quality result as project certificate** | An `E.19` pass is cited as proof that a project release, safety claim, compliance state, work result, publication, or gate has passed. | Collapses FPF pattern-quality review into project-world evidence or gate authority. | Keep `E.19` as pattern-quality review; open `A.10`, `B.3`, `A.20`, `A.21`, `A.15`, or another governing pattern for the project-side claim being made. |
 
 ### E.19:9 - Consequences
 
@@ -71,7 +2271,7 @@ The baseline profile protects cross-pattern comparability and editorial sanity. 
 | “Living” guidance needs refresh discipline. | Reporting and review guidance is updated and versioned; reviewers track changes and report deltas clearly. | **Current reporting-reference source use.** PRISMA supplies transparent updated-guidance and delta-reporting discipline; it is not imported as a mandatory FPF review workflow. | Page et al. (2021), “The PRISMA 2020 statement: an updated guideline for reporting systematic reviews”; Page et al. (2021), “PRISMA 2020 explanation and elaboration: updated guidance and exemplars for reporting systematic reviews”. | Runs require explicit decisions and deltas in SoTA-Echoing; `PCP-REFRESH` asks whether stale SoTA, renamed relations, terminology drift, or refresh windows change the pattern. | **Adapt.** Use the versioned-guidance and explicit-delta principle without importing medical-review reporting forms or process mandates. |
 | Retrieval-facing entry changes need selected evidence dimensions, not universal benchmarks. | RAG evaluation practice separates context relevance, answer faithfulness, answer relevance, and retrieved-context adequacy. | **Current practice source use for retrieval-facing evidence dimensions.** RAGAS and ARES are representative current RAG evaluation source refs for the selected retrieval fixture only; they are not current-best source material for all pattern entry or pattern quality. | Es, James, Espinosa-Anke, Schockaert (2023 arXiv; 2024 EACL demo), “RAGAS: Automated Evaluation of Retrieval Augmented Generation”; Saad-Falcon, Khattab, Potts, Zaharia (2023 arXiv; 2024 NAACL), “ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems”. | `PCP-ENTRY-E4` and related evidence modes select tiny retrieval fixtures only when retrieval-facing behavior or observed misretrieval is present; the row does not authorize a universal benchmark for every pattern entry. | **Adopt lightly.** Keep retrieval hit, source-material relevance, authority, and faithfulness dimensions only when retrieval-facing behavior is present; ordinary entry prose remains prose-only. |
 
-Action result from the pattern-review and validation practice grounding: an `E.19` pass, caution, return-for-repair result, clean checklist, or clean retrieval-entry check does not become project certification, project evidence, safety-assurance material, gate input, release justification, compliance-assurance material, assurance material, work authority, publication truth, or project refusal or approval. The local E.19 result is a pattern-quality review or refresh claim over the named reviewed pattern, selected profile, defects found or cleared, admission, refresh, repair-return, or selected pattern-quality boundary. Reopen the pattern-quality result when the reviewed text, accepted-source-material decision, SoTA grounding, related exact pattern, selected companion or projection role, profile trigger, review boundary, or attempted project-side reuse changes.
+Action result from the pattern-review and validation practice grounding: an `E.19` pass, caution, return-for-repair result, clean checklist, or clean retrieval-entry check does not become project certification, project evidence, safety-assurance material, gate input, release justification, compliance-assurance material, assurance material, work authority, publication truth, or project refusal or approval. The local E.19 result is a pattern-quality review or refresh claim over the named reviewed pattern, selected profile, defects found or cleared, admission, refresh, repair-return, or selected pattern-quality boundary. Reopen the pattern-quality result when the reviewed text, accepted-source-material decision, SoTA grounding, related governing pattern, selected companion or projection role, profile trigger, review boundary, or attempted project-side reuse changes.
 
 ### E.19:12 - Relations
 
@@ -95,7 +2295,9 @@ Action result from the pattern-review and validation practice grounding: an `E.1
   * `F.15` (conceptual harness and regression framing)
   * `E.17` (MVPK / `U.View` projection discipline)
   * `E.11` (pattern-entry discoverability discipline, for `PCP-ENTRY` only as a review hook, not as a semantic prerequisite)
+  * `E.13` (pragmatic utility and proxy-to-value alignment when a pattern-quality pass, score, coordinate value, checklist result, benchmark, projection signal, or release posture is being used as value evidence)
   * `E.21` (scoped pattern-quality characteristic space, coordinate evidence discipline, `PatternQualityStatus`, and stop condition; `E.19` findings may supply evidence for a later `E.21` value only when they identify content defects or strengths in the reviewed pattern version, but final coordinate values and `PatternQualityStatus` are assigned by `E.21`, not by `E.19`)
+
   * `A.6.7` (`MechSuiteDescription` suite-level semantics)
   * `A.15.3` (`SlotFillingsPlanItem` P2W planned-baseline seam)
   * `G.11` (refresh/decay orchestration principles, where applicable)
@@ -110,7 +2312,7 @@ Action result from the pattern-review and validation practice grounding: an `E.1
 
 ### E.20:1 - Problem frame
 
-FPF is intentionally **open‑ended**: new `U.Mechanism.*` intensions, suite compositions, and SoTA‑driven wiring modules can be added over time. This flexibility creates a recurrent authoring problem: introducing a new mechanism (or revising an existing one) tends to touch multiple governing patterns, specification loci, and extension blocks across Parts A/E/F/G and can easily create drift:
+FPF is intentionally **open-ended**: new `U.Mechanism` definitions, suite compositions, and SoTA-driven wiring modules can be added over time. This flexibility creates a recurrent authoring problem: introducing a new mechanism (or revising an existing one) tends to touch multiple governing patterns, specification loci, and extension blocks across Parts A/E/F/G and can easily create drift:
 
 * semantics appear in the wrong governing locus (e.g., Part G wiring starts carrying mechanism meaning),
 * suites degrade into “meta‑mechanisms” or hidden gates,
@@ -118,51 +2320,51 @@ FPF is intentionally **open‑ended**: new `U.Mechanism.*` intensions, suite com
 * token drift breaks public references, or
 * the corpus accumulates dangling references and non-normative drafting commitments without a governing definition.
 
-This pattern provides a **repeatable, governing-definition assignment protocol** for introducing mechanisms. It supports kernel coherence by keeping extension points and governing definitions explicit.
+This pattern provides a **repeatable, governing-definition assignment protocol** for introducing mechanisms. It preserves kernel coherence by keeping extension points and governing definitions explicit.
 
-**Use this when.** Use E.20 when a proposed FPF change introduces or revises mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
+**Use this when.** Use E.20 when a proposed FPF change introduces or revises mechanism meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
 
 **First useful move.** Classify the edit with MIP trigger triage: `MIP not triggered`, `local wording or alias-docking only`, or `MIP-run manifest required`. If a manifest is required, name exactly one governing definition for each changed item before writing the pattern text.
 
-**Smallest sufficient governing-definition assignment guidance.** Use the lightest governing-definition assignment guidance that preserves the next admissible reader move. Add MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, or deprecation-continuity material only when the live mechanism-intension or citeable-token claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
+**Smallest sufficient governing-definition assignment guidance.** Use the lightest governing-definition assignment guidance that preserves the next bounded reader move. Add MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, or deprecation-continuity material only when the current mechanism-definition or citeable-token claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
 
-**Minimum sufficient next move.** If the edit does not change citeable-token denotation, mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, or governing-definition assignment, a MIP-run manifest is not opened; name the current governing locus or alias-docking relation and stop.
+**Minimum sufficient next move.** If the edit does not change citeable-token denotation, mechanism meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, or governing-definition assignment, a MIP-run manifest is not opened; name the current governing locus or alias-docking relation and stop.
 
 **Do not escalate when.** Do not create a MIP-run manifest when alias docking or local wording repair preserves denotation. Do not treat a suite, plan, wiring module, or lexical cleanup as mechanism meaning unless the changed item needs a new or revised governing definition.
 
-**Same problem, different live question.** For a TGA-looking problem, use `E.18` for graph/flow/crossing, `A.20` for internal step validity, `A.21` for gate-decision publication, and `E.20` for mechanism-meaning placement; do not open the other three until their own claim is live.
+**Same problem, different question under repair.** For a mechanism-adjacent transformation-flow problem, use `E.18` for transformation-flow structure, graph/path, valuation, or crossing claims, `A.20` for internal step validity, `A.21` for gate-decision publication, and `E.20` for mechanism-meaning placement; do not open the other three until their own claim is present.
 
-**Semantic repair return.** When E.20 blocks a misleading word, face, alias, or source label, the repair must return to the enabled authoring move: name the governing definition, canonical location, alias-docking relation, or non-trigger stop that remains admissible. Do not stop at a classification of vocabulary or publication faces.
+**Semantic repair return.** When E.20 blocks a misleading word, face, alias, or source label, the repair must return to the enabled authoring move: name the governing definition, canonical location, alias-docking relation, or non-trigger stop that remains available under E.20. Do not stop at a classification of vocabulary or publication faces.
 
-**Governed-object and relation separation.** Keep the graph object and path or crossing relation (`E.18`), MVPK publication faces (`E.17`), internal CV status and witness (`A.20`), gate decision and `DecisionLog` (`A.21`), evidence or provenance relation (`A.10`/`G.6`), work plan or work occurrence (`A.15`), and mechanism-governing definition assignment (`E.20`) distinct. An MVPK face, `DecisionLog`, evidence carrier, MIP manifest, or work witness does not carry another pattern's project-side value unless that exact governing pattern consumes it for that relation.
+**Governed-object and relation separation.** Keep the graph object and path or crossing relation (`E.18`), MVPK publication faces (`E.17`), internal CV status and witness (`A.20`), gate decision and `DecisionLog` (`A.21`), evidence or provenance relation (`A.10`/`G.6`), work plan or work occurrence (`A.15`), and mechanism-governing definition assignment (`E.20`) distinct. An MVPK face, `DecisionLog`, evidence value, provenance reference, MIP manifest, or work witness does not supply another pattern's project-side value unless that governing pattern consumes it for that relation.
 
-**Smallest affected locus.** Localize the change to the smallest live locus: `PathSlice` or crossing in `E.18`, CV step in `A.20`, `GateDecision` equivalence class in `A.21`, or mechanism-governing definition in `E.20`. Do not widen to a whole flow or unrelated affected locus when that locus is enough.
+**Smallest affected locus.** Localize the change to the smallest current locus: `PathSlice` or crossing in `E.18`, CV step in `A.20`, `GateDecision` equivalence class in `A.21`, or mechanism-governing definition in `E.20`. Do not widen to a whole flow or unrelated claim, locus, or EntityOfConcern when that locus is enough.
 
 **Ordinary success.** For ordinary E.20 use, success is that the edit is classified, the current governing locus or alias-docking relation is named, and no MIP-run manifest is opened unless denotation, mechanism meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planning pins, wiring semantics, or governing-definition assignment actually changes.
 
 **Locality asymmetry.** `E.18` is graph-local, `A.20` is step-local, `A.21` is gate-local, and `E.20` is trigger-local. Do not normalize the four patterns into one assurance regime.
 
-**Do not merge these pairs.** Keep `CV.Status` distinct from `GateDecision`, TGA `Check` distinct from `GateCheckKind`, MIP manifest distinct from `DecisionLog`, `ViewpointMap` distinct from graph semantics, `PathSlice` distinct from a work run, and `GateProfile=Lite` distinct from `PublishMode=Lite`.
+**Do not merge these pairs.** Keep `CV.Status` distinct from `GateDecision`, `E.18` `Check` locus distinct from `GateCheckKind`, MIP manifest distinct from `DecisionLog`, `ViewpointMap` distinct from graph semantics, `PathSlice` distinct from a work run, and `GateProfile=Lite` distinct from `PublishMode=Lite`.
 
-**Field liveness.** Always core for E.20: trigger triage and the current governing locus or alias-docking relation. Conditional-live: MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, and deprecation continuity; open them only when the corresponding denotation, mechanism-meaning, suite, planning, wiring, lexical, refresh, review, or retirement claim is live.
+**Field applicability.** Always core for E.20: trigger triage and the current governing locus or alias-docking relation. Conditional fields: MIP-run manifest fields, canonical mechanism card stubs, suite fields, planned-baseline pins, wiring refs, RSCR triggers, PQG coverage, and deprecation continuity; open them only when the corresponding denotation, mechanism-meaning, suite, planning, wiring, lexical, refresh, review, or retirement claim is present.
 
 **Retrieval trap guard.** When excerpted alone, E.20 manifest language must not be read as requiring a full MIP-run for every mechanism-adjacent edit. Pure currentness cleanup, alias docking, optional suite-member citation of an already-defined mechanism, and local wording repair stop at the current governing locus unless denotation, mechanism meaning, suite closure, suite obligations, suite pins, suite protocol semantics, planning pins, wiring semantics, or governing-definition assignment changes.
 
 **Anti-Goodhart guard.** A complete MIP-run manifest is not a substitute for the governed mechanism result: the mechanism-governing definition must still carry the operation, law, admissibility, slot, transport, applicability, and audit meaning needed for the claim.
 
-**Generative side.** E.20 preserves open-ended action by allowing new mechanism intensions, suite variants, wiring, and citeable tokens to enter FPF with a named governing definition; the discipline prevents semantic drift so new work can be added rather than merely blocked.
+**Generative side.** E.20 preserves open-ended action by allowing new mechanism definitions, suite variants, wiring, and citeable tokens to enter FPF with a named governing definition; the discipline prevents semantic drift so new work can be added rather than merely blocked.
 
 **What goes wrong if missed.** A suite can start defining mechanism meaning, a plan item can start carrying enactment witnesses or gate decisions, a wiring module can carry kernel semantics, or a token rename can break citations while looking like harmless cleanup.
 
 **What this buys.** E.20 gives the reader one current authoring move: assign the change to the right governing definition and keep mechanism, suite, planning, wiring, and lexical continuity distinct.
 
-**Not this pattern when.** If the edit is only pure currentness, typo, reference, or old-label cleanup and changes no semantics or citeable-token denotation, record the current governing locus and stop. If the live question is runtime gate passage, gate decision, approval, suite-as-mechanism, plan-as-enactment, or performed work, use the gate, suite, planning, or work loci that own that question. A MIP-run manifest is not a runtime gate, gate passage, approval packet, or binary pass/fail decision.
+**Not this pattern when.** If the edit is only pure currentness, typo, reference, or old-label cleanup and changes no semantics or citeable-token denotation, record the current governing locus and stop. If the question under repair is runtime gate passage, gate decision, approval, suite-as-mechanism, plan-as-enactment, or performed work, use the gate, suite, planning, or work loci that own that question. A MIP-run manifest is not a runtime gate, gate passage, approval packet, or binary pass/fail decision.
 
 ### E.20:2 - Problem
 
 When a new mechanism (or mechanism family) is introduced without an explicit authoring protocol:
 
-1. **Governing-definition ambiguity** causes partial changes: a suite enumerates a new `…IntensionRef`, but the canonical `U.Mechanism.Intension` card is missing or inconsistent.
+1. **Governing-definition ambiguity** causes partial changes: a suite enumerates a new `...MechanismDefinitionRef`, but the canonical `U.Mechanism` definition card is missing or inconsistent.
 2. **Boundary erosion** occurs: suite descriptions start to define mechanism semantics; method wiring starts to redefine kernel meaning; publication/telemetry becomes a hidden tail.
 3. **Plan/enactment confusion** appears: planned slot fillings start to carry launch values, witnesses, or gate decisions.
 4. **Terminology drift** breaks citations: renames happen silently; tokens fragment across registers; downstream references become unstable.
@@ -173,7 +2375,7 @@ When a new mechanism (or mechanism family) is introduced without an explicit aut
 | Force | Tension |
 |---|---|
 | **Extensibility vs Kernel stability** | New mechanisms need to be addable ↔ kernel reference loci need to remain citeable and minimal. |
-| **One governing definition vs cross-locus reach** | Each mechanism-intension meaning, suite change, plan item, wiring module, or token migration needs one governing definition while a mechanism introduction often spans suites, plans, wiring, and lexicon. |
+| **One governing definition vs cross-locus reach** | Each mechanism meaning, suite change, plan item, wiring module, or token migration needs one governing definition while a mechanism introduction often spans suites, plans, wiring, and lexicon. |
 | **Didactic usability vs auditability** | Humans need clear “cards” and examples ↔ obligations and pins need to remain checkable and governing-locus bounded. |
 | **SoTA evolution vs semantic integrity** | Methods evolve fast ↔ mechanism meaning SHALL NOT silently shift via wiring updates. |
 | **Local naming freedom vs global reference continuity** | Context-local labels are necessary ↔ references need to remain stable across editions and refactors. |
@@ -182,7 +2384,7 @@ When a new mechanism (or mechanism family) is introduced without an explicit aut
 
 #### E.20:4.0 - Terminology note (disambiguation)
 
-*This protocol and any MIP-run manifest are authoring-side semantic-governing-definition assignment maps.* A manifest is not an approval packet, gate, runtime decision, or pass/fail result. It names where mechanism meaning lives and what must not be inferred from suites, plans, wiring, aliases, or gates.
+*This protocol and any MIP-run manifest are authoring-side semantic-governing-definition assignment maps.* A manifest is not an approval packet, gate, runtime decision, or pass/fail result. It names where mechanism meaning is governed and what must not be inferred from suites, plans, wiring, aliases, or gates.
 
 MIP governs **how changes are assigned to their governing definitions**, not how systems execute.
 
@@ -190,9 +2392,9 @@ MIP governs **how changes are assigned to their governing definitions**, not how
 
 * **MIP not triggered:** pure currentness, reference, typo, or old-label cleanup that changes no mechanism, suite, planned-baseline, wiring, governing-definition, or citeable-token semantics.
 * **Local wording or alias-docking only:** wording clarifies an already-governed mechanism relation, or `F.18` alias docking preserves citeability of an old token without changing what the token denotes.
-* **MIP-run manifest required:** the edit changes mechanism-intension meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
+* **MIP-run manifest required:** the edit changes mechanism meaning, suite denotation, suite closure, suite obligations, suite pins, suite protocol semantics, planned-baseline pins, wiring semantics, governing-definition assignment, or what a citeable token denotes.
 
-Only the third outcome uses the manifest in `E.20:4.2`. The first two still name the current governing locus or alias-docking relation when the text will be published. When the only live result is no denotation change, the published content should not carry MIP-run vocabulary except as a short non-trigger note.
+Only the third outcome uses the manifest in `E.20:4.2`. The first two still name the current governing locus or alias-docking relation when the text will be published. When the only current result is no denotation change, the published content should not carry MIP-run vocabulary except as a short non-trigger note.
 
 #### E.20:4.0.1 - Mint vs reuse
 
@@ -201,14 +2403,14 @@ Only the third outcome uses the manifest in `E.20:4.2`. The first two still name
 * **MIP-run** — an authoring event that applies this protocol to a concrete change set, captured as a short manifest (recorded as a DRR-linked change record or an equivalent, explicitly citeable change record).
 
 **Reuses:**
-* `U.Mechanism.Intension` / `U.Mechanism.IntensionRef`, suite descriptions (`MechSuiteDescription` and specializations), WorkPlanning plan items (`SlotFillingsPlanItem` and specializations), alias docking (F.18), RSCR triggers (G.Core), and PQG profiles (E.19).
+* `U.Mechanism` definition cards and `MechanismDefinitionRef`, suite descriptions (`MechSuiteDescription` and specializations), WorkPlanning plan items (`SlotFillingsPlanItem` and specializations), alias docking (F.18), RSCR triggers (G.Core), and PQG profiles (E.19).
 
 #### E.20:4.1 - Step 1: Classify the introduction
 
 A MIP-run SHALL first classify the change, because different classes have different governing definitions:
 
-1. **New mechanism family, species, or archetypal grounding** (new `U.Mechanism.Intension` archetype).
-2. **New mechanism intension within an existing A.6.1 mechanism kind** (new `…IntensionRef`, new canonical card).
+1. **New mechanism family, species, or archetypal grounding** (new `U.Mechanism` archetypal definition).
+2. **New mechanism definition within an existing A.6.1 mechanism kind** (new `MechanismDefinitionRef`, new canonical card).
 3. **Mechanism revision** (signature/laws/slots/transport/audit semantics change).
 4. **Suite change** (membership, obligations, spec pins, suite protocols, suite audit obligations).
 5. **Planned-baseline change** (new or revised `SlotFillingsPlanItem` specialization, or changes to its pins).
@@ -216,11 +2418,11 @@ A MIP-run SHALL first classify the change, because different classes have differ
 7. **Terminology migration** (renames, token splits/merges, register changes).
 8. **Deprecation / supersession / retirement** (marking mechanisms/suites/plan items as deprecated, declaring successors, and preserving citeability; apply E.20:4.9.1).
 
-**Mechanism kind boundary.** A MIP-run may introduce a new `U.Mechanism.IntensionRef`. It does not introduce a new `U.Transduction(kind=...)` unless `E.18` is explicitly updated, and it does not introduce a new C.3 `U.Kind` unless C.3 and `A.6.5` discipline is explicitly live.
+**Mechanism kind boundary.** A MIP-run may introduce a new `MechanismDefinitionRef`. It does not introduce a new `E.18` transformation-flow locus kind or transformation-flow structure unless `E.18` is explicitly updated, and it does not introduce a new C.3 `U.Kind` unless C.3 and `A.6.5` discipline is the current governing question.
 
-**A.6.1 compatibility.** MIP assigns mechanism meaning to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, slot interface, transport or bridge regime, applicability, and audit. Suites, planned-baseline records, and Part-G wiring modules may cite or bind that meaning; they do not supply or redefine it.
+**A.6.1 compatibility.** MIP assigns mechanism meaning to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, `SlotIndex`, per-operation `SlotSpec`s with required input and output `SlotKind`s, transport or bridge regime, applicability, audit, and monotone realization relation when declared. Suites, planned-baseline records, and Part-G wiring modules may cite or bind that meaning; they do not supply or redefine it.
 
-**New mechanism-family criterion.** Treat a change as a new mechanism family, species, or archetypal grounding only when the existing mechanism-governing pattern cannot express the operation algebra, law set, admissibility conditions, slot interface, transport boundary, or audit semantics without changing its kind invariants. Otherwise classify the change as a new mechanism intension or `…IntensionRef` within an existing A.6.1 mechanism kind.
+**New mechanism-family criterion.** Treat a change as a new mechanism family, species, or archetypal grounding only when the existing mechanism-governing pattern cannot express the operation algebra, law set, admissibility conditions, `SlotIndex`, per-operation `SlotSpec`s, required input/output `SlotKind`s, transport boundary, audit semantics, or monotone realization relation when declared without changing its kind invariants. Otherwise classify the change as a new mechanism definition or `MechanismDefinitionRef` within an existing A.6.1 mechanism kind.
 
 A single MIP-run MAY span multiple classes, but SHALL treat each class with its correct governing-definition assignment (below).
 
@@ -233,12 +2435,12 @@ For every new or modified change item, the MIP-run SHALL name **exactly one gove
 * its canonical location (expressed as `PatternId:SectionPath`, `PatternScopeId`, or `DRRId`, not as prose), and
 * the forbidden overread or forbidden move blocked by that assignment.
 
-Conditional support fields appear only when live:
+Conditional manifest fields appear only when the corresponding claim is present:
 
 * the change class(es) from E.20:4.1 when needed to disambiguate the assignment,
-* new or changed citeable tokens (`…IntensionRef`, `SlotKind` tokens, `PatternScopeId`, etc.) when token denotation or citeability changes,
+* new or changed citeable tokens (`MechanismDefinitionRef`, `SlotKind` tokens, `PatternScopeId`, etc.) when token denotation or citeability changes,
 * the best-known Delta-Class (`Δ-0` to `Δ-3`) and impact radius estimate (E.15) when the run is plausibly `Δ-2` or `Δ-3`,
-* intended RSCR trigger types when refresh or regression wiring is live, and
+* intended RSCR trigger types when a refresh or regression-wiring claim is present, and
 * the PQG (E.19) profile set when the run crosses an E.19-governed review boundary.
 
 **Note (normative).** If the canonical location is a Part‑G wiring module, it SHALL be cited as a `PatternScopeId` (`G.x:Ext.*`) and the module SHALL declare `GoverningPatternId` (wiring is binding-only; meaning remains governed by its cited pattern).
@@ -247,7 +2449,7 @@ Conditional support fields appear only when live:
 
 | Change kind | Governing definition | Canonical location | Forbidden move |
 |---|---|---|---|
-| Mechanism intension meaning (operations, laws, invariants, admissibility, slot interface, transport, audit semantics) | **Mechanism-governing pattern** | Designated mechanism-governing pattern | SHALL NOT “define” the mechanism inside a suite or a wiring module. |
+| Mechanism meaning (operations, laws, invariants, admissibility, `SlotIndex`, required input/output `SlotKind`s, per-operation `SlotSpec`s, transport, audit semantics, and monotone realization relation when declared) | **Mechanism-governing pattern** | Designated mechanism-governing pattern | SHALL NOT “define” the mechanism inside a suite or a wiring module. |
 | Suite membership, obligations, spec pins, and suite protocols | **Suite-governing pattern** | `A.6.7` or `A.6.7.<FamilyKey>` | SHALL NOT carry mechanism semantics, acceptance thresholds, gate criteria, DecisionLogs, or publication tails into the suite. |
 | Planned baseline pins (planned slot fillings, edition-pinned refs, explicit time selector) | **WorkPlanning governing pattern** | `A.15.3` plus suite-specific specialization when needed | SHALL NOT embed launch values, witnesses, or gate decisions in planning. |
 | SoTA method, comparator, or generator **definitions**, including provenance and evaluation semantics | **SoTA-pack governing pattern** | `G.2` (SoTA synthesis packs) | SHALL NOT rephrase SoTA evolution as kernel semantics. |
@@ -256,30 +2458,30 @@ Conditional support fields appear only when live:
 | Change-cause taxonomy and regression triggers | **RSCR governing pattern** | `G.Core` | SHALL NOT invent ad hoc “reason kinds” scattered in patterns. |
 | Project specializations of a mechanism | **Project specialization pattern** | `P.*` patterns (using `⊑/⊑⁺`) | SHALL NOT mutate kernel membership to express project variants. |
 
-**Guard (normative).** Any proposed change that cannot name a governing definition from the table above SHALL be treated as a non-normative drafting note or candidate intake and SHALL NOT be relied upon as an FPF architectural commitment. Such material may exist only in an explicitly marked non-normative source carrier until assigned to its governing definition.
+**Guard (normative).** Any proposed change that cannot name a governing definition from the table above SHALL be treated as a non-normative drafting note or candidate intake and SHALL NOT be relied upon as an FPF architectural commitment. Such material may exist only in an explicitly marked non-normative source note until assigned to its governing definition.
 
 #### E.20:4.3 - Step 3: Card-first canonicalization (eliminate dangling refs)
 
-If the introduction adds a new `U.Mechanism.IntensionRef` anywhere (especially inside a suite):
+If the introduction adds a new `MechanismDefinitionRef` anywhere (especially inside a suite):
 
-1. The MIP-run SHALL first create a **canonical mechanism card** at the governing pattern location that publishes the `…IntensionRef` and the minimal identity fields (names, intent, and “this is a distinct mechanism”).
+1. The MIP-run SHALL first create a **canonical mechanism card** at the governing pattern location that publishes the `MechanismDefinitionRef` and the minimal identity fields (names, intent, and "this is a distinct mechanism").
 2. The card MAY be a **stub** initially, but SHALL reserve:
-  * the stable `…IntensionRef` (and its lexical register entry per E.10/F.17),
+  * the stable `MechanismDefinitionRef` (and its lexical register entry per E.10/F.17),
    * the intended mechanism family or species placement,
  and
   * a DRR pointer for completing semantics (including any missing register/twin-label work).
 
-Only after (1) is in place MAY suites or protocols enumerate the new `…IntensionRef`.
+Only after (1) is in place MAY suites or protocols enumerate the new `MechanismDefinitionRef`.
 
 #### E.20:4.4 - Step 4: Mechanism semantics completion (what “done” means)
 
 **Definition-of-done note (delegated).** MIP uses two completion checkpoints for mechanism cards:
 
-* **Stub done** — a citeability stub for a `U.Mechanism.IntensionRef`: a resolvable canonical target created only to prevent dangling references (E.20:4.3), not semantic completion.
+* **Stub done** - a citeability stub for a `MechanismDefinitionRef`: a resolvable canonical target created only to prevent dangling references (E.20:4.3), not semantic completion.
 
- A stub **SHALL** (i) exist at the mechanism-governing pattern's canonical location, (ii) reserve and publish the stable `…IntensionRef` (and its lexical/register entries), (iii) set `IntensionHeader.status = draft`, and (iv) carry an explicit DRR pointer for completing semantics. A stub **SHALL** also list the *A.6.1* conformance checklist item IDs it does **not** yet satisfy (without duplicating that checklist here). A stub may preserve citeability for suite or protocol enumeration, but it does not authorize suite closure, gate checks, planned baselines, wiring consumption, reuse, or import unless the fields required for that use are present and marked current.
+ A stub **SHALL** (i) exist at the mechanism-governing pattern's canonical location, (ii) reserve and publish the stable `MechanismDefinitionRef` (and its lexical/register entries), (iii) set `MechanismDefinitionHeader.status = draft`, and (iv) carry an explicit DRR pointer for completing semantics. A stub **SHALL** also list the *A.6.1* conformance checklist item IDs it does **not** yet satisfy (without duplicating that checklist here). A stub may preserve citeability for suite or protocol enumeration, but it does not authorize suite closure, gate checks, planned baselines, wiring consumption, reuse, or import unless the fields required for that use are present and marked current.
 
-* **Introduced done** — a mechanism card that can be relied upon as a `U.Mechanism.Intension`. “Introduced done” is defined by *A.6.1* conformance: the card **SHALL** satisfy the applicable *A.6.1:7 Conformance Checklist* items (**CC‑UM.\***), with the baseline items designated by *A.6.1* (e.g., **CC‑UM.0** and **CC‑UM.1**) being the minimum requirement.
+* **Introduced done** - a mechanism card that can be relied upon as a `U.Mechanism` definition. "Introduced done" is defined by *A.6.1* conformance: the card **SHALL** satisfy the applicable *A.6.1:7 Conformance Checklist* items (**CC-UM.\***), with the baseline items designated by *A.6.1* (e.g., **CC-UM.0** and **CC-UM.1**) being the minimum requirement.
 
 The list below is **informative** only (semantic orientation); the normative structure and “done” criteria are delegated to *A.6.1*’s CC items to avoid drift between this protocol and the canonical mechanism definition.
 
@@ -288,10 +2490,10 @@ For an “introduced” mechanism beyond a stub, the useful completion target is
 * **Operation field**: the named operations that the mechanism provides (signature-scoped intent).
 * **Law/invariant field**: the invariants that govern the operations, including admissibility constraints when applicable.
 * **Admissibility field**: preconditions or eligibility predicates for admissible operation (not a gate decision log, and not per-run outcomes).
-* **Slot interface**: required input and output slot kinds, with stable kinds and explicit ref modes.
+* **Slot discipline**: `SlotIndex`, required input and output `SlotKind`s, per-operation `SlotSpec`s, stable `ValueKind`s, and explicit ref modes.
 * **Specialisation discipline (when `⊑/⊑⁺` is declared):** explicit parent+morphism kind; SlotKind invariance; monotone ValueKind narrowing; no new mandatory inputs to inherited operations (per A.6.1:4.2.1 / CC‑UM.8).
-* **Transport**: declarative transport semantics (no hidden crossings; crossings are published via Bridges where required).
-* **Audit obligations**: which evidence anchors are required when the mechanism is used.
+* **Transport and realization discipline**: declarative transport semantics with no hidden crossings; when a realization relation is declared, it is monotone against the mechanism declaration and may tighten laws or guards but must not relax them.
+* **Audit obligations**: which evidence references are required when the mechanism is used.
 
 If the mechanism introduces new slot kinds shared across a family/suite, apply E.20:4.5.
 
@@ -319,7 +2521,7 @@ If the introduction changes a suite (`MechSuiteDescription` or specialization):
 
 **Kernel stability rule (recommended).** If the suite is a kernel suite, and the change adds a new required stage, prefer creating a **suite variant** rather than mutating the kernel membership. If mutation is unavoidable, pair it with terminology continuity (E.20:4.9) and RSCR triggers (E.20:4.10).
 
-#### E.20:4.7 - Step 7: Planned baseline & P2W seam (if planning changes)
+#### E.20:4.7 - Step 7: Planned baseline & P2W planning-to-work boundary (if planning changes)
 
 If the mechanism introduction changes what a WorkPlanning baseline pins (e.g., selected comparator specs, method descriptions, time selector, guard pins):
 
@@ -330,9 +2532,9 @@ If the mechanism introduction changes what a WorkPlanning baseline pins (e.g., s
    * no `FinalizeLaunchValues` witnesses,
    * no gate decisions or decision logs.
    * time is explicit: include `Γ_time_selector` or `Γ_time_rule_ref` (XOR); implicit “latest/current” is nonconformant.
-3. The plan item SHALL target exactly one **Description-scoped, edition-addressable** slot-bearing description via `target_slot_bearing_description_ref` (typically a kit or suite) and SHALL NOT target a `U.Mechanism.IntensionRef`. If a “standalone mechanism baseline” is needed, introduce an explicit Description-scoped slot-bearing description wrapper (e.g., a mech kit or a suite-of-one) and target that.
+3. The plan item SHALL target exactly one **Description-scoped, edition-addressable** slot-bearing description via `target_slot_bearing_description_ref` (typically a kit or suite) and SHALL NOT target a `MechanismDefinitionRef`. If a "standalone mechanism baseline" is needed, introduce an explicit Description-scoped slot-bearing description wrapper (e.g., a mech kit or a suite-of-one) and target that.
 
-This step exists to keep the P2W seam crisp: planning defines **planned fillers**, enactment witnesses **actual runs**.
+This step exists to keep the P2W planning-to-work boundary crisp: planning defines **planned fillers**, enactment witnesses **actual runs**.
 
 #### E.20:4.8 - Step 8: Wiring & SoTA updates (keep method evolution out of kernel)
 
@@ -342,7 +2544,7 @@ If the introduction involves methods, comparators, selectors, or other SoTA-sens
 2. Pin the chosen SoTA refs for a baseline in WorkPlanning plan items (E.20:4.7); wiring consumes pins rather than silently overriding them.
 3. Put flow/task binding logic in **wiring modules** (`GPatternExtension`), with an explicit `PatternScopeId` and declared governing pattern.
 4. Wiring may bind, select, dispatch, or cite SoTA method packs; it may not redefine the operation, law, admissibility, transport, slot, or audit meaning of the mechanism it wires.
-5. If a SoTA update changes a mechanism's signature/laws, that semantic change SHALL be performed in the mechanism-governing pattern, under the A.6.1 mechanism-intension template; the change SHALL emit RSCR triggers (E.20:4.10).
+5. If a SoTA update changes a mechanism's signature/laws, that semantic change SHALL be performed in the mechanism-governing pattern, under the A.6.1 mechanism-definition template; the change SHALL emit RSCR triggers (E.20:4.10).
 
 #### E.20:4.9 - Step 9: Terminology continuity (alias docking)
 
@@ -357,7 +2559,7 @@ If the introduction renames any public token or changes canonical naming:
 If the change class includes deprecation/supersession/retirement (E.20:4.1 #8), the MIP-run SHALL preserve reference continuity while making the status change explicit:
 
 1. **Preserve the canonical target.** The deprecated mechanism card, suite description, plan item, or wiring module SHALL remain resolvable at its canonical location; deprecation MUST NOT be implemented by removal that would break citations.
-2. **Keep the public token citeable.** The deprecated token (`…IntensionRef`, suite token, plan-item token, etc.) SHALL remain citeable. If a successor token/name is introduced, the old token SHALL be alias-docked per F.18 (E.20:4.9).
+2. **Keep the public token citeable.** The deprecated token (`MechanismDefinitionRef`, suite token, plan-item token, etc.) SHALL remain citeable. If a successor token/name is introduced, the old token SHALL be alias-docked per F.18 (E.20:4.9).
 3. **Declare successor (or “no successor”).** The deprecated mechanism card, suite description, plan item, or wiring module SHALL declare a successor pointer (or explicitly declare that there is none) using the project’s established deprecation/supersession fields.
 4. **Assign downstream updates to governing definitions.** Any needed suite denotation, closure, obligation, pin, protocol-semantic, WorkPlanning-pin, or wiring-semantic change SHALL be performed in its respective governing definition (E.20:4.2), preferably by introducing a suite variant rather than silently swapping kernel membership.
 5. **Emit RSCR triggers.** Deprecation/supersession SHALL emit typed RSCR triggers and extend the regression envelope (E.20:4.10), including checks for dangling refs and alias coverage.
@@ -374,10 +2576,10 @@ A MIP-run that changes any of:
 
 SHALL emit typed RSCR triggers via the RSCR governing pattern and SHALL extend the regression envelope to include, at minimum:
 
-* no dangling `…IntensionRef` enumerations,
+* no dangling `MechanismDefinitionRef` enumerations,
 * suite membership set semantics + protocol closure,
 * guard/gate separation preservation,
-* P2W seam preservation (planning vs enactment).
+* P2W planning-to-work boundary preservation (planning vs enactment).
 
 **Guard (normative).** Trigger kind identifiers (e.g., `RSCRTriggerKindId`) SHALL be selected from the RSCR trigger catalogue governed by `G.Core`. A MIP-run SHALL NOT mint ad hoc trigger kinds (“reason kinds”) scattered in arbitrary patterns/modules.
 
@@ -410,39 +2612,39 @@ A reviewed MIP-run SHALL be closed as one of:
 
 ### E.20:5 - Archetypal Grounding *(Tell–Show–Show)*
 
-**Show 0 (suite member, no new mechanism meaning).** A suite adds an already-defined `U.Mechanism.IntensionRef` as an optional member and changes no operation, law set, admissibility condition, slot interface, transport boundary, audit semantics, planned-baseline pins, or wiring semantics. E.20 records the suite-governing locus and stops; no new mechanism-governing card and no MIP-run manifest are opened.
+**Show 0 (suite member, no new mechanism meaning).** A suite adds an already-defined `MechanismDefinitionRef` as an optional member and changes no operation, law set, admissibility condition, `SlotIndex`, required input/output `SlotKind`s, per-operation `SlotSpec`s, transport boundary, audit semantics, monotone realization relation when declared, planned-baseline pins, or wiring semantics. E.20 records the suite-governing locus and stops; no new mechanism-governing card and no MIP-run manifest are opened.
 
 |  | Tell | Show #1 — add a mechanism to an existing suite *variant* | Show #2 — introduce a new mechanism family + suite |
 |---|---|---|---|
 | **Scene** | Mechanisms evolve: new stages appear, methods mature, and planning records need to remain citeable. | A team wants an additional “stage” in a characterization pipeline, but does not want to mutate the kernel suite. | A new domain needs a mechanism family or species not yet present in any existing mechanism-profile cluster (for characterization: `A.19.*`), plus a suite that composes several distinct mechanisms with a P2W hook. |
 | **Governing-definition assignment** | Each change item has one governing definition; changes are assigned there, not smeared. | 1) Add the new mechanism card under the mechanism-governing pattern. 2) Add a suite variant under the suite-governing pattern. 3) Pin the variant via a planned-baseline specialization. 4) Wire the variant via a `GPatternExtension`. | 1) Add a new archetypal grounding under the governing pattern. 2) Add `A.6.7.<FamilyKey>` describing the suite. 3) Add a suite-specific `SlotFillingsPlanItem` specialization. 4) Add SoTA packs and wiring modules. |
-| **Card-first** | No suite enumerates a missing `…IntensionRef`. | Create the new `…IntensionRef` card stub first; then update the suite variant membership. | Create the new mechanism-governing card(s) first; then publish suite membership by `…IntensionRef`. |
+| **Card-first** | No suite enumerates a missing `MechanismDefinitionRef`. | Create the new `MechanismDefinitionRef` card stub first; then update the suite variant membership. | Create the new mechanism-governing card(s) first; then publish suite membership by `MechanismDefinitionRef`. |
 | **Suite discipline** | Suites are descriptive: membership, obligations, pins, protocols; not mechanisms and not gates. | The variant’s `suite_protocols` explicitly names the new stage; publish/telemetry remains outside the suite. | The new suite defines shared obligations and allowed pipelines without embedding mechanism semantics. |
-| **P2W seam** | Planning pins refs; enactment witnesses runs. | The plan item pins the chosen suite variant and any method/spec refs; no launch values or decision logs. | The plan item specialization defines the planned fillers/pins that downstream flows cite. |
-| **SoTA updates** | Methods change faster than kernel meaning; wiring is where choices live. | A `GPatternExtension` selects a post-2015 scoring method by edition‑pinned ref; no kernel mutation required. | The family ships method packs and wiring modules; kernel cards remain the semantic source of mechanism meaning. |
+| **P2W planning-to-work boundary** | Planning pins refs; enactment witnesses runs. | The plan item pins the chosen suite variant and any method/spec refs; no launch values or decision logs. | The plan item specialization defines the planned fillers/pins that downstream flows cite. |
+| **SoTA updates** | Methods change faster than kernel meaning; wiring is where choices are governed. | A `GPatternExtension` selects a post-2015 scoring method by edition‑pinned ref; no kernel mutation required. | The family ships method packs and wiring modules; kernel cards remain the semantic source of mechanism meaning. |
 
 ### E.20:6 - Bias-Annotation
 
-Lenses tested: **Governance** (governing-definition assignment, continuity), **Architecture** (boundary hygiene and modularity), **Onto/Epist** (meaning placement and type discipline), **Pragmatic authoring** (reviewability, governing-definition split handling), **Didactic** (Tell-Show-Show training support).
+Lenses tested: **Governance** (governing-definition assignment, continuity), **Architecture** (boundary hygiene and modularity), **Onto/Epist** (meaning placement and type discipline), **Pragmatic authoring** (reviewability, governing-definition split handling), **Didactic** (Tell-Show-Show training scaffold).
 
 ### E.20:7 - Conformance Checklist (normative)
 
-**Conformance use.** This checklist is evidence for the governing-definition assignment guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; an item is applied only when its corresponding trigger triage, manifest, card, suite, planning, wiring, lexical, RSCR, PQG, or deprecation move is live. Before applying any item, name the Solution move it tests; if no such reader move is live, treat the item as support-only or not applicable rather than expanding the applied assurance or conformance material.
+**Conformance use.** This checklist is evidence for the governing-definition assignment guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; an item is applied only when its corresponding trigger triage, manifest, card, suite, planning, wiring, lexical, RSCR, PQG, or deprecation move is present. Before applying any item, name the Solution move it tests; if no such reader move is present, treat the item as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
 
-**Conformance groups.** Ordinary E.20 use starts with trigger triage and stops at the current governing locus when no denotation or mechanism-meaning change is live. Manifest-core items apply only when a MIP-run is actually triggered. Publication/assurance items apply only when citeability, card stubs, alias docking, RSCR, PQG, or deprecation continuity are live. Crossing, launch, and work-enactment checks are not governed by E.20; if they become live, use the gate, planning, or work loci and keep E.20 to governing-definition assignment.
+**Conformance groups.** Ordinary E.20 use starts with trigger triage and stops at the current governing locus when no denotation or mechanism-meaning change is present. Manifest-core items apply only when a MIP-run is actually triggered. Publication/assurance items apply only when citeability, card stubs, alias docking, RSCR, PQG, or deprecation continuity is part of the current claim. Crossing, launch, and work-enactment checks are not governed by E.20; if those claims become present, use the gate, planning, or work loci and keep E.20 to governing-definition assignment.
 
 | ID | Requirement | Purpose |
 |---|---|---|
 | **CC-E20-0 (MIP trigger triage).** | Every proposed mechanism, suite, planned-baseline, wiring, governing-definition, or citeable-token edit is classified as `MIP not triggered`, `local wording or alias-docking only`, or `MIP-run manifest required` before E.20 is cited to start a MIP-run. | Prevents pure currentness cleanup from becoming a false runtime gate or expanded authoring event. |
 | **CC-E20-1 (Governing-definition assignment declared).** | Every MIP-run **SHALL** provide a MIP-run manifest that lists each changed item, exactly one governing definition, and the canonical location; each changed item **SHALL** be written in that canonical location. | Prevents “floating commitments” and semantic placement errors. |
-| **CC‑E20‑2 (Card-first canonicalization).** | Any new `U.Mechanism.IntensionRef` enumerated anywhere **SHALL** resolve to a canonical mechanism card (stub allowed) before suite/protocol enumeration. | Eliminates dangling refs. |
+| **CC-E20-2 (Card-first canonicalization).** | Any new `MechanismDefinitionRef` enumerated anywhere **SHALL** resolve to a canonical mechanism card (stub allowed) before suite/protocol enumeration. | Eliminates dangling refs. |
 | **CC‑E20‑3 (Suite discipline preserved).** | If a suite is edited, it **SHALL** preserve: membership set semantics, protocol closure, no hidden tails, no gate decisions/logs, no publication records. | Prevents suite-as-gate and suite-as-mechanism drift. |
 | **CC‑E20‑4 (SlotKind lexicon used when shared).** | If mechanisms share slot vocabulary in a family/suite, a suite-scoped lexicon **SHALL** exist and member mechanisms **SHALL** cite it. | Stops slot token drift. |
-| **CC‑E20‑5 (P2W seam preserved).** | If planned baselines are edited, plan items **SHALL** remain WorkPlanning-only (pins/refs only), **SHALL** target exactly one Description-scoped slot-bearing description via `target_slot_bearing_description_ref` (and **SHALL NOT** target a `U.Mechanism.IntensionRef`), and **SHALL NOT** contain enactment witnesses, launch values, or gate decisions. | Keeps planning and enactment separable and auditable. |
+| **CC-E20-5 (P2W planning-to-work boundary preserved).** | If planned baselines are edited, plan items **SHALL** remain WorkPlanning-only (pins/refs only), **SHALL** target exactly one Description-scoped slot-bearing description via `target_slot_bearing_description_ref` (and **SHALL NOT** target a `MechanismDefinitionRef`), and **SHALL NOT** contain enactment witnesses, launch values, or gate decisions. | Keeps planning and enactment separable and auditable. |
 | **CC‑E20‑6 (Kernel stability handled).** | If a kernel suite would gain a new required stage, the change **SHOULD** be expressed as a suite variant; if mutation occurs, it **SHALL** include continuity measures (alias docking and explicit delta). | Minimizes E.15 impact radius of kernel edits. |
 | **CC‑E20‑7 (SoTA wiring, not kernel semantics).** | Method/comparator choices **SHALL** be represented via SoTA packs and wiring modules; if a SoTA update changes mechanism semantics, that change **SHALL** be made in the mechanism-governing pattern and not by wiring. | Prevents silent semantic shifts. |
 | **CC‑E20‑8 (Terminology continuity).** | Any rename changing citeable tokens **SHALL** use alias docking and register updates; silent rewrites are non‑conformant. | Preserves reference stability. |
-| **CC‑E20‑9 (RSCR triggers + regressions).** | Any semantic or reference-change **SHALL** emit RSCR triggers and extend the regression envelope to cover dangling refs + suite closure + guard/gate separation + P2W seam. | Makes changed loci and regression obligations explicit and testable. |
+| **CC‑E20‑9 (RSCR triggers + regressions).** | Any semantic or reference-change **SHALL** emit RSCR triggers and extend the regression envelope to cover dangling refs + suite closure + guard/gate separation + P2W planning-to-work boundary. | Makes changed loci and regression obligations explicit and testable. |
 | **CC‑E20‑10 (PQG coverage).** | Every MIP-run **SHALL** be reviewed under PQG (E.19) with PCP‑BASE and the triggered profiles implied by the change. | Normalizes review and refresh. |
 | **CC‑E20‑11 (Deprecation preserves citeability).** | Any deprecation/supersession/retirement action **SHALL** preserve citeability of the deprecated token (alias docking if renamed), keep the canonical mechanism card, suite description, plan item, or wiring module resolvable, and declare a successor pointer or “no successor” explicitly (E.20:4.9.1). | Prevents broken citations and orphaned semantics during evolution. |
 
@@ -452,7 +2654,7 @@ Lenses tested: **Governance** (governing-definition assignment, continuity), **A
 |---|---|---|---|
 | **Wiring carries semantics** | Part G extensions start redefining what a mechanism “means”. | Meaning becomes edition-fragile and non-local. | Move semantics back to the mechanism-governing pattern; keep extensions as binding only. |
 | **Suite becomes a meta-mechanism** | Suite text defines ops/laws or embeds thresholds/decisions. | Collapses suite, mechanism, and gate kinds; creates hidden gate behavior. | Restore suite as description-only; push thresholds to acceptance/gate kind. |
-| **Plan becomes enactment** | Plan items contain launch values, witnesses, or decisions. | Destroys P2W seam; breaks audit semantics. | Strip enactment content; pin only refs/policies/time selectors. |
+| **Plan becomes enactment** | Plan items contain launch values, witnesses, or decisions. | Destroys the P2W planning-to-work boundary; breaks audit semantics. | Strip enactment content; pin only refs/policies/time selectors. |
 | **Kernel churn by convenience** | New required stage is added directly to kernel suite membership. | Expands the E.15 impact radius; destabilizes citations. | Prefer suite variant; if not possible, pair with alias docking and explicit deltas. |
 | **Token drift by silent rename** | “Just rename UNM to ...” without aliasing. | Breaks citations and downstream reasoning. | Use F.18 alias docking; update registers explicitly. |
 | **MIP as gate surrogate** | A MIP-run manifest is treated as a runtime pass/fail result or gate passage. | Governing-definition assignment is being mistaken for project execution or gate decision. | Keep MIP as authoring-side governing-definition assignment; use `A.21` for gate decisions and `A.15` for work or enactment claims. |
@@ -462,8 +2664,8 @@ Lenses tested: **Governance** (governing-definition assignment, continuity), **A
 
 **Benefits**
 * Mechanism introductions become **trainable and reviewable** (a repeatable governing-definition map).
-* Reduces drift by requiring one governing pattern for each mechanism-intension meaning and keeping semantics in their governing pattern.
-* Keeps suites descriptive and the P2W seam crisp, improving auditability.
+* Reduces drift by requiring one governing pattern for each mechanism meaning and keeping semantics in their governing pattern.
+* Keeps suites descriptive and the P2W planning-to-work boundary crisp, improving auditability.
 * Supports SoTA evolution without destabilizing kernel meaning.
 
 **Costs**
@@ -475,17 +2677,17 @@ Lenses tested: **Governance** (governing-definition assignment, continuity), **A
 
 Mechanisms are high-leverage semantic units: a small change can touch suites, planned baselines, wiring modules, and audits. Without a protocol, the corpus tends toward **semantic duplication across governing loci** and **non-local correctness** (you can’t know what changed without reading everything).
 
-Governing-definition-directed authoring is a pragmatic compromise: it does not depend on tooling, yet it gives a stable governing-definition map that supports subsequent review and refresh.
+Governing-definition-directed authoring is a pragmatic compromise: it does not depend on tooling, yet it gives a stable governing-definition map that enables subsequent review and refresh.
 
 ### E.20:11 - SoTA-Echoing
 
 | SoTA source idea | FPF invariant | Reader move | Rejected shortcut |
 | --- | --- | --- | --- |
-| Mechanism semantics in A.6.1, effects-handler practice, and refinement-style signature discipline require an explicit operation/signature/law/admissibility locus. | Mechanism meaning is assigned to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, slot interface, transport/bridge regime, applicability, and audit. | When a mechanism is introduced or changed, name the mechanism-governing definition that carries those semantic fields before suites, plans, or wiring cite it. | Treating suite text, wiring prose, or a MIP manifest as mechanism semantics. |
-| SoTA method evolution is carried by SoTA synthesis packs, shipping boundaries, and refresh wiring rather than silent kernel mutation. | `G.2`, `G.10`, and `G.11` own method-evolution support: SoTA packs, release/shipping boundary, and refresh wiring. If the SoTA change alters mechanism meaning, the mechanism-governing definition changes. Current-source examples are only admissible through named pack refs, such as SLSA v1.2 for provenance and attestation support, RO-Crate 1.2 for research-package publication support, QDax JMLR 2024 for QD-library support, or a named current domain survey or source when that domain is live. | Tie a mechanism-changing SoTA update to the exact SoTA pack or source ref and refresh or shipping locus, then edit the mechanism-governing pattern if semantics changed. | Rephrasing a fashionable method update as kernel semantics or hiding it in wiring. |
+| Mechanism semantics in A.6.1, effects-handler practice, and refinement-style signature discipline require an explicit operation/signature/law/admissibility locus. | Mechanism meaning is assigned to A.6.1-governed mechanism definitions: operation algebra, law set, admissibility conditions, `SlotIndex`, required input/output `SlotKind`s, per-operation `SlotSpec`s, transport/bridge regime, applicability, audit, and monotone realization relation when declared. | When a mechanism is introduced or changed, name the mechanism-governing definition that carries those semantic fields before suites, plans, or wiring cite it. | Treating suite text, wiring prose, or a MIP manifest as mechanism semantics. |
+| SoTA method evolution is carried by SoTA synthesis packs, shipping boundaries, and refresh wiring rather than silent kernel mutation. | `G.2`, `G.10`, and `G.11` own method-evolution apparatus: SoTA packs, release/shipping boundary, and refresh wiring. If the SoTA change alters mechanism meaning, the mechanism-governing definition changes. Current-source examples are usable only through named pack refs, such as SLSA v1.2 for provenance and attestation discipline, RO-Crate 1.2 for research-package publication discipline, QDax JMLR 2024 for QD-library practice, or a named current domain survey or source when that domain claim is present. | Tie a mechanism-changing SoTA update to the SoTA pack or source ref named by value and the refresh or shipping locus, then edit the mechanism-governing pattern if semantics changed. | Rephrasing a fashionable method update as kernel semantics or hiding it in wiring. |
 | Open-ended and set-valued method evolution may return candidate sets, archives, or selector outputs. | C.18, C.19, and G.5 preserve set-return and selection boundaries; MIP must not force one approved mechanism too early. | Keep candidate mechanisms, selected sets, abstain/reject states, and archive semantics in their receiving loci until a mechanism-governing definition is actually selected for introduction. | Collapsing open-ended exploration or selector output into one prematurely approved mechanism. |
-| Mechanism-related refresh uses explicit pins and trigger kinds rather than restating method semantics. | G.11-style refresh uses edition pins, policy pins, `PathSliceId`, and RSCR trigger kinds; refresh wiring supports comparable reruns but does not redefine the method. | When a mechanism change affects refresh, name the pins and RSCR trigger kinds and keep method semantics in the mechanism or SoTA-pack locus. | Letting refresh wiring become a second method definition. |
-| Stable identifiers and modular vocabularies preserve reference continuity. | Names, aliases, lexicons, and stable identifiers preserve citeability; they do not establish mechanism law, admissibility, evidence, or gate fit. Mechanism meaning and admissibility belong in governing definitions, signature/law/admissibility patterns, suite boundaries, SoTA packs, and wiring modules according to their exact roles. | Use alias docking and lexicon updates to keep references alive, then return mechanism meaning to the governing definition that governs it. | Treating ontology or vocabulary modularity as sufficient mechanism introduction. |
+| Mechanism-related refresh uses explicit pins and trigger kinds rather than restating method semantics. | G.11-style refresh uses edition pins, policy pins, `PathSliceId`, and RSCR trigger kinds; refresh wiring enables comparable reruns but does not redefine the method. | When a mechanism change affects refresh, name the pins and RSCR trigger kinds and keep method semantics in the mechanism or SoTA-pack locus. | Letting refresh wiring become a second method definition. |
+| Stable identifiers and modular vocabularies preserve reference continuity. | Names, aliases, lexicons, and stable identifiers preserve citeability; they do not establish mechanism law, admissibility, evidence, or gate fit. Mechanism meaning and admissibility belong in governing definitions, signature/law/admissibility patterns, suite boundaries, SoTA packs, and wiring modules according to their role named by values. | Use alias docking and lexicon updates to preserve references, then return mechanism meaning to the governing definition that governs it. | Treating ontology or vocabulary modularity as sufficient mechanism introduction. |
 
 ### E.20:12 - Relations
 
@@ -496,10 +2698,10 @@ Governing-definition-directed authoring is a pragmatic compromise: it does not d
 * **E.15** (evolution discipline; DRR/edition thinking)
 
 **Coordinates with:**
-* **A.6.1** (`U.Mechanism.Intension` template governance)
+* **A.6.1** (`U.Mechanism` definition template governance)
 * **A.6.7** (`MechSuiteDescription` integrity)
 * **A.15.3** (`SlotFillingsPlanItem` and planned baseline seam)
-* **E.18** (E.TGA flows that cite planned baselines)
+* **E.18** (`TransformationFlowStructure` values that cite planned baselines)
 * **G.Core** (RSCR trigger catalogue)
 * **G.2** (SoTA synthesis packs)
 * **G.x:Ext.\*** (wiring modules via `GPatternExtension`)
@@ -517,15 +2719,15 @@ Status: Core.
 
 Use `E.21` when one authored FPF pattern of concern must be evaluated for quality under the use required by the governing evaluation frame: ordinary practitioner use, authoring input, landing input, release input, external-review input, high-assurance reuse input, canonization input, or another explicitly requested pattern-quality use. The evaluator does not replace the required `ClaimScope` with an easier one. If the pattern fails the required use, the result is `repairBeforeUse`, `holdForArchitectureDecision`, or `refreshNeeded`; a different use needs a different evaluation frame and does not rescue the current result.
 
-Not this pattern when the evaluated object is one `DRR`, an FPF-level corpus object, a single wording repair, a source-use decision, or a project-side evidence, assurance, gate, release, safety, compliance, work, or decision claim. Use `E.9.DA`, `E.2.DA`, `E.10` and exact precision-restoration neighbours, or the exact project-side pattern for those objects.
+Not this pattern when the evaluated object is one `DRR`, an FPF-level corpus object, a single wording repair, a source-use decision, or a project-side evidence, assurance, gate, release, safety, compliance, work, or decision claim. Use `E.9.DA`, `E.2.DA`, `E.10` and precision-restoration neighboring patterns named by value, or the project-side pattern governing the claim for those objects.
 
-First useful move: recover the required scope from the governing request, `E.22` frame, campaign seam, landing check, release check, or review assignment; then name the exact pattern of concern, required scope, working reader, intended use, and qualification window; then evaluate every coordinate in `RequiredPatternQualityCoordinates` with a value and short rationale.
+First useful move: recover the required scope from the governing request, `E.22` frame, campaign seam, landing check, release check, or review assignment; then name the governing pattern of concern, required scope, working reader, intended use, and qualification window; then evaluate every coordinate in `RequiredPatternQualityCoordinates` with a value and short rationale.
 
 `floorEvaluation` changes the declared floor and expected evidence economy. It never creates a partial `E.21`, inactive coordinates, overlay-trigger shortcuts, narrowing to an easier use, blocker-only substitution, or a permission to skip precision-restoration discharge. Fragmentary, wrong-shaped, or weak pattern text is still evaluated under the required scope; weakness receives low coordinate values, repair status, architecture hold, or refresh status.
 
 What goes wrong if missed: pattern quality becomes taste, checklist closure, source count, review state, landing state, or length. Short patterns can pass while missing mature content; long patterns can pass while hiding the first user move; semio material can take over a non-semio pattern.
 
-Primary EntityOfConcern in plain terms: the quality claim of one exact FPF pattern of concern for a declared use.
+Primary EntityOfConcern in plain terms: the quality claim of one governing FPF pattern of concern for a declared use.
 
 ### E.21:2 - Problem
 
@@ -542,8 +2744,8 @@ FPF patterns need a quality evaluation that is stronger than a style checklist a
 |---|---|
 | Comparability vs false precision | Pattern versions must be comparable, but ordinal qualities cannot be averaged. |
 | Completeness vs affordability | Every coordinate is evaluated; rationale and evidence can stay compact. |
-| Maturity vs length | A short pattern is mature only when selected mature-pattern ingredients are present in the body or exact neighbours. |
-| Ontology vs usability | Names and kinds must be exact without burying the first user move. |
+| Maturity vs length | A short pattern is mature only when selected mature-pattern ingredients are present in the body or neighboring pattern governing the claims. |
+| Ontology vs usability | Names and kinds must be precise enough for the governed move without burying the first user move. |
 | Semio precision vs semio-bias | Episteme and publication distinctions matter, but non-semio patterns still lead with their own `EntityOfConcern`. |
 | Open-ended improvement vs stop | Improvement can continue forever, while one version needs a scoped stop condition. |
 
@@ -567,16 +2769,16 @@ There is no separate pre-check result. If a pattern lacks frame, first move, sou
 | Local name | Kind and role |
 |---|---|
 | `PatternQualityEvaluation` | Authored quality evaluation record over one pattern of concern. |
-| `PatternOfConcernRef` | Exact FPF pattern that this `E.21` evaluation makes the pattern of concern: host, monolith section, edition, or pinned version. `PatternOfConcern` is role-relative: the same pattern can also be the pattern of concern for another role in another flow, for example when a reader selects, applies, or reviews that pattern. This row names the concern of the quality-evaluation flow, not a special kind of pattern and not a second text. The evaluated pattern also has its own primary `EntityOfConcern`: the subject that its Problem/Solution/guidance is about. FPF patterns are applied to situations, claims, texts, or work objects. Use `governing pattern` only in the typed form `governing pattern for <claim/relation/boundary>` when the pattern actually governs that specific item; use `related pattern` for a looser pattern relation; use `relation` only for the relation itself. |
+| `PatternOfConcernRef` | FPF pattern named by value that this `E.21` evaluation makes the pattern of concern: host, monolith section, edition, or pinned version. `PatternOfConcern` is role-relative: the same pattern can also be the pattern of concern for another role in another flow, for example when a reader selects, applies, or reviews that pattern. This row names the concern of the quality-evaluation flow, not a special kind of pattern and not a second text. The evaluated pattern also has its own primary `EntityOfConcern`: the subject that its Problem, Solution, or guidance is about. FPF patterns are applied to situations, claims, texts, or work objects. Use `governing pattern` only in the typed form `governing pattern for <claim, relation, or boundary>` when the pattern actually governs that specific item; use `related pattern` for a looser pattern relation; use `relation` only for the relation itself. |
 | `ClaimScope` | Quality claim boundary recovered from the governing frame: ordinary use, authoring input, landing input, release input, external-review input, high-assurance reuse input, canonization input, or another explicitly requested pattern-quality use. It is not chosen by the evaluator to make a failing request pass. |
 | `WorkingReaderScope` | Reader role and first-use situation the pattern must serve. |
 | `IntendedUse` | Action that may use the result: continue drafting, admit for declared use, repair, refresh, or compare candidates. |
 | `QualificationWindow` | Edition, SoTA, related-pattern, release, time, or comparison window in which the evaluation is current. |
-| `EvaluationEvidenceBasis` | Exact checked evidence loci for the evaluation: pattern body version, host or monolith section, ToC or `J.4` row when corpus-facing, card or retrieval cue when claimed, source-currentness locus when SoTA/currentness is valued, mature comparator set when maturity is valued, and worked case or absence of worked case when case coverage is valued. |
+| `EvaluationEvidenceBasis` | Evidence loci named by value for the evaluation: pattern body version, host or monolith section, README scenario, ToC row, `E.11` entry-distribution locus, `I.2` expanded entry-disambiguation case when corpus-facing, card or retrieval cue when claimed, source-currentness locus when SoTA/currentness is valued, mature comparator set when maturity is valued, and worked case or absence of worked case when case coverage is valued. |
 | `QualityEvaluationQuestionFrameRef` | `E.22` frame when purpose, floor, trade-offs, absorption, or proposal expectation needs to be declared. |
 | `CoordinateValueRationales` | One row for every required coordinate: `Coordinate`, `Value`, `ShortRationale`. |
 | `CoordinateEvidenceRefs` | Per-coordinate text, case, relation, SoTA, mature comparator, projection, or review refs where the short rationale depends on evidence outside the pattern body row being discussed. |
-| `PrecisionRestorationProfile` | Compact profile over five precision-restoration layers: word/head/use precision, phrase-level apparatus, repeated or distributed material, role/carrier separation, and pattern-application ontology. It collapses those layers into one scalar effect for the `E.21` result, not one coordinate per defect. The profile names present or bounded issues, checked absence scope when clean, affected coordinates, and the exact restoration or governing pattern such as `E.10`, `E.10.ARCH`, `F.18`, `F.19`, or an object-specific pattern. |
+| `PrecisionRestorationProfile` | Compact profile over six precision-restoration layers: word, head, and use precision; phrase-level apparatus; repeated or distributed material; ontic and slot-relation clarity; description, publication, and source boundary separation; and pattern-application ontology. It collapses those layers into one scalar effect for the `E.21` result, not one coordinate per defect. The profile names present or bounded issues, checked absence scope when clean, affected coordinates, and the selected restoration or governing pattern such as `E.10`, `E.10.ARCH`, `F.18`, `F.19`, `E.24.CD`, `E.24.PUB`, or an object-specific pattern. |
 | `DominanceSet` | Coordinates used to compare already evaluated candidate versions. It never changes the required coordinate set. |
 | `PatternQualityStatus` | Scoped pattern-quality result assigned by `E.21`; it is not an `E.19` admission or refresh decision by itself. |
 | `StopCondition` | Why improvement may stop, continue, refresh, or hold. |
@@ -586,13 +2788,13 @@ Names are local to pattern-quality evaluation unless `F.18` promotes a durable n
 
 ```text
 PatternQualityEvaluation:
-  PatternOfConcernRef: <exact pattern of concern>
+  PatternOfConcernRef: <governing pattern of concern>
   ClaimScope: <declared quality claim>
   WorkingReaderScope: <reader and first-use situation>
   IntendedUse: <what may consume the result>
-  QualificationWindow: <edition/source/neighbour/release/comparison window>
+  QualificationWindow: <edition, source, neighbour, release, or comparison window>
   EvaluationEvidenceBasis: <checked pattern, corpus, source, comparator, case, and projection loci; missing or unchecked loci named explicitly when they affect values>
-  PrecisionRestorationProfile: <collapsed profile: word/head/use, phrase-apparatus, repetition/distribution, role-carrier, pattern-application; scalar effect, affected coordinates, and exact restoration or governing pattern>
+  PrecisionRestorationProfile: <collapsed profile: word, head, and use; phrase-apparatus; repetition-and-distribution; ontic-slot clarity; description-publication-source boundary; pattern-application; scalar effect, affected coordinates, and selected restoration or governing pattern>
   CoordinateValueRationales: <all required coordinates, values, short rationales>
   PatternQualityStatus: <status>
   StopCondition: <local stop, first repair, hold, or refresh>
@@ -615,19 +2817,19 @@ The result-bearing coordinate row has exactly this shape:
 
 | Coordinate | Value | ShortRationale |
 |---|---:|---|
-| `<E.21 coordinate>` | `<0..5>` | `<assigned-value basis; why the lower adjacent value would understate the evidence; why the higher adjacent value would overstate the evidence, or for 5 what evidence makes 4 too weak and what would lower/reopen>` |
+| `<E.21 coordinate>` | `<0..5>` | `<assigned-value basis; why the lower adjacent value would understate the evidence; why the higher adjacent value would overstate the evidence, or for 5 what evidence makes 4 too weak and what would lower or reopen>` |
 
-A two-column coordinate/value table, a narrative paragraph, a table whose comment lacks adjacent-value comparison, or a result whose value depends on unchecked external loci is not an `E.21` result. It is only draft evaluation material until every coordinate has a `ShortRationale` row and the result names the `EvaluationEvidenceBasis` used for values that depend on source, comparator, corpus, projection, or worked-case evidence.
+A two-column coordinate-and-value table, a narrative paragraph, a table whose comment lacks adjacent-value comparison, or a result whose value depends on unchecked external loci is not an `E.21` result. It is only draft evaluation material until every coordinate has a `ShortRationale` row and the result names the `EvaluationEvidenceBasis` used for values that depend on source, comparator, corpus, projection, or worked-case evidence.
 
-A `ShortRationale` is allowed to be compact, but it is not allowed to be evidenceless. When the value depends on a source-currentness row, mature comparator, ToC or `J.4` projection, card, retrieval cue, monolith section, worked slice, near-miss, or anti-case, the rationale names that locus by value or says that the locus was missing or unchecked. "By value" means a recoverable section, row, case, checklist item, relation, source row, projection row, comparator id plus selected ingredient, or exact absent locus; a category list such as "entry, first move, boundaries, SoTA, checklist, relations" is not by-value discharge. Missing or unchecked evidence lowers the value for the coordinate that needs it; it does not create a separate "not evaluated" result.
+A `ShortRationale` is allowed to be compact, but it is not allowed to be evidenceless. When the value depends on a source-currentness row, mature comparator, README scenario, ToC row, `E.11` entry-distribution locus, `I.2` expanded entry-disambiguation case, card, retrieval cue, monolith section, worked slice, near-miss, or anti-case, the rationale names that locus by value or says that the locus was missing or unchecked. "By value" means a recoverable section, row, case, checklist item, relation, source row, projection row, comparator id plus selected ingredient, or specific absent locus; a category list such as "entry, first move, boundaries, SoTA, checklist, relations" is not by-value discharge. Missing or unchecked evidence lowers the value for the coordinate that needs it; it does not create a separate "not evaluated" result.
 
 A `5` is not a reward for clear early wording, named neighbour relations, or a well-formed field set alone. It needs exceptional expression for the declared use: reinforcing loci, a worked or otherwise replayable slice where the coordinate demands one, and no hidden cost or neighbour loss. When the evaluator cannot say why `4` would understate the evidence, assign `4` or lower.
 
-When a coordinate's `5` meaning names a filled case, replayable slice, near-miss, anti-case, worked comparison, projection evidence, currentness basis, or exact-neighbour replay, absence of that evidence caps that coordinate at `4` even if the prose is otherwise strong. Do not hide the same absence only in `CaseCountercaseAndTransferCoverage`; lower every coordinate whose own `5` meaning needs that missing evidence. A `5` rationale names the reinforcing evidence loci that make `4` too weak.
+When a coordinate's `5` meaning names a filled case, replayable slice, near-miss, anti-case, worked comparison, projection evidence, currentness basis, or selected-neighbour replay, absence of that evidence caps that coordinate at `4` even if the prose is otherwise strong. Do not hide the same absence only in `CaseCountercaseAndTransferCoverage`; lower every coordinate whose own `5` meaning needs that missing evidence. A `5` rationale names the reinforcing evidence loci that make `4` too weak.
 
-For `MaturePatternParityAndSelectedContentSufficiency`, the rationale names a mature-pattern comparison set and the selected mature ingredients being claimed. For non-epistemic patterns, include at least one mature non-epistemic comparator when one exists: work, method, role, system, control, architecture, selection, engineering-action, or another pattern whose primary `EntityOfConcern` is not an episteme or publication. Value `4` requires by-value discharge of selected ingredients in the body or exact neighbours; comparator IDs plus a generic "main ingredients are present" sentence are only value `3`. The comparison is not a length target and not permission to copy semio apparatus.
+For `MaturePatternParityAndSelectedContentSufficiency`, the rationale names a mature-pattern comparison set and the selected mature ingredients being claimed. For non-epistemic patterns, include at least one mature non-epistemic comparator when one exists: work, method, role, system, control, architecture, selection, engineering-action, or another pattern whose primary `EntityOfConcern` is not an episteme or publication. Value `4` requires by-value discharge of selected ingredients in the body or neighboring pattern governing the claims; comparator IDs plus a generic "main ingredients are present" sentence are only value `3`. The comparison is not a length target and not permission to copy semio apparatus.
 
-For a `4` or `5` on `MaturePatternParityAndSelectedContentSufficiency`, include a compact maturity-discharge payload in the rationale or `CoordinateEvidenceRefs`: `comparator=<pattern id>; selectedIngredient=<ingredient name>; currentLocus=<section, row, case, checklist item, relation, or exact neighbour>; missingOrLowering=<absent or weak ingredient, if any>`. A category list such as "frame, first move, neighbour relations, CC, SoTA, relations" without current loci is still value `3`, even when the listed categories are plausible mature ingredients.
+For a `4` or `5` on `MaturePatternParityAndSelectedContentSufficiency`, include a compact maturity-discharge payload in the rationale or `CoordinateEvidenceRefs`: `comparator=<pattern id>; selectedIngredient=<ingredient name>; currentLocus=<section, row, case, checklist item, relation, or neighboring pattern governing the claim>; missingOrLowering=<absent or weak ingredient, if any>`. A category list such as "frame, first move, neighbour relations, CC, SoTA, relations" without current loci is still value `3`, even when the listed categories are plausible mature ingredients.
 
 #### E.21:4.3a - Precision-restoration profile
 
@@ -638,22 +2840,24 @@ Use this compact shape:
 ```text
 PrecisionRestorationProfile:
   overallEffect: <clean | boundedLocal | lowersCoordinates | repairBeforeUse>
-  wordHeadUsePrecision: <clean | E.10/E.10.ARCH/F.18/exact-pattern needed | lowers coordinates>
-  kindRestorationCheck: <pre-repair kind/relation/slot-or-use-position/admissible use -> proposed post-repair kind/relation/slot-or-use-position/admissible use; preserved | split | intentionally changed | blocker>
+  wordHeadUsePrecision: <clean | E.10, E.10.ARCH, F.18, or governing pattern needed | lowers coordinates>
+  kindRestorationCheck: <pre-repair kind, relation, slot or use-position, and admissible use -> proposed post-repair kind, relation, slot or use-position, and admissible use; preserved | split | intentionally changed | blocker>
   phraseApparatus: <clean | F.19 needed | lowers coordinates>
   repetitionAndNegativeDistribution: <clean | bounded-local | lowers coordinates>
-  roleCarrierSeparation: <clean | quality/development/projection carrier leakage | lowers coordinates>
+  onticAndSlotRelationClarity: <clean | hidden candidate ontic or slot-relation drift | lowers coordinates>
+  descriptionPublicationSourceBoundary: <clean | description-publication-source boundary leakage | lowers coordinates>
   patternApplicationOntology: <clean | application relation unclear | lowers coordinates>
-  checkedLoci: <sections/rows/cases/relations checked>
+  checkedLoci: <sections, rows, cases, and relations checked>
   affectedCoordinates: <coordinates lowered or protected>
   repairProposal: <repair, no-repair disposition with loci, or owning locus>
 ```
 
-This profile deliberately collapses several small subreadings into one scalar effect. The scalar is the strongest quality effect that any layer requires: clean, bounded local repair, coordinate lowering, or repair-before-use. The layers are diagnostic, not extra coordinates, checklists, or proposal quotas. A new precision-restoration symptom is classified into one of these layers or assigned to the exact restoration or governing pattern; it does not mint a new `E.21` coordinate. Details belong in the patterns that govern those objects: word/head/name problems apply `E.10`, `E.10.ARCH`, or `F.18`; phrase-level boilerplate and plain-technical rewriting apply `F.19`; claim, relation, evidence, work, decision, assurance, publication, or pattern-application problems apply the exact pattern that governs that object. `E.21` consumes only the result: which coordinates fall, which stay protected, and what repair would make the quality claim true.
+This profile deliberately collapses several small diagnostic checks into one scalar effect. The scalar is the strongest quality effect that any layer requires: clean, bounded local repair, coordinate lowering, or repair-before-use. The layers are diagnostic, not extra coordinates, checklists, or proposal quotas. A new precision-restoration symptom is classified into one of these layers or assigned to the selected restoration or governing pattern; it does not mint a new `E.21` coordinate. Details belong in the patterns that govern those objects: word, head, and name problems apply `E.10`, `E.10.ARCH`, or `F.18`; phrase-level boilerplate and plain-technical rewriting apply `F.19`; hidden candidate ontics and ontic-vs-description-vs-publication boundaries apply `E.24.CD`, `E.24.PUB`, or the direct subject pattern when the governed object is already clear; claim, relation, evidence, work, decision, assurance, publication, or pattern-application problems apply the pattern that governs that object. `E.21` consumes only the result: which coordinates fall, which stay protected, and what repair would make the quality claim true.
 
-The `kindRestorationCheck` is required whenever a precision-restoration finding or repair proposal changes wording. It records the meaning-bearing object, kind, relation, slot or use-position, admissible use, and scope before and after the proposed repair, then names the exact governing pattern when another pattern governs the live kind, relation, claim, or position (`A.6.0`/`A.6.5`, `A.6.P`, `C.29`, `A.15`, `E.10.ARCH`, or another exact pattern). `E.21` does not restate slot discipline or mathematical-lens ontology; it only checks that the repair preserved or deliberately changed them by value. The check is a bounded complete preservation proof, not a blanket demand to formalize every sentence and not a license to do the least visible work. Complete means every live field that can drift because of the changed wording receives one explicit disposition: `not triggered/ordinary prose/no FPF-governed phrase changed` with checked loci, `preserved`, `split`, `intentionally changed by accepted decision`, or `blocker`. A no-repair result is valid only as one of those dispositions with loci; "nothing to do" without that discharge is a missing repair. Expand the row only when a live kind, relation, claim, slot/use-position, or admissible use can drift. A lexical replacement is not a repair when it only removes a trigger word, substitutes one umbrella for another, narrows a graph or method into a work sequence, widens a work occurrence into a method, turns a publication or evidence carrier into the object itself, or otherwise changes kind or slot/use-position without an accepted decision. If the kind or slot/use-position cannot be recovered, the profile is at least `lowersCoordinates`; if the proposed repair would change kind or slot/use-position and no accepted DRR or exact governing pattern justifies that change, the result is `repairBeforeUse` or `holdForArchitectureDecision`.
+When this layer finds a hidden candidate ontic or publication-form confusion, `E.21` records the quality effect and affected coordinates only. Candidate detection, ontic placement, slot-relation design, and publication-boundary repair remain with `E.24.CD`, `E.24.PUB`, or the direct governing pattern. A quality evaluation does not become an ontic-discovery pattern by noticing that defect.
+The `kindRestorationCheck` is required whenever a precision-restoration finding or repair proposal changes wording. It records the meaning-bearing object, kind, relation, slot or use-position, admissible use, and scope before and after the proposed repair, then names the governing pattern when another pattern governs the affected kind, relation, claim, or position (`A.6.0`, `A.6.5`, `A.6.P`, `C.29`, `A.15`, `E.24.CD`, `E.24.PUB`, `E.10.ARCH`, or another governing pattern). `E.21` does not restate slot discipline, ontic architecture, publication-form discipline, or mathematical-lens ontology; it only checks that the repair preserved or deliberately changed them by value. The check is a bounded complete preservation proof, not a blanket demand to formalize every sentence and not a license to do the least visible work. Complete means every field whose value can drift because of the changed wording receives one explicit disposition: `not triggered`, `ordinary prose`, or `no FPF-governed phrase changed` with checked loci, `preserved`, `split`, `intentionally changed by accepted decision`, or `blocker`. A no-repair result is valid only as one of those dispositions with loci; "nothing to do" without that discharge is a missing repair. Expand the row only when a kind, relation, claim, slot or use-position, or admissible use can drift. A lexical replacement is not a repair when it only removes a trigger word, substitutes one umbrella for another, narrows a graph or method into a work sequence, widens a work occurrence into a method, turns a publication form or evidence source into the object itself, or otherwise changes kind or slot or use-position without an accepted decision. If the kind or slot or use-position cannot be recovered, the profile is at least `lowersCoordinates`; if the proposed repair would change kind or slot or use-position and no accepted DRR or governing pattern justifies that change, the result is `repairBeforeUse` or `holdForArchitectureDecision`.
 
-When the profile is not clean, lower every affected coordinate named by the profile. Do not hide a present precision-restoration issue only in `EntityOfConcernPrimacyAndSemioBiasResistance`, and do not raise the result through related-pattern-boundary praise, projection evidence, or "correct but true" guards when the profile shows that those materials compete with the positive subject/action spine.
+When the profile is not clean, lower every affected coordinate named by the profile. Do not hide a present precision-restoration issue only in `EntityOfConcernPrimacyAndSemioBiasResistance`, and do not raise the result through related-pattern-boundary praise, projection evidence, or "correct but true" guards when the profile shows that those materials compete with the positive subject-and-action spine.
 
 #### E.21:4.4 - RequiredPatternQualityCoordinates
 
@@ -664,54 +2868,54 @@ Every `E.21` evaluation of an FPF pattern of concern evaluates every coordinate 
 | `WorkingSituationAndUseBoundaryRecognizability` | Whether the reader recognises the situation, ordinary use, non-use, harm if missed, and boundary early. |
 | `EntityOfConcernAndClaimScopeStability` | Whether the primary `EntityOfConcern` and quality-claim scope stay stable across title, Problem frame, Solution, cases, checklist, relations, and status. |
 | `ActionPathGuidance` | Whether the Solution gives a usable action path after the first move is recovered. |
-| `ClosureAndBoundedNonUseRecoverability` | Whether stop conditions, repair conditions, bounded non-use, and any `governing pattern for <claim/relation/boundary>` statements are recoverable. |
+| `ClosureAndBoundedNonUseRecoverability` | Whether stop conditions, repair conditions, bounded non-use, and any `governing pattern for <claim, relation, or boundary>` statements are recoverable. |
 | `SemanticKindAndNameRecoverability` | Whether names, kinds, relations, qualifiers, and claim boundaries recover the same FPF interpretation. |
-| `NeighborAuthorityAndBoundedUseFit` | Whether evidence, assurance, measurement, naming, work, gate, decision, publication, release, and project claims stay with the exact pattern that governs each claim, relation, or boundary. |
-| `EntityOfConcernPrimacyAndSemioBiasResistance` | Whether the pattern leads with its own `EntityOfConcern` and action move instead of letting description, publication, source, evidence, review talk, standard non-use warnings, precision-repair material, quality/projection evidence, package rationale, or cross-pattern reference apparatus take over. The `PrecisionRestorationProfile` supplies the collapsed diagnosis across word/head/use precision, phrase apparatus, repetition/distribution, role/carrier separation, and pattern-application ontology. This coordinate consumes that profile by lowering the value when those materials compete with the positive subject/action spine. Semio-bias is one special case when the displaced content concerns descriptions, sources, publications, notes, records, diagrams, or evidence-like artifacts. |
+| `NeighborAuthorityAndBoundedUseFit` | Whether evidence, assurance, measurement, naming, work, gate, decision, publication, release, and project claims stay with the pattern that governs each claim, relation, or boundary. |
+| `EntityOfConcernPrimacyAndSemioBiasResistance` | Whether the pattern leads with its own `EntityOfConcern` and action move instead of letting description, publication, source, evidence, review talk, standard non-use warnings, precision-repair material, quality or projection evidence, package rationale, or cross-pattern reference apparatus take over. The `PrecisionRestorationProfile` supplies the collapsed diagnosis across word, head, and use precision; phrase apparatus; repetition-and-distribution; ontic-slot clarity; description-publication-source boundary separation; and pattern-application ontology. This coordinate consumes that profile by lowering the value when those materials compete with the positive subject-and-action spine. Semio-bias is one special case when the displaced content concerns descriptions, sources, publications, notes, records, diagrams, or evidence-like publications. |
 | `PracticalUseDeltaAndHarmPrevention` | Whether the pattern changes a real reader move, prevents a named misuse, reduces a named cost, or preserves a named boundary. |
 | `UseAffordabilityAndApparatusProportionality` | Whether ordinary first use stays affordable and heavier apparatus appears only when it buys admissible use. |
 | `RepairLocalityAndChangeImpactPredictability` | Whether repairs have the smallest locus and predictable downstream impact. |
-| `ProxyForValueSubstitutionResistance` | Whether the evaluation asks what became worse when visible quality coordinates improved. |
+| `ProxyForValueSubstitutionResistance` | Whether the evaluation asks what became worse when visible quality coordinates improved, and applies `E.13` when a visible quality value, metric, review result, or release cue is being used as the practical value itself. |
 | `ClaimJustificationTraceabilityCurrentnessAndReplayability` | Whether the claim is replayable from pinned text, scope, evidence, currentness basis, limitations, status, and stop reason. |
 | `CaseCountercaseAndTransferCoverage` | Whether positive cases, near-misses, anti-cases, and transfer cases match the breadth claimed. |
-| `MaturePatternParityAndSelectedContentSufficiency` | Whether selected mature-pattern ingredients are present in the body or exact related patterns for this `EntityOfConcern` and use. |
-| `SoTABindingAndCurrentness` | Whether current best-known practice changes the pattern and has reopen/currentness discipline. |
-| `FormalClaimLegalityAndLensFit` | Whether measurement, scale, comparison, formal model, simulation, causal, mathematical, QL, or learned-lens claims are legal and bounded, or correctly absent. |
+| `MaturePatternParityAndSelectedContentSufficiency` | Whether selected mature-pattern ingredients are present in the body or related patterns for this `EntityOfConcern` and use. |
+| `SoTABindingAndCurrentness` | Whether current best-known practice changes the pattern and has reopen and currentness discipline. |
+| `FormalClaimAdmissibilityAndLensFit` | Whether measurement, scale, comparison, formal model, simulation, causal, mathematical, QL, or learned-lens claims are admissible for their stated use, bounded to the governing pattern that owns the claim, or correctly absent. |
 | `FalsifiabilityAndLoweringCondition` | Whether coordinate values, status, and stop claims say what would raise, lower, or reopen the evaluation. |
-| `CorpusEntryProjectionAndEcologyFit` | Whether ToC, `J.4`, Preface cues, cards, summaries, retrieval snippets, durable names, relations, and corpus ecology preserve the scoped quality result without becoming authority faces, stale echoes, or pattern content. Corpus-entry and projection evidence belongs in the `E.21` result, `E.19` run record, ToC/J.4, retrieval/card carrier, or other quality carrier unless the pattern of concern's own `EntityOfConcern` and user move are that projection or evaluation work. |
+| `CorpusEntryProjectionAndEcologyFit` | Whether README scenarios, ToC query cues, Preface cues, `E.11` entry-distribution loci, `I.2` expanded entry-disambiguation cases, cards, summaries, retrieval snippets, durable names, relations, and corpus ecology preserve the scoped quality result without becoming authority faces, stale echoes, or pattern content. Corpus-entry and projection evidence belongs in the `E.21` result, `E.19` run record, README, ToC, `E.11`, `I.2`, retrieval or card publication locus, or other quality evaluation locus unless the pattern of concern's own `EntityOfConcern` and user move are that projection or evaluation work. |
 | `EvolutionFrontAndRefreshDiscipline` | Whether variants, fronts, archives, refresh windows, and smallest-reopen rules preserve open-ended evolution without endless polishing. |
 
-Constraint, harm, safety, security, compliance, deontic, self-application, recursion, and high-assurance questions do not add a second coordinate family. Evaluate them through the coordinate that owns the content: related-pattern authority, traceability, formal legality, falsifiability, affordability, corpus ecology, or evolution/refresh.
+Constraint, harm, safety, security, compliance, deontic, self-application, recursion, and high-assurance questions do not add a second coordinate family. Evaluate them through the coordinate that owns the content: related-pattern authority, traceability, formal-claim admissibility, falsifiability, affordability, corpus ecology, evolution, or refresh.
 
-**Coupled-flow unity/separation for pattern quality.** An `E.21` run evaluates a `PatternOfConcernRef` inside a development, refresh, or admission flow. Another flow may make the same pattern a pattern of concern for a different role, for example a practitioner selecting and using it, a reviewer applying it to another text, or a later evaluator reopening it. One `TransductionGraph` may join pattern development, pattern use, use-found evaluation, and repair or refresh flows through transfer, feedback, return, edition-change, or projection relations. Keep three roles distinct in each sentence: the pattern as concern of the current flow, the intended reader addressed by the pattern, and the pattern's own primary `EntityOfConcern` inside its Problem/Solution/guidance. `E.21`, `E.19`, handoffs, ledgers, ToC/J.4/retrieval checks, and landing evidence are checking operations or carriers in the development or evaluation flow. They can cause edits to the pattern, but they are not automatically user-facing content for the role addressed by the pattern. `DesignRunTag` stays on the subject-context, claim, work, trace, or artifact relation inside the TGA graph; it does not decide whether a pattern is current, obsolete, under development, or being used. Treat FPF pattern development as the local pilot case: quality-loop proof changes the pattern through edits, not by being copied into the pattern.
+**Coupled-flow unity and separation for pattern quality.** An `E.21` run evaluates a `PatternOfConcernRef` inside a development, refresh, or admission flow. Another flow may make the same pattern a pattern of concern for a different role, for example a practitioner selecting and using it, a reviewer applying it to another text, or a subsequent evaluator reopening it. One `TransformationFlowStructure` may join pattern development, pattern use, use-found evaluation, and repair or refresh flows through transfer, feedback, return, edition-change, or projection relations. Keep three roles distinct in each sentence: the pattern as concern of the current flow, the intended reader addressed by the pattern, and the pattern's own primary `EntityOfConcern` inside its Problem, Solution, or guidance. `E.21`, `E.19`, handoffs, ledgers, README, ToC, `E.11`, `I.2`, retrieval checks, and landing evidence are checking operations or evidence loci in the development or evaluation flow. They can cause edits to the pattern, but they are not automatically user-facing content for the role addressed by the pattern. `DesignRunTag` stays on the subject-context, claim, work, trace, publication-form relation, or source relation inside the transformation-flow structure; it does not decide whether a pattern is current, obsolete, under development, or being used. Treat FPF pattern development as the local pilot case: quality-loop proof changes the pattern through edits, not by being copied into the pattern.
 
-#### E.21:4.4a - Frequent 3/4/5 calibration points
+#### E.21:4.4a - Frequent value-3, value-4, and value-5 calibration points
 
 These rows calibrate common disagreements. They do not replace the coordinate definitions above.
 
 | Coordinate family | 3 is typical when | 4 is typical when | 5 is typical when |
 |---|---|---|---|
-| `WorkingSituationAndUseBoundaryRecognizability` | The use situation is recoverable but late, abstract, or missing harm/payoff/non-use detail. | The situation, first move, harm, payoff, and non-use are early and clear. | Early recognition is reinforced by a filled or replayable first-use slice showing that a cold practitioner can enter correctly. |
+| `WorkingSituationAndUseBoundaryRecognizability` | The use situation is recoverable but late, abstract, or missing harm, payoff, or non-use detail. | The situation, first move, harm, payoff, and non-use are early and clear. | Early recognition is reinforced by a filled or replayable first-use slice showing that a cold practitioner can enter correctly. |
 | `EntityOfConcernAndClaimScopeStability` | The primary object is named but related record, evidence, lens, or project claims keep pulling the scope. | The primary `EntityOfConcern` and claim scope stay stable, with bounded related-pattern material. | Scope stability is reinforced across title, recognition text, Solution, worked or replayable case material, checklist, relations, and non-use without any local apparatus stealing attention. |
 | `ActionPathGuidance` | The move is named but only partly executable, or the Solution mostly assigns governing loci instead of giving this pattern's own action. | The first move and continuation are executable in this pattern's own subject terms; related-pattern statements are declarative, compact, and late. | The action path is demonstrated by a filled worked slice or equivalent replayable evidence. |
 | `ClosureAndBoundedNonUseRecoverability` | Non-use or related-pattern statements are present but not tied to stop, repair, or lowering conditions. | Stop, repair, bounded non-use, and governing-pattern statements for specific claims, relations, or boundaries are recoverable for declared use. | A worked stop, overturn, or non-use case shows how closure changes status or the next applicable pattern relation. |
-| `NeighborAuthorityAndBoundedUseFit` | Related patterns are named but some authority split remains generic, future-pattern-like, ambiguous, role-nicknamed, or too early in the Solution. | Exact related patterns and limited declarative relations are clear enough for declared use and do not replace the pattern's own content. | Related-pattern authority is replayable across examples, relations, and overread cases, with pattern application and authority kept explicit. |
-| `EntityOfConcernPrimacyAndSemioBiasResistance` | The pattern is about its object but one or more precision-restoration layers lead or leak into the pattern in a developer/reviewer/evaluator role. | The pattern leads with its own object and action path; auxiliary material is compact, declarative, and late; role/carrier/locus/flow/status words are used only when they add a real kind, relation, evidence value, or user move; quality/projection evidence about the pattern stays outside the pattern. | The primary object and action spine are first recoverable across recognition text, Solution, cases, and checks even when auxiliary material is present, and any precision-restoration or quality/projection material is in its proper carrier rather than in the pattern. |
+| `NeighborAuthorityAndBoundedUseFit` | Related patterns are named but some authority split remains generic, future-pattern-like, ambiguous, role-nicknamed, or too early in the Solution. | Related patterns named by value and limited declarative relations are clear enough for declared use and do not replace the pattern's own content. | Related-pattern authority is replayable across examples, relations, and overread cases, with pattern application and authority kept explicit. |
+| `EntityOfConcernPrimacyAndSemioBiasResistance` | The pattern is about its object but one or more precision-restoration layers lead or leak into the pattern in a developer, reviewer, or evaluator role. | The pattern leads with its own object and action path; auxiliary material is compact, declarative, and late; role, slot, publication-form, source, locus, flow, and status words are used only when they add a real kind, relation, evidence value, or user move; quality or projection evidence about the pattern stays outside the pattern. | The primary object and action spine are first recoverable across recognition text, Solution, cases, and checks even when auxiliary material is present, and any precision-restoration, quality, or projection material is in its proper evaluation, projection, or publication locus rather than in the pattern. |
 | `PracticalUseDeltaAndHarmPrevention` | The prevented harm is named but not demonstrated. | The pattern changes a recoverable move and blocks named misuse for declared use. | A worked or near-miss case shows the practical delta, cost of the missed pattern, and prevented harm. |
 | `UseAffordabilityAndApparatusProportionality` | The first move exists but apparatus is heavy for ordinary readers. | Ordinary first use is affordable and heavier apparatus opens only when useful. | A minimal first-use example shows the thin path works before heavy apparatus. |
 | `RepairLocalityAndChangeImpactPredictability` | Repair conditions or related-pattern relations are named but downstream impact is not shown. | Repairs have local loci and predictable impact for declared use. | A worked repair or downstream-impact slice shows the smallest locus and changed related-pattern relation. |
 | `ProxyForValueSubstitutionResistance` | Proxy risks are named but "what got worse" is not applied. | The pattern blocks visible proxy substitutions and asks what worsened. | A proxy-failure case shows a visible improvement damaging intended value, and the pattern prevents that stop. |
-| `ClaimJustificationTraceabilityCurrentnessAndReplayability` | Fields or sources exist but replayability/currentness basis is incomplete. | The claim can be replayed from pinned text, evidence, currentness basis, status, and stop reason. | A filled evidence/currentness slice shows how the claim is replayed and when it reopens. |
+| `ClaimJustificationTraceabilityCurrentnessAndReplayability` | Fields or sources exist but replayability and currentness basis are incomplete. | The claim can be replayed from pinned text, evidence, currentness basis, status, and stop reason. | A filled evidence and currentness slice shows how the claim is replayed and when it reopens. |
 | `CaseCountercaseAndTransferCoverage` | Archetypes are listed, but no filled worked case or near-miss exercises the claim. | At least one filled worked case plus a near-miss or anti-case covers the declared use. | Heterogeneous cases, countercases, and transfer slices cover the breadth claimed. |
-| `MaturePatternParityAndSelectedContentSufficiency` | Mature comparators are named or implied, but selected mature ingredients are not discharged by value. | Mature comparators are named and selected ingredients are discharged by value in the body or exact related patterns. | Mature parity is shown across reinforcing body sections, related patterns, omissions, cases, and lowering conditions without copying irrelevant apparatus. |
-| `SoTABindingAndCurrentness` | Sources are relevant and not decorative, but currentness, source-use status, or reopen conditions are compact or incomplete. | Load-bearing sources state adopt/adapt/reject, content mutation, currentness window, and reopen condition. | The pattern compares current best-known practice against popular, official, or lineage alternatives and carries the resulting source decisions into solution, cases, boundaries, and refresh. |
-| `FormalClaimLegalityAndLensFit` | Formal, scale, lens, or measurement terms are bounded but not exercised. | Formal/lens/measurement claims are legal, bounded, and governed by exact related patterns when the pattern makes those claims. | A worked formal/lens/scale comparison shows what is preserved, lost, admissible, and not proved. |
-| `FalsifiabilityAndLoweringCondition` | Stop, waiver, or non-use fields exist, but lowering and reopen triggers for the main claims are mostly implicit. | The pattern states explicit lowering/reopen triggers for its main claims; named fields alone do not reach `4` unless they say what evidence change lowers, overturns, rejects, or reopens the claim. | Worked lowering or overturn cases show how values, status, or use change. |
-| `CorpusEntryProjectionAndEcologyFit` | Host text is coherent, but ToC, `J.4`, card, retrieval, monolith, or projection evidence is absent for a corpus-facing claim, or that evidence is placed anywhere in the pattern as method, note, appendix, relation, rationale, or quality-status content about the pattern. | Corpus-facing entry/projection loci are named and aligned enough for the declared use, and their evidence stays in the evaluation/result/projection carrier rather than entering the pattern. | Retrieval, stale-projection, cold-reader, or projection-update evidence shows corpus ecology stays aligned after change without leaking into the pattern. |
-| `EvolutionFrontAndRefreshDiscipline` | Reopen is delegated to related patterns or implied by source-return. | The smallest reopen locus, source/currentness trigger, or variant/front condition is explicit. | Variant/front/archive or ongoing refresh discipline is replayable for the declared use. |
+| `MaturePatternParityAndSelectedContentSufficiency` | Mature comparators are named or implied, but selected mature ingredients are not discharged by value. | Mature comparators are named and selected ingredients are discharged by value in the body or related patterns named by value. | Mature parity is shown across reinforcing body sections, related patterns, omissions, cases, and lowering conditions without copying irrelevant apparatus. |
+| `SoTABindingAndCurrentness` | Sources are relevant and not decorative, but currentness, source-use status, or reopen conditions are compact or incomplete. | Decision-governing sources state adopt, adapt, or reject disposition, content mutation, currentness window, and reopen condition. | The pattern compares current best-known practice against popular, official, or lineage alternatives and carries the resulting source decisions into solution, cases, boundaries, and refresh. |
+| `FormalClaimAdmissibilityAndLensFit` | Formal, scale, lens, or measurement terms are bounded but not exercised. | Formal, lens, and measurement claims are admissible for their stated use, bounded, and governed by the related pattern that owns the claim when the evaluated pattern makes such claims. | A worked formal, lens, or scale comparison shows what is preserved, lost, admissible, and not proved. |
+| `FalsifiabilityAndLoweringCondition` | Stop, waiver, or non-use fields exist, but lowering and reopen triggers for the main claims are mostly implicit. | The pattern states explicit lowering and reopen triggers for its main claims; named fields alone do not reach `4` unless they say what evidence change lowers, overturns, rejects, or reopens the claim. | Worked lowering or overturn cases show how values, status, or use change. |
+| `CorpusEntryProjectionAndEcologyFit` | Host text is coherent, but README, ToC, `E.11`, `I.2`, card, retrieval, monolith, or projection evidence is absent for a corpus-facing claim, or that evidence is placed anywhere in the pattern as method, note, appendix, relation, rationale, or quality-status content about the pattern. | Corpus-facing entry or projection loci are named and aligned enough for the declared use, and their evidence stays in the evaluation, result, or projection locus rather than entering the pattern. | Retrieval, stale-projection, cold-reader, or projection-update evidence shows corpus ecology stays aligned after change without leaking into the pattern. |
+| `EvolutionFrontAndRefreshDiscipline` | Reopen is delegated to related patterns or implied by source-return. | The smallest reopen locus, source or currentness trigger, or variant or front condition is explicit. | Variant, front, archive, or ongoing refresh discipline is replayable for the declared use. |
 
-For `EntityOfConcernPrimacyAndSemioBiasResistance`, do not compensate a bad `PrecisionRestorationProfile` with `NeighborAuthorityAndBoundedUseFit` or `CorpusEntryProjectionAndEcologyFit`. This is a role-based evaluation, not a lexical search: ask what role the sentence plays. Material about developing, reviewing, projecting, landing, evaluating, or proving this pattern's quality belongs in the carrier that owns that work, not in the pattern. Exact related-pattern statements can be true and still damage the pattern of concern when they appear before the pattern's own `EntityOfConcern` and action spine are recoverable. If the opening Problem frame or Solution starts with precision-restoration material before the pattern's own subject and move, this coordinate is at most `2`; if a positive action exists but the reader must traverse that material across sections to find it, it is at most `3`. Compact related-pattern statements belong in `Relations` or short late boundary rows and must preserve kind. Local boundary prose is admissible only when it states a documented local confusion and exact stop condition not already carried by the owning pattern for that specific distinction or claim boundary. Also lower `ActionPathGuidance`, `WorkingSituationAndUseBoundaryRecognizability`, `PracticalUseDeltaAndHarmPrevention`, and `UseAffordabilityAndApparatusProportionality` when the profile shows that precision-restoration issues displace first-use content.
-If the declared use is `Stable`, landing-input, release-input, external-review-ready, or another corpus-facing use, the evaluation must use evidence for corpus entry and projection coordinates. A host-only body evaluation can still evaluate the pattern body, but it cannot silently turn missing ToC, `J.4`, card, retrieval, monolith, or projection evidence into a high `CorpusEntryProjectionAndEcologyFit` value.
+For `EntityOfConcernPrimacyAndSemioBiasResistance`, do not compensate a bad `PrecisionRestorationProfile` with `NeighborAuthorityAndBoundedUseFit` or `CorpusEntryProjectionAndEcologyFit`. This is a role-based evaluation, not a lexical search: ask what role the sentence plays. Material about developing, reviewing, projecting, landing, evaluating, or proving this pattern's quality belongs in the evaluation, projection, release, or publication locus that owns that work, not in the pattern. Related-pattern statements named by value can be true and still damage the pattern of concern when they appear before the pattern's own `EntityOfConcern` and action spine are recoverable. If the opening Problem frame or Solution starts with precision-restoration material before the pattern's own subject and move, this coordinate is at most `2`; if a positive action exists but the reader must traverse that material across sections to find it, it is at most `3`. Compact related-pattern statements belong in `Relations` or short late boundary rows and must preserve kind. Local boundary prose is admissible only when it states a documented local confusion and local stop condition not already carried by the owning pattern for that specific distinction or claim boundary. Also lower `ActionPathGuidance`, `WorkingSituationAndUseBoundaryRecognizability`, `PracticalUseDeltaAndHarmPrevention`, and `UseAffordabilityAndApparatusProportionality` when the profile shows that precision-restoration issues displace first-use content.
+If the declared use is `Stable`, landing-input, release-input, external-review-ready, or another corpus-facing use, the evaluation must use evidence for corpus entry and projection coordinates. A host-only body evaluation can still evaluate the pattern body, but it cannot silently turn missing README, ToC, `E.11`, `I.2`, card, retrieval, monolith, or projection evidence into a high `CorpusEntryProjectionAndEcologyFit` value.
 
 #### E.21:4.5 - Status and stop condition
 
@@ -733,25 +2937,25 @@ An `E.21` result uses this result-bearing form:
 ```text
 E.21 result:
   Pattern of concern: <PatternOfConcernRef>
-  Declared scope/use/reader/window: <ClaimScope, IntendedUse, WorkingReaderScope, QualificationWindow>
+  Declared scope, use, reader, and window: <ClaimScope, IntendedUse, WorkingReaderScope, QualificationWindow>
   Evidence basis checked: <EvaluationEvidenceBasis>
   Status: <PatternQualityStatus>
 ```
 
 | PrecisionRestorationProfile | OverallEffect | KindRestorationCheck | Loci | AffectedCoordinates | RepairProposal |
 |---|---|---|---|---|---|
-| `<word/head/use / phrase-apparatus / repetition-distribution / role-carrier / pattern-application profile>` | `<clean | boundedLocal | lowersCoordinates | repairBeforeUse>` | `<pre/post kind, relation, slot/use-position, and not-triggered/ordinary/preserved/split/changed/blocker disposition>` | `<by-value loci or absence scope>` | `<affected coordinates or none>` | `<repair, no-repair disposition with loci, or owning locus>` |
+| `<word, head, and use; phrase-apparatus; repetition-and-distribution; ontic-slot; description-publication-source; pattern-application profile>` | `<clean | boundedLocal | lowersCoordinates | repairBeforeUse>` | `<pre-repair and post-repair kind, relation, slot or use-position, and not-triggered, ordinary, preserved, split, changed, or blocker disposition>` | `<by-value loci or absence scope>` | `<affected coordinates or none>` | `<repair, no-repair disposition with loci, or owning locus>` |
 
 | Coordinate | Value | ShortRationale |
 |---|---:|---|
-| `<all RequiredPatternQualityCoordinates rows>` | `<0..5>` | `<assigned-value basis; why not lower; why not higher or what would lower/reopen>` |
+| `<all RequiredPatternQualityCoordinates rows>` | `<0..5>` | `<assigned-value basis; why not lower; why not higher or what would lower or reopen>` |
 
 ```text
 First repair or stop: <repair | hold | local stop>
 Reopen if: <smallest changed locus or condition>
 ```
 
-Status is not assigned from a two-column table, a prose summary, a checklist count, an `E.19` pass/fail row, a table missing `ShortRationale`, a result missing the required `PrecisionRestorationProfile`, or a result missing the evidence basis needed for the values it claims. Such material can support a later evaluation, but it is not the `E.21` result. Conversely, an `E.21` status is a pattern-quality status, not a release crossing: `E.19` or the exact release/admission process still checks gate-specific carry-through, projection, monolith, packaging, authority, and non-overread conditions.
+Status is not assigned from a two-column table, a prose summary, a checklist count, an `E.19` pass or fail row, a table missing `ShortRationale`, a result missing the required `PrecisionRestorationProfile`, or a result missing the evidence basis needed for the values it claims. Such material can support a subsequent evaluation, but it is not the `E.21` result. Conversely, an `E.21` status is a pattern-quality status, not a release crossing: `E.19` or the release or admission process named by value still checks gate-specific carry-through, projection, monolith, packaging, authority, and non-overread conditions.
 
 #### E.21:4.7 - Finding and proposal rows
 
@@ -760,31 +2964,31 @@ E.21 finding:
   Pattern of concern: <PatternOfConcernRef>
   Coordinate or status affected: <coordinate | status | stop>
   Pattern locus: <section, row, example, relation, source row, projection>
-  Value or status effect: <value/status/floor/stop impact>
+  Value or status effect: <value, status, floor, or stop impact>
   Correction direction: <what should change>
   Closure test: <what changed pattern text would show>
 ```
 
-When `E.22`, `E.23`, returned-finding absorption, or `exceptionalImprovementEvaluation` asks for improvements, add proposal rows for every below-target coordinate, status weakness, stop-condition weakness, or open question that can be improved within the declared scope. One proposal may cover several coordinates only when it names all affected coordinates and the shared repair.
+When `E.22`, `E.23`, returned-finding absorption, or `exceptionalImprovementEvaluation` asks for improvements, add finding rows for every below-floor coordinate and proposal rows only for substantive non-dominated improvement opportunities inside the declared scope. Do not treat every value below `5` as a defect. For above-floor coordinates, the evaluator still searches by value when exceptional improvement is requested, but the proposal must name a content move such as stronger positive action guidance, a worked slice, case or countercase, source-currentness carry-through, mature-content discharge, relation cleanup, deletion of displaced apparatus, split of overloaded content, or another content gain. A `4` can be the correct stop value only with a checked no-proposal disposition showing why further content movement is dominated, unavailable, or outside scope.
 
 ### E.21:5 - Worked slices
 
-**Exact names, no first move.** A pattern has precise Tech names and current source rows but no first user move. `WorkingSituation...`, `ActionPathGuidance`, and `PracticalUseDelta...` fall; source currentness does not rescue ordinary use.
+**Names named by value, no first move.** A pattern has precise Tech names and current source rows but no first user move. `WorkingSituation...`, `ActionPathGuidance`, and `PracticalUseDelta...` fall; source currentness does not rescue ordinary use.
 
 **Short architecture pattern.** A compact pattern has a triage form but no worked slice and no mature-pattern comparison. It can be useful as local expert reference material, but `MaturePatternParity...` and `CaseCountercase...` stay below exceptional until selected mature content is present.
 
-**Precision-restoration profile in a non-semio pattern.** A pattern about architecture, work, system levels, method, P2W, or another non-semio `EntityOfConcern` tries to introduce the subject through a catalog of other claim kinds or objects that are outside its own subject. That catalog is unbounded because every EoC is outside infinitely many other EoCs. If copied boundary doctrine leads the Problem frame or Solution, `EntityOfConcernPrimacyAndSemioBiasResistance` falls to `2` or `3` even when every individual boundary is true. Repair by leading with this pattern's own `EntityOfConcern` and action spine, and replace copied boundary doctrine with one exact pattern id or one `governing pattern for <claim/relation/boundary>` statement unless a documented local confusion needs an exact stop condition not already carried there. If the same doctrine is spread across Problem frame, Solution, anti-patterns, checklist, and Relations, classify the aggregate under the profile's repetition/distribution layer and repair the distribution, not just each local sentence.
+**Precision-restoration profile in a non-semio pattern.** A pattern about architecture, work, system levels, method, P2W, or another non-semio `EntityOfConcern` tries to introduce the subject through a catalog of other claim kinds or objects that are outside its own subject. That catalog is unbounded because every EoC is outside infinitely many other EoCs. If copied boundary doctrine leads the Problem frame or Solution, `EntityOfConcernPrimacyAndSemioBiasResistance` falls to `2` or `3` even when every individual boundary is true. Repair by leading with this pattern's own `EntityOfConcern` and action spine, and replace copied boundary doctrine with one governing pattern id or one `governing pattern for <claim, relation, or boundary>` statement unless a documented local confusion needs an local stop condition not already carried there. If the same doctrine is spread across Problem frame, Solution, anti-patterns, checklist, and Relations, classify the aggregate under the profile's repetition-and-distribution layer and repair the distribution, not just each local sentence.
 
-**Reference apparatus before Solution content.** A pattern's first Solution paragraph assigns other patterns or related-pattern mappings before it unfolds the ontology, method, norm, worked action, or other positive solution for the pattern of concern's own `EntityOfConcern`. Even if the related pattern id is correct, `ActionPathGuidance`, `EntityOfConcernPrimacyAndSemioBiasResistance`, `PracticalUseDeltaAndHarmPrevention`, and sometimes `NeighborAuthorityAndBoundedUseFit` fall. Repair by moving discoverability to ToC/J.4, moving compact pattern-id or `governing pattern for <claim/relation/boundary>` statements to `Relations` or a late boundary row, moving architecture-placement rationale to `DRR` or architecture documents, and rewriting the Solution to answer "what do I do with this pattern's EoC?" before any statement about another pattern.
+**Reference apparatus before Solution content.** A pattern's first Solution paragraph assigns other patterns or related-pattern mappings before it unfolds the ontology, method, norm, worked action, or other positive solution for the pattern of concern's own `EntityOfConcern`. Even if the related pattern id is correct, `ActionPathGuidance`, `EntityOfConcernPrimacyAndSemioBiasResistance`, `PracticalUseDeltaAndHarmPrevention`, and sometimes `NeighborAuthorityAndBoundedUseFit` fall. Repair by moving discoverability to README, ToC, `E.11`, `I.2`, or retrieval or projection loci, moving compact pattern-id or `governing pattern for <claim, relation, or boundary>` statements to `Relations` or a late boundary row, moving architecture-placement rationale to `DRR` or architecture documents, and rewriting the Solution to answer "what do I do with this pattern's EoC?" before any statement about another pattern.
 
-**Overformalized precision.** A pattern uses correct FPF kinds, slots, references, and governing-pattern pointers so densely that the working reader cannot recover the first useful move, practical delta, or generalizing insight without doing an internal audit. Precision is then present but not usable. Lower `UseAffordabilityAndApparatusProportionality`, `WorkingSituationAndUseBoundaryRecognizability`, and sometimes `ActionPathGuidance`. Repair by keeping the exact ontology only where it carries a live FPF-governed claim, moving restoration evidence to the evaluation or DRR carrier, and adding a short worked slice or plain recognition sentence that preserves the same kind without extra apparatus.
+**Overformalized precision.** A pattern uses correct FPF kinds, slots, references, and governing-pattern pointers so densely that the working reader cannot recover the first useful move, practical delta, or generalizing insight without doing an internal audit. Precision is then present but not usable. Lower `UseAffordabilityAndApparatusProportionality`, `WorkingSituationAndUseBoundaryRecognizability`, and sometimes `ActionPathGuidance`. Repair by keeping the ontology named by value only where it carries a current FPF-governed claim, moving restoration evidence to the evaluation result or DRR, and adding a short worked slice or plain recognition sentence that preserves the same kind without extra apparatus.
 
-**QualityCarrierLeakage in the pattern.** The pattern says that corpus projection, ToC/J.4 alignment, retrieval/cold-reader evidence, monolith parity, external-review readiness, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, or another quality-carrier result is what the user should do with the pattern's `EntityOfConcern`, or records developer/reviewer/executor correspondence as if it were pattern content. The defect is not limited to `Problem frame`, `Solution`, examples, or checklist; notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, tables, and conformance rows are also parts of the pattern in hosts and the monolith. That evidence may be required for `E.21`, `E.19`, landing, or retrieval carriers, but it is not automatically a user action in the pattern of concern. Lower `EntityOfConcernPrimacyAndSemioBiasResistance`, `ActionPathGuidance`, `UseAffordabilityAndApparatusProportionality`, and `CorpusEntryProjectionAndEcologyFit` when this evidence enters the pattern. Repair by moving the evidence to the `E.21` result, `E.19` run record, ToC/J.4, card/retrieval/projection carrier, or release/landing evidence carrier, and keeping in the pattern only the user-facing move or boundary that follows from that evidence.
+**QualityEvidenceLeakage in the pattern.** The pattern says that corpus projection, README, ToC, `E.11`, or `I.2` alignment, retrieval or cold-reader evidence, monolith parity, external-review readiness, landing evidence, `PatternQualityStatus`, all-`4` or all-`5` result framing, or another quality-result locus is what the user should do with the pattern's `EntityOfConcern`, or records developer, reviewer, or executor correspondence as if it were pattern content. The defect is not limited to `Problem frame`, `Solution`, examples, or checklist; notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, tables, and conformance rows are also parts of the pattern in hosts and the monolith. That evidence may be required for `E.21`, `E.19`, landing, or retrieval loci, but it is not automatically a user action in the pattern of concern. Lower `EntityOfConcernPrimacyAndSemioBiasResistance`, `ActionPathGuidance`, `UseAffordabilityAndApparatusProportionality`, and `CorpusEntryProjectionAndEcologyFit` when this evidence enters the pattern. Repair by moving the evidence to the `E.21` result, `E.19` run record, README, ToC, `E.11`, `I.2`, card, retrieval, projection, or release or landing evidence locus, and keeping in the pattern only the user-facing move or boundary that follows from that evidence.
 
 
 **Quality table without rationale.** A result gives values but no adjacent-value rationale. Values are unsupported. Add `ShortRationale` or lower.
 
-**Goodharted improvement.** A rewrite improves source refs and proof sketches but becomes hard to use. Re-evaluate affordability, repair locality, proxy-for-value, and corpus ecology before stopping.
+**Goodharted improvement.** A rewrite improves source refs and proof sketches but becomes hard to use, or treats every non-`5` coordinate as a defect to be fixed with more apparatus. Re-evaluate affordability, repair locality, proxy-for-value, and corpus ecology before stopping. When exceptional improvement is requested, keep searching for content movement, not proof movement; record no-proposal only with loci showing that further content change is dominated, unavailable, or outside scope.
 
 ### E.21:6 - Conformance checklist
 
@@ -792,37 +2996,38 @@ When `E.22`, `E.23`, returned-finding absorption, or `exceptionalImprovementEval
 |---|---|
 | `CC-E21-1` | Recover `ClaimScope` from the governing request, `E.22` frame, campaign seam, landing check, release check, or review assignment; then name `PatternOfConcernRef`, `ClaimScope`, `WorkingReaderScope`, `IntendedUse`, `QualificationWindow`, and `EvaluationEvidenceBasis`. |
 | `CC-E21-2` | Evaluate the full `RequiredPatternQualityCoordinates` set. |
-| `CC-E21-2a` | Before assigning coordinate values, record one `PrecisionRestorationProfile` with word/head/use, phrase-apparatus, repetition/distribution, role-carrier, and pattern-application layers. A missing, grouped, or memory-only profile makes the `E.21` result incomplete. |
-| `CC-E21-3` | Use the result-bearing three-column table: coordinate, value, and `ShortRationale`; a two-column coordinate/value table is not an `E.21` result. |
+| `CC-E21-2a` | Before assigning coordinate values, record one `PrecisionRestorationProfile` with word, head, and use; phrase-apparatus; repetition-and-distribution; ontic-slot; description-publication-source; and pattern-application layers. A missing, grouped, or memory-only profile makes the `E.21` result incomplete. |
+| `CC-E21-3` | Use the result-bearing three-column table: coordinate, value, and `ShortRationale`; a two-column coordinate-and-value table is not an `E.21` result. |
 | `CC-E21-4` | Let `floorEvaluation` change floor and evidence cost only, not the coordinate set. |
 | `CC-E21-5` | Assign values from checked pattern content and named content evidence, not review, landing, popularity, praise, or absence of prior use. |
-| `CC-E21-6` | For corpus-facing values, name the checked ToC, `J.4`, card, retrieval, monolith, or projection loci, or lower the affected coordinate when those loci are missing or unchecked. |
-| `CC-E21-6a` | Keep corpus-projection, ToC/J.4 alignment, retrieval/cold-reader, monolith-parity, `PatternQualityStatus`, developer/reviewer/executor correspondence, and other quality-carrier evidence out of the pattern unless the pattern's own `EntityOfConcern` and user move are that evaluation/projection work. This is a role test, not a word-list test. If such material appears anywhere in the pattern, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, examples, tables, conformance rows, or any other host/monolith pattern section, as development, review, projection, or quality-status content about the pattern, lower `CorpusEntryProjectionAndEcologyFit`, `EntityOfConcernPrimacyAndSemioBiasResistance`, and the affected action/usability coordinates. |
+| `CC-E21-6` | For corpus-facing values, name the checked README, ToC, `E.11`, `I.2`, card, retrieval, monolith, or projection loci, or lower the affected coordinate when those loci are missing or unchecked. |
+| `CC-E21-6a` | Keep corpus-projection; README, ToC, `E.11`, and `I.2` alignment; retrieval or cold-reader evidence; monolith-parity; `PatternQualityStatus`; developer, reviewer, and executor correspondence; and other quality evidence out of the pattern unless the pattern's own `EntityOfConcern` and user move are that evaluation or projection work. This is a role test, not a word-list test. If such material appears anywhere in the pattern, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, examples, tables, conformance rows, or any other host or monolith pattern section, as development, review, projection, or quality-status content about the pattern, lower `CorpusEntryProjectionAndEcologyFit`, `EntityOfConcernPrimacyAndSemioBiasResistance`, and the affected action or usability coordinates. |
 | `CC-E21-7` | For any `5`, name the reinforcing evidence loci required by that coordinate's `5` meaning; otherwise lower the coordinate to `4` or below. |
-| `CC-E21-8` | For `MaturePatternParityAndSelectedContentSufficiency = 4` or `5`, include a compact maturity-discharge payload: comparator id, selected ingredient, current locus, and missing/lowering item if any; category lists without loci cap the coordinate at `3`. |
+| `CC-E21-8` | For `MaturePatternParityAndSelectedContentSufficiency = 4` or `5`, include a compact maturity-discharge payload: comparator id, selected ingredient, current locus, and missing or lowering item if any; category lists without loci cap the coordinate at `3`. |
 | `CC-E21-9` | Make SoTA rows adopt, adapt, or reject current practice and change the pattern. |
-| `CC-E21-10` | Keep measurement, score, scale, formal, causal, mathematical, QL, simulation, representation, or learned-lens claims under `C.16`, `A.17`, `A.18`, `A.19`, or the exact pattern that governs the claim when the evaluated pattern makes those claims. |
+| `CC-E21-10` | Keep measurement, score, scale, formal, causal, mathematical, QL, simulation, representation, or learned-lens claims under `C.16`, `A.17`, `A.18`, `A.19`, or the pattern that governs the claim when the evaluated pattern makes those claims. |
 | `CC-E21-11` | State floor satisfaction, remaining bounded non-use, and lowering or reopen conditions in any stop claim. |
 | `CC-E21-12` | Keep coordinate rationale separate from improvement proposal rows. |
-| `CC-E21-13` | Keep quality results out of project evidence, assurance, gate, work, safety/compliance, release, and publication truth claims. |
-| `CC-E21-14` | Do not raise a pattern with a bad `PrecisionRestorationProfile` through related-pattern-boundary, projection, or quality-carrier praise. When the profile shows defects before the pattern of concern's primary subject action is recoverable, or enough volume to compete with the Solution, lower `EntityOfConcernPrimacyAndSemioBiasResistance` and the affected action/usability coordinates; do not offset that loss with generic related-pattern-boundary praise or correct corpus projection evidence. |
+| `CC-E21-13` | Keep quality results out of project evidence, assurance, gate, work, safety, compliance, release, and publication truth claims. |
+| `CC-E21-14` | Do not raise a pattern with a bad `PrecisionRestorationProfile` through related-pattern-boundary, projection, or quality-result praise. When the profile shows defects before the pattern of concern's primary subject action is recoverable, or enough volume to compete with the Solution, lower `EntityOfConcernPrimacyAndSemioBiasResistance` and the affected action and usability coordinates; do not offset that loss with generic related-pattern-boundary praise or correct corpus projection evidence. |
+| `CC-E21-15` | Keep ordinal values as measurement results, not repair targets. Below-floor values require findings or repair. Values at or above the floor receive proposal rows only for concrete non-dominated content opportunities when improvement is requested; a non-`5` value is not automatically a defect. No proposal may raise a value by adding quality proof, guards, relation catalogues, or process evidence that worsens use, affordability, locality, ecology, or the positive subject-and-action spine. A no-proposal disposition must name checked loci and why no substantive content move remains. |
 
 ### E.21:7 - Common anti-patterns and repairs
 
 | Anti-pattern | Repair |
 |---|---|
-| **Score illusion.** `Pattern quality = 87/100`. | Use ordinal coordinate values; no arithmetic aggregation. |
-| **Two-column table.** Coordinate/value table has no rationale. | Add `ShortRationale` for every coordinate. |
+| **Score illusion.** `Pattern quality = 87 out of 100`. | Use ordinal coordinate values; no arithmetic aggregation. |
+| **Two-column table.** Coordinate-and-value table has no rationale. | Add `ShortRationale` for every coordinate. |
 | **Floor as omission.** A floor evaluation omits maturity, SoTA, formal, corpus, or evolution coordinates. | Keep floor low if needed; evaluate all coordinates. |
 | **Scope laundering.** A landing-input, corpus-facing, `Stable`, release, or external-review request is reported under an easier use, local-only use, diagnostic pass, or evaluator-selected use. | Re-evaluate under the governing scope; if it fails, return `repairBeforeUse`, `holdForArchitectureDecision`, or `refreshNeeded` with the missed coordinates and repairs. |
 | **Administrative proxy.** "4 because landed" or "3 because not externally reviewed". | Evaluate pattern content. |
-| **Comparator-free or locus-free maturity.** `MaturePatternParity... = 4` by impression, comparator IDs only, or category list such as "frame, first move, checklist, SoTA, relations". | Name mature comparison patterns and use the maturity-discharge payload: comparator, selected ingredient, current locus, and missing/lowering item. Without that payload, cap at `3`. |
-| **Omission account as maturity.** A note explaining absence raises the value. | Add content to body/exact neighbour, lower value, or mark the current request `repairBeforeUse`. |
-| **Semio-biased maturity.** Non-semio pattern is judged by episteme/publication exemplars only. | Include non-epistemic mature comparators and score action on the primary `EntityOfConcern`. |
-| **Quality-carrier leakage.** Corpus projection, retrieval evidence, `J.4` alignment, monolith parity, `PatternQualityStatus`, developer/reviewer/executor correspondence, or other quality evidence is written anywhere in the pattern as method, problem, note, appendix, relation, rationale, or status content about the pattern. | Move the evidence to the `E.21` result, `E.19` run record, ToC/J.4, card/retrieval/projection carrier, or release/landing evidence carrier; keep only the user move or boundary that the evidence justifies. |
-| **Apparatus overwrap.** A simple FPF claim is wrapped in extra role, carrier, locus, flow, state, status, text-state, package, or process words, so the reader sees a bureaucratic apparatus instead of the object, relation, action, or boundary. | Apply `F.19`; record the scalar effect in `PrecisionRestorationProfile`, then lower the affected coordinates or name the completed repair. |
+| **Comparator-free or locus-free maturity.** `MaturePatternParity... = 4` by impression, comparator IDs only, or category list such as "frame, first move, checklist, SoTA, relations". | Name mature comparison patterns and use the maturity-discharge payload: comparator, selected ingredient, current locus, and missing or lowering item. Without that payload, cap at `3`. |
+| **Omission account as maturity.** A note explaining absence raises the value. | Add content to the body or neighboring pattern governing the claim, lower value, or mark the current request `repairBeforeUse`. |
+| **Semio-biased maturity.** Non-semio pattern is judged by episteme or publication exemplars only. | Include non-epistemic mature comparators and score action on the primary `EntityOfConcern`. |
+| **Quality-evidence leakage.** Corpus projection, retrieval evidence, README, ToC, `E.11`, or `I.2` alignment, monolith parity, `PatternQualityStatus`, developer, reviewer, or executor correspondence, or other quality evidence is written anywhere in the pattern as method, problem, note, appendix, relation, rationale, or status content about the pattern. | Move the evidence to the `E.21` result, `E.19` run record, README, ToC, `E.11`, `I.2`, card, retrieval, projection, or release or landing evidence locus; keep only the user move or boundary that the evidence justifies. |
+| **Apparatus overwrap.** A simple FPF claim is wrapped in extra role, publication-form, locus, flow, state, status, text-state, package, or process words, such as `current pattern text`, `current object`, `active record`, `field used in the current pass`, or route-like pattern talk where no real state or use-position is named, so the reader sees a bureaucratic apparatus instead of the object, relation, action, or boundary. | Apply `F.19`; record the scalar effect in `PrecisionRestorationProfile`, then lower the affected coordinates or name the completed repair. |
 | **Apparatus maximalism.** Every pattern gets evidence cards, telemetry, archives, and companions. | Keep evidence compact unless it changes value, status, stop, or candidate comparison. |
-| **Quality veto theatre.** "Not ready" has no exact E.21 locus, evidence, status effect, and repair. | Rewrite as an `E.21` finding or remove the veto. |
+| **Quality veto theatre.** "Not ready" has no E.21 coordinate named by value, evidence, status effect, and repair. | Rewrite as an `E.21` finding or remove the veto. |
 
 ### E.21:8 - Consequences
 
@@ -844,10 +3049,10 @@ The mature-pattern parity coordinate is deliberately strict because recent short
 
 | Claim | Source-use disposition | Concrete E.21 effect |
 |---|---|---|
-| Feedback connects desired state, current state, and next action. | Adopt from feedback-for-learning lineage such as Sadler and Hattie/Timperley. | `ShortRationale` and proposal rows are separated: value now, next improvement when requested. |
-| Questions and metrics derive from the goal. | Adopt from GQM-style measurement discipline. | Scope, reader, use, and window precede coordinate values. |
-| Multi-criteria improvement needs explicit trade-offs. | Adopt from MCDA, Pareto, ATAM, and current QD/OEE lines. | Dominance comparisons and protected trade-offs replace one-score closure. |
-| Proxy optimization can make intended value worse. | Adopt from Goodhart/proxy-risk lines. | `ProxyForValueSubstitutionResistance` and stop condition ask what got worse. |
+| Feedback connects desired state, current state, next action, and available tactics. | Adopt from formative-assessment lineage such as Sadler and Hattie and Timperley. | `ShortRationale` and proposal rows are separated: value now, next improvement when requested, and checked no-proposal when no substantive move remains. |
+| Questions and metrics derive from the goal. | Adopt from GQM and GQM+Strategies measurement discipline. | Scope, reader, use, and window precede coordinate values. |
+| Multi-criteria improvement needs explicit trade-offs. | Adopt from MCDA, Pareto, ATAM, and current QD and OEE lines. | Dominance comparisons and protected trade-offs replace one-score closure. |
+| Proxy optimization can make intended value worse. | Adopt from Goodhart and Campbell, management-accounting surrogation, reward-hacking, and specification-gaming lines. | `ProxyForValueSubstitutionResistance`, `PrecisionRestorationProfile`, `E.13`, and stop condition ask what got worse; `5`, all-`5`, discharge count, and proof apparatus cannot replace pattern content or pragmatic value. |
 | Evaluation results are not governance, safety, or compliance proof. | Adopt as non-overread boundary from current evaluation-governance practice. | Neighbour authority and status boundaries keep project claims outside `E.21`. |
 
 ### E.21:11 - Relations
@@ -860,11 +3065,13 @@ The mature-pattern parity coordinate is deliberately strict because recent short
 | `E.19` | Runs admission and refresh review profiles; it can consume or request `E.21`, but it does not assign `E.21` coordinate values or replace the required pattern-quality table. |
 | `E.22` | Frames purpose, floor, trade-offs, and proposal expectation before an evaluation. |
 | `E.23` | Runs repeated improvement using `E.21` values and stop meanings for pattern versions. |
+| `E.13` | Governs pragmatic utility and proxy-to-value alignment when quality values, visible measures, review results, all-`5` result framing, or release cues are used as practical value, target, incentive, gate, or improvement proof. |
+
 | `E.9.DA` | Evaluates upstream `DRR` decision adequacy when pattern-quality defects trace to decisions. |
 | `C.16`, `A.17`, `A.18`, `A.19` | Govern scale, coordinate, and measurement legality. |
 | `F.18`, `E.10`, `A.6.P`, `C.2.P`, `C.16.P`, `C.16.Q` | Govern naming and wording-use precision when quality defects are lexical or ontological. |
 | `A.10`, `B.3`, `A.20`, `A.21`, `A.15` | Govern project evidence, assurance, local CV state, gates, and work authority. |
-| `J.4` and `E.11` | Govern entry and projection cues; `E.21` supplies only the scoped quality result. |
+| `E.11` and `I.2` | Govern entry-distribution and expanded entry-disambiguation cues; `E.21` supplies only the scoped quality result. |
 
 ### E.21:End
 
@@ -874,7 +3081,7 @@ Status: Core.
 
 ### E.22:1 - Problem frame
 
-Use `E.22` when someone is about to ask for a quality evaluation, quality review, returned-finding absorption, improvement proposal, or next-move hypothesis over an exact object version, and the question needs to say what kind of evaluation is wanted before the evaluator starts.
+Use `E.22` when someone is about to ask for a quality evaluation, quality review, returned-finding absorption, improvement proposal, or next-move hypothesis over an object version named by value, and the question needs to say what kind of evaluation is wanted before the evaluator starts.
 
 `E.22` frames the question. It does not evaluate the object. The values, coordinates, statuses, and stop meanings come from the named object-under-improvement evaluation: for example `E.21` for one pattern version, `E.9.DA` for one `DRR`, `E.2.DA` for an FPF-level object, `C.25` for an engineering quality bundle, or another declared characteristic space, scale set, rubric, or review profile. `E.19` is different: it supplies an admission or refresh review gate and findings profile. Use `E.19` as the object-under-improvement evaluation only when the object being evaluated is an `E.19` review-profile result itself. For one FPF pattern version, `E.21` supplies the coordinate values and `PatternQualityStatus`; `E.19` may later check that the `E.21` result is valid, sufficient for the release seam, and not overread as project evidence, release, gate, assurance, or work.
 
@@ -898,8 +3105,8 @@ The defect is not that reviewers need more ceremony. The defect is that an unfra
 |---|---|
 | Cheap readiness vs ambitious improvement | A floor evaluation should be short; exceptional improvement needs richer proposals. |
 | Explicit purpose vs reviewer discovery | The request names the purpose, while the reviewer can still report important unasked questions. |
-| Evaluation vs next move | A useful evaluation may suggest a next move, but the suggestion remains a hypothesis until the exact pattern that governs the claim, relation, or boundary is applied. |
-| Multi-coordinate gain vs Goodhart risk | Raising one visible value can damage usability, affordability, locality, source preservation, or corpus ecology. |
+| Evaluation vs next move | A useful evaluation may suggest a next move, but the suggestion remains a hypothesis until the pattern that governs the claim, relation, or boundary is applied. |
+| Multi-coordinate gain vs Goodhart risk | Raising one visible value can damage usability, affordability, locality, source preservation, or corpus ecology; use `E.13` when the visible value or metric is being treated as the intended value itself. |
 | Proposal portfolio vs selected result | Several candidate improvements may be useful without becoming a selected set, pool policy, front insertion, parity, or refresh result. |
 
 ### E.22:4 - Solution
@@ -917,12 +3124,12 @@ The defect is not that reviewers need more ceremony. The defect is that an unfra
 | `DeclaredQualityFloor` | Minimum acceptable coordinate or status floor when the frame declares a floor claim. |
 | `DesiredImprovementAim` | Requested movement beyond the floor when improvement beyond the floor is requested. |
 | `TradeoffProtectionSet` | Qualities that must not silently worsen while visible values improve. |
-| `ExpectedEvaluationEvidenceBasis` | Evidence loci the named evaluation must check or name for the requested purpose: object version, corpus/projection loci, source-currentness loci, comparator loci, worked cases, returned findings, or exact missing loci. |
+| `ExpectedEvaluationEvidenceBasis` | Evidence loci the named evaluation must check or name for the requested purpose: object version, corpus/projection loci, source-currentness loci, comparator loci, worked cases, returned findings, or missing loci named by value. |
 | `ExpectedQualityEvaluationResultForm` | The result-row shape required by the named evaluation, including coordinate/value/short-rationale rows, mandatory attention-discharge profiles such as `E.21` `PrecisionRestorationProfile`, and any evidence-locus or coordinate-specific payload fields. For `E.21`, this profile collapses word/head/use, phrase-apparatus, repetition/distribution, role-carrier, and pattern-application layers into affected-coordinate effects. |
 | `QualityReviewFindingRow` | Actionable row for a returned finding, expected movement, correction direction, and closure test. |
 | `KindRestorationCheck` | Required field for any finding or proposal whose correction direction changes wording, naming, or precision-restoration content: pre-repair kind/relation/slot-or-use-position/admissible use/scope, proposed post-repair kind/relation/slot-or-use-position/admissible use/scope, or `not triggered`/`ordinary prose`/`already satisfied`/`blocker` disposition with loci. |
 | `CandidateImprovementProposalPortfolio` | Bounded set of proposal rows returned by the evaluation when alternatives are useful. |
-| `NextAdmissibleMoveHypothesis` | Stop, repair, proposal, trade-off warning, outside-evaluation statement, new-frame statement, or exact governing pattern for a specific claim, relation, or boundary suggested by the evaluation. This is the proposed next improvement move, not a substitute for the evaluation result. |
+| `NextAdmissibleMoveHypothesis` | Stop, repair, proposal, trade-off warning, outside-evaluation statement, new-frame statement, or governing pattern for a specific claim, relation, or boundary suggested by the evaluation. This is the proposed next improvement move, not a substitute for the evaluation result. |
 
 These names frame and report quality evaluation. They do not select candidates, publish sets, plan work, certify evidence, approve release, or create new values.
 
@@ -940,16 +3147,17 @@ These names frame and report quality evaluation. They do not select candidates, 
 Purposes can be combined, but the result keeps them distinguishable. A floor result does not answer exceptional improvement. Absorption count is not quality movement. A proposal is not a selected work item.
 
 #### E.22:4.3 - Question frame
+An improvement aim is not a command to make every coordinate exceptional. A `5` is assigned only by the named evaluation after the changed object earns it. The frame may ask for substantive non-dominated proposals that could move named coordinates toward exceptional expression, but it must also allow `no proposal` or `stay at current value` when every plausible change would add apparatus, proof prose, boundary catalogues, or process evidence while damaging protected qualities. That no-proposal result needs checked loci; it is not a cheap refusal to improve.
 
 ```text
 QualityEvaluationQuestionFrame:
-  Object version under quality evaluation: <exact object version>
+  Object version under quality evaluation: <object version named by value>
   Object-under-improvement evaluation: <exact evaluation>
   Evaluation purpose selection: <floor | exceptional | tradeoff | proposal | open-question | absorption | combined>
   Declared quality floor: <floor and scope, or evaluation default>
   Desired improvement aim: <floor-only | raise toward exceptional | compare variants | propose candidate changes | discover questions | absorption impact>
-  Protected trade-offs: <usability | affordability | locality | corpus ecology | neighbour fit | source preservation | other exact property>
-  Expected evidence basis: <object, corpus, source, comparator, worked-case, returned-finding, projection, or exact missing loci required by the named evaluation and purpose>
+  Protected trade-offs: <usability | affordability | locality | corpus ecology | neighbour fit | source preservation | other property named by value>
+  Expected evidence basis: <object, corpus, source, comparator, worked-case, returned-finding, projection, or missing loci named by value required by the named evaluation and purpose>
   Expected result form: <named evaluation's result-row shape | finding rows | proposal rows | trade-off table | open-question list | absorption-impact account | next-move hypotheses>
   Non-use boundary: <what this result must not decide, certify, publish, plan, execute, or prove>
 ```
@@ -974,7 +3182,7 @@ QualityReviewFindingRow:
   Closure test: <what evidence would close the row>
 ```
 
-A proposal row uses the same shape plus expected trade-offs and the exact governing pattern for any outside claim, relation, or boundary when needed. One edit may close several rows, but each row keeps its own disposition and closure evidence.
+A proposal row uses the same shape plus expected trade-offs and the governing pattern for any outside claim, relation, or boundary when needed. One edit may close several rows, but each row keeps its own disposition and closure evidence.
 
 For wording, naming, and precision-restoration proposals, the correction direction is not "replace X with Y". It must state the recovered object kind, relation, slot or use-position when live, admissible use, and scope before and after the change, or state `not triggered`, `ordinary prose`, `already satisfied`, or `blocker` with loci. A proposal that only removes the suspicious word, that leaves the text unchanged without by-value discharge, or that narrows one kind into another without an accepted decision, is a finding, not a closed repair.
 
@@ -984,7 +3192,7 @@ For wording, naming, and precision-restoration proposals, the correction directi
 |---|---|
 | `coordinateImproved` | A named coordinate or status has stronger content evidence after the change. |
 | `floorOnlyClosure` | A below-floor defect was repaired enough for the floor but not exceptional expression. |
-| `unchangedBecauseAlreadySatisfied` | The suggestion was already satisfied by value, with exact loci and the evaluation property it already satisfies. |
+| `unchangedBecauseAlreadySatisfied` | The suggestion was already satisfied by value, with loci named by value and the evaluation property it already satisfies. |
 | `tradeoffIntroduced` | A repair raised one property and damaged another. |
 | `qualityLossDetected` | The applied or proposed change lowers a value or protected quality. |
 | `outsideObjectUnderImprovementEvaluation` | The suggestion belongs under another exact evaluation or pattern. |
@@ -994,17 +3202,17 @@ The absorption result is quality movement under the object-under-improvement eva
 
 #### E.22:4.6 - OEE/NQD and proposal portfolios
 
-When the object is a candidate, archive/front member, selected set, parity report, refresh report, or declared transduction result, `E.22` can frame the quality question and return proposal rows. `C.17`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` keep authority over candidate characteristics, archive/front semantics, pool policy, selected-set publication, parity, and refresh.
+When the object is a candidate, archive/front member, selected set, parity report, refresh report, or declared transformation result, `E.22` can frame the quality question and return proposal rows. `C.17`, `C.18`, `C.19`, `G.5`, `G.9`, and `G.11` keep authority over candidate characteristics, archive/front semantics, pool policy, selected-set publication, parity, and refresh.
 
 ### E.22:5 - Worked slices
 
 **Floor evaluation.** A reviewer is asked whether one pattern is ready for ordinary use. The frame names `E.21`, purpose `floorEvaluation`, the declared floor, and the expected `E.21` result form. The result is a complete `E.21` coordinate table with `ShortRationale` and `EvaluationEvidenceBasis`, not a narrative "looks fine."
 
-**Exceptional improvement.** A pattern already passes the floor. The frame asks for non-dominated improvements toward `5` while protecting usability and related-pattern fit. The result returns proposal rows for missing worked cases and source-currentness, plus no-candidate dispositions for coordinates already strongly expressed.
+**Exceptional improvement.** A pattern already passes the floor. The frame asks for substantive non-dominated improvements for named coordinates while protecting usability and related-pattern fit. The result returns proposal rows for content moves such as missing worked cases, source-currentness carry-through, mature-comparator discharge, deletion of displaced apparatus, or relation cleanup, plus checked no-candidate dispositions for coordinates where no non-dominated content move remains. It does not ask the evaluator to make every coordinate `5`.
 
 **Absorption.** External review returns many suggestions. The frame asks for `absorptionEvaluation`. The result says which changes improved coordinates, which were already satisfied, which introduced trade-offs, and which belong outside the evaluation.
 
-**Proposal portfolio.** A candidate improvement campaign needs alternatives before editing. The frame asks for `candidateImprovementProposalEvaluation`. The result returns bounded proposal rows; selection or generation stays with the exact pattern that governs that claim and is not decided by the evaluation frame.
+**Proposal portfolio.** A candidate improvement campaign needs alternatives before editing. The frame asks for `candidateImprovementProposalEvaluation`. The result returns bounded proposal rows; selection or generation stays with the pattern that governs that claim and is not decided by the evaluation frame.
 
 ### E.22:6 - Bias annotation
 
@@ -1016,14 +3224,15 @@ The bias is bounded. `E.22` does not supply quality values, run repeated improve
 
 | Check | Requirement |
 |---|---|
-| `CC-E22-1` | Name the exact object version and object-under-improvement evaluation. |
+| `CC-E22-1` | Name the object version and object-under-improvement named by value evaluation. |
 | `CC-E22-2` | State purpose, declared floor or improvement aim, protected trade-offs, and expected result form. |
 | `CC-E22-3` | Keep the object-under-improvement evaluation as the source of values and required coordinates. |
-| `CC-E22-4` | Represent actionable returned work as row-level findings or proposal rows with expected quality movement, closure tests, and `KindRestorationCheck` when the row proposes wording, naming, or precision-restoration repair. When a relation/signature/lens slot or use-position is live, the row cites the exact governing pattern named by the evaluation or restoration result; `E.22` frames the improvement question and does not restate that ontology. |
+| `CC-E22-4` | Represent actionable returned work as row-level findings or proposal rows with expected quality movement, closure tests, and `KindRestorationCheck` when the row proposes wording, naming, or precision-restoration repair. When a relation/signature/lens slot or use-position is live, the row cites the governing pattern named by the evaluation or restoration result; `E.22` frames the improvement question and does not restate that ontology. |
 | `CC-E22-5` | For absorption, report quality impact on the changed object, not only applied/not-applied disposition. |
-| `CC-E22-6` | State a compact declarative non-use boundary when the result might be overread as decision, work, evidence, assurance, gate, release, certification, publication, parity, refresh, or selected-set authority. Keep the result on the evaluation question and name only the specific outside claim plus the exact pattern that governs it when one is needed; precision-restoration or phrase-apparatus issues belong to the named evaluation profile and `F.19`, not to a local boundary catalogue. |
+| `CC-E22-6` | State a compact declarative non-use boundary when the result might be overread as decision, work, evidence, assurance, gate, release, certification, publication, parity, refresh, or selected-set authority. Keep the result on the evaluation question and name only the specific outside claim plus the pattern that governs it when one is needed; precision-restoration or phrase-apparatus issues belong to the named evaluation profile and `F.19`, not to a local boundary catalogue. |
 | `CC-E22-7` | State what became worse when a proposed or applied improvement raises visible values. |
 | `CC-E22-8` | Send repeated improvement to `E.23` after one framed evaluation returns findings or proposals. |
+| `CC-E22-8a` | Do not frame `5`, all-`5`, or `5-defensible` as the work target. Frame below-floor repair separately from optional exceptional-improvement proposals. The optional proposal target is substantive content movement, not score proof; allow checked `no proposal` or `stay at current value` only when further change would be dominated by apparatus growth, proof theatre, or protected-quality loss. |
 | `CC-E22-9` | Name the expected evidence basis and result-row shape from the object-under-improvement evaluation; `E.22` cannot authorize omitted coordinates, missing rationales, missing mandatory attention-discharge profiles, missing `PrecisionRestorationProfile` when `E.21` is used, unchecked loci, inactive/triggered-coordinate shortcuts, scope narrowing, or a weaker result form. |
 
 ### E.22:8 - Common anti-patterns and repairs
@@ -1035,7 +3244,7 @@ The bias is bounded. `E.22` does not supply quality values, run repeated improve
 | **Frame replaces result.** The question frame names a purpose but returns prose, a two-column value table, or proposal rows without the named evaluation's result form. | Re-run the named evaluation and return its required coordinates, evidence basis, rationales, and payload fields. |
 | **Scope laundering.** The frame asks one use, but the result answers an easier, local-only, diagnostic, or evaluator-selected use. | Re-run the named evaluation under the requested use; if another use is needed, open a new frame rather than saving the current result. |
 | **Applied-count absorption.** Closure count replaces quality movement. | Re-evaluate the changed object and classify impact. |
-| **Goodharted improvement.** Visible values rise while protected qualities worsen. | Add trade-off protection and reject dominated changes. |
+| **Goodharted improvement.** Visible values rise while protected qualities worsen, or a `5` target makes the evaluator add apparatus instead of improving content. | Frame the expected movement as a substantive content move, add trade-off protection, reject dominated changes, apply `E.13` when a visible value is replacing the intended value, and require checked `no proposal` dispositions when no worthwhile content move remains. |
 | **Recommendation as decision.** A next-move hypothesis is treated as chosen work. | Open the exact decision, work, publication, parity, refresh, evidence, or assurance pattern if that claim is needed. |
 | **Lexical repair request.** A finding says only "replace this word" or "avoid that wording." | Rewrite the row as a precision-restoration finding with pre/post kind, relation, admissible use, and scope; if no kind-preserving repair is recoverable, leave it blocking. |
 
@@ -1056,10 +3265,11 @@ There is no neutral generic request when a quality result is wanted. The useful 
 | Claim | Current or retained source line | Local adoption |
 |---|---|---|
 | Quality evaluation should be multidimensional, diagnostic, and actionable. | Current rubric and long-form evaluation work, including multidimensional LLM rubric evaluation and meta-evaluation lines, treats rubric validity and actionable feedback as current problems. | Findings name evaluation effects, expected movement, correction direction, and closure tests. |
-| Feedback needs desired condition, current condition, and next action. | Hattie/Timperley and Sadler lineage, retained through current feedback-evaluation work. | The frame states floor or desired aim, current evaluation object, and expected result form. |
-| Evaluation questions must derive from purpose. | GQM lineage and current task-specific rubric evaluation work. | `QualityEvaluationPurposeSelection` precedes values. |
+| Feedback needs desired condition, current condition, next action, and evaluative tactics. | Sadler's formative-assessment line and Hattie/Timperley feedback model. | The frame states floor or desired aim, current evaluation object, expected result form, and proposal/no-proposal output. |
+| Evaluation questions must derive from purpose. | GQM and GQM+Strategies lineage. | `QualityEvaluationPurposeSelection` precedes values, evidence basis, and proposal shape. |
 | Multi-criteria improvement needs trade-offs and non-dominated alternatives. | MCDA, Pareto, ATAM lineage plus current architecture trade-off evaluation work. | `paretoTradeoffEvaluation` and `TradeoffProtectionSet` prevent one-score closure. |
-| Proxy optimization can degrade intended value. | Goodhart taxonomy and current proxy/reward/rubric failure work. | Findings ask what became worse and keep popularity, review count, and discharge count out of values. |
+| Measures used as targets can replace the intended object. | Goodhart/Campbell, management-accounting surrogation, and current proxy-failure work. | The frame separates floor repair from substantive exceptional proposals, rejects discharge count, popularity, review count, or all-`5` posture as value, and points proxy-to-value repair to `E.13`. |
+| Agents can satisfy a literal specification while missing the intended outcome. | AI safety specification-gaming and reward-hacking lines, including current LLM-judge and reward-model bias work. | `DesiredImprovementAim` names content movement and protected trade-offs; proposal rows cannot close by adding proof apparatus that only satisfies the evaluator. |
 | OEE/NQD needs proposal-shaped quality pressure before candidate change. | Current quality-diversity and open-ended exploration lines. | Proposal rows name expected quality movement before generation or selection neighbours consume them. |
 
 ### E.22:12 - Relations
@@ -1071,6 +3281,8 @@ There is no neutral generic request when a quality result is wanted. The useful 
 | `E.2.DA` | Supplies FPF Pillar-adequacy values. |
 | `E.19` | Supplies admission or refresh review profiles when that is the evaluation. |
 | `E.23` | Governs repeated improvement after framed evaluations return findings or proposal rows. |
+| `E.13` | Governs pragmatic utility and proxy-to-value alignment when framed values, visible measures, proposal counts, or all-`5` posture are being used as the intended improvement value. |
+
 | `E.10`, `A.6.P`, `C.2.P`, `F.18` | Repair load-bearing wording and names introduced by frames or findings. |
 | `C.16`, `A.17`, `A.18`, `A.19`, `C.25` | Govern characteristics, scales, measurements, characteristic spaces, and quality bundles. |
 | `C.17`, `C.18`, `C.19`, `G.5`, `G.9`, `G.11` | Govern OEE/NQD candidate, archive/front, pool, selected-set, parity, and refresh claims. |
@@ -1084,7 +3296,7 @@ Status: Core.
 
 ### E.23:1 - Problem frame
 
-Use `E.23` when an object version will be improved through repeated passes under a declared object-under-improvement evaluation. The object can be a pattern, `DRR`, FPF corpus object, engineering quality object, naming candidate, OEE/NQD candidate, archive/front member, selected set, parity report, refresh report, or declared transduction result, if an exact evaluation supplies values and stop meanings for that object kind.
+Use `E.23` when an object version will be improved through repeated passes under a declared object-under-improvement evaluation. The object can be a pattern, `DRR`, FPF corpus object, engineering quality object, naming candidate, OEE/NQD candidate, archive/front member, selected set, parity report, refresh report, or declared transformation result, if an exact evaluation supplies values and stop meanings for that object kind.
 
 Not this pattern when one direct quality evaluation is enough. Use `E.22` to frame one evaluation and then run the named object-under-improvement evaluation. Use `A.19.ECS` first if the needed evaluation characteristic space does not exist.
 
@@ -1100,6 +3312,8 @@ FPF often improves artifacts by repeated review, repair, and re-evaluation. The 
 
 The loop must also avoid the maturity-ladder trap. A floor or all-`5` result can close this loop under current use, comparison set, source state, and cost boundary; it is not proof that the object cannot improve under a new use, source, front, or payoff.
 
+The loop also fails when an ordinal value becomes a work target. `5` is an assigned result after measurement, not an instruction to add apparatus until a `5` can be defended. Below-floor values return repair work. Above-floor improvement remains a real obligation when the frame requests it, but the target is a substantive content move: stronger positive action guidance, worked slice, case/countercase, source-currentness carry-through, mature-content discharge, relation cleanup, deletion of displaced apparatus, split of overloaded content, or another named content gain. `Stay at 4` or `no proposal` is admissible only after a by-value search finds no non-dominated content move worth its cost under protected qualities.
+
 ### E.23:3 - Forces
 
 | Force | Tension |
@@ -1113,7 +3327,7 @@ The loop must also avoid the maturity-ladder trap. A floor or all-`5` result can
 
 ### E.23:4 - Solution
 
-`E.23` is the general method for repeated improvement of an object version under an exact object-under-improvement evaluation. It changes the object, re-evaluates the changed version using that evaluation's required evidence basis and result-row shape, checks trade-offs and cost, and decides whether to stop, continue, switch method family, open a new frame, or hold for exact information.
+`E.23` is the general method for repeated improvement of an object version under an object-under-improvement evaluation named by value. It changes the object, re-evaluates the changed version using that evaluation's required evidence basis and result-row shape, checks trade-offs and cost, and decides whether to stop, continue, switch method family, open a new frame, or hold for exact information.
 
 #### E.23:4.1 - Local names and kind settlement
 
@@ -1124,7 +3338,7 @@ The loop must also avoid the maturity-ladder trap. A floor or all-`5` result can
 | `ObjectUnderImprovementEvaluationRef` | Exact evaluation pattern, characteristic space, Q-Bundle, rubric, or review profile that supplies values. |
 | `LoopEvaluationEvidenceBasis` | Evidence loci checked or named for the current loop evaluation result, including missing loci that lower values. |
 | `LoopEvaluationResultForm` | Result-row shape required by the object-under-improvement evaluation for the current pass. |
-| `ImprovementAim` | Desired movement: floor repair, exceptional improvement, trade-off inspection, absorption impact, open-question discovery, source-front reach, or another exact aim. |
+| `ImprovementAim` | Desired movement: floor repair, optional exceptional improvement, trade-off inspection, absorption impact, open-question discovery, source-front reach, or another exact aim. It names desired quality movement, not a value that the repair must prove. |
 | `MethodFamilySelection` | Selected method family for the current object and evaluation. |
 | `OperationFamilySelectionSet` | Optional operation families selected because they can move the evaluation enough to justify cost. |
 | `ObjectUnderImprovementReEvaluation` | Re-run or cited result of the evaluation on the changed object version. |
@@ -1142,11 +3356,11 @@ These names belong to loop method. They do not create quality values, project ev
 For one quality-improvement loop:
 
 1. Declare `ObjectUnderImprovementRef`, object version, and `ObjectUnderImprovementEvaluationRef`.
-2. Declare `ImprovementAim`, floor or target, protected trade-offs, cost and risk account, and local stop condition.
+2. Declare `ImprovementAim`, declared floor or desired substantive quality movement, protected trade-offs, cost and risk account, and local stop condition. Do not declare `5`, all-`5`, or `5-defensible` as the work target; name the content property to improve instead.
 3. Use `E.22` to frame the first quality evaluation when the purpose is not already explicit.
 4. Run the object-under-improvement evaluation in its required result form. For one FPF pattern version, this is an `E.21` result with every required coordinate, every `ShortRationale`, the `PrecisionRestorationProfile`, evidence basis, coordinate-specific payloads, and status. A loop record, profile pass, blocker summary, two-column table, or "no blockers" note is not a substitute.
 5. Record row-atomic findings or proposal rows when work is returned. A step is closed only after its finding or proposal row is written; do not rely on memory or a later grouped summary.
-6. Apply repairs or variants to the object. When generation, selection, publication, parity, refresh, decision, planning, work, evidence, or assurance claims leave quality improvement, keep the exact pattern that governs that claim, relation, or boundary in the loop record or `Relations`. Do not let loop-method prose replace the object's positive content. For precision-restoration defects, use the exact restoration or governing pattern named by the evaluation: `E.10`, `E.10.ARCH`, `F.18`, `F.19`, or an object-specific pattern. Also record a bounded complete `KindRestorationCheck` before closing the finding: the repair must say what kind, relation, slot or use-position, admissible use, and scope were present before the edit and what kind, relation, slot or use-position, admissible use, and scope the changed text now carries when those items are live. No-op closure is admissible only as `not triggered`, `ordinary prose`, or `already satisfied` with loci; otherwise unchanged text remains a live finding. When another pattern governs the live kind, relation, claim, or position, cite that pattern; `E.23` records the repair and reruns the evaluation, it does not duplicate the restoration algorithm.
+6. Apply repairs or variants to the object. Repair below-floor findings first. When exceptional improvement is requested, search coordinate-by-coordinate for substantive content moves: better positive action guidance, a missing worked slice, case/countercase coverage, source-currentness carry-through, mature-content discharge, relation cleanup, deletion of displaced apparatus, split of overloaded content, or relocation of quality/process proof. Repairs must not add guards, boundary catalogues, relation menus, or quality proof solely to make a higher value defensible. A no-change closure is admissible only when the row gives loci and explains why no non-dominated content move is available under the protected trade-offs. When generation, selection, publication, parity, refresh, decision, planning, work, evidence, or assurance claims leave quality improvement, keep the pattern that governs that claim, relation, or boundary in the loop record or `Relations`. Do not let loop-method prose replace the object's positive content. For precision-restoration defects, use the selected restoration or governing pattern named by the evaluation: `E.10`, `E.10.ARCH`, `F.18`, `F.19`, or an object-specific pattern. Also record a bounded complete `KindRestorationCheck` before closing the finding: the repair must say what kind, relation, slot or use-position, admissible use, and scope were present before the edit and what kind, relation, slot or use-position, admissible use, and scope the changed text now carries when those items are live. No-op closure is admissible only as `not triggered`, `ordinary prose`, or `already satisfied` with loci; otherwise unchanged text remains a live finding. When another pattern governs the kind under repair, relation, claim, or position, cite that pattern; `E.23` records the repair and reruns the evaluation, it does not duplicate the restoration algorithm.
 7. Re-evaluate the changed object version through the object-under-improvement evaluation, using that evaluation's required coordinate set, evidence basis, result-row shape, short rationales, mandatory attention-discharge rows, and coordinate-specific payloads.
 8. Record what improved, what stayed floor-only, what was unchanged by value with loci, what became worse, and which rows moved outside the evaluation.
 9. Decide `stop`, `continue`, `switchMethodFamily`, `openNewFrame`, or `holdForExactInformation`.
@@ -1154,7 +3368,7 @@ For one quality-improvement loop:
 
 #### E.23:4.3 - Stop, continue, and reopen
 
-Stop when the current object version meets the declared floor or improvement aim and no feasible non-dominated proposal remains worth its cost under the current use, comparison set, source state, and protected trade-offs.
+Stop when the current object version meets the declared floor or improvement aim and no feasible non-dominated proposal remains worth its cost under the current use, comparison set, source state, and protected trade-offs. If the remaining proposal mainly makes a value easier to argue while adding apparatus or worsening use, affordability, locality, source preservation, or ecology, reject that proposal; continue searching for a substantive content move if the improvement aim is still open, and stop only with a by-value no-proposal disposition.
 
 Continue only when the next pass has an expected evaluation movement and acceptable cost/risk. Switch method when the current method family is not moving the object, is too costly, or no longer fits the evaluation. Hold when object, evaluation, authority, evidence, source condition, or comparison set is too under-specified.
 
@@ -1209,13 +3423,13 @@ For NQD/OEE, `E.23` can change one object version or candidate to improve declar
 
 ### E.23:5 - Worked slices
 
-**Affordable floor evaluation.** A pattern needs admission readiness. `E.22` frames `floorEvaluation`; `E.21` evaluates all required coordinates. If the result is admissible and no improvement aim is requested, `E.23` stays closed. If an admission, refresh, landing, or release crossing is claimed, `E.19` and the exact release/admission process still check the gate conditions; the `E.21` status is necessary quality evidence, not the gate itself.
+**Affordable floor evaluation.** A pattern needs admission readiness. `E.22` frames `floorEvaluation`; `E.21` evaluates all required coordinates. If the result is admissible and no improvement aim is requested, `E.23` stays closed. If an admission, refresh, landing, or release crossing is claimed, `E.19` and the release named by value/admission process still check the gate conditions; the `E.21` status is necessary quality evidence, not the gate itself.
 
-**Pattern exceptional improvement.** A pattern already passes floor but lacks worked slices and source-currentness. `E.22` frames exceptional improvement. `E.23` applies proposal rows, re-evaluates by `E.21`, checks what became worse, and stops locally when no non-dominated improvement remains under the declared use.
+**Pattern exceptional improvement.** A pattern already passes floor but lacks worked slices and source-currentness. `E.22` frames optional exceptional improvement for named coordinates. `E.23` searches for substantive non-dominated content moves, applies proposal rows, re-evaluates by `E.21`, checks what became worse, and stops locally only when no worthwhile content improvement remains under the declared use. The loop may stop at `4`, but only after the missing-exceptional opportunity has been searched and discharged by value; it is not a proof-building run toward all-`5`.
 
 **DRR improvement.** A `DRR` needs drafting adequacy for multi-locus authoring. `E.9.DA` supplies coordinates; `E.23` applies decision repairs and re-evaluates. The improved object is still a decision record, not prewritten pattern prose.
 
-**NQD quality-side improvement.** A generated candidate has declared `Q` components and a comparison set. `E.22` returns proposal rows. `E.23` may change the candidate and re-evaluate `Q`; archive/front insertion, selected-set publication, parity, and refresh remain under the exact pattern that governs each claim and are not quality-loop decisions.
+**NQD quality-side improvement.** A generated candidate has declared `Q` components and a comparison set. `E.22` returns proposal rows. `E.23` may change the candidate and re-evaluate `Q`; archive/front insertion, selected-set publication, parity, and refresh remain under the pattern that governs each claim and are not quality-loop decisions.
 
 ### E.23:6 - Bias annotation
 
@@ -1227,15 +3441,16 @@ The bias is bounded. One direct evaluation can close without a loop. Repetition 
 
 | Check | Requirement |
 |---|---|
-| `CC-E23-1` | Name exact object version and object-under-improvement evaluation before claiming quality movement. |
+| `CC-E23-1` | Name object version and object-under-improvement named by value evaluation before claiming quality movement. |
 | `CC-E23-2` | Use `E.22` or an equivalent frame when the evaluation purpose is not already explicit. |
 | `CC-E23-3` | Represent returned work as row-atomic findings or proposal rows with expected evaluation movement and closure tests; a step is not closed until its row is written, and grouped memory summaries do not discharge skipped rows. |
 | `CC-E23-4` | Re-evaluate the changed object version before claiming coordinate, status, `Q`, or front movement. |
 | `CC-E23-5` | Record what became worse and protected trade-offs. |
 | `CC-E23-6` | Continue only with expected evaluation movement and cost/risk reason. |
 | `CC-E23-7` | Treat all-`5`, exceptional, or front-reaching results as local loop stops, not permanent maturity endings. |
-| `CC-E23-8` | Keep candidate generation, pool policy, selected-set publication, parity, refresh, decision, planning, work, evidence, assurance, gate, release, safety, and compliance claims with the exact pattern that governs each claim, relation, or boundary. State those pattern relations declaratively in loop records or `Relations`; keep loop-method and architecture-placement prose out of the object under improvement unless that prose is the object's own user-facing content. |
-| `CC-E23-8a` | When the evaluation names a precision-restoration defect, apply the exact restoration or governing pattern named by that evaluation. For `E.21`, use its `PrecisionRestorationProfile` to decide whether the repair is word/head/use precision (`E.10`, `E.10.ARCH`, `F.18`), phrase-level plain rewriting (`F.19`), or an exact governing-pattern repair. The repair row is not closed until it includes a `KindRestorationCheck`: pre-repair kind/relation/slot-or-use-position/admissible use/scope, post-repair kind/relation/slot-or-use-position/admissible use/scope, or `not triggered`/`ordinary prose`/`already satisfied`/`blocker` disposition with loci. |
+| `CC-E23-7a` | Do not treat `5`, all-`5`, or `5-defensible` as a repair target. The loop repairs below-floor results first. Exceptional-improvement work may proceed only through non-dominated proposal rows that name the expected substantive content movement, protected trade-offs, and cost/risk. A no-proposal or stay-at-current-value disposition must show the checked loci and why every plausible content move is dominated, unavailable, or outside the declared scope. If a change would only add guards, relation catalogues, evidence theatre, or quality proof while reducing use, affordability, locality, or ecology, reject that change rather than counting it as improvement. |
+| `CC-E23-8` | Keep candidate generation, pool policy, selected-set publication, parity, refresh, decision, planning, work, evidence, assurance, gate, release, safety, and compliance claims with the pattern that governs each claim, relation, or boundary. State those pattern relations declaratively in loop records or `Relations`; keep loop-method and architecture-placement prose out of the object under improvement unless that prose is the object's own user-facing content. |
+| `CC-E23-8a` | When the evaluation names a precision-restoration defect, apply the selected restoration or governing pattern named by that evaluation. For `E.21`, use its `PrecisionRestorationProfile` to decide whether the repair is word/head/use precision (`E.10`, `E.10.ARCH`, `F.18`), phrase-level plain rewriting (`F.19`), or a governing-pattern repair. The repair row is not closed until it includes a `KindRestorationCheck`: pre-repair kind/relation/slot-or-use-position/admissible use/scope, post-repair kind/relation/slot-or-use-position/admissible use/scope, or `not triggered`/`ordinary prose`/`already satisfied`/`blocker` disposition with loci. |
 | `CC-E23-9` | Apply `E.10` to load-bearing loop names, status values, examples, stop conditions, and result wording introduced or repaired by the loop. |
 | `CC-E23-10` | Preserve the named evaluation's required evidence basis, result-row shape, short-rationale rule, mandatory attention-discharge rows, and coordinate-specific payloads in every re-evaluation. |
 
@@ -1247,8 +3462,8 @@ The bias is bounded. One direct evaluation can close without a loop. Repetition 
 | **Loop result without evaluation form.** The loop says the object improved but records only prose, applied rows, or values without the named evaluation's evidence basis. | Re-run the object-under-improvement evaluation in its required result-row shape. |
 | **Agentic retry as method law.** Repetition continues without expected movement. | Add evaluation movement, cost/risk, trade-offs, and stop/switch condition. |
 | **Operation-family creep.** Verification, memory, supervision, or search is added everywhere. | Keep only operations that can move the evaluation enough to justify cost. |
-| **Goodharted pass.** Visible values rise while protected qualities worsen. | Use trade-off inspection and reject, repair, split, or hold dominated changes. |
-| **Lexical substitution closure.** A trigger word disappears, but the replacement narrows, widens, or changes the object kind; for example a graph-shaped method/workflow cue becomes a work sequence without a selected ontology decision. | Reopen the row, recover the pre/post kind through `E.10`, `F.19`, `F.18`, or the exact governing pattern, and leave the repair blocking if the kind cannot be preserved or explicitly changed by accepted decision. |
+| **Goodharted pass.** Visible values rise while protected qualities worsen, or a non-`5` value is treated as a defect to be fixed by more apparatus. | Use trade-off inspection; apply `E.13` when the visible value is replacing the intended value; reject, delete, split, relocate, or hold dominated changes; continue searching for substantive content movement when the improvement aim is still open; record `stay at current value` only with loci showing that no non-dominated content improvement remains. |
+| **Lexical substitution closure.** A trigger word disappears, but the replacement narrows, widens, or changes the object kind; for example a graph-shaped method/workflow cue becomes a work sequence without a selected ontology decision. | Reopen the row, recover the pre/post kind through `E.10`, `F.19`, `F.18`, or the governing pattern, and leave the repair blocking if the kind cannot be preserved or explicitly changed by accepted decision. |
 | **Maturity-ceiling stop.** All-`5` is treated as end of development. | Close this loop locally and record reopen conditions. |
 | **SoTA citation as self-assignment.** Sources are cited as proof of frontier quality. | State source contributions and re-evaluate the composed result. |
 
@@ -1269,10 +3484,12 @@ The shared method is simple: change an object version, re-evaluate it by the exa
 
 | Claim | Practice or source line | Local adoption |
 |---|---|---|
-| Improvement needs desired condition, current condition, next action, and learning. | PDSA/PDCA lineage and feedback traditions. | The loop names aim, current evaluation, applied changes, re-evaluation, and stop/continue decision. |
+| Improvement needs aim, measures, changes, learning, and adaptation. | Model for Improvement/PDSA-PDCA lineage, including aim-measure-change discipline. | The loop names aim, current evaluation, applied changes, re-evaluation, learning, and stop/continue decision. |
+| Formative feedback requires more than a score. | Sadler and Hattie/Timperley feedback traditions. | The loop requires substantive proposal rows or checked no-proposal dispositions, not value-only closure. |
 | Broad adaptive loops are useful but costly. | Ralph-like current technique signal, Reflexion/Self-Refine/ReAct/LATS/SWE-agent lineage. | General adaptive methods are selectable under `C.19.1` cost/risk and re-evaluation discipline. |
 | Fixed-performer object-version optimization is a useful current line. | SkillOpt-like work with fixed performer and mutable external skill/document object. | `FixedPerformerObjectVersionUnderImprovementOptimizationFamily`, bounded change budget, held-out evaluation, rejected-change memory, and optimizer-memory separation. |
-| Multi-coordinate improvement needs trade-offs. | MCDA, Pareto, ATAM, Goodhart, and current proxy-failure work. | Re-evaluation includes what became worse and rejects dominated changes. |
+| Multi-coordinate improvement needs trade-offs. | MCDA, Pareto, ATAM, and current proxy-failure work. | Re-evaluation includes what became worse, rejects dominated changes, and applies `E.13` when the visible value under optimization starts replacing the intended value. |
+| Measures and specifications can be gamed under optimization pressure. | Goodhart/Campbell, surrogation, specification-gaming, and reward-hacking lines. | The loop forbids all-`5` targeting, separates floor repair from substantive exceptional proposals, rejects apparatus-only proof as dominated change, and opens `E.13` when the loop target becomes a proxy for value. |
 | OEE/NQD improvement is relative to declared `Q`, comparison sets, and fronts. | Current quality-diversity and open-ended exploration survey lines. | `NQDQualitySideImprovementFamily` changes object versions while OEE/NQD neighbours keep archive/front and selected-set authority. |
 | Source-bearing improvement must synthesize contributions. | Current source-currentness discipline in FPF plus source-composition practice. | The loop records contribution strata and `SourceComposedResultClaim` before claiming front reach or maintenance. |
 
@@ -1285,6 +3502,8 @@ The shared method is simple: change an object version, re-evaluate it by the exa
 | `E.21` | Supplies pattern-quality values for pattern-improvement loops. |
 | `E.9.DA` | Supplies `DRR` decision-adequacy values for `DRR` loops. |
 | `E.2.DA` | Supplies FPF Pillar-adequacy values for corpus-level loops. |
+| `E.13` | Governs pragmatic utility and proxy-to-value alignment when loop targets, quality values, metrics, or review results become substitutes for the intended value. |
+
 | `F.18` | Supplies durable-name evaluation for naming loops. |
 | `C.25`, `C.16.Q` | Govern engineering quality bundles and quality-word precision repair. |
 | `C.19.1` | Governs BLP and cost/risk comparison for method-family choice. |
@@ -1294,6 +3513,1007 @@ The shared method is simple: change an object version, re-evaluate it by the exa
 | `E.10`, `A.6.P`, `C.2.P`, `F.18` | Repair load-bearing wording and names introduced by loop records. |
 
 ### E.23:End
+
+## E.24 - U.Ontic and Ontic Introduction Discipline
+
+> **Type:** Part E FPF authoring discipline pattern
+> **Status:** Stable
+> **Normativity:** Normative unless a section is explicitly informative
+
+### E.24:0 - Use This When
+
+Use this pattern when FPF work appears to need a durable ontic: a connected ontology-architecture unit whose meaning is spread across several typed values, slots, relation positions, pattern nests, and nearby governing patterns.
+
+Typical moments:
+
+- a repeated local use frame starts behaving like a hidden object;
+- a source label or project-side expression keeps pointing to several FPF values at once;
+- a draft ToC locus names a calculus or object family, but no current pattern carries its governing meaning;
+- a subject pattern begins to carry local slot-relation doctrine that other patterns also need;
+- a proposed term would sit across one `semanticArea`, one `ontologicalNeighborhood`, and several dependent patterns.
+
+**First useful move.** Decide whether the construct is a durable ontic, a direct use of existing governing patterns, a local use frame for one bounded application family, or a source label that must remain quote-only or reduced-use.
+
+**What goes wrong if missed.** FPF grows shadow ontology. The same project concern becomes a method in one place, a mechanism in another, a record in a third, and a local checklist in a fourth. Later uses then fight symptoms instead of settling the underlying kind, slot, and governing-pattern question.
+
+**What this buys.** A durable ontic gets an explicit slot relation like `U.EpistemeSlotRelation`, or the construct is explicitly kept as a local use frame with pointers to the typed values and governing patterns that already carry the work.
+
+Main gains:
+
+- it prevents duplicate ontology: one project concern is recovered into typed FPF values and slots instead of becoming a different local object in each nearby pattern;
+- it replaces long negative catalogues with positive slot discipline: name the ontic, its slots, and the governing patterns for fillers instead of repeating "not proof, not gate, not work..." across dependent patterns;
+- it gives dependent patterns a stable head to rely on without copying the whole slot relation;
+- it separates durable ontic introduction from thin relation updates, local use frames, direct governing-pattern use, and quote-only source labels;
+- it makes wording follow ontology: after the slot relation and fillers are recovered, local words such as method, mechanism, process, morphism, construction, transformation, work, or change can name the slot or filler they actually refer to.
+
+**Not this pattern when.**
+
+- If one existing governing pattern already carries the claim, use that pattern directly.
+- If the issue is only one wording-use repair row, use `E.10` and `E.10.ARCH`.
+- If the issue is only a new or revised mechanism meaning, use `E.20`.
+- If the issue is only durable naming, use `F.18`.
+- If the issue is only a pattern publication-form or section-order matter, use `E.8`.
+
+### E.24:1 - Problem Frame
+
+Some FPF governed objects are small enough to define with one relation or one record. Others require a durable ontic. `U.Episteme` is the central example: it needs identity criteria, typed slots, slot-filling discipline, filled assignments, card and publication species, description boundary, publication-form boundary, relation to `U.Signature`, and dependent episteme-morphism and publication patterns. `C.2.1` works because it makes the small ontic slot relation explicit.
+
+The same failure recurs elsewhere. A project label such as "algorithm", "process", "model", "architecture", "service", "quality", "time", "rhythm", "change", or "source" can point to several typed FPF values. If FPF answers only by choosing a better word, the old compression returns. If FPF creates a new `U.*` kind too early, the new kind becomes a duplicate ontology over values that already have governing patterns.
+
+E.24 governs that ontic-introduction decision.
+
+### E.24:2 - Problem
+
+Without this discipline:
+
+1. **Local use frames become pseudo-kinds.** A repeated local table or record starts to look like a new FPF object even though its rows are only links to existing values.
+2. **Draft-only loci become false authorities.** A ToC row such as `C.4 Method-CAL` is cited as if it already supplied current governing text.
+3. **Pattern nests are mistaken for semantic units.** The placement label becomes the ontic, while `semanticArea` and `ontologicalNeighborhood` stay unstated.
+4. **Slot relations are copied without identity.** Several patterns list similar slots but no pattern says what identifies the ontic, which slots are required, and which dependent patterns may rely on them.
+5. **Existing typed values are duplicated.** A new head repeats `U.Method`, `U.Mechanism`, `U.WorkPlan`, `U.Work`, evidence, gate, source, or result relations under a new name.
+
+### E.24:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Ontic stability vs local use | A durable FPF ontic needs identity and slots; a local use frame only needs enough structure for one bounded application family. |
+| Reuse vs overgrowth | Dependent patterns need a stable slot relation when they rely on one; premature `U.*` growth creates another ontology. |
+| Semantic area vs pattern placement | `semanticArea` names the semantic unit; `ontologicalNeighborhood` names the applicability neighborhood; `pattern nest` is only placement. |
+| Draft citeability vs current governance | Draft ToC rows can guide investigation, but current pattern text or an accepted DRR must carry governing meaning. |
+| Naming vs ontology | F.18 can make a name better, but naming cannot decide the kind, slot relation, species, and dependent-pattern duties by itself. |
+
+### E.24:4 - Solution
+
+This pattern selects `U.Ontic` as the FPF kind for an ontic. `U.Ontic` is the `EntityOfConcern` of E.24: a connected ontology fragment whose stable identity, slots, admissible slot values, neighboring ontology units, dependent pattern obligations, and non-use boundary must be held together before FPF can use that fragment safely in action-facing patterns.
+
+Keep three objects distinct:
+
+- the `U.Ontic` being introduced or rejected;
+- the `OnticIntroductionCandidate`, which is a pattern-set architecture problem: duplicated slots, hidden slot boundaries, hidden relation boundaries, weak identity, scattered invariants, high coupling, low cohesion, or dependent patterns copying the same local ontology;
+- the publication that describes the selected ontic, usually one head pattern plus dependent patterns.
+
+The introduction decision is not the publication form. A pattern section, table, source row, or relation list may describe the ontic after the decision, but it is not evidence by itself that the pattern set needs a durable ontic.
+
+Start from the ontic, not from its description or publication. An ontic may then have:
+
+- a description episteme that describes the ontic and its slot relation;
+- a publication of that description episteme, often as a head pattern plus dependent patterns;
+- publication forms, views, examples, and source rows that help users apply it.
+
+Those are downstream of the EoC distinction. A pattern file, section, table, card, packet, review note, or publication form is not the ontic. It may describe or publish the ontic after the ontic has been selected as the object under concern.
+
+A `U.Ontic` names the braid of:
+
+- the `semanticArea` being settled: the meaning area that lets users recognize the family of claims or uses under concern;
+- the `onticSlotRelation`: the small typed slot relation that gives the ontic its identity, required and optional slots, value kinds, reference kinds, relation set, species or record forms, non-slot components, description boundary, and publication boundary;
+- the `ontologicalNeighborhood`: the current FPF patterns that carry claims about the ontic, its slots, its values, its neighboring `EntityOfConcern` uses, and its admissible neighboring uses and boundaries;
+- the governing head pattern or accepted local frame that describes the ontic when current FPF use needs a citeable description;
+- the dependent-pattern obligations that rely on that settlement without copying the whole slot relation.
+
+FPF ontology is therefore not treated here as one flat class list. It is a connected set of ontics. That prevents ontology explosion: FPF can keep a small number of durable ontology units while allowing many project `EntityOfConcern` values, source labels, project handles, role assignments, records, methods, mechanisms, work plans, descriptions, publications, and other values to appear as slot fillers inside several ontics. A value filling a slot in one ontic does not thereby become a different entity, a different `U.*` kind, or a second ontology.
+
+The `U.Ontic` decision is selected because the repeated semantic-area, ontic-slot-relation, ontological-neighborhood, and dependent-pattern braid is now itself a governed object in FPF. Without a named kind, the same architecture unit would be re-described as a semantic area, pattern nest, ontology family, local frame, slot relation, or description and publication arrangement in different places, recreating the duplicate-ontology problem E.24 is meant to prevent. With `U.Ontic`, DRRs and patterns can cite one kind for the ontology-architecture unit while still keeping each filled value under its own governing pattern.
+
+The cost is kernel growth and metamodel risk. E.24 contains that cost by making `U.Ontic` narrow. A local use frame, source label, project-side expression, recurring table, pattern nest, or draft ToC row is not a `U.Ontic` merely because it looks ontology-shaped. It becomes a `U.Ontic` only when the E.24 decision names stable identity, an ontic slot relation, selected semantic area, selected ontological neighborhood, dependent pattern obligations, existing-pattern reuse, and non-use boundary by value.
+
+Slot discipline is the governing protection. A slot-position label says which relation position or use-position is being filled. It does not create a new entity kind, and it also does not erase an already governed entity kind. A value can fill a slot in an ontic slot relation while remaining governed by its own pattern.
+
+Use this distinction:
+
+- If the name only identifies a position in the current slot relation, keep it as a `SlotKind`, relation label, or local field.
+- If the name has independent `EntityOfConcern` identity, stable identity criteria, a governing pattern, admissible use boundaries, and dependent-pattern reliance, it may remain or become a `U.*` kind after an E.24 decision.
+- If both are true, keep both levels explicit: the slot belongs to the ontic slot relation; the filler keeps its governing kind. A `methodSlot` can be filled by a `U.Method`; a `workOccurrenceSlot` can be filled by `U.Work`; an `EntityOfConcernSlot` can be filled by a `U.Entity`. The slot name does not make the filler a different entity, and the filler kind does not make the whole slot relation one super-kind.
+
+Role participation is the main stress test for this distinction. Do not write that `U.Role` is a slot, that a slot is a role, or that `U.Role` is a special case or subtype of `SlotKind`. `U.Role` remains a context-bound functional mask under the role-governing patterns; any schema that describes it is a description, not the role itself. `U.RoleAssignment` is the typed relation that binds holder, role, context, and window. That assignment relation is slot-disciplined: `holderSlot` is filled by a holon, `roleSlot` is filled by `U.Role`, `contextSlot` is filled by `U.BoundedContext`, and `windowSlot?` is filled by the current temporal-window value when that value is current for the assignment. The filled holder, role, context, and window keep their own governing kinds.
+
+Role participation therefore uses slot discipline without demoting `U.Role` to a local field and without turning every relation participant into a role. A system acting as an engineer is still the same `U.System` filling the holon-typed holder slot in an assignment such as `System#EngineerRole:EngineeringContext@Window`; the role name does not create a new system kind. A performed `U.Work` then points to that assignment through `performedBy -> U.RoleAssignment` and to the enacted way of doing through `enactsMethod -> U.Method`. If a source word such as "engineer", "reviewer", or "operator" is under repair, recover the holder, `U.Role`, bounded context, assignment relation, temporal window, work, method, and method-description values through A.2, A.2.1, and A.15 rather than minting a participation type.
+
+Specialized participation words still require care. A role-like, method-like, mechanism-like, source-like, temporal, or publication-like word may name either a slot position or a governed filler. E.24 does not settle every subject ontology by itself. It requires the author to keep the slot position and the filled value distinct, then use the governing pattern for the filled value or run a separate E.24 decision when the participation family itself appears to need a durable ontic. Ordinary phrases such as "the television plays the role of transformed object" are not enough to create `U.Role`: the television fills `transformedEntityOrStructure` in the `U.Transformation` core; it is not thereby assigned a contextual functional mask.
+
+When an existing `U.*` name appears to be only a slot-position label, run the same check explicitly. Retain the `U.*` name only if its pattern gives a standalone `EntityOfConcern`, identity criterion, and action-facing gain that cannot be reduced to "value filling this slot." Otherwise demote the use to a slot or relation label and do not keep the U-kind by inertia.
+
+Use slot-language for ontic slots. The ordinary E.24 names are `onticSlotRelation`, `SlotSpec`, `SlotKind`, `ValueKind`, `RefKind`, slot discipline, slot boundary, and relation boundary. Use `interface` only when the object under concern is actually a boundary, module interface, signature interface, mechanism interface, or architecture interface under its governing pattern. A slot relation does not become an interface because the author wants a shorter or more familiar word.
+
+Use naming patterns for durable names, not for slot relations. `F.18` governs name repair when an E.24 decision mints or changes a durable `U.*` name, reusable SlotKind head, species or record-form name, public id, Core-facing head, or cross-context label. `F.17 UTS` and Name Card material publish or update that durable name when it becomes public, Core-facing, or cross-context. UTS is not the ontic slot relation: `A.6.5` SlotSpec discipline remains the slot discipline for the ontic itself. Do not require UTS for one local use frame or one filled core unless its name becomes reusable beyond that use.
+
+Keep ontic levels separate before dependent patterns rely on the ontic.
+
+An ontic is selected when FPF needs one governed `SlotRelation`: a typed n-ary relation with `SlotSpec` discipline that keeps several different typed objects together without fusing them into one umbrella kind. The ontic is the relation architecture: it says which SlotKinds exist, what ValueKinds and RefKinds can fill them, which governing pattern owns each filler, and what claims become admissible or blocked when a filler changes. A filled use is a value assignment over that relation. Under `C.29`, that filled assignment may be viewed as a tuple for tuple reasoning, or drawn as a graph or hypergraph for dependency reasoning, but tuple, graph, and hypergraph are mathematical-lens views, not alternate ontology heads.
+
+When several partial ontologies already exist for the same project concern, E.24 does not pick one and delete the others. It selects the head ontic or local frame that can glue them: the existing objects become slot fillers, relation positions, graph-valued expressions, descriptions, publications, or neighboring governed values. This prevents duplicate ontology: a `U.Method`, `U.Work`, `U.Mechanism`, a source-local graph-position claim or current `TransformationFlowStructure` expression, role assignment, and publication can participate in one typed relation without becoming the same kind.
+
+1. **Ontic root and identity.** Name the durable ontic or accepted local frame under concern and its stable identity criterion.
+2. **Type-level `onticSlotRelation`.** State the SlotKinds, ValueKinds, RefKinds, relation set, required slots, optional-in-use slots, participation slots and check slots, species or record forms when needed, non-slot components, description boundary, and publication boundary. This is the reusable schema, not one filled use.
+3. **Filled value assignment or ordinary-use core.** Give a compact filled instance or first-use frame only when users need one concrete application shape. It fills the type-level slots; it is not a second ontology and not a competing slot relation. Under `C.29`, that filled assignment may be viewed as a tuple when tuple reasoning is current.
+4. **Description episteme and publication.** Claims about the ontic, its slots, its slot fillers, or relations among those values use `C.2.1`; a pattern section, table, diagram, publication, card, or view may describe the ontic, but it is not the ontic.
+5. **Participation slots, check slots, and relation references.** Method, mechanism, work, evidence, source, gate, result, temporal adequacy, math lens, publication, and other typed values may be fixed slot positions in an ontic when claims about the ontic change admissible use, support, identity, responsibility, enactment, observation, modeling, permission, acceptance, refresh, or dependent-pattern obligations when those fillers change. They are not identity slots unless the ontic identity criterion explicitly depends on them.
+
+Use these criteria when deciding whether a possible slot belongs to the ontic slot relation:
+
+1. **Claim-impact.** A claim about the ontic becomes stronger, weaker, blocked, differently evidenced, or differently usable when the slot filler changes.
+2. **Stable participation relation.** The filler specifies, constrains, enables, enacts, observes, models, times, evidences, publishes, authorizes, accepts, refreshes, or otherwise participates in the ontic through a stable relation.
+3. **Duplicate-ontology resistance.** Leaving the slot outside would make dependent patterns copy negative catalogues, local tables, or shadow kinds.
+4. **Kind preservation.** Including the slot lets the filler keep its governing pattern instead of fusing several kinds into one umbrella value.
+5. **First-use burden.** Including the slot gives a bounded disposition check; it does not force a full neighboring-pattern application unless the current claim depends on that value.
+
+The `?` marker or optional-in-use status does not mean "weakly belongs to the ontic." It means that every use considers the slot and records a disposition, while only some uses recover or assert a filler. Under open-world discipline, an unfilled slot means unknown, not recovered, not asserted, or not current for this claim; it does not assert that no such value exists.
+
+Not every ontic needs every named layer. Add a named signature or kind level only when dependent patterns must rely on slot constraints across species or morphisms. Add a named filled-value assignment only when patterns need a publication-form-agnostic filled value; use C.29 tuple-view language only when tuple reasoning is current. Add named card, view, or publication species only when holonic working forms, views, or publication forms are themselves governed by the ontic. Name attached or non-slot components only when common adjacent structures must stay recoverable while remaining outside the ontic identity.
+
+Keep annotation proportional. E.24 requires source-ontology recovery only for wording that can change the ontic, slot, filled value, governing pattern, admissible use, or dependent-pattern obligation. If a domain sentence already preserves those values, do not replace it with a typed paraphrase merely to show that an ontic exists.
+
+This differs from pure ontology engineering because FPF patterns are action-facing: they help an engineer-manager decide what can be done, claimed, relied on, repaired, compared, or stopped in a problem situation. Ontic settlement supplies the object discipline that makes those actions intelligible. It says which objects and relations the pattern acts with, while the subject pattern still carries the practical move, boundary, evidence, and consequence.
+
+Precision restoration uses the same discipline without turning it into lexical style. First recover the ad hoc ontic implied by the source situation: which meaning area, candidate object of concern, slots, neighboring patterns, and typed values are being compressed by the wording or source-side situation. Then repair toward the normative FPF ontic and linked typed values when such an ontic exists. If no normative ontic exists, use the direct governing patterns, keep the frame local, or open an E.24 ontic-introduction decision.
+
+E.24 is the governing description pattern for `U.Ontic`. In that sense it is the ontic-of-ontics pattern: it describes the `U.Ontic` EoC, its slot relation, and its decision discipline. That self-application is allowed only under the same checks it imposes on other ontics; it is not a license for every local ontology-shaped bundle to become a `U.*` kind.
+
+E.24 is compatible with modular ontology and ontology-design-pattern practice: modular ontology libraries and ontology design patterns show why reusable small ontology structures matter, and recent process-modeling work shows that implicit process patterns must be made explicit for reuse. E.24 is narrower and more FPF-specific: it selects when FPF should introduce a durable action-facing ontic, rather than importing an external microtheory or treating every reusable repair table as ontology.
+
+If the choice between "write an ontic" and "keep the existing pattern constellation" needs reusable scoring, build a separate evaluation `CharacteristicSpace` through `A.19.ECS`. The evaluated object is then the FPF pattern-set architecture alternative, not the ontic itself: current constellation, local frame, or durable ontic. Candidate architecture characteristics include cross-pattern coupling, subject cohesion, explicit `onticSlotRelation` and `SlotSpec` discipline, invariant recoverability, duplicate-ontology resistance, dependent-pattern thinness, change-impact locality, first-use burden, and FPF ecology fit. E.24 uses these as diagnostic pressure for the introduction decision; it does not itself become the full architecture-characteristic evaluation pattern.
+
+Do not grow E.24 by adding full publication-section rules, adequacy scales, wording-use restoration rules, or a general architecture-characteristic theory. E.24 keeps only the object split and the ontic-introduction decision needed before dependent patterns rely on a durable ontic.
+
+Use the current split this way:
+
+- use `E.24` for `U.Ontic` identity, type-level `onticSlotRelation`, semantic area, ontological neighborhood, dependent-pattern obligations, and non-use boundary;
+- use `E.24.CD` when the current problem is detection of an ontic candidate, hidden-form classification, or sufficiency rationale for deciding whether a recurring construct is a durable ontic, a local use frame, direct governing-pattern use, or source wording only;
+- use `E.24.PUB` when the current problem is the distinction among the ontic, the ontic-description episteme, the publication of that description, and publication forms such as cards, records, tables, schemas, diagrams, views, or source packets;
+- use `A.19.ECS` only when the contested question is how to construct an evaluation `CharacteristicSpace` for comparing pattern-set architecture alternatives, such as current constellation, local frame, or durable ontic.
+
+This split keeps E.24 ontic-first. Candidate detection, publication discipline, and contested evaluation remain neighboring governed objects rather than sections that make E.24 a general discovery, documentation, or scoring pattern.
+
+
+Introduce or rely on a durable FPF ontic only after the ontic-introduction decision satisfies four checks.
+
+#### E.24:4.1 - Check 1: Existing Governing Pattern Check
+
+Name the current claim under decision and ask whether an existing pattern already carries it.
+
+Use direct governing patterns first. If the case is method semantics, use `A.3.1`; if it is method description, use `A.3.2`; if it is mechanism meaning, use `A.6.1` and `E.20`; if it is work planning or dated work, use `A.15.2` or `A.15.1`; if it is evidence, gate, source, assurance, decision, release, or publication use, use that governing pattern.
+
+Do not introduce a durable ontic only because several patterns are near each other or because one source word appears often.
+
+#### E.24:4.2 - Check 2: Stable Identity Test
+
+A durable ontic must have stable identity beyond one repair pass.
+
+Ask:
+
+1. What is the primary `EntityOfConcern`?
+2. What changes the identity of this ontic?
+3. What does not change identity, even if the publication form, notation, view, or local record changes?
+4. Which bounded context is required for identity?
+5. Which dependent patterns may rely on that identity?
+
+If those questions cannot be answered, keep the construct as a local use frame or direct governing-pattern use.
+
+#### E.24:4.3 - Check 3: Typed Slot Relation Test
+
+A durable ontic must publish a small typed slot relation.
+
+The ontic-introduction decision states:
+
+One-screen first-use card:
+
+```text
+OnticIntroductionDecisionCard:
+  concern: a recurring FPF subject looks spread across several typed values or patterns.
+  decision: durable ontic | local use frame | direct governing-pattern use | source label only.
+  onticRootIfSelected: the EntityOfConcern and stable identity criterion.
+  typeLevelSlotRelation: required slots, optional-in-use slots, ValueKinds, RefKinds, and governing patterns for fillers.
+  filledAssignmentExample: one concrete assignment over the slot relation, not a second ontology.
+  publicationBoundary: pattern text, table, card, or diagram may describe the ontic; it is not the ontic.
+  blockedLocalOverread: one tempting shadow kind, duplicate ontology, or publication-as-object error.
+```
+
+Filled replay slice:
+
+```text
+OnticIntroductionDecisionCard:
+  concern: bounded change talk compresses method, work, mechanism, timing, evidence, result, and flow-structure claims.
+  decision: durable ontic selected.
+  onticRootIfSelected: `U.Transformation`, identified by transformed entity or structure, bounded context, pre-state and post-state or delta, transformation relation, and boundary condition.
+  typeLevelSlotRelation: `TransformationCore` plus linked participation slots for method, method description, mechanism, work plan, work occurrence, evidence relation, result relation, temporal aspect, and flow-structure relation; fillers keep their own governing patterns.
+  filledAssignmentExample: pump-station backup architecture change, with `A.3.4` transformation core, `A.15` method and work chain, `C.27.TA` two-release-cycle recovery timing, and evidence references plus result references only where those claims are being made.
+  publicationBoundary: `A.3.4` describes the ontic and its slot relation; a table, card, diagram, or transformation-flow view may publish that description but is not the transformation.
+  blockedLocalOverread: one "transformation" label does not make method, mechanism, work plan, performed work, evidence, and result the same typed value.
+```
+
+The full replay form is heavier:
+
+```text
+OnticIntroductionDecision:
+  ProposedOnticName:
+  ProposedConceptHead:
+  OnticAsEntityOfConcern:
+  BoundedContext:
+  StableIdentityCriterion:
+  UKindDecision:
+    verdict: selected U-kind, no U-kind, or blocked
+    selectedUKindName:
+    gain:
+    cost:
+    duplicateOntologyRisk:
+    migrationObligation:
+  SemanticAreaBaseConcept:
+  SemanticArea:
+  SemanticAreaSenseFamily:
+  OnticSlotRelation:
+    RequiredSlotKinds:
+    OptionalSlotKinds:
+    ValueKinds:
+    RefKinds:
+    RelationSet:
+    SpeciesOrRecordForms:
+    NonSlotComponents:
+    DescriptionEpistemeBoundary:
+    PublicationBoundary:
+  OntologicalNeighborhood:
+    HeadPattern:
+    DependentPatterns:
+    NeighboringGoverningPatterns:
+    DirectUsePatternsBeforeNewConcept:
+  ExistingGoverningPatternsReused:
+  DependentPatternObligations:
+  SlotPositionLabelsThatAreNotNewKinds:
+  NonUseBoundary:
+```
+
+For E.24 itself, this record is already decided: `ProposedOnticName = Ontic`, `OnticAsEntityOfConcern = connected ontology fragment under FPF settlement`, and `UKindDecision.verdict = selected U-kind` with `selectedUKindName = U.Ontic`. Other proposed ontics must still fill the record by value; they do not inherit the `U.*` decision from E.24.
+
+The slot relation must use `A.6.5` slot discipline and must not define a second slot discipline. A role-like, method-like, mechanism-like, source-like, publication-like, temporal, or architecture-like slot-position label is not a kind decision. It becomes a kind decision only when the governing pattern names that filled value by value and admits that kind.
+
+#### E.24:4.4 - Check 4: Placement and Dependent-Pattern Obligation
+
+Declare:
+
+- `semanticAreaBaseConcept`, `semanticArea`, and `semanticAreaSenseFamily`;
+- selected `ontologicalNeighborhood`;
+- pattern nest and why that placement follows the primary `EntityOfConcern`, relation, or claim;
+- first subject pattern to write;
+- dependent patterns that may rely on the slot relation;
+- draft-only or missing loci that cannot yet govern current claims;
+- names that pass `F.18`;
+- evaluation pattern for the resulting pattern or DRR, usually `E.21` for a pattern and `E.9.DA` for the DRR.
+
+If the decision selects a durable ontic, write the governing head pattern now or state the accepted stub with current named non-satisfied conformance rows. If no governing head pattern is written, do not cite the proposed ontic as governing current FPF use.
+
+#### E.24:4.5 - Local Use Frame Decision
+
+Use a local use frame when a recurring construct is useful for one bounded application family and its filled positions are already governed elsewhere.
+
+A local use frame:
+
+- names the concern, use, or relation being handled in that bounded application family;
+- links separately governed typed values without turning the link into a new `U.*` kind;
+- points each value to its governing pattern;
+- blocks one overread or shadow-kind temptation;
+- does not mint a `U.*` kind;
+- does not become a project record, evidence record, gate record, method, mechanism, work plan, or work occurrence.
+
+Precision restoration may use a local use frame in one of its slots, but the frame is not defined by repair. P2W, work planning, evidence use, gate use, architecture use, or publication use may use the same subject ontology in different slots for different practical purposes.
+
+### E.24:5 - Archetypal Grounding
+
+Use these slices as archetypes for the ontic-introduction decision. They are not a recommended progression. Each slice shows which object is being governed, which ontic or local use shape is selected, and which tempting overread is blocked.
+
+#### E.24:5.1 - Episteme as Durable Ontic
+
+`U.Episteme` passes E.24. It has stable identity, a normative `U.EpistemeSlotRelation`, required slots, optional slots, filled assignments, card and publication species, a description boundary, a publication-form boundary, and dependent patterns in C.2, A.6.2-A.6.4, and E.17. `C.2.1` is therefore the right form: a subject pattern with a small typed ontic slot relation and dependent-pattern obligations.
+
+#### E.24:5.2 - Multi-Pattern Subject Matter as an Ontic-Candidate Archetype
+
+A project phrase such as "algorithm", "process", "solver", "workflow", "system", "quality", "time", "source", or "architecture" can point to one recognizable subject that is spread across several FPF values and patterns. The point of this archetype is not that all such subjects are one kind. The point is that E.24 must decide the status of the cross-pattern subject before patterns rely on it.
+
+In this archetype, "process" and "workflow" are source-side labels until recovered. They may point to method, method description, work plan, dated work, transformation-flow structure, evidence relation, source relation, gate relation, result relation, publication relation, or another governed value. They become durable FPF ontology only through the same E.24 decision as any other proposed ontic; otherwise keep them quote-only, reduced-use, or mapped to the governing patterns that already carry the claim.
+
+The E.24 move is:
+
+1. name the candidate subject under concern;
+2. list the typed values, relation positions, and governing patterns that currently carry pieces of it;
+3. decide whether those pieces already close under direct governing patterns, whether a bounded local use frame is enough, whether a durable ontic with a head pattern and slot relation is required, or whether the apparent subject is only a source label or wording compression;
+4. if a durable ontic is selected, write or cite the governing head pattern before dependent patterns rely on it.
+
+Method, work, and change are one current stress case for this archetype. A project concern about changing, producing, selecting, deriving, controlling, maintaining, planning, performing, measuring, or carrying a result may involve `U.Method`, `U.MethodDescription`, `U.Mechanism`, formal-substrate declaration, mathematical-lens use, `U.WorkPlan`, dated `U.Work`, source-local process labels or workflow labels, transformation-flow representation, evidence relation, source relation, gate relation, result relation, publication relation, and temporal relation. That spread is an E.24 applicability signal. It does not by itself prove either "make one new ontic" or "existing constellation is enough".
+
+The same decision applies to other broad heads. A proposed `system`, `relation`, role-participation, role-assignment, slot-discipline, `characteristic space`, `temporal dynamics`, or `architecture` ontic must pass the same decision. E.24 supplies the decision form; the governing subject pattern supplies the subject ontology and source set by value.
+
+Dependent subject patterns may keep a thin cue: when one recognizable concern spans several typed values, name the current relation being made and use that relation's governing pattern. They must not copy a full negative formula, must not call a local constellation a durable ontic before the E.24 decision, and must not assign one typed value to two kinds unless a governing pattern explicitly admits that dual typing. Slot-position labels do not create alternate ontology.
+
+#### E.24:5.3 - Draft Locus as False Authority
+
+A draft ToC row or older source label may name a calculus, family, or object before current FPF has a governing pattern for it. Such a label can guide investigation, but it cannot govern current use.
+
+Example: `C.4 Method-CAL` may appear in a ToC row or older source wording. If no current pattern text carries it, it is not a governing pattern for current FPF use. Use the current patterns that govern the filled values. A Method-CAL pattern can govern other patterns only after it has its own E.24-style ontic decision, stable identity, slot relation, and dependent-pattern declaration.
+
+The same test applies to any draft-only locus. If the label has no current governing text, do not cite it as ontology. Either cite current governing patterns, keep the label as investigation context, or open an E.24 ontic-introduction decision.
+
+#### E.24:5.4 - System-Like Head Concepts
+
+`system`, `episteme`, `architecture`, `method`, `mechanism`, `temporal claim`, `dynamics`, and `change` can each appear as a broad head for many dependent FPF patterns. That breadth is not itself enough to create a durable FPF ontic. Apply E.24 before treating a broad head as current governing ontology: name the primary `EntityOfConcern`, stable identity, `onticSlotRelation`, selected `semanticArea`, selected `ontologicalNeighborhood`, dependent patterns, description boundary, and publication boundary. If those rows are missing, use the current governing patterns that already carry the claim and do not cite the broad head as if it supplied current slot discipline.
+
+#### E.24:5.5 - Mature Comparator Discharge
+
+`E.24` is mature only when its selected mature-pattern ingredients are present in the body, not only in a separate planning or evaluation note.
+
+| Comparator | Selected mature ingredient | Current E.24 locus | Lowering condition |
+| --- | --- | --- | --- |
+| `C.2.1` | stable identity plus small typed slot relation for a durable ontic | `E.24:4.2`, `E.24:4.3`, `E.24:5.1` | Lower if E.24 asks for fields but no longer asks what preserves or changes identity. |
+| `E.20` | introduction discipline for one governed subject family | `E.24:4.1`, `E.24:4.4`, `E.24:8` | Lower if mechanism-specific doctrine is copied here instead of left with `E.20`, `A.6.1`, and related patterns. |
+| `E.8` | publication-form and section-order boundary | `E.24:0`, `E.24:4.4`, `E.24:6`, `E.24:8` | Lower if E.24 starts regulating pattern format instead of the ontic-introduction decision. |
+| `E.10.ARCH` | wording-use restoration architecture that uses existing subject ontology before sending wording symptoms to the governing precision-restoration pattern | `E.24:4.1`, `E.24:4.5`, `E.24:5.2`, `E.24:7` | Lower if a local use frame is treated as a durable ontic or if a wording trigger alone creates a new ontology unit. |
+| `F.18` | durable naming after ontology is settled | `E.24:4.4`, `E.24:6`, `E.24:7` | Lower if a new name substitutes for identity, slot, and dependent-pattern settlement. |
+
+#### E.24:5.6 - Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto and Epist**, **Prag**, **Did**.
+Scope: the authoring decision for a durable ontic, direct governing-pattern use, or local use frame, not the subject matter governed by the resulting pattern.
+
+This pattern intentionally biases toward explicit identity, typed slots, and governing-pattern reuse. It resists five recurring distortions:
+
+- **shadow-kind bias:** repetition of a local use frame is mistaken for a new object;
+- **placement bias:** a pattern nest or draft ToC row is mistaken for semanticArea or governing text;
+- **name bias:** a cleaner term hides unresolved kinds, slots, and relations;
+- **semio-bias:** discussion of descriptions, publications, or review evidence displaces the ontic or subject matter being introduced;
+- **process-bias:** development-state, publication-state, evaluation-state, or process-proof status is copied into ontic or subject-matter content.
+
+The mitigation is the same in each case: recover the primary `EntityOfConcern`, stable identity, typed slot relation, selected `semanticArea`, selected `ontologicalNeighborhood`, and governing-pattern reuse before naming, placement, dependent pattern reliance, or publication form starts governing the decision.
+
+#### E.24:5.7 - Rationale
+
+FPF needs a pattern for ontic introduction because many important FPF ontology units are not one term, one field, one taxonomy branch, or one U-kind. They are small typed slot relations with identity criteria, slots, admissible values, record or publication species, dependent patterns, and action-facing use boundaries.
+
+The compactness gain is the central reason for `U.Ontic`. A taxonomy-heavy design tends to create a new type for each contextual position: reviewer, evidence reviewer, architecture reviewer, work reviewer, mechanism reviewer; method, mechanism, procedure, process, algorithm; record, evidence record, gate record, authority record. An ontic design instead keeps a small number of governed ontology units and lets many objects fill typed relation slots. A relation slot works like a parameter position in a relation-function: the value is typed and constrained by the slot, but it does not become a new kind merely because it fills that position.
+
+`U.Episteme` is the proof case inside FPF. `C.2.1` does not define epistemes by a long taxonomy of descriptions. It defines stable identity and a small slot relation: EntityOfConcernSlot, claim graph, viewpoint, reference scheme, grounding, publication-form and source boundaries, and dependent episteme patterns plus publication patterns. The same small slot relation can hold many claim kinds, descriptions, views, publications, and project cases without minting a new episteme kind for each one.
+
+Role participation is the second proof case. It is not the claim that roles are slots, slots are roles, or role is a special case of slot. `U.Role` remains useful because holons participate in contexts under contextual functional masks, and `U.RoleAssignment` remains useful because the assignment binds holder, role, context, and window before work can be enacted through that assignment. The compactness gain comes from representing `U.RoleAssignment` as a typed relation with slot positions while preserving the governing kinds of the filled holon, role, context, window, method, plan, and work values.
+
+This prevents a separate ontology for every participation name while preserving the real action-facing gain of the role patterns. "Engineer", "reviewer", "evidence reviewer", and "operator" do not become new system kinds merely because they appear in project language. They are recovered, when the case requires it, as role values and assignment relations under A.2, A.2.1, and A.15. Conversely, arbitrary relation participants such as a transformed television, an evidence target, an input, an output, a base, or a dependent are slot fillers or relation participants under their governing patterns, not `U.Role` values merely because ordinary language can say they "play a role."
+
+Without E.24, FPF ontology development oscillates between two bad moves. One move invents a new umbrella name and leaves the mixed ontology intact. The other refuses the new name but still leaves several patterns carrying duplicated local slot doctrine. E.24 gives a bounded authoring decision: use an existing governing pattern, introduce a durable ontic, keep a local use frame local, or keep the source label quote-only or reduced-use.
+The pattern is deliberately about the introduction decision. It does not define every ontic and does not become a registry of system, episteme, method, mechanism, architecture, source, quality, temporal, dynamics, or change objects. Each accepted subject matter still needs its own governing pattern or accepted local frame.
+
+#### E.24:5.8 - SoTA-Echoing and Currentness
+
+E.24 does not claim to replace ontology engineering, OWL-style formal ontology, or UFO-style foundational ontology. Its governing reason is the current FPF need for action-facing ontology compactness, plus a narrow SoTA echo:
+
+| Source family | Current lesson for E.24 | FPF decision |
+| --- | --- | --- |
+| W3C [SKOS Reference](https://www.w3.org/TR/skos-reference/), 2009, and W3C [OWL 2 Primer](https://www.w3.org/TR/owl2-primer/), 2012. | SKOS is useful for controlled vocabularies, labels, broader and narrower relations, and concept schemes; OWL shows that ontology work also needs classes, properties, individuals, axioms, and declarative semantics. | Do not present FPF ontology as one taxonomy tree. Use taxonomy relations where they fit, but introduce an ontic only when stable identity and typed slot relation are required. |
+| Modular ontology design patterns, MODL/MOMo, and commonsense ontology micropatterns, including [Shimizu and Hitzler 2024](https://arxiv.org/abs/2411.09601) and [Eells, Dave, Hitzler, and Shimizu 2024](https://arxiv.org/abs/2402.18715). | Current ontology-engineering work emphasizes reusable small ontology structures and pattern libraries, including LLM-assisted ontology engineering where modularity becomes more important, not less. | E.24 adapts the modular-pattern lesson: a durable ontic is a reusable FPF ontology unit with a governing head pattern and dependent-pattern obligations, not a local checklist copied across patterns. |
+| [Qiang 2025/2026 ontology-interoperability ecosystem](https://arxiv.org/abs/2507.12311). | Overlapping and conflicting concepts block interoperability; current approaches combine design patterns, matching and versioning, and validation across the ontology lifecycle. | E.24 prevents shadow ontology and type explosion before matching and versioning becomes a rescue operation. It asks whether a proposed head is a durable ontic, existing governing-pattern use, local use frame, or non-use. |
+| [Norouzi, Hertling, Waitelonis, and Sack 2025 process-representation ODP work](https://arxiv.org/abs/2509.23776). | Process ontologies and workflow ontologies often contain implicit design patterns; reuse suffers when those patterns are not explicit and accessible to domain experts. | E.24 uses this as a caution for any process-like or temporal subject: do not hide process, method, work, or temporal material in a local use frame. If such material needs a durable ontic, write its own slot relation and governing pattern. |
+| [Almeida, Guizzardi, Sales, and Fonseca 2026 gUFO](https://arxiv.org/abs/2603.20948); UFO and OntoUML role, relator, situation, and high-order type practice. | Current foundational-ontology work uses type typology, reification of intrinsic and relational aspects, situations, and high-order types to avoid naive taxonomic flattening. | E.24 keeps role-assignment, relation-slot, signature, interface-as-boundary, episteme and publication distinctions, and mechanism, method, and work distinctions as slot-governed ontology architecture rather than one taxonomic tree. |
+
+This SoTA echo justifies a bounded conclusion: ontic-based FPF ontology architecture gives compactness and structure compared with a taxonomy-only design when the governed subject depends on identity, relation slots, dependent patterns, and action-facing use. It does not make every modular ontology pattern an FPF ontic. External sources govern the decision only when the DRR selects their payload for the specific ontic or subject matter under decision.
+
+Use external sources when one ontic or subject matter itself depends on a source tradition. Put that source decision in the DRR and in the governing pattern for that subject matter. Do not make E.24 carry a borrowed external theory of every durable ontic.
+
+#### E.24:5.9 - Currentness and Lowering Logic
+
+Treat E.24 as current for ontic-introduction decisions only while the current FPF slot, precision-restoration, naming, and pattern-quality apparatus remain the governing source set. Lower E.24's current authority for a case when one of these changes governs that case:
+
+- a new accepted FPF pattern changes slot discipline, `EntityOfConcern` discipline, or durable-name discipline;
+- a local use frame begins to be reused as if it were a durable ontic;
+- a draft locus becomes a current pattern and changes the ontic-introduction decision;
+- dependent patterns start copying a slot relation instead of relying on the governing head pattern;
+- external source work governs the introduction method itself rather than one selected ontic or subject matter.
+
+Lower the decision before use when E.24 cannot decide among durable ontic, local use frame, existing governing-pattern use, quote-only source label, or reduced-use source label. A failed decision is not repaired by adding more fields; it is repaired by returning to `E.24:4.1` and settling which object, slot relation, semantic area, ontological neighborhood, and governing patterns actually govern the decision.
+
+### E.24:6 - Conformance Checklist
+
+| Check | Requirement |
+| --- | --- |
+| `CC-E24-1` | The authoring decision names the primary `EntityOfConcern`, bounded context, and current claim before proposing a durable ontic. |
+| `CC-E24-2` | Existing governing patterns are checked by value before a new ontic is selected. |
+| `CC-E24-3` | A durable ontic publishes stable identity criteria and says what does and does not change identity. |
+| `CC-E24-4` | A durable `onticSlotRelation` names SlotKinds, ValueKinds, RefKinds, relation set, species or record forms, non-slot components, description boundary, and publication boundary. |
+| `CC-E24-5` | The decision declares the selected `ontic` components by value: `semanticAreaBaseConcept`, `semanticArea`, `semanticAreaSenseFamily`, `onticSlotRelation`, selected `ontologicalNeighborhood`, pattern nest, and dependent-pattern obligations, without treating any of them as synonyms. |
+| `CC-E24-5a` | The pattern keeps ontic root identity, type-level `onticSlotRelation`, filled value assignment or ordinary-use core, description episteme, publication form, and neighboring relation references distinct; a filled core or neighbor list is not treated as a second ontology. |
+| `CC-E24-6` | Draft-only loci are marked non-governing until a current pattern or accepted stub carries named conformance gaps. |
+| `CC-E24-7` | A local use frame is explicitly non-`U.*`, non-ontic, and points typed values to their governing patterns. |
+| `CC-E24-8` | The selected name passes `F.18`; the name does not hide a second ontology or one umbrella for several kinds. |
+| `CC-E24-8a` | Durable `U.*` names, reusable SlotKind heads, species or record-form names, public ids, Core-facing heads, and cross-context labels use `F.18`; `F.17 UTS` and Name Card material is opened only when that name becomes public, Core-facing, or cross-context, and never replaces `A.6.5` SlotSpec discipline. |
+| `CC-E24-9` | Pattern-quality and DRR-adequacy checks stay in `E.21` and `E.9.DA`; they are not copied as user-facing ontic or subject-matter content. |
+| `CC-E24-10` | Dependent patterns state how they rely on the head ontic or local use frame without duplicating the whole slot relation. |
+| `CC-E24-11` | Slot-position labels, including role-like labels, method-like labels, mechanism-like labels, temporal labels, source labels, and publication labels, do not create alternate ontology; `U.Role` is not a SlotKind, SlotKind is not a role, and role participation uses a slot-disciplined `U.RoleAssignment` only when A.2 and A.15 role-governing patterns govern the case. |
+| `CC-E24-12` | Ontic slot talk uses slot-language (`onticSlotRelation`, `SlotSpec`, `SlotKind`, `ValueKind`, `RefKind`, slot discipline, slot boundary, relation boundary); `interface` is used only when a governing boundary, module, signature, mechanism, or architecture pattern makes interface meaning current. |
+| `CC-E24-13` | Source-ontology annotation is proportional: decision-changing kind, slot, relation, admissible-use, and governing-pattern differences are recovered, while stable domain prose is not expanded into type labels. |
+| `CC-E24-14` | Candidate detection, publication-form discipline, and contested evaluation are sent to `E.24.CD`, `E.24.PUB`, and `A.19.ECS` respectively; E.24 itself stays centered on `U.Ontic` identity, slot relation, semantic area, ontological neighborhood, and dependent-pattern obligations. |
+
+
+### E.24:7 - Common Anti-Patterns
+
+| Anti-pattern | Symptom | Repair |
+| --- | --- | --- |
+| Shadow-kind by repetition | The same local record appears in several patterns and starts being cited as an object. | Apply E.24; either write a durable ontic pattern or rename it as a local use frame. |
+| Draft locus as authority | A ToC row is cited as if it supplied current governing text. | Treat it as investigation cue only; use current governing patterns until the pattern exists. |
+| Slot list without identity | A pattern lists fields but never says what identifies the ontic. | Add stable identity criteria or lower the construct to a local use frame. |
+| Pattern nest as ontology | The numbering area is treated as the semantic unit. | Declare `semanticArea`, `ontologicalNeighborhood`, and primary `EntityOfConcern` separately. |
+| New name as solution | The repair invents a smoother term while the typed values remain mixed. | Recover kinds, slots, semantic area, and ontological neighborhood first; name only after the ontology is settled. |
+| Slot-position kind inflation | A role-like, method-like, temporal, source, or publication position receives a fresh kind name only because it occupies a slot. | Keep the value's kind under its governing pattern and record the slot position separately. |
+| Interface metaphor for slots | A slot relation, SlotSpec, relation position, or filler constraint is called an interface only because that word feels familiar. | Rename to the slot-language term unless a governing boundary/interface pattern makes interface meaning current. |
+| Typed paraphrase overload | A readable subject sentence is rewritten as a full chain of kinds, slots, and source-ontology labels without changing the claim. | Keep the subject sentence and annotate only the decision-changing slot or value under decision. |
+
+### E.24:8 - Relations
+
+- **Builds on:** `E.8`, `E.9`, `E.9.DA`, `E.10`, `E.10.ARCH`, `E.20`, `E.21`, `F.18`, `A.6.5`, `C.2.1`, `E.24.CD`, and `E.24.PUB`.
+- **Coordinates with:** governing patterns that describe durable ontics or their filled values, especially `C.2.1` for epistemes, `A.6.1` and `E.20` for mechanisms, `A.3.1` and `A.3.2` for method and method description, `A.15` for role-method-work alignment, and precision-restoration patterns such as `C.2.P`, `C.2.P.DR`, and `C.30.STRAT`.
+- **Used by:** DRRs and pattern authors when repeated slot-relation-shaped material is being considered as either a durable ontic or a local use frame.
+
+### E.24:9 - Consequences
+
+- FPF can introduce rich ontology units without letting every local use frame become a new ontology.
+- Draft-only loci stop acting like current governing patterns.
+- Dependent patterns get a stable slot relation when a durable ontic is selected.
+- The cost is a short ontic-introduction decision before writing or relying on a durable ontic.
+
+### E.24:End
+
+## E.24.CD - Ontic Candidate Detection
+
+> **Type:** Part E FPF authoring discipline pattern
+> **Status:** Stable
+> **Normativity:** Normative unless a section is explicitly informative
+
+### E.24.CD:0 - Use This When
+
+Use this pattern when a recurring FPF construct is an ontic candidate, but the current evidence is still a tangle of names, fields, cards, records, tables, schemas, diagrams, views, examples, or nearby pattern fragments.
+
+Typical moments:
+
+- one word such as "process", "source", "quality", "architecture", "problem", "view", "role", "function", "mechanism", or "method" keeps pointing to several FPF values at once;
+- several patterns repeat a similar slot list, field list, boundary formula, or "not proof, not gate, not work" warning;
+- a project data structure looks concept-shaped, but it may only be a publication form or local record;
+- a draft ToC row or older source label names a family that no current pattern yet governs;
+- a proposed new `U.*` kind feels useful, but it might duplicate existing governing patterns.
+
+**First useful move.** Recover the recognizable project concern first, then list the typed FPF values and relation positions that the source material compresses. Only then classify the case as durable ontic candidate, local use frame, direct governing-pattern use, publication-form-only case, or source wording to keep quote-only or reduced-use.
+
+**What goes wrong if missed.** FPF grows a hidden ontology. A table becomes a kind, a card becomes a subject, a draft label becomes authority, and a convenient word creates a second ontology over values that already have governing patterns.
+
+**What this buys.** The author gets a compact candidate cluster and a sufficiency rationale before opening `E.24`. This keeps E.24 small and keeps candidate discovery from becoming a registry, score form, or warning catalogue.
+
+**Not this pattern when.**
+
+- If the durable ontic is already selected and its identity and slot relation must be governed, use `E.24`.
+- If the current problem is only confusion between an ontic, its description, and publication forms, use `E.24.PUB`.
+- If an existing subject pattern already governs the claim, use that pattern directly.
+- If the issue is one wording-use repair, use `E.10`, `E.10.ARCH`, or the relevant precision-restoration pattern.
+- If the contested question is how to compare pattern-set architecture alternatives, construct the evaluation `CharacteristicSpace` through `A.19.ECS`.
+
+### E.24.CD:1 - Problem Frame
+
+`E.24` introduces or rejects a durable `U.Ontic`. Before that decision, FPF often needs a smaller move: detect whether an apparent subject is actually a candidate ontic or merely a record, local frame, source label, draft locus, or direct use of existing patterns.
+
+Ontic candidates are easy to overread because they appear through publications. A form, card, schema, table, field list, diagram, source row, review packet, or data model can carry a real subject matter, but it is not automatically the subject matter. Detection must therefore start from the `EntityOfConcern` and the typed values involved, not from the publication form that made the subject visible.
+
+E.24.CD governs that detection move. It prepares an E.24 decision; it does not make the durable ontic decision by itself.
+
+### E.24.CD:2 - Problem
+
+Without ontic-candidate detection:
+
+1. **Publication forms become false objects.** A card, table, or schema receives ontology authority because it is the visible publication form.
+2. **Local use frames harden silently.** A useful table for one bounded use starts being cited as if it were a reusable FPF kind.
+3. **Direct governing patterns are bypassed.** Existing `U.Method`, `U.Work`, `U.Mechanism`, `U.Episteme`, `U.Structure`, `U.CharacteristicSpace`, source, gate, evidence, or publication patterns are duplicated under a new head.
+4. **Candidate selection becomes vocabulary repair.** The author replaces a broad word with a new broad word while the slot relation remains hidden.
+5. **Candidate selection becomes scoring ritual.** The author builds a score table before the candidate's identity, slots, and neighboring governing patterns are clear.
+
+### E.24.CD:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Recognition vs premature kind creation | A recurring concern must be noticed early, but early recognition must not mint a `U.*` kind by momentum. |
+| Publication visibility vs subject ontology | The visible publication form may reveal the concern, but the ontic candidate is the governed object, not that form. |
+| Direct reuse vs hidden duplication | Existing governing patterns should carry their values; a new ontic is justified only when their relation must itself be governed. |
+| First-use affordability vs full architecture analysis | The author needs a quick first move; contested alternatives can use `A.19.ECS` in a separate evaluation frame without making every candidate pass a scoring ritual. |
+| Semantic cohesion vs registry growth | Several examples can reveal one semantic area; a list of examples is not a registry of ontics. |
+
+### E.24.CD:4 - Solution
+
+Use an `OnticCandidateCluster` as a local detection aid. It is not a `U.*` kind, not a permanent registry entry, and not the ontic. It is a compact description of why the author is considering an E.24 decision.
+
+```text
+OnticCandidateCluster:
+  RecognizableConcern:
+  VisibleSourceForms:
+  CompressedTypedValues:
+  CandidateSemanticArea:
+  CandidateOntologicalNeighborhood:
+  PossibleSlotRelation:
+  ExistingGoverningPatterns:
+  HiddenFormClassification:
+  FirstUseGain:
+  NonUseDisposition:
+  NextPattern:
+```
+
+Read the rows this way:
+
+- `RecognizableConcern` names what users or authors are trying to think or act with, before choosing a new kind.
+- `VisibleSourceForms` names the forms that revealed the concern: cards, records, tables, schemas, diagrams, views, source rows, examples, or project data structures.
+- `CompressedTypedValues` lists the separate FPF values being compressed, such as method, method description, mechanism, work plan, work occurrence, evidence, gate, source, publication, characteristic, structure, role assignment, bounded context, or transformation value.
+- `CandidateSemanticArea` names the meaning area where the concern is recognizable.
+- `CandidateOntologicalNeighborhood` names the current FPF patterns that already govern nearby values.
+- `PossibleSlotRelation` sketches the candidate relation only enough to decide whether E.24 should open.
+- `ExistingGoverningPatterns` lists direct patterns that may already close the case.
+- `HiddenFormClassification` selects one of the dispositions below.
+- `FirstUseGain` says what becomes easier, safer, or more action-facing if the candidate becomes an ontic.
+- `NonUseDisposition` blocks the main overread if no durable ontic is selected.
+- `NextPattern` names the next governing pattern: usually `E.24`, `E.24.PUB`, `A.19.ECS`, a direct subject pattern, or `E.10.ARCH`.
+
+#### E.24.CD:4.1 - Detection Signals
+
+Open E.24.CD when several signals cohere around one recognizable concern and a possible slot relation that current patterns do not already make easy to use. The judgement is expert sufficiency, not a score gate: a repeated word alone is a wording-use trigger, and a useful form alone is a publication form or local use frame. Two or more signals can serve as a quick suspicion threshold only when they support the same concern, preserve the typed values involved, and make the possible slot relation worth inspecting.
+
+Useful signals include:
+
+1. **Stable concern across forms.** Several source forms point to the same recognizable concern even when the publication form changes.
+2. **Typed-value spread.** The concern repeatedly involves several governed values whose relation matters for use.
+3. **Copied slot doctrine.** Several patterns repeat the same field list, slot list, boundary warning, or local relation shape.
+4. **Claim-impact from relation changes.** Changing one filler changes what can be claimed, compared, relied on, repaired, or stopped.
+5. **Weak identity in current text.** The concern is used as if it has identity, but the identity criterion is missing or inconsistent.
+6. **Direct-pattern strain.** Existing governing patterns carry the values, but users still need a stable relation among them.
+7. **Publication-form temptation.** A card, record, table, schema, diagram, view, source row, or data structure is treated as the object because it is visible.
+8. **Dependent-pattern burden.** Nearby patterns need a shared settlement and would otherwise copy the same local ontology.
+
+If the signals do not cohere around one concern, do not open E.24.CD only to collect them. Use the direct governing pattern, `E.10.ARCH`, `E.24.PUB`, or a local-use disposition.
+
+#### E.24.CD:4.2 - Hidden Form Classifications
+
+Classify the detected construct before opening E.24:
+
+| Classification | Meaning | Next move |
+| --- | --- | --- |
+| Durable ontic candidate | The concern appears to need stable identity, a type-level slot relation, semantic area, ontological neighborhood, and dependent-pattern reliance. | Open `E.24`. |
+| Local use frame | The relation is useful in one bounded use family, but all filled values are already governed elsewhere and no dependent pattern needs a reusable ontic. | Keep local; cite governing patterns for fillers. |
+| Direct governing-pattern use | One existing pattern already carries the claim. | Use that pattern directly. |
+| Publication-form-only case | The visible object is a card, record, table, schema, diagram, view, packet, or source form that publishes or organizes another EoC. | Use `E.24.PUB` or the relevant publication pattern. |
+| Source wording only | The source label compresses several values but should not enter current FPF vocabulary. | Keep quote-only or reduced-use; use `E.10.ARCH` if repair is needed. |
+| Evaluation-construction case | The current problem is comparing pattern-set architecture alternatives. | Build the evaluation `CharacteristicSpace` through `A.19.ECS`. |
+
+#### E.24.CD:4.3 - Sufficiency Rationale
+
+If the classification is durable ontic candidate, write a short sufficiency rationale before opening E.24:
+
+```text
+OnticCandidateSufficiencyRationale:
+  CandidateEoC:
+  StableIdentityHint:
+  PossibleSlotRelation:
+  ExistingValuesPreserved:
+  SemanticArea:
+  OntologicalNeighborhood:
+  DependentPatternNeed:
+  DuplicateOntologyRiskIfSkipped:
+  FirstUseGain:
+  MainNonUseBoundary:
+```
+
+The rationale is sufficient only when it shows both gain and restraint. Gain: the candidate would reduce duplicated ontology, make claims easier to inspect, and give dependent patterns a reusable relation. Restraint: existing typed values keep their governing patterns, publication forms stay downstream, and a local frame remains local when no durable ontic is needed.
+
+#### E.24.CD:4.4 - Project Data-Structure Recovery
+
+Project data structures often hide ontic candidates. Treat them as signals, not conclusions.
+
+When a project data structure or publication form has fields such as `status`, `owner`, `type`, `target`, `source`, `evidence`, `decision`, `problem`, `view`, `flow`, `quality`, or `architecture`, do not accept the field heads as ontology. Recover:
+
+1. the project concern that the form is helping the team handle;
+2. the FPF typed values that may fill those fields;
+3. the relation among those values;
+4. the publication or record form that carries the visible form;
+5. the governing patterns that already own each value;
+6. the one overread blocked by this recovery.
+
+Example: an "ArchitectureDecisionRecord" may carry an architecture move, selected structure, decision, evidence, source freshness, gate condition, responsible role assignment, and publication date. That record is not a root `U.ArchitectureDecisionRecord` ontic by appearance. It may be a publication form over values governed by `C.30`, decision, gate, evidence, source, role-assignment, and `E.24.PUB` patterns. Only if the relation itself needs stable identity and dependent-pattern reliance does E.24 open.
+
+#### E.24.CD:4.5 - Stop Conditions
+
+Stop E.24.CD when one of these dispositions is reached:
+
+- **Open E.24:** durable ontic candidate is selected for a full ontic-introduction decision.
+- **Use existing pattern:** a direct governing pattern carries the claim.
+- **Keep local:** a bounded local use frame is enough and is explicitly non-`U.*`.
+- **Use publication discipline:** the problem is confusion among the ontic, its description, and publication form.
+- **Use evaluation construction:** the problem is comparing architecture alternatives.
+- **Keep quote-only or reduced-use:** the source wording should not become current FPF vocabulary.
+
+Do not keep E.24.CD open as a standing registry of possibilities. Once the disposition is clear, move to the selected governing pattern.
+
+### E.24.CD:5 - Archetypal Grounding
+
+#### E.24.CD:5.1 - Episteme Candidate That Becomes a Durable Ontic
+
+Before `C.2.1`, "description", "view", "claim set", and "publication" could be confused. E.24.CD would detect stable concern across forms, typed-value spread, slot doctrine, publication-form temptation, and dependent-pattern need. The sufficiency rationale points to a durable ontic: `U.Episteme`, with EntityOfConcernSlot, claim graph, viewpoint, reference scheme, grounding, and publication-form boundaries.
+
+The next move is E.24-style introduction, then the governing pattern `C.2.1`. The cards and publications are not the episteme; they describe or publish it.
+
+#### E.24.CD:5.2 - Problem Card as Stress Case
+
+`ProblemCard@Context` is a useful working form, but the card form alone does not create `U.Problem`. It can carry a project problem statement, affected entity, concern, evidence, constraints, candidate solution direction, owner role assignment, source references, and gate conditions.
+
+E.24.CD asks what is under concern:
+
+- If the current claim is about the card's publication form and use, use the card or publication governing pattern.
+- If the claim is about problematization and problem statement adequacy, use the problematization pattern.
+- If several patterns need a reusable problem ontology with stable identity and slot relation, open E.24.
+
+The stress case prevents a common overread: a record form named "ProblemCard" does not by itself prove that FPF needs a root `U.Problem`.
+
+#### E.24.CD:5.3 - Project Schema With Ontology-Looking Fields
+
+A project may contain a table:
+
+```text
+ChangeItem:
+  status:
+  owner:
+  method:
+  mechanism:
+  evidence:
+  result:
+  target:
+  source:
+```
+
+The table may be a planning aid, work record, publication form, or schema for project tooling. Its fields reveal possible FPF values, but they do not decide their kinds. E.24.CD recovers the project concern and typed values first. If the relation among method, mechanism, work, evidence, result, source, and transformed entity is governed by existing transformation, method, work, mechanism, evidence, source, and publication patterns, keep the table as a publication or local use frame. If dependent patterns need a reusable relation that existing patterns do not provide, open E.24.
+
+#### E.24.CD:5.4 - Characteristic Space as Candidate
+
+Evaluation work often starts as a score table. The visible table may hide a `U.CharacteristicSpace`: characterized object kind, characteristics, scale bindings, value meanings, coordinate groups, missingness semantics, normalization boundaries, comparability boundaries, and evidence hooks. If the score table is only a local report, use the relevant evaluation pattern. If several patterns rely on that space as a reusable object, the candidate can be selected as `U.CharacteristicSpace` and governed by `A.19`.
+
+The table is not the characteristic space. It can publish one filled evaluation over the space.
+
+### E.24.CD:6 - Bias-Annotation
+
+Lenses tested: **Onto**, **Arch**, **Epist**, **Prag**, **Did**.
+
+This pattern intentionally biases toward early recovery of the real object under concern. It resists:
+
+- **publication-form bias:** treating a card, schema, table, or record as the subject matter;
+- **wording bias:** treating a repeated word as a kind decision;
+- **registry bias:** collecting every possible ontic candidate instead of disposing the current case;
+- **scoring bias:** building an evaluation form before identity and slot relation are clear;
+- **semio-bias:** discussing descriptions and publications while the ontic candidate and filled values disappear.
+
+The mitigation is concrete: recover the recognizable concern, typed values, current governing patterns, and possible slot relation before naming a candidate or opening E.24.
+
+### E.24.CD:7 - Conformance Checklist
+
+| Check | Requirement |
+| --- | --- |
+| `CC-E24CD-1` | The candidate detection names the recognizable concern before naming a new kind, card, record, schema, or publication form. |
+| `CC-E24CD-2` | Visible source forms are listed as source forms, not treated as the candidate ontic. |
+| `CC-E24CD-3` | Compressed typed values are separated and each is pointed to its current governing pattern when such a pattern exists. |
+| `CC-E24CD-4` | Detection records a sufficiency judgement: several signals cohere around one recognizable concern and possible slot relation; repeated wording or one useful form alone is not enough. |
+| `CC-E24CD-5` | The hidden-form classification is explicit: durable ontic candidate, local use frame, direct governing-pattern use, publication-form-only case, source wording only, or evaluation-construction case. |
+| `CC-E24CD-6` | Durable ontic candidates carry a sufficiency rationale with identity hint, possible slot relation, semantic area, ontological neighborhood, dependent-pattern need, duplicate-ontology risk, first-use gain, and non-use boundary. |
+| `CC-E24CD-7` | Local use frames are explicitly non-`U.*` and do not become registries, evidence records, gate records, methods, mechanisms, work plans, or work occurrences. |
+| `CC-E24CD-8` | Publication-form confusion is sent to `E.24.PUB` rather than solved by declaring the form to be the ontic. |
+| `CC-E24CD-9` | Contested comparison of architecture alternatives is sent to `A.19.ECS` rather than built into E.24.CD. |
+| `CC-E24CD-10` | The stop condition names one next governing pattern or reduced-use disposition. |
+
+### E.24.CD:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Symptom | Repair |
+| --- | --- | --- |
+| Card-to-kind jump | A useful card is promoted into a `U.*` kind because it has repeated fields. | Recover the EoC and typed values; use `E.24.PUB` for publication form. |
+| Table ontology by appearance | A table or schema field list is treated as a slot relation. | Ask whether the fields are publication columns, local record fields, or type-level slots with claim-impact. |
+| One-word candidate | A broad word is renamed and treated as settled. | Use `E.10.ARCH` and E.24.CD together: recover typed values and slot relation before naming. |
+| Registry trap | The author keeps a growing list of possible ontics without disposition. | Stop at one of the E.24.CD classifications and move to the next governing pattern. |
+| Scoring before identity | A score form compares alternatives before the candidate EoC and slot relation are clear. | First write the sufficiency rationale; use `A.19.ECS` only when evaluation construction is actually current. |
+| Negative-catalogue repair | The text says "not proof, not gate, not evidence..." instead of naming positive values and boundaries. | Name the positive EoC, typed values, and governing patterns; keep the blocked overread to one row. |
+
+### E.24.CD:9 - Consequences
+
+Positive consequences:
+
+- E.24 stays compact because candidate discovery has its own pattern.
+- New ontics are selected from recognizable subject matter, not from publication-form appearance.
+- Existing governing patterns are reused before a new `U.*` kind is considered.
+- Data structures, cards, records, and schemas become useful detection signals without becoming ontology by appearance.
+
+Costs:
+
+- The author must do a short detection pass before opening E.24 for a new durable ontic.
+- Some attractive names are lowered to source wording, local frames, or publication forms.
+- A contested architecture comparison may require a separate `A.19.ECS` evaluation construction instead of a quick authorial preference.
+
+### E.24.CD:10 - Rationale
+
+FPF needs E.24.CD because ontic candidates are rarely visible as pure ontology. They show up as forms that people use: project tables, cards, schemas, diagrams, source packets, draft pattern rows, examples, and repeated words. Those forms are important because they reveal project concerns, but they are unreliable as ontology decisions.
+
+The pattern therefore uses a small detection cluster rather than a score sheet. A cluster is enough to recover the concern, values, possible relation, and next disposition. A score sheet would make candidate discovery look like a maturity test and invite Goodhart-style optimization of the candidate record instead of ontology settlement.
+
+This also preserves the distinction among EoC, description, and publication. A card can describe an episteme, a table can publish a filled characteristic-space evaluation, and a schema can carry source-side data. None of those forms is automatically the ontic. Conversely, the fact that a concern appears through several forms may be a strong signal that an ontic is needed.
+
+### E.24.CD:11 - SoTA-Echoing
+
+| Source family | Current lesson for E.24.CD | FPF decision |
+| --- | --- | --- |
+| Shimizu and Hitzler 2024, and Eells, Dave, Hitzler, and Shimizu 2024. | Current modular-ontology and micropattern support: useful ontology units are understandable, extensible, aligned, reusable, and small enough to be assembled. | Detect coherent ontology modules, repeated relation shape, slot-relation density, and dependent-pattern copying; do not treat word frequency, common nouns, or every record field as an ontic decision. |
+| Norouzi, Hertling, Waitelonis, and Sack 2025. | Current process-ontology ODP extraction support: process-like and workflow-like forms can hide implicit design patterns that need explicit publication for domain experts. | Inspect process-like, record-like, card-like, and field-list forms for hidden slot relations; do not reopen the transformation-flow settlement and do not import imperative route metaphors. |
+| Nayyeri et al. 2025, and Oyewale and Soru 2026. | Current data-model-to-ontology and enterprise-KG support: schemas, documentation, relations, domain ontologies, extraction, hierarchy structuring, provenance, and validation can expose ontology candidates while also producing overreads. | Treat project databases, tables, schemas, and enterprise data models as ontology-signal sources requiring bounded scope, semantic alignment, slot-relation discipline, expert validation, and a blocked-overread row. |
+| CYC microtheory line. | Lineage-only caution: context-bounded knowledge modules are a useful analogy for contradiction locality and scope-bounded ontology fragments. | Do not cite CYC as current decisive support for FPF ontic design and do not import CYC architecture as FPF law. |
+| OWL, SKOS, RDF, and triple-store practice. | Infrastructure and expression lineage: these lines carry ontology descriptions, vocabulary links, queries, and serialization forms. | Use them as expression and publication caution only; they do not substitute for `U.Ontic`, do not prove that labels are ontology, and do not answer FPF ontic modularization by themselves. |
+
+Smallest source-currentness reopen trigger: reopen this SoTA slice when a newer ontology-engineering or data-model-to-ontology source changes the selected detection criteria for coherent modules, hidden slot relations, bounded scope, validation, or source-form overread; do not reopen it merely because a new vocabulary, serialization, or KG tooling paper appears.
+
+### E.24.CD:12 - Relations
+
+- **Builds on:** `E.24`, `A.6.5`, `C.2.1`, `E.10`, `E.10.ARCH`, `F.18`, `F.19`, and `A.19.ECS`.
+- **Coordinates with:** `E.24.PUB` for ontic-description and publication-form boundary, `A.19` for `U.CharacteristicSpace`, `A.19.ECS` for evaluation-characteristic construction, and the governing subject patterns for values recovered in the candidate cluster.
+- **Used by:** DRRs and authoring passes that need to decide whether a recurring construct should become a durable ontic, remain a local use frame, use existing governing patterns, or stay as quote-only or reduced-use source wording.
+
+### E.24.CD:13 - Footer Marker
+
+### E.24.CD:End
+
+## E.24.PUB - Ontic Description and Publication Discipline
+
+> **Type:** Part E FPF authoring discipline pattern
+> **Status:** Stable
+> **Normativity:** Normative unless a section is explicitly informative
+
+### E.24.PUB:0 - Use This When
+
+Use this pattern when a text, table, card, record, schema, diagram, view, source row, or pattern section may be confused with the ontic it describes.
+
+Typical moments:
+
+- a pattern file is treated as if it were the ontic rather than a publication of an ontic-description episteme;
+- a card, record, table, schema, diagram, or view is cited as if its form created the governed object;
+- an ontic description starts to grow generic warnings about proof, promise, authority, permission, gate, source, evidence, decision, or work instead of staying centered on the ontic;
+- a subject pattern about architecture, structure, characteristic space, transformation, episteme, or bounded context begins with publication-use guards while the subject matter becomes background;
+- a source packet or review packet is used as if it carried ontology authority by appearance.
+
+**First useful move.** Name four objects separately: the ontic under concern, the ontic-description episteme, the publication of that description, and the publication form used by that publication.
+
+**What goes wrong if missed.** The pattern becomes about how to talk about a thing rather than about the thing. A diagram becomes an architecture claim or selected structure, a score table becomes characteristic space, a problem card becomes problem ontology, and a pattern host becomes the ontic it publishes.
+
+**What this buys.** The author can put publication-form and description-use issues in the right place without pushing the primary subject pattern into semio-bias.
+
+**Not this pattern when.**
+
+- If the current question is whether a construct deserves a durable ontic, use `E.24.CD` and then `E.24`.
+- If the current question is generic multi-view publication or viewpoint packaging, use `E.17` and its dependent patterns.
+- If the current question is wording-use repair, use `E.10`, `E.10.ARCH`, `F.19`, or the relevant precision-restoration pattern.
+- If the current question is an architecture description as its own subject matter, use `C.30.AD`; E.24.PUB supplies only the boundary between the ontic and its publication-facing description stack.
+
+### E.24.PUB:1 - Problem Frame
+
+Ontics need descriptions. In FPF, the usual description is an episteme: a structured claim set about the ontic, its identity, slot relation, admissible fillers, dependent patterns, and use boundary. That episteme can be published through a pattern host, a card, a table, a schema, a diagram, a source packet, or another publication form.
+
+Those objects have different kinds:
+
+- the `U.Ontic` is the subject under concern;
+- the ontic-description episteme is the claim structure describing that subject;
+- the publication is the made-available expression of that episteme;
+- the publication form is the format, layout, or medium shape used by that publication.
+
+E.24.PUB governs this distinction for ontic descriptions. It does not replace `C.2.1` for epistemes, `E.17` for multi-view publication, `E.8` for pattern form, or `E.10` for wording-use repair.
+
+### E.24.PUB:2 - Problem
+
+Without this discipline:
+
+1. **Publication form displaces the subject.** Users start reasoning about a card or diagram when the real EoC is an ontic such as `U.Episteme`, `U.Structure`, `U.CharacteristicSpace`, or `U.BoundedContext`.
+2. **Subject patterns become semio-heavy.** A pattern about a subject begins with long warnings about what descriptions are not, while identity, slots, invariants, and first-use moves come late.
+3. **Descriptions become authority by appearance.** A source row, standard, table, or pattern section is treated as governing because it looks formal.
+4. **Publication variants become duplicate ontology.** Several views or forms of one ontic description are treated as several different ontics.
+5. **Generic semio guards repeat everywhere.** Each subject pattern copies the same "not proof, not decision, not permission" catalogue instead of using the governing semio patterns.
+
+### E.24.PUB:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Ontic focus vs publication practicality | Users need forms they can read and use, but the form must not become the subject. |
+| Description adequacy vs semio overgrowth | Ontic descriptions need boundary statements; copied generic semio doctrine can bury the subject. |
+| Multiple publications vs one subject | One ontic may have several publications, views, or forms; those variants must not create several ontics. |
+| Formal appearance vs governing authority | A schema, standard, or source row may look authoritative, but authority comes from the governing pattern or accepted source relation, not appearance. |
+| Local clarity vs generic duplication | A short local boundary helps; a repeated negative catalogue belongs in neighboring semio patterns. |
+
+### E.24.PUB:4 - Solution
+
+Use the ontic-description stack before writing or revising publication-facing text:
+
+```text
+OnticDescriptionStack:
+  OnticEoC:
+  OnticDescriptionEpisteme:
+  DescriptionClaims:
+  Publication:
+  PublicationForm:
+  GovernedUse:
+  NonOverread:
+  NeighboringPatternIfCurrent:
+```
+
+Read the stack this way:
+
+- `OnticEoC` is the ontic itself: for example `U.Ontic`, `U.Episteme`, `U.Structure`, `U.CharacteristicSpace`, `U.BoundedContext`, or another accepted ontic.
+- `OnticDescriptionEpisteme` is the claim structure that describes the ontic and its slot relation.
+- `DescriptionClaims` are the specific claims about identity, slots, admissible values, dependent patterns, invariants, examples, and use boundary.
+- `Publication` is the made-available expression of that episteme.
+- `PublicationForm` is the selected form: pattern host, card, record, table, schema, diagram, view, source packet, or another form.
+- `GovernedUse` says what a user may do with the publication in the current pattern.
+- `NonOverread` blocks the main confusion without listing every generic semio boundary.
+- `NeighboringPatternIfCurrent` names the governing neighboring pattern when the current claim belongs elsewhere.
+
+#### E.24.PUB:4.1 - Minimal Boundary Formula
+
+When a subject pattern needs a publication boundary, use the shortest formula that preserves the EoC:
+
+```text
+This [publication form] publishes an ontic-description episteme about [OnticEoC].
+It is not [OnticEoC].
+Use it for [governed use].
+Use [neighboring pattern] when the current claim is about [neighboring EoC].
+```
+
+Do not expand that local formula into a general catalogue of all things a description is not. If proof, permission, gate, source, evidence, authority-bearing record, decision, or work is current, name the governing neighboring pattern and apply it for that neighboring EoC or claim.
+
+#### E.24.PUB:4.2 - Description Claims Stay About the Ontic
+
+An ontic-description episteme may claim:
+
+- what identifies the ontic;
+- which slot relation gives the ontic its structure;
+- which values may fill the slots and which governing pattern owns each value;
+- which invariants and non-use boundaries preserve the ontic;
+- which dependent patterns may rely on the ontic;
+- which examples show first use without turning the example form into the ontic.
+
+It should not carry generic warnings about all possible uses of descriptions. Those warnings belong to `C.2.1`, `E.17`, `E.10`, `F.19`, source patterns, evidence patterns, gate patterns, decision patterns, or another subject pattern when that subject is current.
+
+#### E.24.PUB:4.3 - Publication Forms Stay Downstream
+
+A publication form may improve usability, inspection, currentness, source return, or multi-view handling. It does not decide ontology by itself.
+
+Use this test:
+
+1. If changing the table layout, card fields, diagram notation, or section order changes only how the ontic is published, the ontic is unchanged.
+2. If changing a description claim changes what the ontic is asserted to be, inspect the ontic-description episteme through `C.2.1`.
+3. If changing a slot relation or identity criterion changes the ontic itself, apply the governing ontic pattern or `E.24`.
+4. If changing viewpoint or publication packaging changes which reader concern is served, use `E.17` or the relevant view or publication pattern.
+
+#### E.24.PUB:4.4 - Subject Pattern Placement
+
+In a subject pattern, keep the positive subject spine first:
+
+1. name the EoC and practical situation;
+2. state identity, slot relation, invariants, first-use move, and governed use;
+3. add one compact publication boundary only where needed;
+4. send description-use or publication-use claims to neighboring semio patterns.
+
+This prevents semio-bias. A pattern about architecture should teach architecture first. A pattern about structure should teach structure first. A pattern about characteristic space should teach characteristic space first. Publication and description boundaries protect those patterns; they do not become their main subject unless the pattern EoC is itself a description or publication.
+
+If the EoC is a description, repeat the same test one level up. A pattern about an architecture description should center that description as the EoC; claims about descriptions of that description, publication of that description, and use of that publication stay in a bounded publication section or neighboring patterns.
+
+### E.24.PUB:5 - Archetypal Grounding
+
+#### E.24.PUB:5.1 - E.24 Pattern Host and U.Ontic
+
+`E.24` is a publication of an ontic-description episteme about `U.Ontic`. The host text is not `U.Ontic`. Its tables, examples, headings, and source rows help publish the description; they do not create the ontic by appearance.
+
+If the issue is whether `U.Ontic` has stable identity and a slot relation, use `E.24`. If the issue is whether the E.24 host is formatted, sectioned, or published well, use `E.8`, `E.17`, or this pattern as appropriate.
+
+#### E.24.PUB:5.2 - Characteristic Space and Score Table
+
+A score table may publish a filled evaluation over a `U.CharacteristicSpace`. The table is not the characteristic space. The characteristic space is the ontic with characterized object, characteristics, scales, value meanings, coordinate groups, missingness semantics, normalization boundaries, and comparability boundaries.
+
+If the score table is unclear, fix the publication. If the scale meanings are unclear, fix the characteristic-space description through `A.19` or the relevant evaluation pattern. If the question is how to construct the space, use `A.19.ECS`.
+
+#### E.24.PUB:5.3 - Architecture Description and ArchitectureOf@Context
+
+An architecture description is an episteme about one `ArchitectureOf@Context` claim or about selected `U.Structure` refs for a described `U.Holon` in a `U.BoundedContext`. A diagram, view, document, or pattern section may publish that episteme. The publication form is not the `ArchitectureOf@Context` claim, not the selected `U.Structure`, and not the described holon's structure by itself.
+
+`C.30` stays centered on the `ArchitectureOf@Context` claim and the selected structures that matter for the current architectural question. `A.22` stays centered on `U.Structure`. `C.30.AD` centers architecture description as its own EoC. E.24.PUB supplies the bridge: know which object is being described before deciding whether the publication, view, or source row is current.
+
+#### E.24.PUB:5.4 - Problem Card
+
+A problem card can publish a problematization episteme or a project work record. The card is not automatically `U.Problem`, and the presence of fields does not decide the ontology. If the current question is problem formulation, use the problematization pattern. If it is the card form, use the publication-form pattern. If a reusable problem ontic is proposed, apply `E.24.CD` for candidate detection and `E.24` for the ontic-introduction decision.
+
+### E.24.PUB:6 - Bias-Annotation
+
+Lenses tested: **Onto**, **Epist**, **Semio**, **Arch**, **Prag**, **Did**.
+
+This pattern intentionally resists semio-bias inside subject patterns. It does not deny that descriptions and publications matter. It says they must stay in the right slot:
+
+- the ontic remains the subject when the pattern is about the ontic;
+- the description episteme becomes the subject only when the pattern is about that description;
+- the publication becomes the subject only when publication, currentness, source return, multi-view handling, or reader-facing use is current;
+- the publication form never receives ontology authority by appearance.
+
+### E.24.PUB:7 - Conformance Checklist
+
+| Check | Requirement |
+| --- | --- |
+| `CC-E24PUB-1` | The text names the ontic EoC separately from the ontic-description episteme, publication, and publication form. |
+| `CC-E24PUB-2` | The publication form is not treated as evidence that a durable ontic exists. |
+| `CC-E24PUB-3` | Description claims stay centered on identity, slot relation, admissible fillers, invariants, dependent patterns, and use boundary for the ontic. |
+| `CC-E24PUB-4` | Generic semio guards are not copied into subject patterns; neighboring patterns are named when those claims are current. |
+| `CC-E24PUB-5` | Multiple views, diagrams, tables, cards, schemas, or sections do not create duplicate ontics unless an E.24 decision selects a distinct ontic. |
+| `CC-E24PUB-6` | Subject patterns keep the positive EoC spine before publication-boundary text. |
+| `CC-E24PUB-7` | Patterns whose EoC is a description still keep publication of that description and descriptions of that description distinct. |
+| `CC-E24PUB-8` | The local non-overread sentence blocks the current confusion without becoming a long negative catalogue. |
+
+### E.24.PUB:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Symptom | Repair |
+| --- | --- | --- |
+| Pattern host as ontic | The file or section is cited as if it were the object it describes. | Name the ontic EoC and the ontic-description episteme separately. |
+| Diagram as architecture claim | A diagram is treated as the `ArchitectureOf@Context` claim or as the selected `U.Structure` itself. | Treat the diagram as a publication form of an architecture-description episteme; use `C.30` for the `ArchitectureOf@Context` claim or `A.22` for selected `U.Structure`. |
+| Score table as characteristic space | A table of scores is treated as the characteristic-space ontology. | Separate the table, filled evaluation, and `U.CharacteristicSpace`. |
+| Generic guard pile-up | A subject pattern opens with a long list of what a description is not. | Keep one non-overread sentence and send neighboring claims to their patterns. |
+| View variant as duplicate ontology | Several views of one subject are treated as several subjects. | Use `E.17` for view or publication packaging and keep the ontic identity stable. |
+
+### E.24.PUB:9 - Consequences
+
+Positive consequences:
+
+- Subject patterns can stay centered on their EoC while still guarding against publication-form overread.
+- Ontic descriptions become clearer because their claims are about identity, slot relation, values, invariants, and use boundaries.
+- Publication variants can multiply without multiplying ontology.
+- `E.24` stays compact because publication discipline sits beside it, not inside it.
+
+Costs:
+
+- Authors must name the stack explicitly when publication and ontology are easy to confuse.
+- Some familiar phrases such as "the diagram shows the architecture" need a more careful interpretation: the diagram publishes an architecture description, and the description concerns an `ArchitectureOf@Context` claim or selected `U.Structure` refs for the described holon in context.
+- Generic semio warnings must be moved out of subject spines.
+
+### E.24.PUB:10 - Rationale
+
+FPF needs E.24.PUB because ontics are normally encountered through descriptions and publications. Without a separate publication discipline, the same subject pattern is pulled in two directions: it must teach the subject, but it also tries to guard every possible misuse of descriptions. The result is semio-bias.
+
+The remedy is not to ignore descriptions. The remedy is to type the stack. Once the ontic, description episteme, publication, and publication form are separated, subject patterns can carry a short local boundary and then continue the subject treatment. Publication-heavy questions use publication patterns. Wording-use questions use wording-use patterns. Multi-view questions use multi-view patterns.
+
+### E.24.PUB:11 - SoTA-Echoing
+
+| Source family | Current lesson for E.24.PUB | FPF decision |
+| --- | --- | --- |
+| Shimizu and Hitzler 2024, Eells, Dave, Hitzler, and Shimizu 2024, plus modular ODP practice. | Current modular-ontology support: reusable ontology structure and its documentation or publication form are different objects. | Separate ontic, ontic-description episteme, publication, and publication form; do not let reusable form or documentation style become the ontology decision. |
+| Norouzi, Hertling, Waitelonis, and Sack 2025. | Current process-ODP support: implicit ontology may be carried by process-like publications and needs explicit representation for domain experts. | Distinguish the implicit ontology from the card, table, workflow notation, diagram, or process document that happened to carry it. |
+| Nayyeri et al. 2025, and Oyewale and Soru 2026. | Current data-model-to-ontology and enterprise-KG support: schemas, extraction, entailment or hierarchy structuring, provenance, validation, and RDF serialization can reveal ontology candidates but can also hide publication-form overread. | Keep schema, data structure, ontology description, serialization, publication form, and ontic distinct; require bounded scope and validation before a publication form influences ontic selection. |
+| OWL, SKOS, RDF, and triple-store practice. | Infrastructure and expression lineage: labels, concept schemes, axioms, published documents, serializations, and queries play different roles. | Use them as expression and publication caution only; they do not substitute for `U.Ontic` and do not prove that labels, tables, or pattern sections decide ontology by appearance. |
+| FPF episteme and publication machinery. | `C.2.1` and `E.17` already govern epistemes and publication kits. | E.24.PUB specializes that machinery only for ontic descriptions and avoids duplicating generic semio doctrine. |
+
+Smallest source-currentness reopen trigger: reopen this SoTA slice when newer ontology-publication, data-model-to-ontology, or enterprise-KG work changes the selected distinction among ontology module, ontology-description episteme, serialization, publication form, and source-form overread. Do not reopen it merely because a new serialization format, graph store, or documentation style becomes popular.
+
+### E.24.PUB:12 - Relations
+
+- **Builds on:** `E.24`, `C.2.1`, `E.17`, `E.17.0`, `E.8`, `E.10`, `E.10.ARCH`, and `F.19`.
+- **Coordinates with:** `E.24.CD` for candidate detection, `A.19` and `A.19.ECS` for characteristic-space descriptions and evaluation construction, `A.22` for structure, `C.30` for architecture, and `C.30.AD` for architecture descriptions.
+- **Used by:** subject patterns that need a thin boundary between the subject ontic, its description, and the publication form without turning the pattern into generic semio instruction.
+
+### E.24.PUB:13 - Footer Marker
+
+### E.24.PUB:End
 
 # **Part F — The Unification Suite (U‑Suite): Concept‑Sets, SenseCells & Contextual Role Assignment**
 
@@ -1305,8 +4525,6 @@ The shared method is simple: change an object version, re-evaluate it by the exa
 **Status.** Architectural pattern.
 **Builds on:** A.1.1 `U.BoundedContext` (formal frame); A.7 *Strict Distinction* (C‑6); A.8 *Universal Core* (C‑1); A.11 *Ontological Parsimony* (C‑5); A.4 *Temporal Duality* (C‑7); **E.10.D1 D.CTX** (lexical discipline for “Context”).
 **Coordinates with.** **F.1** (Context Map via Context Cards), **F.2** (local term capture), **F.3** (intra‑Context clustering), **F.7** (Concept‑Set Table), **F.9** (Alignment & Bridge), **B.3** (Trust & Assurance; CL penalties).
-
-> **Didactic note.** In the Tech register, **Context ≡ `U.BoundedContext`** (per E.10.D1). We use “Context of meaning” as a **metaphor only**; *Context* remains the normative short form for `U.BoundedContext`. The word **anchor** is not used in FPF.
 
 > **Didactic note.** In the Tech register, **Context ≡ `U.BoundedContext`** (per E.10.D1). We use “Context of meaning” as a **metaphor only**; *Context* remains the normative short form for `U.BoundedContext`. The word **anchor** is not used in FPF. The word *plane* is reserved to **CHR:ReferencePlane** only.
 
@@ -1887,6 +5105,7 @@ F1-Card v2025‑Q3:
   calibrationSet: 120 labeled pairs (same vs different families)
   edition: 2025‑Q3
 ```
+
 ### F.1:15 - Relations (with other patterns)
 
 **Builds on:**
@@ -3237,7 +6456,7 @@ Without disciplined Role Assignment & Enactment reasoning:
 * **Context** — shorthand for **U.BoundedContext** (per E.10.D1).
 * **SenseCell σ** — **address** **⟨Context C × Local‑Sense ℓ⟩** per F.3. (Informative: we write simply **σ**; it already contains **C**.)
 * **Role Description** — a **Role** or **Status** card anchored in a SenseCell (F.4).
-* **Holder** — the concrete entity admitted by the Role or Status Template; when the holder is semio-side, name the exact kind, such as system, episteme, publication, or carrier.
+* **Holder** — the concrete entity admitted by the Role or Status Template; when the holder is semio-side, name the kind named by value, such as system, episteme, publication, or carrier.
 * **Subject** — the referent of a **Status** assertion; determined by the Template (may or may not be the Holder).
 * **subject_of(τ, H)** — function yielding the **Subject** for Status assertions given Template **τ** (and, if needed, candidate **H**).
 * **Eligibility** — conditions on the Holder that *must* hold to apply the Template (F.4 invariants).
@@ -4617,6 +7836,7 @@ A reader can test bridge integrity with six questions:
 6. **If a stance overlay exists, does it stay within the bridge card's kind, direction, `CL`, and Loss Notes?**
 
 Migration from legacy "same/equivalent/align/map" prose should therefore recover the Bridge Card first, then any row support, then any optional stance overlay. Doing it in the opposite order recreates silent equivalence under new vocabulary.
+
 ### F.9:14a - C.29 mathematical-lens use relation
 
 > When meaning, substitution, sense cells, direction, `CL`, or Bridge-supported use crosses context, write the `F.9` Bridge Card first. Add the applicable `C.29` output only for mathematical-lens use: candidate mathematical object, `LensMappingMode`, preserved and lost structure, exposed invariants or distinctions, lens-use admissibility value, admissible and non-admissible use, and stop condition. Do not duplicate Bridge semantics inside MathLensUse. A Bridge may make a mathematical lens interpretable across contexts without making it substitution-safe.
@@ -4631,7 +7851,7 @@ Migration from legacy "same/equivalent/align/map" prose should therefore recover
 
 **Plain-name.** Bridge-card stance overlay.
 **One-line summary.** `BridgeStanceOverlay` governs one stance annotation over an existing `F.9` bridge card so authors can say how to read that bridge without changing its kind, direction, `CL`, or loss notes and without treating the overlay as bridge authority or as a cure for missing source-bearing return.
-**Bridge-stance overlay in plain terms.** One overlay annotation attached to an existing `F.9` bridge card; not the bridge card itself, not a second bridge kind, and not the pattern that governs coarsened renderings.
+**Primary EntityOfConcern in plain terms.** One overlay annotation attached to an existing `F.9` bridge card; not the bridge card itself, not a second bridge kind, and not the pattern that governs coarsened renderings.
 **Use this when.** Use this overlay when an existing bridge card already exists and the real need is one compact stance label such as `localRename`, `operationalizes`, `partialAnalogy`, `projection`, or `nonEquivalent` that helps readers interpret that bridge without widening its substitution licence.
 **Start here when.** Your first honest artefact is already an `F.9` bridge card, and the practical question is how to read that bridge rather than whether a bridge exists at all.
 **What goes wrong if missed.** Authors fall back to vague phrases like "roughly analogous" or "just a rename", and readers either over-read the gloss as silent bridge authority or under-read it as disposable style.
@@ -4684,7 +7904,7 @@ If the stance materially affects interpretation, the bridge card should publish 
 
 ### F.9.1:6 - Bias-Annotation
 Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal** for stance overlays attached to existing `F.9` Bridge Cards inside FPF.
-This pattern favors disciplined cross-school comparison and bridge readability over sweeping synonym claims. The main mitigation is that every stance remains subordinate to the underlying Bridge Card, its direction, `CL`, and loss notes, with explicit handoff to `A.6.3.CSC` when the live issue is source-bearing return for a coarsened rendering rather than bridge-card reading.
+This pattern favors disciplined cross-school comparison and bridge readability over sweeping synonym claims. The main mitigation is that every stance remains subordinate to the underlying Bridge Card, its direction, `CL`, and loss notes, with explicit handoff to `A.6.3.CSC` when the issue under repair is source-bearing return for a coarsened rendering rather than bridge-card reading.
 
 ### F.9.1:7 - Conformance Checklist
 - `CC-F.9.1-1` A stance annotation **SHALL NOT** replace the underlying `F.9` bridge kind.
@@ -4703,7 +7923,7 @@ This pattern favors disciplined cross-school comparison and bridge readability o
 The benefit is reusable interpretive clarity for bridge-heavy bundles and school comparisons. The trade-off is one more declared annotation layer on bridge cards.
 
 ### F.9.1:10 - Rationale
-`U.LanguageStateSpace` and `U.LanguageStateTransductionTrajectory` create many legitimate cross-school comparisons. `F.9.1` gives those comparisons a reusable stance vocabulary without fragmenting the underlying `F.9` bridge discipline.
+`U.LanguageStateSpace` and `U.LanguageStateMoveTrajectory` create many legitimate cross-school comparisons. `F.9.1` gives those comparisons a reusable stance vocabulary without fragmenting the underlying `F.9` bridge discipline.
 
 The practical gain is narrow but real: teams already use short stance glosses in review work, and without a governed overlay those glosses either smuggle bridge `CL` through casual wording or sprawl into a second bridge taxonomy. Keeping the overlay subordinate to the bridge card lets bundles reuse interpretive cues while the boundary rule and the worked `projection` anti-case keep source-bearing return and bridge publication duty where they belong.
 
@@ -4719,7 +7939,7 @@ The practical gain is narrow but real: teams already use short stance glosses in
 | Shared operational names and semantic attributes aid observability and documentation, but common naming does not by itself license substitution. | Contemporary observability practice standardizes common operation and data names while keeping those conventions tied to explicit resources, spans, metrics, logs, and profiles. | OpenTelemetry Semantic Conventions (2025). | `F.9.1` adopts the value of short reusable glosses, but keeps them local to the bridge card and loss notes. | **Adapt/Reject.** Adapt common-name discipline as a readability aid; reject common naming as proof of equivalence or completeness. |
 | Validation and metadata practice keeps annotations inspectable instead of letting them replace the object they annotate. | Semantic-web validation and catalog practice separates shapes/metadata from the data graph or dataset being described. | W3C SHACL (2017); W3C DCAT v3 (2024). | `F.9.1` treats a stance overlay as inspectable annotation over a bridge card, not as a substitute bridge or source-return cure. | **Adapt.** Use annotation discipline to keep stance local and reviewable. |
 
-**Worked-slice docking.** The nearest practical recovery anchors here are the `localRename`, `operationalizes`, `projection`, and `partialAnalogy` examples in `F.9.1:13.1` through `F.9.1:13.4`, plus the anti-case `F.9.1:13.5`. If the SoTA claim cannot be recovered through those worked slices and the early boundary rule, do not let the citation stand in for the live pattern law.
+**Worked-slice docking.** The nearest practical recovery loci here are the `localRename`, `operationalizes`, `projection`, and `partialAnalogy` examples in `F.9.1:13.1` through `F.9.1:13.4`, plus the anti-case `F.9.1:13.5`. If the SoTA claim cannot be recovered through those worked slices and the early boundary rule, do not let the citation stand in for the live pattern law.
 
 **Local stance.** Best-known current practice supports a narrow rule: stance labels are useful only when they stay visibly subordinate to a published bridge card, its direction, `CL`, loss notes, and reviewable source-cell and target-cell structure.
 
@@ -4745,7 +7965,7 @@ Table-level note: `projection` is only a stance over a declared bridge. It does 
 A comparative bundle may need to mention an explanatory resemblance across traditions without claiming substitution. In such cases `partialAnalogy` may guide reading when the shared pattern is local and declared. If review concludes that this local resemblance still lacks reuse support, `nonEquivalent` should be preferred so that apparent similarity does not drift into silent replacement. The label blocks equivalence and silent substitution; it does not by itself assert `Disjoint` or `CL=0` unless the underlying `F.9` bridge card says so.
 
 #### F.9.1:13.5 - `projection` is not a coarsened-note cure
-A team may write a short comparison note saying that one report-only metric is `basically a projection` of a richer operations concept. That sentence does not by itself justify a `projection` overlay. First recover the underlying `F.9` bridge card, its direction, `CL`, and Loss Notes from the source-bearing episteme or source publication needed for bridge support. Only then may the overlay say how to read that bridge. If readers still need return to the source-bearing episteme or source publication before any bridge-bearing use is admissible, the overlay must wait; it cannot repair the missing bridge card.
+A team may write a short comparison note saying that one report-only metric is `basically a projection` of a richer operations concept. That sentence does not by itself justify a `projection` overlay. First recover the underlying `F.9` bridge card, its direction, `CL`, and Loss Notes from the source-bearing episteme or source publication needed for the Bridge Card. Only then may the overlay say how to read that bridge. If readers still need return to the source-bearing episteme or source publication before any bridge-bearing use is admissible, the overlay must wait; it cannot repair the missing bridge card.
 
 ### F.9.1:14 - Practical use guidance
 
@@ -5671,6 +8891,7 @@ Every verdict is **time‑bounded**. Changing the Window can change the result; 
 | **A10** | **Hidden aggregation**          | “Global availability” but only a subset of regions/slices was covered.                       | Over‑claims evidence.                           | State the **aggregation scope** explicitly or confine the verdict to the observed subset; otherwise **Inconclusive**.                                    |
 | **A11** | **Status on “the service”**     | Tagging an abstract umbrella like *“the service”* as “Satisfied”.                            | Loses the entityOfConcern of the judgement.           | Attach to **ClauseCell\@Window about WorkCell**; the service concept remains a promise vocabulary (A.2.3).                                               |
 | **A12** | **Bridge‑by‑name**              | Equating *Activity* ≡ *Process* because both say “process”.                                  | Assumes global meaning.                         | Use **F.9 Bridge** with **kind/CL/Loss**; or keep them distinct.                                                                                         |
+
 ### F.12:11 - Extended worked examples
 
 > Each example identifies **Contexts**, the **quadruple** ⟨ClauseCell, WorkCell, MeasureCell, Window⟩, any **Bridge(s)**, and the **Predicate**. The verdict attaches to *ClauseCell\@Window about WorkCell*.
@@ -7345,9 +10566,9 @@ _(Choose 3–5 that fit the thread; do not place Contexts here.)_
 
 Use `F.18` when a name must become stable and reusable across one local context, a concept set, a bridge, or a durable FPF/publication vocabulary. Use it when the issue is not merely one overloaded local phrase, but a name that must carry context, kind, local sense, use-domain, bridge relation or F.9.1 bridge stance when live, and lineage without smuggling global sameness.
 
-**First useful move.** Ask whether the live work is durable naming. If yes, make the name local-first by naming its context, kind, purpose/use-domain, local sense, and bridge relation or F.9.1 bridge stance when live. If no, use the lighter exact pattern: local phrase repair under `E.10` or `C.2.P`, relation precision under `A.6.P`, or the domain pattern that governs the named object.
+**First useful move.** Ask whether the live work is durable naming. If yes, make the name local-first by naming its context, kind, purpose/use-domain, local sense, and bridge relation or F.9.1 bridge stance when live. If no, use the lighter governing pattern: local phrase repair under `E.10` or `C.2.P`, relation precision under `A.6.P`, or the domain pattern that governs the named object.
 
-**Cheap stop.** If the wording is one-off local repair and does not create a reusable name, stop after the exact local repair. Do not open a full Name Card, mint a new head, or create lineage entries just because a phrase was clarified.
+**Cheap stop.** If the wording is one-off local repair and does not create a reusable name, stop after the local repair with recovered kind and use. Do not open a full Name Card, mint a new head, or create lineage entries just because a phrase was clarified.
 
 ### F.18:1 - Context
 
@@ -7484,7 +10705,7 @@ This is especially useful when one head already appears in more than one admissi
 When naming work touches the discoverability amendment, `PCP-TERM` plus `F.18`
 and `A.6.P` must settle the durable heads used here, including
 `pattern-entry discoverability`, `description recognition signature`,
-`entry orientation`, `entry lexeme retrieval aid`, `worked entry reading`,
+`entry orientation`, `entry lexeme retrieval aid`, `expanded entry-disambiguation case`,
 `Problem-frame recognition signature`, and `thin-echo discipline`, as part of
 the amendment itself.
 
@@ -7502,9 +10723,9 @@ The canonical settlement table for this amendment is:
 | `pattern-entry discoverability` | composite entry quality over one entry-recognition stack | `E.11` | broad `discoverability` alone |
 | `description recognition signature` | first-contact cue structure of one description-bearing unit | `A.6.RSIG` | `discoverability of descriptions` |
 | `recognition text` | existing first reading text inside one pattern | `E.8` | invented `discoverability surface` |
-| `entry neighborhood` | entry-load-oriented grouping of plausible patterns, tempting wrong patterns, entry-load reclassifications, and admissible stops | `E.11`; `J.4` only when the entry grouping is a pattern-language map | `route` |
+| `FirstEntryPatternComparisonSet` | case-relative `E.11` entry-distribution grouping of plausible candidate patterns, tempting wrong patterns, entry-load reclassifications, and admissible entry stops | `E.11`; use `I.2` for expanded entry-disambiguation cases when compact cues are insufficient | `route`, `semanticArea` as navigation label, `ontologicalNeighborhood` as navigation label |
 | `entry lexeme retrieval aid` | lexical and query retrieval aid without alias minting | `F.17`, `F.18`, and `E.10`, coordinated by `E.11` | `lexical discoverability`, bare search-help wording |
-| `worked entry reading` | bounded interpretive case reading | `I.2` | `workflow`, `scenario script`, `route` |
+| `ExpandedEntryDisambiguationCase` | bounded case that expands compact first-entry comparison when wrong-pattern risk, repeated failure, retrieval-facing use, or compact guidance insufficiency is live | `I.2` | `workflow`, `scenario script`, `route`, untyped interpretation label |
 | `thin echo` | low-detail projection pointer to the cited pattern, cited pattern section, field, relation, or section of a named non-pattern FPF publication form; the pointer makes the publication form, companion function, and reference recoverable, and the referenced section carries the claim | `E.11` | duplicated guidance, parallel blurbs |
 
 One canonical term per job is the settled target of this amendment.
@@ -7514,17 +10735,18 @@ Rejected or superseded wording is not live Plain or Tech vocabulary; the row use
 
 When naming work touches the C.2.1 EntityOfConcern family, use these rows as the local-first settlement. They are Name Card settlements for field and head names; they do not create a new `U.*` kind, relation kind, evidence kind, publication kind, or universal entity ontology.
 
-`EntityOfConcern` is the selected Tech head for the Russian idea "интересуемая сущность" in the episteme slot/ref and same-EntityOfConcern alignment family. It means the entity, relation, claim record, or exact kind/reference pair selected for the declared use by role-method-interest selection, construction/reference trace, episteme trace when a Description episteme or Description episteme admitted for specification use is live, publication-unit trace when a bounded unit is live, bridge or retargeting trace when sameness crosses context, and witness trace when work, action, or reliance is live. If that trace is missing, the result is a candidate set, blocked use, or non-use, not a stronger claim under a nicer name.
+`EntityOfConcern` is the selected Tech head for the Russian idea "интересуемая сущность" in the episteme slot/ref and same-EntityOfConcern alignment family. It means the entity, relation, claim record, or kind named by value/reference pair selected for the declared use by role-method-interest selection, construction/reference trace, episteme trace when a Description episteme or Description episteme admitted for specification use is live, publication-unit trace when a bounded unit is live, bridge or retargeting trace when sameness crosses context, and witness trace when work, action, or reliance is live. If that trace is missing, the result is a candidate set, blocked use, or non-use, not a stronger claim under a nicer name.
 
 | Name or source wording | F.18 settlement | Must not mean |
 | --- | --- | --- |
-| `EntityOfConcern` | Preferred Tech head for the EntityOfConcern, relation, claim record, or exact kind/reference pair that a claim-bearing episteme, pattern body, or bounded publication unit treats as primary for the declared use. | A universal `object`, a topic by interest alone, the publication unit itself, or a new kernel kind. |
-| `EntityOfConcernSlot` | Entity-valued C.2.1 slot. Relation, claim-record, and exact kind/reference cases enter only through the declared relation/claim/reference discriminator and the exact governing pattern. | A relation-valued bucket, a generic claim-use bucket, or a way to avoid the exact relation, evidence, gate, work, decision, assurance, or architecture pattern. |
+| `EntityOfConcern` | Preferred Tech head for the EntityOfConcern, relation, claim record, or kind named by value/reference pair that a claim-bearing episteme, pattern body, or bounded publication unit treats as primary for the declared use. | A universal `object`, a topic by interest alone, the publication unit itself, or a new kernel kind. |
+| `EntityOfConcernSlot` | Entity-valued C.2.1 slot. Relation, claim-record, and kind named by value/reference cases enter only through the declared relation/claim/reference discriminator and the governing pattern. | A relation-valued bucket, a generic claim-use bucket, or a way to avoid the relation named by value, evidence, gate, work, decision, assurance, or architecture pattern. |
 | `entityOfConcernRef`, `EntityOfConcernRef` | Reference handle for the EntityOfConcern under the slot/ref discipline of C.2.1. Same-EntityOfConcern cases preserve this reference; retargeting changes it only through A.6.4 and its invariant/loss boundary. | A free publication-unit field, title, topic, carrier reference, authoring-work reference, or review-object reference. |
 | `EntityOfConcernClass` | Constraint on admissible EntityOfConcern values only where an episteme slot or same-EntityOfConcern law is live. | A topic taxonomy, audience category, object-quality class, or default pattern-family partition. |
-| `publicationUnitPrimaryEntityOfConcern` | Technical head for the primary entity of concern, exact non-claim-bearing kind, topic, or subject that one bounded `PublicationUnit` is mainly about while carrying one move and one outside-work boundary. When a claim-bearing episteme or episteme-lane `U.View` is live, recover it through `EntityOfConcernRef`. | A C.2.1 slot by itself, a second EntityOfConcern ontology, a carrier identity, a title, or project-side authority by readable form. |
-| `EntityOfInterest`, `EoIClass`, `DescribedEntity*`, `describedEntityRef`, `primary described entity` | Use `EntityOfConcern`, `EntityOfConcernRef`, `EntityOfConcernClass`, `publicationUnitPrimaryEntityOfConcern`, or the exact local FPF kind. | Live technical vocabulary, second C.2.1 slot family, alias permission, or permission to keep old semantics beside the selected family. |
-| `EntityOfConcernAlignmentCase` | Local table head for the exact-same, retarget, bridge, relation-record, distinct-entity, and blocked-use split. | A new kernel kind or a substitute for A.6.4, F.9/F.17/F.18, A.6.P, or the exact receiving relation pattern. |
+| `publicationUnitPrimaryEntityOfConcern` | Technical head for the primary entity of concern, non-claim-bearing kind named by value, topic, or subject that one bounded `PublicationUnit` is mainly about while carrying one move and one outside-work boundary. When a claim-bearing episteme or episteme-lane `U.View` is live, recover it through `EntityOfConcernRef`. | A C.2.1 slot by itself, a second EntityOfConcern ontology, a carrier identity, a title, or project-side authority by readable form. |
+| `EntityOfInterest`, `EoIClass`, `DescribedEntity*`, `describedEntityRef`, `primary described entity` | Use `EntityOfConcern`, `EntityOfConcernRef`, `EntityOfConcernClass`, `publicationUnitPrimaryEntityOfConcern`, or the local FPF kind named by value. | Live technical vocabulary, second C.2.1 slot family, alias permission, or permission to keep old semantics beside the selected family. |
+| `EntityOfConcernAlignmentCase` | Local table head for the same-by-value, retarget, bridge, relation-record, distinct-entity, and blocked-use split. | A new kernel kind or a substitute for A.6.4, F.9/F.17/F.18, A.6.P, or the pattern governing the relation kind. |
+
 #### F.18:5.1 - Card purpose & mode guard (normative)
 
 To prevent “post-hoc justification” of intuitively chosen labels, every **Name Card** SHALL declare its
@@ -7791,8 +11013,8 @@ Disputes often orbit the string (“we hate that word”). By separating **sense
 
 **11.5a Test the replacement candidate against umbrella drift.**
 
-* Before replacing an overloaded head, apply the `E.10:0.2` replacement-candidate anti-umbrella rule. Then run the candidate head through the same local-first naming test: primary `EntityOfConcern`, governing FPF pattern, carried admissible move, exact kind/ref or local field, relation or claim record when live, neighboring exclusions, and example fit.
-* Do not approve a candidate merely because it avoids the old bad word. The replacement is acceptable only when the exact FPF kind or local field is defined by value and the current use names its boundaries.
+* Before replacing an overloaded head, apply the `E.10:0.2` replacement-candidate anti-umbrella rule. Then run the candidate head through the same local-first naming test: primary `EntityOfConcern`, receiving FPF pattern, carried admissible move, kind named by value/ref or local field, relation or claim record when live, neighboring exclusions, and example fit.
+* Do not approve a candidate merely because it avoids the old bad word. The replacement is acceptable only when the FPF kind named by value or local field is defined by value and the current use names its boundaries.
 * If the candidate still hides several possible kinds, keep a candidate-set note and do not mint, rename, or land the term yet.
 
 **11.5b Keep interpretive-view labels subordinate to the base candidate set or family.**
@@ -7849,6 +11071,7 @@ Disputes often orbit the string (“we hate that word”). By separating **sense
 * A naming pass compares candidate labels over one active palette and shortlist. The card keeps the active palette recoverable and uses thinner interpretive-view wording, because the question is only which label best fits the current candidate spread.
 * Later, the same naming discussion must explain why one label misleads unless the reader can see the palette together with a derived archive, an `OutcomeMapRef`, and one `BridgeDistortionNote`. In that case atlas wording is allowed, but the card still names the base palette and records that the atlas is only optional interpretive help for the naming explanation.
 * In both cases, guarded-head notes stay on the naming side: they explain alias risk or mismatch patterns, not who stewards the substrate or which publication face is authoritative.
+
 ### F.18:13 - Anti‑Patterns & Failure Modes (what to avoid)
 
 **13.1 “Global name first.”**
@@ -7871,6 +11094,7 @@ Letting a Plain label or alias accumulate extra meanings absent in the underlyin
 
 **13.7 “Atlas label does substrate work.”**
 Letting atlas or interpretive-view language quietly replace the base candidate set or family or decide substrate stewardship or publication policy. **Fix:** keep the base palette, front, archive, or shortlist recoverable, use atlas wording only when several declared views or qualifiers are jointly load-bearing for the naming explanation, and move substrate questions and publication questions to the pattern sections that govern those objects.
+
 ### F.18:14 - Assurance & Conformance (human‑only checks)
 
 #### F.18:14.1 - Author checklist (before requesting review).
@@ -7951,6 +11175,7 @@ A **MintNew** Name Card is **non-conformant** if it records only the chosen labe
 
 **CC-F18-18 (Interpretive-view labels keep their base candidate set or family).**
 When a Name Card or worked naming note uses interpretive-view or atlas wording, it **SHALL** keep the base palette, front, archive, shortlist, or candidate set recoverable, **SHALL** use atlas wording only when several declared views, spaces, mappings, or qualifiers are jointly load-bearing for the naming explanation, and **SHALL NOT** let guarded-head notes stand in for substrate stewardship or publication policy decisions.
+
 ### F.18:16 - Anti‑patterns & safe rewrites (normative)
 
 > Each item names a **speaking error** and a **local‑first repair**. Use this as an author’s lint pass before proposing a unified name.
@@ -8194,11 +11419,11 @@ All patterns that propose or consume unified names and rows in Part F; any Part 
 **Plain-name.** Ontology-first plain rewriting.
 
 **Intent.**
-Repair technical prose whose object, claim, relation, action, role, or flow is buried under extra apparatus. The repair is not cosmetic plain-language editing. It first separates content from apparatus by ontology, then writes the remaining content in the shortest plain technical form that preserves FPF kinds, slots, claim boundaries, and admissible use. Remaining word, head, naming, or wording-use problems then apply `E.10`, `E.10.ARCH`, `F.18`, or the exact pattern for the object.
+Repair technical prose whose object, claim, relation, action, role, or flow is buried under extra apparatus. The repair is not cosmetic plain-language editing. It first separates content from apparatus by ontology, then writes the remaining content in the shortest plain technical form that preserves FPF kinds, slots, claim boundaries, and admissible use. Remaining word, head, naming, or wording-use problems then apply `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern for the object.
 
-**Builds on.** `E.8`, `E.10`, `E.10.ARCH`, `F.18`, `A.6.P`, `A.7`, `E.18`, `E.21`, and exact source-use, evidence, assurance, gate, work, decision, publication, architecture, characteristic, state-family, and relation patterns when those objects are live.
+**Builds on.** `E.8`, `E.10`, `E.10.ARCH`, `F.18`, `A.6.P`, `A.7`, `E.18`, `E.21`, and source-use, evidence, assurance, gate, work, decision, publication, architecture, characteristic, state-family, and relation patterns when those objects carry the repaired span's claim.
 
-**Coordinates with.** `E.19`, `E.22`, `E.23`, `A.19.SPR`, `C.2.P`, `C.16.P`, `C.30.P`, `J.4`, pattern-quality records, review records, `DRR`s, projection carriers, and source-side notes.
+**Coordinates with.** `E.19`, `E.22`, `E.23`, `A.19.SPR`, `C.2.P`, `C.16.P`, `C.30.P`, `E.11`, `I.2`, pattern-quality records, review records, `DRR`s, projection loci, and source-side notes.
 
 ### F.19:0 - Use this when
 
@@ -8223,14 +11448,14 @@ Typical in-scope prose includes:
 
 - If the problem is only one overloaded word or head after the content is visible, apply `E.10`.
 - If the problem is a durable reusable name, apply `F.18`.
-- If the span already names a live relation, source-use relation, state-family value, architecture label, characteristic, quality term, function wording, evidence claim, gate claim, work claim, decision claim, or other exact FPF object, apply the exact pattern for that object.
+- If the span already names the content-bearing relation, source-use relation, state-family value, architecture label, characteristic, quality term, function wording, evidence claim, gate claim, work claim, decision claim, or other FPF object named by value, apply the governing pattern for that object.
 - If the source text is only being observed and not admitted into FPF-governed prose, keep the observation source-side.
 
 **Primary EntityOfConcern in plain terms.** One phrase-level, sentence-level, row-level, paragraph-level, or small-section technical-prose repair whose goal is kind-preserving plain expression.
 
 ### F.19:1 - Problem frame
 
-Mature technical languages accumulate enough ontology that many bad sentences are not bad because the terms are unknown. They are bad because a simple technical claim is wrapped in process language, role language, status language, quality-carrier evidence, pattern-reference apparatus, or repeated negative distinctions.
+Mature technical languages accumulate enough ontology that many bad sentences are not bad because the terms are unknown. They are bad because a simple technical claim is wrapped in process language, role language, status language, quality-proof evidence, pattern-reference apparatus, or repeated negative distinctions.
 
 The repair question is:
 
@@ -8239,14 +11464,14 @@ The repair question is:
 Examples inside FPF:
 
 - "`A.15` handles the claim" when the text needs to say that `A.15` applies to a work-planning claim;
-- "live pattern text" when the text means "the pattern" or "the pattern of concern";
+- "pattern text" when the text means "the pattern" or "the pattern of concern";
 - "governing relation" when the named object is a pattern, not a relation;
 - long "not X, not Y, not Z" paragraphs when the text needs a positive object, action, and one stop condition;
 - corpus-projection proof written inside a pattern whose own user move is not corpus projection.
 
 The same defect appears outside pattern prose. A system note may hide an evaluation claim inside process language; a project note may treat a dashboard as evidence authority when it is a publication form; an architecture memo may replace a scale-preference claim over alternatives with a platform label.
 
-These failures confuse coupled transduction flows. A pattern under development, a pattern being applied, a quality evaluation of that pattern, a project work occurrence, a source publication, and a projection record are different objects. They may influence one another; they do not become one another by being mentioned in the same paragraph.
+These failures confuse coupled transformation flows. A pattern under development, a pattern being applied, a quality evaluation of that pattern, a project work occurrence, a source publication, and a projection record are different objects. They may influence one another; they do not become one another by being mentioned in the same paragraph.
 
 ### F.19:2 - Problem
 
@@ -8254,10 +11479,10 @@ How can FPF make technical prose plain without:
 
 - treating plain language as a synonym-replacement exercise;
 - deleting content-bearing technical terms as "jargon";
-- replacing exact terms with colourful synonyms or role nicknames;
+- replacing established terms with colourful synonyms or role nicknames;
 - letting process, review, projection, or quality proof become pattern content;
 - repeating the same boundary doctrine in every local pattern;
-- hiding slot/use-position changes under a shorter phrase;
+- hiding slot or use-position changes under a shorter phrase;
 - turning every phrase repair into a new local mini-ontology?
 
 ### F.19:3 - Forces
@@ -8265,7 +11490,7 @@ How can FPF make technical prose plain without:
 | Force | Tension |
 |---|---|
 | Plain wording vs ontology | Short prose helps readers, but careless simplification erases kinds, slots, roles, or claim boundaries. |
-| Precision vs apparatus | Exact technical language needs kind recovery, but extra role, carrier, locus, flow, status, and process words can bury the claim. |
+| Precision vs apparatus | Technical precision needs kind recovery, but extra role, record, card, table, schema, data-structure wrapping, locus, flow, status, and process words can bury the claim. |
 | Local repair vs semantic change | Some extra words are boilerplate; others carry a hidden kind, relation, slot, evidence role, or admissible-use boundary. |
 | Flow separation vs readable prose | Development, evaluation, projection, and use flows must stay distinct without making every sentence narrate those flows. |
 | Reuse vs repetition | References to related patterns matter, but repeated "if X, apply Y" prose can become reference fanout. |
@@ -8275,11 +11500,13 @@ How can FPF make technical prose plain without:
 
 Use `OntologyFirstPlainRewrite` as a five-step repair over one bounded span.
 
-1. **Bound the span.** Name the sentence, row, paragraph, or small section under repair. Name visible apparatus candidates: pattern-application drift, role label, container word, status word, process trace, quality proof, negative catalogue, reference boilerplate, or other overwrap.
-2. **Separate content from apparatus by ontology.** For each phrase part, ask what object, head kind, claim kind or relation kind, slot or use-position, admissible use, concerned role, and design/run or coupled-flow role it expresses. If a phrase part changes one of those values, keep it as content. If it only restates process, role label, negative catalogue, reference boilerplate, or quality proof without changing content, classify it as apparatus.
-3. **Remove or move apparatus.** Delete the apparatus or move it to the carrier where it belongs: `DRR`, review record, quality result, architecture note, ToC/J.4, projection carrier, release/landing evidence carrier, or source-side note. Do not replace it with a smoother synonym, role label, container word, or status word.
-4. **Restore remaining content precision.** Apply `E.10`, `E.10.ARCH`, `F.18`, or the exact governing pattern when a remaining word, head, relation, claim, slot/use-position, source-use role, durable name, or admissible-use boundary is still hidden.
-5. **Rewrite and check loss.** Write the shortest plain technical sentence that preserves the repaired object, kind, claim/relation/action, slot/use-position, role, flow, established term, and admissible use. The rewrite fails if it changes one of those values without an accepted semantic decision, or if it becomes harder for the declared reader to use.
+1. **Bound the span.** Name the sentence, row, paragraph, or small section under repair. Name visible apparatus candidates: pattern-application drift, role label, container word, status word, process trace, quality proof, negative catalogue, reference boilerplate, record, card, table, schema, data-structure wrapping, or other overwrap.
+2. **Separate content from apparatus by ontology.** For each phrase part, ask what object, head kind, claim kind or relation kind, slot or use-position, publication relation, admissible use, concerned role, and design or run or coupled-flow role it expresses. If a phrase part changes one of those values, keep it as content. If it only restates process, role label, negative catalogue, reference boilerplate, record, card, table, schema, data-structure wrapping, or quality proof without changing content, classify it as apparatus.
+3. **Remove or move apparatus.** Delete the apparatus or move it to the document, record, note, or publication relation where it belongs: `DRR`, review record, quality result, architecture note, README, ToC, `E.11`, or `I.2` entry locus, projection record, release or landing evidence document, or source-side note. Do not replace it with a smoother synonym, role label, container word, status word, record, card, table, schema, data-structure wrapper, or publication-form word.
+4. **Restore remaining content precision.** Apply `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern when a remaining word, head, relation, claim, slot or use-position, source-use role, durable name, or admissible-use boundary is still hidden.
+5. **Rewrite and check loss.** Write the shortest plain technical sentence that preserves the repaired object, kind, claim, relation, action, slot or use-position, role, flow, established term, and admissible use. The rewrite fails if it changes one of those values without an accepted semantic decision, or if it becomes harder for the declared reader to use.
+
+Keep ontology visible only where it carries the sentence. A term-source or type annotation is needed when the wording can change the object, kind, relation, slot or use-position, publication relation, admissible use, or governing pattern. A record, card, table, schema, data structure, dashboard, or named form remains apparatus unless it carries one of those values. If ordinary domain wording already preserves those values, keep the ordinary sentence. "The aircraft flies" is better than a typed expansion unless the flight function, system kind, or slot relation is under repair.
 
 Use the full result form when the repair must be inspectable; otherwise a local rewrite plus the kind-preservation check is enough.
 
@@ -8287,14 +11514,14 @@ Use the full result form when the repair must be inspectable; otherwise a local 
 
 | Field | Meaning |
 |---|---|
-| `TextSpanRef` | Exact span under repair. |
-| `ApparatusCandidateSet` | Visible pattern-application, role, carrier, locus, flow, status, process, negative-catalogue, reference, or quality-proof apparatus candidates. |
-| `ContentCandidateSet` | Phrase parts that may carry object, kind, claim, relation, slot/use-position, role, flow, evidence value, or user move. |
+| `TextSpanRef` | Bounded span under repair. |
+| `ApparatusCandidateSet` | Visible pattern-application, role, record, card, table, schema, data-structure wrapping, locus, flow, status, process, negative-catalogue, reference, or quality-proof apparatus candidates. |
+| `ContentCandidateSet` | Phrase parts that may carry object, kind, claim, relation, slot or use-position, role, flow, evidence value, or user move. |
 | `ObjectOfConcern` | Object the span is about. |
-| `KindAndClaimMap` | Head kind, claim kind, relation kind, slot or use-position when live, admissible use, scope, and exact governing pattern when another pattern governs a specific outside claim. |
-| `ConcernedRoleAndFlow` | Role concerned with the object, plus design/run or coupled-flow role when it changes meaning. |
+| `KindAndClaimMap` | Head kind, claim kind, relation kind, slot or use-position, publication relation when it changes admissible use, scope, and governing pattern when another pattern governs a specific outside claim. |
+| `ConcernedRoleAndFlow` | Role concerned with the object, plus design, run, or coupled-flow role when it changes meaning. |
 | `ApparatusDisposition` | Removed, moved, retained as content, or blocker when separation is not yet possible. |
-| `RemainingContentPrecisionRestoration` | `not needed`, `E.10`, `E.10.ARCH`, `F.18`, exact governing pattern, or blocker. |
+| `RemainingContentPrecisionRestoration` | `not needed`, `E.10`, `E.10.ARCH`, `F.18`, governing pattern, or blocker. |
 | `PlainRewrite` | Short rewrite after apparatus removal and remaining-content precision restoration. |
 | `KindPreservationCheck` | Pre-rewrite and post-rewrite object kind, relation or claim kind, slot or use-position, admissible use, and scope; disposition is `preserved`, `split`, `intentionally changed by accepted decision`, or `blocker`. |
 | `LossCheck` | What became worse, less local, less current, less recoverable, or less usable if the rewrite is accepted. |
@@ -8312,15 +11539,15 @@ Pattern prose keeps:
 - the pattern's own primary `EntityOfConcern`;
 - the first useful move;
 - the practical delta and cost of missing it;
-- local boundary prose only for a documented local confusion and exact stop condition;
-- short declarative references to exact related patterns after the pattern's own content is visible.
+- local boundary prose only for a documented local confusion and named stop condition;
+- short declarative references to related patterns after the pattern's own content is visible.
 
 Pattern prose moves out:
 
 - package-placement rationale;
-- review/executor correspondence;
+- review correspondence or executor correspondence;
 - quality-status proof;
-- ToC/J.4, retrieval, card, monolith-parity, or landing evidence;
+- README, ToC, `E.11`, `I.2`, retrieval, card, monolith-parity, or landing evidence;
 - repeated boundary doctrine already carried by another pattern.
 
 ### F.19:5 - Archetypal Grounding
@@ -8329,52 +11556,55 @@ Pattern prose moves out:
 |---|---|---|
 | Pattern application | "`A.15` handles the work-planning claim." | "Apply `A.15` to the work-planning claim." |
 | Pattern vs relation | "The governing relation is `C.29`." | "Mathematical-lens claims are governed by `C.29`." |
-| Pattern text role | "Live pattern text must not contain corpus projection evidence." | "A pattern must not contain projection evidence about itself." |
+| Pattern text role | "Pattern text must not contain corpus projection evidence." | "A pattern must not contain projection evidence about itself." |
 | Evaluation scope | "The evaluation has pre-landing host-set use." | "This is a host-only evaluation; corpus-entry values need corpus-projection evidence." |
 | Negative catalogue | "This pattern is not proof, not work, not a gate, not a decision." | "This pattern evaluates pattern quality; project evidence claims are governed by project-side evidence patterns." |
-| Role label | "The platform owns scale." | "A scale-preference claim over platform and non-platform alternatives is live." |
-| Publication/evidence mix | "The dashboard is the evidence gate." | "The dashboard is a publication form; evidence and gate claims need their own governing patterns." |
+| Role label | "The platform owns scale." | "The span makes a scale-preference claim over platform and non-platform alternatives." |
+| Publication and evidence mix | "The dashboard is the evidence gate." | "The dashboard is a publication form; evidence and gate claims need their own governing patterns." |
 
 ### F.19:6 - Bias-Annotation
 
-`F.19` deliberately biases toward shorter, reader-facing prose. The protected value is kind-preserving clarity, not brevity by itself. A rewrite that removes terms while losing object kind, relation kind, slot/use-position, source-use role, or admissible-use boundary is worse than the original.
+`F.19` deliberately biases toward shorter, reader-facing prose. The protected value is kind-preserving clarity, not brevity by itself. A rewrite that removes terms while losing object kind, relation kind, slot or use-position, source-use role, or admissible-use boundary is worse than the original.
 
 `F.19` also protects against two common reviewer biases:
 
 - **negative-catalogue bias:** explaining a class by long lists of what it is not;
-- **apparatus-preservation bias:** replacing one process, role, carrier, locus, flow, status, or quality-proof phrase with another phrase that still hides the object.
+- **apparatus-preservation bias:** replacing one process, role, record, card, table, schema, data-structure wrapper, locus, flow, status, or quality-proof phrase with another phrase that still hides the object.
 
 ### F.19:7 - Conformance checklist
 
 | Check | Requirement |
 |---|---|
 | `CC-F19-1` | The repair names the text span and visible apparatus candidates before rewriting. |
-| `CC-F19-2` | The repair separates apparatus from content by object, kind, claim or relation kind, slot/use-position when live, admissible use, concerned role, and flow role; lexical dislike is not enough. |
+| `CC-F19-2` | The repair separates apparatus from content by object, kind, claim or relation kind, slot or use-position, publication relation when it changes admissible use, concerned role, and flow role; lexical dislike is not enough. |
 | `CC-F19-3` | Apparatus is removed or moved before wording-use precision restoration is applied to the remaining content. |
-| `CC-F19-4` | Content-bearing wording remains content and is repaired by `E.10`, `E.10.ARCH`, `F.18`, or the exact governing pattern rather than deleted as style. |
+| `CC-F19-4` | Content-bearing wording remains content and is repaired by `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern rather than deleted as style. |
 | `CC-F19-5` | A removed apparatus word is not replaced by a synonym, metonymy, role label, container word, or status word that carries the same hidden apparatus. |
 | `CC-F19-6` | Established FPF terms are preserved unless a named precision-restoration or naming pattern changes them. |
-| `CC-F19-7` | Every accepted rewrite includes a `KindPreservationCheck`; a wording change that changes object kind, relation kind, claim kind, slot/use-position, admissible use, or scope without an accepted decision remains a blocker. |
-| `CC-F19-8` | Development, evaluation, projection, landing, use-found, repair, and source-management evidence stay in their own carriers unless the text's own object of concern is that flow object. |
+| `CC-F19-7` | Every accepted rewrite includes a `KindPreservationCheck`; a wording change that changes object kind, relation kind, claim kind, slot or use-position, admissible use, or scope without an accepted decision remains a blocker. |
+| `CC-F19-8` | Development, evaluation, projection, landing, use-found, repair, and source-management evidence stay in their owning evidence, projection, release, or publication loci unless the text's own object of concern is that flow object. |
 | `CC-F19-9` | The accepted rewrite is shorter or clearer without losing technical semantics; a longer rewrite is admissible only when it recovers a hidden kind, relation, role, slot, or claim boundary. |
 | `CC-F19-10` | The repair records any value, usability, locality, currentness, or kind-recoverability loss. |
+| `CC-F19-11` | Term-source or type annotation is used only for wording whose source ontology can change the object, kind, relation, slot or use-position, publication relation, admissible use, or governing pattern; stable ordinary prose is not expanded into type labels. |
 
 ### F.19:8 - Common anti-patterns and how to avoid them
 
 | Anti-pattern | Symptom | Repair |
 |---|---|---|
 | Lexical paint | One umbrella word is replaced by another while the object kind stays hidden. | Recover the object kind and rewrite in the object's technical name. |
-| Plain-language drift | Smooth prose drops the exact kind or admissible-use boundary. | Remove apparatus first, then restore remaining wording precision before shortening. |
-| Flow smuggling | Development, projection, landing, or evaluation evidence is written as user-facing guidance. | Move the evidence to its carrier and keep only the resulting user move or boundary. |
+| Plain-language drift | Smooth prose drops the kind named by value or admissible-use boundary. | Remove apparatus first, then restore remaining wording precision before shortening. |
+| Flow smuggling | Development, projection, landing, or evaluation evidence is written as user-facing guidance. | Move the evidence to the review record, quality result, projection record, release document, or other governing evidence document and keep only the resulting user move or boundary. |
 | Role label as ontology | A role label replaces the object kind. | Name the object kind; state the role relation only when it changes the claim. |
-| Slot label as ontology | A slot, field, or use-position label replaces the object kind, or the same object in several slots is treated as several kinds. | Preserve object kind and slot/use-position separately and apply the exact pattern for the live relation, signature, lens, role, method, or work claim. |
-| Negative catalogue | The sentence defines an object by listing what it is not. | Lead with the positive object and action; keep only local documented confusion and exact stop condition. |
-| Overformalized precision | The rewrite preserves all terms but makes the sentence harder to think with or generalize from. | Keep the live kind and claim, drop non-load-bearing apparatus, and use a plain technical sentence plus exact reference where needed. |
-| Apparatus-preserving paraphrase | A rewrite changes wording but keeps the same status, process, or quality-proof apparatus. | Return to the apparatus/content split and repair by value. |
+| Slot label as ontology | A slot, field, or use-position label replaces the object kind, or the same object in several slots is treated as several kinds. | Preserve object kind and slot or use-position separately and apply the governing pattern for the content-bearing relation, signature, lens, role, method, or work claim. |
+| Apparatus-looking data structure | A record, card, table, schema, dashboard, or data-structure word is kept because it sounds precise, but it does not carry the EntityOfConcern, slot relation, publication relation, admissible use, or governing pattern. | Treat it as apparatus and remove it, or use `E.24.CD`, `E.24.PUB`, or the direct governing pattern if it really carries a candidate ontic, publication boundary, or subject-pattern relation. |
+| Negative catalogue | The sentence defines an object by listing what it is not. | Lead with the positive object and action; keep only local documented confusion and named stop condition. |
+| Over-annotation as precision | The rewrite replaces a clear domain sentence with type labels, source-ontology tags, or slot names that do not change the claim. | Keep the domain sentence and annotate only the claim-governing term or relation that is under repair. |
+| Overformalized precision | The rewrite preserves all terms but makes the sentence harder to think with or generalize from. | Keep the content-bearing kind and claim, drop non-governing apparatus, and use a plain technical sentence plus reference named by value where needed. |
+| Apparatus-preserving paraphrase | A rewrite changes wording but keeps the same status, process, or quality-proof apparatus. | Return to the apparatus-and-content split and repair by value. |
 
 ### F.19:9 - Consequences
 
-`F.19` makes technical prose easier to read because it removes apparatus before shortening the sentence. It also makes reviews stricter: a pleasant paraphrase does not count unless the pre/post kind, relation, slot/use-position, admissible use, and scope are preserved or deliberately changed by accepted decision.
+`F.19` makes technical prose easier to read because it removes apparatus before shortening the sentence. It also makes reviews stricter: a pleasant paraphrase does not count unless the pre-rewrite and post-rewrite kind, relation, slot or use-position, admissible use, and scope are preserved or deliberately changed by accepted decision.
 
 The cost is that some edits need a short repair note before they look simple. That cost is intentional. Without the note, agents tend to do lexical replacement, narrow a graph into a sequence, widen a work occurrence into a method, turn a publication into evidence, or hide a pattern application under a route-like metaphor.
 
@@ -8383,19 +11613,19 @@ The cost is that some edits need a short repair note before they look simple. Th
 Plain technical style in FPF is not a separate aesthetic layer. It is the visible result of ontology-first repair with less apparatus. The order matters:
 
 1. remove or move boilerplate apparatus;
-2. restore the remaining content through the exact wording-use, naming, relation, slot, source-use, or object pattern;
+2. restore the remaining content through wording-use, naming, relation, slot, source-use, or object-governing patterns named by value;
 3. write the shortest sentence that keeps the recovered meaning.
 
 Putting `F.19` beside wording-use restoration keeps `E.10` from becoming a phrase-style super-pattern. `E.10` catches words and heads whose kind or use is hidden. `F.19` catches the earlier phrase-level problem: the content may not even be visible until process, role, status, reference, quality, or negative-catalogue apparatus is removed.
 
 ### F.19:11 - SoTA-Echoing
 
-| Claim disciplined by source | Practice/source | Source-use relation | FPF import |
+| Claim disciplined by source | Practice or source | Source-use relation | FPF import |
 |---|---|---|---|
-| Plain prose serves a reader and task, not a generic style preference. | ISO 24495-1:2023, *Plain language - Part 1: Governing principles and guidelines*. | Current standard reference for plain-language principles and task/readership fit. | `F.19` requires declared reader/use and checks loss after rewriting. It adapts plain-language principles to FPF kind preservation. |
+| Plain prose serves a reader and task, not a generic style preference. | ISO 24495-1:2023, *Plain language - Part 1: Governing principles and guidelines*. | Current standard reference for plain-language principles and task/readership fit. | `F.19` requires declared reader and use and checks loss after rewriting. It adapts plain-language principles to FPF kind preservation. |
 | Plain language removes unnecessary complexity while keeping necessary terms. | Federal Plain Language Guidelines and Digital.gov plain-language guidance. | Current government plain-language practice reference for audience-first, direct, organized prose. | `F.19` removes apparatus but preserves established FPF terms unless `E.10` or `F.18` changes them. |
 | Legal and technical documents can be clearer without losing controlled terms. | SEC, *A Plain English Handbook: How to Create Clear SEC Disclosure Documents*. | Lineage and practice reference for reducing legalese while retaining disclosure meaning. | `F.19` treats "plain" as meaning-preserving repair, not informal paraphrase or synonym churn. |
-| FPF precision restoration must preserve ontology before style. | Current FPF patterns `E.8`, `E.10`, `E.10.ARCH`, `F.18`, `A.6.P`, `E.21`. | Current FPF governing-source relation. | `F.19` becomes the phrase-level sibling to word/head/use restoration and feeds `E.21` through `PrecisionRestorationProfile`. |
+| FPF precision restoration must preserve ontology before style. | Current FPF patterns `E.8`, `E.10`, `E.10.ARCH`, `F.18`, `A.6.P`, `E.21`. | Current FPF governing-source relation. | `F.19` becomes the phrase-level sibling to word, head, and use restoration and feeds `E.21` through `PrecisionRestorationProfile`. |
 
 ### F.19:12 - Relations
 
@@ -8405,11 +11635,11 @@ Putting `F.19` beside wording-use restoration keeps `E.10` from becoming a phras
 | `E.10` | Restores remaining wording whose kind, relation, or admissible use is hidden after apparatus removal. |
 | `E.10.ARCH` | Provides shared wording-use recovery architecture for remaining content. |
 | `F.18` | Settles durable reusable names after kind and use are known. |
-| `A.6.P` | Restores relation construction when the remaining content hides relation kind, endpoint, support/basis, or slot/use-position. |
-| `A.19.SPR`, `C.2.P`, `C.16.P`, `C.30.P` | Govern state-family, source/publication, characteristic/scale, and architecture/structure wording when those objects remain live after apparatus removal. |
+| `A.6.P` | Restores relation construction when the remaining content hides relation kind, endpoint, basedness, anchoring, or slot or use-position. |
+| `A.19.SPR`, `C.2.P`, `C.16.P`, `C.30.P` | Govern state-family, source or publication, characteristic or scale, and architecture or structure wording when those objects remain as content after apparatus removal. |
 | `E.21` | Consumes `F.19` findings through `PrecisionRestorationProfile`; it lowers affected quality coordinates without creating one coordinate per apparatus symptom. |
 | `E.19`, `E.22`, `E.23` | Use `F.19` in review, framing, and improvement-loop work while keeping quality-loop records out of pattern prose. |
-| `J.4` | Provides first-entry cues for phrase-level apparatus repair. |
+| `E.11` and `I.2` | Provide first-entry cues and expanded entry-disambiguation cases for phrase-level apparatus repair. |
 
 ### F.19:End
 
@@ -9161,6 +12391,7 @@ All blocks below are `GPatternExtension` modules (PatternScopeId; not new Patter
 | **CC‑G0‑Φ** | `Φ(CL)` (and `Φ_plane`, if used) is monotone, bounded, and table-backed; policy ids are published; construction preserves `R_eff ≥ 0`. |
 | **CC‑G0‑Unknowns** | *Delegated.* Unknown handling MUST follow the tri-state guard semantics `{pass|degrade|abstain}` with no silent coercions. (See `CC‑GCORE‑GUARD‑1`.) |
 | **CC‑G0‑CSLC** | Scale/unit/polarity legality MUST be proven before any aggregation; illegal arithmetic on ordinal/nominal values is nonconformant. (Governed by the relevant legality patterns; `G.0` only binds and cites.) |
+
 ### G.0:8 - Common Anti-Patterns and How to Avoid Them
 
 * **Anti-pattern: shadow legality gates in downstream code.** Avoid by requiring downstream to cite `CG‑Spec` segments by id+edition.
@@ -11135,6 +14366,7 @@ How to design a **general, auditable dispatcher** that:
 * **Evolvability vs. churn.** Registries evolve (new families, deprecations, edition bumps); continuity must not be broken by “rename by meaning”.
 
 ### G.5:4 - Solution
+
 #### G.5:4.6a - Causal method dispatch declarations
 
 Method selection involving causal methods must declare whether a compared method is an observational predictor, an intervention optimizer, a counterfactual strategy, a causal fairness estimator, a causal-RL policy, or a simulation-only method.
@@ -11686,7 +14918,7 @@ Evidence-source clarification: peer-reviewed source references carry the most di
 * Planning/enactment boundary: `A.15.3 (SlotFillingsPlanItem)` as the plannedBaselineRef (cited, not redefined).
 * Causal-use method dispatch: `C.28` when method selection involves causal effect, counterfactual comparison, causal fairness, causal policy, causal RL, or simulation-only causal-use claims.
 * Optional method/generator extensions via `G.5:Ext.*`: `C.18`, `C.19`, `C.23`, plus any future extension-bearing patterns that add extra selector pins.
-* Mathematical-lens use: open `C.29` when a selector input depends on a claim-relevant comparator, distance, descriptor geometry, embedding, normalization, surrogate model, learned representation, QD archive descriptor, model-family label, or model-selection basis whose mathematical object, mapping mode, preserved/lost structure, or stop condition is not yet recoverable. `C.29` may return `NoMathLensUseNeeded`, `MathLensUse.LensCandidateNote`, `MathLensUse.OneLine`, `MathLensUse.MiniCard`, `MathLensUse.FullCard`, or `NeighborGoverningLocusNote` for the stated selector use. It does not publish the selected set, selector policy, registry row, shortlist, ranked shortlist, or selector evidence pins; those stay in `G.5` and its governing refs.
+* Mathematical-lens use: apply `C.29` when a selector input depends on a claim-relevant comparator, distance, descriptor geometry, embedding, normalization, surrogate model, learned representation, QD archive descriptor, model-family label, or model-selection basis whose mathematical object, mapping mode, preserved/lost structure, or stop condition is not yet recoverable. `C.29` may return `NoMathLensUseNeeded`, `MathLensUse.LensCandidateNote`, `MathLensUse.OneLine`, `MathLensUse.MiniCard`, `MathLensUse.FullCard`, or `NeighborGoverningPatternNote` for the stated selector use. It does not publish the selected set, selector policy, registry row, shortlist, ranked shortlist, or selector evidence pins; those stay in `G.5` and its governing refs.
 
 **Publishes to:** `UTS` (family ids, selector policy records, and selected-set identities such as `ShortlistId` when one public result is emitted), `G.6` (audit citations), RSCR emission records (typed triggers + payload pins), and downstream packs via `G.10` shipping publications.
 
@@ -12984,6 +16216,7 @@ G.9’s role is to make these recoverable as **pinned and publishable** as a *me
 * **Refreshability.** Parity must emit RSCR‑relevant causes as canonical ids, with enough pins to re‑run.
 
 ### G.9:4 — Solution
+
 #### G.9:4.0 — G.Core linkage (normative)
 
 This pattern is **core‑invariant** and therefore binds to **G.Core** by declaration (not by restating invariants here).
@@ -13423,7 +16656,7 @@ A team compares an observational predictor, an intervention optimizer, and a cou
 - C.29 may flag: parity or benchmark input whose comparator, distance, descriptor geometry, embedding, normalization, surrogate model, learned representation, parity measure, model-family label, or model-selection basis depends on a mathematical lens that changes the parity claim and is missing, under-specified, or overread.
 - This pattern keeps: baseline set, freshness, comparator edition, normalization ids, bridge discipline, parity plan, parity report, and reproducible benchmark publication.
 - Non-admissible use: a `C.29` output does not publish a benchmark report, create benchmark superiority, supply selector output, or supply parity-measure admissibility by itself.
-- Exit: for an under-lensed or overread parity input, cite the applicable `C.29` output for the stated use: `NoMathLensUseNeeded`, `MathLensUse.LensCandidateNote`, `MathLensUse.OneLine`, `MathLensUse.MiniCard`, `MathLensUse.FullCard`, or `NeighborGoverningLocusNote`. Use the cheap output that changes the next admissible parity move; full-card work is only required when the live parity or benchmark claim needs it.
+- C.29 application: for an under-lensed or overread parity input, cite the applicable `C.29` output for the stated use: `NoMathLensUseNeeded`, `MathLensUse.LensCandidateNote`, `MathLensUse.OneLine`, `MathLensUse.MiniCard`, `MathLensUse.FullCard`, or `NeighborGoverningPatternNote`. Use the cheap output that changes the next admissible parity move; full-card work is only required when the live parity or benchmark claim needs it.
 
 **Builds on:** `G.Core`, `G.5`, `G.6`, `G.4`, `F.15`, `E.17`, `E.18`, `A.21`, `F.17`, `E.5.2`, `E.10`.
 **Publishes to:** **UTS** (plan/report ids), **G.11** (refresh wiring), **G.10** (shipping publication form; parity records are cited records).
@@ -14981,28 +18214,31 @@ FPF is a conceptual framework for disciplined creative work, not a data governan
 | §   | ID & Title                  |  Concise reminder                                                |
 | --- | --------------------------- | --------------------------------------------------------------- |
 | I.1 | Deprecated Aliases          |  Deprecated names kept as alias labels for continuity; aliases do not carry current semantics. |
-| I.2 | Detailed Walk-throughs | Worked entry readings for high-risk or compact-insufficient entry neighborhoods; compact-index-only is a complete admissible posture when enough. |
+| I.2 | Expanded Entry Disambiguation Cases | Expanded entry-disambiguation cases for high-risk or compact-insufficient first-entry comparison; compact `E.11` entry cues plus local Problem frames are complete when enough. |
 | I.3 | Change‑Log (auto‑generated) |  Version history keyed to DRR ids.                               |
 | I.4 | External Standards Mappings |  Trace tables to ISO 15926, BORO, CCO, Constructor‑Theory terms. |
 
-## I.2 - Detailed Walk-throughs
+## I.2 - Expanded Entry Disambiguation Cases
 
-`I.2` is the canonical worked entry-reading support role in this architecture.
-An `I.2` item can serve as one entry-reading vignette, one didactic learning
-walkthrough, or both. When it serves as entry reading, its `E.11` force is
-limited to disambiguation, wrong-pattern rejection, entry-load reclassification,
-and admissible entry stop.
+`I.2` is the canonical publication unit for `ExpandedEntryDisambiguationCase`
+entries in this architecture. An `I.2` item expands one compact `E.11`-distributed
+entry cue, README scenario, ToC query cue, or local pattern `Problem frame` when
+first-pattern choice is high-risk, often misclassified, repeatedly failed,
+retrieval-facing, or too dense for compact guidance.
+Its `E.11` use is limited to disambiguation, wrong-pattern rejection,
+entry-load reclassification, and admissible entry stop.
 
-`worked entry reading` here is an explanatory reading case. It is not
+An `ExpandedEntryDisambiguationCase` is a bounded entry case. It is not
 `U.Work`, not a workflow, not a route script, and not an execution trace.
 
-`I.2` carries expanded reading only when compact `J.4` guidance plus local
-`Problem frame` recognition are insufficient for one high-risk,
-often-misclassified, repeatedly failed, retrieval-facing, or materially new
-entry neighborhood. Compact-index-only posture is a complete admissible entry result
-when the `J.4` row and pattern `Problem frame` are enough.
+`I.2` carries expanded disambiguation only when README scenarios, ToC query cues,
+`E.11` entry-distribution cues, or local `Problem frame` recognition are
+insufficient for one high-risk, often-misclassified, repeatedly failed,
+retrieval-facing, or materially new first-entry pattern-comparison set. A compact
+entry cue plus the pattern `Problem frame` is a complete admissible entry result
+when it is enough.
 
-Each worked entry reading keeps recoverable:
+Each expanded entry-disambiguation case keeps recoverable:
 
 - `Case signal`
 - `Initial uncertainty`
@@ -15056,7 +18292,7 @@ Each worked entry reading keeps recoverable:
 - **Actual governing FPF pattern body or projection role:** `C.2.LS`, `A.16*`, and
   `B.4.1` are the first governing patterns for cue preservation and entry plurality;
   `A.6.B` / `A.6.C` become first governing patterns only after boundary claim structure is
-  actually live.
+  actually being made.
 - **Admissible entry stop:** cue preserved, entry plurality opened, or entry-load
   reclassified into the right boundary-claim pattern.
 - **What not to infer:** do not recast the cue as a finished requirement, work
@@ -15123,7 +18359,7 @@ Each worked entry reading keeps recoverable:
 - **Case signal:** "We need a reusable search/harvest/portfolio scaffold, not
   one recommendation."
 - **Posture:** compact-index-only is normally sufficient unless repeated
-  misclassification makes a worked reading necessary.
+  misclassification makes an expanded entry-disambiguation case necessary.
 - **Initial uncertainty:** the reader can confuse generator/scaffold authoring
   with one-off recommendation, one comparison, one selected-set publication, or
   tooling choice.
@@ -15199,114 +18435,6 @@ Each worked entry reading keeps recoverable:
 | J.1 | Concept‑to‑Pattern Index |  Quick jump from idea (“boundary”) to pattern (§, id).   |
 | J.2 | Pattern‑to‑Example Index |  Table listing every archetypal grounding vignette.      |
 | J.3 | Principle‑Trace Index    |  Maps each Pillar / C‑rule / P‑rule to concrete clauses. |
-| J.4 | First Practical Entry Neighborhood Index | Compact entry-neighborhood index matching the public entry families without route-state, authority-reference, or output columns. |
-
-## J.4 - First Practical Entry Neighborhood Index
-
-> **Type:** Index (J)
-> **Status:** Stable
-> **Normativity:** Informative navigation rule; it does not create a required sequence or replace the governing pattern body.
-
-**At a glance.** Use `J.4` when a practitioner has a live entry question and needs the first plausible FPF patterns to inspect without turning the index into a universal lookup table or required sequence.
-
-**Use this when.** Use this pattern when several nearby first entries are plausible, the wrong first stop is common, or a lexical cue is likely to hide a more exact governing pattern.
-
-**First output.** One selected entry row, or a decision that no `J.4` row is needed because the governing pattern is already obvious.
-
-**Primary EntityOfConcern.** One informative `EntryNeighborhoodRow` or the table of such rows: entry neighborhood, honest entry question, first patterns to inspect, nearby reclassifications, admissible entry stop, non-entry condition, and lexical-query help.
-
-**Working action path.** Name the live entry question, inspect the closest row, test the non-entry condition, open the named governing pattern rather than staying in `J.4`, and lower or ignore the row when the exact governing pattern is already recoverable.
-
-**Not this pattern when.** Not this pattern when the user already has the exact governing pattern, needs the governing pattern body itself, needs a required ordered sequence, or needs pattern-quality, DRR-adequacy, evidence, assurance, gate, decision, work, or project certification.
-
-**What this buys.** `J.4` reduces first-entry search cost while preserving pattern authority: it points, stops, and reclassifies; it does not govern the substantive claim.
-
-This index is informative navigation only.
-It helps one practitioner compare plausible first pattern entries under one live
-entry question. It is not one universal lookup table, not one required sequence, not one
-learning syllabus, and not one pattern-local recognition role. It is one
-compact comparison of nearby starting points.
-Plain use: choose by what you are really trying to decide, not by document
-order. A row names first patterns to inspect, plausible wrong first stops, and
-where entry can stop without pretending there is a required ordered sequence.
-
-Plain column key: entry neighborhood = nearby starting-point cluster; first
-honest entry question = what you are really trying to decide or stabilize; first patterns
-to inspect = patterns to inspect first; admissible entry stop = enough to proceed
-without pretending there is a required ordered sequence.
-
-This table helps recover the governing pattern or verify the preceding guidance. It does not replace the pattern's Solution and does not create a required sequence.
-
-| Entry neighborhood | First honest entry question or case signal | First patterns to inspect | Nearby reclassification cues | First admissible entry stop | Non-entry condition and search cues |
-| --- | --- | --- | --- | --- | --- |
-| Project alignment | "We keep mixing responsibilities, method, plan, and performed work." | `A.1.1`; `A.15`; `A.15.2`; `A.15.3`; `B.5.1` | `F.11` for unstable method/work vocabulary; `F.9` for bridge discipline | alignment pattern opened, or one shared work/term form stable enough to proceed | not comparison, boundary-claim placement, SoTA scaffold, or generator scaffold; cues: responsibility, plan, actual work |
-| Principles-to-work carry-through | "Accepted problem-side output plus principle, result, source, interface, or integration cue needs the next P2W relation." | `E.18.1`; `C.22.2`; `A.6.0`; `A.6.1`; `A.15`; `A.15.4` | `C.29` for mathematical-lens use; `A.15.1`/`A.15.2`/`A.15.3` for performed or planned work; `E.18` for graph relation | carry-through record names next kind, relation, record, application, or stop condition | not when no accepted problem-side output exists or one exact pattern already governs the claim; cues: P2W, first principles to work, result carry-through, interface split |
-| Partly-said cue and language-state discovery | "Something important is present but too early for a settled claim, requirement, or work record." | `C.2.LS`; `A.16`; `A.16.1`; `A.16.2`; `B.4.1`; `B.5.2.0` | endpoint claim/action/quality patterns only after the cue matures | cue preserved, language-state cue typed, or entry plurality opened | not when the claim is already stable enough for L/A/D/E claim decomposition; cues: vague cue, not yet a claim |
-| Wording-use precision restoration | "The wording hides the head kind, relation, source-use role, state-family value, architecture/structure use, characteristic, quality sense, function sense, or governing pattern." | `E.10`; `E.10.ARCH`; exact realization pattern when known | `C.2.P`, `A.6.P`, `C.30.P`, `C.30.STRAT`, `C.16.P`, `C.16.Q`, `A.19.SPR`, `A.6.F`, or `F.18` by recovered kind | false positive, local repair, direct exact pattern, or restoration note names remaining move | not a toll booth when exact pattern is already recoverable; cues: source says, readiness claim, function of, layer/level/tier/stack/block/gate |
-| Ontology-first plain technical rewriting | "The sentence has an FPF object, but phrase apparatus hides object, claim, relation, or action." | `F.19`; `E.8`; `E.21` when quality evaluation is live | `E.10`, `E.10.ARCH`, `F.18`, or exact pattern after apparatus is removed | phrase apparatus removed/moved, remaining content repaired, or blocker names hidden kind | not one overloaded word/head alone; cues: official-sounding sentence, mostly negative paragraph, reference boilerplate before action |
-| Boundary unpacking and claim decomposition | "Agreement, API, protocol, SLA, acceptance, or compliance wording mixes law, gate, duty, evidence, quality, or action." | `A.6`; `A.6.B`; `A.6.C` | `A.6.RSIG`, `A.6.P`, `C.16.Q`, or `A.6.A` when first-contact, relation, quality, or action wording is live | boundary claim pattern opened or L/A/D/E atomic claim set ready | not partly-said cue or already decomposed claim set; cues: API, promise, commitment, duty, evidence, gate |
-| Architecture, diagram, module, and model distinction | "Architecture, module diagram, ports, functional architecture, graph, control description, modularity, scale-preference, or source-label wording hides the EntityOfConcern." | `C.30.P`; `C.30.STRAT`; `C.30`; `A.6.M`; `C.31` family | `C.30.ASV`, `C.30.TGA-FLOW-REL`, `E.18`, `C.30.LCA`, `A.6.F`, `C.30.ILC`, `C.16.P`, `C.29`, or `C.2.P` by recovered relation | architecture, structure, module, modularity, reusable-structure, or scale-claim triage is selected | not universal layer/stack ontology or scale-proof shortcut; cues: architecture, ports, three layers, modularity score, LCA proves safety |
-| Comparison, pool policy, selection, and selected-set publication | "We need comparison, shortlist, pool policy, call-planning distinction, or selected set without forcing one winner." | `A.19:0`; `A.17-A.19`; `A.19.CN`; `C.18`; `C.19`; `G.0`; `G.5` | `C.11` for local choice; `C.24` for `CallPlan`/`CheckpointReturn`; `A.19.CPM` or `A.19.SelectorMechanism` when structure is live | comparison relation, pool policy, local choice, call plan, or selected-set publication pattern identified | not when selector mechanism or selected-set publication is already settled; cues: shortlist, acceptable option set |
-| Generator, SoTA, or portfolio scaffold | "The work is a reusable search, harvest, generator, selector, or portfolio scaffold, not one recommendation." | `A.0`; `G.0`; `G.1`; `G.2`; `G.5` | `B.5.2.1`, `C.17-C.19`, `G.10`, or `G.11` when creative search, policy, shipping, or refresh is live | generator/scaffold entry opened or portfolio/set publication pattern identified | not one local comparison or one-off recommendation; cues: scaffold, reusable search, generator |
-| Same-entity rewrite, explanation, and comparative interpretation | "Restate, explain, render, repair, or compare the same claim-bearing `PublicationUnit` without changing what it is about." | `A.6.3.CR`; `A.6.3.RT`; `E.17.EFP`; `E.17.ID.CR` | `E.17.AUD.LHR` or `E.17.AUD.OOTD` when pressured-head or `PublicationUnit` stability is live | rewrite, transition, explanation-facing rendering, or bounded comparative interpretation opened | not a new episteme, new rule track, or independent `PublicationUnit`; cues: same unit, different audience |
-| Temporal claim adequacy | "Speed, cadence, throughput, recovery, stabilization, rollout, or learning rate changes the next move." | `C.27`; `C.16`; `A.3.3` | `B.1.4`, `B.1.6`, `C.18.1`, `C.19`, `C.22.1`, `C.24`, `C.25`, `C.26`, `C.26.3`, or `G.9` by other live question | ordinary prose, Dyn0/Dyn1, `Dyn2TemporalClaimAdequacyCard`, profile, or exact relation | not speed metaphor, snapshot, benchmark, or QL residue alone; cues: velocity, rhythm, cadence, throughput, recovery |
-| Causal-use and counterfactual claim repair | "This caused that, an intervention would work, a policy would have prevented harm, or a benchmark is counterfactual." | `C.28`; `A.10`; `B.3`; `D.5`; `G.5`; `G.9` | `C.16`, `C.27`, `C.26`, `A.15`, `A.3.2`, or `A.6` when the live claim is measurement, temporal, QL, work, or boundary split | causal-use triage card, or downgrade to association, measurement, temporal, simulation, method, work, or boundary interpretation | not observed association, work occurrence, schedule, duty, or simulation trace alone; cues: caused, effect, intervention, counterfactual |
-| Quality-evaluation question framing | "Are we asking for floor blockers, exceptional improvements, trade-off check, open questions, or absorption impact?" | `E.22`; `E.21`; `E.9.DA`; `E.19` | `C.16`/`A.17-A.19` for characteristic legality; `E.10`, `A.6.P`, `C.2.P`, `F.18` for wording/names; project-side patterns for overread | `QualityEvaluationQuestionFrame` names object version, use, purpose, floor/aim, evidence basis, result form, and non-use boundary | not already-framed evaluation awaiting execution; cues: review this, raise to 5, absorption impact, Pareto trade-off |
-| EntityOfConcern-under-improvement evaluation setup | "We want to improve something but cannot yet say better for whom, by which values, against which cases, or when to stop." | `A.19.ECS`; `A.19`; `E.22`; `E.23` | exact evaluations such as `E.21`, `E.9.DA`, `E.2.DA`, `F.18`, or `C.25`; `A.17`, `A.18`, `C.16`, `C.18`, `C.19`, `G.5`, `G.9`, `G.11` when live | evaluated object kind, use, contrast cases, coordinates, value meanings, missingness, protected trade-offs, state-family value, and stop/reopen declared | not one already-framed evaluation, local work task, or project certification; cues: what is better, arbitrary rubric, when stop improving |
-| Repeated quality-improvement loop | "The object has an evaluation and candidate repairs; now we need evaluate-change-reevaluate-stop without treating activity as improvement." | `E.23`; `E.22`; exact object-under-improvement evaluation | `A.19.ECS` when evaluation is inadequate; `C.19`/`G.5` for proposal selection; project-side patterns for evidence/assurance/decision/gate/work overread | loop opens with object version, evaluation, expected value movement, protected trade-offs, cost boundary, re-evaluation result form, and stop/reopen | not single evaluation, generator design, selected-set publication, project approval, or external certification; cues: another pass, closed checklist, all fives |
-| Evaluation CharacteristicSpace FPF pattern publication form | "A reusable evaluation characteristic space exists or is being built, and the question is how to publish it as an FPF pattern." | `E.8.ECSPF`; `A.19.ECS`; `E.8`; `E.21` | `E.22`, `E.23`, `F.18`, `E.9.DA`, `E.2.DA`, `C.25`, or exact neighbors by live claim | publication form states evaluated kind, use, first evaluation, coordinates, result form, evidence basis, cases, non-use, reopen | not local, temporary, or one-project-only evaluation; cues: make this rubric a pattern, table right but hard to use |
-| FPF-level Pillar adequacy and whole-FPF improvement | "We are improving FPF as corpus, release candidate, cluster, or language ecology." | `E.2.DA`; `E.2`; `E.23`; `E.22` | `E.21` for one pattern; `E.9.DA` for one DRR; `F.18` for lexical quality; `J.4` for discoverability | FPF object under improvement, use scope, Pillar coordinates, evidence loci, rationales, trade-offs, stop, and reopen declared | not local pattern quality, one DRR, one term, or project-side certification; cues: improve FPF, Pillars, corpus discoverability |
-| Pattern-quality stop, repair, and non-scalar improvement | "A pattern draft/update may be good enough, blocked, or improvable without reducing quality to one score." | `E.21`; `E.19`; `E.8`; `C.25`; `C.16.Q` | `C.16`/`A.17-A.19`, `F.18`, `C.2.P`, `E.17.AUD`, or project-side patterns when those claims are live | `PatternQualityEvaluation` names pattern version, reader, use, window, evidence basis, coordinate rationales, status, stop, or first repair | not only E.8 body shaping, E.19 frame execution, generic measurement, or project certification; cues: quality score, Goodhart, first move missing |
-| DRR decision adequacy before pattern drafting | "Can I draft from this DRR without inventing missing decisions, selected loci, source-use payload, or accepted-decision carry-through?" | `E.9.DA`; `E.9`; `E.10` when wording repair is live | `E.21` for pattern quality; `E.19` for admission/refresh review; project-side or measurement patterns when those claims are live | `DRRDecisionAdequacyEvaluation` names DRR version, use, evidence loci, coordinate rationales, selected-locus disposition, carry-through, status, and first drafting move/repair | not ordinary pattern-quality evaluation, local wording repair, or project-world certification; cues: vague DRR, selected patterns, source-use carry-through |
-Rows are for likely first practical entries, common wrong first guesses, or
-public-facing or retrieval-facing entry points. A pattern does not need a `J.4` row merely
-because it exists. A row belongs here only when the pattern is a practical entry
-point or when its first-pattern choice commonly changes. The pattern text itself
-still needs a pattern-local `Problem frame` and any live wrong-pattern boundary to be clear.
-A `J.4` row usually stays bounded: `3-6` first patterns to inspect, `1-3` nearby or
-reclassification cues, one short not-this-entry sentence, and one short admissible
-entry-stop phrase. The row remains compact enough to scan in one pass and
-specific enough not to smuggle a required ordered sequence.
-
-### J.4:1 - Row Discipline
-
-`EntryNeighborhoodRow := <entryNeighborhood, honestEntryQuestion, firstPatternsToInspect, nearbyReclassifications, admissibleEntryStop, nonEntryCondition, lexicalQueryHelp>`.
-
-This is an informative projection row only. The phrases in `Worked walk-through and lexical-query help` are retrieval cues, not canonical recovered kinds. When a lexical cue has FPF-governed use in FPF-governed wording, `E.10` and the referenced governing pattern decide the exact kind, relation, source-use disposition, source-currentness claim, or value meaning.
-
-A row is current only while the referenced pattern ids exist and the row's first-entry question remains true. Lower, narrow, or remove a row when it no longer changes first-pattern choice, duplicates the referenced pattern's recognition text, cannot stay compact, or its first-entry claim is no longer true for current pattern ids. Update `J.4` when a new or changed pattern materially changes the honest first-entry choice; do not add historical status notes.
-
-`J.4` remains the compact projection role for these rows. It does not become the applicable governing pattern body for the entry questions or relations it points to. `SoTA`-related cues only help select the first governing pattern; source currentness and `SoTA` adoption are evaluated in that governing pattern, not in `J.4`. If a referenced pattern's `Problem frame` does not expose its use situation, the pattern itself remains under-specified. If a row cannot stay compact, the depth belongs in `I.2`.
-
-When `J.4` itself is under improvement, use `E.21` for the pattern-quality evaluation and `E.23` for repeated improvement. `J.4` only answers whether a row is a useful first-practical entry projection.
-
-### J.4:2 - Conformance Checklist
-
-| ID | Check |
-| --- | --- |
-| CC-J4-1 | A row is informative navigation only and does not create a required sequence, governing claim, or replacement for the named pattern body. |
-| CC-J4-2 | A row starts from one honest entry question or case signal, not from alphabetical order, table position, campaign history, or pattern-id proximity. |
-| CC-J4-3 | First patterns to inspect stay bounded enough for first use; nearby reclassifications are explicit and do not become a hidden required action chain. |
-| CC-J4-4 | Lexical-query help stays a retrieval cue. If the cue carries FPF-governed use, the named governing pattern and `E.10` recover the exact kind or relation. |
-| CC-J4-5 | A row is lowered, narrowed, or removed when it no longer changes first-pattern choice, duplicates a pattern's own recognition text, cannot stay compact, or points to stale pattern ids. |
-| CC-J4-6 | `J.4` points to pattern-quality, DRR-adequacy, evidence, assurance, gate, decision, work, release, or project-certification patterns only as first entries; those patterns govern their own claims. |
-
-### J.4:3 - SoTA and Practice Alignment
-
-| Practice source family | Local invariant | Shortcut rejected |
-| --- | --- | --- |
-| Information-foraging and information-scent practice | Entry rows use the practitioner's live question and recognizable cues before taxonomy. | Choosing by table order, pattern id, or familiar name when the live question points elsewhere. |
-| Faceted navigation and controlled-vocabulary practice | Rows combine entry neighborhood, first question, nearby reclassification, stop condition, and lexical-query help as separate facets. | One universal lookup column or one synonym list that hides kind recovery. |
-| Decision-aid triage practice | `Not this entry when` and admissible entry stop are as important as first patterns to inspect. | Turning an index into a required action chain or exhaustive taxonomy. |
-| Search and retrieval practice for technical corpora | Lexical cues are allowed as search handles, but recovered FPF kinds come from the governing pattern. | Treating a search phrase as the canonical kind, relation, or evidence source. |
-
-### J.4:4 - Relations and Refresh
-
-`J.4` depends on the current pattern corpus, current pattern ids, and the recognition text of the patterns it points to. It coordinates with `I.2` for deeper walk-throughs, `E.10` for wording-use recovery, `E.21` for pattern-quality evaluation, `E.23` for repeated improvement, and the named governing pattern for every substantive claim.
-
-Refresh a row when a named pattern is renamed, split, merged, removed, or given a materially different recognition boundary; when a new pattern changes first-entry choice; when a lexical cue becomes misleading; or when the row grows too large to scan. Lower the row to ordinary prose or move depth to `I.2` when it no longer works as compact first-entry navigation.
-
-### J.4:End
 
 # **Part K - Lexical Debt**
 
