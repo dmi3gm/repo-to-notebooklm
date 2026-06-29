@@ -12,6 +12,8 @@ FPF helps when a project has outgrown one clever conversation. It is useful when
 
 Use FPF as a reference model and pattern language, not as a linear textbook. Start from the working question you bring from your project. Bring in internal FPF terms only after they help you keep the work precise.
 
+The plain starting move is: name the project thing at stake. FPF often calls it a holon when the thing is being treated as a whole with parts: a machine, product, organization, method, body of knowledge, publication system, AI-agent arrangement, or local framework. Once the thing is named, FPF asks what structure, claim, decision, evidence, description, work, or improvement question is actually live.
+
 ## Decide Whether FPF Fits
 
 Use FPF when ordinary discussion is no longer enough to keep work coherent. Typical signs:
@@ -43,13 +45,17 @@ Stronger AI does not remove the need for FPF. AI can generate fluent options qui
 
 Core ideas in plain language:
 
+- first name the project thing under concern; when it is treated as a whole with parts, FPF calls it a holon;
 - local teams may use local meanings, but translation must be explicit when work crosses a boundary;
 - the thing itself, its description, a dashboard about it, a decision about it, and the work done to change it are not the same;
+- architecture is structure of that thing in a context, not the diagram, document, approval, or plan about it;
+- serious architecture work can move from problem pressure to candidate structures, selected structures, decisions, method and work, actual structures, and feedback;
 - keep several options alive until the comparison is clear enough to choose;
 - say what "better" means before optimizing or scoring;
 - make trust depend on evidence, freshness, scope, and intended use;
 - publish different views for different readers without changing the underlying claim;
-- use mathematics or formal models when they clarify what structure is preserved, what is lost, and what can be checked.
+- use mathematics or formal models when they clarify what structure is preserved, what is lost, and what can be checked;
+- build domain or local FPF-grounded frameworks as dependents of FPF Core, not as silent rewrites of the Core.
 
 ## First Practical Entries
 
@@ -59,13 +65,13 @@ The entries below are not a required sequence. They are common places where FPF 
 
 ### 1. Develop or review architecture
 
-Use this when you need to design, explain, review, or improve the architecture of a product, organization, technical system, document system, AI-agent setup, research program, or other thing with important internal structure.
+Use this when you need to design, explain, review, or improve the architecture of a product, organization, technical system, document system, AI-agent setup, research program, local practice, or other thing with important internal structure.
 
-FPF helps you ask what is being architected, which structures matter, what property of the architecture is being changed or judged, and which description, diagram, view, promise, decision, evidence, or implementation task is a different matter. It gives you language for selected structures, structural views, architecture characteristics, modularity, interfaces, scale, interlevel tensions, and architecture-changing moves.
+FPF helps you start from the thing being changed or described, not from the drawing. It asks which structures are unknown, candidate, selected, expected, or actual; which architecture characteristics are under pressure; which alternatives must remain alive; which decision is now binding; which method or work will realize the selected structures; and what operation, measurement, or feedback can reopen the architecture.
 
-Typical first result: a short architecture question note that says what is being architected, which structures matter, which architecture characteristic is at stake, what description or view is needed, and what decision or implementation work is still not settled by the architecture statement.
+Typical first result: a short P2S flow card or architecture question note that names the described holon, bounded context, problem pressure, unknown or selected structures, architecture characteristics, candidate or decision owner, work or feedback owner, and what real selected structure is still not settled by the current architecture statement.
 
-First inspect: `C.30`, `A.22`, `C.30.ASV`, `C.30.AD`, `C.31`, `A.6.M`, and the relevant architecture precision-restoration patterns when wording hides the kind of structure being discussed.
+First inspect: `C.32.P2S`, `C.30`, `A.22`, `C.32`, `C.32.PAD`, `C.32.ADR`, `C.33`, `C.34`, `C.35`, `C.30.ASV`, `C.30.AD`, `C.31`, `C.32.CONWAY`, and `B.2` or `B.2.P` when the work may reidentify the whole being discussed.
 
 ### 2. Write rules, methods, and work-process documents
 
@@ -187,6 +193,18 @@ Typical first result: a SoTA pack, option portfolio, candidate set, archive, or 
 
 First inspect: `G.0`, `G.1`, `G.2`, `G.5`, `G.10`, `G.11`, `C.18`, `C.19`, `A.19`, and `A.19.ECS`.
 
+### 14. Build a domain or local FPF-grounded framework
+
+Use this when a team needs its own FPF-grounded guide for a domain, organization, role context, or local practice, such as a hydroponic-cucumber framework, neural-network architecture framework, enterprise architecture-review framework, or Codex-process framework.
+
+FPF helps you keep the FPF Core, domain principle framework, local practice framework, source pack, selected pattern set, relation records, edition dependencies, publication units, quality loop, and refresh route from collapsing into one local monolith or one useful checklist. This is the normal adoption path when a group wants FPF for its own field without turning local policy into a Core rule.
+
+Typical first result: a family-and-structure map or principle-framework architecture decision that names the framework edition, bounded context, FPF Core dependency, selected first patterns, relation and publication carriers, source pack, quality route, and refresh route.
+
+In the first hour, write the context note, source-pack stub, first PFAD question, provisional name route, one to three pattern candidates, relation rows, first-entry carrier, quality route, and refresh trigger. Then open `E.4.DPF` for the full authoring spine.
+
+First inspect: `E.4`, `E.4.PFAD`, `E.4.DPF`, `E.4.PFR`, `G.2`, `E.8`, `E.11`, `E.17`, `F.18`, and `G.11`.
+
 ## One-Minute Example
 
 A platform team asks:
@@ -197,11 +215,13 @@ Without FPF, the conversation often mixes architecture, vendor comparison, safet
 
 With FPF, the first pass can become a small set of explicit project objects:
 
-- architecture question: what stack architecture is being changed or chosen;
+- holons in play: the product, the agent stack, and the team or toolchain that will change it are not the same thing;
+- architecture flow: what problem pressure should become which candidate, selected, expected, and actual structures;
 - comparison frame: which alternatives are in the candidate set;
 - evaluation characteristics: cost, latency, controllability, safety, maintainability, time to first use, and other project-specific characteristics;
 - evidence gaps: what must be tested before commitment;
-- current choice state: whether the team is choosing now, keeping a selected set, or doing more discovery;
+- current decision state: whether the team is choosing now, keeping a selected set, making a project architecture decision, or doing more discovery;
+- work and feedback: what method, readiness, and performed-work records must later show that the selected structures were actually realized;
 - reader reliance: what engineering, management, and assurance readers may responsibly rely on.
 
 That same shape can be used for a factory modernization, laboratory protocol, construction design change, supply-chain decision, safety case, or research program. The point is not the AI topic; the point is one body of reasoning that can be reviewed, improved, and published without changing meaning on the way.
@@ -218,6 +238,8 @@ It helps teams:
 - compare options without collapsing too early to one favorite;
 - define quality criteria before improvement starts;
 - keep evidence, assurance, decisions, and implementation work visible as different questions;
+- carry architecture work from problem pressure to real structures and feedback instead of stopping at diagrams or decision prose;
+- grow domain or local frameworks from FPF Core without silently changing Core meaning;
 - repair confusing wording by first asking what the wording is doing in the project, not by swapping synonyms;
 - leave each pass with one useful next result: a clearer question, a better name, a comparison note, an evidence gap, a safer document, or a reason to inspect a specific pattern.
 
@@ -255,7 +277,8 @@ architecture, rules and methods, API or interface wording, permission or complia
 problem shaping, quality improvement, evidence and assurance,
 temporal claims, causal or model-output use, publication or view use,
 naming, technical-text precision, mathematical modeling,
-or current options and state of the art.
+current options and state of the art,
+or a domain/local FPF-grounded framework.
 For the selected entry, give:
 1. the main project thing or claim at stake,
 2. the first useful written result,
@@ -359,8 +382,7 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | A.6.RSIR | **Relation, Signature, Interface, Role, and Slot Precision Restoration** | Stable | *Keywords:* relation-signature-interface-role-slot recovery, interface wording, role wording, slot wording, field, parameter, endpoint, port, API, protocol, capability, affordance, method, function, concern, interest, shadow ontology. *Queries:* "How do I repair interface, role, slot, parameter, function, or concern wording before choosing the direct governing pattern?", "When is interface wording a port, API, protocol, signature, module boundary, or publication view?", "When is role wording U.Role, U.RoleAssignment, relation position, evidence use, status use, or source label?" | **Builds on:** E.10, E.10.ARCH, A.6.P, A.6.5, A.6.0, A.2, A.2.1, A.15, F.18, F.19. **Coordinates with:** A.6.M, A.6.F, A.6.A, C.2.P, C.2.P.DR, E.17, A.10, F.10, G.6. |
 | A.6.A | **Action-Invitation Precision Restoration (ACT-INV)** | Stable | *Keywords:* affordance, action invitation, action-first language, post-threshold classification, A.15 docking, language-state seam. *Queries:* "How do I repair overloaded affordance language in FPF?", "When does action-guiding language become an action invitation?", "How does A.6.A differ from early cue routing?" | **Builds on:** A.6.P, A.15, C.2.2a, A.16, B.4.1, F.9. **Coordinates with:** C.16.Q, B.5.2.0. |
 | A.6.F | **Function and Functional Precision Restoration (RPR-FUNCTION)** | Stable | *Keywords:* function wording, functional architecture, FunctionalStructure, function-use repair, capability/effect, work/method boundary, module allocation, mathematical function. *Queries:* "When is functional architecture a structure kind rather than a separate ontology?", "How do I repair function-like wording?", "When is a function a capability, method, work, role, quality, module allocation, or mathematical mapping?" | **Builds on:** A.6.P, A.6.5, A.7, C.30, C.30.ASV, C.29. **Coordinates with:** A.6.M, A.15, C.16.Q, A.6.0, A.6.5, A.6.B, A.6.C, A.6.8, E.18, C.30.TFS-REL. |
-| A.6.M | **Module Relation Repair** | Stable | *Keywords:* module relation, component, interface, port, platform, layer, stack, open architecture, substitutability, interface specification. *Queries:* "When is a module relation being claimed?"
-, "How do I keep functional links, signatures, ports, and implemented interfaces distinct?", "When does open architecture require module-interface repair?" | **Builds on:** A.6.P, A.6.5, A.6.B, C.30, C.30.ASV, A.6.F. **Coordinates with:** C.31, C.31.RSA, E.18, C.30.TFS-REL, A.10, B.3, A.20, A.21, C.28, E.20, G.5, C.11. |
+| A.6.M | **Module Relation Repair** | Stable | *Keywords:* module relation, component, interface, port, platform, layer, stack, open architecture, substitutability, interface specification. *Queries:* "When is a module relation being claimed?", "How do I keep functional links, signatures, ports, and implemented interfaces distinct?", "When does open architecture require module-interface repair?" | **Builds on:** A.6.P, A.6.5, A.6.B, C.30, C.30.ASV, A.6.F. **Coordinates with:** C.31, C.31.RSA, E.18, C.30.TFS-REL, A.10, B.3, A.20, A.21, C.28, E.20, G.5, C.11. |
 | A.6.5 | **U.RelationSlotDiscipline - SlotKind, ValueKind, RefKind, and slot-operation discipline** | Stable | *Keywords:* slot, argument position, value, reference, signature, substitution, pass-by-value, pass-by-reference. *Queries:* “How do I declare positions and references in relations?”, “How do we stop mixing roles, values and ids in signatures?”, “How does SlotKind/ValueKind/RefKind interact with EntityOfConcern / Description / specification-use and Epistemes?” | **Builds on:** A.6.0 (U.Signature), A.1 (Holon), A.7 (Strict Distinction), E.8 (pattern authoring discipline), E.10 (LEX-BUNDLE; Tech/Plain registers). **Used by:** C.2.1 (U.EpistemeSlotRelation), A.6.2–A.6.4 (episteme morphisms), A.2.1 and F.6 (RoleEnactmentFact and performed-work attribution), C.3.* (Kinds & KindSignature), E.17.0 (U.MultiViewDescribing), discipline-packs for methods/services. |
 | A.6.6 | **Base Declaration Discipline - Kind-explicit, scoped, witnessed base declaration discipline (with base-change lexicon)** | Stable | *Keywords:* base declaration, basedness, baseRelation, SWBD, witnesses, scope, Γ_time, anchoring, support-as-basedness, rebase, retime, rescope. *Queries:* "What is base-declaration discipline?", "How to model base-dependence without anchoring?", "When is support really base-dependence?", "What is a ScopedWitnessedBaseDeclaration (SWBD)?" | **Builds on:** A.6.0, A.6.5, A.2.6, A.2.4, A.7, E.8, E.10. **Coordinates with:** A.10, A.14, C.2.1, A.6.3-A.6.4, C.3.3, E.18, F.9, F.15, F.18. **Used by:** base-relative admissibility/calibration/attribution patterns; anchor* and support-as-basedness rewrites into explicit `baseRelation(dependent, base)`. |
 | A.6.7 | **`MechSuiteDescription` — Description of a set of distinct mechanisms** | Stable | *Keywords:* mechanism suite, distinct mechanisms, suite obligations, spec pins, CN-Spec, CG-Spec, P2W, planned baseline, crossing visibility. *Queries:* "What is a MechSuiteDescription?", "How to describe a bundle of distinct mechanisms without using MechFamilyDescription?", "How do suite obligations differ from gate decisions?" | **Builds on:** E.8, A.6.1, A.6.5, E.10, E.19. **Coordinates with:** E.18, A.21. **Used by:** Part G universalization; CHR mechanism stacks. |
@@ -375,15 +397,16 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | A.10 | **Evidence Graph Referring (C-4)** | Stable | *Keywords:* evidence, traceability, provenance, evidence carrier, claim support, authority-reliance evidence path, status register, register excerpt, generated-explanation source support, exact authority reference, probe/distributed/export/causal evidence, SCR/RSCR. *Queries:* "How are claims supported by evidence?", "When does a generated explanation become source-backed evidence rather than approval or authorization?", "How do I keep evidence carriers separate from the state they report?", "When is a credential, pass, badge, or status display only an excerpt of a governing register entry or source `U.EpistemePublication`?" | **Builds on:** A.1. **Coordinates with:** A.6, A.15, B.3, E.17.EFP, A.20, A.21, C.16, F.9, C.26.1, C.26.2, C.26.3, C.28. |
 | A.11 | **Ontological Parsimony** | Stable | *Keywords:* parsimony, composition, non-redundancy, kernel growth, U-kind admission. *Queries:* "How does FPF avoid adding redundant core concepts?", "When should a candidate be expressed by slots, relations, records, forms, lenses, or an existing root?" | **Builds on:** E.24.UK, A.8, F.8, F.18. **Constrains:** new core-concept and durable U-kind proposals. |
 | A.12 | **Acting-Side Externalization and Reflexive Split** | Stable | Separates the system or holon on the acting side of a transformation from the changed holon, transformation evidence, work success, and super-holon claims. | **Builds on:** A.1, A.3.4, A.15.1. **Coordinates with:** A.2.1, A.14, B.2, C.30. |
-| A.13 | **The Agential Role & Agency Spectrum** | Stable | *Keywords:* agency as role, agency spectrum, contextual role assignment, autonomy grading, substrate-neutral autonomy. *Queries:* "How does FPF model agency without minting a root agent kind?", "How do I grade autonomy on an evidence-backed spectrum?" | **Builds on:** A.2, A.2.1, A.12. **Informs:** C.9 Agency-CHR, E.16. |
+| A.13 | **The Agential Role & Agency Spectrum** | Stable | *Keywords:* agency as role, agency spectrum, contextual role assignment, autonomy grading, substrate-neutral autonomy. *Queries:* "How does FPF model agency without minting a root agent kind?", "How do I grade autonomy on an evidence-backed spectrum?" | **Builds on:** A.2, A.2.1, A.12. **Informs:** C.9 Agency Characteristic Profile, E.16. |
 | A.14 | **Advanced Mereology: Components, Portions, Aspects & Phases** | Stable | *Keywords:* mereology, part-of, ComponentOf, PortionOf, PhaseOf, composition. *Queries:* "How to model different kinds of 'part-of' relationships?" | **Refines:** A.1. **Prerequisite for:** B.1.1. |
-| A.15 | **Role-Method-Work Alignment (Contextual Enactment)** | Stable | *Keywords:* role-method-work distinction, `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, actual `U.Work`, contextual enactment, coordinated-work evidence, work admission display, source-restoration boundary. *Queries:* "How do role, method, plan, and work stay distinct in FPF?", "When can coordinated work evidence a state that no one report carries?", "When is authorization-looking material a source-restoration problem rather than work enactment?", "When does something that looks like permission or prohibition to start work need the governing FPF pattern and project-side record behind it first?" | **Integrates:** A.2, A.4, A.12. **Builds on / coordinates with:** A.6, A.10, B.3, E.17, E.17.EFP, A.20, A.21, and C.26.2. **Prerequisite for:** A.15.1-A.15.4, C.24, E.16. |
+| A.15 | **Role-Method-Work Alignment (Contextual Enactment)** | Stable | *Keywords:* role-method-work distinction, `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, actual `U.Work`, work-entry readiness, contextual enactment, coordinated-work evidence, work admission display, source-restoration boundary. *Queries:* "How do role, method, plan, readiness, and work stay distinct in FPF?", "When can coordinated work evidence a state that no one report carries?", "When is authorization-looking material a source-restoration problem rather than work enactment?", "When does something that looks like permission or prohibition to start work need the governing FPF pattern and project-side record behind it first?" | **Integrates:** A.2, A.4, A.12. **Builds on / coordinates with:** A.6, A.10, B.3, E.17, E.17.EFP, A.20, A.21, and C.26.2. **Prerequisite for:** A.15.1-A.15.5, C.24, E.16. |
 | A.15.1 | **`U.Work`: The Record of Occurrence** | Stable | *Keywords:* execution, event, run, actuals, log, occurrence. *Queries:* "What is a Work record?", "Where are actual resource costs stored?" | **Refines:** A.15. **Used by:** B.1.6, all Part D. |
 | A.15.2 | **`U.WorkPlan`: The Schedule of Intent** | Stable | *Keywords:* plan, schedule, intent, forecast. *Queries:* "How to model a plan or schedule?", "Difference between a WorkPlan and a MethodDescription." | **Refines:** A.15. **Informs:** `U.Work`. |
 | A.15.3 | **`SlotFillingsPlanItem` — Planned Slot-Fillings Baseline (WorkPlanning PlanItem)** | Stable | *Keywords:* planned baseline, slot-bearing description, planned filler, edition pins, `Γ_time` selector, guard pins, WorkPlanning, P2W seam, variance trail. *Queries:* "What is SlotFillingsPlanItem in FPF?", "How to keep planned slot filling separate from FinalizeLaunchValues?", "How to pin editions and time in WorkPlanning baselines?" | **Builds on:** A.15.2, A.6.5, E.10.D1, E.17, E.18, E.19. **Used by:** A.6.7 (suite spec pins), Part G universalization, suite-specific and kit-specific planned baselines. |
-| A.15.4 | **Work-Relevant Source Restoration** | Stable | *Keywords:* work-relevant source restoration, dashboard display, credential view, generated explanation, copied statement, provenance mark, required project-side FPF kind and reference, admissible next project move, blocked overread, P2W load and position, approval-looking display. *Queries:* "Which project-side FPF kind and reference is needed before a dashboard or explanation can guide work?", "When is a visible item only source-finding before work support or reliance support?", "How do I keep publication, display, or cue separate from work, evidence, gate passage, or engineering justification?" | **Builds on:** A.15, E.17, C.2.1. **Coordinates with:** A.10, B.3, A.6, A.2.1, A.2.8, A.2.9, A.20, A.21, and E.17.EFP. |
-| A.16 | **Language-State Move Coordination** | Stable | *Keywords:* language-state, move, admissible move, reopen, sketch-backoff, respecify, retire, handoff. *Queries:* "How do governed epistemes move across the language-state chart?", "What are the admissible move kinds in FPF?" | **Builds on:** C.2.2a, C.2.LS, A.19. **Coordinates with:** A.16.0-A.16.2, B.4.1, E.18. |
-| A.16.0 | **`U.LanguageStateMoveTrajectory` - Optional trajectory-account normal form over the language-state `U.CharacteristicSpace`** | Stable | *Keywords:* trajectory account, lineage, fork, merge, supersedes, handoff, heavy history. *Queries:* "When do I publish a language-state trajectory account?", "How does FPF record lineage and branch history?" | **Builds on:** A.16, C.2.2a, E.17, E.18. **Used by:** A.16.1, A.16.2, B.4.1, B.5.2.0. |
+| A.15.4 | **Work-Relevant Source Restoration** | Stable | *Keywords:* work-relevant source restoration, dashboard display, credential view, generated explanation, copied statement, provenance mark, required project-side FPF kind and reference, relation-governed current use, blocked overread, P2W load and position, approval-looking display. *Queries:* "Which project-side FPF kind and reference is needed before a dashboard or explanation can guide work?", "When is a visible item only source-finding before work support or reliance support?", "How do I keep publication, display, or cue separate from work, readiness, evidence, gate passage, or engineering justification?" | **Builds on:** A.15, E.17, C.2.1. **Coordinates with:** A.10, B.3, A.6, A.2.1, A.2.8, A.2.9, A.15.5, A.20, A.21, and E.17.EFP. |
+| A.15.5 | **Work-Entry Readiness and Full-Kit Preparation** | Stable | *Keywords:* work-entry readiness, full-kit condition, readiness before work entry, commitment disposition, resource-readiness refs, launch gate, WIP and flow policy, planned slot fillings, blocked readiness overread. *Queries:* "Is this intended work ready to start?", "What is missing before commitment to work entry is honest?", "How do I keep full-kit readiness separate from performed work, work plans, gates, resources, and evidence?" | **Builds on:** A.15, A.15.2, A.15.3, B.1.6, A.21. **Coordinates with:** A.15.1, A.15.4, A.10, B.3, A.20, E.18, and E.10.MOVE. |
+| A.16 | **Language-State Move Coordination** | Stable | *Keywords:* language-state, move, admissible language-state move, reopen, sketch-backoff, respecify, retire, responsibility transfer. *Queries:* "How do governed epistemes move across the language-state chart?", "What are the admissible language-state move kinds in FPF?" | **Builds on:** C.2.2a, C.2.LS, A.19. **Coordinates with:** A.16.0-A.16.2, B.4.1, E.18, and E.10.MOVE when move-like wording leaves the local language-state object. |
+| A.16.0 | **`U.LanguageStateMoveTrajectory` - Optional trajectory-account normal form over the language-state `U.CharacteristicSpace`** | Stable | *Keywords:* trajectory account, lineage, fork, merge, supersedes, responsibility transfer, heavy history. *Queries:* "When do I publish a language-state trajectory account?", "How does FPF record lineage and branch history?" | **Builds on:** A.16, C.2.2a, E.17, E.18. **Used by:** A.16.1, A.16.2, B.4.1, B.5.2.0. **Coordinates with:** E.10.MOVE when move-like wording is not a language-state trajectory-account claim. |
 | A.16.1 | **`U.PreArticulationCuePack`** | Stable | *Keywords:* cue pack, pre-articulation, early publication, cue nucleus, primary witness, candidate route cues. *Queries:* "What is a PreArticulationCuePack?", "How do I preserve early cues before `RoutedCueSet` publication?" | **Builds on:** A.16, C.2.2a, C.2.LS. **Coordinates with:** B.4.1, A.16.2. |
 | A.16.2 | **Reopen / SketchBackoff / Respecify** | Stable | *Keywords:* reopen, backoff, respecify, retire, retreat, branch withdrawal, authority withdrawal. *Queries:* "How do I admissibly reopen or back off a language-state publication?", "How do I retire a branch without silent deletion?" | **Builds on:** A.16, A.16.0, C.2.2a. **Coordinates with:** A.6.P, B.4.1. |
 | A.17 | **A.CHR-NORM — Canonical “Characteristic” & rename (Dimension/Axis → Characteristic)** | Stable | *Keywords:* characteristic, measurement, property, attribute, dimension, axis. *Queries:* "What is the correct term for a measurable property?", "How to define a metric?" | **Prerequisite for:** A.18, A.19, C.16. |
@@ -423,31 +446,25 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | B.2.4 | **Capability and Functioning Whole Reidentification** | Stable | B.2-facing specialization for cases where capability envelope, functioning relation, or transformation-flow structure creates or reveals a whole-reidentification question. | **Builds on:** B.2, A.2.2, C.16, A.6.F, A.3.4. **Coordinates with:** C.30.ASV, C.30.TFS-REL, A.6.M, A.15.1. |
 | B.2.5 | **Supervisor-Subholon Feedback Relation** | Stable | Governs supervisor-subholon feedback relation claims without turning supervisor wording into generic interaction, transformer, or loop-mathematical-lens ontology. | **Builds on:** B.2, A.1, A.12. **Coordinates with:** A.2.1, A.3.4, C.30.LCA, C.29, A.10, B.3. |
 | B.3 | **Trust & Assurance Calculus (F–G–R with Congruence)** | Stable | *Keywords:* trust, assurance, reliability, F-G-R, formality, scope, congruence, evidence, claim-support posture, authority-looking labels, dashboard tiles, probe/distributed/export/causal assurance. *Queries:* "How is trust calculated in FPF?", "When does an authority-looking label or dashboard tile fail to raise assurance?", "How does FPF handle evidence and confidence?" | **Builds on:** A.10. **Coordinates with:** A.6, A.15, E.17.EFP, A.20, A.21, C.26, C.26.1, C.26.2, C.26.3, C.16, C.28, F.9. **Prerequisite for:** All B.3.x, D.4. |
-| B.3.1 | **Components & Epistemic Spaces** | Planned | *Keywords:* F-G-R components, measurement templates, epistemic space. *Queries:* "How are F, G, and R measured?", "What are epistemic spaces?" | **Builds on:** B.3. |
-| B.3.2 | **Evidence & Validation Logic (LOG-use)** | Planned | *Keywords:* verification, validation, confidence, logic, proof. *Queries:* "What is the logic for validating claims in FPF?", "Difference between verification and validation." | **Builds on:** B.3, C.6. |
 | B.3.3 | **Assurance Subtypes & Levels** | Stable | *Keywords:* assurance levels, L0-L2, TA, VA, LA, typing, verification, validation. *Queries:* "What are the assurance levels in FPF?", "How does an assurance record mature in FPF?" | **Builds on:** B.3. |
 | B.3.4 | **Evidence Decay & Epistemic Debt** | Stable | *Keywords:* evidence aging, decay, freshness, epistemic debt, stale data. *Queries:* "How does FPF handle outdated evidence?", "What is epistemic debt?" | **Builds on:** B.3. |
 | B.3.5 | **Working-Model Relations & Grounding (CT2R-LOG)** | Stable | *Keywords:* grounding, constructive trace, working model, assurance layer, CT2R, Compose-CAL. *Queries:* "How are FPF models grounded in evidence?", "What is the CT2R-LOG?" | **Builds on:** B.3, E.14, C.13. |
-| B.4 | **Canonical Evolution Loop** | Stable | *Keywords:* evolution loop, DesignRunTag feedback, observe-notice-stabilize-route, drift repair, open-ended evolution. *Queries:* "How does FPF evolve a system or episteme without design-reality drift?", "Where does pre-abductive routing sit in the canonical loop?" | **Builds on:** A.4, A.12. **Prerequisite for:** B.4.1-B.4.3. |
+| B.4 | **Canonical Evolution Loop** | Stable | *Keywords:* evolution loop, DesignRunTag feedback, observe-notice-stabilize-route, drift repair, knowledge refinement, method refinement, open-ended evolution. *Queries:* "How does FPF evolve a system or episteme without design-reality drift?", "Where do knowledge and method instantiation sit in the canonical loop?", "Where does pre-abductive routing sit?" | **Builds on:** A.4, A.12. **Refined by:** B.4.1. **Carries embedded slices for:** knowledge instantiation and method instantiation. |
 | B.4.1 | **Observe -> Notice -> Stabilize -> Route** | Stable | *Keywords:* routed cue set, route plurality, route selection, pre-abductive seam, task-family specialization route. *Queries:* "How do under-articulated cues become routed before endpoint claim publication?", "When should a cue become a routed cue set instead of an abductive prompt?" | **Builds on:** A.16, A.16.1, C.2.2a. **Coordinates with:** B.5.2.0, C.16.Q, A.6.A, C.22.1. |
-| B.4.2 | **Knowledge Instantiation** | Planned | *Keywords:* theory refinement, knowledge evolution, scientific method. *Queries:* "How are scientific theories refined in FPF?" | **Builds on:** B.4, A.1. |
-| B.4.3 | **Method Instantiation** | Planned | *Keywords:* adaptive workflow, process improvement, operational evolution. *Queries:* "How do workflows or methods evolve in FPF?" | **Builds on:** B.4, A.3.1. |
 | B.5 | **Canonical Reasoning Cycle** | Stable | *Keywords:* reasoning, problem-solving, Abduction-Deduction-Induction, scientific method. *Queries:* "How does FPF model problem-solving?", "What is the canonical reasoning cycle?" | **Builds on:** A.10. **Prerequisite for:** All B.5.x. |
 | B.5.1 | **Explore → Shape → Evidence → Operate** | Stable | *Keywords:* development state cycle, open-ended progression, state machine, Explore, Shape, Evidence, Operate. *Queries:* "What states can project work and its records pass through in FPF?" | **Builds on:** B.5. |
 | B.5.2 | **Abductive Loop** | Stable | *Keywords:* abduction, explanatory prompt, candidate hypotheses, plausibility filters, origin trace, route-to-hypothesis. *Queries:* "How does FPF model abductive hypothesis generation?", "What is the abductive loop?" | **Builds on:** B.5, B.5.2.0, A.10, B.3.3. **Coordinates with:** B.4.1, A.16, A.6.P. |
 | B.5.2.0 | **`U.AbductivePrompt`** | Stable | *Keywords:* abductive prompt, prompt species, rival-set discipline, threshold crossing, explanation-ready cue. *Queries:* "When is a routed cue ready to enter abduction?", "What prompt species does FPF distinguish before hypothesis work begins?" | **Builds on:** B.4.1, A.16, C.2.2a. **Coordinates with:** A.6.P, A.6.A, C.16.Q. **Used by:** B.5.2. |
 | B.5.2.1 | **Creative Abduction with NQD** | Stable | *Keywords:* creative abduction, NQD binding, Γ_nqd.generate, Creativity-CHR, Q-front, declared Q components, retained exploration/archive evidence, Novelty@context, ΔDiversity_P, E/E-LOG, DecisionSubject note. *Queries:* "How do I make abductive idea generation instrumented instead of ad-hoc?", "How does B.5.2 delegate generation to C.18 and pool policy to C.19?", "Why does creative abduction return a front/evidence set rather than one bundled winner?" | **Builds on:** B.5.2, A.17, A.18, C.17, C.18, C.19. **Coordinates with:** B.4, C.11, G.5. |
 | B.5.3 | **Domain-Concept Bridge** | Stable | *Keywords:* domain vocabulary, concept bridge, local sense, bounded context, bridge scope, role assignment boundary. *Queries:* "How does FPF integrate domain-specific language without minting false kinds?", "When is a domain word a role, a kind, a characteristic, or a local sense?" | **Builds on:** A.2, A.6.5, C.3, E.24.UK, F.1, F.2, F.3, F.5, F.8. |
-| **B.6** | **Characterisation Families (CHR-use)** | Planned | *Keywords:* characterization, templates, CHR patterns, measurement. *Queries:* "How to use CHR patterns?" | **Builds on:** Part C (CHR). |
-| **B.7** | **Common Logic Suite (LOG-use)** | Planned | *Keywords:* logic, inference, trust propagation, LOG-CAL. *Queries:* "How to apply formal logic in FPF?" | **Builds on:** Part C (LOG-CAL). |
 
 **Part C — Kernel Extension Specifications**
 
 | § | ID & Title | Status | Keywords & Search Queries | Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
 | **Cluster C.I – Core CALs / LOGs / CHRs** | | | | |
-| C.1 | **Sys‑CAL** | Planned | *Keywords:* physical system, composition, conservation laws, energy, mass, resources, U.System. *Queries:* "How to model physical systems in FPF?", "What are conservation laws in FPF?", "Modeling a pump or engine." | **Builds on:** A.1 Holonic Foundation, A.14. **Coordinates with:** Resrc-CAL. **Prerequisite for:** M-Sys-CAL. |
-| C.2 | **KD‑CAL** | Stable | *Keywords:* knowledge, epistemic, evidence, trust, assurance, F-G-R, Formality, ClaimScope, Reliability, provenance. *Queries:* "What is F-G-R?", "How does FPF handle evidence and trust?", "How to model a scientific theory?". | **Builds on:** A.1, A.10, B.3. **Prerequisite for:** All patterns using F-G-R, M-KD-CAL. |
+| C.1 | **Physical System State, Conservation, and Resource-Flow Calculus (Sys-CAL)** | Planned | *Keywords:* physical system, composition, conservation law, stock-flow, energy, mass, resource flow, U.System. *Queries:* "How to model physical systems in FPF?", "What conservation or stock-flow claim is being made?", "How do resources move through a system?" | **Builds on:** A.1, A.14, A.22, A.3.4, A.19, C.16. **Coordinates with:** B.1.6, C.5, C.14, C.30. |
+| C.2 | **KD‑CAL** | Stable | *Keywords:* knowledge, epistemic, evidence, trust, assurance, F-G-R, Formality, ClaimScope, Reliability, provenance. *Queries:* "What is F-G-R?", "How does FPF handle evidence and trust?", "How to model a scientific theory?". | **Builds on:** A.1, A.10, B.3. **Prerequisite for:** All patterns using F-G-R. |
 | C.2.1 | **U.Episteme - Epistemes and their slot relation** | Stable | `U.EpistemeSlotRelation` organizes EntityOfConcern, GroundingHolon, ClaimGraph, Viewpoint, View, ReferenceScheme, RepresentationScheme, and related slots for claim-bearing epistemes across symbolic, diagrammatic, latent, and tool-mediated representations. | **Builds on:** C.2, A.1, A.6.5, A.7, E.10.D2. **Used by:** A.6.2-A.6.4, E.17.0-E.17.2, E.17, E.18, B.1.3, KD-CAL/LOG-CAL discipline packs. |
 | C.2.P | **Epistemic Precision Restoration** | Stable | Restores precision for source expression, claim-bearing episteme, publication, view, face, carrier, PublicationUnit, EntityOfConcern, grounding relation, pattern-application wording, and FPF-governed use dispositions without turning files or names into claim objects. | **Builds on:** E.10, C.2.1, A.7, E.17.0, E.17, A.6.P, F.18. **Coordinates with:** E.8, E.12, E.17.AUD, E.17.EFP, E.17.ID.CR, A.10, A.15, A.20, A.21, B.3, C.11. |
 | C.2.2 | **Reliability R in the F–G–R triad** | Stable | *Keywords:* Reliability (R), warrant, evidence-bound, F–G–R, ClaimScope (G), Bridge-only reuse, Congruence Level (CL / CL^k / CL^plane), weakest-link, pathwise justification (PathId), TA/VA/LA lanes, no implicit averaging. *Queries:* "What is R in F–G–R?", "How does FPF propagate reliability?", "How do CL penalties route under transport?", "Bridge-only reuse of claims in FPF". | **Builds on:** C.2, A.2.6, C.2.3, B.3, B.1.3, C.3, F.9. **Coordinates with:** G.6, G.7, E.14, E.18. **Constrains:** any cross-context claim reuse and any publication of `R_eff`. |
@@ -459,27 +476,22 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | C.2.6 | **`U.LanguageStateAnchoringMode`** | Stable | *Keywords:* anchoring mode, embodiment, trace, model state, document, operator loop. *Queries:* "How is a language-state claim anchored in FPF?", "What is LanguageStateAnchoringMode?" | **Builds on:** C.2.2a. **Coordinates with:** C.2.LS, F.9.1. |
 | C.2.7 | **`U.LanguageStateRepresentationFactorBundle`** | Stable | *Keywords:* representation factors, locality, sparsity, symbolicity, factor bundle, representation organization. *Queries:* "How does FPF describe representation factors in language-state work?", "What is the representation-factor bundle?" | **Builds on:** C.2.2a. **Coordinates with:** C.2.LS, C.2.6. |
 | C.2.P.DR | **Declarative Representation Precision Restoration** | Stable | Repairs overread of graph paths, evidence paths, query paths, dashboards, schemas, formal substrates, method descriptions, publication faces, and pattern relations when a declarative representation is treated as method, work, gate, release, proof, or pattern application by shape alone. | **Builds on:** C.2.P, E.10, E.10.ARCH, F.19. **Coordinates with:** E.18, A.10, E.17, A.3.1, A.3.2, A.6.1, A.15.1, A.15.2, C.29. |
-| C.3 | **Kinds, Intent and Extent, and Typed Reasoning** | Stable | *Keywords:* kind, type, intension, extension, subkind, typed reasoning, classification, vocabulary. *Queries:* "How does FPF handle types?", "What is a 'Kind'?", "Difference between 'scope' and 'type'?". | **Builds on:** A.1, A.2.6 (USM). **Prerequisite for:** LOG-CAL, ADR-Kind-CAL, and any pattern needing typed guards. |
+| C.3 | **Kinds, Intent and Extent, and Typed Reasoning** | Stable | *Keywords:* kind, type, intension, extension, subkind, typed reasoning, classification, vocabulary. *Queries:* "How does FPF handle types?", "What is a 'Kind'?", "Difference between 'scope' and 'type'?". | **Builds on:** A.1, A.2.6 (USM). **Prerequisite for:** LOG-CAL and any pattern needing typed guards. |
 | C.3.1 | **U.Kind and U.SubkindOf Core** | Stable | *Keywords:* kind, subkind, partial order, type hierarchy. *Queries:* "What is U.Kind in FPF?", "How to model 'is-a' relationships?". | **Builds on:** A.1, A.2.6 (USM). **Prerequisite for:** C.3.2, C.3.3. |
 | C.3.2 | **`KindSignature` (+F) & `Extension`/`MemberOf`** | Stable | *Keywords:* KindSignature, intension, extension, MemberOf, Formality F, determinism. *Queries:* "How to define the meaning of a Kind?", "What is the difference between intent and extent in FPF?". | **Builds on:** C.3.1. **Prerequisite for:** C.3.3, C.3.4. |
 | C.3.3 | **`KindBridge` & `CL^k` — Cross‑context Mapping of Kinds** | Stable | *Keywords:* KindBridge, type-congruence, CL^k, cross-context mapping, R penalty. *Queries:* "How to map types between domains?", "What is a KindBridge?". | **Builds on:** C.3.1, C.3.2, A.2.6, C.2.2. |
 | C.3.4 | **`RoleMask` — Contextual Adaptation of Kinds (without cloning)** | Stable | *Keywords:* RoleMask, context-local adaptation, constraints, subkind promotion. *Queries:* "How to adapt a Kind for a local context?", "What is a RoleMask in FPF?". | **Builds on:** C.3.1, C.3.2. |
 | C.3.5 | **`KindAT` — Intentional Abstraction Facet for Kinds (K0…K3)** | Stable | *Keywords:* KindAT, abstraction tier, K0-K3, informative facet, planning. *Queries:* "What are the abstraction tiers for Kinds?", "How to plan formalization effort?". | **Builds on:** C.3.1. |
 | C.3.A | **Typed Guard Macros for Kinds + USM (Annex)** | Stable | *Keywords:* Typed guard, ESG, Method-Work, USM, Kind-CAL, regulatory profile. *Queries:* "How to write a typed guard?", "How do Kinds and USM interact in gates?". | **Builds on:** All C.3.x, A.2.6. |
-| C.4 | **Method‑CAL** | Planned | *Keywords:* method, recipe, procedure, workflow, SOP, MethodDescription, operator. *Queries:* "How to model a process or workflow?", "What is a MethodDescription in FPF?". | **Builds on:** A.3, A.15. **Coordinates with:** Γ_method (B.1.5). |
-| C.5 | **Resrc‑CAL** | Planned | *Keywords:* resource, energy, material, information, cost, budget, consumption, Γ_work. *Queries:* "How does FPF model resource usage?", "How to track costs of a process?". | **Builds on:** A.15.1 (Work). **Coordinates with:** Sys-CAL. |
-| C.6 | **LOG‑CAL – Core Logic Calculus** | Planned | *Keywords:* logic, inference, proof, modal logic, trust operators, reasoning. *Queries:* "What is the base logic of FPF?", "How does FPF handle formal proofs?". | **Builds on:** Kind-CAL. **Is used by:** B.7. |
-| C.7 | **CHR‑CAL – Characterisation Kit** | Planned | *Keywords:* characteristic, property, measurement, metric, quality. *Queries:* "How to define a new measurable property in FPF?", "What is a CHR pattern?". | **Builds on:** A.17, A.18. **Prerequisite for:** Agency-CHR, Creativity-CHR. |
+| C.5 | **Resource Use and Work-Cost Calculus (Resrc-CAL)** | Planned | *Keywords:* resource use, dated consumption, work cost, budget, cost bearer, resource ledger, efficiency claim. *Queries:* "How does FPF model resource use by work?", "How to keep resource cost separate from evidence or value?", "What resource ledger supports a work-cost claim?" | **Builds on:** A.15.1, A.15.2, B.1.6, C.16, A.10. **Coordinates with:** C.1, C.24, G.9, B.3. |
+| C.6 | **Proof and Inference Use Calculus (LOG-CAL)** | Planned | *Keywords:* proof use, inference rule, typed guard, claim entailment, proof obligation, reasoning support. *Queries:* "What inference is licensed here?", "When is a proof claim separate from evidence?", "Which typed rule supports this conclusion?" | **Builds on:** C.3, C.2.1, A.10, B.3. **Coordinates with:** B.3.5, C.23, G.8, A.6.B. |
 | **Cluster C.II – Domain‑Specific Patterns** | | | | |
-| C.9 | **Agency‑CHR** | Planned | *Keywords:* agency, agent, autonomy, decision-making, active inference. *Queries:* "How to measure autonomy?", "What defines an agent in FPF?". | **Builds on:** CHR-CAL, A.13. |
-| C.10 | **Norm‑CAL** | Planned | *Keywords:* norm, constraint, ethics, obligation, permission, deontics. *Queries:* "How to model rules and constraints?", "Where are ethical principles defined in FPF?". | **Builds on:** A.10. **Is used by:** Part D. |
+| C.9 | **Agency Characteristic Profile** | Planned | *Keywords:* agency, autonomy, responsibility threshold, decision capacity, intervention capacity, agentive role. *Queries:* "What agency claim is being made?", "When does a system or role holder count as agentive enough for this decision?", "How should autonomy be characterized without minting a new agent kind?" | **Builds on:** A.13, A.17, A.18, A.19, C.16, A.10. **Coordinates with:** B.3, C.11, C.24, D.2. |
 | C.11 | **Decision Theory (Decsn-CAL)** | Stable | *Keywords:* decision theory, DecisionSubject, OptionSet, comparison basis, ChoiceRule, ChoiceResult, question order, probe-worthiness, non-shared comparison frame, ValueOfInformation, ValueOfComputation, choose now, reject current set, probe again, reroute. *Queries:* "When should one choose now versus probe again?", "What must be explicit before a choice among already-available options is lawful?", "When do question order or incompatible frames require C.26 rather than ordinary choice?" | **Builds on:** A.6.P, A.6.5, A.13, C.9, A.18, A.19. **Coordinates with:** C.26, C.18, C.19, C.24, G.5. |
 | **Cluster C.III – Meta‑Infrastructure CALs** | | | | |
-| C.12 | **ADR‑Kind-CAL** | Planned | *Keywords:* versioning, rationale, DRR, architecture decision record. *Queries:* "How are changes to kinds managed?". | **Builds on:** Kind-CAL, E.9. |
 | C.13 | **Constructional Mereology (Compose‑CAL)** | Stable | *Keywords:* mereology, part-whole, composition, sum, set, slice, extensional identity. *Queries:* "How does FPF formally construct parts and wholes?", "What is Compose-CAL?". | **Builds on:** A.14. **Is used by:** B.3.5 (CT2R-LOG). |
 | **Cluster C.IV – Composite & Macro‑Scale** | | | | |
-| C.14 | **M‑Sys‑CAL** | Planned | *Keywords:* system-of-systems, infrastructure, large-scale systems, orchestration. *Queries:* "How to model a complex infrastructure like a power grid?". | **Builds on:** Sys-CAL, B.2.2. |
-| C.15 | **M‑KD‑CAL** | Planned | *Keywords:* paradigm, scientific discipline, meta-analysis, knowledge ecosystem. *Queries:* "How to model an entire field of science?". | **Builds on:** KD-CAL, B.2.3. |
+| C.14 | **System-of-Systems and Infrastructure Calculus (M-Sys-CAL)** | Planned | *Keywords:* system-of-systems, infrastructure, inter-system dependency, service network, infrastructure boundary, operational coupling. *Queries:* "How to model a complex infrastructure such as a power grid?", "Which cross-system dependency changes the claim?", "When is this a system-of-systems rather than one system?" | **Builds on:** C.1, B.2.2, A.22, C.30, B.1.6. **Coordinates with:** C.30.ILC, C.5, D.2, G.6, B.3. |
 | C.16 | **Measurement & Metrics Characterization (MM‑CHR)** | Stable | *Keywords:* measurement, measurement template, `U.DHCMethod(Ref)`, `U.Measure`, `U.Unit`, `U.EvidenceStub`, polarity, direct comparability, scoring method disclosure, probe-changing-state, shared-frame check, CSLC. *Queries:* "How do I define a measurement template in FPF?", "When is a metric a passive read and when does it change the state?", "How do EvidenceStubs support measurement claims?" | **Builds on:** A.17, A.18. **Coordinates with:** A.10, B.3, C.26, C.26.1. **Is a prerequisite for:** All CHR patterns and any pattern that issues typed measures/scores. |
 | C.16.P | **Characteristic and Scale Precision Restoration** | Stable | Repairs overloaded characteristic, scale, coordinate, metric, score, indicator, threshold, comparison, and scalar-quality wording before C.16/A.17-A.19/C.25/C.29/E.21 or another governing pattern is applied. | **Builds on:** E.10, E.10.ARCH, A.17, A.18, C.16, A.19, C.25, C.29, E.21, F.18, A.6.P. **Coordinates with:** C.16.Q, A.19.ECS, evidence, assurance, gate, decision, causal-use, benchmark, and publication patterns governing those claims. |
 | C.16.Q | **Quality-Term Precision Restoration** | Stable | Repairs overloaded quality and evaluative-characterization wording by selecting an endpoint-governed evaluative form or a bounded transitional quality-term repair form with declared bearer, evaluation frame, sense family, admissible normal form, and governing pattern. | **Builds on:** E.10, E.10.ARCH, C.16.P, C.16, C.25, E.21, A.17, A.18, A.19, A.7, C.2.1, E.8, F.9, F.18. **Coordinates with:** A.6.P, A.6.A, A.16, B.4.1, B.5.2.0, A.10, B.3, F.9.1. |
@@ -504,21 +516,32 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | C.27.TA | **Temporal Aspect: Time Windows, Rhythm, Cadence, and Currentness** | Stable | *Keywords:* temporal aspect, time window, freshness, currentness, rhythm, cadence, validity window, recovery timing. *Queries:* "Which time relation matters for this claim or object?", "How do I state freshness, rhythm, latency, or validity window without turning it into evidence, work, or dynamics law?" | **Builds on:** A.3.4, A.3.3, C.27, E.24. **Coordinates with:** A.10, B.3, A.15.1, A.15.2, A.20, A.21, C.16, C.29, E.18, G.11. |
 | C.28 | **CausalUse-CAL: Causal-Use Questions, Causality-Ladder Rungs, Identification and Realizability** | Stable | *Keywords:* causal-use question, causality ladder, association, intervention, counterfactual, Pearl Causal Hierarchy, Structural Causal Model, causal diagram, causal estimand, identification, counterfactual sampling realizability, causal evidence support basis, target trial, causal fairness, off-policy causal evaluation, causal-RL evaluation. *Queries:* "Can I say this caused that?", "Is this intervention claim supported?", "What evidence supports a counterfactual claim?", "When does a fairness metric need causal support?", "Is simulation enough for a counterfactual claim?", "Which pattern handles causal benchmark parity?", "When should causal language be downgraded to association, measurement, temporal, QL, or local prose?" | **Builds on:** A.10, B.3, C.11, C.19, C.24, C.26, C.27, D.5, G.5, G.9. **Coordinates with:** A.2.4, A.3.2, A.6, A.15, C.16, G.11. |
 | C.29 | **Mathematical Lens Use** | Stable | *Keywords:* mathematical lens, structure-preserving representation, lens mapping mode, preserved structure, lost structure, invariants, stop condition, scale window, coarse-graining, rival lens, `LensUseAdmissibilityValue`, validation boundary, learned lens, ontology smuggling. *Queries:* "When does a mathematical analogy become an admissible FPF lens?", "What structure is preserved by this lens?", "Where must this math transfer stop?", "How do I use mathematical structure without importing ontology?" | **Builds on:** A.1.1, A.6.P, A.3.3, A.19, A.10, A.15, B.3, C.16, E.17.EFP, E.17.ID.CR, A.6.3.RT, A.6.3.CSC, F.9. **Constrained by:** E.8, E.10, C.2.P, E.19. **Decision basis:** E.9 and C.29:13a. **Coordinates with:** C.11, A.15.1, A.15.4, C.18.1, C.19.1, C.26, C.27, C.28, G.5, G.9, G.2, G.10. |
-| C.30 | **Grounded Architecture and Selected-Structure Adequacy** | Stable | *Keywords:* grounded architecture, ArchitectureOf@Context, selected structure, architecture claim, architecture question card, architecture-description boundary, artifact-as-architecture guard. *Queries:* "How do I recover a grounded architecture claim?", "Which selected structure changes the architecture move?", "When is an architecture description only a conditional description use?" | **Builds on:** A.22, C.2.1, A.6.3, A.7, E.17.0, E.17, E.10.D2, F.18. **Coordinates with:** C.30.AD, C.30.ASV, A.6.F, C.30.TFS-REL, C.30.LCA, C.30.ILC, C.29, C.16, C.25, C.28, A.10, B.3, A.20, A.21, A.15, C.11. |
-| C.30.AD | **Architecture Description Adequacy** | Stable | *Keywords:* architecture description, ArchitectureDescription@Context, architecture description use card, architecture structural view, viewpoint, correspondence, source return, specification-use boundary. *Queries:* "When is an architecture description the EntityOfConcern under repair?", "How do I keep views, viewpoints, selected structures, and publication boundaries distinct?", "When does an architecture description need C.30.AD rather than C.30?" | **Builds on:** C.30, C.30.ASV, A.22, A.7, A.6.3, E.17.0, E.17.1, E.17.2, E.17, C.2.P, E.10, E.10.ARCH. **Coordinates with:** C.30.P, C.30.TFS-REL, C.30.LCA, C.30.ILC, A.6.F, A.6.M, C.29, C.16, C.16.P, A.10, B.3, A.20, A.21, A.15, C.11, C.28, E.8, F.18. |
+| C.30 | **Grounded Architecture and Selected-Structure Adequacy** | Stable | *Keywords:* grounded architecture, ArchitectureOf@Context, selected structure, architecture claim, architecture question card, candidate architecture use, architecture-description boundary, artifact-as-architecture guard. *Queries:* "How do I recover a grounded architecture claim?", "Which selected structure changes the architecture move?", "When does candidate synthesis go to C.32 rather than C.30?" | **Builds on:** A.22, C.2.1, A.6.3, A.7, E.17.0, E.17, E.10.D2, F.18. **Coordinates with:** C.30.AD, C.30.ASV, A.6.F, C.30.TFS-REL, C.30.LCA, C.30.ILC, C.32, C.32.MLAO, C.32.CONWAY, C.32.PAD, C.32.ADR, C.32.ADA, C.29, C.16, C.25, C.28, A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, C.11, A.10, B.3, A.20, A.21, A.15. |
+| C.30.AD | **Architecture Description Adequacy** | Stable | *Keywords:* architecture description, ArchitectureDescription@Context, architecture description use card, architecture structural view, viewpoint, correspondence, source return, specification-use boundary, candidate-description boundary. *Queries:* "When is an architecture description the EntityOfConcern under repair?", "How do I keep views, viewpoints, selected structures, and publication boundaries distinct?", "Where do described candidate palettes and residual frames go?" | **Builds on:** C.30, C.30.ASV, A.22, A.7, A.6.3, E.17.0, E.17.1, E.17.2, E.17, C.2.P, E.10, E.10.ARCH. **Coordinates with:** C.30.P, C.30.TFS-REL, C.30.LCA, C.30.ILC, C.32, C.32.MLAO, A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, C.11, A.6.F, A.6.M, C.29, C.16, C.16.P, A.10, B.3, A.20, A.21, A.15, C.28, E.8, F.18. |
 | C.30.AD.BA | **Built-Asset Architecture Description and Reference Designation** | Stable | Built-asset architecture-description use for BIM, IFC, asset registers, digital-twin views, handover tables, and ISO/IEC 81346-style reference designations without turning descriptions into assets, evidence, gates, work, or decisions. | **Builds on:** C.30, C.30.AD, C.30.ASV, A.22, E.17. **Coordinates with:** A.6.F, A.6.M, C.30.TFS-REL, C.30.LCA, C.30.ILC, A.10, B.3, A.20, A.21, C.11, C.28. |
-| C.30.P | **Architecture and Structure Precision Restoration** | Stable | Repairs architecture or structure wording whose EntityOfConcern or claim kind is hidden before A.22, C.30, C.30.AD, C.30.ASV, a selected C.30.* pattern
-, or another governing pattern is applied. | **Builds on:** E.10, E.10.ARCH, A.22, C.30, C.30.AD, C.30.ASV, C.2.P, A.6.P, A.6.F, C.29, C.16.P, C.16, C.25, E.17, E.8. **Coordinates with:** C.30.TFS-REL, C.30.LCA, C.30.ILC, A.10, B.3, A.20, A.21, C.11, C.28, A.15, E.11. |
-| C.30.STRAT | **Stratification Wording Precision Restoration** | Stable | Repairs source-label uses such as layer, level, tier, stack, ladder, rung, block, expert, cache, router, and gate by recovering selected ontological neighborhood, primary EntityOfConcern kind, governing pattern, admissible use, and remaining reader move before FPF-governed use. | **Builds on:** E.10, E.10.ARCH, E.8, F.18, C.30.P, A.22, C.30. **Coordinates with:** C.30.ASV, C.30.LCA, C.30.TFS-REL, C.30.ILC, A.6.M, A.6.F, E.18, C.16.P, C.16, A.19.SPR, C.2.P, E.17, C.29, C.28, A.10, G.6, B.3, A.20, A.21, A.15, A.2, G.5, C.11, E.11, I.2. |
-| C.30.ASV | **Architecture Structural View Adequacy (ASV)** | Stable | *Keywords:* architecture structural view, ArchitectureStructureKindRef, VF.ARCH.STRUCTURE, viewpoint bundle, structure kind, hidden/lost structure, correspondence, source return. *Queries:* "Which structure kind does this architecture view describe?", "How do viewpoint and structure kind stay distinct?", "When does a view hide or lose structure?" | **Builds on:** C.30, A.22, A.6.3, E.17.0, E.17.1, E.17.2, E.17, E.10.D2. **Coordinates with:** A.6.F, C.30.TFS-REL, C.30.LCA, C.30.ILC, E.18, C.29. |
-| C.30.LCA | **Control Structure View Adequacy (LCA)** | Stable | *Keywords:* control-structure view, layered control architecture, supervisor loop, controller/plant, rate band, control layer, proof overread. *Queries:* "When is LCA a control-structure view rather than proof?", "How do layer, level, stack, and rate labels recover fields named by value?", "Where do stability, safety, evidence, and gate claims go?" | **Builds on:** C.30, C.30.ASV, B.2.5, A.22. **Coordinates with:** A.3.3, C.27, C.28, A.10, G.6, B.3, A.20, A.21, C.29. |
-| C.30.ILC | **Cross-Scope Architecture Residual Triage** | Stable | *Keywords:* cross-scope residual, interlevel conflict, frustration, declared scope, structure kind, local repair, source return. *Queries:* "What is the first architecture move when a local fix creates a residual elsewhere?", "How do level, layer, scope, scale, and frustration wording recover exact carriers?", "When should the case exit to measurement, scale, evidence, decision, or synthesis patterns?" | **Builds on:** C.30, C.30.ASV, A.22. **Coordinates with:** C.16, C.29, G.5, C.11, C.28, A.10, B.3, G.6, D.3, D.4. |
-| C.30.TFS-REL | **Architecture Transformation-Flow Structure Relation** | Stable | *Keywords:* architecture-to-transformation-flow relation, transformation-flow structure, functional behavior, selected structure, architecture structural view. *Queries:* "When can a transformation-flow structure inform a grounded architecture or structural view?", "How do architecture, function, and transformation flow stay distinct?" | **Builds on:** C.30, C.30.ASV, E.18, A.22. **Coordinates with:** A.6.F, E.18.2, C.29, C.16, C.28, A.10, B.3, A.20, A.21, A.15. |
-| C.31 | **Modularity and Reusable Structure Characteristics** | Stable | *Keywords:* modularity characteristics, reusable-structure characteristics, coupling, cohesion, substitutability, interface variation, evidence reuse, bespoke residue, ModularityVectorLite. *Queries:* "Which modularity characteristic is under evaluation?"
-, "When is a modularity score report-only?", "How do I keep module, interface, reuse, and evidence-reuse claims distinct?" | **Builds on:** C.16, A.17, A.18, A.19, C.25, C.30, C.30.ASV. **Coordinates with:** A.6.M, C.31.RSA, C.31.ASAP, C.29, A.10, B.3, G.5, C.11. |
-| C.31.RSA | **Reusable Structure Accounting** | Stable | *Keywords:* reusable-structure accounting, reusable share, bespoke residue, accounting basis, report-only share, source return, refactoring opportunity. *Queries:* "Where is reusable structure located?"
-, "When is a reusable share only report-only?", "What gets worse when we increase reuse?" | **Builds on:** C.31, C.30, C.30.ASV, C.16, A.19. **Coordinates with:** A.6.M, C.31.ASAP, C.29, A.10, B.3, G.6, C.27, C.28, G.5, C.11. |
-| C.31.ASAP | **Architecture Scale-Amenability Preference** | Stable | *Keywords:* architecture scale preference, scale amenability, ScaleClaimTriage, scale variable, scale window, architecture alternatives, source-return condition, coarse-graining, RG, platform scale claim, waiver reason. *Queries:* "When does modularity or platform wording carry an architecture scale-preference claim?", "How do I compare architectures under a scale window?", "When is coarse-graining or RG-like language only a mathematical lens?" | **Builds on:** C.31, C.31.RSA, C.16, A.17, A.18, A.19, C.18.1, C.19.1, C.29. **Coordinates with:** A.6.M, C.30, C.30.ASV, C.30.LCA, C.30.ILC, A.10, B.3, G.6, G.5, G.9, C.11. |
+| C.30.P | **Architecture and Structure Precision Restoration** | Stable | Repairs architecture or structure wording whose EntityOfConcern or claim kind is hidden before A.22, C.30, C.30.AD, C.30.ASV, a selected C.30.* pattern, C.32-family synthesis work, or another governing pattern is applied. | **Builds on:** E.10, E.10.ARCH, A.22, C.30, C.30.AD, C.30.ASV, C.2.P, A.6.P, A.6.F, C.29, C.16.P, C.16, C.25, E.17, E.8. **Coordinates with:** C.30.TFS-REL, C.30.LCA, C.30.ILC, C.32, C.32.MLAO, C.32.CONWAY, C.32.FAIL, A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, A.10, B.3, A.20, A.21, C.11, C.28, A.15, E.11. |
+| C.30.STRAT | **Stratification Wording Precision Restoration** | Stable | Repairs source-label uses such as layer, level, tier, stack, ladder, rung, block, expert, cache, router, and gate by recovering selected ontological neighborhood, primary EntityOfConcern kind, governing pattern, admissible use, and remaining reader use before FPF-governed use. | **Builds on:** E.10, E.10.ARCH, E.8, F.18, C.30.P, A.22, C.30. **Coordinates with:** C.30.ASV, C.30.LCA, C.30.TFS-REL, C.30.ILC, A.6.M, A.6.F, E.18, C.16.P, C.16, A.19.SPR, C.2.P, E.17, C.29, C.28, A.10, G.6, B.3, A.20, A.21, A.15, A.2, G.5, C.11, E.11, I.2. |
+| C.30.ASV | **Architecture Structural View Adequacy (ASV)** | Stable | *Keywords:* architecture structural view, ArchitectureStructureKindRef, VF.ARCH.STRUCTURE, viewpoint bundle, structure kind, hidden or lost structure, correspondence, source return. *Queries:* "Which structure kind does this architecture view describe?", "How do viewpoint and structure kind stay distinct?", "When does a view hide or lose structure?" | **Builds on:** C.30, A.22, A.6.3, E.17.0, E.17.1, E.17.2, E.17, E.10.D2. **Coordinates with:** A.6.F, C.30.TFS-REL, C.30.LCA, C.30.ILC, E.18, C.29. |
+| C.30.LCA | **Control Structure View Adequacy (LCA)** | Stable | *Keywords:* control-structure view, layered control architecture, supervisor loop, controller and plant, rate band, control layer, proof overread. *Queries:* "When is LCA a control-structure view rather than proof?", "How do layer, level, stack, and rate labels recover fields named by value?", "Where do stability, safety, evidence, and gate claims go?" | **Builds on:** C.30, C.30.ASV, B.2.5, A.22. **Coordinates with:** A.3.3, C.27, C.28, A.10, G.6, B.3, A.20, A.21, C.29. |
+| C.30.ILC | **Cross-Scope Architecture Residual Triage** | Stable | *Keywords:* cross-scope residual, interlevel conflict, frustration, declared scope, structure kind, local repair, residual-bearing locus, first architecture move. *Queries:* "What is the first architecture move when a local fix creates a residual elsewhere?", "When does residual-reducing synthesis go to C.32.MLAO and C.32?", "When should the case exit to measurement, scale, evidence, decision, or selected-set publication?" | **Builds on:** C.30, C.30.ASV, A.22. **Coordinates with:** C.32.MLAO, C.32, C.32.PAD, C.31.ASAP, C.16, C.29, G.5, C.11, C.28, A.10, B.3, G.6, D.3, D.4. |
+| C.30.TFS-REL | **Architecture Transformation-Flow Structure Relation** | Stable | *Keywords:* architecture-to-transformation-flow relation, transformation-flow structure, functional behavior, selected structure, architecture structural view, candidate architecture input. *Queries:* "When can a transformation-flow structure inform a grounded architecture or structural view?", "How do architecture, function, and transformation flow stay distinct?", "When do transformation-flow variants become C.32 candidate inputs?" | **Builds on:** C.30, C.30.ASV, E.18, A.22. **Coordinates with:** C.32, A.6.F, E.18.2, C.29, C.16, C.28, A.10, B.3, A.20, A.21, A.15. |
+| C.31 | **Modularity and Reusable Structure Characteristics** | Stable | *Keywords:* modularity characteristics, reusable-structure characteristics, coupling, cohesion, substitutability, interface variation, evidence reuse, bespoke residue, ModularityVectorLite. *Queries:* "Which modularity characteristic is under evaluation?", "When is a modularity score report-only?", "How do I keep module, interface, reuse, and evidence-reuse claims distinct?" | **Builds on:** C.16, A.17, A.18, A.19, C.25, C.30, C.30.ASV. **Coordinates with:** A.6.M, C.31.RSA, C.31.ASAP, C.32, C.29, A.10, B.3, G.5, C.11. |
+| C.31.RSA | **Reusable Structure Accounting** | Stable | *Keywords:* reusable-structure accounting, reusable share, bespoke residue, accounting basis, report-only share, source return, refactoring opportunity. *Queries:* "Where is reusable structure located?", "When is a reusable share only report-only?", "What gets worse when we increase reuse?" | **Builds on:** C.31, C.30, C.30.ASV, C.16, A.19. **Coordinates with:** A.6.M, C.31.ASAP, C.29, A.10, B.3, G.6, C.27, C.28, G.5, C.11. |
+| C.31.ASAP | **Architecture Scale-Amenability Preference** | Stable | *Keywords:* architecture scale preference, scale amenability, ScaleClaimTriage, scale variable, scale window, architecture alternatives, source-return condition, coarse-graining, RG, platform scale claim, waiver reason. *Queries:* "When does modularity or platform wording carry an architecture scale-preference claim?", "How can scale preference inform C.32 candidate generation without selecting the architecture?", "When is coarse-graining or RG-like language only a mathematical lens?" | **Builds on:** C.31, C.31.RSA, C.16, A.17, A.18, A.19, C.18.1, C.19.1, C.29. **Coordinates with:** C.32, C.32.PAD, A.6.M, C.30, C.30.ASV, C.30.LCA, C.30.ILC, A.10, B.3, G.6, G.5, G.9, C.11. |
+| C.32 | **Architecture Candidate Synthesis** | Stable | *Keywords:* architecture candidate synthesis, CandidateArchitecturePalette@Project, selected structures, architecture characteristics, synthesis structure map, candidate configurations, trade-off front, retained alternatives. *Queries:* "How do I synthesize candidate architecture configurations before comparison?", "Which selected structures and architecture characteristics change?", "When does C.32 stop before comparison, selected-set publication, local choice, or project architecture decision?" | **Builds on:** C.30, A.22, A.6.F, A.6.M, C.16, C.25, C.31, C.30.ILC. **Coordinates with:** C.32.P2S, C.32.HCS, C.32.ACS, C.32.ACE, C.32.CONWAY, C.32.MLAO, C.32.FAIL, C.32.PAD, A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, C.11, A.10, B.3. |
+| C.32.P2S | **Problem-to-Structure Architecturing Transformation Flow** | Stable | *Keywords:* problem-to-structure architecturing flow, ProblemToStructureArchitecturingFlowCard@Project, structural uncertainty, selected structures, actual-structure feedback, owner-specific return, architecture work flow. *Queries:* "How do I carry architecture pressure from problem to realized selected structures?", "When does architecturing stop at C.30, C.32, C.32.PAD, C.32.ADR, A.15, C.16, C.29, E.23, G.11, or E.18?", "How do descriptions, decisions, work, evals, and feedback stay with their owners?" | **Builds on:** C.22.2, C.30, C.30.AD, C.30.ASV, C.32, C.32.HCS, C.32.ACS, C.32.ACE, C.25, C.31, C.29, E.17, E.24.PUB. **Coordinates with:** A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, C.11, C.32.PAD, C.32.ADR, C.32.ADA, A.15, A.15.1, A.15.2, A.15.5, C.16, E.23, G.11, E.18, C.32.CONWAY, C.32.FAIL. |
+| C.32.HCS | **Holon-Family Architecture Characteristic Starter Packs** | Stable | *Keywords:* holon-family architecture characteristic starter pack, architecture characteristic heads, source catalogue narrowing, first criteria questions, characteristic transfer. *Queries:* "Which few architecture-characteristic heads should we inspect first?", "How do software-quality catalogues transfer to systems, methods, roles, cultures, AI workflows, or evidence practices?", "When does starter work hand off to ACS?" | **Builds on:** C.32, C.25, C.16, E.13. **Coordinates with:** C.32.ACS, C.32.ACE, C.30, C.31, A.19, G.5, C.11, C.32.PAD. |
+| C.32.ACS | **Architecture Characteristic Criteria Set for Improvement Cycles** | Stable | *Keywords:* architecture characteristic criteria set, criteria row, Q-Bundle, improvement cycle, proxy risk, protected counter-characteristic, anti-Goodhart guard. *Queries:* "How do I turn broad -ility names into project criteria rows?", "Which three to five characteristics enter optimization and which remain guardrails?", "How does the criteria set feed eval and candidate synthesis?" | **Builds on:** C.32.HCS, C.25, C.16, E.13. **Coordinates with:** C.32, C.32.ACE, C.32.PAD, E.22, E.23, A.19.CPM, G.5, C.11, A.10, B.3. |
+| C.32.ACE | **Architecture Characteristic Eval Programs** | Stable | *Keywords:* architecture-characteristic eval program, eval result, measurement boundary, parity frame, missing-data policy, proxy risk, comparison input. *Queries:* "How do I evaluate architecture candidates against criteria rows?", "Why is eval not the characteristic itself?", "When does an eval result feed comparison, publication, or decision without replacing them?" | **Builds on:** C.32.ACS, C.16, C.25, E.13. **Coordinates with:** C.32, C.32.MLAO, C.32.PAD, A.19.CPM, G.5, C.11, A.10, B.3. |
+| C.32.CONWAY | **Transformer and Transformed Architecture Correspondence** | Stable | *Keywords:* Conway correspondence, inverse Conway maneuver, transformer holon, transformed holon, changing relation, selected-structure correspondence, coordination cost. *Queries:* "When must the architecture of the transforming holon and transformed holon be synthesized together?", "Which selected structures correspond across the changing relation?", "When is mirroring only a source cue rather than architecture adequacy?" | **Builds on:** C.32, A.3.4, E.18, A.15, C.29. **Coordinates with:** C.32.MLAO, C.32.FAIL, C.32.PAD, A.19.CPM, G.5, C.11, A.10, B.3. |
+| C.32.MLAO | **Multilevel Architecture Residual Optimization** | Stable | *Keywords:* multilevel architecture residual optimization, residual-reducing candidate frame, declared level, declared scope, Pareto front, stepping stone, ideality pressure, scale amenability. *Queries:* "How do I prepare candidate architecture changes after cross-scope residual triage?", "How do residuals, fronts, archives, and stepping stones inform synthesis without deciding?", "When does the case return to C.30.ILC, C.29, C.31.ASAP, C.32, G.5, C.11, or C.32.PAD?" | **Builds on:** C.30.ILC, C.32, C.32.ACS, C.32.ACE, C.29, C.31.ASAP. **Coordinates with:** C.32.CONWAY, C.32.FAIL, C.32.PAD, C.18, C.19, G.5, C.11, A.10, B.3. |
+| C.32.FAIL | **Architecture Failure Recognition and Repair** | Stable | *Keywords:* architecture failure cue, architecture repair cue, stressed architecture object, selected-structure relation, candidate repair, repair-entry family, source overread. *Queries:* "How do I turn an architecture warning into the smallest repair action?", "Which governing pattern owns the repair?", "When should evidence, assurance, comparison, selection, publication, choice, or decision claims leave the repair cue?" | **Builds on:** C.32, C.30.P, A.6.F, A.6.M, C.31, C.29, E.10. **Coordinates with:** C.32.MLAO, C.32.CONWAY, C.32.PAD, C.30, A.19.CPM, A.19.SelectorMechanism, C.18, C.19, G.5, C.11, E.17, E.24.PUB, A.10, B.3, A.20, A.21. |
+| C.32.PAD | **Project Architecture Decision After Candidate Synthesis** | Stable | *Keywords:* project architecture decision, ArchitectureDecisionRelation@Project, selected architecture option, affected selected structure, architecture-characteristic trade-off, accepted loss, method-use instruction, architect-developer split, reopen condition. *Queries:* "How do I turn candidate architecture configurations into a project decision?", "Which selected structures and accepted losses does the architecture decision commit?", "How does an architecture decision guide developer methods without becoming an ADR or work plan?" | **Builds on:** C.32, C.32.MLAO, C.32.CONWAY, C.32.FAIL, A.19.CPM, A.19.SelectorMechanism, C.11, G.5, C.30, C.30.AD, C.30.ASV. **Coordinates with:** C.32.ADR, C.32.ADA, C.32.ACS, C.32.ACE, C.16, C.25, C.29, A.15, E.8, E.11.PUR, E.17, E.24.PUB, A.10, B.3, A.21, B.2, B.2.P. |
+| C.32.ADR | **Architecture Decision Record Projection** | Stable | *Keywords:* architecture decision record, ADR projection, ArchitectureDecisionDescription@Project, ArchitectureDecisionRecordProjection@Project, section function, rationale, consequences, method-use instruction, supersession, publication boundary. *Queries:* "How do I write an ADR-like record from an architecture decision relation?", "Which ADR sections are required by the decision use?", "When is an ADR only a publication projection rather than the decision?" | **Builds on:** C.32.PAD, C.30.AD, C.30.ASV, E.17, E.24.PUB, A.15, E.8, E.11.PUR. **Coordinates with:** C.32.ADA, A.10, B.3, A.21, C.16, C.25, C.29. |
+| C.32.ADA | **Architecture Decision Adequacy Scales** | Stable | *Keywords:* architecture decision adequacy, ArchitectureDecisionAdequacyEvaluation@Project, declared use, complete coordinate set, E.21 labels, method docking, publication projection, no average, repair target. *Queries:* "How do I evaluate whether an architecture decision is adequate for a declared use?", "Which weak coordinate should be repaired before developer work?", "Why does an ADR score not approve an architecture decision?" | **Builds on:** C.32.PAD, C.32.ADR, E.21, E.22. **Coordinates with:** C.32, C.32.ACS, C.32.ACE, C.30.AD, A.15, C.16, C.25, C.29, E.13, E.17, E.24.PUB, A.10, B.3, A.21. |
+| C.33 | **Structural Information Adequacy for Architecture Capture and Source Return** | Stable | *Keywords:* structural information adequacy, captured structure, lost structure, source return, carrier, observer boundary, selected structure. *Queries:* "What selected structure can I safely take from this carrier?", "What did the view, ADR, graph, report, or observation lose?", "When must architecture work return to the stronger source?" | **Builds on:** A.22, C.30, C.30.AD, C.30.ASV, C.32.P2S, C.32. **Coordinates with:** C.29, C.16, C.25, C.32.ACE, C.30.STRAT, C.30.TFS-REL, A.6.M, C.31, C.31.ASAP, C.32.PAD, C.32.ADR, G.5, C.18, C.19, E.18, F.9, F.15. |
+| C.34 | **Structural Correspondence, Equivalence, and Morphism Adequacy** | Stable | *Keywords:* structural correspondence, equivalence, morphism, mapping mode, preserved structure, lost structure, directionality, scope. *Queries:* "When are two structure-bearing objects same enough for architecture work?", "Which selected structure is preserved and what is lost?", "When is a graph match or morphism only a lens?" | **Builds on:** A.22, C.30, C.30.ASV, C.30.AD, C.29, F.9. **Coordinates with:** C.16, C.25, C.32.ACE, C.32, C.32.PAD, C.32.ADR, C.30.TFS-REL, C.30.STRAT, A.6.M, C.31, C.31.ASAP, E.18, F.15. |
+| C.35 | **Structural Synthesis and Discovery Adequacy** | Stable | *Keywords:* structural synthesis, structural discovery, generated carrier, produced carrier, described structure, candidate admission, source return, DSM, NAS, LLM. *Queries:* "Can a generated architecture output seed synthesis?", "When is a DSM cluster, NAS graph, LLM diagram, or model transformation ready for C.32?", "What must be recovered before treating a discovered structure as architecture material?" | **Builds on:** C.30, C.30.AD, C.30.ASV, A.22, C.32.P2S, C.32. **Coordinates with:** C.33, C.34, C.29, C.30.STRAT, C.30.TFS-REL, A.6.M, C.31, C.31.ASAP, C.32.ACS, C.32.ACE, C.16, C.25, G.5, C.18, C.19, E.18, C.32.PAD, C.32.ADR. |
 | C.36 | **Cultural Evolution and Cultural-Evolution Engineering** | Stable | Cultural-evolution and cultural-evolution-engineering case use: collective holons, roles, work and method families, canon or memory epistemes, recognition and selection regimes, mediation systems, variant sets, term bridges, intervention, measurement, and refresh relations without minting root culture, style, or tradition kinds. | **Builds on:** A.1, A.2.1, A.3.1, A.15, C.18, C.19, C.20, C.23, E.18.1, F.9, F.17, F.18, G.5, G.11. **Coordinates with:** C.36.P, E.10, E.10.ARCH, C.30, C.16, C.11, A.10, B.3. |
 | C.36.P | **Cultural-Evolution Wording-Use Precision Restoration** | Stable | Recovers the FPF object hidden by culture, style, tradition, genre, scene, practice, technique, platform, regime, attractor, or developmental-machinery wording; returns subject work to C.36 or the direct governing pattern. | **Builds on:** E.10, E.10.ARCH, C.36, F.17, F.18, F.9. **Coordinates with:** A.3.1, A.3.2, A.15, C.18, C.19, G.5, G.11. |
 **Part D – Multi-scale Ethics & Conflict-Optimisation**
@@ -530,8 +553,6 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | D.3 | **Interlevel Ethical Conflict Structure** | Stable | Maps affected holons and systems, declared levels or scopes, interests, role holders, agency or responsibility thresholds, methods, work, transformations, evidence, uncertainty, value theories, and consequence horizons. | **Builds on:** D.1, D.2, A.1, A.14, C.13. **Coordinates with:** D.4, C.2.1, E.17, C.30.ILC, C.16, A.10, B.3. |
 | D.4 | **Ethical Mediation and Decision Use** | Stable | Governs how an interlevel ethical conflict structure is used in mediation, refusal, decision, evidence demand, causal return, assurance return, or architecture return. | **Builds on:** D.3, C.11. **Coordinates with:** D.5, A.10, B.3, C.28, C.30.ILC, A.20, A.21. |
 | D.5 | **Bias Audit and Ethical Assurance** | Stable | Bias, fairness, human or group impact audit, causal-fairness audit consumption, and ethical assurance boundary that complements multilevel ethics without replacing D.1-D.4. | **Builds on:** D.1, D.4, E.5.4. **Coordinates with:** A.10, B.3, C.16, C.28, E.13. |
-| D.5.1 | Taxonomy-Guided Audit Templates | Planned | *Keywords:* bias taxonomy, audit checklist, template. *Queries:* "Templates for conducting a bias audit." | **Builds on:** D.5. |
-| D.5.2 | Assurance Metrics Roll-up | Planned | *Keywords:* ethical risk index, metrics, evidence, roll-up. *Queries:* "How to calculate an overall ethical risk score in FPF?" | **Builds on:** D.5, B.3. |
 
 **Part E – The FPF Constitution and Authoring Guides**
 
@@ -542,7 +563,10 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | E.2 | **The Eleven Pillars** | Stable | *Keywords:* principles, constitution, pillars, invariants, core values, rules, P-1 to P-11. *Queries:* "What are the core principles of FPF?", "What are the eleven pillars?". | **Builds on:** E.1. **Prerequisite for:** E.3 and all normative patterns. |
 | E.2.DA | **FPF Pillar-Adequacy Evaluation CharacteristicSpace** | Stable | FPF-level object-under-improvement evaluation derived from the `E.2` Pillars for FPF as a whole, a corpus slice, release candidate, pattern family, projection set, or host set, including content-loss and excess-apparatus regressions. | **Builds on:** E.2, A.19.ECS. **Coordinates with:** E.21, E.9.DA, E.22, E.23, E.11, E.10, F.18, F.19. |
 | E.3 | **Principle Taxonomy & Precedence Model** | Stable | *Keywords:* taxonomy, precedence, conflict resolution, hierarchy, principles, classification, Gov, Arch, Epist, Prag, Did. *Queries:* "How does FPF resolve conflicting principles?", "What is the hierarchy of FPF rules?". | **Builds on:** E.2. **Constrains:** All patterns and DRRs. |
-| E.4 | **FPF Ecosystem Family Architecture** | Stable | *Keywords:* ecosystem families, Conceptual Core, Tooling Reference, Pedagogical Companion, canon, tutorial, linter. *Queries:* "How are FPF publications, tools, and learning companions structured?", "What is the difference between the core spec and tooling?". | **Builds on:** E.1. **Constrained by:** E.5.3. |
+| E.4 | **FPF Ecosystem Family Architecture** | Stable | FPF-grounded pattern ecosystem family architecture; separates Conceptual Core, foundational principle pattern set, FPF Core pattern set, domain principle frameworks, local practice frameworks, tooling, pedagogy, relation records, decisions, publication units, source/currentness/quality owners. | **Builds on:** E.1, E.2/P-5, E.5.3. **Coordinates with:** E.4.PFAD, E.4.DPF, E.4.PFR, E.11, E.17, G.2, G.5, G.11, C.33, C.34, C.35, F.18, E.21, E.23, E.19. |
+| E.4.PFAD | **Principle-Framework Architecture Decision** | Stable | Framework-local architecture decision relation for a domain or local principle framework: selected pattern set, relation structure, publication unit, dependency boundary, source basis, quality route, and refresh or supersession. | **Builds on:** E.4, E.9, C.32.PAD. **Coordinates with:** C.32.ADR, E.17, E.4.PFR, F.18, G.2, G.11, E.21, E.19. |
+| E.4.DPF | **Domain Principle Framework Authoring and Local-Monolith Landing** | Stable | Authoring method for domain principle frameworks and local practice frameworks, including SoTA source packs, PFAD decisions, name-card route, pattern drafts, relation and edition records, local publication, quality loop, and currentness route. | **Builds on:** E.4, G.2, E.8, E.10, F.18. **Coordinates with:** E.4.PFAD, E.4.PFR, C.33, C.34, C.35, E.11, E.17, E.21, E.22, E.23, E.19, G.11. |
+| E.4.PFR | **Pattern-Framework Relation and Edition Discipline** | Stable | Relation and edition records for FPF-grounded pattern frameworks: relation functions, dependency direction, compatibility boundaries, publication, source/decision reuse, produced-carrier admission, deprecation, supersession, and refresh. | **Builds on:** E.5.3, E.4. **Coordinates with:** E.4.PFAD, E.11.PUR, E.11, E.17, G.5, F.18, G.11, E.21, E.22, E.23, C.33, C.34, C.35, G.2, E.9, A.10. |
 | E.5 | **Four Guard-Rails of FPF** | Stable | *Keywords:* guardrails, constraints, architecture, rules, safety, GR-1 to GR-4. *Queries:* "What are the main architectural constraints in FPF?". | **Builds on:** E.2, E.3. **Prerequisite for:** E.5.1, E.5.2, E.5.3, E.5.4. |
 | E.5.1 | **DevOps Lexical Firewall** | Stable | *Keywords:* lexical firewall, jargon, tool-agnostic, conceptual purity, DevOps, CI/CD, yaml. *Queries:* "Can I use terms like 'CI/CD' in FPF core patterns?". | **Refines:** E.5. **Constrains:** All Core patterns. |
 | E.5.2 | **Notational Independence** | Stable | *Keywords:* notation, syntax, semantics, tool-agnostic, diagram, UML, BPMN. *Queries:* "Does FPF require a specific diagram style?", "How is meaning defined in FPF?". | **Refines:** E.5. **Constrains:** All Core patterns. |
@@ -554,13 +578,15 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | E.8 | **FPF Authoring Conventions & Style Guide** | Stable | Pattern body as user-facing pattern body; recognition text and assurance text; working-reader boundary; positive subject/action spine; precision-restoration profile and phrase-apparatus cleanup; evaluation-characteristic-space pattern publication form is delegated to `E.8.ECSPF`. | `E.6`, `E.7`, `E.8.ECSPF`, `E.9`, `E.10`, `E.19`, `E.21`, `F.18`, `F.19` |
 | E.8.ECSPF | **Evaluation CharacteristicSpace FPF Pattern Publication Form** | Stable | Authoring form for publishing an accepted evaluation `CharacteristicSpace` as an FPF pattern while preserving working-reader recognition, value meanings, non-use boundaries, neighbour relations, governing-pattern references, and phrase-apparatus discipline. | **Builds on:** E.8, A.19.ECS. **Coordinates with:** E.21, E.9.DA, E.2.DA, E.22, E.23, F.18, F.19, C.25. |
 | E.9 | **Design-Rationale Record (DRR) Method** | Stable | `DRR` as one bounded decision and rationale record: exact basis, selected answer, source and decision carry-through, positive content distribution to patterns and selected non-pattern FPF kind-reference pairs, kind-or-boilerplate diagnostic for draft wording, and decision-adequacy evaluations through `E.9.DA`. | `E.2`, `E.8`, `E.9.DA`, `E.10`, `E.19`, `E.22`, `F.19` |
-| E.9.DA | **DRR Decision-Adequacy Evaluation CharacteristicSpace** | Stable | Evaluates whether one `DRR` is decisive enough for its declared FPF authoring use: selected answer, source carry-through, selected-locus distribution, rejected alternatives, first drafting move, and phrase-apparatus or boilerplate debt before pattern drafting. | **Builds on:** E.9, A.19.ECS. **Coordinates with:** E.8, E.10, E.19, E.21, E.22, E.23, F.19. |
-| E.10 | **Unified Lexical Rules for FPF** | Stable | Word, head, and use precision; register discipline; term formation; ontology guards; precision-restoration trigger registry; and closure rule: local wording accepted, rewritten to kind or relation named by value, or sent to the selected restoration or governing pattern. | **Builds on:** A.7, E.5, F.5, F.18. **Coordinates with:** E.10.ARCH, A.6.P, C.2.P, A.19.SPR, E.24.CD, E.24.PUB, F.19. |
+| E.9.DA | **DRR Decision-Adequacy Evaluation CharacteristicSpace** | Stable | Evaluates whether one `DRR` is decisive enough for its declared FPF authoring use: selected answer, source carry-through, selected-locus distribution, rejected alternatives, first drafting action, and phrase-apparatus or boilerplate debt before pattern drafting. | **Builds on:** E.9, A.19.ECS. **Coordinates with:** E.8, E.10, E.19, E.21, E.22, E.23, F.19. |
+| E.10 | **Unified Lexical Rules for FPF** | Stable | Word, head, and use precision; register discipline; term formation; ontology guards; precision-restoration trigger registry; and closure rule: local wording accepted, rewritten to kind or relation named by value, or sent to the selected restoration or governing pattern. | **Builds on:** A.7, E.5, F.5, F.18. **Coordinates with:** E.10.ARCH, E.10.MOVE, A.6.P, C.2.P, A.19.SPR, E.24.CD, E.24.PUB, F.19. |
+| E.10.MOVE | **Move and Readiness Wording Precision Restoration** | Stable | Move-like and readiness-like wording precision restoration; recovers project concern, pattern-use recommendation, work-entry readiness, work plan, performed work, gate, architecture candidate use, language-state move, call-planning next action, or transformation branch before any repair. | **Builds on:** E.10, E.10.ARCH, E.11.PUR, A.15.5, A.3.4.P. **Coordinates with:** A.15, A.15.1, A.15.2, A.15.3, A.15.4, A.21, E.18.1, A.16, A.16.0, C.24, C.30, and C.30.AD. |
 | E.10.ARCH | **Wording-Use Ontological Precision Restoration Architecture** | Stable | Distributes wording-use precision restoration: E.10 catches overloaded wording, E.10.ARCH selects the applicability row, selected restoration or governing patterns recover ontology, F.19 handles phrase-level apparatus after kind recovery, and subject patterns keep thin local cues plus declarative relations. | **Builds on:** E.10, A.6.P, A.6.F, C.2.P, A.6.3.CSC, F.18, F.19, E.8, E.19, E.2. **Coordinates with:** C.30.P, C.16.P, C.16.Q, A.22, C.30, C.30.ASV, C.16, A.19, C.25, C.27, C.29, E.21, E.11, I.2. |
 | E.10.P | **Conceptual Prefixes (policy & registry)** | Stable | *Keywords:* prefixes, U., Γ_, ut:, tv:, namespace, registry. *Queries:* "What do the prefixes like 'U.' mean in FPF?". | **Depends on:** E.9. **Constrains:** E.5.1, E.5.2. |
 | E.10.D1 | **Lexical Discipline for “Context” (D.CTX)** | Stable | *Keywords:* context, U.BoundedContext, anchor, domain, frame. *Queries:* "What is the formal meaning of 'Context' in FPF?". | **Builds on:** A.7, A.4. **Coordinates with:** F.1, F.2, F.3, F.7, F.9. |
 | E.10.D2 | **EntityOfConcern, Description Episteme, and Specification-Use Discipline** | Stable | *Keywords:* EntityOfConcern, Description episteme, specification use, DescriptionContext, testable, verifiable. *Queries:* "Difference between a description and a specification in FPF?". | **Builds on:** A.7, E.10.D1, C.2.1, C.2.3. **Constrains:** F.4, F.5, F.8, F.9, F.15. |
-| E.11 | **First-Practical Entry and Pattern-Use Discoverability Discipline** | Stable | Public `readme` first-entry scenarios, Preface plain-engineering explanation of FPF ideas, ToC/retrieval cues, local Problem-frame recognition, expanded entry-disambiguation cases, and projection-boundary discipline. | **Builds on:** E.8, E.19, E.21, F.18. **Coordinates with:** I.2, E.10, E.10.ARCH, F.19. |
+| E.11 | **First-Practical Entry and Pattern-Use Discoverability Discipline** | Stable | Public `readme` first-entry scenarios, Preface plain-engineering explanation of FPF ideas, ToC/retrieval cues, local Problem-frame recognition, expanded entry-disambiguation cases, and projection-boundary discipline. Concrete project-local pattern-use recommendations are governed by `E.11.PUR`. | **Builds on:** E.8, E.19, E.21, F.18. **Coordinates with:** I.2, E.10, E.10.ARCH, E.10.MOVE, E.11.PUR, F.19. |
+| E.11.PUR | **Pattern-Use Recommendation and Pattern-Use Sequence** | Stable | Pattern-use recommendation and short pattern-use sequence relation for a current project concern; keeps ordinary first-use move speech teachable without minting a root move kind, workflow, work plan, gate, or P2W table. | **Builds on:** E.11, E.10.MOVE, E.8. **Coordinates with:** E.18.1, A.15, A.15.5, A.21, A.16, C.24, C.30, C.30.AD, and E.17. |
 | E.12 | **Didactic Primacy & Cognitive Ergonomics** | Stable | *Keywords:* didactic, cognitive load, ergonomics, usability, Rationale Mandate, HF-Loop. *Queries:* "How does FPF ensure it's understandable?", "What is the 'So What?' test in FPF?". | **Builds on:** E.2 (P-2). **Complements:** E.13. |
 | E.13 | **Pragmatic Utility and Value Alignment** | Stable | *Keywords:* pragmatic utility, proxy-to-value alignment, Goodhart, Campbell, surrogation, minimally viable value slice. *Queries:* "How does FPF keep measures from replacing value?", "What got worse when the score improved?". | **Builds on:** E.2 (P-7). **Complements:** E.12 and E.14; coordinates with E.8, E.19, E.21, E.22, E.23, E.9.DA, and E.2.DA. |
 | E.14 | **Human-Centric Working-Model** | Stable | *Keywords:* working model, human-centric, publication surface, grounding, assurance layers. *Queries:* "What is the main interface for FPF users?", "How does FPF separate human-readable models from formal assurance?". | **Builds on:** E.7, E.8, C.2.3. **Coordinates with:** B.3.5, C.13, E.10. |
@@ -573,10 +599,10 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | E.17.EFP | **ExplanationFaithfulnessProfile — explanation-use discipline over existing MVPK faces** | Stable | Explanation-facing rendering classes; source-pinned rendering, source-linked reconstruction, didactic retelling, speculative retelling; admissible explanation use and boundary to evidence, gate, work, and source return. | `E.17`, `A.7`, `A.6.B`, `F.9`, `F.18`; coordinates with `A.10`, `A.15`, `A.15.4`, `A.6.3.CSC`, `E.17.ID.CR` |
 | E.17.ID.CR | **ComparativeReviewUnit - bounded comparison over comparative review units** | Stable | Comparative review unit, source anchors, comparison basis, bounded lift, blocked downstream claim or effect, and boundary to decision, equivalence, bridge, coarsening, explanation, prompt, ontology, or gate work. | `C.2.2a`, `A.16.0`, `F.9`, `E.14`; coordinates with `E.17.EFP`, `E.17.AUD.LHR`, `E.17.AUD.OOTD`, `A.6.3.*`, `A.15`, `A.20`, `A.21` |
 | E.17.AUD | **PublicationUnit Stability Discipline** | Stable | One bounded publication unit as a readable unit; primary EntityOfConcern or subject named by value, carried publication move, and outside boundary to work, decision, gate, or reliance claim; choose local head restoration, whole-unit stabilization, bounded comparison, or neighboring pattern. | `C.2.2a`, `A.16.0`, `A.7`, `E.10`, `F.18`, `E.14`, `E.19`; coordinates with `E.17.AUD.LHR`, `E.17.AUD.OOTD`, `E.17.ID.CR`, `E.17.EFP` |
-| E.17.AUD.LHR | **PublicationUnit Stability Discipline and Local Head Restoration** | Stable | Repair one overloaded local lexical head inside one publication unit before the whole publication unit inherits ambiguity; recover local head kind, active local reading, local head kind, carried move or question under repair, and outside-work boundary. | `A.6.P`, `A.7`, `E.10`, `C.2.P`, `F.18`, `E.14`; coordinates with `E.17.AUD`, `E.17.AUD.OOTD`, `E.17.ID.CR`, `E.17.EFP` |
+| E.17.AUD.LHR | **PublicationUnit Stability Discipline and Local Head Restoration** | Stable | Repair one overloaded local lexical head inside one publication unit before the whole publication unit inherits ambiguity; recover local head kind, active local reading, local head kind, carried action or question under repair, and outside-work boundary. | `A.6.P`, `A.7`, `E.10`, `C.2.P`, `F.18`, `E.14`; coordinates with `E.17.AUD`, `E.17.AUD.OOTD`, `E.17.ID.CR`, `E.17.EFP` |
 | E.17.AUD.OOTD | **PublicationUnit Stability Discipline and PublicationUnit Primary EntityOfConcern Discipline** | Stable | Keep one publication unit explicit about one primary EntityOfConcern or subject named by value, one carried move over that entity, and one outside-work boundary; stop quiet shifts into another primary EntityOfConcern, concern, or wider process. | `A.6.P`, `A.7`, `E.10`, `F.18`, `E.14`, `E.19`, `C.2.2a`, `A.16.0`; coordinates with `E.17.AUD.LHR`, `E.17.ID.CR`, `E.17.EFP` |
 | E.18 | **Transformation Flow Structure** | Stable | *Keywords:* transformation flow structure, selected transformations, flow valuation, crossings, guards, composition, P2W support. *Queries:* "How do transformations compose into a selected flow structure?", "When is a graph/path a selected structure, a mathematical description, or a publication?" | **Builds on:** A.3.4, E.17, E.8, E.10, A.7. **Coordinates with:** E.18.1, E.18.2, C.29, A.20, A.21, A.2.6, F.9, F.17, G.5, G.9, G.11, C.30.TFS-REL. |
-| E.18.1 | **Principles-to-Work Carry-Through** | Stable | *Keywords:* P2W, principles-to-work, carry-through record, accepted ProblemCard@Context, formal substrate, mechanism realization, method-family selection, work planning, evaluation refresh. *Queries:* "How do accepted problem-side distinctions become a next admissible FPF use?", "How do first principles carry into work without selecting a method too early?", "How do I keep P2W separate from evidence, gates, decisions, work, and publication claims?" | **Builds on:** E.18, C.22.2, E.10, E.19. **Coordinates with:** C.29, A.6.0, A.6.1, A.15, A.15.1, A.15.2, A.15.3, A.15.4, A.10, B.3, A.20, A.21, E.17. |
+| E.18.1 | **Principles-to-Work Carry-Through** | Stable | *Keywords:* P2W, principles-to-work, carry-through record, accepted ProblemCard@Context, formal substrate, mechanism realization, method-family selection, work planning, evaluation refresh. *Queries:* "How do accepted problem-side distinctions become a next admissible FPF use?", "How do first principles carry into work without selecting a method too early?", "How do I keep P2W separate from evidence, gates, decisions, work, and publication claims?" | **Builds on:** E.18, C.22.2, E.10, E.19. **Coordinates with:** E.11.PUR, A.15.5, C.29, A.6.0, A.6.1, A.15, A.15.1, A.15.2, A.15.3, A.15.4, A.10, B.3, A.20, A.21, E.17. |
 | E.18.2 | **Transformation Flow Mathematical Description** | Stable | *Keywords:* mathematical description, transformation-flow math, graph expression, path expression, algebraic description, C.29 boundary. *Queries:* "When is a transformation-flow graph a mathematical description rather than the project structure?", "How do I use math for transformation flow without granting work, gate, evidence, or architecture authority?" | **Builds on:** E.18, C.29, A.3.4, E.17. **Coordinates with:** A.6.0, A.10, B.3, A.20, A.21, C.30.TFS-REL, E.18.1. |
 | E.19 | **Pattern Quality Gates: Review and Refresh Profiles** | Stable | Pattern-quality review and refresh profiles; PCP-TERM, PCP-ENTRY, SoTA binding, terminology restoration, reader-role discipline, support-role parity, phrase-apparatus cleanup, semantic trust, profile-depth decisions, and quality-evaluation routing to `E.21`, `E.9.DA`, `E.2.DA`, or `E.22` when those evaluations are being made. | `E.8`, `E.9`, `E.10`, `E.21`, `E.22`, `E.23`, `C.2.P`, `F.18`, `F.19`, `A.6.P` |
 | E.20 | **Mechanism Introduction Protocol (MIP)** | Stable | *Keywords:* mechanism introduction, authoring protocol, governing-definition assignment, MIP-run manifest, canonical card-first, no dangling `…IntensionRef`, suite boundary hygiene, P2W seam, SlotKind lexicon discipline, alias docking, typed RSCR triggers, regression envelope, PQG profiles. *Queries:* "How to introduce a new mechanism in FPF?", "How to avoid dangling IntensionRefs in suites?", "How to assign mechanism changes to their governing definitions?", "How to evolve mechanism suites without drift?" | **Builds on:** E.8, E.9, E.10, E.15, E.19. **Coordinates with:** A.6.1, A.6.7, A.15.3, F.18, E.18, G.Core, G.2, `G.x:Ext.*`. **Constrains:** Any change-set that introduces or revises mechanisms, suites, planned baselines, wiring modules, or citeable tokens. |
@@ -639,38 +665,12 @@ The public FPF readme section after the Table of Content gives human-facing firs
 | G.12 | **DHC Dashboards — Discipline-Health Time-Series (admissible telemetry, generation-first)** | Stable | *Keywords:* dashboard, DHC, discipline health, time-series, admissible telemetry, view-only slices, PathId/PathSliceId, edition pins, UTS twins, RSCR/refresh wiring. *Queries:* "How to build DHC dashboards in FPF?", "How to publish admissible DHC time-series with evidence and edition pins?", "How to wire dashboard telemetry into RSCR refresh?" | **Builds on:** G.Core, C.21, G.6, G.11, A.19, G.0, F.17/F.18, E.5.2, E.10. **Coordinates with:** G.5 (selector set-result outputs), G.7 (crossings/CL/Φ_plane pins), G.8 (maturity ladder panel), G.10 (shipping inclusion), C.18 and C.19 (QD/OEE telemetry), G.2 (SoTA palette hooks). |
 | G.13 | **External Interop Hooks for SoTA Discipline Packs (conceptual; normative when used)** | Stable | *Keywords:* interop, external index, claim mapper, mapping policy, plane map, embedding spec, `ExternalIndexCard@Context`, `ClaimMapperCard@Context`, `InteropSurface@Context`, CHR-typed SoS features, edition pins, UTS twins, RSCRTriggerKindId, telemetry pin. *Queries:* "How does FPF integrate external scholarly indexes into Part G?", "What is an ExternalIndexCard / ClaimMapperCard / InteropSurface in FPF?", "How to make interop refreshable with RSCR trigger kinds and edition pins?" | **Builds on:** G.Core, G.2–G.7, G.9–G.12, A.19, A.18, G.0, F.17, E.5.2, E.18. |
 
-**Part H – Glossary & Definitional Pattern Index**
-
-| § | ID & Title |  Status | Concise reminder |
-| :--- | :--- | :--- | :--- |
-| H.1 | **Alphabetic Glossary** | Planned | Every admitted U-kind, relation, operator, and term-sheet name with four-register naming. |
-| H.2 | **Definitional Pattern Catalogue** | Planned | One‑page micro‑stubs of every definitional pattern for quick lookup. |
-| H.3 | **Cross‑Reference Maps** | Planned | Bidirectional links: Part A ↔ Part C ↔ Part B terms. |
-
 **Part I – Annexes & Extended Tutorials**
 
 | § | ID & Title | Status | Concise reminder |
 | :--- | :--- | :--- | :--- |
-| I.1 | **Deprecated Aliases** | Planned | Deprecated names kept as alias labels for continuity; aliases do not carry current semantics. |
 | I.2 | **Expanded Entry Disambiguation Cases** | Stable | Expanded entry-disambiguation cases for high-risk or compact-insufficient first-entry pattern comparison; compact-index-only is a complete admissible posture when enough. |
-| I.3 | **Change‑Log (auto‑generated)** | Planned | Version history keyed to DRR ids. |
-| I.4 | **External Standards Mappings** | Planned | Trace tables to ISO 15926, BORO, CCO, Constructor‑Theory terms. |
 
-**Part J – Indexes & Navigation Aids**
-
-| § | ID & Title | Status | Concise reminder |
-| :--- | :--- | :--- | :--- |
-| J.1 | **Concept‑to‑Pattern Index** | Planned | Quick jump from idea (“boundary”) to pattern (§, id). |
-| J.2 | **Pattern‑to‑Example Index** | Planned | Table listing every archetypal grounding vignette. |
-| J.3 | **Principle‑Trace Index** | Planned | Maps each Pillar / C‑rule / P‑rule to concrete clauses. |
-
-**Part K - Lexical Debt**
-
-| § | ID & Title | Status | Concise content reminder — “what belongs here” |
-| :--- | :--- | :--- | :--- |
-| K.1 | **Mandatory Replacement of Measurement Terms** | Planned | Retires "axis/dimension" in favor of "Characteristic" and aligns other measurement terms. |
-| K.2 | **Migration Debt from A.2.6 (USM)** | Planned | Specifies the required edits across the FPF to align with the new Unified Scope Mechanism (USM). |
-| K.3 | **Temporal Claim Lexical Debt from C.27** | Planned | Retires untyped velocity, acceleration, cadence, agility, rhythm, inertia, and dynamics language when it is used outside a named C.27, C.16, or A.3.3 reading. |
 # First Principles Framework (FPF) Readme
 
 > First Principles Framework (FPF) is a standards-style pattern language for turning difficult engineering, research, management, and mixed human/AI work into explicit, reviewable, improvable reasoning.
@@ -682,6 +682,8 @@ The public FPF readme section after the Table of Content gives human-facing firs
 FPF helps when a project has outgrown one clever conversation. It is useful when meanings, claims, options, evidence, architecture, work decisions, publication forms, and improvement criteria must stay coherent across people, teams, tools, time, or AI agents.
 
 Use FPF as a reference model and pattern language, not as a linear textbook. Start from the working question you bring from your project. Bring in internal FPF terms only after they help you keep the work precise.
+
+The plain starting move is: name the project thing at stake. FPF often calls it a holon when the thing is being treated as a whole with parts: a machine, product, organization, method, body of knowledge, publication system, AI-agent arrangement, or local framework. Once the thing is named, FPF asks what structure, claim, decision, evidence, description, work, or improvement question is actually live.
 
 ## Decide Whether FPF Fits
 
@@ -714,13 +716,17 @@ Stronger AI does not remove the need for FPF. AI can generate fluent options qui
 
 Core ideas in plain language:
 
+- first name the project thing under concern; when it is treated as a whole with parts, FPF calls it a holon;
 - local teams may use local meanings, but translation must be explicit when work crosses a boundary;
 - the thing itself, its description, a dashboard about it, a decision about it, and the work done to change it are not the same;
+- architecture is structure of that thing in a context, not the diagram, document, approval, or plan about it;
+- serious architecture work can move from problem pressure to candidate structures, selected structures, decisions, method and work, actual structures, and feedback;
 - keep several options alive until the comparison is clear enough to choose;
 - say what "better" means before optimizing or scoring;
 - make trust depend on evidence, freshness, scope, and intended use;
 - publish different views for different readers without changing the underlying claim;
-- use mathematics or formal models when they clarify what structure is preserved, what is lost, and what can be checked.
+- use mathematics or formal models when they clarify what structure is preserved, what is lost, and what can be checked;
+- build domain or local FPF-grounded frameworks as dependents of FPF Core, not as silent rewrites of the Core.
 
 ## First Practical Entries
 
@@ -730,13 +736,13 @@ The entries below are not a required sequence. They are common places where FPF 
 
 ### 1. Develop or review architecture
 
-Use this when you need to design, explain, review, or improve the architecture of a product, organization, technical system, document system, AI-agent setup, research program, or other thing with important internal structure.
+Use this when you need to design, explain, review, or improve the architecture of a product, organization, technical system, document system, AI-agent setup, research program, local practice, or other thing with important internal structure.
 
-FPF helps you ask what is being architected, which structures matter, what property of the architecture is being changed or judged, and which description, diagram, view, promise, decision, evidence, or implementation task is a different matter. It gives you language for selected structures, structural views, architecture characteristics, modularity, interfaces, scale, interlevel tensions, and architecture-changing moves.
+FPF helps you start from the thing being changed or described, not from the drawing. It asks which structures are unknown, candidate, selected, expected, or actual; which architecture characteristics are under pressure; which alternatives must remain alive; which decision is now binding; which method or work will realize the selected structures; and what operation, measurement, or feedback can reopen the architecture.
 
-Typical first result: a short architecture question note that says what is being architected, which structures matter, which architecture characteristic is at stake, what description or view is needed, and what decision or implementation work is still not settled by the architecture statement.
+Typical first result: a short P2S flow card or architecture question note that names the described holon, bounded context, problem pressure, unknown or selected structures, architecture characteristics, candidate or decision owner, work or feedback owner, and what real selected structure is still not settled by the current architecture statement.
 
-First inspect: `C.30`, `A.22`, `C.30.ASV`, `C.30.AD`, `C.31`, `A.6.M`, and the relevant architecture precision-restoration patterns when wording hides the kind of structure being discussed.
+First inspect: `C.32.P2S`, `C.30`, `A.22`, `C.32`, `C.32.PAD`, `C.32.ADR`, `C.33`, `C.34`, `C.35`, `C.30.ASV`, `C.30.AD`, `C.31`, `C.32.CONWAY`, and `B.2` or `B.2.P` when the work may reidentify the whole being discussed.
 
 ### 2. Write rules, methods, and work-process documents
 
@@ -858,6 +864,18 @@ Typical first result: a SoTA pack, option portfolio, candidate set, archive, or 
 
 First inspect: `G.0`, `G.1`, `G.2`, `G.5`, `G.10`, `G.11`, `C.18`, `C.19`, `A.19`, and `A.19.ECS`.
 
+### 14. Build a domain or local FPF-grounded framework
+
+Use this when a team needs its own FPF-grounded guide for a domain, organization, role context, or local practice, such as a hydroponic-cucumber framework, neural-network architecture framework, enterprise architecture-review framework, or Codex-process framework.
+
+FPF helps you keep the FPF Core, domain principle framework, local practice framework, source pack, selected pattern set, relation records, edition dependencies, publication units, quality loop, and refresh route from collapsing into one local monolith or one useful checklist. This is the normal adoption path when a group wants FPF for its own field without turning local policy into a Core rule.
+
+Typical first result: a family-and-structure map or principle-framework architecture decision that names the framework edition, bounded context, FPF Core dependency, selected first patterns, relation and publication carriers, source pack, quality route, and refresh route.
+
+In the first hour, write the context note, source-pack stub, first PFAD question, provisional name route, one to three pattern candidates, relation rows, first-entry carrier, quality route, and refresh trigger. Then open `E.4.DPF` for the full authoring spine.
+
+First inspect: `E.4`, `E.4.PFAD`, `E.4.DPF`, `E.4.PFR`, `G.2`, `E.8`, `E.11`, `E.17`, `F.18`, and `G.11`.
+
 ## One-Minute Example
 
 A platform team asks:
@@ -868,11 +886,13 @@ Without FPF, the conversation often mixes architecture, vendor comparison, safet
 
 With FPF, the first pass can become a small set of explicit project objects:
 
-- architecture question: what stack architecture is being changed or chosen;
+- holons in play: the product, the agent stack, and the team or toolchain that will change it are not the same thing;
+- architecture flow: what problem pressure should become which candidate, selected, expected, and actual structures;
 - comparison frame: which alternatives are in the candidate set;
 - evaluation characteristics: cost, latency, controllability, safety, maintainability, time to first use, and other project-specific characteristics;
 - evidence gaps: what must be tested before commitment;
-- current choice state: whether the team is choosing now, keeping a selected set, or doing more discovery;
+- current decision state: whether the team is choosing now, keeping a selected set, making a project architecture decision, or doing more discovery;
+- work and feedback: what method, readiness, and performed-work records must later show that the selected structures were actually realized;
 - reader reliance: what engineering, management, and assurance readers may responsibly rely on.
 
 That same shape can be used for a factory modernization, laboratory protocol, construction design change, supply-chain decision, safety case, or research program. The point is not the AI topic; the point is one body of reasoning that can be reviewed, improved, and published without changing meaning on the way.
@@ -889,6 +909,8 @@ It helps teams:
 - compare options without collapsing too early to one favorite;
 - define quality criteria before improvement starts;
 - keep evidence, assurance, decisions, and implementation work visible as different questions;
+- carry architecture work from problem pressure to real structures and feedback instead of stopping at diagrams or decision prose;
+- grow domain or local frameworks from FPF Core without silently changing Core meaning;
 - repair confusing wording by first asking what the wording is doing in the project, not by swapping synonyms;
 - leave each pass with one useful next result: a clearer question, a better name, a comparison note, an evidence gap, a safer document, or a reason to inspect a specific pattern.
 
@@ -926,7 +948,8 @@ architecture, rules and methods, API or interface wording, permission or complia
 problem shaping, quality improvement, evidence and assurance,
 temporal claims, causal or model-output use, publication or view use,
 naming, technical-text precision, mathematical modeling,
-or current options and state of the art.
+current options and state of the art,
+or a domain/local FPF-grounded framework.
 For the selected entry, give:
 1. the main project thing or claim at stake,
 2. the first useful written result,
@@ -953,7 +976,7 @@ The reader should not need FPF vocabulary before this Preface becomes useful. He
 
 FPF is not a domain encyclopedia and not a project-management method. It is a framework for making hard project reasoning coherent when many kinds of things are easy to mix: systems, bodies of knowledge and models, architecture, descriptions, publications, concern-specific views, roles, methods, plans, performed work, evidence, decisions, options, commitments, and improvement criteria.
 
-FPF starts from holons: project entities that can be treated as wholes and as parts. A holon can be a physical system, software system, organization, method, publication system, body of knowledge or model, research program, AI-agent arrangement, or another entity selected by a pattern. This is why FPF can be used across domains without flattening every domain into one vocabulary.
+FPF starts from holons: project entities that can be treated as wholes and as parts. For a first reader, a holon is simply the project thing we are treating as a whole with parts for this question. It can be a physical system, software system, organization, method, publication system, body of knowledge or model, research program, AI-agent arrangement, local practice framework, or another entity selected by a pattern. This is why FPF can be used across domains without flattening every domain into one vocabulary.
 
 FPF is written as a pattern language. A pattern is not a tutorial, blog post, checklist bureaucracy, or local process script. It is a reusable action-guidance form. A mature FPF pattern lets a working practitioner recover:
 
@@ -1001,6 +1024,8 @@ Other publication families may sit around the Core:
 Those materials can be valuable, but they have different jobs. They may teach, demonstrate, implement, translate, or specialize. They do not replace the Core pattern that governs the claim. If a companion says something more clearly than the Core, the useful explanation can be brought back into a pattern. If a tool makes an FPF form easier to use, the tool still implements the conceptual form; it does not become the conceptual form.
 
 This separation protects both sides. The Core can stay tool-agnostic and pattern-centered. Companions and tools can be vivid, practical, and domain-rich without turning every example into a new norm. The Preface therefore speaks about FPF as a whole project while keeping the boundary clear: patterns govern, companions teach, tools implement, project-local material applies, and examples show.
+
+The same boundary now applies to FPF-grounded frameworks. FPF Core is not the same object as a domain principle framework or a local practice framework. A crop-production framework, neural-network architecture framework, enterprise architecture-review framework, or local Codex-process framework may depend on FPF Core, reuse its patterns, publish its own local monolith, and run its own quality and refresh loop. It should not silently rewrite the Core just because the local framework is useful.
 
 ## Why FPF Exists
 
@@ -1071,6 +1096,7 @@ FPF applies the same idea to reasoning:
 - characteristic spaces define what "better" means for the object under improvement;
 - precision-restoration patterns repair language when it begins to carry work;
 - state-of-the-art and option-portfolio patterns keep the frontier moving;
+- problem-to-structure architecture patterns carry pressure into candidate structures, selected structures, decisions, realization work, actual-structure feedback, and repair;
 - review and refresh patterns let FPF itself improve.
 
 The result is not one final answer. It is a way to keep producing, comparing, selecting, publishing, and improving answers without losing traceability or semantic integrity.
@@ -1142,7 +1168,7 @@ FPF is a thinking-oriented architecture. It asks:
 - what project thing is under concern in this project moment;
 - what claim, relation, decision, evidence path, work object, or publication use is being made;
 - what distinction must remain visible for action to be responsible;
-- what pattern can govern the next move;
+- what pattern can govern the next use or action;
 - what would make the result reviewable and reopenable.
 
 This is the difference between a catalogue and an instrument. A catalogue can tell you that a method description and performed work are different kinds of things. FPF also asks what happens in the project when those two are confused, what written form should separate them, what evidence or decision remains blocked, and what pattern should be used next.
@@ -1189,17 +1215,21 @@ This is also how FPF can work with distributed and AI-generated representations.
 
 ## Architecture As Structure Of Holons
 
-FPF treats architecture as structure of a holon in a context, not as a diagram, document, approval, promise, or implementation plan.
+FPF treats architecture as selected structure of a holon in a context, not as a diagram, document, approval, promise, or implementation plan.
 
-This makes architecture broad. There can be architecture of a physical system, software system, organization, work system, body of knowledge, publication system, research program, AI-agent arrangement, or FPF itself. Wherever holons have structure, architecture can be discussed.
+For a first reader, this means: before asking whether the architecture is good, name the thing whose structure matters. The thing may be a product, machine, organization, method, publication system, body of knowledge, AI-agent arrangement, local framework, or FPF itself. Then ask which structures are unknown, candidate, selected, expected, actual, captured in a description, lost in a view, or returned from operation.
 
-Architecture descriptions, structural views, viewpoints, diagrams, models, and publication forms are descriptions or publications about architecture. They are valuable, but they do not replace the architecture itself.
+This makes architecture broad without making it vague. Architecture descriptions, structural views, viewpoints, diagrams, models, ADR-like records, and publication forms are descriptions or publications about architecture. They are valuable, but they do not replace the architecture itself. A decision record can preserve why a structure was selected; it is not proof that the structure was realized. A measurement can show stress or improvement; it is not the decision. A work plan can tell people how to act; it is not performed work.
 
-The architecture patterns make this distinction usable. `C.30` governs architecture as an EntityOfConcern. `A.22` governs architectural characteristics. `C.30.ASV` governs architecture structural views. `C.30.AD` governs architecture descriptions. `A.6.M` governs module-interface relation repair. `C.31` and related architecture patterns govern modularity, reusable structure, scale, selected structures, interlevel tension, and architecture-changing moves.
+The architecture patterns make the whole flow usable. `C.30` grounds an architecture claim over selected structures. `A.22` governs structure and structural views. `C.32.P2S` carries architecture-relevant pressure into candidate structures, selected structures, architecture decisions, work that realizes structures, and actual-structure feedback. `C.32` governs candidate synthesis. `C.32.PAD` governs project architecture decisions. `C.32.ADR` governs ADR-like publication. `C.33`, `C.34`, and `C.35` govern what structural content is captured, preserved, lost, or generated before architecture work relies on it.
 
-This matters because architecture work is not only "draw the diagram". It is also "which structure matters", "what characteristic changes", "what tradeoff is visible", "what description is needed", "what interface claim is being made", "what evidence would make this architecture decision responsible", and "which move changes the architecture rather than merely changing a document about it".
+This matters because architecture work is not only "draw the diagram". It is also "which holon is changing", "which structure matters", "what characteristic changes", "what alternatives must remain alive", "which decision closes enough for work", "which method or role can realize the selected structure", "what actual structure appeared", and "what feedback reopens the work".
 
-Epiplexity is one important architecture characteristic. It names the structural entanglement that makes a holon hard to understand, change, control, reuse, or improve. A low-epiplexity design is not merely simpler in ordinary speech. It is structurally easier to reason about under declared characteristics and concerns.
+When one holon changes another holon, FPF also asks whether the changing holon can produce the desired structure of the changed holon. A team, toolchain, work method, evidence practice, or supplier network has its own architecture. If that transformer architecture cannot realize the transformed holon's selected structure, the project has an architecture problem on both sides.
+
+Epiplexity is one important architecture characteristic. It names structural entanglement that makes a holon hard to understand, change, control, reuse, or improve. A low-epiplexity design is not merely simpler in ordinary speech. It is structurally easier to reason about under declared characteristics and concerns, and its descriptions usually lose less critical structure.
+
+The same architecture thinking now applies to the FPF ecosystem itself. FPF Core, domain principle frameworks, local practice frameworks, source packs, relation records, publication units, quality loops, and refresh routes are different objects. The public adoption path is not "copy all of FPF into your project." It is usually: depend on FPF Core, create a domain or local framework when needed, publish it for your readers, and keep its quality and refresh route explicit.
 
 ## Boundary Statements
 
@@ -1245,14 +1275,15 @@ Several commitments make FPF more than a collection of patterns.
 2. The project thing under concern and its description are kept distinct so descriptions, views, diagrams, publications, and carriers do not replace what they describe.
 3. Context keeps meaning local, while bridges and term sheets let meanings travel without collapse.
 4. Role, method, plan, performed work, evidence, decision, and gate are different kinds of project objects.
-5. Architecture is structure of holons, and architecture descriptions are descriptions of that structure.
+5. Architecture is selected structure of holons; architecture descriptions, decisions, work plans, and actual structures are kept distinct.
 6. Evidence and assurance are first-class, so trust is not reduced to confidence prose.
-7. Comparison and improvement require declared characteristics, scales, candidate sets, and current comparator fields.
+7. Comparison and improvement require declared characteristics, scales, candidate sets, trade-offs, conflicts, and current comparator fields.
 8. Creativity is governed search over candidate possibilities, not an uninspectable burst of inspiration.
 9. State of the art is a refreshable publication object, not a frozen leaderboard.
 10. Semantic precision starts from ontology and, when useful, from mathematical modeling that preserves declared structure, not from synonym replacement.
 11. Pattern publication is itself part of the thinking architecture: patterns, DRRs, checks, and improvement loops keep FPF evolvable.
-12. Didactic primacy keeps the whole structure usable by working readers rather than only by authors of the specification.
+12. FPF-grounded domain and local frameworks depend on FPF Core without silently rewriting it.
+13. Didactic primacy keeps the whole structure usable by working readers rather than only by authors of the specification.
 
 These storylines are connected. Architecture needs characteristics. Characteristics need comparison. Comparison needs evidence. Evidence needs publication and source-use discipline. Language repair needs ontology. Ontology often benefits from a mathematical lens. Improvement needs state-of-the-art comparison. FPF's value comes from the composition.
 
@@ -1333,9 +1364,11 @@ Its positive scope is broader than those refusals. FPF is a compact language for
 
 Start with the `readme` when you are deciding whether FPF can help a working project. Read this Preface when you want the ideas that make the first practical entries fit together. Use the Table of Content when you need to locate a pattern family. Then use the pattern body that governs the claim, relation, publication use, architecture, evidence, decision, work, name, mathematical lens, option portfolio, or improvement object you actually have.
 
+If your goal is to use FPF in a field or organization, do not begin by rewriting the Core. Start from the readme entry for domain or local FPF-grounded frameworks, then use `E.4`, `E.4.PFAD`, `E.4.DPF`, and `E.4.PFR` to decide what belongs in your dependent framework and what stays in FPF Core.
+
 Do not read the specification linearly unless that is your study goal. In project use, the first useful FPF pattern family is selected by the working question.
 
-The main practical habit is this: when a project sentence starts to matter, ask what kind of thing it is talking about, what claim it is making, what can responsibly be done with that claim, and which pattern can keep the next move honest. That habit is small. The architecture behind it is the rest of FPF.
+The main practical habit is this: when a project sentence starts to matter, ask what kind of thing it is talking about, what claim it is making, what can responsibly be done with that claim, and which pattern can keep the next use or action honest. That habit is small. The architecture behind it is the rest of FPF.
 
 # **Part A - Kernel Architecture Cluster**
 
@@ -1915,7 +1948,7 @@ A.1 prevents category errors by separating individuation, part-whole treatment, 
 
 This also prevents ontology duplication. A theory under concern, a theory description, a publication of that description, and the system that edits the publication can all be named without turning each slot position into a new kind. The same discipline is needed by architecture: architecture is selected structure of a holon in context, not a diagram and not a floating root kind.
 
-The constructional stance is conservative: FPF avoids unrestricted composition and uses A.14, C.13, and B.3.5 before a part-whole claim is relied on for another claim or work move. This keeps holonic thinking useful without letting every collection, expression, graph, or source label become a holon.
+The constructional stance is conservative: FPF avoids unrestricted composition and uses A.14, C.13, and B.3.5 before a part-whole claim is relied on for another claim or work occurrence. This keeps holonic thinking useful without letting every collection, expression, graph, or source label become a holon.
 
 ### A.1:11 - SoTA-Echoing
 
@@ -6487,7 +6520,7 @@ It is not the text, code, diagram, model, plan, run, role, capability, or eviden
 * **run-independent**: one method may be enacted by many `U.Work` occurrences;
 * **assignment-independent**: method requirements may name role kinds or capability requirements, but named holders and dated assignments belong elsewhere.
 
-The primary repair move is not to replace the word "method" with one better word. Recover the current slot first:
+The primary repair action is not to replace the word "method" with one better word. Recover the current slot first:
 
 | If the text is really about... | Govern it as... |
 | --- | --- |
@@ -7867,7 +7900,7 @@ The slot-relation design keeps the ontic compact. Identity slots recover one bou
 ### A.3.4:12 - Relations
 
 - **Builds on:** `E.24`, `A.1`, `A.6.0`, `A.6.5`, `C.2.1`, `A.3`, `A.7`.
-- **Coordinates with:** `A.3.1`, `A.3.2`, `A.3.3`, `A.6.1`, `E.20`, `A.15.1`, `A.15.2`, `E.18`, `E.18.1`, `C.27.TA`, `C.27`, `C.29`, evidence, gate, decision, source, result, assurance, and publication patterns.
+- **Coordinates with:** `A.3.1`, `A.3.2`, `A.3.3`, `A.6.1`, `E.20`, `A.15.1`, `A.15.2`, `E.18`, `E.18.1`, `C.32.P2S`, `C.27.TA`, `C.27`, `C.29`, evidence, gate, decision, source, result, assurance, and publication patterns.
 - **Specializes:** the A.3 transformer-constitution family for bounded transformations under declared conditions.
 
 ### A.3.4:End
@@ -7875,7 +7908,7 @@ The slot-relation design keeps the ontic compact. Identity slots recover one bou
 ## A.3.4.P - Transformation Ontic Precision Restoration
 
 > **Type:** A.3.4 precision-restoration child pattern
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Normative unless a section is explicitly informative
 
 **Plain-name.** Transformation wording repair.
@@ -7884,11 +7917,11 @@ The slot-relation design keeps the ontic compact. Identity slots recover one bou
 
 **Use this when.** Use `A.3.4.P` when source or FPF-governed wording such as "pipeline", "dataflow", "flow", "network", "circuit", "path", "slice", "workflow", "process", "operation", "transformation", or "change" seems to name the thing under concern, but the text has not yet recovered what kind of FPF value is actually current.
 
-**First useful move.** Fill a compact `TransformationWordingRepair` note: encountered wording, working concern, recovered transformation or non-transformation object, recovered slot or neighboring pattern, retained use, blocked overread, and remaining reader move. Then rewrite only the wording that depends on the recovered kind.
+**First useful restoration output.** Fill a compact `TransformationWordingRepair` note: encountered wording, working concern, recovered transformation or non-transformation object, recovered slot or neighboring pattern, retained use, blocked overread, and remaining reader use. Then rewrite only the wording that depends on the recovered kind.
 
-**What goes wrong if missed.** The text silently creates a local ontology from a convenient source label: "process" becomes method in one paragraph, dated work in another, and transformation-flow structure in a third; "path" becomes proof or permission; "function" becomes behavior, bearer, mathematical function, and software routine at once.
+**What goes wrong if missed.** The text silently creates a local ontology from a convenient source label: "process" becomes method in one paragraph, dated work in another, and transformation-flow structure in a third; "path" becomes evidence sufficiency, assurance, gate passage, deontic permission, work authorization, or release authorization; "function" becomes behavior, bearer, mathematical function, and software routine at once.
 
-**What this buys.** The reader gets one small repair move that keeps bounded transformations, compound transformation-flow structures, formal descriptions, methods, mechanisms, work, evidence, publications, and functional structures in their governing places before any wording is changed.
+**What this buys.** The reader gets one small restoration use that keeps bounded transformations, compound transformation-flow structures, formal descriptions, methods, mechanisms, work, evidence, publications, and functional structures in their governing places before any wording is changed.
 
 **Not this pattern when.**
 
@@ -7936,7 +7969,7 @@ Restore the change situation in this order.
 3. **Test for neighboring slots.** Decide whether the wording points to a transformer-side system or holon, method, method description, mechanism, work plan, dated work, functioning relation, transformation-flow structure, mathematical description, dynamics episteme, temporal aspect, evidence, source, publication, gate, decision, assurance, result, refresh, or reopen relation.
 4. **Use the governing pattern for each filled value.** The slot may belong to the transformation ontic; the filler keeps its own kind and governing pattern.
 5. **Rewrite only after kind recovery.** Keep ordinary wording when it is not FPF-governed, write quote-only source wording when no current use is admitted, or rewrite into the recovered FPF kind and relation named by value.
-6. **Leave one reader move.** The repaired text must say what the reader may do now: use `A.3.4`, use `E.18`, use `C.29`, use a method, work, or mechanism pattern, keep a quote-only cue, or block the stronger claim.
+6. **Leave one reader use.** The repaired text must say what the reader may do now: use `A.3.4`, use `E.18`, use `C.29`, use a method, work, or mechanism pattern, keep a quote-only cue, or block the stronger claim.
 
 #### A.3.4.P:4.1 - TransformationWordingRepair note
 
@@ -7952,7 +7985,7 @@ TransformationWordingRepair:
   GoverningPattern:
   RetainedUse:
   BlockedOverread:
-  RemainingReaderMove:
+  RemainingReaderUse:
 ```
 
 `TransformationCoreDisposition` is one of: bounded transformation recovered, not a transformation, not recovered, not current for this claim, quote-only source wording, or blocking missing value.
@@ -7970,10 +8003,11 @@ TransformationWordingRepair:
 | episteme describing a way of doing | `A.3.2` | Code, protocol, solver model, proof script, process model, or diagram may describe a method without being the method or the work. |
 | law-governed operation algebra, laws, admissibility predicates, transport, audit, or mechanism-governing-definition assignment | `A.6.1` and `E.20` | Mechanism is not selected by a prestigious "algorithm", "process", or "mechanism" word. |
 | planned or dated work | `A.15.2` or `A.15.1` | Plan and work occurrence are not method, method description, transformation-flow structure, or evidence by appearance. |
+| pattern-use recommendation, work-entry readiness, language-state move, architecture candidate use, or call-planning next action | `E.10.MOVE` first, then `E.11.PUR`, `A.15.5`, `A.16`, `C.30`, `C.24`, or the direct governing pattern | Move-like wording is not transformation wording unless a bounded `U.Transformation` or selected `TransformationFlowStructure` is actually current. |
 | function-like wording inside a change situation | `A.3.4.P` only to decide whether `U.Transformation`, `TransformationFlowStructure`, transformer-side filler, input boundary, output boundary, or `FunctioningRef?` is current; use `A.6.F` for detailed function-kind discrimination | A function word does not decide the transformation, bearer, mathematical function, software routine, module allocation, or architecture view by label. |
 | state-space and transition-law episteme | `A.3.3` | Dynamics can model possible or claimed change; it is not the transformation itself. |
 | time window, cadence, duration, latency, freshness, currentness, trajectory, inertia, or effort | `C.27.TA`; use `C.27` for temporal-claim adequacy | Temporal aspect is not the whole transformation and temporal-claim adequacy is not positive temporal subject matter. |
-| evidence, provenance, source, publication, dashboard, view, gate, decision, assurance, result, or release claim | the direct governing evidence, source, publication, gate, decision, assurance, result, or release pattern | A visible record or path does not prove, permit, enact, or accept the change by itself. |
+| evidence, provenance, source, publication, dashboard, view, gate, decision, assurance, result, or release claim | the direct governing evidence, source, publication, gate, decision, assurance, result, or release pattern | A visible record or path does not establish evidence sufficiency, assurance, gate passage, deontic permission, work authorization, release authorization, performed work, or acceptance by itself. |
 
 #### A.3.4.P:4.3 - Common source-label settlements
 
@@ -8020,13 +8054,13 @@ Repair: the block may be a system-like architecture locus or module allocation; 
 
 Source wording says: "The guide-selection workflow changes the target gene."
 
-Repair: the target-gene edit is the candidate `U.Transformation`; guide selection may be method, method description, work plan, evidence-facing table, or performed lab work according to the current claim. A table rank or workflow diagram does not approve the edit.
+Repair: the target-gene edit is the candidate `U.Transformation`; guide selection may be method, method description, work plan, evidence-facing table, or performed lab work according to the current claim. A table rank or workflow diagram does not establish gate passage, deontic permission, work authorization, release authorization, or performed lab work for the edit.
 
 #### A.3.4.P:5.4 - Evidence path near a plant change
 
 Source wording says: "The evidence path lets the valve-change flow proceed."
 
-Repair: an evidence path may be a legitimate `A.10` provenance relation for a named claim. The valve change still needs the transformation, work plan, dated work, gate, assurance, and result relations when those claims are current. The path does not authorize the change by shape or name.
+Repair: an evidence path may be a legitimate `A.10` provenance relation for a named claim. The valve change still needs the transformation, work plan, dated work, gate, assurance, and result relations when those claims are current. The path does not establish work authorization, release authorization, gate passage, or performed work by shape or name.
 
 #### A.3.4.P:5.5 - Filled minimal repair note
 
@@ -8040,7 +8074,7 @@ TransformationWordingRepair:
   GoverningPattern: `E.18` for selected transformation-flow structure; `A.3.4` for each bounded component transformation when named; `C.30.ASV` for functional architecture view; direct publication pattern when the schematic publication is current.
   RetainedUse: "circuit" may stay as ordinary domain wording after the selected structure is named.
   BlockedOverread: the circuit label is not proof of functioning, not a gate decision, not dated work, and not one atomic transformation.
-  RemainingReaderMove: name the selected transformation-flow structure and then open the direct governing pattern for the next claim being made.
+  RemainingReaderUse: name the selected transformation-flow structure and then open the direct governing pattern for the next claim being made.
 ```
 
 ### A.3.4.P:6 - Bias-Annotation
@@ -8050,7 +8084,7 @@ Lenses tested: **Onto**, **Arch**, **Prag**, **Epist**, **Gov**.
 This pattern intentionally biases toward kind recovery before wording repair. It resists:
 
 - **source-label ontology:** familiar labels such as pipeline, process, network, circuit, or workflow become FPF kinds;
-- **graph or path overread:** graph path, evidence path, and carrier path become action route, proof, permission, or work sequence;
+- **graph or path overread:** graph path, evidence path, and carrier path become action route, evidence sufficiency, assurance, deontic permission, work authorization, release authorization, or work sequence;
 - **function collapse:** functioning, functional element, module allocation, mathematical function, software routine, and everyday purpose collapse into one "function";
 - **semio displacement:** descriptions and publications of transformations replace the transformation under concern;
 - **slot-filler fusion:** a method, mechanism, work occurrence, system, or evidence record fills a transformation slot and is then treated as the whole transformation.
@@ -8065,7 +8099,7 @@ This pattern intentionally biases toward kind recovery before wording repair. It
 | `CC-A34P-4` | `TransformationFlowStructure`, graph mathematical description, path mathematical description, and subject-domain network or circuit wording are kept distinct. |
 | `CC-A34P-5` | Method, method description, mechanism, work plan, dated work, evidence, gate, decision, assurance, result, source, and publication claims remain with their governing patterns. |
 | `CC-A34P-6` | Function-like wording closes here only when the transformation-side value is recovered; detailed function-kind discrimination remains governed by `A.6.F`. |
-| `CC-A34P-7` | The repair leaves retained use, blocked overread, and remaining reader move by value. |
+| `CC-A34P-7` | The repair leaves retained use, blocked overread, and remaining reader use by value. |
 | `CC-A34P-8` | The repair order is explicit: `E.10` recognizes the wording, `A.3.4.P` restores the transformation ontic neighborhood, and neighboring patterns govern recovered fillers or facets. |
 
 ### A.3.4.P:8 - Common Anti-Patterns and How to Avoid Them
@@ -8081,7 +8115,7 @@ This pattern intentionally biases toward kind recovery before wording repair. It
 
 ### A.3.4.P:9 - Consequences
 
-- FPF gains one reusable repair move for language about change situations without making every subject pattern carry its own cue list.
+- FPF gains one reusable restoration pattern for language about change situations without making every subject pattern carry its own cue list.
 - `A.3.4` becomes easier to use because source labels are translated into transformation identity slots and neighboring values.
 - `E.18`, `E.18.2`, and `C.29` stay distinct: selected compound structure, mathematical expression, and mathematical-lens use do not collapse.
 - Architecture, method, work, mechanism, function, evidence, publication, and temporal patterns can point to the transformation ontic without becoming transformation patterns.
@@ -8101,15 +8135,16 @@ The current transformation ontology gives FPF one compact way to speak about bou
 | Current FPF `A.3.4` transformation ontic | Governing ontology source for bounded change under conditions. | This pattern restores wording by first testing `U.Transformation` identity and participation slots. |
 | Current FPF `E.18`, `E.18.2`, and `C.29` | Governing source line for compound transformation-flow structure and mathematical description. | Flow, path, network, circuit, graph, morphism, algebra, and category wording is separated into selected structure, mathematical expression, or lens use. |
 | Current FPF `E.10` and `E.10.ARCH` precision-restoration architecture | Governing source line for recognition and distribution. | `E.10` recognizes change-situation wording; `E.10.ARCH:2.2` chooses direct governing, ontic-level restoration, or facet-level restoration; `A.3.4.P` restores only the transformation ontic neighborhood. |
-| Current FPF `C.2.P.DR` and method, work, and mechanism patterns | Governing source line for declarative representation, method, mechanism, plan, work, and evidence separation. | Algorithm, workflow, process, proof, and path wording is recovered by current slot or use-position rather than by programming-paradigm slogans. |
+| Current FPF `C.2.P.DR` and method, work, and mechanism patterns | Governing source line for declarative representation, method, mechanism, plan, work, and evidence separation. | Algorithm, workflow, process, proof, and path wording is recovered by current ontic slot, relation position, use relation, or claim kind rather than by programming-paradigm slogans. |
 | Current FPF `A.6.F`, `A.6.M`, and architecture structural-view patterns | Governing source line for function-like, module, interface, and structural-view claims. | `A.3.4.P` recovers only the transformation-side value; `A.6.F`, `A.6.M`, `C.30.ASV`, or the direct governing pattern decides the recovered function, module, interface, or structural-view claim. |
 
-No new external SoTA claim is introduced here. The pattern inherits the current source decisions already carried by `A.3.4`, `C.2.P.DR`, and the governing neighboring patterns; it changes only the reusable restoration move for transformation-situation wording.
+SoTA use is conservative: this pattern relies on the current FPF settlements already carried by `A.3.4`, `C.2.P.DR`, and the governing neighboring patterns; it contributes the reusable restoration use for transformation-situation wording.
 
 ### A.3.4.P:12 - Relations
 
 - **Builds on:** `A.3.4`, `E.10`, `E.10.ARCH`, `E.24`, `A.6.5`, and `E.8`.
 - **Coordinates with:** `E.18`, `E.18.2`, `C.29`, `A.3.1`, `A.3.2`, `A.3.3`, `A.6.0`, `A.6.1`, `E.20`, `A.15.2`, `A.15.1`, `A.6.F`, `A.6.M`, `C.30.ASV`, `C.27.TA`, `C.27`, `A.10`, `C.2.P.DR`, `C.2.1`, `E.17`, and direct gate, decision, assurance, result, source, publication, and release patterns when those claims are current.
+- **Coordinates with:** `E.10.MOVE` when source wording about a move, next action, pattern-use recommendation, work-entry readiness, language-state transition, architecture candidate use, or call-planning next action is not actually transformation wording.
 - **Selected by:** `E.10` recognition row for change-situation wording when FPF wording repair needs transformation-ontic precision restoration.
 - **Specializes:** `A.3.4` for wording-use precision restoration around situations of change.
 
@@ -8355,7 +8390,7 @@ Role prompts for boundary wording use:
 
 Display guidance for boundary wording: a publication face, API doc, schema page, connector card, or compliance statement that uses approval-, authorization-, permission-, recommendation-, certification-, or guarantee-like wording should expose the `L-*`, `A-*`, `D-*`, and `E-*` claim IDs, the source for each live work claim or reliance claim, freshness and supersession refs where currentness matters, and unsupported work claims, reliance claims, or effects. If it cannot expose those, keep the wording as source-finding or repair the boundary package.
 
-Incident-learning fields for boundary wording overread: displayed phrase, intended next work move or reliance move, required source-backed claim or effect, missing or ambiguous L/A/D/E claim ID, exact `L-*`, `A-*`, `D-*`, or `E-*` source needed, plausible overread, safe disposition used now, and upstream repair item for labels, L/A/D/E claim IDs, source refs, currentness refs, supersession refs, or publication-face wording.
+Incident-learning fields for boundary wording overread: displayed phrase, intended next work occurrence or reliance use, required source-backed claim or effect, missing or ambiguous L/A/D/E claim ID, exact `L-*`, `A-*`, `D-*`, or `E-*` source needed, plausible overread, safe disposition used now, and upstream repair item for labels, L/A/D/E claim IDs, source refs, currentness refs, supersession refs, or publication-face wording.
 
 **Conventions:** The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**, and **SHALL** are to be interpreted as in RFC 2119/8174. Lower-case `must`, `may`, and `should` in explanatory prose is descriptive, not normative.
 
@@ -10528,7 +10563,7 @@ This makes `profile=FormalSubstrate` and `profile=PrincipleFrame` *morphisms* in
 
 ### A.6.0:7.1 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | Signature as implementation manual | Build steps, CI checks, vendors, or work authorization are placed before the public declaration. | State SubjectKind, RangedValueKind, Vocabulary, Laws, and Applicability first; put realization, tooling, work, and evidence in their governing patterns. |
 | Signature as operational gate | Runtime admission predicates are treated as signature laws. | Keep declaration-level constraints in A.6.0 and put operational admissibility conditions in A.6.1 mechanisms. |
@@ -11321,7 +11356,7 @@ Concrete A.6.3/A.6.4/E.17.\* patterns for specific engineering description and s
 
 ### A.6.2:7.1 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | EFEM as performed work | An episteme rewrite is treated as measurement, actuation, or work occurrence. | Use EFEM only for episteme-to-episteme morphisms; use A.15 when work in the world is current. |
 | EFEM as publication rendering | A face, carrier, or rendering change is treated as the episteme morphism itself. | Use E.17 for publication forms and use EFEM only for the episteme relation being represented. |
@@ -11817,7 +11852,7 @@ For each species, the definition SHALL provide:
 
 ### A.6.3:6.2 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | View as retargeting | The output episteme is about a different system, function, scale, or concern object. | Use A.6.4 or a KindBridge retargeting relation when `EntityOfConcernRef` changes. |
 | View as publication face | A document, GUI, export, or dashboard is treated as the viewing morphism. | Use E.17 for publication forms and A.6.3 for the episteme relation behind the face. |
@@ -12150,7 +12185,7 @@ A conformance check is retained only if it changes the next admissible use of th
 | **CC-CSC-2 (Rendering explicit).** | A conforming card SHALL identify the coarsened rendering and keep it distinct from the source-bearing side. | Prevents citation laundering and source-to-rendering collapse. |
 | **CC-CSC-3 (Admissible use).** | A conforming card SHALL state the narrower admissible use. | Keeps ordinary convenience from becoming broad authority. |
 | **CC-CSC-4 (Non-admissible downstream use).** | A conforming card SHALL state the non-admissible downstream use. | Makes over-read and misuse visible early. |
-| **CC-CSC-5 (Reopen or handoff).** | A conforming card SHALL state the source-bearing reopen trigger or governing-pattern handoff condition. | Gives readers an admissible next move under dispute, citation, reliance, policy, bridge, work, gate, privacy, assurance, release, or adjudication use. |
+| **CC-CSC-5 (Reopen or handoff).** | A conforming card SHALL state the source-bearing reopen trigger or governing-pattern handoff condition. | Gives readers an admissible next use under dispute, citation, reliance, policy, bridge, work, gate, privacy, assurance, release, or adjudication use. |
 | **CC-CSC-6 (Ordinary economy).** | Authors SHOULD keep ordinary cases to the mini-card unless dispute, citation, external reliance, policy, bridge, work, gate, privacy, or assurance use is live. | Preserves usability and avoids daily-process inflation. |
 
 #### A.6.3.CSC:7.2 - CSC-Conditional
@@ -13530,7 +13565,7 @@ When `StructuralReinterpretation`, `PathSliceId`, `CrossingRef`, or `DecisionLog
 
 ### A.6.4:5.2 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | Retargeting as viewing | A changed EntityOfConcern is treated as the same object under another viewpoint. | Use A.6.3 only when `EntityOfConcernRef` is preserved; use A.6.4 when it changes. |
 | Retargeting as publication rendering | A diagram, export, or face is treated as the retargeting relation. | Keep publication forms in E.17 and state the A.6.4 bridge/invariant relation separately. |
@@ -13791,7 +13826,7 @@ A relation mention or relation-bearing phrase is in-scope for `A.6.P` when **any
 | **Mathematical-lens use result.** The phrase says a lens, model, mapping, similarity, or formal construction makes a claim admissible or exposes preserved and lost structure. | lens candidate, lens-use card, primary `EntityOfConcern` or relation record or claim record named by value, preserved and lost structure, declared loss, stop condition, lens-use result, lens-use admissibility value, and the non-lens claim-kind pattern governing the claim when evidence, causal, assurance, decision, or publication claim kind or admissible-use boundary is live. | `C.29`, `C.26`, `F.9`, `A.6.3.RT`, or a named mathematical-lens pattern. |
 | **Characteristic, measurement, threshold, or comparison reference.** The phrase says a characteristic, metric, score, threshold, benchmark, or comparison warrants a claim. | bearer, characteristic space, scale, measure, measurement procedure, comparison reference set, threshold rule, proxy-distortion risk. | `C.16`, `A.17`-`A.19`, `C.25`, `G.9`, and the bridge or comparison pattern governing the characteristic, measurement, threshold, benchmark, or comparison claim being made. |
 | **Admissible-use or boundary-use rule.** The phrase says a current use, publication use, project action, work preparation, gate use, or downstream reliance is allowed. | `admissibleUse` target named by value, non-admissible claim escalation or adjacent use, L, A, D, and E split when boundary-use reading is being made, project-side kind or reference if needed. | `A.6.B`, `E.17:5.1c`, `C.2.P`, and project-side pattern governing the claim. |
-| **Work, enablement, prerequisite, resource, or operational help.** The phrase says one thing helps, enables, prepares, funds, resources, scaffolds, directs, or makes work easier, without claiming evidence, authority, truth, or admissibility. | enabled work and method or action, prerequisite or resource relation if FPF-governed, remaining reader move, explicit non-admissible evidence, gate, assurance, or decision use. | `A.15`, `A.15.4`, `A.6.A`, `C.11`, or Plain orientation when no FPF-governed use is live. |
+| **Work, enablement, prerequisite, resource, or operational help.** The phrase says one thing helps, enables, prepares, funds, resources, scaffolds, directs, or makes work easier, without claiming evidence, authority, truth, or admissibility. | enabled work and method or action, prerequisite or resource relation if FPF-governed, remaining reader use, explicit non-admissible evidence, gate, assurance, or decision use. | `A.15`, `A.15.4`, `A.6.A`, `C.11`, or Plain orientation when no FPF-governed use is live. |
 | **Publication companion, entry, navigation, or reader help.** The phrase says one publication unit, section, README scenario, ToC query cue, expanded entry-disambiguation case, review packet, companion document, or reader aid helps readers find, inspect, compare, or review another EntityOfConcern. | publication unit or companion-publication kind, entry-distribution locus, reader function, publication or episteme being found, inspected, or reviewed, source-description relation, evidence path, architecture or structure relation, or review relation when that relation is being made; no downstream authority unless separately named. | `E.17`, `E.11`, `I.2`, `C.2.P`, and the governing pattern if action guidance becomes FPF-governed. |
 
 If no support-like claim kind or admissible-use boundary can be selected from the current claim context, the phrase remains ordinary help, orientation, source-finding, quote-only wording, reduced-use cue, or blocked current transfer. A support-headed name such as `SupportRecord`, `support source`, `support relation`, `support line`, `support basis`, a support phrase that hides a state-family claim, `support view`, or `supported use` is a diagnostic trigger; it is conforming only when rewritten to a locally governed record, field, relation, admissible-use boundary, or, for the A.19 case, `DeclaredSubstrateInterpretiveView` under `A.19.DECLARED-SUBSTRATE-INTERPRETIVE-VIEW`. When the selected support-like case is base-dependence, the conforming form is A.6.6 SWBD or a Context-local SWBD specialization with explicit `baseRelation(dependent, base)`, not a generic support-headed type. Otherwise, use the selected row above and name the relation named by value, slot, field, source-use relation, evidence path, grounding, or governing pattern ontology for that support-like case.
@@ -14520,7 +14555,7 @@ RSIRRepairNote:
   neighboringCandidateValues:
   retainedSourceLabelUse:
   blockedOverread:
-  nextAdmissibleMove:
+  nextAdmissibleUse:
   stopCondition:
 ```
 
@@ -15444,10 +15479,10 @@ recoveredViewRecordRefs?:
 recoveredFpFReferenceRefs?:
 directGoverningPatternApplicationRefs?:
 blockedLocalOverreadRefs:
-nextAdmissibleMove:
+nextAdmissibleUse:
 stopCondition:
 ```
-Stop when the source cue, recovered value-kind refs, relation-record refs, slot refs, view-record refs, needed FPF reference refs, direct governing-pattern applications, the one local overread that would change this repair, and the next admissible move are clear.
+Stop when the source cue, recovered value-kind refs, relation-record refs, slot refs, view-record refs, needed FPF reference refs, direct governing-pattern applications, the one local overread that would change this repair, and the next admissible use are clear.
 
 What goes wrong if A.6.F is missed: a function becomes a root kind; functional architecture becomes a peer ontology beside architecture; a capability becomes a function; a method or work occurrence becomes a function; a mathematical function becomes design ontology; a module allocation becomes functional truth; or a quality claim hides behind "functionality".
 
@@ -15582,7 +15617,7 @@ FunctionUseRepair ::= {
   blockedLocalOverreadRefs,
   admissibleUse,
   nonAdmissibleUse,
-  nextAdmissibleMove,
+  nextAdmissibleUse,
   stopCondition
 }
 ```
@@ -15702,7 +15737,7 @@ recoveredViewRecordRefs: FunctionalStructureView@Context when selected functiona
 recoveredFpFReferenceRefs: ArchitectureOf@Context with structureKindRef = FunctionalStructure
 directGoverningPatternApplicationRefs: C.30; C.30.ASV
 blockedLocalOverreadRefs: user journey publication, work log, selected transformation-flow structure, mathematical graph description, module diagram
-nextAdmissibleMove: open C.30.ASV only if the selected functional structure changes action
+nextAdmissibleUse: open C.30.ASV only if the selected functional structure changes action
 stopCondition: ordinary phrase remains Plain if no architecture claim is being made
 ```
 **Functionality as quality.** A product note says, "new functionality improves adequacy." The repair separates added capability or effect from quality claim. Capability or effect wording may stay as recognition, but adequacy claim goes to `C.25`, `C.16`, C.16.Q, or an admitted characteristic or measurement governing pattern when the claim is being made. A.6.F stops after value-kind, relation-record, slot-reference, view-record, or governing-pattern recovery when no quality claim remains.
@@ -15731,9 +15766,9 @@ Lenses tested: **Arch**, **Ontology and episteme**, **Prag**, **Did**, **Gov**. 
 | Functional-architecture exception bias | Functional architecture is normalized as `FunctionalStructure`, not a peer ontology. |
 | Module bias | Function-to-module allocation uses correspondence or `A.6.M` module-relation repair; function and module remain distinct. |
 | Mathematical bias | Mathematical function wording is assigned to C.29 when used as a lens. |
-| Check-only bias | Every conformance item carries a repair move or governing-pattern application. |
+| Check-only bias | Every conformance item carries a repair action or governing-pattern application. |
 
-This checklist verifies the preceding guidance after the practitioner has chosen the selected move; it is not a required project control form and not a substitute for the card, note, view, relation, or repair move above.
+This checklist verifies the preceding guidance after the practitioner has chosen the selected repair action; it is not a required project control form and not a substitute for the card, note, view, relation, or repair guidance above.
 
 ### A.6.F:7 - Conformance Checklist
 
@@ -15748,7 +15783,7 @@ This checklist verifies the preceding guidance after the practitioner has chosen
 | **CC-A6F-7 Mathematical function boundary.** | Mathematical function or relation wording used to justify reasoning names C.29 lens fields and stop condition. | Add C.29 lens-use admissibility value, preserved and lost structure, and stop condition, or mark mathematical use as ordinary. |
 | **CC-A6F-8 Quality and functionality boundary.** | Quality, fitness, characteristic, score, or "functionality" wording recovers bearer and governing pattern. | Assign the claim to `C.25`, `C.16`, `C.16.Q`, `A.17`, `A.18`, or the characteristic named by value or measurement governing pattern according to the asserted quality, characteristic, measurement, or comparison claim. |
 | **CC-A6F-9 Module-interface boundary.** | Functional relation, module allocation, interface, signature, port, API, protocol, flow, and mechanism wording remain separated. | Add `A.6.RSIR` interface-cue recovery, `FunctionFlowModuleAlignmentNote`, a module-interface boundary note governed by `A.6.M`, signature-discipline note governed by `A.6.0` and `A.6.5`, declared correspondence, declared allocation, or `A.6.M` module-relation repair. |
-| **CC-A6F-10 Useful action.** | The repair leaves a surviving admissible move: assign the FPF value kind, relation record, slot reference, view record, or governing pattern named by value; open functional view; add alignment note; assign the claim being made to C.29, C.30, C.30.ASV, A.15, C.25, C.16, A.10, B.3, A.20, A.21, or C.11; or stop. | Restore that move, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
+| **CC-A6F-10 Useful action.** | The repair leaves a remaining admissible use: assign the FPF value kind, relation record, slot reference, view record, or governing pattern named by value; open functional view; add alignment note; assign the claim being made to C.29, C.30, C.30.ASV, A.15, C.25, C.16, A.10, B.3, A.20, A.21, or C.11; or stop. | Restore that use, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
 
 ### A.6.F:8 - Common Anti-Patterns and How to Avoid Them
 
@@ -15774,7 +15809,7 @@ This checklist verifies the preceding guidance after the practitioner has chosen
 
 ### A.6.F:10 - Rationale
 
-Function-like wording is too useful to ban and too overloaded to leave ungoverned. The smallest useful repair is not a new ontology. It is recovery of the value kind, relation record, slot reference, claim record, view record, or governing-pattern application: say what the phrase is about, what it is not about, and what move remains admissible.
+Function-like wording is too useful to ban and too overloaded to leave ungoverned. The smallest useful repair is not a new ontology. It is recovery of the value kind, relation record, slot reference, claim record, view record, or governing-pattern application: say what the phrase is about, what it is not about, and what use remains admissible.
 
 This design follows A.6.P: trigger phrase, value-kind recovery, relation-record recovery, slot-reference recovery, explicit relation fields, governingPatternRef fields, and lexical guardrails. It also follows C.30: functional architecture is selected structure for a described holon, not a peer of architecture, not a selected transformation-flow structure by default, and not a mathematical graph description by itself.
 
@@ -15811,7 +15846,7 @@ Does not replace: C.30 grounded architecture and selected-structure adequacy, C.
 
 Use this pattern when an architecture or engineering text says "module", "component", "interface", "port", "platform", or "open architecture", and the phrase is doing more than ordinary orientation. If a stratification or architecture-operation source label covered by `C.30.STRAT` is doing the work, apply `C.30.STRAT` first; use A.6.M only when that repair recovers a module-interface relation. Use A.6.M when the question under repair is whether one holon is being treated as a replaceable, reusable, or separately changed structural unit of a larger holon under a declared module-interface viewpoint.
 
-The first useful move is `ModuleRelationRepairNote`:
+The first useful output is `ModuleRelationRepairNote`:
 
 ```text
 ModuleRelationRepairNote:
@@ -15878,7 +15913,7 @@ A module is a `U.Holon` viewed in a declared bounded context as a replaceable, r
 
 Functional ports and module interfaces may both use `U.Signature` discipline, but they govern different claims. A functional port constrains input condition, output condition, accepted-state, and produced-state slots for a functional behavior or transformation. A module interface constrains boundary, substitutability, compatibility, protocol references, schema references, version policy, change policy, and conformance expectations for a module relation. Do not move a functional-port claim into module-interface structure unless a module-interface or substitution claim is actually being made.
 
-For modular synthesis, A.6.M supplies only the module-interface slice. A synthesis move may align required functions or functional-service claims under `VP.Functional`, transformation-flow topology under `E.18` and `C.30.TFS-REL`, control structure under `C.30.LCA`, procedures and work packages under `VP.Procedural`, allocation and responsibility claims under `VP.AllocationResponsibility`, and modules or interfaces under `VP.ModuleInterface`; A.6.M repairs the module-interface relation, while non-module candidate generation, evidence, assurance, decision, work, and characteristic claims are governed by the patterns named in `A.6.M:12` when those claims are being made.
+For modular synthesis, A.6.M supplies only the module-interface slice. A synthesis action may align required functions or functional-service claims under `VP.Functional`, transformation-flow topology under `E.18` and `C.30.TFS-REL`, control structure under `C.30.LCA`, procedures and work packages under `VP.Procedural`, allocation and responsibility claims under `VP.AllocationResponsibility`, and modules or interfaces under `VP.ModuleInterface`; A.6.M repairs the module-interface relation, while non-module candidate generation, evidence, assurance, decision, work, and characteristic claims are governed by the patterns named in `A.6.M:12` when those claims are being made.
 
 #### A.6.M:4.1 - `moduleIn(...)` relation record
 Use `moduleIn(...)` only when the light repair note is not enough:
@@ -15954,7 +15989,7 @@ A signature declares vocabulary, laws, and applicability. A slot or endpoint rec
 4. State the boundary and the declared interface specification or explicit interface-specification gap.
 5. State the admissibility conditions, substitutability policy, and change policy, or mark any of those fields not established by the repair.
 6. State the governing pattern for any non-module claim being made: `C.30`, `C.30.ASV`, `A.6.F`, `A.15`, `A.2`, `E.18`, `C.30.TFS-REL`, `C.31`, `C.31.RSA`, `C.16`, `A.10`, `B.3`, `A.20`, `A.21`, `C.28`, `E.20`, `G.5`, or `C.11`.
-7. Stop when the relation and next move are explicit.
+7. Stop when the relation and next use are explicit.
 
 #### A.6.M:4.5 - Worked slices
 
@@ -16067,7 +16102,7 @@ Holon and episteme: the candidate module and whole are described holons under a 
 | `CC-A6M-4` | `InterfaceSpecificationRef` is recoverable when interface compatibility, substitutability, or conformance is being claimed. |
 | `CC-A6M-5` | Substitution or change policy is declared when replaceability, alternate supplier, upgrade, or platform extension is being claimed. Substitutability not established by the repair is marked as not established, not implied by wording. |
 | `CC-A6M-6` | Function, transformation-flow, control, work, evidence, assurance, gate, decision, causal, and mechanism claims use their governing patterns. |
-| `CC-A6M-7` | A failed check gives a repair move or governing-pattern application, not only a rejection. |
+| `CC-A6M-7` | A failed check gives a repair action or governing-pattern application, not only a rejection. |
 | `CC-A6M-8` | A current `G.2` source row for MOSA, open systems, platform practice, Conway correspondence, team-boundary correspondence, or Amdahl-style decomposition limits appears before guidance from that source is used for practitioner-facing claims being made. |
 | `CC-A6M-9` | RFC keywords are used only for pattern users, records, claims, conformance items, or publication records, evidence records, or assurance records. Modeled modules and interfaces are not written as agents with duties. |
 | `CC-A6M-10` | Lower or reopen the repair when whole holon, module holon, boundary, interface specification, interface gap, substitutability policy, change policy, platform grammar, conformance expectation, relied-on evidence relation, relied-on source relation, source-label recovery, team-to-work correspondence, or neighboring governing pattern changes. |
@@ -16117,7 +16152,7 @@ The pattern deliberately keeps measurement out of the first move. A module relat
 | Conway's law, the mirroring hypothesis, and Team Topologies and inverse Conway practice (`https://www.melconway.com/Home/Committees_Paper.html`; `https://doi.org/10.1016/j.respol.2012.04.011`; `https://itrevolution.com/wp-content/uploads/2022/06/TTOP_excerpt.pdf`) | Mature socio-technical law and empirical lineage plus current organization-design practice family; used as diagnostic pressure, not as a proof rule. | Team communication structure, team-boundary placement, and delivery responsibility can create real pressure on module and interface boundaries and useful correspondence clues. | Recover team and work material through `A.15`, `A.2`, `VP.AllocationResponsibility`, or `VP.Procedural` first; connect it to `ModuleInterfaceStructure` only through declared correspondence, allocation, boundary relation, and preserved and lost structure note. Use `C.29` when the correspondence is claimed as homomorphism-like or almost-same structure. | Do not treat Conway's law, an org chart, team responsibility label, or a delivery unit as proof of module interface, substitutability, modularity quality, evidence, gate passage, or architecture decision. | A practitioner may use team-boundary mismatch as a diagnostic prompt: repair the role, work, and module relation, then decide whether the module boundary, team boundary, communication relation, or architecture move changes. |
 | Amdahl's law and communication and synchronization extensions (`https://www.cs.cmu.edu/~18742/papers/Amdahl1967.pdf`; `https://arxiv.org/abs/1306.3302`; `https://arxiv.org/abs/2603.20654`) | Mature mathematical law plus current extension sources for communication, synchronization, and scalable-workload-fraction limits. | Serial work, synchronization, communication overhead, shared resources, and changing scalable workload fractions can limit the payoff of decomposition, parallelization, or specialization. | Use `C.29` for mathematical speedup or value-scalable-fraction reasoning, `E.18` for transformation-flow structure, `C.30.TFS-REL` when the module claim uses an architecture-to-transformation-flow relation, and `C.31` and `C.16` for modularity and characteristic tradeoffs. | Do not treat module count, team count, service count, transformation-flow path count, or accelerator count as improvement, scalability, throughput, or evolvability by itself. | A practitioner considering a module split names the serial part, shared bottleneck, synchronization or communication overhead, and characteristic tradeoff before claiming improvement. |
 | SEI Views and Beyond, ISO/IEC/IEEE 42010:2022, and multi-view architecture practice | Mature architecture-description lineage plus current international view-description discipline; not used as a current module-quality source. | Module and component-and-connector views are distinct architecture descriptions. | Use `ModuleInterfaceStructure` and `RuntimeInteractionStructure` as structure-kind signals under `C.30.ASV`. | Do not reduce architecture to a module diagram. | Module repair stays one architecture-structure concern, not the whole architecture ontology. |
-| Platform and product-line engineering practice (`https://tag-app-delivery.cncf.io/fr/whitepapers/platform-eng-maturity-model/`; `https://www.sei.cmu.edu/library/variability-in-software-product-lines/`; `https://arxiv.org/abs/2605.21353`) | Mature product-line variability lineage plus current platform-engineering maturity-model and current SPLE-review cues; used for variability-slot and extension-rule discipline, not as one FPF platform kind. | Variation slots and extension rules matter for reuse and substitution. | Use `PlatformGrammarRef`, `variabilitySlotRefs`, and change policy instead of a platform root kind. | Do not treat platform name as architecture quality, architecture scale-preference evidence, procurement suitability, supplier-set selection, or decision authority. | The next move is to identify extension rules and substitution conditions; non-module quality, scale-preference, procurement, supplier-set, and decision claims are governed by the patterns named in `A.6.M:12` when those claims are being made. |
+| Platform and product-line engineering practice (`https://tag-app-delivery.cncf.io/fr/whitepapers/platform-eng-maturity-model/`; `https://www.sei.cmu.edu/library/variability-in-software-product-lines/`; `https://arxiv.org/abs/2605.21353`) | Mature product-line variability lineage plus current platform-engineering maturity-model and current SPLE-review cues; used for variability-slot and extension-rule discipline, not as one FPF platform kind. | Variation slots and extension rules matter for reuse and substitution. | Use `PlatformGrammarRef`, `variabilitySlotRefs`, and change policy instead of a platform root kind. | Do not treat platform name as architecture quality, architecture scale-preference evidence, procurement suitability, supplier-set selection, or decision authority. | The next module-repair action is to identify extension rules and substitution conditions; non-module quality, scale-preference, procurement, supplier-set, and decision claims are governed by the patterns named in `A.6.M:12` when those claims are being made. |
 | Architecture-operation language, with neural-network and software-system intakes as source examples | Current practitioner-language source examples accepted by the architecture workstream; used as recognition material, not as a standard or current-best-known authority. | `C.30.STRAT` source labels, including source examples such as `block`, `layer`, `expert`, `router`, `cache`, and `state`, are useful recognition prompts. | Keep them as source labels until the recovered FPF kind, relation, claim-use, or source-use disposition is known; use A.6.M only for module-interface relation, interface specification, platform grammar, substitutability, or open-architecture module-interface claims. | Do not import source-context labels as module kinds or evidence of adequacy. | The same repair works for neural-network block replacement, hardware module substitution, organizational module repair, and episteme-module repair without making any source context the ontology. |
 
 Older or local sources may serve as lineage or worked examples only when the row says so. They do not stand in for current competitive source, and they do not make a module, interface, platform, or open-architecture claim admissible for comparison, assurance, gate, selection, or decision use without the governing pattern for that use.
@@ -16135,6 +16170,7 @@ Older or local sources may serve as lineage or worked examples only when the row
 | `A.6.0` and `A.6.5` | Signatures, slots, ports, endpoints, and field structure remain governed by signature and slot discipline. |
 | `A.6.B`, `A.6.C`, and `A.6.8` | Boundary, interface-specification, API, protocol, service, promise, and duty wording uses A.6.M only when the claim is module-interface relation, interface specification, substitutability, change policy, platform grammar, or open-architecture module-interface claim. |
 | `C.30` and `C.30.ASV` | Architecture claims and module-interface structural views stay architecture-governed. |
+| `C.33`, `C.34`, and `C.35` | Use these only when a module carrier, interface carrier, view, source label, generated map, or discovered structure needs architecture-specific captured-structure adequacy, lost-structure adequacy, preservation adequacy, or generated-carrier admission support. A.6.M keeps module-interface relation, interface specification, substitutability, change policy, and platform grammar ownership. |
 | `A.6.F` | Function and functional wording stays distinct from module allocation. |
 | `A.15` and `A.2` | Method, work-plan, performed-work, role-assignment, role claims, responsibility claims, team-boundary wording, and delivery-unit wording are governed by `A.15`, `A.2`, `VP.Procedural`, or `VP.AllocationResponsibility` unless a module-interface relation or correspondence is recovered; A.6.M governs only that recovered module-interface slice. |
 | `E.18` and `C.30.TFS-REL` | E.18 transformation-flow relations, path slices, crossings, and flow valuations are not interface specifications. |
@@ -19740,7 +19776,7 @@ A.8 intentionally biases against kernel growth by name familiarity. This is usef
 
 ### A.8:4.1 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | Same-word admission | A term is admitted because many domains use the same word. | Require three domain-family projection records that show the same abstract contribution. |
 | Prestige admission | A famous source or standard is treated as universal-core evidence by itself. | Record the candidate's role in multiple domain families and state difference/loss. |
@@ -19972,13 +20008,13 @@ The work occurrence that produces, measures, interprets, verifies, publishes, or
 
 #### A.10:4.6a - Authority-reliance use of ordinary A.10 evidence-provenance paths
 
-Use this subsection when an authority-looking case is being used as evidence for a reliance claim. The `A.10` evidence-provenance path is claim-bound: it evidences one named claim or effect for one named work move or reliance move, not "authority" in general. This subsection does not change the A.10 `EntityOfConcern`; it applies the same evidence-provenance graph relation to source-sensitive cases where displays, credentials, copied text, generated text, dashboards, provenance labels, or attestations are being overread. If the work occurrence, gate decision, speech act, commitment, or evidence relation is already recorded in a project-side FPF source, recover and cite that source named by value directly instead of analyzing nearby wording first.
+Use this subsection when an authority-looking case is being used as evidence for a reliance claim. The `A.10` evidence-provenance path is claim-bound: it evidences one named claim or effect for one named work occurrence or reliance use, not "authority" in general. This subsection does not change the A.10 `EntityOfConcern`; it applies the same evidence-provenance graph relation to source-sensitive cases where displays, credentials, copied text, generated text, dashboards, provenance labels, or attestations are being overread. If the work occurrence, gate decision, speech act, commitment, or evidence relation is already recorded in a project-side FPF source, recover and cite that source named by value directly instead of analyzing nearby wording first.
 
 A10-lite is enough for source-finding, orientation, learning, and bounded reversible probes:
 
 | Field | Required content |
 | --- | --- |
-| claim or effect | The claim, effect, or source-backed reliance use the evidence carrier is being asked to evidence for the named work move or reliance move. |
+| claim or effect | The claim, effect, or source-backed reliance use the evidence carrier is being asked to evidence for the named work occurrence or reliance use. |
 | evidence carrier | The display, badge, credential, attestation, dashboard tile, copied text, generated text, log, trace, source file, report, or other `SymbolCarrier`/publication carrier. |
 | producer, issuer, verifier, or source-maintenance role assignment | The role assignment or system that issued, performed, attested, measured, copied, generated, verified, or displayed the carrier or source-backed content. |
 | method enactment or work occurrence | The work act, measurement, verification, review, build, attestation, copy, extraction, generation, dashboard query, API query, trace, log, or method enactment that produced the carrier. |
@@ -20059,9 +20095,9 @@ What this does not authorize: `A.10` does not approve, authorize work or relianc
 
 #### A.10:4.6b - Local evidence-use classifier and `RelianceDisposition` for source-looking evidence uses
 
-Use this subsection when a visible source is being treated as evidence for a claim, act, work move, gate, release, review claim, assurance use, or problem-side P2W use. The first A.10 move is to recover the evidence kind and the bounded evidence use. Broad source words such as `source`, `metric`, `confidence`, `conformant`, `safe`, `ready`, `certified`, `approval`, or `permission` are only recovery prompts; they do not name the evidence relation by themselves.
+Use this subsection when a visible source is being treated as evidence for a claim, act, work occurrence, gate, release, review claim, assurance use, or problem-side P2W use. The first A.10 action is to recover the evidence kind and the bounded evidence use. Broad source words such as `source`, `metric`, `confidence`, `conformant`, `safe`, `ready`, `certified`, `approval`, or `permission` are only recovery prompts; they do not name the evidence relation by themselves.
 
-This subsection uses a local reliance-use classifier, not a Core evidence-kind ontology. Its practical gain is a smaller next move: recover the evidence relation, name the bounded evidence use and unsupported attempted use, then either stay inside A.10 or apply the governing pattern for the stronger claim being made. It is not a required project review step and does not ask the practitioner to inspect every source-looking carrier or display.
+This subsection uses a local reliance-use classifier, not a Core evidence-kind ontology. Its practical gain is a smaller next action: recover the evidence relation, name the bounded evidence use and unsupported attempted use, then either stay inside A.10 or apply the governing pattern for the stronger claim being made. It is not a required project review step and does not ask the practitioner to inspect every source-looking carrier or display.
 
 Section role: the first table is an A.10 recognition aid, the `RelianceDisposition` table is a minimum local record aid, and the worked source-overread slices are regression slices and review slices. They are not project checklists, a required sequence, a new evidence ontology, or a general source classifier. Use only the row that answers the attempted evidence use, then stop when the bounded evidence relation, unsupported attempted use, and reopen condition are clear. This local section keeps the attempted use inside the A.10 evidence relation; it does not create an extra SEMIO authority or cross-pattern relation vocabulary.
 
@@ -20071,9 +20107,9 @@ Cheap stop: if a bounded claim, current carrier, evidence-provenance path, windo
 
 Common wrong first classification: a visible source is approval, permission, safety, or readiness. First honest entry: recover the A.10 evidence-provenance path for one bounded claim or use; approval, permission, safety, readiness, gate passage, and work authority stay with their governing patterns when those relations are being claimed.
 
-Plain move palette: `RelianceDisposition=pass` means proceed only inside the bounded evidence use; `RelianceDisposition=degrade` means use only a narrower or reversible version; `RelianceDisposition=abstain` means do not decide yet; `RelianceDisposition=reopen` means changed or contested evidence relation defeated the previous evidence-use classification; `RelianceDisposition=evidence-needed` means ask for the named missing evidence at the named decision point; `RelianceDisposition=safety-case-required` means apply `B.3` because the B.3 material-reliance threshold is met; `RelianceDisposition=blocked-current-use` means block the current attempted use until the evidence-provenance path or governing source relation changes.
+Plain disposition palette: `RelianceDisposition=pass` means proceed only inside the bounded evidence use; `RelianceDisposition=degrade` means use only a narrower or reversible version; `RelianceDisposition=abstain` means do not decide yet; `RelianceDisposition=reopen` means changed or contested evidence relation defeated the previous evidence-use classification; `RelianceDisposition=evidence-needed` means ask for the named missing evidence at the named decision point; `RelianceDisposition=safety-case-required` means apply `B.3` because the B.3 material-reliance threshold is met; `RelianceDisposition=blocked-current-use` means block the current attempted use until the evidence-provenance path or governing source relation changes.
 
-| Source-looking evidence use or attempted use | First A.10 move | Escalation trigger | Forbidden overread |
+| Source-looking evidence use or attempted use | First A.10 action | Escalation trigger | Forbidden overread |
 | --- | --- | --- | --- |
 | Ordinary source-backed report, record, citation, observation, model card, datasheet, data card, or publication excerpt | Name the claim, evidence carrier, producer or method trace, evidence-provenance path, currentness window, bounded evidence use, unsupported attempted use, and reopen trigger. | Open `B.3` only when an assurance claim is being made or the B.3 material-reliance threshold is met; open `A.21` for a gate decision currently being relied on, `A.15` or `A.15.1` for work, or another governing neighboring pattern only when that relation is being claimed; open `B.2.5` only when a controlled object is regulated through a feedback channel, evidence channel, cadence, window, supervisory relation, or control relation. | Evidence presence as approval, gate passage, assurance, release permission, work authority, control authority, or safety acceptance. |
 | Confidence, calibration, prediction interval, abstention reason, or selective-action cue | Name the act, context, window, calibration population, exchangeability condition, shift condition, applicability condition, and stop condition for the bounded evidence use. Use `RelianceDisposition=pass` or `RelianceDisposition=degrade` only for that bounded use, and state the unsupported attempted use beside it. | Open `C.27` or `G.11` when timing, expiry, refresh, distribution shift, monitoring, or applicability change alters the bounded act; open `B.3` when an assurance claim is being made or the B.3 material-reliance threshold is met. | Confidence as global permission, trust, readiness, safety, release reliance, or engineering justification. |
@@ -20092,7 +20128,7 @@ If publication or observation of a cue changes the represented situation or repr
 
 | `RelianceDisposition` | A.10 classification | Minimum A.10 statement |
 | --- | --- | --- |
-| `RelianceDisposition=pass` | The evidence relation named by value is present and current for the named use, the evidence kind is present, the source is current enough for that use, and the evidenced use is bounded. | State the evidenced claim, act, work move, review claim, or P2W carry-through use, the unsupported attempted use, the evidence-provenance path, and the window. |
+| `RelianceDisposition=pass` | The evidence relation named by value is present and current for the named use, the evidence kind is present, the source is current enough for that use, and the evidenced use is bounded. | State the evidenced claim, act, work occurrence, review claim, or P2W carry-through use, the unsupported attempted use, the evidence-provenance path, and the window. |
 | `RelianceDisposition=degrade` | The source relation carries only a narrower claim, smaller audience, reversible local act, lower assurance input, or shorter window. | State the narrowed bounded evidence use, the unsupported attempted use, and the stop condition. |
 | `RelianceDisposition=abstain` | Evidence is insufficient, stale, out-of-context, uncalibrated, conflicted, or not tied to the claimed relation, while immediate rejection is not justified. | State the claim not decided and the missing evidence or relation needed before use. |
 | `RelianceDisposition=reopen` | A contest, changed representation, changed selected entity, stale source, expired window, changed profile, conflicting source, retargeting, or new evidence defeats the previous evidence-provenance path. | State the source or relation to reopen and the previous use that is no longer evidenced. |
@@ -20728,7 +20764,7 @@ This pattern builds directly upon the foundations laid in the FPF Kernel to prov
 
 The intent of this pattern is to:
 1.  Formally define **agency** not as an intrinsic *type* of holon, but as a **contextual Role Assignment**.
-2.  Introduce a measurable, multi-dimensional **spectrum of agency** via a dedicated Characterization (`Agency-CHR`), moving beyond a simple binary "agent/not-agent" switch.
+2.  Introduce a measurable, multi-dimensional **spectrum of agency** via a dedicated agency-characteristic profile, moving beyond a simple binary "agent/not-agent" switch.
 3.  Provide a clear, **didactic grading system** that allows engineers and managers to assess and communicate the Agency Grade of any system in a consistent, evidence-backed manner.
 
 ### A.13:2 - Problem
@@ -20773,11 +20809,11 @@ This means the acting holder is a **`U.System`** that currently bears **`Agentia
     *   A system holding `ObserverRole@Context` is currently gathering information.
     This creates a clean role-value hierarchy: a `TransformerRole@Context` assignment is agential, but an agential assignment is not always transformational; it could be observing, planning, or idle.
 
-#### A.13:4.3 - Measuring Agency: The `Agency-CHR` and the Spectrum
+#### A.13:4.3 - Measuring Agency: The Agency Characteristic Profile and the Spectrum
 
-Agency is not a binary switch; it is a multi-dimensional spectrum of capabilities. FPF models this using a dedicated pattern, **`Agency-CHR` (C.9)**, which is a **Characterization** that attaches a set of measurable properties to a `U.RoleAssignment`.
+Agency is not a binary switch; it is a multi-dimensional spectrum of capabilities. FPF models this using **C.9 Agency Characteristic Profile**, a characterization pattern that attaches a set of measurable properties to a `U.RoleAssignment`.
 
-The `Agency-CHR` profile is grounded in contemporary research (e.g., Active Inference, Basal Cognition) and includes the following key characteristics. Each is measured for a specific holder system in a specific context and must be backed by evidence (A.10).
+The agency-characteristic profile is grounded in contemporary research (e.g., Active Inference, Basal Cognition) and includes the following key characteristics. Each is measured for a specific holder system in a specific context and must be backed by evidence (A.10).
 
 1.  **Boundary Maintenance Capacity (BMC):** The ability of the system to maintain its structural and functional integrity against perturbations. *(How robust is it?)*
 2.  **Predictive Horizon (PH):** The temporal or causal depth of the holder's internal model. *(How far ahead can it "see"?)*
@@ -20793,9 +20829,9 @@ Low-human-overlap or newly discovered task families remain admissible when the t
 
 #### A.13:4.4 - The Agency Grade (Didactic Layer)
 
-While the multi-dimensional `Agency-CHR` profile is essential for formal assurance, engineers and managers need a simpler, at-a-glance summary. The **Agency Grade** is a **non-normative, didactic** scale from 0 to 4 that synthesizes the CHR profile into an intuitive autonomy grade.
+While the multi-dimensional agency-characteristic profile is essential for formal assurance, engineers and managers need a simpler, at-a-glance summary. The **Agency Grade** is a **non-normative, didactic** scale from 0 to 4 that synthesizes the profile into an intuitive autonomy grade.
 
-| Grade | Label | Typical `Agency-CHR` Profile (Conservative Lower Bound) | Archetypal Example |
+| Grade | Label | Typical agency-characteristic profile (Conservative Lower Bound) | Archetypal Example |
 | :--- | :--- | :--- | :--- |
 | **0** | **Non-Agential** | `BMC ≈ 0`, `PH ≈ 0`, `MP ≈ 0` | A rock, a document, a passive structural component. |
 | **1** | **Reactive** | `BMC > 0`, `PH ≈ 0`, `MP ≈ 0` | A thermostat; a simple feedback controller. Follows fixed rules. |
@@ -20803,13 +20839,13 @@ While the multi-dimensional `Agency-CHR` profile is essential for formal assuran
 | **3** | **Adaptive** | `BMC > 0`, `PH > 0`, `MP > 0` | A self-calibrating sensor system; a machine learning agent that updates its model with new data. |
 | **4** | **Reflective/Strategic** | High `BMC`, `PH`, `MP`, `PER`, and `OC`. Capable of meta-cognition (reasoning about its own reasoning) and pursuing abstract goals. | An autonomous R&D system; a cohesive, self-organizing DevOps team. |
 
-**Crucial Distinction:** The `Agency-CHR` profile is the **normative evidence**. The Grade is a **pedagogical shortcut**. A holder cannot claim an Agency Grade without having a corresponding, auditable CHR profile to back it up.
+**Crucial Distinction:** The agency-characteristic profile is the **normative evidence**. The Grade is a **pedagogical shortcut**. A holder cannot claim an Agency Grade without having a corresponding, auditable characteristic profile to back it up.
 
 ### A.13:5 - Archetypal Grounding
 
-The universal pattern of agency, defined as a `Contextual Role Assignment` and measured by the `Agency-CHR`, manifests across all domains. The following table demonstrates its application to the FPF's two primary archetypes: a `U.System` and a collective `U.System` (a team), while explicitly showing why a `U.Episteme` cannot be an acting holder.
+The universal pattern of agency, defined as a `Contextual Role Assignment` and measured by the agency-characteristic profile, manifests across all domains. The following table demonstrates its application to the FPF's two primary archetypes: a `U.System` and a collective `U.System` (a team), while explicitly showing why a `U.Episteme` cannot be an acting holder.
 
-| Archetype | Holder (`U.System`) | Role & Context (`#Role:Context`) | `Agency-CHR` Profile Sketch | Resulting Agency Grade |
+| Archetype | Holder (`U.System`) | Role & Context (`#Role:Context`) | Agency-characteristic profile sketch | Resulting Agency Grade |
 | :--- | :--- | :--- | :--- | :--- |
 | **Simple Controller** | `Thermostat_Model_T800` | `#AgentialRole:HomeHeatingSystem` | `BMC`: High (maintains temp). <br> `PH`: Zero (no prediction). <br> `MP`: Zero (fixed logic). <br> `PER`: Very High. <br> `OC`: Low (single set-point). | **Grade 1 (Reactive)** |
 | **Advanced Controller** | `PredictiveCruiseControl_v3` | `#AgentialRole:VehicleDynamics` | `BMC`: High. <br> `PH`: High (predicts traffic flow). <br> `MP`: Zero (fixed model). <br> `PER`: High. <br> `OC`: Medium (optimization). | **Grade 2 (Predictive)** |
@@ -20828,17 +20864,17 @@ To ensure the agency model is applied rigorously and consistently, all FPF publi
 | :--- | :--- | :--- |
 | **CC-A13.1 (Holder Type)** | The `holderRef` of a `U.RoleAssignment` with `roleRef=AgentialRole@Context` **MUST** name a `U.System`. | Prevents the "episteme-as-actor" category error. Enforces **Strict Distinction (A.7)**. |
 | **CC-A13.2 (RoleAssignment Mandate)** | Any claim of agency **MUST** be represented by a complete `U.RoleAssignment` instance, including an explicit `holder`, `role`, and `context`. | Ensures that agency is always modeled as contextual and bound to a specific bearer, not as a free-floating property. |
-| **CC-A13.3 (CHR Evidence)** | Any claim about a holder's Agency Grade or autonomy profile **MUST** be substantiated by an auditable `Agency-CHR` profile with Evidence Graph Ref (A.10). | Makes claims of agency falsifiable and prevents "agency by marketing." |
-| **CC-A13.4 (Grade is Didactic)**| The **Agency Grade (0-4)** **SHALL NOT** be used as a normative input for formal reasoning. It is a didactic summary of the `Agency-CHR` profile. | Prevents oversimplification in formal models. The detailed profile, not the summary grade, must be used for assurance cases. |
+| **CC-A13.3 (Characteristic Evidence)** | Any claim about a holder's Agency Grade or autonomy profile **MUST** be substantiated by an auditable agency-characteristic profile with Evidence Graph Ref (A.10). | Makes claims of agency falsifiable and prevents "agency by marketing." |
+| **CC-A13.4 (Grade is Didactic)**| The **Agency Grade (0-4)** **SHALL NOT** be used as a normative input for formal reasoning. It is a didactic summary of the agency-characteristic profile. | Prevents oversimplification in formal models. The detailed profile, not the summary grade, must be used for assurance cases. |
 | **CC-A13.5 (Collective as System)** | To claim agency for a collective (e.g., a team, a swarm), the collective **MUST** first be modeled as a `U.System` with a defined `U.Boundary` and a coordination `U.Method`. | Prevents the error of assigning agency to a mere set or collection (`MemberOf`). Aligns with **A.1** and **A.14**. |
-| **CC-A13.6 (MHT for Emergent Agency)** | If a collection of systems, previously non-agential or at a lower grade, develops a new supervisory structure and crosses a documented `Agency-CHR` threshold, a **Meta-Holon Transition (MHT, B.2)** **MUST** be declared. | Makes the emergence of collective agency an explicit, auditable event, preventing "magic" emergence. |
+| **CC-A13.6 (MHT for Emergent Agency)** | If a collection of systems, previously non-agential or at a lower grade, develops a new supervisory structure and crosses a documented agency-characteristic threshold, a **Meta-Holon Transition (MHT, B.2)** **MUST** be declared. | Makes the emergence of collective agency an explicit, auditable event, preventing "magic" emergence. |
 
 ### A.13:7 - Consequences
 
 | Benefits | Trade-offs / Mitigations |
 | :--- | :--- |
 | **Category Safety & Clarity:** The pattern provides a clear, unambiguous definition of agency that prevents common modeling errors and is consistent across all of FPF. | **Increased Modeling Granularity:** Requires modelers to think in terms of role assignments and contexts, which is slightly more complex than just labeling something "agentive." *Mitigation:* The `Holon#Role:Context` syntax and tooling support make this manageable in practice. |
-| **Falsifiable & Measurable Agency:** By grounding agency in the `Agency-CHR`, the framework transforms a vague philosophical concept into a set of concrete, evidence-backed engineering properties. | **Measurement Effort:** Populating the `Agency-CHR` profile requires real work (testing, analysis, data gathering). *Mitigation:* The profile can be built iteratively. An initial estimate can be used, with the understanding that its `Reliability (R)` score is low until backed by evidence. |
+| **Falsifiable & Measurable Agency:** By grounding agency in the agency-characteristic profile, the framework transforms a vague philosophical concept into a set of concrete, evidence-backed engineering properties. | **Measurement Effort:** Populating the profile requires real work (testing, analysis, data gathering). *Mitigation:* The profile can be built iteratively. An initial estimate can be used, with the understanding that its `Reliability (R)` score is low until backed by evidence. |
 | **Scalable Autonomy Model:** The graded scale provides a sophisticated language for describing and comparing different Agency Grades, from simple automation to strategic intelligence. | **Risk of Misinterpreting Grades:** The simple 0-4 scale could be misused as a simplistic marketing label. *Mitigation:* The normative requirement (**CC-A13.4**) to always link a grade to its underlying CHR profile acts as a guardrail against this. |
 | **Elegant Handling of Collectives:** The pattern provides a clean way to model the agency of teams, swarms, and organizations without violating ontological principles. | - |
 
@@ -20846,9 +20882,9 @@ To ensure the agency model is applied rigorously and consistently, all FPF publi
 
 This pattern's value comes from its synthesis of contemporary, post-2015 research into a single, operational model.
 
-*   **Grounded in Science:** The move away from a binary, type-based view of agency towards a **graded, spectrum-based model** is directly aligned with modern research in Active Inference (Friston et al.), Basal Cognition (Fields, Levin), and evolutionary cybernetics. The `Agency-CHR` provides a direct, practical implementation of these ideas.
+*   **Grounded in Science:** The move away from a binary, type-based view of agency towards a **graded, spectrum-based model** is directly aligned with modern research in Active Inference (Friston et al.), Basal Cognition (Fields, Levin), and evolutionary cybernetics. The agency-characteristic profile provides a direct, practical implementation of these ideas.
 *   **Ontologically Sound:** By defining agential participation as a **Contextual Role Assignment**, the pattern avoids the ontological pitfalls of creating a new base type. It fully embraces the FPF's core architectural principle of separating **substance (`holder`)** from **function (`role`)** within a **context**. This aligns with best practices from foundational ontologies (like UFO) and the principles of **Strict Distinction (A.7)**.
-*   **Pragmatic and Actionable:** The pattern is designed for engineers and managers. The `Agency Grade` provides a quick communication tool, while the underlying `Agency-CHR` provides the detailed, auditable data needed for formal assurance and risk management. This duality satisfies both **Didactic Primacy (P-2)** and **Pragmatic Utility (P-7)**.
+*   **Pragmatic and Actionable:** The pattern is designed for engineers and managers. The `Agency Grade` provides a quick communication tool, while the underlying agency-characteristic profile provides the detailed, auditable data needed for formal assurance and risk management. This duality satisfies both **Didactic Primacy (P-2)** and **Pragmatic Utility (P-7)**.
 
 In essence, this pattern does not *invent* a new theory of agency. It **distills and operationalizes** the emerging scientific consensus, packaging it into a rigorous, falsifiable, and practical tool for the FPF ecosystem.
 
@@ -20859,11 +20895,11 @@ In essence, this pattern does not *invent* a new theory of agency. It **distills
     *   `A.2 Role Taxonomy`: Provides the universal  Contextual Role Assignment (`U.RoleAssignment`) mechanism.
     *   `A.12 External Transformer`: Work by an acting holder is modeled using the external transformer principle.
 *   **Coordinates with:**
-    *   `B.2 Meta-Holon Transition (MHT)`: A significant jump in the `Agency-CHR` of a collective can trigger an MHT.
-    *   `B.3 Trust & Assurance Calculus`: The `Agency-CHR` profile provides crucial inputs for assessing the reliability and safety of an autonomous system.
+    *   `B.2 Meta-Holon Transition (MHT)`: A significant jump in the agency-characteristic profile of a collective can trigger an MHT.
+    *   `B.3 Trust & Assurance Calculus`: The agency-characteristic profile provides crucial inputs for assessing the reliability and safety of an autonomous system.
     *   `D.2 Multilevel Ethics For System-Holon Work`: The Agency Grade is used to determine the moral-responsibility posture and accountability assigned to a system.
 *   **Instantiates:**
-    *   The `Agency-CHR` (C.9), which provides the formal definitions for the characteristics (BMC, PH, etc.).
+    *   `C.9 Agency Characteristic Profile`, which provides the formal definitions for the characteristics (BMC, PH, etc.).
 
 ### A.13:End
 
@@ -21171,26 +21207,26 @@ A.14 exists because part-whole words carry identity, aggregation, measure, time,
 
 **First output.** One explicit separation of `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, and `U.Work`, plus the shortest traceable chain that already exists from `U.RoleAssignment` through the governing `U.Method` and its method-description source to the intended `U.WorkPlan` or actual `U.Work` occurrence, or an explicit source gap that blocks admission of the claim.
 
-**Working enactment-alignment spine.** Role, method, plan, and work confusion -> separate role, holder, bounded context, method description, intended `U.WorkPlan`, and actual `U.Work` -> choose proceed, plan, bounded probe, narrow, apply the direct governing pattern for any non-A.15 claim, or stop -> output the smallest alignment frame needed for the next project move -> use `A.15.4` only when an encountered episteme publication, display, credential view, explanation, copied statement, provenance mark, dashboard tile, schema wording, API wording, or composed source chain begins to carry or justify a work claim or reliance claim.
+**Working enactment-alignment spine.** Role, method, plan, and work confusion -> separate role, holder, bounded context, method description, intended `U.WorkPlan`, and actual `U.Work` -> choose proceed, plan, bounded probe, narrow, apply the direct governing pattern for any non-A.15 claim, or stop -> output the smallest alignment frame needed for the next work-family use -> use `A.15.4` only when an encountered episteme publication, display, credential view, explanation, copied statement, provenance mark, dashboard tile, schema wording, API wording, or composed source chain begins to carry or justify a work claim or reliance claim.
 
-**Working application moves.**
+**Working alignment applications.**
 1. Name the role, holder, and context distinction under repair.
 2. Name the method or method description that is meant to govern the work.
 3. Name the intended `U.WorkPlan` or actual `U.Work` occurrence being claimed.
-4. Choose the next move: proceed inside the recovered relation, plan, run a bounded reversible probe, narrow scope, apply the governing FPF pattern and project-side FPF kind and reference named by value for the claim or effect being made, or stop.
+4. Choose the next governed use: proceed inside the recovered relation, plan, run a bounded reversible probe, narrow scope, apply the governing FPF pattern and project-side FPF kind and reference named by value for the claim or effect being made, or stop.
 5. If an encountered source candidate or display is being used by appearance for a work claim, reliance claim, or source-restoration claim, apply `A.15.4 Work-Relevant Source Restoration` to that source-restoration claim; keep `A.15` only for the `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, and `U.Work` separation.
 
-**Action-pattern protection.** This pattern is not about classifying encountered publications, displays, or cues. It keeps role, method, plan, capability, and actual work distinct so the acting engineer-manager can choose the next admissible project move. Work-relevant source restoration is handled by the related `A.15.4` cluster member.
+**Action-pattern protection.** This pattern is not about classifying encountered publications, displays, or cues. It keeps role, method, plan, capability, and actual work distinct so the acting engineer-manager can choose the next admissible work-family or reliance use. Work-relevant source restoration is handled by the related `A.15.4` cluster member.
 
-**Minimum sufficient next move.** Choose the minimum sufficient next move, recover only the project-side FPF kind and reference named by value needed for that move, and do not raise the claim beyond that recovered relation, source, or admissible-use boundary.
+**Minimum sufficient governed use.** Choose the minimum sufficient governed use, recover only the project-side FPF kind and reference named by value needed for that use, and do not raise the claim beyond that recovered relation, source, or admissible-use boundary.
 
-**Recovered-source ready condition.** If the required project-side FPF kind and reference named by value is present and its scope and window match the role, method, plan, or work move under repair, proceed inside that recovered scope and window. If not, narrow scope, run a bounded reversible probe, source-find, or create only the smallest source-restoration request, decision-request record, prospective work-plan entry, source-gap note, or missing-source admission block needed for the next move.
+**Recovered-source sufficiency condition.** If the required project-side FPF kind and reference named by value is present and its scope and window match the role, method, plan, or work-family claim under repair, proceed inside that recovered scope and window. If not, narrow scope, run a bounded reversible probe, source-find, or create only the smallest source-restoration request, decision-request record, prospective work-plan entry, source-gap note, or missing-source admission block needed for the next governed use.
 
 **Ordinary use.** If the team only needs to separate role, method, plan, capability, and actual work for orientation or planning, one separation sentence or small working card is enough.
 
-**Reliance-bearing use.** Use the fuller alignment frame when an encountered source candidate or display is about to guide planned work, actual work, role attribution, status attribution, release reliance, disputed responsibility, or cross-context use. Use `A.15.4` when the issue under repair is whether that source candidate exposes the project-side FPF kind and reference named by value needed for that work claim or reliance claim.
+**Reliance-bearing use.** Use the fuller alignment frame when an encountered source candidate or display is about to guide planned work, actual work, role attribution, role-state attribution, release reliance, disputed responsibility, or cross-context use. Use `A.15.4` when the issue under repair is whether that source candidate exposes the project-side FPF kind and reference named by value needed for that work claim or reliance claim.
 
-**Stop condition.** Stop once the separation changes no next admissible work move or reliance move and blocks no concrete overclaim about role, method, plan, work, status, approval, evidence, or release.
+**Stop condition.** Stop once the separation changes no next admissible work-family use or reliance use and blocks no concrete overclaim about role, role-state, method, plan, work, approval, evidence, or release.
 
 **Admissible-use examples.**
 
@@ -21200,15 +21236,15 @@ A.14 exists because part-whole words carry identity, aggregation, measure, time,
 
 **Alignment frame in plain terms.** One alignment frame linking `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, and `U.Work` through `U.RoleAssignment`; not a single work occurrence, not a checklist, not a language-style repair pattern, and not a mere cue note.
 
-**First admissible project move in plain terms.** Keep design-time role, method, and work plan distinct from run-time work while making the chain between them inspectable enough for enactment, audit, and source restoration.
+**First admissible work-family use in plain terms.** Keep design-time role, method, and work plan distinct from run-time work while making the chain between them inspectable enough for enactment, audit, and source restoration.
 
 **What goes wrong if missed.** Teams collapse role, recipe, plan, capability, and actual run into one fuzzy source-side "process" label, then mistake documentation for execution, capability for evidence, schedule for occurrence, or a narrower briefing for the source that makes work admissible.
 
 **What this buys.** One inspectable enactment frame that lets a team ask who held what role, which method governed, what plan existed, and what work actually occurred before treating follow-on work, blame, or approval as if those distinctions were the same.
 
-**Not this pattern when.** Not this pattern when the honest need is only one dated work occurrence (`A.15.1`), only planning or schedule baseline (`A.15.2`), only a cue note that has not yet become an enactment-alignment question (`A.16` or `A.16.1`), only boundary wording or policy wording without a role-method-work question under repair (`A.6` or `A.6.B`), or work-relevant source restoration for an encountered source candidate or display (`A.15.4`).
+**Not this pattern when.** Not this pattern when the honest need is only one dated work occurrence (`A.15.1`), only planning or schedule baseline (`A.15.2`), only work-entry readiness or full-kit preparation (`A.15.5`), only a cue note that has not yet become an enactment-alignment question (`A.16` or `A.16.1`), only boundary wording or policy wording without a role-method-work question under repair (`A.6` or `A.6.B`), or work-relevant source restoration for an encountered source candidate or display (`A.15.4`).
 
-**Related project records and governing patterns.** `A.15.1` governs dated execution records, `A.15.2` schedule or baseline planning records, `A.15.3` slot-filling plan items, `A.15.4` work-relevant source restoration, `B.5.1` Explore -> Shape -> Evidence -> Operate for project progression, `F.11` method and work vocabulary alignment across contexts, and `F.17` the human-facing work sheet.
+**Related project records and governing patterns.** `A.15.1` governs dated execution records, `A.15.2` schedule or baseline planning records, `A.15.3` slot-filling plan items, `A.15.4` work-relevant source restoration, `A.15.5` work-entry readiness and full-kit preparation, `B.5.1` Explore -> Shape -> Evidence -> Operate for project progression, `F.11` method and work vocabulary alignment across contexts, and `F.17` the human-facing work sheet.
 
 **Causal-use work boundary.** Realized counterfactual-sampling work, counterfactual randomization, intervention assignment, target-trial emulation work, and causal evidence collection remain `U.MethodDescription`, `U.WorkPlan`, and `U.Work` structures here. `A.15` can say who performs which sampling or intervention work under which method and role; it does not make the resulting causal use admissible. `C.28` governs the causal-use question, `CausalityLadderRung`, causal estimand, `CausalEvidenceSupportBasis`, counterfactual sampling realizability, and supported use and unsupported use.
 
@@ -21347,16 +21383,16 @@ This chain provides complete traceability: a specific instance of `U.Work` can b
 
 #### A.15:4.3 - Bounded specialization scouting and `CheckpointReturn`
 
-When one human-plus-AI pair faces a new task family or candidate solution family, the governed work system may temporarily compose four distinct local roles inside the same dyad: a human-held `OutcomeCriterionHolderRole`, an `AIScoutRole`, an `AISpecialistProbeRole`, and a human-held `CommitAuthorityRole`. The payoff of the dyad is faster admissible specialization of the next move, not disappearance of the human decision step.
+When one human-plus-AI pair faces a new task family or candidate solution family, the governed work system may temporarily compose four distinct local roles inside the same dyad: a human-held `OutcomeCriterionHolderRole`, an `AIScoutRole`, an `AISpecialistProbeRole`, and a human-held `CommitAuthorityRole`. The payoff of the dyad is faster admissible specialization of the next work-family use, not disappearance of the human decision step.
 
-For this bounded dyadic work question, the pair declares one outcome criterion first, enumerates heterogeneous candidate approaches that may satisfy that target, spends a bounded scouting budget or probing budget before any committed approach is chosen, and returns one `CheckpointReturn` that compares the tested approaches rather than silently treating one successful probe as a committed rollout. `A.15` governs this dyadic move and local role split only; it does not restate the checkpoint-record semantics of `C.24` or the budget and guard enforcement of `E.16`.
+For this bounded dyadic work question, the pair declares one outcome criterion first, enumerates heterogeneous candidate approaches that may satisfy that target, spends a bounded scouting budget or probing budget before any committed approach is chosen, and returns one `CheckpointReturn` that compares the tested approaches rather than silently treating one successful probe as a committed rollout. `A.15` governs this dyadic alignment use and local role split only; it does not restate the checkpoint-record semantics of `C.24` or the budget and guard enforcement of `E.16`.
 
 Every `CheckpointReturn` carries:
 - the declared outcome criterion and current `TaskFamily`
 - the candidate approaches actually tested
 - the evidence observed on each tested approach, including progress toward the named work-measure threshold and important failure signals
 - the budget already burned and the residual budget still available
-- the recommended next work move or reliance move: continue probing, commit to planned work, narrow the method or claim, apply the direct governing pattern for a non-A.15 claim, or stop
+- the recommended next work-family use or reliance use: continue probing, commit to planned work, narrow the method or claim, apply the direct governing pattern for a non-A.15 claim, or stop
 - the commit trigger named by value that would justify leaving the bounded probe
 
 The return is candidate-approach evidence, burned and residual budget amounts, observed result, and commit-trigger condition. It is not the selected method, `U.WorkPlan`, performed `U.Work`, execution evidence/provenance relation, or rollout decision. Those claims need the project-side FPF kind and reference named by value before committed rollout.
@@ -21365,11 +21401,17 @@ Low-human-overlap approaches remain admissible here only while they stay tied to
 
 #### A.15:4.4 - Boundary to A.15.4 Work-Relevant Source Restoration
 
-Use `A.15.4` when an encountered episteme, episteme publication, display, credential view, generated explanation, copied statement, provenance mark, dashboard tile, schema wording, API wording, or composed source chain is being used by appearance for a work claim, reliance claim, role-assignment currentness claim, status currentness claim, approval, permission, gate passage, evidence, engineering justification, release reliance, or performed `U.Work`.
+Use `A.15.4` when an encountered episteme, episteme publication, display, credential view, generated explanation, copied statement, provenance mark, dashboard tile, schema wording, API wording, or composed source chain is being used by appearance for a work claim, reliance claim, role-assignment currentness claim, role-state currentness claim, source-currentness claim, approval, authorization, gate passage, evidence, engineering justification, release reliance, or performed `U.Work`.
 
 `A.15` itself keeps the kernel separation: `U.Role`, holder, context, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, actual `U.Work`, and the `U.RoleAssignment` chain between them. The source-restoration question recovers the project-side FPF kind and reference named by value before the encountered source candidate or display can carry the work claim, reliance claim, or effect claim being made; that question belongs to `A.15.4` or to the source-restoration pattern governing that reliance named there.
 
 A principle scheme, functional diagram, scenario, screen, or explanation that makes an `E.18.1` P2W carry-through structure recoverable may help the team plan work or find the needed source.
+
+#### A.15:4.5 - Boundary to A.15.5 Work-Entry Readiness
+
+Use `A.15.5` when the current question is whether intended work is ready enough to enter a work boundary. `A.15` keeps the role-method-work separation; `A.15.5` carries `WorkEntryReadiness@Context`, `FullKitCondition`, commitment disposition, resource-readiness refs, WIP or flow-policy refs, planned-baseline refs, and launch-gate refs when they are current.
+
+Readiness is not performed work, not evidence sufficiency, and not gate passage by itself. A readiness-looking briefing, dashboard, source bundle, or P2W record may cue `A.15.5`, but the readiness relation is admitted only when the target work plan or plan item, missing inputs, preparation work if performed, planned baseline, and stop or degraded-use condition can be named.
 
 ### A.15:5 - Archetypal Grounding
 
@@ -21460,7 +21502,7 @@ To preserve role-method-work modeling, check the following predicates.
 - **Approval collapse.** Keep approval or authorization speech acts distinct from the operational step they permit; model them as communicative `U.Work` when they institute a role, gate, or commitment effect.
 - **Process soup.** Do not leave "process", "workflow", or "activity" uninterpreted in FPF-governed passages; resolve the source cue to `U.Method`, `U.MethodDescription`, `U.WorkPlan`, or `U.Work`.
 - **Briefing-as-execution-cue.** A lighter review note, rollout summary, or redacted operations note may orient work; use `A.15.4` or the source-restoration pattern governing that reliance before relying on it for execution, approval, gate, evidence, or plan claims.
-- **P2W publication as work occurrence.** A principle scheme, functional diagram, scenario, screen, or explanation may guide selected method or work-planning moves named by value; recover the project-side FPF kind and reference named by value for any selected-method, work-plan, work-occurrence, result, evidence, gate, or engineering-justification claim, and keep the `E.18.1` carry-through structure separate from those typed values.
+- **P2W publication as work occurrence.** A principle scheme, functional diagram, scenario, screen, or explanation may guide selected method or work-planning uses named by value; recover the project-side FPF kind and reference named by value for any selected-method, work-plan, work-occurrence, result, evidence, gate, or engineering-justification claim, and keep the `E.18.1` carry-through structure separate from those typed values.
 - **Source candidate or display as work source.** A dashboard tile, credential display, copied approval, generated explanation, provenance label, command-like cue, or composed source chain is only a source candidate until `A.15.4` recovers the project-side kind and reference named by value needed for the work or reliance claim under repair.
 
 ### A.15:9 - Consequences
@@ -21516,17 +21558,18 @@ For visible credential, provenance, dashboard, explanation, or composed-source c
 The nearest recovery loci are the manufacturing, peer-review, rollout briefing, `CC-A15-7`, `CC-A15-10`, `CC-A15-12`, and the boundary to `A.15.4`. If a SoTA row cannot be recovered through those local checks, do not let the source citation stand in for the local `A.15` rule.
 
 ### A.15:12 - Relations
+*   **Architecture method/work boundary:** `C.32.P2S` and `C.32.PAD` may cite method descriptions, pattern-use refs, responsible roles, readiness exits, and expected structure effects as architecturing or decision-output duties. `C.32.ADR` may publish those refs. A.15 still governs method, method description, work plan, work-entry readiness, performed work, and role enactment claims.
 
 *   **Directly applies:** `A.7 Strict Distinction` for the role, method, method-description, plan, and work split.
-*   **Builds upon:** `A.2` for `U.Role`, `A.2.1` for `U.RoleAssignment`, `A.2.2` for `U.Capability`, `A.2.5` for role-state admission, `A.2.7` for role relation structure, `A.6.5` for slot-relation discipline used by assignment and relation declarations, `A.3.1` for `U.Method`, `A.3.2` for `U.MethodDescription`, `A.3.3` for `U.Dynamics`, `A.3.4` for `U.Transformation`, `A.15.1` for `U.Work`, `A.15.2` for `U.WorkPlan`, and `A.15.3` for slot-filling plan items.
-*   **Coordinates with:** `A.15.4` for work-relevant source restoration; `E.10` and `E.10.ARCH` for source cue recovery around process, workflow, activity, schedule, algorithm, solver, and procedure wording; `A.6`, `A.6.B`, and `A.6.C` for mixed boundary, policy, API, schema, agreement-like, or promise wording; `A.10` for evidence, currentness, and provenance; `B.3` for assurance claims; `A.21` for `OperationalGate(profile)`, `GateDecision`, and `DecisionLogRef`; `A.20` for `ConstraintValidity` status or witness; `C.28` for causal-use admissibility; `C.29` for mathematical-lens use; `E.18.1` for P2W carry-through; and `E.17.EFP` for generated-explanation faithfulness or source-finding.
+*   **Builds upon:** `A.2` for `U.Role`, `A.2.1` for `U.RoleAssignment`, `A.2.2` for `U.Capability`, `A.2.5` for role-state admission, `A.2.7` for role relation structure, `A.6.5` for slot-relation discipline used by assignment and relation declarations, `A.3.1` for `U.Method`, `A.3.2` for `U.MethodDescription`, `A.3.3` for `U.Dynamics`, `A.3.4` for `U.Transformation`, `A.15.1` for `U.Work`, `A.15.2` for `U.WorkPlan`, `A.15.3` for slot-filling plan items, and `A.15.5` for work-entry readiness.
+*   **Coordinates with:** `A.15.4` for work-relevant source restoration; `A.15.5` for full-kit preparation and work-entry readiness; `E.10` and `E.10.ARCH` for source cue recovery around process, workflow, activity, schedule, algorithm, solver, and procedure wording; `A.6`, `A.6.B`, and `A.6.C` for mixed boundary, policy, API, schema, agreement-like, or promise wording; `A.10` for evidence, currentness, and provenance; `B.3` for assurance claims; `A.21` for `OperationalGate(profile)`, `GateDecision`, and `DecisionLogRef`; `A.20` for `ConstraintValidity` status or witness; `C.28` for causal-use admissibility; `C.29` for mathematical-lens use; `E.18.1` for P2W carry-through; `C.32.P2S` for architecturing flow refs to method, work plan, readiness, and performed work; and `E.17.EFP` for generated-explanation faithfulness or source-finding.
 *   **Used by:** patterns that need to keep systems or acting holons with role assignments, method descriptions, work plans, work occurrences, result records, and source-restoration claims distinct. A.15 is not a generic process ontology, workflow engine, evidence graph, gate pattern, or publication pattern.
 
 ### A.15:12a - Coordinated-work evidence and distributed-state relation note
 
 Use A.15 first when the claim is about who acts, by which method, under which role, under which work plan, producing which work result. Coordinated work, routine skill, team alignment, tacit knowledge, and role-method fit are not quantum-like by default.
 
-Application moves:
+Application choices:
 
 1. Name the role, method, and work result before naming any distributed state.
 2. State which work traces, records, events, observations, reports, metrics, `U.Work` occurrences, or `RoleEnactmentFact` records make the coordination visible.
@@ -21559,9 +21602,9 @@ Useful outputs:
 
 ### A.15:12c - P2W Work-Family Split
 
-When a P2W use under `E.18.1` produces a `WorkPlanning` relation, this family carries the split among selected method, `U.WorkPlan`, `SlotFillingsPlanItem`, performed `U.Work`, and result-related records. A P2W principle scheme, functional diagram, or scenario may guide method inspection and work-planning preparation only after the current work-family object is named.
+When a P2W use under `E.18.1` produces a `WorkPlanning` or work-entry readiness relation, this family carries the split among selected method, `U.WorkPlan`, `SlotFillingsPlanItem`, `WorkEntryReadiness@Context`, performed `U.Work`, and result-related records. A P2W principle scheme, functional diagram, or scenario may guide method inspection and work-planning preparation only after the current work-family object is named.
 
-WorkPlanning may place evidence-reference hooks and source-currentness requests for the governing pattern that carries the relation under repair. If the relation under repair is evidence, gate passage, launch-value finalization, performed work, result measurement, assurance, or refresh, name that relation before relying on the work-planning record.
+WorkPlanning may place evidence-reference hooks and source-currentness requests for the governing pattern that carries the relation under repair. `A.15.5` may cite WorkPlan and SlotFillingsPlanItem baselines when readiness is the current relation. If the relation under repair is evidence, gate passage, launch-value finalization, performed work, result measurement, assurance, or refresh, name that relation before relying on the work-planning or readiness record.
 
 ### A.15:12d - P2W Performed-Work Relation
 
@@ -21577,9 +21620,9 @@ If the same phrase also raises connected artifacts, telemetry, acceptance record
 
 ### A.15:12f - Lowering, Repair, and Refresh Conditions
 
-Lower an `A.15` claim when the role, holder, bounded context, method, method description, work plan, performed work occurrence, or capability check cannot be named at the granularity required by the next work move. A weaker but admissible result is a separation note, source-gap note, source-restoration request, decision-request record for the next decision, or prospective work-plan entry.
+Lower an `A.15` claim when the role, holder, bounded context, method, method description, work plan, work-entry readiness relation, performed work occurrence, or capability check cannot be named at the granularity required by the next work-family use. A weaker but admissible result is a separation note, source-gap note, source-restoration request, decision-request record for the next decision, prospective work-plan entry, or `A.15.5` readiness-gap note.
 
-Repair the local alignment frame when a subsequent source shows that the role assignment, method description, work-plan baseline, performed-work occurrence, capability threshold, status-currentness record, or source-currentness window was wrong for the claimed move. Repair only the changed relation: do not rewrite the method when only the work plan changed, do not rewrite the work occurrence when only the evidence relation changed, and do not treat a source-restoration request as carrying a non-A.15 claim.
+Repair the local alignment frame when a subsequent source shows that the role assignment, method description, work-plan baseline, performed-work occurrence, capability threshold, role-state currentness record, or source-currentness window was wrong for the claimed use. Repair only the changed relation: do not rewrite the method when only the work plan changed, do not rewrite the work occurrence when only the evidence relation changed, and do not treat a source-restoration request as carrying a non-A.15 claim.
 
 Refresh the `A.15` use before relying on it across a new context, new role assignment, new method family, new work plan, new execution window, new result measurement, or new evidence, assurance, gate, source-restoration, or mathematical-lens relation. If the issue under repair after refresh is no longer role-method-work alignment, use the governing pattern for that relation and keep only the remaining `A.15` separation here.
 
@@ -21614,7 +21657,7 @@ Refresh the `A.15` use before relying on it across a new context, new role assig
 
 **What this buys.** One dated occurrence record that keeps performer, role assignment, enacted method, method-description source, time window, affected referent, resources, outcome, evidence relation, and repair boundary inspectable.
 
-**Not this pattern when.** Not this pattern when the current claim is only a method (`A.3.1`), only a method description (`A.3.2`), only a plan or schedule (`A.15.2`), only a `SlotFillingsPlanItem` (`A.15.3`), only a visible source cue that needs source restoration before reliance (`A.15.4`), only evidence or assurance (`A.10` or `B.3`), only publication-use behavior (`E.17`), or only a declarative representation overread as a work-control or method claim (`C.2.P.DR` or the direct representation pattern).
+**Not this pattern when.** Not this pattern when the current claim is only a method (`A.3.1`), only a method description (`A.3.2`), only a plan or schedule (`A.15.2`), only a `SlotFillingsPlanItem` (`A.15.3`), only work-entry readiness or full-kit preparation before work entry (`A.15.5`), only a visible source cue that needs source restoration before reliance (`A.15.4`), only evidence or assurance (`A.10` or `B.3`), only publication-use behavior (`E.17`), or only a declarative representation overread as a work-control or method claim (`C.2.P.DR` or the direct representation pattern).
 
 ### A.15.1:1 - Problem Frame
 
@@ -21675,11 +21718,13 @@ When you describe a Work instance in a review, answer these prompts:
 | The **assignment** ("who is being what")     | **`U.Role` value plus `U.RoleAssignment` relation** | Can be reassigned without changing the system?                  |
 | The **ability** (“can do within bounds”)      | **Capability**         | Would remain even if not assigned?                             |
 | The **dated occurrence** with logs, resources | **Work**               | Did it happen at (t₀, t₁), consume resources, produce outcomes? |
-| The **state change observed for this occurrence** | **Work.Δ**             | Did the referent move from pre→post on the declared state-plane? |
+| The **state change observed for this occurrence** | **Work.Δ**             | Did the referent change from pre→post on the declared state-plane? |
 
 #### A.15.1:4.4 - Publication-use boundary for `U.Work`
 
 A `U.Work` publication projects an already declared work occurrence; it does not create the occurrence, add run-time facts, or make a plan, source reconstruction, dashboard, or publication face count as performed work.
+
+Preparation work is `U.Work` only when preparation has actually occurred and has its own performer, method, time window, affected referent, resources, and outcome. The readiness relation that asks whether intended work is ready enough to enter a work boundary is `WorkEntryReadiness@Context` under `A.15.5`; a readiness label, full-kit checklist, or launch-looking cue is not a performed occurrence.
 
 | Publication-use pressure | Work-local rule |
 |---|---|
@@ -21951,7 +21996,7 @@ When a Work is recorded, perform these **three quick checks**:
 ### A.15.1:11 - Common Anti-Patterns and How to Avoid Them
 
 * **"The log is the performed run."** Dumping telemetry without occurrence references (method-description source when current, performer, time window, affected referent, context) -> **Not Work**. Create a work-occurrence record and link the log as evidence.
-* **Record-only transforms.** ETL or replication of records with no declared affected referent (product or dataset as product) -> **Not Work** in this context; either declare the dataset as the product referent or move it to `U.WorkPlan` or the relevant operations pattern.
+* **Record-only transforms.** ETL or replication of records with no declared affected referent (product or dataset as product) -> **Not Work** in this context; either declare the dataset as the product referent or treat the material under `U.WorkPlan` or the relevant operations pattern.
 * **Silent cross‑context acceptance.** “Ops accepted it, so audit accepts it.” → Add a **Bridge** or re‑judge in audit context.
 * **Method-description edition drift in mid-run.** Swapping SOP v5->v6 without recording -> split into episodes or record method-description override.
 * **Budget on the method.** Charging costs to Method or Role -> Book **only** to Work; keep estimates in method descriptions or plans.
@@ -21959,7 +22004,7 @@ When a Work is recorded, perform these **three quick checks**:
 * **Union-hull confusion.** Changing KPI coverage silently between reports -> declare `Γ_time` policy per KPI.
 * **Double‑count in overlaps.** Summing child and parent resource ledgers → Declare and apply an overlap policy.
 
-### A.15.1:12 - Existing work-log repair moves
+### A.15.1:12 - Existing work-log repair applications
 
 1. **Backfill links.** For existing logs, create work-occurrence records and attach `enactsMethod`, `methodDescriptionRef` when current, and `performedBy`.
 2. **Name the context.** Pick the judgement context explicitly; add Bridges if multiple contexts accept.
@@ -21986,7 +22031,7 @@ When a Work is recorded, perform these **three quick checks**:
 
 **SoTA alignment rule.** A source tradition counts here only when it preserves the local `U.Work` distinction: dated occurrence, role-assigned performer, enacted method, method-description source when current, time window, affected referent, resources, outcome, and evidence-provenance relation. Historical occurrence modeling is used as lineage only when a current standard or current practice still needs the same distinction.
 
-| Source tradition | Current source reference and status | Local invariant adopted | Shortcut rejected |
+| Source tradition | Current source reference and source maturity | Local invariant adopted | Shortcut rejected |
 | --- | --- | --- | --- |
 | Occurrent and 4D occurrence ontology | ISO/IEC 21838-2:2021 / BFO 2020; BORO-style extensionalism used as historical lineage for identity criteria. | `U.Work` is an occurrence with temporal extent and occurrence references; parts, retries, resumptions, and overlaps stay explicit. | Treating a method factor, diagram, role label, or log entry as proof of a performed occurrence. |
 | Object-centric event logging and process mining | OCEL 2.0 Specification (2024) and object-centric process-mining practice. | Event records can enter an evidence or provenance relation for work only after they are bound to involved objects, performer or role-assignment relation, method, time window, context, and affected referent. | Treating telemetry or event rows alone as `U.Work`. |
@@ -21997,7 +22042,7 @@ When a Work is recorded, perform these **three quick checks**:
 ### A.15.1:14 - Relations
 
 * **Builds on:** A.1 Holonic Foundation; A.1.1 `U.BoundedContext`; **U.System**; A.2 `U.Role`; A.2.1 `U.RoleAssignment`; A.2.2 `U.Capability`; A.3.1 `U.Method`; A.3.2 `U.MethodDescription`.
-* **Coordinates with:** A.15 Role-Method-Work Alignment (the "four-slot grammar"); B.1 Gamma (aggregation) for resource and time operators; `E.10` and `E.10.ARCH` for source cues such as process, workflow, activity, schedule, algorithm, solver, and procedure; `A.10`, `B.3`, `E.17`, and `A.15.4` when evidence, assurance, publication-use, or source-restoration claims are being made.
+* **Coordinates with:** A.15 Role-Method-Work Alignment (the "four-slot grammar"); B.1 Gamma (aggregation) for resource and time operators; `E.10` and `E.10.ARCH` for source cues such as process, workflow, activity, schedule, algorithm, solver, and procedure; `A.10`, `B.3`, `E.17`, and `A.15.4` when evidence, assurance, publication-use, or source-restoration claims are being made; `A.15.5` when readiness or full-kit preparation is current before performed work; `C.32.P2S` when performed work realizes or inspects selected structures in an architecturing flow.
 * **Informs:** reporting and KPI patterns; assurance and evidence patterns (Work as the reference occurrence for audits); scheduling patterns (`U.WorkPlan` -> `U.Work` deltas).
 
 ### A.15.1:15 - Didactic quick cards
@@ -22013,11 +22058,11 @@ When a Work is recorded, perform these **three quick checks**:
 
 When `E.18.1` reaches performed work, `U.Work` states the dated occurrence: performer, method-description source, parameters, resources, time window, pre-state, post-state, outputs, outcome, and audit trace.
 
-A `U.Work` occurrence may cite a `U.WorkPlan` or `SlotFillingsPlanItem` as planned baseline. The performed-work record states launch values, performed values, substitutions, variance, telemetry, and result-related records; comparator, transport, `PrincipleFrame`, evidence, assurance, and gate claims are separate current relations when the carry-through record names them.
+A `U.Work` occurrence may cite a `U.WorkPlan`, `SlotFillingsPlanItem`, or prior `WorkEntryReadiness@Context` as planned baseline or pre-entry context. The performed-work record states launch values, performed values, substitutions, variance, telemetry, and result-related records; comparator, transport, `PrincipleFrame`, evidence, assurance, gate, and readiness claims are separate current relations when the carry-through record names them.
 
 ### A.15.1:16 - Lowering, Repair, and Refresh Conditions
 
-Lower a candidate `U.Work` claim when performer, enacted method, method-description source when current, time window, `executedWithin`, affected referent, parameter bindings, resources, outcome, or state-change witness cannot be named at the granularity required by the next work move. The acceptable lowered record is a plan note, evidence note, source-gap note, source-restoration request, or method-description reference, not a backdated work occurrence.
+Lower a candidate `U.Work` claim when performer, enacted method, method-description source when current, time window, `executedWithin`, affected referent, parameter bindings, resources, outcome, or state-change witness cannot be named at the granularity required by the next performed-work use. The acceptable lowered record is a plan note, readiness-gap note, evidence note, source-gap note, source-restoration request, or method-description reference, not a backdated work occurrence.
 
 Repair the work record when a subsequent source changes the work interval, performer, role assignment, enacted method, method-description edition, parameter binding, resource ledger, outcome, affected referent, state-plane reference, pre-state reference, post-state reference, overlap policy, or aggregation policy. Repair only the changed relation: do not rewrite the method when only evidence changed, do not rewrite evidence when only work time changed, and do not convert a plan or source-restoration request into work.
 
@@ -22033,14 +22078,14 @@ Refresh before cross-context acceptance, aggregation, comparison, result measure
 
 **At a glance.** Use `U.WorkPlan` when the current claim is intended work: horizon, planned window, intended role requirements, planned constraints, resource budgets, dependencies, acceptance targets, and baselines for subsequent variance against performed `U.Work`.
 
-**Use this when.** Use this pattern when a schedule, calendar, rota, Kanban ticket, Gantt bar, shift plan, rollout plan, reservation, planning cue, or P2W preparation note is being treated as a method, method description, performed work, evidence, approval, gate result, publication cue, query-plan representation, or database query-optimizer representation. `U.WorkPlan` is an episteme for intended `U.Work`; it can coordinate action, but it does not make work happen.
+**Use this when.** Use this pattern when a schedule, calendar, rota, Kanban ticket, Gantt bar, shift plan, rollout plan, reservation, planning cue, or P2W preparation note is being treated as a method, method description, performed work, evidence, approval, gate result, publication cue, query-plan representation, or database query-optimizer representation. `U.WorkPlan` is an episteme for intended `U.Work`; it can coordinate intended work, but it does not make work happen.
 
-**First output.** One plan record or `PlanItem` naming horizon, cadence, target `U.Method`, method-description source when current, planned window, intended role requirements or proposed `U.RoleAssignment`, planned constraints, resource budgets, dependencies, acceptance targets, planned baseline, and the variance relation expected when `U.Work` occurs.
+**First output.** One plan record or `PlanItem` naming horizon, cadence, target `U.Method`, method-description source when current, planned window, intended role requirements or proposed `U.RoleAssignment`, planned constraints, resource budgets, dependencies, acceptance targets, planned preparation or full-kit tasks when current, planned baseline, and the variance relation expected when `U.Work` occurs.
 
 **First-use checks.**
 1. Name the intended work occurrence or work family that needs planning.
 2. Recover target method, method-description source when current, planned window, role requirements, planned resources, dependencies, acceptance targets, baseline, and context.
-3. Decide whether the encountered record, cue, or plan element is a `U.WorkPlan`, a method description, performed `U.Work`, a `SlotFillingsPlanItem`, evidence, gate claim, source-restoration case, publication-use cue, or declarative representation.
+3. Decide whether the encountered record, cue, or plan element is a `U.WorkPlan`, a method description, performed `U.Work`, a `SlotFillingsPlanItem`, `WorkEntryReadiness@Context`, evidence, gate claim, source-restoration case, publication-use cue, or declarative representation.
 4. Declare `PlanItem` decomposition, dependency relation, and planned-baseline policy before using the plan for coordination or variance.
 5. When work occurs, connect the `U.Work` record back to the `PlanItem` and record variance rather than rewriting the plan as if it had happened.
 
@@ -22054,7 +22099,7 @@ Refresh before cross-context acceptance, aggregation, comparison, result measure
 
 **What this buys.** One intended-work record that keeps horizon, window, intended role requirements, constraints, budgets, dependencies, acceptance targets, baseline, and subsequent variance against performed `U.Work` inspectable.
 
-**Not this pattern when.** Not this pattern when the current claim is a dated performed work occurrence (`A.15.1`), a `SlotFillingsPlanItem` (`A.15.3`), a visible source cue needing work-relevant restoration (`A.15.4`), a method (`A.3.1`), a method description (`A.3.2`), evidence or assurance (`A.10` or `B.3`), a gate or constraint decision (`A.20` or `A.21`), publication-use behavior (`E.17`), or a declarative representation overread as a work-control or method claim (`C.2.P.DR`).
+**Not this pattern when.** Not this pattern when the current claim is a dated performed work occurrence (`A.15.1`), a `SlotFillingsPlanItem` (`A.15.3`), work-entry readiness or full-kit condition (`A.15.5`), a visible source cue needing work-relevant restoration (`A.15.4`), a method (`A.3.1`), a method description (`A.3.2`), evidence or assurance (`A.10` or `B.3`), a gate or constraint decision (`A.20` or `A.21`), publication-use behavior (`E.17`), or a declarative representation overread as a work-control or method claim (`C.2.P.DR`).
 
 ### A.15.2:1 - Context (plain‑language motivation)
 
@@ -22105,7 +22150,7 @@ A `U.WorkPlan` **contains `PlanItem` values** (think: scheduled tasks or operati
 3. **Role requirements** — required `U.Role` values, not people; optional proposed `U.RoleAssignment`s if pre-assignment is admitted in the context.
 4. **Capability thresholds** — minimal abilities required of the performer, checked for the performed-work interval.
 5. **Resource budgets and reservations** — planned energy, materials, machine windows, money, and reservations on assets.
-6. **Dependencies** — precedence, overlap permissions, required gate references, and required approval references.
+6. **Dependencies** — precedence, overlap constraints, required gate references, and required approval references.
 7. **Acceptance targets** — quality windows and SLA targets to be judged when Work completes.
 8. **Location and asset constraints** — where the run is expected to take place.
 9. **Links to Service promises** (if any) — external commitments that this plan aims to satisfy.
@@ -22202,7 +22247,7 @@ Use this as a human-facing checklist (not a rigid schema):
 ### A.15.2:7 - Scope Declaration and Rationale
 
 * **Applicability:** Use the same intended-work test for coordination, budgeting, architecture planning, teaching examples, and source or evidence questions; when the current claim is performed work, evidence, assurance, publication-use, source restoration, or declarative representation, apply the governing pattern for that claim.
-* **Scope declaration:** Universal; meanings of windows, budgets, and permissions are **context-local** via `U.BoundedContext`.
+* **Scope declaration:** Universal; meanings of windows, budgets, constraints, and authorization references are **context-local** via `U.BoundedContext`.
 * **Rationale:** Elevates **planning and scheduling** to a first-class episteme that coordinates Methods, `U.RoleAssignment`s, and Work without conflation.
 
 ### A.15.2:7a - Conformance Checklist
@@ -22216,6 +22261,7 @@ Use this as a human-facing checklist (not a rigid schema):
 | CC-A15.2-5 | `PlanItem` decomposition does not force the same shape on performed work. | Fulfilment and variance relations explain split, consolidated, emergency, or substituted work. |
 | CC-A15.2-6 | Cross-context planning names bridges before reusing planned windows, budgets, or acceptance targets across contexts. | Audit, regulatory, operations, and delivery contexts can judge the plan without hidden equivalence. |
 | CC-A15.2-7 | Evidence, assurance, gate, launch-value, and result-measurement claims stay in the patterns that govern those relations. | The WorkPlan may state evidence-reference notes or requests, but it does not become evidence, assurance, gate passage, or result measurement. |
+| CC-A15.2-8 | Planned preparation or full-kit tasks may appear in the WorkPlan, but `WorkEntryReadiness@Context` is governed by `A.15.5`. | The plan may say what should be prepared; it does not decide readiness for work entry by itself. |
 
 ### A.15.2:7b - Common Anti-Patterns and How to Avoid Them
 
@@ -22224,7 +22270,7 @@ Use this as a human-facing checklist (not a rigid schema):
 - **Assignment-by-plan.** Do not treat an intended performer in the plan as a `U.RoleAssignment` satisfying the governing role, holder, and bounded-context constraints for the work interval; validate assignment when the work occurrence is prepared or recorded.
 - **Budget-as-cost.** Do not book planned budgets as actual resource use; actuals belong to `U.Work`.
 - **Plan-shape overreach.** Do not force performed work to match plan decomposition; use fulfilment and variance relations.
-- **Evidence-note-as-claim.** Do not treat evidence-reference notes, gate-preparation notes, or source-currentness requests as evidence, gate passage, assurance, or release permission.
+- **Evidence-note-as-claim.** Do not treat evidence-reference notes, gate-preparation notes, or source-currentness requests as evidence, gate passage, assurance, or release authorization.
 
 ### A.15.2:7c - Consequences
 
@@ -22233,7 +22279,7 @@ Use this as a human-facing checklist (not a rigid schema):
 | Plans become inspectable without being confused with performed work. | More explicit records; mitigate by using compact `PlanItem` values for ordinary coordination. |
 | Variance becomes meaningful because planned baseline and performed work stay separate. | Requires discipline around baselines; keep baseline and version visible on the plan. |
 | Cross-role and cross-context coordination becomes safer. | Requires bridge checks when contexts differ; name only the bridge needed for the planned use. |
-| P2W carry-through can prepare work without pretending work already happened. | Use `A.15.1`, `A.15.3`, `A.15.4`, `A.10`, `B.3`, `A.20`, or `A.21` only when the performed-work, planned-baseline, source-restoration, evidence, assurance, gate, or constraint relation becomes current. |
+| P2W carry-through can prepare work without pretending work already happened. | Use `A.15.1`, `A.15.3`, `A.15.4`, `A.15.5`, `A.10`, `B.3`, `A.20`, or `A.21` only when the performed-work, planned-baseline, source-restoration, work-entry readiness, evidence, assurance, gate, or constraint relation becomes current. |
 
 ### A.15.2:7d - SoTA Alignment
 
@@ -22247,12 +22293,14 @@ Use this as a human-facing checklist (not a rigid schema):
 ### A.15.2:7e - Relations
 
 * **Builds on:** `A.15` Role-Method-Work Alignment, `A.15.1` `U.Work`, `A.2.1` `U.RoleAssignment`, `U.Method`, and `U.MethodDescription`.
-* **Coordinates with:** `A.15.3` for `SlotFillingsPlanItem` values, `A.15.4` for work-relevant source restoration, `A.10` for evidence-provenance relations, `B.3` for assurance, `A.20` and `A.21` for gates and constraint decisions, and `E.17` for publication-use questions.
-* **Used by:** P2W carry-through when principle-to-work reasoning reaches WorkPlanning and keeps plan, performed work, evidence, gate, and result-measurement relations separate.
+* **Coordinates with:** `A.15.3` for `SlotFillingsPlanItem` values, `A.15.4` for work-relevant source restoration, `A.15.5` for work-entry readiness and full-kit preparation, `A.10` for evidence-provenance relations, `B.3` for assurance, `A.20` and `A.21` for gates and constraint decisions, `C.32.P2S` for architecturing-flow refs to intended work that realizes selected structures, and `E.17` for publication-use questions.
+* **Used by:** P2W carry-through when principle-to-work reasoning reaches WorkPlanning, and P2S carry-through when architecture-selected structures require intended work records. Both uses keep plan, work-entry readiness, performed work, evidence, gate, and result-measurement relations separate.
 
 ### A.15.2:8 - P2W WorkPlanning Use Relation
 
 When `E.18.1` reaches WorkPlanning, `U.WorkPlan` states intended work occurrences, planned windows, intended role requirements, planned constraints, resource budgets, acceptance targets, evidence-reference notes, source-currentness requests, and `PlanItem` values.
+
+When the P2W use also needs a readiness question, the WorkPlan may supply target PlanItems, planned preparation tasks, reservations, and planned baselines. `A.15.5` carries the `WorkEntryReadiness@Context` relation that judges full-kit condition, commitment disposition, resource readiness, WIP or flow policy, and launch-gate refs when those are current.
 
 If the same P2W source material also makes a performed-work, launch-value, evidence, gate, result, measurement, publication-use, source-restoration, or refresh claim, write that meaning as a separate current relation before using the plan.
 
@@ -22262,11 +22310,11 @@ For P2W use, `U.WorkPlan` may state planned values, planned fillers, constraints
 
 ### A.15.2:10 - Lowering, Repair, and Refresh Conditions
 
-Lower a candidate `U.WorkPlan` claim when horizon, planned window, target method, method-description source when current, role requirement, planned constraint, resource budget, dependency, acceptance target, or baseline cannot be named at the granularity required by the next planning move. The acceptable lowered result is a planning cue, method-description note, source-gap note, source-restoration request, publication-use cue, declarative-representation note, or evidence-reference note, not a conforming WorkPlan.
+Lower a candidate `U.WorkPlan` claim when horizon, planned window, target method, method-description source when current, role requirement, planned constraint, resource budget, dependency, acceptance target, or baseline cannot be named at the granularity required by the next planning use. The acceptable lowered result is a planning cue, method-description note, source-gap note, source-restoration request, publication-use cue, declarative-representation note, readiness-gap note for `A.15.5`, or evidence-reference note, not a conforming WorkPlan.
 
 Repair the WorkPlan when a subsequent source changes the intended method, planned window, role requirement, planned resource budget, dependency, acceptance target, baseline, version, bridge, or exception policy. Repair the plan; do not rewrite performed `U.Work` unless the work record itself changed, and do not make the repaired plan into evidence that the work occurred.
 
-Refresh before relying on a WorkPlan for cross-context coordination, budget reservation, release preparation, gate preparation, evidence-reference use, performed-work entry, result measurement, or P2W carry-through. If the claim being made after refresh is performed work, evidence, assurance, gate passage, publication use, declarative representation, or source restoration, use the governing pattern for that relation and keep only the returned WorkPlan relation here.
+Refresh before relying on a WorkPlan for cross-context coordination, budget reservation, release preparation, gate preparation, work-entry readiness, evidence-reference use, performed-work entry, result measurement, or P2W carry-through. If the claim being made after refresh is work-entry readiness, performed work, evidence, assurance, gate passage, publication use, declarative representation, or source restoration, use the governing pattern for that relation and keep only the returned WorkPlan relation here.
 
 ### A.15.2:End
 
@@ -22275,19 +22323,19 @@ Refresh before relying on a WorkPlan for cross-context coordination, budget rese
 > **Tech-name:** `SlotFillingsPlanItem`
 > **Plain-name:** planned slot-fillings baseline item
 > **Short code:** `SFPI`
-> **Pattern type:** Definitional WorkPlanning pattern
+> **Type:** Definitional WorkPlanning pattern
 > **Status:** Stable
 > **Normativity:** Normative unless explicitly marked informative
 > **Placement:** Part A -> A.15 work family
-> **Builds on:** `A.15.2 U.WorkPlan`, `A.15.1 U.Work`, `A.6.5 U.RelationSlotDiscipline`, `E.10.D2`, `E.17`, `E.18.1`, and `E.20`
-> **Used by:** P2W work-planning slices, suite or kit planned baselines, Part G planned-baseline references, and performed-work variance records
+> **Builds on:** `A.15.2 U.WorkPlan`, `A.15.1 U.Work`, `A.6.5 U.RelationSlotDiscipline`, `E.10.D2`, `E.17`, `E.18.1`, `E.20`, and `E.24`
+> **Used by:** P2W work-planning slices, suite or kit planned baselines, work-entry readiness checks, Part G planned-baseline references, and performed-work variance records
 > **One-line purpose:** name one planned baseline item that states which planned fillers are intended for which SlotKinds of one slot-bearing description before performed work occurs.
 
 **At a glance.** Use `SlotFillingsPlanItem` when a `U.WorkPlan` needs more than a date, budget, or intended method: it needs a reproducible planned baseline saying which planned fillers are intended for one slot-bearing description's SlotKinds.
 
-**Use this when.** Use this pattern when a P2W or work-planning slice needs planned references, policy pins, method-description refs, edition pins, evidence-reference pins, guard-preparation refs, or crossing-policy refs to stay fixed before performed `U.Work`.
+**Use this when.** Use this pattern when a P2W, work-planning, or work-entry-readiness slice needs planned references, policy pins, method-description refs, edition pins, evidence-reference pins, guard-preparation refs, or crossing-policy refs to stay fixed before performed `U.Work`.
 
-**First output.** One `SlotFillingsPlanItem` naming exactly one `target_slot_bearing_description_ref`, one `bounded_context_ref`, the EntityOfConcern under planning, a time selector or time rule, authoritative planned-filling rows, and any guard-preparation, evidence-reference, edition, or crossing-policy refs needed before performed work.
+**First output.** One `SlotFillingsPlanItem` naming exactly one `target_slot_bearing_description_ref`, one `bounded_context_ref`, the EntityOfConcern under planning, a time selector or time rule, authoritative planned-filling rows, and any guard-preparation, evidence-reference, readiness-preparation, edition, or crossing-policy refs needed before performed work.
 
 **Working use order.**
 
@@ -22301,13 +22349,13 @@ Refresh before relying on a WorkPlan for cross-context coordination, budget rese
 
 **Reliance-bearing use.** Use the fuller record when reproducibility, launch-guard preparation, crossing expectations, suite or kit reuse, Part G universalization, publication-view projection, or P2W carry-through depends on the baseline.
 
-**Stop condition.** Stop once the planned rows are explicit enough for the work-planning move, or lower the claim to a plan cue, source-gap note, relation governed by another FPF pattern, or blocked kind-definition gap without claiming a conforming planned baseline.
+**Stop condition.** Stop once the planned rows are explicit enough for the work-planning use, or lower the claim to a plan cue, source-gap note, relation governed by another FPF pattern, or blocked kind-definition gap without claiming a conforming planned baseline.
 
 **What goes wrong if missed.** Teams hide planned choices in mechanism prose, suite descriptions, generated cards, "latest" references, local checklists, or execution logs. Later nobody can tell what was planned, what was performed, which edition changed, or which variance belongs to performed work.
 
 **What this buys.** A small planned-baseline record that lets later performed work cite the intended slot fillings and record variance without rewriting the plan after the fact.
 
-**Not this pattern when.** Not this pattern when the current claim is the slot-bearing description itself (`A.6.5` plus the governing description pattern), a mechanism definition (`A.6.1` or `E.20`), a performed work occurrence (`A.15.1`), an ordinary work plan without slot-filling rows (`A.15.2`), evidence or assurance (`A.10` or `B.3`), a gate or constraint decision (`A.20` or `A.21`), publication-use behavior (`E.17`), or a declarative representation overread as work control (`C.2.P.DR`).
+**Not this pattern when.** Not this pattern when the current claim is the slot-bearing description itself (`A.6.5` plus the governing description pattern), a mechanism definition (`A.6.1` or `E.20`), a performed work occurrence (`A.15.1`), an ordinary work plan without slot-filling rows (`A.15.2`), work-entry readiness or full-kit condition (`A.15.5`), evidence or assurance (`A.10` or `B.3`), a gate or constraint decision (`A.20` or `A.21`), publication-use behavior (`E.17`), or a declarative representation overread as work control (`C.2.P.DR`).
 
 ### A.15.3:1 - Context
 
@@ -22345,6 +22393,44 @@ Without an explicit `SlotFillingsPlanItem`, six failures recur:
 | Audit and improvement | Later work needs a stable planned baseline so variance can be attributed and improved. |
 
 ### A.15.3:4 - Solution
+
+#### A.15.3:4.0 - Planned slot-filling ontic
+
+`A.15.3` governs the planned slot-filling ontic: a bounded planning relation in which one `U.WorkPlan.PlanItem` states which planned fillers are intended for which SlotKinds of one slot-bearing description before performed work occurs.
+
+Keep three levels distinct:
+
+- the planned slot-filling ontic: the E.24 ontic-level SlotRelation architecture for planned fillers of SlotKinds before performed work;
+- `SlotFillingsPlanItem`: one filled `U.WorkPlan.PlanItem` value over that ontic for one bounded planning use;
+- a card, table, view, schema, checklist, or document that publishes or projects a `SlotFillingsPlanItem` value.
+
+By E.24 and E.24.UK, this is not an ontic without a kind settlement. The selected settlement reuses the root `U.WorkPlan` U-kind and admits `SlotFillingsPlanItem` as a dependent durable plan-item U-kind within `U.WorkPlan`; its filled instances are values inside a `U.WorkPlan`. The planned slot-filling ontic is the ontic-level SlotRelation that gives that dependent U-kind its identity and filler discipline. It does not introduce an independent root U-kind, a C.3 subkind claim, or a publication form. The stable identity is the planned-baseline relation among one work plan, one target slot-bearing description edition, one EntityOfConcern, one bounded context, one time selector or time rule when required, and one planned-filling row set. Changing the planned baseline before work creates a new PlanItem edition or a new PlanItem; performed-work variance does not rewrite the cited baseline.
+
+The ontic keeps these objects distinct:
+
+- `SlotFillingsPlanItem`: the dependent plan-item U-kind in this settlement; a filled value lives inside a `U.WorkPlan`, and the dependent U-kind does not introduce an independent root U-kind, the ontic-level SlotRelation itself, or a second slot ontology.
+- `target_slot_bearing_description_ref`: the Description episteme whose SlotSpecs supply the SlotKinds being planned.
+- `planned_fillings[]`: the row set that connects each selected SlotKind to a planned filler, filler mode, and edition pin when current.
+- preparation refs: guard, evidence-reference, crossing-policy, time, context, or source-currentness refs that prepare later work without becoming evidence, a gate decision, or performed work.
+- performed-work variance relation: the later `U.Work`, gate, evidence, result, archive, or variance relation that states what happened against the cited baseline.
+
+Ontic-level `onticSlotRelation`:
+
+| Slot group | Required or optional-in-use | Filler discipline |
+| --- | --- | --- |
+| Plan identity | Required | `plan_item_id`, `kind = SlotFillingsPlanItem`, `work_plan_ref`, and optional `plan_item_edition`; governed by `A.15.2` and this pattern. |
+| Target slot-bearing description | Required | One Description episteme that exposes SlotSpecs; governed by the target description pattern and `A.6.5`. |
+| EntityOfConcern, context, and time | Required for a conforming baseline | `entity_of_concern_ref`, `bounded_context_ref`, and `time_selector_ref` or `time_rule_ref` when reproducibility, currentness, or comparison depends on time. |
+| Planned-filling rows | Required | Each row names a SlotKind from the target description, planned filler, ByValue or concrete RefKind mode, and edition pin when current; filler values keep their own governing patterns. |
+| Preparation refs | Optional-in-use | Guard, readiness-preparation, evidence-reference, crossing-policy, source-currentness, bridge, or refresh refs; they prepare later relations but do not become `WorkEntryReadiness@Context`, gate decisions, evidence sufficiency, crossings, or performed work. |
+| Derived projections | Optional-in-use | Cards, records, tables, views, indices, or summaries are E.17 publication or view-use projections; they are not the ontic and not row authority. |
+| Variance policy | Required for reliance-bearing use | Names how later `U.Work`, gate, evidence, result, archive, or variance relations cite the baseline and record substitutions, missing fillers, extra fillers, launch values, or edition changes. |
+
+A conforming instance fills only the slots that are current to the planning claim. Optional refs stay absent when the project does not rely on them. The open-world assumption is preserved: not writing an optional planned filler does not say that no such project value exists; it only says the current planned-baseline claim does not rely on it.
+
+Use this ontic whenever a suite, kit, comparison, selector, archive, refresh, work-entry-readiness check, or P2W carry-through needs project-specific editions, policy ids, evidence-reference pins, bridge ids, method-description refs, or other planned fillers. Use the neighboring governing pattern when the current object is mechanism meaning, comparison result, selection result, work-entry readiness, performed work, evidence, gate passage, publication-use, source-currentness, or refresh.
+
+This ontic is selected because dependent patterns need a shared settlement. Without it, suite, comparison, selector, archive, refresh, and P2W patterns would each invent a local baseline field, a local planned-pin phrase, or a local warning that planned values are not performed values. With this ontic, they cite `A.15.3` and keep their own EoC thin.
 
 #### A.15.3:4.1 - Definition
 
@@ -22405,8 +22491,8 @@ A conforming `SlotFillingsPlanItem` states these fields when the corresponding c
    - a pin ref is not evidence and does not create evidence sufficiency.
 
 8. **Crossing-preparation refs**
-   - optional refs for expected cross-context or cross-plane support, such as BridgeCard refs, policy-id refs, reference-plane refs, or already-published CrossingBundle baseline refs;
-   - these refs state expected crossing support only;
+   - optional refs for expected cross-context or cross-plane bridge or crossing relations, such as BridgeCard refs, policy-id refs, reference-plane refs, or already-published CrossingBundle baseline refs;
+   - these refs state expected bridge or crossing relations only;
    - they are not crossing witnesses, do not embed CL/Phi/Psi tables, and do not claim that a crossing occurred.
 
 9. **Authoritative planned-filling rows**
@@ -22543,7 +22629,7 @@ If the later work uses `ComparatorSpecRef:CG42-v4`, the work record states varia
 
 The pattern does not try to make every work plan heavy. Ordinary plans stay in A.15.2. A.15.3 opens only when slot-filling choices themselves are the planned baseline that later work, gates, evidence, or publication projections will rely on.
 
-The anti-bias guard is locality: if the current issue is mechanism meaning, evidence sufficiency, gate passage, source restoration, publication use, or performed work, use that governing pattern and bring only the returned planned-baseline relation back here.
+The anti-bias guard is locality: if the current issue is mechanism meaning, work-entry readiness, evidence sufficiency, gate passage, source restoration, publication use, or performed work, use that governing pattern and bring only the returned planned-baseline relation back here.
 
 ### A.15.3:7 - Conformance Checklist
 
@@ -22560,16 +22646,17 @@ The anti-bias guard is locality: if the current issue is mechanism meaning, evid
 | CC-A15.3-08 | preserves target SlotKind meaning. | The PlanItem chooses fillers; it does not redefine SlotKinds. |
 | CC-A15.3-09 | keeps guard-preparation refs separate from gate results. | Later gate passage is recorded under the gate pattern. |
 | CC-A15.3-10 | keeps evidence-reference pins separate from evidence-use. | Later evidence and assurance are governed by A.10, B.3, G.6, or the current evidence pattern. |
-| CC-A15.3-11 | keeps crossing-preparation refs separate from crossing witnesses. | Crossing refs cite expected Bridge, policy, reference-plane, or published-baseline support only; they do not embed CL/Phi/Psi tables or claim that a crossing occurred. |
+| CC-A15.3-11 | keeps crossing-preparation refs separate from crossing witnesses. | Crossing refs cite expected Bridge, policy, reference-plane, or published-baseline references only; they do not embed `CL`, `Phi`, or `Psi` tables or claim that a crossing occurred. |
 | CC-A15.3-12 | keeps launch values and actuals out of the plan. | Performed work records launch values, substitutions, and variance. |
 | CC-A15.3-13 | preserves cited baselines after work. | A changed plan becomes a new edition or new PlanItem; performed work records variance against the cited baseline. |
 | CC-A15.3-14 | gives lowering and refresh conditions. | Missing target description, exposed SlotKind set, context, time, RefKind, edition pin, guard ref, evidence pin, crossing-policy ref, or variance relation lowers or reopens the claim. |
+| CC-A15.3-15 | may be cited by `A.15.5` but does not decide readiness. | Readiness-preparation refs and planned fillers can be cited by `WorkEntryReadiness@Context`; the readiness relation is governed by `A.15.5`. |
 
 ### A.15.3:8 - Common Anti-Patterns and How to Avoid Them
 
 | Anti-pattern | Failure | Repair |
 | --- | --- | --- |
-| Plan-as-execution | The plan contains launch values, witnesses, decision logs, or actual fillers. | Move actuals to performed `U.Work`, gate, evidence, or result records; leave planned rows in A.15.3. |
+| Plan-as-execution | The plan contains launch values, witnesses, decision logs, or actual fillers. | Record actuals under performed `U.Work`, gate, evidence, or result records; leave planned rows in A.15.3. |
 | Latest-as-baseline | "Latest" is used where replay needs a pinned edition or time rule. | Add time selector and edition pins, or lower to a plan cue. |
 | View-as-baseline | A card, dashboard, or generated page becomes the row source. | Make the PlanItem rows authoritative and treat the view as E.17 projection. |
 | Mechanism-prose baseline | Suite or mechanism prose hides plan-instance choices. | Put suite meaning in the suite pattern and planned fillers in A.15.3. |
@@ -22584,7 +22671,7 @@ The anti-bias guard is locality: if the current issue is mechanism meaning, evid
 | Performed-work variance becomes attributable. | Teams preserve cited baselines rather than editing history. |
 | Suite and kit reuse becomes cleaner. | Specialized PlanItems may be needed, but only under the suite or kit governing pattern. |
 | Publication views remain affordable. | Views can be generated, but they are projections, not the planned rows themselves. |
-| P2W carry-through gets a stable planned-baseline relation. | P2W still does not prescribe a project method, work plan, or performed work; it only carries a recovered planned-baseline relation. |
+| P2W carry-through and work-entry readiness get a stable planned-baseline relation. | P2W and `A.15.5` still do not prescribe a project method, work plan, or performed work from the baseline alone; they only cite a recovered planned-baseline relation when current. |
 
 ### A.15.3:10 - Rationale
 
@@ -22605,13 +22692,15 @@ This split is especially useful in P2W and Part G work because many downstream r
 
 ### A.15.3:12 - Relations
 
-- **Builds upon:** `A.15.2` for `U.WorkPlan` and PlanItem discipline; `A.15.1` for performed `U.Work`; `A.6.5` for SlotKind, ValueKind, RefKind, and SlotSpec discipline; `E.10.D2` for EntityOfConcern vs Description episteme vs specification-use; `E.17` for publication-use and view-use projection; `E.18.1` for P2W carry-through; `E.20` for mechanism-introduction boundaries.
-- **Coordinates with:** `A.20` and `A.21` for gates and constraint decisions; `A.10`, `B.3`, and `G.6` for evidence, assurance, and provenance; `C.27.TA` and `G.11` for currentness and refresh; Part G patterns when planned baselines are used by kits, packs, or refresh plans.
+- **Builds upon:** `A.15.2` for `U.WorkPlan` and PlanItem discipline; `A.15.1` for performed `U.Work`; `A.6.5` for SlotKind, ValueKind, RefKind, and SlotSpec discipline; `E.24` for ontic introduction and slot-relation discipline; `E.10.D2` for EntityOfConcern vs Description episteme vs specification-use; `E.17` for publication-use and view-use projection; `E.18.1` for P2W carry-through; `E.20` for mechanism-introduction boundaries.
+- **Coordinates with:** `A.15.5` for work-entry readiness and full-kit preparation; `A.20` and `A.21` for gates and constraint decisions; `A.10`, `B.3`, and `G.6` for evidence, assurance, and provenance; `C.27.TA` and `G.11` for currentness and refresh; Part G patterns when planned baselines are used by kits, packs, or refresh plans.
 - **Does not replace:** target description patterns, mechanism definitions, suite definitions, gate records, evidence relations, publication views, performed work, or source restoration.
 
 ### A.15.3:12a - P2W planned-baseline use relation
 
-When `E.18.1` reaches a planned-baseline question, `SlotFillingsPlanItem` records the planned relation between one slot-bearing description's SlotKinds and the fillers intended for a future work-planning move.
+When `E.18.1` reaches a planned-baseline question, `SlotFillingsPlanItem` records the planned relation between one slot-bearing description's SlotKinds and the fillers intended for a future work-planning or work-entry-readiness use.
+
+When `A.15.5` checks full-kit condition, it may cite `SlotFillingsPlanItem` for planned fillers, target description edition, required refs, and time selector. That citation does not make the planned baseline a readiness verdict; `A.15.5` states the readiness relation and any missing-input or degraded-use condition.
 
 If the same source phrase also carries launch-value, performed-work, evidence, gate, result, measurement, publication-use, source-restoration, or refresh meaning, name that separate current relation before using the PlanItem downstream.
 
@@ -22627,7 +22716,7 @@ Lower a `SlotFillingsPlanItem` claim when the item cannot name exactly one targe
 
 Repair the PlanItem when a source-currentness change alters the target description edition, exposed SlotKind set, planned filler, concrete RefKind, edition pin, context, time rule, evidence-reference pin, guard-preparation ref, crossing-policy ref, or expected gate relation. If performed `U.Work` already cited the PlanItem as a baseline, preserve the cited baseline and record variance or crossing witness in the work-governed relation.
 
-Refresh before the PlanItem is used for performed-work preparation, launch-guard preparation, cross-context comparison, suite or kit reuse, Part G universalization, publication-view projection, evidence-reference use, or P2W carry-through. Stop the refresh at the smallest changed relation: the PlanItem, target slot-bearing description, concrete RefKind, cited source edition, performed-work variance record, or related gate, evidence, bridge, or publication relation.
+Refresh before the PlanItem is used for performed-work preparation, work-entry readiness, launch-guard preparation, cross-context comparison, suite or kit reuse, Part G universalization, publication-view projection, evidence-reference use, or P2W carry-through. Stop the refresh at the smallest changed relation: the PlanItem, target slot-bearing description, concrete RefKind, cited source edition, readiness relation, performed-work variance record, or related gate, evidence, bridge, or publication relation.
 
 ### A.15.3:End
 
@@ -22649,37 +22738,37 @@ SourceRestorationNote:
   WorkOrRelianceClaimUnderRepair:
   ClaimOrEffectNeeded:
   GoverningSourceNeeded:
-  RelationGovernedMoveNow:
+  CurrentRelationGovernedUse:
   BlockedOverread:
   StopOrReopenCondition:
 ```
 
-**First move in practice.** Name what the encountered source candidate may safely do now: orient the user, help find a source, allow a bounded reversible probe under `U.WorkPlan`, proceed inside a recovered relation, or block only the unsupported work or reliance claim.
+**First source-restoration use in practice.** Name what the encountered source candidate may safely do now: orient the user, help find a source, allow a bounded reversible probe under `U.WorkPlan`, proceed inside a recovered relation, or block only the unsupported work or reliance claim.
 
-**What goes wrong if missed.** A dashboard, credential view, copied approval, generated explanation, provenance mark, schema wording, API wording, publication, display, or cue starts acting as the work or reliance source relation. Work then proceeds or stops while the gate decision, evidence path, speech act, commitment, role assignment, status record, work occurrence, source episteme, or source publication that would carry the claim is missing, stale, revoked, or contradicted.
+**What goes wrong if missed.** A dashboard, credential view, copied approval, generated explanation, provenance mark, schema wording, API wording, publication, display, or cue starts acting as the work or reliance source relation. Work then proceeds or stops while the gate decision, evidence relation, speech act, commitment, role assignment, credential-status or role-state currentness record, work occurrence, source episteme, or source publication that would carry the claim is missing, stale, revoked, or contradicted.
 
-**Primary EntityOfConcern in plain terms.** One source-restoration relation for one work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair. The relation connects the encountered source candidate, the needed claim or effect, the source required for that claim, the next relation-governed move, and the blocked overread.
+**Primary EntityOfConcern in plain terms.** One source-restoration relation for one work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair. The relation connects the encountered source candidate, the needed claim or effect, the source required for that claim, the current relation-governed use, and the blocked overread.
 
 **First restoration checks.**
 1. Name the encountered source-candidate kind and publication position without treating its appearance as the source relation itself.
 2. Name the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair.
-3. Name the claim or effect that would be carried: gate passage, release reliance, evidence relation, assurance claim, speech act, commitment, role-assignment relation, status currentness, work occurrence, source currentness, boundary claim, or another claim named by value.
+3. Name the claim or effect that would be carried: gate passage, release reliance, evidence relation, assurance claim, speech act, commitment, role-assignment relation, role-state or credential-status currentness, work occurrence, source-currentness, boundary claim, or another claim named by value.
 4. Recover the source required for that claim: the governing FPF pattern plus the reference named by value.
-5. Choose the lightest relation-governed disposition now: proceed inside the recovered relation, narrow the move, run a bounded reversible probe under `U.WorkPlan`, reopen or refresh the source, ask the accountable role assignment to expose or repair it, or block only the unsupported claim or effect.
+5. Choose the lightest relation-governed disposition now: proceed inside the recovered relation, narrow the recovered use, run a bounded reversible probe under `U.WorkPlan`, reopen or refresh the source, ask the accountable role assignment to expose or repair it, or block only the unsupported claim or effect.
 
-**Not this pattern when.** Stay in A.15 when the question under repair is only `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, and `U.Work` separation. Stay in E.17 when the question under repair is only publication-face exposure or multi-view publication. Stay in A.10, B.3, A.20, A.21, A.2.8, A.2.9, A.6, or A.15.1 when evidence, currentness, engineering justification, gate-passage claim, `ConstraintValidity` status, commitment, speech act, boundary claim, or work occurrence already governs the claim or effect directly.
+**Not this pattern when.** Stay in A.15 when the question under repair is only `U.Role`, `U.Method`, `U.MethodDescription`, `U.WorkPlan`, and `U.Work` separation. Stay in A.15.5 when the question is full-kit condition or work-entry readiness rather than source restoration. Stay in E.17 when the question under repair is only publication-face exposure or multi-view publication. Stay in A.10, B.3, A.20, A.21, A.2.8, A.2.9, A.6, or A.15.1 when evidence, currentness, engineering justification, gate-passage claim, `ConstraintValidity` status, commitment, speech act, boundary claim, or work occurrence already governs the claim or effect directly.
 
 **What this buys.** The acting engineer-manager can keep work moving without trusting appearances: use the source candidate for orientation or source-finding when that is all it can carry, proceed only inside the recovered relation when that relation exists, and turn repeated ambiguity into source-relation repair work rather than repeated manual reconstruction.
 
 ### A.15.4:1 - Problem Frame
 
-Dashboards, credential views, generated explanations, copied approvals, provenance labels, green tiles, schema wording, API wording, and composed source chains often look ready for action before the source that carries the claim is visible. The practical problem is to decide what an engineer-manager may do now without turning appearance into approval, gate passage, evidence, assurance, performed work, role-assignment currentness, status currentness, or release permission.
+Dashboards, credential views, generated explanations, copied approvals, provenance labels, green tiles, schema wording, API wording, and composed source chains often look ready for work or reliance before the source that carries the claim is visible. The practical problem is to decide what an engineer-manager may do now without turning appearance into approval, gate passage, evidence, assurance, performed work, role-assignment currentness, role-state or credential-status currentness, or release authorization.
 
-**Plain recognition line.** Let the visible cue point to a relation named by value, source episteme, source publication, evidence path, gate decision, role-assignment record, status record, work occurrence, or assurance claim. Do not let the cue become the relation that permits work or reliance.
+**Plain recognition line.** Let the visible cue point to a relation named by value, source episteme, source publication, evidence relation, gate decision, role-assignment record, credential-status or role-state record, work occurrence, or assurance claim. Do not let the cue become the relation that authorizes work or reliance.
 
-**Source wording discipline.** In this pattern, `source` is not a generic kind. `Governing source` means the project-side value, named by FPF kind and reference, that carries the claim or effect under repair: source `U.Episteme`, source `U.EpistemePublication`, evidence path, gate decision, speech act, commitment, credential record, status record, role assignment, work-occurrence record, register entry, source relation, or another named project-side value. Source-finding cues, publication faces, publication carriers, renderings, dashboards, copied wording, and generated explanations remain source candidates unless they expose that governing source. If no governing source can be named, keep the encountered source candidate at cue-only orientation or source-finding use.
+**Source wording discipline.** In this pattern, `source` is not a generic kind. `Governing source` means the project-side value, named by FPF kind and reference, that carries the claim or effect under repair: source `U.Episteme`, source `U.EpistemePublication`, evidence relation, gate decision, speech act, commitment, credential record, credential-status or role-state record, role assignment, work-occurrence record, register entry, source relation, or another named project-side value. Source-finding cues, publication faces, publication carriers, renderings, dashboards, copied wording, and generated explanations remain source candidates unless they expose that governing source. If no governing source can be named, keep the encountered source candidate at cue-only orientation or source-finding use.
 
-Here `evidence path` and `currentness path` mean `A.10` evidence-provenance, attestation, or currentness relations named by value. They are not action routes, workflows, or permission pipelines.
+Here `evidence relation`, `attestation relation`, and `currentness relation` mean `A.10` evidence-provenance, attestation, or currentness relations named by value. They are not steps in a work procedure and do not carry authorization by their wording.
 
 ### A.15.4:2 - Problem - Cluster Boundary
 
@@ -22689,10 +22778,10 @@ A.15 remains the kernel for separating `U.Role`, holder and context, `U.Method`,
 
 | Force | Tension |
 | --- | --- |
-| Work momentum vs. source recoverability | Teams need to keep work moving, but an appearance-based source can make the wrong claim carry work authority. |
-| Cheap first note vs. high-impact reliance | Routine source-finding should stay light, while release, safety, compliance, role-assignment, status, and gate cases need more fields. |
+| Work momentum vs. source recoverability | Teams need to keep work moving, but an appearance-based source can make the wrong claim look like work authorization. |
+| Cheap first note vs. high-impact reliance | Routine source-finding should stay light, while release, safety, compliance, role-assignment, credential-status, role-state, and gate cases need more fields. |
 | Publication face vs. governing source | The visible carrier may be useful for orientation, but the work or reliance claim belongs to the project-side source named by value. |
-| Neighboring authority vs. local restoration | A.15.4 can recover the missing source relation, but evidence, gate, assurance, speech-act, commitment, boundary, status, and work-occurrence claims must return to their governing patterns. |
+| Neighboring governed claims vs. local restoration | A.15.4 can recover the missing source relation, but evidence, gate, assurance, speech-act, commitment, boundary, credential-status, role-state, and work-occurrence claims must return to their governing patterns. |
 | Repeated ambiguity vs. individual burden | Repeated source ambiguity should become source-relation repair work, not repeated manual reconstruction by every acting practitioner. |
 
 ### A.15.4:3 - Solution - Work-Relevant Source Restoration
@@ -22701,35 +22790,35 @@ A.15 remains the kernel for separating `U.Role`, holder and context, `U.Method`,
 
 **Ordinary source-restoration note.** In ordinary use, do not build a source dossier. The first useful note is:
 
-`encounteredSourceCandidate; work or reliance claim under repair; claim or effect needed; governing source needed; relation-governed move now; blocked overread; stop or reopen condition`
+`encounteredSourceCandidate; work or reliance claim under repair; claim or effect needed; governing source needed; current relation-governed use; blocked overread; stop or reopen condition`
 
 The encountered source candidate may be a tile, credential view, approval-looking memo, generated explanation, copied review, provenance mark, API wording, functional-description publication, or composed source chain. The pattern asks whether the requested claim is currently carried by a project-side source named by value, not whether the source candidate is impressive, fluent, easy to inspect, or visually salient.
 
-**Conditional source-relation field set.** Use the fuller fields below only when release, safety, compliance, role assignment, status, gate, assurance, contested source, external reliance, cross-context reuse, currentness, revocation, generated source relation, or copied source relation is being relied on for the claim under repair. These fields are local restoration aids, not a new record kind.
+**Conditional source-relation field set.** Use the fuller fields below only when release, safety, compliance, role assignment, credential-status, role-state, gate, assurance, contested source, external reliance, cross-context reuse, currentness, revocation, generated source relation, or copied source relation is being relied on for the claim under repair. These fields are local restoration aids, not a new record kind.
 
 | Field | Working question |
 | --- | --- |
-| subject or actor | Who or what would perform the work, rely on the source candidate, hold the status, or be affected by the claim? |
+| subject or actor | Who or what would perform the work, rely on the source candidate, hold the credential-status or role-state, or be affected by the claim? |
 | role-assignment claim | Which `U.RoleAssignment` or role-context claim is being made? |
-| guided action or work target | Which selected method, method of work, `U.WorkPlan`, planned work, dated `U.Work`, work result, release move, reliance move, source status, or effect is being guided? |
-| affected resource or claim | Which resource, claim, gate, credential, status, evidence, approval, or source finding with authority-reference relation is supposedly affected? |
+| guided work use or work target | Which selected method, method of work, `U.WorkPlan`, planned work, dated `U.Work`, work result, release reliance, reliance use, source-currentness, credential-status, or effect is being guided? |
+| affected resource or claim | Which resource, claim, gate, credential, credential-status, role-state, evidence, approval, or source finding with authority-reference relation is supposedly affected? |
 | context | Which bounded context, environment, project slice, API setting, connector setting, protocol setting, or relying situation makes the claim applicable? |
 | policy or gate version | Which policy, gate profile, constraint version, method version, or register edition is supposed to govern the claim? |
 | time window | During which window is the claim, effect, source relation, or recovered-use boundary claimed to hold? |
 | currentness or revocation field | Is the source relation current, stale, revoked, superseded, expired, contradicted, or unknown? |
-| issuer or source | Which issuer, governing source, register source, source-status record, speech act, gate decision, evidence path, or work-occurrence record carries the claim, effect, source relation, or recovered-use boundary? |
+| issuer or source | Which issuer, governing source, register source, source-currentness or credential-status record, speech act, gate decision, evidence relation, or work-occurrence record carries the claim, effect, source relation, or recovered-use boundary? |
 | verifier or relying context | Who is checking or relying on the claim, and in which context? |
-| evidence or attestation path | Which `A.10` evidence, provenance, or attestation path, if any, justifies the claim without itself becoming approval, gate passage, assurance, or work occurrence? |
+| evidence or attestation relation | Which `A.10` evidence, provenance, or attestation relation, if any, justifies the claim without itself becoming approval, gate passage, assurance, or work occurrence? |
 | sourceRelationClass | Which `E.17:5.1b` source-relation class or claim-use class applies to the encountered source candidate and required claim or use? |
 | unsupported effect | Which requested work claim, reliance claim, or downstream effect remains unsupported and needs narrowing, repair, reopening, probing, or blocking? |
 
-Start with the A.15.4 first restoration checks above when the encountered source candidate is about to guide a work move, reliance move, or work-relevant claim. If the issue under repair is only evidence, currentness, gate-passage claim, `ConstraintValidity` status, engineering justification, commitment, speech act, boundary wording, use-boundary wording, credential proof, source-status proof, explanation, comparison, or publication-carrier or front-end behavior, use the pattern governing that issue directly. Use A.15.4 only when source restoration is needed before role assignment, method, plan, work, work result, result measurement, or another work move or reliance move can proceed.
+Start with the A.15.4 first restoration checks above when the encountered source candidate is about to guide a work use, reliance use, or work-relevant claim. If the issue under repair is only evidence, currentness, gate-passage claim, `ConstraintValidity` status, engineering justification, commitment, speech act, boundary wording, use-boundary wording, credential proof, source-currentness proof, credential-status proof, explanation, comparison, or publication-carrier or front-end behavior, use the pattern governing that issue directly. Use A.15.4 only when source restoration is needed before role assignment, method, plan, work, work result, result measurement, or another work use or reliance use can proceed.
 
-**Authority-looking source-backed work or reliance case.** Use A.15.4 when an approval-, permission-, gate-, command-, credential-, delegation-, revocation-, status-, provenance-, dashboard-, copied-review-, generated-explanation-, schema-, API-, or composed-chain case is about to be used as a work cue, reliance claim source, release-reliance claim source, performed-work evidence source, approval-claim source, approval-effect source, role-assignment-claim source, status-claim source, or next work-relevant move. The recognition moment is that an encountered publication, display, credential view, wording, or explanation looks like permission, prohibition, readiness, or evidence for starting work. The repair question remains: which work or reliance claim is being made, and which source is required for it?
+**Authority-looking source-backed work or reliance case.** Use A.15.4 when an approval-, permission-, gate-, command-, credential-, delegation-, revocation-, role-state-, credential-status-, provenance-, dashboard-, copied-review-, generated-explanation-, schema-, API-, or composed-chain case is about to be used as a work cue, reliance claim source, release-reliance claim source, performed-work evidence source, approval-claim source, approval-effect source, role-assignment-claim source, role-state-claim source, credential-status-claim source, or work-relevant source cue. The recognition moment is that an encountered publication, display, credential view, wording, or explanation looks like permission, prohibition, readiness, or evidence for starting work. The repair question remains: which work or reliance claim is being made, and which source is required for it?
 
-Here "authority-looking case" is only a recognition phrase for the encountered situation. The governing source that permits, forbids, records, or carries the work-relevant claim may instead be a `GateDecision`, `SpeechAct`, `U.Commitment`, `U.RoleAssignment`, credential record, status record, `A.6.B`-claim being made, `A.10` evidence path, or `B.3` assurance claim. Use `E.17:5.1c` for the shared meanings of `orientation use`, `reliance use`, work claim, reliance claim, operative claim, unsupported downstream use, and `reopen trigger`; use `E.17:5.1d` when the primary question under repair belongs to another governing pattern.
+Here "authority-looking case" is only a recognition phrase for the encountered situation. The governing source that authorizes, forbids, records, or carries the work-relevant claim may instead be a `GateDecision`, `SpeechAct`, `U.Commitment`, `U.RoleAssignment`, credential record, role-state record, credential-status record, context-state record, `A.6.B`-claim being made, `A.10` evidence relation, or `B.3` assurance claim. Use `E.17:5.1c` for the shared meanings of `orientation use`, `reliance use`, work claim, reliance claim, operative claim, unsupported downstream use, and `reopen trigger`; use `E.17:5.1d` when the primary question under repair belongs to another governing pattern.
 
-The central behaviour is: name the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair; name the source that carries the needed claim or effect; keep the `U.Episteme` or `U.EpistemePublication` distinct from publication form, MVPK face, publication carrier, rendering, and source-finding cue; choose the minimum sufficient next move; and do not raise the claim beyond the recovered relation, source relation, or recovered use boundary. If the named project record states the governing FPF relation, use that recorded relation directly rather than inferring it from wording.
+The central behaviour is: name the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair; name the source that carries the needed claim or effect; keep the `U.Episteme` or `U.EpistemePublication` distinct from publication form, MVPK face, publication carrier, rendering, and source-finding cue; choose the minimum sufficient recovered use; and do not raise the claim beyond the recovered relation, source relation, or recovered use boundary. If the named project record states the governing FPF relation, use that recorded relation directly rather than inferring it from wording.
 
 **Positive repaired disposition.** An encountered `U.Episteme` publication, publication form, MVPK face, publication carrier, rendering, or source-finding cue may guide work or reliance only to the claim or effect carried by the recovered source, actor or role assignment, work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, affected work target, context, window, and source-recoverable claim or effect. The repaired outcome is the smallest relation-governed work or reliance statement plus the unsupported work claim or reliance claim still blocked.
 
@@ -22738,41 +22827,41 @@ Reliance dispositions by recovered source relation:
 | Work or reliance disposition | Use when | Minimum useful record |
 | --- | --- | --- |
 | Orientation or source-finding note | The encountered source candidate is only a publication face, publication carrier, rendering, cue, retrieval cue, learning aid, or reversible local probe trigger. | `encounteredSourceCandidate; required claim or effect not yet carried by a recovered source; source to reopen; stop condition`. |
-| Routine reliance note | The team needs ordinary bounded reliance without release, safety, compliance, delegated role-assignment or status claim, contested source, or cross-context reuse. | Work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair; required claim or effect; actor or role assignment; affected work target, context, effective window; source reference exposed by the encountered source candidate; and reopen condition. |
-| High-impact reliance disposition | The required claim or effect is external-impact, irreversible, release-bearing, gate-bearing, compliance-bearing, safety-bearing, delegated, revoked, status-claim-bearing, generated-source-mediated, copied-source-mediated, provenance-mediated, contested, or cross-context. | Governing source with the `A.10`, `A.6`, `B.3`, `A.2.9`, `A.2.8`, `A.21`, `A.20`, or `A.15.1` fields needed for that claim or effect. |
+| Routine reliance note | The team needs ordinary bounded reliance without release, safety, compliance, delegated role-assignment claim, role-state claim, credential-status claim, contested source, or cross-context reuse. | Work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair; required claim or effect; actor or role assignment; affected work target, context, effective window; source reference exposed by the encountered source candidate; and reopen condition. |
+| High-impact reliance disposition | The required claim or effect is external-impact, irreversible, release-bearing, gate-bearing, compliance-bearing, safety-bearing, delegated, revoked, role-state-claim-bearing, credential-status-claim-bearing, generated-source-mediated, copied-source-mediated, provenance-mediated, contested, or cross-context. | Governing source with the `A.10`, `A.6`, `B.3`, `A.2.9`, `A.2.8`, `A.21`, `A.20`, or `A.15.1` fields needed for that claim or effect. |
 
 A small A.15.4 restoration note is enough for the first disposition:
 
 | Field | Value |
 | --- | --- |
 | work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair | Name the claim or P2W chain position by value: method-family selection, selected method, method of work, work plan, planned work, dated `U.Work` occurrence, work result, result-measurement, release reliance decision, or non-work reliance claim. A planned baseline remains a `U.WorkPlan` or `U.WorkPlanning` plan record; performed work becomes `U.Work` only after it occurs and is recorded under `A.15.1`; work-result measurement belongs with the evidence or result-measurement source. This row is a local restoration label unless it cites an existing FPF kind or governing FPF relation. |
-| governing source needed | Approval, permission, gate passage, role-assignment or status currentness, work occurrence, evidence relation, assurance claim, boundary claim, or other claim named by value or effect needed before that work claim, reliance claim, or P2W chain-position claim can be treated as carried by a recovered source. The governing relation is carried by the named FPF pattern and recovered project-side reference, not by a new `A.15.4` kind. |
+| governing source needed | Approval act, deontic permission, gate passage, role-assignment relation, role-state or credential-status currentness, work occurrence, evidence relation, assurance claim, boundary claim, or other claim named by value or effect needed before that work claim, reliance claim, or P2W chain-position claim can be treated as carried by a recovered source. The governing relation is carried by the named FPF pattern and recovered project-side reference, not by a new `A.15.4` kind. |
 | actor or role assignment | Who would act or rely, and which `U.RoleAssignment` matters when the acting capacity is part of the claim. |
 | affected work target, context, and window | Release, service, person, role-assignment holder, work target, claim, tenant, environment, physical batch, construction element, machine state, or effective window affected by that class or claim. |
 | claim-bearing episteme or episteme publication | The claim-bearing FPF kind is `U.Episteme` or a species such as `U.EpistemePublication`; if the encountered source candidate is only a publication form, MVPK face, publication carrier, rendering, `PublicationUnit`, dashboard tile, copied text, credential view, generated explanation, API wording, or cue, name that kind named by value separately. |
-| source needed or safe next move | Source `U.Episteme`, source `U.EpistemePublication`, register entry, governing source, source status to refresh, reversible probe, role assignment accountable for exposing or repairing the missing source, or narrower relation-governed use. |
+| source needed or safe current use | Source `U.Episteme`, source `U.EpistemePublication`, register entry, governing source, source-currentness value, credential-status value, role-state value, reversible probe, role assignment accountable for exposing or repairing the missing source, or narrower relation-governed use. |
 | stop or reopen condition | What blocks the work claim or reliance claim and what would reopen it. |
 
 **Borrowed episteme and publication discipline.** A.15.4 borrows the `C.2.1`, `E.17`, and `A.16.0` distinction rather than minting a new generic `U.*` kind. The claim-bearing FPF kind here is `U.Episteme`; `U.EpistemePublication` is used only when that episteme is available as a published episteme with MVPK-face references. Publication forms, MVPK faces, publication carriers, renderings, `PublicationUnit` instances, and source-finding cues are separate kinds or relation positions in the case. A planned baseline remains a `U.WorkPlan` or `U.WorkPlanning` plan record such as `SlotFillingsPlanItem`; launch values and finalization values remain their own project records, decision logs remain gate or decision records, performed-work evidence remains evidence, and dated work occurrences remain `A.15.1` or `U.Work` matters.
 
-When the required source is incomplete, choose one relation-governed source-restoration disposition after naming the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair and the source required for that claim or effect; pick the lightest move that preserves practical work and source recoverability:
+When the required source is incomplete, choose one relation-governed source-restoration disposition after naming the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair and the source required for that claim or effect; pick the lightest disposition that preserves practical work and source recoverability:
 
 1. Use the encountered source candidate only for orientation or source-finding.
-2. Reopen the required source `U.Episteme`, source `U.EpistemePublication`, register entry, or governing source, or refresh status or currentness.
-3. Narrow actor and role assignment, requested operation or work class, affected work target, affected resource, affected claim, context, and effective window until the recovered source really covers the move.
+2. Reopen the required source `U.Episteme`, source `U.EpistemePublication`, register entry, or governing source, or refresh source-currentness, credential-status, role-state, context-state, or another currentness relation.
+3. Narrow actor and role assignment, requested operation or work class, affected work target, affected resource, affected claim, context, and effective window until the recovered source really covers the recovered use.
 4. Run a bounded reversible probe under an explicit `U.WorkPlan` when no external-impact reliance is being made.
-5. Ask the role assignment accountable for the issuer, gate decision, evidence path, role-assignment record, status record, or boundary claim set to expose or repair the missing source.
+5. Ask the role assignment accountable for the issuer, gate decision, evidence relation, role-assignment record, role-state record, credential-status record, context-state record, source-currentness relation, or boundary claim set to expose or repair the missing source.
 6. Repair the `U.WorkPlan`, `U.MethodDescription`, dashboard label, source link, or boundary wording that made the overread plausible.
 7. Proceed only inside the recovered scope and window.
 8. Block only the work claim or reliance claim that lacks source relation.
 
 #### Repair assignment rule
 
-**Broken-source repair assignment.** If the required governing source is unavailable to the acting user, assign only prospective repair work, request work, decision work, work-plan work, or source-gap work to the role assignment accountable for the missing source relation. The acting user records the blocked work claim or reliance claim, the missing source relation, and the safe narrowed move now.
+**Broken-source repair assignment.** If the required governing source is unavailable to the acting user, assign only prospective repair work, request work, decision work, work-plan work, or source-gap work to the role assignment accountable for the missing source relation. The acting user records the blocked work claim or reliance claim, the missing source relation, and the safe narrowed use now.
 
 **Source-candidate kind check.** First name the kind of the encountered source candidate: actual `U.Episteme`, actual `U.EpistemePublication`, publication form, MVPK face, publication carrier, rendering, `PublicationUnit`, dashboard tile, credential view, generated wording, copied wording, or source-finding cue. If the source candidate exposes the governing source, use that exposed source directly. If only the display face, publication carrier, wording, or cue is named, the A.15.4 disposition is orientation, source-finding, bounded reversible probe, source-repair request, or blocked unsupported reliance until the source relation named by value is recovered.
 
-**Source-relation guard.** Release urgency, delegated-claim urgency, compliance concern, color, salience, copied wording, or generated wording does not replace the source relation named by value. A dashboard tile may guide release only as a current view of the relevant `GateDecision` plus evidence path, currentness path, scope, and window.
+**Source-relation guard.** Release urgency, delegated-claim urgency, compliance concern, color, salience, copied wording, or generated wording does not replace the source relation named by value. A dashboard tile may guide release only as a current view of the relevant `GateDecision` plus evidence relation, currentness relation, scope, and window.
 
 #### Governing-source lookup table
 
@@ -22780,23 +22869,23 @@ Governing sources by required claim or effect kind:
 
 - cue-only orientation: use only for attention, learning, source-finding, or a reversible local probe trigger; stay with `A.16`, `A.16.1`, or `A.6.A` when those claims are being made.
 - issuing, approval, authorization, delegation, or revocation act: cite `A.2.9` `U.SpeechAct` or `SpeechActRef`, including act type, actor and role assignment if claimed, affected work target or claim, judgement context, window, publication-carrier reference, evidence reference when currentness matters, and instituted effects if claimed. Because `U.SpeechAct <: U.Work`, it can evidence only that communicative act.
-- deontic permission, obligation, prohibition, or recommendation-as-duty: cite `A.2.8` `U.Commitment` and the instituting `SpeechActRef` when provenance matters. If the word instead names claimed use boundary, gate passage, authorization act, role-assignment effect, status effect, credential status, cue, or advice, use the pattern that carries that kind named by value.
-- role-assignment or status reliance: cite `A.2.1`, `U.RoleAssignment`, a status-changing `U.SpeechAct`, a governing context-state record, a credential proof or status result under `A.10`, or an `A.21` `GateDecision` when the status is gate-governed.
+- deontic permission, obligation, prohibition, or recommendation-as-duty: cite `A.2.8` `U.Commitment` and the instituting `SpeechActRef` when provenance matters. If the word instead names claimed use boundary, gate passage, authorization act, role-assignment effect, role-state effect, credential-status effect, cue, or advice, use the pattern that carries that kind named by value.
+- role-assignment, role-state, credential-status, or context-state reliance: cite `A.2.1`, `U.RoleAssignment`, a state-changing `U.SpeechAct`, a governing context-state record, a credential proof or credential-status result under `A.10`, or an `A.21` `GateDecision` when the state is gate-governed.
 - boundary, policy, API, schema, "allowed", "authorized", "approved", "recommended", or "guaranteed" wording: split the statement through `A.6` or `A.6.B`; use `A.6.C`, `A.2.3`, `A.2.8`, and `A.2.9` for agreement-like guarantee, SLA, or promise wording before work use or reliance use.
 - gate decision or gate passage: cite `A.21` `OperationalGate(profile)`, `GateDecision`, `GateDecisionRationale`, `DecisionLogRef`, gate profile, gate version, check set, scope, window, and replay or freshness pins.
 - Flow constraint-validity witness: cite `A.20` `ConstraintValidity` status, witness, `GateCheckRef.aspect = ConstraintValidity`, `PathId` or `PathSliceId` when applicable, window, sentinel, and pins when those fields are needed for the claim.
 - release, deployment, repair, inspection, or rollback work occurrence: cite `A.15.1` dated `U.Work` occurrence and the `A.10` evidence or provenance relation when reliance on occurrence is needed.
-- evidence, provenance, authenticity, currentness, copied-source, or generated-source relation: apply `A.10` and name the claim-bound evidence path, currentness path, and relation-governed or blocked use.
-- assurance, readiness, safety, compliance, trust, release confidence, or `R`, `F`, `G`, or `CL` increase: apply `B.3` and name the typed assurance claim plus its limitations and reopen condition.
+- evidence, provenance, authenticity, currentness, copied-source, or generated-source relation: apply `A.10` and name the claim-bound evidence relation, currentness relation, and relation-governed or blocked use.
+- assurance, safety, compliance, trust, release confidence, or `R`, `F`, `G`, or `CL` increase: apply `B.3` and name the typed assurance claim plus its limitations and reopen condition. If the word `ready` names full-kit or work-entry readiness, use `A.15.5`; if it names a gate decision, use `A.21`.
 - generated explanation: use `E.17.EFP` for explanation faithfulness or source-finding relation, then require `A.10` claim-bound source relation for every operative claim that will be relied on.
-- ambiguous approval, permission, or authorization wording: choose among the rows above named by value by asking what effect is claimed now: speech act, commitment, claimed use boundary, gate passage, role-assignment or status change, credential status, evidence relation, assurance claim, or work occurrence.
+- ambiguous approval, permission, or authorization wording: choose among the rows above named by value by asking what effect is claimed now: speech act, commitment, claimed use boundary, gate passage, role-assignment effect, role-state change, credential-status change, evidence relation, assurance claim, or work occurrence.
 
 Recovered source outputs for A.15.4 closure:
 | Governing source relation used | Recovered output for this A.15.4 restoration | A.15.4-local use |
 | --- | --- | --- |
 | `A.6` or `A.6.B` | Typed claim IDs (`L-*`, `A-*`, `D-*`, and `E-*`) plus the pattern that governs the claim being made or effect and the governing source for that claim or effect. | Use for wording, boundary, API, schema, or use-boundary recovery before work or reliance use. |
-| `A.10` | Claim-bound evidence path, freshness field, currentness field, and relation-governed or blocked use for the attempted claim. | Use for evidence, provenance, authenticity, credential-currentness, copied-source, or generated-source recovery. |
-| `B.3` | Typed assurance claim, no-assurance-use disposition, or rejected or downgraded assurance claim. | Use only when the project move under repair relies on a typed assurance claim. |
+| `A.10` | Claim-bound evidence relation, freshness field, currentness field, and relation-governed or blocked use for the attempted claim. | Use for evidence, provenance, authenticity, credential-currentness, copied-source, or generated-source recovery. |
+| `B.3` | Typed assurance claim, no-assurance-use disposition, or rejected or downgraded assurance claim. | Use only when the work or reliance claim under repair relies on a typed assurance claim. |
 | `A.21` | `OperationalGate(profile)`, `GateDecision`, `DecisionLogRef`, gate profile, gate version, scope, window, and replay or freshness pins. | Use for gate-passage reliance in the named scope and window. |
 | `A.20` | `ConstraintValidity` status, witness, `PathId` or `PathSliceId` when applicable, window, sentinel, and pins when those fields are needed for the claim. | Use for flow constraint-validity reliance. |
 | `A.2.9` | `SpeechActRef` with act type, actor and role assignment if claimed, affected work target or claim, judgement context, window, and instituted effects if claimed. | Use for issued acts and, where needed, dated occurrence of that communicative act. |
@@ -22804,46 +22893,46 @@ Recovered source outputs for A.15.4 closure:
 | `A.15.1` | Dated `U.Work` occurrence plus `A.10` evidence or provenance relation when relied on. | Use for reliance on performed work. |
 | `E.17.EFP` | Explanation class, source-finding relation, and faithfulness relation over the source `U.Episteme` or source `U.EpistemePublication`. | Use for generated-explanation faithfulness and source-finding before operative reliance. |
 
-High-impact work or reliance - especially external-impact, irreversible, release-bearing, role-assignment-bearing, status-claim-bearing, gate-bearing, compliance-bearing, safety-bearing, delegated, contested, or assurance-bearing claim or effect - may guide work only for the actor and role assignment, work or reliance claim under repair, work-relevant P2W claim under repair, P2W chain position under repair, affected work target or claim, audience, scope, environment, version, policy context, operational mode, and time window for which the required FPF-governed project source, relation, evidence path, gate decision, or assurance claim is recoverable. Cue-only, source-finding, learning, and bounded reversible probes stay lightweight and do not require a full source dossier.
+High-impact work or reliance - especially external-impact, irreversible, release-bearing, role-assignment-bearing, role-state-claim-bearing, credential-status-claim-bearing, gate-bearing, compliance-bearing, safety-bearing, delegated, contested, or assurance-bearing claim or effect - may guide work only for the actor and role assignment, work or reliance claim under repair, work-relevant P2W claim under repair, P2W chain position under repair, affected work target or claim, audience, scope, environment, version, policy context, operational mode, and time window for which the required FPF-governed project source, relation, evidence relation, gate decision, or assurance claim is recoverable. Cue-only, source-finding, learning, and bounded reversible probes stay lightweight and do not require a full source dossier.
 Quick dispositions:
 
 | Encountered case | First `A.15.4` disposition |
 | --- | --- |
-| Source-backed release dashboard tile | If the tile is a current dashboard view of `A.21` `GateDecision` or `DecisionLogRef` plus release scope or work target, environment, scope, window, gate profile, gate version, and `A.10` evidence path, it may carry gate-passage reliance for that release and environment. |
-| Unsourced or stale release dashboard tile | Display or source-finding only until the current `GateDecision` or `DecisionLogRef`, release scope or work target, scope, window, gate profile, gate version, and `A.10` evidence path are recoverable; use `B.3` only if an assurance claim is being made. |
-| Copied review summary or copied approval | Copied wording and copied-currentness cue at most; approval, authorization, permission, commitment, or work occurrence needs the original `A.2.9` `SpeechActRef`, `A.21` decision, `A.2.8` commitment, or `A.15.1` work source plus `A.10` evidence. |
-| Delegation chain with forwarded approval | Each link names delegator, delegatee, delegated operation or work class, affected work target, affected resource, affected claim, scope, window, source permitting delegation, subdelegation allowance if any, revocation source, currentness source or currentness path, and evidence path. A forwarded approval is not delegated authority by copy alone. |
-| Role-assignment, revocation, or status display | Resolve to role assignment, status-changing speech act, context-state record, credential proof or status result, or gate decision with freshness field, revocation source, or revocation record; visual status cannot defeat a higher-priority revocation or supersession source. |
+| Source-backed release dashboard tile | If the tile is a current dashboard view of `A.21` `GateDecision` or `DecisionLogRef` plus release scope or work target, environment, scope, window, gate profile, gate version, and `A.10` evidence relation, it may carry gate-passage reliance for that release and environment. |
+| Unsourced or stale release dashboard tile | Display or source-finding only until the current `GateDecision` or `DecisionLogRef`, release scope or work target, scope, window, gate profile, gate version, and `A.10` evidence relation are recoverable; use `B.3` only if an assurance claim is being made. |
+| Copied review summary or copied approval | Copied wording and copied-currentness cue at most; approval, authorization, deontic permission, commitment, or work occurrence needs the original `A.2.9` `SpeechActRef`, `A.21` decision, `A.2.8` commitment, or `A.15.1` work source plus `A.10` evidence. |
+| Delegation chain with forwarded approval | Each link names delegator, delegatee, delegated operation or work class, affected work target, affected resource, affected claim, scope, window, source permitting delegation, subdelegation allowance if any, revocation source, currentness source or currentness relation, and evidence relation. A forwarded approval is not delegated authority by copy alone. |
+| Role-assignment, revocation, role-state, or credential-status display | Resolve to role assignment, state-changing speech act, context-state record, credential proof or credential-status result, or gate decision with freshness field, revocation source, or revocation record; visual display cannot defeat a higher-priority revocation or supersession source. |
 | Conflicting sources | Do not resolve by color, visual salience, copied wording, or apparent recency. Name source order, governing decision source, freshness policy, and supersession rule; the work claim, reliance claim, or effect is contested until resolved, while source-finding and bounded reversible probes remain available. |
-| Credential badge or register-backed status view | Use the display as a publication of a credential source or status source, not the source itself. Find the governing status register or issuer, trust root, holder binding or subject binding, verifier context, relying context, proof or status result, revocation, freshness, and effective window. If the governing register entry itself creates or changes role assignment, status, permission, duty, or gate effect in the bounded context, cite that register or status-source entry named by value and the `A.2.1`, `A.2.8`, `A.2.9`, `A.6.B`, or `A.21` source it depends on. Otherwise rely only on credential-currentness for that holder and context. |
+| Credential badge or register-backed credential-status view | Use the display as a publication of a credential source, credential-status source, or role-state source, not the source itself. Find the governing credential-status register, role-state register, or issuer, trust root, holder binding or subject binding, verifier context, relying context, proof or credential-status result, revocation, freshness, and effective window. If the governing register entry itself creates or changes role assignment, role-state, deontic permission, duty, or gate effect in the bounded context, cite that register or status-source entry named by value and the `A.2.1`, `A.2.8`, `A.2.9`, `A.6.B`, or `A.21` source it depends on. Otherwise rely only on credential-currentness for that holder and context. |
 | Rollback command-like cue | Treat as cue or `A.6.A`-governed invitation unless command record, authorization, work occurrence, performed-work result, or gate decision is recoverable. |
 | Generated explanation says "authorized" | Explanation may help find sources; it does not issue, approve, revoke, commit, authorize, pass a gate, provide evidence for performed work, or raise assurance. A citation or source mention inside the explanation guides work use or reliance use only when the cited publication carrier carries that relied-on claim named by value in the relying context under `A.10`. |
-| Extracted source, rewrite, representation shift, explanation, then gate or release claim | Reopen the governing source at the first lossy or non-commutative transform step; the gate claim or release claim waits for the required transform record, evidence path, explanation relation, gate decision, or assurance claim. |
+| Extracted source, rewrite, representation shift, explanation, then gate or release claim | Reopen the governing source at the first lossy or non-commutative transform step; the gate claim or release claim waits for the required transform record, evidence relation, explanation relation, gate decision, or assurance claim. |
 | Repeated green-tile failures without recoverable source relation | Treat recurrence as upstream source-relation repair work: expose decision refs, fix dashboard semantics, add source links and currentness, revise boundary wording, or add review cues so the acting user is not repeatedly forced to reconstruct missing source relation. |
 
 ### A.15.4:3.1 - Archetypal Grounding - Worked Dashboard And Approval Examples
 
 Worked dashboard and approval slice:
 
-A release dashboard shows a green approval-looking tile for `Release-2026.05.08-prod`. If the tile is a current view of the relevant `GateDecisionRef` plus evidence path and currentness path, it may carry bounded gate-passage reliance for that release scope and window. A claim that deployment happened still requires an `A.15.1` work-occurrence source. If the gate source is missing or stale, treat the tile as orientation and source-finding until the team can name the release-work claim under repair, release-work position under repair, governing pattern for the claim or effect, and governing source for the gate decision, evidence path, and currentness path.
+A release dashboard shows a green approval-looking tile for `Release-2026.05.08-prod`. If the tile is a current view of the relevant `GateDecisionRef` plus evidence relation and currentness relation, it may carry bounded gate-passage reliance for that release scope and window. A claim that deployment happened still requires an `A.15.1` work-occurrence source. If the gate source is missing or stale, treat the tile as orientation and source-finding until the team can name the release-work claim under repair, release-work position under repair, governing pattern for the claim or effect, and governing source for the gate decision, evidence relation, and currentness relation.
 
-| Step | Required move |
+| Step | Required source or relation |
 | --- | --- |
 | Required project claim or effect kind | Release reliance, gate passage, compliance proof, assurance increase, evidence relation, or currentness relation. |
-| Gate decision source | Cite the current `A.21` `GateDecision` or `DecisionLogRef`, gate profile, gate version, release scope or work target, scope, window, and replay or freshness pins. Without that source, the tile is not release permission or gate passage. |
+| Gate decision source | Cite the current `A.21` `GateDecision` or `DecisionLogRef`, gate profile, gate version, release scope or work target, scope, window, and replay or freshness pins. Without that source, the tile is not release authorization or gate passage. |
 | Flow constraint-validity source | Cite `A.20` `ConstraintValidity` status or witness only when the claim is about flow constraint validity, not about the gate decision itself. |
 | Evidence and currentness source | Use `A.10` for the dashboard query, publication-carrier integrity, evidence refs, time, window, freshness field, revocation source or revocation record, verifier context, relying context, and rival explanation such as stale display or copied status. |
 | Assurance source | Use `B.3` only if the tile is being used to raise readiness, compliance, trust, safety, release confidence, `R`, `F`, `G`, or `CL`; otherwise no assurance tuple is being claimed. |
-| Repaired gate-use reliance | With the decision and evidence path recovered, rely on gate passage only for the named release scope or work target, environment, gate profile, gate version, time, and window; a claim that deployment happened still needs an `A.15.1` work-occurrence source. |
-| Blocked overreads | The dashboard color does not create approval, permission, compliance proof, rollback success, work occurrence, or assurance by display. |
+| Repaired gate-use reliance | With the decision and evidence relation recovered, rely on gate passage only for the named release scope or work target, environment, gate profile, gate version, time, and window; a claim that deployment happened still needs an `A.15.1` work-occurrence source. |
+| Blocked overreads | The dashboard color does not create approval, deontic permission, compliance proof, rollback success, work occurrence, or assurance by display. |
 
 Approval memo green-tile case:
 
-An approval memo may carry an approval claim when it exposes the `A.2.9` `SpeechActRef`, actor and role assignment if claimed, affected release scope or work target, judgement context, time, window, publication-carrier refs, evidence refs, and instituted effect being claimed. That carries the bounded approval claim or effect only. It does not prove that release, deployment, rollback, or other work occurred; that performed-work claim still needs the dated `A.15.1` work-occurrence source plus any `A.10` evidence path required for the relying context.
+An approval memo may carry an approval claim when it exposes the `A.2.9` `SpeechActRef`, actor and role assignment if claimed, affected release scope or work target, judgement context, time, window, publication-carrier refs, evidence refs, and instituted effect being claimed. That carries the bounded approval claim or effect only. It does not prove that release, deployment, rollback, or other work occurred; that performed-work claim still needs the dated `A.15.1` work-occurrence source plus any `A.10` evidence relation required for the relying context.
 
-Credential and status green-tile case:
+Credential-status and role-state green-tile case:
 
-A credential or status response may carry holder reliance, status reliance, or currentness reliance only inside the issuer or governing status register, holder binding or subject binding, verifier context, relying context, proof result or status result, revocation source or revocation record, freshness field, and effective window that it exposes. It does not by itself carry release, work occurrence, gate passage, engineering justification, evidence for underlying operational facts, or contextual permission; those uses require the governing source for the claim or effect.
+A credential, credential-status, or role-state response may carry holder reliance, credential-status reliance, role-state reliance, or currentness reliance only inside the issuer, governing credential-status register, governing role-state register, holder binding or subject binding, verifier context, relying context, proof result or credential-status result, revocation source or revocation record, freshness field, and effective window that it exposes. It does not by itself carry release, work occurrence, gate passage, engineering justification, evidence for underlying operational facts, contextual deontic permission, or authorization; those uses require the governing source for the claim or effect.
 
 Situation viewpoint prompts:
 
@@ -22851,14 +22940,14 @@ Situation viewpoint prompts:
 | --- | --- |
 | Acting practitioner | What can I safely do next without turning the encountered episteme or episteme publication into unsupported work or reliance justification? |
 | Release engineer | Which `A.21` gate decision, decision log, release scope, work target, and `A.15.1` work occurrence are separate here? |
-| Issuer, gate, evidence, or role-assignment source | Which source, status, decision ref, or evidence path needs exposure or repair? |
-| Audit or peer-review viewpoint | Which evidence path, decision ref, speech-act ref, commitment, work occurrence, or assurance claim needs recoverability? |
+| Issuer, gate, evidence, or role-assignment source | Which source, role-state, credential-status, decision ref, or evidence relation needs exposure or repair? |
+| Audit or peer-review viewpoint | Which evidence relation, decision ref, speech-act ref, commitment, work occurrence, or assurance claim needs recoverability? |
 | Boundary claimant | Which words need typed claim IDs before they can guide work or reliance? |
 | Manager | Is repeated ambiguity source-relation repair work rather than another manual check for the acting practitioner? |
 | LLM user or tool user | Which governing source does the explanation help find, and which operative claims still need an `A.10` claim-bound source relation? |
-| Security or compliance source | Which revocation, currentness, proof, status, source order, or supersession source needs exposure? |
-| Model or data source | Which intended use, evaluation condition, version, window, limitation, and evidence path bound the model or data documentation? |
-| Assurance viewpoint | Which named claim actually has a `B.3` assurance claim, with what assurance tuple, evidence path, limitations, and reopen condition? |
+| Security or compliance source | Which revocation, currentness, proof, credential-status, role-state, source order, or supersession source needs exposure? |
+| Model or data source | Which intended use, evaluation condition, version, window, limitation, and evidence relation bound the model or data documentation? |
+| Assurance viewpoint | Which named claim actually has a `B.3` assurance claim, with what assurance tuple, evidence relation, limitations, and reopen condition? |
 
 Search cues for A.15.4 include: approval, approval-looking display, authorization, authorization-looking display, permission, permission display, allowed wording, green dashboard, release tile, release readiness, model card, datasheet, data card, provenance, provenance mark, attestation, attestation label, credential, credential badge, generated explanation, copied review, copied approval, review summary, compliance-looking mark, delegation, delegation display, revocation, revocation status, gate passed, gate passage, rollback successful, rollback cue, and assurance label. These are retrieval cues only; decide the governing source and governing pattern or source relation from the work or reliance question under repair, not from the displayed word, publication-carrier name, or source name.
 
@@ -22866,27 +22955,27 @@ Work and reliance disposition table for authority-looking cases:
 
 | Question under repair | Start in | First useful output |
 | --- | --- | --- |
-| Can this encountered episteme publication, publication face, publication carrier, rendering, or cue guide work or reliance? | `A.15.4` | Candidate next `U.WorkPlanning`, `U.Work`, or reliance move; governing pattern for the claim or effect; governing source; minimum relation-governed next move. |
+| Can this encountered episteme publication, publication face, publication carrier, rendering, or cue guide work or reliance? | `A.15.4` | Candidate `U.WorkPlan`, dated `U.Work`, or reliance-use relation; governing pattern for the claim or effect; governing source; minimum relation-governed use. |
 | Is the problem boundary, policy, API, schema, or connector wording? | `A.6` or `A.6.B` | Typed `L-*`, `A-*`, `D-*`, and `E-*` claims before the work claim or reliance claim is used. |
-| Is the problem evidence, currentness, provenance, credential status, generated-source relation, copied-source relation, or source-chain recovery? | `A.10` | Claim-bound evidence path, currentness path, and relation-governed or blocked use. |
+| Is the problem evidence, currentness, provenance, credential-status, generated-source relation, copied-source relation, or source-chain recovery? | `A.10` | Claim-bound evidence relation, currentness relation, and relation-governed or blocked use. |
 | Is the problem assurance, readiness, safety, compliance, trust, release confidence, or change in `R`, `F`, `G`, or `CL`? | `B.3` | Typed assurance claim, no-assurance-use disposition, or downgraded or rejected assurance use. |
 
-Display guidance for bounded status: a visible status meant to guide work should expose source type, reference or link named by value, freshness, window, scope, unsupported work claim, unsupported reliance claim, and unsupported effect. For example, prefer `Gate check passed; GateDecisionRef; release scope; environment; window; not compliance proof, rollback success, or assurance increase` over a bare approval-looking label.
+Display guidance for bounded credential-status or role-state: a visible state label meant to guide work should expose source type, reference or link named by value, freshness, window, scope, unsupported work claim, unsupported reliance claim, and unsupported effect. For example, prefer `Gate check passed; GateDecisionRef; release scope; environment; window; not compliance proof, rollback success, or assurance increase` over a bare approval-looking label.
 
 Incident-learning fields for authority-looking overread: encountered episteme or episteme publication, work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, governing pattern and governing source for the claim or effect, actor and role assignment, affected work target or claim, context, window, missing or stale source `U.Episteme`, source `U.EpistemePublication`, register entry, or governing source; governing FPF relation or role assignment accountable for exposing or repairing that missing source, plausible overread, safe disposition used now, and upstream repair work for the source, dashboard, explanation, credential view, boundary wording, publication face, or publication carrier.
 
-Contestability and redress relation: when an authority-looking case affects person or team status, access, assignment, responsibility, release blockage, compliance claim, or safety-impacting work, name the review relation or redress relation before the work claim or reliance claim hardens. The relation should name the disputed source or claim, the role assignment accountable for refreshing or correcting that source, the evidence relation or status-currentness relation to reopen, the safe interim disposition, and the time and window for review.
+Contestability and redress relation: when an authority-looking case affects person or team role-state, credential-status, access, assignment, responsibility, release blockage, compliance claim, or safety-impacting work, name the review relation or redress relation before the work claim or reliance claim hardens. The relation should name the disputed source or claim, the role assignment accountable for refreshing or correcting that source, the evidence relation or state-currentness relation to reopen, the safe interim disposition, and the time and window for review.
 
 Lintable overread cues:
 
 | Lint signal | Governing relation named by value |
 | --- | --- |
 | `approved`, `authorized`, `allowed`, `recommended`, or `guaranteed` in boundary, API, schema, or policy wording | Split through `A.6` or `A.6.B` into `L-*`, `A-*`, `D-*`, and `E-*`; use `A.6.C`, `A.2.8`, and `A.2.9` for agreement-like wording when agreement, commitment, or speech-act claims are being made. |
-| Dashboard tile, status color, or release tile used as release evidence or gate passage | Require `A.21` `GateDecision` or `DecisionLogRef` plus `A.10` evidence path and currentness path. |
-| Credential screenshot or badge used as permission, authorization, role-assignment relation, or status relation | Require `A.10` issuer, holder, verifier, status, currentness, and relying-context fields, then the `A.2.8`, `A.2.9`, `A.2.1`, `A.6.B`, or `A.21` source named by value for the required permission, authorization, role assignment, status, gate claim, or gate effect. |
+| Dashboard tile, credential-status color, role-state color, or release tile used as release evidence or gate passage | Require `A.21` `GateDecision` or `DecisionLogRef` plus `A.10` evidence relation and currentness relation. |
+| Credential screenshot or badge used as deontic permission, authorization, role-assignment relation, role-state relation, or credential-status relation | Require `A.10` issuer, holder, verifier, credential-status, currentness, and relying-context fields, then the `A.2.8`, `A.2.9`, `A.2.1`, `A.6.B`, or `A.21` source named by value for the required deontic permission, authorization, role assignment, role-state, credential-status, gate claim, or gate effect. |
 | Generated explanation uses `authorized`, `approved`, or similar wording | Use `E.17.EFP` for explanation relation and source-finding relation and `A.10` claim-bound source relation; issue, approval, gate, and commitment claims still need `A.2.9`, `A.21`, or `A.2.8`. |
-| Model card, datasheet, label, or note cited as readiness, safety, compliance, or release confidence | Require a typed `B.3` assurance claim, intended-use match, evaluation condition, limitations, and `A.10` evidence path. |
-| Provenance or attestation label cited as truth, safety, release, or permission | Require `A.10` bounded provenance claim or process claim plus separate evidence for truth, safety, release, permission, or assurance. |
+| Model card, datasheet, label, or note cited as readiness, safety, compliance, or release confidence | Require a typed `B.3` assurance claim, intended-use match, evaluation condition, limitations, and `A.10` evidence relation. Use `A.15.5` instead when the current claim is full-kit or work-entry readiness. |
+| Provenance or attestation label cited as truth, safety, release, deontic permission, or authorization | Require `A.10` bounded provenance claim or process-trace claim plus separate evidence for truth, safety, release, deontic permission, authorization, or assurance. |
 | Evidence, assurance, gate, or work-occurrence words without the governing source that carries that claim or effect | Recover the `A.10` evidence relation, `B.3` assurance claim, `A.21` gate decision, or `A.15.1` work-occurrence record respectively before the work claim or reliance claim is used. |
 
 Stress cases for practice:
@@ -22895,11 +22984,11 @@ Stress cases for practice:
 | --- | --- |
 | Green release dashboard tile with no `GateDecisionRef`. | Source-finding only; recover `A.21` decision or decision log plus `A.10` evidence before gate-passage reliance. |
 | Copied approval from last month. | Recover original `A.2.9` `SpeechActRef`, currentness, freshness, and any `A.2.8` commitment or `A.21` gate source needed for the claim. |
-| Credential badge screenshot after revocation. | Treat as contested credential-currentness; use `A.10` issuer, holder, verifier, source-status, and revocation relation and do not infer permission. |
+| Credential badge screenshot after revocation. | Treat as contested credential-currentness; use `A.10` issuer, holder, verifier, credential-status, and revocation relation and do not infer deontic permission or authorization. |
 | Generated explanation says `authorized by policy`. | Use `E.17.EFP` for explanation and source-finding and `A.10` claim-bound source relation; issuing, gate, and commitment claims still need their own sources. |
 | Boundary wording says `guaranteed approved for production`. | Split through `A.6` or `A.6.B`; if agreement-like or promise-bearing, unpack through `A.6.C`, `A.2.8`, and `A.2.9`. |
 | Dashboard says green while decision log says blocked. | Treat as conflicting sources; name source order, governing decision source, freshness policy, and supersession rule before the work claim or reliance claim is used. |
-| CRISPR lab dashboard says the guide edit is ready. | Treat the dashboard as orientation or source-finding until the protocol, approval record or gate record, role-assignment source, evidence path, current lab source, and `U.WorkPlan` for the intended edit are recoverable. A ranked guide row or readiness tile does not create biological-intervention permission, safety, or performed work. |
+| CRISPR lab dashboard says the guide edit is ready. | Treat the dashboard as orientation or source-finding until the protocol, approval record or gate record, role-assignment source, evidence relation, current lab source, and `U.WorkPlan` for the intended edit are recoverable. If the question is full-kit or work-entry readiness for the intended edit, use `A.15.5`; the readiness tile still does not create biological-intervention authorization, deontic permission, safety, or performed work. |
 
 ### A.15.4:3.2 - Archetypal Grounding - High-Impact Source-Restoration Slice
 
@@ -22909,26 +22998,26 @@ A lab manager sees a green tile for `CRISPR-guide-G42 ready` and a copied messag
 SourceRestorationNote:
   EncounteredSourceCandidate: green guide-readiness tile plus copied approval-looking message
   WorkOrRelianceClaimUnderRepair: proceed with the planned gene-editing work for sample batch B-17
-  ClaimOrEffectNeeded: authorization for intervention, current protocol, role-assignment source, evidence path, and lab work plan
+  ClaimOrEffectNeeded: authorization for intervention, current protocol, role-assignment source, evidence relation, and lab work plan
   GoverningSourceNeeded: current protocol publication; approval record or gate record when required; role assignment; A.10 evidence relation and currentness relation; A.15.2 work plan
-  RelationGovernedMoveNow: source-finding and source refresh; no intervention until the needed sources are named
+  CurrentRelationGovernedUse: source-finding and source refresh; no intervention until the needed sources are named
   BlockedOverread: tile color and copied message do not authorize biological work or prove safety
-  StopOrReopenCondition: reopen when the protocol, approval source or gate source, evidence path, role assignment, and work plan are current for batch B-17
+  StopOrReopenCondition: reopen when the protocol, approval source or gate source, evidence relation, role assignment, and work plan are current for batch B-17
 ```
 
 ### A.15.4:4.1 - Bias-Annotation
 
 A.15.4 corrects source-appearance bias. A publication face, dashboard tile, credential view, generated explanation, copied approval, provenance mark, schema wording, or API response can look like a work source before the governing project-side source is named. The pattern keeps the encountered source candidate separate from the source relation that carries the claim.
 
-It also corrects over-restoration bias. Not every source-looking case needs a full dossier. The source-restoration note names the claim, governing source, relation-governed next move, blocked overread, and reopen condition at the smallest useful depth for the work or reliance question.
+It also corrects over-restoration bias. Not every source-looking case needs a full dossier. The source-restoration note names the claim, governing source, current relation-governed use, blocked overread, and reopen condition at the smallest useful depth for the work or reliance question.
 
 ### A.15.4:4 - Conformance Checklist
 
 | ID | Requirement (Normative Predicate) | Purpose and Rationale |
 | :--- | :--- | :--- |
-| **CC-A15.4-1 (Work-relevant source restoration)** | Before an authority-looking case guides work or reliance, a conforming `A.15.4` use produces the ordinary source-restoration note: encountered source candidate, work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, governing pattern for the claim or effect, governing source needed, relation-governed next project move now, and blocked overread. The note names the pattern and governing source that carry the requested claim or effect; if that source is absent or stale, the disposition is limited to orientation, source-finding, contested use, source repair, bounded reversible probe, or blocked unsupported claim. | Prevents appearance-based reliance while keeping ordinary use cheap. |
-| **CC-A15.4-2 (P2W publication use boundary)** | A principle scheme, functional diagram, scenario, screen, or explanation that exposes a P2W chain guides only the `A.15` work or planning kind selected by the project use: method-family selection, selected method, `U.WorkPlan`, dated `U.Work`, work-result record, or result measurement. Claims outside that selected use require their own governing source. | Keeps P2W publication use tied to the work move under repair instead of turning publication form into project authority. |
-| **CC-A15.4-3 (Lowering and refresh)** | When the governing pattern, governing source, source-currentness relation, revocation relation, affected work target, relying context, or time window cannot be recovered, the disposition for the work or reliance claim is orientation, source-finding, contested use, bounded reversible probe, source-repair request, or blocked unsupported claim. The note records a refresh condition for changes to source currentness, revocation, governing decision, evidence path, status register, copied-source relation, generated-source relation, or publication relation. | Keeps A.15.4 useful without admitting a new source kind. |
+| **CC-A15.4-1 (Work-relevant source restoration)** | Before an authority-looking case guides work or reliance, a conforming `A.15.4` use produces the ordinary source-restoration note: encountered source candidate, work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, governing pattern for the claim or effect, governing source needed, current relation-governed use, and blocked overread. The note names the pattern and governing source that carry the requested claim or effect; if that source is absent or stale, the disposition is limited to orientation, source-finding, contested use, source repair, bounded reversible probe, or blocked unsupported claim. | Prevents appearance-based reliance while keeping ordinary use cheap. |
+| **CC-A15.4-2 (P2W publication use boundary)** | A principle scheme, functional diagram, scenario, screen, or explanation that exposes a P2W chain guides only the `A.15` work or planning kind selected by the project use: method-family selection, selected method, `U.WorkPlan`, dated `U.Work`, work-result record, or result measurement. Claims outside that selected use require their own governing source. | Keeps P2W publication use tied to the work use under repair instead of turning publication form into project authority. |
+| **CC-A15.4-3 (Lowering and refresh)** | When the governing pattern, governing source, source-currentness relation, revocation relation, affected work target, relying context, or time window cannot be recovered, the disposition for the work or reliance claim is orientation, source-finding, contested use, bounded reversible probe, source-repair request, or blocked unsupported claim. The note records a refresh condition for changes to source currentness, revocation, governing decision, evidence relation, role-state register, credential-status register, context-state record, copied-source relation, generated-source relation, or publication relation. | Keeps A.15.4 useful without admitting a new source kind. |
 
 ### A.15.4:5 - Common Anti-Patterns and How to Avoid Them
 
@@ -22940,13 +23029,13 @@ It also corrects over-restoration bias. Not every source-looking case needs a fu
 | --- | --- | --- |
 | Work can continue at the lightest relation-governed level instead of stopping on every suspicious display. | The practitioner names the claim being made and governing source reference before relying on the source. | Use the ordinary six-field source-restoration note first; use fuller fields only for high-impact or contested reliance. |
 | Appearance-based approval, evidence, assurance, gate, and work-occurrence overreads are blocked. | Some convenient dashboard or copied-text shortcuts become unusable until source currentness is recovered. | Keep orientation, source-finding, and bounded reversible probes available when no external-impact reliance is being made. |
-| Repeated ambiguity becomes source-relation repair work rather than repeated manual heroics. | The repair may reveal missing register entries, stale source publications, or underspecified gate and evidence paths. | Assign only prospective repair work or source-gap work; do not backdate evidence, gate passage, work occurrence, or assurance. |
+| Repeated ambiguity becomes source-relation repair work rather than repeated manual heroics. | The repair may reveal missing register entries, stale source publications, or underspecified gate and evidence relations. | Assign only prospective repair work or source-gap work; do not backdate evidence, gate passage, work occurrence, or assurance. |
 
 ### A.15.4:7 - Rationale
 
-A.15.4 exists because work often meets sources through displays, publication faces, generated explanations, copied statements, credential views, dashboard tiles, schema wording, API wording, or composed source chains before the governing source is visible. The pattern protects work momentum and source recoverability together: it lets the practitioner use the encountered source candidate for orientation or bounded source-finding, while preventing the source candidate from becoming approval, evidence, assurance, gate passage, performed work, release permission, role-assignment currentness, or status currentness by appearance.
+A.15.4 exists because work often meets sources through displays, publication faces, generated explanations, copied statements, credential views, dashboard tiles, schema wording, API wording, or composed source chains before the governing source is visible. The pattern protects work momentum and source recoverability together: it lets the practitioner use the encountered source candidate for orientation or bounded source-finding, while preventing the source candidate from becoming approval, evidence, assurance, gate passage, performed work, release authorization, role-assignment currentness, role-state currentness, or credential-status currentness by appearance.
 
-The pattern is deliberately a restoration relation, not a new authority source. Once the evidence, gate, assurance, speech-act, commitment, role-assignment, status, work-occurrence, publication, or boundary claim named by value is recovered, the pattern that governs that claim carries it directly.
+The pattern is deliberately a restoration relation, not a new authority source. Once the evidence, gate, assurance, speech-act, commitment, role-assignment, role-state, credential-status, context-state, work-occurrence, publication, or boundary claim named by value is recovered, the pattern that governs that claim carries it directly.
 
 ### A.15.4:8 - SoTA-Echoing
 
@@ -22954,20 +23043,20 @@ The pattern is deliberately a restoration relation, not a new authority source. 
 
 | Claim need | Source idea and current source | Current source reference | Local FPF invariant and practical local test | Adopted invariant, adapted invariant, and rejected shortcut |
 | --- | --- | --- | --- | --- |
-| Dynamic authorization or policy-response displays need requested operation named by value, affected resource or work target, context, and window relation. | Dynamic authorization practice separates subject, requested operation, affected resource or work target, context, and window before a relying move is allowed. | NIST SP 800-207 Zero Trust Architecture; Cedar Policy Language Reference Guide v4.5; OpenFGA authorization-modeling docs; source maturity = current standards, specifications, and widely used technical practice. | The restoration note names the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, the affected resource or work target, affected claim when one is being made, policy version, context, and time window before treating a visible allow response, deny response, or policy response as a relation-governed work or reliance source. | **Adopt, adapt, reject.** Adopt bounded currentness, source-relation, and relation-governed-use invariants; adapt them through FPF project records named by value; reject treating policy-looking output as permission or work-relevant source relation by display. |
-| Credential or register-backed status needs issuer, holder, verifier, status, currentness, and relying-context fields. | Credential and status practice separates issuer, holder binding or subject binding, verifier context, relying context, proof result or status result, governing register entry, revocation, freshness, and effective window. | W3C Verifiable Credentials Data Model v2.0 Recommendation and current digital identity or register-backed status practice; source maturity = current specifications and technical practice. | A credential view or status tile can carry only the holder claim, status claim, or currentness claim whose issuer, register, proof result or status result, revocation, freshness, and relying context are recoverable. | **Adopt, adapt, reject.** Adopt status-currentness separation; reject treating a badge, screenshot, or register excerpt as role assignment, status, permission, gate passage, or work reliance without the governing source for that claim or effect. |
-| Provenance and attestation marks need source relation and process-trace relation without becoming truth, release, or work evidence. | Provenance and attestation practice separates origin relation, process traceability relation, build claim, supply-chain claim, and verification metadata from truth of downstream claims or release permission. | C2PA Specifications 2.4 content provenance and attestations; SLSA v1.2 provenance; in-toto Statement v1 attestations; source maturity = current standards, specifications, and widely used practice. | A provenance or attestation mark remains source relation or process-trace relation until `A.10`, `B.3`, `A.20`, `A.21`, `A.15.1`, or another source relation named by value carries the downstream claim. | **Adopt, adapt, reject.** Adopt source traceability and process traceability; reject provenance-mark-as-truth, release permission, gate passage, assurance, or work occurrence. |
+| Dynamic authorization or policy-response displays need requested operation named by value, affected resource or work target, context, and window relation. | Dynamic authorization practice separates subject, requested operation, affected resource or work target, context, and window before a relying use is allowed. | NIST SP 800-207 Zero Trust Architecture; Cedar Policy Language Reference Guide v4.5; OpenFGA authorization-modeling docs; source maturity = current standards, specifications, and widely used technical practice. | The restoration note names the work or reliance claim under repair, work-relevant P2W claim under repair, or P2W chain position under repair, the affected resource or work target, affected claim when one is being made, policy version, context, and time window before treating a visible allow response, deny response, or policy response as a relation-governed work or reliance source. | **Adopt, adapt, reject.** Adopt bounded currentness, source-relation, and relation-governed-use invariants; adapt them through FPF project records named by value; reject treating policy-looking output as permission or work-relevant source relation by display. |
+| Credential or register-backed credential-status or role-state needs issuer, holder, verifier, currentness, and relying-context fields. | Credential and state practice separates issuer, holder binding or subject binding, verifier context, relying context, proof result or credential-status result, governing register entry, revocation, freshness, and effective window. | W3C Verifiable Credentials Data Model v2.0 Recommendation and current digital identity or register-backed status practice; source maturity = current specifications and technical practice. | A credential view, credential-status tile, or role-state tile can carry only the holder claim, credential-status claim, role-state claim, or currentness claim whose issuer, register, proof result or credential-status result, revocation, freshness, and relying context are recoverable. | **Adopt, adapt, reject.** Adopt credential-currentness, role-state-currentness, and source-currentness separation; reject treating a badge, screenshot, or register excerpt as role assignment, deontic permission, gate passage, or work reliance without the governing source for that claim or effect. |
+| Provenance and attestation marks need source relation and process-trace relation without becoming truth, release, or work evidence. | Provenance and attestation practice separates origin relation, process traceability relation, build claim, supply-chain claim, and verification metadata from truth of downstream claims, release authorization, or deontic permission. | C2PA Specifications 2.4 content provenance and attestations; SLSA v1.2 provenance; in-toto Statement v1 attestations; source maturity = current standards, specifications, and widely used practice. | A provenance or attestation mark remains source relation or process-trace relation until `A.10`, `B.3`, `A.20`, `A.21`, `A.15.1`, or another source relation named by value carries the downstream claim. | **Adopt, adapt, reject.** Adopt source traceability and process traceability; reject provenance-mark-as-truth, release authorization, deontic permission, gate passage, assurance, or work occurrence. |
 | Change, gate, release, and approval displays need decision, schedule, and performed-work separation. | Release and change practice separates approval acts, authorization acts, gate decisions, planned schedules, and performed work. | ISO/IEC/IEEE 15288:2023 and ISO/IEC/IEEE 12207:2017 life-cycle process separation; ITIL 4 Change Enablement and current release and change practice; source maturity = current life-cycle standards plus mature service-management practice. | A dashboard or approval-looking display supports reliance only when it exposes the `GateDecision`, `SpeechAct`, `Commitment`, `U.WorkPlan`, or `A.15.1` work-occurrence source that carries the claim named by value or effect. | **Adopt, adapt, reject.** Adopt decision, schedule, and performed-work separation; reject a green tile, copied approval, or generated explanation as rollout, release, or work reliance by appearance. |
 
-**Digital-identity and provenance boundary.** The W3C Verifiable Credentials, C2PA, SLSA, in-toto, Cedar-style, Zanzibar-style, NIST, and ITIL sources are used for currentness, status, provenance, authorization-source fields, and change-practice fields. They do not turn a visible credential, provenance label, attestation, policy response, register excerpt, or dashboard display into work occurrence, gate passage, permission, assurance, release, or project claim relation without the governing source required by `A.15.4`, `A.15`, `A.10`, `B.3`, `A.20`, or `A.21`.
+**Digital-identity and provenance boundary.** The W3C Verifiable Credentials, C2PA, SLSA, in-toto, Cedar-style, Zanzibar-style, NIST, and ITIL sources are used for currentness, credential-status, role-state, provenance, authorization-source fields, and change-practice fields. They do not turn a visible credential, provenance label, attestation, policy response, register excerpt, or dashboard display into work occurrence, gate passage, deontic permission, assurance, release, or project claim relation without the governing source required by `A.15.4`, `A.15`, `A.10`, `B.3`, `A.20`, or `A.21`.
 
 The nearest recovery references are the worked dashboard and approval examples, `CC-A15.4-1`, `CC-A15.4-2`, `A.10`, `B.3`, `A.20`, `A.21`, `A.2.8`, `A.2.9`, and `A.15.1`. If a SoTA row cannot be recovered through those local checks, do not let the source citation stand in for the local `A.15.4` rule.
 
 ### A.15.4:9 - Relations
 
 * **Cluster relation:** `A.15.4` is a cluster member under `A.15` for work-relevant source restoration; it does not replace the A.15 role, method, plan, and work kernel.
-* **Uses:** `E.17`, `E.17:5.1b`, `E.17:5.1c`, and `E.17:5.1d` for source-relation, use-boundary, and neighboring-pattern publication-use vocabulary, `E.17.EFP` for generated-explanation faithfulness and source-finding, `A.16.0` for source-transfer and publication discipline, `A.6`, `A.6.B`, and `A.6.C` for boundary, policy, API, and schema wording, `A.10` for evidence, currentness, provenance, and credential status, `B.3` for engineering justification claims, `A.20` for flow constraint validity, `A.21` for gate decisions, `A.2.1` for role-assignment or context-state relations when they carry the source claim, `A.2.8` for commitments, `A.2.9` for speech acts, and `A.15.1` for dated `U.Work` occurrences.
-* **E.10.ARCH relation-selection rule:** When `E.10` encounters source-relation, authority, permission, approval, role, status, green-tile, generated-explanation, copied-review, credential, provenance, or dashboard wording that is about to guide work or reliance, `E.10.ARCH` selects `A.15.4` only after excluding or assigning direct evidence (`A.10`), assurance (`B.3`), gate (`A.21`), constraint (`A.20`), boundary or use-boundary wording (`A.6` and `A.6.B`), role-assignment or context-state relation (`A.2.1`), speech act (`A.2.9`), commitment (`A.2.8`), work occurrence (`A.15.1`), and publication-face, publication-use, source-transfer, or explanation questions (`E.17`, `A.16.0`, and `E.17.EFP`). `A.15.4` records the work-relevant source-restoration relation named by value; it does not replace those governing patterns.
+* **Uses:** `E.17`, `E.17:5.1b`, `E.17:5.1c`, and `E.17:5.1d` for source-relation, use-boundary, and neighboring-pattern publication-use vocabulary, `E.17.EFP` for generated-explanation faithfulness and source-finding, `A.16.0` for source-transfer and publication discipline, `A.6`, `A.6.B`, and `A.6.C` for boundary, policy, API, and schema wording, `A.10` for evidence, currentness, provenance, and credential-status, `B.3` for engineering justification claims, `A.15.5` for full-kit and work-entry readiness relations, `A.20` for flow constraint validity, `A.21` for gate decisions, `A.2.1` for role-assignment or context-state relations when they carry the source claim, `A.2.8` for commitments, `A.2.9` for speech acts, and `A.15.1` for dated `U.Work` occurrences.
+* **E.10 and E.10.MOVE relation-selection rule:** When `E.10` encounters source-relation, authority, permission, approval, readiness, role, role-state, credential-status, green-tile, generated-explanation, copied-review, credential, provenance, dashboard, or move-like wording that is about to guide work or reliance, `E.10.MOVE` restores move or readiness wording first when it hides pattern-use or work-entry-readiness claims, and `E.10.ARCH` selects `A.15.4` only after excluding or assigning direct evidence (`A.10`), assurance (`B.3`), work-entry readiness (`A.15.5`), gate (`A.21`), constraint (`A.20`), boundary or use-boundary wording (`A.6` and `A.6.B`), role-assignment or context-state relation (`A.2.1`), speech act (`A.2.9`), commitment (`A.2.8`), work occurrence (`A.15.1`), and publication-face, publication-use, source-transfer, or explanation questions (`E.17`, `A.16.0`, and `E.17.EFP`). `A.15.4` records the work-relevant source-restoration relation named by value; it does not replace those governing patterns.
 * **A.15 boundary relation:** use `A.15` directly when the remaining question under repair is role, method, plan, and work alignment rather than source restoration.
 
 ### A.15.4:9.1 - C.29 mathematical-lens use relation
@@ -22978,17 +23067,237 @@ The nearest recovery references are the worked dashboard and approval examples, 
 
 When a P2W use under `E.18.1` produces result wording, use this pattern only when an encountered source candidate such as publication, dashboard, generated explanation, copied statement, provenance mark, schema wording, API wording, or composed source chain is about to justify a work-result or reliance claim by appearance. No generic `WorkResult` kind is admitted.
 
-Recover the governing source before relying on any result-related cue: result artifact, resource ledger, launch-values-bound record, substitution record, telemetry, acceptance record, quality-evaluation record, done-state update, feedback pin, result measurement, evidence path, assurance claim, parity relation, refresh relation, or role-assignment enactability claim. If the governing pattern or relation is missing, use the encountered source candidate only for orientation or source-finding and block only the unsupported result or reliance claim.
+Recover the governing source before relying on any result-related cue: result artifact, resource ledger, launch-values-bound record, substitution record, telemetry, acceptance record, quality-evaluation record, done-state update, feedback pin, result measurement, evidence relation, assurance claim, parity relation, refresh relation, or role-assignment enactability claim. If the governing pattern or relation is missing, use the encountered source candidate only for orientation or source-finding and block only the unsupported result or reliance claim.
 
 ### A.15.4:9.3 - Lowering, Repair, and Refresh Conditions
 
-Lower an `A.15.4` use when the work or reliance claim under repair, work-relevant P2W claim under repair, P2W chain position under repair, governing pattern, governing source, relying context, time window, source-currentness relation, revocation relation, evidence path, gate decision, assurance claim, speech-act ref, commitment, role assignment, status record, or work-occurrence source cannot be named for the intended use. The lowered use is orientation, source-finding, contested use, bounded reversible probe, source-repair request, or blocked unsupported claim.
+Lower an `A.15.4` use when the work or reliance claim under repair, work-relevant P2W claim under repair, P2W chain position under repair, governing pattern, governing source, relying context, time window, source-currentness relation, revocation relation, evidence relation, gate decision, assurance claim, speech-act ref, commitment, role assignment, role-state record, credential-status record, context-state record, or work-occurrence source cannot be named for the intended use. The lowered use is orientation, source-finding, contested use, bounded reversible probe, source-repair request, or blocked unsupported claim.
 
-Repair the source-restoration note when source currentness, revocation, source order, governing decision source, evidence path, copied-source relation, generated-source relation, dashboard publication, credential view, status register, boundary wording, or work-result cue changes. Repair the governing source through the evidence, assurance, gate, constraint, speech-act, commitment, role-assignment, status, work-occurrence, publication, or boundary-wording pattern governing the recovered claim when that recovered claim belongs outside A.15.4.
+Repair the source-restoration note when source currentness, revocation, source order, governing decision source, evidence relation, copied-source relation, generated-source relation, dashboard publication, credential view, role-state register, credential-status register, context-state record, boundary wording, or work-result cue changes. Repair the governing source through the evidence, assurance, gate, constraint, speech-act, commitment, role-assignment, role-state, credential-status, context-state, work-occurrence, publication, or boundary-wording pattern governing the recovered claim when that recovered claim belongs outside A.15.4.
 
-Refresh before allowing the encountered source candidate to guide release, safety, compliance, delegated role-assignment or status, contested source, cross-context reuse, work-result reliance, external-impact reliance, or irreversible work. Stop the refresh at the smallest changed source-restoration value: encountered source candidate, source episteme, source publication, governing source, source-currentness relation, status or revocation record, gate relation, evidence relation, assurance relation, copied-source relation, generated-source relation, or work-governed relation.
+Refresh before allowing the encountered source candidate to guide release, safety, compliance, delegated role-assignment or role-state, contested source, cross-context reuse, work-result reliance, external-impact reliance, or irreversible work. Stop the refresh at the smallest changed source-restoration value: encountered source candidate, source episteme, source publication, governing source, source-currentness relation, role-state record, credential-status record, context-state record, revocation record, gate relation, evidence relation, assurance relation, copied-source relation, generated-source relation, or work-governed relation.
 
 ### A.15.4:End
+
+## A.15.5 - Work-Entry Readiness and Full-Kit Preparation
+
+> **Type:** Architectural (A)
+> **Status:** Stable
+> **Normativity:** Normative unless marked informative
+
+**At a glance.** `A.15.5` governs `WorkEntryReadiness@Context`: the planning and gate-facing relation that says whether intended work is ready enough to enter a work boundary. It uses full-kit preparation, commitment, resource readiness, flow policy, planned slot-filling baselines, and gate refs without treating readiness as performed work.
+
+**Use this when.** Use this pattern when a team is about to commit, release, launch, or admit intended work and needs to know whether the needed inputs, sources, resources, planned fillers, constraints, and gate conditions are ready enough for that work entry.
+
+**Primary EntityOfConcern.** One `WorkEntryReadiness@Context` relation for one intended work item, target work plan, PlanItem, or work-boundary concern in one bounded context.
+
+**First output.** One `WorkEntryReadiness@Context` record with its `FullKitCondition`, commitment disposition, resource-readiness refs, WIP or flow-policy refs, planned-baseline refs, gate refs when current, and stop or degraded-use condition.
+
+**Not this pattern when.** Use `A.15.2` for the work plan itself, `A.15.3` for planned slot fillers, `A.15.1` for dated performed work, `A.21` for gate decisions, `B.1.6` for resource aggregation after work, `E.18` for transformation-flow structure, and `E.18.1` for P2W carry-through from accepted problem-side material.
+
+### A.15.5:1 - Problem Frame
+
+Teams often say that work is "ready", "full-kitted", "committed", "green", "released", or "good to start." Those words can point to different FPF values: an intended WorkPlan, a PlanItem baseline, a performed preparation activity, a gate decision, a source-currentness relation, resource availability, or resulting performed work.
+
+`A.15.5` gives the readiness relation one place without importing a management framework object as an FPF kind. Readiness is pre-work-entry unless a recheck after launch or post-launch variance claim is explicitly current. A readiness relation may cite preparation work, but it is not that preparation work and not the target performed work.
+
+### A.15.5:2 - Problem
+
+Without a separate work-entry readiness relation:
+
+1. Full-kit preparation becomes an attractive umbrella for planning, source use, gate passage, and performed work.
+2. A green tile or ready label is treated as a `GateDecision`.
+3. A `SlotFillingsPlanItem` baseline is overread as evidence that the planned values were actually prepared or used.
+4. Resource readiness is confused with resource consumption.
+5. A committed item becomes "done" by position in a board, not by dated `U.Work`.
+
+### A.15.5:3 - Forces
+
+| Force | Pressure |
+| --- | --- |
+| Work-entry speed | Teams need a short readiness result before work entry. |
+| Open-world discipline | A missing field in the readiness record does not mean the corresponding concern does not exist; it means the current readiness claim did not use that slot. |
+| Plan and work split | A readiness relation can cite intended work and preparation work without becoming performed target work. |
+| Gate separation | A gate may consume readiness evidence, but the readiness relation does not itself publish a `GateDecision`. |
+| Full-kit usefulness | Full-kit thinking is valuable when it states what must be known, prepared, reserved, or checked before work starts. |
+
+### A.15.5:4 - Solution
+
+Represent readiness as `WorkEntryReadiness@Context`, a dependent relation under the A.15 family and A.21 boundary.
+
+E.24.UK settlement: this pattern does not introduce a root `U.Readiness`, root `U.Move`, imported TameFlow `MOVE` kind, or independent readiness ontic. The governed value is a context readiness relation over existing values: `U.WorkPlan`, PlanItem, `SlotFillingsPlanItem`, intended work kind, target EntityOfConcern, commitment disposition, resource-readiness refs, gate refs, evidence refs, and performed `U.Work` only when that work has occurred. `FullKitCondition` is a condition inside this readiness relation, not a separate root kind.
+
+#### A.15.5:4.1 - WorkEntryReadiness@Context
+
+```text
+WorkEntryReadiness@Context:
+  ProjectConcernRef
+  BoundedContextRef
+  TargetWorkPlanRef?
+  TargetPlanItemRef?
+  TargetWorkKindRef?
+  TargetEntityOfConcernRef?
+  IntendedOutcomeOrValueRef?
+  FullKitCondition?
+  CommitmentDisposition?
+  ResourceReadinessRefs?
+  WIPPolicyRef?
+  FlowPolicyRef?
+  SlotFillingsPlanItemRefs?
+  PreparationWorkRefs?
+  PriorWorkEvidenceRefs?
+  SourceReadinessRefs?
+  LaunchGateRef?
+  GateDecisionRef?
+  EvidenceRefs?
+  StopCondition
+  DegradedUse?
+  ReturnOrRecheckCondition?
+  PostLaunchVarianceRef?
+```
+
+The record is filled according to the current readiness claim. It is not a demand to fill every slot. It is a checklist of concerns that must not be forgotten when those concerns are live.
+
+#### A.15.5:4.2 - FullKitCondition
+
+Use `FullKitCondition` when the readiness question depends on what must be known, prepared, reserved, gathered, communicated, or pinned before work entry.
+
+```text
+FullKitCondition:
+  NeededInputRefs
+  KnownInputRefs
+  MissingInputRefs
+  GoverningPatternForEachMissingValue
+  PreparationWorkRef?          # only when preparation was performed
+  PlannedBaselineRef?          # usually A.15.3 SlotFillingsPlanItem
+  SourceOrPublicationRefs?
+  ResourceReadinessRefs?
+  StopOrDegradedUseRule
+```
+
+Full-kit preparation can include gathering information, coordinating roles, producing a missing source, reserving a resource, pinning a planned filler, or creating shared understanding. Those activities are `U.Work` only when actually performed. The readiness record cites them; it does not become them.
+
+#### A.15.5:4.3 - Commitment and Launch Boundary
+
+`CommitmentDisposition` states the work-entry stance, such as `notReady`, `readyWithKnownGaps`, `readyForProbe`, `readyForCommitment`, `committed`, `blocked`, or `requiresGateDecision`.
+
+Use A.21 only when a current `OperationalGate(profile)` consumes declared checks and publishes a `GateDecision`. A readiness badge, green tile, full-kit label, or commitment board position is not gate passage unless A.21 fields are recoverable.
+
+#### A.15.5:4.4 - Relation to A.15 Family
+
+| Current claim | Governing pattern |
+| --- | --- |
+| Intended target work and horizon | `A.15.2 U.WorkPlan`. |
+| Planned slot fillers before work | `A.15.3 SlotFillingsPlanItem`. |
+| Preparation activity that actually happened | `A.15.1 U.Work`. |
+| Target work that actually happened | `A.15.1 U.Work`. |
+| Readiness before work entry | `A.15.5 WorkEntryReadiness@Context`. |
+| Resource budgets or reservations before work | `A.15.5` with `B.1.6` refs when resource semantics are current. |
+| Resource consumption by work | `B.1.6` plus `A.15.1`. |
+
+#### A.15.5:4.5 - Relation to P2W and Pattern Use
+
+When `E.18.1` carries accepted problem-side material to a readiness question, `E.18.1` names that carry-through relation and cites `A.15.5` for the readiness result. When a user needs to know which pattern to use before readiness is current, use `E.11.PUR`.
+
+### A.15.5:5 - Archetypal Grounding - Worked Slices
+
+#### A.15.5:5.1 - Fixture Deformation Work
+
+Situation: a cooling-fixture team plans a deformation test. The ProblemCard is accepted, P2W has carried a heat-flow distinction into a work-planning question, and the team asks whether the test is ready to start.
+
+```text
+WorkEntryReadiness@Context:
+  ProjectConcernRef: cooling-fixture deformation test
+  BoundedContextRef: lab test before comparator run
+  TargetWorkPlanRef: WorkPlan-LAB-043
+  TargetPlanItemRef: PlanItem-TEST-043
+  FullKitCondition:
+    NeededInputRefs: specimen id, heat-flow invariant note, boundary-condition plan, sensor calibration source, fixture drawing edition
+    KnownInputRefs: specimen id, heat-flow invariant note
+    MissingInputRefs: sensor calibration source, fixture drawing edition
+    GoverningPatternForEachMissingValue: A.15.4 for calibration source, E.17 for drawing publication edition
+    PlannedBaselineRef: SlotFillingsPlanItem-SFI-043
+    StopOrDegradedUseRule: no launch until calibration and drawing edition are pinned
+  CommitmentDisposition: blocked
+  LaunchGateRef: LaunchGate-LAB-043
+  StopCondition: do not start target test work
+```
+
+The readiness result blocks target work entry. It does not say the lab test occurred.
+
+#### A.15.5:5.2 - Documentation Repair Probe
+
+Situation: an assisting agent can run a reversible documentation probe to find source-currentness gaps.
+
+Use `WorkEntryReadiness@Context` only for the readiness of the probe or repair work. If the probe is actually run, record the probe as `U.Work` under `A.15.1` and then recheck readiness for the target repair.
+
+#### A.15.5:5.3 - Release Screen
+
+Situation: a release dashboard shows a green readiness badge.
+
+If the current claim is "the release gate passed", use A.21 and recover `OperationalGate(profile)`, declared checks, aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and window. If those fields are not recoverable, the display may be a source cue for `A.15.4`, an evidence question, or a readiness cue. It is not gate passage by appearance.
+
+### A.15.5:6 - Bias-Annotation
+
+- **Ready-label bias.** A green tile, ready label, release screen, or commitment board position can look stronger than the recoverable claim. Recover whether the current object is readiness, source restoration, gate decision, work authorization, or performed work.
+- **Full-kit umbrella bias.** Full-kit preparation is useful, but it can hide planned baselines, performed preparation work, resource readiness, source currentness, and target work. Keep each current value in its governing pattern.
+- **Baseline-as-actuals bias.** Planned fillers and readiness references do not prove launch values, performed values, variance, or results.
+
+### A.15.5:7 - Conformance Checklist
+
+| ID | A conforming readiness use... | Check |
+| --- | --- | --- |
+| `CC-A15.5-1` | names the target intended work or work-boundary concern. | The readiness relation is not floating without a target concern. |
+| `CC-A15.5-2` | separates readiness from performed work. | No target `U.Work` occurrence is asserted unless dated work evidence is current. |
+| `CC-A15.5-3` | separates full-kit condition from preparation work. | `PreparationWorkRef` is used only when preparation was performed. |
+| `CC-A15.5-4` | cites planned baselines without rewriting them. | `SlotFillingsPlanItem` remains a plan-item baseline under A.15.3. |
+| `CC-A15.5-5` | keeps gate decisions in A.21. | Readiness labels do not create `GateDecision` without A.21 fields. |
+| `CC-A15.5-6` | keeps resource readiness and resource aggregation distinct. | Planned reservations and actual consumption are not merged. |
+| `CC-A15.5-7` | states stop, degraded-use, or recheck condition. | The reader can tell whether to stop, probe, commit, launch, or return to a missing source. |
+
+### A.15.5:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Why it fails | Better use |
+| --- | --- | --- |
+| Ready label as authorization | A label is treated as work authorization or gate passage. | Use A.21 for gate decision or A.15.4 for source restoration. |
+| Full kit as work done | Prepared inputs are treated as target work completion. | Record preparation work separately and target work only when it occurs. |
+| Baseline as actuals | Planned slot fillers are treated as launch or performed values. | Keep planned fillers in A.15.3 and record variance after work. |
+| MOVE imported as kind | TameFlow source wording becomes an FPF object. | Recover intended work, commitment, readiness, gate, preparation work, or performed work under FPF patterns. |
+
+### A.15.5:9 - Consequences
+
+Benefits:
+
+- Teams can inspect work-entry readiness without flattening plan, preparation, gate, resource, and performed-work claims.
+- TameFlow full-kitting contributes useful criteria without importing TameFlow `MOVE` as an FPF kind.
+- Gate and work evidence remain auditable because readiness only cites them when they are current.
+
+Costs:
+
+- Some "ready" claims become incomplete until the target work, missing inputs, and stop condition are named.
+- A full-kit record may expose preparation work that needs its own plan, source, evidence, and resource records.
+
+### A.15.5:10 - Rationale
+
+The readiness question is practical and recurrent: should this intended work enter the work boundary now? FPF already has the kinds needed to answer that question, but without a small readiness relation the same words pull in too many objects at once.
+
+`WorkEntryReadiness@Context` is deliberately dependent. It preserves `U.WorkPlan`, `SlotFillingsPlanItem`, `U.Work`, A.21 gate decisions, B.1.6 resource relations, and source restoration while giving the practitioner one inspectable pre-work-entry record.
+
+### A.15.5:11 - SoTA-Echoing
+
+| Source family | Use in this pattern | Local adoption |
+| --- | --- | --- |
+| TameFlow `MOVE` and Full-Kitting source material | Supplies minimal outcome-value effort, target scope, commitment, WIP pressure, and pre-entry full-kit criteria. | Adopt as source distinctions; adapt into FPF `WorkEntryReadiness@Context`, WorkPlan, PlanItem, gate, preparation work, resource, and performed-work relations. |
+| Current A.15 work-family settlement | Separates intended work, planned baseline, and dated performed work. | Reuse the split directly; readiness cites but does not replace those values. |
+| Current A.21 gate-publication discipline | Separates readiness-looking displays from gate decisions. | Readiness may feed a gate, but gate passage belongs to A.21. |
+
+### A.15.5:12 - Relations
+
+- **Builds on:** `A.15`, `A.15.1`, `A.15.2`, `A.15.3`, `A.15.4`, `A.21`, `B.1.6`, `E.18`, `E.18.1`, and `E.24`.
+- **Coordinates with:** `E.11.PUR` for recommended pattern use before readiness is selected, `E.10.MOVE` for readiness wording repair, `C.32.P2S` when readiness prepares work that realizes architecture-selected structures, and `A.3.4.P` when workflow or process wording is primarily transformation-situation wording.
+- **Does not replace:** target `U.WorkPlan`, `SlotFillingsPlanItem`, `U.Work`, `GateDecision`, source-restoration relation, resource aggregation, or transformation-flow structure.
+
+### A.15.5:End
 
 ## A.16 - Language-State Move Coordination
 
@@ -22998,18 +23307,18 @@ Refresh before allowing the encountered source candidate to guide release, safet
 
 **Plain-name.** Language-state move coordination.
 
-**Start here when.** Your first honest content is a cue, not yet a claim, requirement, method, or work record, and you need to name the next admissible move without pretending that one downstream governing pattern has already taken over.
+**Start here when.** Your first honest content is a cue, not yet a claim, requirement, method, or work record, and you need to name the next admissible language-state move without pretending that one downstream governing pattern has already taken over.
 
-**First output.** A small typed move note or early preservation-to-routing note that names the source publication form, target publication form, target governing pattern, and MVPK face where that face matters.
+**First output.** A small typed language-state move note or early preservation-to-routing note that names the source publication form, target publication form, target governing pattern, and MVPK face where that face matters.
 
-**Typical next governing patterns.** `A.16.1` for early preservation, `B.4.1` for route publication, `B.5.2.0` for cue-derived abductive prompting, endpoint governing patterns such as `A.6.P`, `A.6.A`, and `C.16.Q`, and `A.16.2` when the right move is reopen/backoff/respecify/retire.
+**Typical next governing patterns.** `A.16.1` for early preservation, `B.4.1` for route publication, `B.5.2.0` for cue-derived abductive prompting, endpoint governing patterns such as `A.6.P`, `A.6.A`, and `C.16.Q`, and `A.16.2` when the right language-state move is reopen, backoff, respecify, or retire.
 
 **Common neighboring-pattern mistakes.** If history itself must be published as an accountable trajectory, use `A.16.0`; if you are already doing slot-explicit epistemic precision repair, apply `A.6.P`, `C.16.Q`, or `A.6.A`; if the publication target is a graph publication in itself, use `E.18`.
 
 ### A.16:1 - Problem frame
-Once positions in the declared language-state `U.CharacteristicSpace` chart from `C.2.2a` are explicit, teams still need admissible move kinds for how governed `U.Episteme` publications change, narrow, reopen, or hand off across that chart. Those moves must not collapse into a second formality-only climb, a generic one-pass process story, or an invisible sequence of governing pattern replacements.
+Once positions in the declared language-state `U.CharacteristicSpace` chart from `C.2.2a` are explicit, teams still need admissible move kinds for how governed `U.Episteme` publications change, narrow, reopen, or transfer responsibility across that chart. Those moves must not collapse into a second formality-only climb, a generic one-pass process story, or an invisible sequence of governing pattern replacements.
 
-A single local move note is often enough. Only some cases need a full trajectory account. The coordination pattern therefore has to stand independently while still remaining compatible with `A.16.0` when lineage, branch structure, loss notes, or handoff history become governance-relevant.
+A single local move note is often enough. Only some cases need a full trajectory account. The coordination pattern therefore has to stand independently while still remaining compatible with `A.16.0` when lineage, branch structure, loss notes, or responsibility-transfer history become governance-relevant.
 
 ### A.16:2 - Problem
 Without a dedicated coordination pattern, authors either misuse `F0-F9`, force every cue into anomaly/problem language too early, let reopen and backoff happen informally with no explicit guards, or over-wrap every local move in a meta-account that should have remained optional.
@@ -23025,7 +23334,9 @@ Without a dedicated coordination pattern, authors either misuse `F0-F9`, force e
 ### A.16:4 - Solution
 `A.16` governs only admissible move kinds, their guards, and docking rules for how governed `U.Episteme` publications may be related across declared language-state positions. It does **not** govern `F`, does **not** define the trajectory-account semantics itself, and does **not** define a rival graph calculus beside `E.18`.
 
-A conforming move may be published as a local move note without any `U.LanguageStateMoveTrajectory` wrapper. `A.16.0` is used only when lineage, branch structure, loss notes, supersession, retirement, bridge-sensitive history, or governing pattern handoff has governance value that should be published as an account.
+In this pattern, `move` is a local term for a typed language-state publication transition over governed `U.Episteme` publication forms. It is not a general project move, pattern-use recommendation, work-entry readiness relation, performed work, or work plan. When source prose uses move-like wording outside this local language-state scope, restore the project concern through `E.10.MOVE` and then use `E.11.PUR`, `A.15.5`, `A.15.1`, `A.15.2`, or the direct governing pattern named by value.
+
+A conforming move may be published as a local move note without any `U.LanguageStateMoveTrajectory` wrapper. `A.16.0` is used only when lineage, branch structure, loss notes, supersession, retirement, bridge-sensitive history, or governing-pattern responsibility transfer has governance value that should be published as an account.
 
 Observation itself is a precursor condition typically published through `B.4.1`. `A.16` move kinds begin once a cue is deliberately noticed, stabilized, route-published, reopened, formalized, operationalized, respecified, or retired under explicit move discipline.
 
@@ -23062,7 +23373,7 @@ After `route`, `projection`, `formalize`, or `operationalize`, the next admissib
 Naming only the governing pattern is insufficient because governing patterns are not forms. Naming only the face is insufficient because faces are not forms. An admissible move note states the pattern-governed publication form first, then the governing pattern, then the face if the face matters.
 
 #### A.16:4.4 - Effect-free versus work-requiring moves
-Some `formalize` and `operationalize` moves are effect-free epistemic rewrites or moves to publication forms with higher articulation or closure over already available grounds. Others require new measurements, experiments, instrumentation, execution, or other `U.Work`. When the latter happens, the move note shall expose the crossing or handoff explicitly; `A.16` does not pretend that world-facing work occurred inside the language layer.
+Some `formalize` and `operationalize` moves are effect-free epistemic rewrites or moves to publication forms with higher articulation or closure over already available grounds. Others require new measurements, experiments, instrumentation, execution, or other `U.Work`. When the latter happens, the move note shall expose the work-boundary crossing or responsibility transfer explicitly; `A.16` does not pretend that world-facing work occurred inside the language layer.
 
 #### A.16:4.5 - Move-note threshold and path publication discipline
 A typed local move note is sufficient when a small move or short move chain can be kept reconstructible without publishing extra lineage machinery.
@@ -23072,7 +23383,7 @@ Use `A.16.0` only when at least one of the following is load-bearing:
 - derivation, supersession, fork, merge, or retirement structure;
 - a multi-move history whose compression would hide governing pattern or authority changes;
 - visible loss notes or reopen conditions spanning more than one move;
-- responsibility handoff or bridge/viewpoint entry that depends on upstream history.
+- responsibility transfer, bridge entry, or viewpoint entry that depends on upstream history.
 
 If the history itself must be published as a graph publication, reuse `E.18`. `A.16` governs move admissibility; `A.16.0` packages trajectory accounts; `E.18` governs graph publication of paths.
 
@@ -23104,7 +23415,7 @@ The pattern biases authors toward explicit move-typing and away from folk storie
 - **Form-face collapse.** Do not treat an MVPK face as if it were the publication form itself. Name both when both matter.
 - **Irreversible maturity story.** Reopen, sketch-backoff, respecify, and retirement are admissible moves, not failures of the trajectory discipline.
 - **Silent branch retirement.** Do not let one route or branch disappear without a retirement or supersession note.
-- **Route/fork confusion.** Several live routes in one `RoutedCueSet` are not yet a lineage fork.
+- **Route and fork confusion.** Several live routes in one `RoutedCueSet` are not yet a lineage fork.
 
 ### A.16:9 - Consequences
 The benefit is a clear governing pattern for language-state moves and an admissible place for both tightening and retreat without governing pattern blur. The trade-off is more explicit move bookkeeping.
@@ -23119,13 +23430,13 @@ This separation keeps `C.2.3` as the sole governing pattern of formality while `
 
 **Claim 2.** Best-known current provenance, path-publication, and model-evaluation practice distinguishes a local transition note from a heavier published history account.
 
-**Practice source, local alignment, and adoption decision.** Contemporary provenance and evaluation practice separates lightweight transition marking from heavier account publication when branch structure, loss notes, or handoff history become governance-relevant. This pattern **adopts** that separation, **adapts** it through the `A.16` / `A.16.0` / `E.18` split, and **rejects** both extremes: wrapping every move in a mandatory trajectory wrapper and compressing a governance-relevant move history into one vague maturity sentence.
+**Practice source, local alignment, and adoption decision.** Contemporary provenance and evaluation practice separates lightweight transition marking from heavier account publication when branch structure, loss notes, or responsibility-transfer history become governance-relevant. This pattern **adopts** that separation, **adapts** it through the `A.16` / `A.16.0` / `E.18` split, and **rejects** both extremes: wrapping every move in a mandatory trajectory wrapper and compressing a governance-relevant move history into one vague maturity sentence.
 
 **Local stance.** The load-bearing SoTA claim for this pattern is narrow: admissible language-state movement needs typed move notes, explicit authority effects, and explicit retreat/retirement options, but it does not need a mandatory formality climb or a mandatory wrapper around every move.
 
 ### A.16:12 - Relations
 - Builds on: `C.2.2a`, `C.2.LS`, `C.2.4`, `C.2.5`, `C.2.6`, `C.2.7`, `A.18`, `A.19`.
-- Coordinates with: `A.16.0`, `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `A.6.P`, `A.6.A`, `C.16.Q`, `E.18`.
+- Coordinates with: `A.16.0`, `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `A.6.P`, `A.6.A`, `C.16.Q`, `E.18`, and `E.10.MOVE` when move-like source wording is not a local A.16 language-state publication transition.
 - Constrains: language-state move publication and docking.
 
 ### A.16:13 - Admissible Move Matrix
@@ -23138,14 +23449,14 @@ This separation keeps `C.2.3` as the sole governing pattern of formality while `
 | `route` | cue pack or stabilized note | `RoutedCueSet` or equivalent route-bearing publication becomes admissible | route plurality, selected route if any, route rationale, route authority state |
 | `projection` | routed cue or selected route | a typed route-bounded publication form rendered on an existing MVPK face | what is foregrounded, what is omitted, and how reopen remains admissible |
 | `formalize` | explicit but not yet formal-enough publication | a named `U.EpistemePublication` form with higher articulation or closure governed by a later formal pattern becomes admissible | new symbolic or slot structure and governing-pattern entry |
-| `operationalize` | method-facing, work-facing, or gate-facing publication | a method-facing, work-facing, or gate-facing `U.EpistemePublication` form governed by a later method, work, or gate pattern becomes admissible | hook governing pattern, guard, authority basis, and work crossing if any |
+| `operationalize` | method-facing, work-facing, or gate-facing publication | a method-facing, work-facing, or gate-facing `U.EpistemePublication` form governed by a later method, work, or gate pattern becomes admissible | hook governing pattern, guard, authority grounds, and work crossing if any |
 | `reopen` | route-bearing or endpoint-bound publication | same family with reduced closure | which rivals reopen and what authority falls |
 | `sketchBackoff` | over-rigid form | exploratory cue-bearing form such as `U.PreArticulationCuePack` or `RoutedCueSet` | withdrawn authority and retained witnesses |
 | `respecify` | plausible family under wrong framing scaffold | same family with revised framing scaffold or route specification | replaced framing commitments and invariants that stay fixed |
 | `retire` | cue pack, route-bearing publication, or branch | retired / withdrawn state with successor or no-successor note | why continuation stopped and what now carries authority |
 
 #### A.16:13.2 - Invariance reminder
-An admissible move may change articulation, closure, representation, route, authority, or publication form, but it shall not silently rewrite governing pattern boundaries. A move is not permission to retype a cue into any convenient governing pattern.
+An admissible move may change articulation, closure, representation, route, authority, or publication form, but it shall not silently rewrite governing pattern boundaries. A move does not justify retyping a cue into any convenient governing pattern.
 
 ### A.16:14 - Worked Move Notes
 
@@ -23238,7 +23549,7 @@ The pattern is not just about movement; it is about admissible movement under ex
 #### A.16:18.1 - Multi-route state versus lineage fork
 A **multi-route state** means one governed member still keeps several downstream directions live inside one publication such as `RoutedCueSet`.
 
-A **lineage fork** means separate successor members have already been published, each with distinct authority, losses, and future handoff semantics.
+A **lineage fork** means separate successor members have already been published, each with distinct authority, losses, and future responsibility-transfer semantics.
 
 The first is plurality inside one member. The second is explicit branching of lineage. Reviewers shall not treat them as the same lineage relation.
 
@@ -23247,7 +23558,7 @@ A governed publication after route work is usually in one of four states:
 
 - **open plurality** - several downstream directions remain live;
 - **selected-route-before-endpoint-publication** - one route is preferred, but the `U.EpistemePublication` is still an early or seam publication form;
-- **endpoint-pattern-publication-issued** - a named endpoint pattern now governs the relevant `U.EpistemePublication` form and responsibility handoff;
+- **endpoint-pattern-publication-issued** - a named endpoint pattern now governs the relevant `U.EpistemePublication` form and responsibility transfer;
 - **retired / withdrawn** - the publication or branch is no longer current and survives only as historical continuity.
 
 Confusing these states is one of the main causes of premature endpoint language.
@@ -23273,11 +23584,11 @@ The authority effect should be named as carefully as the move kind itself.
 `A.16` never authorizes a silent governing pattern replacement. If a route crosses into `A.6.P`, `B.5.2`, `A.15`, `C.25`, or another endpoint governing pattern, that governing pattern and the pattern-governed publication form must be named explicitly. `A.16` coordinates the crossing; it does not absorb the destination governing pattern's semantics.
 
 #### A.16:18.6 - `EndpointAdmissionProfile` extraction note
-The corridor can reuse an `EndpointAdmissionProfile` as a declarative pattern-derived profile for admissible handoff from language-state publications to governing patterns.
+The corridor can reuse an `EndpointAdmissionProfile` as a declarative pattern-derived profile for admissible responsibility transfer from language-state publications to governing patterns.
 
 That profile is stated over already pattern-governed conditions: declared language-state positions in `C.2.2a`, facet readings in `C.2.LS` and `C.2.4`-`C.2.7`, explicit route state in `B.4.1`, prompt-readiness in `B.5.2.0`, and witness or grounding conditions that are already visible in the publication chain.
 
-`EndpointAdmissionProfile` decides whether handoff is admissible; it does not govern the downstream publication form itself. A relation-like skeleton may therefore be admitted toward `A.6.P`; an explicit open question with rival-set may be admitted toward `B.5.2.0`; evaluative or `A.6.A`-inviting publication content may be admitted toward `C.16.Q` or `A.6.A`; executable docking may be admitted toward `A.15`.
+`EndpointAdmissionProfile` decides whether responsibility transfer is admissible; it does not govern the downstream publication form itself. A relation-like skeleton may therefore be admitted toward `A.6.P`; an explicit open question with rival-set may be admitted toward `B.5.2.0`; evaluative or `A.6.A`-inviting publication content may be admitted toward `C.16.Q` or `A.6.A`; executable docking may be admitted toward `A.15`.
 
 No admission result makes a governing pattern optional. Tone, style, or mere apparent explicitness is never sufficient by itself; the relevant governing pattern conditions still have to be named and met.
 
@@ -23287,7 +23598,7 @@ No admission result makes a governing pattern optional. Tone, style, or mere app
 A low-articulation cue is observed and quickly described as if it were already a requirement. Under `A.16`, this is rejected because the move history is missing: the publication should first be noticed, stabilized, and route-published. The recovery is not to defend the over-committing label, but to reopen and publish the earlier route-bearing form.
 
 #### A.16:19.2 - Silent route drift
-A note begins as evaluative pressure but later starts driving work planning. If this shift is not published, the route drift remains invisible. `A.16` requires either a new route-bearing publication, an explicit operationalization note, or an explicit handoff to a governing pattern.
+A note begins as evaluative pressure but later starts driving work planning. If this shift is not published, the route drift remains invisible. `A.16` requires either a new route-bearing publication, an explicit operationalization note, or an explicit responsibility transfer to a governing pattern.
 
 #### A.16:19.3 - admissible retreat after over-formalization
 A note is formalized too early into a relation-like shape, but later review shows the anchors are still unstable. The correct continuation is not to leave the relation form in place and quietly reinterpret it. The correct continuation is `reopen -> sketchBackoff`, preserving what still holds and lowering the authority of what no longer does.
@@ -23318,10 +23629,10 @@ When the history must be published as a path publication in a graph sense, reuse
 Move histories may be compared across contexts only if the compared moves are typed by publication form, governing pattern, and authority effect. Comparing one context's `route -> projection` chain to another context's `cue -> requirement` leap as though they were the same "formalization speed" is a category mistake.
 
 #### A.16:21.2 - No maturity-climb compression
-A multi-move path shall not be redescribed as one generic climb in maturity, rigor, or readiness. The admissible comparison is over move kinds, facet shifts, route states, governing pattern crossings, and authority effects.
+A multi-move chain shall not be redescribed as one generic climb in maturity, rigor, or readiness. The admissible comparison is over move kinds, facet shifts, route states, governing pattern crossings, and authority effects.
 
-#### A.16:21.3 - Boundary test for silent path laundering
-If a endpoint claim depends on prior move publications that are not visible anywhere in the publication chain, reviewers should assume silent path laundering until the missing move records are supplied. `A.16` exists precisely to prevent such invisible transitions.
+#### A.16:21.3 - Boundary test for hidden-lineage laundering
+If an endpoint claim depends on prior move publications that are not visible anywhere in the publication chain, reviewers should assume hidden-lineage laundering until the missing move records are supplied. `A.16` exists precisely to prevent such invisible transitions.
 
 ### A.16:22 - Review Matrix for Integration Integrity
 
@@ -23351,14 +23662,14 @@ This matrix keeps the integration layer narrow while still making its move seman
 **Used by.**
 `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `A.6.P`, `C.16.Q`, `A.6.A`, `F.9.1`, `E.17.1`.
 
-**Use this when.** Use this pattern when a local language-state move is no longer enough because the history of governed `U.Episteme` publications, branches, retirements, losses, or handoffs must be visible as one reviewable account.
+**Use this when.** Use this pattern when a local language-state move is no longer enough because the history of governed `U.Episteme` publications, branches, retirements, losses, or responsibility transfers must be visible as one reviewable account.
 
-**What goes wrong if missed.** Readers treat a sequence of cue packs, routed cue sets, endpoint-bound publications, and handoffs as one magically moving publication; forks, losses, authority changes, and work-requiring crossings become implicit.
+**What goes wrong if missed.** Readers treat a sequence of cue packs, routed cue sets, endpoint-bound publications, and responsibility transfers as one magically moving publication; forks, losses, authority changes, and work-requiring crossings become implicit.
 
 **What this buys.** One optional trajectory account that records lineage, position claims, move kinds, publication forms, losses, and next governing responsibility without wrapping every local A.16 move in heavy history machinery.
 
 ### A.16.0:1 - Problem frame
-In engineering, inquiry, operator, and management practice, teams sometimes need more than a local move note. When branch structure, supersession, retirement, handoff, bridge-sensitive loss, or multi-step governing pattern change matters, readers need one place where the history of successive governed `U.Episteme` publications is made explicit.
+In engineering, inquiry, operator, and management practice, teams sometimes need more than a local move note. When branch structure, supersession, retirement, responsibility transfer, bridge-sensitive loss, or multi-step governing pattern change matters, readers need one place where the history of successive governed `U.Episteme` publications is made explicit.
 
 Cue packs, routed cue sets, abductive prompts, typed route-bounded projection publications, partial normal forms, and endpoint-bound records are publication forms that may appear in that history. They are not the raw disturbances, telemetry traces, model outputs, bodily tensions, or carrier documents that ground it.
 
@@ -23370,7 +23681,7 @@ Without an explicit trajectory-account pattern for those heavier cases:
 1. history is mistaken for generic one-pass process story rather than for governed move lineage over a declared language-state `U.CharacteristicSpace`;
 2. early seam publications are confused with `U.EpistemePublication` forms governed by endpoint patterns;
 3. forks, merges, route retirement, supersession, and route-sensitive loss become implicit and unverifiable;
-4. every local move is either over-wrapped in ad hoc history prose or under-wrapped in a way that hides handoff and authority change;
+4. every local move is either over-wrapped in ad hoc history prose or under-wrapped in a way that hides responsibility transfer and authority change;
 5. bridge and viewpoint docking inherit under-described upstream history.
 
 ### A.16.0:3 - Forces
@@ -23391,7 +23702,7 @@ It answers the question: `when history itself matters, which governed publicatio
 
 #### A.16.0:4.0a - E.24.UK settlement
 
-`U.LanguageStateMoveTrajectory` is retained as a dependent durable trajectory-account value under the language-state settlement, not as a root U-kind. Its identity depends on the governed `U.Episteme` publication lineage, the declared `U.CharacteristicSpace` from `C.2.2a`, and the lineage relation set that makes the trajectory account reviewable. The public name is therefore admissible only with this dependence relation; ordinary local histories, route notes, and publication forms do not become `U.LanguageStateMoveTrajectory` by resemblance.
+`U.LanguageStateMoveTrajectory` is retained as a dependent durable trajectory-account U-kind under the language-state settlement, not as a root U-kind. Its filled trajectory-account instances are values whose identity depends on the governed `U.Episteme` publication lineage, the declared `U.CharacteristicSpace` from `C.2.2a`, and the lineage relation set that makes the account reviewable. The public name is therefore admissible only with this dependence relation; ordinary local histories, route notes, and publication forms do not become `U.LanguageStateMoveTrajectory` by resemblance.
 
 #### A.16.0:4.1 - Ontological subject and slot groups
 In this cluster, keep six slot groups distinct:
@@ -23403,7 +23714,7 @@ In this cluster, keep six slot groups distinct:
 - **publication faces** - the existing MVPK faces on which those publication forms are rendered when face typing matters;
 - **carriers** - documents, console notes, cards, trace files, or model outputs or carriers that hold or render those publications.
 
-A multi-route state inside one current governed member is **not** yet a lineage fork. It becomes a fork only when distinct successor members are published and given distinct authority, losses, or handoff semantics.
+A multi-route state inside one current governed member is **not** yet a lineage fork. It becomes a fork only when distinct successor members are published and given distinct authority, losses, or responsibility-transfer semantics.
 
 A trajectory step may add a new lineage member, revise the current member, or relate several members through fork, merge, supersession, or retirement. It does **not** mean that the source phenomenon itself has moved through the language-state chart.
 
@@ -23415,13 +23726,13 @@ The position read by this pattern is the slot-explicit claim defined in `C.2.2a`
 Early seam publications may leave some slots unknown or wide. That uncertainty is admissible only if it is explicit. A trajectory account therefore records the position claims of the current lineage member and, when needed, of the predecessor or sibling members that justify the move reading.
 
 #### A.16.0:4.3 - Use threshold and core trajectory record
-A single local `A.16` move note is sufficient when no load-bearing branch, loss, handoff, or supersession structure needs publication.
+A single local `A.16` move note is sufficient when no load-bearing branch, loss, responsibility transfer, or supersession structure needs publication.
 
 Use `U.LanguageStateMoveTrajectory` when at least one of the following is load-bearing:
 
 - derivation, supersession, fork, merge, or retirement structure;
 - multi-step loss notes or reopen conditions that would be hidden by a compressed move note;
-- responsibility handoff whose legitimacy depends on upstream history;
+- responsibility transfer whose legitimacy depends on upstream history;
 - bridge or viewpoint entry that depends on upstream route, loss, or lineage structure.
 
 A conforming trajectory account then keeps at least the following explicit:
@@ -23432,7 +23743,7 @@ A conforming trajectory account then keeps at least the following explicit:
 - the current position claim and any load-bearing predecessor position claims;
 - the typed move or move sequence that relates them;
 - the publication form currently carrying the governed member and, if it matters, the MVPK face carrying that form;
-- the next intended governing pattern or handoff state;
+- the next intended governing pattern or responsibility-transfer state;
 - any loss note, reopen condition, branch-specific authority note, or bridge-sensitive note that matters.
 
 #### A.16.0:4.4 - Recorded move-family discipline
@@ -23449,14 +23760,14 @@ A trajectory account may refer to seam publications that remain upstream of endp
 - `RoutedCueSet`;
 - `U.AbductivePrompt`;
 - partial normal forms already typed elsewhere;
-- other explicitly typed upstream publications that preserve non-endpoint status.
+- other explicitly typed upstream publications that preserve a non-endpoint position.
 
 These are not a rival publication-face sequence. They are typed publication forms rendered, when necessary, on existing MVPK faces under `E.17`.
 
 Untyped placeholders such as "route-bounded publication face" are non-conformant in a trajectory account unless the text also names the actual publication form and, separately, the MVPK face if face typing matters.
 
-#### A.16.0:4.6 - Endpoint docking and responsibility handoff
-A trajectory does not need to terminate in order to be useful. What matters is a visible docking milestone or responsibility handoff into a governing pattern that is allowed to take the next pattern-governed declaration.
+#### A.16.0:4.6 - Endpoint docking and responsibility transfer
+A trajectory does not need to terminate in order to be useful. What matters is a visible docking milestone or responsibility transfer into a governing pattern that is allowed to take the next pattern-governed declaration.
 
 Typical docking governing patterns include:
 
@@ -23467,14 +23778,14 @@ Typical docking governing patterns include:
 - `A.15` for method-facing or work-facing forms;
 - `C.25` for endpoint bundle structures.
 
-A trajectory account should therefore name not only the docking governing pattern but also the pattern-governed publication or record that now carries the next pattern-governed declaration. Naming only the governing pattern under-publishes the handoff.
+A trajectory account should therefore name not only the docking governing pattern but also the pattern-governed publication or record that now carries the next pattern-governed declaration. Naming only the governing pattern under-publishes the responsibility transfer.
 
-After such a handoff, monitoring, maintenance, revisit, or later re-entry may continue through new lineage members or later trajectories. The pattern therefore distinguishes `lineage continuity` from `current governing pattern responsibility`.
+After such a responsibility transfer, monitoring, maintenance, revisit, or later re-entry may continue through new lineage members or later trajectories. The pattern therefore distinguishes `lineage continuity` from `current governing pattern responsibility`.
 
 #### A.16.0:4.7 - Effect-free moves versus work-requiring crossings
 Some `formalize` and `operationalize` steps are effect-free epistemic changes: rewriting, slot-explicit articulation, route-bounded partialization, view retargeting, or normal-form repair over already available grounds.
 
-Other steps require new measurements, experiments, instrumentation, execution, or other `U.Work`. When that happens, the trajectory account shall publish the crossing or handoff explicitly rather than pretending that world-facing work occurred inside the language layer. `A.16.0` records that the crossing was required; the relevant work, gate, or endpoint governing pattern records the world step itself.
+Other steps require new measurements, experiments, instrumentation, execution, or other `U.Work`. When that happens, the trajectory account shall publish the work-boundary crossing or responsibility transfer explicitly rather than pretending that world-facing work occurred inside the language layer. `A.16.0` records that the crossing was required; the relevant work, gate, or endpoint governing pattern records the world step itself.
 
 #### A.16.0:4.8 - Relation to `A.16` and `E.18`
 `U.LanguageStateMoveTrajectory` is not an `E.18` path publication, and `A.16.0` does **not** govern the semantics of language-state movement.
@@ -23485,6 +23796,8 @@ Other steps require new measurements, experiments, instrumentation, execution, o
 - endpoint patterns govern endpoint-local `U.EpistemePublication` forms and declarations.
 
 `A.16.0` standardizes only the heavier history package for cases where that package is itself worth publication.
+
+The word `move` remains inherited from `A.16` and means a typed language-state publication transition. `A.16.0` does not generalize it into project action, work-entry readiness, pattern-use recommendation, performed work, work plan, workflow, or transformation-flow path. If source wording uses move-like language outside the language-state trajectory account, restore the concern through `E.10.MOVE` before selecting `E.11.PUR`, `A.15.5`, the A.15 work family, or another direct governing pattern.
 
 #### A.16.0:4.9 - Bridge and viewpoint entry
 A trajectory may later cross a viewpoint or context boundary. When that happens:
@@ -23504,7 +23817,7 @@ A trajectory may later cross a viewpoint or context boundary. When that happens:
 **Show (Episteme).** A model-vs-observation discrepancy is a witness-lane tension, not the positioned episteme publication or lineage itself. Once preserved as a cue pack, the governed lineage may project into a typed prompt publication on one branch and later formalize on another, or it may reopen and retire one branch if the provisional route proves unsupported.
 
 ### A.16.0:6 - Bias-Annotation
-The pattern biases authors toward lineage-aware history accounts rather than stage stories about one magically maturing `U.Episteme` publication. That bias is intentional when branch, loss, or handoff semantics matter. The counter-bias is equally intentional: do **not** publish a trajectory account when a local move note already suffices.
+The pattern biases authors toward lineage-aware history accounts rather than stage stories about one magically maturing `U.Episteme` publication. That bias is intentional when branch, loss, or responsibility-transfer semantics matter. The counter-bias is equally intentional: do **not** publish a trajectory account when a local move note already suffices.
 
 ### A.16.0:7 - Conformance Checklist
 - `CC-A.16.0-1` `U.LanguageStateMoveTrajectory` **SHALL NOT** be treated as mandatory wrapper syntax around every `A.16` move.
@@ -23513,29 +23826,29 @@ The pattern biases authors toward lineage-aware history accounts rather than sta
 - `CC-A.16.0-4` Fork, merge, supersession, derivation, and retirement **SHALL** be made explicit whenever the account depends on them.
 - `CC-A.16.0-5` Publication form and MVPK face **SHALL NOT** be collapsed, and untyped seam placeholders **SHALL NOT** substitute for typed publication forms.
 - `CC-A.16.0-6` `projection` **SHALL** be read as route-bounded partialization with visible loss notes and an admissible reopen condition.
-- `CC-A.16.0-7` Work-requiring `formalize` or `operationalize` steps **SHALL** expose the relevant crossing or handoff rather than pretending that `U.Work` occurred inside the language layer.
+- `CC-A.16.0-7` Work-requiring `formalize` or `operationalize` steps **SHALL** expose the relevant work-boundary crossing or responsibility transfer rather than pretending that `U.Work` occurred inside the language layer.
 - `CC-A.16.0-8` When graph publication of paths is needed, authors **SHOULD** reuse `E.18` rather than inventing a rival path calculus here.
 
 ### A.16.0:8 - Common Anti-Patterns and How to Avoid Them
 - **Meta-wrapper inflation.** Treat `A.16.0` as obligatory around every move. Repair by publishing a local `A.16` move note unless history itself has governance value.
 - **One-publication myth.** Treat one frozen episteme as literally moving unchanged. Repair by publishing lineage members and their links.
-- **Governing-pattern/form collapse.** Treat governing patterns as if they were publication forms. Repair by naming the pattern-governed form and the governing pattern separately.
-- **Form/face collapse.** Treat seam publications as if they minted a second MVPK face family. Repair by naming form and face separately.
-- **Multi-route/fork collapse.** Treat several live routes in one governed member as if they were already several successor members.
+- **Governing-pattern and form collapse.** Treat governing patterns as if they were publication forms. Repair by naming the pattern-governed form and the governing pattern separately.
+- **Form and face collapse.** Treat seam publications as if they minted a second MVPK face family. Repair by naming form and face separately.
+- **Multi-route and fork collapse.** Treat several live routes in one governed member as if they were already several successor members.
 - **Hidden work crossing.** Describe operationalization as purely linguistic when it actually required new world-facing work. Repair by publishing the crossing explicitly.
 
 ### A.16.0:9 - Consequences
-The benefit is that heavy-history language-state movement becomes lineage-aware, reviewable, and dockable without premature endpoint capture or metonymic collapse. The trade-off is more explicit publication of position claims, lineage links, move kinds, loss notes, and handoffs when history is worth publishing.
+The benefit is that heavy-history language-state movement becomes lineage-aware, reviewable, and dockable without premature endpoint capture or metonymic collapse. The trade-off is more explicit publication of position claims, lineage links, move kinds, loss notes, and responsibility transfers when history is worth publishing.
 
 ### A.16.0:10 - Rationale
-Language-state work needs one explicit trajectory-account normal form for the subset of cases where history itself matters. Without that account, readers have to reconstruct lineage, branch structure, retirement, and handoff semantics from fragments. With it overused, every local move becomes over-wrapped. The pattern exists to hold the middle line.
+Language-state work needs one explicit trajectory-account normal form for the subset of cases where history itself matters. Without that account, readers have to reconstruct lineage, branch structure, retirement, and responsibility-transfer semantics from fragments. With it overused, every local move becomes over-wrapped. The pattern exists to hold the middle line.
 
 ### A.16.0:11 - SoTA-Echoing
-The pattern matches contemporary practice in exploratory inquiry, operator-centered incident work, model probing, and structured design iteration: admissible progress sometimes requires visible intermediate publications, branch-aware history, disciplined retreat, and explicit handoffs rather than hidden jumps from cue to endpoint.
+The pattern matches contemporary practice in exploratory inquiry, operator-centered incident work, model probing, and structured design iteration: admissible progress sometimes requires visible intermediate publications, branch-aware history, disciplined retreat, and explicit responsibility transfers rather than hidden jumps from cue to endpoint.
 
 ### A.16.0:12 - Relations
 - Builds on: `C.2.2a`, `A.16`, `A.19`, `E.17`, `E.18`.
-- Coordinates with: `C.2.LS`, `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `B.5.2`, `A.6.P`, `C.16.Q`, `A.6.A`, `F.9`, `F.9.1`, `E.17.1`.
+- Coordinates with: `C.2.LS`, `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `B.5.2`, `A.6.P`, `C.16.Q`, `A.6.A`, `F.9`, `F.9.1`, `E.17.1`, and `E.10.MOVE` when move-like wording is not a language-state trajectory-account claim.
 - Constrains: trajectory-account publication, branch visibility, seam publication reading, docking visibility, and anti-pipeline language across the cluster.
 
 ### A.16.0:13 - Worked trajectories
@@ -23549,7 +23862,7 @@ An inquiry cue pack centered on a felt or trace-anchored discrepancy cue may fir
 - `notice -> stabilize -> route -> projection -> formalize`, with a cue-derived prompt publication carrying the explanatory branch, and
 - `notice -> stabilize -> route -> projection -> operationalize`
 
-if one branch supports explanatory work while another supports immediate probe or control work. The branches remain admissible only if the fork is visible and each branch keeps distinct loss notes and handoff conditions.
+if one branch supports explanatory work while another supports immediate probe or control work. The branches remain admissible only if the fork is visible and each branch keeps distinct loss notes and responsibility-transfer conditions.
 
 #### A.16.0:13.3 - Operator trajectory with retirement
 An operator alert note about a service disturbance may move:
@@ -23585,12 +23898,12 @@ A practitioner should ask:
 4. Are multi-route state and lineage fork being kept distinct?
 5. Are derivation, supersession, fork, merge, or retirement links visible where the reading depends on them?
 6. Is the current publication a seam publication or already a `U.EpistemePublication` form governed by a named endpoint pattern?
-7. If `formalize` or `operationalize` required world-facing work, is the crossing or handoff explicit?
+7. If `formalize` or `operationalize` required world-facing work, is the work-boundary crossing or responsibility transfer explicit?
 
 ### A.16.0:16 - Boundary notes
 `A.16.0` does not replace `C.2.2a` / `A.19` position semantics, `A.16` move guards, `A.16.1` cue-pack semantics, `A.16.2` retreat / retirement semantics, `B.4.1` seam entry routing, `B.5.2.0` abductive prompt species, `E.17` face typing, `E.18` path publication, or any endpoint-local repair logic.
 
-Its job is narrower and architectural: to make the heavier trajectory account visible only where lineage, branch, loss, retreat, retirement, and handoff need to be published as one intelligible package.
+Its job is narrower and architectural: to make the heavier trajectory account visible only where lineage, branch, loss, retreat, retirement, and responsibility transfer need to be published as one intelligible package.
 ### A.16.0:End
 
 ## A.16.1 - `U.PreArticulationCuePack`
@@ -23784,7 +24097,7 @@ The cue pack may cite traces, embodiment, and model-state refs, but it should no
 ### A.16.1:15 - Migration and Extension Notes
 
 #### A.16.1:15.1 - Migration from vague cue or signal language
-Source prose often says merely "there is a signal" or "something suggests a work move". A conforming migration first asks whether the source is truly signal-like in the narrow telemetry or trace sense, or whether the load-bearing phenomenon is a broader cue nucleus, work-possibility hint, reliance-possibility hint, contrast, or figure-against-background shift. It then turns the passage into a cue pack with explicit cue nucleus, primary witness or anchor, and route-candidate hints only if those hints are already visible.
+Source prose often says merely "there is a signal" or "something suggests possible work". A conforming migration first asks whether the source is truly signal-like in the narrow telemetry or trace sense, or whether the load-bearing phenomenon is a broader cue nucleus, work-possibility hint, reliance-possibility hint, contrast, or figure-against-background shift. It then turns the passage into a cue pack with explicit cue nucleus, primary witness or anchor, and route-candidate hints only if those hints are already visible.
 
 #### A.16.1:15.2 - Local extension rule
 Contexts may add local cue-pack fields only if they remain preservation aids rather than covert route-decision or endpoint semantics.
@@ -24243,7 +24556,7 @@ In summary, A.17 is the linchpin that turns a loose collection of measurement pr
 
 -   **Constrains:** All other patterns that define or use metrics. For example, **A.3.3 `U.Dynamics`** (system dynamics) must name its state variables as Characteristics with proper scales (it cannot refer to them loosely as “KPIs” without context). Similarly, any **service-level targets / SLO clauses (A.2.3 `U.PromiseContent.acceptanceSpec`)** or **assurance calculations (B.3, D.3 patterns)** that involve measurements are governed by this canonical terminology (no unwarranted synonyms or unit confusion per ISO/IEC 80000, ISO/IEC 25024, QUDT, SOSA/SSN best practices). The pattern’s lexical rules are part of the **LEX-BUNDLE** (E.10) – any FPF-conformant context must adhere to these naming conventions.
 
--   **Coordinates with:** **A.18 (CSLC-KERNEL)**, which defines the minimal **Characteristic/Scale/Level/Coordinate** Standard in detail. A.17 provides the vocabulary and basic distinctions (what is a Characteristic, and its arity), while A.18 applies this to ensure each measurement template is well-formed. Also coordinates with **C.KD-CAL** and **C.CHR-CAL** (Knowledge Dynamics Calculus, Characterization Calculus) – those patterns use the Characteristic/Scale constructs to build domain-specific metrics (e.g. knowledge quality scores) and rely on A.17’s canon for consistency.
+-   **Coordinates with:** **A.18 (CSLC-KERNEL)**, which defines the minimal **Characteristic/Scale/Level/Coordinate** Standard in detail. A.17 provides the vocabulary and basic distinctions (what is a Characteristic, and its arity), while A.18 applies this to ensure each measurement template is well-formed. Also coordinates with **C.2 KD-CAL** and the **A.19/C.16 characterization stack**; those patterns use the Characteristic/Scale constructs to build domain-specific metrics (e.g. knowledge quality scores) and rely on A.17’s canon for consistency.
 
 -   **Anticipates:** **E.10 Lexical Discipline** rules – A.17’s enforcement of a single term and controlled aliases is a concrete instance of the lexical uniformity mandated in E.10. It also paves the way for **F.7 Concept-Set Bridges** in Unification patterns, since external ontologies for quantities (ISO 80000, QUDT, etc.) can be mapped cleanly onto FPF Characteristics now that the term is fixed. In short, A.17 is a foundational lexicon pattern that a) ensures internal consistency and b) simplifies alignment with external standards for measurable properties.
 
@@ -24389,7 +24702,7 @@ In essence, A.18 is the _infrastructure of meaning_ for metrics. It may appear a
 
 -   **Extends/Uses:** **A.17 (CHR-NORM)** – A.18 explicitly builds on the canonical terminology established in A.17. It uses the term **Characteristic** as defined there (and no other synonyms) and carries forward the edict that “axis/dimension” be treated as mere narrative aliases. It also leverages the Entity-vs-Relation Characteristic distinction from A.17: Section 7.4 of this pattern references tests for disambiguating relational metrics. Essentially, A.17 provides the **lexical and conceptual groundwork** (what a Characteristic is, and the basic vocabulary), while A.18 provides the **structural and normative rules** for linking Characteristics to measurements.
 
--   **Core foundation for metrics:** This pattern underpins the **Measurement & Metrics Characterization spec (C.MM‑CHR)** – the pattern that implements metric storage and computation. In MM-CHR, every `U.DHCMethodRef` and `U.Measure` follows the CSLC format defined by A.18. By lifting CSLC rules to the kernel, we ensure all FPF patterns (like **KD-CAL** for knowledge dynamics, **Sys-CAL** for systems, or any custom CAL/CHR) share a common approach to metrics. A.18 also informs the design of **CHR-CAL (Characterisation Calculus)**, which generalizes measurable property templates: CHR-CAL relies on the one-Characteristic-per-metric assumption and the comparability rules set here to compose composite characterizations.
+-   **Core foundation for metrics:** This pattern underpins the **Measurement & Metrics Characterization spec (C.MM‑CHR)** – the pattern that implements metric storage and computation. In MM-CHR, every `U.DHCMethodRef` and `U.Measure` follows the CSLC format defined by A.18. By lifting CSLC rules to the kernel, we ensure all FPF patterns (like **KD-CAL** for knowledge dynamics, **Sys-CAL** for systems, or any custom CAL/CHR) share a common approach to metrics. A.18 also informs **A.19 CharacteristicSpace**, **A.19.CHR**, and **C.16 MM-CHR**, which carry measurable property templates and composite characterizations.
 
 -   **Enables dynamic reasoning:** A.18’s insistence on well-defined Scales allows patterns like **A.3.3 `U.Dynamics`** (system dynamics models) to incorporate measurement dimensions as state variables without ambiguity. For example, a `stateSpace` in a dynamics model can be explicitly defined as a set of Characteristics (each with units and ranges), making simulations and traces dimensionally consistent. If A.18 were not in place, one model might treat “performance” as a 1–5 score and another as a probability – combining them would be incoherent. With A.18, such differences must be reconciled via a ScoringMethod or kept separate, preserving coherence in multi-model analyses.
 
@@ -24944,8 +25257,8 @@ Use these moves when constructing or repairing an evaluation. They are not a man
 2. **Build the discriminating cases.** Include at least one evaluated object that should pass, one object of the same general family that should fail the floor, and one different object kind that should return to evaluation selection before opening or receive an explicit object-kind-fit defect/value if this evaluation has already been invoked.
 3. **Choose candidate characteristics.** Draw candidates from the object kind's real failure modes, first-principles structure, user or operator harms, domain tradition, current `SoTA`, existing evaluations, and FPF neighbouring patterns named by value.
 4. **Bind each slot.** For each candidate, state the characteristic, chosen scale, value set, admissible domain, missingness semantics, and whether the value is a measurement claim or an ordinal content evaluation.
-5. **Remove false coordinates.** Drop coordinates that do not change admissible action, do not discriminate the evaluated object, duplicate another coordinate without a different repair move, or belong to another exact evaluation.
-6. **Split compound coordinates.** If a coordinate mixes two repair moves, two object kinds, or two incompatible scales, split it or assign one part to the neighboring pattern governing the claim that governs it.
+5. **Remove false coordinates.** Drop coordinates that do not change admissible action, do not discriminate the evaluated object, duplicate another coordinate without a different repair action, or belong to another exact evaluation.
+6. **Split compound coordinates.** If a coordinate mixes two repair actions, two object kinds, or two incompatible scales, split it or assign one part to the neighboring pattern governing the claim that governs it.
 7. **State preferred movement and trade-offs.** For each declared coordinate, state the preferred direction or explain why no simple direction exists. Name the protected trade-offs that must be checked when the coordinate improves.
 8. **Define result form, evidence basis, and calibration.** State the required result row shape, evidence basis, adjacent-value rationale rule, calibration points for common disagreements, and any coordinate-specific payload needed for high or floor-reaching values.
 9. **Define floor, exceptional, status, and stop.** State the viable-for-use floor, exceptional-for-use meaning, status values, and local stop or reopen condition.
@@ -25037,7 +25350,7 @@ It also corrects evaluation-reuse bias. A reusable evaluation is useful only whe
 | `CC-A19ECS-13` | A reusable evaluation characteristic-space specification SHALL define the result-row shape and require a short rationale for every coordinate value. | Prevents prose impressions and two-column tables from being mistaken for evaluation results. |
 | `CC-A19ECS-14` | It SHALL define the evaluation evidence basis and any coordinate-specific evidence payload needed for source-currentness, comparator, corpus-projection, worked-case, retrieval, or external-currentness claims. Missing or unchecked evidence lowers the coordinate that needs it. | Makes values replayable without creating an "inactive" or "not evaluated" escape route. |
 | `CC-A19ECS-15` | It SHALL publish calibration points for common adjacent-value disagreements whenever the evaluation is expected to be reused by different evaluators. | Keeps `3`, `4`, and `5` from drifting into evaluator temperament. |
-| `CC-A19ECS-16` | It SHALL declare where result evidence, corpus-projection evidence, retrieval evidence, comparator evidence, currentness evidence, and quality-status evidence live. These payloads SHALL stay in the evaluation result, evidence basis, projection carrier, or selected publication carrier unless the evaluated object itself is that carrier. If the payload implies a user move for another evaluated object, publish that move or boundary, not the carrier proof. This is an evaluation-payload placement rule, not a lexical ban: evidence-use payloads do not enter live evaluated-object text merely because they are true or useful to authors or evaluators. | Prevents evaluation evidence from leaking into the evaluated object's method or live text. |
+| `CC-A19ECS-16` | It SHALL declare where result evidence, corpus-projection evidence, retrieval evidence, comparator evidence, currentness evidence, and quality-status evidence live. These payloads SHALL stay in the evaluation result, evidence basis, projection carrier, or selected publication carrier unless the evaluated object itself is that carrier. If the payload implies a user-facing action for another evaluated object, publish that move or boundary, not the carrier proof. This is an evaluation-payload placement rule, not a lexical ban: evidence-use payloads do not enter live evaluated-object text merely because they are true or useful to authors or evaluators. | Prevents evaluation evidence from leaking into the evaluated object's method or live text. |
 | `CC-A19ECS-17` | If construction or repair changes coordinate wording or evaluation wording, the specification SHALL require a pre/post kind-restoration check for evaluated object kind, characteristic kind, relation or claim kind, current ontic slot, relation position, use relation, or claim kind when live, admissible use, and scope, plus the governing pattern when another pattern governs the kind under repair, relation, claim, or position. | Prevents coordinate cleanup from changing what the evaluation evaluates. |
 
 ### A.19.ECS:7 - Common Anti-Patterns and How to Avoid Them
@@ -25188,7 +25501,7 @@ StateFamilyPrecisionRepair:
   nonAdmissibleOverread:
   validityWindowOrReopenCondition?:
   finalWordingOrBlocker:
-  remainingReaderMove:
+  remainingReaderUse:
 ```
 
 Use the full shape only when the repair must remain inspectable. A direct rewrite is enough when one sentence names the bearer, state frame, value, use boundary, and governing pattern.
@@ -25265,7 +25578,7 @@ If any of those are missing, either complete them now or rename the field to the
 | `CC-A19SPR-6` | Source, evidence, assurance, publication, gate, work, decision, release or admission, and administrative uses SHALL be assigned to patterns governing the recovered claims or project-side records rather than hidden under state-family wording. |
 | `CC-A19SPR-7` | Semio patterns govern only language-state and source or publication cases. They SHALL NOT become the general home for evidence, assurance, gate, work, temporal, mathematical-lens, or administrative states. |
 | `CC-A19SPR-8` | Local fields named by value, such as `LensUseAdmissibilityValue` and `dynClaimPosture`, may stay only with declared governing pattern, value set, boundary, and reopen condition; specification wording SHALL recover a Description episteme admitted for specification use or refinement plus the specification-granting neighbouring pattern named by value. |
-| `CC-A19SPR-9` | The repair SHALL preserve one remaining reader move. Type-correct but inert wording is incomplete. |
+| `CC-A19SPR-9` | The repair SHALL preserve one remaining reader use. Type-correct but inert wording is incomplete. |
 | `CC-A19SPR-10` | Whole-corpus cleanup SHALL be classified. Blind global replacement of `posture`, `state`, `status`, or `readiness` is nonconforming. |
 
 ### A.19.SPR:7 - Common anti-patterns
@@ -25355,7 +25668,7 @@ This pattern buys one conservative but expressive substrate declaration:
 - heavier qualifier refs remain available without being forced into every case;
 - and interpretive-view or publication neighbors can reuse the substrate without changing what it means.
 
-The practical payoff is simple: readers can tell what the line is acting on, what relation between the two space refs it assumes, what kind of qualification they must keep in view, and which neighboring pattern governs the next move if that requirement grows.
+The practical payoff is simple: readers can tell what the line is acting on, what relation between the two space refs it assumes, what kind of qualification they must keep in view, and which neighboring pattern governs the next use or action if that requirement grows.
 
 ### A.19.SOURCE-SET-SPACE-SUBSTRATE:0.a - TERM/LEX token-status guard (local-first)
 
@@ -26665,7 +26978,7 @@ In this stub, RSG\_REFINEMENT maps states of a sub-role to states of a super-rol
 * **A.2 / A.2.5 (Roles / RSG).** RSG **checklists** quote **CN‑Spec.acceptance**; enactment gates rely on **admitted** CN‑frame data.
 * **B.1 (Γ‑algebra).** CN‑Spec’s `Γ_fold` instantiates Γ\_ctx/Γ\_time/WLNK/MONO choices explicitly.
 * **B.3 (Assurance).** Bridge CL enters the **R** term; WLNK protects safety roll‑ups.
-* **C.6 / C.7 (LOG‑CAL / CHR‑CAL).** Units, scales, and measurement templates come from CHR; proofs about folds live in LOG‑CAL.
+* **C.6 LOG‑CAL and C.16/A.19 characterization stack.** Units, scales, and measurement templates come from C.16, A.17, A.18, and A.19; proofs about folds live in LOG‑CAL.
 
 ### A.19.CN:13 - Minimal CN‑Spec template (copy/paste, informational)
 
@@ -29450,13 +29763,13 @@ Concrete selector-family SoTA packages are cited through their current Part G pa
 **Use this when.** Use A.20 when the current question is whether one transformation step internally satisfies its declared constraints before any `GateProfile` fit is evaluated.
 **First useful move.** Name the step, the CV class being checked, the `CV.Status`, and the witness or missing witness. Stop there unless a gate, comparator, bridge, freshness, or work-boundary question is actually being made.
 
-**Smallest sufficient CV guidance.** Use the lightest CV guidance that preserves the next practitioner move made available by the local CV result. Add publication lexemes, witnesses, `DecisionLog` detail, `CrossingBundle`, `PQG`, `RSCR`, or MIP-run material only when the CV claim being made would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
+**Smallest sufficient CV guidance.** Use the lightest CV guidance that preserves the next practitioner action made available by the local CV result. Add publication lexemes, witnesses, `DecisionLog` detail, `CrossingBundle`, `PQG`, `RSCR`, or MIP-run material only when the CV claim being made would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
 
-**Minimum sufficient next move.** For ordinary CV, `step + CV class + CV.Status + witness or refusal` is enough. Per-check publication lexemes are needed only when the CV result is carried into a publication face, gate relation, or assurance material.
+**Minimum sufficient CV output.** For ordinary CV, `step + CV class + CV.Status + witness or refusal` is enough. Per-check publication lexemes are needed only when the CV result is carried into a publication face, gate relation, or assurance material.
 
 **Do not escalate when.** Do not create `GateDecision`, `GateDecisionExplanation`, GateFit narrative, comparator law, bridge law, freshness claim, release-confidence claim, or work-boundary authority from `CV.Status`. Use the neighboring pattern relation only when its own claim is present.
 
-**Conformance-marker overread note.** Use this note when a conformance label, `CV.Status=pass`, release-screen status, dashboard cue, or CV-looking publication is being interpreted as gate passage, release confidence, safety acceptance, assurance, work occurrence, work authorization, or performed work. The first A.20 move is to return to the local step, CV class, `CV.Status`, witness or refusal, and window governed here; then state the attempted stronger use without a governing relation and name the governing neighboring relation only if that relation is being claimed: `A.21` for gate decision, `B.3` for assurance, `A.10` for evidence or currentness, `A.15` for work, or the neighboring pattern governing that claim. Write `CV.Status=pass` when CV is meant; do not write plain `pass` near gate, release, safety, or work use. Plain wording remains ordinary unless it changes bounded CV use, source relation, evidence, gate, assurance, work, decision, or neighboring-pattern relation.
+**Conformance-marker overread note.** Use this note when a conformance label, `CV.Status=pass`, release-screen status, dashboard cue, or CV-looking publication is being interpreted as gate passage, release confidence, safety acceptance, assurance, work occurrence, work authorization, or performed work. The first A.20 action is to return to the local step, CV class, `CV.Status`, witness or refusal, and window governed here; then state the attempted stronger use without a governing relation and name the governing neighboring relation only if that relation is being claimed: `A.21` for gate decision, `B.3` for assurance, `A.10` for evidence or currentness, `A.15` for work, or the neighboring pattern governing that claim. Write `CV.Status=pass` when CV is meant; do not write plain `pass` near gate, release, safety, or work use. Plain wording remains ordinary unless it changes bounded CV use, source relation, evidence, gate, assurance, work, decision, or neighboring-pattern relation.
 
 **Common wrong interpretation.** `CV.Status=pass` means release, safety acceptance, or gate passage. First honest entry: `CV.Status` is local step constraint validity with witness or refusal; release, safety, gate, assurance, or work use belongs to its governing pattern only when that claim is present.
 
@@ -29688,7 +30001,7 @@ The pattern constrains *how* CV status and witnesses are carried; it does not en
 
 ### A.20:7 - Conformance Checklist - Constraint-validity checks
 
-**Conformance use.** This checklist is evidence for the internal-step CV guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding CV class, witness, publication face, or neighboring relation is present. Before applying any row, name the Solution move it tests; if no such Solution move is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
+**Conformance use.** This checklist is evidence for the internal-step CV guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding CV class, witness, publication face, or neighboring relation is present. Before applying any row, name the Solution guidance it tests; if no such Solution guidance is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
 
 **Conformance groups.** Ordinary CV use starts with step, applicable CV class, `CV.Status`, and witness or refusal. Crossing and launch rows apply only when a CV-checked step is adjacent to a present gate, crossing, or launch boundary. Publication and assurance rows apply only when the CV result is carried on MVPK faces or consumed by replay or audit. Extension and change rows apply only when species binding, valuation, refresh, or neighboring selector and comparator loci are being changed or consumed.
 
@@ -29721,7 +30034,7 @@ The pattern constrains *how* CV status and witnesses are carried; it does not en
 
 ### A.20:7.1 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct action |
 |---|---|---|
 | CV as gate passage | Internal step validity is treated as release, safety, launch, or admission readiness. | Keep `CV.Status` local to the step and use `A.21` when gate fit or gate decision is current. |
 | CV as scalar ranking | A valid set return is folded into one best item without a comparator relation. | Keep set, archive, and comparator claims with the neighboring loci named in Relations. |
@@ -29746,7 +30059,7 @@ The pattern constrains *how* CV status and witnesses are carried; it does not en
 
 ### A.20:10 - SoTA-Echoing (post-2015)
 
-| SoTA source idea | FPF invariant | Practitioner move | Rejected shortcut |
+| SoTA source idea | FPF invariant | Practitioner action | Rejected shortcut |
 | --- | --- | --- | --- |
 | Algebraic effects, refinement, and certified-computation practice separate local constraint satisfaction from handler or deployment policy. | CV is internal step validity with `CV.Status` plus witness or refusal; GateFit (`A.21`) may consume the CV result only when a gate relation is being claimed. | Name the step, the applicable CV class, and the witness or refusal before making any gate claim. | Treating `CV.Status=pass` as gate passage, launch readiness, comparator-use claim, or a release-confidence claim. |
 | Reproducible-pipeline practice keeps mechanism constraints distinct from release or deployment criteria. | A.20 records assumption-bound status and witnesses; it does not define build tooling, cache keys, storage formats, or release policy. | Keep release and `GateProfile` questions outside CV unless the neighboring claim is present. | Treating a validation checklist as release readiness. |
@@ -29803,19 +30116,21 @@ Register token classes (Tech) include: `TransformationFlowStructure`, `Transform
 
 **Use this when.** Use A.21 when the current question is whether a gate-decision relation publishes a `GateProfile`-bound `GateDecision` from declared GateChecks, folds, pins, and rationale.
 
-**First useful move.** Name the `OperationalGate(profile)`, the current declared `GateProfile`, the effective `GateCheckRef` set, the aggregated CV status, and the `DecisionLogRef` that carries the decision rationale.
+**First useful gate use.** Name the `OperationalGate(profile)`, the current declared `GateProfile`, the effective `GateCheckRef` set, the aggregated CV status, and the `DecisionLogRef` that carries the decision rationale.
 
-**Smallest sufficient gate-publication guidance.** Use the lightest gate-publication guidance that preserves the next bounded practitioner move. Add crossing fields, launch fields, regulated fields, safety-critical fields, replay witnesses, `CrossingBundle`, `PQG` or `RSCR`, or MIP-run material only when the present gate-decision claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
+**Smallest sufficient gate-publication guidance.** Use the lightest gate-publication guidance that preserves the current bounded gate use. Add crossing fields, launch fields, regulated fields, safety-critical fields, replay witnesses, `CrossingBundle`, `PQG` or `RSCR`, or MIP-run material only when the present gate-decision claim would otherwise become false, unsafe, non-replayable, or lack a named governing-definition locus.
 
-**Minimum sufficient next move.** If there is only a guard, dashboard cue, explanation, or readiness-looking label and no `A.21` gate-decision relation, A.21 has no gate-decision relation to publish. Once the gate-decision relation is present, the low-risk publication minimum is `GateId + GateProfile + GateCheckRef set + CV aggregate + GateDecision + DecisionLogRef`; crossing, launch, regulated, and safety-critical fields appear only when those claims are being made.
+**Minimum sufficient gate use.** If there is only a guard, dashboard cue, explanation, full-kit-looking label, or readiness-looking label and no `A.21` gate-decision relation, A.21 has no gate-decision relation to publish. Once the gate-decision relation is present, the low-risk publication minimum is `GateId + GateProfile + GateCheckRef set + CV aggregate + GateDecision + DecisionLogRef`; crossing, launch, regulated, and safety-critical fields appear only when those claims are being made. If the current question is whether intended work has full-kit or work-entry readiness without a gate-decision relation, use `A.15.5`.
 
 **Do not escalate when.** Do not turn cues, guards, narrative explanations, dashboard states, CV results, or readiness-looking labels into a `GateDecision`. Use A.21 only when a present gate-decision relation consumes check refs under a current declared `GateProfile`.
 
-**Gate-looking display and conformance-label disposition.** A green tile, readiness badge, release screen, conformance label, `CV.Status`, safety-envelope note, or regulated-conformance phrase is not gate passage by resemblance. If the attempted use is gate passage, recover the current `OperationalGate(profile)`, `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window. If those fields are not recoverable, keep the display as a cue, source pointer, CV result, or evidence question; the evidence claim is governed by `A.10`, the CV result by `A.20`, the assurance claim by `B.3`, the language-quality question by `E.19`, or the recovered neighboring claim by its own governing pattern. Safety-envelope and assurance claims do not belong to A.21 unless they are declared gate checks consumed under the current `GateProfile`; their evidence and assurance relations remain with `A.10` and `B.3`. Plain wording remains ordinary unless it changes bounded use, source relation, evidence, gate, assurance, work, decision, or neighboring-pattern relation.
+**Gate-looking display and conformance-label disposition.** A green tile, readiness badge, release screen, full-kit label, conformance label, `CV.Status`, safety-envelope note, or regulated-conformance phrase is not gate passage by resemblance. If the attempted use is gate passage, recover the current `OperationalGate(profile)`, `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window. If those fields are not recoverable, keep the display as a cue, source pointer, CV result, evidence question, or work-entry-readiness question; the evidence claim is governed by `A.10`, the CV result by `A.20`, the work-entry-readiness relation by `A.15.5`, the assurance claim by `B.3`, the language-quality question by `E.19`, or the recovered neighboring claim by its own governing pattern. Safety-envelope, work-entry-readiness, and assurance claims do not belong to A.21 unless they are declared gate checks consumed under the current `GateProfile`; their evidence, readiness, and assurance relations remain with `A.10`, `A.15.5`, and `B.3`. Plain wording remains ordinary unless it changes bounded use, source relation, evidence, gate, readiness, assurance, work, decision, or neighboring-pattern relation.
 
 **Common wrong interpretation.** A green tile, readiness display, or release screen means `GateDecision=pass` exists. First honest entry: A.21 applies only when a current `OperationalGate(profile)` consumes declared checks and publishes a `GateDecision` with `DecisionLogRef`; otherwise the display remains a cue or source question.
 
 Repaired anti-case: a release screen says all checks are green but no current `OperationalGate(profile)`, effective `GateCheckRef` set, `GateDecision`, or `DecisionLogRef` is recoverable. The display remains a cue or evidence question; the attempted gate-passage use has no bounded current gate use until the A.21 gate-decision relation is recoverable.
+
+Agent-loop anti-case: a monitor retries twice, escalates to a supervisor, and the harness dashboard turns green. That sequence may be performed work, telemetry, a transformation-flow path, or evidence for a later check, but it is not `GateDecision=pass` unless a current `OperationalGate(profile)` consumes declared `GateCheckRef`s and publishes `GateDecision` plus `DecisionLogRef`. If the gate-decision relation is intended but missing, repair it by recovering the A.21 gate-decision relation; otherwise the result remains a cue for A.15, E.18, G.9, or evidence work, not an A.21 gate passage.
 
 **Same problem, different current question.** For a gate-bearing transformation-flow problem, use `E.18` for transformation-flow structure, graph value, path relation, valuation, or crossing claims, `A.20` for internal step validity, `A.21` for gate-decision publication, and `E.20` for mechanism-meaning placement; do not use the other three until their own claim is present.
 
@@ -29844,7 +30159,7 @@ Repaired anti-case: a release screen says all checks are green but no current `O
 
 **What this buys.** A.21 gives the practitioner one place to separate `GateProfile` fit, decision aggregation, rationale, optional explanation, and decision-record reuse while keeping gate logic out of CV and planning.
 
-**Not this pattern when.** If the question is internal step constraint satisfaction, use `A.20`. If the question is graph crossing or valuation, use `E.18`. If the question is performed work or work planning, use the work occurrence or work-planning loci. If the text only contains a guard, cue, explanation, dashboard state, lexical pseudo-gate, or readiness-looking label without an `A.21` gate-decision relation, do not infer gate passage.
+**Not this pattern when.** If the question is internal step constraint satisfaction, use `A.20`. If the question is graph crossing or valuation, use `E.18`. If the question is performed work or work planning, use the work occurrence or work-planning loci. If the question is full-kit condition or work-entry readiness before work entry, use `A.15.5` unless an actual gate-decision relation is current. If the text only contains a guard, cue, explanation, dashboard state, lexical pseudo-gate, or readiness-looking label without an `A.21` gate-decision relation, do not infer gate passage.
 
 ### A.21:1 - Problem frame
 
@@ -29926,7 +30241,7 @@ If a local short form `{ kind, edition, scope }` appears in prose, it is interpr
 
 * `GateDecision` is the published lattice value.
 * `GateDecisionRationale` is the minimal structured rationale payload for that decision (check outcomes, folds, witness refs).
-* `GateDecisionExplanation` is optional, human-readable, derived from the rationale; it **does not carry decision status** and is not used as one.
+* `GateDecisionExplanation` is optional, human-readable, derived from the rationale; it **does not carry the decision value** and is not used as one.
 
 **Register discipline.** Tech labels are ASCII and twin-labeled where the plain form uses symbolic notation.
 (Example: paired labels use `CLPlane` and “CL^plane”, `CLKind` and “CL^k”, `UNM.TransportRegistryPhi` and “UNM.TransportRegistryΦ”, `GammaTimeRule` and “Γ_timeRule”.)
@@ -29967,7 +30282,7 @@ Publications carry only:
 A check may encounter `error`, `timeout`, or evidence-scoped `unknown`. These do **not** become new decision values; they are folded into the decision lattice **by profile and check policy**.
 **Normative minimum folds (tri-state).**
 
-> **Naming note.** Some conformance tables use **Lean** as a label for the `GateProfile=Lite` GateProfile value. Treat this as an alias only, and do not confuse it with `PublishMode=Lite` (a publication-face reduction mode).
+> **Naming note.** Some conformance tables use **Lean** as a display label for the `GateProfile=Lite` GateProfile value. Treat this as a label only, and do not confuse it with `PublishMode=Lite` (a publication-face reduction mode).
 
 | Current `GateProfile` | `error` fold | `timeout` fold | `unknown` fold (evidence-scoped) |
 | -------------------- | -----------: | -------------: | ------------------------------: |
@@ -30120,7 +30435,7 @@ The built-in biases of this pattern are stated across the five Principle-Taxonom
 
 ### A.21:7 - Conformance Checklist
 
-**Conformance use.** This checklist is evidence for the gate-decision publication guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding gate, check set, decision, crossing, launch, publication, or assurance move is present. Before applying any row, name the Solution move it tests; if no such practitioner move is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
+**Conformance use.** This checklist is evidence for the gate-decision publication guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding gate, check set, decision, crossing, launch, publication, or assurance relation is present. Before applying any row, name the Solution relation it tests; if no such practitioner use is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
 
 **Conformance groups.** Ordinary gate use starts with the current gate, check set, CV aggregate, `GateDecision`, and `DecisionLogRef`. Crossing and launch rows apply only when the gate is a GateCrossing or `LaunchGate`. Publication and assurance rows apply only when MVPK faces, evidence references, decision stability, or replay are present. Extension and change rows apply only when lexical tokens, profile variants, or neighboring policy or evidence loci are being changed or consumed.
 
@@ -30157,16 +30472,16 @@ Minimum unified conformance for A.21 and for any `PathSlice` or gate-bearing tra
 * [ ] Tech names are ASCII and twin-labeled; required token classes are registered under LEX (including `GateProfile`, `GateCheckKind`, `GateCheckRef`, `DecisionLog`).
 * [ ] Any lexical alias view is trace-only and cannot change `GateDecision`.
 
-### A.21:7.1 - Common Anti-Patterns and How to Avoid Them
+### A.21:8 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | Why it fails | Correct move |
+| Anti-pattern | Why it fails | Correct use |
 |---|---|---|
 | Guard as GateCheck | A guard, status cue, or publication label is treated as a profile-bound gate check. | Declare the `GateCheckRef`, check criteria, fold policy, and governing neighboring truth condition. |
 | Explanation as decision | A readable narrative is treated as the `GateDecision` or `DecisionLog`. | Keep `GateDecision`, `GateDecisionRationale`, optional explanation, and decision record distinct. |
-| Gate pass as performed work | `GateDecision=pass` is read as work occurrence, release action, or work authorization. | Use A.21 only for the gate-decision relation and use A.15 or the release-governing pattern for work or authorization claims. |
+| Gate pass as performed work | `GateDecision=pass` is read as work occurrence, release action, work-entry readiness, or work authorization. | Use A.21 only for the gate-decision relation; use A.15.5 for work-entry readiness and A.15 or the release-governing pattern for work or authorization claims. |
 | Profile drift by publication mode | `PublishMode=Lite` is read as a weaker `GateProfile`. | Keep publication-face reduction in E.17 and keep `GateProfile` fold policy explicit in A.21. |
 
-### A.21:8 - Consequences
+### A.21:9 - Consequences
 
 **Benefits**
 
@@ -30181,7 +30496,7 @@ Minimum unified conformance for A.21 and for any `PathSlice` or gate-bearing tra
 * **Two-stage reasoning.** Users need the rule “GF does not apply until `CV.Status=pass` holds”; mitigated by explicit inapplicability rules and optional narratives only when applicable.
 * **Scope complexity.** Multi-scope merge semantics can feel heavy; mitigated by union + worst-wins + preserved rationales.
 
-### A.21:9 - Rationale
+### A.21:10 - Rationale
 
 * The microkernel framing preserves a single graph semantics: checks are gate/check loci and decision publications, not an external execution sequence; this keeps a second hidden execution order outside the gate core from appearing.
 * The join lattice provides minimal, monotone aggregation with two useful properties:
@@ -30191,23 +30506,24 @@ Minimum unified conformance for A.21 and for any `PathSlice` or gate-bearing tra
 * CV⇒GF activation is the mechanism that keeps orthogonality strict while still publishing a single gate decision publication: GF results do not replace CV failures.
 * Explicit folds for `error|timeout|unknown` make safety review result inspectable and profile-specific without inventing new decision values.
 
-### A.21:10 - SoTA-Echoing
+### A.21:11 - SoTA-Echoing
 
 Source references (post-2015) that this pattern **adopts, adapts, or rejects**, consistent with the transformation-flow goal of assured lanes, open graph composition, and join-semantics.
 
 * **Adopt.** *Join-semilattice aggregation as deterministic, profile-bound merge* (distributed-systems and CRDT literature, e.g., Kleppmann 2017; Kleppmann & Beresford 2017): A.21 uses the algebraic idea only so declared gate-check outcomes fold to the same `GateDecision` under the same current `GateProfile` and equivalence witness. It does not import CRDT architecture or use CRDT as prestige terminology.
 
 * **Adapt.** *Compositional reasoning with commuting diagrams* (applied category theory, e.g., Fong & Spivak 2019): A.21 adapts the intuition by making SquareLaw a gate-audited invariant on crossings, while keeping publications human-first and pin-based.
-* **Adapt.** *Supply-chain provenance and policy gating via attestations* (software supply-chain security, e.g., in-toto 2019; SLSA v1.2 current specification for provenance and VSA attestation formats): A.21 adapts the attestation-shaped evidence discipline as MVPK pins plus `DecisionLog`, not DevOps release procedure, tool-specific methods, or runtime scripts.
+* **Adapt.** *Supply-chain provenance and policy gating via attestations* (software supply-chain security, e.g., in-toto 2019; SLSA v1.2 provenance and VSA attestation specification line): A.21 adapts the attestation-shaped evidence discipline as MVPK pins plus `DecisionLog`, not DevOps release procedure, tool-specific methods, or runtime scripts.
 
 * **Reject.** *Narrative-as-authority.* Any approach where human-readable explanations function as decision-bearing records is rejected; in A.21, narratives remain optional derivatives of structured rationales and are explicitly non-decisional.
 
-Gate-publication result in attestation-shaped practice: green tiles, readiness badges, release screens, conformance labels, safety-envelope notes, CV results, and gate-looking explanations do not become gate passage, release permission, safety acceptance, assurance, work occurrence, or work authorization by appearance. The local A.21 result is a current `OperationalGate(profile)`, current `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window, or else the display remains a cue, source pointer, CV result, or evidence question governed outside A.21. Reopen the gate result when the current `GateProfile`, check set, CV aggregate, decision, rationale, scope, currentness, effective window, equivalence witness, or consuming neighboring relation changes.
+Gate-publication result in attestation-shaped practice: green tiles, readiness badges, full-kit labels, release screens, conformance labels, safety-envelope notes, CV results, and gate-looking explanations do not become gate passage, release authorization, deontic permission, safety acceptance, work-entry readiness, assurance, work occurrence, or work authorization by appearance. The local A.21 result is a current `OperationalGate(profile)`, current `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window, or else the display remains a cue, source pointer, CV result, evidence question, or readiness question governed outside A.21. Reopen the gate result when the current `GateProfile`, check set, CV aggregate, decision, rationale, scope, currentness, effective window, equivalence witness, or consuming neighboring relation changes.
 
-### A.21:11 - Relations
+### A.21:12 - Relations
 
 * **`E.18` transformation-flow structure →coordinates→ A.21.** GateFit-scoped GateChecks are aggregated by `OperationalGate(profile)`; GateCheck enumeration and publication shape are governed here.
 * **A.20 →couples_to→ A.21 via CV=>GF.** CV is evaluated inside transformations; while `CV.Status!=pass`, GF is `abstain` and GF explanations do not apply.
+* **A.15.5 →separates→ work-entry readiness from gate decision.** Full-kit and work-entry readiness labels may be cited by A.21 only when they are declared GateChecks under a current `GateProfile`; otherwise `WorkEntryReadiness@Context` remains governed by A.15.5.
 * **A.21 GateProfile binding.** A.21 carries the current profile binding, inheritance boundary, and minimum mandatory check-set semantics. Fuller project-local profile matrix material is not separately governing unless a current governing pattern includes it by value.
 * **E.18 and G.11 →provide→ scope and refresh boundaries.** `subflow` scope is bounded and restartable through PathSlice and refresh wiring where present; weakening check sets use a new `PathSlice`.
 * **F.9, F.17, E.17, and E.18 →required_by→ any edition-citing face.** Whenever gate faces cite editions, the compatibility reference (BridgeCard + UTS + `CL` and `CLPlane`) is required for downstream consumption.
@@ -30223,7 +30539,7 @@ Gate-publication result in attestation-shaped practice: green tiles, readiness b
 
 ### A.22:1 - Problem frame
 
-Use this pattern when a practitioner needs to select `U.Structure` as the `EntityOfConcern`: the organization, relation class, constraint, invariant, variation class, preserved arrangement, or lost arrangement that changes a next engineering or reasoning move.
+Use this pattern when a practitioner needs to select `U.Structure` as the `EntityOfConcern`: the organization, relation class, constraint, invariant, variation class, preserved arrangement, or lost arrangement that changes a next engineering or reasoning action.
 
 The first A.22 question is positive: what is organized, over which bounded context and declared substrate, which relation, constraint, invariant, or variation matters, what is preserved, what is lost or hidden, and which admissible use or stop condition follows.
 
@@ -30243,9 +30559,9 @@ StructureQuestionCard@Project:
   governingPatternApplicationRefs, if another claim is being made:
 ```
 
-`StructureQuestionCard@Project` is a project-side triage aid for this selected-structure move. It is not a new structure kind. Fill the reliance row only when extraction, coarsening, source-description, base-dependence, grounding, evidence, lens, simulation, representation, or action reliance is being claimed; otherwise leave it unused and keep the move on selected structure.
+`StructureQuestionCard@Project` is a project-side triage aid for this selected-structure use. It is not a new structure kind. Fill the reliance row only when extraction, coarsening, source-description, base-dependence, grounding, evidence, lens, simulation, representation, or action reliance is being claimed; otherwise leave it unused and keep the move on selected structure.
 
-Stop at this card when it makes the next structure move clear. Open heavier records only when a named description, view, publication, extraction, coarsening, comparison, mathematical-lens, architecture-description, or other neighboring claim is being made.
+Stop at this card when it makes the next structure use clear. Open heavier records only when a named description, view, publication, extraction, coarsening, comparison, mathematical-lens, architecture-description, or other neighboring claim is being made.
 
 What goes wrong if A.22 is missed: the practitioner reasons from the visible diagram, source, lens output, generated representation, project record, or architecture description instead of asking which organization is selected and what loss or reliance boundary matters for action.
 
@@ -30288,17 +30604,17 @@ How can FPF let a practitioner name structure as an EntityOfConcern while preser
 
 ### A.22:4 - Solution
 
-Select `U.Structure` as the A.22 ontic head: a dependent, non-agentive `EntityOfConcern` used when selected organization changes a next engineering or reasoning move.
+Select `U.Structure` as the A.22 ontic head: a dependent, non-agentive `EntityOfConcern` used when selected organization changes a next engineering or reasoning action.
 
 > `U.Structure` is the organization of typed relations, constraints, invariants, variation classes, and admissible references to operation or dynamics descriptions over a declared substrate, or declared A.6.6 base declaration when base-dependence is being claimed, inside a bounded context and admissible-use frame.
 
 The A.22 ontic head is intentionally narrow. `U.Structure` is the selected organization under concern: typed relations, constraints, invariants, variation classes, operation or dynamics references, preserved organization, and lost organization over a declared substrate in a bounded context. The grounding object may be a `U.Holon`, `U.System`, `U.Episteme`, declared substrate, or another governed value named by the current use; the selected structure remains the structure of or over that object.
 
-The first useful A.22 move is about the selected structure itself: name the bounded context, selected structure, relation, constraint, invariant, variation class, operation or dynamics reference that matters, preserved or lost organization, and the source-return condition or governing-pattern application needed for work. Description records, views, publications, diagrams, publication forms, and renderings are aids that make that structure move inspectable, reusable, comparable, or safe to rely on; they do not share the center of the Solution.
+The first useful A.22 use is about the selected structure itself: name the bounded context, selected structure, relation, constraint, invariant, variation class, operation or dynamics reference that matters, preserved or lost organization, and the source-return condition or governing-pattern application needed for work. Description records, views, publications, diagrams, publication forms, and renderings are aids that make that selected-structure use inspectable, reusable, comparable, or safe to rely on; they do not share the center of the Solution.
 
 `U.Structure` may fill `EntityOfConcern` for a structure description, view, or structure-claim relation. When a structure description or view is being used, `DescriptionContext.EntityOfConcernRef` names the selected structure, structure claim, or relation governed by the governing pattern for that use; publication forms, publication units, and renderings only make the episteme or view available.
 
-A.22 governs `U.Structure` as a dependent, non-agentive ontic head. It works first over selected-structure EntityOfConcern records and structure-claim reliance relations. Structural descriptions, structural views, extracted structural views, structural-aspect descriptions, structural-coarsening descriptions, and structure-general source-return conditions are subordinate record forms used only when they preserve the selected-structure move, expose loss, enable comparison, or state a reliance boundary. A.22 does not govern architecture descriptions directly; `C.30` and its subpatterns govern architecture as a use of selected structure over a described holon.
+A.22 governs `U.Structure` as a dependent, non-agentive ontic head. It works first over selected-structure EntityOfConcern records and structure-claim reliance relations. Structural descriptions, structural views, extracted structural views, structural-aspect descriptions, structural-coarsening descriptions, and structure-general source-return conditions are subordinate record forms used only when they preserve the selected-structure use, expose loss, enable comparison, or state a reliance boundary. A.22 does not govern architecture descriptions directly; `C.30` and its subpatterns govern architecture as a use of selected structure over a described holon.
 
 #### A.22:4.1 - Selected Structure Object
 
@@ -30334,7 +30650,7 @@ U.Structure ::= {
 }
 ```
 
-The field list is a recovery aid, not a demand to fill every field. The ordinary record names only the fields that carry the next admissible move. When state, dynamics, causality, measurement, bridge, evidence, assurance, gate, work, decision, or mathematical-lens claims are being made, the record names the governing pattern instead of absorbing that claim kind into A.22.
+The field list is a recovery aid, not a demand to fill every field. The ordinary record names only the fields that carry the next admissible use. When state, dynamics, causality, measurement, bridge, evidence, assurance, gate, work, decision, or mathematical-lens claims are being made, the record names the governing pattern instead of absorbing that claim kind into A.22.
 
 A.22 `generalStructureAspectKindRefs` are general structure-aspect cues. C.30.ASV `ArchitectureStructureKindRef` values are architecture-local structure-kind classifiers for structures selected by `ArchitectureOf@Context`. A matching label does not imply identity. Use a declared mapping when an A.22 aspect is used as an architecture structure kind.
 
@@ -30491,7 +30807,7 @@ next FPF pattern application: C.30.TFS-REL when this selected structure is used 
 non-admissible use: graph as whole architecture, work, evidence, gate, or decision
 ```
 
-The useful move survives: the practitioner can use the graph as a governed reliance relation for selected flow structure without turning it into architecture ontology.
+The useful structure use survives: the practitioner can use the graph as a governed reliance relation for selected flow structure without turning it into architecture ontology.
 
 **Extracted code structure slice.** A code-agent relation graph or probe JSON reports imports, calls, registry wiring, and data-flow links. A.22 treats it as an extracted structural view only when the source, extraction method, preserved structure, lost structure, validation boundary, and source-return condition are named. The relation graph or probe output is not the codebase architecture itself and is not proof of internal agent belief, assurance, or release readiness.
 
@@ -30521,10 +30837,10 @@ Lenses tested: **Arch**, **Onto**, **Epist**, **Prag**, **Did**, **Gov**. Scope:
 | Architecture bias | Do not make architecture the parent of all structure. A.22 stays upstream; C.30 carries grounded architecture and selected-structure adequacy. |
 | Mathematical-formalism bias | A mathematical lens can expose preserved structure and lost structure, but C.29 remains the governing pattern for lens-use result, admissibility, and stop condition. |
 | Diagram bias | A useful diagram or generated relation graph is attractive enough to be mistaken for the structure. description, specification-use, and publication boundaries stay explicit. |
-| Review-only bias | Checks leave a repair move: name the structure, name the structure-claim reliance relation named by value, state a structural view, add a `SourceReturnCondition`, or apply the governing FPF pattern. |
+| Review-only bias | Checks leave a repair action: name the structure, name the structure-claim reliance relation named by value, state a structural view, add a `SourceReturnCondition`, or apply the governing FPF pattern. |
 | Didactic-thinning risk | Semantic repair does not leave inert prose. The recognition text keeps the first useful move and the practical payoff visible before the formal records. |
 
-This checklist verifies the preceding guidance after the practitioner has chosen the selected move; it is not a required project control form and not a substitute for the card, note, view, relation, or repair move above.
+This checklist verifies the preceding guidance after the practitioner has chosen the selected repair action; it is not a required project control form and not a substitute for the card, note, view, relation, or repair guidance above.
 
 ### A.22:7 - Conformance Checklist
 
@@ -30539,7 +30855,7 @@ This checklist verifies the preceding guidance after the practitioner has chosen
 | **CC-A22-7 Non-structure claim kind.** | Evidence, assurance, gate, release, causal, dynamics, measurement, work, decision, publication, bridge, and mathematical-lens claims are assigned to their governing patterns. | The check passes when the governing FPF pattern and the claim kind being made are named, while the A.22 record remains limited to selected-structure use. |
 | **CC-A22-8 Architecture pattern application.** | Architecture claims use `C.30` and `ArchitectureOf@Context`; A.22 does not treat architecture as a root kind or define C.30-specific records. | Apply C.30 or a C.30 subpattern and keep A.22 only as the selected-structure EntityOfConcern and structure-claim reliance relation. |
 | **CC-A22-9 Plain and Tech recovery.** | Plain structure phrases may remain, but if they carry ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim, the relevant Tech fields and FPF pattern applications are recoverable. | Add the missing Tech fields or demote the Plain phrase to ordinary recognition wording. |
-| **CC-A22-10 Useful action.** | The repair leaves a surviving admissible practitioner move: name the structure, name the structure-claim reliance relation named by value, state a structural view, add a `SourceReturnCondition`, or apply the FPF pattern that governs the claim kind being made. | Restore that move, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
+| **CC-A22-10 Useful action.** | The repair leaves a remaining admissible practitioner use: name the structure, name the structure-claim reliance relation named by value, state a structural view, add a `SourceReturnCondition`, or apply the FPF pattern that governs the claim kind being made. | Restore that use, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
 
 ### A.22:8 - Common Anti-Patterns and How to Avoid Them
 
@@ -30584,7 +30900,9 @@ The reason to keep C.30 separate is architectural clarity. Architecture is selec
 
 Builds on: `C.2.1`, `A.6.P`, `A.7`, `A.6.2`, `A.6.3`, `A.14`, `C.16`, `C.29`, `E.10.D2`, `E.10`, `C.2.P`, `E.17.0`, `E.17.1`, `E.24`, `E.24.PUB`, and `F.18`.
 
-Coordinates with: `C.30.P`, `C.30.STRAT`, `C.30`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.LCA`, `C.30.ILC`, `A.6.F`, `E.18`, `A.10`, `G.6`, `B.3`, `A.20`, `A.21`, `C.28`, `A.15`, `C.11`, `C.16`, `C.25`, `G.5`, and governing patterns named for structure-information, equivalence, and synthesis claim kinds when those claim kinds are being made.
+Coordinates with: `C.30.P`, `C.30.STRAT`, `C.30`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.LCA`, `C.30.ILC`, `A.6.F`, `E.18`, `A.10`, `G.6`, `B.3`, `A.20`, `A.21`, `C.28`, `A.15`, `C.11`, `C.16`, `C.25`, `G.5`, `C.33`, `C.34`, and `C.35` when architecture-specific structure-capture, preservation, or discovery adequacy claim kinds are being made.
+
+Queue `7b` relation note: `C.33`, `C.34`, and `C.35` govern architecture-specific capture, preservation, and discovery adequacy over selected structures. A.22 keeps the general selected-structure portion; it does not decide architecture use, candidate admission, measurement, evidence, assurance, or decision authority for those adequacy claims.
 
 Does not replace: `C.30.P` or `C.30.STRAT` wording-use precision restoration, `C.30` for grounded architecture adequacy and conditional architecture-description use, `C.29` for mathematical-lens use, `C.16` for measurement and characterization, `C.28` for causal-use relation, `B.3` for assurance, `A.10` and `G.6` for evidence, `A.20` and `A.21` for gates and release, `A.15` for work, `C.11` for decisions, or `E.17` for publication.
 
@@ -32097,7 +32415,7 @@ Method Interface Standard (MIC)
 
 **Use this when.** Use this pattern when the current claim aggregates resources, effort, time, energy, material, information, cost, or another measured resource over dated work occurrences, phase slices, boundary partitions, or comparable work-resource ledgers.
 
-**Not this pattern when.** If the current question is the method as a way of doing, use `A.3.1`. If it is a method description, SOP, algorithm text, simulator configuration, or formal expression, use `A.3.2`. If it is a work plan, use `A.15.2`. If it is whether work occurred, use `A.15.1`. If it is temporal phase aggregation without resource accounting, use `B.1.4`. If it is a transformation claim, use `A.3.4`. If apparent resource gain changes whole identity, use `B.2.P` before any B.2-family owner.
+**Not this pattern when.** If the current question is the method as a way of doing, use `A.3.1`. If it is a method description, SOP, algorithm text, simulator configuration, or formal expression, use `A.3.2`. If it is a work plan, use `A.15.2`. If it is whether work occurred, use `A.15.1`. If it is work-entry readiness, full-kit condition, or resource readiness before work entry, use `A.15.5`. If it is temporal phase aggregation without resource accounting, use `B.1.4`. If it is a transformation claim, use `A.3.4`. If apparent resource gain changes whole identity, use `B.2.P` before any B.2-family owner.
 
 **What goes wrong if missed.** Resource, effort, time, energy, or cost totals are read from methods, plans, dashboards, or phase labels without a dated work occurrence, resource ledger, and overlap policy.
 
@@ -32111,17 +32429,17 @@ Practitioners need to roll up work-resource claims across runs, phases, teams, d
 
 ### B.1.6:1.0 - Problem
 
-Work-resource totals are often borrowed from plans, method descriptions, dashboards, or phase labels even when no performed-work evidence, resource basis, holon delimitation, time window, and overlap policy have been recovered. The failure is to treat a convenient total as a work-resource aggregation claim before the dated work occurrences and resource ledger are explicit.
+Work-resource totals are often borrowed from plans, method descriptions, dashboards, or phase labels even when no performed-work evidence, resource-accounting basis, holon delimitation, time window, and overlap policy have been recovered. The failure is to treat a convenient total as a work-resource aggregation claim before the dated work occurrences and resource ledger are explicit.
 
 ### B.1.6:1.1 - Forces
 
 | Force | Tension |
 | --- | --- |
 | Measured work vs. planned work | Expected yield, duration, or resource use helps planning, but cannot prove performed-work resource use. |
-| Typed resources vs. convenient totals | Energy, mass, time, cost, data volume, and attention can be compared only after their basis and conversion relation are declared. |
+| Typed resources vs. convenient totals | Energy, mass, time, cost, data volume, and attention can be compared only after their resource-accounting basis and conversion relation are declared. |
 | Boundary accounting vs. local convenience | Resource values are useful only when the holon delimitation, boundary-crossing relation, stock relation, and time window are named. |
 | Additivity vs. shared stocks | Disjoint partitions can be added; shared meters, tools, people, inventories, data, or ports need overlap and deduplication policy. |
-| Efficiency vs. whole reidentification | Apparent free gain may be measurement, changed basis, substitution, or a new whole; B.1.6 cannot decide that by resource wording alone. |
+| Efficiency vs. whole reidentification | Apparent free gain may be measurement, changed accounting basis, substitution, or a new whole; B.1.6 cannot decide that by resource wording alone. |
 
 ### B.1.6:2 - Solution
 
@@ -32155,6 +32473,8 @@ WorkResourceAggregation@Context:
 
 The record is a resource-aggregation relation over work evidence. It is not a method, not a method description, not proof that planned work happened, not a new holon level, and not a whole reidentification claim.
 
+Resource readiness is a neighboring claim, not a measured aggregation result. Planned capacity, reserved inventory, staffing availability, or a full-kit-looking label may be cited as a work-plan, source, or readiness reference, but `A.15.5` governs whether intended work is ready to enter performed-work execution. `B.1.6` governs only the resource-accounting basis, ledger, evidence, aggregation rule, and aggregated value for dated work occurrences or explicitly narrowed planned estimates.
+
 #### B.1.6:2.1 - Direct Owner Map
 
 | Current claim | Direct owner |
@@ -32162,6 +32482,7 @@ The record is a resource-aggregation relation over work evidence. It is not a me
 | Semantic way of doing | `A.3.1` |
 | Description of the way of doing, including algorithm text or SOP | `A.3.2` |
 | Planned work window or planned assignment | `A.15.2` |
+| Work-entry readiness, full-kit condition, or resource readiness before work entry | `A.15.5` |
 | Dated performed work occurrence and occurrence evidence | `A.15.1` |
 | Work-resource aggregation over dated work occurrences | `B.1.6` |
 | Holon delimitation, ports, interfaces, or part-whole boundary used for accounting | `A.1`, `B.1`, `A.14`, `C.13`, or the direct relation owner named by value |
@@ -32180,14 +32501,14 @@ Gamma_work(workResourceAggregationRecord, resourceBasis, aggregationRule)
   -> aggregated resource value plus ledger
 ```
 
-The notation applies only after the work occurrence refs, resource basis, time window, holon delimitation, and evidence or measurement refs have been named. It does not order method steps, certify the method, create work evidence, or declare emergence.
+The notation applies only after the work occurrence refs, resource-accounting basis, time window, holon delimitation, and evidence or measurement refs have been named. It does not order method steps, certify the method, create work evidence, or declare emergence.
 
 ### B.1.6:4 - Ledger Discipline
 
 A conforming `WorkResourceAggregation@Context` includes a work-resource ledger with:
 
 - work occurrence refs or parent and child work occurrence refs;
-- resource basis and unit refs;
+- resource-accounting basis and unit refs;
 - time window and phase refs when time slicing is used;
 - holon delimitation refs and any boundary-crossing relation refs used for accounting;
 - method, method-description, and work-plan refs only when those objects are actually used;
@@ -32195,7 +32516,7 @@ A conforming `WorkResourceAggregation@Context` includes a work-resource ledger w
 - overlap or deduplication policy when work occurrences share resources, time windows, ports, stocks, people, tools, or data;
 - admissible use and non-admissible overread.
 
-For any resource type in the selected basis, the ledger should say whether the value is measured, estimated, normalized, or converted. If the value is measured, it names the measurement or evidence relation. If the value is planned, it stays marked as expected work-resource use and does not become performed-work evidence.
+For any resource type in the selected resource-accounting basis, the ledger should say whether the value is measured, estimated, normalized, or converted. If the value is measured, it names the measurement or evidence relation. If the value is planned, it stays marked as expected work-resource use and does not become performed-work evidence.
 
 When the aggregation divides a stock or resource amount, use `PortionOf` or the direct quantitative relation owner. When the aggregation slices one work occurrence or one carrier over time, use `PhaseOf` or the direct phase owner. Do not use `MemberOf` for resource stock, resource portion, or time-slice composition.
 
@@ -32209,16 +32530,16 @@ When the aggregation divides a stock or resource amount, use `PortionOf` or the 
 
 **Plan and result stay separate.** A method description or work plan may provide expected yield, expected duration, or expected resource use. Measured work-resource aggregation uses dated work occurrence evidence. Do not overwrite one with the other.
 
-**B.1 invariant carry-through.** `B.1.6` keeps B.1 invariants only for recovered work-resource ledgers. A singleton zero-resource occurrence is idempotent for the selected basis. Addition is commutative only for independent partitions, non-overlapping slices, or explicitly deduplicated overlaps. Weakest-link claims must name the critical resource, availability, or threshold; monotonicity claims must name the resource characteristic being improved. Apparent "free" gains remain measurement, equivalence, or whole-reidentification questions until their direct owner is recovered.
+**B.1 invariant carry-through.** `B.1.6` keeps B.1 invariants only for recovered work-resource ledgers. A singleton zero-resource occurrence is idempotent for the selected resource-accounting basis. Addition is commutative only for independent partitions, non-overlapping slices, or explicitly deduplicated overlaps. Weakest-link claims must name the critical resource, availability, or threshold; monotonicity claims must name the resource characteristic being improved. Apparent "free" gains remain measurement, equivalence, or whole-reidentification questions until their direct owner is recovered.
 
-**Proof-sketch obligations.** For idempotence, show the zero-resource or singleton ledger under the selected basis. For commutativity or locality, show disjoint boundary partitions, disjoint time slices, or the declared deduplication relation. For weakest-link, name the critical resource and availability condition. For monotonicity, name the exact resource characteristic that cannot get worse under the selected improvement. These are user-facing obligations for the aggregation claim, not a separate proof package.
+**Proof-sketch obligations.** For idempotence, show the zero-resource or singleton ledger under the selected resource-accounting basis. For commutativity or locality, show disjoint boundary partitions, disjoint time slices, or the declared deduplication relation. For weakest-link, name the critical resource and availability condition. For monotonicity, name the exact resource characteristic that cannot get worse under the selected improvement. These are user-facing obligations for the aggregation claim, not a separate proof package.
 
 #### B.1.6:5.1 - Compact Obligation Rows
 
 | Obligation | What must be named | Why it matters |
 | --- | --- | --- |
-| Typed resource vector | Resource basis, unit, measure, evidence refs, and source refs for each component. | Prevents hours, energy, material, cost, and data volume from becoming one undifferentiated total. |
-| Disjoint partition | Boundary partition, stock relation, time window, and work occurrence refs. | Allows addition only where the partitions are actually disjoint for the selected resource basis. |
+| Typed resource vector | Resource-accounting basis, unit, measure, evidence refs, and source refs for each component. | Prevents hours, energy, material, cost, and data volume from becoming one undifferentiated total. |
+| Disjoint partition | Boundary partition, stock relation, time window, and work occurrence refs. | Allows addition only where the partitions are actually disjoint for the selected resource-accounting basis. |
 | Shared-stock handling | Shared meter, shared tool, shared person, shared data, shared inventory, or overlap policy. | Prevents double counting and false savings. |
 | Critical resource cap | The capacity, availability, threshold, or bottleneck resource whose limit governs the claim. | Makes weakest-link and capacity claims inspectable. |
 | Yield relation | Input resource refs, output result refs, loss refs, and measurement basis. | Keeps efficiency from being asserted without a result relation. |
@@ -32249,10 +32570,11 @@ When the aggregation divides a stock or resource amount, use `PortionOf` or the 
 | ID | Requirement | Purpose |
 | --- | --- | --- |
 | CC-B1.6-1 | The aggregation names dated work occurrence refs or explicitly narrows use to planned estimates. | Prevents plans and method descriptions from masquerading as performed work. |
-| CC-B1.6-2 | Resource basis, units, measurement refs, evidence refs, and source refs are named. | Keeps resource values comparable and reviewable. |
+| CC-B1.6-2 | Resource-accounting basis, units, measurement refs, evidence refs, and source refs are named. | Keeps resource values comparable and reviewable. |
 | CC-B1.6-3 | Holon delimitation and any boundary-crossing relation used for accounting are named by value. | Prevents an unexplained boundary word from carrying the claim. |
 | CC-B1.6-4 | Time windows, phase refs, and overlap and deduplication policy are present when slices or shared resources are aggregated. | Prevents double counting and missing epochs. |
 | CC-B1.6-5 | Method, method-description, work-plan, transformation, and whole-reidentification claims use their direct owners. | Keeps work-resource aggregation from absorbing neighboring objects. |
+| CC-B1.6-5a | Work-entry readiness, full-kit condition, and resource readiness before work entry use `A.15.5`; B.1.6 cites such refs only as neighboring inputs when a resource aggregation claim also exists. | Keeps planned or reserved resource availability from becoming measured performed-work aggregation. |
 | CC-B1.6-6 | `Gamma_work` is used only as notation over a recovered aggregation record. | Keeps algebraic notation from becoming ontology by spelling. |
 
 ### B.1.6:8 - Common Anti-Patterns and How to Avoid Them
@@ -32273,7 +32595,7 @@ The cost is explicit accounting discipline. The gain is that resource roll-ups b
 
 ### B.1.6:9.1 - Rationale
 
-`B.1.6` exists because work-resource accounting is easy to confuse with method, plan, phase, transformation, evidence, and whole reidentification. The governed object is the resource aggregation claim over dated work occurrences or explicitly narrowed estimates. That claim needs a ledger discipline: typed resource basis, holon delimitation, time window, stock and boundary-crossing relation, measurement or evidence relation, and overlap policy.
+`B.1.6` exists because work-resource accounting is easy to confuse with method, plan, phase, transformation, evidence, and whole reidentification. The governed object is the resource aggregation claim over dated work occurrences or explicitly narrowed estimates. That claim needs a ledger discipline: typed resource-accounting basis, holon delimitation, time window, stock and boundary-crossing relation, measurement or evidence relation, and overlap policy.
 
 The pattern keeps the useful old `Gamma_work` notation, but only as notation over a recovered aggregation record. It also preserves the old planned-versus-measured warning: a method description or work plan can declare expected yield or expected resource use, but measured aggregation depends on dated work evidence.
 
@@ -32281,15 +32603,16 @@ The pattern keeps the useful old `Gamma_work` notation, but only as notation ove
 
 | Source line | Practical implication for this pattern |
 | --- | --- |
-| Conservation and engineering accounting practice | Resource roll-ups need a selected basis, boundary, stock relation, and time window before addition is meaningful. |
+| Conservation and engineering accounting practice | Resource roll-ups need a selected resource-accounting basis, boundary, stock relation, and time window before addition is meaningful. |
 | Constructive mereology and phase discipline | Resource portions, work phases, and collection membership are different relations; `PortionOf`, `PhaseOf`, and `MemberOf` cannot substitute for one another. |
 | Measurement and mathematical-lens discipline | Unit conversion, normalization, efficiency, and typed vectors need their measurement, model, or mathematical-lens owner. |
-| Work/method distinction in FPF | A method, method description, or work plan can guide expected resource use, but performed-work aggregation requires dated work occurrence evidence. |
+| Work and method distinction in FPF | A method, method description, or work plan can guide expected resource use, but performed-work aggregation requires dated work occurrence evidence. |
 
 ### B.1.6:10 - Relations
 
 - Builds on `A.15.1` for dated work occurrence and on `A.15` for role-method-work alignment.
 - Coordinates with `A.3.1`, `A.3.2`, and `A.15.2` for method, method description, and work plan.
+- Coordinates with `A.15.5` for work-entry readiness, full-kit condition, and resource readiness before work entry; B.1.6 may cite those refs but does not decide readiness.
 - Coordinates with `B.1.4` and `C.27` for phase and temporal-claim adequacy.
 - Coordinates with `A.1`, `B.1`, `A.14`, and `C.13` for holon delimitation, part-whole, phase, and constructive grounding.
 - Coordinates with `A.3.4` for transformation. When whole reidentification or emergence-family wording is current, `B.2.P` tests the problem and the relevant B.2-family pattern governs the recovered claim.
@@ -32567,7 +32890,7 @@ The pattern is intentionally conservative: it preserves ordinary direct-owner re
 ### B.2:11 - Relations
 
 - **Builds on:** `A.1` for holon admission, `B.1` for part-whole construction, `A.14` and `C.13` for relation and constructional grounding, and `E.24.UK` for result-kind admission discipline.
-- **Coordinates with:** `A.12` and `A.3.4` for acting-side and transformation, `A.15` and `A.15.1` for method and work, `C.16` and `A.19` for characteristic space and threshold, `C.29` for mathematical lenses, and `A.10` for evidence.
+- **Coordinates with:** `A.12` and `A.3.4` for acting-side and transformation, `A.15` and `A.15.1` for method and work, `C.16` and `A.19` for characteristic space and threshold, `C.29` for mathematical lenses, `C.32.P2S` when architecturing pressure becomes whole reidentification or emergence rather than local structure repair, and `A.10` for evidence.
 - **Specialized by:** `B.2.2` for system-result MHT, `B.2.3` for MHT-result holons admitted as `U.Episteme`, and `B.2.4` for capability and functioning whole reidentification.
 - **Can use neighboring evidence from:** `B.2.5` when a supervisor-subholon feedback relation is part of the B.2 case evidence or neighboring structure; that does not make B.2.5 a result-kind specialization.
 - **Uses:** `B.2.P` when emergence-family, MHT, MET, MFT, synergy, or metric-mirage wording hides which claim kind is current before B.2 is applied.
@@ -32828,7 +33151,7 @@ B.2.P follows the E.10.ARCH algorithm: recover ontology first, then choose wordi
 - **Builds on:** `E.10`, `E.10.ARCH`, `E.24`, `F.18`, and `B.2`.
 - **Returns whole reidentification to:** `B.2`, with `B.2.2`, `B.2.3`, and `B.2.4` as current specializations.
 - **Keeps collection admission with:** `A.14`, `C.13`, `B.3.5`, `A.1`, `A.15`, A.2 patterns, and `C.16`.
-- **Coordinates with:** `A.2.2`, `C.16`, `A.6.F`, `A.3.4`, `C.30`, `A.22`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.ILC`, `C.29`, `A.10`, `C.2.1`, `E.17`, and source-use patterns.
+- **Coordinates with:** `A.2.2`, `C.16`, `A.6.F`, `A.3.4`, `C.30`, `A.22`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.ILC`, `C.32.P2S`, `C.29`, `A.10`, `C.2.1`, `E.17`, and source-use patterns.
 
 ### B.2.P:End
 
@@ -33084,741 +33407,3 @@ The key distinction is ontological, not lexical. A result system is not a trigge
 - **Contrasts with:** `B.2.3` for MHT-result holons admitted as `U.Episteme` and `B.2.4` for capability and functioning whole-reidentification evidence.
 
 ### B.2.2:End
-
-## B.2.3 - Meta-Holon Transition With Episteme Result
-
-> **Type:** Part B holonic construction pattern
-> **Status:** Stable
-> **Normativity:** Normative unless a section is explicitly informative
-
-### B.2.3:0 - Use This When
-
-Use this pattern when a Meta-Holon Transition result is admitted as `U.Episteme`: a theory, model family, standard, doctrine, specification body, research programme, field-level knowledge body, or other claim-bearing non-agentive holon.
-
-Use `B.2` first to decide whether whole reidentification is current. Use `B.2.3` only when the result-kind question points to `mhtResultEpistemeRef`.
-
-**First useful move.** Recover the episteme result as a `U.Episteme` holon with its C.2.1 slot relation: EntityOfConcern, grounding holon, claim graph, reference scheme, viewpoint, view, and publication or source-use relations when current.
-
-**What goes wrong if missed.** A catalogue, literature review, dashboard, model repository, or vocabulary is called a new theory without claim-graph reidentification; or a real new episteme whole is treated as a pile of publications.
-
-**What this buys.** The pattern preserves B.2 whole reidentification while keeping episteme ontology with C.2.1 and the episteme family. It prevents episteme-result MHT from becoming episteme agency, publication authority, generic emergence, or a second episteme ontology.
-
-**Not this pattern when.**
-
-- If the result whole is an acting physical or operational holon, use `B.2.2`.
-- If the question is episteme slot relation, publication, source use, view, viewpoint, claim graph, reference scheme, or description use without MHT, use `C.2.1`, `C.2.P`, `C.2.P.DR`, `E.17`, and the episteme family directly.
-- If the question is effect-free episteme morphing, viewing, retargeting, or controlled semantic coarsening, use `A.6.2`, `A.6.3`, `A.6.4`, or `A.6.3.CSC`.
-- If the question is synthesis work, use `A.15.1` for performed work and `A.12` or `A.3.4` for acting-side and transformation claims.
-- If the wording is ambiguous emergence-family language, use `B.2.P` before selecting B.2.3.
-
-### B.2.3:1 - Problem Frame
-
-A library is not a theory, and a theory is not its publication.
-
-A group of papers, models, datasets, design notes, forecasts, standards, or local doctrines may remain a collection. It becomes an MHT-result episteme only when the current claim needs one reidentified claim-bearing holon whose C.2.1 slot relation can be filled and governed as one episteme.
-
-B.2.3 does not introduce a special episteme ontology. It uses `mhtResultEpistemeRef` in the B.2 record and then returns episteme structure to C.2.1.
-
-### B.2.3:2 - Problem
-
-Without this specialization:
-
-1. **Catalogues become theories.** Aggregated publications or dashboards are treated as a new episteme because they are stored together.
-2. **Theory becomes publication.** The paper, report, standard document, model card, or dashboard is used as the episteme itself.
-3. **Episteme receives agency.** The theory, standard, or doctrine is described as if it performs work or enforces behavior by itself.
-4. **Morphing becomes MHT.** A view, retargeting, coarsening, translation, or model transformation is treated as a new episteme whole.
-5. **Assurance is inherited silently.** Trust in constituent sources is treated as trust in the reidentified episteme whole.
-6. **Generic emergence replaces claim structure.** "Emergent theory" hides the actual claim graph, reference scheme, and grounding relation.
-
-### B.2.3:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Synthesis vs aggregation | A new episteme whole can integrate claims, but many collections remain indexes, reviews, or portfolios. |
-| Episteme identity vs publication form | The episteme may be published in many forms; no publication form is the episteme by appearance. |
-| Claim organization vs agency | An episteme can organize claims and guide use, but systems perform work with or on it. |
-| Constituent evidence vs result assurance | Evidence for parts may bear on the result, but the result episteme needs its own claim and assurance relations. |
-| Source mnemonic vs current ontology | Short labels can aid recognition while hiding whether the current object is B.2, C.2.1, A.6, E.17, or source-use. |
-
-### B.2.3:4 - Solution
-
-Use B.2.3 as the episteme-result specialization of B.2.
-
-#### B.2.3:4.1 - Episteme-Result MHT Slice
-
-When `mhtResultEpistemeRef` is selected, use:
-
-```text
-EpistemeResultMHTSlice@Context:
-  existingWholeRef: U.Holon
-  mhtResultEpistemeRef: U.Episteme
-  boundedContextRef:
-  selectedTriggerProfileRef: MHTTriggerProfile@Context
-  existingWholeExplanationCheckRef: ExistingWholeExplanationCheck@Context
-  epistemeKindAdmissionRef: C.2.1
-  epistemeSlotRelationRef: U.EpistemeSlotRelation
-  entityOfConcernSlotRef:
-  groundingHolonSlotRef:
-  claimGraphSlotRef:
-  referenceSchemeSlotRef:
-  viewpointSlotRef?
-  viewSlotRef?
-  publicationOrSourceUseRefs?
-  constituentEpistemeRefs:
-  synthesisWorkRefs?
-  evidenceOrAssuranceRefs:
-  mathematicalLensUseRefs?
-  blockedOverreads:
-```
-
-This slice is not a U-kind and not a second episteme ontology. It is the B.2 record slice that says the MHT result is an episteme and names the C.2.1 relation that governs it.
-
-#### B.2.3:4.2 - Episteme Slot Re-Basing
-
-For the result episteme, re-base at least these C.2.1 slots when current:
-
-- `EntityOfConcernSlot`: what the result episteme is about;
-- `GroundingHolonSlot`: where the result claim is grounded or tested;
-- `ClaimGraphSlot`: what the result episteme says as a claim structure;
-- `ReferenceSchemeSlot`: how claims are read as about their entities;
-- `ViewpointSlot` and `ViewSlot`: when the result episteme has viewpoint-governed views;
-- publication, source-use, and representation relations when the result episteme is published, cited, carried, or represented.
-
-Do not infer these slots from the existence of a publication set. Fill them as episteme slots.
-
-#### B.2.3:4.3 - Episteme Trigger Interpretation
-
-Interpret `MHTTriggerProfile@Context` for epistemes without giving agency to epistemes:
-
-| Trigger family in `MHTTriggerProfile@Context` | Episteme-result reading | Direct owner kept visible |
-| --- | --- | --- |
-| Delimitation change | The knowledge body now has a stable EntityOfConcern, scope, reference scheme, and claim scope. | `C.2.1`, `A.7`, source-use owners |
-| Objective or evaluation change | The result episteme answers or evaluates a question that the collection did not answer as one claim-bearing whole. | `C.2.1`, `C.16`, `E.21` or relevant evaluation owner |
-| Supervision or coordination change | Principles, axioms, invariants, reference schemes, or claim-graph constraints organize how constituent claims are interpreted. | `C.2.1`, `A.6.0`, `A.6.1`, `C.29` when formal lens is current |
-| Capability or closure evidence | The result episteme enables a new explanatory, predictive, specification, or coordination use. | `C.2.1`, `C.16`, `A.10`, use-specific owner |
-| Agency threshold | Usually not applicable to the episteme itself; if agency is claimed, recover the acting system in role. | `A.12`, `A.2.1`, `A.13`, `A.19`, `C.16` |
-| Temporal consolidation | A field, standard, or theory becomes one current knowledge body after phase consolidation or source-currentness change. | `C.27`, `E.17`, source-use owners |
-| Context reframe | New terms, reference schemes, or EntityOfConcern mapping reframe the knowledge body. | `C.2.1`, `A.6.3`, `A.6.4`, `F.18` |
-
-B.2.3 uses these rows as evidence to inspect. B.2 decides whether whole reidentification is admitted.
-
-#### B.2.3:4.4 - Blocked Readings
-
-Do not use B.2.3 as:
-
-- a name for generic emergence;
-- an authority claim for a publication;
-- an agentive claim about a theory, standard, or doctrine;
-- an effect-free episteme morphism, view, retargeting, or coarsening;
-- a second episteme ontic beside C.2.1;
-- a shortcut from source synthesis to high trust;
-- a replacement for source-use, evidence, assurance, or publication patterns.
-
-### B.2.3:5 - Archetypal Grounding (Worked Cases)
-
-#### B.2.3:5.1 - Reliability Doctrine
-
-Before MHT, teams have local runbooks, incident reports, dashboards, and reliability definitions. They may be useful, but they are not yet one episteme.
-
-After MHT, the result may be a reliability doctrine if it has one EntityOfConcern, one reference scheme for service harm and reliability claims, a claim graph with principles and definitions, grounding relations to operating services, publication relations, and source-use relations for its standards and training materials.
-
-```text
-EpistemeResultMHTSlice@Reliability:
-  mhtResultEpistemeRef: reliability doctrine
-  epistemeSlotRelationRef: U.EpistemeSlotRelation
-  entityOfConcernSlotRef: user-visible service harm and reliability
-  groundingHolonSlotRef: operating service systems
-  claimGraphSlotRef: doctrine claims and invariants
-  referenceSchemeSlotRef: shared reliability vocabulary
-  publicationOrSourceUseRefs: handbook and standard publication forms
-```
-
-The doctrine does not enforce anything by itself. Systems in role use it, cite it, train with it, and work according to it.
-
-#### B.2.3:5.2 - Model Family Becomes Theory
-
-A model family can remain a toolbox. It becomes an episteme-result MHT only if the result has a unified claim graph, reference scheme, grounding holons, and admissible explanatory or predictive use that the collection did not carry as one whole.
-
-If the change is only a new model publication or benchmark score, use publication, source-use, measurement, evidence, and mathematical-lens owners instead.
-
-#### B.2.3:5.3 - Standard Body
-
-A set of clauses, examples, and annexes can become a standard episteme when the result is one claim-bearing whole with terms, references, scope, conformance claims, and publication forms.
-
-The standard is not the committee, not the PDF, and not the work of enforcement. The committee is an acting system or role-bearing system; the PDF is a publication form; enforcement is work by systems in role.
-
-### B.2.3:5.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Library as theory | A repository, dashboard, or reading list is treated as one claim-bearing episteme. | Fill C.2.1 slots and use B.2.3 only when whole reidentification remains current. |
-| Publication as episteme | A PDF, report, standard document, model card, or dashboard is treated as the episteme itself. | Keep publication forms with E.17 and source-use owners. |
-| Episteme agency | A theory, standard, or doctrine is described as performing work or enforcement. | Recover acting systems, role assignments, methods, work, and evidence separately. |
-| Morphing as MHT | View, translation, coarsening, or retargeting is called a new episteme whole. | Use A.6 episteme-morphism owners unless B.2 whole reidentification remains current. |
-| Source trust transfer | Trust in constituent sources becomes assurance for the result episteme. | Rebuild assurance and source-use relations for the result episteme. |
-
-### B.2.3:6 - Conformance Checklist
-
-| Check | Requirement |
-| --- | --- |
-| `CC-B2.3-1` | B.2 has left a whole-reidentification question before B.2.3 is used. |
-| `CC-B2.3-2` | The result kind is admitted as `U.Episteme` and recorded as `mhtResultEpistemeRef`. |
-| `CC-B2.3-3` | `EpistemeResultMHTSlice@Context` names `U.EpistemeSlotRelation` and does not create a second episteme ontic. |
-| `CC-B2.3-4` | Publication, source-use, view, viewpoint, claim-bearing, and representation questions return to C.2.1, E.17, C.2.P, C.2.P.DR, and direct episteme-family owners. |
-| `CC-B2.3-5` | The episteme is non-agentive; acting systems, synthesis work, and enforcement work use A.12, A.2, A.15, A.15.1, or work owners. |
-| `CC-B2.3-6` | Assurance for the result episteme is not silently inherited from constituent epistemes or publications. |
-| `CC-B2.3-7` | Effect-free morphing, viewing, retargeting, and controlled coarsening are not treated as B.2.3 unless whole reidentification is current. |
-
-### B.2.3:7 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-| --- | --- | --- |
-| Library as theory | A repository or reading list is treated as one episteme. | Fill C.2.1 slots; use B.2.3 only if one result episteme whole is recovered. |
-| PDF as episteme | A publication form is used as the theory itself. | Use E.17 and publication owners; keep `mhtResultEpistemeRef` for the episteme. |
-| Doctrine receives agency | "The standard enforces..." or "the theory decides..." | Recover the acting system, role, method, work, evidence, or decision claim. |
-| Morphism as MHT | A view, translation, coarsening, or retargeting is called a new episteme whole. | Use A.6.2, A.6.3, A.6.4, or A.6.3.CSC unless B.2 whole reidentification is current. |
-| Synthesis as high trust | A new theory inherits trust because its sources were reliable. | Rebuild assurance for the result episteme through A.10, B.3, B.3.5, C.2.1, and source-use owners. |
-
-### B.2.3:8 - Consequences
-
-Positive consequences:
-
-- Episteme-result MHT becomes usable without preserving title mnemonics as ontology.
-- C.2.1 remains the episteme ontic owner.
-- Publications, source use, synthesis work, evidence, assurance, and acting systems remain separate.
-
-Costs:
-
-- A claimed synthesis must fill episteme slots, not only cite a portfolio.
-- Result-episteme assurance requires fresh relation work.
-- Some "new theory" claims return to publication, source-use, morphism, benchmark, or evidence owners.
-
-### B.2.3:9 - Rationale
-
-Knowledge synthesis can create a new holon, but only when the result is a reidentified claim-bearing episteme. B.2.3 keeps that useful case and removes the drift toward episteme agency, publication authority, generic emergence, and duplicate episteme ontology.
-
-This pattern is deliberately thin. B.2 owns whole reidentification; C.2.1 owns episteme slot relation; E.17 and source-use patterns own publications; A.6 episteme-morphism patterns own morphing and retargeting; A.15 and A.12 own synthesis work and acting systems.
-
-### B.2.3:10 - SoTA-Echoing
-
-| Source family | Lesson for B.2.3 | FPF decision |
-| --- | --- | --- |
-| Evidence synthesis and living-review practice | Synthesis claims need explicit scope, evidence relation, currentness, and maintenance rather than narrative authority. | B.2.3 requires result-episteme slots, assurance relations, and source-use relations. |
-| Knowledge-graph and claim-network practice | A knowledge body can be represented as related claims, evidence, and sources. | `ClaimGraphSlot` remains C.2.1 material; graph representation does not declare MHT by itself. |
-| Science-of-science and paradigm-change studies | Fields and theories can consolidate into named bodies with new scope and organizing principles. | B.2.3 treats consolidation as possible evidence for episteme-result MHT, not as automatic admission. |
-| Publication and standards practice | Standards, reports, models, and dashboards are carriers and publication forms. | E.17 and source-use owners remain separate from the episteme whole. |
-
-### B.2.3:11 - Relations
-
-- **Specializes:** `B.2` for MHT-result holons admitted as `U.Episteme`.
-- **Builds on:** `C.2.1` for `U.EpistemeSlotRelation`, `A.1` for holon admission, and `E.24.UK` for result-kind admission discipline.
-- **Coordinates with:** `C.2.P`, `C.2.P.DR`, `E.17`, `E.17.*`, `A.6.2`, `A.6.3`, `A.6.4`, `A.6.3.CSC`, `A.10`, `B.3`, `B.3.5`, `C.29`, `F.18`, and `F.19`.
-- **Uses:** `B.2.P` when source wording such as emergence-family or title-mnemonic wording hides the claim kind.
-- **Contrasts with:** `B.2.2` for system-result MHT and `B.2.4` for capability and functioning whole-reidentification evidence.
-
-### B.2.3:End
-
-## B.2.4 - Capability and Functioning Whole Reidentification
-
-> **Type:** Part B holonic construction pattern
-> **Status:** Stable
-> **Normativity:** Normative unless a section is explicitly informative
-
-### B.2.4:0 - Use This When
-
-Use this pattern when capability-envelope evidence, functioning-relation evidence, or transformation-flow-structure evidence creates or reveals a B.2 whole-reidentification question.
-
-The first useful question is:
-
-```text
-Does this capability or functioning evidence show that the existing whole
-is no longer the right EntityOfConcern, or is this only a direct capability,
-functioning, transformation, method, work, module, characteristic, or
-architecture claim?
-```
-
-Use `B.2.4` only for the first case. Use direct owners for the second.
-
-**What goes wrong if missed.** A genuine new whole is hidden under ordinary capability improvement; or every impressive capability, function, method chain, module allocation, or metric gain is overclaimed as emergence.
-
-**What this buys.** The pattern keeps capability and functioning evidence available for B.2 while preventing B.2.4 from becoming a generic capability, function, method, work, module, or emergence pattern.
-
-**Not this pattern when.**
-
-- If the claim is ordinary capability, use `A.2.2` and `C.16`.
-- If the claim is function-like wording or functioning relation without whole reidentification, use `A.6.F`.
-- If the claim is transformation or transformation-flow structure, use `A.3.4`, `E.18`, and `C.30.TFS-REL`.
-- If the claim is method, method relation, method description, work plan, or work occurrence, use `A.15`, `A.3.1`, `A.3.2`, `A.15.2`, and `A.15.1`.
-- If the claim is module allocation or bearer allocation, use `A.6.M` and architecture owners.
-- If the claim is measurement, threshold, score, robustness, quality, or whole-level characteristic, use `C.16`, `A.19`, and evidence owners.
-- If the wording is ambiguous emergence, synergy, or title-mnemonic language, use `B.2.P` before selecting B.2.4.
-
-### B.2.4:1 - Problem Frame
-
-A new capability is not automatically a new whole. A function-like relation is not automatically a part-whole relation. A transformation-flow structure is not automatically MHT.
-
-B.2.4 is the narrow B.2 specialization for cases where capability, functioning, or transformation-flow evidence makes the existing whole explanation fail and points to a reidentified holon. It is not a pattern for all capabilities or all functions.
-
-### B.2.4:2 - Problem
-
-Without this specialization:
-
-1. **Capability becomes generic emergence.** A threshold crossing or new envelope is treated as a new whole without B.2 checks.
-2. **Function becomes ontology.** Function-like wording creates `U.Function` or a hidden peer kind.
-3. **Method and work collapse.** The way of doing, description of doing, planned work, and performed work are compressed into one vague operational claim.
-4. **Module allocation becomes functional truth.** A module label is treated as evidence for the required behavior or selected structure.
-5. **Transformation-flow description replaces in-life structure.** A graph, diagram, or publication of a flow is treated as the flow structure or whole.
-6. **Whole reidentification is missed.** A real result whole is left as "just a better capability".
-
-### B.2.4:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Capability evidence vs whole identity | Capability evidence can reveal a new whole, but most capability claims stay with A.2.2 and C.16. |
-| Functioning relation vs part-whole relation | Functioning often crosses parts and bearers; it is not parthood by wording. |
-| Transformation-flow structure vs mathematical description | Flow structure may enter architecture claims; graphs and diagrams remain lenses or publications unless selected as objects. |
-| Method composition vs performed work | A method relation can describe possible doing, while work occurrence evidence concerns dated performance. |
-| New whole vs local improvement | The pattern must preserve real novelty without turning every improvement into MHT. |
-
-### B.2.4:4 - Solution
-
-Use B.2.4 as a decision bridge from capability and functioning evidence to B.2 whole reidentification.
-
-#### B.2.4:4.1 - Capability-Functioning Whole-Reidentification Slice
-
-Use this slice only when B.2 remains current after direct-owner explanations are checked.
-
-```text
-CapabilityFunctioningWholeReidentificationSlice@Context:
-  existingWholeRef: U.Holon
-  boundedContextRef:
-  capabilityEnvelopeRef?
-  functioningRelationRef?
-  transformationFlowStructureRef?
-  functionalStructureViewRef?
-  candidateBearerRefs?
-  methodRelationRefs?
-  methodDescriptionRefs?
-  workPlanRefs?
-  workOccurrenceRefs?
-  moduleAllocationRefs?
-  characteristicOrThresholdRefs?
-  evidenceOrMeasurementRefs:
-  existingWholeExplanationCheckRef: ExistingWholeExplanationCheck@Context
-  candidateB2RecordRef:
-  blockedDirectOwnerOverreads:
-```
-
-This slice is not a U-kind and not a capability object. It carries the evidence needed to decide whether B.2 whole reidentification is current.
-
-#### B.2.4:4.2 - Direct-Owner Test
-
-Before using B.2.4 for whole reidentification, test whether a direct owner explains the evidence:
-
-| Evidence under concern | Direct owner if sufficient | B.2.4 becomes current only when |
-| --- | --- | --- |
-| Capability envelope | `A.2.2`, `C.16`, `A.10` | the envelope belongs to a result whole that cannot be explained by the existing whole |
-| Function or functioning relation | `A.6.F`, `A.3.4`, `C.16` | the relation creates or reveals a new whole-level EntityOfConcern |
-| Transformation-flow structure | `C.30.TFS-REL`, `E.18`, `A.3.4`, `C.29` when mathematical lens is current | the flow structure changes the identity of the whole under B.2 |
-| Method relation or method family | `A.15`, `A.3.1`, `G.5`, `C.29` when lens is current | method evidence changes the whole, not merely the way of doing |
-| Method description or procedure text | `A.3.2` and `C.2.1`; use publication-use or source-use owners when publication or source reliance is current | description is not enough; in-life whole reidentification must be recovered |
-| Work plan or work occurrence | `A.15.2`, `A.15.1` | performed or planned work is evidence for a result whole, not the whole by label |
-| Module, component, or bearer allocation | `A.6.M`, `C.30`, `A.22`, `C.30.ASV` | allocation evidence changes the whole under concern |
-| Metric, score, threshold, robustness, quality | `C.16`, `A.19`, `A.10` | the characteristic shift defeats existing-whole explanation |
-
-#### B.2.4:4.3 - Existing-Whole Explanation
-
-Use `ExistingWholeExplanationCheck@Context` before claiming whole reidentification.
-
-Direct-owner explanations that often stop B.2.4:
-
-- better measurement or benchmark normalization;
-- improved component capability;
-- corrected function-like wording;
-- a clearer method relation or method family selection;
-- a new method description without performed capability evidence;
-- better work coordination inside the same whole;
-- module allocation repair;
-- architecture-view or transformation-flow-structure repair;
-- evidence or source-currentness improvement.
-
-If one of these explanations is sufficient, do not use B.2.4. Use the direct owner.
-
-#### B.2.4:4.4 - When B.2.4 Returns To B.2
-
-Return to B.2 when the evidence shows that the current object must be reidentified as a result holon. Examples:
-
-- a production cell now has a capability envelope, coordination relation, transformation-flow structure, and assurance claim that cannot be explained by individual machines;
-- a service platform now has a functioning relation and external commitments that cannot be assigned to one service or module;
-- a team, toolchain, and method family now operate as one result system with new capability and work evidence;
-- an episteme or standard now has a capability for explanation, prediction, or specification use that requires result-episteme reidentification.
-
-After the return, B.2 owns the MHT record and result-kind admission. B.2.4 carries only the capability and functioning evidence slice.
-
-### B.2.4:5 - Archetypal Grounding (Worked Cases)
-
-#### B.2.4:5.1 - Production Cell Capability
-
-A milling machine, robot arm, fixture, inspection station, and scheduling rule can remain a collection of assets. A new production-cell whole becomes current only when capability and functioning evidence shows one bounded result whole: cell-level cycle time, tolerance, transformation-flow structure, coordination, and assurance cannot be explained by any single component or old aggregate.
-
-Use A.6.F for function-like wording, A.3.4 for transformations, C.30.TFS-REL for transformation-flow structure, A.15.1 for performed work, C.16 for cycle-time and tolerance characteristics, and B.2 only when the cell whole must be reidentified.
-
-#### B.2.4:5.2 - CI/CD Capability
-
-A team may have methods for coding, testing, and releasing. That does not by itself create a new whole. Use method and work owners for the method relations and performed release work.
-
-B.2.4 becomes current only if the capability evidence points to a result holon: a platform, team-system, or work occurrence whole with new delimitation, coordination, external commitments, evidence, and assurance. An automated delivery sequence label does not decide the ontology.
-
-#### B.2.4:5.3 - Theory Explains New Phenomena
-
-A new theory may explain phenomena that the source portfolio did not explain. B.2.4 can carry the explanatory-capability evidence, but B.2.3 owns the episteme-result MHT if the result is `U.Episteme`; C.2.1 owns the episteme slot relation; C.29 owns mathematical-lens use when the lens is relied on for the current claim.
-
-### B.2.4:5.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Capability as emergence | A new capability label declares a new whole. | Test direct capability, characteristic, evidence, and existing-whole explanations first. |
-| Function as part | A function block or functioning relation becomes physical or organizational parthood. | Separate functioning relation, bearer allocation, selected structure, and part-whole claims. |
-| Method chain as whole | A sequence of methods or work stages is called a new holon. | Keep method, method description, work plan, and work occurrence with direct owners. |
-| Diagram as flow structure | A diagram or graph is treated as the in-life transformation-flow structure. | Use mathematical, description, publication, and selected-structure owners before B.2. |
-| Metric jump as MHT | A benchmark, KPI, robustness, or threshold gain declares whole reidentification. | Use C.16, A.19, A.10, and B.2 existing-whole explanation before MHT. |
-
-### B.2.4:6 - Conformance Checklist
-
-| Check | Requirement |
-| --- | --- |
-| `CC-B2.4-1` | B.2.4 is used only when capability, functioning, or transformation-flow evidence creates or reveals a B.2 whole-reidentification question. |
-| `CC-B2.4-2` | Ordinary capability, function, functioning, transformation, method, work, module, characteristic, evidence, and architecture claims return to direct owners. |
-| `CC-B2.4-3` | No generic `U.Emergence`, `U.Function`, `U.MetaMethod`, or capability-root kind is created. |
-| `CC-B2.4-4` | Method, method description, work plan, and work occurrence remain separate. |
-| `CC-B2.4-5` | Mathematical or publication descriptions of transformation-flow structure do not replace the in-life structure. |
-| `CC-B2.4-6` | If B.2 remains current, B.2 owns the MHT record and result-kind admission. |
-
-### B.2.4:7 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-| --- | --- | --- |
-| Capability by declaration | A leader names a new capability, but evidence remains component-level. | Use A.2.2, C.16, and A.10; use B.2.4 only if the existing whole explanation fails. |
-| Function as part | A function block is treated as a physical or organizational part. | Use A.6.F, C.30.TFS-REL, A.6.M, and architecture allocation owners. |
-| Method chain as whole | A sequence of methods is called a new holon. | Recover method relation and work occurrence; return to B.2 only when a result holon is current. |
-| Diagram as flow structure | A diagram or graph is treated as the transformation-flow structure itself. | Use C.29, E.17, C.30.AD, or publication owners unless the selected structure is recovered. |
-| Metric jump as whole | A KPI improves and MHT is declared. | Use C.16, A.10, and existing-whole explanation first. |
-
-### B.2.4:8 - Consequences
-
-Positive consequences:
-
-- Capability and functioning evidence can bear on real whole reidentification without becoming a generic emergence owner.
-- Direct owners remain visible, so local improvements are not overclaimed.
-- Method, work, function, module, and architecture distinctions survive high-pressure capability language; each claim remains with its governing pattern.
-
-Costs:
-
-- Teams must do the direct-owner test before using B.2.4.
-- Many impressive capability claims will stay outside MHT.
-- B.2.4 depends on B.2 for the final whole-reidentification record.
-
-### B.2.4:9 - Rationale
-
-Capabilities and functioning relations are often where new wholes first become visible. But the evidence is mixed: it may belong to capability measurement, function-like wording, architecture structure, transformation flow, method relation, work occurrence, module allocation, or whole reidentification.
-
-B.2.4 exists to keep that mixed evidence disciplined. It does not rename all of it as "meta-function". It asks whether the evidence defeats the existing whole explanation and, only then, returns to B.2.
-
-### B.2.4:10 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Capability and functioning approaches | A capability envelope is evidence about what a holon can do under conditions; it is not automatically a new whole. |
-| Functional architecture and transformation-flow practice | Functioning and flow structures can expose a result whole, but descriptions and diagrams remain distinct from selected in-life structures. |
-| Method and work ontology in FPF | Method, method description, work plan, and performed work occurrence must stay separate when capability evidence is interpreted. |
-| TAME and agency-as-characteristic-space work | Agency-like evidence is multi-characteristic and thresholded by concern; B.2.4 does not create a binary agency kind. |
-
-### B.2.4:11 - Relations
-
-- **Specializes:** `B.2` for cases where capability, functioning, or transformation-flow evidence creates or reveals whole reidentification.
-- **Uses:** `B.2.P` when emergence-family or title-mnemonic wording hides the claim kind.
-- **Coordinates with:** `A.2.2`, `C.16`, `A.6.F`, `A.3.4`, `E.18`, `C.30.TFS-REL`, `A.15`, `A.3.1`, `A.3.2`, `A.15.2`, `A.15.1`, `A.6.M`, `C.30`, `A.22`, `C.30.ASV`, `C.29`, `A.10`, and source-use patterns.
-- **Contrasts with:** `B.2.2` for system-result MHT and `B.2.3` for episteme-result MHT.
-
-### B.2.4:End
-
-## B.2.5 - Supervisor-Subholon Feedback Relation
-
-> **Type:** Part B holonic construction pattern
-> **Status:** Stable
-> **Normativity:** Normative unless a section is explicitly informative
-
-### B.2.5:0 - Use This When
-
-Use this pattern when a holon is supervised, regulated, steered, corrected, constrained, or coordinated through a two-sided feedback relation between a supervisor role and one or more supervised holons.
-
-The first useful move is to recover the relation:
-
-```text
-Which holons are supervised?
-Which acting system holds the supervisor role in this bounded context?
-What observation, report, signal, publication, or source relation carries state?
-What influence, constraint, objective, mode, or work change returns?
-Which transformation, work, architecture, evidence, assurance, timing,
-or causal claim is being made in addition to the relation?
-```
-
-**What goes wrong if missed.** A control diagram, policy note, dashboard, publication channel, or supervisor word starts carrying part-whole, agency, safety, assurance, timing, gate, or architecture claims that belong elsewhere.
-
-**What this buys.** B.2.5 gives a small relation record: supervised holons, supervisor role, acting system, medium or publication relation, observation or report side, influence or constraint side, and direct owners for stronger claims.
-
-**Not this pattern when.**
-
-- If the question is a control-structure view, use `C.30.LCA`.
-- If the question is architecture or selected structure, use `C.30`, `A.22`, and `C.30.ASV`.
-- If the question is reusable dynamics, timing, rate, or temporal validity, use `A.3.3` and `C.27`.
-- If the question is causal use, use `C.28`.
-- If the question is evidence, assurance, gate, or constraint validity, use `A.10`, `G.6`, `B.3`, `A.20`, or `A.21`.
-- If the question is module allocation or interface commitment, use `A.6.M`.
-- If the question is whole reidentification, use `B.2`.
-
-### B.2.5:1 - Problem Frame
-
-Supervisor-subholon feedback is a relation among holons, roles, acting systems, observed or published state, and returned influence or constraint. It is not automatically parthood, not automatically a control-structure view, not automatically evidence, and not automatically a mathematical loop object.
-
-B.2.5 governs the relation-level claim. It can sit inside a broader architecture description, control-structure view, MHT claim, work claim, or evidence claim, but those claims keep their direct owners.
-
-### B.2.5:2 - Problem
-
-Without this pattern, three different structures collapse:
-
-1. **Part-whole structure.** Which holons are parts of which wholes.
-2. **Supervisor-subholon feedback relation.** Which acting system holds the supervisor role, what it observes, and what influence or constraint returns.
-3. **Description or representation structure.** Which diagram, dashboard, report, model, publication, or control-view description represents the relation.
-
-When these are confused, a functional layer is treated as a physical part, a publication is treated as an acting system, a diagram is treated as evidence, or a supervisor label is treated as a gate or assurance result.
-
-### B.2.5:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Recognizable feedback language vs kind precision | Engineers use feedback, control, supervision, and regulation language naturally; FPF needs the relation and neighboring claim kinds named. |
-| Relation vs view | A supervisor-subholon relation may appear inside a control-structure view, but the view and relation are different objects. |
-| Acting system vs episteme | A theory, model, standard, dashboard, or report may be revised or used, but it does not act by itself. |
-| Closure vs stronger claims | A two-sided feedback relation can supply input to stability or assurance work, but does not certify those claims. |
-| Medium visibility vs perfect communication | The relation needs observation or report and influence or constraint sides, including publication or medium limits when current. |
-
-### B.2.5:4 - Solution
-
-Model the current object as `SupervisorSubholonFeedbackRelation@Context`.
-
-```text
-SupervisorSubholonFeedbackRelation@Context:
-  supervisedHolonRefs: FinSet(U.HolonRef)
-  boundedContextRef:
-  supervisorRoleRef:
-  supervisingActingSystemRef:
-  supervisedWorkOrTransformationRefs?
-  observationOrReportRefs: FinSet(ObservationRef | ReportRef | PublicationUnitRef | SourceUseRef)
-  influenceOrConstraintRefs: FinSet(InfluenceSignalRef | ConstraintRef | ObjectiveRef | ModeRef)
-  sharedMediumOrPublicationRefs?
-  holonBoundaryCrossingRelationRefs?
-  feedbackClosureCondition:
-  admissibleUse:
-  nonAdmissibleUse:
-  neighboringClaimOwnerRefs?
-```
-
-This relation is not a U-kind and not a mathematical loop lens. It is a relation record for the current bounded context.
-
-#### B.2.5:4.1 - Two-Sided Feedback Relation
-
-A one-way command, publication, or report relation is not yet a supervisor-subholon feedback relation. Name both:
-
-- the observation, report, signal, source, or publication side; and
-- the returned influence, constraint, objective, mode, or work-change side.
-
-If only one side is current, record a one-sided relation and use the direct owner for that claim.
-
-#### B.2.5:4.2 - Part-Whole Boundary
-
-A supervised holon may be part of a larger holon, but supervision and parthood are different relations. An acting controller system, committee system, platform-governance system, review board, or tool-mediated group can hold the supervisor role without being a physical part of the supervised holon. A method, policy, or review practice can structure the supervision work; it does not supervise by itself.
-
-Use `A.1`, `B.1`, `A.14`, and `C.13` for parthood. Use B.2.5 only for the supervisor-subholon feedback relation.
-
-#### B.2.5:4.3 - Acting-System Boundary
-
-The supervisor role is held by an acting system in a bounded context. Do not create `U.TransformerRef` or treat a publication, theory, dashboard, model, method description, or report as the acting system.
-
-For acting-side externalization, use `A.12`. For transformation, use `A.3.4`. For work, use `A.15.1`. For role assignment, use `A.2.1`.
-
-#### B.2.5:4.4 - Control-Structure View Boundary
-
-When the relation is drawn as planner, controller, observer, plant, and supervisor structure, B.2.5 names the relation, while `C.30.LCA` owns the control-structure view. A diagram or view does not establish the relation by appearance; recover the in-life relation and the description relation separately.
-
-#### B.2.5:4.5 - Neighboring Claim Boundary
-
-B.2.5 does not certify stability, safety, assurance, evidence sufficiency, causal validity, gate passage, rate adequacy, or mathematical adequacy.
-
-Use:
-
-- `A.3.3` for reusable dynamics or state-evolution claims;
-- `C.27` for temporal and rate adequacy;
-- `C.28` for causal-use claims;
-- `A.10` and `G.6` for evidence and provenance;
-- `B.3` for assurance;
-- `A.20` and `A.21` for constraint validity and gate decisions;
-- `C.29` for mathematical-lens use.
-
-### B.2.5:5 - Archetypal Grounding (Worked Cases)
-
-#### B.2.5:5.1 - Robotic Swarm
-
-A fleet controller supervises drones. B.2.5 records each drone as a supervised holon, the controller system holding the supervisor role, telemetry as observation side, and waypoint or mode commands as influence side.
-
-Claims about convergence, delay tolerance, disturbance damping, evidence, assurance, or safety use their direct owners. The feedback relation does not certify them.
-
-#### B.2.5:5.2 - Scientific Theory Revision
-
-A theory is revised when labs publish findings and a research community reviews anomalies and accepted revisions.
-
-B.2.5 may record the theory or constituent epistemes as supervised objects only when the current claim is about a feedback relation around review and revision. The acting system is the research community, standards body, lab, review board, or tool-mediated group in role. The theory does not sense, judge, plan, decide, or act.
-
-Publication channels, journals, datasets, reports, and review records remain publication or source-use objects.
-
-#### B.2.5:5.3 - Product Platform Policy
-
-A product platform constrains component teams through interface rules and release gates. B.2.5 records the acting platform or governance system holding the supervisor role, component holons, report channels, and constraint returns.
-
-Work authority uses `A.15`; gate passage uses `A.21`; interface commitments use `A.6.M`; architecture view uses `C.30.LCA` when the control structure is described.
-
-### B.2.5:5.4 - Bias-Annotation
-
-| Bias | How B.2.5 prevents it |
-| --- | --- |
-| Supervisor-as-superholon bias | The supervisor relation is not a parthood claim; parthood stays with `A.1`, `B.1`, `A.14`, and `C.13`. |
-| Feedback-as-proof bias | A closed feedback relation may supply input to separate stability, safety, assurance, or timing work, but does not certify those claims. |
-| Description-as-relation bias | A diagram, dashboard, report, or control-view description does not establish the in-life feedback relation by itself. |
-| Episteme-agency bias | A theory, standard, model, dashboard, or publication may stand in a supervised slot or source-use slot, but the acting system in the supervisor role must still be named. |
-
-### B.2.5:6 - Conformance Checklist
-
-| Check | Requirement |
-| --- | --- |
-| `CC-B2.5-1` | A conforming use names supervised holons, supervisor role, and the acting system holding that role. |
-| `CC-B2.5-2` | A conforming use names observation, report, or source side and influence, constraint, or objective side. |
-| `CC-B2.5-3` | `SupervisorSubholonFeedbackRelation@Context` is used instead of loop wording unless a separate math-lens owner selects a loop object. |
-| `CC-B2.5-4` | No `U.TransformerRef` or `U.InteractionRef` is created. |
-| `CC-B2.5-5` | Parthood, control-structure view, publication and source-use relation, and feedback relation are kept separate. |
-| `CC-B2.5-6` | Stability, safety, timing, causal, evidence, assurance, gate, and mathematical-lens claims return to their governing patterns. |
-| `CC-B2.5-7` | Episteme examples name the acting systems that perform review, revision, publication, or use. |
-
-### B.2.5:7 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-| --- | --- | --- |
-| Ghost coordination | Subholons coordinate, but no supervisor role, acting system, medium, or feedback relation is named. | Fill `SupervisorSubholonFeedbackRelation@Context`. |
-| Functional layer as component | A planning or control layer is modeled as a physical part of the controlled holon. | Separate parthood from feedback relation; use `C.30.LCA` for the view. |
-| Perfect communication | State access is assumed instant, complete, or lossless. | Name medium or publication limits; use `C.27`, `A.3.3`, or evidence owners for timing and information claims. |
-| Episteme acts | A theory, model, paper, dashboard, or standard senses, judges, plans, or adapts. | Name the acting system in role, the method or review practice structuring the work when current, the revision work, and any publication or source-use relation. |
-| Relation certifies safety | The feedback relation is treated as evidence, assurance, gate, or safety result. | Keep the relation and apply the governing pattern for the stronger claim. |
-
-### B.2.5:8 - Consequences
-
-Positive consequences:
-
-- Supervisor-subholon language stays useful without creating false acting objects or false part-whole claims.
-- Control diagrams, publication channels, and feedback relations can be coordinated without being collapsed.
-- Stability, safety, assurance, gate, timing, and evidence claims stay inspectable.
-
-Costs:
-
-- A feedback relation record is only the beginning of stronger analysis.
-- Some control diagrams become less impressive because their unproven claims are separated.
-- Episteme examples require explicit acting systems for review and revision.
-
-### B.2.5:9 - Rationale
-
-Supervisor-subholon feedback is a recurring relation in control, organization, architecture, and epistemic revision. It becomes precise only when separated from part-whole composition, control-structure views, publication and source-use relations, and stronger assurance claims.
-
-The selected name is `SupervisorSubholonFeedbackRelation@Context` because the governed object is a relation. A mathematical loop, if needed, is a lens or structure selected by another pattern; it is not selected by the name of this relation.
-
-### B.2.5:10 - SoTA-Echoing
-
-| Source family | Lesson for B.2.5 | FPF decision |
-| --- | --- | --- |
-| Layered and multi-rate control practice | Supervisor, plant, controller, observer, rate, and feedback language are useful recognition cues. | B.2.5 recovers the relation; `C.30.LCA`, `A.3.3`, `C.27`, and `C.29` own view, dynamics, timing, and mathematical claims. |
-| Cyber-physical systems practice | Medium limits, observation channels, actuation, delay, disturbance, and plant dynamics affect adequacy. | The relation names medium and returned influence; adequacy claims use direct owners. |
-| Organizational policy and review practice | Supervision may be enacted through policies, reviews, reports, publication channels, and role assignments. | The acting system in role is named; publications and reports remain source-use or publication objects. |
-| Episteme and publication discipline | Knowledge-bearing objects can be reviewed, revised, cited, and published, but they do not act. | Episteme examples use acting systems for review and keep the episteme as reviewed or revised object. |
-
-### B.2.5:11 - Relations
-
-- **Builds on:** `A.1`, `A.2.1`, `A.12`, `A.3.4`, `A.15.1`, `B.1`, `A.14`, and `C.13`.
-- **Coordinates with:** `B.2` when feedback evidence creates a whole-reidentification question.
-- **Coordinates with:** `C.30.LCA` for control-structure view, `A.3.3` for dynamics, `C.27` for temporal and rate adequacy, `C.28` for causal use, `A.10` and `G.6` for evidence, `B.3` for assurance, `A.20` and `A.21` for constraint validity and gate decisions, `A.6.M` for module-interface relation, and `C.29` for mathematical-lens use.
-- **Uses:** `B.2.P` when feedback, supervision, emergence, or MHT wording hides the claim kind.
-
-### B.2.5:End
-
-## B.3 - Trust and Assurance Calculus (F-G-R with Congruence)
-
-> **Type:** Foundational (B)
-> **Status:** Stable
-> **Normativity:** Normative for FPF use that claims assurance, trust, readiness, compliance, safety, release confidence, `F`, `G`, `R`, or `CL` for a named claim.
-
-> **Plain-English headline.**
-> B.3 defines how assurance or trust is assigned, aggregated, and reused for physical systems, epistemes, and publication or evidence records that are used to claim assurance. It uses one typed assurance tuple, F-G-R: `F` and `R` as characteristics, `G` as the scope value, plus edge-scoped `CL`; the aggregation rules stay conservative, respect the current composition, transformation, temporal, and work invariants named by their governing patterns, and keep the A.7 EntityOfConcern and description strict distinction. It treats the E.14 Working-Model layer as the publication-facing assertion layer for claims, with assurance inputs attached downward from Mapping, Logical, Constructive, and Empirical Validation layers.
-
-**Use this when.** Use `B.3` when a claim, label, dashboard, evidence bundle, model, report, gate decision, or assurance-input package is being used to raise assurance, trust, readiness, compliance, safety, release confidence, `F`, `G`, `R`, or `CL` for a named claim.
-
-**What goes wrong if missed.** Labels, dashboards, model cards, credentials, provenance marks, gate decisions, or evidence bundles start raising trust or readiness without one typed assurance claim, named evidence, scope, limitations, decay, and relying context.
-
-**What this buys.** Assurance becomes a conservative typed claim over `F`, `G`, `R`, and edge-scoped `CL`, with explicit evidence, scope, time, limitations, contestability, and stop or reopen conditions.
-
-**First output.** Write one typed `Assurance(H, C | K, S)` claim per named assurance claim `C`, or write an explicit no-assurance-claim disposition when the encountered publication face, rendering, cue, evidence pointer, wording issue, gate decision, role assertion, status-value assertion, commitment, or work occurrence does not carry an assurance claim.
-
-**Not this pattern when.** If the encountered source or publication face is only a cue, action invitation, boundary wording, evidence question, currentness question, gate decision, release decision, role assertion, status-value assertion, commitment, or work occurrence, use `A.15`, `A.6`, `A.10`, `A.21`, `A.20`, `A.2.1`, `A.2.8`, `A.2.9`, or `A.15.1` as appropriate.
-
-**Assurance result selection.** Use the lightest assurance result that can decide the assurance use being claimed. A cue or source pointer gets no B.3 tuple. A local, non-release, non-compliance, non-safety, non-reused claim may be written as a compact bounded assurance claim statement that names claim, assurance use carried by the assurance tuple or relying context, evidence pointer, limit, and stop or reopen condition. Reserve a full typed `Assurance(H, C | K, S)` claim for readiness, compliance, safety, release confidence, trust, `F`, `G`, `R`, `CL`, or reused assurance input.
-
-**Assurance claim over time.** Treat an assurance claim as time-bounded and updateable: it can decay, reopen, narrow, or be withdrawn, not remain a one-time checklist result. For model, data, AI, documentation, release, or operational assurance, name the drift, monitoring, incident, evidence refresh, version change, policy change, gate change, or residual unsupported-use condition that reopens the assurance claim.
-
-### B.3:1 - Problem frame
-
-Every non‑trivial result in FPF—*a composed system is safe*, *a model is credible*, *a conclusion holds*—is a **claim** that rests on **composed evidence**.
-
-* For **U.System** holons, assurance is about *capabilities and constraints* under stated conditions.
-* For **U.Episteme** holons, assurance is about the *quality of evidence relation* for a statement or model.
-
-To make such claims comparable and auditable across domains, B.3 introduces a **Trust and Assurance Calculus** that:
-
-* uses a **small typed assurance tuple** (F-G-R: `F` and `R` as characteristics plus `G` as scope value) governed by conservative propagation rules; this tuple is **not** a state space,
-* accounts for **integration quality** via **Congruence Level (CL)** along the edges of a `DependencyGraph` (B.1.1, A.14),
-* and composes these values only through current governing composition, transformation, temporal, and work operators while respecting their declared invariants.
-
-B.3 is **conceptual and normative**: it defines *which assurance components must be published and how they propagate*. How those components improve (for example by formalizing, replicating, reconciling, or widening or narrowing scope under declared operation rules) is handled by KD-CAL improvement moves; those knowledge-dynamics references are descriptive, not required to read here.
-
-**Mechanism linkage.** For law-governed operation families (for example **USM** and **UNM**) authored as **mechanisms**, use A.6.1 — U.Mechanism to publish **OperationAlgebra**, **LawSet**, **AdmissibilityConditions**, and the **Transport** clause (Bridge-only; `CL`, `CL^k`, and `CL^plane`). All such penalties reduce `R_eff` only; `F` and `G` remain invariant.
-
-**Working-Model handshake (alignment with E.14, B.3.5, and C.13).**
-Assurance consumes two inputs declared in the **Working-Model** assertion layer (CT2R-LOG, B.3.5): the **justification declaration** `validationMode ∈ {postulate, inferential, axiomatic}` and, where present, the **grounding link** `tv:groundedBy`. Structural claims that aspire to the strongest guarantees rely on **Constructive** grounding as a constructive-composition narrative referenced via `tv:groundedBy`. No assurance record or publication **defines** Working-Model wording or layout; dependence remains downward-only under E.14.
-
-### B.3:2 - Problem
-
-Without a disciplined calculus, four chronic failures appear:
-
-1. **Trust inflation:** Averaging or summing heterogeneous “quality” tags yields aggregates that look better than their weakest parts, violating WLNK.
-2. **Scale confusion:** Mixing ordinal and ratio scales (e.g., averaging `F` ordinal scale values with numeric reliabilities) produces meaningless numbers.
-3. **Congruence blindness:** Integration quality (how well pieces fit) is invisible; brilliantly strong parts connected by weak mappings produce overconfident wholes.
-4. **Scope drift:** Design-time formalism and run-time evidence are composed into a single score; dashboards then claim “assurance” for a blueprint using run-time data, or vice versa.
-
-### B.3:3 - Forces
-
-| Force                                    | Tension                                                                                                                             |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Conservatism vs. Synthesis**           | Avoid overclaiming (WLNK) ↔ recognize real gains from better integration (raise CL) or true emergence (B.2).                            |
-| **Universality vs. Domain nuance**       | One calculus for systems and epistemes ↔ physics and epistemology use different primitives; keep them comparable but not identical. |
-| **Simplicity vs. Fidelity**              | Keep the assurance tuple small and typed (A.11) ↔ capture enough structure to be informative and improvable by KD-CAL moves.           |
-| **Static clarity vs. Dynamic evolution** | A score must be reproducible today ↔ tomorrow it should legitimately rise after formalization, replication, or reconciliation.      |
-
-### B.3:4 - Solution — **Part 1: The assurance tuple and the universal aggregation skeleton**
-
-B.3 defines **what** the assurance components are, **where** they are assigned on nodes and edges of the dependency graph, and the **shape** of the aggregation that any Γ-flavour must honor when producing an *assurance result*.
-
-#### B.3:4.1 - The F-G-R assurance components (typed; `F` and
