@@ -1,4 +1,1439 @@
-e Decision **MUST** apply `F.19` before proposing wording for selected patterns; boilerplate stays outside pasteable pattern prose, and remaining content that still hides precision must name the applied `E.10`, `E.10.ARCH`, `F.18`, or governing pattern. Pattern application and selected-locus disposition **MUST** remain declarative content distribution, not architecture-placement memo. `Owning pattern` is admissible only when the owned distinction, claim boundary, relation, row shape, or naming decision is named. When one pattern or selected non-pattern FPF kind-reference pair is already named as part of that distribution question, the Decision **MUST NOT** leave it in conditional or time-relative pattern prose or prose for one selected non-pattern FPF kind-reference pair such as `most likely`, `may need`, or `if later touched`. | Stops hidden deferral, including conditional/time-relative carrier-list wording, prevents tentative carrier-list prose from replacing real content decisions, and prevents DRR boundary maps from becoming local subject-Solution noise. |
+## E.5.2 - Notational Independence
+
+### E.5.2:1 - Problem frame
+FPF concepts must travel across academic disciplines, modelling tools,
+and future notations we cannot yet foresee. If a normative pattern binds
+its *meaning* to one diagram style, file syntax, or markup dialect, the
+concept ages as soon as the notation does.
+
+### E.5.2:2 - Problem
+*Semantic lock‑in*: when a definition relies on a particular glyph set or
+diagram grammar, alternative communities either translate it—risking
+drift—or ignore FPF altogether.
+
+### E.5.2:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Expressiveness** | Diagrams and formal grammars aid precision ↔ they should never become the definition itself. |
+| **Longevity** | A 20‑year horizon ↔ notation life‑cycles of 3‑5 years. |
+| **Cross‑discipline adoption** | Mathematicians prefer algebraic syntax; engineers prefer schematics. |
+
+### E.5.2:4 - Solution — Notational Independence Guard‑Rail *(conceptual; semantics over syntax; not a notation mandate)*
+
+1. **Semantics primacy**
+   Normative content **SHALL** define concepts in linguistic form first
+   (plain English + mathematics if needed). Visual or syntax examples
+   are secondary illustrations.
+
+2. **Equivalence clause**
+   When an official alternate notation exists, the pattern must state:
+   *“Representation A and Representation B are semantically equivalent
+   under mapping M.”*
+
+3. **Reference indirection**
+   If the Core cites a diagram, it does so by *conceptual role*
+   (“reference boundary schematic”) rather than by file or syntax name.
+
+4. **Conceptual prefix neutrality**
+   FPF **conceptual prefixes** (e.g., `U.`, `Γ_`, `ut:`, `tv:`, `ev:`, `mero:`) are  **cognitive namespaces**, not syntax tokens. Core patterns **MUST NOT**  tie their meaning to any concrete serialisation or URI scheme for these prefixes; any expansions are **illustrative only** and live in Tooling or Pedagogy.
+
+5. **Cards and other "forms"**
+Cards, tables and other "forms" exist in FPF core only as conceptual model, not as data model, thus no need to data-related notation or notation for lint. Comformance checklist and quards is also conceptual, argumentation like "this will ease machine check" is forbidden, no machine checking is intended in core; machine checks and linters live only in Tooling.
+
+### E.5.2:5 - Archetypal Grounding (System / Episteme)
+
+| Scenario | `U.System` example | `U.Episteme` example |
+|----------|-------------------|----------------------|
+| Definition | Boundary of a pump is expressed in prose plus set notation; a diagram is illustrative. | F‑G‑R assurance components defined textually; a triple‑store serialisation is illustrative. |
+| Alternate rendering | Same pump semantics rendered in a lattice diagram or a tabular sheet remain valid. | R‑scores plotted in a heatmap or listed in CSV remain equivalent. |
+
+### E.5.2:6 - Conformance Checklist
+
+| ID | Requirement |
+|----|-------------|
+| **CC‑NI.1** | A Core pattern **MUST NOT** embed semantics that hinge on one specific notation. |
+| **CC‑NI.2** | Illustrative renderings **SHALL** be marked “informative”. |
+| **CC‑NI.3** | When multiple official renderings exist, the pattern **MUST** declare the semantic mapping between them. |
+| **CC‑NI.4** | If a **conceptual prefix** appears in Core, its expansion (if shown) **SHALL** be marked *informative* and **MUST NOT** be required to interpret the semantics. |
+
+### E.5.2:7 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| Ensures FPF survives notation turnover. | Authors invest time describing mappings; mitigated by reusable mapping templates. |
+| Lowers entry barrier for domains using different diagram traditions. | Excessive illustrations can bloat pages; guidance in Pedagogical Companion limits scope. |
+
+### E.5.2:8 - Rationale
+Language and diagrams are tools, not truths. By elevating semantics over
+syntax, FPF maintains **P‑1 Cognitive Elegance** and **P‑2 Didactic
+Primacy** while safeguarding **P‑5 FPF Layering**: tooling layers can
+add new renderers without Core edits.
+
+### E.5.2:9 - Relations
+* **Parent umbrella:** `pat:constitution/guard‑rails` (E.5)
+* **Constrains:** every normative Core pattern and official alternate rendering
+* **Instantiates pillars:** P‑1, P‑2, P‑5
+
+### E.5.2:End
+
+## E.5.3 - Unidirectional Dependency
+
+### E.5.3:1 - Problem frame
+FPF separates artefacts into stable **Conceptual Core**, executable
+**Tooling Reference**, and fast‑evolving **Pedagogical Companion** (see
+E.4 FPF Ecosystem Family Architecture).  If dependencies can point *both* ways,
+volatile layers will eventually drag the Core into rapid revision
+cycles or introduce domain‑specific bias.
+
+### E.5.3:2 - Problem
+*Architectural gravity*: a tutorial or helper script adds a new feature,
+Core patterns import it “temporarily,” and within months the supposedly
+timeless layer depends on transient assets—breaking Pillar **P‑5
+FPF Layering**.
+
+### E.5.3:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Agility vs Stability** | Tooling must iterate quickly ↔ Core must remain slow and deliberate. |
+| **Reuse vs Isolation** | Authors want to reuse helper concepts ↔ Core cannot depend on volatile code. |
+| **Simplicity** | Rule must be testable and unambiguous ↔ must allow legitimate upward imports. |
+
+### E.5.3:4 - Solution — One‑Way, Acyclic Imports
+Define a strict **partial order** over FPF ecosystem families **and guard meaning flow** (see **E.10 V-1**): imports point only **upward** in stability, and **no Core semantics** may derive from Tooling/Pedagogy. No linters or machine checking in Conceptual Core.
+
+**`imports` is a dependency DAG, not a specialisation relation (normative).** Whenever an artefact exposes an explicit `imports : [...]` list (e.g., `SignatureManifest.imports` in A.6.0), treat `imports` as **dependency edges** governed by this section: the induced `imports` graph MUST be **acyclic** (a DAG) and MUST respect the declared direction. `imports` MUST NOT be used to encode *specialisation* (e.g., `⊑` / `⊑⁺` between mechanisms); specialisation relations are declared separately via the relevant morphism and specialisation-chain rules (e.g., A.6.1 `U.MechMorph`).
+
+Pedagogical Companion  ⟶  Tooling Reference  ⟶  Conceptual Core
+
+1. **Allowed edges**
+   Dependencies **MAY** point **only upward** (toward greater semantic
+   stability). No cycle is ever permitted.
+
+2. **No downward import**
+   Conceptual Core patterns **SHALL NOT** import Tooling Reference or Pedagogical Companion family members.
+   Tooling Reference family members **SHALL NOT** import Pedagogical Companion family members.
+
+3. **Future layers**
+   Any new family is inserted below an existing one or becomes part of
+   the Tooling or Pedagogy strata; the ordering extends accordingly.
+
+### E.5.3:5 - Archetypal Grounding (System / Episteme)
+
+| Layer | `U.System` illustration | `U.Episteme` illustration |
+|-------|------------------------|---------------------------|
+| Core | Definition of `U.System` and boundary invariant. | Definition of F‑G‑R assurance components. |
+| Tooling | “Reference system‑profile” that checks boundary flow; *imports* Core invariants. | “Episteme‑scoring routine” that calculates R‑score; *imports* Core characteristics. |
+| Pedagogy | Tutorial using the system‑profile to model a pump; *imports* profile and Core term. | Case study explaining R‑score evolution; *imports* scoring routine and Core term. |
+| **Forbidden** | Core pattern importing measurement script. | Core pattern importing R‑score web dashboard. |
+
+### E.5.3:6 - Conformance Checklist
+
+| ID | Requirement |
+|----|-------------|
+| **CC-UD.1** | Dependency graph among all FPF ecosystem family members **MUST** be acyclic. |
+| **CC-UD.2** | A family member **SHALL** import only from its own family or any family above it in the order. |
+| **CC‑UD.3** | A DRR that introduces a downward edge **SHALL** be automatically rejected. |
+
+### E.5.3:7 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| Core stays free of tool churn and tutorial bias. | Authors must create abstraction layers in Tooling instead of inserting hooks into Core. |
+| Release cadence decoupled: Core (slow), Tooling (medium), Pedagogy (fast). | Slight duplication when multiple tools target same concept; mitigated by shared Core definitions. |
+
+### E.5.3:8 - Rationale
+One‑way import graphs are a proven safeguard in operating systems
+(kernel vs user land) and layered protocols. Here the rule operationalises
+Pillars **P‑4 Open‑Ended Kernel** and **P‑5 FPF Layering**, ensuring
+that innovation happens “below” without contaminating the timeless Core.
+
+### E.5.3:9 - Relations
+* **Parent umbrella:** `pat:constitution/guard‑rails` (E.5)
+* **References family definition:** `pat:constitution/fpf-ecosystem-family-architecture` (E.4)
+* **Instantiates pillars:** P‑4, P‑5
+* **Constrains:** All artefact imports recorded in DRRs or SCRs
+
+### E.5.3:End
+
+## E.5.4 - Cross‑Disciplinary Bias Audit
+
+### E.5.4:1 - Problem frame
+FPF calls itself trans‑disciplinary, but every author carries implicit
+metaphors from a source domain. If those metaphors leak into “universal”
+patterns, practitioners from other fields disengage or mis‑interpret the
+rules.
+
+### E.5.4:2 - Problem
+Unrecognised bias hides in wording, examples, unit choices or principle
+weighting. Once embedded in normative language, such bias is hard to
+remove and contradicts Pillars **P‑2 Didactic Primacy** and **P‑8
+Cross‑Scale Consistency**.
+
+### E.5.4:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Neutrality** | One voice for all disciplines ↔ need for relatable examples. |
+| **Conciseness** | Audit guidance must be brief ↔ must cover multiple bias types. |
+| **Longevity** | Guidance must survive emergence of new domains. |
+
+### E.5.4:4 - Solution — Principle‑Taxonomy‑Guided Bias Audit
+
+1. **Bias‑Lens set**
+   Every normative pattern is assessed through **five lenses** that match the
+   Principle classes from **E.3**:
+   `Gov`, `Arch`, `Onto/Epist`, `Prag`, `Did`.
+
+2. **Equilibrium question**
+   For each lens ask:
+   *“Does the pattern over‑privilege this class or silence it?”*
+   *Examples:*
+   *   Over‑reliance on `Onto/Epist` precision may ignore `Prag` cost.
+   *   Dominant `Arch` metaphors may alienate `Did` audiences.
+
+3. **Scope‑or‑Balance rule**
+   * If imbalance is found and universality is intended, re‑phrase to
+     restore balance.
+   * If imbalance is intentional (domain‑specific pattern), mark the
+     scope explicitly: *“Applies primarily to thermodynamic systems.”*
+
+4. **Audit trace**
+   The pattern carries a short **Bias‑Annotation** paragraph recording
+   which lenses were tested and any scoping statement. No workflow checklists or
+   reviewer metadata or other data and data format and data governance tips is stored in the Core.
+
+### E.5.4:5 - Archetypal Grounding (System / Episteme)
+
+| Bias lens | Example imbalance | Conceptual correction |
+|-----------|------------------|-----------------------|
+| `Arch` vs `Did` | Pump pattern uses abstract category theory terms. | Add plain‑language boundary narrative or move abstraction to appendix. |
+| `Onto/Epist` vs `Prag` | Episteme trust score defined with complex logic but no guidance on empirical cost. | Add pragmatic note on evidence collection cost or scope the pattern. |
+
+### E.5.4:6 - Conformance Checklist
+
+| ID | Requirement | Purpose |
+|----|-------------|---------|
+| **CC‑BA.1** | Each Core pattern **SHALL** include a *Bias‑Annotation* listing the five lenses and any declared scope limitation. | Ensures explicit reflection on bias. |
+| **CC‑BA.2** | A pattern labelled “universal” **MUST NOT** privilege a single lens without justification or scoping note. | Preserves trans‑disciplinary integrity. |
+| **CC‑BA.3** | If scope is declared, the pattern **SHALL** reference the mapping or rationale that enables cross‑domain translation. | Keeps pathways open for other calculi. |
+| **CC‑BA.4 (QD‑triad evidence for “universal”).** | Any pattern that labels itself **“universal”** SHALL cite **A.8 CC‑UC 1 + CC‑UC 2** and attach the **QD evidence** (Diversity_P + IlluminationSummary, with edition and binning) or else **scope** the claim to its declared `U.BoundedContext`. | preserves domain quality diversity |
+
+### E.5.4:7 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| Neutral, inclusive language attracts wider adoption. | Authors spend a few extra lines on Bias‑Annotation; mitigated by template snippet. |
+| Bias is surfaced at writing time, not after publication. | — |
+
+### E.5.4:8 - Rationale
+Coupling the audit directly to the Principle Taxonomy keeps the guard‑rail
+**concept‑driven**, not workflow‑driven. No mention of review boards,
+CI‑jobs, or checklists appears in the Core; such mechanics belong in the
+Tooling Guide. This guard‑rail therefore satisfies **GR‑1** (Firewall)
+while securing Pillars **P‑2, P‑7 Pragmatic Utility, P‑8**.
+
+### E.5.4:9 - Relations
+* **Parent umbrella:** `pat:constitution/guard‑rails` (E.5)
+* **Depends on:** `pat:constitution/principle‑taxonomy` (E.3)
+* **Constrains:** All normative patterns claiming universality
+
+### E.5.4:End
+
+## E.6 - Didactic Architecture of the Specification
+
+### E.6:1 - Problem frame
+FPF addresses readers from at least two characteristics of diversity:
+
+* **Disciplinary** – systems engineers, knowledge scientists, ethicists.
+* **Experience** – newcomers need intuition; experts need rigour.
+
+Past drafts mixed governance mandates with domain examples, producing a
+steep learning curve and repeated “forward‑reference” detours.
+
+### E.6:2 - Problem
+If core ideas are buried under formalism or scattered across parts,
+readers either give up or misuse the framework. We need a didactic
+macro-order that guides cognitive load from low to high while keeping
+normative sections discoverable, without letting readers confuse
+document order with one universal first-practical workflow.
+
+### E.6:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Cognitive Load** | Early clarity ↔ eventual formal depth. |
+| **Conceptual Integrity** | Foregoing examples risks abstraction ↔ too many examples delay axioms. |
+| **Didactic order vs practical entry** | Stable document macro-order ↔ truthful first-practical routes that may cross parts. |
+
+### E.6:4 - Solution — “On‑Ramp to Archetypes first, Authoring last” sequence
+
+#### E.6:4.0 - Document order is distinct from first-practical entry
+
+The macro-order of the document is a didactic scaffold, not a universal practical workflow. Entry navigation publication units such as `README`, `Preface`, ToC query cues, `E.11` entry-distribution loci, and `I.2` expanded entry-disambiguation cases are informative navigation only: they may cross Parts when that is the first honest entry for the question under repair, and they do not create a second normative process history.
+
+The "On-Ramp First" Macro-Structure: The specification is ordered to create a smooth cognitive ramp:
+* It begins with an informal, non-normative Preface (The On-Ramp), which uses storytelling and concrete examples (System and Episteme) to build intuition.
+* It then proceeds through the normative Parts (A-D), moving from the foundational kernel to the rich patterns of trans-disciplinary reasoning.
+* It concludes with the authoring rules (Part E) and appendices, ensuring that this "meta" content does not obstruct the primary learning path.
+
+1. **Preface (On‑Ramp)**
+   Informal tour; introduces `U.System` and `U.Episteme` via concrete
+   stories before any normative language appears.
+
+2. **Part A Kernel**
+   Minimal holonic ontology and the Transformer principle give readers
+   the essential vocabulary.
+
+3. **Part B Trans‑disciplinary Reasoning**
+   Tell‑Show‑Show pedagogy: universal rule → Sys‑CAL example →
+   KD‑CAL example.
+
+4. **Part C Extension Patterns**
+   Domain‑specific calculi expand on the examples already seen.
+
+5. **Part D Ethics & Conflict Optimisation**
+   Shows reflective patterns only after readers grasp holonic reasoning.
+
+6. **Part E Authoring**
+   Constitution, guard‑rails, and contributor rules come last; novices
+   can postpone reading.
+
+7. **Appendices (Annexes)**
+   Tutorials, tooling guides, and migration scripts live here.
+
+### E.6:5 - Archetypal Grounding (System / Episteme)
+
+| Narrative layer | First sight of `U.System` | First sight of `U.Episteme` |
+|-----------------|---------------------------|-----------------------------|
+| Preface | Coffee‑machine story (pump as system). | Meta‑analysis story (study bundle as episteme). |
+| Part A | Formal definition inherits boundary invariant. | Formal definition inherits F‑G‑R coordinates. |
+| Part B Tell‑Show‑Show | Γ\_sys example: assemble pump. | Γ_epist example: merge study bundle. |
+
+### E.6:6 - Conformance Checklist
+
+| ID | Requirement |
+|----|-------------|
+| **CC‑DA.1** | Each Part **SHALL** open with a one‑paragraph situational “hook” before formal text. |
+| **CC‑DA.2** | Every architectural pattern **MUST** implement Tell‑Show‑Show: universal rule plus System & Episteme illustrations. |
+| **CC‑DA.3** | Governance patterns (**Part E**) **SHALL NOT** appear before the Kernel in the main document flow. |
+| **CC‑DA.4** | Navigation aids **SHALL** distinguish document order from first-practical entry guidance; first-entry pattern-comparison guidance and expanded entry-disambiguation cases are informative and MAY cross Parts without implying a universal process history. |
+
+### E.6:7 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| Smooth learning curve; readers can stop at their needed depth. | Template discipline required; mitigated by authoring guide (E.8). |
+| Reduces forward‑reference clutter; each concept is primed before formal use. | Preface evolves when new archetypes added; handled via On‑Ramp revision DRR. |
+
+### E.6:8 - Rationale
+Educational research shows retention improves when abstract rules are
+immediately paired with contrasting illustrations. By fixing the reading
+order and mandating Tell‑Show‑Show inside every architectural pattern, FPF
+embeds pedagogy into its architecture, realising Pillars **P‑2 Didactic
+Primacy** and **P‑1 Cognitive Elegance** without weakening rigour.
+
+### E.6:9 - Relations
+* **Depends on:** `pat:constitution/guard‑rails` (GR‑1 ensures example jargon stays outside Core).
+* **Constrains:** Placement of all Parts, patterns, and appendices.
+* **Instantiates pillars:** P‑1, P‑2
+
+### E.6:End
+
+## E.7 - Archetypal Grounding Principle
+
+### E.7:1 - Problem frame
+Universal rules are powerful only when readers can grasp them. In FPF the
+Conceptual Core speaks in substrate‑agnostic language: `U.Holon`,
+Γ‑aggregation, MHT emergence. Practitioners need to “see” those rules in
+familiar matter—physical hardware or bodies of knowledge—before they can
+reuse them.
+
+### E.7:2 - Problem
+A purely abstract statement risks two failures:
+
+1. **Didactic failure** – readers dismiss the pattern as “too meta,”
+   violating Pillar **P‑2 Didactic Primacy**.
+2. **Unproven universality** – without cross‑domain instantiation the rule
+   remains an untested claim.
+
+### E.7:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Universality vs Concreteness** | Abstract law ↔ concrete example. |
+| **Brevity vs Clarity** | Spec should stay concise ↔ dual examples add length. |
+| **Rigour vs Accessibility** | Formal semantics ↔ intuitive narrative. |
+
+### E.7:4 - Solution — mandatory *Archetypal Grounding* subsection
+
+Every architectural pattern **SHALL** include a dedicated
+section, titled exactly **“Archetypal Grounding,”** that *shows* how the
+abstract law SCRs in FPF’s two canonical holon flavours:
+
+1. **`U.System`** – the archetype of a **physical, operational holon**.
+2. **`U.Episteme`** – the archetype of an **abstract, epistemic holon**.
+
+This enforces a repeatable **Tell‑Show‑Show** rhythm:
+
+| Stage | Content |
+|-------|---------|
+| **Tell** | `Solution` section states the universal rule. |
+| **Show #1** | `Archetypal Grounding` – concrete `U.System` example. |
+| **Show #2** | Same section – parallel `U.Episteme` example. |
+
+### E.7:5 - Archetypal Grounding (of this pattern itself)
+
+| Universal rule | `U.System` instantiation | `U.Episteme` instantiation |
+|----------------|--------------------------|----------------------------|
+| “Every architectural pattern requires grounding.” | Pattern *D.1 Algebra of Aggregation* illustrates Γ\_sys on assembling a water pump. | The same pattern illustrates Γ_epist on merging a meta‑analysis. |
+
+### E.7:6 - Conformance Checklist
+
+| ID | Requirement | Purpose |
+|----|-------------|---------|
+| **CC‑AG.1** | Every architectural pattern in Parts A, B, C, D, E **SHALL** contain a subsection headed exactly *“Archetypal Grounding”*. | Guarantees consistent Tell‑Show‑Show rhythm. |
+| **CC‑AG.2** | The Archetypal Grounding subsection **MUST** illustrate the rule with both `U.System` *and* `U.Episteme`. | Demonstrates trans‑disciplinary reach. |
+| **CC‑AG.3** | If a rule intentionally applies to only one substrate, the subsection **SHALL** state the scope limitation and justify it against the five Principle‑Taxonomy lenses (`Gov`, `Arch`, `Onto/Epist`, `Prag`, `Did`). | Prevents silent bias; links to Bias‑Audit guard‑rail. |
+| **CC‑AG.4** | Patterns lacking a compliant Archetypal Grounding subsection **MAY NOT** progress to “Accepted” status. | Enforces discipline without referring to workflow mechanics. |
+
+### E.7:7 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| **Immediate clarity** – readers see abstract laws in action. | Patterns grow by one short table; mitigated by consistent template snippet. |
+| **Proof of universality** – every rule is self‑documenting across substrates. | Authors must think cross‑domain; fosters richer patterns. |
+| **Narrative cohesion** – recurring System/Episteme protagonists create a memorable storyline. | — |
+|Built-in Proof of Universality: The specification consistently demonstrates its trans-disciplinary claims, building trust and credibility. | — |
+
+### E.7:8 - Rationale
+Tell‑Show‑Show is a proven pedagogical sequence. By making it normative,
+FPF hard‑codes **P‑2 Didactic Primacy** into the fabric of every architectural
+pattern while still honouring **P‑1 Cognitive Elegance**—the grounding
+section replaces brittle ad‑hoc anecdotes with a disciplined dual
+example. Linking scope‑justification to the five Principle lenses ties the
+pattern to the **Taxonomy‑Guided Bias Audit** and keeps governance
+language out of the Core.
+
+### E.7:9 - Relations
+
+* **Implements macro flow:** `pat:authoring/didactic‑architecture` (E.6)
+* **References base types:** `pat:kernel/holon` (A.1) (`U.System`, `U.Episteme`)
+* **Interacts with bias guard‑rail:** `pat:guard/bias‑audit` (E.5.4) via CC‑AG.3
+* **Constrains:** Authoring template in `pat:authoring/pattern‑template` (E.8)
+
+### E.7:End
+
+## E.8 - FPF Authoring Conventions & Style Guide
+
+> **Type:** Architectural (A)
+> **Status:** Stable
+> **Normativity:** Normative (unless explicitly marked informative)
+
+### E.8:0 - Use this when
+
+Use `E.8` when you are writing, revising, or reviewing one FPF pattern and need to know what shape, voice, reader-recognition role, and assurance material the pattern must carry before it can be treated as mature FPF text.
+
+Use it especially when a draft is technically correct but hard to use: the cold reader cannot tell when to apply it, what action to take, what mistake that action prevents, which related pattern governs a specific outside claim, or which assurance material is informative rather than the first user-facing guidance.
+
+**Not this pattern when.** Use `E.9` when the main work is deciding why FPF should change and how that decision is distributed across patterns. Use `E.19` when the main work is an admission or refresh review. Use the local domain pattern when the question is what FPF says inside that domain rather than how a pattern should be authored.
+
+### E.8:0.1 - What goes wrong if missed
+
+A pattern can satisfy a checklist and still be practically unreadable. It may open with package architecture instead of a recognisable working moment, bury its payoff, hide the pattern that governs a specific outside claim, or let assurance prose silently replace the reader-facing claim. The result is a formally neat text that authors can defend but practitioners cannot reliably use.
+
+### E.8:0.2 - What this buys
+
+`E.8` gives FPF authors one shared pattern shape and one shared authoring discipline: recognition text first, assurance text second, canonical sections present, terminology kept stable, SoTA used as current practice grounding rather than decoration, and practical consequences visible before a reader has to reconstruct the architecture.
+
+**First useful move.** Put the working situation, first action-guiding move, practical payoff, ordinary boundary, and nearest heavier assurance condition into the recognition text before tightening template details or conformance material.
+
+**Move wording in pattern prose.** In `E.8`, phrases such as `first useful move`, `action-guiding move`, or `working move` are reader-facing guidance phrases. They do not create a root `U.Move` or a local pattern-application ontology. When the phrase itself becomes load-bearing, recover the governed value: usually `PatternUseRecommendation@Context` or `PatternUseSequence@Context` under `E.11.PUR`, or a direct work, plan, gate, transformation, publication, architecture, source, or language-state relation under its own governing pattern. Use `E.10.MOVE` when the text cannot tell which value is current.
+
+**Cheap stop.** If the draft already gives a cold reader the working situation, first useful move, practical payoff, ordinary boundary, and nearest heavier assurance condition, do not add more authoring apparatus just to look mature. Use conformance material to verify that guidance; do not let it replace the guidance.
+
+**FPF-governed wording extension.** Add heavier assurance, conformance, SoTA grounding, relation material, or related-pattern material only when the light recognition text would leave a false claim, unstable primary `EntityOfConcern`, hidden governing pattern for a specific claim, relation, or boundary, unbacked practical payoff, or misleading admissible use.
+
+When an authoring pass claims quality improvement rather than ordinary drafting, keep these pattern responsibilities distinct: `E.22` frames the improvement-oriented quality-evaluation question, the object-under-improvement evaluation such as `E.21` or `E.9.DA` supplies value meanings and stop meanings, `C.16.Q` repairs overloaded quality and evaluative-characterization wording, `C.25` carries engineering quality-family endpoints when those endpoints are claimed, and `E.23` governs any repeated quality-improvement method. Closing checklist rows or satisfying a review profile is not by itself quality improvement.
+
+When a pattern claims practical payoff or uses a score, coordinate value, checklist result, benchmark, projection signal, review result, or release posture as evidence of value, name the intended value and the visible proxy relation. If the visible proxy is being treated as the value itself, apply `E.13` and repair the proxy-to-value substitution before the payoff claim is admitted.
+
+
+**Quality or projection evidence placement.** Pattern-quality status, corpus projection, README, ToC, `E.11`, and `I.2` alignment, card or retrieval evidence, cold-reader evidence, monolith parity, landing evidence, developer, reviewer, and executor correspondence, and other quality-carrier facts belong in the evaluation result, review run record, projection carrier, or release or landing evidence carrier. They do not belong anywhere in the pattern itself, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, examples, tables, and checklist rows, unless the pattern's own `EntityOfConcern` and intended-reader use are that evaluation or projection work. Part E patterns may govern FPF-pattern authoring, review, evaluation, entry, or publication when that is their declared EntityOfConcern; that authoring scope does not admit rules or rationale about developing that same pattern version. This is a role test, not a lexical test: the same word may be user-facing content in an evaluation pattern and carrier leakage when it reports quality, landing, projection, or role-turn state for this pattern.
+
+**Pattern roles across coupled flows.** In authoring guidance, speak at the pattern level. One pattern may be the pattern of concern for different roles in different flows: an author repairs it, `E.21` evaluates it, `E.19` admits or refreshes it, a practitioner selects and uses it, and a later evaluator may reopen it. Those flows may be joined in one `TransformationFlowStructure` through transfer, feedback, return, projection, landing, edition-change, or repair relations, but their roles and `EntityOfConcern` assignments stay distinct. The pattern itself also carries its own primary `EntityOfConcern`: the subject its Problem, Solution, or guidance is about. Development-flow evidence may cause rewrites, but reviewer and executor exchange, status, projection proof, landing proof, and use-found evidence remain in their carriers rather than entering the pattern as if they were guidance for the intended reader. This is the pattern-authoring instance of the broader transformation-flow and P2W coupled-flow rule: a publication, principle scheme, work plan, or self-evolving specification flow may help create or govern later work without becoming the performed work, project evidence, gate passage, assurance, edition bump, or applied-edition content.
+
+**Maturity rule.** Section completeness is not pattern maturity. A pattern matures when its `Problem frame`, `Solution`, worked cases, boundaries, and conformance checks all point to the same usable action guidance.
+
+**Primary EntityOfConcern in plain terms.** The primary `EntityOfConcern` of `E.8` is the authored FPF pattern: its canonical sections, reader-recognition role, wording discipline, examples, rationale, anti-patterns, SoTA-Echoing, and relations.
+
+**Primary working reader.** The first reader is an FPF author or reviewer shaping pattern prose for later practitioners and managers. The downstream practitioner is the reader the pattern must ultimately serve, so the authoring guide must model the same recognition discipline it requires.
+
+### E.8:0.3 - Pattern Kind In Plain Terms
+
+An FPF pattern is an action-guiding method description for a recurring working situation. It is applied by an intended FPF user who recognizes the situation, understands the problem and forces, and then uses the `Solution` to decide what to do, what to stabilize, what to avoid, and what practical change should follow.
+
+Pattern application is the user-side act: the user recognizes the working situation, applies the pattern, and uses the `Solution` to shape the next admissible use. Its `Problem frame`, `Problem`, `Forces`, `Solution`, `Consequences`, worked slices, and anti-patterns carry the guidance. Its `Conformance Checklist` checks whether that guidance has been applied and authored correctly; it must not replace the `Solution` or turn the pattern into a control form.
+
+The primary content-bearing job is constructive method guidance: the pattern must say what the user should do so the recurring error does not arise. Error prevention, auditability, and conformance checks are evidence that the guidance is usable; they are not the pattern's center. The first substantive content in the opening `Problem frame` and `Solution` must be a positive subject spine: the primary `EntityOfConcern` kind, the first admissible action-guiding move, the practical delta, and the few boundaries needed for that first move. The text must not replace subject content with repeated guards, distinctions, related-pattern mappings, references, mini-rules, definitions, caveats, architecture rationale, or quality or projection evidence unless the repetition adds a new local action, case, evidence value for the user, or first-reading recognition need. Copying distinctions owned by other patterns into this pattern as repeated "do not confuse our EoC with their EoC" prose is the same repetition problem. Boundary doctrine is pattern content like any other doctrine: if strict distinction, non-use, ToC navigation, or the governing pattern for a claim, relation, or boundary already carries the distinction, do not repeat it locally. Use one short pattern id or governing-pattern statement when needed. Add local boundary prose only when it states a documented local confusion and exact stop condition that the owning pattern does not already carry. The repair is to say clearly what this pattern's own `EntityOfConcern` is, not to enumerate the unbounded set of other things it is not.
+
+The same rule blocks pattern-application drift for any FPF object, not only for patterns. Name the object by its FPF kind when the kind is known: a pattern is a pattern, a claim is a claim, a relation is a relation, a row is a row, a source is a source, a publication is a publication, a WorkPlan is a WorkPlan, and so on. FPF patterns are applied to situations, claims, texts, or work objects. Use `governing pattern` only in the typed form `governing pattern for <claim, relation, or boundary>` when one pattern actually governs that specific item; use `related pattern` for a looser pattern relation; use `relation` only for the relation itself. A compact pattern-reference sentence should be declarative: this pattern applies to `<situation, claim, or object>`, this claim is governed by `<pattern id>`, this relation is recorded in `Relations`, this entry cue belongs in README, ToC, `E.11`, `I.2`, or a retrieval or projection carrier, or this pattern application stops under `<condition>`. Relations are positive claims, not catalogs of absent relations. Detailed discoverability belongs in README, ToC query cues, `E.11`, `I.2`, or retrieval or projection carriers; compact related-pattern statements belong late in `Relations` after the positive subject and action spine. Ordinary references use ordinary reference forms: a pattern id in prose, a citation, `Builds on`, `Coordinates with`, `Relations`, ToC, README, `E.11`, or `I.2`. They are also not repeated as many conditional sentences or small variants when one compact definition, boundary, table, `Relations`, ToC, README, `E.11`, `I.2`, or retrieval or projection locus already carries the same content family.
+
+Treat precision-restoration problems in pattern prose as one profile with five layers: word, head, and use precision; phrase apparatus; repetition and distribution; role and carrier separation; and pattern application. Do not add a local row for each new symptom. `E.8` requires the author to keep the positive subject and action spine first; `F.19` repairs phrase-level apparatus; `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern repairs remaining word, head, and use precision; `E.21` measures the collapsed effect on pattern quality.
+
+A wording cleanup is kind-preserving by default. Before an author accepts a changed FPF-governed phrase as a repair, the pre-repair and post-repair `EntityOfConcern`, kind, relation or claim kind, current ontic slot, relation position, use relation, or claim kind, admissible use, and scope must be recoverable when those items are live. This is a bounded complete preservation check, not an order to formalize ordinary prose or unchanged text and not permission to choose "no edit" as the easy minimum. Leaving text unchanged closes only when the phrase is `not triggered`, ordinary prose, or already satisfied by value with loci; otherwise the finding remains open. Removing a trigger word or replacing a generic head is not a repair when it changes the ontology: for example, a graph-shaped method cue must not be narrowed into a work sequence unless an accepted decision explicitly changes the kind and consequences. If a relation, signature, mathematical-lens, role, method, work, or evidence position is live, the author cites the governing pattern for that position instead of restating its ontology in `E.8`. If the phrase hides several kinds, split them or assign the decision to the governing pattern or `DRR`; do not flatten them into one cleaner-looking word.
+
+For boilerplate overwrap, follow `F.19`. `E.8` adds only the pattern-authoring placement rule: after boilerplate is removed or moved and remaining content is precision-restored under `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern when needed, pattern prose keeps only the intended user's admissible move and boundary. Process, architecture, review, quality, projection, and release evidence stay in their own carriers unless they are rewritten as that user-facing move.
+
+When an action-adjacent pattern classifies wording, a name, a publication face, an explanation class, a comparison unit, or another semio-facing object, that classification is only useful if it connects back to action guidance. The pattern must say what use or action is admissible now, what related use or action is not admissible under the current pattern, and which FPF pattern governs the case when the claim is a work, evidence, gate, decision, assurance, engineering-justification, release, or reliance claim.
+
+`Semio-Echoing` is admissible only as a trigger-controlled auxiliary placement. Use it when `E.10`, `C.2.P`, or `E.10.ARCH` has exposed a wording-use overread whose EntityOfConcern, episteme/publication stack, alignment basis, and remaining admissible reader use are recoverable by value. Do not add it as a generic warning block. In non-semio patterns the primary content remains the pattern's own `EntityOfConcern` and admissible use; semio material stays as a thin cue, related-pattern relation named by value, local recovery line, or named description and publication-use boundary section unless it changes that use or blocks a documented overread. If the material mainly says that a description, view, publication, record, card, diagram, source, or file is not a permission, promise, prescription, evidence item, assurance verdict, decision, gate passage, release, work occurrence, or authority source, keep it out of the subject Solution and put it in that boundary section or in the exact description-publication pattern.
+
+### E.8:1 - Problem frame
+FPF grows through the addition of patterns written by authors from many
+disciplines. Without a shared structure *and* voice, the framework would
+fracture, violating Pillars **P‑1 Cognitive Elegance** and
+**P‑2 Didactic Primacy**.
+
+### E.8:2 - Problem
+*Structural drift* and *stylistic fragmentation* threaten three qualities:
+
+1. **Comparability** – readers cannot align patterns lacking common
+   headings.
+2. **Narrative cohesion** – prose swings from dry jargon to informal
+   blog style.
+3. **Reviewability after guidance** – missing sections hide boundary and assurance checks
+   (Archetypal Grounding, Bias‑Annotation) that let reviewers verify the action guidance without replacing it.
+
+### E.8:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Uniformity vs Expressiveness** | Consistent template ↔ freedom for diverse domains. |
+| **Rigor vs Readability** | Formal precision ↔ engaging prose. |
+| **Brevity vs Completeness** | Concise patterns ↔ mandated safety subsections. |
+
+### E.8:4 - Solution — One template, enriched by style principles
+
+#### E.8:4.1 - Canonical Pattern Template
+Within each pattern, the **canonical** section headings **SHALL** appear in the order below.
+For each **canonical content section heading (1–12)**, the `<Title>` component (after the heading separator, e.g. ` - `) **MUST** start with the canonical section title (case-insensitive match; canonical capitalisation preferred); an optional clarifier after an em dash is allowed (e.g., `Solution — …`).
+The **Footer marker** (section **13**, if present) is a sentinel and is governed by **H-9** rather than the standard `<FullId> - <Title>` shape.
+
+**Extensibility.**
+Authors **MAY** add additional sections. Prefer expressing them as subsections under the nearest canonical section (e.g., `4.1`, `4.1.1` under *Solution*). If an additional pattern-level section is necessary, it **MUST NOT** delete or reorder the canonical sections and its title **MUST NOT** shadow a canonical title.
+
+**Mandatory vs optional.**
+* Canonical sections **1–13** are mandatory in every pattern.
+* Canonical sections carry content. Authors must not use omission placeholders as section substitutes; when a section is intrinsically small, write the smallest content-bearing grounding, misuse, boundary, or reduced-case statement that preserves the section's role.
+* **First substantive authoring seed.** The first non-empty authored body of a pattern **SHALL** already instantiate the canonical section frame by value: title line, header block, canonical sections **1–13**, and the footer marker.
+* Recognition-role openings and first-minute working guidance belong **inside** that canonical frame. Any retained pre-template entry material must also stay inside that same canonical frame rather than appearing as one pre-template opening memo. Authors **MUST NOT** seed one pre-template opening memo and postpone canonical sectioning, `Conformance Checklist`, or footer-marker installation to one separate `E.19`, assembly, or review-repair pass.
+
+**Template:**
+- **Title line:** Hashes + FullId + ` - ` + Pattern Title; optional `(informative)` note.
+- **Header block:** Type, Status; optional Normativity override.
+1. **Problem frame**
+2. **Problem**
+3. **Forces**
+4. **Solution**
+5. **Archetypal Grounding** (Tell-Show-Show; at least one content-bearing grounding slice, reduced grounding case, or ordinary/non-use boundary)
+6. **Bias‑Annotation**
+7. **Conformance Checklist**
+8. **Common Anti‑Patterns and How to Avoid Them** (at least one local misuse, overread, or exact boundary case; no placeholder)
+9. **Consequences**
+10. **Rationale**
+11. **SoTA-Echoing** (post-2015 practice alignment; terminology drift and deltas; full comparison or reduced SoTA required whenever external or internal practice changes the Solution)
+12. **Relations**
+13. **Footer marker**
+
+**Footer marker.** End each pattern with a single visible sentinel heading line by itself: `### <PatternId>:End`. This makes truncation detectable even when HTML comments are stripped or surfaced by editors. The footer marker is intentionally content‑free: **do not** place prose under it.
+
+*Note.* Pattern boundaries are still parseable by scanning for the next pattern heading (`## …`), but an explicit `:End` marker helps retrieval pipelines (and LLM prompts) distinguish “this chunk is the whole pattern” from “this chunk was cut mid‑pattern”.
+
+##### E.8:4.1.1 - Heading & ID discipline (human tooling + retrieval)
+FPF is often consumed through full‑text search and retrieval (RAG). A reader or an LLM may see a subsection without its parent headings, so headings must be **self‑identifying**.
+
+**H-1 (Heading shape).** Every pattern heading and every subsection heading inside a pattern **SHALL** follow:
+`<hashes> <FullId> - <Title> (optional note of non‑normativity)`
+
+*Exception.* The **Footer marker** is a sentinel heading and is governed by **H-9**, not by the standard `<FullId> - <Title>` shape.
+
+**H-2 (Heading separator).** The canonical separator between `<FullId>` and `<Title>` is ` - ` (ASCII, space-hyphen-space).
+Previously authored text may use Unicode dash variants such as ` – ` or ` — ` as separators; tooling **SHOULD** treat those variants as migration candidates, and authors **SHOULD** migrate touched headings to ` - `.
+
+**H-3 (FullId).** `FullId` is the full hierarchical address.
+For a **pattern heading** it is the pattern ID (e.g., `A.2`, `E.10.D1`).
+For **headings inside a pattern**, append dot‑separated ordinal section numbers after the colon (`:`) (e.g., `A.2:4.4`, `E.10.D2:3`).
+*Exception:* the Footer marker uses the reserved sentinel token `:End` as defined in **H-9**.
+The colon (`:`) is **reserved** for section paths and **MUST NOT** appear in pattern IDs.
+
+**H-4 (Ordinals).** Ordinals in section paths **SHOULD** track the canonical template numbering (**1 = Problem frame**, …, **13 = Footer marker**) to maximise cross‑pattern comparability. During refactors or in previously authored patterns, ordinals **MAY** be local. In that case, the **canonical section title at the start of `<Title>`** is the semantic key; readers and tools **MUST NOT** infer section semantics from the ordinal alone.
+*Note:* the Footer marker itself is exempt from ordinal encoding; it uses the reserved token `:End` (see **H-9**).
+
+**H-5 (Where kind and normativity are declared).** Pattern **kind** (for example, Architectural or Definitional) **MUST** be declared in the **Header block**, not encoded into the heading text. Normativity (**normative** or **informative**) **MUST** also be declared in the Header block when it deviates from the default. If a reminder is needed for readers, authors **MAY** add a short parenthetical note at the end of the heading, for example `(informative)` or `(non‑normative)`, but headings **MUST NOT** use square‑bracket tags.
+
+**H-6 (Heading levels).** Heading levels **MUST** preserve a fixed offset between structural layers (Part or Cluster (flat) → Pattern → Pattern sections):
+* Part and Cluster headings **MUST** use `#` (level 1) across the file.
+* A Pattern heading **MUST** use `##` (level 2).
+* Inside a pattern, each nested section **MUST** add exactly one `#` per level (e.g., `## A.2 - …`, `### A.2:2 - …`, `#### A.2:2.1 - …`).
+
+**H-7 (Ellipsis discipline).** Authors **MUST NOT** use **three consecutive full stops/dots** (`...`) as punctuation in headings or narrative prose. Authors **MUST** use the Unicode ellipsis `…` (U+2026) instead. For editorial elisions in quotations, authors **SHOULD** prefer `[…]` to make the omission explicit and distinguish it from retrieval truncation.
+*Exception:* literal three‑dot sequences that are part of an external language’s syntax **MAY** appear **only inside code spans or fenced code blocks**.
+
+**H-8 (Normative keywords).** The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**, **SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** are to be interpreted as described in RFC 2119, as clarified by RFC 8174 (only when capitalised). Authors **SHOULD** avoid informal deontic phrasing (“need to”, “is required to”) in normative clauses.
+
+**Deontics vs admissibility.** Use RFC keywords only for **deontic obligations** (requirements on authors, reviewers, implementers/tooling, or published pattern or companion texts) — i.e., things an agent can choose to do or omit. Do **not** use RFC keywords to state **definitions**, **structural invariants**, **typing rules**, or other **admissibility conditions** of the modeled world.
+
+When you need an enforceable constraint that is *mathematical* rather than *deontic*, express it as a non‑deontic predicate using one of: `Definition:`, `Invariant:`, or `Well‑formedness constraint:` (optionally with formal quantifiers). Prefer mathematical terms like `cardinality 1..1 (total)`, `0..1 (partial)`, or `0..n` over deontic adjectives like “mandatory or optional” when the intent is cardinality, not duty.
+
+**Admissibility predicate discipline (recommended shape).**
+When expressing admissibility or validity constraints as predicates (`Definition:`, `Invariant:`, or `Well‑formedness constraint:`):
+* Authors **MUST NOT** use RFC keywords inside the predicate block.
+* Authors **SHOULD** give each predicate a stable identifier and short name (e.g., `RA‑1 (Locality)`, `RE‑3 (Method gate)`), so that Conformance Checklist items can reference it without re‑authoring the rule.
+* Authors **SHOULD** write the constraint as a declarative predicate (optionally quantified), e.g., `role ∈ Roles(context)`, rather than as “X MUST …”.
+* If the constraint needs to be checked as part of pattern conformance, authors **SHOULD** reference the predicate identifier from the Conformance Checklist, and call out validator behaviour when relevant, rather than duplicating the predicate with RFC keywords.
+
+**H-9 (Footer marker sentinel).** Footer marker **SHALL** be a single heading line whose `FullId` is the pattern ID followed by the reserved sentinel token `:End` (no ordinals, no title, no square‑bracket tags):
+`### <PatternId>:End`
+It is the only allowed heading *inside* a pattern whose section token is non‑numeric. It **MUST** be the final line of the pattern and **MUST NOT** carry any prose. Tooling and readers **MUST** treat it as a boundary sentinel, not as a semantic section.
+
+*Unification note:* historic A‑ and D‑templates differed only by the presence/absence of **Bias‑Annotation** and **Relations**; the unified template keeps the headings everywhere and requires every heading to carry content-bearing grounding, boundary, consequence, rationale, source-use, relation, or reduced-case material rather than an omission placeholder.
+The Alexandrian pattern canon historically calls *Problem frame* “Context”. FPF avoids that label because **Context** is already overloaded in FPF (e.g., `U.BoundedContext` and its Plain‑register label).
+
+#### E.8:4.2 - Stylistic Principles (S-0 ... S-19)
+
+| # | Principle | Guideline |
+|---|-----------|-----------|
+| S-0 | Narrative Flow Seven-Step Heuristic | Authors are encouraged to structure major paragraphs or subsections using the seven-step mnemonic. |
+| S-1 | Density without Jargon | Short declarative sentences; tool names belong in Pedagogy/Tooling. |
+| S-2 | Internal Cohesion | Inline references to Pillars and related patterns. |
+| S-3 | Embedded Mini-Definitions | Gloss a new term in parentheses on first appearance. |
+| S-4 | Contextualisation | Brief historical or disciplinary lineage references. |
+| S-5 | Prophylactic Clarification | Pre-empt common misreadings inside the prose. |
+| S-6 | Quotable Closers | Finish Solution or Consequences with a memorable aphorism. |
+| S-7 | Generative over Prescriptive | Present rules as enabling constraints, not bureaucracy. |
+| S-8 | Trans-disciplinary Tie-ins | Illustrate using at least two distinct fields. |
+| S-9 | Physical Grounding Reference | Link abstractions to a `Transformer` or physical process. |
+| S-10 | Punchy Blocks | <= 5 sentences per paragraph; lists for clarity. |
+| S-11 | Narrative Flow | Ensure sections read as a continuous story, not bullet soup. |
+| S-12 | Full sentences over tags | Avoid “keyword soup”. Each list item SHOULD contain a subject and a verb; prefer 2-4 sentence micro-paragraphs to bare tag lists. |
+| S-13 | SoTA-Echo structure | In the SoTA-Echoing section, present: **claim -> practice -> source -> alignment -> adoption status (adopt/adapt/reject)**; cite Bridges & CL when crossing Contexts/ReferencePlanes. |
+| S-14 | Didactic-content sufficiency | New and substantially revised patterns carry enough didactic content to be teachable without nearby project notes. |
+| S-15 | Worked slices over scenario labels | Transform-like families show at least one concrete source and resulting-publication slice; scenario names alone are not enough. |
+| S-16 | Ordinary vs FPF-governed wording realism | Keep ordinary use light, and make heavier review records explicit only for disputed, high-risk, or higher-impact cases. |
+| S-17 | Self-contained monolith prose | A merged pattern must explain itself inside the monolith; planning shorthand and review-context dependencies are not admissible in pattern prose. |
+| S-18 | Reader-role discipline | Keep every pattern host or monolith section addressed to the intended FPF user; move package-development, architecture-placement rationale, developer, reviewer, and executor correspondence, and quality or projection evidence to separate companion, evaluation, review, projection, or release carriers unless the sentence has been rewritten as the user's admissible move or boundary. |
+| S-19 | Precision before relaxation | In FPF-governed prose, restore the head kind named by a generic phrase before treating any qualifier as trustworthy claim guidance; then restore the claim kind or admissible-use boundary hidden in the qualifier before allowing any later plain, didactic, or coarsened restatement. |
+
+Authors use the principles as a *scaffold*, not a straitjacket: the goal
+is coherent, engaging insight. Engagement remains subordinate to semantic discipline: hooks, quotable lines, Plain restatements, and didactic images may improve recognition, but any ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary they carry must be recoverable through the governed Tech reading or named neighboring pattern. Ordinary Plain prose without that claim kind or admissible-use boundary stays ordinary prose.
+
+**S-0 (Narrative Flow Seven-Step Heuristic) — explanation**
+Narrative flow is recommended to follow these steps: **Hook -> Frame -> Weave -> Ground -> Bridge -> Flow -> Close**.
+
+Brief explanations:
+| Step       | Purpose in a paragraph/section                             |
+| ---------- | ---------------------------------------------------------- |
+| **Hook**   | Open attention with a vivid but bounded image or paradox that maps back to the primary `EntityOfConcern` and claim. |
+| **Frame**  | State the specific question or problem space.              |
+| **Weave**  | Connect to earlier patterns or Pillars.                    |
+| **Ground** | Tie to a concrete system, episteme, or physical process.     |
+| **Bridge** | Show the implication for the upcoming claim or rule.       |
+| **Flow**   | Deliver the formal content or argument.                    |
+| **Close**  | End with a quotable line or payoff that reinforces memory. |
+
+Narrative Flow Heuristic also operationalises S-1 (Density w/o Jargon), S-2 (Internal Cohesion), S-4 (Contextualisation), and S-6 (Quotable Closers).
+
+#### E.8:4.2.1 - Recognition text and assurance text
+Every canonical pattern SHALL stabilise one primary `EntityOfConcern`, relation record, or claim record early enough that a cold reader can tell what kind of thing the pattern is actually governing. If ordinary forms vary (`note`, `sheet`, `guided UI`, `rendering`, `review aid`), the text must make explicit which of those are merely presentation forms of one primary selected EntityOfConcern, relation, or claim and which would instead name a different act, process, work-result record, or governing companion. Recognition and assurance texts may refine that selected item differently, but they must not silently swap the central kind.
+
+If a pattern uses a broad umbrella or head together with a narrower operative branch, the text must also make the stack explicit early enough for first reading: what the broad head names, what the current narrowed branch is, what primary `EntityOfConcern`, relation record, or claim record is actually in play, what governed action is being carried by that object, and what wider work or process remains outside the pattern. A qualifier alone does not restore that stack.
+
+Under `F.18` local-first naming, the canonical pair here is **recognition text** and **assurance text**.
+The earlier provisional `recognition shell` and `assurance shell` wording is retired.
+These names refer to two reading-order roles carried by existing sections or projections inside one pattern; they do **not** mint new `authoritySourceRef` targets, governing-pattern relations, publication-form/face kinds, `publication-face kind`s, or a second face family.
+A third didactic-content role remains optional and is justified only when the family is especially easy to misuse, easy to over-read, or hard to teach without extra scaffolding.
+
+The **recognition text** is the first-reading text.
+It is the part of the pattern that lets a cold working reader recognise the situation quickly enough to decide whether to keep reading.
+It should start from a subject-domain or practice moment before internal taxonomy whenever the pattern is meant to help real work rather than only internal canon maintenance.
+In practice it usually appears in an early `Use this when` line or equivalent opening, plus the upper parts of `Problem frame`, `Problem`, `Solution`, `Consequences`, and nearby worked slices.
+Its job is to make visible:
+- what ordinary working situation this pattern is for;
+- what goes wrong if the pattern is missed;
+- what the pattern buys the reader in practice;
+- when this is not the right pattern;
+- what primary `EntityOfConcern`, relation record, or claim record is actually being kept stable;
+- and, when technical terms must appear early, a pairwise plain gloss for each early FPF-governed technical term.
+
+The **assurance text** is the second-reading text.
+It carries the heavier FPF-governed material that makes the pattern reviewable and auditable:
+- declaration blocks and typed fields when those are part of the pattern's declared conformance or boundary claim;
+- representation ontology, EntityOfConcern discipline, or primary-EntityOfConcern discipline;
+- any minimal modeling or mathematical lens that keeps the primary `EntityOfConcern`, relation record, or claim record stable;
+- guidance or check material, invariants, admissibility, and stop or neighbouring-pattern conditions;
+- `SoTA-Echoing` when it carries explanatory work;
+- and the review hooks that let a broader or more consequential interpretation or use be checked explicitly.
+
+The assurance text may sharpen, justify, and discipline the recognition text.
+It must **not** silently replace, strengthen, or universalize the claim that the recognition text made visible.
+If the recognition text says “this pattern helps with a bounded working situation”, the assurance text must not quietly turn that into an unbacked carrier claim, unbacked guarantee, or broader universality claim.
+
+If a pattern claims **universal** or **transdisciplinary** status, that claim must already be visible in the recognition text.
+It is not enough for universality to appear only later in a guidance or check sheet, declaration block, or `SoTA-Echoing` rationale.
+A broad claim should therefore be demonstrated in the recognition text through at least **three heterogeneous reader or domain situations**.
+When a compact matrix helps, `F.16` is the preferred template for showing that breadth.
+If `SoTA-Echoing` carries an FPF-governed claim, the practical implication of those rows should be recoverable from the recognition text and case bank rather than remaining a late-only justification layer.
+
+A **third didactic-content role** means enough didactic and operational content that the pattern survives without nearby project documents. Typical indicators include:
+- at least one concrete source and resulting-publication slice in Archetypal Grounding when the pattern governs transforms or publication change;
+- at least one boundary-heavy example or anti-example when nearby patterns or other governing companion roles are easy to confuse;
+- reviewer guidance that tells what to inspect first and which neighboring FPF pattern governs the failure mode and which project-side FPF kind and reference named by value carries the claim or effect;
+- local mini-definitions or glossary material for recurring terms that would otherwise be recovered only from project context.
+
+Pattern density is therefore not “more metadata” and not “longer tag lists”. It is the presence of enough recognition, assurance, and, when needed, extra didactic material that a reader can understand the pattern, apply it lightly in ordinary cases, and recognise when a heavier review profile is required.
+
+#### E.8:4.2.2 - Package-form and governing-pattern relation role-word discipline
+
+FPF pattern prose is not free-form descriptive English. When authors name a *package-form* or a *governing-pattern relation*, they must use role words with stable semantic intent.
+
+Use the following distinctions explicitly:
+
+This is a cross-cutting review discipline, not a replacement for local pattern lexica. For example, `A.6.7` and `A.19.CHR` already carry the suite, kit, and pack distinction, and `E.17.1` already carries the viewpoint bundle, family, and library distinction.
+- **governing pattern** = the pattern that carries the primary guidance or check authority of the family;
+- **specialization** = a named refinement under an existing governing pattern;
+- **overlay** = a cross-cutting governance role or reading-order projection over existing governing patterns;
+- **profile** = a declarative review/use role derived from a governing pattern rather than a replacement pattern;
+- **family** = a recurring class of cases governed by one pattern or governing companion;
+- **bundle** = a packaged set of defaults, allowances, or coordinated members;
+- **cluster** = a navigation or reading-order grouping; not by itself a governing-pattern claim;
+- **suite** = a coordinated set of members with explicit suite semantics under the governing FPF pattern or named authority reference;
+- **pack** = an editorial or review grouping, not automatically a semantic-authority claim;
+- **kit** = a reusable coordinated publication or boundary-description package with kit-level semantics under the governing FPF pattern or named authority reference;
+- **record** = a case, report, or review record;
+- **umbrella** = a provisional or review-stage head spanning possible subfamilies before a final governing FPF pattern, accepted `DRR`, or pattern-body decision.
+
+These words are not interchangeable. In particular, authors must not let `cluster`, `bundle`, `suite`, `family`, `profile`, `overlay`, or `umbrella` do the work of an unnamed governing-pattern relation. When that relation matters, it must be stated directly: `specialization under ...`, `profile governed by ...`, `overlay over ...`, `bundle under ...`, or another equally explicit formulation.
+
+A pattern may reuse a pattern-native role word when that role is already defined by the governing pattern. Outside that case, authors must not improvise near-synonyms or shift between role words for stylistic variety.
+
+##### E.8:4.2.2.1 - Precision-restoration placement discipline
+
+When a pattern or companion text is drafted from `E.10` or `E.10.ARCH`, distinguish two authoring objects:
+
+* **`semanticArea`** is the Part-F semantic unit for a wording-use restoration row: one Concept-Set row, one UTS row, or an explicitly bounded row-set. It is declared with `semanticAreaBaseConcept` and `semanticAreaSenseFamily`.
+* **`ontologicalNeighborhood`** is the applicability neighborhood around that named `semanticArea`: nearby primary `EntityOfConcern` kinds, relation kinds, claim records, governing FPF patterns, non-use boundaries, and remaining reader use that can carry the recovered meaning after the wording is repaired.
+* **`pattern nest`** is the publication and specialization placement of a pattern under its governing pattern family.
+
+These are not synonyms. A precision-restoration pattern is placed in the pattern nest whose primary `EntityOfConcern`, relation record, or claim record it repairs. Its `semanticArea` states the Part-F semantic unit it repairs, while its `ontologicalNeighborhood` may name several relation governing the asserted uses. For example, quality-term repair lives in the `C.16` characterization nest, even though its neighbouring relations can include relation construction, action invitation, evidence, assurance, source-use assignment, engineering quality bundles, pattern-quality evaluation, or mathematical-lens use.
+
+Affected patterns should use a thin pointer when the first-stage wording repair belongs elsewhere. The pointer names the selected restoration pattern and the condition that triggers it; it does not copy the trigger registry, the full `E.10.ARCH` recovery algorithm, or a second local architecture for the same repair. The affected pattern then keeps its own subject matter: the characteristic, structure, view, episteme, relation, evidence, assurance, gate, work, decision, or adequacy question it already governs.
+
+If a draft proposes a new precision-restoration pattern, the authoring claim must show the repeated wording failure, `semanticAreaBaseConcept`, `semanticArea`, `semanticAreaSenseFamily`, the recovered primary `EntityOfConcern` kind or relation/claim record, the intended pattern nest, the neighboring governing relations, and the admissible action left after repair. A new pattern is not justified merely because a word appears often, because a local checklist wants a bucket, or because a campaign needs a tidy grouping.
+
+#### E.8:4.2.3 - Reader-role discipline for pattern prose
+
+A pattern is written for its intended FPF user: the person who will use the pattern to organise thought, inspect a case, publish a note, or review a result under that pattern.
+Its FPF-governed sections therefore explain what the pattern lets that user do, what it forbids, what it costs, and how it relates to neighbouring patterns in user terms. When neighbouring patterns or other governing companion roles are named, the prose should answer one user question such as `which neighboring FPF pattern applies`, `which project-side FPF kind and reference named by value carries the claim`, `which nearby pattern is easy to confuse`, or `what must stay coordinated here`; it should not read as one explanatory aside about why the package architecture was split that way.
+`E.8` reader and reviewer wording is FPF pattern-authoring wording. Project-side publication readers, explanation readers, comparative review units, and participants in named project-side review relations are governed by the publication or project-side patterns that name those publication units, explanation-use relations, comparative review units, evidence paths, work records, or gate records, such as `E.17`, `E.17.ID.CR`, `E.17.EFP`, `A.10`, `A.15.4`, `A.20`, or `A.21`.
+
+Authors must keep FPF-development or package-architecture material separate from that user-facing body.
+In particular, `Problem`, `Solution`, `Consequences`, `Rationale`, worked slices, and ordinary-vs-FPF-governed wording guidance must not do the work of:
+- arguing that the material is worth isolating;
+- justifying overlay/profile/governing-pattern or authority-reference choice as a package decision;
+- discussing authority-reference freeze, naming freeze, merge state, blast radius, or safest landing form;
+- or narrating future package promotion or defer decisions.
+
+If architecture-placement commentary is still helpful, the default place is a separate companion note or ADR-like architecture note.
+A pattern may include a short optional informative subsection such as `Architectural placement note (informative)` only when that placement materially helps users avoid misuse; even then, it must stay clearly separated from the user-facing solution and rationale rather than replacing them.
+
+#### E.8:4.2.4 - Human-facing fit beyond role correctness
+Human-facing fit is also subject-domain fit. A recognition text that starts from internal taxonomy, pattern-placement convenience, or package-architecture wording before the problem-domain moment is still under-authored even if its later guidance or check text is correct. When a broader umbrella name and a narrower operative branch are both used, the recognition text should also tell the reader which stack is actually active rather than leaving that reconstruction to a later declaration block or companion note.
+
+A pattern can already be role-clean, boundary-clean, and reader-role-clean, yet still fail the first minute of use for a cold working reader.
+That failure usually appears when the text is admissible but does not yet make the working situation, practical payoff, primary `EntityOfConcern`, non-use boundary, or first action-guiding move visible enough.
+
+**P-2 epistemic precision check.** When `E.10` selects epistemic precision restoration for pattern prose, the first admissible action-guiding move must survive as remaining admissible reader use or be replaced by a neighboring FPF pattern governing that claim application that now carries that claim. This is a direct `E.2` `P-2` and `E.12` requirement, not an optional style preference. Intentional didactic metaphors and vivid Plain recognition lines are admissible when they are ordinary recognition aids or when their claim kind or admissible-use boundary maps back to Tech under `E.10:6.2`. A precision-corrected rewrite that leaves the recognition text inert is still under-authored.
+
+For canonical patterns, the first-reading text should behave as a **recognition text** and the heavier review/check scope should remain in an **assurance text**.
+
+When a pattern claims practice guidance or is meant to be used by engineers, managers, researchers, or other working readers, authors should make the following visible before the heavier harness takes over:
+- a recognisable `Use this when` or equivalent first-minute recognition cue;
+- a concrete working situation in `Problem frame`, not only taxonomic or pattern-placement language;
+- a short statement of what goes wrong if the pattern is missed or misread;
+- a short statement of what this pattern buys the reader in practice;
+- the first admissible action-guiding move the user should take in that situation;
+- a short `Not this pattern when` boundary for ordinary nearby non-use cases;
+- one minimally viable worked case or use slice that shows what changes in practice;
+- when a typed declaration block, formal lens, or other compact modeling material is FPF-governed, a short user-facing statement of what kind of object the pattern is governing and what minimal lens keeps that object reviewable;
+- pairwise plain glosses for any FPF-governed technical terms that must appear before the heavier declaration role arrives;
+- when `SoTA-Echoing` carries explanatory work, a short working-reader implication for each row or cluster of rows and a visible link back to the case bank or worked slices that those rows discipline;
+- a visible split between the recognition text and the heavier assurance text or companion material;
+- and, if the draft implicitly serves several working-reader situations, an explicit primary working reader, primary concern, or primary viewpoint.
+
+**Problem-frame recognition signature (informative).** A canonical pattern should
+expose the working situation through its `Problem frame`, not through one
+separate navigation block. When an `E.11` pattern-entry discoverability problem
+is present, the same `Problem frame` may also carry candidate-pattern and
+tempting-wrong-pattern cues; otherwise it should stay with action guidance
+rather than becoming a local catalogue row.
+
+The local recognition signature should make recoverable:
+
+- the concrete working situation;
+- the primary `EntityOfConcern`, relation named by value, claim record, or stabilized concern;
+- what goes wrong if the pattern is missed or misread;
+- the first admissible action-guiding move and what that move buys;
+- the ordinary not-this-pattern boundary;
+- the first admissible action-guiding result; when an `E.11` discoverability
+  problem is present, the first admissible entry stop or entry-stabilizing result.
+
+`Use this pattern when`, `This pattern applies when`, or equivalent `Problem
+frame` prose may be used as the first sentence or compact cue of this
+signature.
+It is not one separate required section.
+Compact candidate-pattern comparison belongs in `E.11`-distributed entry material; expanded entry-disambiguation cases belong in `I.2`.
+
+If the prose points to neighbouring patterns or other governing companion roles, it should present them as neighboring FPF patterns, project-side FPF kinds and references named by value, or `E.11` entry-recognition reclassifications rather than as hidden co-authorities of the current pattern.
+
+If the pattern claims broad, universal, or transdisciplinary usefulness, that breadth should already be visible in the recognition text.
+At minimum the recognition text should show at least three heterogeneous reader or domain situations rather than one narrow case family with a later broad claim attached.
+When a compact matrix helps, `F.16` is the preferred template for making that breadth legible.
+
+This is not a request to flatten the pattern into plain language only.
+It is a rule about ordering, assurance depth, and text consistency: the recognition text must help a working reader recognise the pattern early, while the assurance text continues to carry the full claim kind or admissible-use boundary.
+If the pattern uses technical lexicon, ontological distinctions, or a mathematical lens, those structures must remain recoverable, but the first-reading text should not require the reader to decode that full stack before recognising the working situation.
+The assurance text may tighten or discipline the recognition text; it must not silently shift what the recognition text claimed.
+
+**Illustrative migration example (informative).**
+
+Old pre-template top:
+
+```text
+Start here when the dominant question is API, protocol, SLA, published boundary, or compliance wording.
+First output: Claim Register.
+Neighboring pattern relations and entry-recognition reclassifications: A.6.B, A.6.C.
+```
+
+Repaired Problem-frame recognition signature:
+
+```text
+Use this pattern when boundary-facing language - API, protocol, SLO/SLA, compliance clause, or other published boundary description - mixes guidance or check clauses, admissibility gates, duties, and evidence into one sentence or published boundary description.
+
+If missed, the text becomes boundary-claim soup: runtime behavior, governance, and evidence are treated as one undifferentiated promise.
+
+Do not use this pattern merely because the text mentions an API or boundary description. If the question is still one unstable cue, preserve it through the admissible cue-preservation line first.
+
+First admissible action-guiding result: one `A.6.B`-governed atomic claim set or one Claim Register whose claim/use questions are explicit enough for the governing FPF pattern or named project-side FPF kind and reference to inspect.
+```
+
+#### E.8:4.2.5 - Design-time and run-time referents stay separated in pattern prose
+
+Pattern prose must keep its referent index explicit. In ordinary body sections, the default truth-makers are run-time or governed-domain objects, states, moves, boundaries, consequences, and user-facing practical effects. Normative-standard wording is still admissible when the sentence is explicitly about the standard as a normative publication, for example in marked migration navigation examples, marked informative notes, or conformance/checklist clauses.
+
+Design-time and development-state referents are different objects. The current draft, current body, current pass, author, reviewer, handoff, packet, governing companion, landing choice, or other writing-process objects must not be smuggled in as the hidden truth-condition of pattern prose. A quick test is: what makes this sentence true? If the sentence is true because the current text is arranged a certain way, because the author or reviewer must do something next, or because the current development state says so, then it is design-time residue, not pattern content.
+
+Move that material to the authored-slice carrier, handoff, `DRR`, or companion architecture note. If a sentence is kept in the pattern, rewrite it so that its truth depends on the governed run-time/domain object or on the standard's declared normative claim set rather than on the current writing pass.
+If a pattern or example claims **autonomy** for any Role, Method, or Service:
+1) Add a subsection **“Autonomy (RoC‑E.16)”** that lists:
+   * `AutonomyBudgetDeclRef` (id, version, Scope (G), Γ_time),
+   * `Aut-Guard policy-id (PolicyIdRef)`,
+   * `OverrideProtocolRef` (SpeechAct names, SoD),
+   * pointer to where **Green‑Gate** applies in the Method steps,
+   * where **AutonomyLedgerEntry** is recorded on `U.Work`.
+2) Include one **Tell‑Show‑Show** vignette that demonstrates **depletion** and **override** handling.
+3) Use **LEX‑BUNDLE** terms (Scope (G), Γ_time, Role, Method, and Work). Avoid “validity”, “process”, “actor”, “system”, “mechanism” unless mapped to admitted U-kinds or direct governing patterns.
+
+### E.8:5 - Archetypal Grounding (System and Episteme)
+
+| Template element | `U.System` illustration | `U.Episteme` illustration |
+|------------------|------------------------|---------------------------|
+| Section order | Pump‑assembly pattern follows sections **1–12** (and, optionally, **13**). | Meta‑analysis pattern follows the same sections. |
+| S‑1 Density w/o Jargon | “The pump boundary is the sealing surface.” | “This episteme raises **F (Formality)** by making falsifiers testable.” |
+| Hook‑Weave‑Ground | Opens with field anecdote → weaves in Γ‑core → ties the claim to motor torque. | Opens with historical paradox → weaves in **A.10** evidence refs → ties the claim to peer‑review data. |
+
+*Note:* Prefer examples that reuse FPF characteristics vocabulary (e.g., **F (Formality)** rather than “F‑score”) unless you explicitly mean an external metric and name it as such.
+
+### E.8:6 - Bias-Annotation
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal** for the authoring conventions in this pattern.
+This guidance biases toward **Did** (readability, narrative flow) and **Arch** (template regularity) by design; the mitigation is content-bearing reduced sections and justification through the smallest grounding, misuse, boundary, or reduced-case statement, not omission placeholders.
+
+### E.8:7 - Conformance Checklist
+
+**CC style (canonical).**
+Conformance Checklist items are authoring checks: they test whether the pattern guidance has been applied and written correctly in a pattern or companion text that claims conformance. They do not replace `Solution`, do not make the pattern a control form, and do not state deontic obligations about the modeled world. A CC clause of the form “X SHALL ...” is to be read as “In a conforming pattern or companion text, X SHALL ...”.
+
+**Preferred wording for new or edited CC items:** start with an explicit conformance subject (e.g., “Authors ...”, “Reviewers ...”, “A conforming implementation ...”, “A validator ...”). If a CC item is enforcing an admissibility predicate, it **SHOULD** cite the predicate’s identifier (from a `Definition:` / `Invariant:` / `Well-formedness constraint:` block) rather than restating the predicate as “X MUST ...”. For boundary/interface/protocol/declaration patterns, prefer A.6.B-scoped claim IDs (L/A/D/E) or cite an existing Claim Register (A.6.B:7) instead of restating mixed prose.
+
+| ID | Requirement | Purpose |
+|----|-------------|---------|
+| **CC-SG.0 (Heading discipline).** | Pattern and subsection headings **SHALL** follow **H-1 ... H-9** (FullId prefix, reserved punctuation, heading levels, ellipsis discipline). The Footer marker **SHALL** follow **H-9**. | Makes chunks self-contained; reduces ambiguity between author elision and retrieval truncation. |
+| **CC-SG.1** | Every new pattern **SHALL** follow the section order defined in the Canonical Template (Title block -> ... -> Footer marker). | Guarantees structural comparability. |
+| **CC-SG.1a (Initial pattern draft shape).** | The first non-empty authored version of a pattern **SHALL** already use the canonical section frame (Title block -> Footer marker). Authors **MUST NOT** start from one pre-template opening memo and promise to backfill canonical sections later. | Prevents large late-stage structural rewrites and keeps drafting aligned with `E.8` from the first substantive pass. |
+| **CC-SG.2 (Grounding required).** | Every pattern **MUST** include an *Archetypal Grounding* section with at least one content-bearing Tell, Show, reduced grounding case, or ordinary/non-use boundary. A placeholder saying that grounding is absent is nonconforming. | Keeps patterns teachable and reduces "definition-only" ambiguity. |
+| **CC-SG.3** | The *Bias-Annotation* section **SHALL** cite the five Principle-Taxonomy lenses and declare either “Universal” or an explicit scope limitation. | Keeps cross-disciplinary neutrality explicit (ties to Guard-Rail 4). |
+| **CC-SG.4** | Deontic normative sentences **MUST** use only RFC-style keywords (see **H-8**); RFC keywords **MUST NOT** appear inside `Definition:`/`Invariant:`/`Well-formedness constraint:` blocks. When enforceable, admissibility/validity predicates **SHOULD** be referenced by id from the Conformance Checklist (rather than duplicated as “X MUST ...”). Informal deontic verbs are prohibited in normative clauses. | Prevents ambiguity between obligation language and model validity; improves auditability. |
+| **CC-SG.5** | Pattern prose **SHOULD** demonstrate adherence to Style Principles **S-0 ... S-19**; reviewers are empowered to request revision when clarity or didactic quality suffers. | Embeds common narrative voice without rigid policing. |
+| **CC-SG.6 (SoTA-Echo required).** | Every pattern **SHALL** include a **SoTA-Echoing** section and clearly state divergence of its Solution from SoTA with explanation of why. Architectural patterns **SHALL** satisfy the full authoring requirements below. Definitional patterns **SHALL** carry reduced SoTA when a full comparison is not meaningful: name which current practice is adopted, adapted, or rejected for terminology work, ambiguity or sense recovery, separation between constraint and ontology, controlled-vocabulary caution, or a comparable definitional problem. Internal coherence alone is not enough. | Ensures explicit lineage, guards against vocabulary drift, and prevents definitional patterns from using internal coherence as zero SoTA. |
+| **CC-SG.7 (Post-2015, multi-Tradition).** | For Architectural patterns, SoTA-Echoing **SHALL** cite >= 3 post-2015 sources across >= 2 Traditions; each item **MUST** carry adoption status (adopt/adapt/reject) with reason. | Guards against monoculture; makes intent explicit. |
+| **CC-SG.8 (Bridge & CL on reuse).** | Any cross-Context or ReferencePlane reuse mentioned in SoTA-Echoing **MUST** cite **Bridge id + CL** and (if ReferencePlanes differ) **Φ(CL)**/**Φ_plane** policy-ids; penalties **-> R_eff** only. | Safe, auditable reuse. |
+| **CC-SG.9 (Lexical hygiene).** | The term **mapping** **SHALL NOT** appear in SoTA-Echoing except in the precise E.10 sense; use **alignment/Bridge/relation** instead. | Avoids overloading reserved vocabulary. |
+| **CC-SG.10 (No keyword soup).** | SoTA-Echoing items **MUST** be written as sentences (not bare noun phrases); bullet lists are acceptable only with complete clauses. | Improves didactic quality and comparability. |
+| **CC-SG.11 (Anti-patterns).** | Every pattern **SHALL** include a **Common Anti-Patterns and How to Avoid Them** section with at least one local misuse, overread, boundary case, or neighboring-pattern misuse relation. A placeholder saying no anti-pattern applies is nonconforming. | Makes misuse cases explicit and reduces review churn without creating omission-as-content. |
+| **CC-SG.12 (Boundary claim-set discipline).** | If a pattern’s subject is a boundary, interface, API, protocol, connector, SLA, or other published boundary description, it **MUST** either (a) provide an **A.6.B**-governed atomic claim set (`L-*`/`A-*`/`D-*`/`E-*`, with stable IDs), or (b) explicitly cite an existing **A.6.B Claim Register** / scoped claim set that it reuses. | Pulls A.6.B into the authoring contour, prevents boundary-kind soup, and makes review more explicit and repeatable. |
+| **CC-SG.13 (Didactic sufficiency).** | New patterns and substantial revisions **MUST** remain understandable without project-planning notes. When a pattern introduces a new named family, profile, or specialization, or adds a non-trivial note derived from another pattern, its Solution and Grounding **SHALL** carry enough didactic content: the relation to the pattern that governs the specific claim, ordinary-vs-FPF-governed wording guidance, at least one concrete source and resulting-publication slice where applicable, and visible related-pattern or project-side FPF kind and reference named by value cues. | Prevents skeleton-only patterns and project-context leakage. |
+| **CC-SG.14 (Controlled prose, not free shorthand).** | FPF-governed prose **SHALL NOT** rely on bare relation words or planning shorthand whose governing-pattern relation is left implicit (e.g., bare “species”, “branch”, “flow”, or API-like “input/output” language). When a governing-pattern relation matters, authors **MUST** name it explicitly (`specialization under ...`, `profile governed by ...`, `overlay over ...`, etc.). | Keeps pattern prose precise and self-identifying. |
+| **CC-SG.15 (Package-form and governing-pattern relation role-word discipline).** | When a pattern names a package-form or the governing-pattern relation of a family (`primary carrier`, `specialization`, `profile`, `overlay`, `family`, `bundle`, `cluster`, `suite`, `pack`, `kit`, `record`, `umbrella`), the chosen role word **MUST** match the intended ontology and **MUST NOT** be swapped for stylistic variety or left to implication. | Prevents semantic blur in pattern prose and keeps governing-pattern relations auditable. |
+| **CC-SG.16 (Reader-role discipline).** | Authors **MUST** keep every pattern host or monolith section user-facing. FPF-development or package-architecture reasoning about isolation, overlay or carrier choice, freeze, merge state, planned evolution, review/executor correspondence, or quality/projection state **MUST NOT** occupy any pattern text, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, worked slices, tables, or checklists; if such placement reasoning is still needed, put it in a separate companion, architecture, evaluation, review, projection, release, or landing carrier. A Part E pattern may govern FPF-pattern authoring, review, evaluation, entry, or publication as its subject matter, but it still may not carry rationale or instructions for developing that same pattern version unless the sentence is rewritten as the user-facing authoring, review, or evaluation move. | Keeps pattern prose aligned with its intended reader and prevents package-governance leakage into use guidance. |
+| **CC-SG.16a (Referent-index discipline in pattern prose).** | Pattern sections **MUST** keep run-time/domain referents, normative-standard referents, and design-time/development-state referents distinct. In ordinary pattern prose, sentence truth **MUST** depend on the governed run-time/domain object or on the pattern's declared normative claim set, not on the current draft state, author action, reviewer action, or development-state status. If a sentence is true only because of the current writing/review pass or text arrangement, it is design-time residue and belongs in carriers or companion notes, not in the pattern. | Prevents Conway/process leakage, DesignRunTag drift, and late cleanup before review or landing. |
+| **CC-SG.16b (Quality/projection carrier separation).** | Pattern text **MUST NOT** present `E.21` values, `PatternQualityStatus`, corpus-projection evidence, README/ToC/E.11/I.2 alignment, card/retrieval evidence, cold-reader evidence, monolith parity, landing evidence, developer/reviewer/executor correspondence, or other quality-carrier facts as pattern content. This applies to the whole host or monolith section, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, examples, tables, and checklists. Such facts belong in evaluation results, review records, projection carriers, README, ToC, `E.11`, `I.2`, cards, retrieval/projection carriers, or release/landing evidence carriers. They may remain in the pattern only when the role test shows that the pattern's own `EntityOfConcern` and user-facing action are that evaluation/projection work, or when rewritten as the user-facing move or boundary that the evidence justifies. | Prevents pattern-quality and corpus-projection evidence from masquerading as practitioner guidance. |
+| **CC-SG.17 (Recognition text and assurance text).** | Admission or substantial revision runs **MUST** check that a canonical pattern exposes a recognition text early enough for the intended working reader and an assurance text that carries declaration, guidance/check, modeling, and review/check scope without silently shifting the recognition-text claim. The recognition text **MUST** expose a recognisable working situation, what goes wrong if the pattern is missed, what the pattern buys, and a clear ordinary `not this pattern when` boundary. Any FPF-governed typed declaration or modeling lens **MUST** be exposed by a short user-facing statement of the primary `EntityOfConcern`, early FPF-governed technical terms **MUST** receive nearby pairwise plain glosses, and any `SoTA-Echoing` used as explanatory grounding **MUST** state a short practitioner or manager implication plus visible linkage to the worked cases or boundary slices it disciplines. If the pattern claims universal or transdisciplinary reach, the recognition text **MUST** demonstrate that claim through at least three heterogeneous reader or domain situations, preferably using an `F.16`-style example matrix or an equally explicit alternative. | Prevents text-clean but reader-opaque patterns and keeps broad claims visible where cold readers actually enter the text. |
+| **CC-SG.17a (Problem-frame recognition signature and E.11 boundary).** | Authors **SHOULD** express a pattern's concrete working situation through the pattern's `Problem frame`, not through a separate navigation block. The `Problem frame` should make recoverable the primary `EntityOfConcern`, relation named by value, claim record, or stabilized concern, what goes wrong if the pattern is missed or misread, the ordinary not-this-pattern boundary, the first admissible action-guiding move, and the result that move buys. Only when an `E.11` pattern-entry discoverability problem is present should the same recognition text add candidate-pattern, tempting-wrong-pattern, entry-recognition reclassification, or first admissible entry-stop cues. Compact candidate-pattern comparison belongs in `E.11`-distributed entry material; expanded entry-disambiguation cases belong in `I.2`; lexical-query material belongs under the lexical/naming patterns and companion patterns that already govern it. Pattern-local `Start here when`, `First output`, neighboring-pattern lists, and `Common wrong escalations and boundary transfers` blocks **SHOULD NOT** replace the action-guiding `Problem frame` and `Solution`. | Keeps working-use recognition inside the canonical pattern frame while preventing navigation/workflow language from becoming local pattern structure. |
+| **CC-SG.17b (Epistemic precision repair preserves action guidance).** | When authors edit pattern prose under `C.2.P`, the repaired recognition text **MUST** preserve or restore the first admissible action-guiding move as remaining admissible reader use, or explicitly name the neighboring FPF pattern that now carries that claim. When both Tech and Plain registers are active in the same sentence family, any Plain or didactic wording **MUST** map back to the recovered Tech reading under `E.10:6.2` when it carries ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim kind or admissible-use boundary. More engaging recognition wording remains admissible as ordinary Plain prose only when it does not carry such claim kind or admissible-use boundary, or as a recognition aid whose claim kind or admissible-use boundary is recoverable through the recovered Tech reading or named FPF pattern application. Type-correct but inert wording is not mature pattern prose. | Prevents epistemic precision cleanup from leaving pattern guidance inert while also preventing expressive prose from reintroducing overread. |
+| **CC-SG.18 (Precision before relaxation).** | In FPF-governed prose, authors **MUST NOT** leave a generic head noun or qualifier with FPF-governed use uninterpreted when that phrase carries semantic, boundary, or authority claim kind or admissible-use boundary. A narrowing qualifier by itself does **not** restore the head kind. Authors **MUST** restore head kind first, then qualifier claim kind or admissible-use boundary, then any comparison criterion or escalation condition before downstream claim or effect. If a later Plain, didactic, or coarsened rendering is kept, the more precise upstream reading **MUST** remain recoverable. | Prevents ambiguity from being hidden inside ordinary-looking phrases and keeps softened prose subordinate to an explicit authoritative reading. |
+| **CC-SG.18a (Semio-Echoing auxiliary placement).** | `Semio-Echoing` or comparable semio-facing material **MUST** be trigger-controlled and auxiliary. A conforming non-semio pattern keeps its own `EntityOfConcern`, first useful move, practical payoff, stop condition, and related-pattern relations primary; it adds semio material only when the EntityOfConcern, episteme/publication stack, alignment basis, and remaining admissible reader use are recoverable by value under `E.10`, `C.2.P`, or `E.10.ARCH`. Generic description/publication-use guards about descriptions, views, publications, records, cards, diagrams, sources, or files not being permissions, promises, prescriptions, evidence items, assurance verdicts, decisions, gate passages, releases, work occurrences, or authority sources belong in a named boundary section or exact description-publication pattern, not as the main subject Solution. When a semio-bias repair touches several non-semio patterns or source rows, conformance evidence is row-atomic: for each affected pattern or source row, name the primary `EntityOfConcern`, first useful move, required pattern-quality checks, guard placement, first-screen result, related-pattern relations named by value, and any source re-seeding result. | Prevents semio-bias: correct language checks must not replace the pattern's constructive method guidance. |
+| **CC-SG.18b (Positive subject content and precision-restoration profile control).** | A conforming pattern's first substantive content in `Problem frame` and `Solution` **MUST** be the positive subject-kind/action spine: primary `EntityOfConcern`, first useful move, practical delta, and bounded non-use needed for that move. Material from any precision-restoration layer **MUST NOT** compete with that spine. Boundary doctrine and related-pattern mapping are pattern content like any other doctrine: if the governing pattern, strict distinction, non-use rule, README/ToC/E.11/I.2 entry cue, or relation row already carries it, use one short pointer instead of repeating it locally; add local boundary prose only for a documented local confusion and exact stop condition. Pattern application **MUST** stay explicit: patterns are applied to situations, claims, texts, or work objects, and related FPF patterns are stated as declarative pattern relations in `Relations` only after this pattern has stated its own ontology, method, norm, worked action, or other positive solution content. For phrase-level apparatus, apply `F.19`; for remaining word/head/use precision, apply `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern. Architecture-placement or package-boundary rationale stays in `DRR`, architecture documents, review handoff, or companion material; if it implies a working-reader use, write that use in pattern terms and keep the rationale outside the pattern. | Prevents precision-restoration debt and architecture/reference boilerplate from replacing the pattern's own subject matter. |
+| **CC-SG.18c (Kind-preserving wording repair).** | A changed FPF-governed phrase **MUST** leave the pre-repair and post-repair primary `EntityOfConcern`, kind, relation or claim kind, current ontic slot, relation position, use relation, or claim kind, admissible use, and scope recoverable when those items are live. Removing a trigger word, changing a head, or replacing a phrase is not a repair until the author can show that the kind and any live current ontic slot, relation position, use relation, or claim kind were preserved, split by accepted decision, or intentionally changed by accepted decision, and can cite the governing pattern when another pattern governs the kind under repair, relation, claim, or position. | Prevents lexical cleanup from becoming ontology drift. |
+
+### E.8:8 - Common Anti-Patterns and How to Avoid Them
+
+These failure modes recur in drafts and in downstream application. They are predictable ways the Forces in this pattern get violated.
+
+| Anti-pattern | Symptom | Why it fails | How to avoid / repair |
+|-------------|---------|------------------------------|-----------------------|
+| **Template cargo-culting** | Headings exist, but each section is a thin bullet list with no narrative. | Satisfies Uniformity but loses Readability and Didactic Primacy. | Use S-0 narrative flow per section; write 2-4 sentence micro-paragraphs before any list/table. |
+| **Un-grounded abstractions** | Problem/Solution stay abstract; no concrete System/Episteme Tell-Show-Show. | Breaks teachability and makes misuse likely. | Fill Archetypal Grounding first; then back-propagate concrete nouns into Problem/Forces/Solution. |
+| **SoTA name-dropping** | SoTA-Echoing is a list of nouns/buzzwords with no adopt/adapt/reject rationale. | Violates CC-SG.7 and CC-SG.10; readers cannot audit alignment. | For each source, state what is adopted/adapted/rejected and why (complete clauses, 2-4 sentences). |
+| **Tool-bound normativity** | A vendor tool, file format, or schema is described as required to apply the pattern. Data governance implied. | Violates Guard-Rails (lexical firewall; notation independence, data governance absence); reduces portability and conceptual clarity. | Keep normative content conceptual; move tooling and data governance into Context-local Profiles. |
+| **Hidden trade-offs** | Solution sounds universally good; Consequences lists only benefits. | Removes decision-use value; applicability cannot be judged. | In Consequences, include at least one trade-off and a mitigation; if none exists, explain why. |
+| **Skeleton-only pattern** | The template is present, but the pattern gives only one compressed definition block and scenario labels. | Passes form while failing didactic sufficiency. | Add didactic content: local decomposition, concrete slices, reviewer cues, and neighboring-pattern or project-side FPF kind and reference named by value guidance. |
+| **Project-context leakage** | A reader needs architecture memos or planning notes to understand the pattern. | The monolith stops being self-sufficient. | Move the essential problem framing, worked slices, and rationale into the pattern itself; keep project reviews informative only. |
+| **Repeated content, reference, and architecture boilerplate leakage** | Problem frame or Solution spends user-facing space repeating the same guard, distinction, mini-rule, reference, definition, caveat, related-pattern mapping, placement note, split rationale, or defer rationale without a new local action/case/evidence need. | The product text becomes an architecture memo or reference note instead of a pattern. Ordinary references, footnotes, README/ToC/E.11/I.2 entry cues, and `Relations` already carry cross-reference work; repeating it as prose hides the positive Solution. | Replace the boilerplate with a normal pattern id, citation, `Builds on`, `Coordinates with`, `Relations`, README/ToC/E.11/I.2 entry cue, or architecture/DRR note. Keep only a local boundary sentence when it changes the first admissible move. |
+| **Quality-carrier leakage** | Any host or monolith pattern text, including notes, appendices, `Relations`, `Rationale`, `SoTA-Echoing`, examples, tables, or checklist rows, talks about corpus projection, README/ToC/E.11/I.2 alignment, retrieval/cold-reader evidence, monolith parity, landing evidence, `PatternQualityStatus`, all-`4`/all-`5` posture, or developer/reviewer/executor correspondence as if that is pattern content. | The text is now about why the pattern can be evaluated, found, landed, or trusted, or about role-turn communication, rather than about what the intended user should do. | Move the quality/projection facts to `E.21`, `E.19`, README/ToC/E.11/I.2, projection/card/retrieval, or release/landing carriers. Keep only the user-facing action or boundary justified by that evidence. |
+| **Apparatus overwrap** | A simple pattern claim, relation, object, action, or placement is wrapped in extra role, carrier, locus, flow, state, status, text-state, package, or process words. | The sentence may be technically correct, but the reader sees apparatus before the pattern's object and move. A poetic plain rewrite can be just as bad if it loses the FPF kind. | Apply `F.19`; the final rewrite keeps the same `EntityOfConcern`, head kind, relation or claim kind, established FPF term, concerned role, and flow role. |
+| **Generic-head underspecification** | An FPF-governed phrase uses a generic head such as `note`, `view`, `guidance`, `output`, or `artifact`, but the text never restores what kind of thing that phrase names. | The reader cannot tell what ontology the sentence is actually governing. | Restore the head kind first in pattern-local or project-local terms before any broader claim or effect or comparison is made. |
+| **Qualifier-smuggled claim kind or admissible-use boundary** | A modifier such as `comparative`, `safe`, `interactive`, `reliable`, or `faithful` is doing the semantic work while the text leaves its claim kind or admissible-use boundary implicit. | The sentence sounds precise without actually stating its comparison criterion, relation claim kind or admissible-use boundary, or downstream claim or effect boundary. | Unpack the qualifier into explicit claim kind or admissible-use boundary, criteria, named neighboring FPF pattern, or project-side FPF kind and reference rather than relying on the modifier alone. |
+| **Mixed comparison criterion** | One sentence compares or ranks publication-form, carrier, process, authority-reference, or project-record values under one declared criterion. | The sentence becomes ontologically incoherent when the compared objects do not share the criterion, even if each local noun sounds plausible. | First restore head kind, then qualifier claim kind or admissible-use boundary, then rewrite the comparison through a homogeneous claim-kind criterion, threshold, or named governing-pattern relation condition. |
+| **Implicit relation shorthand** | Words like “species”, “branch”, or process metaphors do the semantic work without naming the actual governing-pattern relation. | Readers infer the wrong ontology or workflow. | State the governing-pattern relation explicitly and remove shorthand that only makes sense inside project discussions. |
+| **Package-form and governing-pattern relation drift** | Words like `bundle`, `cluster`, `profile`, `overlay`, `family`, `suite`, or `kit` are swapped as if they were stylistic variants. | Readers cannot tell whether the text is naming an `authoritySourceRef` target, a navigation grouping, a review role, or a packaged set of defaults. | Pick one role word by ontology, keep the governing-pattern relation explicit, and do not vary the noun unless the ontology really changes. |
+| **Reader-role leakage** | Pattern sections start telling the reader why the pattern was isolated, what landing form is safest, or why freeze/merge is premature. | The pattern stops teaching the user and starts narrating FPF-development decisions. | Move package-development reasoning to companion notes; keep pattern sections about admissible use, costs, boundaries, and neighboring FPF pattern governing that claims or project-side FPF kinds and references for the intended user. |
+| **Editorial/development self-instruction leak** | The pattern starts saying things like `this draft should ...`, `later authoring will ...`, or `that is the opening this draft must hold`. | The text stops addressing the working reader and starts narrating the current editorial or drafting process. | Move the sentence to the authored-slice carrier or handoff, or rewrite it as one user-facing claim about the primary `EntityOfConcern`, boundary, or practical consequence. |
+| **Role-clean but pragmatically foggy** | The pattern addresses the right reader in principle, but a cold practitioner still cannot recognise the working situation, practical payoff, primary `EntityOfConcern`, first useful move, or project-level implication of the `SoTA-Echoing` early enough. | The text passes role hygiene but still fails `E.12`/`E.13`/`E.14` as working guidance. | Bring a manager-first or practitioner-first recognition cue higher, add one minimally viable worked case, state what changes in practice, expose the primary `EntityOfConcern` and any minimal modeling lens in plain user-facing prose, add plain glosses for early FPF-governed technical terms, and keep `SoTA-Echoing` tied to visible practitioner or manager implications plus nearby case linkage rather than lineage alone. |
+| **Hybrid audience blob** | One main narrative tries to serve engineers, managers, auditors, architects, and researchers at once with no primary working reader or concern role. | The text becomes globally polite but locally blurry; no reader knows which concern governs the first role. | Make the primary working reader, concern, and viewpoint explicit and assign other audiences to secondary companion roles, other faces, or an explicit out-of-scope note. |
+
+### E.8:9 - Consequences
+
+| Benefits | Trade‑offs / Mitigations |
+|----------|-------------------------|
+| **Predictable skeleton** – readers instantly know where to find context, forces, and criteria. | Limits author freedom in macro layout; mitigated by flexibility inside the Solution subsection. |
+| **Cohesive voice** – S‑principles give FPF a recognisable style, aiding memorability. | Reviewers must read for style, not only semantics; checklists reduce review effort. |
+| **Embedded pedagogy** – Tell‑Show‑Show and Hook → Close heuristics turn the spec into a self‑teaching text. | Slightly longer patterns; justified by better comprehension and fewer clarifying DRRs. |
+
+### E.8:10 - Rationale
+Structure and style function as FPF’s *grammar*. By unifying what were
+once separate “template” and “style guide” patterns, authors face a
+single reference point that satisfies:
+
+* **P‑1 Cognitive Elegance** – uniform, minimal surprises.
+* **P‑2 Didactic Primacy** – narrative flow, dual archetype examples.
+* Guard‑Rails 1 & 2 – no tool jargon, no notation lock‑in inside prose.
+
+A unified template also improves retrieval: a chunk containing `A.2:<n> - Bias‑Annotation` remains self‑identifying even when parent headings are missing, and the recommended footer marker makes truncation detectable.
+
+International and industry standards often speak in terms of *conformance criteria*. FPF uses the label **Conformance Checklist** to make adoption easier for engineers and managers.
+
+### E.8:11 - SoTA-Echoing  *(normative; lineage and deltas to contemporary State-of-the-Art)*
+
+**Purpose.** Make each pattern's relationship to contemporary best-known problem-solving practice explicit and comparable without importing tooling or data governance. This section is prose-first and notation-independent. It does not mint an independent second rule source, but it is an FPF-governed alignment section: the Solution, Conformance Checklist, Relations, worked cases, and other FPF-governed sections must reflect the stance stated here or explicitly justify divergence.
+
+**SoTA definition.** In FPF, `SoTA` names the best-known currently defensible problem-solving practice for the named practice question in the relevant domain or practice tradition. It is not official status, a recent edition, broad popularity, citation volume, institutional adoption, reputation, or familiar terminology. A standard, book, paper, benchmark, or practice report carries SoTA only when it states or justifies the current best-known answer for the named practice question; otherwise it is lineage, current-standard reference, rationale-only material, or rejected-popular-practice material.
+
+**Two-part SoTA test.** A row must pass both tests. First, the source family must be SoTA-bearing: it must represent the current best-known answer for the named practice question or a clearly named current branch of that answer. Second, the pattern must incorporate that answer by value: the adopted, adapted, or rejected stance must change `Solution`, boundary, anti-pattern, rationale, checklist, relation, worked case, evidence requirement, stop/reopen condition, or another FPF-governed pattern locus. A current best-known source that changes no FPF locus is uncaptured SoTA; a citation that changes wording without being current best-known practice is not SoTA.
+
+**Incorporation test.** A SoTA row is accepted as pattern grounding only when it changes what the pattern lets a working user do, what the pattern forbids them to over-read, which neighbouring FPF pattern must apply, which evidence or validation requirement remains applicable, or how the Solution and neighbouring FPF-governed sections are written. A citation that only decorates the pattern or proves that the author has read a tradition does not carry E.8.
+
+**Minimum contents (authoring requirements).**
+1) **Evidence binding (no duplicate SoTA).** If a **SoTA Synthesis Pack** exists (G.2), this section **SHALL cite** its **ClaimSheet IDs, CorpusLedger entries, and BridgeMatrix rows** as the governing evidence source for claims and report `adopt`, `adapt`, or `reject` **consistent with those IDs**. Avoid forking an untracked SoTA narrative.
+1a) **Accepted decision and source material set, not DRR-only narrowing.** When a pattern is drafted under an accepted `DRR` and other accepted decision or source materials also exist by value, the `DRR` remains the decision and placement record, but `SoTA-Echoing`, neighboring-pattern relations, and any minimal modeling or mathematical lens **MAY** and **SHOULD** inherit non-conflicting material from that accepted material set.
+2) **Sources (current problem-solving source refs, not prestige refs).** For **Architectural patterns**, cite at least 3 primary SoTA source refs that carry current best-known answers for the named practice question, with at least **two independent Traditions** when more than one serious tradition currently answers that question. For **Definitional patterns**, cite at least 1 current source or practice ref for the reduced issue being governed: terminology work, ambiguity or sense recovery, separation between constraint and ontology, controlled-vocabulary caution, or a comparable definitional problem. If the best source is older but still current, mark why it still answers the named practice question rather than treating source age, standard status, or popularity as SoTA by itself.
+3) **Best-known, not merely popular.** Authors **SHALL** distinguish best-known currently defensible practice from merely widespread or fashionable defaults. If the pattern adopts, adapts, or rejects a popular but less defensible practice, that divergence **MUST** be stated explicitly.
+3a) **Currentness and lineage status.** Older standards, early papers, and historically important examples may be cited as lineage only when later practice has materially changed the answer. They may carry a SoTA row only when the pattern states why the source ref is still current for the named practice question or pairs it with a current source that supplies the current practice.
+3b) **Problem-domain and practice answerability.** The selected SoTA source family **MUST** answer the governed working problem and the relevant domain or practice tradition. It **MUST NOT** be selected only because it makes package placement, naming neatness, or pattern clustering easier to justify.
+4) **Practice alignment.** For each cited item, state **what is adopted, adapted, or rejected** and **why** in 2 to 4 sentences.
+5) **Scale admissibility.** If numeric operations are implied, bind to ComparatorSet or CG-Spec and declare partial-order stance with no hidden scalarization.
+6) **Cross-Context reuse.** Any reuse across `U.BoundedContext` must expose Bridge id plus CL and, if ReferencePlanes differ, Phi policy ids; penalties affect only `R_eff`.
+7) **Lexical hygiene.** Avoid “mapping” unless you mean an explicit Bridge, translation relation, or other named relation with loss notes.
+
+**Writing guidance (readability).**
+*Write short paragraphs, not tag lists.* For each Tradition, provide one sentence naming the practice, one sentence comparing it to the pattern's Solution, and one sentence giving adoption status with reason. Where helpful, add one **System** and one **Episteme** micro-example (Tell-Show-Show).
+
+**Format: human-first.** A small table is allowed, but each row **MUST** be accompanied by 1 to 2 sentences as above. Vendor tokens, tool tokens, file formats, or data schemas are out of scope unless the named practice question under discussion makes them have FPF-governed use.
+
+#### E.8:11.1 - SoTA alignment for this pattern (E.8 self-echo)
+
+| Claim (E.8 need) | SoTA practice (post-2015) | Use of source | Primary source (post-2015) | Alignment with E.8 | Adoption status |
+|---|---|---|---|---|---|
+| Pattern texts must be teachable, not just correct. | Use a stable skeleton with context, problem, forces, solution, actions, and consequences, plus illustration and checks, to keep patterns readable and actionable. | **Current-practice writing-guidance use.** This row is used for E.8's canonical pattern skeleton and didactic ordering; it is not treated as external authority over FPF ontology. | Iba (2021), “How to Write Patterns: A Practical Guide for Creating a Pattern Language on Human Actions” (PLoP 2021 PLoPourri). | Canonical Template mirrors the skeleton and adds Archetypal Grounding plus Conformance Checklist as first-class sections. | **Adopt and adapt.** Adopt the skeleton; adapt by making bias and conformance explicit sections. |
+| Pattern quality needs explicit validation beyond folklore. | Critique of ad hoc validation, including the rule of three, and push toward more rigorous discovery and validation methods. | **Current-best source use for pattern discovery and validation rigor in this row's narrow use.** The source changes E.8 by requiring validation to be explicit rather than folklore-based. | Riehle, Harutyunyan, Barcomb (2020), “Pattern Discovery and Validation Using Scientific Research Methods”. | E.8 encodes validation as Conformance Checklist plus SoTA-Echoing with adoption status and evidence binding. | **Adopt.** Adopt auditability goals; keep the mechanism lightweight through checks and evidence binding. |
+| Governance should constrain structure, not mandate tools. | Specify conformance and structure; do not prescribe processes, notations, tools, or recording media. | **Current-standard reference use.** The architecture-description standard supplies a useful conformance-vs-tooling distinction, but E.8 does not import architecture-description ontology as pattern-authoring ontology. | ISO/IEC/IEEE 42010:2022, *Software, systems and enterprise - Architecture description*. | E.8 is template-centric and conformance-centric, with guardrails against tool and notation lock-in in core narrative. | **Adopt.** Directly adopt the conformance-not-tooling discipline for authoring shape. |
+| Pattern languages are networks; visuals often mislead. | Systematic surveys report low consensus on what to visualise and ambiguous or inexpressive visuals; relations need clear definition in text. | **Current-practice rationale use.** The source is used as rationale for the text-first relation discipline; it is not current-best source material for all pattern-language visualization. | Quirino, Barcellos, Falbo (2018), “Visual Notations for Software Pattern Languages: A Mapping Study”. | E.8 requires a Relations section and keeps diagrams optional, placing primacy on textual structure and explicit links. | **Adapt.** Use the finding as rationale for text-first, relation-explicit authoring. |
+| Controlled technical writing should be plain without losing necessary terms. | Plain-language practice writes for a specific audience, removes unnecessary words and hidden verbs, avoids synonym churn for the same object, and keeps necessary technical or legal terms when they carry the meaning. | **Current-practice source use for kind-safe plain wording.** The source changes E.8 by making plain wording a precision-preserving diagnostic, not decorative simplification. | U.S. Plain Writing Act implementation and Digital.gov plain-language guides; SEC, *A Plain English Handbook*. | E.8 encodes kind-safe plain rewriting: remove phrase-level role/carrier/locus/flow/status apparatus only when it adds no kind, relation, evidence value, or user-facing action; preserve established FPF terms unless `E.10`/`F.18` changes them. | **Adapt.** Adopt audience-first, concise, consistent wording; adapt it to FPF kind preservation. |
+
+### E.8:12 - Relations
+* **Coordinates with:** `E.9.DA` when an authored pattern body is drafted from a concrete `DRR` and the blocker is whether the `DRR` selected, distributed, carried source use, carried accepted decisions, or supplied a first drafting action sufficiently for that authoring use. `E.8` still governs the pattern body; `E.9.DA` is not a mandatory authoring section, review card, or substitute for writing the Solution.
+
+* **Builds on:** E.6, E.7
+* **Constrained by:** Guard‑Rails E.5.1–E.5.4 (lexical firewall, notation independence, etc.)
+* **Coordinates with:** `E.21` when one authored FPF pattern version is evaluated as a scoped pattern-quality claim. `E.8` governs authoring shape, recognition text, action guidance, worked cases, SoTA grounding, and conformance material; `E.21` governs the pattern-quality evaluation, required coordinate values, `PatternQualityStatus`, and stop condition. Do not import `E.21` as a mandatory authoring section or full review card.
+* **Coordinates with:** `E.23` when an authored FPF pattern body is being improved through repeated passes. `E.8` still governs the authored pattern body; `E.23` governs the repeated quality-improvement method; the object-under-improvement evaluation such as `E.21` or `E.9.DA` supplies value meanings and stop meanings.
+* **Coordinates with:** `E.13` when an authored pattern claims practical payoff or uses a visible quality value, metric, checklist result, review result, or release posture as if it were the intended value. `E.8` keeps the payoff in user-facing prose; `E.13` repairs proxy-to-value substitution.
+* **Coordinates with:** `E.11.PUR` when the authoring question is which FPF pattern use is recommended for a current concern, and with `E.10.MOVE` when move-like wording in pattern prose hides whether the current value is pattern-use recommendation, direct work, plan, gate, transformation, publication, source, architecture, call-planning, or language-state material.
+
+
+* **Constrains:** All patterns; the DRR template references the same section order.
+
+### E.8:End
+
+## E.8.ECSPF - Evaluation CharacteristicSpace FPF Pattern Publication Form
+
+> **Type:** Authoring method pattern
+> **Status:** Stable
+> **Normativity:** Normative
+
+### E.8.ECSPF:1 - Problem frame
+
+Use this pattern when an evaluation `CharacteristicSpace` constructed or repaired under `A.19.ECS` must be published as an FPF pattern. The question is not "what values should this evaluated object be judged by?" but "how do we write the FPF pattern publication form so those values remain usable, reviewable, and bounded?"
+
+`A.19.ECS` governs the evaluation characteristic-space specification: evaluated object kind, use scope, contrast cases, coordinate set, value meanings, evidence basis, result-row shape, calibration points, coordinate-specific payloads, missingness, protected trade-offs, status meanings, and stop or reopen conditions. `E.8` governs ordinary FPF authoring form. `E.8.ECSPF` governs their intersection: an FPF pattern whose main payload is a reusable evaluation.
+
+**Not this pattern when.** Use `A.19.ECS` when the characteristic-space specification itself is missing or inadequate. Use `E.8` when the pattern is not an evaluation-characteristic-space pattern. Use `E.21`, `E.9.DA`, `E.2.DA`, `F.18`, `C.25`, or a project-local evaluation when one already supplies the value meanings for the evaluated object and use. Use `E.22` to frame one quality evaluation and `E.23` to run repeated improvement. Use a local rubric, table, or project rule instead of an FPF pattern when the evaluation is not intended for durable FPF reuse.
+
+**First useful move.** Start from the accepted `A.19.ECS` specification. Name the evaluated object kind, declared use, and first action-guiding evaluation use in the pattern's recognition text before presenting coordinate tables or conformance rows.
+
+**FPF-publication boundary.** If the evaluation is local, temporary, or project-specific, do not publish an FPF pattern. Keep the `A.19.ECS` specification in the local publication form and cite the FPF neighbouring patterns named by value it uses.
+
+**What goes wrong if missed.** An evaluation-characteristic-space pattern becomes a score sheet, review form, checklist, or taxonomy. The coordinate table appears before the working situation. Readers can see values but cannot tell when to use them, what to do after an evaluation result, which objects are outside the declared evaluated-object kind, or which neighbouring pattern governs evidence, assurance, gate, work, decision, naming, measurement, or improvement-loop claims.
+
+**What this buys.** `E.8.ECSPF` lets FPF publish evaluations as real patterns: practitioner-readable first, exact enough for review, and bounded enough that `E.22` and `E.23` can consume them without stealing their values.
+
+**Primary EntityOfConcern in plain terms.** The primary EntityOfConcern is the authored FPF pattern publication form for one evaluation `CharacteristicSpace`.
+
+**Primary working reader.** The first reader is an FPF author or reviewer turning an accepted evaluation characteristic-space specification into a reusable FPF pattern for later practitioners, managers, and stewards.
+
+### E.8.ECSPF:2 - Problem
+
+`A.19.ECS` can produce a good evaluation characteristic-space specification without saying how to publish that specification as an FPF pattern. `E.8` can produce a good generic FPF pattern without saying how a coordinate set, object-kind-fit rule, evidence basis, result-row shape, calibration points, status set, and stop condition should be placed when they are the pattern's main payload.
+
+Recurring failures:
+
+1. **Publication-form/content collapse.** The FPF pattern is treated as the evaluation itself, instead of a publication form for an evaluation characteristic-space specification.
+2. **Table-first pattern.** Coordinate rows arrive before evaluated object kind, use, first move, FPF-publication boundary, and object-kind boundary.
+3. **Checklist substitution.** Conformance rows replace the `Solution` instead of checking a readable evaluation method.
+4. **Underpublished values.** Coordinate names are present, but value meanings, missingness, polarity, protected trade-offs, status meanings, or stop conditions are missing.
+5. **Wrong-kind examples.** Worked cases show only passing examples, so the pattern cannot teach below-floor and outside-declared-object-kind boundary outcomes.
+6. **Neighbour theft.** Evidence, assurance, gate, work, decision, naming, measurement, OEE/NQD, or mathematical-lens claims are carried as if the evaluation-characteristic-space pattern governed them.
+7. **Pattern-quality confusion.** The author uses `E.21` to judge whether the FPF pattern version is good, but forgets that the new pattern must still publish the evaluation for one evaluated object kind by value.
+8. **Quality-carrier leakage.** `E.21` values, corpus projection, README/ToC/E.11/I.2 alignment, retrieval, cold-reader evidence, monolith parity, landing evidence, or developer/reviewer/executor correspondence for the publication form is written into the evaluation pattern as if it were the evaluated object's method.
+
+### E.8.ECSPF:3 - Forces
+
+| Force | Tension |
+|---|---|
+| **Recognition first vs coordinate completeness** | An evaluation-characteristic-space pattern needs tables, but the reader must first see the working situation and first evaluation use. |
+| **Generic E.8 form vs ECS payload** | The canonical pattern skeleton stays fixed, but the payload has special fields from `A.19.ECS`. |
+| **Reusable FPF pattern vs local evaluation** | FPF publication is useful only when the evaluation is durable and reusable beyond one local project. |
+| **Values named by value vs checklist feel** | Values and statuses must be named by value without making the pattern feel like an administrative form. | |
+| **Related-pattern statements vs second ontology** | The pattern must keep outside claims with governing patterns for those claims without becoming a directory of every related pattern. |
+| **Evaluation of object vs evaluation of FPF pattern version** | The evaluation judges its evaluated object; `E.21` may separately evaluate whether the authored FPF pattern publication form is good enough. |
+
+### E.8.ECSPF:4 - Solution
+
+When an `A.19.ECS` specification is selected for durable FPF publication, author the evaluation as an `E.8` pattern with these additional placement rules:
+
+1. **Keep the evaluation characteristic-space specification separate from the publication form.** The pattern publishes an evaluation `CharacteristicSpace`; it is not itself the evaluated object, the evaluation result, the improvement loop, or the evidence record.
+2. **Put recognition before coordinates.** The opening text names evaluated object kind, declared use, first evaluation use, FPF-publication boundary, what goes wrong, and what the pattern buys before any dense table.
+3. **Place the `A.19.ECS` specification by value.** The `Solution` carries the record shape, local names, object-kind-fit rule, coordinate set, value meanings, evidence-basis rule, result-row shape, adjacent-value rationale rule, calibration points, coordinate-specific evidence payloads, missingness rule, protected trade-offs, status meanings, and stop or reopen condition.
+4. **Use worked slices as the discriminating-case test.** Archetypal Grounding and worked cases include a passing evaluated object, a below-floor evaluated object, and an outside-declared-object-kind boundary case.
+5. **Keep checklist rows secondary.** Conformance checks verify that the evaluation is recoverable and usable. They do not become the user's method.
+6. **Keep outside claims with governing patterns.** `Relations` and compact non-use boundaries name the governing pattern for evidence, assurance, gate, work, decision, naming, measurement, OEE/NQD, mathematical lens, `E.22` quality-evaluation, and improvement-loop claims. They do so declaratively and do not replace the evaluation publication form with reference boilerplate, phrase apparatus, or architecture-placement rationale. If phrase-level apparatus appears, apply `F.19`; if remaining words still hide precision, apply `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern. If a wording repair changes an FPF-governed phrase in the evaluation specification or publication form, the pre-repair and post-repair evaluated object kind, relation or claim kind, current ontic slot, relation position, use relation, or claim kind when live, admissible use, and scope must remain recoverable; lexical substitution without that check and governing-pattern reference when another pattern governs the kind under repair, relation, claim, or position is not a repair.
+7. **Evaluate the publication form with `E.21`.** When the FPF pattern publication form is under quality improvement, `E.21` evaluates the FPF pattern version's quality. The evaluation coordinates inside the pattern continue to judge the evaluated object declared by that evaluation. The `E.21` result, corpus-projection evidence, README/ToC/E.11/I.2 alignment, retrieval or cold-reader evidence, monolith parity, landing evidence, and developer/reviewer/executor correspondence stay in the quality, review, projection, or release carriers unless the publication form's own `EntityOfConcern` and user-facing action are that evaluation/projection work.
+
+The authoring flow and the quality-improvement flow are different flows. This pattern publishes an evaluation for its declared evaluated object kind. A later `E.21` evaluation of this pattern is evidence about the publication form as an FPF pattern, not part of the evaluation that the pattern publishes. That evidence may cause edits to recognition text, coordinates, cases, or boundaries, but it remains outside the pattern unless rewritten as user-facing evaluation guidance.
+
+#### E.8.ECSPF:4.1 - Canonical placement table
+
+| E.8 section | ECS-specific payload |
+|---|---|
+| `Problem frame` | Evaluated object kind, declared use, first useful evaluation use, FPF-publication boundary, what goes wrong without this evaluation, and what practical move the evaluation enables. |
+| `Problem` | Failure modes that the evaluation prevents: wrong-kind scoring, hidden value drift, proxy value, one-score collapse, missingness confusion, or neighbour theft. |
+| `Forces` | Tensions among reuse, coordinate count, readability, measurement admissibility, trade-off protection, local stop, and open-ended improvement. |
+| `Solution` | `A.19.ECS` record shape, local names, object-kind-fit rule, coordinate set, value meanings, evidence basis, result-row shape, adjacent-value rationale rule, calibration points, coordinate-specific evidence payloads, evidence and missingness rules, protected trade-offs, status meanings, stop and reopen conditions. |
+| `Archetypal Grounding` | At least one passing evaluated object, one below-floor evaluated object, and one outside-declared-object-kind boundary case. |
+| `Bias-Annotation` | Known skew in source examples, reader family, domain tradition, measurement preference, benchmark preference, or FPF-internal reuse. |
+| `Conformance Checklist` | Checks that the specification is recoverable, not that a reviewer likes the evaluated object. |
+| `Common Anti-Patterns` | Score-sheet pattern, checklist-as-solution, table-first recognition failure, neighbour theft, one total score, hidden value drift. |
+| `Consequences` | What a conforming evaluation use permits, what it does not permit, and which neighbours govern claims that exceed the evaluation. |
+| `Rationale` | Why this coordinate set and publication-form are selected, including relation to `A.19.ECS` and existing evaluations named by value. |
+| `SoTA-Echoing` | Current practice that changes evaluated-object selection, coordinate choice, value meaning, missingness, comparison, or stop discipline. |
+| `Relations` | `A.19.ECS`, `E.8`, `E.21`, `E.22`, `E.23`, and exact domain or neighbour patterns. |
+
+#### E.8.ECSPF:4.2 - Local names and kind settlement
+
+| Local name | Role | Non-use boundary |
+|---|---|---|
+| `EvaluationCharacteristicSpaceFPFPatternPublicationForm` | The authored FPF pattern body that publishes one evaluation `CharacteristicSpace`. | Not the evaluated object being evaluated, evaluation result, improvement loop, evidence record, or release approval. |
+| `ECSPayload` | The by-value `A.19.ECS` specification inside the pattern. | Not an arbitrary table or checklist. |
+| `RecognitionEvaluationUseLine` | Early line saying what object is evaluated, for which use, and what the first admissible evaluation use does. | Not a slogan or pattern-title paraphrase. |
+| `DiscriminatingCaseBank` | Passing, below-floor, and outside-declared-object-kind boundary worked slices. | Not only positive examples. |
+| `RelatedPatternRelationBlock` | Declarative governing-pattern statements named by value for claims outside the evaluation. | Not a general directory of possibly related patterns. |
+| `EvaluationResultFormBlock` | Published result-form discipline for this evaluation: required row fields, evidence basis, short rationale rule, and any coordinate-specific payload. | Not a review report, project status, or optional appendix. |
+| `CalibrationAndPayloadBlock` | Published adjacent-value calibration points and payload rules for values that need comparator, source-currentness, corpus-projection, worked-case, or retrieval evidence. | Not extra bureaucracy and not a second score system. |
+| `PatternVersionQualityEvaluation` | Optional `E.21` evaluation over the authored pattern publication form. | Not a replacement for the evaluation for one evaluated object kind and not publication-form method content. |
+
+### E.8.ECSPF:5 - Archetypal Grounding
+
+**Tell.** An evaluation `CharacteristicSpace` becomes reusable in FPF only when a practitioner can recognize the evaluated object and use before reading the coordinate table. The publication form must teach the evaluation use, not merely list the values.
+
+**Show, pattern-quality evaluation.** `E.21` is an evaluation for one FPF pattern version. Its publication form must still open with the working question "is this pattern good enough for the declared use?" before showing coordinates such as first-action recoverability, boundary fit, and SoTA binding.
+
+**Show, local rubric that should not become an FPF pattern.** A project team defines a temporary rubric for choosing a meeting room. The `A.19.ECS` specification may be adequate locally, but no durable FPF pattern is needed because the evaluated object kind and use do not recur across FPF practice.
+
+**Show, object-kind boundary.** A nuclear-plant evaluation can judge nuclear plants and declared comparable power-generation alternatives. A chair or FPF pattern is outside that evaluated-object kind: before the evaluation is opened, select a suitable evaluation; after a forced invocation, record an object-kind-fit defect/value rather than treating it as a weak nuclear plant or skipping declared coordinates. The pattern publication form must show that boundary before readers try to use the coordinate table.
+
+### E.8.ECSPF:6 - Bias-Annotation
+
+Evaluation-characteristic-space patterns are vulnerable to domain-example bias: the first examples can silently choose the evaluated object kind, use, and value family for later readers. A conforming publication form names known skew in examples, sources, reader family, domain tradition, measurement preference, benchmark preference, or FPF-internal reuse. When the evaluation claims broad use, the case bank must include heterogeneous evaluated object situations or explicitly narrow the claim.
+
+### E.8.ECSPF:7 - Conformance Checklist
+
+| Check | Requirement | Why |
+|---|---|---|
+| `CC-E8ECSPF-1` | The pattern publication form SHALL name the `A.19.ECS` evaluation characteristic-space specification or carry its evaluated object kind, use, object-kind-fit rule, coordinate set, value meanings, evidence basis, result-row shape, calibration points, coordinate-specific payloads, missingness, trade-offs, status, and stop condition by value. | Prevents publication-form/content collapse. |
+| `CC-E8ECSPF-2` | Recognition text SHALL state evaluated object kind, declared use, first evaluation use, FPF-publication boundary, and object-kind boundary before dense coordinate tables. | Keeps the pattern usable before it becomes reviewable. |
+| `CC-E8ECSPF-3` | The `Solution` SHALL carry the ECS payload rather than leaving it only in conformance rows, SoTA rows, or examples. | Prevents checklist substitution. |
+| `CC-E8ECSPF-4` | Worked cases SHALL include passing, below-floor, and outside-declared-object-kind boundary outcomes. | Tests evaluated-object-kind discrimination. |
+| `CC-E8ECSPF-5` | Each coordinate SHALL state value meanings, polarity or no-simple-direction value rule, missingness rule, and protected trade-off when applicable to the declared evaluation use. | Makes evaluation uses repeatable and bounded. |
+| `CC-E8ECSPF-6` | Relations SHALL name governing patterns for evidence, assurance, gate, work, decision, naming, measurement, OEE/NQD, mathematical-lens, `E.22` quality-evaluation, and improvement-loop claims when the publication form makes those claims. They SHALL keep pattern application and relation kind explicit, keep simple relations free of phrase apparatus, and keep ordinary references or architecture-placement reasoning out of publication-form evaluation prose. | Prevents a second ontology or apparatus-overwrapped publication form. |
+| `CC-E8ECSPF-6a` | Wording, naming, or precision-restoration repairs in an evaluation-characteristic-space pattern SHALL include a kind-restoration check for the evaluated object, relation or claim kind, current ontic slot, relation position, use relation, or claim kind when live, admissible use, and scope before and after the repair, plus the governing pattern when another pattern governs the kind under repair, relation, claim, or position. | Prevents evaluation patterns from inheriting lexical cleanup as ontology drift. |
+| `CC-E8ECSPF-7` | If the authored publication form is under improvement, `E.21` SHALL evaluate FPF pattern-version quality separately from the evaluation's evaluated object result. | Keeps pattern quality distinct from evaluated object quality. |
+| `CC-E8ECSPF-8` | The pattern SHALL not publish a local, temporary, or one-project evaluation as FPF unless reuse scope and governing patterns for outside claims justify FPF publication. | Blocks needless pattern growth. |
+| `CC-E8ECSPF-9` | The publication form SHALL state what would lower, reopen, or retire the published evaluation: changed object kind, changed use, changed use of a cited source, changed source adoption/adaptation/rejection decision, missing contrast case, coordinate-value drift, missingness-rule change, or corrected governing pattern for an outside claim. | Makes maintenance of the evaluation pattern testable. |
+| `CC-E8ECSPF-10` | The publication form SHALL state the required result row shape and evidence basis. If values need external, comparator, projection, worked-case, or currentness evidence, the result form SHALL require that evidence by value or lower the coordinate. | Prevents a published evaluation from accepting prose impressions or two-column value lists as results. |
+| `CC-E8ECSPF-11` | Reusable evaluation patterns SHALL publish calibration points for common adjacent-value disagreements and any coordinate-specific evidence payload needed to reach floor or exceptional values. | Makes the same evaluation usable by more than one evaluator. |
+| `CC-E8ECSPF-12` | The publication form SHALL keep `E.21` values, `PatternQualityStatus`, corpus-projection evidence, README/ToC/E.11/I.2 alignment, card/retrieval evidence, cold-reader evidence, monolith parity, landing evidence, developer/reviewer/executor correspondence, and other quality-carrier facts out of the pattern. These facts belong in the `E.21` result, `E.19` run record, README/ToC/E.11/I.2, card/retrieval/projection carrier, or release/landing evidence carrier unless the role test shows that the publication form's own `EntityOfConcern` and user-facing action are that evaluation/projection work. | Prevents quality of the publication form from replacing the evaluation published by the pattern. |
+
+### E.8.ECSPF:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Symptom | Repair |
+|---|---|---|
+| **Score-sheet pattern.** | The pattern is mostly a table of values. | Move evaluated object kind, use, first evaluation use, FPF-publication boundary, and practical consequence into recognition text before the table. |
+| **Checklist-as-solution.** | Users are told only what must be checked. | Put the actual evaluation method and record shape in `Solution`; let checklist rows verify it. |
+| **Publication-form/content collapse.** | The FPF pattern is treated as the evaluated object being evaluated or evaluation result. | State that the pattern is a publication form for the `CharacteristicSpace`; the evaluated object and evaluation result are separate. |
+| **Positive-only case bank.** | Every example passes. | Add below-floor and outside-declared-object-kind boundary cases. |
+| **Related-pattern authority theft.** | The pattern claims evidence, assurance, gate, release, measurement, naming, or improvement authority. | Keep each claim with the pattern that governs it and keep only the evaluation claim here. |
+| **Rubric promotion.** | A local rubric becomes an FPF pattern because it was useful once. | Keep it local unless durable FPF reuse, evaluated object scope, and governing patterns for outside claims are declared. |
+| **Frozen evaluation publication form.** | The evaluated EntityOfConcern kind, use, use of a cited source, source adoption/adaptation/rejection decision, or coordinate meanings change, but the pattern keeps the old values as if still current. | Reopen `A.19.ECS` for the evaluation EntityOfConcern and state whether earlier evaluation results remain comparable, need a bridge, or must be retired. |
+| **Report-shaped evaluation pattern.** | The pattern publishes coordinate names but leaves the returned result as a narrative, score list, or two-column table. | Add a result-form block: coordinate, value, short rationale, evidence basis, and coordinate-specific payload where needed. |
+| **Pattern-quality report as evaluation pattern.** | `E.21` status, all-`4`/all-`5` posture, corpus projection, retrieval evidence, README/ToC/E.11/I.2 alignment, monolith parity, landing readiness, or role-turn correspondence appears anywhere in the pattern as if it were the evaluation method. | Move that evidence to the quality/review/projection/release carrier and keep the pattern body focused on the evaluation for the declared evaluated object kind. |
+| **Apparatus-overwrapped publication form.** | The evaluation relation is written through role, carrier, locus, flow, status, or package words that add no evaluated object kind, coordinate meaning, evidence rule, user-facing action, or flow-role distinction. | Apply `F.19`; if remaining content still hides a word/head/use, apply `E.10`, `E.10.ARCH`, `F.18`, or the governing pattern. |
+
+### E.8.ECSPF:9 - Consequences
+
+A conforming `E.8.ECSPF` publication form makes an evaluation findable, teachable, and reusable inside FPF. It lets `E.22` frame quality evaluations and `E.23` run improvement loops without re-inventing values. It also makes the cost visible: a reusable evaluation-characteristic-space pattern must publish more than a local rubric, because it must prevent wrong-kind use, hidden value drift, neighbour theft, and proxy-for-value substitution.
+
+The pattern publication form does not certify the evaluated object, approve a release, prove evidence, or finish improvement. It only publishes a bounded evaluation.
+
+### E.8.ECSPF:10 - Rationale
+
+The split between `A.19.ECS` and `E.8.ECSPF` preserves the FPF distinction between an evaluation characteristic-space specification and its publication form. `A.19.ECS` says what must exist for an evaluation to be adequate. `E.8.ECSPF` says how that adequate evaluation is authored as an FPF pattern when FPF publication is selected. This prevents two symmetric mistakes: stuffing FPF pattern-format requirements into a general characteristic-space construction method, and publishing an evaluation-characteristic-space pattern whose coordinate set is not recoverable by value.
+
+### E.8.ECSPF:11 - SoTA-Echoing
+
+**Source-use convention.** This section uses source rows only where they change the publication form: evaluated object and use before checklist, coordinate meanings and missingness, worked cases, non-scalar comparison, protected trade-offs, or action-guiding recognition text. Reporting frameworks and standards are reference-only use unless they solve the publication-form problem named by value.
+
+| Claim | Current practice line | Use of source and representative sources | Adoption in E.8.ECSPF | Boundary |
+|---|---|---|---|---|
+| Evaluation rubrics are useful only when criteria, value meanings, and use context are explicit. | Current reporting practice makes evaluation cards, scenario descriptions, metric meanings, raw-result visibility, intended use, and performance-characteristic reporting explicit. | **Current-practice and reference use.** BenchmarkCards and EvalCards are current evaluation-card reporting sources; HELM, VHELM, and AHELM are current suite-reporting sources for scenarios, metrics, inference settings, prompts, raw outputs, and comparable reporting; model cards are retained lineage for intended-use and performance-characteristic reporting. | The publication form must publish evaluated object kind, use, coordinate meanings, missingness, and worked cases before checklist closure. | `E.8.ECSPF` is not a benchmark harness, model-card schema, automated evaluator, or reporting standard. |
+| Multicriteria evaluation needs non-scalar comparison and trade-off visibility. | Current QD and multicriteria practice keeps dimensions, dominance, trade-offs, objective heads, and diversity or descriptor choices visible when one total score would hide important loss. | **Current-best source use for QD overview in this narrow use, plus retained lineage.** `A survey on Quality-Diversity optimization: Approaches, applications, and challenges`, *Swarm and Evolutionary Computation* 100:102240 (2026), supplies the current QD overview used here. MCDA and older QD practice are retained lineage for dimensions, dominance, and trade-offs. | The publication form keeps coordinate values, protected trade-offs, and status meanings distinct. | Scalarization belongs only to an neighboring pattern governing the claim or explicitly declared local method. |
+| Pattern publication must remain action-guiding. | Pattern-language practice treats a pattern as reusable action guidance for recurring situations, not as a static rubric table. | **Lineage and current FPF reference use.** Pattern-language practice is retained as lineage and problem pressure; current FPF `E.8` supplies the governing publication-form rules for recognition text, first useful move, worked cases, and relations. | The publication form keeps recognition text and first evaluation use before coordinate tables. | `E.8.ECSPF` does not replace `E.8`; it specializes it for evaluation-characteristic-space patterns. |
+
+### E.8.ECSPF:12 - Relations
+
+| Pattern | Relation |
+|---|---|
+| `E.8` | Governs the canonical FPF authoring form. `E.8.ECSPF` specializes that form for evaluation `CharacteristicSpace` pattern publication forms. |
+| `A.19.ECS` | Constructs or repairs the evaluation `CharacteristicSpace`. `E.8.ECSPF` authors the FPF pattern publication form for the selected specification when FPF reuse is selected. |
+| `A.19`, `A.17`, `A.18`, `C.16` | Govern `CharacteristicSpace`, characteristic, scale, coordinate, and measurement admissibility. |
+| `E.21` | Evaluates quality of the authored FPF pattern publication form. It does not replace the evaluation for one evaluated object kind. |
+| `E.22` | Frames one quality evaluation using the evaluation published by the publication form. |
+| `E.23` | Runs repeated improvement using the evaluation published by the publication form. |
+| `E.9.DA`, `E.2.DA`, `F.18`, `C.25` | Existing or candidate evaluations that may use this authoring specialization when their publication-form is being written or refreshed. |
+| `A.10`, `B.3`, `A.20`, `A.21`, `A.15` | Govern evidence, assurance, gate, decision, and work claims when an evaluation result is reused for those purposes. |
+| `C.18`, `C.19`, `G.5`, `G.9`, `G.11` | Govern OEE/NQD archive, novelty, diversity, pool, selected-set, parity, and refresh claims. |
+| `C.29` | Governs mathematical-lens use when a mathematical structure defines or justifies coordinate choice. |
+
+### E.8.ECSPF:End
+
+## E.9 - Design‑Rationale Record (DRR) Method
+
+> **Type:** Governance and authoring pattern
+> **Status:** Stable
+> **Normativity:** Normative
+
+### E.9:0 - Use this when
+
+- one proposed normative change needs an explicit by-value account of what FPF should say, why this decision is preferred, and which neighboring patterns or selected non-pattern FPF kind-reference pairs it affects
+- several patterns or selected non-pattern FPF kind-reference pairs must move together and one external decision record is needed to keep one bounded coordinated change set (one mutually dependent change set) semantically complete while enduring Core text is redistributed
+- one bounded content decision question would otherwise force authors to decide the same load-bearing answer separately across several patterns or selected non-pattern FPF kind-reference pairs
+- one deprecation, narrowing, or cross-pattern amendment must stay reviewable without reconstructing intent from patch history, chat memory, or scattered notes
+
+**Not this pattern when.** Do not use `E.9` as the permanent location of normative Core law, as a campaign or process brief, or as the main vehicle for purely editorial `Delta-0` or `Delta-1` cleanup that fits the lightweight variant in `CC-DRR.5`. Use `E.9.DA` when one concrete `DRR` already exists and the question is whether its selected answer, selected-locus obligations, source use, lexical closure, and drafting actionability are adequate for a declared downstream authoring use.
+
+### E.9:0.1 - What goes wrong if missed
+
+- Core text changes without one explicit rationale account, so later readers cannot recover which alternatives were rejected or which exclusions were intentional
+- coordinated multi-pattern amendments drift apart because the temporary selected-answer account survives only in patches, handoffs, or reviewer memory
+- future repairs overfit to local wording and silently lose Pillar, taxonomy-lens, impact-graph, practical-use, or pattern-placement discipline
+
+### E.9:0.2 - What this buys
+
+- one external decision record that states the bounded FPF change by value before Core text is rewritten
+- one minimum kernel that keeps Problem frame, Decision, Rationale, and Consequences recoverable for later review and replay
+- one temporary convergence record for coordinated changes, while keeping enduring Core text in the selected patterns and selected non-pattern FPF kind-reference pairs rather than in the DRR
+- one temporary convergence record that fixes the selected answer (the chosen content answer for the bounded content decision question) before later drafting fans out across several selected patterns or selected non-pattern FPF kind-reference pairs
+
+**First useful move.** State the bounded FPF content decision question, the selected answer, the rationale for that answer, and the selected distribution across patterns or selected non-pattern FPF kind-reference pairs before drafting or landing the Core text.
+
+**Cheap stop.** If the change is ordinary local wording repair, application of an already accepted pattern, or editorial cleanup that does not change FPF semantics, obligations, boundaries, names, admissible uses, or normative force, do not open a full DRR. Use the lighter governing pattern for the local repair: `E.17.AUD.LHR` for one overloaded local lexical head inside one publication unit, `C.2.P` for one episteme, publication, or source-use phrase requiring local epistemic precision restoration, `E.10` for general lexical repair, `F.18` only when a durable reusable name is being minted, and `E.8` for authoring-form correction. Leave `E.9` for bounded content decisions that need rationale by value.
+
+**Kind-or-boilerplate diagnostic.** When a DRR proposes wording for selected patterns, apply `F.19` to separate boilerplate from remaining content before any wording is treated as pasteable pattern prose. If the remaining content still hides wording-use, naming, relation, claim, admissible-use, selected-locus, user-action, or flow-role precision, the DRR names the applied `E.10`, `E.10.ARCH`, `F.18`, or governing pattern. Process, architecture, review, or reference boilerplate belongs in its own carrier, not in pasteable pattern prose.
+
+A DRR-proposed wording repair is not pasteable pattern prose until it carries a kind-restoration check. The DRR must show the pre-repair and post-repair object kind, relation or claim kind, slot or use-position, admissible use, and scope, or explicitly decide that the change is a semantic change rather than an editorial repair. A nicer head word, shorter phrase, or removed trigger word is not decision evidence when it narrows a graph into a sequence, turns a method into work, widens an evidence record into assurance, treats a use-position as a new kind, or otherwise changes the kind or use-position without an accepted decision. When the decision depends on slot, lens, role, method, work, evidence, assurance, gate, or decision ontology, the DRR cites the governing pattern rather than redefining that ontology locally.
+
+**Primary EntityOfConcern in plain terms.** The primary EntityOfConcern here is one external decision-rationale record for one bounded FPF content decision or one bounded coordinated change set. The minimal lens is simple: the record must keep the problem frame, decision, rationale, consequences, and impact and boundary account recoverable enough that accepted content can be distributed into the selected Core patterns and selected non-pattern FPF kind-reference pairs without semantic invention.
+
+**Primary working reader.** The first working reader is an FPF author, reviewer, or steward who must evaluate, challenge, or land one bounded content decision. Downstream pattern readers benefit from the landed Core text; they are not the primary reader of the DRR itself.
+
+### E.9:1 - Problem frame
+FPF is engineered for Pillar **P‑10 Open‑Ended Evolution**: its normative
+rules must adapt as new calculi and insights arrive. But change without a
+record of *why* leads to conceptual erosion and undermines auditability.
+Hence FPF requires an explicit **Design‑Rationale Record (DRR)**—a
+durable *conceptual record* that precedes every normative change.
+
+### E.9:2 - Problem
+Direct edits to the Core, absent a structured rationale, trigger three
+systemic hazards:
+
+1. **Lost provenance** – future authors cannot infer the reasoning behind
+   a rule; intent decays.
+2. **Implicit assumptions** – discarded alternatives vanish from memory,
+   so debates resurface and churn repeats.
+3. **Conceptual drift** – incremental tweaks slip past the Eleven Pillars
+   and Principle Taxonomy lenses, blurring the framework’s foundations.
+
+### E.9:3 - Forces
+
+| Force | Tension |
+|-------|---------|
+| **Agility vs Rigour** | Evolve swiftly ↔ demonstrate deliberate, Pillar‑aligned decisions. |
+| **Transparency vs Efficiency** | Provide a public argument trail ↔ avoid bureaucratic drag on minor edits. |
+| **Clarity vs Conciseness** | Capture enough reasoning and coordinated implications ↔ prevent meta‑text from bloating the Core itself. |
+
+### E.9:4 - Solution — the DRR as a structured argument and temporary convergence record
+Any proposal to add, modify or deprecate a `NORM`, `A`, `D`, or `GOV`
+rule **MUST** be accompanied by a **Design‑Rationale Record**. By default,
+a conforming DRR contains at least four conceptual components (below);
+these form the minimum decision kernel recoverable by any conforming DRR.
+A lightweight editorial variant is permitted by CC‑DRR.5.
+
+In this pattern, a **bounded coordinated change set** means one bounded
+group of mutually dependent content decisions whose enduring FPF
+expression will be distributed across several patterns or selected non-pattern FPF kind-reference pairs.
+In this pattern, the **selected answer** means the current set of chosen
+content decisions for that bounded content decision question: what FPF should say, which
+selected patterns or selected non-pattern FPF kind-reference pairs carry it, what stays outside, and which source-use row, evidence path, validation evidence obligation, or loss/recoverability regime applies.
+In this pattern, **selected non-pattern FPF kind-reference pair** is a tuple-like instruction, not one new kind: when a DRR selects a non-pattern publication, view, record, or relation to carry durable content, it must name the FPF kind named by value and reference by value, for example pattern profile, `U.View`, source map, source-use note, `authoritySourceRef` target, evidence-path record, review-finding record, or architecture-decision record.
+In this pattern, a **temporary convergence record** means one external
+decision record that temporarily holds the selected answer while
+the selected Core patterns and selected non-pattern FPF kind-reference pairs are still being updated.
+
+A nontrivial DRR may therefore govern one bounded coordinated change set.
+In that case the DRR is the temporary convergence record for the selected
+answer until selected Core patterns and selected non-pattern FPF kind-reference pairs are updated; it is not a second
+permanent Core-law section.
+
+| Minimum-kernel component | Guiding question | Typical content |
+|-----------|------------------|-----------------|
+| **Problem frame** | *Why are we talking about this?* | Problem statement, triggering insight, intended FPF use-value, scenario grounding, or external change. |
+| **Decision** | *What will we do?* | Precise normative text, selected content distribution, explicit outside-current-decision disposition, or other substantive change law to enter the specification. |
+| **Rationale** | *Why is this the right thing?* | Comparison of alternatives, Pillar check, taxonomy-lens balance, architecture/usability/SoTA grounds. |
+| **Consequences** | *What follows from this choice?* | Expected benefits, trade-offs, impacted patterns and selected non-pattern FPF kind-reference pairs, practical gains/costs, and remaining validation evidence obligation. |
+
+#### E.9:4.1 - Minimum decision-inspection content blocks
+
+A conforming DRR must also make the following decision-inspection content blocks
+recoverable. They may appear inside the four kernel components or inside one
+dedicated `Decision grounds used` or decision-inspection block, but they are part of
+substantive DRR adequacy rather than later review-only hardening.
+
+| Decision-inspection content block | What must be recoverable by value | Usual location in the DRR |
+|---|---|---|
+| **Exact decision grounds and governing inheritance** | Exact source documents, accepted architecture records, accepted audit records, and inherited decisions that materially govern the decision, plus any remaining uncertainty not already closed by those grounds. | Header or `Decision grounds used`, with the Problem frame or Rationale carrying the decision-relevant source use. |
+| **Purpose, utility, and scenario grounding** | Intended FPF use-value, first-minute working situation, minimum scenario/anti-case grounding, and compact utility/fitness reading. | Problem frame. |
+| **Alternatives and current disposition map** | Material alternatives plus one current disposition for each content decision question this DRR must settle: `selected now`, `rejected now`, `inherited unchanged`, or `outside current decision with named pattern, selected non-pattern FPF kind-reference pair, or decision record`. When the accepted decision grounds or the DRR itself already names one pattern or selected non-pattern FPF kind-reference pair as part of the distribution question, that named pattern or selected non-pattern FPF kind-reference pair is already part of the current disposition map and must not remain one conditional watch item. | Decision and Rationale. |
+| **Content-distribution and outside-boundary map** | For each load-bearing selected answer: the positive content obligation each selected pattern or selected non-pattern FPF kind-reference pair must carry, the first subject-kind/action spine expected in drafting when a pattern is selected, which related patterns or selected non-pattern FPF kind-reference pairs stay unamended under the current decision, and any agreement across selected patterns and selected non-pattern FPF kind-reference pairs that those selected patterns and selected non-pattern FPF kind-reference pairs must preserve. Outside-boundary and non-obligation material is secondary distribution control; it must be normalized, compact, and not pasteable as copied negative doctrine or precision-restoration debt for the selected pattern Solution. Pattern applications are declarations about specific claims, relations, or boundaries. Repeated content families, ordinary references, README/ToC/E.11/I.2 navigation, package-boundary rationale, split/defer rationale, architecture placement reasoning, and phrase apparatus around simple claims stay in DRR, architecture documents, handoff, relation rows, README, ToC, `E.11`, `I.2`, or one compact local locus instead of the Solution. When proposed wording still needs precision restoration, the DRR names the selected restoration or governing pattern: `E.10`, `E.10.ARCH`, `F.18`, `F.19`, or another governing pattern. Named related patterns or selected non-pattern FPF kind-reference pairs must be classified now, not left as tentative `most likely` / `may need` / `if later touched` watch prose. | Decision. |
+| **Existing-pattern sufficiency and new-pattern necessity** | For each load-bearing selected answer, whether one already-existing pattern is sufficient, one already-existing selected non-pattern FPF kind-reference pair is sufficient, or one newly selected pattern or selected non-pattern FPF kind-reference pair is necessary, and why rejected options would misplace, overload, or falsely split the pattern or selected non-pattern FPF kind-reference pair that governs the selected answer. | Decision and Rationale. |
+| **Naming, ontology, and wrong-carrier-confusion account** | Head/branch/object/move/outside-work separation, tempting wrong-pattern assignment or wrong non-pattern FPF kind-reference assignment, and any load-bearing `F.18` naming obligation needed to keep the selected answer truthful by value. | Problem frame, Decision, and Rationale. |
+| **Reusable content-disposition when triggered** | Whether a potentially reusable selected non-pattern FPF kind-reference pair remains local, is generalized now, is rejected, or is placed outside the current decision with named pattern, selected non-pattern FPF kind-reference pair, or decision record. | Decision and Rationale. |
+| **Loss and recoverability template when source-loss or scope narrowing is declared** | Preserved distinctions, dropped distinctions, admissible use, non-admissible downstream use, recoverability class, and reopen/stop rule. | Decision and Consequences. |
+| **Selected locus and related-pattern boundary account** | Why the selected patterns and selected non-pattern FPF kind-reference pairs carry the content, which tempting patterns or selected non-pattern FPF kind-reference pairs stay outside, and which governing patterns govern specific outside claims, relations, or boundaries. | Decision and Rationale. |
+| **Convergence and overlap account when several content-decision branches touch the same carrier set** | Whether overlap is valid convergence or one reopened architecture smell, what agreement across selected patterns and selected non-pattern FPF kind-reference pairs must hold, and whether a new pattern or selected non-pattern FPF kind-reference pair is actually selected or refused now. | Decision and Consequences. |
+| **Selected-answer stability boundary** | Which elements of the selected answer are fixed now for later FPF drafting, and which later elaborations may strengthen wording, examples, source-use rows, or validation evidence without reopening the selected answer. | Decision and Consequences. |
+| **Impact, practical gains, and remaining validation evidence obligation** | Affected patterns and selected non-pattern FPF kind-reference pairs, practical gains/costs, authority or release consequences when they follow from the content decision, and the remaining validation evidence obligation that still constrains later authoring or landing. | Consequences. |
+| **SoTA and competitive-positioning account when load-bearing** | Current best-known problem-solving source lines under E.8 that discipline the decision, what problem-owning domain or practice they answer to, which official/popular/legacy alternatives they reject or bound when relevant, and what unresolved uncertainty would materially change the selected answer. | Problem frame, Rationale, and Consequences. |
+
+These decision-inspection content blocks are not separate process paperwork. A DRR that keeps
+only the four labels while leaving decision grounds, first-minute use question, naming,
+selected content distribution, pattern or selected non-pattern FPF kind-reference pair sufficiency or necessity, overlap handling, impact,
+or unresolved uncertainty implicit is structurally labeled but still
+substantively immature.
+
+Together these decision-inspection content blocks let the DRR act as one decision record
+for one bounded coordinated change set: enough semantic closure that later
+drafting distributes the selected answer into selected patterns and selected non-pattern FPF kind-reference pairs rather than
+inventing it for the first time pattern by pattern.
+
+When one bounded decision coordinates several patterns or selected non-pattern FPF kind-reference pairs, or one cluster of mutually dependent pattern edits and selected non-pattern FPF kind-reference pair edits, the DRR **MAY**
+carry additional substantive sections beyond that minimum kernel. Typical substantive additions include obligations on selected patterns and selected non-pattern FPF kind-reference pairs, one explicit
+new-pattern vs existing-pattern decision, one impact or non-goal map across selected patterns and selected non-pattern FPF kind-reference pairs, coverage or agreement maps across selected patterns and selected non-pattern FPF kind-reference pairs, convergence
+classification, and one provisional decision-law account by value that
+keeps the bounded change account semantically complete until enduring
+Core text is distributed.
+
+Such additions do not change the DRR’s kind. A DRR carrying them remains
+conforming only when it stays about the FPF content decision: what FPF should
+say, why, what is excluded, how selected patterns and selected non-pattern FPF kind-reference pairs are
+affected, and what practical use or authoring action improves. A DRR carrying richer
+convergence content **MUST NOT** become a campaign plan, process script,
+baton carrier, packet checklist, staging log, or other development-process
+brief.
+
+When one selected answer could plausibly fit one already-existing pattern or selected non-pattern FPF kind-reference pair
+or require one newly proposed pattern or selected non-pattern FPF kind-reference pair, the DRR must decide that
+sufficiency/necessity question by value. It is not enough to list a
+tentative carrier list or leave downstream drafting to discover the selected pattern or selected non-pattern FPF kind-reference pair later.
+
+When the accepted decision grounds or the DRR itself already names one pattern or
+selected non-pattern FPF kind-reference pair as part of the distribution question, that
+pattern or selected non-pattern FPF kind-reference pair is not a neutral future watch item. The DRR
+must classify it now either as one selected pattern or selected non-pattern FPF kind-reference pair
+with explicit obligation, one explicit boundary neighbor kept unchanged,
+one inherited-unchanged neighbor, or one outside-current-decision item
+with named pattern, selected non-pattern FPF kind-reference pair, or decision record. Conditional or
+time-relative pattern prose or prose for one selected non-pattern FPF kind-reference pair such as `most likely`, `may need local
+hardening`, `if later touched`, `watch later`, or one equivalent
+placeholder is non-conforming there because it marks one unmade current
+decision rather than one explicit current disposition.
+
+When accepted decision grounds expose one potentially reusable selected non-pattern FPF kind-reference pair or neighboring source-use, evidence, assurance, validation, or architecture-decision mechanism, the
+DRR must not merely note that such content already exists. It must decide
+whether that content is generalized now, kept local with a substantive
+reason, rejected, or marked outside the current decision with a named pattern, selected non-pattern FPF kind-reference pair, or decision record.
+
+When one selected answer involves source-loss mode, simplification, redaction,
+summarization, or other declared loss, the DRR must make the admissible-use template explicit by value. Explanation alone is not enough; the decision
+must say what remains preserved, what is dropped, which branch reading is admissible and which selected non-pattern FPF kind-reference pair carries it, which uses lack an admissible carrier or evidence path, what recoverability class
+applies, and what reopen or stop rule governs cases that exceed the
+declared source-loss or scope-narrowing state.
+
+A nontrivial DRR is mature enough for downstream authoring only when
+material selected-answer branch choices about the EntityOfConcern, selected patterns and selected non-pattern FPF kind-reference pairs, outside-current-decision boundary, reusable-content disposition,
+and loss/recoverability regime have already been selected, rejected,
+inherited unchanged, or placed outside the current decision with a named pattern, selected non-pattern FPF kind-reference pair, or decision record. If those choices are still missing, the DRR is still decision-grounding work
+rather than one accepted design-rationale record.
+
+The DRR lives **outside** the normative Core. An accepted DRR **SHALL** be
+landed by applying its Decision account and any stabilized enduring
+content to the relevant pattern or selected non-pattern Core kind-reference pair as explicit
+normative or informative text (the change is "in the Core"; the DRR is
+not). A richer DRR **MAY** remain the temporary convergence record while
+redistribution into selected Core patterns and selected non-pattern FPF kind-reference pairs is still incomplete, but it
+**SHALL NOT** remain the permanent sole semantic carrier once landed Core text
+exists.
+
+Authors drafting from an accepted DRR **MAY** elaborate examples,
+SoTA‑Echoing, recognition sections, local wording inside the selected patterns and selected non-pattern FPF kind-reference pairs, and neighboring fit. They **SHALL NOT** silently revise the selected answer, selected patterns and selected non-pattern FPF kind-reference pairs, outside-current-decision boundary, reusable-content disposition, or
+declared loss/recoverability regime. Any such revision **SHALL** be handled
+through one successor DRR or other named successor decision record.
+
+A `DRR` may itself be improved through `E.23`, but the `DRR` remains the selected decision record, not a full pattern draft. When SoTA is load-bearing in that improvement, it must mutate the selected answer, selected-locus obligation, boundary, example, validation obligation, or reopen condition; otherwise it is rationale-only or lineage-only for the DRR.
+
+To preserve **P‑2 Didactic Primacy** without duplicating meta‑text,
+authors landing an accepted DRR **SHOULD** distill stable and reusable
+parts of its *Rationale*, *Consequences*, and other valid convergence
+sections into the appropriate **informative** sections of the affected
+pattern(s) (Rationale, Consequences, SoTA‑Echoing, Archetypal Grounding;
+per the Pattern Template, E.8). The full DRR remains external as
+provenance.
+
+A substantive DRR is one current content decision object. It may carry
+selected content obligations only when they are part of the
+Decision or Consequences. It **MUST NOT** carry next-gate state,
+handoff/packet state, process-order state, monolith status, future campaign
+planning, or one hidden promise that the same current content decision question will be
+decided later inside the same decision object. Any undecided remainder must
+be marked outside the current decision with a named pattern, selected non-pattern FPF kind-reference pair, or decision record.
+
+#### E.9:4.1a - Process-source method admission into FPF
+
+When a `DRR` imports stable method from process-source document-carried method description into `FPF`, it must decide the admission by value rather than treating process prose as a second canon.
+
+The `DRR` names:
+
+- the process-source passage or accepted source named by value process-source decision-ground item being considered;
+- the reusable FPF method recovered from that passage;
+- the current FPF pattern, section, or accepted `DRR` that already carries the method, if any;
+- the remaining delta that current FPF does not yet carry;
+- the selected FPF pattern chosen to carry that delta;
+- process-control material excluded from FPF pattern prose, such as role dispatch, seam state, helper behavior, Git recovery, packet transport, review transport, chat cadence, and mutable release state;
+- the source-use result for that passage or decision-ground item: quote named by value, narrowed scope, instantiated case, decision-bearing use, draft-guidance source, example-only use, or retired source use;
+- any meaning loss or addition created by that source-use result: changed scope, relation, evidence path, admissible use, non-admissible use, reader use, or recoverability condition;
+- the first improved FPF use that the admitted method gives to an author, reviewer, or downstream FPF user;
+- the current disposition: selected now, inherited sufficient, rejected now, or outside the current decision with the named evaluation pattern, accepted `DRR`, or accepted decision-ground item named by value.
+
+Reusable process-source method is not limited to semio wording or pattern-authoring language. It may enter FPF only when it is separable from local process mechanics, improves FPF use, and has one exact evaluation pattern. After the method lands in FPF, process documents should cite the selected FPF pattern instead of keeping a parallel long-form rule.
+
+### E.9:5 - Archetypal Grounding (System / Episteme)
+
+| Holon flavour | DRR analogue | Minimum kernel illustrated |
+|---------------|--------------|-----------------------------|
+| **`U.System`** (physical) | Engineering Change Order for pump motor upgrade. | Context: inefficiency and plant-use problem; Decision: switch to brushless DC and update the selected control/maintenance patterns or selected non-pattern FPF kind-reference pairs; Rationale: energy gain vs cost and authority fit; Consequences: new control schema, supplier change, validation evidence obligation. |
+| **`U.Episteme`** (knowledge) | Foundational theory revision paper. | Context: conflicting data and explanatory problem; Decision: introduce new axiom and distribute its consequences into the selected theory/teaching patterns or selected non-pattern FPF kind-reference pairs; Rationale: explains legacy & new data, Pillar alignment, alternative rejection; Consequences: fresh predictions, update to curricula, downstream review obligation. |
+
+### E.9:6 - Bias-Annotation
+
+| Lens | Bias risk in DRR use | Mitigation in this pattern |
+|---|---|---|
+| **Gov** | The DRR can become a bureaucratic approval ritual rather than a decision-rationale record. | Keep `CC-DRR.5` for lightweight editorial changes and require richer DRRs only when the content decision is semantically load-bearing. |
+| **Arch** | A rich DRR can become a shadow specification that competes with the selected Core patterns and selected non-pattern FPF kind-reference pairs. | Treat the DRR as a temporary convergence aid; enduring content is distributed into the selected Core patterns and selected non-pattern FPF kind-reference pairs. |
+| **Onto/Epist** | Authors can mix content decisions, evidence paths, source-use grounds, process state, and provenance into one ambiguous object. | Require exact decision grounds and selected-answer boundaries while excluding process-order state, baton, packet, and mutable status state from the DRR. |
+| **Prag** | The method adds work before editing Core text. | Allow pointer-based DRRs and require only the selected non-pattern FPF kind-reference pairs materially needed for the selected decision. |
+| **Did** | Rationale can become too internal for later authors to use. | Distill stable rationale, consequences, anti-cases, and SoTA implications into informative pattern sections when the Core text is updated. |
+
+Scope: this bias annotation is universal for FPF semantic changes governed by `E.9`. It does not turn project-management state, helper state, or review logistics into DRR content.
+
+### E.9:7 - Conformance Checklist
+
+| ID | Requirement | Purpose |
+|----|-------------|---------|
+| **CC‑DRR.1** | Any Δ‑2/Δ‑3 semantic change set against a `NORM`, `A`, `D`, or `GOV` pattern **SHALL** be backed by an accepted DRR containing at least Problem‑frame (Context), Decision, Rationale, and Consequences. | Prevents undocumented semantic edits while setting a minimum kernel rather than an artificial ceiling. |
+| **CC‑DRR.1a** | A DRR whose proposed change is expressed as a new or revised pattern written in the standard template (E.8) **MAY** satisfy that minimum kernel by **pointing to** the corresponding pattern sections rather than duplicating prose. | Avoids “double writing” while keeping the argument recoverable. |
+| **CC‑DRR.1b (rich convergence content is permitted)** | A DRR that coordinates several patterns or selected non-pattern FPF kind-reference pairs, or mutually dependent pattern and selected non-pattern FPF kind-reference pair changes, **MAY** include additional substantive sections beyond the minimum kernel—for example obligations on selected patterns or selected non-pattern FPF kind-reference pairs, explicit new-pattern vs existing-pattern decisions, boundary/non-goal maps, coverage or agreement maps across selected patterns and selected non-pattern FPF kind-reference pairs, convergence classification, or one provisional decision-law account by value—provided that the DRR stays about the FPF content decision and **MUST NOT** become process management. | Allows one semantically sufficient convergence record for coordinated changes without forcing mid-distribution invention or extra shadow documents. |
+| **CC-DRR.1c (exact decision grounds are recoverable)** | A conforming DRR **MUST** make its exact decision grounds and governing inheritance recoverable by value, either in one dedicated `Decision grounds used` section or one equivalent header with exact source-use and rationale fields. Routing, status, and provenance records do not count unless their substantive content still governs the decision by value. | Prevents anti-telephone drift and keeps the decision inspectable against its real source-use and inheritance grounds. |
+| **CC-DRR.1d (problem-frame adequacy)** | The Problem frame **MUST** make the intended FPF use-value, first-minute working situation, minimum scenario/anti-case grounding, compact utility/fitness reading, and any load-bearing current SoTA, competitive-positioning, or inherited-decision justification recoverable by value. | Prevents a DRR from being formally labeled but pragmatically under-specified. |
+| **CC-DRR.1e (current disposition map and content obligations)** | The Decision **MUST** name the selected patterns and selected non-pattern FPF kind-reference pairs and the positive content obligations each selected pattern or selected non-pattern FPF kind-reference pair must carry by value, including the first subject-kind/action spine when a pattern is selected. For every load-bearing selected answer and for every content decision question explicitly assigned to this DRR by accepted decision grounds, the Decision **MUST** record one current disposition now: `selected now`, `rejected now`, `inherited unchanged`, or `outside current decision with named pattern, selected non-pattern FPF kind-reference pair, or decision record`. Boundary and non-obligation lists **MUST NOT** be handed to later drafting as copied negative doctrine. Distinctions already owned by strict distinction, an pattern that governs the specific claim/relation/boundary, or ToC/navigation loci **MUST** be classified as one pointer or non-carried fanout unless a documented local confusion needs a new exact stop condition. The Decision **MUST** apply `F.19` before proposing wording for selected patterns; boilerplate stays outside pasteable pattern prose, and remaining content that still hides precision must name the applied `E.10`, `E.10.ARCH`, `F.18`, or governing pattern. Pattern application and selected-locus disposition **MUST** remain declarative content distribution, not architecture-placement memo. `Owning pattern` is admissible only when the owned distinction, claim boundary, relation, row shape, or naming decision is named. When one pattern or selected non-pattern FPF kind-reference pair is already named as part of that distribution question, the Decision **MUST NOT** leave it in conditional or time-relative pattern prose or prose for one selected non-pattern FPF kind-reference pair such as `most likely`, `may need`, or `if later touched`. | Stops hidden deferral, including conditional/time-relative carrier-list wording, prevents tentative carrier-list prose from replacing real content decisions, and prevents DRR boundary maps from becoming local subject-Solution noise. |
 | **CC-DRR.1e2 (kind-restoration for proposed wording).** | When the DRR proposes changed wording for an FPF-governed phrase, the Decision **MUST** record a kind-restoration check: pre-repair and post-repair primary object kind, relation or claim kind, slot or use-position, admissible use, and scope. If the wording changes kind, narrows or widens the object, collapses several kinds into one head, treats a slot/use-position as a kind, or loses a live slot/use-position, the DRR **MUST** accept that semantic decision by value or leave the wording as a blocking finding rather than a repair. When another pattern governs that kind under repair, relation, claim, or position, the Decision cites that pattern instead of restating it. | Prevents DRR wording proposals from laundering ontology changes as editorial cleanup. |
 | **CC-DRR.1f (reusable-content disposition when triggered)** | When accepted decision grounds expose a potentially reusable selected non-pattern FPF kind-reference pair or neighboring source-use, evidence, assurance, validation, or architecture-decision mechanism, the DRR **MUST** decide whether it is generalized now, kept local with reason, rejected, or placed outside the current decision with named pattern, selected non-pattern FPF kind-reference pair, or decision record. | Prevents unexamined inheritance of local source-use publications, evidence records, assurance records, validation views, or architecture-decision relations. |
 | **CC‑DRR.1g (source-loss and recoverability template when triggered)** | If the decision declares a source-loss mode, simplification, redaction, summarization, or other source-to-rendering loss, the DRR **MUST** make explicit the preserved distinctions, dropped distinctions, admissible uses, non-admissible downstream uses, recoverability class, and reopen or stop rule. | Prevents rhetorical smoothing from masquerading as stable content. |
@@ -378,7 +1813,7 @@ The cheapest place to repair missing FPF decisions is the `DRR`, before pattern 
 
 ### E.10:0 - Use this when
 
-**What goes wrong if missed.** Precision repair turns into taste or synonym replacement. A broad head such as `support`, `surface`, `route`, `mapping`, `kind`, `basis`, `force`, `load`, `bearing`, `object`, or `record` is replaced by another broad head, while the relation, source-use relation, admissible use, or direct governing FPF pattern application remains unrecovered.
+**What goes wrong if missed.** Precision repair turns into taste or synonym replacement. A broad head such as `support`, `surface`, `carrier`, `route`, `mapping`, `kind`, `basis`, `force`, `load`, `bearing`, `object`, or `record` is replaced by another broad head, while the relation, source-use relation, admissible use, or direct governing FPF pattern application remains unrecovered.
 
 **What this buys.** `E.10` gives one cheap trigger scan before heavier repair. Ordinary wording stays ordinary, local lexical mistakes close locally, and FPF-governed wording uses the smallest pattern that can recover the governed object, relation, claim, admissible use, and remaining reader use. The result is precise enough to compose with FPF without replacing one umbrella word with another or turning every phrase into a new pattern, card, or review artifact.
 
@@ -444,16 +1879,16 @@ Classification is not closure. A conforming result must end in one of these by-v
 | Relation-like wording or relation-bearing use | Apply `A.6.P` or a retained A.6 relation specialization. | Named relation kind, slots and qualifiers, admissible relation use, blocked overread, and remaining reader use. |
 | Relation, signature, interface, role, assignment, enactment, slot, field, parameter, argument, endpoint, port, API, protocol, connector, capability, affordance, method, function, concern, interest, or role-holder wording whose current governed object or claim kind is hidden | Apply `A.6.RSIR` only when the direct governing pattern is not already clear. If the current object is already recovered, use the direct pattern instead: `A.6.P`, `A.6.5`, `A.6.0`, `A.2`, `A.2.1`, `A.15`, `A.6.M`, `A.6.F`, `A.6.A`, method and work patterns, publication and episteme patterns, evidence patterns, status patterns, gate patterns, or another governing pattern named by value. | Recovered project concern, current EntityOfConcern or claim kind, selected direct governing pattern, slot-discipline need, retained source-label use, blocked overread, and stop before minting generic `U.Interface`, a standalone role-slot ontology, `U.Concern`, `U.Interest`, or episteme-role ontology. |
 
-| Source-expression, publication, publication form, face, `PublicationUnit`, FPF-governed use, or `reading`, `read`, or `quality-read` wording whose entity or construction is not yet recovered | Apply `C.2.P` first. If the recovered entity or construction is evaluation for improvement, then use the evaluation pattern governing that evaluation claim, such as `E.22`, `E.21`, or `E.9.DA`. | Source-local meaning, publication relation set, publication-form relation when that relation is being made, EntityOfConcern, project-side FPF kind, use disposition, evaluation claim or bundle named by value when that evaluation claim is being made, adjacent overread blocked, and remaining reader use. |
+| Source-expression, publication, publication form, face, carrier, rendering, `PublicationUnit`, framework publication/access carrier, FPF-governed use, or `reading`, `read`, or `quality-read` wording whose entity or construction is not yet recovered | Apply `C.2.P` first. If the recovered construction is only publication/access exposure, use `E.17`, `E.17.AUD`, or `E.4.*` as applicable; if it is evidence, source-currentness, generated-output admission, work/reliance, or architecture/structure use, use `A.10`/`G.11`, `C.35`, `A.15.4`, or `C.30.P`/`C.33`/`C.34` after `C.2.P` recovers the carrier relation set. If the recovered entity or construction is evaluation for improvement, use the evaluation pattern governing that evaluation claim, such as `E.22`, `E.21`, or `E.9.DA`. | Source-local meaning, publication and carrier relation set, publication-form relation when that relation is being made, EntityOfConcern, project-side FPF kind, use disposition, downstream owner named by value when the carrier is evidence, currentness, generation, framework publication/access, work/reliance, architecture/structure, or evaluation, adjacent overread blocked, and remaining reader use. |
 | Ontic, ontic candidate, concept cluster, semantic area, ontological neighborhood, slot relation, schema, data structure, record, card, table, or publication-form wording whose EntityOfConcern and publication boundary are hidden | Apply `E.24.CD` when repeated material may require an ontic candidate decision; apply `E.24.PUB` when the confusion is among ontic, ontic-description episteme, publication form, view, record, card, table, schema, or data-structure expression. Use `E.24` or the direct governing pattern when the ontic or subject pattern is already recovered. | Candidate ontic cluster, EntityOfConcern, slot relation or slot-position, subject pattern, ontic-description episteme, publication form or source relation, admissible use, blocked publication-form overread, and remaining reader use. |
 | Admissibility-like, external-rule-looking, authority-looking, readiness-looking, validity-looking, pass-looking, fail-looking, or conformance-looking wording whose bearer, claim kind, source relation, value frame, bounded use, or governing pattern is hidden | Use the direct governing pattern when recoverable: evidence, assurance, gate, constraint validity, work, work plan, publication use, temporal use, source restoration, external-rule claim, pattern-quality result, state-like value, or another claim-specific pattern. If the word is only the trigger, restore by `E.10.ARCH` and the claim-specific pattern; do not mint a generic admissibility object. | Bearer, claim kind, value frame or decision class, source relation when that relation is being made, bounded admissible use, non-admissible overread, reopen or stop condition, and governing pattern; otherwise quote-only, reduced-use, or blocked-use. |
-| Method, algorithm, program, solver, proof, recipe, workflow, process, procedure, access-path, query-plan, control-strategy, method algebra, method graph, selector calculus, or programming-paradigm wording whose slot or method-side relation is hidden | Recover the slot or method relation structure before rewriting: `A.3.1 U.Method`, `MethodRelationStructure@BoundedContext` when method composition or method-family relation is current, `A.3.2 U.MethodDescription`, `A.6.0` formal-substrate declaration, `C.29` mathematical-lens use, `A.6.1` with `E.20` mechanism claim, `A.15.2 U.WorkPlan`, `A.15.1 U.Work`, `G.5` method-family registry or selector outcome, `A.10` evidence relation, quote-only source wording, or another direct governing pattern. | Pre-repair and post-repair kind or relation position, current ontic slot, relation position, use relation, or claim kind, admissible use, blocked overread, and remaining reader use. Do not replace one umbrella with `method`, `mechanism`, `algorithm`, `workflow`, or `method algebra` by taste. |
+| Method, practice, technique, algorithm, program, solver, proof, recipe, workflow, process, procedure, access-path, query-plan, control-strategy, method algebra, method graph, selector calculus, or programming-paradigm wording whose slot or method-side relation is hidden | Recover the slot or method relation structure before rewriting: `A.3.1 U.Method`, `MethodRelationStructure@BoundedContext` when method composition or method-family relation is current, `A.3.2 U.MethodDescription`, `A.6.0` formal-substrate declaration, `C.29` mathematical-lens use, `A.6.1` with `E.20` mechanism claim, `A.15.2 U.WorkPlan`, `A.15.1 U.Work`, `A.2.1` role assignment, `A.2.7` role relation structure, `A.1.1` bounded context, `C.20` discipline position, `C.36.P` when practice/technique is cultural-evolution wording, `G.5` method-family registry or selector outcome, `A.10` evidence relation, quote-only source wording, or another direct governing pattern. | Pre-repair and post-repair kind or relation position, current ontic slot, relation position, use relation, or claim kind, admissible use, blocked overread, and remaining reader use. Do not replace one umbrella with `method`, `practice`, `mechanism`, `algorithm`, `workflow`, or `method algebra` by taste. |
 | Transformation, change, pipeline, dataflow, flow, network, circuit, path, slice, workflow, process, operation, or close change-situation wording whose object or slot is hidden | Apply `A.3.4.P` first. If `U.Transformation`, `TransformationFlowStructure`, mathematical description, method, method description, mechanism, work plan, dated work, functioning relation, temporal aspect, evidence, source, publication, gate, decision, assurance, result, or quote-only source wording is already recovered, use the direct governing pattern. | Recovered transformation identity or non-transformation value, recovered slot or filler, governing pattern, retained use, blocked overread, and remaining reader use. Do not replace one source label with `flow`, `network`, `process`, `method`, `function`, or `transformation` by taste. |
 | Move-like wording such as first move, working move, next move, pattern move, project move, architecture move, local move, or readiness move whose project concern and governed value are hidden | Apply `E.10.MOVE` first unless a local governing pattern has already recovered the exact local object, such as A.16 language-state move, C.24 `nextPlannedAction`, or C.30 architecture candidate use. | Recovered project concern; source-use class; direct governed value such as `PatternUseRecommendation@Context`, `PatternUseSequence@Context`, P2W carry-through, WorkPlan, `WorkEntryReadiness@Context`, GateDecision, performed `U.Work`, A.16 local move, C.24 next action, C.30 architecture candidate use, ordinary prose, quote-only wording, or blocker. Do not mint root `U.Move`. |
 | Declarative representation wording overread as imperative action, method, work, deontic permission, work authorization, release authorization, evidence, or pattern dispatch: graph path, path slice, flow valuation, evidence-path wording, state predicate, SQL-like query, checklist predicate, table, dashboard, publication face, mathematical representation, method-description representation, source-chain relation, file path, or FPF pattern relation | Apply `C.2.P.DR` unless the direct governing pattern already closes the repair. Accepted direct cases include `E.18` graph path or `PathSlice`, `A.10 evidence relation or evidence-provenance relation for a claim, effect, or use`, `A.19.SPR` state predicate or value, `E.17` publication face, `C.29` mathematical-lens use, `A.3.1` method, `A.3.2` method description, `A.15.2` work plan, `A.15.1` work occurrence, carrier file path, source-chain relation, and declarative pattern relation under `E.8` or `F.19`. | Encountered representation, representation kind, represented object or claim, source expression or publication face when that relation is being made, tempting imperative overread, recovered governing pattern, admissible use now, non-admissible overread, stop or reopen condition. |
 | Architecture or structure wording with hidden selected structure, `ArchitectureOf@Context` relation, architecture-description use, structural-view use, source-return condition, or named C.30 subcase | Apply `C.30.P`. If `A.22`, `C.30`, `C.30.ASV`, or a named C.30 subpattern is already recoverable, use it directly. | Recovered selected structure, `ArchitectureOf@Context`, architecture description, structural view, source-return condition, governing-pattern result, or stop. |
 | Holon, system, episteme-as-holon, collection, part-whole, multilevel, interlevel, boundary, interaction, functioning, capability, emergence, BOSC, MHT, MET, MFT, `post`-like, or promotion-like wording whose object kind, part-whole relation, boundary-crossing relation, transformation relation, architecture relation, ethical conflict relation, or admissible-use boundary is hidden | Recover the object kind and relation first. Use `B.2.P` only for emergence-family, MHT-family, MET-family, MFT-family, synergy, metric-mirage, whole-reidentification, and collection wording entangled with those ambiguities. After recovery use the direct governing pattern: `A.1` for the holon or system claim, `C.2.1` or the publication pattern named by value for episteme and publication claims, the part-whole or collection governing pattern named by value, `B.2` for whole reidentification, `B.2.2` for result-system MHT, `B.2.3` for result-episteme MHT, `B.2.4` for capability or functioning whole reidentification, `B.2.5` for supervisor-subholon feedback relation, `A.3.4.P` for transformation wording, `A.6.F` for functioning or capability-like wording, `C.30`, `C.30.ASV`, `C.30.LCA`, `C.30.ILC`, `C.30.STRAT`, `D.2`, `D.3`, `D.4`, or another governing pattern named by value. | Recovered holon, system, episteme, collection, part-whole relation, boundary-crossing relation, transformation relation, architecture relation, supervisor-subholon feedback relation, interlevel ethical conflict, mediation use, source-label repair, admissible use, non-admissible overread, and stop. Do not mint `U.Level`, `U.SystemLevel`, `U.HolonLevel`, `U.Frustration`, `U.Emergence`, or treat owner selection as procedural control flow. |
-| Culture, cultural evolution, style, tradition, genre, scene, technique, practice, platform, regime, measurement regime, attractor, developmental machinery, or close cultural-evolution wording whose current object is hidden | Immediate disposition: recover the current object first: method family, work family, role assignment, discipline, canon or memory episteme, recognition or selection regime, mediation system or architecture, measurement or visibility relation, publication label, variant set, dynamics or mathematical-lens claim, bounded context, development-loop relation, or cultural-evolution case. Use `C.36` when a collective-holon or discipline-facing cultural-evolution case is current; use `C.36.P` for repeated wording-use recovery; use `F.17`, `F.18`, and `F.9` for durable terms and bridges; use `A.3.1`, `A.3.2`, `A.15`, `C.20`, `C.23`, `A.3.3`, `C.27`, `C.29`, `C.18`, `C.19`, `G.5`, `G.11`, `E.18.1`, `C.22.2`, `C.16`, `A.19`, or `C.11` according to the recovered object. | One root cultural ontology by source word, root `U.Culture`, `U.Style`, `U.Tradition`, `U.Practice`, `U.Platform`, `U.PlatformRegime`, `U.MeasurementRegime`, `U.DevelopmentalMachine`, loose style-as-attractor ontology, or one umbrella replacement word. |
+| Culture, cultural evolution, style, tradition, genre, scene, technique, practice, platform, regime, measurement regime, attractor, developmental machinery, or close cultural-evolution wording whose current object is hidden | Immediate disposition: recover the current object first: method family, work family, role assignment, discipline, canon or memory episteme, recognition or selection regime, mediation system or architecture, measurement or visibility relation, publication label, variant set, dynamics or mathematical-lens claim, bounded context, development-loop relation, or cultural-evolution case. Use the method-like row above when `practice` or `technique` is just the ordinary word for a way of doing; use `C.36` when a collective-holon or discipline-facing cultural-evolution case is current; use `C.36.P` for repeated wording-use recovery; use `F.17`, `F.18`, and `F.9` for durable terms and bridges; use `A.3.1`, `A.3.2`, `A.15`, `C.20`, `C.23`, `A.3.3`, `C.27`, `C.29`, `C.18`, `C.19`, `G.5`, `G.11`, `E.18.1`, `C.22.2`, `C.16`, `A.19`, or `C.11` according to the recovered object. | One root cultural ontology by source word, root `U.Culture`, `U.Style`, `U.Tradition`, `U.Practice`, `U.Platform`, `U.PlatformRegime`, `U.MeasurementRegime`, `U.DevelopmentalMachine`, loose style-as-attractor ontology, or one umbrella replacement word. |
 | External holon-class or Holon Graph Architecture (HGA) graph-expression wording such as `AgentHolon`, `OrganisationHolon`, `DataHolon`, `ProcessHolon`, `Portal`, `Projection`, event envelope, provenance, target holon, projection envelope, projected content, envelope, payload, RDF graph, node, edge, traversal, or boundary-governed payload whose FPF object is hidden | Recover the claim before importing the source label. Use `A.1` for admitted system or holon claims; `C.2.1`, `E.17`, architecture-description, publication, source, or evidence owners for data, document, projected content, description, publication, view, or evidence claims; `A.10`, source-relation, evidence-relation, dated-work, or publication owners for event and provenance claims; `A.3.4.P`, method owners, work-plan owners, or work owners for process-like wording; `A.6.RSIR`, `A.6.P`, `A.6.0`, `A.6.5`, `A.6.M`, `A.6.C`, `A.6.8`, or policy owners for portal, access, traversal, boundary-crossing, signature, module-interface, service-access, protocol, agreement-like, or evidence-relation claims; `C.29`, `A.22`, `C.30.ASV`, `C.30.AD`, `E.17`, or source/publication owners for graph, RDF, node, edge, or traversal expression claims; use `A.6.B` only for L, A, D, or E statement classification inside a boundary package. | W3C Community Group Holon Graph Architecture (HGA) vocabulary is retained as a serious source cue or comparison term only after the recovered FPF object is named and differences from FPF are explicit. Do not mint source-class U-kinds such as `U.AgentHolon`, `U.DataHolon`, `U.ProcessHolon`, `U.Portal`, `U.Projection`, `U.Envelope`, or `U.Payload`; do not turn semantic-web class names or graph-expression vocabulary into FPF ontology. |
 | Markov blanket, Markov border, computational boundary, boundary leak, or active-inference boundary wording whose object kind or claim kind is hidden | Recover whether the source phrase names accepted local Markov dynamics, a mathematical or probabilistic lens, holon delimitation, boundary-crossing relation, relation precision, signature or slot declaration, interface, interface module, functional element, physical component, boundary description or publication, boundary-package statement classification, or agency-threshold claim. | Use `A.3.3`, `C.29`, `C.26`, `C.26.3`, `A.1`, the direct relation owner, `A.6.RSIR`, `A.6.P`, `A.6.0`, `A.6.5`, `A.6.M`, `A.6.F`, `A.14`, `C.13`, `B.3.5`, `C.30.AD`, `E.17`, `A.13`, `A.19`, or `C.16` according to recovered claim; use `A.6.B` only for L, A, D, or E statement classification inside a boundary package. Do not mint `U.MarkovBlanket`, generic `U.Boundary`, generic `U.Interface`, or binary `U.Agent`; do not collapse statistical separation, physical boundary, interface module, description, boundary-package classification, and agency threshold. |
 | Stratification or structure-source-label wording such as `layer`, `level`, `tier`, `stack`, `ladder`, `rung`, `block`, `expert`, `cache`, `router`, or `gate` when the FPF kind under repair, relation, claim-use, or source-use disposition is not yet recovered | Apply `C.30.STRAT` first. If a control-layer relation, module-interface relation, architecture-to-`TransformationFlowStructure` relation, mathematical scale relation, coarse-graining relation, publication relation set, gate relation, or other governed use named by value is already recovered, use that governing pattern directly. | Recovered FPF kind, relation, claim-use, source-use disposition, and governing pattern; `StratificationSourceLabelRepairNote`; ordinary source label; quote-only, reduced-use, or blocked-use disposition; or stop. |
@@ -515,13 +1950,13 @@ They are words that must trigger kind recovery when they carry ontology, authori
 | `context`, `scope`, `frame` | bounded context, project operational context, review context packet, source context, reference frame, viewpoint frame, or claim scope | world, situation, authority, authority-reference status, or hidden qualifier |
 | `state`, `status`, `posture`, `readiness`, `stance`, `currentness`, or close state-family compounds | state-like claim over a named bearer, state frame or governing pattern, value or classification, admissible use, non-admissible overread, and reopen condition; apply `A.19.SPR` when hidden | maturity adjective, authority, gate passage, deontic permission, release authorization, evidence, assurance, source authority, work completion, or process state by appearance |
 | `claim`, `claim content`, `claim referent` | claim node or claim content in a claim-bearing episteme, claim-bearing publication, admissibility target, EntityOfConcern, or referent relation | sentence, opinion, text fragment, document with named source-basis, evidence-basis, architecture-basis, or review-basis relation/use, or whole publication unit |
-| `evidence`, `witness`, `ground`, `proof` | evidence record or evidence/provenance relation, witness, grounding relation, source pin, observation, validation result, or assurance argument component | authority, approval, gate, engineering justification, or truth by label |
+| `evidence`, `witness`, `ground`, `proof` | evidence record, evidence relation, evidence-provenance relation, witness, grounding relation, source pin, observation, validation result, or assurance argument component | authority, approval, gate, engineering justification, or truth by label |
 | `authority`, `permission`, `approval`, `commitment`, `obligation` | role assignment, speech act, commitment record, authority relation, gate record, decision record, or policy claim | visible label, author confidence, reviewer praise, explanation, or provenance mark |
 | `admissible`, `lawful`, `legal`, `legality`, `allowed`, `permitted`, `authorized`, `valid`, `pass`, `ready`, `conformant`, `eligible`, or close admissibility-like compounds | claim-specific value, gate decision, constraint-validity result, evidence or assurance use, source-currentness relation, work-plan readiness, dated-work result, external-rule claim, publication-use boundary, state-like value, pattern-quality result, or bounded admissible use whose bearer, source relation, value frame, non-admissible overread, reopen condition, and governing pattern are named | generic deontic permission, generic authorization, external-rule truth, gate passage, evidence strength, release decision, work completion, source authority, or conformance by label alone |
 | `algorithm`, `program`, `solver`, `proof`, `recipe`, `method`, `workflow`, `process`, `procedure`, `access path`, `query plan`, `control strategy`, `method algebra`, `method graph`, `selector calculus`, or programming-paradigm labels | `U.Method` as semantic way of doing, `MethodRelationStructure@BoundedContext` when method-side relations or compositions are current, `U.MethodDescription` as episteme describing a method or method relation structure, `U.Signature(profile=FormalSubstrate)`, mathematical-lens use, `U.Mechanism` declaration or realization, `U.WorkPlan`, dated `U.Work`, method-family registry or selector outcome, evidence relation, control relation, source quote, or another direct governing pattern selected by current ontic slot, relation position, use relation, or claim kind | one generic method, software-only algorithm, method algebra as root object, mechanism by default, performed work by description, or instruction sequence by representation style |
 | `transformation`, `change`, `pipeline`, `dataflow`, `flow`, `network`, `circuit`, `path`, `slice`, `workflow`, `process`, `operation`, or close change-situation labels | apply `A.3.4.P` when wording points to a situation of change; recover `U.Transformation`, transformed object, transformer or system-in-context, method, method description, mechanism, work plan, dated work, functioning or functional structure, `TransformationFlowStructure`, mathematical description, dynamics, temporal aspect, evidence, source, publication, gate, decision, assurance, result, quote-only source wording, or another direct governing pattern by value | one source-label ontology, generic flow or network head, continuity by source label alone, graph proof, path proof, method by default, work by default, function by default, or transformation occurrence by wording alone |
 | `holon`, `system`, `episteme`, `collection`, `level`, `boundary`, `interaction`, `functioning`, `capability`, `emergence`, `BOSC`, `MHT`, `MET`, `MFT`, `post`, `promotion`, or close multilevel-holon labels | recover the object kind and relation being claimed: system holon, episteme holon, collection relation, part-whole relation, grounding holon, boundary-crossing relation, transformation relation, functioning or capability relation, architecture relation, control relation, supervisor-subholon feedback relation, interlevel ethical conflict, mediation use, source-label repair, or quote-only source wording. Use `B.2.P` only for emergence-family, MHT-family, MET-family, MFT-family, synergy, metric-mirage, whole-reidentification, and collection wording entangled with those ambiguities; then use `A.1`, `C.2.1`, the part-whole or collection governing pattern named by value, `B.2`, `B.2.2`, `B.2.3`, `B.2.4`, `B.2.5`, `A.3.4.P`, `A.6.F`, `C.30`, `C.30.ASV`, `C.30.LCA`, `C.30.ILC`, `C.30.STRAT`, `D.2`, `D.3`, `D.4`, or the direct governing pattern named by value | generic holon hierarchy, system-only architecture, episteme-as-document collapse, false level kind, boundary-as-proof, interaction-as-part-whole, emergence as proof word, MHT/BOSC/MET/MFT as free heuristic, generic loop owner, promotion as process travel, or `post` as an unexplained new phase |
-| `culture`, `cultural evolution`, `style`, `tradition`, `genre`, `scene`, `technique`, `practice`, `platform`, `regime`, `measurement regime`, `attractor`, `developmental machinery`, or close cultural-evolution labels | Detailed trigger repair after the immediate disposition row has selected the current object: recover method family, work family, role assignment, discipline, canon or memory episteme, recognition or selection regime, mediation system or architecture, measurement or visibility relation, publication label, variant set, dynamics or mathematical-lens claim, bounded context, development-loop relation, or cultural-evolution case before use. Apply `C.36` for cultural-evolution cases, `C.36.P` for repeated wording-use recovery, `F.17`, `F.18`, and `F.9` for term and bridge work, and the direct governing pattern for method, work, discipline, dynamics, archive, selected-set, choice, measurement, architecture, or refresh claims. | root culture or style kind by label, platform or regime as root ontology, loose attractor metaphor as dynamics claim, genre tree as proof of cultural identity, or replacing one broad source word with another broad FPF-looking word |
+| `culture`, `cultural evolution`, `style`, `tradition`, `genre`, `scene`, `technique`, `practice`, `platform`, `regime`, `measurement regime`, `attractor`, `developmental machinery`, or close cultural-evolution labels | Detailed trigger repair after the immediate disposition row has selected the current object: recover method family, work family, role assignment, discipline, canon or memory episteme, recognition or selection regime, mediation system or architecture, measurement or visibility relation, publication label, variant set, dynamics or mathematical-lens claim, bounded context, development-loop relation, or cultural-evolution case before use. If `practice` or `technique` is only the ordinary word for a way of doing, use the method-like recovery row and `A.3.1` route first. Apply `C.36` for cultural-evolution cases, `C.36.P` for repeated wording-use recovery, `F.17`, `F.18`, and `F.9` for term and bridge work, and the direct governing pattern for method, work, discipline, dynamics, archive, selected-set, choice, measurement, architecture, or refresh claims. | root culture or style kind by label, platform or regime as root ontology, loose attractor metaphor as dynamics claim, genre tree as proof of cultural identity, or replacing one broad source word with another broad FPF-looking word |
 | `route`, `path`, `workflow`, `lifecycle`, `dispatch`, `exit`, `receiver`, `call`, `invoke`, `run`, `flow`, `EvidencePath`, or close movement and control metaphors over representations or pattern relations | `C.2.P.DR` repair, `E.18` graph path or `PathSlice`, `A.10 evidence relation or evidence-provenance relation for a claim, effect, or use`, state predicate, checklist predicate, SQL-like query, table representation, dashboard representation, publication face, source-chain relation, carrier file path, mathematical-lens use, method claim, method-description claim, work plan, dated work occurrence, or declarative FPF pattern relation under `E.8` or `F.19` | imperative program, action route, deontic-permission route, work-authorization route, release-authorization route, evidence route, pattern dispatch, or work sequence unless that governing kind is recovered by value |
 | `profile`, `harness`, `catalog`, `registry`, `index`, `map` | profile with a named source-basis relation, evidence-basis relation, architecture-basis relation, or review-basis relation/use; review harness; entry index; registry record; source-reference map with a named map kind; navigation index; catalog publication; benchmark harness; publication form; companion publication; publication-companion relation; or governing record named by value | governing FPF pattern, governing source, ontology, method, or release decision unless named by value |
 | `entry`, `front door`, `corridor`, `route` | navigation aid, recognition entry, navigation-bearing publication, corridor overview, or movement, control, and temporal relation | governing pattern body, mandatory process sequence, release readiness, or proof that the target publication or target record is complete |
@@ -637,7 +2072,7 @@ Split `target` into EntityOfConcern, target `U.Episteme`, review target, governi
 
 Generic `object` and `target` are not final recovered kinds. Keep them only when the sentence is explicitly declaring a variable slot, such as `ObjectKindUnderImprovement`, `ObjectVersionUnderImprovement`, `ObjectVersionUnderQualityEvaluation`, `review target`, or one named relation endpoint whose endpoint kind is supplied by value nearby. When the kind named by value is known, write the kind named by value: FPF pattern version, `DRR`, FPF corpus slice, publication form, `PublicationUnit`, file carrier, system carrier, declared transformation result, candidate proposal, evidence or provenance relation, gate decision, work plan, method description, object-under-improvement evaluation, or another named FPF kind.
 
-Do not recover an FPF pattern, publication form, `PublicationUnit`, pattern body, or view as a `carrier`. Use `carrier` only for the system, medium, file, rendering, or transport object that bears or renders a publication or symbol. If the text means the FPF pattern publication form, write `FPF pattern publication form`; if it means the file or rendered medium, write file carrier, system carrier, rendering, or another carrier kind named by value.
+Do not recover an FPF pattern, publication form, `PublicationUnit`, pattern body, or view as a `carrier`. In C.2.1+ the Tech kind is `U.PresentationCarrier`; ordinary carrier wording names a publication-side relation to the system, medium, file, rendering, front-end, or transport object that bears or renders a publication or symbol. If the text means the FPF pattern publication form, write `FPF pattern publication form`; if it means the file, rendered, front-end, or transport side, write file carrier, rendering, front-end relation, transport carrier, or another carrier relation named by value.
 
 Common repair examples:
 
@@ -1284,7 +2719,7 @@ The retained clauses below apply only within that selected problem and only inso
 > **Rule V‑0 (Strata).** Every lexical item in a conformant text belongs to exactly one **stratum**:
 
 1. **Kernel** — admitted `U.*` names, core relation kinds, invariants (e.g., `U.Holon`, `U.Role`, `U.Method`, `U.Work`, `U.PromiseContent`).
-2. **Extension patterns** — CAL, LOG, and CHR exports (e.g., **Sys‑CAL**, **KD‑CAL**, **C.9 Agency Characteristic Profile**) that **extend** but do not override Kernel.
+2. **Extension patterns** — CAL, LOG, and CHR exports (e.g., **Sys‑CAL**, **KD‑CAL**, **Agency‑CHR**) that **extend** but do not override Kernel.
 3. **Context** — a **`U.BoundedContext`** with its **Glossary, Invariants, Roles**, and **Bridges** (local Context of meaning).
 4. **Instance** — concrete identifiers (holders, role assignments, works, carriers).
 
@@ -1314,13 +2749,13 @@ The retained clauses below apply only within that selected problem and only inso
 * **Extension:** Apply the same morphology to non-method EntitiesOfConcern where appropriate: `TransformationFlowStructureDescription`, `TransformationFlowStructureSpec`, `SystemDescription`, and `SystemSpec`.
 * **Do:** `SamplingMethod` - `SamplingMethodDescription` - `SamplingMethodSpec`.
 * **Don’t:** `SamplingAlgorithm` (when it is just prose), `SamplingProcessSpec` (head not signalling kind).
-**Onto3 — Roles, RoleAssignments, and episteme-symbol carriers (holonic)**  *(ref. A.2, A.2.1, F.4, and F.5)*
-* **Rule:** A work-facing role value may use a Tech label ending in **`…Role`** and is described through **F.4 Role Description**, e.g., `SafetyOfficerRole`, `ReviewerRole`. Role-characteristic spaces, role-state relations, and role relation structures are separate governed values; they are not hidden inside the role name. The concrete assignment relation is a **`U.RoleAssignment`** with explicit `holderRef`, `roleRef`, `boundedContextRef`, and optional `windowRef`; do not use a compact role-assignment display string as the normative model. **Carrier** is **reserved for a system that carries or makes available a symbol of episteme** (`U.Episteme`, `Tradition`, `Lineage`, `Profile`, repertoire) **independent of any concrete role assignment**, e.g., `LeanTraditionCarrier`, `CalibrationLineageCarrier`. Avoid **`Artefact`** as a head in the kernel: it is ambiguous between an episteme-symbol carrier, a system made by a transformer, or an episteme abstracted from its carrier.
+**Onto3 — Roles, RoleAssignments, and carrier-relation separation (holonic)**  *(ref. A.2, A.2.1, F.4, F.5, C.2.1+, C.2.P, E.17, A.10, and C.35)*
+* **Rule:** A work-facing role value may use a Tech label ending in **`…Role`** and is described through **F.4 Role Description**, e.g., `SafetyOfficerRole`, `ReviewerRole`. Role-characteristic spaces, role-state relations, and role relation structures are separate governed values; they are not hidden inside the role name. The concrete assignment relation is a **`U.RoleAssignment`** with explicit `holderRef`, `roleRef`, `boundedContextRef`, and optional `windowRef`; do not use a compact role-assignment display string as the normative model. **Carrier** is not a free holon/system kind. In Tech use, recover the governed carrier relation: `U.PresentationCarrier` or `PresentationCarrierSlot` when C.2.1+ publication/presentation discipline is current; file, transport, rendering, front-end, or access-carrier relation under `E.17`; evidence or source-currentness carrier under `A.10`/`G.11`; generated or produced carrier under `C.35`; or a named episteme-symbol carrier relation only when a tradition, lineage, profile, repertoire, or other episteme is made available independently of any role assignment. Avoid **`Artefact`** as a head in the kernel: it is ambiguous between a carrier relation, a system made by a transformer, or an episteme abstracted from its carrier.
 * **Register note:** Job titles (`Reviewer`, `Owner`, `Lead`) belong in the **Plain** register and MUST twin-map to explicit Tech `…Role` tokens.
-* **Why:** This resolves inconsistent “role carrier” and “role-assigned holon/system” usage: use **`U.RoleAssignment`** for the contextual assignment of a holon/system to a `…Role`; keep **“Carrier”** for the system that carries or makes available a symbol of episteme.
-* **Rewrite note.** `…CarrierRole` used for a role-assigned holon/system **MUST be rewritten** to an explicit `U.RoleAssignment(holderRef=..., roleRef=...Role, boundedContextRef=..., windowRef?=...)`. Use SCR-LEX to enforce the rewrite.
-* **Do:** `ReviewerRole` (or `AssessorRole`), `U.RoleAssignment(holderRef=TeamAlpha, roleRef=ReviewerRole, boundedContextRef=JournalIssue42Context)`; `LeanTraditionCarrier (U.Holon)`, independent of any particular role assignment.
-**Don’t:** `Reviewer` (as a U-kind), `ReviewerCarrier` (to mean a role-assigned holon/system), `SystemReviewer` (role collapsed into a system kind).
+* **Why:** This resolves inconsistent “role carrier”, “role-assigned holon/system”, and generic carrier-kind usage: use **`U.RoleAssignment`** for the contextual assignment of a holon/system to a `…Role`; use `U.PresentationCarrier` or another direct owner only for the recovered carrier relation.
+* **Rewrite note.** `…CarrierRole` used for a role-assigned holon/system **MUST be rewritten** to an explicit `U.RoleAssignment(holderRef=..., roleRef=...Role, boundedContextRef=..., windowRef?=...)`. Any `…Carrier` KernelToken must name the direct owner and relation it uses, or be rewritten through `C.2.P`/`E.10.D2`. Use SCR-LEX to enforce the rewrite.
+* **Do:** `ReviewerRole` (or `AssessorRole`), `U.RoleAssignment(holderRef=TeamAlpha, roleRef=ReviewerRole, boundedContextRef=JournalIssue42Context)`; `LeanTraditionCarrier` only when declared as an episteme-symbol carrier relation over a holon independent of any particular role assignment.
+**Don’t:** `Reviewer` (as a U-kind), `ReviewerCarrier` (to mean a role-assigned holon/system), `SystemReviewer` (role collapsed into a system kind), or `Carrier` as an unstated system kind.
 **Onto4 — Domain only as a catalog mark**  *(ref. E.10.D1 D.CTX; publish stitching on UTS)*
 * **Rule:** `Domain` is **not a kernel kind** and carries **no semantics, inheritance, or reasoning rights**. It is a **catalog mark** that groups several `U.BoundedContext` entries.
 * **Required stitching (see D.CTX and UTS).** Any use of `Domain` **MUST** present: 1. the enumerated list of `ContextId` in **D.CTX**, and 2. the corresponding **UTS strings** (F.17) with twin labels.
@@ -1360,10 +2795,10 @@ The retained clauses below apply only within that selected problem and only inso
 **Checklist before minting a KernelToken**
 * Head noun signals kind (Onto1).
 * EntityOfConcern and Description-episteme boundary and specification-use morphology correct (Onto2).
-* If role-related: **Role, RoleAssignment, and episteme-symbol carrier** separation observed; holonic scope explicit (Onto3).
+* If role-related or carrier-related: **Role, RoleAssignment, and carrier-relation** separation observed; holonic scope explicit and direct carrier owner named (Onto3).
 * Any Domain mention stitched to D.CTX and UTS; **no norms on Domain** (Onto4, Onto6).
 * Object‑of‑talk declared (Onto5).
-* SCR-LEX rewrites checked for current role-assignment and episteme-symbol carrier separation (Onto6).
+* SCR-LEX rewrites checked for current role-assignment and carrier-relation separation (Onto6).
 > **Note on registers.** Keep figurative or business-casual terms in the **Plain** register only, with strict **twin-label** links to the Tech token under current `E.10`. In the **Tech** register, speak in KL-CAL: **episteme-about-epistemes** (Tradition, Lineage, Profile), not in catalogue-admin idioms.
 
 * **Onto‑Deon — Deontic lexicon guard (Core register)**
@@ -1742,7 +3177,7 @@ Example: using a `KernelToken` in a Context constraint may require a Bridge or a
 
 **Notes.**
 1) Scope‑sensitive guards **must** declare the **Γ_time** window selector used for admission checks.
-2) Proper names of patterns and components that already include “Agent” or “Agency” (e.g., *C.9 Agency Characteristic Profile*, *Agent‑Tools‑CAL*) are permitted as **titled terms**; avoid re‑introducing “agent” as a free‑standing noun in new prose.
+2) Proper names of patterns and components that already include “Agent” or “Agency” (e.g., *Agency‑CHR*, *Agent‑Tools‑CAL*) are permitted as **titled terms**; avoid re‑introducing “agent” as a free‑standing noun in new prose.
 
 #### E.10:8.9 - LEX-CHR-STRICT — Reserve *Characteristic* for CSLC-measurable aspects
 
@@ -1779,12 +3214,12 @@ Example: using a `KernelToken` in a Context constraint may require a Bridge or a
 
 | **L‑rule**   | **Ambiguous or low-precision word (Ban)**                  | **Canonical FPF target(s)**                                                                                                                                                                     | **EntityOfConcern and Description-episteme boundary and specification-use gate**                                                                       | **TokenClass gate**                         | **Notes**                                                                                            |
 | ------------ | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **L‑PROC**   | *process*, *procedure*, *workflow*, *activity*, process-like function step, method-algebra, method-graph, or selector-calculus wording | Recover the current family before choosing the value: `A.3.4.P` for change-situation wording; `U.Method` for semantic way of doing; `MethodRelationStructure@BoundedContext` for method-side composition, substitution, iteration, fallback, selector, or method-family relation; `U.MethodDescription` for description episteme; `U.WorkPlan` for planned work window; dated `U.Work` for occurrence; `U.Transformation` or `TransformationFlowStructure` only when the transformation or transformation-flow-structure claim is named by value; `C.29` when algebraic or graph notation is the selected lens. | EntityOfConcern side for `Method`, method relation structure, `U.Transformation`, and `TransformationFlowStructure`; Description episteme for `MethodDescription` and `WorkPlan`; dated occurrence for `Work`; lens-use for method-algebra notation | Kernel or Context for types; Context for occurrences; lens/register when representation is current | “Industrial process” as **line role** -> model system plus `...Role`; chemistry in `U.Transformation`, `U.Dynamics`, or `Method` only after the claim is recovered. |
+| **L‑PROC**   | *process*, *practice*, *procedure*, *workflow*, *activity*, process-like function step, method-algebra, method-graph, or selector-calculus wording | Recover the current family before choosing the value: `A.3.4.P` for change-situation wording; `U.Method` for semantic way of doing; `MethodRelationStructure@BoundedContext` for method-side composition, substitution, iteration, fallback, selector, or method-family relation; `U.MethodDescription` for description episteme; `U.WorkPlan` for planned work window; dated `U.Work` for occurrence; role assignment or role relation when the phrase says who holds what work-facing position; bounded context when the phrase names local norms, vocabulary, or admissible moves; discipline or `C.36.P` when practice is a field, tradition, canon, or cultural-evolution label; `U.Transformation` or `TransformationFlowStructure` only when the transformation or transformation-flow-structure claim is named by value; `C.29` when algebraic or graph notation is the selected lens. | EntityOfConcern side for `Method`, method relation structure, `U.Transformation`, and `TransformationFlowStructure`; Description episteme for `MethodDescription` and `WorkPlan`; dated occurrence for `Work`; role-assignment relation; bounded context; discipline/cultural-evolution source label; lens-use for method-algebra notation | Kernel or Context for types; Context for occurrences; lens/register when representation is current | “Industrial process” as **line role** -> model system plus `...Role`; chemistry in `U.Transformation`, `U.Dynamics`, or `Method` only after the claim is recovered; “practice” is not a root kind and is not automatically `U.Method`. |
 | **L‑FUNC**   | *function*, *functional*, *functionality*, *effect* | Apply `A.6.F` first when kind or relation is hidden. Possible recovered values include `U.Capability`, `U.PromiseContent`, `U.Method`, dated `U.Work`, mathematical function or operator under `C.29`, and functional-architecture or architecture-to-`TransformationFlowStructure` relation under `C.30`, `C.30.ASV`, or `C.30.TFS-REL`. | EntityOfConcern side for Capability, PromiseContent, Method, mathematical object, architecture relation, or transformation-flow relation; dated occurrence for Work | Kernel or Context | Never use *function* as a Core type name or as default architecture meaning. |
 | **L‑SERV**   | *service* used for team, system, API, ticket, or process | Always unpack to the facet: `U.PromiseContent` (service offering or promise clause), `U.Commitment` (SLA obligation), `U.SpeechAct` (promise or offer act), `accessSpec : U.MethodDescription` (API or interface spec), **service access point** (`SystemRef`, addressable endpoint), **service delivery system** (`SystemRef`), **service delivery method** (`U.MethodDescription`), or `U.Work` (delivery run, case, or ticket). | EntityOfConcern side for PromiseContent, Commitment, and Method; Description episteme for specs; system-side for systems; run record for Work                                        | Kernel, Context, or Discriminator, per facet | “API = service” is forbidden; name the facet head phrase (A.6.8).                                                           |
 | **L‑SLA**    | *SLA* or *service level agreement* used for SLO, contract, or document | Unpack: (i) SLOs or acceptance thresholds -> `U.PromiseContent.acceptanceSpec`; (ii) binding obligation or penalty -> `U.Commitment`; (iii) packaged “the SLA” -> Contract Bundle (A.6.C); (iv) published terms -> `U.SpeechAct` + clause carrier (`U.Episteme`). | EntityOfConcern side for PromiseContent and Commitment; Description episteme for clause carriers and specs; run record for Work plus evidence | Kernel, Context, or Discriminator | Treat “SLA” as polysemic shorthand; never store it as a single type name. |
 | **L‑SCHED**  | *schedule*, *plan*, or *calendar* as execution    | `U.WorkPlan` as intent window; `U.Work` as actuals or telemetry                                                                                                                                    | Description episteme versus run record                                                                             | Context                                     | Never attach actuals to a plan.                                                                      |
-| **L‑ACT**    | *activity*, *action*, or *task* as type           | `U.Work` (execution); **steps** belong to `U.MethodDescription` (with `requiredRoles`, capability bounds)                                                                                       | run record versus Description episteme                                                                             | Context                                     | Reserve verbs: *assign* for role assignment, *admit* for role-state relation, *execute* for Work, *actuate* for System, and *approve* for SpeechAct Work. |
+| **L‑ACT**    | *activity*, *action*, *task*, or *step* as type           | Recover the governed object before choosing the value: `U.Work` for dated execution; `U.Method` only when the step is recovered as a submethod in an admitted composite method; `U.MethodDescription` when the step is a description constituent; `U.WorkPlan` when it is a planned item; `MethodRelationStructure@BoundedContext` when only order, fallback, substitution, or dispatch relation is current. | run record, method value, description episteme, plan item, or selected method relation structure | Context | Reserve verbs: *assign* for role assignment, *admit* for role-state relation, *execute* for Work, *actuate* for System, and *approve* for SpeechAct Work. |
 | **L‑AGENT**  | *agent, actor, or doer* (bare)                     | recover the acting system or holon as role-assignment holder and name the `U.RoleAssignment(holderRef, roleRef, boundedContextRef)` when a work-facing role is current; use `AgentialRole@Context` only where the role value itself is being named                                                                                                                        | system or holon plus role-assignment relation                                                                                    | Kernel or Context                              | Org titles (Owner, Operator, Reviewer) are role values assigned in a Context.                                    |
 | **L‑OWNER**  | *owner of X* (global)                             | Recover ownership wording as a work-facing role value plus `U.RoleAssignment` in a `U.BoundedContext` when actual responsibility is being assigned (e.g., `OwnerRole:ITIL_2020` assigned to a holder); otherwise recover commitment, authority, source-maintenance, or publication-use relation by direct governing pattern. | role value plus assignment relation, or the direct non-role relation | Context | No global “owner” property in Kernel. |
 | **L‑CAP**    | *capability* for assignment, recipe, run, or promise | `U.Capability` only = ability with envelope; assignments are `…Role`; recipes `U.Method` or `U.MethodDescription`; runs `Work`; promises `U.PromiseContent` (service promise clause or offering)                                                       | EntityOfConcern side, Description episteme, or run record                                                                        | Kernel or Context                              | Holder of a Capability is a `U.System`.                                                              |
@@ -1822,7 +3257,7 @@ A text **passes** LEX if all answers are **Green**:
 6. **Cross‑context reuse.** Any reuse across Contexts cites a **Bridge id** with kind, direction, congruence level, loss, and scope. Apply **A.6.9 (RPR‑XCTX)** when the published prose uses “same”, “equivalent”, “align”, “map”, or similar bridge wording.
 7. **MG-DA ok.** New or refactored tokens pass **§ 7 MG-DA** (anchored head noun; collision check; CharacteristicSpace for enums).
 8. **Morphology ok.** Suffix, prefix, and casing respect **§ 8 LEX.Morph** (e.g., `…Role`, `MethodDescription`, `Work`, reserved prefixes).
-9. **Banned tokens absent or recovered.** No *process*, *function*, *task*, or *activity* in Kernel senses unless the sentence applies the selected recovery pattern (`A.3.4.P`, `A.6.F`, work patterns, method patterns, or another governing pattern) and names the recovered value by value; no tooling or file suffixes in Kernel tokens.
+9. **Banned tokens absent or recovered.** No *process*, *practice*, *function*, *task*, or *activity* in Kernel senses unless the sentence applies the selected recovery pattern (`A.3.4.P`, `A.6.F`, work patterns, method patterns, `C.36.P`, or another governing pattern) and names the recovered value by value; no tooling or file suffixes in Kernel tokens.
 10. **State gating present (when needed).** Readiness is expressed via a role-state relation value plus **StateAssertion**, not vague “approved” or “ready”.
 
 #### E.10:9.4 - Coordination map (how LEX plugs into the rest of FPF)
@@ -2060,7 +3495,7 @@ Re-review your prose when any of these happen:
 * **Recipes gain or lose steps** → update **`MethodDescription`**, not service labels or `Role` names.
 * **Evidence verbs creep into actor sentences** → re-apply L-rules (documents do not act).
 * **A generic head or support-headed compound acquires FPF-governed claim or admissible use** (`comparative`, `safe`, `interactive`, `reliable`, `support`, `supported`, `supporting`, `support-looking`, and similar modifiers or heads) → restore the head kind first, then unpack the qualifier claim or support-like interpretation before broader publication.
-* **Method, algorithm, program, proof, solver, workflow, process, procedure, access path, query plan, control-strategy, method-algebra, method-graph, or selector-calculus wording changes** -> recover the slot or method-side relation before rewriting: `U.Method`, `MethodRelationStructure@BoundedContext`, `U.MethodDescription`, formal-substrate declaration, mathematical-lens use, `U.Mechanism`, `U.WorkPlan`, dated `U.Work`, method-family registry or selector outcome, evidence relation, or quote-only source wording. Do not replace one umbrella with another.
+* **Method, practice, technique, algorithm, program, proof, solver, workflow, process, procedure, access path, query plan, control-strategy, method-algebra, method-graph, or selector-calculus wording changes** -> recover the slot or method-side relation before rewriting: `U.Method`, `MethodRelationStructure@BoundedContext`, `U.MethodDescription`, formal-substrate declaration, mathematical-lens use, `U.Mechanism`, `U.WorkPlan`, dated `U.Work`, role assignment or role relation, bounded context, discipline or cultural-evolution source label, method-family registry or selector outcome, evidence relation, or quote-only source wording. Do not replace one umbrella with another.
 * **A declarative representation starts to sound imperative** (graph path, path slice, evidence-path wording, query, predicate, table, dashboard, publication face, mathematical representation, method-description representation, source-chain relation, carrier path, or FPF pattern relation "runs", "routes", "calls", "dispatches", "authorizes", or "flows" without a recovered kind) → apply `C.2.P.DR` or the direct governing pattern such as `E.18`, `A.10`, `A.19.SPR`, `E.17`, `C.29`, `A.3.1`, `A.3.2`, `A.15.2`, `A.15.1`, `E.8`, or `F.19`.
 * **New token minted** → ensure `LEX.TokenClass` declared; perform collision checks; add CharacteristicSpace if enum.
 * **Suffix drift** (e.g., `…Work` on a plan) → fix via **LEX.Morph**.
@@ -3058,7 +4493,7 @@ If any condition is absent, use `...Description` and state the live criteria inf
 
 #### E.10.D2:4.1.4 - Publication, carrier, and work boundary
 
-`U.Carrier` encodes an episteme. A publication face, publication form, or publication unit makes an episteme available. A rendering, UI rendering, or front-end view displays it. A work occurrence uses it or acts under it. None of those relations changes the EntityOfConcern or upgrades a Description episteme to specification use by itself.
+`U.PresentationCarrier` or another explicitly named carrier relation bears, encodes, transports, or renders an episteme publication; it is publication-side in C.2.1+ rather than a semantic part of `U.Episteme`. A publication face, publication form, or publication unit makes an episteme available. A rendering, UI rendering, or front-end view displays it. A work occurrence uses it or acts under it. None of those relations changes the EntityOfConcern or upgrades a Description episteme to specification use by itself.
 
 ### E.10.D2:5 - Naming discipline
 
@@ -3150,7 +4585,7 @@ The main bias is entity-description collapse: readers let a description, publica
 | **Entity-description collapse** | "The method is the document"; "the architecture is the diagram"; "the role contains the checklist". | Name the EntityOfConcern, then name the Description episteme or publication relation separately. |
 | **Spec by name** | Any detailed write-up is called `...Spec`. | Use `...Description` unless specification-use admission conditions are present. |
 | **Publication as authority** | A card, dashboard, schema, generated view, or file is treated as permission, evidence, gate, assurance, decision, or work. | Apply the neighboring pattern that governs the exact claim being made; keep the publication relation separate. |
-| **Carrier identity** | The file path or repository entry is treated as the episteme or EntityOfConcern. | Say the carrier encodes or renders the episteme. |
+| **Carrier identity** | The file path or repository entry is treated as the episteme or EntityOfConcern. | Say the `U.PresentationCarrier` or carrier relation bears, encodes, transports, or renders the publication, and keep the episteme and EntityOfConcern separate. |
 | **Context erasure** | A context-local Description episteme is read as a global definition. | Restore `BoundedContextRef` and `ViewpointRef`, or use F.9, A.6.3, or A.6.4 for cross-context relations. |
 | **Status-state leakage** | Evidence, requirement, approval, or standard status becomes a role-state value. | Keep statuses over epistemes distinct from role-state relations and runtime state attestations. |
 | **Episteme-role shortcut** | "The standard plays the compliance role"; "the evidence has the approval role"; "the source authorizes work". | Recover the typed relation: standard-use, evidence-use, status-use, source-use, assurance-use, gate-use, publication-use, or work-relevance relation. Use `U.RoleAssignment` only for work-facing holder-role claims. |
@@ -3249,7 +4684,7 @@ Use these repairs when live FPF prose violates this pattern:
 1. Replace old `DescribedEntity*`, `EntityOfInterest`, `EoI`, and `EoIClass` wording with `EntityOfConcern`, `EntityOfConcernRef`, `EntityOfConcernClass`, or the local FPF kind named by value. Retain old spellings only as source-side trigger wording.
 2. Replace peer-layer I-D-S wording with EntityOfConcern, Description episteme, and specification-use admission wording.
 3. Replace "contains role characteristic space, role-state relation, or checklist" with "is characterized through the Description episteme by role characteristic space, role-state relation, or checklist".
-4. Replace carrier identity with "carrier encodes" or "publication exposes" wording.
+4. Replace carrier identity with "`U.PresentationCarrier` or carrier relation bears or renders" and "publication exposes" wording.
 5. Replace generic "object under description" talk with the EntityOfConcern named by value and its `DescriptionContext`.
 6. Replace `...Spec` names that lack specification-use admission with `...Description`.
 
@@ -13103,13 +14538,13 @@ Typical moments:
 - a slot name, relation position, record field, diagram node, table column, graph expression, or publication form has acquired a `U.*` spelling;
 - a single E.24 ontic settlement appears to govern one root value plus several dependent durable values.
 
-**Primary EntityOfConcern.** The EntityOfConcern is the U-kind admission relation for one candidate `U.*`, type, kind, or subkind name. The pattern governs whether the candidate is retained as a durable U-kind, retained as a dependent durable value under a root settlement, governed by C.3 typed-reasoning law, or treated as a non-U object governed elsewhere.
+**Primary EntityOfConcern.** The EntityOfConcern is the U-kind admission relation for one candidate `U.*`, type, kind, or subkind name. The pattern governs whether the candidate is retained as a durable U-kind, retained as a dependent durable value under a root settlement, governed by C.3 typed-reasoning rules, or treated as a non-U object governed elsewhere.
 
 **Primary working reader.** The first reader is an FPF pattern author or reviewer deciding whether a public FPF name should remain `U.*`. The downstream reader is the practitioner who uses public pattern titles, headings, ToC rows, and names as orientation cues and needs those cues to point to the real governed object.
 
-**First useful move.** Recover the current governed object and the current use before judging the spelling. Then ask which existing FPF law governs the value: E.24 ontic settlement, C.3 typed reasoning, A.8 universal-core admission, A.11 parsimony, F.8 mint-or-reuse, F.5 naming, a direct subject pattern, or E.10 precision restoration.
+**First useful move.** Recover the current governed object and the current use before judging the spelling. Then ask which existing FPF rule set governs the value: E.24 ontic settlement, C.3 typed reasoning, A.8 universal-core admission, A.11 parsimony, F.8 mint-or-reuse, F.5 naming, a direct subject pattern, or E.10 precision restoration.
 
-**What goes wrong if missed.** FPF grows a shadow ontology by punctuation. A slot label becomes a kind, a publication form becomes an ontic, type and kind wording becomes active beside ontic law, and a useful title survives because it is searchable rather than because it names the governed object.
+**What goes wrong if missed.** FPF grows a shadow ontology by punctuation. A slot label becomes a kind, a publication form becomes an ontic, type and kind wording becomes active beside ontic settlement, and a useful title survives because it is searchable rather than because it names the governed object.
 
 **What this buys.** Public `U.*` names become trustworthy. Root U-kinds, dependent durable values, C.3 `U.Kind` values, Concept-Set rows, slot names, relation structures, records, publication forms, lenses, local frames, and source wording outside current FPF use are separated before naming.
 
@@ -13133,14 +14568,14 @@ The same token shape can name different kinds of things:
 - type, kind, or subkind wording whose governed value must be recovered before current FPF use;
 - a slot position, relation structure, selected structure, record form, publication form, math lens, representation lens, local frame, or source expression.
 
-E.24.UK governs that separation. It is an E.24 subpattern because U-kind admission depends on ontic settlement, but it is not the head E.24 pattern. E.24 remains the head pattern for `U.Ontic` and ontic introduction. E.24.UK owns the detailed U-kind law.
+E.24.UK governs that separation. It is an E.24 subpattern because U-kind admission depends on ontic settlement, but it is not the head E.24 pattern. E.24 remains the head pattern for `U.Ontic` and ontic introduction. E.24.UK owns the detailed U-kind admission rules.
 
 ### E.24.UK:2 - Problem
 
 Without this pattern:
 
 1. **`U.*` spelling substitutes for admission.** A public name is retained because it looks like a kind.
-2. **Unsettled type and kind wording competes with U-kind admission law.** Type, kind, subkind, Concept-Set rows, U-kind names, and E.24 ontics become overlapping ontologies.
+2. **Unsettled type and kind wording competes with U-kind admission rules.** Type, kind, subkind, Concept-Set rows, U-kind names, and E.24 ontics become overlapping ontologies.
 3. **Dependent values become root values.** A value whose identity is held by a root settlement gets treated as a new root kind.
 4. **Structural names over-admit.** Titles, filenames, headings, and ToC rows advertise kindhood more strongly than the pattern body establishes.
 5. **Slot names and lenses become objects.** Relation positions, graph expressions, tuple views, table columns, and publication forms receive `U.*` names.
@@ -13197,7 +14632,7 @@ Retain or introduce a candidate `U.*` name as a durable U-kind only if all of th
 3. The admission cites an identity, grounding, or recognition rule: direct governing pattern, C.3 membership and extent rule, Concept-Set witness set, A.6 `SubjectBlock` with `RangedValueKind`, imported signature symbol, CT2R/Compose-CAL constructive grounding for structural claims, formal-substrate or principle-frame declaration when current, or another accepted operational identity test.
 4. FPF users need to make action-facing claims about that value, not only about a wording choice.
 5. Existing root U-kinds plus slot and relation combinatorics cannot express the claim without losing reviewable distinctions.
-6. The candidate has a primary governing pattern or a selected governing pattern in the same landing set.
+6. The candidate has a primary governing pattern or another selected governing pattern in the same governed source set.
 7. The candidate has an E.24-compatible settlement: root subject, SlotRelation when needed, semanticArea, ontologicalNeighborhood, admissible use, non-use boundary, and dependent-value policy.
 8. Dependent patterns rely on this value by value or are expected to rely on it after the selected amendments.
 9. F.18 and F.17 can name and publish the term without turning a local slot label into a kernel kind.
@@ -13209,7 +14644,7 @@ If any row fails, the candidate is not admitted as a durable U-kind in the curre
 
 A root U-kind is the subject value whose identity is held by the primary settlement.
 
-A dependent durable U-kind is a reusable governed value whose identity is kept by the same primary settlement as a root U-kind, while the head pattern states the exact dependence relation and the governing pattern for the dependent value. It is not automatically:
+A dependent durable U-kind is a reusable public U-kind name for governed individual instances whose identity is kept through the same primary settlement as a root U-kind. The head pattern states the exact dependence relation and the governing pattern for those instances. It is not automatically:
 
 - a C.3 subkind;
 - a slot name;
@@ -13218,6 +14653,26 @@ A dependent durable U-kind is a reusable governed value whose identity is kept b
 - a synonym for the root;
 - a title convenience.
 
+Read the words carefully:
+
+- A **U-kind name** such as `U.WorkPlan`, `U.RoleAssignment`, `U.MethodDescription`, or `U.Capability` names a reusable governed kind admitted by this pattern and by its direct owner.
+- An **individual instance of that U-kind** is one concrete governed object under that kind, for example one work plan, one role assignment, one method description, or one holder capability. It is not a second kind named `Value`, not a slot filler by that fact, and not a record field.
+- **Dependent durable** means that the individual instance has durable identity for FPF use, but its identity is held through another settlement and declared dependence relation. It is not a root beside that settlement.
+- The dependency relation is an identity and governance relation, not parthood by default. A `U.RoleAssignment` depends on role, holder, bounded context, and window; that does not make the assignment a part of the role. A `U.Capability` may depend on a holder `U.System`; that does not make the capability a system part or a `U.Characteristic`.
+- A statement, record, evidence relation, publication, dashboard row, source expression, or fit predicate about a dependent individual remains a neighboring object unless its own governing pattern admits it as a governed object.
+- Avoid bare **value** when the contrast is kind versus instance. Use **individual**, **instance**, or **concrete governed object**. Reserve slot-filler wording for actual slot relations and record-field wording for records.
+
+Use this small reading table when authoring:
+
+| Form in prose | Ontological reading |
+| --- | --- |
+| "`U.WorkPlan` is dependent durable" | The public U-kind name is admitted, but its instances depend on method, role, time, and intended-work relations rather than forming a root beside `U.Work`. |
+| "this `U.WorkPlan` instance" | One concrete intended-work episteme or plan record governed by the work-plan pattern. |
+| "`U.RoleAssignment` is dependent" | Assignment instances depend on role, holder, bounded context, window, and work-facing use. |
+| "this `U.RoleAssignment` instance" | One concrete assignment relation, not the role, not the holder, and not performed work. |
+| "`U.Capability` is dependent" | The public U-kind name is admitted for holder-dependent capability instances under the system-holder settlement. |
+| "this `U.Capability` instance" | One concrete holder capability under envelope, measures, qualification window, and currentness condition; not the statement, evidence, currentness assessment, characteristic, Q-Bundle, architecture row, or fit predicate around it. |
+
 Examples:
 
 | Candidate | Disposition |
@@ -13225,18 +14680,18 @@ Examples:
 | `U.Episteme` | root U-kind governed by the episteme ontic settlement. |
 | `U.EpistemePublication` | dependent durable value only when the episteme/publication settlement states the dependence relation. |
 | `U.View` and `U.Viewpoint` | dependent or directly governed values under episteme and multi-view settlement, not automatic roots. |
-| `U.Method` | root U-kind for semantic way-of-doing when governed by the method pattern. |
+| `U.Method` | root U-kind for semantic way-of-doing and admitted non-agentive method holon kind when governed by `A.3.1` and direct method-composition patterns. |
 | `U.MethodDescription` | dependent value: description episteme for a method, not a C.3 subkind by default. |
 | `U.Work` | root U-kind for dated performed occurrence. |
 | `U.WorkPlan` | dependent value under method, work, role, and time settlement; it does not show that work occurred. |
 | `U.Role` | root work-facing role value under role patterns. |
 | `U.RoleAssignment` | dependent typed assignment relation value under role, holder, bounded-context, and work settlement. |
 | `RoleRelationStructure` | non-U selected relation structure unless E.24.UK evidence admits durable U-kindhood. |
-| `MethodRelationStructure` | non-U selected relation structure unless direct method-composition law admits durable U-kindhood. |
+| `MethodRelationStructure` | non-U selected relation structure for method-side relations that do not assert one `U.Method` whole assembled from method parts; direct method-composition patterns govern composite `U.Method` claims without promoting this relation structure to a U-kind. |
 
 #### E.24.UK:4.3 - Combined Admission Order
 
-Use existing law in this order:
+Use existing rules in this order:
 
 1. Recover the source use and governed EntityOfConcern.
 2. If the current question is typed claim quantification, apply C.3 and C.3.1 first. `U.Kind` is the context-local intensional value; `U.SubkindOf` is a partial-order relation over those values.
@@ -13272,7 +14727,7 @@ Then select the FPF object:
 
 | Source construct use | FPF recovery |
 | --- | --- |
-| claim quantification, membership, extent, subkind, or kind bridge | C.3 `U.Kind`, C.3.1 `U.SubkindOf`, and typed-reasoning law |
+| claim quantification, membership, extent, subkind, or kind bridge | C.3 `U.Kind`, C.3.1 `U.SubkindOf`, and typed-reasoning rules |
 | public durable FPF kind needed across patterns | E.24.UK durable U-kind admission, then E.24-compatible settlement |
 | a reusable cluster of slots, fillers, and governing relations | E.24 ontic settlement with one root subject U-kind or explicit reuse of an existing root |
 | imported formal symbol or declared range in a signature or mechanism | A.6 `SubjectBlock` with `RangedValueKind`, imported signature symbol, Concept-Set row, or admitted durable U-kind |
@@ -13320,11 +14775,11 @@ A structural title that names an action-invitation precision-restoration move as
 
 #### E.24.UK:5.3 - Dependent Durable Value
 
-`U.WorkPlan` is not performed work. It may remain a dependent durable value when the work-plan pattern states dependence on method, role, time, and intended work relations. The dependence relation is not `U.SubkindOf` unless C.3 typed-reasoning law explicitly says so.
+`U.WorkPlan` is not performed work. It may remain a dependent durable value when the work-plan pattern states dependence on method, role, time, and intended work relations. The dependence relation is not `U.SubkindOf` unless C.3 typed-reasoning rules explicitly say so.
 
 #### E.24.UK:5.4 - Type And Kind Governance Passage
 
-A passage that says a proposed type must pass A.8 or A.11 is a kernel-level U-kind admission question. A passage that says `U.Kind` and `U.SubkindOf` are used for typed reasoning remains C.3 law. A naming passage in F.5 or F.8 waits until the recovered value and admission decision are stable.
+A passage that says a proposed type must pass A.8 or A.11 is a kernel-level U-kind admission question. A passage that says `U.Kind` and `U.SubkindOf` are used for typed reasoning remains under C.3 rules. A naming passage in F.5 or F.8 waits until the recovered value and admission decision are stable.
 
 #### E.24.UK:5.5 - Lower-level Heading
 
@@ -13332,7 +14787,7 @@ A C.2.1 heading such as `U.ClaimGraph` or `U.Viewpoint` does not admit kindhood 
 
 ### E.24.UK:5.6 - Bias-Annotation
 
-This pattern blocks punctuation-bias and taxonomy-bias. A `U.*` spelling, title, filename, table row, or imported type word is not enough to create a durable FPF kind. First recover the governed object, its current use, the owning ontic or typed-reasoning law, and the slot or relation position. Only then decide whether the public name should be a root U-kind, dependent durable value, C.3 `U.Kind`, Concept-Set row, slot name, relation structure, record, publication form, lens, or local frame.
+This pattern blocks punctuation-bias and taxonomy-bias. A `U.*` spelling, title, filename, table row, or imported type word is not enough to create a durable FPF kind. First recover the governed object, its current use, the owning ontic settlement or typed-reasoning rule set, and the slot or relation position. Only then decide whether the public name should be a root U-kind, dependent durable value, C.3 `U.Kind`, Concept-Set row, slot name, relation structure, record, publication form, lens, or local frame.
 
 ### E.24.UK:6 - Conformance Checklist
 
@@ -13345,7 +14800,7 @@ This pattern blocks punctuation-bias and taxonomy-bias. A `U.*` spelling, title,
 | `CC-E24UK-5` | Structural locations retain `U.*` only with settlement evidence or direct reference to an already governed value. |
 | `CC-E24UK-6` | Non-U objects are classified as slot, relation, record, form, lens, local frame, expression, or source wording outside current FPF use, with the direct governing pattern named where the claim remains current. |
 | `CC-E24UK-7` | F.8, F.5, F.18, and F.17 are used only after the recovered value and admission decision are stable. |
-| `CC-E24UK-8` | E.24 remains the head ontic pattern; this pattern owns detailed U-kind law and does not duplicate it back into E.24. |
+| `CC-E24UK-8` | E.24 remains the head ontic pattern; this pattern owns detailed U-kind admission rules and does not duplicate them back into E.24. |
 
 ### E.24.UK:6.1 - Common Anti-Patterns and How to Avoid Them
 
@@ -13353,7 +14808,7 @@ This pattern blocks punctuation-bias and taxonomy-bias. A `U.*` spelling, title,
 | --- | --- | --- |
 | **U-dot by punctuation.** A heading or filename contains `U.` and therefore survives as a kind. | Public spelling outruns admission. | Apply the durable U-kind test; otherwise rename to the governed object. |
 | **Slot becomes kind.** `EvidenceRole`, `MethodRole`, or `DescriptionRole` is admitted because a value fills a relation position. | Slot-position label becomes a false ontology branch. | Keep SlotKind, ValueKind, RefKind, and governing pattern separate. |
-| **Source type import.** A BFO, ISO, OWL, database, or programming-language type is copied as an FPF U-kind. | Source ontology and FPF ontic law become mixed. | Use the source conversion guide and name the FPF governed object. |
+| **Source type import.** A BFO, ISO, OWL, database, or programming-language type is copied as an FPF U-kind. | Source ontology and FPF ontic admission rules become mixed. | Use the source conversion guide and name the FPF governed object. |
 | **Searchable title wins.** A memorable heading remains public even though the body governs a record, publication form, relation structure, or local frame. | Discoverability replaces ontology. | Keep the searchable phrase in entry or retrieval material if useful, and put the governed object in the public pattern name. |
 | **Dependent value promoted.** A value that depends on an existing ontic settlement is admitted as an independent root U-kind. | FPF grows duplicate roots for one ontological neighborhood. | Keep the root settlement and state the dependent durable value relation explicitly. |
 
@@ -13382,7 +14837,7 @@ The coupling rule keeps the architecture compact: a durable U-kind needs an E.24
 
 | Source line | Use in this pattern | Practical implication |
 | --- | --- | --- |
-| Foundational and applied ontology distinguish classes, individuals, relations, roles, qualities, functions, and representation forms. | Adapt: FPF does not copy one source taxonomy as U-kind law; it recovers the governed object and its admission basis. | A source `type`, `class`, or `category` becomes an FPF U-kind only after FPF admission, not by translation. |
+| Foundational and applied ontology distinguish classes, individuals, relations, roles, qualities, functions, and representation forms. | Adapt: FPF does not copy one source taxonomy as U-kind admission rules; it recovers the governed object and its admission basis. | A source `type`, `class`, or `category` becomes an FPF U-kind only after FPF admission, not by translation. |
 | Modular ontology and ontology-design-pattern practice use reusable fragments rather than one flat taxonomy. | Adopt for E.24 coupling: public durable names are backed by ontic settlement and neighboring-pattern obligations. | A durable U-kind must be usable across patterns without forcing a new taxonomy branch for every slot position. |
 | Naming and controlled-vocabulary practice separate labels from the objects they label. | Adopt through F.5, F.8, F.17, and F.18 after the governed value is recovered. | A good title can remain searchable while the body names the actual governed object and avoids false U-kind admission. |
 
@@ -27124,3 +28579,2769 @@ Each expanded entry-disambiguation case keeps recoverable:
 - **What not to infer:** a randomized procedure is not automatically counterfactual support; a simulation is not realized counterfactual data; a target-trial phrase is not proof of identification; a fairness metric is not causal fairness; a method benchmark is not comparable if methods sit on different causal rungs or estimands; and a causal support record does not by itself create a duty, promise, commitment, release gate, or admissibility predicate.
 
 ### I.2:End
+
+
+# SOURCE_FILE: Narrativization-and-Narrative-Studies-Principles-Framework.md
+---
+# Narrativization and Narrative Studies Principles Framework
+
+> **Framework family:** Domain Principle Framework
+> **Package edition ref:** `NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30`
+> **Dependency:** FPF Core, especially `A.6.3.NAR`, `A.6.3.RT`, `A.6.3.CSC`, `E.17.EFP`, `A.6.P`, `C.2.LS`, `C.2.4` through `C.2.7`, `A.16.1`, `A.16.2`, `C.16.Q`, `E.10`, `F.18`, `C.33`, `C.34`, `C.35`, `D.1` through `D.5`, `A.10`, `B.3`, `B.4`, `A.19.ECS`, `C.16`, `E.4.DPF`, `E.4.PFR`, `G.2`, `E.21`, `E.22`, `E.23`, and `G.11`
+
+Use this package as a small FPF-style Domain Principle Framework publication carrier: table of contents, readme, preface, framework context, pattern bodies, relation records, acceptance cases, and refresh route.
+
+# Table of Contents
+
+Use the Table of Contents when you already know the DPF pattern or support section you need. Use the readme when you are deciding whether narrativization work is the right entry. Use the Preface when you need the cross-cutting ideas that make the pattern set cohere. Pattern bodies contain the action-guiding text.
+
+How maps are reached during work: do not read support maps front-to-back unless you are designing or refreshing the package. During ordinary narrative work, enter a map only when a pattern relation, a low-value repair action, source-return condition, or boundary question points there.
+
+| Work trigger | Map to open | Why |
+| --- | --- | --- |
+| The narrative route is architecture-mediated, uses views and viewpoints, candidate structures, structural-information capture, correspondence, or actual-structure feedback. | Architecture and Narrative Work Bridge | Translate narrative wording into the relevant FPF architecture owners without making Core depend backward on this DPF. |
+| Style, hook, cue, coarsening, explanation, relation wording, quality wording, or precision restoration becomes load-bearing. | Semiotic And Language-Precision Bridge | Find the FPF owner before treating craft vocabulary as ontology or quality. |
+| A source line supports a narratology, cognition, teaching, ethics, or generation claim; the source is absent, stale, or too narrow. | Source Use And Refresh Map | Bound the claim and route refresh through `G.2`/`G.11`. |
+| A local term such as route, viewpoint, actant, epiplexity, engagement, generated plan, or learning route risks becoming a new kind. | DPF Precision Restoration And Owner Map | Recover the kind, owner, use boundary, and blocked overread. |
+| The question is DPF prefix, edition dependency, package relation, or refresh route rather than narrative content. | Name And Edition Route or DPF Relation Records | Check package-level identity and dependency without mixing it into pattern bodies. |
+
+| Locus | Title | Kind | Use |
+| --- | --- | --- | --- |
+| Readme | First practical entries | Informative | Choose the first DPF entry from the working problem. |
+| Preface | Cross-cutting ideas and principles | Informative | Understand narrativization as source-structure-to-sequence work rather than style polish. |
+| Package carrier structure-account note | What this DPF publication carrier exposes, for whom, captured structure, deliberately coarsened or deferred structure, and source-return boundary | Framework-level use note | Check what part of narrative-studies structure this package exposes before treating it as domain coverage. |
+| Framework context | Package boundary and owner routing | Normative package frame | See dependency, owner, and reliance limits. |
+| `NSTD.1` | Source-Structure Intake and Narrative Purpose | DPF pattern | Start from source structures and declared use before message or theme. |
+| `NSTD.2` | Structure-to-Sequence Ordering | DPF pattern | Declare the ordering rule that turns structure into narrative sequence. |
+| `NSTD.3` | Source Mechanism, Event Model, and Coherence | DPF pattern | Preserve mechanism, dependency, event, or state-change reconstruction. |
+| `NSTD.4` | Voice, Focalization, and Agency | DPF pattern | Use viewpoint and protagonist choices without false agency or responsibility. |
+| `NSTD.5` | Engagement, Attention, and Motivation | DPF pattern | Use engagement without turning attention into truth, permission, or authority. |
+| `NSTD.6` | Declared-Use Narrative Rendering Quality Evaluation | DPF evaluation pattern | Evaluate one narrative rendering version for one declared use. |
+| `NSTD.7` | Automated Narrativization and Story Planning | DPF pattern | Split generated-carrier, source, method, admission, evaluation, evidence, and responsibility. |
+| `NSTD.8` | Learning-Route Narrative Rendering and Reconstruction Return | DPF pattern | Design and evaluate a learning route without moving teaching material into pattern bodies. |
+| Acceptance cases | FPF seminar, franchise continuation, homotopy explanation, live event commentary | Use-test support section | Test the pattern set across heterogeneous narrative work. |
+| Support maps | Architecture bridge, semiotic bridge, source use, precision map, naming and edition route | Reference | Use only when a pattern relation, low-value repair action, source-return condition, or owner-routing doubt points to one of the maps. |
+| PFR records | DPF relation and edition records | Relation-record section | State specialization, source reuse, evaluation, generated-carrier, teaching publication-carrier, and ethics routing relations. |
+| Refresh route | Source, evaluation, and edition refresh | Refresh-route section | State what must return to `G.2`, `E.22`, `E.23`, and `G.11`. |
+
+# Readme - First Practical Entries
+
+Narrativization and Narrative Studies DPF helps when a structure-bearing source must become a sequence that humans can follow, remember, teach, discuss, or generate, while source structure and source return remain recoverable.
+
+Treat this as a problem-solving DPF, not an ontology of narratives and not a guide to chatting about narrative. Its patterns target recurring narrative-work failures: starting from theme before source structure, hiding temporal posture, choosing story order by habit, making events happen because the writer wants them, treating viewpoint as agency, letting engagement become truth or permission, trusting generated fluency, and copying blocked technical structure into a bad learning route. The intended payoff is a set of source-grounded solution moves that make those failures harder.
+
+Use this DPF when the project question is not only "how do we write this nicely?" but one of these:
+
+- a source graph, architecture, proof dependency, event set, mechanism, evidence set, canon, or knowledge base must become a narrative route;
+- a historical, live, or prospective source must be narrated without hiding which temporal posture and uncertainty obligations apply;
+- a learning route must preserve source structure rather than only examples, analogies, mood, or slogans;
+- a generated text or story plan must be admitted, evaluated, and repaired before reliance;
+- engagement or viewpoint helps comprehension but may distort source structure, agency, ethics, evidence, or authority;
+- a team needs to know whether a narrative rendering is good enough for a declared use.
+
+Do not use this DPF when the live issue is only source evidence, publication layout, legal permission, ethics mediation, proof status, generated-carrier admission, or pattern quality. Use the direct FPF owner first, then return here only if source structure is being rendered as narrative.
+
+## First Practical Entry 1 - Turn A Source Structure Into A Narrative Route
+
+Start with `NSTD.1`, then `NSTD.2`. Name the source material, selected source structures, source temporal posture, route family, narrating or rendering worker, intended reader use, narrative purpose, ordering rule, preserved structure, lost structure, and source-return condition.
+
+Typical first result: one `NarrativePurposeIntake@Context` plus one `NarrativeOrderingRule@Context`.
+
+## First Practical Entry 2 - Repair A Fluent But Misleading Narrative
+
+Start with `NSTD.3`, `NSTD.4`, and `NSTD.5`. Check whether readers can reconstruct events, mechanisms, dependencies, viewpoint, agency, engagement boundary, and source-return limits.
+
+Typical first result: a repair note that lowers causal, agency, engagement, evidence, or assurance claims and points to the owner that can carry them.
+
+## First Practical Entry 3 - Evaluate Rendering Quality For Declared Use
+
+Start with `NSTD.6`. First confirm that the object is an admitted narrative rendering version for one declared use. Then evaluate `NarrativeRenderingEpiplexity`, ordering recoverability, event-mechanism support, viewpoint-agency discipline, engagement boundedness, owner routing, medium fit, and source-return readiness.
+
+Typical first result: `NarrativeRenderingQualityResultRow@Context` rows with values, evidence basis, lowering reason, repair action, owner, and reopen condition.
+
+For repeated improvement, package those rows as `NarrativeRenderingQualityEvaluationResult@Context` and prepare `NarrativeRenderingImprovementLoopInput@Context` for `E.22`/`E.23`. Do not count a style pass, prompt retry, extra drama, or generated variant as improvement until the changed rendering version or declared changed slice is re-evaluated through `NSTD.6`.
+
+## First Practical Entry 4 - Use LLM Or NLG Output Safely
+
+Start with `NSTD.7` and `C.35`. Treat the generated result as a produced carrier until source material, selected structure, generation method, admission note, losses, evaluation, and human responsibility are explicit.
+
+Typical first result: `AutomatedNarrativizationAdmissionCase@Context`.
+
+## First Practical Entry 5 - Build A Learning Route
+
+Start with `NSTD.8`, then `NSTD.6`. Keep actual lessons, slides, scripts, exercises, seminar notes, and teaching examples in separate teaching or test-run files. Pattern bodies only govern the route, reconstruction tasks, source return, and evaluation.
+
+Typical first result: `LearningNarrativeRoute@Context` plus narrative rendering quality result rows.
+
+# Preface - Cross-Cutting Ideas And Principles
+
+This DPF is not a story-writing manual and not an ontology of narrative. It is an FPF-grounded pattern set for one recurring transformation: selected source structure becomes a sequential narrative rendering for a declared human use. The patterns are organized around problems and repair moves, because the framework is useful only if it helps a narrative worker avoid known failures and choose better routes.
+
+The central distinction is simple. A narrative rendering is not the source material, not the selected source structure, not evidence, not assurance, not a gate, not a decision, and not work authorization. It is a representation relation with ordering, salience, loss, recoverability, and source-return obligations.
+
+Narrative work has temporal postures. A historical reconstruction, reverse-engineering account, live match commentary, prospective project scenario, future event preview, and fictional continuation can all be narrative renderings, but they do not carry the same source, uncertainty, evidence, telemetry, or source-return obligations. This DPF therefore requires the source temporal posture before drafting and before evaluation.
+
+Narrativization has two route families. In the direct source-structure route, a situation, event stream, proof field, canon, evidence set, or source pack is rendered into narrative without making architecture work the central owner. In the architecture-mediated route, actual or possible holon structure is first understood through architecture work, architecture descriptions, views, viewpoints, architecture decisions, candidate structures, or telemetry, and then narrated for a declared reader or listener use. The route family decides when `C.33`, `C.34`, and architecture owners stay live.
+
+Direct source-structure work is still structured work. The pattern set must not pretend that a writer's intuition or LLM generation magically selected the needed structures. If selection, reader-use hypothesis, ordering, and loss accounting stay implicit, the result is a candidate carrier or candidate prose, not a checked narrative rendering. Improvement then starts by reconstructing the hidden selection record before changing style, drama, or prompt wording.
+
+Narrative work is role work. The narrator, writer, teacher, commentator, designer, or tool-mediated rendering worker chooses sequence, viewpoint, loss profile, and engagement devices. The intended reader or listener role constrains those choices. A narrative worker cannot ignore reader-role interests, but reader interest also does not create evidence, assurance, ethics, publication permission, or source authority.
+
+Narrativization is similar to serialization in one important way: a non-linear or differently ordered source structure must be made readable as a sequence. That sequence preserves some relations and loses others. The DPF keeps that similarity, then adds narrative-specific concerns: event comprehension, viewpoint, engagement, agency cues, ethics, teaching, generated text, and rendering-quality evaluation.
+
+Narrative studies is the broad domain label here. Narratology is one source tradition inside it, not the whole domain and not Core ontology. Storycraft, science communication, teaching design, cognitive narrative research, NLG, story planning, and qualitative narrative analysis all supply useful distinctions. The DPF uses those distinctions only after mapping them to FPF owners.
+
+Core boundary decision: this package depends on FPF Core; FPF Core must not depend back on this package. The Core admission from this campaign is the general `A.6.3.NAR` relation: selected source structure is rendered into a sequential narrative rendering for declared use with preservation, loss, admissibility, and source return visible; that rendering may then be carried by a publication or access carrier. The `NSTD.*` patterns stay DPF material because they use narrative-studies, narratology, storycraft, learning-design, NLG, and narrative-evaluation solution moves for narrative-work problems. If a later framework finds one of those moves recurring outside narrative work, it should return through a separate FPF amendment instead of silently treating this DPF as Core.
+
+The first discipline is source return. A good narrative can foreground one route through the source, but it must say when the reader needs the source again. This matters in architecture explanation, mathematical teaching, science communication, generated story planning, and franchise-continuation storycraft.
+
+The second discipline is owner routing. Engagement is not truth. Viewpoint is not responsibility. Protagonist is not `U.Role`. Actant is not `U.RoleAssignment`. Generated fluency is not admission. A learning route is not the source framework. Each stronger claim goes to the FPF pattern that owns it.
+
+The third discipline is evaluation before improvement. `NSTD.6` does not ask whether a narrative is beautiful in general. It evaluates one admitted narrative rendering version for one declared use under `NarrativeRenderingEpiplexity`, ordering recoverability, source-return readiness, bounded engagement, owner-routed claims, values, evidence basis, missingness rules, repair actions, and reopen conditions.
+
+## Package Carrier Structure-Account Note
+
+This all-in-one package file is a DPF publication carrier: its readme, preface, pattern bodies, and support sections publish a sequential explanatory route through selected narrativization and narrative-studies problem-and-solution structures for FPF users who need to design, evaluate, repair, or govern narrative renderings. The carrier is not a narrative by type, not the domain itself, not the source pack, not a proof that every narrative will work, and not a replacement for the FPF Core patterns it depends on.
+
+This publication carrier is written mainly for FPF authors, teachers, technical communicators, architects, researchers, AI-tool builders, and reviewers who must turn source structures into reader-usable narratives without losing source return. It foregrounds the architecture of recurring narrative-work problems and solution moves: source-structure selection before theme, temporal-posture errors, route-family choice, ordering-rule failure, event or mechanism reconstruction, viewpoint and agency distortion, engagement overclaim, declared-use quality, generated-output admission, learning-route design, precision repair, ethics routing, and refresh.
+
+The package deliberately coarsens, abstracts, omits, or defers other structures. This is not merely shortening one text into another. A narrative-studies source may first be understood through architecture-like structure selection, views, models, source packs, or examples, and this all-in-one DPF publication carrier then makes that selected structure available again for use. In architecture-mediated narrative-rendering cases, the return chain is `narrative rendering carried by this publication carrier -> architecture description or view -> architecture as selected structures in context -> wider source structures`; when no narrative rendering is present, the first step is `DPF publication carrier -> selected source structures`. Each arrow can lose structure. The carrier does not carry a full history of narratology, a genre-specific storycraft course, a complete learning-sciences curriculum, a full NLG or story-planning survey, legal publication advice, a replacement ethics theory, or all source-pack rows. Those return to the source-use map, upstream FPF patterns, local teaching material, domain sources, or a stronger DPF when the declared use needs them.
+
+For this all-in-one publication carrier, the structure-capture question is qualitative rather than a universal score for narrativity:
+
+```text
+FrameworkCarrierStructureCapture@NarrativizationAndNarrativeStudiesPrinciplesFramework:
+  evaluatedCarrierRef: NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30
+  declaredUse: help FPF users design, evaluate, repair, and govern narrative renderings
+  selectedSourceStructureDenominator: narrativization as source-structure-to-sequence work, with narrative-studies, cognition, learning, ethics, NLG, and FPF architecture/representation owners as source traditions
+  foregroundedStructure: recurring narrative-work problem situations, solution moves, source selection, route family, ordering, event and mechanism reconstruction, viewpoint and agency, engagement, quality evaluation, generated-output admission, learning-route design, precision repair, source return, and refresh
+  intentionallyCoarsenedAbstractedOmittedOrDeferredStructure: full domain history, genre craft, full pedagogy, full NLG algorithms, legal permissions, complete source pack, and formal metric calibration
+  qualitativeCarrierEpiplexityForDeclaredUse: 4
+  whyNot5: heterogeneous probes show transfer across teaching, franchise continuation, mathematical explanation, and live-event narration, but field use, stronger source-pack discharge, and better accounting of source-to-architecture-to-publication/access coarsening would be needed before claiming near-complete domain capture
+  sourceReturnCondition: return to pattern bodies, FPF owners, source-use map, and local domain material whenever a narrative claim becomes evidence, assurance, ethics, legal permission, pedagogy, generation-method, or domain-expert authority
+```
+
+Read that `4` narrowly. It means this DPF publication carrier makes enough selected structure available for its declared authoring and evaluation use. It does not mean the package exhausts narrative studies, guarantees reader impact, or replaces domain expertise. A `5` would require stronger evidence that the package's selected structures are both sufficient and non-dominated for the declared reader families and acceptance cases, including evidence that important architecture-level or source-level structure was not silently lost in the publication/access route.
+
+## Package Boundary And Owner Routing
+
+
+This package is a Domain Principle Framework for narrativization and narrative studies. Its governed use is narrow: it helps practitioners solve recurring narrative-work problems by rendering selected source structures into narrative renderings for declared reader or listener use, while preserving source return, ethics routing, evidence routing, generated-carrier admission, evaluation, and refresh discipline.
+
+The package does not redefine FPF Core. `A.6.3.NAR` remains the Core owner for the source-to-narrative relation. `NSTD.*` patterns specialize that Core relation for narratology, narrative communication, storycraft, teaching, and generated-narrative work. The DPF adds domain methods, cases, and evaluation scales; it does not mint new Core `U.*` kinds.
+
+Intended readers are FPF authors, teachers, technical communicators, architects, researchers, and tool builders who must make narrative renderings useful without turning narrative fluency into source authority.
+
+Non-use boundary: this package is not FPF Core, not a style guide, not a seminar script, not a storycraft course, not an ethics authority, and not evidence or assurance for generated narratives. Actual seminar outlines, slides, exercises, scripts, session notes, generated outputs, and field-test evidence or publication carriers belong in separate files and may be evaluated by this package.
+
+## Pattern Index
+
+| Pattern id | Pattern title | First use |
+| --- | --- | --- |
+| `NSTD.1` | Source-Structure Intake and Narrative Purpose | Start from selected source structure and declared use before message, theme, or engagement. |
+| `NSTD.2` | Structure-to-Sequence Ordering | Choose and justify the ordering rule that turns source structure into a narrative path. |
+| `NSTD.3` | Source Mechanism, Event Model, and Coherence | Keep mechanism, event, dependency, and update structure intelligible. |
+| `NSTD.4` | Voice, Focalization, and Agency | Govern viewpoint and protagonist choices when they affect comprehension, responsibility, or source loss. |
+| `NSTD.5` | Engagement, Attention, and Motivation | Use engagement without turning attention into truth, permission, or authority. |
+| `NSTD.6` | Declared-Use Narrative Rendering Quality Evaluation | Evaluate one narrative rendering version for one declared use. |
+| `NSTD.7` | Automated Narrativization and Story Planning | Keep generated narrative output grounded, constrained, admitted, evaluated, and repairable. |
+| `NSTD.8` | Learning-Route Narrative Rendering and Reconstruction Return | Design and evaluate a learning route without placing teaching material inside patterns. |
+
+## NSTD.1 - Source-Structure Intake and Narrative Purpose
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativePurposeIntake@Context`, a DPF-local relation record for one narrative rendering case.
+
+### NSTD.1:1 - Problem frame
+
+Use this pattern when a writer, narrator, teacher, architect, researcher, commentator, story designer, or tool starts with a message, lesson, theme, persuasive effect, desired memory, live commentary line, or future scenario before naming the source structures that must survive the narrative rendering.
+
+First useful move: write `NarrativePurposeIntake@Context` with source material, selected source structures, source-structure selection rationale, source temporal posture, route family, narrating or rendering worker, reader-interest or use hypothesis, intended reader or listener role and use, narrative purpose, blocked purpose overread, source-return owner, and any ethics or assurance owner.
+
+What goes wrong if missed: purpose absorbs source. The narrative may become memorable, but readers cannot recover which structure was selected, which uncertainty was retained, or which claims need source return.
+
+What this buys: the writer can choose a narrative aim without letting that aim widen evidence, assurance, ethics, policy, or work authority.
+
+Not this pattern when the issue is only publication face, source-pack admission, evidence sufficiency, or ethics mediation. Use the direct owner and return here only when narrative purpose must be tied to selected source structure.
+
+### NSTD.1:2 - Problem
+
+Narrative purpose is useful because a narrative rendering is made for someone and for some use. But ordinary purpose language is often too broad: "make it inspiring", "tell the story", "explain the architecture", "make learners care". Those phrases do not say which structures must be preserved, which distinctions may be coarsened, and which downstream use is blocked.
+
+### NSTD.1:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Reader usefulness vs source discipline | A narrative needs a purpose, but the purpose cannot replace selected source structures. |
+| Motivation vs authority | Motivation helps attention, but it does not create evidence, assurance, ethics clearance, or work permission. |
+| Domain vocabulary vs FPF owners | Narratology and communication terms help design, but source, evidence, ethics, and assurance claims have FPF owners. |
+| Writing speed vs replayability | Fast writing starts from message; replayable writing starts from source structure and use. |
+
+### NSTD.1:4 - Solution
+
+Create one intake record before drafting or evaluating the narrative.
+
+```text
+NarrativePurposeIntake@Context:
+  sourceMaterialRef:
+  selectedSourceStructureRefs:
+  sourceStructureSelectionRationale:
+  sourceTemporalPosture:
+  routeFamily: direct-source-structure | architecture-mediated | mixed
+  architectureMediationRef?:
+  sourceStructureOwnerRef?:
+  narratingOrRenderingWorkerRef?:
+  readerOrListenerRoleRefs:
+  readerInterestOrUseHypothesis:
+  intendedReaderOrListenerUse:
+  narrativePurpose:
+  blockedPurposeOverread:
+  sourceReturnOwner:
+  ethicsOrAssuranceOwner?:
+  refreshCondition?:
+```
+
+Then apply these moves:
+
+1. Name source material, selected source structures, source-structure selection rationale, and source temporal posture.
+2. Name the route family and any architecture mediation, source-structure owner, or telemetry source that remains live.
+3. Name the narrating or rendering worker, reader-interest or use hypothesis, and intended reader or listener role and use in project terms.
+4. State the narrative purpose as a relation to the selected source structures and reader or listener use.
+5. State what the purpose may not justify: evidence, assurance, policy, work, ethics, or decision use.
+6. Name the source-return owner and any neighboring FPF owner.
+
+Use the intake in four passes, not as one form-filling gesture.
+
+| Pass | Question | Output |
+| --- | --- | --- |
+| Source pass | What source-bearing material is being rendered, and which structures must remain recoverable for the declared use? | Source material refs, selected structure refs, and source owner refs. |
+| Use pass | Who will use the narrative, for what work or understanding, and what must they be able to recover or decide not to decide? | Reader or listener role, reader-interest hypothesis, intended use, and non-use boundary. |
+| Route pass | Is the work direct source-structure rendering, architecture-mediated rendering, or mixed? What temporal posture changes source obligations? | Route family, temporal posture, architecture mediation refs, and live telemetry or source-return refs. |
+| Authority pass | Which claims are tempting but not granted by the narrative purpose? | Blocked purpose overread plus evidence, assurance, ethics, policy, work, and decision owner exits. |
+
+The intake is good enough to compose only when the selected source structures can be stated without looking at the current prose version. If the only answer is "the important bits are the bits I happened to write about", selection is still hidden. Return to the source material, name candidate structures, and choose by reader use. If the reader use is also vague, stop at an orientation cue or source-pack note; do not present the carrier-borne content as an admitted narrative rendering.
+
+Use contrast cases before drafting:
+
+- Admissible: "This route helps new FPF readers reconstruct why `EntityOfConcern`, forces, and neighboring-pattern exits matter during pattern use." The selected structures are named and the use is reconstructive.
+- Below floor: "Make the seminar inspiring so people like FPF." Motivation is a possible engagement device, but source structures and reconstruction use are missing.
+- Wrong owner: "Use the narrative to prove FPF is correct." That is evidence or assurance work, not narrative-purpose work.
+
+For prospective or fictional material, the selected source structure may be a constrained source pack rather than already-realized facts. The intake must still name the canon, scenario assumptions, design constraints, or future-state hypotheses that count as source-bearing for the case. "The story world wants it" is not a source-structure selection rationale; the worker must state which admitted source constraints make the narrative route legitimate for private planning, teaching, or scenario exploration.
+
+Use role-specific intake prompts when the worker is stuck.
+
+| Worker situation | Prompt | Expected answer |
+| --- | --- | --- |
+| Teacher or trainer | "After the narrative, what should learners reconstruct from source without relying on my story?" | Source spine, reconstruction task, and source-return condition. |
+| Architect or analyst | "Which structure, trade-off, candidate, telemetry, or decision memory must survive the narrative?" | Architecture or source-structure refs plus route family. |
+| Scientist or researcher | "Which mechanism, calculation, failed attempt, source uncertainty, or unresolved tension is being rendered?" | Mechanism or event support, uncertainty, evidence owner, and source return. |
+| Story designer | "Which canon, premise, agency, continuity, or causal plot constraint is source-bearing for this route?" | Bounded source pack and non-publication boundary when needed. |
+| Live commentator | "Which observation, inference, prediction, and later official source must stay distinguishable?" | Temporal posture, uncertainty markers, and refresh condition. |
+| Tool builder | "Which part is source, which part is method, which part is generated carrier, and who admits it?" | Split between source, method, generated carrier, and admission owner; generated-carrier admission route; human responsibility. |
+
+If the answer names only mood, audience reaction, style, genre, or desired conclusion, the intake is not ready. Those can be legitimate later choices under `NSTD.4`, `NSTD.5`, `C.2.LS`, or `E.17`, but they cannot select the source structure by themselves.
+
+Minimum worked intake cases:
+
+```text
+NarrativePurposeIntake@FPFLearningRoute:
+  sourceMaterialRef: selected FPF pattern bodies and relation records
+  selectedSourceStructureRefs: EntityOfConcern discipline; problem frame; forces; solution; neighboring exits; quality and improvement loop
+  sourceStructureSelectionRationale: learners must reconstruct how a practitioner chooses and uses a pattern
+  sourceTemporalPosture: prospective planned learning route over current source corpus
+  routeFamily: direct-source-structure unless architecture-of-FPF explanation is opened
+  narratingOrRenderingWorkerRef: teacher or course designer
+  readerOrListenerRoleRefs: new FPF author or reviewer
+  readerInterestOrUseHypothesis: learner needs usable entry, not complete monolith memory
+  intendedReaderOrListenerUse: reconstruct one pattern-use route and apply it to a new case
+  narrativePurpose: orient attention and sequence learning tasks around source-returnable pattern use
+  blockedPurposeOverread: lesson is not evidence that FPF is correct and not replacement for pattern bodies
+  sourceReturnOwner: FPF source patterns and teaching publication-carrier relation
+  refreshCondition: FPF edition, learner telemetry, or route evaluation changes
+```
+
+```text
+NarrativePurposeIntake@HomotopyExplanation:
+  sourceMaterialRef: formal definitions, examples, diagrams, proof-status notes, and selected textbook or lecture source
+  selectedSourceStructureRefs: definition dependency; example and counterexample relation; theorem prerequisite; formal-source return
+  sourceStructureSelectionRationale: learner needs an intuitive route that preserves formal boundaries
+  sourceTemporalPosture: retrospective or atemporal explanation over existing mathematical material
+  routeFamily: direct-source-structure unless a teaching architecture is explicitly used
+  narratingOrRenderingWorkerRef: teacher, explainer, or tool-assisted author
+  readerOrListenerRoleRefs: learner who must later distinguish intuition from proof
+  readerInterestOrUseHypothesis: learner needs recoverable dependency order and analogy boundary
+  intendedReaderOrListenerUse: use examples and return to formal statements without treating metaphor as theorem
+  narrativePurpose: make abstractions followable while preserving proof-status boundary
+  blockedPurposeOverread: narrative does not prove the theorem, replace notation, or authorize informal equivalence
+  sourceReturnOwner: mathematical source or proof owner
+  refreshCondition: source correction, learner failure, or changed learning objective
+```
+
+```text
+NarrativePurposeIntake@LiveCommentary:
+  sourceMaterialRef: live observations, official event feed, telemetry, recording, later official result
+  selectedSourceStructureRefs: event order; score state; possession or control changes; actor roles; uncertainty markers
+  sourceStructureSelectionRationale: listener needs orientation during an unfolding source
+  sourceTemporalPosture: live unfolding source with later refresh
+  routeFamily: direct-source-structure
+  narratingOrRenderingWorkerRef: commentator or live analyst
+  readerOrListenerRoleRefs: listener following the event and later checking source
+  readerInterestOrUseHypothesis: listener needs distinction between observation, inference, prediction, and official correction
+  intendedReaderOrListenerUse: follow the event without treating provisional interpretation as fact
+  narrativePurpose: maintain orientation and attention under uncertainty
+  blockedPurposeOverread: commentary is not official evidence, blame assignment, or final tactical analysis
+  sourceReturnOwner: event source owner, official record, recording, telemetry
+  refreshCondition: official correction, telemetry, or post-event evidence changes
+```
+
+```text
+NarrativePurposeIntake@FictionalContinuationProbe:
+  sourceMaterialRef: admitted canon or local source pack for private storycraft test
+  selectedSourceStructureRefs: canon constraints; continuity; premise and theme; character agency; causal plot support
+  sourceStructureSelectionRationale: storycraft probe tests whether the DPF protects source constraints under dramatic pressure
+  sourceTemporalPosture: prospective fictional source structure
+  routeFamily: direct-source-structure unless fictional organization or technology architecture is live
+  narratingOrRenderingWorkerRef: story designer or tool-assisted writer
+  readerOrListenerRoleRefs: private reviewer of storycraft plan
+  readerInterestOrUseHypothesis: reviewer needs to see whether continuity and agency survive the route
+  intendedReaderOrListenerUse: private design critique, not publication
+  narrativePurpose: produce a source-returnable continuation route for testing
+  blockedPurposeOverread: no authorization, no exhaustive canon authority, no publication permission
+  sourceReturnOwner: source-pack and canon owner; rights and publication owner when those claims are made
+  refreshCondition: source-pack correction, canon selection change, generated-carrier admission change
+```
+
+### NSTD.1:5 - Archetypal Grounding
+
+#### Mature worked slice: FPF seminar from source spine to admitted route
+
+Start with a weak request: "Tell a motivating story about FPF so people want to use it." This is not yet a narrative purpose intake. The source structure is hidden, the reader use is vague, and motivation is being asked to carry adoption, evidence, and teaching value at once.
+
+Repair it in the intake, not later in style.
+
+```text
+NarrativePurposeIntake@FPFSeminarOrientation:
+  sourceMaterialRef: selected FPF pattern bodies and relation records
+  selectedSourceStructureRefs:
+    - EntityOfConcern discipline
+    - Problem frame and forces
+    - Solution as admissible move under conditions
+    - neighboring-pattern exits
+    - quality and improvement loop entry
+  sourceStructureSelectionRationale: new practitioners fail when they treat patterns as recipes rather than condition-bound moves
+  sourceTemporalPosture: prospective planned learning route over current FPF source corpus
+  routeFamily: direct-source-structure
+  narratingOrRenderingWorkerRef: seminar author
+  readerOrListenerRoleRefs: new FPF practitioner; team lead evaluating local adoption
+  readerInterestOrUseHypothesis: reader wants a first usable route through FPF without learning every pattern first
+  intendedReaderOrListenerUse: reconstruct one pattern-use route and choose the next governing pattern
+  narrativePurpose: orient attention and motivation toward source-returnable pattern use
+  blockedPurposeOverread: not proof that FPF is correct; not replacement for pattern bodies; not authority for a local project
+  sourceReturnOwner: selected FPF pattern body and relation record
+  ethicsOrAssuranceOwner: none unless the seminar makes assurance, policy, or affected-party claims
+  refreshCondition: FPF edition or selected-source pattern changes; learner reconstruction test fails
+```
+
+Now the narrative worker can compose. The first paragraph may be memorable, but every memorable move has a source return. "A pattern is not a recipe" returns to source conditions, forces, and neighboring exits. "Start with the thing being changed" returns to `EntityOfConcern`. "Do not optimize the visible proxy indicator" returns to quality and proxy-risk owners. The seminar publication carrier can be engaging, but the intake prevents it from becoming a local mythology about FPF.
+
+Evaluation through `NSTD.6` later asks whether learners can rebuild the route: identify the source structure, say why the selected order was didactic, name what the story intentionally omitted, and return to the pattern body when they need authority. If learners only repeat the slogan "patterns are not recipes", `NSTD.1` did not select enough source structure for the declared use.
+
+#### Mature worked slice: architecture-mediated narrative
+
+An architect wants a narrative explaining a system's future structure after candidate synthesis. Do not start with "tell the journey from chaos to architecture". Start by deciding whether the narrative is architecture-mediated. If it is, architecture work remains live before narrative work.
+
+```text
+NarrativePurposeIntake@ArchitectureDecisionStory:
+  sourceMaterialRef: architecture candidate set, selected architecture description, decision record, expected characteristics, known residuals
+  selectedSourceStructureRefs:
+    - problem situation and forces
+    - candidate structures considered
+    - selected structure and rejected alternatives
+    - expected architecture characteristics
+    - residual exceptions and developer continuation boundary
+    - telemetry or later actual-structure feedback condition
+  sourceTemporalPosture: prospective future holon structure before implementation
+  routeFamily: architecture-mediated
+  architectureMediationRef: architecture description and candidate synthesis records
+  readerOrListenerRoleRefs: developer team; product steward; later evaluator
+  intendedReaderOrListenerUse: understand what structure to preserve while implementing and what may be locally detailed
+  narrativePurpose: carry structural intent and trade-off rationale into development work
+  blockedPurposeOverread: not the architecture itself; not implementation order; not assurance that realized structure will match
+  sourceReturnOwner: architecture description, architecture decision record, and future telemetry route
+  refreshCondition: candidate set, selected architecture, decision, or actual-structure feedback changes
+```
+
+This case teaches the architecture bridge. The narrative worker is not exempt from architecture owners just because the output is prose. `C.33` is live for structural-information capture and loss; `C.34` is live if correspondence between described and realized structure matters; `E.17` is live if the carrier is published; architecture decision owners remain live for decision authority. `NSTD.1` only binds the narrative purpose to selected structures and reader use.
+
+#### Mature worked slice: franchise continuation probe
+
+For a continuation-style storycraft probe using a well-known space-opera franchise such as `Star Wars`, the selected source is a bounded private source pack. The intake must state canon scope, character-agency constraints, continuity constraints, premise constraints, and non-publication boundary before any scene or plot move is accepted.
+
+A bad intake says: "Write a surprising sequel that feels epic." A repaired intake says: "For private storycraft testing, render a continuation premise that preserves admitted canon constraints, character agency, causal consequence, and theme tension; block publication, rights, and authority claims." If a surprising turn works only because the source pack was ignored, the failure belongs to `NSTD.1` before `NSTD.2` or `NSTD.5` can repair it.
+
+#### Role-specific mature first moves
+
+| Worker | First source-selection move | Common hidden overread | Repair before composing |
+| --- | --- | --- | --- |
+| Teacher | Name the source spine and reconstruction task. | Learner interest means learning occurred. | Add source-return question and later `NSTD.6` row. |
+| Architect | Name selected structures, candidates, residuals, and actual-structure feedback. | Explanatory story is the architecture decision. | Route decision authority to architecture decision owners. |
+| Scientist | Name mechanism, calculation, uncertainty, and proof or evidence boundary. | Story coherence is evidence closure. | Add evidence owner and source-return condition. |
+| Story designer | Name source pack, continuity, agency, and non-use boundary. | Dramatic surprise authorizes source violation. | Reopen source-pack selection before ordering. |
+| Live commentator | Name event stream, provisional interpretation, and later official return. | Live causal claim is settled fact. | Mark uncertainty and telemetry return. |
+| AI-agent operator | Name source plan, schema, admission owner, and evaluation route. | Fluent generated prose is an admitted rendering. | Send carrier to `NSTD.7` and `C.35` before `NSTD.6`. |
+
+#### What this pattern teaches about FPF
+
+`NSTD.1` is often the first place where a narrative worker learns why FPF separates source, description, evidence, assurance, ethics, publication, and improvement. The pattern does not ask for more paperwork. It asks the worker to stop one very common collapse: "I have a purpose, therefore I know what the story should say." In FPF terms, a purpose is a relation to an `EntityOfConcern`, a role use, and selected source structures. It is not the source, not the authority, and not the quality result.
+
+An FPF seminar route wants learners to understand why pattern use is condition-based rather than recipe following. The selected source structures are `EntityOfConcern`, problem frame, forces, solution, consequences, and neighboring-pattern exits. The purpose is orientation for later reconstruction tasks. It is not permission to replace pattern bodies with seminar slogans. Source return points to the FPF patterns and the seminar publication carrier stays outside this DPF body.
+
+A homotopy explanation starts differently. The source material is a mathematical corpus: definitions, examples, maps, equivalences, proof-status boundaries, and formal sources. The intended reader is not "any curious person"; it might be an undergraduate who must later distinguish intuitive pictures from formal definitions. The purpose can be "make paths, deformations, and invariants followable", but the blocked overread says that the narrative does not prove the theorem, replace formal notation, or license analogy as definition. The intake therefore protects formal return before any metaphor is selected.
+
+A live football commentary has a live unfolding source posture. The commentator's purpose may be orientation and suspense, but the selected structures are event order, score state, possession changes, player actions, provisional interpretation, and later official source return. The intake blocks the overread that a dramatic prediction, blame cue, or emotional framing is evidence. If later official statistics contradict the live interpretation, the refresh condition is not optional.
+
+A franchise-continuation storycraft test uses a prospective fictional source posture. The source structures are admitted canon constraints, continuity requirements, premise constraints, character-agency constraints, and non-publication boundary. The purpose may be private storycraft testing, not authorized sequel publication. The intake must state that publication rights, exhaustive canon authority, and moral permission are outside this DPF case.
+
+### NSTD.1:6 - Bias-Annotation
+
+This pattern blocks purpose-primacy drift: the message, theme, desired memory, or persuasion effect is allowed to choose source structures after the fact. Treating purpose as the source-selection owner collapses selected source structure, reader use, and authority boundary. Repair by reopening the intake, naming selected structures, and writing the blocked purpose overread before drafting or evaluating. Scope: DPF-local for narrative renderings; it does not govern all communication, evidence, assurance, or publication work.
+
+### NSTD.1:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD1-1` | Source material and selected source structures are named before purpose is finalized. |
+| `CC-NSTD1-2` | Source-structure selection rationale explains why these structures are needed for the reader or listener use. |
+| `CC-NSTD1-3` | Source temporal posture and route family are explicit. |
+| `CC-NSTD1-4` | Narrating or rendering worker, reader-interest or use hypothesis, and intended reader or listener role are named. |
+| `CC-NSTD1-5` | Intended use is narrower than general persuasion, inspiration, or entertainment. |
+| `CC-NSTD1-6` | Purpose states non-admissible downstream use. |
+| `CC-NSTD1-7` | Evidence, assurance, ethics, policy, and work claims route to direct owners when made. |
+| `CC-NSTD1-8` | Source-return owner and refresh condition are present when source currentness or hidden distinctions matter. |
+
+### NSTD.1:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Message-first drafting | The theme chooses the structure after the fact. | Reopen intake and name selected source structures before drafting. |
+| Tacit selection as craft | The worker or model foregrounds structures, but no rationale ties them to reader use. | Reconstruct the selection rationale and reader-interest hypothesis before evaluating or improving the narrative. |
+| Motivation as truth support | A moving narrative is treated as stronger evidence. | Route evidence to `A.10` and keep motivation as reader-use support. |
+| Purpose without blocked use | The same narrative is reused for decision, policy, or work. | Add blocked purpose overread and source-return condition. |
+
+### NSTD.1:9 - Consequences
+
+The benefit is early kind stability: source material, selected structure, narrative rendering, reader use, and authority boundaries stop competing. The cost is one small intake record before drafting.
+
+### NSTD.1:10 - Rationale
+
+Narrative design traditions often begin with audience and communicative aim. FPF keeps that value, but it binds aim to selected source structure. This avoids semio-bias: the narrative is a rendering relation over source structure, not a free-standing communication product.
+
+### NSTD.1:11 - SoTA-Echoing
+
+#### Operational comparison against domain vocabulary
+
+This DPF intentionally translates domain vocabulary into FPF owner work instead of importing it whole. When narratology says story, discourse, and presentation, this package asks: what source structure is selected, what order is chosen, what is foregrounded, and what source return remains? When cognitive narratology says event model, transportation, perspective, or memory, this package asks: which reconstruction target, engagement device, viewpoint, or evaluation characteristic is being changed? When NLG says content planning, discourse planning, and realization, this package asks: what is the source plan, what is the ordering rule, what is the generated carrier, and what admission and evaluation route owns it?
+
+The practical consequence is a repair rule. If a domain term helps the worker choose or repair a narrative move, keep it as DPF vocabulary. If it starts carrying evidence, assurance, ethics, agency, publication, or Core ontology, route the claim to the FPF owner and state the blocked overread.
+
+Hoffmann's "The Tensions of Scientific Storytelling" shows that scientific story construction can organize attempts, mechanisms, and unresolved tensions for readers; Schmid's `Narratology: An Introduction` and Chihaia's `Introductions to Narratology: Theory, Practice and the Afterlife of Structuralism` show that presentation and audience-facing narrative traditions differ by source tradition; Castricato et al.'s "Towards a Formal Model of Narratives" supports explicit narrator-to-reader information flow, reader story-model evolution, and uncertainty; Dahlstrom and Ho's "Ethical Considerations of Using Narrative to Communicate Science" warns that communicative purpose can become persuasion risk. The DPF adapts audience and purpose only after source-structure selection, temporal posture, route family, and role split are named. When a purpose, reader-use, science-storytelling, teaching, future-scenario, or persuasion-risk claim depends on a source line, name that source line and keep the claim within its boundary.
+
+### NSTD.1:12 - Relations
+
+Uses `A.6.3.NAR` for Core relation ownership, `A.16.1` when the first honest material is only a pre-articulation narrative cue, `C.2.LS` when language-state facets or thresholds shape the intake, `G.2` for source-pack claims, `C.33` when architecture-relevant structural-information capture or loss is current, `NSTD.6` when non-architecture narrative epiplexity is evaluated, `D.1` through `D.5` when affected parties or persuasion are live, `A.10` for evidence, `B.3` for assurance, `E.10` and `F.18` for durable wording or naming repairs, and `G.11` for source and telemetry refresh. Support-map entry: open `Architecture and Narrative Work Bridge` when `routeFamily` is `architecture-mediated` or `mixed`; open `Source Use And Refresh Map` when a source line is relied on or stale; open `DPF Precision Restoration And Owner Map` when a local narrative term threatens to become ontology; open `Name And Edition Route` only for DPF-prefix or edition questions.
+
+### NSTD.1:End
+
+## NSTD.2 - Structure-to-Sequence Ordering
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativeOrderingRule@Context`, a DPF-local relation slot set for one narrative rendering.
+
+### NSTD.2:1 - Problem frame
+
+Use this pattern when a graph, mechanism, evidence set, architecture structure, candidate set, mathematical dependency structure, canon structure, or source tradition must be put into a sequence and the sequence changes what readers can recover.
+
+First useful move: name the ordering rule, the source relations it preserves, the source relations it foregrounds, the source relations it coarsens or loses, and the source-return condition.
+
+What goes wrong if missed: the order feels natural, but readers silently infer a different order kind: chronology, proof, causality, importance, decision order, work order, or moral priority.
+
+What this buys: sequence becomes an explicit rendering choice rather than hidden ontology.
+
+### NSTD.2:2 - Problem
+
+Narrative is sequential. Many source structures are not. Trees, graphs, mechanism diagrams, dependency sets, option sets, proof dependencies, and architecture views must be traversed. A chosen order preserves some relations and hides others. If the ordering rule is implicit, a fluent sequence can misrepresent the source.
+
+### NSTD.2:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Legibility vs structural fidelity | Linear order helps reading but cannot preserve every relation. |
+| Teaching order vs source order | A good learning route may violate publication order or proof order. |
+| Dramatic tension vs dependency truth | Suspense and reveal can hide prerequisites. |
+| Compactness vs source return | The sequence needs to move, but hidden relations need return points. |
+
+### NSTD.2:4 - Solution
+
+Declare the ordering rule before treating the narrative rendering as good enough for declared use.
+
+```text
+NarrativeOrderingRule@Context:
+  narrativeRenderingRef:
+  sourceStructureRefs:
+  orderingRuleKind:
+  orderRationale:
+  preservedSourceRelations:
+  foregroundedSourceRelations:
+  coarsenedOrLostSourceRelations:
+  sourceReturnCondition:
+  neighboringOwnerRefs:
+```
+
+Admissible ordering-rule kinds include chronology, causality, dependency, discovery, didactic prerequisite, tension, traversal, viewpoint, publication, decision memory, and declared local rule. The name is not enough; the record must say what the rule preserves and loses.
+
+Choose the rule through a four-question ordering test.
+
+| Test | Ask | If unclear |
+| --- | --- | --- |
+| Source topology | Is the source primarily chain, graph, hierarchy, cycle, option set, event stream, proof dependency, architecture view, or canon field? | Return to `NSTD.1`; selected source structure is not ready for sequencing. |
+| Reader traversal | What path should the reader take first for the declared use: prerequisite, tension, discovery, causal, chronological, decision, viewpoint, or recap? | State two candidate rules and choose by reader-use effect, not by author taste. |
+| Loss account | Which source relations become hidden or weaker under this order? | Add coarsened or lost relations and a source-return point before drafting. |
+| Misread risk | What wrong order will readers infer if the rule is not stated? | Add a sentence or marker that blocks that inference. |
+
+The ordering rule can be mixed, but only if the mixture is explicit. A teaching route may start with didactic prerequisites, use one discovery story to motivate a distinction, then return to formal dependency order. A live commentary may use chronological order for observations and causal order in a later recap. A franchise continuation may use reveal order for suspense while preserving an underlying causal or continuity order. The mixed rule must state where each order applies and what it must not imply.
+
+Use this repair table when the narrative feels coherent but readers reconstruct the wrong structure.
+
+| Symptom | Likely hidden order | Repair |
+| --- | --- | --- |
+| Readers think the first-mentioned cause is the strongest cause. | Salience order mistaken for causal order. | Mark salience as viewpoint or teaching order; return causal strength to source owner. |
+| Learners can retell the lesson but fail formal exercises. | Didactic story order mistaken for proof order. | Add proof-return checkpoints and separate example order from theorem dependency. |
+| Stakeholders think a narrative of architecture choices is the project decision sequence. | Explanation order mistaken for decision or work order. | Route decision claims to architecture-decision owners and name the explanatory order. |
+| Fans like a reveal but continuity breaks. | Reveal order hides source canon constraints. | Add source-pack return and causal and continuity support before dramatic reveal. |
+| A generated story has plausible steps but no preserved source graph. | Generator realization order mistaken for selected source structure. | Return to `NSTD.7`; recover source plan and selected structure before evaluation. |
+
+Do not evaluate the sequence by elegance first. A beautiful order that hides a critical dependency is below floor for declared use. Evaluate it through `NSTD.6` only after the rule, preserved relations, foregrounded relations, lost relations, and source-return condition are in the record.
+
+### NSTD.2:5 - Archetypal Grounding
+
+#### Mature worked slice: graph-to-sequence serialization without source loss
+
+Use this case when the source is not already a line. A knowledge graph about a domain has concepts, dependencies, counterexamples, evidence links, and practice routes. A narrative rendering must choose a traversal. If the traversal is not named, the reader may treat the story order as ontology, proof order, or historical order.
+
+```text
+NarrativeOrderingRule@HomotopyIntro:
+  narrativeRenderingRef: HomotopyIntroNarrative@v1
+  sourceStructureRefs:
+    - topological space
+    - path
+    - deformation under constraints
+    - invariant
+    - example and counterexample
+    - proof-status boundary
+  orderingRuleKind: didactic prerequisite plus analogy-first cue
+  orderRationale: learner needs visual intuition before formal return, but formal dependency must remain recoverable
+  preservedSourceRelations: prerequisite relation; analogy-to-definition return; example-to-counterexample contrast
+  foregroundedSourceRelations: deformation intuition and invariant question
+  coarsenedOrLostSourceRelations: full proof order; advanced generality; categorical reformulation
+  sourceReturnCondition: any claim about theorem, equivalence, or proof returns to formal statement and proof owner
+  neighboringOwnerRefs: `A.6.3.CSC`, `E.17.EFP`, `A.10`, `NSTD.6`
+```
+
+This is a serialization decision with narrative consequences. The route can begin with a picture-like story about deforming paths, but the story must mark where analogy stops. A mature narrative might say, in ordinary prose, "The picture is a guide to the relation, not the definition; the formal boundary returns in the next step." That line is not decoration. It prevents the selected order from becoming false ontology.
+
+#### Before and after repair: architecture order
+
+Before:
+
+> We tried several designs and eventually found the architecture that solved the coordination problem.
+
+Failure: chronology and success wording hide candidate selection, trade-off, decision authority, and realized-structure uncertainty. The reader may infer that the final candidate is proven, implemented, and telemetry-confirmed.
+
+After:
+
+> This explanation follows decision-memory order. First it states the coordination problem, then the candidate splits considered, then the selected trade-off and the residual interface exceptions. It does not give implementation order or proof that the realized structure already has the expected characteristics. For authority, return to the architecture decision record; for actual structure, return to telemetry after implementation.
+
+What changed: the ordering rule became explicit, preserved relations are named, lost relations are named, and source-return is recoverable. `NSTD.2` did not make the narrative longer for its own sake. It made the sequence truthful.
+
+#### Before and after repair: live commentary
+
+Before:
+
+> The midfield is late, so the press has failed, and that is why the match is turning.
+
+Failure: live chronological observation is mixed with causal explanation and outcome projection. The source at that moment may support late movement and lost possession, but not a settled causal account.
+
+After:
+
+> In live order, the midfield line arrives late and the press opens space. Treat that causal reading as provisional until the replay, event data, or post-match analysis confirms it. For now the narrative preserves observation, uncertainty, and listener orientation.
+
+What changed: chronology, provisional causality, and later source return are separated. This is the same FPF move as separating evidence, interpretation, and assurance, but in narrative-order vocabulary.
+
+#### Calibration for ordering values
+
+| Value | Ordering condition |
+| --- | --- |
+| `2` | A readable sequence exists, but the ordering rule and lost relations are mostly hidden. |
+| `3` | The ordering rule is named, but source-return and misread risks are weak. |
+| `4` | The order preserves declared relations, states losses, and blocks the main wrong reconstruction for one use. |
+| `5` | The order is replayable across at least two heterogeneous cases, with conflict between order layers explicitly handled and tested through `NSTD.6`. |
+
+#### SoTA-to-action translation
+
+Narratology distinguishes source material, story, discourse, presentation, and focalization in many vocabularies. NLG separates content selection, document planning, microplanning, and realization. `NSTD.2` adopts the operational split, not the vocabulary as a new FPF ontology. The action is: choose what source structure is selected, then choose the traversal or order, then name what the order preserves and loses, then compose. Fluent wording realization cannot repair a bad ordering rule.
+
+A homotopy-theory explanation orders material by learner dependency: spaces, paths, homotopy, fundamental group, examples, proof-status boundaries. This is not the historical discovery order and not the formal proof order of a research monograph. The narrative must state that definitions and proof obligations remain in source-return formal statements.
+
+An architecture narrative for a team may order structures by decision memory: first the coordination problem, then candidate splits, then chosen trade-off, then residual interface exceptions. That order is not the architecture structure itself and not the chronological order of implementation work. The preserved relations are coupling, cohesion, interface grammar, responsibility boundary, and expected trade-off. The lost relations may include low-level module detail and alternative candidates. Source return goes to architecture description, decision record, and telemetry if actual-structure feedback exists.
+
+A franchise-continuation outline may order scenes by reveal and tension. That does not mean reveal order is causal order. The underlying causal and continuity order must still name premise constraint, character motivation, event cause, consequence, and canon-return point. If a later twist works only because a source constraint was hidden from the writer as well as from the reader, the order is not a legitimate reveal; it is a source-selection failure.
+
+A scientific storytelling case may order experiments by tension: failed attempt, surprising measurement, revised hypothesis, unresolved conflict. That order can be useful because it mirrors inquiry, but it cannot make unresolved tension into evidence closure. The sequence must name which calculations, mechanisms, and experimental facts remain source-return points.
+
+Worked repair sequence:
+
+1. Initial symptom: "The team first tried A, then B, and finally discovered the right architecture."
+2. Hidden-order diagnosis: chronology is being read as decision quality and finality.
+3. Source topology repair: name candidate structures, quality characteristics, rejected alternatives, and telemetry or decision basis.
+4. Ordering rule repair: call the narrative "decision-memory order", not proof, implementation order, or architecture structure.
+5. Loss repair: state what the narrative omits, such as lower-level exceptions or candidates excluded for scope.
+6. Source-return repair: link to architecture description, decision record, or candidate comparison when a reader needs authority.
+
+Second worked repair sequence:
+
+1. Initial symptom: "We introduce homotopy with loops, then groups, then examples, because that is the natural story."
+2. Hidden-order diagnosis: "natural story" hides the didactic prerequisite order and may be mistaken for formal proof order.
+3. Source topology repair: list definitions, examples, theorem prerequisites, proof-status boundaries, and formal-source returns.
+4. Ordering rule repair: choose didactic dependency order and explicitly state where it diverges from formal order.
+5. Loss repair: record which formal details are deferred and where they return.
+6. Evaluation repair: `NSTD.6` checks whether learners can reconstruct dependency and proof boundaries, not whether they enjoyed the story.
+
+Case matrix for ordering work:
+
+| Case | Candidate order | Preserves | Hides or weakens | Required source return |
+| --- | --- | --- | --- | --- |
+| FPF learning route | Didactic prerequisite order: entry condition, EoC, forces, solution, checks, exits, improvement. | Pattern-use route and learner build-up. | Monolith order, advanced variants, historical source evolution. | Source pattern body and relation records. |
+| Homotopy explanation | Didactic dependency order with analogy before formal proof. | Learner accessibility and dependency sequence. | Full proof order, all lemmas, advanced generalization. | Formal statement, proof owner, example boundary. |
+| Franchise continuation | Causal plot order plus reveal order. | Continuity, motivation, event consequence, source-pack return. | Exhaustive canon and publication rights. | Admitted canon refs and non-publication boundary. |
+| Live commentary | Live chronological order plus provisional interpretation markers. | Event stream, uncertainty, listener orientation. | Later tactical recap, off-camera sources, official correction. | Official event record, telemetry, recording. |
+| Architecture explanation | Decision-memory order or trade-off route. | Problem, candidate, selected trade-off, residual exception. | Implementation order, full structure, rejected-candidate detail. | Architecture description, candidate set, decision record, telemetry. |
+
+Use the matrix as a pre-drafting design aid. The selected order should be visible before the narrative prose exists. If the matrix can only be filled after the text is written, the worker is reconstructing hidden choices and should mark the result as a repaired route, not as an originally controlled route.
+
+When two orders conflict, preserve both as named layers. A learning route may teach prerequisites first and later show historical discovery. A mystery-like story may reveal effects before causes while keeping an internal causal order. A live recap may reorder events by causal explanation after first recording live chronology. The reader must be told which layer they are following.
+
+### NSTD.2:6 - Bias-Annotation
+
+This pattern blocks natural-sequence drift: a chronological, didactic, dramatic, traversal, or slide order is treated as if it were the source structure itself. The bias is especially likely when the order feels intuitive to the author. Repair by naming the ordering rule, preserved relations, foregrounded relations, lost relations, and source-return condition. Scope: DPF-local for source-structure-to-sequence rendering; it does not govern general serialization formats or publication order.
+
+### NSTD.2:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD2-1` | Ordering rule and rationale are named. |
+| `CC-NSTD2-2` | Preserved, foregrounded, and lost relations are explicit. |
+| `CC-NSTD2-3` | Narrative order is not treated as physical time, proof order, work order, or decision authority without source support. |
+| `CC-NSTD2-4` | Source-return condition is present when lost relations affect action or reliance. |
+| `CC-NSTD2-5` | Preservation claims route to `C.34`; coarsening claims route to `A.6.3.CSC`, to `C.33` when architecture-relevant structural-information loss is current, or to `NSTD.6` epiplexity when the loss question is non-architecture DPF evaluation. |
+
+### NSTD.2:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Natural-order assumption | The order is not named because it feels obvious. | Write the rule and one preserved or lost relation. |
+| Tension as dependency | Reveal order is read as prerequisite order. | Split dramatic order from dependency order and add source return. |
+| Slide order as source structure | A teaching sequence is treated as the corpus architecture. | Route the teaching publication carrier through `NSTD.8` and keep source structure separate. |
+
+### NSTD.2:9 - Consequences
+
+The benefit is that a narrative path can be optimized for comprehension without pretending to preserve all source relations. The cost is explicit loss accounting.
+
+### NSTD.2:10 - Rationale
+
+Narrative sequence is a transformation over structure. Making the ordering rule explicit preserves the useful similarity between serialization and narrativization: both choose an order for a structure, both preserve and lose relations, and both need a return path when the order is relied on.
+
+### NSTD.2:11 - SoTA-Echoing
+
+Schmid's `Narratology: An Introduction` supplies the source material, story, narrative, and presentation distinction; Chihaia's `Introductions to Narratology: Theory, Practice and the Afterlife of Structuralism` keeps the DPF from treating one narratology tradition as the whole domain; Gatt and Krahmer's `Survey of the State of the Art in Natural Language Generation` makes content selection and realization separable; Cardona-Rivera and Ware et al.'s "The Story So Far on Narrative Planning" makes planned event and plot structure visible before wording. The DPF adopts that ordering discipline and routes preservation claims to FPF structure owners.
+
+Operational payload:
+
+- From Schmid, use selection, composition, and linearization as separate duties. A route may select source material correctly but still linearize it badly. `NSTD.2` therefore evaluates ordering independently from `NSTD.1` selection.
+- From Chihaia, do not assume one narratology school's order terms are universal. If a term such as plot, discourse, fabula, perspective, or presentation is used, it must be translated into the local ordering rule and FPF owner terms.
+- From NLG, content planning and realization are distinct. A generated or human-written text can realize fluent sentences while hiding the content plan. `NSTD.2` asks for the plan before style.
+- From narrative planning, plot order and event order may diverge. This is useful in storycraft and explanation, but the divergence must be recorded so readers do not infer false causality or dependency.
+- From FPF architecture patterns, views and viewpoints are not free perspectives. When the narrative order traverses architecture-relevant structures, `C.30.ASV`, `C.33`, `C.34`, and architecture decision owners may become live.
+
+The practical consequence is that "good order" is never a free aesthetic judgment. It is an ordering rule plus preserved relations, lost relations, and source return for one declared use.
+
+### NSTD.2:12 - Relations
+
+Uses `A.6.3.NAR`, `A.6.3.CSC`, `C.33` for architecture-relevant structural-information capture or loss, `C.34`, `E.17`, `E.17.EFP`, `A.16.2` when a route must back off or respecify after overcommitment, `A.6.P` when ordering rationale hides relation-kind claims, `NSTD.6`, and `G.11`. Non-architecture capture and loss questions feed the DPF-local epiplexity basis in `NSTD.6`. Reopen when source structure, reader use, ordering rule, source-return condition, route authority, relation precision, or low `NSTD.6` ordering value changes. Support-map entry: open `Architecture and Narrative Work Bridge` when sequence is over architecture views, candidate structures, descriptions, correspondence, or actual-structure feedback; open `Semiotic And Language-Precision Bridge` or `DPF Precision Restoration And Owner Map` when ordering terms hide coarsening, relation-kind, or quality claims.
+
+### NSTD.2:End
+
+## NSTD.3 - Source Mechanism, Event Model, and Coherence
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativeEventMechanismSupport@Context`, a DPF-local support record for one narrative rendering.
+
+### NSTD.3:1 - Problem frame
+
+Use this pattern when locally fluent narrative passages fail because readers cannot build a coherent model of source mechanism, event flow, dependency structure, architecture relation, state change, or proof dependency.
+
+First useful move: state whether the selected source structure is event-like, mechanism-like, dependency-like, architecture-like, proof-like, canon-like, or mixed; then state what readers must reconstruct for the declared use.
+
+What goes wrong if missed: fluency is mistaken for source coherence. Readers remember the story but cannot say what changed, why it changed, which relation mattered, or where the claim stops.
+
+What this buys: coherence is tied to recoverable source structure, not to smooth prose alone.
+
+### NSTD.3:2 - Problem
+
+Narratives often use events and agents because they are easy to follow. But many source structures are not event sequences. Architecture structures, mathematical definitions, evidence graphs, mechanism diagrams, and source packs can be misread when forced into a fiction-like event model.
+
+### NSTD.3:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Event readability vs non-event structures | Readers follow events easily, but not every source relation is an event. |
+| Causal wording vs causal support | "Because" helps comprehension but may need `C.28`. |
+| Mechanism clarity vs uncertainty | A good mechanism story can hide unknown or contested source relations. |
+| Reconstruction vs entertainment | The declared use may require reconstruction, not only engagement. |
+
+### NSTD.3:4 - Solution
+
+Use an event and mechanism support record when the narrative asks readers to understand change, dependency, or explanation.
+
+```text
+NarrativeEventMechanismSupport@Context:
+  narrativeRenderingRef:
+  sourceStructureKind:
+  requiredReaderReconstruction:
+  eventOrMechanismModel:
+  participatingHolonOrRoleRefs?:
+  dependencyOrConstraintRefs?:
+  causalUseOwnerRef?:
+  uncertaintyOrUnknownRefs?:
+  reconstructionTaskRefs?:
+  sourceReturnCondition:
+```
+
+Then perform four checks: source structure kind, reader reconstruction target, supported relation claims, and source return.
+
+Build the support record before polishing the prose.
+
+1. Convert each important passage into a source-support row: what changed, what relation is being suggested, what source structure backs it, and what remains unknown.
+2. Mark the relation strength: observed event, temporal sequence, dependency, constraint, mechanism hypothesis, causal claim, proof dependency, architecture trade-off, canon continuity, or reader-facing analogy.
+3. Mark the reconstruction target: after reading, what should the reader be able to state, distinguish, predict, update, or return to source for?
+4. Mark the overclaim risk: which verbs, connectors, or story beats make the relation sound stronger than the source allows?
+5. Add repair before style: lower the relation word, add uncertainty, add source return, or open the direct owner.
+
+Use these relation-strength distinctions in narrative review.
+
+| Narrative wording pressure | Minimum support needed | Direct owner when stronger |
+| --- | --- | --- |
+| "then" or "after" | Event or sequence source | Source or event owner if factual |
+| "because" | Causal or mechanism support | `C.28`, evidence owner, or domain causal owner |
+| "therefore" | Inference or proof support | Proof or evidence owner and source return |
+| "had to" | Constraint or necessity support | Constraint, architecture, proof, or canon owner |
+| "wanted" or "decided" | Agent or responsibility support | `A.13`, `A.2`, `A.2.1`, `D.*` when ethical |
+| "shows that" | Evidence support | `A.10` and source owner |
+
+For non-event structures, do not invent fake events just to make a story move. A proof dependency can be narrated as a sequence of questions and distinctions; an architecture view can be narrated as a path through forces and trade-offs; a source pack can be narrated as a controlled return route. The narrative event model is only a reader-facing scaffold. The selected source structure remains the denominator for reconstruction and later `NSTD.6` evaluation.
+
+Reader reconstruction tasks should be concrete:
+
+- "Name the mechanism and the unresolved relation" is better than "understand the mechanism."
+- "Distinguish observed event, inference, and prediction" is better than "follow the live story."
+- "Point to the formal statement where the analogy stops" is better than "get the math intuition."
+- "Recover which architecture trade-off was accepted and which exception remains" is better than "remember the project story."
+
+If no reconstruction task can be written, the narrative may still be entertaining or orienting, but it is not yet a reliable structure-to-narrative rendering for a reliance-bearing use.
+
+### NSTD.3:5 - Archetypal Grounding
+
+#### Mature worked slice: event support in a scientific narrative
+
+A science narrative says: "The failed experiment forced the theory to change." That line may be a useful story beat, but it hides several relation kinds: observed result, incompatibility with expectation, proposed mechanism, community decision, and later evidence. `NSTD.3` repairs the relation support before the story is trusted.
+
+```text
+NarrativeEventSupportRecord@ExperimentTension:
+  narrativeRenderingRef: ScienceStory@v1
+  eventOrMechanismClaim: failed measurement challenged the prior mechanism hypothesis
+  sourceStructureRef: measurement record, model expectation, uncertainty interval, alternative explanations
+  relationStrength: observed mismatch plus mechanism hypothesis, not proof of forced theory change
+  reconstructionTarget: reader can distinguish observed result, hypothesis pressure, and later evidence
+  overclaimRisk: "forced", "proved", "settled", and "therefore" make the relation too strong
+  sourceReturnCondition: return to measurement record and evidence owner for truth claim
+```
+
+Before:
+
+> The experiment failed, so the old theory collapsed.
+
+After:
+
+> The measurement contradicted the expected value under the old mechanism model. The narrative uses that mismatch as tension, but the evidence claim remains narrower: the result pressures the mechanism and opens alternatives; it does not by itself prove which replacement is right.
+
+The after version is not less narrative. It is a better narrative because the reader can reconstruct the event support and return to source when the claim becomes load-bearing.
+
+#### Mature worked slice: franchise plot support
+
+In a continuation-style storycraft probe, a scene says that a character betrays an ally "because the plot needs a darker turn." That is a narrative-function explanation, not source support. Repair it as source structure:
+
+```text
+NarrativeEventSupportRecord@CharacterTurn:
+  eventOrMechanismClaim: character changes allegiance under named pressure
+  sourceStructureRef: admitted canon constraint, prior motivation, current dilemma, consequence chain
+  relationStrength: plausible character-agency hypothesis within private source pack
+  reconstructionTarget: reader can state motive, pressure, action, consequence, and canon-return condition
+  overclaimRisk: author need or theme is treated as character cause
+  sourceReturnCondition: return to source pack and agency constraints
+```
+
+This repair blocks a common beginner and stale-practice failure: plot events occur because the writer wants them. `NSTD.3` asks what event support the reader can reconstruct. If the answer is "the writer needed a twist", the event belongs to story-planning repair, not admitted narrative rendering.
+
+#### Calibration for relation support
+
+| Value | Relation-support condition |
+| --- | --- |
+| `2` | Events are followable, but cause, dependency, motivation, proof, or evidence strength is inferred from wording. |
+| `3` | Relation kinds are named, but reconstruction target or overclaim risk is weak. |
+| `4` | Each load-bearing event or mechanism claim has source support, relation strength, reconstruction target, and source return. |
+| `5` | The rendering survives perturbation: if wording, order, or viewpoint changes, readers still recover the same relation strength and know where stronger claims return. |
+
+#### FPF owner teaching
+
+`NSTD.3` is where narrative workers learn that "because" is not one relation. It may carry chronology, cause, mechanism, evidence, proof dependency, motivation, trade-off, or analogy. FPF already has owners for evidence, assurance, relation precision, and architecture structure. This DPF pattern teaches how those owners become visible when the publication expression is a story.
+
+An architecture explanation tells why a modular split reduced coordination cost but increased interface exceptions. The narrative event is "the split happened"; the source mechanism is coupling, interface grammar, evidence-reuse loss, and residual repair. The story must let the reader reconstruct the architecture trade-off, not only the before-and-after drama.
+
+A science story can say that an experimental result "forced" a revised hypothesis only if the source line supports that constraint. Often the honest relation is weaker: the result made one hypothesis less useful, exposed a tension, or suggested a new mechanism to test. `NSTD.3` keeps the tension narratable while preventing the narrative from closing evidence that the source left open.
+
+A live match commentary says "the press is breaking down because the midfield line is late." The source event may support late midfield movement and lost possession; the causal claim may be provisional. The support record separates observed event, tactical interpretation, uncertainty, and later source return to recording or telemetry.
+
+In a homotopy explanation, a deformation story may help learners track invariance, but it is not a proof by itself. The support record says which formal relation the story illustrates, what the learner should reconstruct, and where analogy must return to definitions or proof-status boundaries.
+
+Use rewrite diagnostics when a sentence sounds good but may overclaim.
+
+| Initial sentence | Source-support question | Safer narrative repair |
+| --- | --- | --- |
+| "The failed experiment revealed the true mechanism." | Did the source establish the mechanism or only expose a tension? | "The failed experiment exposed a tension that made this mechanism worth testing." |
+| "The module split solved coordination." | Did it solve, reduce, move, or trade off coordination cost? | "The split reduced one coordination path and introduced interface exceptions." |
+| "The character had no choice." | Is necessity supported by canon, causal constraint, or only dramatic pressure? | "The route presents the action as constrained by these canon and causal conditions." |
+| "The proof idea is that loops remember holes." | Is this an analogy, definition, theorem, or proof step? | "The image helps track the invariant; the formal statement returns here." |
+| "The team was outplayed because the press failed." | Is this observed cause, provisional interpretation, or later analysis? | "The live reading treats the late press as a provisional explanation to check against telemetry." |
+
+If the repair makes the narrative less exciting, that is not automatically a defect. The repair preserves the source relation. Engagement can be rebuilt later through `NSTD.5` around the safer relation instead of by restoring the overclaim.
+
+Minimum support-record sketches:
+
+```text
+NarrativeEventMechanismSupport@ArchitectureTradeoff:
+  sourceStructureKind: architecture-like and mechanism-like trade-off
+  requiredReaderReconstruction: why the split reduces one coordination path while creating interface exceptions
+  eventOrMechanismModel: selected modular split changes dependency paths and exception-handling burden
+  dependencyOrConstraintRefs: coupling refs; interface grammar refs; residual repair refs
+  causalUseOwnerRef: architecture or evidence owner when causal strength is claimed
+  uncertaintyOrUnknownRefs: telemetry not yet collected; candidate alternatives omitted
+  reconstructionTaskRefs: reader names trade-off and residual exception
+  sourceReturnCondition: architecture description and decision record for reliance
+```
+
+```text
+NarrativeEventMechanismSupport@HomotopyAnalogy:
+  sourceStructureKind: proof-like and definition-like dependency
+  requiredReaderReconstruction: distinguish intuitive deformation image from formal equivalence relation
+  eventOrMechanismModel: path deformation story used as analogy for invariant tracking
+  dependencyOrConstraintRefs: formal definitions; examples; counterexamples; theorem prerequisites
+  causalUseOwnerRef: none unless a causal learning claim is made
+  uncertaintyOrUnknownRefs: analogy may fail outside named examples
+  reconstructionTaskRefs: learner states where analogy stops and where proof returns
+  sourceReturnCondition: formal source statement for proof or exercise use
+```
+
+```text
+NarrativeEventMechanismSupport@LiveCommentary:
+  sourceStructureKind: live event stream with provisional interpretations
+  requiredReaderReconstruction: observed event vs inference vs prediction vs official correction
+  eventOrMechanismModel: state updates and tactical hypothesis under uncertainty
+  participatingHolonOrRoleRefs: teams, players, officials, broadcast or event source roles when needed
+  uncertaintyOrUnknownRefs: off-camera events; later telemetry; official review
+  reconstructionTaskRefs: listener can say what was observed and what was inferred
+  sourceReturnCondition: official record, recording, statistics, or telemetry
+```
+
+These sketches are not mandatory formats. They teach the level of detail needed before coherence becomes reviewable. The record can be shorter in low-risk cases, but it must still state source-structure kind, reconstruction target, relation strength, uncertainty, and source return.
+
+### NSTD.3:6 - Bias-Annotation
+
+This pattern blocks fluent-coherence drift: smooth event language is mistaken for a mechanism, dependency, architecture, proof, or causal model. The bias appears when readers can retell the story but cannot reconstruct the selected source relation. Repair by naming the source-structure kind, the reconstruction target, the owner for causal or dependency claims, and the source-return condition. Scope: DPF-local for narrative coherence over selected source structure; it does not certify mechanism truth or causal evidence.
+
+### NSTD.3:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD3-1` | Source structure kind is named and not forced into event form when inappropriate. |
+| `CC-NSTD3-2` | Reader reconstruction target is explicit. |
+| `CC-NSTD3-3` | Causal, dependency, constraint, goal, obstacle, hierarchy, prediction, and update relations are routed to their owners when claim-bearing. |
+| `CC-NSTD3-4` | Unknown, contested, or deferred source relations are visible. |
+| `CC-NSTD3-5` | Teaching or reliance-facing use includes reconstruction tasks or source-return points. |
+
+### NSTD.3:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Fluent mechanism fiction | The passage reads well but cannot be reconstructed. | Add event or mechanism support fields and reconstruction task. |
+| Causal overrun | Narrative causality exceeds supported causal-use claims. | Route to `C.28` or lower the claim to dependency or temporal sequence. |
+| Event forcing | A graph, proof dependency, or architecture view is converted into fake events. | Name source structure kind and choose a better ordering rule through `NSTD.2`. |
+
+### NSTD.3:9 - Consequences
+
+The benefit is that narrative coherence becomes testable. The cost is that some dramatic simplifications must be weakened or paired with source return.
+
+### NSTD.3:10 - Rationale
+
+Narrative comprehension often depends on event models and causal schemas. FPF uses that strength but keeps event support distinct from causal evidence, mechanism truth, architecture evaluation, and proof status.
+
+### NSTD.3:11 - SoTA-Echoing
+
+Tan T. Nguyen's "A Review of Mechanistic Models of Event Comprehension" supplies the event-comprehension pressure: readers build event, hierarchy, prediction, updating, and causal-like models. Hoffmann's "The Tensions of Scientific Storytelling" shows scientific narratives can organize mechanisms and unresolved theory and experiment tension without proving them. Gatt and Krahmer's `Survey of the State of the Art in Natural Language Generation` keeps content selection separate from wording realization. The DPF adapts these lines by making source-structure kind and reconstruction target explicit.
+
+Operational payload:
+
+- From event-comprehension work, assume readers will build event, causal-like, hierarchical, and prediction or update models even when the source is weaker. `NSTD.3` therefore asks what model the reader is allowed to build.
+- From scientific storytelling, unresolved tension is narratively useful. It must stay unresolved when the source is unresolved. A good story may preserve tension rather than close it.
+- From NLG, a generated or edited realization can make a relation sound coherent even when content selection was wrong. `NSTD.3` therefore reviews source-support rows, not only wording coherence.
+- From FPF evidence and assurance owners, coherence is not evidence. If the narrative says "shows", "proves", "forces", or "because", the relation strength must be routed to the owner that can carry it.
+- From architecture work, a mechanism-like story about structure must keep trade-offs, residual exceptions, and telemetry distinct. A before-and-after story is not by itself an architecture evaluation.
+
+The practical consequence is that narrative coherence is a reconstruction promise. If the reader cannot reconstruct the source relation and its uncertainty boundary, smooth prose is a liability.
+
+### NSTD.3:12 - Relations
+
+Uses `A.6.3.NAR`, `NSTD.2`, `C.28`, `A.10`, `B.3`, `C.33` for architecture-relevant structural-information capture or loss, `C.34`, `NSTD.6`, and `G.11`. Non-architecture mechanism-support recovery feeds `NSTD.6` epiplexity and event-mechanism values. Reopen when the source mechanism, causal support, reconstruction target, or evaluation result changes. Support-map entry: open `Architecture and Narrative Work Bridge` when event, mechanism, dependency, or coherence support is architecture-relevant; open `Source Use And Refresh Map` when a source or cognition claim supports reconstructability; open `DPF Precision Restoration And Owner Map` when event, mechanism, coherence, support, or cause language starts doing evidence or quality work.
+
+### NSTD.3:End
+
+## NSTD.4 - Voice, Focalization, and Agency
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativeViewpointAgencyDiscipline@Context`, a DPF-local record for one viewpoint and agency treatment.
+
+### NSTD.4:1 - Problem frame
+
+Use this pattern when narrator, voice, viewpoint, focalized object, protagonist, actant, personification, or agency treatment changes what a reader understands, remembers, trusts, blames, or treats as capable of action.
+
+First useful move: state viewpoint or focalized object, what it reveals, what it hides, and whether any source bearer is being personified or treated as an actor.
+
+What goes wrong if missed: viewpoint looks like style while it changes source visibility and responsibility assignment. A structure, institution, model, or document can be written as if it decided, wanted, knew, or authorized.
+
+What this buys: the narrative can use viewpoint and protagonist design without smuggling agency, capability, responsibility, or moral permission.
+
+### NSTD.4:2 - Problem
+
+Narratology terms such as voice, focalization, protagonist, and actant are useful because they describe how narrative directs attention. But FPF cannot let those terms replace role, assignment, capability, responsibility, evidence, or ethics owners.
+
+### NSTD.4:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Reader orientation vs ontological discipline | A focalized object helps readers, but it may not be an actor. |
+| Storycraft roles vs FPF roles | Protagonist and actant are narrative functions, not `U.Role` by default. |
+| Personification vs responsibility | Personification can teach, but responsibility and moral standing need direct owners. |
+| Future agency profile vs current owner | `C.9` is planned, so current agency work must not rely on it operationally. |
+
+### NSTD.4:4 - Solution
+
+Create a viewpoint and agency discipline record when viewpoint is load-bearing.
+
+```text
+NarrativeViewpointAgencyDiscipline@Context:
+  narrativeRenderingRef:
+  viewpointOrVoice:
+  focalizedObjectRef:
+  revealedSourceStructureRefs:
+  hiddenOrWeakenedSourceStructureRefs:
+  narrativeFunctionTerms:
+  personificationOrAgencyWording:
+  directOwnerRefs:
+  blockedAgencyOverread:
+  repairAction:
+```
+
+Operational owner rules:
+
+1. Use `A.13` for agential participation and agency spectrum when current.
+2. Use `A.2` and `A.2.1` for role values and role assignments.
+3. Use `A.2.2` for capability.
+4. Use `D.1` through `D.5` for value, harm, conflict, bias, responsibility, and assurance-facing ethics claims.
+5. Use `A.19.ECS` and `C.16` for any local agency characteristic or evaluation scale.
+6. Mention `C.9` only as planned and non-operational until admitted.
+
+Review viewpoint in four passes.
+
+| Pass | What to inspect | Repair if failed |
+| --- | --- | --- |
+| Reveal or hide pass | What source structures become visible or invisible because of this viewpoint? | Add hidden-structure note, source-return link, or alternate viewpoint. |
+| Function and kind pass | Is protagonist, actant, narrator, voice, or focalized object being treated as an FPF role, agent, capability, or responsibility bearer? | Split narrative function from FPF owner claim. |
+| Literalization pass | Which personifications would become false if read literally? | Mark metaphor or personification, lower wording, or name the literal owner. |
+| Affected-party pass | Does the viewpoint erase harmed parties, dissenting roles, uncertainty, or downstream reliance pressure? | Route to `D.1` through `D.5`, add counter-viewpoint, or block downstream use. |
+
+Use narrative-function terms positively, but only inside their lane.
+
+| Narrative function | Useful for | Not enough for |
+| --- | --- | --- |
+| Protagonist | Centering attention or action path. | Responsibility, role assignment, moral standing, or capability. |
+| Actant | Describing function in a plot or transformation. | `U.Role`, `U.RoleAssignment`, or method ownership. |
+| Voice | Controlling stance, distance, confidence, or witness posture. | Evidence strength, source authority, or ethical permission. |
+| Focalization | Selecting what the reader sees and from whose constraints. | Completeness, neutrality, or source truth. |
+| Personification | Teaching or memory aid for abstract structures. | Actual agency, decision authority, or intent. |
+
+When a phrase has both narrative value and ontological risk, keep the phrase only if the record states the safe reading. "The architecture wants fewer dependencies" may be safe in a teaching aside if the same passage says that architects choose structures to reduce dependency under stated characteristics. It is unsafe when the sentence becomes decision rationale, blame assignment, or evidence of system behavior.
+
+The strongest repair is often not deletion. Good narrative sometimes needs viewpoint and personification. Repair by adding the missing owner split: who actually decides, which structure is being highlighted, what is hidden, which source should be returned to, and which moral or work claim is not being made.
+
+### NSTD.4:5 - Archetypal Grounding
+
+#### Mature worked slice: viewpoint without false agency
+
+An architecture explanation says: "The database wants to protect consistency, while the service wants speed." This can be a useful teaching viewpoint, but literal reading creates false agency and hides the real owners: architecture decision, component responsibility, consistency requirement, latency requirement, and trade-off.
+
+```text
+NarrativeViewpointRecord@ArchitecturePersonification:
+  narrativeRenderingRef: ArchitectureExplanation@v1
+  viewpointOrVoiceKind: didactic personification
+  focalizedSourceStructureRef: consistency and latency trade-off across selected architecture structures
+  narrativeFunction: make the trade-off memorable and traversable
+  hiddenOrWeakenedSourceStructureRefs: actual component responsibility, decision record, measured characteristics
+  agencyOrResponsibilityRisk: component metaphor may be read as actor agency or authority
+  literalizationRepair: lower "wants" to "is treated as protecting" or name the real owner
+  sourceReturnCondition: return to architecture description and decision record for authority
+```
+
+Before:
+
+> The database refuses to let the service move fast.
+
+After:
+
+> In this teaching view, we personify the consistency boundary as the part that "pushes back." Literally, the owner is the architecture decision: consistency is protected by transaction and replication choices, and the service latency trade-off returns to the decision record and later telemetry.
+
+This repair keeps the narrative value while protecting ontology. The viewpoint is a lens over selected source structures, not a new actor.
+
+#### Mature worked slice: narrator and reader roles
+
+A narrative rendering about a future project can speak from the viewpoint of "the future user". That may help the team notice consequences, but the imagined user is not evidence and not an affected-party consultation. `NSTD.4` requires the narrative worker to state the role boundary:
+
+```text
+NarrativeViewpointRecord@FutureUserScenario:
+  viewpointOrVoiceKind: prospective scenario voice
+  focalizedSourceStructureRef: expected use situation and system interaction
+  narrativeFunction: expose usability and risk questions before design is final
+  hiddenOrWeakenedSourceStructureRefs: actual user evidence, policy claim, safety claim
+  agencyOrResponsibilityRisk: imagined voice is treated as real stakeholder authority
+  literalizationRepair: mark as scenario hypothesis and route evidence to user research owner
+  sourceReturnCondition: return to source assumptions and later evidence
+```
+
+#### Viewpoint repair ladder
+
+1. **Keep as ordinary style** when the phrase is clearly not claim-bearing and no reader use depends on it.
+2. **Mark as viewpoint** when it helps attention but could be mistaken for source structure.
+3. **Lower the wording** when metaphor or focalization implies agency, evidence, certainty, or responsibility.
+4. **Name the literal owner** when architecture, evidence, ethics, work, decision, or assurance authority is touched.
+5. **Reject the move** when the viewpoint works only by hiding a source constraint or affected-party boundary.
+
+#### Calibration for viewpoint quality
+
+| Value | Viewpoint condition |
+| --- | --- |
+| `2` | Voice or focalization is effective, but agency, responsibility, evidence, or source visibility can be misread. |
+| `3` | Viewpoint function is named, but literalization repair is incomplete. |
+| `4` | Viewpoint, source structure, hidden structures, and owner exits are recoverable for one declared use. |
+| `5` | A reader can shift viewpoint or remove the metaphor and still recover the same source structure and owner routing. |
+
+#### FPF owner teaching
+
+`NSTD.4` makes the parallel with architecture views explicit for narrators. A viewpoint selects and highlights structure for a use. It is valuable for attention, but it does not create a new `U.Role`, `U.RoleAssignment`, responsibility bearer, evidence source, or decision authority. The narrative vocabulary may say narrator, focalization, protagonist, actant, or voice; FPF keeps asking which owner carries the claim if the wording becomes load-bearing.
+
+A technical story says "the architecture wants to reduce coupling." `NSTD.4` repairs this as personification for reader orientation. The source structure is an architecture candidate with coupling and cohesion characteristics. The architecture is not an agent and has no responsibility. The actor may be an architect role assignment, and the decision or method claim goes to its direct owner.
+
+In a franchise storycraft case, the protagonist may be the center of narrative attention while agency discipline asks whether the character's action is supported by admitted canon, premise constraints, and causal plot support. "The Force guided the decision" may be a story-world explanation, but it is not a license to skip character motivation, source constraints, or responsibility language when the case is used as a DPF probe.
+
+In a homotopy explanation, a space, path, or loop may be written as if it "wants" to deform or "remembers" a hole. That can help intuition, but the focalized object is not an agent. The repair is to state the formal relation being highlighted and where the personification stops.
+
+In live commentary, viewpoint may follow one player, coach, or tactical unit. That can make the stream intelligible, but it may hide off-ball actions, referee uncertainty, or later official correction. The commentary record needs the hidden-structure note before blame or capability claims are treated as stable.
+
+Use a literalization rewrite ladder.
+
+| Risky phrase | Safe if read as | Repair if literal reading would be false |
+| --- | --- | --- |
+| "The architecture wants..." | Shorthand for a selected quality pressure. | Name the architect, decision, characteristic, or trade-off owner. |
+| "The paper proves..." | Shorthand for a source claim inside the paper. | Name proof status, evidence owner, or author claim. |
+| "The model knows..." | Shorthand for model output behavior. | Name training, source, or method claim and admission boundary. |
+| "The protagonist represents the system..." | Reader-facing focalization. | State which source structures the protagonist highlights and hides. |
+| "The market punished..." | Aggregate outcome narrative. | Name actual actors, mechanism uncertainty, evidence owner, or lower the claim. |
+
+When the phrase is kept for readability, put the safe reading close enough that a reader will not need a hidden glossary. "The architecture wants fewer dependencies" can be followed by "more precisely, the selected architecture characteristic rewards fewer dependency edges under this trade-off." If that clarification ruins the passage, the passage was probably carrying more authority than the source supports.
+
+Use alternate viewpoint when one viewpoint hides a load-bearing source structure. A learner-facing story may first focalize the novice, then briefly switch to the maintainer who pays the cost of hidden coupling. A live commentary may follow the attacking player, then mark what the defensive line or official review could change. A future-scenario narrative may focalize a user, then return to the system owner for constraints and responsibility.
+
+Filled viewpoint records:
+
+```text
+NarrativeViewpointAgencyDiscipline@ArchitecturePersonification:
+  viewpointOrVoice: teacher voice using personification
+  focalizedObjectRef: selected architecture candidate
+  revealedSourceStructureRefs: coupling pressure; cohesion target; interface exception
+  hiddenOrWeakenedSourceStructureRefs: architect role assignment; decision record; telemetry
+  narrativeFunctionTerms: "architecture wants" as memory aid
+  personificationOrAgencyWording: architecture described as wanting fewer dependencies
+  directOwnerRefs: architect role assignment; architecture decision; characteristic evaluation
+  blockedAgencyOverread: architecture is not an agent and has no responsibility
+  repairAction: add "more precisely" sentence naming characteristic pressure and decision owner
+```
+
+```text
+NarrativeViewpointAgencyDiscipline@FictionalProtagonistProbe:
+  viewpointOrVoice: close protagonist viewpoint for private storycraft testing
+  focalizedObjectRef: protagonist function in continuation route
+  revealedSourceStructureRefs: character agency constraint; premise; causal plot support
+  hiddenOrWeakenedSourceStructureRefs: alternative viewpoints; broader canon conflicts; publication rights
+  narrativeFunctionTerms: protagonist; actant; motivation
+  directOwnerRefs: source-pack and canon owner; agency and role owner when moral responsibility is claimed
+  blockedAgencyOverread: protagonist centrality does not create moral permission or canon authority
+  repairAction: record character action support and route rights and publication outside this DPF
+```
+
+```text
+NarrativeViewpointAgencyDiscipline@LiveCommentaryView:
+  viewpointOrVoice: commentator follows attacking side under time pressure
+  focalizedObjectRef: attacking player or unit
+  revealedSourceStructureRefs: possession, pressure, chance creation
+  hiddenOrWeakenedSourceStructureRefs: defensive shape, off-ball movement, official review
+  narrativeFunctionTerms: "forced", "wanted", "could not"
+  directOwnerRefs: event source owner; evidence owner for claims; ethics owner if blame or harm framing appears
+  blockedAgencyOverread: live focalization is not settled blame or capability assessment
+  repairAction: mark provisional interpretation and later source-return route
+```
+
+The practitioner should be able to fill at least a compact version of this record before using strong agency language. If the record feels too heavy for the use, lower the language: use "is presented as", "the route follows", "the example highlights", or "the story treats" rather than "decides", "knows", "forces", or "is responsible".
+
+### NSTD.4:6 - Bias-Annotation
+
+This pattern blocks story-function agency drift: protagonist, actant, focalized object, voice, or personification is read as role assignment, capability, responsibility, or moral standing. Repair by splitting narrative function from current FPF owners for agency, role, capability, responsibility, ethics, evidence, and assurance claims. Scope: DPF-local for viewpoint and agency treatment in narrative renderings; it does not create a new agency ontology.
+
+### NSTD.4:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD4-1` | Viewpoint, voice, focalized object, or protagonist choice is named when load-bearing. |
+| `CC-NSTD4-2` | Revealed and hidden source structures are explicit. |
+| `CC-NSTD4-3` | Protagonist, actant, and focalized object remain narrative functions unless direct owner admits role, assignment, agency, capability, or responsibility. |
+| `CC-NSTD4-4` | `C.9` is not used as an operational owner while planned only. |
+| `CC-NSTD4-5` | Personification has a repair route: literal owner, lowered wording, or source-return note. |
+
+### NSTD.4:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Protagonist as responsible agent | Narrative centrality becomes moral or operational responsibility. | Split protagonist function from `A.13`, `A.2.1`, and ethics owner claims. |
+| Episteme as actor | A paper, standard, pattern, or model "decides" or "knows". | Rewrite as source, evidence, method description, or author work through direct owners. |
+| Viewpoint hides harmed party | A compelling viewpoint erases affected parties. | Route to `D.1` through `D.5` and add a source-return or viewpoint correction. |
+
+### NSTD.4:9 - Consequences
+
+The benefit is that storycraft remains available without agency inflation. The cost is that some memorable phrases need repair or explicit personification status.
+
+### NSTD.4:10 - Rationale
+
+Narrative voice and focalization are not decorative only. They shape source visibility and responsibility cues. FPF therefore treats them as source-structure rendering choices that may trigger role, agency, capability, ethics, evidence, or assurance owners.
+
+### NSTD.4:11 - SoTA-Echoing
+
+Schmid's `Narratology: An Introduction` and Chihaia's `Introductions to Narratology: Theory, Practice and the Afterlife of Structuralism` supply voice, focalization, actant, and perspective vocabulary as narrative-function language; Chen and Xu's "Neural and Behavioral Evidence for Differential Processing of Narrative Perspective in Novel Reading" gives current support that perspective can change processing; Nguyen-Trung and Nguyen's "Narrative-Integrated Thematic Analysis" keeps LLM-assisted narrative analysis tied to human interpretive agency. The DPF adopts the attentional and perspective value, while rejecting any automatic agency or responsibility import.
+
+Operational payload:
+
+- From narratology, voice, focalization, protagonist, and actant are useful because they locate attention and function inside a narrative. `NSTD.4` keeps them as narrative functions unless another FPF owner admits a stronger claim.
+- From perspective-processing evidence, viewpoint can change what readers process and remember. It is not ornamental. The pattern therefore requires revealed and hidden source structures.
+- From LLM-assisted narrative analysis, machine-suggested themes or viewpoints do not remove human interpretive responsibility. Tool-mediated viewpoint choices need admission and human owner routing.
+- From FPF agency and role patterns, narrative centrality is not role assignment. A character, model, architecture, organization, or source can be focalized without becoming an agent.
+- From ethics patterns, viewpoint can erase affected parties. When harm, blame, policy, or responsibility is live, a single compelling viewpoint is insufficient.
+
+The practical consequence is that viewpoint is both a design tool and a risk locus. It earns its place by revealing needed source structure and naming what it hides.
+
+### NSTD.4:12 - Relations
+
+Uses `A.6.3.NAR`, `A.13`, `A.2`, `A.2.1`, `A.2.2`, `A.19.ECS`, `C.16`, `D.1` through `D.5`, `A.10`, `B.3`, and `G.11`. Reopen when viewpoint changes source visibility or when new source-pack or FPF agency owners change the owner map. Support-map entry: open `Architecture and Narrative Work Bridge` when viewpoint or focalization is really an architecture view and viewpoint over selected structures; open `Semiotic And Language-Precision Bridge` when voice, focalization, salience, sign, or language-state choice changes interpretation; open `DPF Precision Restoration And Owner Map` when protagonist, actant, agency, personification, or responsibility wording needs owner split.
+
+### NSTD.4:End
+
+## NSTD.5 - Engagement, Attention, and Motivation
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativeEngagementBoundary@Context`, a DPF-local boundary record for one narrative rendering.
+
+### NSTD.5:1 - Problem frame
+
+Use this pattern when a narrative must be followed, remembered, cared about, or acted on, but engagement risks distorting source structure, persuasion boundary, ethical use, evidence use, assurance, or policy interpretation.
+
+First useful move: state the intended engagement effect, the source structures that may not be distorted for that effect, and the non-admissible downstream use.
+
+What goes wrong if missed: attention becomes confidence. Suspense, identification, emotional salience, fluency, and memorability make readers rely on the narrative beyond its source relation.
+
+What this buys: engagement can be designed as support for declared use, not as an authority amplifier.
+
+### NSTD.5:2 - Problem
+
+Narratives often work because they attract attention and organize memory. That value is real. But the same mechanisms can overpersuade, hide uncertainty, simplify conflict, or make a reader treat a narrative as evidence, assurance, or permission.
+
+### NSTD.5:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Attention vs source fidelity | Engagement can help readers reach source structure or distract from it. |
+| Motivation vs manipulation | Motivation may be appropriate for teaching but unsafe for decisions or policy. |
+| Memory vs overconfidence | Memorable stories can feel more certain than their sources. |
+| Reader diversity vs one route | A motivating route for one group may mislead or harm another. |
+
+### NSTD.5:4 - Solution
+
+Record engagement as a bounded use support.
+
+```text
+NarrativeEngagementBoundary@Context:
+  narrativeRenderingRef:
+  intendedEngagementEffect:
+  protectedSourceStructureRefs:
+  languageStateFacetProfileRef?:
+  coarseningOrPrecisionOwnerRefs?:
+  affectedReaderOrGroupRefs?:
+  persuasionBoundary:
+  nonAdmissibleUse:
+  ethicsOwnerRefs?:
+  evidenceOrAssuranceOwnerRefs?:
+  lowValueRepairAction:
+```
+
+Admit engagement only when it serves the declared use and does not widen authority. If engagement depends on artistic, literary, dramatic, compressed, or simplified wording, name whether the live issue is a language-state profile (`C.2.LS`), controlled coarsening (`A.6.3.CSC`), explanation-facing rendering (`E.17.EFP`), or precision restoration (`E.10`, `A.6.P`, `C.16.Q`). If engagement increases reliance pressure, route the stronger claim to ethics, evidence, assurance, gate, policy, or work owners.
+
+Design engagement through a protected-structure loop.
+
+1. Name the intended engagement effect: attention, curiosity, emotional salience, identification, suspense, memorability, motivation, or willingness to continue.
+2. Name the protected source structures that may not be distorted to get that effect.
+3. Choose the device: example, analogy, scene, viewpoint, contrast, unresolved tension, repetition, rhythm, visual image, or narrative hook.
+4. State what the device is allowed to change: order, salience, language state, compression, repetition, or route.
+5. State what it is not allowed to change: evidence strength, source truth, agency, responsibility, moral permission, policy authority, work authorization, or proof status.
+6. Evaluate the result through `NSTD.6`, not through liking alone.
+
+Use a reliance-pressure ladder.
+
+| Reader reaction sought | Typical safe use | Extra owner needed if stronger |
+| --- | --- | --- |
+| Keep reading | Orientation or teaching support | None unless source loss or manipulation risk appears. |
+| Remember a structure | Learning or source-return support | `NSTD.6` reconstruction evidence; `NSTD.8` for learning route. |
+| Care about a problem | Motivation for attention or inquiry | `D.1` through `D.5` if harm, affected parties, conflict, or decision pressure is live. |
+| Trust a claim | Not owned by engagement | `A.10`, `B.3`, source owner, assurance owner. |
+| Decide or act | Not owned by engagement | Decision, policy, ethics, work, or gate owner. |
+
+Engagement can fail in two opposite ways. It may be too weak: readers do not stay with the material long enough to recover the source. It may be too strong: readers rely on the story past the source boundary. The repair is different. Low attention may need a better hook, example, rhythm, or viewpoint. Overreliance needs weaker claim language, source-return markers, affected-party routing, or lower admissible use.
+
+When engagement uses artistic or literary language, do not reduce the issue to style preference. Ask which language-state facet changed: articulation, closure, anchoring, representation factor, threshold, compression, or cue. A more literary passage can be better for a memorial or exploratory essay and worse for a technical source-return task. The declared use and protected source structures decide.
+
+### NSTD.5:5 - Archetypal Grounding
+
+#### Mature worked slice: engagement without persuasion capture
+
+A learning narrative about FPF uses a dramatic failure story: a team blindly follows a pattern checklist and damages its project. The story is engaging, but it may over-persuade if it implies that FPF prevents all such failures or that the named team is evidence. `NSTD.5` keeps interest useful and bounded.
+
+```text
+NarrativeEngagementBoundary@FPFFailureStory:
+  narrativeRenderingRef: FPFLearningRoute@v1
+  engagementDevice: failed-use contrast with tension and repair
+  protectedSourceStructureRefs:
+    - pattern conditions
+    - forces
+    - neighboring exits
+    - evaluation and improvement route
+  intendedEffect: keep attention and make misuse recognizable
+  persuasionOrHarmRisk: reader treats story as proof of FPF superiority or as blame of a real group
+  sourceFidelityRisk: checklist failure hides the actual source relation being taught
+  precisionBackoff: mark the story as an archetype and return to pattern body for authority
+  evaluationReturn: `NSTD.6` checks reconstruction, not emotional agreement
+```
+
+Before:
+
+> This disaster proves why teams must use FPF.
+
+After:
+
+> This fictionalized failure case shows one misuse: treating a pattern as a checklist after the governing situation has changed. It motivates attention, but the authority returns to the pattern body and the evidence or assurance claim would need its own owner.
+
+#### Mature worked slice: homotopy interest without analogy capture
+
+A homotopy lesson uses the image of a loop "slipping around a hole". The image is engaging and memorable, but it may cause learners to think all deformations are allowed. `NSTD.5` protects the formal boundary:
+
+```text
+NarrativeEngagementBoundary@HomotopyLoopImage:
+  engagementDevice: vivid analogy
+  protectedSourceStructureRefs: deformation under constraints, invariant, formal definition, proof-status boundary
+  intendedEffect: sustain attention through abstraction
+  persuasionOrHarmRisk: low, unless used to make a false certainty claim
+  sourceFidelityRisk: analogy replaces condition-bound definition
+  precisionBackoff: state where analogy stops and return to formal statement
+  evaluationReturn: learner marks allowed and blocked deformation conditions
+```
+
+#### Engagement device selection matrix
+
+| Device | Buys | Risk | Required repair handle |
+| --- | --- | --- | --- |
+| Tension | Keeps attention across uncertainty. | Reads as evidence closure. | Name uncertainty and source return. |
+| Failure story | Makes misuse vivid. | Becomes blame or proof by anecdote. | Mark archetype, evidence owner, and protected structure. |
+| Analogy | Makes abstraction traversable. | Replaces definition or proof boundary. | State analogy stop condition. |
+| Character viewpoint | Improves salience. | Imports agency or responsibility. | Use `NSTD.4` literalization repair. |
+| Surprise reveal | Supports memory and curiosity. | Hides source constraints from worker as well as reader. | Return to `NSTD.1` and `NSTD.2` before composing. |
+| Humor or style | Reduces attention cost. | Coarsens terms beyond later use. | Use `C.2.LS`, `A.6.3.CSC`, and `E.10` when claim-bearing. |
+
+#### Calibration for engagement quality
+
+| Value | Engagement condition |
+| --- | --- |
+| `2` | The narrative is interesting, but protected structures, persuasion risk, or precision backoff are not recoverable. |
+| `3` | Engagement device and intended effect are named, but source-fidelity or harm repair is weak. |
+| `4` | Engagement supports declared use while preserving source return, precision backoff, and ethics and evidence exits. |
+| `5` | A low-engagement and high-engagement variant can be compared, and the high-engagement variant improves attention without lowering `NSTD.6` source recovery or owner routing. |
+
+#### FPF owner teaching
+
+`NSTD.5` is the pattern that prevents "make it interesting" from becoming a hidden ethics, evidence, or quality claim. FPF already distinguishes value, evidence, assurance, affected parties, language state, and quality terms. Narrative work does not override those distinctions; it adds a design concern: attention must be earned without capturing the source.
+
+An explanation of FPF uses a story of a team fixing a broken pattern. The engagement effect is motivation and memory. Protected source structures are EntityOfConcern, forces, solution, checks, and source-return condition. The story may not be used as proof that the pattern works in all domains. Evaluation must check reconstruction, not only enjoyment.
+
+A science-communication narrative may use tension around an unresolved experiment. The protected structures are the actual measurement, the attempted explanation, the uncertainty, and the boundary between "suggests" and "shows". If the story makes readers feel that the policy decision is settled, `NSTD.5` lowers the engagement design or routes policy and ethics claims to their owners.
+
+A homotopy lesson may use a memorable image of stretching loops. The image is admissible only if learners can still recover definition boundaries and source-return points. If the image helps memory but makes learners treat all deformations as equivalent without conditions, repair source selection and event or model support before adding more vivid imagery.
+
+A franchise continuation may use suspense, stakes, and identification. Those devices are useful when they protect attention to causal plot and character agency. They fail when fan-service or shock replaces continuity, source constraints, or agency support.
+
+Live commentary may use excitement to keep listeners oriented. The protected structures are observed event, provisional inference, score state, and uncertainty. Engagement fails when suspense turns prediction into fact or blame into settled responsibility.
+
+Choose engagement devices by protected structure, not by taste alone.
+
+| Device | Good use | Failure mode | Repair |
+| --- | --- | --- | --- |
+| Hook | Creates initial attention for a source-returnable route. | Becomes clickbait or false problem statement. | Add source-return promise and blocked overread. |
+| Tension | Keeps unresolved relation visible. | Converts uncertainty into dramatic certainty. | Name unresolved relation and evidence owner. |
+| Identification | Helps readers track a role or viewpoint. | Turns sympathy into permission, blame, or policy. | Add affected-party and ethics routing. |
+| Analogy | Makes abstract structure graspable. | Replaces definition or proof boundary. | State where analogy stops and source returns. |
+| Repetition | Keeps source spine memorable. | Repeats slogan without reconstruction. | Pair each repeat with a reconstruction task. |
+| Compression | Makes route usable under attention budget. | Drops distinctions needed for downstream use. | Use `A.6.3.CSC` or narrow admissible use. |
+| Literary style | Supports felt sense, pacing, or atmosphere. | Becomes quality authority or source-authority signal. | Route language-state and evaluate declared-use quality. |
+
+Do not remove engagement just because it is dangerous. Low engagement can make source recovery impossible because readers never stay with the route. The pattern's job is to bind engagement to a declared use, protected structure, and owner routing. A dry but unmemorable explanation can fail `NSTD.6` for learning use; a vivid but overpersuasive story can fail for evidence or ethics boundary. Both failures are real, but they have different repairs.
+
+Filled engagement-boundary records:
+
+```text
+NarrativeEngagementBoundary@FPFLearningRoute:
+  intendedEngagementEffect: motivation and memory for pattern-use reconstruction
+  protectedSourceStructureRefs: EntityOfConcern; forces; solution; relations; source-return condition
+  languageStateFacetProfileRef: plain teaching narrative with repeated anchors
+  affectedReaderOrGroupRefs: new FPF authors and reviewers
+  persuasionBoundary: may motivate study; may not prove FPF authority or tell readers to bypass checks
+  nonAdmissibleUse: evidence of FPF correctness; replacement for pattern bodies
+  lowValueRepairAction: add reconstruction task, source-return prompt, or lower motivational slogan
+```
+
+```text
+NarrativeEngagementBoundary@HomotopyAnalogy:
+  intendedEngagementEffect: curiosity and retention for abstract structure
+  protectedSourceStructureRefs: definitions; examples; proof-status boundary; formal return
+  languageStateFacetProfileRef: analogy plus formal boundary markers
+  persuasionBoundary: analogy may invite exploration, not replace proof
+  nonAdmissibleUse: theorem proof, formal definition, or exam solution without source return
+  lowValueRepairAction: add formal boundary, counterexample, or source-return step before more metaphor
+```
+
+```text
+NarrativeEngagementBoundary@FranchiseContinuationProbe:
+  intendedEngagementEffect: suspense, identification, and stakes for private storycraft critique
+  protectedSourceStructureRefs: canon constraint; continuity; character agency; causal plot support
+  affectedReaderOrGroupRefs: private reviewers; no public audience permission implied
+  persuasionBoundary: emotional satisfaction does not override source-pack or rights boundary
+  nonAdmissibleUse: publication, canon authority, or rights claim
+  lowValueRepairAction: repair continuity, agency, or causal support before increasing drama
+```
+
+```text
+NarrativeEngagementBoundary@LiveCommentary:
+  intendedEngagementEffect: attention under unfolding uncertainty
+  protectedSourceStructureRefs: observed event; provisional inference; score state; official return
+  affectedReaderOrGroupRefs: listeners and any named parties if blame or harm framing appears
+  persuasionBoundary: suspense and emotion do not settle blame, prediction, or official fact
+  nonAdmissibleUse: final evidence, disciplinary judgment, or settled tactical analysis
+  lowValueRepairAction: add uncertainty markers, source-return route, or lower blame wording
+```
+
+### NSTD.5:6 - Bias-Annotation
+
+This pattern blocks engagement-authority drift: attention, identification, suspense, memorability, or motivation is treated as truth support, ethics clearance, assurance, policy permission, or work authorization. Repair by naming protected source structures, persuasion boundary, affected readers when live, and direct owners for stronger claims. Scope: DPF-local for engagement in narrative renderings; it does not govern all persuasion or ethics work.
+
+### NSTD.5:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD5-1` | Engagement effect is named as use support. |
+| `CC-NSTD5-2` | Protected source structures are named. |
+| `CC-NSTD5-3` | Persuasion, policy, work, evidence, ethics, and assurance use boundaries are explicit when live. |
+| `CC-NSTD5-4` | Affected readers, listeners, or groups are named when harm or manipulation risk is live. |
+| `CC-NSTD5-5` | Low engagement does not automatically fail declared-use rendering quality; low source recovery does fail source-recovery quality when source recovery is required. |
+| `CC-NSTD5-6` | Artistic, literary, dramatic, simplified, or memorable wording is routed to language-state, coarsening, explanation, or precision owners when it changes source recovery, authority, or declared use. |
+
+### NSTD.5:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Fluency as truth | Smooth narrative is treated as supported claim. | Route evidence to `A.10` and evaluate source recovery in `NSTD.6`. |
+| Identification as permission | Readers identify with a protagonist and infer what they should do. | Add persuasion boundary and route policy or work claims to owners. |
+| Artisticness as adequacy | More literary or memorable wording is treated as a better narrative regardless of lost structure. | State the language-state or engagement choice, then evaluate source recovery and source return through `NSTD.6`; use `A.6.3.CSC` if distinctions were deliberately dropped. |
+| Engagement-only success | Readers liked it but cannot reconstruct source structure. | Add reconstruction task and repair via `NSTD.1` through `NSTD.3`. |
+
+### NSTD.5:9 - Consequences
+
+The benefit is safer narrative power: attention is used without stealing evidence or ethics authority. The cost is that designers must state when engagement is not enough.
+
+### NSTD.5:10 - Rationale
+
+The best narrative practice does not reject engagement. It disciplines engagement by purpose, audience, source fidelity, and ethical boundary. FPF makes those boundaries explicit and owner-routed.
+
+### NSTD.5:11 - SoTA-Echoing
+
+Green and Brock's "The Role of Transportation in the Persuasiveness of Public Narratives" treats transportation as a persuasion-relevant effect; Dahlstrom and Ho's "Ethical Considerations of Using Narrative to Communicate Science" makes accuracy loss, policy influence, and affected readers visible; Mengelkamp et al.'s "Effects of Reading Goal Instructions on the Comprehension and Metacomprehension of Informative Narratives" shows engagement and metacomprehension can mislead without explicit goals; Georgiou et al.'s "Large-scale study of human memory for meaningful narratives" warns that memory can preserve summary and order while losing source detail. The DPF adopts engagement as a design characteristic but routes persuasion, harm, bias, evidence, and assurance through FPF owners.
+
+Operational payload:
+
+- From transportation research, engagement can change persuasion. `NSTD.5` therefore treats engagement as a power, not as decoration.
+- From science-communication ethics, narrative can change accuracy, policy interpretation, and perceived obligation. The pattern therefore requires non-admissible downstream use and affected-reader routing when live.
+- From reading-goal research, explicit goals matter. A narrative that works for motivation may fail for comprehension, and a narrative that feels understood may increase overconfidence.
+- From memory research, long narratives can preserve gist and sequence while losing source detail. `NSTD.5` therefore protects source structures and sends learning cases to reconstruction tasks.
+- From FPF language-state and coarsening patterns, literary, compressed, or memorable wording is a change in representation, not an automatic quality increase.
+
+The practical consequence is that engagement is evaluated by its service to declared use and protected structure. It is not a moral permission slip, evidence boost, or universal quality value.
+
+### NSTD.5:12 - Relations
+
+Uses `A.6.3.NAR`, `NSTD.1`, `NSTD.3`, `NSTD.6`, `C.2.LS`, `A.6.3.CSC`, `E.17.EFP`, `E.10`, `A.6.P`, `C.16.Q`, `D.1` through `D.5`, `A.10`, `B.3`, `E.17`, and `G.11`. Reopen when reader telemetry, harm assessment, source fidelity, language-state profile, coarsening relation, precision repair, or persuasion boundary changes. Support-map entry: open `Semiotic And Language-Precision Bridge` when interesting, literary, artistic, memorable, hook, cue, coarsening, or explanation language becomes load-bearing; open `DPF Precision Restoration And Owner Map` when engagement, adequacy, quality, value, or persuasion terms overload; open `Source Use And Refresh Map` when persuasion, memory, cognition, or ethics source claims carry the boundary.
+
+### NSTD.5:End
+
+## NSTD.6 - Declared-Use Narrative Rendering Quality Evaluation
+
+> **Type:** DPF evaluation pattern body
+
+> **Primary EntityOfConcern:** `NarrativeRenderingQualityEvaluationCharacteristicSpace@Context`, an evaluation `CharacteristicSpace` for one evaluated narrative rendering kind and declared use.
+
+### NSTD.6:1 - Problem frame
+
+Use this pattern when a team must decide whether one admitted narrative rendering version is good enough for one declared reader or listener use.
+
+Evaluated object kind: `NarrativeRenderingVersion@Context`, meaning one admitted narrative rendering version with source material, selected source structures, declared use, ordering rule, and source-return condition. A source text, source pack, style guide, seminar script, slide deck, generated output before `C.35` admission, or broad communication plan is not this evaluated object.
+
+First useful move: state "quality of which admitted narrative rendering version, for which declared use, under which temporal posture and route family, against which contrast cases?" Then name one admissible narrative rendering, one below-floor narrative rendering, and one wrong-kind object that must return to evaluation selection.
+
+What goes wrong if missed: readability, elegance, engagement, expert approval, or generated fluency substitutes for epiplexity, source-return discipline, and bounded use.
+
+What this buys: a repeatable evaluation that can feed `E.23` improvement without confusing characteristics, measurements, eval programs, evidence, assurance, or gates.
+
+Quality target: this pattern evaluates quality for one declared use under source-structure selection fit, `NarrativeRenderingEpiplexity`, ordering recoverability, temporal-posture and role fit, source-return readiness, bounded engagement, and owner-routed evidence, assurance, ethics, publication, and work claims.
+
+### NSTD.6:2 - Problem
+
+Narrative rendering quality for declared use is not one property. A narrative can be fluent but structurally false, engaging but ethically unsafe, technically accurate but unusable for learners, or source-faithful but impossible to follow. A useful evaluation needs object-kind fit, characteristic slots, value meanings, evidence basis, missingness rules, floor, exceptional meaning, result-row shape, and repair actions.
+
+### NSTD.6:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Fluency vs epiplexity | A readable narrative may pull too little selected source structure into the rendering for the declared use. |
+| Engagement vs bounded use | A motivating narrative may overpersuade. |
+| Local usability vs reusable scale | A project can use a small rubric, but DPF needs reusable value meanings. |
+| Measurement vs evaluation | Some values may be measured through `C.16`; many are ordinal content evaluations. |
+| Improvement vs Goodhart pressure | Indicatorized characteristics help loops, but unmeasured tracked concerns must prevent proxy capture. |
+
+### NSTD.6:4 - Solution
+
+Construct and use one narrative rendering quality evaluation characteristic space for one declared use.
+
+```text
+NarrativeRenderingQualityEvaluationCharacteristicSpace@Context:
+  evaluatedObjectKindRef: NarrativeRenderingVersion@Context
+  declaredUseScope:
+  objectKindFitRule:
+  discriminatingCaseSet:
+  characteristicSlotSet:
+  epiplexityBasisRule:
+  scaleBindingSet:
+  valueMeaningSet:
+  evidenceBasisRule:
+  missingnessAndLoweringRule:
+  resultRowShape:
+  floorAndExceptionalMeaning:
+  protectedTradeoffSet:
+  stopOrReopenCondition:
+  neighborOwnerRefs:
+```
+
+Object-kind fit:
+
+| Object-kind case | Handling |
+| --- | --- |
+| Admissible narrative rendering | Evaluate all load-bearing characteristics for the declared use. |
+| Below-floor narrative rendering | Evaluate and return low-value repair actions. |
+| Wrong-kind object before invocation | Return to evaluation selection; choose source, style, seminar, generation, publication, or evidence owner. |
+| Wrong-kind object after invocation | Record explicit object-kind-fit defect and stop; do not silently assign values to unrelated coordinates. |
+
+Default value meanings for ordinal content evaluation:
+
+| Value | Meaning |
+| --- | --- |
+| `0` | Wrong-kind object, no admissible basis, or evaluation must stop before value use. |
+| `1` | Object is a narrative rendering but unusable for the declared use. |
+| `2` | Orientation only; source return is needed before reliance. |
+| `3` | Locally usable with named limitations and repair obligations. |
+| `4` | Good for declared use with bounded losses and source return. |
+| `5` | Strong for declared use; source relation, repair history, and boundary cases are replayable. |
+
+Default floor: for reliance-bearing or teaching use, all load-bearing characteristics must be at least `4`, and `NarrativeRenderingEpiplexity`, `OrderingRecoverability`, and `SourceReturnReadiness` may not be below `4`. A local low-risk orientation use may set floor `3` only if non-admissible downstream use is explicit.
+
+Result-row shape:
+
+```text
+NarrativeRenderingQualityResultRow@Context:
+  narrativeRenderingVersionRef:
+  declaredUseScopeRef:
+  characteristicId:
+  characteristicName:
+  scaleRef:
+  value:
+  evidenceBasisRefs:
+  missingnessClass:
+  loweringReason:
+  repairAction:
+  directOwnerRefs:
+  reopenCondition:
+```
+
+Package the rows before feeding an improvement loop:
+
+```text
+NarrativeRenderingQualityEvaluationResult@Context:
+  evaluatedNarrativeRenderingVersionRef:
+  declaredUseScopeRef:
+  evaluationCharacteristicSpaceRef: NarrativeRenderingQualityEvaluationCharacteristicSpace@Context
+  evaluationPurpose:
+  evidenceBasisRefs:
+  resultRows:
+  protectedTradeoffSet:
+  belowFloorRows:
+  candidateImprovementProposalRows?:
+  nonUseBoundary:
+  stopOrReopenCondition:
+```
+
+When repeated improvement is wanted, open `E.22` first if the quality question is not already framed. Then use `E.23` with `NSTD.6` as the object-under-improvement evaluation. This DPF does not mint a local loop kind.
+
+```text
+NarrativeRenderingImprovementLoopInput@Context:
+  e22QuestionFrameRef?:
+  objectUnderImprovementRef: NarrativeRenderingVersion@Context
+  objectVersionBeforeRef:
+  objectUnderImprovementEvaluationRef: NSTD.6
+  improvementAim:
+  protectedTradeoffSet:
+  costAndRiskAccount:
+  allowedChangeSlice:
+    narrativeRenderingVersion | NSTD.1-intake | NSTD.2-ordering |
+    NSTD.3-event-model | NSTD.4-viewpoint | NSTD.5-engagement |
+    NSTD.7-generated-carrier-admission | NSTD.8-learning-route |
+    evaluationCharacteristicSpace
+  returnedFindingOrProposalRows:
+  expectedReEvaluationResultForm: NarrativeRenderingQualityEvaluationResult@Context
+  neighboringOwnerRefs:
+  stopContinueSwitchOrHoldCondition:
+```
+
+`E.23` may claim improvement only after the changed object version is re-evaluated through `NSTD.6` or through a declared stronger evaluation. If the loop changes the source pack, source-currentness, generated-carrier admission, learning publication carrier, publication face, ethics claim, evidence claim, assurance claim, or evaluation characteristic space, the loop must name that neighboring owner and either keep it as the allowed change slice or open separate work. Style edits, prompt retries, or additional drama are admissible loop operations only when their expected movement under `NSTD.6` is stated and protected trade-offs are checked. `B.4` is relevant only when the narrative episteme or learning route is claimed to evolve across use and renewed operation; `G.11` handles refresh when source currentness, reader telemetry, teaching-test evidence, generated-narrative practice, or FPF edition changes.
+
+Before assigning values, require construction-route evidence. The evaluator must be able to point to the records or source passages that played the role of `NSTD.1` source selection, `NSTD.2` ordering, `NSTD.3` event or mechanism support when live, `NSTD.4` viewpoint and agency discipline when live, `NSTD.5` engagement boundary when live, `NSTD.7` generated-carrier admission when live, and `NSTD.8` learning-route design when live. If those records were not written before drafting, they may be reconstructed from source and carrier, but the reconstruction must be explicit. Do not allow "the narrative already looks good" to substitute for the missing construction route.
+
+Use this evaluation sequence:
+
+1. Object-kind fit: is this an admitted narrative rendering version, not source text, source pack, slide deck, prompt output, style guide, or broad communication plan?
+2. Construction-route fit: can the evaluator recover the selected source structures, ordering rule, source-return condition, and live neighboring-owner routes?
+3. Declared-use fit: is the reader or listener use narrow enough to evaluate, and are non-admissible downstream uses stated?
+4. Load-bearing characteristics: assign values only to the characteristics needed for the declared use, but include every characteristic whose failure would make the use unsafe or useless.
+5. Low-value repair: for every value below floor, name the smallest repair route before proposing style, drama, or generation retries.
+6. Re-evaluation route: if any repair changes the object version or selected source basis, plan a new `NSTD.6` evaluation before claiming improvement.
+
+Missingness and lowering rules:
+
+| Missing or defect condition | Lowering rule |
+| --- | --- |
+| Selected source structures absent | `NarrativeRenderingEpiplexity` no higher than `1`; evaluation may stop as wrong object if the rendering has no recoverable source-structure denominator. |
+| Ordering rule absent | `OrderingRecoverability` no higher than `2`. |
+| Source temporal posture, route family, narrating worker, or reader role absent | `TemporalPostureAndRoleFit` no higher than `2`; return to `NSTD.1` before trusting evaluation. |
+| Source-structure selection rationale or reader-interest hypothesis absent | `NarrativeRenderingEpiplexity` no higher than `2`, `TemporalPostureAndRoleFit` no higher than `2`, and evaluation must return to `NSTD.1` before style or engagement repair. |
+| Source-return condition absent | `SourceReturnReadiness` no higher than `2`. |
+| Artistic, literary, simplified, or dramatic wording changes source recovery without owner routing | `LanguageStatePrecisionAndCoarseningFit` no higher than `2`; return to `C.2.LS`, `A.6.3.CSC`, `E.17.EFP`, `E.10`, `A.6.P`, or `C.16.Q` before treating style repair as improvement. |
+| Early hook, vibe, story seed, or route hint is evaluated as an admitted narrative rendering | Wrong-kind object for this evaluation; return to `A.16.1`, then `NSTD.1` and `NSTD.2` when route selection becomes explicit. |
+| Engagement effect asserted without persuasion boundary when influence is live | `EngagementBoundedness` no higher than `3` and ethics owner must be named. |
+| Generated output not admitted through `C.35` | Wrong-kind object for this evaluation; return to `NSTD.7` and `C.35`. |
+| Evidence or assurance claim made without owner | Relevant characteristic value lowered and claim routed to `A.10` or `B.3`. |
+
+Default narrative rendering quality characteristics:
+
+| Characteristic | Evaluation question | Low-value repair action |
+| --- | --- | --- |
+| `SourceStructureSelectionFit` | Are the selected source structures and reader-interest or use hypothesis explicit, non-magical, and well matched to the declared use? | Reopen `NSTD.1`; reconstruct or revise the source-structure selection rationale before changing style, drama, or prompt wording. |
+| `NarrativeRenderingEpiplexity` | How much of the selected source-structure denominator is recoverably pulled into this narrative rendering for the declared use, observer boundary, and source-return condition? | Reopen `NSTD.1`; add source refs, source pins, preserved, foregrounded, or lost-structure accounting, or source-return links. Use `C.33` when architecture-relevant structural-information capture is current. |
+| `OrderingRecoverability` | Can the reader say why this sequence was chosen and what it hides? | Reopen `NSTD.2`; state ordering rule, preserved relations, and lost relations. |
+| `TemporalPostureAndRoleFit` | Do source temporal posture, route family, narrating or rendering worker, reader or listener role, uncertainty, and source-return obligation match the declared use? | Reopen `NSTD.1`; mark retrospective, live, prospective, architecture-mediated, or mixed posture; repair narrator and reader role split and lower claims that overread provisional or fictional structure. |
+| `EventMechanismSupport` | Can the reader reconstruct events, mechanisms, dependencies, or state changes when required? | Reopen `NSTD.3`; add mechanism support or lower causal language. |
+| `ViewpointAgencyDiscipline` | Does viewpoint reveal source structure without false agency, capability, responsibility, or permission? | Reopen `NSTD.4`; split protagonist, actant, role, agency, and ethics owners. |
+| `EngagementBoundedness` | Does engagement support declared use without widening authority? | Reopen `NSTD.5`; add persuasion boundary or reduce engagement device. |
+| `LanguageStatePrecisionAndCoarseningFit` | Does the chosen plain, technical, literary, compressed, didactic, or cue-like language state fit the declared use without hiding relation precision, quality sense, source loss, or route authority? | Publish the language-state facet profile when threshold-bearing, use `A.6.3.CSC` for narrowed-use coarsening, `E.17.EFP` for explanation-facing retelling, `A.16.1`/`A.16.2` for cue or backoff, and `E.10`, `A.6.P`, or `C.16.Q` for precision restoration. |
+| `EthicsEvidenceAssuranceRouting` | Are value, harm, evidence, assurance, and policy claims routed to owners? | Route to `D.1` through `D.5`, `A.10`, `B.3`, or relevant owner. |
+| `MediumAndPublicationFit` | Does the carrier fit the reader and use without changing the claim? | Route publication or audience-unit questions to `E.17`, `E.17.AUD`, or `NSTD.8`. |
+| `SourceReturnReadiness` | Does the narrative tell readers when and where to return to source material? | Add source-return condition or narrow admissible use. |
+
+### NSTD.6:5 - Archetypal Grounding
+
+#### Mature value bank: full result rows
+
+Use this bank when a narrative rendering "sounds good" and therefore tempts the worker to skip evaluation. Each row evaluates an admitted rendering version for one declared use. The same text may receive different values for a different use.
+
+| Case | Characteristic | Value | Evidence basis | Low-value repair |
+| --- | --- | --- | --- | --- |
+| FPF seminar handout | `NarrativeRenderingEpiplexity` | `4` | Learners can recover `EntityOfConcern`, forces, solution, and neighboring exits from the handout. | To reach `5`, add a transfer task where learners choose a governing pattern for a new situation. |
+| FPF seminar handout | `SourceReturnReadiness` | `5` | Every slogan-like line has a source pattern return and one reconstruction exercise. | No proposal unless source patterns change. |
+| FPF seminar handout | `EngagementBoundaryFit` | `4` | Failure story is marked as archetype, not evidence. | Add an explicit evidence-owner exit if the story is used in public adoption material. |
+| Homotopy explanation | `LanguageStatePrecisionAndCoarseningFit` | `3` | Analogy is vivid but learners may not know where formal conditions return. | Add an analogy-stop line and a formal boundary task. |
+| Homotopy explanation | `OrderingRecoverability` | `4` | Didactic order is named and proof order is deferred by value. | To reach `5`, add a second problem where learner maps story order to formal dependency order. |
+| Franchise continuation probe | `SourceReturnReadiness` | `4` | Private source-pack constraints and non-publication boundary are named. | Add a continuity perturbation test: change one premise and check whether event support remains valid. |
+| Live commentary | `EventMechanismSupport` | `3` | Observation and provisional interpretation are separated, but later telemetry return is only generic. | Add specific official record, replay, or statistics return condition. |
+| Generated graph-to-text narrative | `GeneratedCarrierAdmissionFit` | `2` | Output is fluent, but source plan and selected lost relations are not admitted. | Return to `NSTD.7`; do not call this an admitted rendering yet. |
+
+#### Before and after evaluation repair
+
+Before evaluation statement:
+
+> The narrative is strong because readers liked it and remembered the main point.
+
+Failure: engagement and memory are treated as total quality. Source recovery, relation strength, owner routing, and use boundary are absent.
+
+After evaluation statement:
+
+> For the declared onboarding use, the rendering receives value `4` on source recovery because learners can reconstruct the pattern-use route, value `3` on source-return readiness because two slogans lack pattern-body refs, and value `4` on engagement boundary because the failure story is marked as archetypal. The first repair is to add source-return refs for the slogans before changing style.
+
+Now `E.23` has a real changed slice: add two source-return refs and re-evaluate. It is not "make it better somehow".
+
+#### Adjacent-value calibration
+
+| Characteristic | `3` means | `4` means | `5` means |
+| --- | --- | --- | --- |
+| `NarrativeRenderingEpiplexity` | Some selected structure is recoverable, but important preserved or lost structure is implicit. | Selected structure, intentional loss, observer and use boundary, and source return are recoverable. | Recovery survives a heterogeneous transfer or perturbation case. |
+| `OrderingRecoverability` | Order is named, but wrong reconstruction remains likely. | Order, preserved relations, lost relations, and misread block are explicit. | Conflicting order layers are handled and tested. |
+| `EventMechanismSupport` | Events are coherent, but support strength is partly inferred from wording. | Relation strength and reconstruction target are explicit. | A wording or viewpoint change does not change recovered support strength. |
+| `ViewpointOwnerRouting` | Viewpoint is useful, but agency or responsibility repair is incomplete. | Viewpoint function and literal owner exits are recoverable. | Reader can remove or swap viewpoint without losing source structure. |
+| `EngagementBoundaryFit` | Interest exists, but source fidelity or persuasion boundary is weak. | Interest supports declared use while protecting source and owner exits. | A higher-engagement variant improves attention without lowering source recovery. |
+| `GeneratedCarrierAdmissionFit` | Generated output is plausible, but source plan or admission is incomplete. | Source plan, method, admission, and evaluation route are explicit. | Source perturbation and responsibility probes both pass. |
+| `LearningRouteReconstructionFit` | Learners can retell the route but not reliably reconstruct source relations. | Learners reconstruct source spine and source-return boundaries. | Learners transfer the route to a new case and identify the correct neighboring owner. |
+
+#### Evaluation-to-improvement repair input without process theatre
+
+`NSTD.6` does not create a big improvement program. It creates result rows. A repeated improvement loop needs only:
+
+```text
+NarrativeRenderingImprovementLoopInput@Context:
+  objectVersionRef: admitted narrative rendering version
+  evaluationResultRefs: selected `NSTD.6` rows
+  improvementAim: raise one declared value without lowering protected trade-offs
+  allowedChangedSlice: wording, source-return link, ordering marker, viewpoint repair, engagement device, generated source plan, or learning task
+  protectedTradeoffSet: source fidelity, owner routing, engagement, cost, reader burden
+  expectedReEvaluationForm: rerun the affected `NSTD.6` rows and any neighbor owner checks
+```
+
+If the change is "regenerate until better", the object version and changed slice are gone. If the change is "add a source-return link and an analogy-stop task", `E.23` can operate and `NSTD.6` can re-evaluate.
+
+#### FPF owner teaching
+
+`NSTD.6` teaches that epiplexity is not a mood about detail. It asks how much selected structure is recoverable in this rendering, for this observer and use, with explicit losses and source returns. For architecture-relevant renderings, `C.33` remains the stronger owner. For ordinary narrative renderings, the DPF-local epiplexity basis keeps the same information discipline without pretending that every story is an architecture description.
+
+Pass case: an FPF seminar handout narrates how a practitioner moves from problem frame to forces to solution and checks. It names FPF pattern source sections, ordering rule, learner reconstruction task, and source-return points. Values reach `4` or `5` for teaching orientation, but the handout is not evidence that FPF is correct.
+
+Fail despite fluency: a polished architecture story says one chosen architecture "won" because it felt coherent, hides rejected candidates, omits architectural characteristics, and gives no source-return path. `NarrativeRenderingEpiplexity`, `OrderingRecoverability`, and `SourceReturnReadiness` fall below floor even if engagement is high.
+
+Wrong-kind object: an LLM produces a fluent story before `C.35` carrier admission and before selected source structures are recoverable. The object returns to `NSTD.7` and `C.35`; `NSTD.6` may record object-kind-fit value `0`, but it must not evaluate the text as an admitted narrative rendering.
+
+### NSTD.6:6 - Bias-Annotation
+
+This pattern blocks proxy-as-quality drift: readability, fluency, liking, engagement, expert approval, or generated-text benchmark value replaces object-kind fit and declared-use rendering quality. It also blocks the opposite drift where a test program is treated as the characteristic itself. Repair by selecting the evaluated object kind, scales, value meanings, evidence basis, missingness and lowering rules, floor, result rows, and repair actions. Scope: DPF-local for evaluating narrative rendering versions; it does not govern evidence, assurance, gate, decision, or publication authority.
+
+### NSTD.6:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD6-1` | Evaluated object kind, declared use, and object-kind fit rule are explicit. |
+| `CC-NSTD6-2` | At least three discriminating cases are present: pass, below-floor, and wrong-kind. |
+| `CC-NSTD6-3` | Each characteristic binds one scale or is explicitly an ordinal content evaluation. |
+| `CC-NSTD6-4` | Value meanings, evidence basis, missingness rules, floor, exceptional meaning, and stop or reopen condition are declared. |
+| `CC-NSTD6-5` | Result rows include value, evidence basis, lowering reason, repair action, owner, and reopen condition. |
+| `CC-NSTD6-6` | Measurement, eval program, evidence, assurance, gate, decision, publication, and pattern-quality claims route to owners. |
+| `CC-NSTD6-7` | If repeated improvement is claimed, the `E.22` or `E.23` input names object version, `NSTD.6` as evaluation, improvement aim, protected trade-offs, allowed change slice, cost and risk account, and expected re-evaluation form. |
+| `CC-NSTD6-8` | No quality movement is claimed until the changed narrative rendering version or declared changed slice is re-evaluated by `NSTD.6` or a declared stronger evaluation. |
+
+### NSTD.6:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Fluency benchmark value as quality | Smoothness replaces structure recovery. | Lower source-related characteristics and repair through `NSTD.1` through `NSTD.3`. |
+| Style repair as precision repair | A nicer wording pass is treated as sufficient while relation kind, quality sense, language-state threshold, or coarsening loss remains hidden. | Lower `LanguageStatePrecisionAndCoarseningFit`; apply the selected FPF precision, coarsening, explanation, or language-state owner before assigning value movement to style gains. |
+| Prompt loop as improvement | The worker keeps regenerating more engaging drafts without a named object version, allowed change slice, protected trade-offs, or re-evaluation. | Open `E.22` when needed, route the repair to `E.23`, and re-evaluate the changed version through `NSTD.6`; otherwise keep the generated text as an unadmitted candidate carrier under `NSTD.7` and `C.35`. |
+| Evaluation theft | Quality result is used as evidence, assurance, or gate. | Keep `NSTD.6` as evaluation; route wider use to `A.10`, `B.3`, or gate owner. |
+| Wrong-kind evaluation | Source text, style guide, script, or generated output is evaluated as narrative rendering. | Apply object-kind fit and return to the correct evaluation or admission owner. |
+| Characteristics as eval programs | Test scripts or automated checks are treated as characteristics. | Keep characteristics in `A.19.ECS`; automated evals are measurement or eval-program carriers under direct owners. |
+
+### NSTD.6:9 - Consequences
+
+The benefit is a usable improvement target: `E.23` can improve narrative versions because values, floors, evidence, and repairs are declared. The cost is heavier evaluation before reliance-bearing use.
+
+### NSTD.6:10 - Rationale
+
+`A.19.ECS` says improvement cannot be better than its evaluation. `NSTD.6` specializes that lesson for narrative renderings: first recover object kind and use, then choose characteristics that discriminate narrative rendering quality for that declared use.
+
+### NSTD.6:11 - SoTA-Echoing
+
+FPF `A.19.ECS` and `C.16` supply the characteristic-space and result-row discipline. FPF `C.33` supplies the structural-information note for architecture-relevant carriers, while the same general epiplexity line supplies the broader DPF pressure: a carrier is useful only to the extent that selected structure is recoverable under an observer and use boundary. FPF `C.2.LS`, `A.16.1`, `A.16.2`, `A.6.3.CSC`, `E.17.EFP`, `E.10`, `A.6.P`, and `C.16.Q` supply the language-state, cue, backoff, coarsening, explanation, lexical, relation, and quality-term repairs that narrative work often needs under different vocabulary. Castricato et al.'s "Towards a Formal Model of Narratives" supports evaluating narrator-reader information flow, reader story-model evolution, uncertainty, and conveyed-information accuracy. Mengelkamp et al.'s "Effects of Reading Goal Instructions on the Comprehension and Metacomprehension of Informative Narratives" and Georgiou et al.'s "Large-scale study of human memory for meaningful narratives" make declared learner use, memory, and overconfidence measurable pressures. Ma et al.'s "Text-to-Text Automatic Story Generation: A Survey" and Rahman et al.'s "Game Knowledge Management System: Schema-Governed LLM Pipeline for Executable Narrative Generation in RPGs" show that generated narratives need coherence, controllability, structural and semantic evaluation, and human-study probes rather than fluency alone. The DPF adopts those moves through `A.19.ECS`, `C.16`, DPF-local epiplexity basis rules, and FPF owner-routing for language-state and precision repairs, not by importing a generic writing-quality rubric.
+
+### NSTD.6:12 - Relations
+
+Uses `A.19.ECS`, `A.17`, `A.18`, `C.16`, `C.16.Q`, `C.2.LS`, `A.16.1`, `A.16.2`, `A.6.3.CSC`, `E.17.EFP`, `E.10`, `A.6.P`, `C.33`, `E.22`, `E.23`, `B.4`, `A.10`, `B.3`, `E.17`, `C.35`, and `G.11`. `C.33` is used here only when the evaluated narrative rendering is an architecture-relevant structural-information carrier; non-architecture cases keep the epiplexity basis local to `NSTD.6` until a broader FPF owner is admitted. `E.23` consumes `NSTD.6` result rows only after object version, allowed change slice, protected trade-offs, cost and risk, and re-evaluation form are explicit. `B.4` is used only for an evolution claim over a narrative episteme, learning route, or other holon under repeated use; `G.11` handles currentness and refresh. Reopen when evaluated object kind, declared use, source pack, characteristic set, language-state profile, cue or backoff status, coarsening or explanation relation, precision-restoration result, epiplexity basis, value meanings, floor, evidence basis, allowed improvement slice, or low-value repair route changes. Support-map entry: open `Architecture and Narrative Work Bridge` when `NarrativeRenderingEpiplexity` is architecture-relevant or tied to `C.33`; open `Semiotic And Language-Precision Bridge` for language-state, coarsening, explanation, relation, or quality-word repairs; open `Source Use And Refresh Map` when evidence basis or source-currentness supports a value; open `DPF Precision Restoration And Owner Map` when a characteristic name risks becoming a new ontology.
+
+### NSTD.6:End
+
+## NSTD.7 - Automated Narrativization and Story Planning
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `AutomatedNarrativizationAdmissionCase@Context`, a DPF-local case record for generated or tool-assisted narrative output.
+
+### NSTD.7:1 - Problem frame
+
+Use this pattern when LLM, NLG, graph-to-text, data-to-text, story-planning, schema-governed generation, or search is used to produce or repair narrative renderings.
+
+First useful move: split source material, generated carrier, source-to-narrative relation, structure capture or loss, correspondence, generation method, evaluation, evidence, assurance, and human admission responsibility.
+
+What goes wrong if missed: generated fluency, schema compliance, controllability, or story-plan coherence becomes source authority.
+
+What this buys: automation can help produce narrative candidates without admitting them as source-grounded renderings before checks.
+
+### NSTD.7:2 - Problem
+
+Automated systems can produce fluent, coherent-looking, and controllable-looking narratives that fail source grounding, plot or event consistency, schema constraints, source-return discipline, ethical boundary, or human interpretive responsibility. The issue is not whether generation is useful. It is what kind of object has been produced and what owner can use it.
+
+### NSTD.7:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Fast generation vs admission | Tools can produce carriers quickly, but admission requires owner checks. |
+| Schema control vs source truth | A valid story schema does not prove source fidelity. |
+| Fluency vs correspondence | Fluent text can lose selected structure. |
+| Automation vs responsibility | Human responsibility for source selection and admission remains explicit. |
+
+### NSTD.7:4 - Solution
+
+Use a kind-splitting record before evaluating or publishing generated output as a narrative rendering.
+
+```text
+AutomatedNarrativizationAdmissionCase@Context:
+  sourceMaterialOrSourcePackRef:
+  generatedCarrierRef:
+  generationMethodOrMethodDescriptionRef:
+  sourcePlanRef?:
+  plotOrEventPlanRef?:
+  schemaConstraintRefs?:
+  c35AdmissionRef:
+  narRelationRef:
+  structureCaptureLossRef:
+  correspondenceRef:
+  evaluationRef:
+  evidenceOwnerRefs?:
+  assuranceOwnerRefs?:
+  humanAdmissionResponsibilityRef:
+  nonAdmissibleUse:
+  repairOrRejectCondition:
+```
+
+Owner split:
+
+| Claim kind | Owner |
+| --- | --- |
+| Source material or source pack | `G.2`, `A.10`, `E.17.EFP` |
+| Generated or discovered carrier admission | `C.35` |
+| Source-to-narrative relation | `A.6.3.NAR` and this DPF |
+| Structure capture and loss | `C.33` for architecture-relevant carriers; `NSTD.6` epiplexity basis for non-architecture DPF cases |
+| Correspondence or preservation | `C.34` |
+| Generation procedure | method or method-description owner, with source-pack grounding |
+| Narrative rendering quality evaluation | `NSTD.6`, `A.19.ECS`, `C.16` |
+| Repeated quality improvement | `E.22` when the quality question is not framed, then `E.23` using `NSTD.6` result rows and re-evaluation |
+| Evidence | `A.10` |
+| Assurance | `B.3` |
+| Ethics, harm, bias, affected parties | `D.1` through `D.5` |
+| Human responsibility for admission | role, assignment, work, decision, or governance owner as applicable |
+
+Use a six-stage generated-narrative pipeline. Each stage may be lightweight, but it must not be skipped by a fluent final carrier.
+
+| Stage | Required separation | Typical failure |
+| --- | --- | --- |
+| Source grounding | Source material, source pack, selected structures, source-currentness, and non-use boundary are named before generation. | The prompt becomes the source; missing constraints are invented by the model. |
+| Content planning | Source structures to include, omit, foreground, or protect are listed. | The generator chooses content implicitly and loses the denominator for epiplexity. |
+| Discourse or sequence planning | Ordering rule, reveal rule, event plan, or learning route is stated. | Plausible prose hides wrong chronology, causality, proof order, or canon order. |
+| Realization | Language state, style, compression, viewpoint, and engagement devices are selected as rendering choices. | Tone and fluency are mistaken for source fidelity. |
+| Admission | `C.35` or an equivalent admission owner separates generated carrier from admitted narrative rendering. | Prompt output is used directly in teaching, publication, or decision support. |
+| Evaluation and repair | `NSTD.6` evaluates the admitted rendering, and low values route repair through the smallest owner. | Regeneration continues until it "sounds better" without re-evaluation. |
+
+For schema-governed generation, treat schema compliance as one input, not as admission. A schema can constrain scene fields, character roles, location, source refs, branch structure, or game-engine requirements. It cannot prove that selected source structures were preserved, that evidence is sufficient, or that human responsibility was assigned. Record schema constraints in the admission case, then test structural and semantic correspondence through `C.34` and `NSTD.6`.
+
+For LLM-assisted analysis or theme generation, treat the model output as an interpretive aid. The worker must still own source selection, coding or theme acceptance, reflexive judgment, and downstream use. A generated theme, plot plan, or source plan may become source material for later narrative work only after admission and source-return conditions are explicit.
+
+Use three probes before relying on automated output:
+
+1. Source perturbation probe: remove or change one source constraint and check whether the generated carrier changes in the expected way. If it does not, the output may not be grounded in the declared source.
+2. Structure recovery probe: ask a reader or evaluator to reconstruct selected source structures from the generated carrier without seeing the prompt. Low recovery returns to content planning or ordering.
+3. Responsibility probe: ask who is accountable for source selection, admission, publication, and reliance. If the answer is "the model", the case is not admitted.
+
+### NSTD.7:5 - Archetypal Grounding
+
+#### Mature generated-narrative pipeline: graph-to-text case
+
+An AI agent receives a source graph and produces a polished explanation. `NSTD.7` treats the output as a candidate carrier until the source plan, method, admission, and evaluation path are explicit.
+
+```text
+GeneratedNarrativePipelineRecord@GraphToTextTeaching:
+  sourceMaterialOrSourcePackRef: concept graph with dependency, example, counterexample, and evidence links
+  selectedSourceStructureRefs: prerequisite chain, contrast pairs, evidence-return points
+  generatorOrMethodRef: LLM-assisted graph-to-text workflow
+  sourcePlanRef: selected nodes and relations to preserve
+  discourseOrStoryPlanRef: didactic dependency order with contrast reveal
+  realizationCarrierRef: generated prose candidate
+  admissionOwnerRef: `C.35`
+  evaluationOwnerRef: `NSTD.6`
+  humanResponsibilityOwnerRef: human narrator or teacher
+  blockedOverread: fluent output is not source truth, admission, evidence, assurance, or improvement
+  refreshCondition: source graph, generator behavior, schema, or evaluation result changes
+```
+
+Pipeline steps:
+
+1. Source plan: select nodes, relations, losses, and source-return refs.
+2. Discourse plan: choose ordering rule through `NSTD.2`.
+3. Realization: generate wording.
+4. Admission: decide whether the carrier-borne output can be admitted and evaluated as a narrative rendering through `C.35`.
+5. Evaluation: evaluate through `NSTD.6`.
+6. Repair: use `E.23` only after object version and changed slice are explicit.
+
+#### Probe suite for generated narrative
+
+| Probe | Question | Pass condition | Failure repair |
+| --- | --- | --- | --- |
+| Source perturbation | If one source relation changes, does the generated narrative change at the right place? | The affected sentence, order marker, or source-return link changes. | Recover source plan; do not rely on prompt fluency. |
+| Structure recovery | Can a reader reconstruct selected source structure from the output? | Reader recovers nodes and relations needed for declared use and knows lost relations. | Add source-return markers or narrow declared use. |
+| Responsibility | Who is responsible for source selection, admission, and publication? | Human or tool-owner roles are explicit; generated output has no authority by fluency. | Route to `C.35`, `A.10`, `B.3`, `E.17`, or ethics owners. |
+| Schema-governance | Does schema constrain output or only decorate the prompt? | Missing source slots prevent admission or lower evaluation. | Make schema executable or mark it as weak guide. |
+| Improvement evidence | Is the new variant better under `NSTD.6` rows? | Re-evaluation shows expected value movement without protected trade-off loss. | Keep variant as candidate and reframe through `E.22`/`E.23`. |
+
+#### Before and after repair: generated seminar outline
+
+Before:
+
+> The generated outline sounds coherent and covers all important ideas, so it can be used as a DPF learning route.
+
+Failure: source plan, admission, reconstruction task, and evaluation route are missing. "Covers all important ideas" is the model's hidden selection, not a source structure.
+
+After:
+
+> The generated outline is a candidate teaching publication carrier. Its source plan selects `EntityOfConcern`, forces, solution, relation exits, and improvement loop. Its discourse plan uses didactic prerequisite order. It is not a DPF pattern and not a public teaching route until `C.35` admits the carrier and `NSTD.8`/`NSTD.6` show that learners can reconstruct the source spine.
+
+#### Mature generated-storycraft boundary
+
+For the franchise continuation probe, a generated scene is especially risky because fluency and tone can hide source-pack violations. The DPF does not need to teach storycraft in full. It needs to require source-plan and responsibility discipline:
+
+- source pack before scene;
+- continuity and agency constraints before plot twist;
+- private-use boundary before publication-like wording;
+- perturbation test before claiming consistency;
+- `NSTD.6` evaluation before improvement;
+- human responsibility before any reliance-bearing use.
+
+#### Calibration for generated narrative
+
+| Value | Generated-carrier condition |
+| --- | --- |
+| `2` | Output is fluent, but source plan, admission, or evaluation route is missing. |
+| `3` | Source plan exists, but probes or responsibility split are incomplete. |
+| `4` | Source plan, discourse plan, admission, evaluation, and responsibility are explicit for declared use. |
+| `5` | Perturbation, recovery, responsibility, and improvement probes pass across at least two heterogeneous generated cases. |
+
+#### FPF owner teaching
+
+`NSTD.7` is not a prompt-engineering trick. It applies FPF's carrier discipline to generated narrative: produced text is a carrier, not source truth; admission is separate from fluency; improvement needs evaluation rows; source currentness and generator behavior can decay. This is why `C.35`, `G.2`, `G.11`, `A.10`, `B.3`, `E.17`, `NSTD.6`, and `E.23` remain visible.
+
+An LLM drafts a story-like explanation of FPF pattern use from source notes. `NSTD.7` records the prompt output as generated carrier, the source notes as source material, the prompt and generator as method-description context, and `C.35` as admission owner. Only after selected source structures, losses, and source-return condition are recovered may `NSTD.6` evaluate it as a narrative rendering.
+
+A graph-to-text system turns an event graph into a match recap. The event graph, source timestamp, uncertainty markers, and official-result refresh route are source material. The generated recap is a carrier. If the system adds causal explanations not in the graph, those claims are not admitted by graph-to-text success. Repair by lowering causal language, adding source return, or opening the evidence owner.
+
+A game story-planning pipeline generates a branching scene. The schema may require objective, location, actors, traits, constraints, and available actions. `NSTD.7` treats those fields as method and source-plan support, not as proof of playable, coherent, or ethically acceptable narrative. Structural, semantic, executable, and human probes remain separate from fluency.
+
+An LLM proposes themes from interview notes for qualitative narrative analysis. The generated theme list is not the researcher's interpretation by default. Human interpretive agency remains live: the researcher checks source excerpts, reflexive stance, alternative readings, and admissible use before any narrative rendering or report uses the generated material.
+
+Use admission and rejection examples.
+
+| Generated carrier | Admit as narrative rendering? | Reason |
+| --- | --- | --- |
+| A fluent summary from a prompt with no source refs. | No. | Source material and selected structure are not recoverable. |
+| A graph-to-text candidate with source event ids, ordering rule, and explicit lost relations. | Candidate after `C.35`. | It can proceed to `NSTD.6`, but source recovery and relation strength still need value assignment. |
+| A schema-valid RPG scene that ignores a required canon constraint. | No for source-faithful use. | Schema compliance does not establish correspondence. |
+| A generated FPF seminar outline with source-spine refs and reconstruction tasks. | Candidate teaching publication carrier. | It remains outside DPF pattern bodies and needs `NSTD.8`/`NSTD.6`. |
+| A generated metaphor for homotopy that helps intuition but lacks proof boundary. | Orientation cue only. | It may feed `A.16.1` or `NSTD.1`, not admitted rendering quality yet. |
+
+When automated repair is used, preserve version identity. "Regenerate until better" destroys improvement evidence. Record the previous carrier, changed prompt or method, selected changed slice, expected value movement, protected trade-offs, and re-evaluation route. A generated variant can be more fluent and still worse on epiplexity, source return, or agency discipline.
+
+Pipeline variants by source type:
+
+| Source type | Content plan | Discourse or story plan | Admission danger | Evaluation focus |
+| --- | --- | --- | --- | --- |
+| Knowledge graph or event graph | Select nodes, edges, event ids, uncertainty, and omissions. | Choose traversal, grouping, and return links. | Treating graph coverage as semantic truth. | Epiplexity, ordering recoverability, relation strength. |
+| Architecture source pack | Select structures, candidate trade-offs, decisions, telemetry, and residual exceptions. | Use decision-memory or trade-off route. | Treating generated explanation as architecture decision or assurance. | Structural-information capture, correspondence, source return. |
+| Fictional canon or source pack | Select canon constraints, premise, agency, continuity, and non-use boundary. | Use causal plot plus reveal order. | Treating private generated scene as authorized continuation. | Continuity, character agency, causal support, rights boundary. |
+| Teaching source spine | Select concepts, dependencies, examples, counterexamples, tasks. | Use didactic prerequisite route with repeated anchors. | Treating generated outline as source framework. | Reconstruction tasks, learning-route quality, source-return readiness. |
+| Qualitative notes or interviews | Select excerpts, themes, alternative readings, reflexive stance. | Use analysis narrative with traceable source excerpts. | Treating generated theme as researcher judgment. | Human interpretive agency, source traceability, ethical boundary. |
+
+If a pipeline variant requires a source type not covered by the current source pack, mark the case as a source-refresh trigger rather than silently generalizing. A graph-to-text claim, for example, may require a more specific graph-to-text source than a general NLG survey. A game narrative pipeline may need executable or playability probes that a plain text-generation source does not supply.
+
+### NSTD.7:6 - Bias-Annotation
+
+This pattern blocks generated-fluency admission drift: an LLM, NLG system, graph-to-text tool, schema, or story planner produces coherent text and that text is treated as admitted narrative rendering, evidence, assurance, or source authority. Repair by splitting generated carrier, source material, generation method, source-to-narrative relation, capture or loss, correspondence, evaluation, and human admission responsibility. Scope: DPF-local for automated narrativization; it does not replace `C.35` admission or source-pack owners.
+
+### NSTD.7:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD7-1` | Generated carrier is separated from source material, selected source structure, admitted narrative rendering, evidence, and assurance. |
+| `CC-NSTD7-2` | `C.35` admission is present before generated output feeds candidate, narrative, or teaching use. |
+| `CC-NSTD7-3` | Source plan, plot or event plan, schema constraints, and generation method are named when relied on. |
+| `CC-NSTD7-4` | Fluency, coherence, controllability, schema compliance, and story planning do not become authority, evidence, or admission. |
+| `CC-NSTD7-5` | Human admission responsibility is explicit for source selection, interpretation, publication, and reliance-bearing use. |
+| `CC-NSTD7-6` | A generated variant is not called an improvement unless an exact changed rendering version or changed slice is re-evaluated through `NSTD.6` and handed to `E.22` or `E.23` with protected trade-offs, cost and risk, and expected re-evaluation form. |
+
+### NSTD.7:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Fluent generated output as narrative rendering | Carrier admission and source recovery are skipped. | Apply `C.35`, recover selected structure, then evaluate through `NSTD.6`. |
+| Schema compliance as source fidelity | The story satisfies a schema but changes the source. | Add `C.34` correspondence checks; use `C.33` capture-loss checks only for architecture-relevant structural-information use, and use `NSTD.6` epiplexity for non-architecture source-structure loss. |
+| Automation as responsibility holder | Tool output is treated as responsible admission. | Name human role assignment, method, work, decision, or governance owner. |
+| Regeneration as improvement | The worker generates another fluent variant and treats it as quality movement. | Keep the variant as a generated carrier until admission, run `NSTD.6` on the changed rendering version, and use `E.22` or `E.23` only after the improvement question, protected trade-offs, cost and risk, and re-evaluation form are explicit. |
+
+### NSTD.7:9 - Consequences
+
+The benefit is productive automation without false authority. The cost is an admission step and repair or rejection route for generated carriers.
+
+### NSTD.7:10 - Rationale
+
+Modern NLG, LLM, graph-to-text, data-to-text, and story-planning practice makes generation useful but not self-justifying. FPF already has the owners needed for admission, source, structure, correspondence, evaluation, evidence, assurance, and work responsibility.
+
+### NSTD.7:11 - SoTA-Echoing
+
+#### Operational comparison against domain vocabulary
+
+This DPF intentionally translates domain vocabulary into FPF owner work instead of importing it whole. When narratology says story, discourse, and presentation, this package asks: what source structure is selected, what order is chosen, what is foregrounded, and what source return remains? When cognitive narratology says event model, transportation, perspective, or memory, this package asks: which reconstruction target, engagement device, viewpoint, or evaluation characteristic is being changed? When NLG says content planning, discourse planning, and realization, this package asks: what is the source plan, what is the ordering rule, what is the generated carrier, and what admission and evaluation route owns it?
+
+The practical consequence is a repair rule. If a domain term helps the worker choose or repair a narrative move, keep it as DPF vocabulary. If it starts carrying evidence, assurance, ethics, agency, publication, or Core ontology, route the claim to the FPF owner and state the blocked overread.
+
+Gatt and Krahmer's `Survey of the State of the Art in Natural Language Generation` separates content planning, discourse planning, and realization; Alabdulkarim et al.'s "Automatic Story Generation: Challenges and Attempts" and Cardona-Rivera and Ware et al.'s "The Story So Far on Narrative Planning" keep story planning, plot structure, and consistency visible; Chakrabarty et al.'s "SceneCraft" and Rahman et al.'s "Game Knowledge Management System" show schema-governed and interactive generation pressures; Ma et al.'s "Text-to-Text Automatic Story Generation: A Survey" names coherence, consistency, diversity, controllability, datasets, and evaluation limits; Nguyen-Trung and Nguyen's "Narrative-Integrated Thematic Analysis" requires human interpretive agency. The DPF adopts these as owner-splitting requirements rather than as one automation pattern that grants trust.
+
+Operational payload:
+
+- From NLG, keep content planning, discourse planning, and realization separate. If a tool only returns final prose, reconstruct or reject the missing planning stages before reliance.
+- From story-generation surveys, coherence and controllability are necessary but not sufficient. They must be connected to selected source structure, correspondence, admission, and declared use.
+- From narrative planning, plot or event plan is a method artifact. It can guide generation but cannot become source truth.
+- From schema-governed generation, schema fields can support repair and normalization, but schema compliance is not semantic fidelity or human evaluation.
+- From interactive game generation, executable or playability probes may be needed when the narrative must function inside an engine or workflow; text fluency alone is the wrong evidence.
+- From LLM-assisted qualitative analysis, human interpretive agency remains load-bearing. Generated themes, routes, or plans are aids until admitted by the responsible worker.
+
+The practical consequence is that `NSTD.7` should make automated work more usable, not more magical. It protects speed by preventing hidden authority transfer from model output to source truth.
+
+### NSTD.7:12 - Relations
+
+Uses `G.2`, `C.35`, `A.6.3.NAR`, `C.33` for architecture-relevant structural-information capture or loss, `C.34`, `NSTD.6`, `A.19.ECS`, `C.16`, `E.22`, `E.23`, `A.10`, `B.3`, `D.1` through `D.5`, and `G.11`. `E.22`/`E.23` apply only after carrier admission and `NSTD.6` result rows exist; generation retries remain carrier candidates until re-evaluation. Reopen when source material, generator, method, schema, admission note, evaluation result, or generated-narrative SoTA changes. Support-map entry: open `Source Use And Refresh Map` when generation, NLG, story-planning, schema, or source-pack claims are relied on; open `DPF Precision Restoration And Owner Map` when generated source plan, plot plan, schema constraint, admission, correspondence, or responsibility words blur object kinds; open `Semiotic And Language-Precision Bridge` when prompt output changes language state, coarsening, cue, or quality wording.
+
+### NSTD.7:End
+
+## NSTD.8 - Learning-Route Narrative Rendering and Reconstruction Return
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `LearningNarrativeRoute@Context`, a source-returnable learning route plus its teaching or learning publication-carrier relation and evaluation route.
+
+### NSTD.8:1 - Problem frame
+
+Use this pattern when a complex source structure must be taught, explained, or learned through a narrative route, and the route must preserve enough structure for learners to reconstruct and apply it later.
+
+First useful move: name learner use, source-structure spine, learning-step ordering rule, source-return links, learner reconstruction tasks, and evaluation route.
+
+Architecture warning: the source corpus may have a good reference architecture and still make a bad learning route if copied directly into the course. Engineers often make a blocked topic route: one coherent module after another, with each topic concentrated in its own lesson. That can be excellent for a reference manual, API, or architecture description, but weak for learning when learners must discriminate neighboring cases, retrieve earlier distinctions, and transfer the structure under varied cues.
+
+What goes wrong if missed: the explanation is engaging and memorable, but learners retain examples, slogans, analogies, and mood while losing architecture, relation records, proof obligations, pattern-use routes, source-return conditions, or improvement cycles.
+
+What this buys: the learning publication carrier instantiates a declared narrative route over source structures, rather than becoming a hidden replacement for the source corpus.
+
+### NSTD.8:2 - Problem
+
+Teaching and learning routes expressed through publication carriers need sequence, examples, repetition, analogy, and motivation. But those choices can obscure source structure and make learners think the learning route is the framework, proof, or method itself. A DPF pattern should not contain the lesson, seminar script, or explainer text. It should govern how such a carrier is designed, tested, and repaired.
+
+A common engineering failure is the reference-manual course. The course follows the module architecture of the source: first all of topic A, then all of topic B, then all of topic C, each with concentrated examples. Learners can follow each block locally, but later fail to choose the right pattern, distinguish nearby structures, remember earlier conditions, or transfer across domains. The repair is not to destroy the source architecture. Keep the source architecture as source return, then design a different learning-route architecture with deliberate interleaving, spaced retrieval, recurring anchors, and transfer tasks.
+
+### NSTD.8:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Didactic route vs source corpus | Learning order may differ from publication order, proof order, architecture order, or framework order. |
+| Source architecture vs learning-route architecture | High cohesion and low coupling can be good for the source corpus but harmful when copied as blocked topic instruction. |
+| Local fluency vs durable discrimination | Blocked topic lessons feel orderly and efficient, while interleaving can feel harder but can improve later choice and transfer. |
+| Coverage vs spaced retrieval | A course can cover every topic once and still leave learners unable to retrieve earlier structures when they matter later. |
+| Engagement vs reconstruction | Learners may enjoy a story, analogy, example, or lesson without reconstructing source structure. |
+| Carrier specificity vs pattern generality | Lessons, slides, scripts, worked examples, and exercises are needed, but pattern bodies must stay general. |
+| Local teaching evidence vs package authority | Test-run evidence helps a learning route, but does not by itself make the package authoritative. |
+
+### NSTD.8:4 - Solution
+
+Create a learning route record and keep teaching materials outside pattern bodies.
+
+```text
+LearningNarrativeRoute@Context:
+  learnerUse:
+  sourceStructureSpineRefs:
+  sourceArchitectureRef?:
+  learningRouteArchitectureRule:
+  learningStepOrderingRule:
+  interleavingPlanRefs?:
+  spacingOrRetrievalScheduleRefs?:
+  recurringAnchorRefs?:
+  sourceReturnLinkRefs:
+  learnerReconstructionTaskRefs:
+  applicationTaskRefs?:
+  engagementBoundaryRef?:
+  narrativeRenderingQualityEvaluationRef:
+  improvementLoopInputRef?:
+  learningPublicationCarrierRefs:
+  blockedTopicOverread?:
+  nonAdmissibleUse:
+  refreshCondition:
+```
+
+Actual lessons, seminar outlines, slides, exercises, scripts, session notes, recordings, and examples are separate teaching or test-run files. This pattern states how to design and evaluate them.
+
+Build the route in eight design passes.
+
+| Pass | Work product | Failure it prevents |
+| --- | --- | --- |
+| Source-spine pass | A short list of structures learners must later reconstruct or apply. | The lesson becomes an inspirational story or example chain. |
+| Architecture-split pass | A split between source architecture and learning-route architecture. | The source module structure is copied as the course structure by default. |
+| Ordering pass | A learning-step rule that may differ from monolith, proof, publication, or architecture order. | Learners confuse teaching order with source order. |
+| Interleaving pass | Planned returns to earlier and neighboring source structures across sessions, examples, or exercises. | Learners learn each topic in isolation and cannot choose between similar owners later. |
+| Spacing or retrieval pass | Delayed retrieval points for source-spine items, boundary cases, and repair moves. | Learners recognize material during the block but cannot retrieve it after delay. |
+| Anchor pass | Repeated terms, diagrams, questions, or cases that return learners to the source spine. | Learners remember episodes but lose the framework. |
+| Reconstruction pass | Tasks that ask learners to rebuild source structure, not only recall the narrative. | Satisfaction and memory replace practical competence. |
+| Evaluation pass | `NSTD.6` rows for one route version and declared learner use. | Teaching tweaks are treated as improvement without evidence. |
+
+Do not optimize the learning-route architecture for local neatness. A locally neat blocked route can be globally weak: it gives learners the answer key for the current block, so they do not practice selecting the right owner under mixed cues. Interleaving is useful when the learner must later discriminate similar patterns, methods, proof obligations, architecture structures, or source-return owners. Spacing is useful when the learner must still retrieve a structure after other material has intervened. Use them as design moves with declared learner use, not as decorative variety.
+
+Use reconstruction tasks at several depths.
+
+| Task depth | Example task | What it tests |
+| --- | --- | --- |
+| Recognition | "Which pattern owns this problem?" | Whether the learner can see the entry condition. |
+| Reconstruction | "Rebuild the pattern-use route from source, forces, solution, and exit." | Whether source structure survived the narrative. |
+| Transfer | "Apply the same route to a different domain case." | Whether the learner learned structure rather than anecdote. |
+| Boundary | "Name the non-use condition and owner to return to." | Whether blocked overreads were retained. |
+| Repair | "Given a low `NSTD.6` row, choose the smallest repair route." | Whether improvement discipline survived the lesson. |
+
+The learning route may deliberately use examples, stories, rhythm, repetition, and analogy. Those devices are not defects. They become defects only when learners can no longer reconstruct the source spine or source-return boundary. A vivid example can be kept if the route also includes source-return markers and reconstruction tasks.
+
+Telemetry does not have to be heavy. For a small route, it can be a short learner task result, a failed reconstruction note, or an observed confusion pattern. For a reliance-bearing or repeated course, telemetry should include route version, learner role, source spine covered, task result, repair action, and refresh condition. Do not describe this as evolution unless the route is treated as a holon across repeated operation and `B.4` is actually live.
+
+If the route is improved across runs, first evaluate the concrete route version through `NSTD.6`. Use `E.22` when learner value, floor, protected trade-offs, evidence, or result form are still underframed; use `E.23` to repair a declared changed slice such as source spine, learning-step order, reconstruction tasks, learning publication carrier, engagement boundary, or evaluation characteristic space. Use `G.11` when source currentness, learner telemetry, teaching-test evidence, generated practice, or FPF edition changes; use `B.4` only when making an evolution claim about the learning route as a holon across repeated operation.
+
+### NSTD.8:5 - Archetypal Grounding
+
+#### Mature learning-route case: FPF onboarding route
+
+`NSTD.8` is not a seminar-script pattern. It governs the learning route that a seminar, slide deck, tutorial, or exercise sequence may instantiate.
+
+```text
+LearningNarrativeRoute@FPFOnboarding:
+  learnerUse: new practitioner can apply one FPF pattern without treating it as a recipe
+  sourceArchitectureRef: FPF pattern language and monolith and source pattern organization
+  sourceSpineRefs:
+    - `EntityOfConcern`
+    - problem frame
+    - forces
+    - solution as condition-bound move
+    - conformance and checking
+    - neighboring exits
+    - quality and improvement loop
+  learningRouteArchitectureRule: interleaved pattern-use route, not monolith-reference order
+  learningStepOrder:
+    - failed ordinary use
+    - recover object of concern
+    - read forces
+    - choose solution move
+    - check boundary and neighboring owner
+    - repair one low-value result
+  interleavingPlanRefs:
+    - return to `EntityOfConcern` after forces, solution, and quality checks
+    - mix adjacent owner-choice cases after each new pattern
+    - revisit source-return boundary in examples from at least two domains
+  spacingOrRetrievalScheduleRefs:
+    - short delayed retrieval at the start of the next session
+    - later mixed owner-choice task after intervening material
+    - final transfer task with no block label
+  reconstructionTasks:
+    - name the source pattern section behind each story beat
+    - choose the governing pattern for a new case
+    - state one source-return condition
+  engagementBoundaryRef: failure story is an archetype, not evidence
+  evaluationRouteRef: `NSTD.6` learning-route rows
+  improvementLoopInputRef: `E.23` only after low-value rows exist
+```
+
+An actual seminar file can contain jokes, slides, timing, exercises, and examples. The DPF pattern body does not. It tells the route designer what must survive in any carrier-borne teaching material: source spine, ordering rule, reconstruction tasks, source returns, engagement boundary, evaluation, and repair.
+
+#### Mature learning-route case: repair a blocked engineering course
+
+An engineering team wants a course on architecture patterns. Their first outline looks clean:
+
+```text
+Lesson 1: all source-structure intake.
+Lesson 2: all ordering rules.
+Lesson 3: all viewpoint and agency.
+Lesson 4: all engagement.
+Lesson 5: all evaluation.
+```
+
+This is a reference architecture for topics, not yet a learning architecture. It has high local coherence, but it tells learners which kind of problem they are solving inside each block. The hard work appears later: choosing whether a new failure is source selection, ordering, viewpoint, engagement, generated-carrier admission, evidence, assurance, or refresh.
+
+Repair the route:
+
+```text
+LearningNarrativeRoute@ArchitecturePatternCourse:
+  learnerUse: engineer chooses and repairs the right pattern under mixed project situations
+  sourceArchitectureRef: topic map and source pattern bodies
+  sourceSpineRefs:
+    - selected source structure
+    - ordering rule
+    - viewpoint and agency split
+    - engagement boundary
+    - narrative rendering quality row
+    - source-return and owner routing
+  learningRouteArchitectureRule: spaced interleaving around recurring project cases
+  learningStepOrder:
+    - one motivating project failure
+    - source-selection repair
+    - different project failure requiring ordering repair
+    - return to first failure and add viewpoint risk
+    - mixed owner-choice exercise
+    - delayed retrieval of source-return boundaries
+    - final transfer to an unseen case
+  interleavingPlanRefs:
+    - every session mixes at least one current pattern with one earlier pattern
+    - adjacent failure modes are compared side by side
+    - examples rotate across FPF seminar, architecture explanation, homotopy explanation, generated carrier, and live commentary
+  spacingOrRetrievalScheduleRefs:
+    - start each session with a no-label retrieval task from a prior session
+    - return to `EntityOfConcern`, source-return, and owner-routing at increasing delays
+    - require one late repair of an old low-value row after new material intervenes
+  blockedTopicOverread: a clean topic block is not evidence of durable pattern choice
+  evaluationRouteRef: `NSTD.6` rows for transfer, source return, and learner reconstruction
+```
+
+The repaired route still preserves the source architecture. It simply refuses to treat that architecture as the course order. The learner sees a pattern, uses it, leaves it, then returns under a different cue. That is the point: source modules can stay modular while the learning route deliberately crosses module boundaries.
+
+#### Mature learning-route case: homotopy explanation
+
+```text
+LearningNarrativeRoute@HomotopyIntro:
+  learnerUse: learner distinguishes intuitive deformation picture from formal definition and proof boundary
+  sourceSpineRefs:
+    - topological space
+    - path
+    - homotopy relation under constraints
+    - invariant
+    - example and counterexample
+    - proof-status return
+  learningStepOrder:
+    - image cue
+    - constraint marker
+    - formal definition return
+    - example
+    - counterexample
+    - reconstruction task
+  reconstructionTasks:
+    - mark where analogy stops
+    - state which deformations are not allowed
+    - return one claim to formal source
+  engagementBoundaryRef: vivid image cannot replace definition
+  evaluationRouteRef: `NSTD.6` rows for ordering, language-state precision, and source return
+```
+
+If learners can retell the loop picture but cannot state the constraint boundary, the route is not successful. Add examples only after the source spine and reconstruction task are repaired.
+
+#### Mature learning-route case: narrative DPF teaching route
+
+A short course on this DPF may use the three probes: FPF seminar, franchise continuation, and homotopy explanation, with live commentary as a fourth transfer case. The route succeeds only if learners can see the same pattern set working across different domains:
+
+| Step | Probe | Pattern focus | Transfer question |
+| --- | --- | --- | --- |
+| 1 | FPF seminar | `NSTD.1`, `NSTD.8` | What source spine must survive a learning route? |
+| 2 | Franchise continuation | `NSTD.1`, `NSTD.2`, `NSTD.3`, `NSTD.7` | What counts as source pack and event support when facts are prospective or fictional? |
+| 3 | Homotopy explanation | `NSTD.2`, `NSTD.5`, `NSTD.6` | Where does analogy stop and formal source return begin? |
+| 4 | Live commentary | `NSTD.3`, `NSTD.6`, `G.11` | Which claims are provisional until later source return? |
+
+The transfer question is the actual teaching test. Remembering case names is not learning. The learner must choose the live pattern and repair the failure in a new situation.
+
+#### Before and after repair: teaching material inside pattern body
+
+Before:
+
+> This pattern should include a full seminar script so readers can immediately teach narrativization.
+
+Failure: teaching-material carrier and DPF pattern body are collapsed. The carrier-borne material will age, distract, and hide the general route.
+
+After:
+
+> This pattern defines the learning route. Seminar scripts, slides, exercises, examples, recordings, and session notes stay in teaching publication carriers. The route records learner use, source spine, ordering rule, reconstruction tasks, evaluation, and refresh condition. A seminar publication carrier may instantiate it, and `NSTD.6` can evaluate the route version.
+
+#### Calibration for learning routes
+
+| Value | Learning-route condition |
+| --- | --- |
+| `2` | The route is engaging or organized, but source spine and reconstruction tasks are weak. |
+| `3` | Source spine and order exist, but learner tasks mostly check recall or enthusiasm. |
+| `4` | Learners reconstruct source relations, source returns, and boundary conditions for one declared use, including after at least one delay or mixed case. |
+| `5` | Learners transfer the route to a heterogeneous case and repair a low-value row after interleaved and spaced practice, without confusing carrier, source, and pattern authority. |
+
+#### FPF owner teaching
+
+`NSTD.8` connects narrative work to FPF learning without making education a local mythology. It reuses `E.11` for entry, `E.17` for publication carriers, `E.17.AUD` for audience units, `NSTD.5` for motivation, `NSTD.6` for evaluation, `E.22`/`E.23` for improvement, and `G.11` for refresh. The route may be small for a one-off explanation or versioned for a course. The source-return discipline is the same.
+
+An FPF learning route, such as a seminar series or tutorial sequence, teaches the framework across several steps. The source-structure spine includes EntityOfConcern discipline, relation precision, pattern bodies, DPF authoring, architecture synthesis, evaluation, improvement loops, and source-return discipline. The learning order is didactic, not proof of FPF architecture. Learner tasks ask participants to reconstruct one pattern-use route from source, not only repeat a story or slogan.
+
+A homotopy mini-course may start with pictures and deformation stories, but the source spine includes definitions, examples, counterexamples, theorem prerequisites, and proof-status boundaries. A reconstruction task might ask the learner to explain where an analogy stops and to return to a formal statement. If learners can retell the image but cannot mark the formal boundary, `NSTD.8` repairs the source spine and tasks before adding more examples.
+
+A DPF onboarding route may teach narrative rendering through three cases: FPF seminar, franchise storycraft, and live commentary. The route is successful only if learners can reconstruct why all three open `NSTD.1`, why different patterns become live later, and why `NSTD.6` evaluates a declared rendering version rather than a general story. The test is transfer across cases, not recall of the case names.
+
+A generated teaching route must pass through `NSTD.7` before it is trusted. Slides or examples produced by an LLM remain candidate carrier-borne material until the source spine, ordering rule, admission status, and reconstruction tasks are explicit. The learning route may use generated material, but the DPF pattern body does not absorb the generated lesson.
+
+Use route versioning when teaching is repeated.
+
+```text
+LearningNarrativeRouteVersion@Context:
+  routeRef:
+  sourceSpineVersionRef:
+  learnerRoleRef:
+  learningStepOrderingRule:
+  carrierRefs:
+  reconstructionTaskRefs:
+  evaluationResultRef:
+  observedConfusionOrTelemetryRefs?:
+  changedSliceSincePreviousVersion?:
+  refreshCondition:
+```
+
+Versioning is not bureaucracy. It prevents the common failure where a teacher changes slides, examples, or order and then claims the course improved because it felt smoother. Improvement requires a route version, a declared changed slice, and re-evaluation. If the source spine changes because FPF changed, that is refresh through `G.11`, not merely local teaching preference.
+
+Use a two-column lesson plan before writing materials.
+
+| Source-spine item | Narrative or teaching move | Interleaving or spacing move |
+| --- | --- | --- |
+| Pattern entry condition | Recognition story, contrast case, or failed-use story. | Return after two other pattern cases and ask for owner choice without a label. |
+| Forces | Tension sequence, stakeholder conflict, or trade-off map. | Compare with a different pattern's forces in a mixed exercise. |
+| Solution move | Demonstration, guided reconstruction, or worked slice. | Reuse the same project case later with a different repair owner. |
+| Boundary and non-use | Counterexample, wrong-owner case, or blocked overread. | Start a later session with a delayed boundary retrieval question. |
+| Relations | Neighboring-pattern exit exercise. | Interleave adjacent exits so the learner must discriminate them. |
+| Quality and improvement | Low-value row and repair exercise. | Revisit an old low-value row after new material and require a changed-slice repair. |
+
+The left column is the source spine and must remain source-returnable. The middle column is the immediate publication-carrier design. The right column is the learning-route architecture: how the route crosses topic boundaries and returns over time. If the middle column becomes the only remembered structure, the route has failed even if the lesson was popular. If the right column is empty in a multi-session course, the route is probably a reference manual wearing course clothes.
+
+Learning-route recipes:
+
+| Route type | Source spine | Narrative devices allowed | Reconstruction evidence |
+| --- | --- | --- | --- |
+| FPF onboarding route | Pattern entry, EoC, forces, solution, relations, checks, improvement loop. | Practitioner story, failed-use contrast, recurring source-return prompt. | Learner selects correct owner and reconstructs one pattern-use route. |
+| Mathematical explanation route | Definitions, examples, theorem prerequisites, proof-status boundaries. | Analogy, diagram story, dependency sequence, counterexample. | Learner marks where analogy stops and returns to formal statement. |
+| Architecture explanation route | Candidate structures, characteristics, decisions, trade-offs, telemetry. | Trade-off story, viewpoint over stakeholder role, decision-memory path. | Learner separates architecture description, decision, realized structure, and telemetry. |
+| Generated teaching route | Source spine plus generated carrier admission route. | Generated examples or slides after `C.35` and source recovery. | Learner tasks plus admission and evaluation record show the carrier-borne material did not replace source. |
+| Live debrief route | Event record, provisional interpretation, official correction, source return. | Recap story, tension order, role viewpoint. | Learner distinguishes observation, inference, prediction, and official update. |
+
+For a short one-off teaching note, the route can be tiny: one source-spine item, one ordering rule, one reconstruction question, one source-return link. For a repeated seminar or course, the route should have versioned carriers, task results, and low-value repairs. The size changes; the source-return discipline does not.
+
+Do not use popularity as learning evidence. Attendance, satisfaction, applause, or "people liked the story" may be engagement telemetry, but it is not reconstruction evidence. Reconstruction evidence asks whether learners can rebuild the source relation, apply it to a new case, name a boundary, or choose a repair.
+
+### NSTD.8:6 - Bias-Annotation
+
+This pattern blocks learning-route-as-framework drift: a lesson sequence, seminar sequence, slide deck, story arc, exercise set, analogy chain, or memorable teaching case is treated as the source framework. Repair by naming learner use, source-structure spine, learning-step ordering rule, reconstruction tasks, source-return links, learning publication-carrier refs, engagement boundary, and evaluation route. Scope: DPF-local for learning narrative routes; it does not admit teaching material into pattern bodies.
+
+It also blocks blocked-topic architecture drift: the source corpus is modular, so the course is made modular in the same way. Repair by separating source architecture from learning-route architecture. Keep the source modules for source return, then add interleaving and spacing when the learner must later discriminate, retrieve, or transfer structures across topic boundaries.
+
+### NSTD.8:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD8-1` | Learner use and source-structure spine are named. |
+| `CC-NSTD8-2` | Learning-step ordering rule and source-return links are explicit. |
+| `CC-NSTD8-3` | Learner reconstruction tasks test source structure, not only recall of narrative highlights. |
+| `CC-NSTD8-4` | Actual teaching materials remain outside DPF pattern bodies. |
+| `CC-NSTD8-5` | Evaluation uses `NSTD.6`; repeated improvement uses `E.22` when the quality question is underframed and `E.23` only after exact route version, changed slice, protected trade-offs, cost and risk, and re-evaluation form are explicit. |
+| `CC-NSTD8-6` | For multi-session or transfer-bearing routes, source architecture is separated from learning-route architecture, and any blocked topic order is either justified for the learner use or repaired with interleaving, spacing, delayed retrieval, and mixed cases. |
+
+### NSTD.8:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Learning route as source structure | Lesson sequence, seminar order, analogy chain, or explainer order is treated as framework architecture, proof order, or source structure. | Declare learning-step ordering rule and source-return links. |
+| Reference manual as course | The source topic map is copied into lessons one topic at a time. | Keep the topic map as source architecture; design a learning-route architecture with interleaved and spaced retrieval. |
+| Blocked practice fluency | Learners perform well inside each topic block because the block label gives away the owner. | Add mixed owner-choice cases and delayed no-label retrieval before claiming transfer. |
+| Materials inside pattern body | Slides or exercises are inserted into DPF patterns. | Move them to teaching publication-carrier files and reference only the carrier relation. |
+| Recall as reconstruction | Learners remember examples but cannot use patterns. | Add reconstruction and application tasks; evaluate through `NSTD.6`. |
+| Teaching tweak as evolution | A revised slide, example, or prompt is described as evolved route quality without telemetry and re-evaluation. | Treat the tweak as an `E.23` changed slice after `NSTD.6`; use `G.11` for refresh and reserve `B.4` for actual evolution claims over the route across operation. |
+
+### NSTD.8:9 - Consequences
+
+The benefit is a teachable path that stays source-returnable and can be improved without confusing entertainment with understanding. The cost is maintaining separate teaching publication carriers and evaluation evidence.
+
+### NSTD.8:10 - Rationale
+
+Didactic primacy requires examples, analogies, routes, interleaving, and spaced returns. Ontological discipline requires that learning publication carriers do not become the source framework. This pattern holds both: the route is designed, tested, and refreshed without entering pattern bodies as teaching content.
+
+The architectural lesson is counterintuitive for engineers. In a source corpus, strong modularity often helps: each pattern or topic has its own boundary, internal coherence, and relation exits. In a learning route, copying that modularity can hurt. Learners need to meet similar structures under varied cues, return to earlier distinctions after delay, and practice choosing the right owner when the block label is gone. Therefore the course architecture is a transformation over the source architecture, not a mirror of it.
+
+### NSTD.8:11 - SoTA-Echoing
+
+Mengelkamp et al.'s "Effects of Reading Goal Instructions on the Comprehension and Metacomprehension of Informative Narratives" makes study goals and metacomprehension risk visible; Georgiou et al.'s "Large-scale study of human memory for meaningful narratives" shows that long narratives can be remembered as gist and sequence rather than source detail; Hoffmann's "The Tensions of Scientific Storytelling" supplies a science-storytelling example where unresolved tension and source return matter. Dunlosky et al.'s "Improving Students' Learning With Effective Learning Techniques" rates practice testing and distributed practice as high-utility techniques and treats interleaved practice as promising for appropriate situations. Rohrer and Taylor's "The shuffling of mathematics problems improves learning" directly shows the risk of standard blocked textbook practice and the benefit of spaced and mixed practice in mathematics problems. Kang's "Spaced Repetition Promotes Efficient and Effective Learning" gives a policy-level synthesis: spacing repeated encounters with material improves long-term learning and can be combined with tests. Until a separate curriculum-design or cognitive-apprenticeship source row is admitted, `NSTD.8` uses these sources for learning route, reconstruction, memory, spacing, interleaving, engagement-boundary, and source-return pressure, not as a complete pedagogy doctrine.
+
+Operational payload:
+
+- From reading-goal work, declare the learner use before the lesson route. A route for curiosity, exam preparation, professional use, or framework authoring needs different reconstruction tasks.
+- From metacomprehension risk, ask learners to reconstruct or apply source structure, not only rate whether they understood.
+- From memory work, long routes need anchors and returns. Repetition should protect source spine rather than repeat slogans.
+- From spacing work, one concentrated encounter with a topic is not enough for durable learning. Put delayed retrieval points into the route and evaluate whether earlier structures survive intervening material.
+- From interleaving work, blocked topic practice can hide the real choice problem. Mix adjacent owners, cases, or problem types when the learner must later decide which structure applies.
+- From engineering architecture discipline, preserve the source architecture for source return but do not copy it as the learning-route architecture unless the learner use really is reference lookup.
+- From scientific storytelling, unresolved tension can be taught honestly. The route can preserve open questions instead of pretending closure.
+- From FPF improvement-loop patterns, teaching improvement needs route versions, low-value findings, changed slices, and re-evaluation.
+
+The practical consequence is that `NSTD.8` is not a course-design doctrine. It is a source-return and learning-route architecture discipline for narrative learning routes and their publication carriers. It tells when a teaching story still serves the source framework, when it has become its own misleading object, and when a tidy blocked course should be repaired into interleaved and spaced learning.
+
+### NSTD.8:12 - Relations
+
+Uses `A.6.3.NAR`, `E.6`, `E.11`, `E.17`, `E.17.AUD`, `NSTD.1`, `NSTD.2`, `NSTD.5`, `NSTD.6`, `E.21`, `E.22`, `E.23`, `B.4`, and `G.11`. `NSTD.5` bounds motivation and interest; `NSTD.6` evaluates one route version; `E.22` frames under-specified quality questions; `E.23` repairs a declared changed slice; `G.11` refreshes source, telemetry, edition, or practice currentness; `B.4` is only for evolution claims over the learning route. Reopen when learner use, source spine, source architecture, learning-route architecture, interleaving plan, spacing or retrieval schedule, teaching-test evidence, source currentness, edition, or evaluation result changes. Support-map entry: open `Architecture and Narrative Work Bridge` when the learning route narrates architecture, copies source architecture as course architecture, uses views, source spine, or actual-structure feedback; open `Semiotic And Language-Precision Bridge` when didactic coarsening, cue or backoff, explanation, style, or language-state choice matters; open `Source Use And Refresh Map` when teaching, memory, cognition, interleaving, spacing, or learner-test source support changes; use the refresh route when learner telemetry changes.
+
+### NSTD.8:End
+
+## Heterogeneous Acceptance Cases
+
+These cases test whether the DPF handles several narrative domains without importing their materials into pattern bodies.
+
+Each case below must have a construction route before `NSTD.6` evaluation. A pass is not "someone wrote a good narrative and the checklist liked it"; a pass is that the pattern set tells the worker how to move from source structures to a draftable narrative route, then how to evaluate and repair it.
+
+### Case A - FPF Learning Route Probe With Seminar Carrier
+
+Use: multi-session or slide-deck teaching publication carrier for FPF. Actual slides, scripts, exercises, and session notes stay in separate teaching files.
+
+Patterns opened: `NSTD.1`, `NSTD.2`, `NSTD.3`, `NSTD.5`, `NSTD.6`, `NSTD.8`.
+
+Source structures that must survive: pattern body structure, EntityOfConcern discipline, relation owner routing, source-return conditions, quality evaluation, DPF relation records, and improvement loop.
+
+Temporal posture and route family: prospective planned learning route over current FPF source structures; direct source-structure route unless an architecture-of-FPF explanation is explicitly opened as architecture-mediated support.
+
+Ordering rule: didactic prerequisite order, with explicit divergence from monolith order when helpful.
+
+Construction route:
+
+1. `NSTD.1`: select the learner use first, then choose the source-structure spine: `EntityOfConcern`, relation owner routing, pattern body shape, source return, DPF package relation, quality evaluation, and improvement loop.
+2. `NSTD.2`: build a didactic prerequisite sequence from that spine; state where it diverges from monolith order and what this hides.
+3. `NSTD.3`: turn each session into a reconstruction target: after the session, the learner should be able to reconstruct one pattern-use route from source, not only repeat the teaching story.
+4. `NSTD.5`: add motivation devices only where they protect attention without replacing source return; slogans and examples remain subordinate to reconstructable source structure.
+5. `NSTD.8`: create the learning route record with recurring anchors, source-return links, reconstruction tasks, and application tasks before writing slides or scripts.
+6. `NSTD.6`: evaluate the route only after the above fields exist; a low `NarrativeRenderingEpiplexity` value sends the route back to source-spine selection rather than to style polish.
+
+Intentionally lost or deferred: full monolith detail, all neighboring patterns, all source-pack rows, and advanced formal variants. These return through source links.
+
+Owner routing: teaching publication-carrier and audience-unit claims to `E.17` and `E.17.AUD`; evaluation to `NSTD.6`; source claims to `G.2`; evidence to `A.10`; refresh to `G.11`.
+
+Low `NSTD.6` repair: if learners enjoy sessions but cannot reconstruct pattern use, repair `NSTD.2`, `NSTD.3`, and `NSTD.8` before changing only style.
+
+### Case B - Franchise Continuation Storycraft
+
+Use: continuation-style narrative planning for a well-known space-opera franchise such as `Star Wars`, used only as storycraft and source-pack test material. This is not unauthorized publication guidance and does not include generated sequel content.
+
+Patterns opened: `NSTD.1`, `NSTD.2`, `NSTD.3`, `NSTD.4`, `NSTD.5`, `NSTD.6`, `NSTD.7` when generation is used.
+
+Source structures that must survive: canon constraints, continuity, premise and theme, character agency, causal plot structure, viewpoint, stakes, and source-return to admitted canon references.
+
+Temporal posture and route family: prospective fictional source structure over an admitted canon or local source pack; direct source-structure route unless architecture of a fictional organization or technology is separately opened as a source structure.
+
+Ordering rule: plot-causal order with possible reveal order; reveal order must not hide causal support.
+
+Construction route:
+
+1. `NSTD.1`: create a bounded source pack for private storycraft testing: admitted canon references, continuity constraints, premise and theme constraints, character-agency constraints, and non-admissible publication use.
+2. `NSTD.2`: choose plot-causal order and separately mark reveal order; every reveal must point back to a causal or continuity support relation.
+3. `NSTD.3`: build an event or mechanism support map for the proposed plot: initiating condition, constraint, conflict, action, consequence, update, and unresolved tension.
+4. `NSTD.4`: choose viewpoint and protagonist function, then split narrative agency from role, responsibility, capability, rights, or moral permission.
+5. `NSTD.5`: use stakes, curiosity, and identification only after source constraints are protected; fan-service is allowed only when it performs a plot or source-return function.
+6. `NSTD.7`: if generated outputs are used, treat them as carriers to admit and repair, not as authorized sequel content.
+7. `NSTD.6`: evaluate continuity, character agency, causal plot support, viewpoint discipline, and `NarrativeRenderingEpiplexity`; repair structure before increasing drama.
+
+Intentionally lost or deferred: exhaustive canon, production rights, fan-service catalogue, and publication permission. These are outside this DPF case.
+
+Owner routing: canon source pack to `G.2`; generated outputs to `C.35` and `NSTD.7`; agency and responsibility wording to `NSTD.4`, `A.13`, `A.2`, and ethics owners when needed; publication and rights claims outside this DPF.
+
+Low `NSTD.6` repair: continuity drift, premise mismatch, character-agency collapse, escalation without causal structure, fan-service replacing plot function, viewpoint confusion, or stakes without source return repair through `NSTD.1` through `NSTD.4`, not by adding more dramatic prose.
+
+### Case C - Homotopy Theory Explanation
+
+Use: graph-heavy and structure-heavy mathematical theory rendered into sequential explanatory narrative for learners.
+
+Patterns opened: `NSTD.1`, `NSTD.2`, `NSTD.3`, `NSTD.5`, `NSTD.6`, and `NSTD.8` if taught as a series.
+
+Source structures that must survive: definitions, dependency order, examples, counterexamples, proof-status boundaries, theorem prerequisites, and source return to formal statements.
+
+Temporal posture and route family: retrospective or atemporal explanatory route over existing mathematical source structures; direct source-structure route unless a teaching architecture or knowledge-graph architecture is explicitly used as mediation.
+
+Ordering rule: didactic dependency order with source-return to formal proof order.
+
+Construction route:
+
+1. `NSTD.1`: select the learner use and source structures: definitions, dependency graph, examples, counterexamples, theorem prerequisites, proof-status boundaries, and formal-source return.
+2. `NSTD.2`: choose didactic dependency order; explicitly mark where it differs from formal proof order, historical order, or publication order.
+3. `NSTD.3`: define the reconstruction target for each step: what the learner must be able to state, distinguish, use in an example, or return to as formal proof status.
+4. `NSTD.5`: use analogy, curiosity, or visual intuition only after the formal boundary is named; an analogy may motivate but may not become the theorem.
+5. `NSTD.8`: if the explanation becomes a series, turn dependencies into session anchors and reconstruction tasks rather than a sequence of entertaining analogies.
+6. `NSTD.6`: evaluate whether learners can recover definitions, dependency order, example boundaries, proof-status boundaries, and source-return points; low values repair source selection and ordering before adding more metaphor.
+
+Intentionally lost or deferred: full proof detail, every lemma, historical order, and advanced generalizations not needed for declared learner use.
+
+Owner routing: mathematical-lens claims to `C.29` when used; evidence or proof-status claims to their proof or source owner and `A.10` when evidence is claimed; publication-unit and audience claims to `E.17`.
+
+Low `NSTD.6` repair: if learners can retell an analogy but cannot state definitions, dependency order, example boundaries, or proof status, repair `NSTD.1`, `NSTD.2`, and `NSTD.3`; do not raise engagement alone.
+
+### Case D - Live Event Commentary
+
+Use: live commentary for an unfolding football match or analogous event stream, used for listener orientation and later review only under source-return conditions.
+
+Patterns opened: `NSTD.1`, `NSTD.2`, `NSTD.3`, `NSTD.4`, `NSTD.5`, and `NSTD.6`.
+
+Source structures that must survive: score state, event sequence, possession or control changes, tactical or situational structure, actor roles, uncertainty, provisional interpretation, and return to official result, telemetry, statistics, or recording.
+
+Temporal posture and route family: live unfolding source; direct source-structure route. Architecture-mediated route opens only if the commentary is explicitly about structure of a team, venue, broadcast system, or other holon and uses architecture descriptions as source.
+
+Ordering rule: live event order with explicit prediction and uncertainty markers; later recap may use causal or tension order but must not erase which claims were provisional during the live event.
+
+Construction route:
+
+1. `NSTD.1`: name listener use, live temporal posture, commentator or rendering worker, event-source owner, provisional interpretation boundary, and source-return route.
+2. `NSTD.2`: follow live event order while marking when the sequence is observation, inference, tactical interpretation, or prediction.
+3. `NSTD.3`: preserve event and state-update support so listeners can reconstruct what changed, who acted, and what remains uncertain.
+4. `NSTD.4`: keep viewpoint and agency wording from assigning responsibility, intention, or capability beyond the observable or sourced basis.
+5. `NSTD.5`: use tension and suspense only as attention support; it cannot make predictions, disputed rulings, or emotional framing into settled evidence.
+6. `NSTD.6`: evaluate whether the listener can distinguish observed event, provisional interpretation, uncertainty, and source-return obligation.
+
+Intentionally lost or deferred: full official statistics, all off-camera events, post-match medical or disciplinary facts, and later tactical analysis. These return through official source refs, telemetry, or recording.
+
+Owner routing: official facts to event source owners and evidence owners when asserted; publication or broadcast carrier to publication owners; ethics or harm framing to `D.1` through `D.5`; refresh to `G.11` when official record or telemetry changes.
+
+Low `NSTD.6` repair: if listeners remember drama but cannot distinguish observed event from commentator inference or later official correction, repair `NSTD.1`, `NSTD.2`, `NSTD.3`, and `NSTD.4` before increasing engagement.
+
+## Support Maps
+
+These maps are reference material reached from pattern work, not a second reading sequence before the pattern bodies. Use the pattern bodies first. Open a map when a `Relations` section, low-value repair action, source-return condition, or owner-routing doubt points to it.
+
+Fast entry: `NSTD.1` and `NSTD.2` send architecture-mediated structure and route-family questions to the architecture bridge; `NSTD.4` through `NSTD.6` send language-state, quality wording, viewpoint, engagement, and epiplexity precision questions to the semiotic and precision maps; `NSTD.7` sends generated-carrier, source, and admission questions to source use and precision maps; `NSTD.8` sends teaching-route and learner-reconstruction questions to the architecture bridge, semiotic bridge, and refresh route when those owners become live.
+
+## Architecture and Narrative Work Bridge
+
+Use this bridge when narrative-language work is doing architecture-like structural work under different words. The point is not to turn every narrator into an architect or every architecture record into prose. The point is to let narrators borrow FPF architecture discipline when they select structures, choose viewpoints, decide what to foreground, and later test whether readers recovered the intended structure.
+
+| Architecture-work locus | Narrative-studies wording that may name the same ontological work | FPF use in this DPF |
+| --- | --- | --- |
+| architecture-relevant problem pressure in `C.32.P2S` | narrative problem, communicative pressure, audience confusion, motivation gap, future-scenario need, story problem | Use `NSTD.1` to name reader or listener use and source-structure selection rationale; use `C.32.P2S` only when the pressure is genuinely about holon architecture carry-through. |
+| selected structure or unknown structure | source material, storyworld, event field, canon constraint, mechanism, proof dependency, thematic relation, situation structure | Name selected source structures explicitly; use `A.22`, `C.30`, or domain owners when structure claims become load-bearing. |
+| architecture structural view and viewpoint in `C.30.ASV` | focalization, narrative viewpoint, perspective, lens, whose path through the material, what the reader is allowed to see | Use `NSTD.4` for voice or focalization wording; cite `C.30.ASV` when the viewpoint is over architecture-relevant selected structures. |
+| architecture description in `C.30.AD` | synopsis, outline, story bible, explanatory account, learning route, narrative-rendering publication carrier | Use `A.6.3.NAR` for structure-to-sequence rendering and `E.17` for publication; use `C.30.AD` only when the source or target is an architecture description. |
+| candidate structure set and trade-off in `C.32` | alternative plots, possible story plans, scenario branches, competing explanation routes, narrative design alternatives | Keep alternatives visible before picking the route; use `NSTD.2` for ordering and `NSTD.6` for declared-use quality. Use `C.32` only for architecture candidate synthesis. |
+| project architecture decision in `C.32.PAD` | chosen narrative route, selected plot or order, editorial commitment, scenario commitment | Treat the chosen narrative route as DPF-local unless it is also an architecture decision. Do not let narrative commitment authorize work, evidence, ethics, or architecture decisions. |
+| developer or transformer role receiving architecture work | writer, narrator, teacher, commentator, story designer, tool operator, performer, generator controller | Name the narrating or rendering worker in `NSTD.1`; use A.15-family owners only when method, work, readiness, or performed-work claims become live. |
+| structural information capture and source return in `C.33` | how much of the source got into the story, what the story hides, what must be checked in source, epiplexity of rendering | Use `NarrativeRenderingEpiplexity` in `NSTD.6`; use `C.33` when the carrier is architecture-relevant structural information. |
+| structural correspondence in `C.34` | canon fidelity, same storyworld, adaptation faithfulness, explanation still same-enough, narrative order preserving source relation | Use `C.34` when same-enough preservation matters for architecture; otherwise keep correspondence local to DPF and domain owners and state lost structure and non-admissible use. |
+| realized structure, operation, telemetry, feedback in `C.32.P2S` and `G.11` | reader reception, learner reconstruction, field test, replay, audience misunderstanding, generated-output repair, official result after live commentary | Use `NSTD.6`, `NSTD.8`, `E.23`, and `G.11` for evaluation, improvement, and refresh. Use architecture feedback owners only when actual holon structure or architecture-characteristic results are being checked. |
+
+Training transfer works both ways. Architects already practice selected-structure discipline, viewpoints, trade-offs, source return, and actual-structure feedback; to become better narrators they must add reader or listener role, ordering rationale, event support, focalization, engagement boundaries, and declared-use narrative quality. Narrators already practice audience, sequence, viewpoint, tension, and reception; to become better structural workers they must add selected-source discipline, architecture-style view and correspondence discipline, explicit loss accounting, source return, and owner routing.
+
+## Semiotic And Language-Precision Bridge
+
+Narrative work is also semio work: it changes signs, carriers, salience, sequence, viewpoint, articulation, closure, and reader interpretation. The DPF should not translate every narrative problem into a new narratology term. When an FPF pattern already owns the problem under different language, the DPF uses that owner and adds only the narrative-specific selection, ordering, engagement, and reception discipline.
+
+| Narrative-studies wording or problem | FPF owner to use | DPF consequence |
+| --- | --- | --- |
+| "make it more interesting", "more literary", "more artistic", "more memorable", or "more story-like" | `NSTD.5` for engagement, `C.2.LS` plus `C.2.4` through `C.2.7` when a language-state profile matters, and `NSTD.6` for declared-use quality | Artistic or memorable wording is admissible only as use support or language-state choice. It does not by itself increase source truth, source recovery, evidence, ethics, assurance, or permission. |
+| early hook, vibe, image, tension, felt mismatch, story seed, or low-articulation direction | `A.16.1` for a pre-articulation cue pack, then `NSTD.1` and `NSTD.2` only when source selection and route selection are explicit | Preserve the cue without pretending that the narrative purpose, selected route, claim, method, or quality endpoint already exists. |
+| preconceptual or dynamic-quality pull toward a more artistic rendering | `C.16.Q` as `QS.PreconceptualFit` or related signal-pack treatment, often with `A.16.1` and `C.2.LS` before endpoint evaluation | Treat the felt artistic pull as a real cue or signal only under explicit witness, anchor, and articulation discipline. It is not yet a characteristic, value, proof of narrative quality, or permission to drop source structure. |
+| overcommitted plot frame, failed explanatory frame, or too-strong narrative route | `A.16.2` for reopen, sketch-backoff, respecify, or retire; `A.6.P`/`C.16.Q` only when relation or quality precision is actually repairable | Back off the narrative route honestly instead of hiding retreat behind "refined", "made subtler", or "more nuanced" prose. |
+| simplified, didactic, redacted, compressed, or audience-safe retelling | `A.6.3.CSC`, with `E.17.EFP` when the rendering is explanation-facing | State narrower admissible use, source-loss mode, blocked downstream use, and source-return condition before treating the retelling as useful. |
+| clearer explanation, tutorial wording, onboarding story, or source-linked retelling | `E.17.EFP` plus `A.6.3.NAR` when sequence and narrative order are load-bearing | Classify whether the rendering is source-pinned, source-linked reconstruction, didactic retelling, or speculative retelling; do not let helpful explanation become a second semantic rule track. |
+| "same story", adaptation fidelity, canon continuity, or narrative correspondence | `C.34`, with `NSTD.2` and `NSTD.6` for order and declared-use quality | State same-enough relation, preserved relations, lost relations, and non-admissible use rather than relying on the word "faithful". |
+| "quality", "good narrative", "adequate story", "strong explanation", or "better style" | `C.16.Q` for overloaded quality wording, `A.19.ECS`/`C.16`/`NSTD.6` for evaluation, `F.18` for durable names | Recover bearer, evaluation frame, quality sense, characteristic or bundle, and value meaning before using the term as improvement guidance. |
+| relation words such as "supports", "grounds", "maps", "connects", "based on", or "aligned with" inside narrative rationale | `A.6.P` and direct relation owners such as `A.6.6`, `C.34`, `A.10`, or `B.3` when selected | Restore relation kind, endpoints, qualifiers, admissible use, and blocked overread before the narrative rationale is reused. |
+| style, genre, tradition, scene, technique, voice, or tone used as an FPF-governed decision | `E.10` trigger scan; `F.18` only for reusable durable names; `NSTD.4` and `NSTD.5` for DPF-local voice and engagement | Keep craft vocabulary useful, but do not let style words mint ontology, authority, or quality values. |
+
+The practical rule is bidirectional in reading but one-directional in dependency. DPF authors may freely read FPF patterns as solution resources for narrative problems. FPF Core patterns do not depend on this DPF. If a narrative problem is really a source relation, relation precision, coarsening, explanation, language-state move, quality-term, evidence, assurance, ethics, publication, generated-carrier, or refresh problem, the DPF names the FPF owner and then states only the narrative-specific source selection, sequence, reader-use, and reception consequences.
+
+## Source Use And Refresh Map
+
+Use `G.2` source rows to ground the narrative-studies, cognitive, teaching, ethics-risk, and generation claims used by this package. A source row does not become an ethics, evidence, assurance, admission, or authority owner. When a source row is absent, stale, ambiguous, or too narrow for a relied-on claim, keep the claim bounded and route refresh through `G.2`/`G.11`.
+
+| Source line | DPF locus supported | Use boundary |
+| --- | --- | --- |
+| Hoffmann, "The Tensions of Scientific Storytelling" | `NSTD.1`, `NSTD.3`, `NSTD.5` | Scientific narrative can organize discovery, mechanism, attempts, calculations, and unresolved tension, but it does not create evidence or assurance. |
+| Schmid, `Narratology: An Introduction`, and Chihaia, `Introductions to Narratology: Theory, Practice and the Afterlife of Structuralism` | `NSTD.2`, `NSTD.4`, precision map, source-use refresh | Use source material, selection, composition, linearization, rearrangement, perspectivization, voice, and tradition and audience plurality as DPF vocabulary; do not import fiction-bound terms into Core ontology. |
+| Nguyen, "A Review of Mechanistic Models of Event Comprehension"; Chen and Xu, "Neural and Behavioral Evidence for Differential Processing of Narrative Perspective in Novel Reading"; Mengelkamp et al., "Effects of Reading Goal Instructions on the Comprehension and Metacomprehension of Informative Narratives"; Georgiou et al., "Large-scale study of human memory for meaningful narratives" | `NSTD.3`, `NSTD.4`, `NSTD.6`, `NSTD.8` | Event, hierarchy, prediction, updating, viewpoint, reading goal, metacomprehension, and memory effects inform reconstruction checks; they do not prove source truth. |
+| Castricato et al., "Towards a Formal Model of Narratives"; prospective narrative practice such as design-fiction or experiential-futures sources | `NSTD.1`, `NSTD.2`, `NSTD.4`, `NSTD.6`, acceptance cases | Narrating worker, reader or listener role, reader story-model evolution, uncertainty, and temporal posture become explicit drafting and evaluation slots; these rows do not create FPF Core ontology. |
+| Green and Brock, "The Role of Transportation in the Persuasiveness of Public Narratives"; Dahlstrom and Ho, "Ethical Considerations of Using Narrative to Communicate Science"; Meretoja, "Narrative and Human Existence: Ontology, Epistemology, and Ethics" as background only; FPF `D.1` through `D.5` | `NSTD.5`, `NSTD.6`, acceptance cases | Engagement and persuasion are real design effects, but ethics, harm, evidence, and assurance stay with FPF owners. |
+| Dunlosky et al., "Improving Students' Learning With Effective Learning Techniques"; Rohrer and Taylor, "The shuffling of mathematics problems improves learning"; Kang, "Spaced Repetition Promotes Efficient and Effective Learning" | `NSTD.8`, `NSTD.6`, architecture bridge, source-use refresh | Learning-route architecture may need spaced retrieval and interleaving rather than blocked topic order; a coherent source architecture must not be copied automatically as the course architecture. |
+| Gatt and Krahmer, `Survey of the State of the Art in Natural Language Generation`; Alabdulkarim et al., "Automatic Story Generation: Challenges and Attempts"; Cardona-Rivera and Ware et al., "The Story So Far on Narrative Planning"; Chakrabarty et al., "SceneCraft"; Ma et al., "Text-to-Text Automatic Story Generation: A Survey"; Rahman et al., "Game Knowledge Management System"; Nguyen-Trung and Nguyen, "Narrative-Integrated Thematic Analysis" | `NSTD.7` | Generation splits content planning, discourse planning, method, schema, repair, admission, evaluation, and human interpretive agency; fluency never grants authority. |
+
+Refresh condition: use `G.11` when source pack, FPF Core edition, narrative-studies source basis, generated-narrative practice, reader telemetry, teaching-test evidence, or evaluation results change.
+
+## DPF Precision Restoration And Owner Map
+
+These terms are local working vocabulary unless a source owner and naming owner admit a more durable term. The map states the owner and blocks accidental `U.*` minting.
+
+| Term | Kind and owner | Use in this DPF | Blocked overread |
+| --- | --- | --- | --- |
+| source material | Existing FPF source or episteme use; `G.2`, `A.10`, `E.17.EFP` as applicable | Material from which a narrative may draw | Not the selected source structure by itself |
+| selected source structure | Existing FPF structure use; `A.22`, `A.6.3.NAR`, `C.33` when architecture-relevant structural-information capture is current | Structure that must remain recoverable after rendering | Not the narrative rendering and not evidence authority |
+| source-structure selection rationale | DPF-local slot under `NSTD.1`, with source-owner support when needed | Why these structures were selected for the declared reader or listener use and not merely because the current rendering foregrounded them | Not proof that the selection is correct and not a substitute for source, evidence, or architecture owners |
+| source temporal posture | DPF-local slot under `A.6.3.NAR` and `NSTD.1` | Whether the source is retrospective or reverse-engineered actual material, live unfolding material, prospective planned material, prospective fictional material, or mixed | Not evidence strength, chronology, or publication date by itself |
+| route family | DPF-local slot under `A.6.3.NAR` and `NSTD.1` | Direct source-structure route or architecture-mediated route | Not a claim that all narrativization is architecture and not a reason to bypass architecture owners when architecture is live |
+| architecture-mediated narrativization route | Route family using architecture understanding, architecture description, views, viewpoints, decisions, candidate structures, or telemetry as mediating source | Narrate actual or future holon structure for a declared reader or listener use | Not architecture decision, not architecture description itself, and not implementation authority |
+| narrating or rendering worker | DPF-local role slot under `NSTD.1`, with human or tool responsibility routed to direct owners | Writer, narrator, teacher, commentator, story designer, or tool-mediated worker arranging source structure into narrative | Not source owner, evidence owner, ethical owner, or responsible agent unless direct owners assign that |
+| reader or listener role | DPF-local role-use slot under `NSTD.1`, `NSTD.6`, and publication and audience owners when needed | Intended receiver role whose use constrains source selection, order, viewpoint, engagement, and source return | Not a generic audience, not authority, and not source truth |
+| reader-interest or use hypothesis | DPF-local slot under `NSTD.1` and test object for `NSTD.6` | Explicit guess about what the receiver needs to understand, do, remember, decide not to decide, or return to source for | Not a guarantee of actual comprehension without evaluation or telemetry |
+| narrative rendering | DPF-local name for the receiving-side episteme and rendering relation under `A.6.3.NAR`; carrier or publication availability routes to `E.17` or the direct publication owner | One version of source structure rendered as sequence | Not source truth, carrier identity, assurance, or publication permission |
+| narrative purpose | Relation slot in `NSTD.1` | Declared reader-use aim tied to source structure | Not free persuasion goal |
+| ordering rule | Relation slot in `NSTD.2` | Rule that orders source structure into sequence | Not physical time, proof order, or work order unless the source supports it |
+| event model | DPF-local vocabulary under `NSTD.3`, with causal claims routed to `C.28` | Reader-recoverable account of events, mechanism, dependency, or state change | Not causal evidence by itself |
+| viewpoint | DPF-local vocabulary under `NSTD.4` | Position from which the rendering presents the source | Not evidence, responsibility, or source authority |
+| focalized object | DPF-local vocabulary under `NSTD.4` | Object, role, holon, relation, or source locus made salient by viewpoint | Not a new agent or protagonist kind |
+| voice | DPF-local vocabulary under `NSTD.4` | Rendering stance and speaker arrangement | Not authority, evidence, or moral permission |
+| protagonist | DPF-local storycraft vocabulary under `NSTD.4` | Reader-facing center of action or attention when useful | Not necessarily an `A.13` agent, role holder, or responsible party |
+| actant | DPF-local narratology vocabulary under `NSTD.4` | Function in a narrative relation or plot grammar | Not `U.Role`, `U.RoleAssignment`, or capability without direct owner |
+| agency or personification | Governed by `A.13`, `A.2`, `A.2.1`; local wording check in `NSTD.4` | Humanlike or agent-like presentation of a source bearer | Does not assign responsibility, capability, permission, or decision authority |
+| engagement effect | DPF-local characteristic candidate in `NSTD.5` and `NSTD.6` | Attention, motivation, memorability, or following support | Not truth, evidence, assurance, or ethical clearance |
+| persuasion boundary | Ethics and value routing through `D.1` through `D.5`; local slot in `NSTD.5` | Limit on influence, decision pressure, or action invitation | Not policy permission or work authorization |
+| generated source plan | Method or source-plan reference; `G.2`, `C.35`, `NSTD.7` | Source representation supplied to a generator | Not an admitted source structure until owner checks pass |
+| plot or event plan | Method-description or generation-plan element; `NSTD.7` | Planned sequence for generated narrative | Not source truth or event evidence |
+| schema constraint | Method or generation constraint; `NSTD.7`, `C.35` | Formal or informal constraint on generation | Not assurance or evidence sufficiency |
+| generation method | Method or method-description claim; direct method owners plus `C.35` | Procedure used to produce a carrier | Not admission of its output |
+| repair loop | Improvement method; `E.22` when the question needs framing and `E.23` after values exist | Repeated repair of a narrative rendering version or DPF scale set under re-evaluation | Not evaluation itself, not prompt retry, and not proof of quality movement without re-evaluation |
+| learning narrative route | Teaching or learning route design plus publication-carrier relation governed by `NSTD.8`, `E.17`, `E.17.AUD` | Narrative route over source structures for learner reconstruction or application | Not the pattern body and not the teaching material itself |
+| learner reconstruction task | Teaching work item or evaluation evidence; `NSTD.8`, `A.15`, `NSTD.6` | Task that tests whether learners can recover selected source structure and source-return boundaries | Not proof of general understanding without evidence and scale |
+| narrative rendering epiplexity | DPF-local quality characteristic specializing the general epiplexity move; `NSTD.6`, `A.19.ECS`, `C.16`, with `C.33` when architecture-relevant structural-information capture is current | How much selected source structure is pulled into one narrative rendering for one declared use and observer boundary | Not a universal narrative value, not proof, not evidence, not assurance, and not a new U-kind |
+| narrative rendering quality characteristic | Evaluation characteristic; `A.19.ECS`, `C.16`, `NSTD.6` | Characteristic used to evaluate one narrative rendering version for declared use and source-return obligations | Not an eval program, evidence record, assurance claim, or gate |
+| narrative language-state facet profile | Existing FPF language-state profile use; `C.2.LS`, `C.2.4`, `C.2.5`, `C.2.6`, and `C.2.7` | Decomposable statement of articulation, closure, anchoring, representation factors, and thresholds for a narrative rendering or cue | Not a master maturity value, not artistic merit, and not quality by itself |
+| pre-articulation narrative cue | Existing FPF cue-pack use; `A.16.1` | Preserved hook, tension, image, felt mismatch, or route hint before narrative purpose, route, claim, or quality endpoint is honest | Not a selected route, not a claim, not a method, and not proof that a story should be written |
+| preconceptual narrative fit signal | Existing FPF quality-term precision use; `C.16.Q` with `QS.PreconceptualFit`, and `A.16.1` when still cue-like | Felt rightness, dynamic-quality-like pull, or artistic fit before the DPF can honestly publish a characteristic or route | Not a metric, not `NarrativeRenderingEpiplexity`, not source fidelity, and not sufficient evidence that the rendering works |
+| coarsened narrative rendering | Existing FPF coarsening use; `A.6.3.CSC`, with `NSTD.2` and `NSTD.6` for narrative order and quality | A simplified, compressed, redacted, didactic, or audience-safe rendering that remains useful only under narrower admissible use and source return | Not source replacement, not explanation faithfulness by itself, and not evidence or assurance |
+| explanation-facing narrative rendering | Existing FPF explanation-use profile; `E.17.EFP`, with `A.6.3.NAR` when narrative ordering is load-bearing | Narrative rendering that helps a reader understand an already available source episteme or publication | Not a second semantic rule track and not operative evidence without the direct owner |
+| narrative precision restoration | FPF precision-restoration route; `E.10`, `A.6.P`, `C.16.Q`, `C.2.P`, and the direct owner selected by the recovered claim | Repair of overloaded narrative wording such as support, alignment, quality, style, adequacy, source, route, or same-story claims | Not synonym polishing and not a reason to create local DPF ontology when FPF already owns the claim |
+| artistic or literary rendering mode | DPF-local craft and use choice under `NSTD.4` and `NSTD.5`, with `C.2.LS` when language-state thresholds matter | Voice, tone, genre, scene, tension, or literary technique used to support declared reader use while preserving source-return limits | Not higher truth, higher epiplexity, ethical permission, or quality value unless `NSTD.6` evaluates it for the declared use |
+
+Do not use `C.9` operationally in this package. Agency and role claims use `A.13`, `A.2`, `A.2.1`, `A.2.2`, `A.19.ECS`, `C.16`, `D.1` through `D.5`, `A.10`, and `B.3`.
+
+## Name And Edition Route
+
+Package name: `Narrativization and Narrative Studies Principles Framework`.
+
+Public prefix for package pattern ids: `NSTD.*`.
+
+`NSTD.*` is the package-local pattern prefix for this Domain Principle Framework. It is not an FPF Core id. The rejected `NAR.*` DPF prefix would collide with Core `A.6.3.NAR`.
+
+```text
+FrameworkEditionDependencyRecord@NarrativizationAndNarrativeStudiesPrinciplesFramework:
+  frameworkEditionRef: NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30
+  dependsOnEditionRefs: FPFCorePatternSet@current
+  dependencyReason: DPF reuses FPF Core relation, source, coarsening, explanation, language-state, precision-restoration, ethics, evidence, assurance, quality, publication, generated-carrier, and refresh owners
+  compatibilityBoundary: DPF may add domain patterns but may not redefine Core A.6.3.NAR, A.6.3.CSC, E.17.EFP, A.6.P, C.2.LS, A.16.1, A.16.2, C.16.Q, E.10, F.18, D.1 through D.5, A.10, B.3, A.19.ECS, C.16, or C.35
+  deprecationOrSupersessionRefs: none for this package edition
+  refreshConditionRefs: source-pack change, FPF Core edition change, failed teaching test run, generated-narrative SoTA change, evaluation-scale defect
+  e53ConformanceNote: dependency points from this DPF toward FPF Core; Core has no reverse dependency
+```
+
+## DPF Relation Records
+
+These `PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesPrinciplesFramework` records state package relations that matter during use, refresh, and reuse.
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesPrinciplesFramework:
+  relationId: PFR-NSTD-CORE-DEP-001
+  sourceRef: NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30
+  targetRef: FPFCorePatternSet@current
+  relationFunction: Framework edition dependency
+  governedUse: DPF patterns rely on FPF Core relation, source, evaluation, ethics, evidence, assurance, generated-carrier, publication, and refresh owners
+  directGoverningPatternRef: E.4.PFR
+  dependencyOrEditionEffect: DPF depends on Core; Core has no reverse dependency
+  blockedStrongerReading: not Core specialization by dependency and not permission to redefine Core owners
+  refreshOrSupersessionCondition: refresh when relevant FPF Core edition changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-NAR-SPEC-001
+  sourceRef: NSTD.1 through NSTD.8
+  targetRef: A.6.3.NAR
+  relationFunction: Specialization and pattern-use support
+  governedUse: DPF narrows Core structure-to-narrative rendering for narrative studies and teaching uses
+  directGoverningPatternRef: A.6.3.NAR
+  dependencyOrEditionEffect: DPF inherits Core relation obligations and adds domain checks
+  blockedStrongerReading: DPF does not redefine Core A.6.3.NAR, E.17.EFP, source, evidence, ethics, or assurance owners
+  sourceReturnCondition: return to Core when a DPF row tries to govern the source-to-rendering relation generally
+  refreshOrSupersessionCondition: refresh when A.6.3.NAR changes the Core relation slots or source-return obligations
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-SRC-REUSE-001
+  sourceRef: Source Use And Refresh Map under G.2
+  targetRef: NSTD.1 through NSTD.8
+  relationFunction: Source or decision reuse
+  governedUse: source rows support narratology, science-storytelling, teaching, evaluation, and generation claims by value
+  directGoverningPatternRef: G.2
+  blockedStrongerReading: source rows do not become ethical, evidence, assurance, or authority owners
+  sourceReturnCondition: return to G.2 when source classification, currentness, rival tradition, or exact source row is missing
+  refreshOrSupersessionCondition: refresh when source basis or SoTA currentness changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-EVAL-001
+  sourceRef: NSTD.6
+  targetRef: NSTD.1 through NSTD.8
+  relationFunction: Quality framing, evaluation, or improvement
+  governedUse: evaluate one narrative rendering version or learning route for declared use and feed repair to E.23 when values exist
+  directGoverningPatternRef: A.19.ECS
+  preservationOrAdmissionRef: NarrativeRenderingQualityEvaluationCharacteristicSpace@Context
+  blockedStrongerReading: NSTD.6 is not evidence, assurance, admission, publication, gate, decision, or pattern-quality authority
+  sourceReturnCondition: return to A.19.ECS or C.16 when object kind, scale, value meaning, or measurement basis is defective
+  refreshOrSupersessionCondition: refresh when evaluation floor, characteristics, use, evidence basis, or low-value repair route changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-IMPROVEMENT-001
+  sourceRef: NarrativeRenderingQualityEvaluationResult@Context
+  targetRef: E.22 and E.23
+  relationFunction: Narrative rendering quality-loop transfer
+  governedUse: improve one exact narrative rendering version or declared changed slice by rerunning NSTD.6 after repairs
+  directGoverningPatternRef: E.23; E.22 when the improvement question needs framing
+  preservationOrAdmissionRef: NarrativeRenderingImprovementLoopInput@Context
+  blockedStrongerReading: an NSTD.6 low value, style suggestion, prompt retry, or generated variant is not an improvement claim until the changed object version is re-evaluated
+  sourceReturnCondition: return to NSTD.6 when object version, declared use, result rows, protected trade-offs, allowed change slice, cost and risk, or expected re-evaluation form is missing
+  refreshOrSupersessionCondition: refresh through G.11 when source currentness, reader telemetry, teaching-test evidence, FPF edition, generated-narrative practice, or evaluation characteristic space changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-GENCARRIER-001
+  sourceRef: generated or discovered carrier that may carry a candidate narrative rendering
+  targetRef: NSTD.7
+  relationFunction: Produced-carrier admission
+  governedUse: admit or reject generated narrative output before it is evaluated as narrative rendering or used in teaching
+  directGoverningPatternRef: C.35
+  preservationOrAdmissionRef: AutomatedNarrativizationAdmissionCase@Context
+  blockedStrongerReading: generated fluency, coherence, controllability, or schema compliance is not source authority, evidence, assurance, or admission
+  sourceReturnCondition: return to C.35 when produced carrier, described structure, preserved structure, lost structure, or receiving owner is missing
+  refreshOrSupersessionCondition: refresh when generator, source plan, schema, source edition, or admission result changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-TEACHING-CARRIER-001
+  sourceRef: external FPF seminar or teaching test-run publication carrier
+  targetRef: NSTD.8
+  relationFunction: Publication or teaching publication-carrier relation
+  governedUse: teaching files expose or test a learning narrative route without entering DPF pattern bodies
+  directGoverningPatternRef: E.17
+  preservationOrAdmissionRef: LearningNarrativeRoute@Context
+  blockedStrongerReading: teaching publication carrier is not the DPF pattern body, not FPF source authority, and not a narrative rendering quality result
+  sourceReturnCondition: return to source patterns when teaching examples lose selected source structure
+  refreshOrSupersessionCondition: refresh when learner telemetry, session sequence, source structure spine, or carrier publication condition changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-TEACHING-EVAL-001
+  sourceRef: external FPF seminar or teaching test-run publication carrier
+  targetRef: NSTD.8 and NSTD.6
+  relationFunction: Narrative-route evaluation and improvement relation
+  governedUse: evaluate learner reconstruction and source-return readiness for the learning route, then feed repair to E.23 when values exist
+  directGoverningPatternRef: NSTD.6; E.23 when improvement values exist
+  preservationOrAdmissionRef: NarrativeRenderingQualityResultRow@Context
+  blockedStrongerReading: evaluation result is not publication permission, source authority, evidence, assurance, or package authority
+  sourceReturnCondition: return to NSTD.6 when evaluated object kind, value meaning, evidence basis, or low-value repair route is missing
+  refreshOrSupersessionCondition: refresh when learner telemetry, quality floor, evaluation result, or improvement route changes
+```
+
+```text
+PatternFrameworkRelationRecord@NarrativizationAndNarrativeStudiesDPF:
+  relationId: PFR-NSTD-ETHICS-EVIDENCE-ASSURANCE-001
+  sourceRef: NSTD.4 and NSTD.5
+  targetRef: D.1-through-D.5, A.10, B.3
+  relationFunction: Governing-pattern relation
+  governedUse: route agency, responsibility, persuasion, harm, evidence, and assurance claims out of narrative-effects vocabulary
+  directGoverningPatternRef: direct owner named by claim kind
+  blockedStrongerReading: viewpoint, protagonist, actant, engagement, or fluency does not assign responsibility, capability, evidence, assurance, or moral permission
+  sourceReturnCondition: return to direct owner when claim-bearing ethics, evidence, assurance, or responsibility language appears
+  refreshOrSupersessionCondition: refresh when FPF ethics, evidence, or assurance owner guidance changes
+```
+
+## Refresh Route
+
+Use this route when the package is already being applied and one of its source, evaluation, or carrier assumptions changes.
+
+1. Return to `G.2` when a load-bearing source line is absent, stale, too narrow, contradicted, or used beyond its stated boundary.
+2. Return to `NSTD.6` when the evaluated object kind, declared use, value meaning, quality characteristic, evidence basis, or low-value repair route changes.
+3. Use `E.22` when the improvement question is underframed: purpose, floor, protected trade-offs, expected evidence, result form, or cost and risk are not explicit.
+4. Use `E.23` only for an exact changed narrative rendering version or declared changed slice with `NSTD.6` re-evaluation planned.
+5. Use `G.11` refresh when FPF Core edition, generated-narrative practice, reader telemetry, teaching-test evidence, source pack, or the `NSTD.6` evaluation characteristic space changes.
+6. Keep test-run publication carriers outside pattern bodies; use them as evidence or examples only through the direct owner named by the claim.
