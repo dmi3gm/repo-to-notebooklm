@@ -1,4 +1,781 @@
-repeatable formula that only recalls one pattern's Solution may still be a useful local mantra without containing such rows and without becoming a CGUS.
+VALATA bindings); SquareLaw mismatched pins appear only when the crossing check is present;
+* policy-id dependencies used by checks, as `PolicyIdRef` bundles per F.8:8.1; `Φ(CL)`, `Φ_plane`, and `Ψ(CL^k)` appear only when bridge or crossing is present, while gate-local policy ids appear only when consulted by the current `GateProfile`;
+* `GuardFail` events only when guard events exist; if present, they are received from `USM.Guards` and aggregated by the gate referenced by the existing aggregation-assignment field `GuardOwnerGateId` with the applied `GateProfile` rule (`degrade|block`);
+* `EquivalenceWitness` or `EquivalenceWitnessRef` as an `A.21` publication record field, minimally: `{ keys, E⃗, Γ_time(selector), PathSliceId?, ReturnShapeClass, ComparatorSetRef?, GateProfile }`; use `G.6` or `G.11` where evidence-provenance visibility or refresh implications are present;
+* the declared publish reaction for `degrade|block` only when that outcome has a declared publication consequence, including any local "degrade mode" notes when the `GateProfile` permits them;
+* for `RegulatedConformance(X)`, only when `RegulatedConformance(X)` is present: the identity of X and the rule references and edition references used.
+
+#### A.21:4.11 - GateFit check catalog boundary
+
+**Mandatory on LaunchGate.** `FreshnessUpToDate`, `DesignRunTagConsistency`.
+**Declared GateFit check catalog (non-exhaustive, normative minima).**
+
+* `DesignRunTagConsistency` (mandatory on LaunchGate; may appear elsewhere)
+* `FreshnessUpToDate` (mandatory on LaunchGate; may appear elsewhere)
+* `ReferencePlaneCrossing`
+* `ComparatorConstraintRules (CSLC)`
+* `EvidenceCompleteness`
+* `SafetyEnvelope`
+* `RegulatedConformance(X)` (X identity plus edition and rule refs are recorded in `DecisionLog`)
+* `RoleChannelFit` (roles are Kernel `U.Role` tokens; channel fit is a separate check component, not an alias string)
+* `EquivalencePreservation`
+* `OutflowAudit`
+* `SnapshotConsistency`
+
+**Neighboring-governance truth examples (informative).** A.21 names and aggregates the check; it does not decide the domain truth condition. `EvidenceCompleteness` is governed by `A.10`, `G.6`, or `B.3`; `RoleChannelFit` is governed by `A.2`, `A.15`, or `A.2.6`; `ReferencePlaneCrossing` is governed by `E.18`, `F.9`, `F.17`, and UNM; `ComparatorConstraintRules` is governed by `A.19`, `G.0`, `G.5`, `C.18`, `C.19`, `G.9`, or `G.11` where comparator, archive, parity, set-return, or refresh claims are present; `SafetyEnvelope` and `RegulatedConformance(X)` are governed by the safety or regulatory pattern that governs the envelope or rule.
+
+**Forbidden (hard boundary).**
+
+* Modeling CV classes “as GateFit” (CV classes remain CV; GF remains GF).
+* Any “LEX gate checks” or lexical pseudo-checking (lexical views do not participate in decisions).
+
+#### A.21:4.12 - SquareLaw compatibility at crossings
+For every GateCrossing, the SquareLaw constraint holds:
+`gate_out ∘ transfer = transfer' ∘ gate_in`.
+
+Profile selection or inheritance does not weaken this requirement; inconsistency yields `block` or `degrade` within the current `GateProfile` and is recorded in the DecisionLog. LaunchGate is a work-boundary GateCrossing case, so SquareLaw is mandatory there as well.
+
+#### A.21:4.13 - Lexical mediation (optional trace, non-decisional)
+
+A gate publication can include a `LexicalResolutionRef` or `LexicalView` for traceability of alias resolution, but:
+
+* it does **not** participate in aggregation, and
+* it is not a `GateCheck` input and cannot change `GateDecision`.
+
+### A.21:5 - Archetypal Grounding
+
+#### A.21:5.1 - System vignette — “Regulated release gate”
+
+**Show 0 (green cue, no gate decision).** A dashboard tile says “ready” because a source system returned green. No `OperationalGate(profile)`, `GateCheckRef` set, `GateDecision`, or `DecisionLogRef` is named. The tile remains orientation or source-finding only; it is not gate passage and does not establish A.21 decision reuse.
+
+**Tell.** A `PathSlice` includes a `LaunchGate` immediately before performed `U.Work` that can finalize binding. The current `GateProfile` is `RegulatedX`. The gate publishes a single `GateDecision` and a `DecisionLog` explaining the release-crossing decision, without encoding any execution method.
+
+**Show A (CV ✔, GF ✖).** `CV.Status=pass`, activating GateFit. `RegulatedConformance(X)` is present but evidence references are incomplete (`EvidenceCompleteness` folds to `degrade` under `Core` or `RegulatedX` policy), so the join yields `GateDecision=degrade`. The DecisionLog records which `GateCheckRef` caused the fold and the declared publish reaction for degraded release.
+
+**Show B (CV ✖, GF not applicable).** CV aggregate is `degrade`. All GateFit checks return `abstain` by activation, and any GateFit-oriented explanation is inapplicable. The gate’s published decision is driven by CV; the DecisionLog shows CV status and the “inactive GF” boundary rather than a fabricated GF narrative.
+
+#### A.21:5.2 - Episteme vignette — “Cross-plane comparability gate”
+
+**Tell.** A `PathSlice` includes a comparability-critical step (CSLC). The gate publishes `BridgeId + UTS + CLPlane` and edition pins for downstream consumers, and remains stable under the `A.21` equivalence witness.
+
+**Show A (Core, clean crossing).** The gate publishes `EditionPins{CGSpec, ComparatorSet, TransportRegistryPhi}`, `ComparatorSetRef`, `CL` and `CLPlane`, and a `GateDecision=pass` with a rationale that cites the relevant `GateCheckRef`s and editions.
+
+**Show B (SquareLaw mismatch).** A crossing attempts to change plane pins without the commutative-square witness; the SquareLaw check yields `block` (or `degrade` under a profile with a less strict fold policy), and the DecisionLog records the mismatched pins as the reason.
+
+### A.21:6 - Bias-Annotation
+
+The built-in biases of this pattern are stated across the five Principle-Taxonomy lenses (Gov, Arch, Onto-Epist, Prag, Did).
+
+* **Gov.** Bias toward auditability and explicit responsibility (DecisionLog + profile-bound folds). Risk: gate-stewardship roles become de facto governors; mitigation: keep profiles explicit, inheritable, and pinned to `PathSliceId` for reviewable replay.
+* **Arch.** Bias toward a microkernel of checks (pluggable GateChecks + join aggregation). Risk: “check sprawl”; mitigation: scope discipline + forbidden LEX pseudo-checking + CC-based profile minima.
+* **Onto-Epist.** Bias toward a 4-value `GateDecision` lattice and explicit “does not apply” boundaries. Risk: oversimplifying nuanced epistemic uncertainty; mitigation: preserve structured rationales and check-scoped `unknown` policies rather than inventing new global decision values.
+* **Prag.** Bias toward determinism and replayability (cache invalidation by pinned vectors). Risk: higher publication overhead; mitigation: PublishMode=Lite for faces (never for weakening checks).
+* **Did.** Bias toward explicit separation (CV vs GF) and “what is published” clarity. Risk: more concepts to learn; mitigation: archetypal grounding + stable minimal pins across faces.
+
+### A.21:7 - Conformance Checklist
+
+**Conformance use.** This checklist is evidence for the gate-decision publication guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding gate, check set, decision, crossing, launch, publication, or assurance relation is present. Before applying any row, name the Solution relation it tests; if no such practitioner use is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
+
+**Conformance groups.** Ordinary gate use starts with the current gate, check set, CV aggregate, `GateDecision`, and `DecisionLogRef`. Crossing and launch rows apply only when the gate is a GateCrossing or `LaunchGate`. Publication and assurance rows apply only when MVPK faces, evidence references, decision stability, or replay are present. Extension and change rows apply only when lexical tokens, profile variants, or neighboring policy or evidence loci are being changed or consumed.
+
+Minimum unified conformance for A.21 and for any `PathSlice` or gate-bearing transformation-flow value where GateFit discipline is asserted:
+
+#### A.21:7.1 - Core gate semantics
+
+* [ ] **CC‑TFS‑06**: all GateCrossings (CtxState changes, and work-boundary crossings via LaunchGate) are mediated by `OperationalGate(profile)` and have a `DecisionLog`.
+* [ ] **CC‑TFS‑07**: CV=>GF activation predicate holds (`CV.Status!=pass => GF=abstain`).
+* [ ] **CC-TFS-21**: decision stability witness is present on the `DecisionLog` record as an `A.21` `EquivalenceWitness` or `EquivalenceWitnessRef`.
+* [ ] **CC‑TFS‑21a**: aggregation is the join on `GateDecision` values `abstain <= pass <= degrade <= block`; `GateDecisionExplanation` is optional and non-decisional.
+* [ ] **CC‑TFS‑22**: `error|timeout` folds are profile-bound; `unknown` folds per GateCheck policy.
+* [ ] **Gate-looking display boundary**: a dashboard state, green tile, readiness badge, conformance label, CV result, safety-envelope note, or release screen is not gate passage unless current `OperationalGate(profile)`, effective `GateCheckRef` set, aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window are recoverable.
+
+#### A.21:7.2 - LaunchGate discipline (pre-run barrier)
+
+* [ ] **CC‑TFS‑08**: every performed `U.Work` launch boundary has one and only one `LaunchGate` with mandatory `FreshnessUpToDate` and `DesignRunTagConsistency`; **pre‑run barrier:** if `ConstraintValidityStatus!=pass` over the declared ingress predecessor set or ingress cut-set for the addressed `PathSlice`, then all LaunchGate GateFit checks are `abstain` and the overall `GateDecision=block` (logged).
+
+* [ ] **Pre‑Run barrier** is satisfied for any `U.Work` where `FinalizeLaunchValues` is possible.
+
+#### A.21:7.3 - Publication and evidence
+
+* [ ] **CC‑TFS‑20**: `PublishMode=Lite` changes face reduction only; required GateChecks remain intact.
+
+* [ ] **CC‑TFS‑25**: AssuranceLane carries `GateProfile`, `GateCheckRef` list, edition pins, `GateDecision`, and `DecisionLogRef` with the two-part evidence scheme (SCR or RSCR plus VALATA).
+
+#### A.21:7.4 - Cross-boundary additions (when the gate is a crossing)
+
+* [ ] **CC‑TFS‑11**: crossings publish `BridgeId + UTS + CLPlane` and `CL^plane`; penalties appear in the R-channel only.
+* [ ] **CC‑TFS‑23**: SquareLaw holds on crossings; mismatch yields `block|degrade` per profile and is logged.
+
+#### A.21:7.5 - Lexical norms (E.10 discipline)
+
+* [ ] Tech names are ASCII and twin-labeled; required token classes are registered under LEX (including `GateProfile`, `GateCheckKind`, `GateCheckRef`, `DecisionLog`).
+* [ ] Any lexical alias view is trace-only and cannot change `GateDecision`.
+
+### A.21:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Why it fails | Correct use |
+|---|---|---|
+| Guard as GateCheck | A guard, status cue, or publication label is treated as a profile-bound gate check. | Declare the `GateCheckRef`, check criteria, fold policy, and governing neighboring truth condition. |
+| Explanation as decision | A readable narrative is treated as the `GateDecision` or `DecisionLog`. | Keep `GateDecision`, `GateDecisionRationale`, optional explanation, and decision record distinct. |
+| Gate pass as performed work | `GateDecision=pass` is read as work occurrence, release action, work-entry readiness, or work authorization. | Use A.21 only for the gate-decision relation; use A.15.5 for work-entry readiness and A.15 or the release-governing pattern for work or authorization claims. |
+| Profile drift by publication mode | `PublishMode=Lite` is read as a weaker `GateProfile`. | Keep publication-face reduction in E.17 and keep `GateProfile` fold policy explicit in A.21. |
+
+### A.21:9 - Consequences
+
+**Benefits**
+
+* **Deterministic gating.** Join-semilattice aggregation makes decisions order-independent and idempotent (modulo declared equivalence), enabling consistent audit and replay.
+* **Clean CV and GF separation.** Activation boundary keeps profile concerns out of mechanism validity.
+* **Profile clarity.** Fold policies (`error|timeout|unknown`) are explicit and profile-bound, making safety review result inspectable.
+* **Publication hygiene.** MVPK faces remain pins and references (no new numeric claims), and DecisionLog captures rationale without procedural commitments.
+
+**Trade-offs**
+
+* **More decision records to publish.** Decisions are not just binary pass-or-fail values: they require rationales, pins, and logs.
+* **Two-stage reasoning.** Users need the rule “GF does not apply until `CV.Status=pass` holds”; mitigated by explicit inapplicability rules and optional narratives only when applicable.
+* **Scope complexity.** Multi-scope merge semantics can feel heavy; mitigated by union + worst-wins + preserved rationales.
+
+### A.21:10 - Rationale
+
+* The microkernel framing preserves a single graph semantics: checks are gate/check loci and decision publications, not an external execution sequence; this keeps a second hidden execution order outside the gate core from appearing.
+* The join lattice provides minimal, monotone aggregation with two useful properties:
+
+  * early absorption at `block` without specifying execution strategy, and
+  * deterministic publication semantics (commutative, associative, and idempotent).
+* CV⇒GF activation is the mechanism that keeps orthogonality strict while still publishing a single gate decision publication: GF results do not replace CV failures.
+* Explicit folds for `error|timeout|unknown` make safety review result inspectable and profile-specific without inventing new decision values.
+
+### A.21:11 - SoTA-Echoing
+
+Source references (post-2015) that this pattern **adopts, adapts, or rejects**, consistent with the transformation-flow goal of assured lanes, open graph composition, and join-semantics.
+
+* **Adopt.** *Join-semilattice aggregation as deterministic, profile-bound merge* (distributed-systems and CRDT literature, e.g., Kleppmann 2017; Kleppmann & Beresford 2017): A.21 uses the algebraic idea only so declared gate-check outcomes fold to the same `GateDecision` under the same current `GateProfile` and equivalence witness. It does not import CRDT architecture or use CRDT as prestige terminology.
+
+* **Adapt.** *Compositional reasoning with commuting diagrams* (applied category theory, e.g., Fong & Spivak 2019): A.21 adapts the intuition by making SquareLaw a gate-audited invariant on crossings, while keeping publications human-first and pin-based.
+* **Adapt.** *Supply-chain provenance and policy gating via attestations* (software supply-chain security, e.g., in-toto 2019; SLSA v1.2 provenance and VSA attestation specification line): A.21 adapts the attestation-shaped evidence discipline as MVPK pins plus `DecisionLog`, not DevOps release procedure, tool-specific methods, or runtime scripts.
+
+* **Reject.** *Narrative-as-authority.* Any approach where human-readable explanations function as decision-bearing records is rejected; in A.21, narratives remain optional derivatives of structured rationales and are explicitly non-decisional.
+
+Gate-publication result in attestation-shaped practice: green tiles, readiness badges, full-kit labels, release screens, conformance labels, safety-envelope notes, CV results, and gate-looking explanations do not become gate passage, release authorization, deontic permission, safety acceptance, work-entry readiness, assurance, work occurrence, or work authorization by appearance. The local A.21 result is a current `OperationalGate(profile)`, current `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window, or else the display remains a cue, source pointer, CV result, evidence question, or readiness question governed outside A.21. Reopen the gate result when the current `GateProfile`, check set, CV aggregate, decision, rationale, scope, currentness, effective window, equivalence witness, or consuming neighboring relation changes.
+
+### A.21:12 - Relations
+
+* **`E.18` transformation-flow structure →coordinates→ A.21.** GateFit-scoped GateChecks are aggregated by `OperationalGate(profile)`; GateCheck enumeration and publication shape are governed here.
+* **A.20 →couples_to→ A.21 via CV=>GF.** CV is evaluated inside transformations; while `CV.Status!=pass`, GF is `abstain` and GF explanations do not apply.
+* **A.15.5 →separates→ work-entry readiness from gate decision.** Full-kit and work-entry readiness labels may be cited by A.21 only when they are declared GateChecks under a current `GateProfile`; otherwise `WorkEntryReadiness@Context` remains governed by A.15.5.
+* **A.21 GateProfile binding.** A.21 carries the current profile binding, inheritance boundary, and minimum mandatory check-set semantics. Fuller project-local profile matrix material is not separately governing unless a current governing pattern includes it by value.
+* **E.18 and G.11 →provide→ scope and refresh boundaries.** `subflow` scope is bounded and restartable through PathSlice and refresh wiring where present; weakening check sets use a new `PathSlice`.
+* **F.9, F.17, E.17, and E.18 →required_by→ any edition-citing face.** Whenever gate faces cite editions, the compatibility reference (BridgeCard + UTS + `CL` and `CLPlane`) is required for downstream consumption.
+* **A.21, G.6, and G.11 →define→ equivalence for decision stability.** Gate decisions are stable only under the declared equivalence witness; evidence-provenance or refresh implications use `G.6` or `G.11` where present.
+
+### A.21:End
+
+## A.22 - Structure and Structural Views (STRUCT-CAL)
+
+> **Type:** Architectural pattern
+> **Status:** Stable
+> **Normativity:** Normative unless explicitly marked informative
+
+### A.22:1 - Problem frame
+
+Use this pattern when a practitioner needs to select `U.Structure` as the `EntityOfConcern`: the organization, relation class, constraint, invariant, variation class, preserved arrangement, or lost arrangement that changes a next engineering or reasoning action.
+
+The first A.22 question is positive: what is organized, over which bounded context and declared substrate, which relation, constraint, invariant, or variation matters, what is preserved, what is lost or hidden, and which admissible use or stop condition follows.
+
+The first useful move is small:
+
+```text
+StructureQuestionCard@Project:
+  declared structure substrate:
+  bounded context:
+  selected structure:
+  relation, operation, constraint, invariant, or variation class:
+  preserved structure:
+  lost, hidden, or excluded structure:
+  reliance relation, if being claimed:
+  admissible use:
+  non-admissible overread:
+  governingPatternApplicationRefs, if another claim is being made:
+```
+
+`StructureQuestionCard@Project` is a project-side triage aid for this selected-structure use. It is not a new structure kind. Fill the reliance row only when extraction, coarsening, source-description, base-dependence, grounding, evidence, lens, simulation, representation, or action reliance is being claimed; otherwise leave it unused and keep the move on selected structure.
+
+Stop at this card when it makes the next structure use clear. Open heavier records only when a named description, view, publication, extraction, coarsening, comparison, mathematical-lens, architecture-description, or other neighboring claim is being made.
+
+What goes wrong if A.22 is missed: the practitioner reasons from the visible diagram, source publication, source-use record, lens output, generated representation, project record, or architecture description instead of asking which organization is selected and what loss or reliance boundary matters for action.
+
+What A.22 buys in practice: a practitioner can name selected structure, state preserved and lost structure, name source-basis or lens reliance only when it is being claimed, add a `StructureUseReturnCondition` when loss matters, and apply the FPF pattern that governs any non-structure claim being made.
+
+Not this pattern when the question under repair is grounded architecture adequacy, architecture structural-view adequacy, or mathematical-lens use. Use `C.30`, `C.30.ASV`, or `C.29` respectively. For any other claim being made, use the governing FPF pattern and keep A.22 only to the selected-structure portion.
+
+Thin precision-restoration pointer: when the wording still may name a structure, a structure description, an architecture description, a view, a publication form, or another governed claim, use `C.30.P` or `C.30.STRAT` first as triggered. Apply A.22 only after the selected-structure claim or structure-view portion is recoverable.
+
+### A.22:2 - Problem
+
+FPF needs a selected-structure EntityOfConcern that is useful before any one domain ontology, mathematical formalism, architecture notation, or publication form takes over. Working projects often notice that "the structure" is doing real work:
+
+- dependencies repeat across cases;
+- a method or work description hides an invariant relation;
+- a model compresses a trace by preserving one relation class and losing others;
+- a diagram shows an arrangement but is mistaken for the arrangement itself;
+- a mathematical lens exposes preserved structure but is then overread as ontology;
+- an architecture discussion needs selected structure over a holon before it can describe architecture.
+
+How can FPF let a practitioner name structure as an EntityOfConcern while preserving the distinction between:
+
+- selected structure and the source-description relation, source-use relation, evidence relation, lens output, simulation, generated representation, or declared substrate from which it was inferred or declared;
+- structure and a Description episteme or view of that structure;
+- structure and a publication face, diagram, table, graph, or publication form;
+- structure and mathematical-lens application;
+- structure and another FPF claim kind governed by its governing pattern;
+- structure in general and architecture-specific structure selected by `C.30`.
+
+### A.22:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| First-principles structure EntityOfConcern vs ontology inflation | FPF needs a reusable selected-structure EntityOfConcern for relations, constraints, invariants, variation classes, preserved organization, and lost organization, but adding one such EntityOfConcern can accidentally invite many false root kinds. |
+| Useful compression vs structure-use return | Structure makes work easier by compressing cases, but a `StructureUseReturnCondition` is needed when compression, extraction, coarsening, source-description reuse, base-dependence reuse, grounding reuse, evidence reuse, lens reuse, simulation reuse, or representation reuse hides a distinction needed for action. |
+| Description and view usability vs structure confusion | Descriptions and views make structure inspectable, but a useful view can be mistaken for the structure itself. |
+| Mathematical-lens application vs mathematical overread | C.29 lenses can expose structure, but lens output does not become the structure and does not license evidence, causal, assurance, or decision claims by itself. |
+| Architecture dependency vs architecture takeover | Architecture uses selected structure through `C.30`; A.22 does not import architecture as its parent or make every structure an architecture. |
+| Plain engineering speech vs Tech recovery | Words such as structure, graph, architecture, module, function, interface, pattern, block, layer, level, tier, stack, expert, cache, router, and gate can remain in Plain prose, but FPF-governed use needs recoverable Tech fields and FPF pattern applications. Source-label recovery is governed by `C.30.STRAT` before A.22 accepts a selected-structure portion. |
+
+### A.22:4 - Solution
+
+Select `U.Structure` as the A.22 ontic head: a dependent, non-agentive `EntityOfConcern` used when selected organization changes a next engineering or reasoning action.
+
+> `U.Structure` is the organization of typed relations, constraints, invariants, variation classes, and admissible references to operation or dynamics descriptions over a declared substrate, or declared A.6.6 base declaration when base-dependence is being claimed, inside a bounded context and admissible-use frame.
+
+The A.22 ontic head is intentionally narrow. `U.Structure` is the selected organization under concern: typed relations, constraints, invariants, variation classes, operation or dynamics references, preserved organization, and lost organization over a declared substrate in a bounded context. The grounding object may be a `U.Holon`, `U.System`, `U.Episteme`, declared substrate, or another declared substrate, EntityOfConcern type, relation kind, or record kind named by the direct governing pattern; the selected structure remains the structure of or over that object.
+
+The first useful A.22 use is about the selected structure itself: name the bounded context, selected structure, relation, constraint, invariant, variation class, operation or dynamics reference that matters, preserved or lost organization, and the structure-use return condition or governing-pattern application needed for work. Description records, views, publications, diagrams, publication forms, and renderings are aids that make that selected-structure use inspectable, reusable, comparable, or safe to rely on; they do not share the center of the Solution.
+
+`U.Structure` may fill `EntityOfConcern` for a structure description, view, or structure-claim relation. When a structure description or view is being used, `DescriptionContext.EntityOfConcernRef` names the selected structure, structure claim, or relation governed by the governing pattern for that use; publication forms, publication units, and renderings only make the episteme or view available.
+
+A.22 governs `U.Structure` as a dependent, non-agentive ontic head. It works first over selected-structure EntityOfConcern records and structure-claim reliance relations. Structural descriptions, structural views, extracted structural views, structural-aspect descriptions, structural-coarsening descriptions, and structure-use return conditions are subordinate record forms used only when they preserve the selected-structure use, expose loss, enable comparison, or state a reliance boundary. A.22 does not govern architecture descriptions directly; `C.30` and its subpatterns govern architecture as a use of selected structure over a described holon.
+
+#### A.22:4.1 - Selected Structure Object
+
+```text
+U.Structure ::= {
+  structureId,
+  declaredStructureSubstrateRef:
+    U.EntityRef | U.HolonRef | U.EpistemeRef | DeclaredSubstrateRef,
+  boundedContextRef,
+  relationSignatureRefs?,
+  operationOrDynamicsDescriptionRefs?,
+  constraintRefs?,
+  invariantRefs?,
+  symmetryRefs?,
+  topologyOrGeometryRefs?,
+  stateSpaceRefs?,
+  causalOrPredictiveDescriptionRefs?,
+  informationRegularityRefs?,
+  coarseGrainingRefs?,
+  generalStructureAspectKindRefs:
+    functional | mereological | modular | transformationFlow |
+    control | workMethod | roleEnactor | evidenceAssurance |
+    semantic | informational | causalPredictive | dynamical |
+    algebraic | topological | geometric | scaleCoarseGrained |
+    otherDeclared,
+  granularityOrScaleRef?,
+  equivalenceOrIsomorphismCriterion?,
+  variationClassRefs?,
+  preservedUnder?,
+  brokenBy?,
+  admissibleUse,
+  nonAdmissibleUse
+}
+```
+
+The field list is a recovery aid, not a demand to fill every field. The ordinary record names only the fields that carry the next admissible use. When state, dynamics, causality, measurement, bridge, evidence, assurance, gate, work, decision, or mathematical-lens claims are being made, the record names the governing pattern instead of absorbing that claim kind into A.22.
+
+A.22 `generalStructureAspectKindRefs` are general structure-aspect cues. C.30.ASV `ArchitectureStructureKindRef` values are architecture-local structure-kind classifiers for structures selected by `ArchitectureOf@Context`. A matching label does not imply identity. Use a declared mapping when an A.22 aspect is used as an architecture structure kind.
+
+#### A.22:4.1a - Compact auxiliary boundary
+
+Use description, publication, source-use, evidence, work, gate, decision, release, architecture-description, and mathematical-lens patterns when those claims are being made. The A.22 application contains the selected-structure portion and the structure-use return condition that protects that structure use; neighboring claims remain with their governing patterns. A publication, diagram, graph, table, dashboard, file, model card, generated representation, or lens output may make a structural description or view available; it does not become the selected structure or supply neighboring claim authority by appearance.
+
+#### A.22:4.1b - Constraint-governed unfolding structure
+
+Use `A.22.CGUS` when the current A.22 structure is an organization among several governed loci and constraints: admitted starting records, already-current starting structures, relation signatures, constraints, invariants, guarded transitions, preserved and lost structure, admissible next forms, and conditions for stop, return, split, or currentness refresh. This structure specialization is still `U.Structure`; it is not a route, workflow, method, work plan, performed work, decision, evidence relation, gate, architecture description, or publication.
+
+Open `A.22.CGUS` only when the candidate has several loci and cross-locus constraints. A route card, table, graph, README entry, narrative, slide, or happy-path example may describe or demonstrate the unfolding structure, but it is not the structure itself.
+
+#### A.22:4.2 - Structure claim reliance relation selection
+
+
+A.22 does not mint a local generic reliance record. When a structure claim relies on something beyond the selected structure itself, choose the reliance relation kind, name the relation record by value, and name the governing pattern:
+
+| Current reliance relation kind | What is named | Governing ontology to apply |
+| --- | --- | --- |
+| Source-description relation | source episteme, source view, publication form or rendering where relevant, described structure or structure claim, source-basis pins or structure-use return condition, admissible and non-admissible use | `A.7`, `A.6.3`, `E.17`, `E.17.0`, and local source-publication rules |
+| Base-dependence or basedness | `dependent = structure claim or structural description`, `base`, declared `baseRelation`, scope, declared `Γ_time` when temporal scope is claimed, witness refs when witness use is claimed, admissible and non-admissible use | `A.6.6` SWBD or Context-local SWBD specialization |
+| EntityOfConcern or grounding-holon grounding | selected EntityOfConcern, `GroundingHolonSlot` when grounding-holon grounding is being claimed, bounded context, viewpoint, reference plane, observation or witness condition if observation or witness use is being claimed | `C.2.1`, `A.6.4`, `A.6.3.RT`, `A.6.6` only if it is a base-dependence claim |
+| Evidence or witness reliance | evidence-use relation, evidence-provenance relation, claim ref, witness publication or observation record, timespan and freshness; if an evidence graph is current, its graph path remains a mathematical or provenance expression rather than an action route | `A.10`, `A.2.4`, `G.6` |
+| Mathematical-lens reliance | lens candidate, lens card, or lens-use record; primary `EntityOfConcern`; relation record or claim record named by value when lens reliance is being claimed; preserved structure; lost structure; stop condition; `MathLensUseOutputRef`; C.29 lens-use result; or `LensUseAdmissibilityValue` | `C.29`, `C.26`, `F.9`, named mathematical-lens pattern |
+| Simulation, generated representation, model, or extracted trace | source publication or representation publication, extraction method, validation boundary, preserved structure, lost structure, structure-use return condition | source-description and Description-context patterns plus `C.29`, `A.10`, or governing pattern when a claim of that kind is being made |
+
+If no reliance relation kind can be selected, keep the wording as a source-finding note, recognition cue, ordinary help, quote-only wording, or reduced-use cue. Do not create a generic reliance record to make the claim look governed.
+
+`U.Structure` does not carry description, representation, extraction, mathematical-lens, simulation, or generic reliance state as an internal structure field. Those are source-description, source-use, base-dependence, evidence, lens, extraction, simulation, or publication relations about a structure. `PublicationRef` is not an admissible substitute for the source episteme, source view, evidence relation, SWBD, or lens output.
+
+#### A.22:4.3 - Structural descriptions and views
+
+Structural descriptions and views reuse existing episteme and view machinery. Architecture does not define a second ontology of descriptions, views, viewpoint bundles, multi-view descriptions, publications, publication forms, or source-pin sets. Every record whose name ends in `Description@Context` here is a specialization of existing `U.Episteme` governed by `C.2.1` and `E.10.D2`. Every record whose name ends in `View@Context` here is a specialization of existing `U.View` or `U.EpistemicViewing` governed by `A.6.3` and `E.17.0`. `DescriptionContext` is imported, not locally redefined.
+
+```text
+StructuralDescription@Context ::= {
+  descriptionId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  structureRefs: FinSet(U.StructureRef),
+  structureClaimRelianceRefs?: FinSet(U.ScopedWitnessedBaseDeclarationRef | EvidenceRelationRef | EvidenceProvenanceRelationRef | MathLensUseOutputRef | StructureUseReturnConditionRef | NamedClaimGoverningPatternRef),
+  describingEpistemeRef,
+  admissibleUse,
+  nonAdmissibleUse
+}
+
+StructuralView@Context ::= {
+  viewId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  structureRefs: FinSet(U.StructureRef),
+  structuralAspectDescriptionRefs?,
+  selectedRelationsOrOperations,
+  hiddenOrLostStructure,
+  admissibleUse,
+  nonAdmissibleUse
+}
+```
+
+`descriptionContext.ViewpointRef` is the viewpoint field. Do not duplicate it locally under another name unless the governing pattern supplies a more specific view record.
+
+#### A.22:4.4 - Extracted and transformed structural views
+
+Use extracted or transformed structure records when a corpus, trace, model, lens, simulation, generated representation, coarsening pass, observer boundary, or budget boundary produces a view of structure that may hide distinctions.
+
+```text
+ExtractedStructuralView@Context ::= {
+  extractedViewId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  sourceCorpusOrTraceRefs,
+  structureRefs: FinSet(U.StructureRef),
+  extractionDescriptionRef,
+  preservedStructure,
+  lostStructure,
+  validationBoundary,
+  structureUseReturnCondition,
+  admissibleUse,
+  nonAdmissibleUse
+}
+
+StructureExtractionDescription@Context ::= {
+  extractionDescriptionId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  sourceInputKind,
+  lensOrMethodRef,
+  budgetOrObserverBoundary?,
+  preservedStructureKinds,
+  lostStructureKinds,
+  validationBoundary,
+  structureUseReturnCondition,
+  admissibleUse,
+  nonAdmissibleUse
+}
+
+StructuralAspectDescription@Context ::= {
+  aspectDescriptionId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  aspectKindRef,
+  structureRefs: FinSet(U.StructureRef),
+  structureClaimRelianceRefs?: FinSet(U.ScopedWitnessedBaseDeclarationRef | EvidenceRelationRef | EvidenceProvenanceRelationRef | MathLensUseOutputRef | StructureUseReturnConditionRef | NamedClaimGoverningPatternRef),
+  admissibleUse,
+  nonAdmissibleUse
+}
+
+StructuralCoarseningDescription@Context ::= {
+  coarseningDescriptionId,
+  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
+  sourceStructureRefs: FinSet(U.StructureRef),
+  resultStructureRefs: FinSet(U.StructureRef),
+  preservedUnder,
+  brokenBy,
+  lostStructure,
+  structureUseReturnCondition,
+  admissibleUse,
+  nonAdmissibleUse
+}
+```
+
+#### A.22:4.5 - Structure-use return
+
+`StructureUseReturnCondition` is present when compression, extraction, coarsening, evidence reuse, mathematical-lens use, simulation, ML evaluation, bounded exception, many-to-many allocation, or decision reliance hides a distinction needed for action, assurance, causal use, legal review, regulatory review, comparison, or subsequent decision reopening.
+
+Do not make structure-use return mandatory for ordinary local recognition when no hidden distinction is being used for action. The condition is needed only when the repaired text still relies on a hidden selected-structure, source-basis, source-description, evidence, lens, simulation, extraction, or representation distinction.
+
+#### A.22:4.6 - Relation to architecture
+`StructuralAspectDescription@Context` describes one selected structural aspect under A.22. It is not an `ArchitectureStructureKindRef` by itself. `ArchitectureStructuralView@Context` is a C.30.ASV view over structures selected by `ArchitectureOf@Context` and typed by `ArchitectureStructureKindRef`.
+
+A.22 is intentionally upstream of C.30. Architecture uses structure; structure does not import architecture as a parent.
+
+`C.30` uses A.22 by selecting architecture-relevant structures for one described holon through `ArchitectureOf@Context`. `C.30.ASV` then governs architecture structural views over those selected structures. A structure can be used by architecture, but a structure is not an architecture merely because an architecture description refers to it.
+
+Architecture-related records that belong to C.30 or its subpatterns include `ArchitectureOf@Context`, `ArchitectureDescription@Context`, `ArchitectureStructuralView@Context`, `ArchitectureStructureKindRef`, `ArchitectureStructureKindTriage@Project`, `FunctionalStructureView@Context`, `ArchitectureTransformationFlowStructureRelation@Context`, `ControlStructureView@Context`, and `CrossScopeArchitectureResidualTriage@Context`. A.22 may name them as FPF pattern applications. It does not define their architecture-specific conformance.
+
+#### A.22:4.7 - Boundary and repair table
+
+| Tempting collapse | A.22 repair |
+| --- | --- |
+| The reliance relation is treated as the structure. | Name `declaredStructureSubstrateRef` and, when source-description, source-use, base-dependence, grounding, evidence, lens, simulation, extraction, or representation reliance is being claimed, name the reliance relation record by value and name the governing FPF pattern; keep structure as selected organization over the declared substrate and do not turn that reliance relation into structure. |
+| The diagram, graph, table, dashboard, or publication form is the structure. | Treat it as publication, description, view, publication form, source-description relation, base-dependence relation, grounding relation, evidence relation, lens relation, simulation relation, extraction relation, or representation relation only when its relation is explicit. |
+| A transformation-flow graph expression is the structure in every sense. | Use `E.18` for graph, path, crossing, and flow valuation; use A.22 only for the selected structure claim; use `C.30.TFS-REL` when an architecture-to-transformation-flow relation claim is being made. |
+| A mathematical lens output is the structure. | Use `C.29` for lens-use result and admissibility, and cite `MathLensUseOutputRef` only through C.29 lens-use result, preserved structure, lost structure, and stop-condition discipline. |
+| A structure proves evidence, assurance, safety, causality, or gate passage. | Assign those claims to `A.10`, `G.6`, `B.3`, `C.28`, `A.20`, or `A.21`. |
+| A structure is a decision or work record. | Use `C.11`, `A.20`, `A.21`, `A.15`, or the project-side decision pattern that governs the claim being made. |
+| Architecture is a root kind beside structure. | Use `C.30`: architecture is selected structure for a described holon through `ArchitectureOf@Context`. |
+| Function, module, interface, platform, layer, stack, block, expert, cache, router, or gate becomes a root kind by appearing in structure prose. | Use `C.30.STRAT` for source-label recovery, then `A.6.F`, `A.6.M` module-relation repair when a module-interface claim is being made, `A.6.0`, `A.6.5`, `A.6.B`, `A.6.C`, `A.6.8`, `E.18`, `C.30.ASV`, and governing patterns as triggered. |
+
+#### A.22:4.8 - Worked slices
+
+**Architecture kernel slice.** A team says, "the architecture is the graph." A.22 does not accept that sentence as a root-kind claim. The repair is:
+
+```text
+declaredStructureSubstrateRef: TransformationFlowStructureRef under E.18, with mathematical graph description under E.18.2 when that expression is the current claim
+candidate structure: selected transformation-flow structure
+structure-claim reliance relation: selected relation record named by value(
+  sourceDescriptionOrPatternApplicationRef = SourceViewRef, E.18 selected structure or crossing record, or E.18.2 mathematical graph description,
+  governingPatternRef = E.18, A.6.6, A.10, or C.29 when that reliance claim is being made,
+  relationKind = source-description | base-dependence | evidence | lens, selected for this reliance,
+  validationBoundary = graph-path currentness boundary, slice currentness boundary, or crossing currentness boundary
+)
+next FPF pattern application: C.30.TFS-REL when this selected structure is used in an architecture-to-transformation-flow relation
+non-admissible use: graph as whole architecture, work, evidence, gate, or decision
+```
+
+The useful structure use survives: the practitioner can use the graph as a governed reliance relation for selected flow structure without turning it into architecture ontology.
+
+**Extracted code structure slice.** A code-agent relation graph or probe JSON reports imports, calls, registry wiring, and data-flow links. A.22 treats it as an extracted structural view only when the source codebase or publication, extraction method, preserved structure, lost structure, validation boundary, and structure-use return condition are named. The relation graph or probe output is not the codebase architecture itself and is not proof of internal agent belief, assurance, or release readiness.
+
+```text
+ExtractedStructuralView@Context:
+  sourceCorpusOrTraceRefs: repo snapshot, probe outputs, traces
+  preservedStructure: selected typed relation families
+  lostStructure: unexplored regions, dynamic calls, hidden generated code, ambiguous relation kinds
+  validationBoundary: probe coverage and source codebase or publication edition
+  structureUseReturnCondition: when an architecture decision, assurance use, or repair depends on a relation not observed by the extraction
+```
+
+### A.22:5 - Archetypal Grounding
+
+| Tell-Show-Show row | Grounding |
+| --- | --- |
+| Tell | A practitioner sees an arrangement that matters but does not yet know whether it is a diagram, a model, a graph, an architecture claim, a source description, base-dependence relation, evidence relation, lens relation, or decision. A.22 asks first: what organization is being selected, over what declared substrate and with what reliance relation, under what context, and with what loss? |
+| Show: `U.System` | In a plant, vehicle, software system, or neural-network model, the selected structure may be transformation-flow, control, module-interface structure, placement, information, scale, or declared logical structure. The structure record does not become the system and does not prove that the system is safe, maintainable, or ready. |
+| Show: `U.Episteme` | A paper, model, generated relation graph, dashboard, architecture note, or mathematical-lens output can describe selected structure or serve as a source-description or A.6.6 base-dependence relation for a selected-structure claim. The episteme, view, or publication is not the structure itself; it carries a description, view, or reliance relation named by value with validation and structure-use return boundaries. |
+
+### A.22:6 - Bias-Annotation
+
+Lenses tested: **Arch**, **Onto**, **Epist**, **Prag**, **Did**, **Gov**. Scope: universal within FPF structure claims.
+
+| Bias risk | Mitigation |
+| --- | --- |
+| Architecture bias | Do not make architecture the parent of all structure. A.22 stays upstream; C.30 carries grounded architecture and selected-structure adequacy. |
+| Mathematical-formalism bias | A mathematical lens can expose preserved structure and lost structure, but C.29 remains the governing pattern for lens-use result, admissibility, and stop condition. |
+| Diagram bias | A useful diagram or generated relation graph is attractive enough to be mistaken for the structure. description, specification-use, and publication boundaries stay explicit. |
+| Review-only bias | Checks leave a repair action: name the structure, name the structure-claim reliance relation record by value, state a structural view, add a `StructureUseReturnCondition`, or apply the governing FPF pattern. |
+| Didactic-thinning risk | Semantic repair does not leave inert prose. The recognition text keeps the first useful move and the practical payoff visible before the formal records. |
+
+This checklist verifies the preceding guidance after the practitioner has chosen the selected repair action; it is not a required project control form and not a substitute for the card, note, view, relation, or repair guidance above.
+
+### A.22:7 - Conformance Checklist
+
+| ID | Requirement | Failed-check repair |
+| --- | --- | --- |
+| **CC-A22-1 Selected structure EntityOfConcern.** | An FPF-governed structure claim names `U.Structure`, an existing FPF kind, or a relation record named by value; it does not mint an architecture-adjacent root kind. | Replace the broad noun with `U.Structure`, an existing FPF kind, or a relation record named by value. |
+| **CC-A22-2 Non-agentive structure.** | Structure wording does not make the structure act, optimize, prove, decide, warrant, sense, plan, or adapt. | Apply the governing pattern for the agency, proof, decision, or work claim and keep A.22 to selected organization. |
+| **CC-A22-3 Structure-claim reliance relation boundary.** | When source-description, source-use, base-dependence, grounding, evidence, lens, simulation, extraction, or representation reliance is claimed, the governing A.6.6 relation ontology, source-description ontology, evidence ontology, lens ontology, assurance ontology, causal ontology, gate ontology, decision ontology, or publication ontology is named. | Add the governing pattern, relation kind where the relation is being claimed, validation boundary, admissible use, and non-admissible use, or mark the reliance phrase as carrying no admissible reliance. |
+| **CC-A22-4 Description and view separation.** | A structural description, structural view, extracted view, diagram, table, graph, dashboard, or publication face is not treated as the structure itself. | Treat the visible form as description, view, source-description relation, A.6.6 base declaration, publication form, or publication and name the selected structure separately only if selected organization is being claimed. |
+| **CC-A22-5 DescriptionContext reuse.** | Description epistemes and specification-use cases reuse `DescriptionContext`, `U.Episteme`, `U.View`, `A.6.3`, and `E.17` machinery; no second architecture-local description and view ontology is introduced. | Replace local description and view fields with the imported DescriptionContext fields or assign the claim to the existing governing pattern. |
+| **CC-A22-6 Structure-use return.** | `StructureUseReturnCondition` is present when hidden selected-structure, source-basis, source-description, evidence, lens, simulation, extraction, or representation distinctions are used for action, assurance, causal use, legal or regulatory review, comparison, or decision reopening. | Add one structure-use return condition or narrow the record's admissible use so the hidden distinction is not relied on. |
+| **CC-A22-7 Non-structure claim kind.** | Evidence, assurance, gate, release, causal, dynamics, measurement, work, decision, publication, bridge, and mathematical-lens claims are assigned to their governing patterns. | The check passes when the governing FPF pattern and the claim kind being made are named, while the A.22 record remains limited to selected-structure use. |
+| **CC-A22-8 Architecture pattern application.** | Architecture claims use `C.30` and `ArchitectureOf@Context`; A.22 does not treat architecture as a root kind or define C.30-specific records. | Apply C.30 or a C.30 subpattern and keep A.22 only as the selected-structure EntityOfConcern and structure-claim reliance relation. |
+| **CC-A22-9 Plain and Tech recovery.** | Plain structure phrases may remain, but if they carry ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim, the relevant Tech fields and FPF pattern applications are recoverable. | Add the missing Tech fields or demote the Plain phrase to ordinary recognition wording. |
+| **CC-A22-10 Useful action.** | The repair leaves a remaining admissible practitioner use: name the structure, name the structure-claim reliance relation record by value, state a structural view, add a `StructureUseReturnCondition`, or apply the FPF pattern that governs the claim kind being made. | Restore that use, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
+| **CC-A22-11 CGUS admission.** | A constraint-governed unfolding claim names several loci, cross-locus constraints, preserved and lost structure, direct governing-pattern exits, admissible next forms, and stop or return conditions. | Use `A.22.CGUS` only after those fields are recoverable; otherwise lower the visible route-shaped artifact to a description, demonstrative slice, README seed, or ordinary cue. |
+
+### A.22:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Symptom | Repair |
+| --- | --- | --- |
+| **Structure-as-document** | A diagram, table, dashboard, relation graph, or prose section is called the structure. | Recover publication, publication-form, description, or view relation; name the structure separately only when selected organization is being claimed. |
+| **Reliance-interpretation-as-structure** | A trace used as source basis, benchmark, lens output, model, or simulation is treated as the structure. | Name the governing A.6.6 relation ontology, source-description ontology, evidence ontology, or lens ontology; state relation kind where the relation is being claimed, validation boundary, and non-admissible use. |
+| **Loss-free extraction** | Extracted or coarsened structure is used without lost structure or structure-use return. | Add `preservedStructure`, `lostStructure`, `validationBoundary`, and `structureUseReturnCondition`. |
+| **Architecture root-kind rebound** | Structure work reintroduces `U.Architecture` or treats architecture as parallel to structure. | Use `ArchitectureOf@Context` and C.30; keep A.22 as the upstream selected-structure EntityOfConcern. |
+| **Lens ontology import** | A mathematical lens output becomes the imported ontology. | Use C.29 for the lens, cite it through C.29 lens-use result, preserved structure, lost structure, and stop-condition discipline. |
+| **Sterile precision rewrite** | The text removes overread but no longer tells the practitioner what to do. | Restore the surviving action: structure card, structure-claim reliance relation, Description or view, `StructureUseReturnCondition`, or FPF pattern application. |
+
+### A.22:9 - Consequences
+
+| Benefit | Cost or trade-off |
+| --- | --- |
+| FPF gains a reusable selected-structure EntityOfConcern without minting architecture, module, interface, platform, or graph as root kinds. | A conforming use states context, declared substrate or named reliance relation record, preserved and lost structure, and non-admissible use when the claim has FPF-governed use. |
+| Structural views become usable without confusing the view, publication form, publication, source-use relation, grounding relation, and selected structure EntityOfConcern. | Existing loose prose that says "the structure is the diagram" needs repair. |
+| C.29 mathematical lenses and E.18 transformation-flow structures can supply governed reliance relations for structure claims without becoming structure ontology. | FPF pattern applications are named when evidence, assurance, causal-use, gate, work, or decision claims are being made. |
+| Architecture work can start from selected structure through C.30 instead of forcing architecture to be either a document or a module diagram. | Architecture-specific conformance stays outside A.22, so practitioners can require one extra C.30 application when the architecture claim or durable architecture-description use is being made. |
+
+### A.22:10 - Rationale
+
+FPF needs one general selected-structure EntityOfConcern because many useful project claims depend on organization before they depend on a specific architecture, mathematical, measurement, or publication pattern. The selected-structure entity has to be dependent, non-agentive, and claim-bearing through descriptions or views: it can be described, sourced, compared, coarsened, extracted, or used by architecture, but it does not act or certify.
+
+The selected design keeps A.22 small enough for first use. A practitioner can write one `StructureQuestionCard@Project` and stop. Heavier DescriptionContext, A.6.6 base-dependence, extraction, lens, evidence, and structure-use return records are used only when the next use would otherwise hide loss, source-basis dependence, or non-structure claim kind.
+
+The reason to keep C.30 separate is architectural clarity. Architecture is selected structure for a described holon under context and concern; architecture descriptions are Description epistemes and specification-use cases or views over that claim, while publications only make those epistemes or views available. A.22 supplies the structure substrate, not the architecture ontology.
+
+### A.22:11 - SoTA-Echoing
+
+| Exact practice or source anchor | FPF adoption | Action consequence | Boundary |
+| --- | --- | --- | --- |
+| ISO/IEC/IEEE 42010:2022 architecture-description practice | Adopt the separation of described entity of interest, concern, viewpoint, view, and correspondence as pressure for DescriptionContext separation, mapped here to `EntityOfConcern` and `DescriptionContext` terms. | A.22 structural descriptions and views reuse `DescriptionContext`, viewpoint, view, and correspondence machinery rather than inventing a local display ontology. | ISO 42010 does not make every structure an architecture and does not add evidence, assurance, gate, or decision authority. |
+| OMG SysML v2 view practice | Adapt views-as-queries and model-view discipline as a source for treating views as selected renderings over model content. | A structural view states selected, hidden, or lost structure when the selection changes action. | A view is not the structure and not a proof of the described holon. |
+| C.29 mathematical-lens discipline | Adopt preserved structure, lost structure, lens-use admissibility, and stop-condition discipline when a mathematical lens is used for a structure claim. | Cite C.29 output through C.29 lens-use result, preserved structure, lost structure, stop condition, and structure-use return discipline. | Lens output is not structure, evidence, assurance, causal-use relation, or decision. |
+| arXiv:2603.00601 code-space architecture relation-graph work and related code-probing practice | Adapt partial-observability, typed-relation, uncertainty, and structure-use return pressure for extracted structural views. | Use extracted structural-view records with validation boundaries and an observation value selected from `observed`, `inferred`, or `unknown` where needed, plus structure-use return conditions. | Do not mint `U.CodeSpace` and do not treat probe output, probe JSON, or benchmark output as structure adequacy, assurance, release evidence, or assurance evidence. |
+| Coarsening, compression, and RG-adjacent traditions | Adopt the need to say what structure is preserved and what is lost. | Use `StructuralCoarseningDescription@Context` and `StructureUseReturnCondition` before relying on a coarsened structure for action. | RG, epiplexity, structural information, and equivalence reasoning are governed by C.29, C.16, or another governing pattern named for the claim being made. |
+| GonzoML neural-network architecture discussions as practitioner-language intake | Adapt block replacement, dataflow change, memory placement, cache placement, path-selection, pruning, distillation, and architecture-search wording as general architecture-operation recognition material. | When such wording is used, keep block, cache, expert, router, gate, and similar words as `C.30.STRAT` source labels until changed structure kind, source-description relation, source-use relation, base-dependence relation, evidence relation, lens output, preserved structure, lost structure, and FPF pattern applications are recovered. | Neural-network labels, benchmark results, ablations, or pruning masks do not become structure ontology, architecture decisions, evidence sufficiency, gate passage, assurance, or architecture adequacy by themselves. |
+
+### A.22:12 - Relations
+
+Builds on: `C.2.1`, `A.6.P`, `A.7`, `A.6.2`, `A.6.3`, `A.14`, `C.16`, `C.29`, `E.10.D2`, `E.10`, `C.2.P`, `E.17.0`, `E.17.1`, `E.24`, `E.24.PUB`, and `F.18`.
+
+Coordinates with: `A.22.CGUS`, `C.30.P`, `C.30.STRAT`, `C.30`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.LCA`, `C.30.ILC`, `A.6.F`, `E.18`, `E.18.3`, `A.10`, `G.6`, `B.3`, `A.20`, `A.21`, `C.28`, `A.15`, `C.11`, `C.16`, `C.25`, `G.5`, `C.33`, `C.34`, and `C.35` when architecture-specific structure-capture, preservation, or discovery adequacy claim kinds are being made.
+
+Queue `7b` relation note: `C.33`, `C.34`, and `C.35` govern architecture-specific capture, preservation, and discovery adequacy over selected structures. A.22 keeps the general selected-structure portion; it does not decide architecture use, candidate admission, measurement, evidence, assurance, or decision authority for those adequacy claims.
+
+Does not replace: `C.30.P` or `C.30.STRAT` wording-use precision restoration, `C.30` for grounded architecture adequacy and conditional architecture-description use, `C.29` for mathematical-lens use, `C.16` for measurement and characterization, `C.28` for causal-use relation, `B.3` for assurance, `A.10` and `G.6` for evidence, `A.20` and `A.21` for gates and release, `A.15` for work, `C.11` for decisions, or `E.17` for publication.
+
+### A.22:End
+
+## A.22.CGUS - Constraint-Governed Unfolding Structure
+
+> **Type:** A.22 specialization of `U.Structure`
+> **Status:** Stable
+> **Normativity:** Normative unless explicitly marked informative
+
+### A.22.CGUS:0 - Use This When
+
+Use this when a team has a P2S flow card, a P2W carry-through note, an abductive prompt path, an improvement cycle, a narrative ordering, a typing-grounding trace, or a README first-entry seed, and the visible form helps but also misleads. It looks like a route, loop, chain, table, graph, or story, while the useful engineering question is not "which sequence should everyone follow?" but "which admitted records, current structures, typed positions, relation instances, constraints, and guards make each continuation admissible or inadmissible?"
+
+When that is the live question, name the object as `ConstraintGovernedUnfoldingStructure@Context`: an A.22-governed `U.Structure` whose SlotSpec-grounded positions, relation signatures, exact referenced values, cross-position constraints, invariants, guarded transitions, preserved structures, C.33 adequacy notes, direct governing-pattern exits, admissible next-form kinds, and use boundaries jointly constrain more than one continuation.
+
+Use CGUS only after the candidate structure has more than one typed position and the relations or constraints among those positions affect admissible continuations. A single recommendation, diagram, slogan, pattern list, or document section is not enough.
+
+### A.22.CGUS:1 - Problem Frame
+
+FPF often needs to explain how several admitted records, current structures, typed positions, and relations jointly constrain several admissible next forms without turning that explanation into a workflow. A problem card, `G.2` source pack, architecture concern, candidate set, evaluation result, cue publication, and current `U.Structure` can participate through exact governed relations in pattern-use recommendations, candidate structures, rival hypotheses, evidence work, repair proposals, reader-facing narratives, or structure-use return conditions. The point is the recoverable constraint structure, including relation signatures, guards, preserved structures, C.33 loss notes, and direct governing-pattern exits, not a one-input-one-output conversion.
+
+These structures can be architecture-facing, reasoning-facing, narrative-facing, improvement-facing, typing-grounding-facing, evidence-facing, currentness-facing, or first-use-facing. They share one structural need: typed positions are connected by relations and constrained together, so admissible continuations are recoverable only while the relevant structures, C.33 adequacy notes, guards, exits, and governing-pattern boundaries remain visible.
+
+### A.22.CGUS:2 - Problem
+
+The problem is that a constraint-governed unfolding structure becomes unrecoverable when one route-shaped or loop-shaped description stands in for it.
+
+First, the structure's typed positions, exact relations, constraints, preserved structures, C.33 adequacy notes, stop boundary, and direct governing patterns disappear behind decorative prose. Words such as "flow", "move", "unfold", "loop", or "route" remain, but no reader can recover what constrains a continuation.
+
+Second, one demonstration of the structure becomes a fake workflow. A teaching sequence, diagram, README entry, prompt example, or happy path is treated as the order of real project work. Method, work plan, performed work, evidence, gate, decision, publication, and architecture claims then become unsupported inferences from displayed order.
+
+### A.22.CGUS:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Useful unfolding vs workflow overread | A structured unfolding helps a practitioner see what can come next, but the project sequence may be nonlinear, partial, interrupted, iterative, or delegated to different governing patterns. |
+| Reusable `U.Structure` specialization vs root-kind inflation | FPF needs a reusable A.22 specialization of `U.Structure` for constraint-governed unfolding without minting `U.Route`, `U.Workflow`, `U.Process`, `U.Architecture`, or another root kind by appearance. |
+| Description usefulness vs semio-bias | Route cards, graphs, tables, slides, narratives, and README lines can suggest the structure before admission or present it after admission, but provisional descriptions and admitted demonstrative slices are not the structure itself. |
+| Local claims vs universal calculus | P2W, P2S, abduction, narrative, improvement, grounding, refresh, and option selection need different direct governing patterns; CGUS only carries the shared constraint-governed unfolding structure. |
+| Didactic entry vs shadow navigation | First-entry seed lines help new readers start while remaining publication aids rather than a second specification or navigation authority beside the governing patterns. |
+
+### A.22.CGUS:4 - Solution
+
+Select `ConstraintGovernedUnfoldingStructure@Context <: U.Structure` as a thin A.22 specialization of `U.Structure` for constraint-governed unfolding across typed positions and exact governed relations.
+
+A constraint-governed unfolding structure is a `U.Structure` whose typed positions, relation signatures, referenced relation values, constraints, invariants, guarded transitions, preserved structures, C.33 adequacy notes, and governing-pattern exits jointly constrain admissible next forms. It states how admitted starting records and already-current structures participate through exact relations. It makes no displayed-order claim about real work and fixes no cardinality of starting records, starting structures, or resulting records.
+
+Do not read "unfolding" as a chain by default. The unfolding structure may be branching, merging, cyclic, partially ordered, or graph-shaped, and it may leave several alternative next forms live at once. Before the wider structure passes the admission test, a linear chain, seminar order, prompt path, or happy path remains a `ProvisionalUnfoldingDemonstrationDescription@Context`. After admission, a presentation of one traversal may be a `DemonstrativeUnfoldingSlice@Context` whose EntityOfConcern is that admitted CGUS.
+
+#### A.22.CGUS:4.1 - Constraint-governed unfolding structure
+
+```text
+UnfoldingStructureReferenceKindValue = acceptedStartingRecord | relationInstance | constraint | invariant | guardedTransition | currentness
+UnfoldingStructureBoundaryKindValue = admissibleUse | nonAdmissibleUse | stop | return
+
+ConstraintGovernedUnfoldingStructure@Context <: U.Structure:
+  boundedContextRef: U.BoundedContextRef
+  declaredStructureSubstrateRef: U.EntityRef, referencing one U.Structure
+  entityOfConcernRef: U.EntityRef
+  entityOfConcernKindRef: U.KindRef
+  specializedStructureRef?: U.EntityRef, referencing one narrower U.Structure
+  acceptedStartingRecordReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=acceptedStartingRecord
+  acceptedStartingStructureRefs[]: U.EntityRef, each referencing one U.Structure
+  relationSignatureRefs[]: U.EntityRef, each referencing one U.Signature
+  structurePositionRefs[]: U.EntityRef, each referencing one ConstraintGovernedUnfoldingPosition@Context
+  relationInstanceReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=relationInstance
+  constraintReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=constraint
+  invariantReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=invariant
+  guardedTransitionReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=guardedTransition
+  preservedStructureRefs[]: U.EntityRef, each referencing one U.Structure
+  structureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
+  admissibleNextFormKindRefs[]: U.KindRef
+  demonstrativeSliceRecipeRefs[]?: U.EntityRef, each referencing one U.MethodDescription
+  admissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  nonAdmissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  stopBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  structureUseReturnBoundaryRefs[]: U.EntityRef, each referencing one UnfoldingStructureUseBoundaryCondition@Context
+  currentnessRelationReferenceRefs[]?: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=currentness
+```
+
+The declared substrate is the structure being unfolded, not a topic label or container. `specializedStructureRef` is present only when one narrower `U.Structure` record is current, such as an E.18.3 transformation-flow specialization. That narrower record may point back through its `unfoldingStructureRef`; the reciprocal references state one generic-to-narrower specialization relation and do not create two unrelated unfolding structures. Accepted starting records and accepted starting structures remain different: a record may describe, publish, or evaluate a structure without becoming that structure. Every referenced entity retains its exact kind and direct governing pattern.
+
+#### A.22.CGUS:4.1.1 - Dependent position, reference, and boundary relations
+
+```text
+ConstraintGovernedUnfoldingPosition@Context <: U.Relation:
+  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
+  positionSlotSpecRef: U.EntityRef, referencing one A.6.5 SlotSpec
+  positionFillingRef?: U.EntityRef
+  positionFillingKindRef?: U.KindRef
+  directGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
+  RelationRefKind: U.EntityRef
+  Dependence: bounded-context local to unfoldingStructureRef
+  Identity: <unfoldingStructureRef, positionSlotSpecRef, positionFillingRef if present>
+
+UnfoldingStructureReferencedValueRelation@Context <: U.Relation:
+  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
+  referenceKind: UnfoldingStructureReferenceKindValue
+  referencedValueKindRef: U.KindRef
+  referencedValueRef: U.EntityRef
+  directGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
+  relationSignatureRef?: U.EntityRef, referencing one U.Signature
+  RelationRefKind: U.EntityRef
+  Direction: unfoldingStructureRef -> referencedValueRef
+  Dependence: bounded-context local to unfoldingStructureRef and referencedValueRef editions
+  Identity: <unfoldingStructureRef, referenceKind, referencedValueKindRef, referencedValueRef>
+
+UnfoldingStructureUseBoundaryCondition@Context <: U.Relation:
+  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
+  boundaryConditionKind: UnfoldingStructureBoundaryKindValue
+  conditionDescriptionRef: U.EpistemeRef
+  affectedStructureRef: U.EntityRef, referencing one U.Structure
+  boundaryGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
+  conditionalReceivingPatternRef?: U.EntityRef, referencing one U.MethodDescription
+  RelationRefKind: U.EntityRef
+  Dependence: bounded-context local to unfoldingStructureRef and affectedStructureRef editions
+  Identity: <unfoldingStructureRef, boundaryConditionKind, conditionDescriptionRef, affectedStructureRef, conditionalReceivingPatternRef if present>
+```
+
+The two `...KindValue` declarations are local closed enumerations, not U-kinds. Position filling ref and kind are both present or both absent. A relation signature is present when the referenced value is a relation. Every boundary names its governing pattern; only `return` names a conditional receiver.
+
+`StructuralInformationAdequacyNote@Context` under C.33 carries captured, expected-but-uncaptured, lost, and hidden structure for a declared use. CGUS does not mint parallel loss or hiddenness fields. A use boundary is not permission, gate passage, evidence, assurance, or currentness refresh by itself.
+
+#### A.22.CGUS:4.2 - Admission test
+
+A readable chain is not sufficient for admission. Use CGUS only when the current structure recovers all of the following:
+
+| Coordinate | Recovery for CGUS admission | Reduced use when absent |
+| --- | --- | --- |
+| Structure identity | One exact `U.Structure` substrate, bounded context, EntityOfConcern, and kind. | Keep a note, card, description, or method description. |
+| Typed positions | More than one SlotSpec-grounded position and any current filling ref-kind pairs. | Keep a list or seed description. |
+| Connecting relations | Relation signatures and exact referenced relation instances. | Keep an index until connections are recoverable. |
+| Cross-position constraints | Constraints, invariants, guards, branches, joins, cycles, partial orders, or many-to-many dependencies that matter to the use. | Keep a linear presentation as a provisional demonstration description until the wider structure is admitted. |
+| Preserved and omitted structure | Preserved structures and any C.33 adequacy notes needed by the declared use. | Lower the adequacy claim and retain the return. |
+| Admissible next forms | Exact next-form kinds, not one forced next record. | Do not claim a usable unfolding structure. |
+| Direct governing-pattern exits | Each stronger claim points to its direct pattern. | The structure is overreading itself as method, work, evidence, gate, architecture, publication, or refresh authority. |
+| Use boundaries | Admissible, non-admissible, stop, and return conditions are explicit. | Keep the artifact as a provisional explanation. |
+
+Branches or joins that are current remain visible. A cycle shown as "return to the start" is not thereby a chain. One slice may be linear because attention needs one path; the wider structure remains graph-shaped when its relations are graph-shaped.
+
+#### A.22.CGUS:4.3 - Provisional demonstrations, admitted-structure descriptions, and demonstrative slices
+
+A presentation may help discover positions and relations before any CGUS exists. Keep that pre-admission object as a C.2.1-conformant episteme about the actual subject-domain object, question, or proposed continuation set:
+
+```text
+DemonstrationUseModeValue = workedSlice | firstUseExample | actualCaseReplay | variantComparison | otherDeclared
+DemonstrationPresentationFormValue = orderedList | chainDiagram | flowCard | table | narrativePath | slideSequence | promptBlock | graphSlice | otherDeclared
+
+ProvisionalUnfoldingDemonstrationDescription@Context <: U.Episteme:
+  entityOfConcernRef: U.EntityRef, referencing the actual subject-domain object, question, or proposed continuation set
+  entityOfConcernKindRef: U.KindRef
+  boundedContextRef: U.BoundedContextRef
+  viewpointRef: U.ViewpointRef
+  subjectRef: U.SubjectRef, decoding to <entityOfConcernRef, boundedContextRef, viewpointRef>
+  groundingHolonRef?: U.HolonRef
+  claimGraph: U.ClaimGraph by value
+  referenceScheme: U.ReferenceScheme by value
+  editionId
+  demonstrationUseMode: DemonstrationUseModeValue
+  presentationForm: DemonstrationPresentationFormValue
+  provisionalContinuationDescriptionRefs[1..*]: U.EpistemeRef
+  candidatePositionDescriptionRefs[2..*]: U.EpistemeRef
+  candidateRelationDescriptionRefs[]?: U.EpistemeRef
+  unresolvedCGUSAdmissionCoordinateDescriptionRefs[1..*]: U.EpistemeRef
+  admissionTransitionConditionDescriptionRef: U.EpistemeRef
+```
+
+This local declaration form is an episteme, not a structure slice and not a new root kind. Its C.2.1 identity comes from its exact EntityOfConcern, DescriptionContext, optional grounding holon, ClaimGraph, reference scheme, and edition. `entityOfConcernRef` names the subject that the explanation is currently about; it may not point to a not-yet-admitted CGUS. Candidate positions and relations are claims to investigate, not admitted `ConstraintGovernedUnfoldingPosition@Context` or relation instances. At least one unresolved admission coordinate remains present while the description is provisional.
+
+Once every coordinate in `4.2` is recoverable and the wider `ConstraintGovernedUnfoldingStructure@Context` is admitted, describe that structure without selecting a traversal through it by creating this C.2.1-conformant episteme:
+
+```text
+ConstraintGovernedUnfoldingStructureDescription@Context <: U.Episteme:
+  entityOfConcernRef: U.EntityRef, referencing one admitted ConstraintGovernedUnfoldingStructure@Context
+  entityOfConcernKindRef: U.KindRef, referencing ConstraintGovernedUnfoldingStructure@Context
+  boundedContextRef: U.BoundedContextRef
+  viewpointRef: U.ViewpointRef
+  subjectRef: U.SubjectRef, decoding to <entityOfConcernRef, boundedContextRef, viewpointRef>
+  groundingHolonRef?: U.HolonRef
+  claimGraph: U.ClaimGraph by value
+  referenceScheme: U.ReferenceScheme by value
+  editionId
+  preservedStructureRefs[]: U.StructureRef
+  structureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
+  declaredUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  descriptionUseReturnBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+```
+
+Its EntityOfConcern is the admitted CGUS. Its ClaimGraph may describe branches, joins, cycles, partial orders, positions, relations, constraints, and admissible next forms without choosing one route through them. Carrier, diagram form, table layout, or publication location does not determine its identity. A new edition is required when the described CGUS edition, DescriptionContext, applicable grounding, ClaimGraph, reference scheme, preserved-structure account, adequacy account, declared use, or return boundary changes.
+
+When one presentation selects a traversal or ordering through that admitted structure, create a different post-admission episteme:
+
+```text
+DemonstrativeUnfoldingSlice@Context <: U.Episteme:
+  entityOfConcernRef: U.EntityRef, referencing one admitted ConstraintGovernedUnfoldingStructure@Context
+  boundedContextRef: U.BoundedContextRef
+  claimGraph: U.ClaimGraph by value
+  referenceScheme: U.ReferenceScheme by value
+  editionId
+  derivedFromProvisionalDemonstrationRef?: U.EpistemeRef, referencing one ProvisionalUnfoldingDemonstrationDescription@Context
+  demonstrationUseMode: DemonstrationUseModeValue
+  transformationFlowStructureRef?: U.EntityRef, referencing one E.18 TransformationFlowStructure
+  pathSliceId?: E.18 PathSliceId
+  designRunTag?: E.18 DesignRunTag
+  demonstratedPatternUseRowRefs[]: U.EpistemeRef, each referencing one DemonstratedPatternUseRow@Context
+  includedStructurePositionRefs[]: U.EntityRef, each referencing one ConstraintGovernedUnfoldingPosition@Context
+  omittedStructureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
+  loopCompressionRuleRef?: U.EntityRef, referencing one U.MethodDescription
+  alternativeSliceRefs[]?: U.EpistemeRef, each referencing one DemonstrativeUnfoldingSlice@Context
+  presentationOrderingRuleRef: U.EntityRef, referencing one U.MethodDescription
+  presentationForm: DemonstrationPresentationFormValue
+  admissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  nonAdmissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+  sliceReturnBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
+```
+
+The transition does not retype the provisional episteme or any subject-domain result. The admitted slice cites the provisional description only as its derivation basis, names the already-admitted CGUS as EntityOfConcern, and replaces candidate position and relation descriptions with exact admitted structure positions and relation references. Its edition changes when that CGUS edition, included positions, omitted-structure account, traversal or ordering rule, alternatives, use boundary, ClaimGraph, or reference scheme changes; carrier or rendering change alone does not. If admission later fails, the provisional explanation may remain useful under its declared use while the slice claim is withdrawn.
+
+The local mode and presentation-form values are enumerations, not CharacteristicSpaces or U-kinds. Presentation form says how the episteme is rendered; it is not a carrier kind. Add an E.17 publication relation only when publication is current.
+
+The E.18 triple is all present or all absent. When present, it locates this post-admission demonstration in one flow valuation and relates pattern-selection, selected-pattern-application, and downstream-subject-work slices without merging their structures, rows, work occurrences, or results.
+
+#### A.22.CGUS:4.3.1 - Demonstrated pattern-use rows
+
+When a local pattern mantra is admitted as a `DemonstrativeUnfoldingSlice@Context`, `mantra move` is bounded Plain wording for one `DemonstratedPatternUseRow@Context` inside that slice. The row consumes A.6.5 SlotSpec discipline, but A.6.5 does not govern the row's identity. The row is not a root U-kind, an operation, or a work occurrence. It shows one result-bearing conditional continuation. A short repeatable formula that only recalls one pattern's Solution may still be a useful local mantra without containing such rows and without becoming a CGUS.
 
 ```text
 DemonstrationBasisModeValue = publicTemplate | projectCandidate
@@ -6109,871 +6886,510 @@ KD‑CAL turns the coarse legacy semiotic picture into **holonic composition** o
 
 ### C.2:End
 
-## C.2.1 - U.Episteme - Epistemes and their slot relation
+## C.2.1 - `U.Episteme`: Constitution, Empirical Grounding, and Edition Relations
 
 > **Type:** Pattern
 > **Status:** Stable
 > **Normativity:** Normative except where a section is explicitly marked informative
-> **One-line summary.** `U.Episteme` is the holon type for epistemes; its internal ontology is given by `U.EpistemeSlotRelation`, a typed n-ary relation with `SlotSpec` discipline over `EntityOfConcern`, `GroundingHolon`, `ClaimGraph`, `Viewpoint`, `View`, and `ReferenceScheme`. Under `C.29`, a filled episteme may be represented as a tuple view over that relation; `ClaimGraph` and `JustificationGraph` remain graph-valued fillers or attached graph-valued structures, not tuples. A coarse Symbol-Concept-Object triangle may be used only as a didactic projection of this slot relation, not as the normative ontology.
 
-**Use this pattern when** a theory, model, specification, standard, proof, algorithm, diagram, dashboard, view, or publication is being treated as a knowledge holon and the project must know what it is about, what claim graph it carries, how it is grounded, which viewpoint or view is current, and which reference scheme makes the claims readable.
+**Plain name.** Episteme constitution.
 
-**Primary EntityOfConcern.** The `EntityOfConcern` is `U.Episteme`: a knowledge holon whose identity and admissible use are governed by `U.EpistemeSlotRelation`, not by its carrier, notation, publication face, or one didactic semantic-triangle projection.
+**Mint or reuse.** This pattern reuses `U.Episteme`, `U.ClaimGraph`, `U.Entity`, `U.ReferenceScheme`, `U.Holon`, `U.Signature`, `RelationSignature`, and `SlotSpec`. It introduces the direct relation names `EpistemeConstitutionRelation`, `EpistemeEmpiricalGroundingRelation`, and `EpistemeEditionRelation`; it introduces no U-kind. Each named `...RelationSignature` below is the relation-facing use of one declaration episteme for which the `A.6.0` membership predicate obtains; `A.6.0` therefore recognizes that same individual as a `U.Signature`, not as another identity. The signature-local SlotKinds named below identify participant meanings only inside their stated signatures. An episteme itself has no slots, and repeated slot spelling in another signature establishes no shared SlotKind by spelling alone.
 
-**First useful move.** Fill the small episteme slot relation: `EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ReferenceSchemeSlot`, `ViewpointSlot`, and `ViewSlot` when current. Then decide which claim, view, publication, specification-use, morphism, evidence, or grounding relation is actually being used, and keep that relation with its governing pattern.
+**One-line summary.** A `U.Episteme` is a knowledge holon identified by exact claim content, one exact EntityOfConcern, and the effective `U.ReferenceScheme` that makes those claims interpretable as claims about that entity. `EpistemeConstitutionRelation` is the core direct relation of the episteme ontic. Empirical grounding, viewpoint, view, scope, model use, edition succession, description, publication, carrier, and mathematical representation remain neighboring objects and relations.
 
-**What goes wrong if missed.** A PDF, diagram, proof script, algorithm text, model output, or dashboard becomes "the theory"; the described EntityOfConcern drifts; a publication is used as evidence or authority by appearance; and several local description triangles grow into incompatible episteme ontologies.
+**Use this pattern when.** Use C.2.1 when a theory, model, specification, standard, proof, algorithm description, diagnosis, lesson, diagram, dashboard, or other claim-bearing object needs to remain identifiable while its subject, interpretation, empirical grounding, view, edition, or publication changes.
 
-**What this buys.** The practitioner can keep the episteme, its described object, grounding holon, claim graph, viewpoint, view, reference scheme, carrier, publication, and evidence relation separate while still using one compact slot relation across C.2, A.6.2, A.6.3, A.6.4, E.17, and related description and specification-use patterns.
+**Primary working reader.** An engineer or researcher who needs to identify a knowledge object and use it without mistaking its subject, file, view, evidence, or publication for that knowledge object.
 
-**Not this pattern when.** Use the direct governing pattern when the current question is the described system or holon (`A.7` and system or holon patterns), a publication face or carrier (`E.17`), evidence or assurance (`A.10`, `G.6`, `B.3`), mathematical-lens use (`C.29`), a method or method description (`A.3.1`, `A.3.2`), or a wording-use repair (`E.10`, `C.2.P`, `C.2.P.DR`, `F.18`, `F.19`). `C.2.1` governs the episteme slot relation itself.
+**Primary working concern.** Keep one claim-bearing object reidentifiable through empirical grounding, viewing, revision, and publication, and detect when changed claims, subject, or interpretation identify another episteme.
+
+**Primary viewpoint.** The practitioner using, comparing, revising, or publishing that knowledge object while keeping its identity and neighboring relations distinct.
+
+**Primary EntityOfConcern.** The `U.Episteme` ontic: the knowledge holon, its identity-bearing constitution relation, and the neighboring relations needed for empirical grounding, use, change, description, and publication.
+
+**First useful move.** Name the exact work or decision that will rely on the episteme and the uncertainty or choice the episteme is expected to resolve. Then name the claim content, the identified entity those claims concern, and the effective reference scheme that makes the claims interpretable as claims about that entity. If the named work or decision also depends on empirical grounding, classification, viewpoint, view, claim scope, bounded model use, edition succession, description, or publication, add only the neighboring object or direct relation on which it depends, then apply the pattern governing that object or relation.
+
+**What goes wrong if missed.** A file or diagram becomes "the model"; a subject label drifts while the same episteme name is retained; the holon through which claims are empirically inspected, or the viewpoint from which claims are selected, is copied into episteme identity without justification; or a revised publication is mistaken for a changed knowledge object.
+
+**What this buys.** Epistemes can be compared, revised, grounded, viewed, published, and used recursively while ordinary prose stays short. The complete distinction among the episteme, its direct relations, and their assertion, publication, and representation objects remains recoverable without making users restate every object for every claim.
+
+**Not this pattern when.** Use the direct subject pattern when the current question concerns the system, work, method, relation occurrence, or other entity described by an episteme. Use `A.1` for constructive recognition of a candidate under an admitted holon kind, `C.3.2` for a local-kind membership judgment, and `E.24.UK` for FPF U-kind admission. Use `E.17` and `E.24.PUB` for publication, `A.10` and `B.3` for evidence or assurance, `C.29` for a mathematical representation, and `E.10`, `C.2.P`, or `F.18` for precision restoration or naming. C.2.1 governs episteme identity, including the identity of a separately current classification assertion.
 
 ### C.2.1:1 - Problem Frame
 
-FPF’s kernel recognises two archetypal sub‑holons: **System** and **Episteme**. Systems are operational wholes; **epistemes** are **knowledge holons**—theories, models, specifications, standards, algorithms, proofs—whose reason for being is to **say something defeasible or deductive about something** and to be **held to account** by justification.
+FPF treats an episteme as a holon, not as a document class or a filled record. A pump-maintenance specification, a clinical model, a theorem, a learned classifier description, and a curriculum model can all be epistemes when each is a claim-bearing whole about an exact EntityOfConcern under an effective reference scheme. Their carriers, notations, and admissible operations differ, but that difference does not remove the shared ontology question: what makes this one episteme, and what changes its identity?
 
-**Readers.** Engineering managers and lead designers who need a uniform way to reason about **theories, specifications, algorithms, proofs**—from charter memos up to formal axiomatics—without collapsing into tooling or discipline‑specific notations.
+The episteme ontic coordinates these distinct objects without collapsing them:
 
-KD‑CAL (C.2) needs a precise notion of **what an episteme is** and **how it mediates** between:
+1. the `U.Episteme` knowledge holon;
+2. direct relation occurrences that constitute, ground, or connect editions of that holon;
+3. declaration epistemes whose C.2.1 identity is fixed independently, whose same individual has `U.Signature` membership under `A.6.0`, and whose relation-facing `RelationSignature` use declares reusable participant SlotSpecs for one exact relation kind;
+4. assertion epistemes that claim a direct relation predicate obtains and description epistemes whose EntityOfConcern is one explicitly individuated occurrence;
+5. publication occurrences that make one selected episteme edition available for a bounded audience and use;
+6. publication forms that express the selected edition for that publication use;
+7. `U.PresentationCarrier` entities that bear those forms;
+8. C.29 mathematical representations that correspond to independently recovered objects for an explicit modeling or reasoning use.
 
-* the thing(s) it is about,
-* the contexts and systems that ground and test it, and
-* the representational machinery (notations, carriers, operations) we use to work with it.
+The core constructive question is not which fields a card contains. It is whether an exact `U.ClaimGraph`, exact `U.Entity`, and effective `U.ReferenceScheme` stand in the relation that makes the claim content interpretable and evaluable as claims about that entity. When they do, their selected organization yields a whole-level epistemic characteristic: the resulting holon can be used as one defeasible or deductive body of knowledge. That characteristic is not supplied by any one participant alone.
 
-Contemporary work on **formal languages as cognitive tools** (Dutilh Novaes), **operational iconicity** of notations (Krӓmer), **material engagement** (Malafouris), **distributed representations** and **latent-space communication** in ML, and **tool-augmented reasoning** (ReAct-style agent loops) shows that:
-* the relation between an episteme and its **EntityOfConcernSlot** is not a single undifferentiated “Object” vertex: it involves explicit **slots and morphisms** (EntityOfConcern-reference mapping, grounding, evaluation) typed by SlotKinds and contexts;
-* **representations** come in heterogeneous forms (symbolic, diagrammatic, latent, interactive), with very different **admissible operations**;
-* **inference** is often **mixed‑mode**: symbolic reasoning plus calls to tools, solvers, and learned models.
+Any exact `U.Entity` can participate as the EntityOfConcern. An episteme can therefore concern a system, work, method, relation occurrence, another episteme, or itself without changing the constitution relation. Episteme recursion does not introduce a second meta-episteme ontology.
 
-FPF therefore needs a **more modular, slot-relation ontology** for epistemes which:
-* keeps **KD-CAL** and the boundary between `EntityOfConcern` and Description episteme plus specification use and refinement discipline intact,
-* is compatible with **A.6.0** and **A.6.5** signatures (`SlotKind`, `ValueKind`, and `RefKind`),
-* can be used uniformly by A.6.2-A.6.4 (epistemic morphisms) and E.17.* (views & publication),
-* preserves real graph-valued structures such as `ClaimGraph` and `JustificationGraph` as values inside or beside the episteme relation, and
-* keeps the coarse **semantic triangle** only as a **didactic projection**, not the normative ontology.
-
-In this pattern:
-* `U.Episteme` is the **holon genus** for epistemes (C.2), with components and identity governed by A.1, A.6.0, and A.7.
-* `U.EpistemeSlotRelation` names the **internal slot relation** of `U.Episteme`: the small, typed n-ary relation over episteme positions (`EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, `ReferenceSchemeSlot`) on which KD-CAL, A.6.2-A.6.4 and E.17.* rely.
-* Species such as `U.EpistemeCard`, `U.EpistemeView`, `U.EpistemePublication` are holonic realisations of `U.Episteme` whose component structure is constrained to be compatible with `U.EpistemeSlotRelation`.
-
-**Adopted EntityOfConcern family.** C.2.1 uses `EntityOfConcernSlot`, `entityOfConcernRef`, `EntityOfConcernRef`, `EntityOfConcernChangeMode`, and `EntityOfConcernClass` as the adopted slot, ref, and class family. These names are the current C.2.1 vocabulary and must not be shadowed by a second episteme ontology.
+Contemporary work on formal languages as cognitive tools, material and diagrammatic reasoning, distributed representations, and tool-assisted reasoning explains why representation regimes matter. C.2.1 preserves that insight by keeping representation and admitted operations explicit when current. It does not let notation, latent geometry, tool output, or a publication form determine episteme identity.
 
 ### C.2.1:2 - Problem
 
-Without a shared **episteme constitution**, teams fall into recurring failure modes:
+Without one direct episteme ontology, several practical failures recur.
 
-1. **EntityOfConcern-Description episteme-publication carrier soup.** Diagrams and files are treated as *the theory itself*. Changes to a PDF are confused with theoretical change.
-2. **EntityOfConcern blur.** A spec seems to describe “everything in general”. The **EntityOfConcernSlot** - what exactly this knowledge describes - is implicit and drifts, while the **GroundingHolonSlot** that would say where the claim is grounded is also missing.
-3. **Proof vs program confusion.** Algorithms, specifications, and proofs are mixed: a “proof” is used as if it were a tested routine; a “program” is cited as if it entailed a theorem (Curry–Howard misunderstood).
-4. **Trust without evidence relation.** Claims accumulate with no explicit **justification graph** or **evidence freshness**, so assurance degrades invisibly.
-5. **Category errors at execution.** Epistemes appear as *actors* (“the standard enforces…”) instead of **systems** acting *with* or *on* epistemes such as data sets or algorithms.
+1. **Carrier and episteme collapse.** A PDF, database row, proof script, dashboard, or neural-model file is treated as the knowledge holon. File replacement is then reported as epistemic change even when claim content, EntityOfConcern, and interpretation are unchanged.
+2. **Subject drift.** A specification or model keeps one label while the entity it concerns changes. Comparison and evidence use then combine claims about different entities.
+3. **Interpretation drift.** The same tokens or graph are read under different designation, measurement, or evaluation rules while users assume one unchanged episteme.
+4. **Neighboring-relation collapse.** Grounding holon, viewpoint, view, claim scope, model-use structure, evidence, edition, and publication become optional fields of one omnibus record. Their different obtaining and identity rules disappear.
+5. **Representation-first ontology.** Tuple components, graph nodes, schema fields, and database keys are treated as actual relation participants or subject identity discriminators merely because a tool exposes them.
+6. **Agency leakage.** A standard, model, method description, or claim graph is said to perform work. Systems perform work; epistemes participate in use, description, evidence, decision, and publication relations.
+7. **Dependent-kind identity fork.** A method description or view is assigned another identity merely because its direct pattern supplies a membership condition. The same episteme can then appear twice, and a viewpoint or method-description use can be mistaken for a change of knowledge object.
 
-The coarse Symbol-Concept-Object semantic triangle is useful only as a didactic projection over the richer slot relation: **Concept** approximates `ClaimGraph`, **Object** approximates `EntityOfConcern` plus `ReferenceScheme`, and **Symbol** approximates notation or representation tokens.
-
-This projection can still help with:
-* separating **meaning** (Concept) from **carriers**, and
-* integrating KD‑CAL’s **F–G–R** characteristics (Formality, ClaimScope, Reliability).
-
-But the projection has structural blind spots when used as ontology:
-
-1. **No explicit EntityOfConcern slot.**
-   The “Object vertex” bundles together *what the episteme is about* with *how we interpret and test it*. There is no explicit **slot** for the entity of concern (`U.Entity`) and no clear separation between:
-   * the **EntityOfConcern value**, and
-   * the **ReferenceScheme** used to read claims as statements about that thing.
-
-2. **Grounding collapses into Object.**
-   Material and organisational contexts (labs, infrastructures, organisations) that **ground** an episteme (in Malafouris' sense) are hidden in the Object and Reference map. KD-CAL and Bridges need explicit **GroundingHolon** positions.
-
-3. **Viewpoints are not first‑class.**
-   ISO‑style **viewpoints** (families of stakeholders, concerns, conformance rules) and their induced **views** appear only indirectly, via KD‑CAL or MVPK. There is no explicit `U.Viewpoint` / `U.View` pair at the episteme core, which makes it hard to:
-
-   * connect to **DescriptionContext** for Description epistemes, including Description epistemes admitted for specification use,
-   * organize multi‑view descriptions (E.17.0), or
-   * align publication viewpoints with engineering viewpoints.
-
-4. **Representations and operations are compressed into “Symbol”.**
-   Very different representational regimes are flattened into one Symbol vertex:
-
-   * label-only notations (no internal inference calculus),
-   * fully operational calculi (e.g., proof assistants),
-   * interactive visualisations,
-   * latent vectors and prompt‑programs for LLMs.
-     There is no place to say “this representation admits **syntactic inference** of such‑and‑such kind” vs “this is just a **passive label**”.
-
-5. **No explicit signature discipline.**
-   The triangle speaks of "Object", "Concept", and "Symbol" but not of **slots** and **references** in the sense of A.6.5 `U.RelationSlotDiscipline`. In episteme this leads to:
-   * names where **slot, value and ref** are conflated (`EntityOfConcernRef` used as if it were a slot),
-   * ambiguity between the **EntityOfConcern value** (what the episteme describes) and the **episteme** (the description),
-   * fragile interoperability with signatures for roles, methods, services.
-
-Thus we have problems of:
-* **EntityOfConcern drift.**
- Specifications and models accumulate without a stable notion of **which EntityOfConcernSlot value they carry**; fields like `SubjectRef` carry too many distinct meaning-kinds and resist safe refactoring.
-* **Viewpoint confusion.**
-  Engineering, publication and governance views are mixed, making it hard to maintain consistency across publication faces and publication forms or to reason about conformity of descriptions under different viewpoints.
-* **Representation mismatches.**
-  Trade‑offs between neural vs symbolic, diagrammatic vs textual, or interactive vs batch representations cannot be expressed at the episteme level; they leak into ad‑hoc tool descriptions.
-* **Broken modularity.**
-  As soon as we add KD-CAL, LOG-CAL, MVPK, and E.18, multiple **implicit triangles** appear, each with slightly different semantics, instead of a single shared `U.EpistemeSlotRelation`.
-
-We need a replacement for the triangle that keeps its **didactic clarity** but matches the **slot-relation, graph-valued-claim, and morphism-centric** reality of contemporary epistemic work.
+The familiar Symbol-Concept-Object triangle can still introduce the difference among expression, meaning, and subject. It cannot serve as the ontology because it suppresses reference scheme, grounding, viewpoint, evidence, and the distinction between a relation and a representation of that relation.
 
 ### C.2.1:3 - Forces
 
-| Force                                          | Tension we must resolve                                                                                                                |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **Geometry vs. operations**                    | Simple geometric pictures (triangles) are memorable; real epistemic work is **slot-relation disciplined** and often contains real graph-valued claim, evidence, or dependency structures. |
-| **Universality vs. representation regimes**    | One ontology must accommodate symbolic calculi, diagrams, DSLs, interactive notebooks, and latent vectors.                             |
-| **EntityOfConcern vs. Description episteme and specification use and refinement** | The `EntityOfConcern` value is not the Description episteme produced by this describing, viewing, or morphing use; however, the EntityOfConcern value may itself be a `U.Episteme` when an episteme is the current `EntityOfConcern`. Specification is not a third peer class in C.2.1; it is a gated use or refinement of a Description episteme selected by neighbouring formality plus checkable constraint, harness, acceptance, C.16 measurement criterion, suffix, verification, or publication-expression discipline for an already admitted specification use. |
-| **Viewpoint locality vs. reuse**               | Viewpoints should be **local** to families of descriptions, yet we want reusable **viewpoint bundles** across domains (E.17.1 and E.17.2). |
-| **Slot discipline vs. usability**              | A clean `SlotKind`/`ValueKind`/`RefKind` discipline is vital for reasoning, but must not render engineering episteme unreadable.             |
-| **Stability vs. SoTA evolution**               | The core must remain stable while integrating evolving practices: LLM tool‑use, ReAct‑style loops, structured cospans, optics, etc.    |
+| Force | Tension |
+| --- | --- |
+| Readability vs precision | Ordinary use needs a short statement of what an episteme says and concerns; load-bearing use needs exact identity and direct relations. |
+| Holon identity vs relation-occurrence identity | The same three participant identities reidentify both the episteme and its constitution-relation occurrence, but the episteme is the knowledge holon and the relation occurrence is the obtaining organization among those participants. |
+| Shared episteme identity vs dependent-kind membership | The C.2.1 identity triple identifies every `U.Episteme`. Direct patterns may recognize the same individual as a `U.MethodDescription`, `U.View`, or another admitted dependent episteme kind by a stable membership condition; they do not add a second identity. Grounding, viewpoint, scope, and publication stay in their neighboring relations. |
+| Recursion vs circular justification | Epistemes may describe epistemes, including themselves, while an assurance path terminates in separately governed evidence and evaluation relations. |
+| Representation variety vs ontology stability | Text, diagrams, formal calculi, learned representations, and interactive tools differ operationally, while representation identity remains distinct from the governed-object identities. |
+| Explicit relation distinctions vs usability | The complete set of direct relations, declaration epistemes, assertions, publications, and representations remains recoverable without forcing every engineer to publish a signature, card, or occurrence description for an ordinary claim. |
 
-### C.2.1:4 - Solution - `U.EpistemeSlotRelation` as the normative episteme ontology
+### C.2.1:4 - Solution
 
-#### C.2.1:4.0 - Overview
+Identify each `U.Episteme` through `EpistemeConstitutionRelation`. State a neighboring relation only when a named receiving use depends on it. Keep declaration epistemes, assertions, descriptions, names, references, publication occurrences, publication forms, carriers, and representations distinct under their direct patterns.
 
-For `U.Episteme`, `U.EpistemeSlotRelation` is the normative **small, typed n-ary relation with SlotSpecs** over the core episteme positions. It is not a graph object and not a tuple object. Under `C.29`, the same slot relation may be viewed as a tuple for filled-value reasoning or as a graph or hypergraph diagram for dependency reasoning, but those are mathematical-lens views. Graph-valued fillers such as `U.ClaimGraph` remain real graph-kinds inside the relation.
+**Local episteme mantra.** *Name the relying work or decision and its unresolved question. Name the claims, what they concern, and the scheme that gives those claims their reference. Add empirical grounding, viewpoint, scope, edition, or publication only when that work or decision depends on it. Update episteme identity only when claim content, EntityOfConcern, or effective reference scheme changes; otherwise update the affected neighboring relation, publication occurrence, publication form, or carrier under its direct pattern.*
 
-**Positions and slots.**
-  Minimal **kernel SlotKinds** (with their ValueKinds) that every episteme can refer to, following A.6.5:
-  * `EntityOfConcernSlot`  (ValueKind `U.Entity` or a declared subkind) -> *"what this episteme is about"*;
-  * `GroundingHolonSlot`   (ValueKind `U.Holon`) -> *"where this is grounded and in what holon"*;
-  * `ClaimGraphSlot`       (ValueKind `U.ClaimGraph`) -> *"what is being said (claim content)"*;
-  * `ReferenceSchemeSlot`  (ValueKind `U.ReferenceScheme`) -> *"how we read claims as statements about entities"*;
-  * `ViewpointSlot`        (ValueKind `U.Viewpoint`) -> *"under which viewpoint we read or validate this episteme"*;
-  * `ViewSlot`             (ValueKind `U.View`) -> *"a view-episteme produced under a viewpoint"*.
+The mantra is a recall aid, not a work plan. The application method and stop conditions are carried by sections 4.1-4.9; section 4.10 is a later reference for relation and neighboring-object distinctions.
 
-* **Slots and signatures.**
-  These positions are realised as **SlotKinds** with associated **ValueKinds** and **RefKinds** under `U.RelationSlotDiscipline` (A.6.5). An **episteme kind** (`U.EpistemeKind`) is a **signature** over these slots.
+#### C.2.1:4.0 - First-use completeness questions
 
-* **Episteme as n-ary relation and as holon.**
-  Each concrete episteme instance can be seen both as:
+Begin with the three questions that identify the episteme. They are identity questions, not fields to fill.
 
-  * a **filled value assignment** over this slot relation; when C.29 tuple reasoning is current, the assignment may be viewed as a tuple view without becoming a second episteme kind, and
-  * a **holon with components** (`U.EpistemeCard`, `U.EpistemeView`, `U.EpistemePublication`) whose fields correspond to those slots.
+| Always ask | Exact object recovered |
+| --- | --- |
+| What is being claimed? | the exact claim content carried by one `U.ClaimGraph` |
+| What exact entity do those claims concern? | one identified `U.Entity` participating as the EntityOfConcern |
+| Under which designation, interpretation, measurement, and evaluation rules are the claims read? | the effective `U.ReferenceScheme` |
 
-`U.Episteme` is thus the holon type whose components are *disciplined* by the `U.EpistemeSlotRelation`; C.2.1 fixes that discipline.
+Before scanning the conditional questions, ask: **What exact work or decision will rely on this episteme, and what uncertainty or choice is the episteme expected to resolve?** Name that work or decision and the unresolved question in one sentence. Use that answer to select the conditional questions; the named work or decision does not become another constituent of the episteme.
 
-* **Morphisms.**
-  Simple **epistemic morphisms** (EntityOfConcern-reference mapping, grounding, encoding, evaluation) are expressed as ordinary relations or functions between these positions and their graph-valued or non-graph-valued fillers. A.6.2-A.6.4 then specify general laws for effect-free morphisms over `U.Episteme`.
+Then scan the conditional questions below. Open only a row whose answer changes what the named work can do or what the named decision can settle. Each positive answer adds an independently governed object or direct relation; none adds another slot to the episteme.
 
-* **Symbol-Concept-Object triangle as didactic projection.**
-  The classic Symbol-Concept-Object triangle becomes a **didactic view** of this slot relation, not the normative ontology; it is simply the projection to:
+| Ask when it can affect the named work or decision | If yes, recover | Governing pattern |
+| --- | --- | --- |
+| Does a receiving claim or relation need the exact constitution occurrence rather than only a readable assertion? | one exact obtaining `EpistemeConstitutionRelation` occurrence, reidentified by the participant triple; designate it when an epistemic receiver needs a reference, or use the occurrence itself as a participant when another direct relation is the receiver | C.2.1:4.2.3 and `A.6.REL` |
+| Must the claims be empirically inspectable through current observation, intervention, measurement, or evaluation relations? | one exact `EpistemeEmpiricalGroundingRelation` occurrence and its grounding holon; recover any supporting evidence-use relation separately | C.2.1:4.3 and the direct observation, intervention, measurement, or evaluation pattern |
+| Does one describing use select the concern under which this episteme is read? | one exact `U.Viewpoint` episteme and the `DescriptionContext` use qualification whose `viewpointRef` resolves to it | `E.10.D2` and `E.17.0` |
+| Must a Description episteme be relied on with specification force? | the exact Description episteme, its `DescriptionContext`, checkable claims, and named harness or validation relation required for that use | `E.10.D2` and C.2.1:6 |
+| Must this episteme be recognized as a `U.View`? | one exact obtaining `EpistemeViewpointConformanceRelation` between this episteme and at least one exact `U.Viewpoint` episteme | `E.17.0` |
+| Was this episteme constructed from another source episteme, and does the current work depend on that history? | the exact source and receiving epistemes plus the governed viewing relation; view membership remains a separate conformance judgment | `A.6.3` for construction and `E.17.0` for membership |
+| Are the claims intended to hold only in a declared part of the situation under study? | one exact `U.ClaimScope` and its membership relation over `U.ContextSlice` | `A.2.6` |
+| Does interpretation depend on one selected organization of model use? | one exact `BoundedModelUseStructure` and the relation through which the receiving assertion or use selects it | `A.1.1` and the direct receiving-use pattern |
+| Does a receiving decision depend on inferential support among claims? | the exact `JustificationGraph` content that carries those dependencies | C.2.1:4.4; use `A.10` or `B.3` only when an evidence-use or assurance-evidence relation is current |
+| Does a receiving decision rely on evidence? | the exact evidence-use relation; evidence storage alone is insufficient | `A.10` or `B.3`, according to the evidence use |
+| Must a classification judgment be reviewed as a claim-bearing object in its own right? | one classification assertion episteme about the exact candidate, plus the exact governing criterion | C.2.1:4.2.3 with `A.1` or `C.3.2`; `E.24.UK` only for public U-kind admission |
+| Is a later episteme being treated as a revision, refinement, or superseding edition of an earlier one? | one exact `EpistemeEditionRelation` occurrence | C.2.1:4.5 |
+| Must one selected episteme edition be made available to a declared audience for a bounded use? | the publication occurrence, publication form, and `U.PresentationCarrier` as distinct objects | `E.17` and `E.24.PUB` |
+| Does a notation, diagram, mathematical structure, or tool representation change the operations available to the user? | the exact C.29 representation, correspondence, representation scheme, and any current transition relation | `C.29` and the selected representation-transition pattern |
 
-  * `Symbol` ~= a subset of `U.RepresentationScheme`/`U.RepresentationToken`,
-  * `Concept` ~= `U.ClaimGraph`,
-  * `Object` ~= `{EntityOfConcern, ReferenceScheme}`.
+Stop when the remaining conditional questions do not affect the named work or decision. In that ordinary case, a readable sentence naming the claims, EntityOfConcern, and effective reference scheme is enough. Do not complete the table as a record. Use section 4.10 only when a later work occurrence or decision needs the full relation and neighboring-object reference.
 
-The rest of this pattern fixes the **minimal core** needed by KD-CAL, A.6.2-A.6.4 and E.17.*. The representational nodes (`U.RepresentationScheme`, `U.RepresentationToken`, `U.PresentationCarrier`, `U.RepresentationOperation`) are introduced as an **extension C.2.1+**, preserving the slot-relation boundary and profile defined here.
+#### C.2.1:4.1 - Identify the episteme by its constitution
 
-#### C.2.1:4.1 - Minimal epistemic positions (nodes & slots)
+The shared C.2.1 identity of one `U.Episteme` is:
 
-This section defines the **minimal position set** for `U.EpistemeSlotRelation` and the associated **SlotKinds**. These are the positions that A.6.2-A.6.4 and E.17.* can rely on.
-
-##### C.2.1:4.1.1 - `EntityOfConcernSlot` — “what this episteme is about”
-
-**Tech:** `EntityOfConcernSlot` (SlotKind), `entityOfConcernRef : U.EntityRef` (Ref slot in tuples or cards).
-**Plain:** *EntityOfConcern value*, *entity of concern*. The plain phrase helps readers name the slot value; it is not a current Tech head.
-
-**Intent.** Provide a **single, explicit slot** for the entity (or entities) that an episteme is about, preventing conflation of Object, Reference, and Context.
-
-**Normative definition.**
-
-1. `EntityOfConcernSlot` is a **SlotKind** in the sense of A.6.5 `U.RelationSlotDiscipline`.
-
-   * Its **ValueKind** is `U.Entity`.
-   * Its **RefKind** is `U.EntityRef` (or a species thereof) and **MUST** be realised in data as a field named `entityOfConcernRef : U.EntityRef` (E.10 discipline).
-1. Species of `U.EpistemeKind` **MAY** constrain the ValueKind to a subtype `EntityOfConcernClass ⊑ U.Entity` (for example, “the entity of concern is always a `U.Holon` and, more specifically, a `U.System` or `U.Episteme`”). The subtype **MUST NOT** be named `U.EntityOfConcern`; “EntityOfConcern value” is a local slot-use phrase, not a durable U-kind.
-2. When source wording or a draft uses `U.EpistemicObject` as a separate kind, repair it as **"`U.Entity` filling `EntityOfConcernSlot`"** and keep the source wording only as source wording governed by E.10 and F.18.
-
-**Didactic cue.**
-“Ask: *What, exactly, is this description about?* That is the EntityOfConcern.”
-
-##### C.2.1:4.1.2 - `GroundingHolonSlot` - where this is grounded and in what holon
-
-**Tech:** `GroundingHolonSlot` (SlotKind), `groundingHolonRef : U.HolonRef?`.
-**Plain:** *grounding holon*, *holon‑of‑grounding*, *engagement context*.
-
-**Intent.** Capture the **material–social holon** (system, lab, infrastructure, organisation, runtime environment) with respect to which an episteme’s claims are **tested, calibrated or validated**.
-
-**Normative definition.**
-
-1. `GroundingHolonSlot` is a **SlotKind** with:
-
-   * **ValueKind** `U.Holon`,
-   * **RefKind** `U.HolonRef` (or a species thereof),
-   * and recommended field name `groundingHolonRef? : U.HolonRef` in episteme cards or views.
-2. `GroundingHolonSlot` is **optional** at the minimal core: an episteme may be **un‑grounded** at M‑mode (e.g., purely mathematical), but any episteme used for **empirical evaluation or assurance** under KD‑CAL **SHALL** either:
-
-   * populate `groundingHolonRef`, or
-   * declare explicitly that no such grounding is possible (e.g., counterfactuals, abstract logics), with consequences reflected in KD‑CAL `R`.
-3. The phrase *“grounding holon”* is **plain‑register**; there is no durable U-kind `U.GroundingHolon`. It always means “the holon currently filling `GroundingHolonSlot` for this episteme.”
-
-**Didactic cue.**
-"Ask: *In which lab, organisation, or world-slice do we test or observe this?* That is the GroundingHolon."
-
-##### C.2.1:4.1.3 - `U.ClaimGraph` and `ClaimGraphSlot` — claim content
-
-**Tech:** `U.ClaimGraph` (ValueKind), `ClaimGraphSlot` (SlotKind).
-**Plain:** *claim graph*, *claim content*.
-
-**Intent.** Reuse the existing KD‑CAL notion of **ClaimGraph** as the episteme’s **claim body**, but make its slot value use explicit.
-
-**Normative definition.**
-
-1. `U.ClaimGraph` is the **ValueKind** for `ClaimGraphSlot`:
-
-   * nodes: typed claims (definitions, axioms, theorems, requirements, properties, assumptions);
-   * edges: logical, derivational, or refinement relations, as already defined in C.2.
-2. `ClaimGraphSlot` is a **SlotKind** whose instances are always **stored by value** in core patterns:
-
-   * `content : U.ClaimGraph` is the normative field in `U.EpistemeCard` / `U.EpistemeView`;
-   * C.2.1 **MUST NOT** introduce `U.ClaimGraphRef` as a ValueKind. Any reference type for ClaimGraphs, if needed, is a **RefKind** defined by discipline packs on top of `U.ClaimGraph`.
-3. `ClaimGraphSlot` is **mandatory**: every `U.EpistemeKind` that uses C.2.1 **SHALL** have exactly one `ClaimGraphSlot`.
-
-**Didactic cue.**
-“Ask: *What is actually being claimed, defined, required, proved?* That is the ClaimGraph.”
-
-##### C.2.1:4.1.4 - `U.Viewpoint` and `ViewpointSlot` — perspective of concerns and validators
-
-**Tech:** `U.Viewpoint` (ValueKind), `ViewpointSlot` (SlotKind), `viewpointRef : U.ViewpointRef?`.
-**Plain:** *viewpoint*, *perspective*, *stakeholder perspective*.
-
-**Intent.** Provide a **first-class reusable catalogue** for ISO-style viewpoints and their generalisations, as used by E.17.0 `U.MultiViewDescribing`, MVPK, and TEVB.
-
-**Normative definition.**
-
-1. `U.Viewpoint` is the type of **viewpoint specifications**:
-
-   * system or acting-holon families with current role assignments and stakeholder groups the viewpoint speaks for,
-   * their **concerns**,
-   * allowed **kinds of Description epistemes and Description epistemes admitted for specification use**,
-   * and **conformance rules** for views under this viewpoint.
-     (The internal structure of `U.Viewpoint` is fixed in E.17.0, not here.)
-2. `ViewpointSlot` is a **SlotKind** with:
-
-   * **ValueKind** `U.Viewpoint`,
-   * **RefKind** `U.ViewpointRef`,
-   * normative field name `viewpointRef? : U.ViewpointRef` on episteme cards or views.
-3. For Description epistemes, including Description epistemes admitted for specification use, under E.10.D2, `viewpointRef` is a **mandatory part of `DescriptionContext`**; C.2.1 treats that as a **species-level constraint**, not as a universal requirement for all epistemes.
-4. `ViewpointSlot` may be unset in purely internal, pre‑viewpoint epistemes (e.g., raw formal developments), but any episteme that participates in **MultiViewDescribing** (E.17.0) **MUST** set it or be deterministically associated to it via a `ViewpointBundle`.
-
-**Didactic cue.**
-“Ask: *Who is this for, and what do they need to see to accept it?* That is the Viewpoint.”
-
-##### C.2.1:4.1.5 - `U.EpistemeView` / `U.View` and `ViewSlot` — episteme‑level views
-
-**Tech:** `U.EpistemeView` (species of `U.Episteme`), selected short form `U.View`; `ViewSlot` (SlotKind); `viewRef : U.ViewRef`.
-**Plain:** *view*, *epistemic view*.
-
-**Intent.** Distinguish **view‑epistemes** (views **of** Description epistemes or Description epistemes admitted for specification use) from both:
-
-* the underlying Description epistemes or Description epistemes admitted for specification use themselves, and
-* the MVPK literal `publication-face form` and `interop publication form` values of `publication-face kind`, plus the publication-side carriers and renderings on which views are made available (E.17, publication-face-kind discipline, and A.10 carrier and source-currentness relations when evidence or reliance use is current).
-
-**Normative definition.**
-
-1. `U.EpistemeView` is a **species of `U.Episteme`** whose episteme kind includes, at minimum:
-
-   * one `ClaimGraphSlot` (typically a **sliced or projected ClaimGraph**),
-   * one `EntityOfConcernSlot`,
-   * one `ViewpointSlot`,
-   * and appropriate `ReferenceSchemeSlot`.
-2. `U.View` is the **selected short form** for `U.EpistemeView` in E-cluster patterns (especially E.17.*), used where the word “view” is conventional.
-3. `ViewSlot` is a **SlotKind** whose:
-
-   * **ValueKind** is `U.View`,
-   * **RefKind** is `U.ViewRef` (or `U.EpistemeViewRef` species),
-   * intended usage is **in meta‑structures** such as `U.MultiViewDescribing` families and MVPK.
-4. `ViewSlot` **MUST NOT** be confused with publication-face labels, `publication-face kind` declarations, or carrier slots: a concrete MVPK face that is a view is represented as `U.View` or `U.EpistemeView`, while the face label, publication-form profile, literal `publication-face form` or `interop publication form` `publication-face kind` value, and carrier or rendering remain separate relation positions.
-
-**Didactic cue.**
-“Ask: *Which particular slice of the description under this viewpoint are we talking about?* That is the View.”
-
-##### C.2.1:4.1.6 - `U.ReferenceScheme` and `ReferenceSchemeSlot` — interpreting ClaimGraph as claims about entities
-
-**Tech:** `U.ReferenceScheme` (ValueKind), `ReferenceSchemeSlot` (SlotKind); `referenceScheme? : U.ReferenceScheme`.
-**Plain:** *reference scheme*, *interpretation scheme*, *description scheme*.
-
-**Intent.** Separate **what is being said** (ClaimGraph) from **how claims are read as statements about entities and contexts** (designation, measurement, evaluation envelopes), without reifying the referents themselves as a vertex.
-
-**Normative definition.**
-
-1. `U.ReferenceScheme` is a **component type of epistemes**, not an external entity:
-
-   * it determines how nodes of `U.ClaimGraph` are mapped to **properties or relations** over values of `EntityOfConcernSlot`,
-   * it specifies **measurement and evaluation templates** (how to test claims on `GroundingHolon`),
-   * it fixes **claim-scope predicates and admissible regions** over declared `U.ContextSlice` selectors (and, where needed, references to domain spaces used inside those selectors).
-2. `ReferenceSchemeSlot` is a **SlotKind** with:
-
-   * **ValueKind** `U.ReferenceScheme`,
-   * **no RefKind in the minimal core** (ReferenceSchemes are stored by value as `referenceScheme? : U.ReferenceScheme` fields on episteme cards or views).
-     Discipline packs **may** introduce `U.ReferenceSchemeRef` as a **RefKind**, but **must not** repurpose it as a new ValueKind.
-3. `ReferenceScheme` is the place where Object-vertex concerns are split into explicit claim-to-EntityOfConcern and claim-to-grounding rules:
-
-   * it does **not** “contain” the EntityOfConcern value or grounding referent,
-   * it carries the **rules** that tie claims to entities and groundings.
-
-**Didactic cue.**
-“Ask: *Given this ClaimGraph, how exactly do we treat it as talking about these entities in these contexts, and how do we test it?* That is the ReferenceScheme.”
-
-##### C.2.1:4.1.7 - Minimal slot relation and extension C.2.1+
-
-The **minimal `U.EpistemeSlotRelation` core** for C.2.1 consists of positions (the episteme core SlotKinds of A.6.5 CC-A.6.5-5):
-* `EntityOfConcernSlot` (ValueKind `U.Entity`),
-* `GroundingHolonSlot` (ValueKind `U.Holon`),
-* `ClaimGraphSlot` (ValueKind `U.ClaimGraph`),
-* `ViewpointSlot` (ValueKind `U.Viewpoint`),
-* `ViewSlot` (ValueKind `U.View`),
-* `ReferenceSchemeSlot` (ValueKind `U.ReferenceScheme`).
-
-This pattern **only fixes these positions** and their SlotSpec discipline. It does not turn every graph-valued value into a tuple and does not turn the tuple into a graph.
-The **extension C.2.1+** (second step of the refactor) adds:
-* `U.RepresentationScheme` and `RepresentationSchemeSlot`,
-* `U.RepresentationToken` and `RepresentationTokenSlot`,
-* `U.PresentationCarrier` and `PresentationCarrierSlot`,
-* `U.RepresentationOperation` and `RepresentationOperationSlot` (with inference regime annotations),
-
-without changing:
-* the definition of `U.EpistemeKind`,
-* the minimal `U.EpistemeCard` interface,
-* or the assumptions A.6.2-A.6.4 and E.17.* make about episteme components.
-
-In C.2.1+ `U.PresentationCarrier`, publication-face-kind values, MVPK face, carrier, and rendering relations remain **publication-side carriers, faces, forms, units, or rendering relations**, not semantic parts of the episteme:
-`U.PresentationCarrier` values are linked to `U.Episteme` and `U.View` via MVPK and publication-face-kind discipline relations, such as `isCarriedBy` and MVPK face relations, and **MUST NOT** be counted as components when reasoning about episteme identity, EntityOfConcernSlot filling, GroundingHolonSlot filling, or KD-CAL morphisms. Changing carriers, publication faces, publication forms, units, or renderings alone **never** changes the `U.Episteme` instance determined by C.2.1; it only produces `U.Work` occurrences that publish or republish the same `U.Episteme`.
-
-##### C.2.1:4.1.8 - Attached epistemic structures (non-slot components)
-
-`U.EpistemeSlotRelation` deliberately does **not** reify every episteme-adjacent structure as a slot. Several key structures remain **attached, non-slot components** of `U.Episteme`:
-* **`JustificationGraph`** - the argument and evidence graph for nodes of `U.ClaimGraph` (A.10 and B.3).
-* **`EvidenceBindings`** - per-claim evidence-use bindings, A.10 evidence-provenance refs, or B.3 assurance-evidence refs that connect claims to evidence-producing or evidence-interpreting `U.Work` occurrences, role assignments when current, carrier and source-currentness records, and publication or carrier relations.
-* **`EditionSeries`** - the `PhaseOf` chain of episteme editions (A.14) with change-class annotations (symbol-only vs ClaimGraph vs ReferenceScheme changes).
-* **`ScopeCard` and `U.ClaimScope`** - USM scope values (A.2.6) describing where the episteme's claims hold.
-
-These attached structures are **not extra positions** of `U.EpistemeSlotRelation`; they hang off the `U.ClaimGraph` and `U.ReferenceScheme` pair and are governed by KD-CAL (C.2), A.10, and B.3. C.2.1 only requires that an episteme which participates in KD-CAL exposes them in a way that keeps **ClaimGraph, ReferenceScheme, Evidence, EditionSeries, and `ClaimScope`** clearly distinguishable.
-
-#### C.2.1:4.2 - Episteme as n‑ary relation and as holon
-
-To prevent confusion between **EntityOfConcern values**, their **descriptions**, and the **slots they fill in an episteme**, C.2.1 explicitly treats epistemes both as:
-
-1. **n‑ary relations with a signature** (slots & values), and
-2. **holons with components** (fields & parts).
-
-##### C.2.1:4.2.1 - `U.EpistemeKind` — episteme as a typed n‑ary relation
-
-**Tech:** `U.EpistemeKind` (ValueKind).
-
-**Intent.** Provide a **signature‑level** description of an episteme as an n‑ary relation whose arguments are governed by `SlotKind`/`ValueKind`/`RefKind` triples per A.6.5.
-
-**Normative definition.**
-
-1. Every episteme that participates in KD‑CAL **belongs to some `U.EpistemeKind`**.
-   The kind determines:
-
-   * which **SlotKinds** appear (`EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, `ReferenceSchemeSlot`, …),
-   * the **ValueKind** for each slot (declared through C.3 `U.Kind`, an admitted durable U-kind, a direct governed value kind, a Concept-Set row, or an imported signature symbol),
-   * the **RefKind** used to store it in episteme (when applicable).
-1. `U.EpistemeKind` is a **special case** of `U.Signature` (A.6.0), with its slots governed by `U.RelationSlotDiscipline` (A.6.5). C.2.1 **MUST NOT** define an alternative slot discipline.
-2. For the minimal core, every `U.EpistemeKind` **MUST** include:
-   * exactly one `ClaimGraphSlot`,
-   * at least one `EntityOfConcernSlot`,
-   * and at least one `ReferenceSchemeSlot`.
-     Inclusion of `GroundingHolonSlot`, `ViewpointSlot`, `ViewSlot` **MAY** be species-level constraints (mandatory for Description epistemes, including Description epistemes admitted for specification use, optional for others).
-
-**Didactic cue.**
-“An `EpistemeKind` is the *kind declaration* for an episteme: which positions it has and what can go into them.”
-
-##### C.2.1:4.2.2 - Filled episteme value assignment and C.29 tuple view
-
-**Tech:** filled episteme value assignment over `U.EpistemeSlotRelation`; C.29 tuple view when tuple reasoning is current.
-
-**Intent.** Model a filled use of an episteme's slot relation without making tuple, graph, or publication form into the ontology head.
-
-**Normative definition.**
-
-1. A filled episteme value assignment supplies one governed value or reference for each asserted SlotKind in the associated `U.EpistemeKind`:
-   * for each SlotKind in the associated `U.EpistemeKind`, a value of the slot's **ValueKind** or a reference value of **RefKind**, if the kind is configured as such.
-2. The filled assignment is **notation-agnostic** and **carrier-agnostic**: it does not know about files, formats, publication faces, publication forms, or carriers.
-   It exists to give A.6.2-A.6.4 a minimal notion of "episteme as a filled point over the episteme SlotRelation".
-3. Under `C.29`, the same filled assignment may be viewed as a tuple when tuple reasoning is the selected mathematical lens. That tuple view is a mathematical-lens representation of the filled SlotRelation, not a second episteme kind and not a replacement for graph-valued fillers such as `U.ClaimGraph`.
-4. In ordinary episteme work, the filled assignment rarely appears directly; it is typically **induced** by `U.EpistemeCard` and `U.EpistemeView` (which add component structure and meta-information).
-
-**Didactic cue.**
-"A filled episteme assignment says *what fills which slots*; if C.29 asks for tuple reasoning, read that assignment as a tuple view."
-
-##### C.2.1:4.2.3 - `U.EpistemeCard`, `U.EpistemePublication`, `U.EpistemeView` — holonic realisations
-
-**Tech:** `U.EpistemeCard`, `U.EpistemePublication`, `U.EpistemeView` (species of `U.Episteme`).
-
-**Intent.** Provide **holon-level structures** that engineers can work with (components, mereology, provenance), while keeping them aligned with `U.EpistemeKind` and `U.EpistemeSlotRelation`.
-
-**Normative definition.**
-
-1. **`U.EpistemeCard`.**
-   A species of `U.Episteme` whose components correspond one‑to‑one to slots of some `U.EpistemeKind`:
-   * `content : U.ClaimGraph` (for `ClaimGraphSlot`),
-   * `entityOfConcernRef : U.EntityRef` (for `EntityOfConcernSlot`),
-   * `groundingHolonRef? : U.HolonRef` (for `GroundingHolonSlot`),
-   * `viewpointRef? : U.ViewpointRef` (for `ViewpointSlot`),
-   * `referenceScheme? : U.ReferenceScheme` (for `ReferenceSchemeSlot`),
-   * optionally `representationSchemeRef? : U.RepresentationSchemeRef` (C.2.1+),
-   * `meta : Edition, Provenance, Status...`.
-     Minimal episteme identity is the pair `⟨content, entityOfConcernRef⟩` within a `U.BoundedContext`; all other fields are optional at the genus level but may be mandatory in species. Changes that alter `content` or the effective `referenceScheme` (or that intentionally re-identify `entityOfConcernRef`) **SHALL** be realised as new phases in an `U.EditionSeries` (PhaseOf chain) under A.14 and A.7. Changes confined to `U.PresentationCarrier`, publication-side values, MVPK face, carrier, or rendering relations **do not** create a new episteme; they are captured as publication work over the same `U.Episteme`.
-2. **`U.EpistemePublication`.**
-   A species representing **epistemes that have been published** through publication faces, publication forms, or MVPK relations. It:
-   * has at least the components of `U.EpistemeCard`,
-   * plus references to MVPK `U.View`, face identity, literal `publication-face form` or `interop publication form` `publication-face kind` values, publication-scope fields, profile fields, and external carrier or rendering refs as required by E.17 and publication-face-kind discipline,
-
-   * but **does not** re-interpret face labels, `publication-face kind` values, or carriers or renderings as parts of the episteme; carriers remain external.
-
-3. **`U.EpistemeView`.**
-   As defined in §4.1.5, a species of `U.Episteme` representing a **view** under a specific `U.Viewpoint`.
-   Its components are a specialisation of `U.EpistemeCard`:
-   * ClaimGraph often a restricted projection of a base description and specification-useification,
-   * Viewpoint fixed,
-   * ReferenceScheme tailored to that viewpoint.
-
-**Alignment requirement.**
-For any of these species, the pattern **MUST** state explicitly:
-* which `U.EpistemeKind` it realises, and
-* how each component maps to a SlotKind or RefKind under `U.RelationSlotDiscipline`.
-
-This ensures that A.6.2–A.6.4 can treat any `U.Episteme*` uniformly as both:
-* a category-theory object in the category **Ep**, and
-* a structured holon with components.
-
-##### C.2.1:4.2.3a - Episteme, publication, view, carrier, cue, and authority-reference relation positions  *(normative)*
-
-C.2.1 is the default FPF pattern for claim-bearing units. Do not mint a generic `U.SemioObject`, `U.SemioticObject`, `U.SignObject`, `U.WorkingObject`, or `U.SourceMaterial` when the claim-bearing unit in question should be modeled as an episteme. Use `U.Episteme` or a declared species of `U.Episteme`.
-
-When the same claim-bearing unit is available to readers, tools, or downstream work as a published episteme, name that relation position as `U.EpistemePublication` or as a governed `U.Episteme` publication. Then keep the adjacent relation positions separate:
-
-* **publication form** - the concrete form in which the episteme is made available for some use, such as a cue pack, transfer-prepared claim set, prompt form, partial normal form, record, card, table, or local C.29 output;
-* **view, including MVPK face** - `U.View` or `U.EpistemeView` under a declared `U.Viewpoint`, including MVPK faces such as `PlainView`, `TechCard`, `InteropCard`, or `AssuranceLane`;
-* **carrier or rendering** - the document, dashboard, generated screen, trace file, transport envelope, display, or A.10 carrier and source-currentness record that bears or renders a publication;
-* **source-finding cue** - a badge, tile, heading, signature-looking mark, credential display, generated explanation, or other cue that helps find a source but does not by itself create an authority-reference relation;
-* **governing pattern reference and authority-reference field** - `governingPatternRef` when one FPF pattern governs admissible interpretation or use; `authoritySourceRef` when a non-pattern authority-source referent such as an external standard, editioned register, decision record, gate decision, policy source, or role-assignment or status register carries the relevant authority. The publication records this reference; it does not become the referenced authority.
-
-For latent, distributed, reconstructed, or model-state material, do not call the encountered material a `U.Episteme` merely because it can be decoded into prose, embedded in a vector space, or shown as a dashboard cue. It becomes an episteme only when the needed C.2.1 positions are recoverable for the current use: at least the `EntityOfConcernSlot`, `ClaimGraphSlot`, `ReferenceSchemeSlot` or equivalent interpretation rule, and any current grounding, viewpoint, view, publication, carrier, source-use, evidence, or authority-reference relation named by the direct governing pattern.
-
-No publication form, view, face, carrier, rendering, source-finding cue, dashboard signal, credential display, generated explanation, FPF pattern file, or FPF pattern section is itself a substitute for a governed `U.Episteme`, an evidence relation, an assurance claim, a gate decision, a permission, a role claim, a status claim, or a `U.Work` occurrence. If the next use concerns work, keep candidate reliance, `U.WorkPlanning`, planned work, actual `U.Work`, work result, and work-result measurement in their own work-side patterns rather than storing them inside the episteme or its carrier.
-
-##### C.2.1:4.2.4 - SlotKind, ValueKind, and RefKind discipline for EntityOfConcern and GroundingHolon
-
-C.2.1 adopts **A.6.5 `U.RelationSlotDiscipline`** wholesale. For the two key positions:
-1. **EntityOfConcernSlot.**
-   * `SlotKind = EntityOfConcernSlot`;
-   * `ValueKind = U.Entity` (species may constrain to `EntityOfConcernClass ⊑ U.Entity`);
-   * `RefKind = U.EntityRef` (or a species thereof);
-   * normative field name in episteme cards: `entityOfConcernRef : U.EntityRef`.
-     No durable U-kind named `U.EntityOfConcern` is introduced; the phrase “EntityOfConcern value” always means “an instance of `U.Entity` filling `EntityOfConcernSlot`”.
-1. **GroundingHolonSlot.**
-   * `SlotKind = GroundingHolonSlot`;
-   * `ValueKind = U.Holon`;
-   * `RefKind = U.HolonRef`;
-   * normative field name: `groundingHolonRef? : U.HolonRef`.
-     There is no durable U-kind `U.GroundingHolon`; “grounding holon” is a **slot-filler phrase**.
-Any episteme text that mixes slot, value, and ref concepts (e.g., using `EntityOfConcernRef` as if it were a type) **MUST** be repaired to this discipline when the claim is current; C.2.1 provides the normative reference, and F.18 or the relevant discipline pattern governs any naming decision.
-
-#### C.2.1:4.3 - Minimal epistemic morphisms (informal schema)
-
-> **Note.** The full mathematical treatment (categories Ep and Ref, entityOfConcern functor `α : Ep → Ref`, and effect‑free morphisms) lives in A.6.2–A.6.4. Here we fix only the **episteme-slot relations** that C.2.1 expects to exist between its positions.
-
-At the level of `U.EpistemeCard` components and SlotKinds, we assume the following **primitive relations** (not all are functions):
-
-1. **`entityOfConcernSet : U.Episteme → P(U.Entity)`**
-   *derivable from `EntityOfConcernSlot` and `ReferenceScheme`*
-   * For an episteme `E`, `entityOfConcernSet(E)` is (at least) the singleton containing the entity referenced by `entityOfConcernRef(E)`; in more complex cases, it may be a finite set or bundle of entities, determined by `ReferenceScheme`.
-   * The **functorial EntityOfConcern mapping** `δ_E : Ep → Ref` used in A.6.2–A.6.4 is the categorical lift of this relation: it forgets episteme internals and keeps only the EntityOfConcern value in the ReferencePlane determined by the pair `<EntityOfConcernSlot, GroundingHolonSlot>`.
-
-2. **`grounds : (U.Entity, U.Holon) ⇝ GroundingRelation`**
-   *relates EntityOfConcern values to grounding holons*
-   * Captures how values of `EntityOfConcernSlot` are **situated** in holons that make evaluation possible (labs, infrastructures, organisations).
-   * Need not be total or functional; an entity may admit multiple grounding holons, or none.
-
-3. **`designates : (U.ReferenceScheme, U.ClaimGraph, U.Entity, U.Holon) ⇝ DesignationProfile`**
-   *how claims are read as statements about entities in contexts*
-   * Specifies, for each claim in `content` and each `<entityOfConcernRef, groundingHolonRef>`, what property or relation it purports to state, and under what conditions.
-
-4. **`satisfies` or `evaluatesTo : (U.ClaimGraph, U.ReferenceScheme, U.Holon) -> TruthProfile or SuccessProfile`**
-   *evaluation of claims under a reference scheme and grounding*
-   * Forms the bridge to KD‑CAL’s `F, G, R` evaluation; details are given in C.2 and B.3.
-
-5. **View-related morphisms** (to be connected with A.6.3):
-   * `viewProject : (U.Episteme, U.Viewpoint) → U.View`
-     — effect-free, **EntityOfConcern-preserving** projection that slices `ClaimGraph` and specialises `ReferenceScheme` under a given viewpoint.
-   * `viewEmbed : U.View → U.Episteme`
-     — embedding of a view back into the wider episteme, typically as a reference with correspondence proofs.
-
-5. **Reflexive entityOfConcern guard.**
-   When `EntityOfConcernSlot` or `ReferenceScheme` picks out an episteme or claim that includes the referring claim itself (**ReferencePlane = episteme**), publishers **SHALL** ensure that the induced justification and evaluation structure is **acyclic per evaluation chain**: reflexive describe or citation handles may exist as literature handles, but they MUST NOT form a minimal justification cycle for acceptance or KD-CAL assurance. Self-reference is allowed as a citation pattern, not as a way to close justification loops.
-
-These are **not yet laws**; they are the **hooks** that A.6.2–A.6.4 will formalise into:
-* `U.EffectFreeEpistemicMorphing` (Ep→Ep morphisms over this structure),
-* `U.EpistemicViewing` (entityOfConcern‑preserving Ep→Ep),
-* `U.EpistemicRetargeting` (entityOfConcern‑retargeting Ep→Ep).
-
-### C.2.1:5 - Semantic triangle as didactic view  *(informative)*
-
-**Position.** The classical semiotic or semantic triangle ("Symbol-Concept-Object", Ogden-Richards and Frege-Carnap style) is **not** the normative ontology for epistemes in FPF. For `U.Episteme`, it is treated as a **didactic projection** of `U.EpistemeSlotRelation`. The projection compresses several SlotSpecs and graph-valued fillers into three teaching corners:
-* **"Symbol" corner** ~= {`U.RepresentationToken`, `U.RepresentationScheme`, `U.PresentationCarrier`} when C.2.1+ is in use; in the minimal core this is collapsed into whichever external carrier bears the `U.ClaimGraph` publication.
-* **"Concept" corner** ~= `U.ClaimGraph` + `U.ReferenceScheme` under a chosen `U.Viewpoint`. This is the claim content plus its interpretation recipe.
-* **"Object" corner** ~= the slot filler of `EntityOfConcernSlot` (ValueKind `U.Entity`) plus the slot filler of `GroundingHolonSlot` (ValueKind `U.Holon`) and the grounding relation between them.
-
-Under this didactic projection the triangle is a **three-corner quotient** of the episteme slot relation:
 ```text
-(Symbol)      = RepresentationToken + Scheme + Carrier
-(Concept)     = ClaimGraph + ReferenceScheme (+ Viewpoint)
-(Object)      = EntityOfConcern + GroundingHolon
+<claim content, exact EntityOfConcern, effective ReferenceScheme>
 ```
 
-All **viewpoints, operations, carriers and reference planes** are suppressed in the classical diagram. The cost of this suppression is precisely the confusion that motivates C.2.1:
-* describing becomes a single unlabeled arrow,
-* inference regimes disappear,
-* measurement and grounding are invisible.
+`claim content` is the identity-bearing `U.ClaimGraph` carried as the episteme's constitutive claim structure. The `EntityOfConcern` is one identified `U.Entity`. When claims jointly concern several entities, identify their one joint EntityOfConcern under its direct pattern; if no one joint entity can be identified, split the claim content instead of filling one slot with unrelated referents. The effective `U.ReferenceScheme` supplies the designation, interpretation, measurement, and evaluation rules by which the claim graph is read as claims about that entity.
 
-**Didactic use.** C.2.1 allows the triangle **only** in the following cases:
-1. As an **introductory picture** in guidance material ("this is the coarse triangle; the actual pattern is the episteme slot relation").
-2. As a **quotient diagram**: an explicit note that "this figure ignores viewpoint, grounding, carrier, and operationality; see C.2.1 for the full structure".
-3. As an **external-triangle alignment aid** when mapping to standards or literature that speak only in triangle terms.
+Changing any identity discriminator yields another episteme. Changing a carrier, layout, rendering, publication occurrence, evidence item, viewpoint assignment, or model-use setting does not by itself yield another episteme. A direct pattern may recognize the same individual as a dependent episteme kind through its stable membership condition, but it does not add another identity discriminator. `A.3.2` governs `U.MethodDescription` membership; `E.17.0` governs `U.Viewpoint` and `U.View` membership through fixed predicates over already identified epistemes. `A.6.3` governs an optional viewing construction between source and receiving epistemes, not view membership. If any work or construction changes claim content, EntityOfConcern, or effective reference scheme, those changed C.2.1 discriminators identify the resulting episteme, not the dependent-kind label.
 
-**Guard.** Any pattern or documentation page that uses a "semantic triangle" diagram **MUST** either:
-* explicitly state "this is a didactic projection of C.2.1 `U.EpistemeSlotRelation`", or
-* treat it as an external-triangle reference when aligning with external standards.
+This identity is constructive. The claim graph and reference scheme are epistemic constituents; the EntityOfConcern remains an independently governed entity related through aboutness and reference. When `EpistemeConstitutionRelation` obtains, their organization yields the whole-level characteristic of being one interpretable claim-bearing whole. The relation occurrence and the resulting episteme are distinct but reidentified from the same three discriminators.
 
-The triangle **MUST NOT** be used as a kernel-level ontology or as a source for morphism laws. All normative reasoning about epistemes proceeds via the slots, graph-valued fillers, non-graph-valued fillers, and components governed by `U.EpistemeSlotRelation`.
+#### C.2.1:4.2 - Govern the core direct relation
 
-### C.2.1:6 - Interaction with EntityOfConcern and Description-episteme boundary, specification use and refinement, and DescriptionContext  *(normative)*
+**Tech name:** `EpistemeConstitutionRelation`.
 
-C.2.1 is the **episteme-side slot schema** that the boundary between `EntityOfConcern` and Description episteme discipline (A.7, E.10.D2) relies on. The link is made via `DescriptionContext`, not by treating EntityOfConcern value, Description epistemes, and specification use and refinement as layers, carriers, or peer ontology classes.
+**Plain reading:** these claims, under this reference scheme, are claims about this exact entity and together constitute one episteme.
 
-#### C.2.1:6.1 - DescriptionContext over C.2.1 components
+##### C.2.1:4.2.1 - Participants and the shared reusable-declaration rule
 
-For any episteme that is a **Description** in the sense of E.10.D2, including a Description episteme admitted for specification use, the field `subjectRef : U.SubjectRef` is interpreted as a **DescriptionContext triple**:
-```
-DescriptionContext = ⟨EntityOfConcernRef, BoundedContextRef, ViewpointRef⟩
-```
+Before using any signature-local table, identify the declaration itself. Each of `EpistemeConstitutionRelationSignature`, `EpistemeEmpiricalGroundingRelationSignature`, and `EpistemeEditionRelationSignature` is first one exact C.2.1 episteme: its own `U.ClaimGraph` carries the declaration claims, its exact EntityOfConcern is the direct relation kind, and its effective `U.ReferenceScheme` makes those claims interpretable. For each of these three declarations the fixed `A.6.0` membership predicate obtains, so `A.6.0` independently recognizes that same episteme individual as a `U.Signature`. `RelationSignature` names the relation-facing use of that same individual; it is neither another U-kind nor another identity.
 
-where:
-* `EntityOfConcernRef : U.EntityRef` — fills `EntityOfConcernSlot` (ValueKind `U.Entity`, species often constrained via EntityOfConcernClass ⊑ `U.Entity`).
-* `BoundedContextRef : U.BoundedContextRef` — points to the context that fixes vocabulary, units, and admissible inferences for this description (E.10.D1).
-* `ViewpointRef : U.ViewpointRef` — fills `ViewpointSlot` (ValueKind `U.Viewpoint`) and determines which concerns, system or acting-holon families with current role assignments, stakeholder groups, and conformance rules apply.
+A complete declaration claim names the direct relation-kind designator, the exact `A.6.5` SlotSpecs needed by reusable typed uses, the obtaining predicate, the occurrence-identity rule, applicability, and only the dependencies and provided names that are actually current. The direct relation kind, its actual participants, an obtaining occurrence, an assertion about it, a relation-occurrence description episteme, the declaration episteme, its publication, and a representation of any of these remain distinct. A receiving need may justify typed reuse but does not identify the declaration. One readable assertion needs no signature or manifest. An A.6.0 manifest is optional and is used only when actual dependencies or provided names must be exposed; a manifest row, list, citation, identifier, or edition marker creates neither episteme identity nor dependency.
 
-**Normative requirement (DESCCTX-13).**
-For every `...Description` episteme, and every `...Spec` use admitted by neighbouring specification use and refinement gates:
-1. `subjectRef` **SHALL** be decodable to a well‑formed DescriptionContext triple.
-2. `EntityOfConcernRef` from that triple **SHALL** be identical to the field `entityOfConcernRef` that fills `EntityOfConcernSlot` in the corresponding `U.EpistemeCard`/`U.EpistemeView`.
-3. `ViewpointRef` in DescriptionContext **SHALL** agree with `viewpointRef` in the episteme card or be uniquely derivable from a `U.ViewpointBundle` in E.17.1 (with the derivation rule documented).
+Applying that shared rule locally, typed reuse of `EpistemeConstitutionRelation` uses the one declaration episteme `EpistemeConstitutionRelationSignature`, whose exact EntityOfConcern is `EpistemeConstitutionRelation` and whose declaration includes these SlotSpecs:
 
-EntityOfConcern values such as `U.System`, `U.Method`, `U.Role`, or `U.Episteme` appear in C.2.1 as values of `EntityOfConcernSlot` when an episteme describes, views, or retargets them. They are not the Description episteme produced by that use. The boundary between `EntityOfConcern` and Description episteme separates the EntityOfConcern value from the Description episteme; specification use and refinement is a separate gated use or refinement of that Description episteme, not a third peer ontology class. This boundary does not ban epistemes from being EntityOfConcern values.
+| SlotKind | Relation-participant meaning | ValueKind | refMode |
+| --- | --- | --- | --- |
+| `ClaimGraphSlot` | constitutive claim content | `U.ClaimGraph` | `ByValue` |
+| `EntityOfConcernSlot` | exact entity the claims concern | `U.Entity` | `U.EntityRef` |
+| `ReferenceSchemeSlot` | effective designation and interpretation scheme | `U.ReferenceScheme` | `ByValue` |
 
-**Example.** A formal postulate theorem in physics can be a Description episteme about the behaviour of a physical grounding holon. Its `EntityOfConcernSlot` points to the physical grounding holon, or to the exact behavior, method, or work entity only when a governing pattern has selected that entity under concern; its claim graph carries the theorem, postulates, and derivation; its formal language belongs to formality and publication-expression discipline. It becomes a specification only if a bounded use assigns specification force, such as acceptance criteria, harness checks, normative invariants, C.16 measurement criteria, or verification use. Formal notation alone does not change the slot relation into a third `Specification` ontology class.
+The SlotKinds belong only to this declaration. An actual claim graph, EntityOfConcern, or reference scheme is an actual relation participant under its independently governed kind. A card field or assertion designation corresponds to a SlotKind but does not become the participant.
 
-#### C.2.1:6.2 - EntityOfConcern-to-Description morphism and specification-use boundary over C.2.1
+##### C.2.1:4.2.2 - Obtaining and occurrence identity
 
+`EpistemeConstitutionRelation` obtains exactly when the effective reference scheme supplies a coherent designation and interpretation of the claim graph as claims about the exact EntityOfConcern, and the three participants are constitutively organized as one claim-bearing whole whose claims can in principle be evaluated under that scheme. Merely placing three designations in a card does not make the relation obtain.
 
-* **Describing (`Describe_EoC_DescEp : EntityOfConcern -> DescriptionEpisteme`).**
-  Produces an episteme whose:
-  * `content : U.ClaimGraph` encodes the descriptive claims about the `EntityOfConcern` value,
-  * `entityOfConcernRef` points to the EntityOfConcern value,
-  * `groundingHolonRef` (if present) fixes where the description is evaluated or tested,
-  * `viewpointRef` selects the describing viewpoint.
+The relation occurrence is participant-determined by the exact `<ClaimGraph, EntityOfConcern, ReferenceScheme>` triple. The same triple cannot constitute two distinct `U.Episteme` instances under the shared C.2.1 identity rule. Recognition of that individual as a dependent episteme kind adds a membership judgment under the dependent kind's governing pattern, not another constitution occurrence or discriminator. A tuple may represent the triple under `C.29`, but tuple order and storage keys contribute nothing to identity.
 
-  `Describe_EoC_DescEp` is **conformant** to A.6.2 but not an Ep→Ep morphism (domain is the `EntityOfConcern` value, codomain is a Description-side `U.Episteme`). C.2.1 provides the **codomain schema** and ensures that the resulting Description has a valid DescriptionContext.
+The episteme and the relation occurrence are not identical. The relation is the obtaining organization among the three participants. The episteme is the knowledge holon constructively identified through that organization and its whole-level claim-bearing characteristic.
 
-C.2.1 does not decide that a Description episteme has become a Specification. If a bounded use formalises, constrains, test-harnesses, accepts, or publishes a Description episteme as a specification, the governing pattern must name the exact specification-use gate: A.6.2 for effect-free episteme refinement, C.2.3 for formality and checkability, A.21 or the relevant gate or acceptance pattern for harness and acceptance force, C.16 for measurement criteria, E.17 for publication expression, and E.10 for suffix discipline. The C.2.1 requirement is only that the Description episteme keeps the same `entityOfConcernRef`, `BoundedContextRef`, and `ViewpointRef` unless a retargeting or viewing pattern named by value declares otherwise.
+##### C.2.1:4.2.3 - Ordinary assertion, classification assertion, and explicit occurrence use
 
-C.2.1 does **not** define the full `EntityOfConcern` / Description-episteme boundary or the specification-use gates; it only insists that any `...Description` episteme, and any `...Spec` use admitted by neighbouring gates, must:
-* implement `U.EpistemeCard` or `U.EpistemeView` **with** `content`, `entityOfConcernRef`, `groundingHolonRef?`, `viewpointRef?`, and `referenceScheme?` fields, and
-* wire these fields into `subjectRef` as DescriptionContext.
+An ordinary assertion can state that claim content concerns an entity under a scheme without explicitly naming a relation occurrence. When a receiving relation or claim needs the exact constitution occurrence, apply `A.6.REL`: establish obtaining, apply the participant-determined identity rule, then designate the already recoverable occurrence in the receiving episteme. The assertion, designation, and occurrence remain different objects.
 
-### C.2.1:7 - Alignment with A.6.2–A.6.4 (episteme morphisms)  *(normative)*
-`U.EpistemeSlotRelation` is the **slot-relation substrate** for the episteme morphism patterns:
-* A.6.2 `U.EffectFreeEpistemicMorphing`
-* A.6.3 `U.EpistemicViewing`
-* A.6.4 `U.EpistemicRetargeting`
+Each classification judgment has one pattern governing its criterion. `A.1` governs constructive recognition of a candidate as an instance of an already admitted holon kind. `C.3.2` governs a local-kind membership judgment. `E.24.UK` governs the ontology-level decision that admits a public U-kind; it does not classify a project candidate. None of these judgments is a direct admission relation created by C.2.1.
 
-#### C.2.1:7.1 - Effect‑free episteme morphisms (A.6.2) over C.2.1
-For any `f : X → Y` that is an instance of `U.EffectFreeEpistemicMorphing`:
-* **Typed episteme values.**
-  X and Y are `U.Episteme` instances realised as `U.EpistemeCard` / `U.EpistemeView` with at least the minimal core components:
+When project work needs a classification judgment as a separately reviewable claim, identify one claim-bearing episteme whose exact EntityOfConcern is the candidate entity. For an admitted holon kind, its claim content states the kind, cites the `A.1` constructive criterion and any kind-specific criterion, designates the direct part-relation occurrences used in the assessment, and cites any evidence-use relations supporting its modality. For a local kind, its claim content states the candidate, local kind, selected `KindSignature` edition, context slice, and judgment governed by `C.3.2`. A value classification inside another claim can remain claim content of that episteme instead of fabricating a value-shaped EntityOfConcern.
 
-  ```
-  content            : U.ClaimGraph
-  entityOfConcernRef : U.EntityRef      // EntityOfConcernSlot
-  groundingHolonRef? : U.HolonRef       // GroundingHolonSlot
-  viewpointRef?      : U.ViewpointRef   // ViewpointSlot
-  referenceScheme?   : U.ReferenceScheme// ReferenceSchemeSlot (ByValue)
-  ```
+The assertion does not create the candidate, admit a U-kind, or make the candidate change kind when an FPF host is renamed or republished. For example, the assertion that Pump #37 satisfies the constructive `U.System` criterion may be revised when evidence changes, while Pump #37 and the criterion it satisfies retain their independently governed identities.
 
-  Any additional C.2.1+ components (RepresentationScheme, Tokens, Carriers, Operations) are visible to A.6.2 only through their declared SlotKinds (A.6.5).
-* **EntityOfConcernChangeMode characteristic.**
-  `f` **MUST** declare a **`entityOfConcernChangeMode ∈ {preserve, retarget}`**:
-  * `preserve` - `entityOfConcernRef(Y) = entityOfConcernRef(X)` and any change to `groundingHolonRef` or `viewpointRef` must be justified by Bridges or CorrespondenceModel, without changing the EntityOfConcernSlot value;
-  * `retarget` — permitted only for A.6.4 species; see below; in this case the characteristic records an intentional change in the pair `<entityOfConcernRef, groundingHolonRef>` under a declared `KindBridge` in the appropriate ReferencePlane.
+A card that calls a listed collection a holon is still only a classification assertion episteme. The positive assertion is unsupported unless `A.1` recovers the exact constituents and grounded part relations, their constructive assembly, the whole's reidentification rule, actual compatibility with a governed larger-assembly construction, a composition-grounded whole-level characteristic, and the already admitted holon kind with its kind-specific criterion. The card form supplies none of those facts.
 
-  This **EntityOfConcernChangeMode** is a CHR-style *characteristic* (A.17) on episteme morphisms, which points directly to `EntityOfConcernSlot`. Avoid introducing a separate “entityOfConcern” term alongside `EntityOfConcern`.
+#### C.2.1:4.3 - Add empirical grounding through its own relation
 
-* **Component discipline.**
-  P0–P5 from A.6.2 are read **directly** in terms of C.2.1 components:
-  * purity => only C.2.1 components of Y may change; no Work or Mechanism side-effects;
-  * conservativity ⇒ claims in `content_Y` read via `referenceScheme_Y` about the new `<EntityOfConcern, GroundingHolon>` do not go beyond what already follows from `content_X` via `referenceScheme_X` under the declared EntityOfConcernChangeMode and Bridges;
-  * functoriality ⇒ composition of such transformations respects the slot structure and ReferenceSchemes.
+**Tech name:** `EpistemeEmpiricalGroundingRelation`.
 
-Any Ep-to-Ep pattern that operates on `U.Episteme` **MUST** state which C.2.1 slots it reads and which it may write, in terms of SlotKinds, ValueKinds, and RefKinds (A.6.5), and then declare itself a species of A.6.2, A.6.3, or A.6.4 as appropriate.
+**Plain reading:** this episteme's claims are empirically grounded in this exact holon through the current observation, intervention, measurement, or evaluation relations.
 
-#### C.2.1:7.2 - EpistemicViewing (A.6.3) as entityOfConcern‑preserving projections
+This relation connects one already identified `U.Episteme` to one exact `U.Holon` when an empirically inspectable structure of independently governed direct observation, intervention, measurement, or evaluation relations involving that holon grounds the episteme's claims under its effective reference scheme. Purely formal epistemes need no grounding occurrence merely to fill a record.
 
-`U.EpistemicViewing` is the **EntityOfConcern-preserving** species of A.6.2. Over C.2.1 this means:
-* `entityOfConcernRef(Y) = entityOfConcernRef(X)` — the same value in `EntityOfConcernSlot`.
-* `groundingHolonRef` is preserved, or changed only within a fixed grounding context (e.g. normalising identifiers for the same lab or runtime).
-* `viewpointRef` is either:
-  * preserved (internal normalisation under the same viewpoint), or
-  * replaced by another `U.ViewpointRef` *within* a `U.MultiViewDescribing` family (E.17.0), with invariants enforced by a CorrespondenceModel.
-* `content` and `referenceScheme` are transformed **conservatively**: no new claim content about the same `EntityOfConcern` is introduced.
+Applying the shared declaration rule in 4.2.1, `EpistemeEmpiricalGroundingRelationSignature` is one declaration episteme whose exact EntityOfConcern is `EpistemeEmpiricalGroundingRelation`; the same individual has `U.Signature` membership and relation-facing `RelationSignature` use only under `A.6.0`. Its complete declaration includes the obtaining predicate, maximal-continuous-interval identity rule, applicability, actual dependencies and provided names, and these SlotSpecs:
 
-Typical examples:
-* filtering or aggregating `U.ClaimGraph` to a view relevant for a stakeholder group;
-* rendering a behavioural specification into a tabular or diagrammatic episteme under a publication viewpoint;
-* normalising a logic‑heavy episteme into a more operational one, while keeping the same system EntityOfConcern and context.
+| SlotKind | Relation-participant meaning | ValueKind | refMode |
+| --- | --- | --- | --- |
+| `GroundedEpistemeSlot` | episteme whose claims are grounded | `U.Episteme` | `U.EpistemeRef` |
+| `GroundingHolonSlot` | exact holon involved in the direct observation, intervention, measurement, or evaluation relations that provide the grounding | `U.Holon` | `U.HolonRef` |
 
-In terms of SoTA, EpistemicViewing behaves like a **lens** or **optic** over C.2.1: a focus (SlotKinds for content and representation) is manipulated while the EntityOfConcern is fixed.
+`EpistemeEmpiricalGroundingRelation(E,H)` obtains exactly while, under E's effective reference scheme, a current structure of direct observation, intervention, measurement, or evaluation relation occurrences involving H makes E's exact claims empirically inspectable. Those world-side relation occurrences, not the presence of an evidence episteme, evaluation report, storage record, or work log, supply the grounding condition. An exact evidence-use or assurance relation may support an assertion that grounding obtains or qualify its warrant or confidence; evidence storage, availability, or loss neither makes nor unmakes the grounding relation.
 
-#### C.2.1:7.3 - EpistemicRetargeting (A.6.4) as EntityOfConcern-bundle retargeting on episteme morphisms
+One occurrence is identified by `<episteme, grounding holon, maximal continuous grounding interval>`. Closing the open end of an ongoing interval refines the description of the same occurrence. A demonstrated loss and later restoration of the direct grounding-relation structure yields another occurrence. Evidence availability or absence alone licenses no inference that current obtaining is true, false, or unresolved and neither proves nor disproves a temporal gap. If the direct grounding-relation structure is known to obtain, the grounding relation obtains even when supporting evidence or a work log is absent. If that direct structure is known not to obtain, the grounding relation does not obtain even when evidence or a work log is absent. Only when the status of the direct structure itself is unknown is a positive assertion that grounding obtains unresolved.
 
-`U.EpistemicRetargeting` is the species of A.6.2 where **`entityOfConcernChangeMode = retarget`**.
-It is always a **morphism between epistemes** (`f : X → Y` in `U.Episteme`), but the adjective “retargeting” refers **not** to the fact that an episteme is mapped to another episteme (this is true for all A.6.2 species), and **not** to a separate entityOfConcern, but specifically to the **change in the EntityOfConcern-bundle** classified by C.2.1:
-* `entityOfConcernRef(Y) ≠ entityOfConcernRef(X)` — the value stored for `EntityOfConcernSlot` changes;
-* a `KindBridge` must relate `Kind(entityOfConcernRef(X))` and `Kind(entityOfConcernRef(Y))`;
-* `groundingHolonRef` may remain the same (e.g. same plant, different subsystem) or be transformed along a Bridge in the same ReferencePlane.
+The grounding holon need not be identical to the EntityOfConcern. A method description may concern a method while one grounding occurrence links that episteme to the exact enactment work and another links it to the system whose behavior was observed. A review episteme may concern another episteme while being grounded in the exact experiment work or operating system involved in the direct testing relations. Sharing one grounding holon makes comparison inspectable but does not prove that two epistemes have the same EntityOfConcern or content.
 
-In practice, many retargetings operate on the **`EntityOfConcernSlot`/`GroundingHolonSlot` pair** (for example, when an episteme about a physical module is re-interpreted as an episteme about a function-holon realised in a different environment). The characteristic `entityOfConcernChangeMode` still classifies such morphisms by whether this pair is preserved or intentionally re-identified under a `KindBridge` and reference-plane policy; the episteme on the codomain side is just the usual A.6.2 codomain episteme.
+#### C.2.1:4.4 - Keep neighboring uses under their direct relations
 
-Over C.2.1 this is used for:
-* **functional vs structural reinterpretation** (e.g. an episteme about a physical module retargeted to an episteme about the function it realises; StructuralReinterpretation in E.18 becomes a species of A.6.4);
-* **signal vs spectrum** transitions (Fourier-style moves where the `EntityOfConcernSlot` value changes from time-domain signal to frequency-domain representation but an invariant, such as energy, is preserved);
-* **data vs model** transitions (e.g. retargeting an episteme about raw observations to an episteme about a learnt model, with an invariant such as likelihood or sufficient statistics).
+| Current distinction | Relation or object to use | Why it stays outside the core constitution relation |
+| --- | --- | --- |
+| classification judgment or separately current classification assertion | the `A.1` recognition judgment for an admitted holon kind or the `C.3.2` membership judgment for a local kind; one C.2.1 episteme when a receiving review treats the judgment as a separate claim-bearing object | the governing criterion states the membership condition; the classification judgment evaluates the candidate under it; the assertion carries that judgment but neither creates the candidate nor admits the kind |
+| claim scope | exact `U.ClaimScope` and its A.2.6 membership semantics | scope delimits where claims hold; it does not identify every episteme |
+| concern-bearing viewpoint use | one exact `U.Viewpoint` episteme selected through the current `DescriptionContext` use qualification | selection states the concern under which the description is used; it neither establishes conformance nor enters episteme identity |
+| view | the same episteme individual recognized as `U.View` when an exact `EpistemeViewpointConformanceRelation` to at least one exact viewpoint episteme obtains | conformance, source-to-receiving construction, current-use selection, publication, form, and carrier remain different relations or objects |
+| bounded model use | optional relation to one `BoundedModelUseStructure : U.Structure` under A.1.1 | model-use organization can qualify interpretation without becoming a universal identity component |
+| justification structure | exact `JustificationGraph` content | a justification structure organizes inferential dependencies without becoming claim content |
+| evidence use | the evidence relation governed by A.10 or B.3 that the current claim uses | evidence may support or qualify an assertion about claim truth or grounding; storage, availability, or loss of evidence or a work log neither makes nor unmakes the world-side grounding relation |
+| publication | exact publication occurrence and publication form under E.17 and E.24.PUB | making an edition available does not constitute or reidentify it |
+| presentation carrier | any exact `U.PresentationCarrier` under E.17 and E.24.PUB | bearing a publication form or rendered expression does not constitute or reidentify the episteme |
+| representation and admissible operations | representation scheme currently used for the exact represented episteme, its selected elements, and the C.29 correspondence or transition relations | a change of scheme or admitted operations can change the available work without becoming the represented ontology |
 
-C.2.1 ensures that these retargetings have a **clear domain `EntityOfConcernSlot` value and codomain `EntityOfConcernSlot` value** and that any such move is expressed as a morphism over well-typed slots, not as an unstructured rewrite of “subject” or “object” labels.
+Names ending in `Slot` are admissible here only as SlotKinds inside the exact `RelationSignature` governed by the neighboring direct relation pattern. A card or other episteme form carries participant designations in ordinary fields; it does not acquire SlotKinds by using similar field labels. None of those neighboring SlotSpecs belongs to `EpistemeConstitutionRelationSignature`.
 
-### C.2.1:8 - Alignment with E.17.* (Multi‑View Describing & Publication)  *(normative)*
+#### C.2.1:4.5 - Relate distinct episteme editions explicitly
 
-`U.EpistemeSlotRelation` underpins the E.17 cluster:
-* E.17.0 `U.MultiViewDescribing`
-* E.17.1 `U.ViewpointBundleLibrary`
-* E.17.2 `TEVB — Typical Engineering Viewpoints Bundle`
-* E.17 `MVPK — Multi‑View Publication Kit`
+**Tech name:** `EpistemeEditionRelation`.
 
-#### C.2.1:8.1 - Multi‑View Describing (E.17.0)
+**Plain reading:** this later episteme continues this earlier episteme as a revision, refinement, or superseding edition.
 
-`U.MultiViewDescribing` organises **families of Description epistemes and Description epistemes admitted for specification use** over a shared entity of concern:
-* The **EntityOfConcernClass** parameter of E.17.0 is a species constraint on the ValueKind of `EntityOfConcernSlot` (`EntityOfConcernClass ⊑ U.Entity`).
-* Each member of a multi‑view family is a `…Description`/`…Spec` episteme with:
-  * `entityOfConcernRef` into that EntityOfConcernClass,
-  * `viewpointRef` drawn from a `U.ViewpointBundle`,
-  * `subjectRef` decoding to DescriptionContext.
+`EpistemeEditionRelation` has exactly two direct participants. Applying the shared declaration rule in 4.2.1, `EpistemeEditionRelationSignature` is one declaration episteme whose exact EntityOfConcern is `EpistemeEditionRelation`; the same individual has `U.Signature` membership and relation-facing `RelationSignature` use only under `A.6.0`. Its complete declaration includes the direct predicate, participant-determined identity, applicability, actual dependencies and provided names, and these SlotSpecs:
 
-Within this pattern:
-* `U.Viewpoint` is **exactly** the ValueKind of `ViewpointSlot` in C.2.1.
-* `U.View` is `U.EpistemeView`, a species of `U.Episteme` whose `content` is already restricted to a particular `U.Viewpoint` and often also to a particular `U.RepresentationScheme`.
+| SlotKind | Relation-participant meaning | ValueKind | refMode |
+| --- | --- | --- | --- |
+| `EarlierEpistemeSlot` | exact episteme continued by the later edition | `U.Episteme` | `U.EpistemeRef` |
+| `LaterEpistemeSlot` | exact episteme that continues the earlier edition | `U.Episteme` | `U.EpistemeRef` |
 
-C.2.1 thus supplies the **per‑episteme** structure that E.17.0 rearranges into multi‑view families.
+The relation obtains when the two epistemes have different C.2.1 identities and one exact system performed revision, refinement, or supersession work under a method whose semantics establish historical continuation. `C.2.P` recovers the exact source expression and the source-to-revision-use relation by which the earlier episteme participates. Exact change facts already governed by their current patterns can contribute to evaluating the edition-continuity predicate. When the receiving claim additionally depends on first constitution of the later episteme by that work, use a current direct entity-identity-inception governor only if one actually exists; otherwise return the exact missing-governor blocker and do not assert the edition relation. Once all required facts have direct governors, those facts and the enacted method satisfy the edition-continuity predicate; evaluation and evidence make an assertion about that predicate inspectable. The system, work, method, source-use relation, change or inception claims, evaluation, and evidence are not participants of `EpistemeEditionRelation`.
 
-#### C.2.1:8.2 - Viewpoint bundles (E.17.1 and E.17.2)
+One occurrence is participant-determined by the exact `<earlier episteme, later episteme>` pair. Two work occurrences that establish the same historical continuation do not create two edition-relation occurrences. The relation is acyclic in its earlier-to-later direction. A renamed file, later publication, shared title, or bare provenance edge establishes no occurrence. Loss of a work log can lower confidence in an assertion about the relation, but it does not turn the work log into a third participant.
 
-`U.ViewpointBundleLibrary` and TEVB specialise the `U.Viewpoint` node:
-* A ViewpointBundle is a **set of `U.Viewpoint` instances** tailored to a class of entities of concern (e.g., holons in engineering contexts).
-* TEVB fixes `EntityOfConcernClass = U.Holon` (typically `U.System` or `U.Episteme`) and provides canonical engineering viewpoints: functional, structural, role‑enactor, interface‑oriented, etc.
+Several edition-relation occurrences may be selected as a lineage structure only when a receiving use depends on their organization. If that use also selects an edition collection, `A.14` governs membership in that separately identified collection; collection membership does not establish edition continuity. `PhaseOf` may describe one unchanged episteme over a proper time interval, but it does not connect two different C.2.1 identities.
 
-From the C.2.1 perspective:
+When claim content, EntityOfConcern, or effective reference scheme changes, the later object is another episteme. Apply `EpistemeEditionRelation` only when its historical-continuation predicate above obtains, whether the continuation is revision, refinement, or supersession. Apply `A.6.4` separately only when the current claim is an effect-free retargeting between epistemes with different but bridge-related EntitiesOfConcern under its invariant; retargeting does not by itself establish edition continuity. A changed publication form alone identifies neither another episteme nor an edition relation.
 
-* these bundles populate the ValueKind of `ViewpointSlot`;
-* engineering episteme species that want to be “TEVB‑aligned” must restrict `viewpointRef` to TEVB’s `EngineeringVPId` set, while keeping the same EntityOfConcernSlot discipline.
+#### C.2.1:4.6 - Keep descriptions, cards, publications, and representations downstream
 
-#### C.2.1:8.3 - MVPK (E.17) as publication over C.2.1 views
+A claim-bearing filled card can itself be an episteme when its claim content, EntityOfConcern, and effective reference scheme are recoverable. The reusable arrangement of that card can instead be a publication form, and a selected graphical or tabular element can participate in a C.29 representation. Identify each object through its own constitution and the direct relation in which it participates; visible shape does not determine its kind.
 
-MVPK treats `U.View` (i.e. `U.EpistemeView`) as its primary input:
-* it uses `U.EpistemicViewing` species (A.6.3) to generate publication‑oriented views from engineering or logical views;
-* it then publishes these `U.View` epistemes through declared publication-face-kind values with declared publication viewpoints and faces.
+When a card or other form designates the participants of one direct relation, its field labels may correspond to SlotKinds in that relation's `RelationSignature`, and its field values may be by-value designations or references of the declared refModes. The form is not a filled direct relation occurrence; supplying fields does not make the predicate obtain or provide occurrence identity.
 
-C.2.1’s distinction between:
+In a relational assertion, the claim graph states a modality for the direct obtaining predicate and designates the actual participants. A positive assertion may also designate an already individuated occurrence. In a relation-occurrence description episteme, the EntityOfConcern is that exact occurrence. The assertion and description retain their own C.2.1 identities; neither supplies the occurrence's obtaining or identity rule.
 
-* `U.Viewpoint` (epistemic perspective specification) and
-* `U.PresentationCarrier` (carrier in C.2.1+ and publication-face-kind discipline)
+Keep the direct verbs with their objects. A designator designates an already recoverable referent. A governed reference resolves to that referent under an effective reference scheme. An assertion or description episteme carries claims and participant designations. A C.29 representation stands in an explicit correspondence to what it represents. A publication occurrence makes a selected episteme edition available; a publication form expresses that edition for the use; a presentation carrier bears the form.
 
-keeps **epistemic perspective and physical medium separate**:
-* MVPK operates on `U.View` epistemes and then on carriers;
-* the same View can be realised on multiple carriers without changing its entityOfConcern or ClaimGraph.
+Plain **published episteme** means one already identified `U.Episteme` that currently participates as the selected edition in an exact publication occurrence. It is a contingent publication use, not a durable `U.EpistemePublication` kind and not a second identity for the episteme. The episteme keeps the same C.2.1 identity before, during, and after that availability relation.
 
-Any MVPK species that claims to be C.2.1‑conformant **MUST**:
-* treat `U.View` as a `U.EpistemeView` with a valid C.2.1 core,
-* document which C.2.1 slots it reads and writes (typically only representation-related and carrier-related ones, leaving `EntityOfConcernSlot` and `GroundingHolonSlot` untouched),
-* refrain from introducing new claims about the EntityOfConcern value beyond what is in the source `U.View`’s ClaimGraph.
+A publication occurrence makes one selected episteme edition available to a declared audience for a declared bounded use. A publication form expresses that edition for the publication use. A `U.PresentationCarrier` bears the form. These are three different direct relations governed by `E.17` and `E.24.PUB`; an assertion that any one obtains is a separate episteme. C.2.1 governs the identity of the selected `U.Episteme`; it does not replace the participants, predicates, or occurrence rules of those publication relations.
 
-### C.2.1:9 - Archetypal Grounding
+One completed inspection card shows why the distinctions matter. Its filled claims can identify one episteme; its reusable layout can be a publication form; its paper sheet or file can be a presentation carrier; and a publication occurrence can make the selected card episteme edition available to the maintenance team. None of those uses makes the others identical.
 
-**System-description episteme.** A pump maintenance specification is an episteme whose EntityOfConcernSlot points to the pump or pump class, whose GroundingHolonSlot may point to the plant or test bench, whose ClaimGraph states maintenance claims, and whose ReferenceScheme explains how part names, measurements, and operating states refer to the pump in that bounded context. The PDF, database row, and rendered checklist are publication and carrier values, not the episteme itself.
+When rendering is current, a system performs rendering work and the exact work-participation, transformation, or A.6.1 binding current in that case relates the work to its affected entities. If the work first constitutes a rendered entity and that identity-inception claim matters, use a current direct entity-identity-inception governor only when one actually exists; otherwise retain the exact missing-governor blocker. Rendering work, rendered entity, publication occurrence, form, carrier, and episteme retain their own identities. Republishing unchanged claims with another form or carrier creates no new episteme edition.
 
-**Episteme-about-episteme case.** A review note about a simulation model is also an episteme, but its EntityOfConcernSlot points to the simulation model episteme. The slot relation still separates the reviewed episteme, the review episteme, the claim graph, grounding holon, reference scheme, and evidence relation; the fact that the EntityOfConcern value is itself an episteme does not create a second ontology.
+Under `C.29`, a tuple can represent the identity triple and a graph or hypergraph can represent claim, justification, dependency, or relation structure. `U.ClaimGraph` and `JustificationGraph` remain graph-valued epistemic structures. Their nodes and edges remain representation elements. An explicit correspondence can relate one selected representation element to an independently recovered object, but it neither identifies the two nor makes the representation element a participant of the represented direct relation.
 
-**Multi-view description case.** An architecture description may publish several views under different viewpoints. Each view is an episteme view constrained by the same episteme slot relation, while the publication face or carrier belongs to E.17 rather than to the episteme core.
+#### C.2.1:4.7 - Preserve description and meta-description recursion
+
+If episteme `E1` describes pump `P`, `P` is the EntityOfConcern participant in the constitution relation that identifies `E1`. If review episteme `E2` describes `E1`, then `E1` is the EntityOfConcern participant for `E2`. The two relations have different triples and therefore identify different epistemes.
+
+An episteme may describe itself when its own identity remains recoverable. Self-reference never closes an assurance argument by itself. Each justification or evaluation path terminates in independently governed evidence, observation, or formal derivation rather than in a cycle of claims that cite one another.
+
+Description and specification use remain distinct. A Description episteme is admitted for specification use only when the `E.10.D2` conditions are satisfied: checkable claims, a preserved or explicitly updated DescriptionContext, and a named harness or validation relation. Formal notation alone does not grant specification use or change the episteme's kind.
+
+#### C.2.1:4.8 - Locate the change before updating episteme identity
+
+| Observed change | Disposition |
+| --- | --- |
+| claim content, EntityOfConcern, or effective reference scheme changes | identify another episteme; use `EpistemeEditionRelation` only for revision, refinement, or supersession when its historical-continuation predicate obtains, and use `A.6.4` separately only for an exact retargeting that satisfies its own predicate; otherwise stop at the new identity without inferring continuity |
+| direct empirical-grounding relation structure begins to obtain, ceases to obtain, or is restored | evaluate `EpistemeEmpiricalGroundingRelation` continuity; do not change episteme identity unless a core discriminator also changed |
+| an evidence item, evaluation report, evidence store, or work log becomes available or unavailable while the status of the direct grounding-relation structure stays fixed | revise only the separately governed support, warrant, confidence, or evidence-use assertion that changed; the unchanged direct structure still determines grounding status and occurrence continuity: known obtaining continues, known nonobtaining remains nonobtaining, and unknown structure status leaves a positive grounding assertion unresolved |
+| candidate episteme E or viewpoint episteme P changes | identify the changed episteme under C.2.1, then test the new exact E/P pair under `E.17.0`; for fixed E and P, conformance cannot change because of evaluator, evidence, project, publication, or current use, so state any changing adequacy or evaluation as a separate claim |
+| one `DescriptionContext` has its `viewpointRef` resolve to one identified `U.Viewpoint` episteme for a describing use | update that use's exact `viewpointRef` only; `DescriptionContext` has no `viewRef`, selects no view, and establishes neither conformance, `U.View` membership, nor episteme identity |
+| claim scope changes | update the exact `U.ClaimScope` and its A.2.6 membership semantics; do not infer another episteme automatically |
+| selected bounded model-use or multi-view structure changes | update the exact collection or structure relation and re-evaluate affected interpretation claims; do not infer another episteme or view family automatically |
+| publication form, carrier, rendering, audience, bounded use, or publication occurrence changes | establish the exact E.24.PUB change only; publication is not view membership or episteme succession |
+| mathematical or tool representation changes | apply C.29 and the selected representation-transition relation |
+
+#### C.2.1:4.9 - Hand episteme transformations to their governing patterns
+
+A.6.2-A.6.4 govern episteme-to-episteme morphing, source-to-receiving viewing construction, and retargeting. Identify every source and receiving episteme independently under C.2.1 before testing the exact transformation relation. Each transformation pattern states which identity discriminator is preserved or changed and names the exact correspondence, reinterpretation, or retargeting relation on which it relies. When local senses cross contexts, `F.9` additionally governs Bridge direction, congruence, loss, and admitted use. Categorical function, mapping, or tuple notation creates no direct relation occurrence.
+
+For an A.6.3 source-to-receiving viewing construction, the two identified epistemes may retain the same EntityOfConcern while claim content or effective scheme is restricted. `E.17.0` alone judges whether the receiving episteme conforms to an exact viewpoint and therefore has dependent `U.View` membership. Direct authoring or query generation can yield a candidate episteme without an A.6.3 construction, and neither route creates a multi-view family. For retargeting, the EntityOfConcern changes under an explicit bridge or correspondence. For a representation transition, the represented episteme may remain unchanged while the C.29 representation scheme and admitted operations change.
+
+#### C.2.1:4.10 - Relation and neighboring-object reference
+
+| Current object | FPF kind or relation | Governing pattern |
+| --- | --- | --- |
+| `U.Episteme` | one knowledge holon with identity `<claim content, EntityOfConcern, effective ReferenceScheme>` | C.2.1 |
+| `EpistemeConstitutionRelation` occurrence | the obtaining direct relation among the exact claim graph, exact EntityOfConcern, and effective reference scheme that constructively identifies one episteme | C.2.1 and `A.6.REL` |
+| `EpistemeEmpiricalGroundingRelation` occurrence | the direct relation between one identified episteme and one exact grounding holon when a current structure of direct observation, intervention, measurement, or evaluation relations involving that holon makes the claims empirically inspectable; evidence use may support an assertion but is not the obtaining condition | C.2.1 and the governing observation, intervention, measurement, or evaluation patterns |
+| classification assertion episteme, when separately current | a claim-bearing episteme whose EntityOfConcern is the exact candidate and whose claim content states a classification judgment under the exact governing criterion: `A.1` for an admitted holon kind or `C.3.2` for a local kind | C.2.1 for assertion identity; the pattern governing the criterion for the judgment; `E.24.UK` only for public U-kind admission |
+| `EpistemeEditionRelation` occurrence | the direct historical continuation relation between one exact earlier episteme and one exact later episteme; exact source-to-revision use, enacted-method semantics, actual change facts, and any required separately governed entity-identity-inception claim make its obtaining predicate evaluable but do not participate in the relation | C.2.1, coordinated with `C.2.P`, A.3.1, A.3.4, and a current direct entity-identity-inception governor only when that claim is required and such a governor exists; if a required claim lacks one, return the exact missing-governor blocker |
+| `EpistemeConstitutionRelationSignature`, `EpistemeEmpiricalGroundingRelationSignature`, or `EpistemeEditionRelationSignature` | one C.2.1 declaration episteme whose exact EntityOfConcern is its direct relation kind; the fixed `A.6.0` predicate gives that same individual `U.Signature` membership, and `RelationSignature` is its relation-facing use with complete direct semantics and exact A.6.5 SlotSpecs | C.2.1 for declaration identity, `A.6.0` for membership and reusable vocabulary, and `A.6.5` for SlotSpecs |
+| `SlotSpec` | one declaration-content component of that `RelationSignature` | `A.6.5` |
+| assertion or description episteme | a claim-bearing episteme that states or describes one of the direct relations | C.2.1 and the direct claim or description pattern |
+| `U.MethodDescription` | the same `U.Episteme` individual when A.3.2 recognizes one admitted `U.Method` as its exact EntityOfConcern and its claims, interpreted under the effective `U.ReferenceScheme`, make at least one substantive claim about that method as a way of doing; mention, bibliographic metadata, or approval alone does not establish membership, and adequacy for a receiving use is evaluated separately | C.2.1 for episteme identity; `A.3.2` for dependent-kind membership |
+| `U.View` | the same `U.Episteme` individual when `EpistemeViewpointConformanceRelation` to at least one exact `U.Viewpoint` episteme obtains; fixed E/P conformance, source-to-receiving construction, current-use selection, and publication remain separate | C.2.1 for episteme identity; `E.17.0` for dependent-kind membership; `A.6.3` only when source-to-receiving construction is current |
+| `DescriptionContext` viewpoint resolution | the exact `viewpointRef` in `<EntityOfConcernRef, BoundedContextRef, ViewpointRef>` resolves one already identified `U.Viewpoint` episteme for a describing use; it has no `viewRef` and selects no view | `E.10.D2` and `E.17.0` |
+| multi-view collection or organization | an exact C.13 collection only when a receiving use depends on the plurality as a collection, and an exact A.22 `U.Structure` only when that use additionally depends on organization among those views | `C.13`, `A.22`, and the direct organizing relations |
+| cross-view correspondence, consistency, realization, trace, or change-impact claim | one exact direct subject relation under its own governor; a C.2.1 episteme may assert or describe it, but a heading, edge, carrier, or E.17 publication invents no relation | the exact direct relation pattern; when none is current, return an exact missing-relation blocker naming the participants, required predicate and use, and missing governor |
+| publication occurrence | the occurrence that makes one selected episteme edition available to a declared audience for a declared bounded use | `E.17` and `E.24.PUB` |
+| publication form | the arrangement, notation, or rendering convention that expresses the selected episteme edition for that publication use | `E.17` and `E.24.PUB` |
+| `U.PresentationCarrier` | the exact physical or digital carrier that bears the publication form | `E.17` and `E.24.PUB` |
+| mathematical representation | a C.29 representation used for an explicit modeling or reasoning purpose | `C.29` |
+
+This reference table keeps the neighboring objects and relations visible after the application method. Ordinary prose names only the current object and its direct relation. A sentence such as “Model M concerns Pump P under Scheme S” is sufficient until another use needs explicit empirical grounding, a classification assertion, occurrence identity, edition continuity, publication, or representation correspondence.
+
+### C.2.1:5 - Semantic triangle as a didactic projection  *(informative)*
+
+The Symbol-Concept-Object triangle is a teaching projection, not the episteme ontology.
+
+| Triangle corner | C.2.1 projection | What the projection suppresses |
+| --- | --- | --- |
+| Symbol | selected representation elements and any publication carrier | representation scheme, admitted operations, publication occurrence, and correspondence to the episteme |
+| Concept | `U.ClaimGraph` interpreted under an effective `U.ReferenceScheme` | claim scope, justification, viewpoint, and edition relations |
+| Object | exact EntityOfConcern and any current `EpistemeEmpiricalGroundingRelation` | the difference between what claims concern and the holon through which they are empirically inspectable |
+
+A triangle diagram may be used to introduce expression, meaning, and subject if its caption says that it compresses the C.2.1 episteme ontic. Its corners and arrows are representation elements. They supply no SlotKinds, direct relation occurrences, or identity rules.
+
+This limitation matters in practice. A proof-assistant term, wiring diagram, clinical chart, learned embedding, or verbal explanation can all occupy the Symbol corner while supporting different operations and different losses. Those questions belong to the representation-scheme and transition patterns; one geometric picture does not answer them.
+
+### C.2.1:6 - Description and specification-use boundary  *(normative)*
+
+A Description episteme is a `U.Episteme` whose exact EntityOfConcern is the entity being described. Description does not create a second kind beside ordinary epistemes; it names the current relation and use of one episteme.
+
+For a description use, keep these values recoverable:
+
+| Value | Meaning | Identity status |
+| --- | --- | --- |
+| `entityOfConcernRef` | designation of the exact EntityOfConcern in the description episteme's constitution relation | its resolved exact EntityOfConcern, not the reference value or designation, is C.2.1 identity-bearing |
+| effective `U.ReferenceScheme` | rules by which the description claims refer to and can be checked against that entity | C.2.1 identity-bearing |
+| `viewpointRef`, when current | governed reference resolving to the exact `U.Viewpoint` episteme selected for this describing use under E.17.0 | use qualifier outside episteme identity; work that changes an identity discriminator identifies another episteme independently |
+| `claimScopeRef`, when current | designation of the exact `U.ClaimScope` under A.2.6 | claim-use qualifier |
+| `modelUseStructureRef`, when current | designation of one independently selected `BoundedModelUseStructure : U.Structure` | optional interpretation qualifier, not a context root |
+
+When a filled card used to describe the entity has recoverable claim content, EntityOfConcern, and effective reference scheme, it is one episteme carrying these values. Its reusable layout can be a publication form, and the exact sheet or file that bears that layout can be a `U.PresentationCarrier`. The episteme, form, and carrier are not direct relation occurrences, and none makes a viewpoint, scope, or model-use relation obtain.
+
+`E.10.D2` governs the distinction among the EntityOfConcern, its Description episteme, and specification use. A Description episteme is admitted for specification use only when `E.10.D2` checkability, DescriptionContext, and harness or validation conditions are satisfied. The suffix `Spec`, formal notation, approval appearance, or publication in a repository does not grant that use.
+
+Self-description uses the same rule. If an episteme describes itself, its EntityOfConcern designation resolves to that episteme. If a review episteme describes it, the review episteme has the first episteme as EntityOfConcern and its own claim content and reference scheme.
+
+### C.2.1:7 - Episteme morphing, viewing, and retargeting  *(normative)*
+
+C.2.1 governs episteme identity discriminators and neighboring relations. A.6.2-A.6.4 govern transformations between epistemes.
+
+#### C.2.1:7.1 - Effect-free episteme morphing
+
+For a morphism from episteme `X` to episteme `Y`, state by value:
+
+1. which of claim content, EntityOfConcern, and effective reference scheme are preserved, restricted, bridged, or changed;
+2. which viewpoint, empirical-grounding, claim-scope, model-use, evidence, or representation relations are read or changed;
+3. which claims in `Y` are preserved from or supported by `X` under the named morphism, the exact correspondence or retargeting relation governed by that morphism pattern, and any `F.9` Bridge that governs cross-context sense use when current;
+4. whether the operation changes only epistemes or also entails separately governed work or transformation.
+
+The morphism declaration and any categorical notation are epistemic or mathematical objects. Only systems perform exact authoring, query, translation, or other work. `A.6.1` declares typed argument and result positions. When an exact operation application is current, each application binding relates one exact entity to its declared argument or result position; every bound entity retains its independently governed kind, identity, and any domain-result algebra. Identify the affected or newly constituted entity, the actual change facts, and the C.2.1 discriminators independently. When a receiving claim depends on first constitution of that entity by the exact work and change facts, use a current direct entity-identity-inception governor only if one actually exists; otherwise return the exact missing-governor blocker. No bare A.6.1 `result`, generic work result, universal work-result relation, or universal production relation is inferred from a morphism arrow, declaration, or application.
+
+#### C.2.1:7.2 - Epistemic viewing
+
+`A.6.3` governs an exact source-to-receiving viewing construction when one separately identified receiving episteme is constructed from one separately identified source episteme. That construction may preserve the exact EntityOfConcern while restricting claim content or specializing the effective reference scheme. It neither grants `U.View` membership nor performs work. Direct authoring and query generation can identify receiving epistemes without this construction relation.
+
+`E.17.0` independently judges `EpistemeViewpointConformanceRelation(E,P)` for one fixed receiving episteme E and one fixed viewpoint episteme P; only that obtaining relation gives the same E dependent `U.View` membership. A system may perform viewing, query, authoring, or rendering work. When exact work and change facts first constitute E and that inception claim matters, use a current direct entity-identity-inception governor only if one actually exists; otherwise return the exact missing-governor blocker.
+
+Empirical grounding continues only while the receiving episteme has its own admissible direct grounding-relation structure. Changing publication, current use, evaluator, or evidence alone changes neither fixed E/P conformance nor grounding. Several source or receiving epistemes do not automatically form a multi-view family; identify any current collection under C.13 and any selected organization under A.22.
+
+#### C.2.1:7.3 - Epistemic retargeting
+
+`U.EpistemicRetargeting` is an effect-free morphism relating epistemes with different exact EntitiesOfConcern. `A.6.4` governs the exact correspondence, reinterpretation, or retargeting relation that states what is preserved across the change. When the move also crosses context-local senses, `F.9` supplies the Bridge direction, congruence level, loss notes, and admitted use; it does not replace the subject-side relation. A system may perform exact retargeting work; identify its enacted method and any exact A.6.1 operation application. For each current application, recover each application binding that relates one exact entity to its declared argument or result position; every bound entity retains its independently governed kind, identity, and any domain-result algebra. Identify the affected or newly constituted entity and the actual change facts separately. When first constitution of that entity by the exact work and change facts matters, use a current direct entity-identity-inception governor only if one actually exists; otherwise return the exact missing-governor blocker. The retargeting morphism itself performs no work, and no bare A.6.1 `result`, generic work result, or universal production relation is inferred.
+
+Examples include retargeting from a module to a function it realizes, from observations to a learned model, or from one holon to a meta-holon or subholon with a different EntityOfConcern. A Fourier representation change is not automatically retargeting: use C.29 first to decide whether the signal remains the EntityOfConcern and only its representation changes. This test prevents mathematical notation from deciding ontology.
+
+### C.2.1:8 - Multi-view description and publication  *(normative)*
+
+C.2.1 identifies every candidate episteme and every viewpoint episteme separately. `E.17.0` alone judges each exact `EpistemeViewpointConformanceRelation(E,P)` and the resulting same-individual `U.View` membership. `DescriptionContext = <EntityOfConcernRef, BoundedContextRef, ViewpointRef>` qualifies one describing use: its singular `viewpointRef` resolves one exact viewpoint episteme, it has no `viewRef`, and it selects no view. If another exact receiving-use qualification selects an already identified view, name that use and its exact governor separately. Neither qualification enters episteme identity or establishes conformance.
+
+Several conforming views remain a plurality. Recover an exact C.13 collection only when a receiving use depends on that plurality as a collection. Recover an exact A.22 `U.Structure` only when the use additionally depends on organization among those views, and state the exact direct organizing relations. A shared EntityOfConcern, package, table, heading set, diagram, or carrier creates neither a view family, a collection, nor that structure.
+
+`A.6.3` governs only an obtaining source-to-receiving viewing construction when that history is current; direct authoring and query generation require no such relation. A system performs any viewing, authoring, query, comparison, or repair work. When exact work and change facts first constitute an episteme and that claim matters, use a current direct entity-identity-inception governor only if one actually exists; otherwise return the exact missing-governor blocker. Neither work route nor inception grants `U.View` membership.
+
+`E.17` governs multi-view publication forms and uses, while `E.24.PUB` governs publication occurrences, forms, and carriers. The same recognized view can participate as the selected episteme in several publication occurrences without changing identity or conformance. Publication establishes no view membership and no cross-view subject relation.
+
+When cross-view correspondence, consistency, realization, trace, or change impact matters, name the exact participants and apply the exact direct subject-relation governor. A C.2.1 assertion or description episteme may carry that claim; it does not make the relation obtain. If no direct governor is recoverable, return an exact missing-relation blocker naming the participants, required predicate and use, and missing governor; do not invent a relation. `E.17`, a matching heading, graph edge, diagram position, or shared carrier invents no correspondence relation.
+
+### C.2.1:9 - Archetypal Grounding — Worked Cases
+
+These cases ground the pattern in practice; only a case that names an obtaining `EpistemeEmpiricalGroundingRelation` asserts empirical grounding.
+
+#### C.2.1:9.1 - Physical engineering
+
+A pump-maintenance specification has a claim graph about exact pump `P` under a reference scheme that resolves part names, states, units, and measurement procedures. Those three participants identify the episteme. If the claims are tested on test bench `B`, an `EpistemeEmpiricalGroundingRelation` connects the specification episteme to `B` for the maximal continuous interval in which the direct inspection and measurement relation structure involving `B` remains admissible. If that structure is known to continue while an evidence archive or inspection-work log becomes unavailable, the grounding occurrence continues; only a separately governed support, warrant, confidence, or evidence-use assertion may change. A publication occurrence makes the episteme available through a rendered checklist form borne by an exact carrier; systems assigned the relevant roles perform the maintenance or inspection work recorded by checklist marks. A separately current assertion that `P` satisfies the constructive `U.System` criterion is another episteme about `P`; renaming or republishing the governing FPF pattern does not change `P` or create its systemhood.
+
+The classification assertion changes only when its own claim content or reference scheme changes. Pump continuity is judged instead under the `A.1` reidentification rule; a changed or unchanged assertion does not establish that continuity.
+
+#### C.2.1:9.2 - Medicine
+
+A diagnostic model concerns one patient-state entity or one admitted patient cohort under a scheme that defines observations, measurements, and diagnostic interpretations. Systems and role assignments participating in clinical work retain their own direct relations; they are not absorbed into the model's EntityOfConcern. Empirical grounding is stated by an `EpistemeEmpiricalGroundingRelation` whose episteme, grounding holon, direct grounding-relation structure, and maximal continuous obtaining interval are identified. If a threshold revision changes claim content or the effective reference scheme, that changed discriminator identifies another episteme; moving the unchanged model to another screen changes only the exact publication or representation object that actually changed.
+
+#### C.2.1:9.3 - Learning
+
+A curriculum model concerns an exact competence structure under a scheme that relates learning evidence and performance observations to competence claims. One exact admitted course-cohort holon or one exact admitted learning-environment holon may participate in a separate grounding occurrence without becoming the competence structure. A learner-facing episteme is a `U.View` when it conforms to an exact learner-facing viewpoint under `E.17.0`. If it was constructed from the source curriculum-model episteme, `A.6.3` governs that separate viewing relation; systems in roles perform the lesson-session or receiving-episteme authoring or construction work. Any first-constitution claim requires a current direct entity-identity-inception governor; when none actually exists, retain the exact missing-governor blocker.
+
+#### C.2.1:9.4 - Episteme about an episteme
+
+Simulation model `M` is one episteme. Review `R` concerns `M`, so the EntityOfConcern in `R` is the episteme `M`, not the physical system modeled by `M`. Claims in either episteme may cite separately governed evidence-use relations concerning the simulated or physical system. Publishing `R` does not revise `M`.
+
+A theory episteme is recognized through its claim-bearing constitution and whole-level inferential characteristics. A textbook publication can make one edition of that theory available, but the publication occurrence, form, and carrier are not constituents of the theory and do not establish its holonhood.
+
+#### C.2.1:9.5 - Edition succession
+
+Episteme `E1` participates in revision work `W2` through the exact source-to-revision-use relation recovered by `C.2.P`; `E2` has changed claim content and a separately recovered C.2.1 identity. The revision method enacted in `W2` and the actual change facts contribute to evaluating `EpistemeEditionRelation(E1, E2)`. If that evaluation additionally depends on first constitution of `E2` by `W2`, a current direct entity-identity-inception governor must supply that claim; when none actually exists, return the exact missing-governor blocker instead of asserting the edition relation. Once every required fact is governed, the relation chain makes an assertion about the predicate inspectable, but `W2` is not a third participant and does not distinguish another occurrence for the same pair. Later systems may perform repackaging work whose exact effects concern a publication form or carrier for `E2`; a publication occurrence then makes `E2` available. Neither repackaging nor publication establishes `E3`.
+
+#### C.2.1:9.6 - Grounded identity across two observations
+
+A morning-observation episteme concerns observed object `M` under one reference scheme; an evening-observation episteme concerns observed object `E` under another. A physically testable trajectory together with observations can support an assertion that `M` and `E` designate the same planet only under the exact direct identity or reidentification governor for the observed entity. If no such current governor is recoverable, keep the identity claim unresolved and return an exact missing-relation blocker naming `M`, `E`, the required identity predicate and use, and the missing governor. The assertion is another episteme whose claim content designates the direct identity and evidence relations that make its modality inspectable. Once both designations resolve to the same exact entity, the two observation epistemes still need not merge: their claim graphs or effective reference schemes can keep their C.2.1 identities different. A shared label or shared grounding holon alone establishes neither world-side identity nor episteme identity.
+
+#### C.2.1:9.7 - Readable wiring diagram as a proxy
+
+Wiring-model episteme `E1` concerns exact harness `H` under reference scheme `S1`, which resolves connector designators, pin identities, and connection predicates. A system performs exact diagram-redrawing work; any operation application, binding, or declared result position is governed separately by A.6.1. If only layout changes in a C.29 wiring-diagram representation, identify the exact representation transition and preserved connector, pin, and connection correspondence; `E1` remains the same. If instead only an exact publication form, carrier, or rendering changes, identify that E.17/E.24.PUB object and relation; `E1` again remains the same. These branches are not one undecided representation-or-form result. The redraw work and actual change facts remain independent. If a receiving claim also depends on first constitution of a changed entity by that work, use a current direct entity-identity-inception governor only if one actually exists; otherwise retain the exact missing-governor blocker. If a connection claim is omitted or the legend changes the effective reference scheme, the changed claim graph or scheme identifies episteme `E2` independently of the redraw-work identity or any inception claim.
+
+For the `C.29` lens-use statement, the target phenomenon is the connectivity of `H`; the candidate mathematical object is the wiring-diagram representation under its stated diagram scheme; the mapping resolves connector marks and pin marks to the independently identified connectors and pins. A layout-only transition preserves connector identity, pin identity, and connection predicates. An omitted connection loses one predicate, while a changed legend loses the earlier mark-to-connector reference. The diagram remains admissible for maintenance diagnosis only while the connections on which that diagnosis depends are preserved and recoverable; stop that use or return to the source relation structure when they are not. This representation statement does not prove that the diagram is the harness, that visual similarity preserves claims, or that a higher readability score preserves episteme identity.
+
+A readability score can therefore improve while diagnosable connectivity becomes worse. When that score is used as the practical value, apply `E.13`: name the intended diagnostic value, the readability proxy, and what became worse. `C.29` and `A.6.3.RT` govern the representation transition and its preserved or lost structure; C.2.1 decides whether the changed claim graph or effective reference scheme identifies another episteme.
+
+#### C.2.1:9.8 - Learned representation and tool-using inference
+
+A language-model system performs one inference-work occurrence and may perform tool-call work during it. First recover a distributed activation pattern as an exact system-side phenomenon observed during that work. A probe's learned representation or decoded rendering may represent that phenomenon for a declared use under `C.29` and `A.6.3.RT`; causal influence, decodability, or a readable label does not by itself make the activation pattern or its representation a `U.Episteme`. A probe result or decoded rendering is admitted as an episteme only when recoverable claim content concerns an exact EntityOfConcern under an effective reference scheme.
+
+Keep the other entities and claims separate through their exact direct relations. A tool-call trace may fill an exact A.6.1 result position or another declared participant position for the call work. If exact work and change facts first constitute the trace and that identity-inception claim matters, use a current direct entity-identity-inception governor only if one actually exists; otherwise retain the exact missing-governor blocker. If the trace itself carries claims about that work, it may also be identified as another episteme through the C.2.1 triple. An answer entity identified at an exact declared result position and a separately identified evaluation-report episteme can have different kinds and EntitiesOfConcern; neither is a generic work result by wording alone. Tool availability, a successful call, or a high evaluation score establishes neither claim truth nor empirical grounding. When tool integration changes or degrades reasoning, locate the change in the enacted method, inference work, call work, operation binding, representation use, evidence relation, or empirical-grounding occurrence. Reidentify an episteme only when its claim content, EntityOfConcern, or effective reference scheme changed.
 
 ### C.2.1:10 - Bias-Annotation  *(informative)*
 
-**Episteme‑first and pragmatics‑first.**
-The pattern assumes that a claim-bearing episteme is meaningful only when it is **about something for someone under some perspective**. This follows the pragmatic turn in semantics: EntityOfConcern and concerns are not afterthoughts but part of the core structure. The slot relation is organized around EntityOfConcern, GroundingHolon, Viewpoint, and ClaimGraph positions, while graph-valued fillers such as `ClaimGraph` and `JustificationGraph` remain distinct values inside those positions.
+C.2.1 deliberately favors explicit aboutness and interpretation because claims without an exact EntityOfConcern and effective reference scheme are difficult to compare or test. The mitigation is the `A.6.REL` minimum-current-object rule: ordinary use adds another object only when the receiving use depends on it and states that object's direct relation to an already recoverable object.
 
-**Operational and representational bias.**
-C.2.1+ anticipates that certain RepresentationSchemes are **operational** in Novaes’ sense (admitting direct syntactic inference, like pen-and-paper arithmetic or proof states) while others are **purely notational**. The pattern remains neutral on which schemes are used but bakes in a place for operations and carriers so that:
+The pattern also resists representation bias. Formal calculi, diagrams, learned representations, and interactive tools can materially change available reasoning operations, but their convenience or geometry cannot establish subject identity. C.29 and the selected transition pattern govern those differences.
 
-* symbol‑manipulating tools (SAT solvers, SMT solvers, proof assistants, classical programming languages),
-* distributed and latent representations (LLM embeddings, latent protocols like "DroidSpeak", "Coconut"-style communication),
-* hybrid ReAct‑style agent loops
-
-can all be treated as different species operating over the same `U.EpistemeSlotRelation`. There is a bias towards making these operational differences **explicit** instead of hiding them behind "the model".
-
-**Viewpoint and stakeholder bias.**
-The pattern leans on the ISO‑style idea that viewpoints encode **stakeholder concerns and role‑families**, but it generalises this beyond architecture. `U.Viewpoint` is intentionally context-local and not bound to any single discipline; still, the examples are skewed toward engineering and epistemic use‑cases.
-
-**Didactic bias.**
-The pattern is written to be teachable: semantic triangles are kept as didactic projections; examples like stools on lab rigs, services and SLAs, and model‑evaluation epistemes are deliberately simple. This may under‑represent more exotic epistemes (e.g. artistic, law-domain, or socio‑technical ones), but the intention is that these use the same slots with different species‑level constraints.
+Finally, the pattern has a claim-bearing-holon bias. Decodability alone does not make the decoded entity an episteme. The decoded entity is admitted as an episteme only when claim content, an exact EntityOfConcern, and an effective reference scheme are recoverable and together satisfy the constitution relation.
 
 ### C.2.1:11 - Conformance Checklist  *(normative)*
 
-**CC‑C.2.1‑1 - Minimal core components for episteme species.**
-Any species of `U.Episteme` that participates in the boundary between `EntityOfConcern` and Description episteme discipline, specification use and refinement, or E.17 multi-view and publishing **MUST** be representable as `U.EpistemeCard` or `U.EpistemeView` with at least:
-
-```
-content            : U.ClaimGraph
-entityOfConcernRef : U.EntityRef
-groundingHolonRef? : U.HolonRef
-viewpointRef?      : U.ViewpointRef
-referenceScheme?   : U.ReferenceScheme      // ByValue
-meta               : ...                      // edition, provenance, status (A.7 and F.15)
-```
-
-and corresponding SlotSpecs consistent with A.6.5 (`EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ReferenceSchemeSlot`).
-
-**CC‑C.2.1‑2 - No durable U-kind for “EntityOfConcern” or “GroundingHolon”.**
-Patterns **MUST NOT** introduce durable U-kinds `U.EntityOfConcern` or `U.GroundingHolon`:
-* EntityOfConcernSlot has ValueKind `U.Entity` ( species‑constrained via EntityOfConcernClass if needed),
-* GroundingHolonSlot has ValueKind `U.Holon`.
-
-Plain terms "EntityOfConcern value" and "grounding holon" are allowed only as **slot-filler descriptions** under the declared SlotKind, ValueKind, and RefKind discipline.
-
-**CC-C.2.1-3 - SlotKind, ValueKind, and RefKind discipline.**
-All episteme‑related slots, including `EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, `ReferenceSchemeSlot` (and any extensions in C.2.1+), **MUST**:
-* follow the naming discipline of A.6.5 (`*Slot` for SlotKinds, `*Ref` only for RefKinds or fields),
-* declare a ValueKind and refMode (`ByValue` or a RefKind),
-* be used consistently across patterns that refer to the same conceptual position.
-
-**CC‑C.2.1‑4 - DescriptionContext wiring.**
-Any episteme species whose name or pattern claims to be a `…Description` or `…Spec` in the sense of E.10.D2 **MUST**:
-* expose `subjectRef : U.SubjectRef`,
-* provide a decoding to `DescriptionContext = ⟨EntityOfConcernRef, BoundedContextRef, ViewpointRef⟩`,
-* ensure that `EntityOfConcernRef` matches `entityOfConcernRef` (EntityOfConcernSlot), and
-* ensure that `ViewpointRef` matches `viewpointRef` or is derivable from a `U.ViewpointBundle` under documented rules.
-
-**CC‑C.2.1‑5 - Morphism declarations over slots.**
-Any pattern in A.6.2–A.6.4, E.17, E.18, or discipline packs that defines morphisms between epistemes **SHALL**:
-* state whether it is a species of `U.EffectFreeEpistemicMorphing`, `U.EpistemicViewing`, or `U.EpistemicRetargeting`,
-* declare its `entityOfConcernChangeMode` (`preserve` or `retarget`),
-* name which SlotKinds it reads and writes,
-* state its behaviour on `entityOfConcernRef`, `groundingHolonRef`, `viewpointRef`, and `referenceScheme`.
-
-**CC-C.2.1-5a - Episteme and publication relation-position split for semio-facing terms.**
-Any pattern, publication-form profile, evidence-use note, or FPF-facing term that uses pre-FPF sign vocabulary, explanation, publication, source cues, authority-looking cases, or reader reliance **MUST** name the claim-bearing value as `U.Episteme`, `U.EpistemePublication`, or a declared species of `U.Episteme`. When publication is current, it **MUST** separately name the publication form, `U.View` or MVPK face, carrier or rendering, source-finding cue, and either `governingPatternRef` or `authoritySourceRef` when interpretation or use depends on a named authority reference. It **MUST NOT** use generic semio wording, generic source wording, generic project-work wording, or container-placement wording as solution terms.
-
-**CC-C.2.1-6 - Semantic-triangle usage guard.**
-
-If a semantic triangle or parallelogram diagram appears in a pattern or tutorial, there must be an explicit note that:
-* it is a didactic projection of `U.EpistemeSlotRelation`, and
-* normative laws are stated in terms of C.2.1 slots, graph-valued fillers such as `ClaimGraph`, and morphisms, not in terms of triangle corners.
-
-**CC-C.2.1-7 - KD-CAL and ReferencePlane alignment.**
-Any pattern that evaluates or compares epistemes (KD-CAL, LOG-CAL, CHR, CG-Spec, etc.) **MUST** point out:
-* how `U.ClaimGraph` is interpreted in a ReferencePlane,
-* how `GroundingHolonSlot` figures into measurement or validation,
-
-**CC‑C.2.1‑8 - Context locality and Bridges.**
-Any `U.Episteme` species that is consumed by KD-CAL, LOG-CAL, or CHR-based patterns **SHALL** declare a `U.BoundedContextRef`; all F-G-R computations and C.2.1 slot interpretations are **context-local**. Cross-context use **MUST** proceed via an explicit Bridge with CL and Phi-policy (F.9 and B.3), with penalties applied to the R component only; F and the slot structure from C.2.1 remain unchanged.
-
-**CC‑C.2.1‑9 - Carriers and Work outside episteme content.**
-C.2.1 **inherits** the current A.7 strict distinction plus C.2.1 slot-relation, E.17 publication and carrier, A.10 evidence-use and provenance, B.3 assurance, A.2 and A.2.1 role-assignment, A.15 work, and A.3.4 transformation discipline: `U.PresentationCarrier` values, publication-side values, `U.Work` occurrences, and role assignments **MUST NOT** be treated as parts of `U.Episteme` or as values of any SlotKind in `U.EpistemeSlotRelation`. Episteme content stays in `U.ClaimGraph` and `U.ReferenceScheme`; evidence enters only through an A.10 evidence-provenance graph relation or B.3 assurance-evidence input that points to evidence-producing or evidence-interpreting `U.Work` occurrences, carrier and source-currentness records, and role assignments when those are current. Changing carriers or re-publishing work alone does **not** change the episteme determined by the filled `content`, `entityOfConcernRef`, and effective `referenceScheme` positions in its `U.BoundedContext`.
-
-**CC‑C.2.1‑10 - Reflexive entityOfConcern guard.**
-When an episteme uses C.2.1 to speak **about** another episteme (ReferencePlane = episteme), or about itself (self-describing or meta-specification cases), patterns **SHALL** ensure that the resulting JustificationGraph and evaluation chains are **acyclic** along justification paths. Reflexive `describe` or citation edges may exist as literature references, but they MUST NOT form minimal justification cycles for acceptance or KD-CAL assurance decisions; the trust calculus MUST always bottom out in separated evidence relation material, such as evidence-producing or evidence-interpreting `U.Work` plus an A.10 evidence-provenance graph relation or B.3 assurance-evidence input, rather than in purely self-referential claims.
+1. **Episteme identity.** Claim content, exact EntityOfConcern, and effective `U.ReferenceScheme` are recoverable, and the text states what changes each discriminator. A dependent episteme kind such as `U.MethodDescription` or `U.View` adds a governed membership judgment for the same individual, not another identity discriminator.
+2. **Direct constitution.** `EpistemeConstitutionRelation` has its three identified participants, obtaining condition, and participant-determined occurrence identity.
+3. **Declaration identity and Slot discipline.** Each of the three named relation declarations is first a C.2.1 episteme whose exact EntityOfConcern is its direct relation kind; the fixed `A.6.0` predicate gives that same individual `U.Signature` membership and `RelationSignature` is its relation-facing use. Its complete declaration carries the direct predicate, occurrence identity, applicability, exact A.6.5 SlotSpecs, and only actual dependencies and provided names. Signature-local SlotKinds never become participants, and a one-off assertion needs no signature or manifest.
+4. **Classification discipline.** `A.1` governs recognition under an admitted holon kind, `C.3.2` governs local-kind membership, and `E.24.UK` governs public U-kind admission. A separately current classification assertion is a C.2.1 episteme about the exact candidate and neither creates that candidate nor changes the kind's admission.
+5. **Empirical-grounding discipline.** `GroundingHolonSlot` occurs only inside `EpistemeEmpiricalGroundingRelationSignature`. Obtaining requires the exact current direct observation, intervention, measurement, or evaluation relation structure involving the grounding holon. One occurrence is reidentified from the episteme, grounding holon, and maximal continuous grounding interval; demonstrated loss followed by restoration yields another occurrence. Evidence availability or absence alone sets no grounding status and neither proves nor disproves a temporal gap: known obtaining or nonobtaining follows the direct structure, and only unknown status of that structure leaves a positive grounding assertion unresolved. Evidence use may support an assertion, but evidence storage, availability, or work-log loss neither makes nor unmakes grounding.
+6. **Edition discipline.** `EpistemeEditionRelation` has exactly the earlier and later epistemes as participants and is acyclic in that direction. The identified edition work, exact source-to-revision use, enacted-method semantics, actual change facts, and any separately governed entity-identity-inception claim make the obtaining judgment inspectable without entering occurrence identity. If a required inception claim lacks a current direct governor, return the exact missing-governor blocker.
+7. **View and neighboring-relation discipline.** C.2.1 owns episteme identity; `E.17.0` alone owns fixed E/P conformance and same-individual `U.View` membership; `DescriptionContext` resolves exactly one `viewpointRef`, selects no view, and remains separate from A.6.3 source-to-receiving construction. Several views remain a plurality. Recover an exact C.13 collection only when a receiving use depends on that plurality as a collection, and recover an A.22 structure only when the use additionally depends on their organization. Cross-view claims use their exact direct subject-relation governor or return an exact blocker naming the participants, required predicate and use, and missing governor. E.17 and E.24.PUB own publication, not view membership or correspondence.
+8. **Description boundary.** The EntityOfConcern and any Description episteme about it remain distinct, including self-description and episteme-about-episteme cases.
+9. **Specification use.** Specification force is admitted only when the `E.10.D2` conditions obtain: checkable claims, a preserved or updated DescriptionContext, and a named harness or validation relation. Naming and appearance do not grant it.
+10. **Agency and work-result boundary.** Only systems perform authoring, evaluation, revision, publication, viewing, query, redrawing, and use work. `A.6.1` declares typed argument and result positions; for each exact current operation application, each application binding relates one exact entity to its declared argument or result position, and every bound entity retains its independently governed kind, identity, and any domain-result algebra. Identify actual change facts, the affected or newly constituted entity, and any separately governed entity-identity-inception claim. If the receiving claim requires inception and no current direct governor supplies it, return the exact missing-governor blocker. No morphism, heading, representation, form, bare A.6.1 `result`, generic work result, or universal production relation is inferred.
+11. **Publication boundary.** Episteme, publication occurrence, publication form, view, and carrier keep separate identities. Plain `published episteme` names a contingent relation use, not another durable kind.
+12. **Representation boundary.** Tuple components, graph elements, schema fields, and notation tokens remain representation elements. An explicit correspondence may relate one to an independently recovered object without identifying the two or changing the represented direct relation's participants.
+13. **Transformation boundary.** A morphing, viewing, or retargeting declaration states which C.2.1 identity discriminators are preserved or changed and names the exact correspondence or retargeting relation used. Cross-context sense use additionally states the `F.9` Bridge direction, congruence, loss, and admitted use; the mathematical morphism performs no work.
+14. **Recursive assurance.** Self-reference and meta-description do not form a minimal justification cycle; assurance terminates in independently governed evidence, observation, or formal derivation.
+15. **Minimum current object.** Readable prose adds no object beyond the current use's dependency and states the direct relation to an already recoverable object.
 
 ### C.2.1:12 - Common Anti-Patterns and How to Avoid Them
 
-| Anti-pattern | What goes wrong | Repair |
+| Anti-pattern | Actual failure | Repair |
 | --- | --- | --- |
-| Carrier-as-episteme | A PDF, diagram, dashboard, repository, or database row is treated as the episteme itself. | Separate `U.Episteme`, `U.EpistemePublication`, publication face, carrier, and source relation. |
-| EntityOfConcern drift | The thing being described changes while the same episteme label is kept. | Name the `EntityOfConcernSlot` value and any `EntityOfConcernChangeMode` explicitly. |
-| View and viewpoint collapse | A view is treated as the stakeholder concern, or the viewpoint is treated as the view content. | Keep `ViewpointSlot` and `ViewSlot` distinct and use E.17 for multi-view publication. |
-| Triangle-as-ontology | Symbol-Concept-Object is used as the normative episteme model. | Treat the triangle only as a didactic projection of `U.EpistemeSlotRelation`. |
+| Filled-card ontology | A completed record is treated as what makes an episteme or relation exist. | Recover the C.2.1 identity first. Identify a filled card as an episteme only when its claim content, EntityOfConcern, and effective reference scheme are recoverable; identify its reusable layout, exact carrier, and publication occurrence separately under their direct patterns. |
+| Manifest-created declaration | A manifest row, list, citation, identifier, or edition marker is treated as creating declaration identity, `U.Signature` membership, or a dependency. | Identify the declaration episteme through the C.2.1 triple, judge same-individual `U.Signature` membership under A.6.0, and expose a manifest only for actual dependencies or provided names. A readable one-off assertion stops without either. |
+| Classification as admission relation | A candidate is said to acquire or lose holonhood when a governing FPF pattern or assertion changes. | Apply the `A.1` constructive criterion for an admitted holon kind; let `E.24.UK` govern only admission of that public kind; identify a separate C.2.1 assertion episteme when project review needs the classification claim. |
+| Dependent kind as second identity | `U.MethodDescription`, `U.View`, or another dependent episteme kind is given an extra identity discriminator merely because its direct pattern supplies a membership condition. | Keep the C.2.1 identity of the same episteme individual. Apply the direct pattern only to judge dependent-kind membership; if work changes a C.2.1 discriminator, identify the resulting episteme through that changed discriminator. |
+| Context identifier in episteme identity by habit | A surrounding project or model-use context identifier is treated as identifying every episteme used there. | Keep the shared C.2.1 identity context-independent; add claim scope, viewpoint, or bounded model-use structure only through the direct relation on which the current use depends. |
+| Grounding by evidence presence | Stored evidence is treated as an automatic empirical-grounding relation. | Recover the direct observation, intervention, measurement, or evaluation relations involving the exact grounding holon and test continuity of `EpistemeEmpiricalGroundingRelation`. Evidence availability or absence alone sets no grounding status; known obtaining or nonobtaining follows the direct structure, and only unknown status of that structure leaves a positive grounding assertion unresolved. |
+| Edition work as relation participant | Revision work is inserted into `EpistemeEditionRelation`, so two works appear to create two continuities between the same editions. | Keep earlier and later epistemes as the two participants; recover exact source-to-revision use, enacted-method semantics, actual change facts, any separately governed entity-identity-inception claim, evaluation, and evidence separately. If a required inception claim lacks a current direct governor, return the exact missing-governor blocker. |
+| Edition by filename | `v2` or a later timestamp is taken as epistemic succession. | Recover the two episteme identities, then test edition continuity through identified revision work, exact source-to-revision use, enacted-method semantics, and actual change facts. If that test also requires an entity-identity-inception claim, use a current direct governor only when one actually exists; otherwise return the exact missing-governor blocker. |
+| Published-episteme kind | Temporary participation in publication is treated as a second durable episteme kind. | Keep the episteme identity and state the exact publication occurrence; use Plain `published episteme` only for that contingent use. |
+| View as formatting, generation, or publication | A filtered table, diagram, query result, or published face is called a view because of appearance, construction history, or carrier, and a heading or edge is treated as cross-view correspondence. | Identify the receiving episteme under C.2.1 and apply `E.17.0` conformance for `U.View` membership. Add A.6.3 only for an actual source-to-receiving construction. Apply the exact direct subject-relation governor to correspondence; if none is recoverable, return an exact blocker naming the participants, required predicate and use, and missing governor. |
+| Mathematical identity leak | A tuple key or graph node identity becomes episteme identity. | Keep C.29 representation identity separate and use the C.2.1 identity triple. |
 
 ### C.2.1:13 - Consequences  *(informative)*
 
-**Benefits**
-* **Single, extensible episteme core.**
-  C.2.1 gives a small, stable set of positions (EntityOfConcern, GroundingHolon, ClaimGraph, Viewpoint, View, ReferenceScheme) and components (`U.EpistemeCard`, `U.EpistemeView`, `U.EpistemePublication`) on which all higher‑level patterns depend. This avoids the proliferation of “epistemic objects” and “facets” with overlapping semantics.
-**Transparent EntityOfConcern & grounding discipline.**
-  The pair (`EntityOfConcernSlot`, `GroundingHolonSlot`) is no longer hidden inside ad-hoc “SubjectRef” fields or semantic triangles: both are explicit, typed slots. This makes retargeting, viewing and correspondence laws (A.6.2–A.6.4, E.17.0) easier to state and check.
-* **Better fit for contemporary representation practice.**
-  By distinguishing ClaimGraph, RepresentationScheme, Tokens, Carriers and Operations (in C.2.1+), the pattern matches contemporary SoTA views of notation and formalism:
-  * formal languages as cognitive tools and de-semanticisation techniques (Novaes),
-  * operational iconicity and medium‑sensitive reasoning (Krämer, Malafouris),
-  * hybrid symbolic-neural reasoning methods (e.g. ReAct, tool-augmented LLMs, latent protocols).
-  FPF can model both symbol-heavy and latent-heavy reasoning methods without privileging either.
-* **Uniform substrate for multi‑view description and publication.**
-  MultiViewDescribing, viewpoint bundles (TEVB), and MVPK all land on the same episteme core. This avoids the current “views vs viewpoints vs faces” confusion and leaves “architecture” as a domain‑specific specialisation rather than a competing meta‑ontology.
-* **Tooling alignment.**
-  Slot discipline plus explicit episteme components map cleanly to implementation types (records, row‑typed schemas, effectful handlers). Tools can generate code, schemas or telemetry from episteme species without guessing what “subject”, “context” or “object” mean.
+**Benefits.** Episteme identity becomes stable across carrier and publication changes. Description, empirical grounding, viewing, edition, and representation questions can be repaired locally because each has a direct relation. Self-description and multi-view use need no second ontology. The same pattern works for physical engineering, medicine, learning, formal work, and computational modeling.
 
-**Trade-offs and costs**
-* **More explicit structure.**
-  Pattern users and authors must declare slots, ValueKinds and references explicitly, and keep DescriptionContext consistent. This is more upfront work than writing ad-hoc "Subject" or "Object" fields, but it pays off in substitution safety and cross-pattern reuse.
-* **Repair effort.**
-  Uses of “EpistemicObject”, “Facet”, “Subject”/“Object”, and raw `...Ref` fields need repair into C.2.1 slots + A.6.5 SlotSpecs when the claim is current. Current prose uses the selected C.2.1 slots and A.6.5 SlotSpecs directly; such wording is source material for repair, not a current alternate vocabulary.
-* **Exposure of representation biases.**
-  Being explicit about RepresentationSchemes and Operations may make disagreements visible about which representations are "primary" in a team or discipline. C.2.1 does not resolve these disagreements; it only makes them visible and therefore debatable.
+**Costs.** A load-bearing episteme use has a recoverable exact EntityOfConcern and effective reference scheme rather than relying on a title or file. Empirical-grounding and edition claims depend on their own obtaining and identity evidence. Existing record-shaped schemas sometimes need to distinguish their fields from actual relation participants.
+
+**Limits.** C.2.1 does not decide whether an epistemic claim is true, sufficient, current, or authoritative. It does not prescribe a file format, graph database, proof calculus, or publication layout. Those questions remain with evidence, evaluation, temporal, representation, and publication patterns.
 
 ### C.2.1:14 - Rationale
 
-The rationale for C.2.1 is that modern epistemic work is not adequately captured by one Object, Concept, and Symbol triangle. Engineering specifications, formal theories, simulation models, dashboards, proof states, LLM-assisted reasoning traces, and architecture descriptions all need a common way to say what the episteme is about, how its claims are grounded, what claim graph it carries, which viewpoint or view is current, and which reference scheme makes claims readable.
+Adding empirical grounding, viewpoint, scope, edition, and publication to every identity would instead collapse distinct relations and make ordinary use needlessly heavy.
+
+Separating the episteme from its constitution relation is equally important. The direct relation explains how the identity-bearing participants are organized. The episteme is the resulting holon with a whole-level capacity to carry interpretable claims. A relation declaration is first its own C.2.1 episteme; `A.6.0` independently recognizes that same individual as a `U.Signature`, and `RelationSignature` names its relation-facing use. Its claims declare the direct relation for typed reuse; an assertion claims that the relation obtains, and a publication occurrence makes a selected episteme edition available. None replaces another.
 
 ### C.2.1:14.1 - SoTA-Echoing
 
-C.2.1 echoes current work on formal languages as cognitive tools, operational iconicity of notations, material engagement, distributed representations, and tool-augmented reasoning by giving FPF a slot relation rather than one notation-bound representation model. The SoTA implication is practical: graph-valued claim and justification structures stay graph-valued, while the episteme core stays a typed n-ary slot relation that can be viewed through tuple or graph lenses only when C.29 makes that lens explicit.
+| Source and status | Adopted move | Rejected overread | Practical effect in C.2.1 |
+| --- | --- | --- | --- |
+| [Catarina Dutilh Novaes, *Formal Languages in Logic* (2012)](https://www.cambridge.org/core/books/formal-languages-in-logic/7D1DD805F7B3C70A0C32F2F6A66BE3DD), conceptual lineage | Treat a formal language as a cognitive tool whose notation and admissible operations affect reasoning. | A notation, calculus, or formal-language file does not thereby identify the episteme or its EntityOfConcern. | The semantic-triangle case keeps the effective reference scheme and C.29 representation operations explicit while episteme identity remains independently governed. |
+| [Sybille Krämer, "Why notational iconicity is a form of operational iconicity" (2017)](https://benjamins.com/catalog/ill.15.17kra), diagrammatic-reasoning lineage | Preserve the operational consequences of spatial and material notation. | Visual arrangement does not make diagram elements actual relation participants and does not prove that a view preserves source claims. | The wiring-diagram and view cases use an explicit representation correspondence or viewing relation rather than relying on visual similarity. |
+| [Lambros Malafouris, *People Are STRANGE* (2026)](https://mitpress.mit.edu/9780262553902/people-are-strange/), current continuation of Material Engagement Theory | Use changing boundaries under material engagement as pressure on grounding: when an engagement changes what can be inspected or inferred, FPF still identifies the exact holon in the current grounding occurrence. | A material setting, carrier, or tool is not automatically the episteme's EntityOfConcern or grounding holon. | The pump and learning cases name one exact grounding holon and the direct grounding relation structure instead of absorbing the surrounding setting into episteme identity. |
+| [Florio and Linnebo, *Introduction to Constructional Ontology* (2024)](https://www.utwente.nl/en/eemcs/fois2024/resources/papers/florio-linnebo-introduction-to-constructional-ontology.pdf) and [Borgo and Righetti, *Towards Applied Constructional Ontology* (2025)](https://doi.org/10.3233/FAIA250480), current constructional-ontology line | Adapt the separation among accepted inputs, the construction by which a whole emerges, and the resulting identity rule as a stress discipline for episteme constitution. | `EpistemeConstitutionRelation` is not imported as a constructor object or work occurrence, and C.2.1 does not import a universal staged ontology. | Sections 4.1 and 4.2 make the exact claim graph, EntityOfConcern, reference scheme, and their constitutive organization explicit in the constitution test; a tuple, card, or carrier cannot substitute for that construction or its identity rule. |
+| [Andrei Rodin, *Venus Homotopically* (2016)](https://philsci-archive.pitt.edu/12116/), constructive identity-grounding lineage | Adapt the use of observations, theoretical background, and a physically testable trajectory to make an identity judgment across different presentations inspectable. | Shared wording, one label, or one grounding referent does not by itself prove identical EntityOfConcern, episteme, or substitutable claim content. | The two-observation case in 9.6 separates the world-side identity assertion from both observation epistemes and keeps their C.2.1 identities independently testable. |
+| [Chris Partridge, *BORO Ontology* (2025)](https://borosolutions.net/boro-ontology), bounded four-dimensional extensional comparator | Use extensional identity as a stress test when a grounding relation can cease and later recur: a demonstrated temporal gap distinguishes the occurrences. | C.2.1 does not import unrestricted composition, collapse work with participating systems, or attribute constructional input identity to BORO. | Section 4.3 uses the maximal continuous grounding interval as the recurrence discriminator, while evidence availability or absence alone neither proves nor disproves a temporal gap. |
+| [W3C PROV-O Recommendation (2013)](https://www.w3.org/TR/prov-o/), stable provenance lineage | Keep an entity, the activity that uses or generates it, and revision or derivation relations distinct. | `wasRevisionOf` or generic derivation metadata alone does not establish FPF edition continuity, and the revision activity is not therefore a participant of the edition relation. | `EpistemeEditionRelation` keeps the earlier and later epistemes as its two participants; exact source-to-revision use, enacted-method semantics, change facts, and any needed separately governed entity-identity-inception claim make the obtaining judgment inspectable. A required inception claim without a current direct governor returns the exact missing-governor blocker. |
+| [W3C RDF 1.2 Concepts, Candidate Recommendation Snapshot of 7 April 2026](https://www.w3.org/TR/2026/CR-rdf12-concepts-20260407/), current representation standard | Distinguish an asserted triple, an unasserted triple term, and a reifier used for statements about a proposition. | An RDF triple, reifier, graph edge, or annotation is not the direct relation occurrence merely by representation. | The relation-object boundary keeps assertion episteme, relation-occurrence description episteme, graph representation, and direct relation obtaining separate. |
+| [Almeida, Guizzardi, Sales, and Fonseca, *gUFO: A Gentle Foundational Ontology for Semantic Web Knowledge Graphs* (March 2026)](https://arxiv.org/abs/2603.20948), current preprint | Use its typology and reification patterns for relational aspects as a current comparison case when deciding whether an explicit relation pattern is needed. | C.2.1 does not import a universal relator, situation, or graph-reifier ontology; each direct relation pattern governs its participants, obtaining condition, and occurrence-identity rule. | Constitution, grounding, and edition relations receive separate rules rather than one record-shaped reification scheme. |
+| [Anthropic, *A global workspace in language models* (6 July 2026)](https://www.anthropic.com/research/global-workspace), current primary research summary with linked paper | Recognize that learned internal representations can causally mediate reasoning while remaining distinct from produced text. | A latent activation, probe label, or readable internal trace is not automatically a claim-bearing episteme. | Case 9.8 keeps the observed system-side activation phenomenon, its probe representation, decoded rendering, and any claim-bearing probe episteme distinct; C.2.1 admission still requires recoverable claim content, an exact EntityOfConcern, and an effective reference scheme. |
+| [Cheng et al., *Teaching Thinking Models to Reason with Tools* (May 2026)](https://arxiv.org/abs/2605.06326), current preprint | Keep tool use, reasoning trajectories, evaluation, and their failure modes explicit because tool integration can change or degrade reasoning behavior. | Tool availability, a tool trace, or an evaluation harness does not by itself establish claim truth, grounding, or episteme identity. | Case 9.8 separates enacted inference and call work, the exact work-to-trace relation or A.6.1 binding current in that case, answer and evaluation epistemes, representation use, evidence, and empirical grounding; a changed tool regime reopens only the exact changed objects and relations. |
+
+These sources discipline different parts of the same working problem; they do not jointly define `U.Episteme`. Constructional ontology disciplines the separation among accepted constituents, constitutive organization, and resulting identity without turning the relation into work. Rodin disciplines evidence-backed identity across different observations, while the bounded BORO comparison stresses temporal recurrence without supplying FPF construction rules. Formal-language and material-engagement work explains why representation and grounding matter. RDF 1.2 remains a representation standard, while gUFO remains an ontology comparator for relational aspects; neither graph terms nor reifiers establish the direct relation occurrence. PROV-O motivates keeping the earlier episteme, revision work, exact source-to-revision use, actual change or local inception claim, and later episteme distinct while C.2.1 keeps only the two epistemes as participants of the edition relation. Current learned-representation and tool-integration research makes the same separations necessary for computational epistemes. In every case, C.2.1 retains the minimum-current-object rule: add only the object and direct relation needed by the receiving use, without collapsing either into the episteme or its carrier.
 
 ### C.2.1:15 - Relations  *(overview)*
 
-**Builds on**
-* A.1 `U.Holon` — for treating episteme as a holon with components.
-* A.6.0 `U.Signature` — for interpreting episteme kinds as n‑ary relations over slots.
-* A.6.5 `U.RelationSlotDiscipline` - for SlotKind, ValueKind, and RefKind discipline over episteme slots.
-* A.7, E.10.D2 - for the boundary between `EntityOfConcern` and Description episteme discipline, specification use and refinement gates, and the interpretation of `subjectRef` as DescriptionContext.
-* C.2 (KD‑CAL, LOG‑CAL) — for ClaimGraph semantics, ReferencePlanes, and Bridges.
-* E.8, E.10 — for pattern authoring discipline and lexical guards.
-
-* **Constrains**
-* A.6.2–A.6.4 — by fixing the minimal episteme component set those morphisms operate on and by requiring an explicit **EntityOfConcernChangeMode characteristic** (`entityOfConcernChangeMode ∈ {preserve, retarget}`) over `EntityOfConcernSlot`/`GroundingHolonSlot`.
-* E.17.0–E.17.2 — by specifying how `EntityOfConcern`, `Viewpoint`, `View` and ReferenceSchemes are represented at episteme level.
-* E.17 (MVPK) — by separating `U.View` (episteme) from `U.PresentationCarrier` (publication carrier), and by requiring that publication morphisms be `U.EpistemicViewing` species over C.2.1‑conformant views.
-* F.18 (LEX-BUNDLE) - by providing the episteme-specific name cards and guards for EntityOfConcern, GroundingHolon, Viewpoint, View, ReferenceScheme, and their SlotKinds.
-
-**Used by**
-* A.6.2 `U.EffectFreeEpistemicMorphing` - as the default episteme slot and value structure for episteme-to-episteme transforms.
-* A.6.3 `U.EpistemicViewing` — as the substrate for entityOfConcern‑preserving projections (views).
-* A.6.4 `U.EpistemicRetargeting` — as the substrate for EntityOfConcern-bundle retargeting transforms between epistemes (Ep→Ep with `entityOfConcernChangeMode = retarget`).
-* E.17.0 `U.MultiViewDescribing`, E.17.1, E.17.2 — to organise families of Description epistemes, including Description epistemes admitted for specification use, under Viewpoints and `EntityOfConcernClass` constraints.
-* E.17 (MVPK) — to publish episteme views through publication faces, publication forms, and carriers.
-* E.18 - to interpret StructuralReinterpretation and other engineering projections as episteme morphisms over a well-typed `U.EpistemeSlotRelation`.
-
-Together, these relations make `U.EpistemeSlotRelation` the **single normative core** for thinking about epistemes, their EntityOfConcern mapping, their representations, and their transformations across FPF.
+- **Builds on:** `A.1` for holon recognition, `A.6.REL` for direct relation occurrences, `A.6.0` for independent same-individual `U.Signature` membership and relation-facing `RelationSignature` use, `A.6.5` for declaration-local SlotSpecs and participant designations, `A.7` for entity-description distinction, and `C.29` for mathematical representation.
+- **Coordinates with:** `A.3.2` for `U.MethodDescription` membership without a second episteme identity; `C.3.2` for local-kind membership judgments; `E.24.UK` for ontology-level U-kind admission; `E.10.D2` for Description and specification-use discipline, including selection that creates neither conformance nor membership; `A.6.1` for typed operation positions and exact current application bindings; `A.6.2`, `A.6.3`, and `A.6.4` for morphing, source-to-receiving viewing construction, and retargeting; `A.6.3.RT` for representation transitions; `E.17.0` for fixed E/P conformance and `U.View` membership; `C.13` and `A.22` for separately current multi-view collections and structures; the exact direct subject-relation pattern, or an exact missing-relation blocker naming the participants, required predicate and use, and missing governor; `F.9` when transformations cross context-local senses; `E.13` when a visible representation-quality proxy is used as practical epistemic value; `A.2.6` for claim scope; `A.1.1` for bounded model-use structure; `A.10` and `B.3` for evidence and assurance; `A.14` only when a phase or separately selected edition collection is current; `C.2.P`, `A.3.1`, and `A.3.4` when exact source use, revision method, or actual change is current in edition-continuity evaluation; a current direct entity-identity-inception governor only when that local claim is required and such a governor actually exists, with the exact missing-governor blocker otherwise; `E.17` for multi-view publication forms and uses; `E.24.PUB` for publication occurrences, forms, and carriers; and `G.11` for currentness.
+- **Used by:** every pattern that identifies, describes, classifies through an explicit assertion, compares, grounds, transforms, views, publishes, or refers to a `U.Episteme`.
 
 ### C.2.1:End
 
@@ -32543,1102 +32959,3 @@ Coordinates with: `A.1`, `B.2`, `B.2.P`, `B.2.2`, `B.2.3`, `B.2.4`, `B.2.5`, `A.
 ### C.36.P:End
 
 # **Part D - Multi-scale Ethics and Conflict Optimization**
-
-## D.1 - Ethical Value Plurality and FPF Boundary
-
-> **Type:** D-family ethical boundary pattern
-> **Status:** Stable
-> **Pattern role:** This compact pattern gives the stable entry boundary and conformance checks for value-plurality use; fuller ethical theory remains outside FPF unless a direct pattern names it.
-
-**Use this when.** Use this pattern when an FPF claim, method, work plan, architecture move, policy, recommendation, model, or system change has ethical force, but the value theory or ethical concern behind the claim is not yet explicit.
-
-**Not this pattern when.** If the current question is already a conflict across declared levels or scopes, use `D.3`. If the current question is how to mediate that conflict or use it in a decision, use `D.4`. If the current question is bias, fairness, human or group impact audit, causal-fairness audit consumption, or ethical assurance, use `D.5`.
-
-**What goes wrong if missed.** FPF looks ethically neutral because it names evidence, method, architecture, or work but leaves the value frame and affected EntityOfConcern implicit.
-
-**What this buys.** The ethical concern becomes a bounded FPF claim with value frame, affected EntityOfConcern, evidence, admissible use, and direct next owner.
-
-### D.1:1 - Problem Frame
-
-FPF cannot prescribe one final ethics doctrine and still remain usable across engineering, research, organizational, public, and AI-enabled work. But FPF also cannot treat ethical neutrality as permission to omit ethics. Many working claims already carry values: who may be harmed, who benefits, which consequences count, which responsibilities are accepted, what evidence is enough, and which sacrifice is treated as admissible.
-
-`D.1` supplies the boundary rule. When the ethical claim matters, make the value concern explicit enough that neighboring FPF patterns can inspect it. Do not hide it inside words such as "responsible", "safe", "fair", "humane", "acceptable", or "aligned" without saying what is being valued, for whom, in which context, and with what evidence.
-
-### D.1:1.0 - Problem
-
-Ethically loaded FPF claims often arrive as ordinary technical, architectural, method, evidence, or publication claims. The failure is not that the text lacks moral vocabulary; the failure is that the affected EntityOfConcern, value concern, evidence, admissible use, and stronger-source return condition are not explicit enough to inspect.
-
-### D.1:1.1 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Value plurality vs. shared use | FPF must work across ethical traditions, but the current claim still needs an inspectable value frame. |
-| Technical adequacy vs. ethical force | Evidence, assurance, method, architecture, or work quality may be strong while the value concern remains implicit. |
-| Local usefulness vs. overreach | A bounded ethical claim can guide work, but it must not become universal moral permission. |
-| Plain language vs. hidden doctrine | Words such as responsible, safe, fair, aligned, or humane are useful only after the valued object and affected parties are named. |
-| Boundary entry vs. conflict handling | D.1 should surface the value frame, while D.3, D.4, and D.5 own conflict structure, mediation, bias audit, and assurance use. |
-
-### D.1:2 - Solution
-
-Recover an `EthicalValueFrame@Context` before treating the claim as ethically admissible:
-
-```text
-EthicalValueFrame@Context:
-  ethicalClaimRef
-  affectedEntityOfConcernRef
-  boundedContextRef
-  valueConcernRefs
-  ethicalTheoryOrTraditionRefs?
-  affectedHolonRefs?
-  affectedEpistemeRefs?
-  roleAssignmentRefs?
-  methodOrWorkRefs?
-  transformationRefs?
-  evidenceRefs
-  uncertaintyOrCurrentnessCondition
-  admissibleUse
-  inadmissibleOverread
-  strongerSourceReturnCondition
-```
-
-This frame does not settle the ethical question. It makes the value frame inspectable. A utilitarian consequence claim, a deontic constraint, a virtue or character claim, a care-ethics concern, a rights claim, a professional-duty claim, and a project-specific value trade-off may all be admissible starting points, but they must not be presented as the same claim merely because the same word "ethical" appears.
-
-### D.1:3 - Boundaries
-
-`D.1` keeps value plurality and FPF boundary discipline. It does not replace:
-
-| Question | Direct owner |
-| --- | --- |
-| Which levels, scopes, holons, interests, responsibilities, methods, work, and consequences are in ethical tension? | `D.3` |
-| How should a mapped ethical conflict be mediated, refused, escalated, or used in a decision? | `D.4` |
-| Is a model, metric, policy, publication, or release-bearing claim biased, unfair, or ethically unsafe? | `D.5` |
-| Does the causal fairness claim have the required C.28 evidence value and verdict? | `C.28`, with `D.5` for ethical-audit use |
-| Is there evidence for the claim? | `A.10` |
-| Is an assurance claim being made? | `B.3` |
-| Is an architecture residual current? | `C.30.ILC` |
-
-### D.1:4 - Archetypal Grounding (Worked Slice)
-
-A team says that a triage model is "ethical because it maximizes total benefit." `D.1` does not accept the phrase as a finished ethical judgment. It records the affected patients and institutions, the value concern called "total benefit", the consequence theory being used, the excluded concerns such as equal access or avoidable harm to a subgroup, the evidence set, and the admissible use of the claim. If equal access or subgroup harm becomes live, `D.3` maps the conflict and `D.4` governs mediation or decision use.
-
-### D.1:4.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Ethical label as permission | A word such as responsible or fair is treated as enough to act. | Name the value concern, affected EntityOfConcern, evidence, and admissible use. |
-| One doctrine by default | The local text silently assumes one ethical theory while claiming neutrality. | Name the ethical theory, tradition, or project value frame when it changes the claim. |
-| Technical proof substitutes for value frame | Evidence, model quality, or architecture adequacy is read as ethical adequacy. | Keep evidence and assurance owners separate from the ethical value frame. |
-| Ethics becomes universal owner | Every difficult concern is assigned to D.1. | Use D.1 only for value-frame boundary; return conflict, mediation, bias, causal, assurance, and architecture claims to their owners. |
-
-### D.1:5 - Conformance Checklist
-
-| ID | Requirement | Purpose |
-| --- | --- | --- |
-| CC-D1-1 | The value concern, affected EntityOfConcern, bounded context, and evidence refs are named. | Keeps "ethical" from becoming a label without content. |
-| CC-D1-2 | The text states admissible use and non-admissible overread for the ethical claim. | Prevents value wording from authorizing action by itself. |
-| CC-D1-3 | Ethical theory, tradition, or project-specific value frame is named when it changes the claim. | Keeps plural value frames inspectable. |
-| CC-D1-4 | Multilevel conflict, mediation, bias or fairness audit, causal use, evidence, assurance, and architecture residuals use their direct owners. | Keeps D.1 as boundary pattern rather than universal ethics owner. |
-
-### D.1:7 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | What goes wrong | Repair |
-| --- | --- | --- |
-| Neutrality theater | The work claims to avoid ethics by naming only technical evidence or method quality. | Recover the value concern or explicitly state that no ethical claim is being made. |
-| Slogan ethics | Responsible, safe, humane, aligned, fair, or beneficial is used without affected parties and admissible use. | Fill `EthicalValueFrame@Context`. |
-| Doctrine smuggling | A utilitarian, rights, duty, care, virtue, professional, or project-specific value frame is treated as obvious. | Name the value frame and the stronger owner for any conflict. |
-| Universal D.1 | D.1 is used to decide mediation, bias, causal fairness, or assurance. | Return to D.3, D.4, D.5, C.28, A.10, B.3, or the direct owner. |
-
-### D.1:6 - Consequences
-
-This pattern makes ethical claims portable across FPF without pretending that FPF has one final ethical theory. It also prevents a common failure: a technical pattern silently inherits one ethical theory because a word such as "safe", "fair", "beneficial", or "responsible" sounded ordinary.
-
-The cost is extra explicitness. The gain is that ethics becomes reviewable in the same FPF body as systems, methods, work, evidence, assurance, architecture, and publication use.
-
-### D.1:8 - Rationale
-
-`D.1` is an entry boundary for ethical value plurality. It is intentionally modest: it does not settle ethical theory and does not decide an interlevel conflict. It makes the live value frame visible enough for neighboring FPF patterns to carry the next claim without hiding ethics inside technical adequacy, evidence, architecture, method, work, or publication wording.
-
-This keeps FPF usable in engineering, research, organizational, public, and AI-enabled contexts where ethical traditions differ but value-bearing claims still need explicit affected entities, evidence, admissible use, and stronger-source return conditions.
-
-### D.1:9 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Value pluralism and applied ethics practice | FPF should not pretend that one ethical doctrine resolves every project claim; it should name the current value frame, affected EntityOfConcern, excluded concerns, evidence, and admissible use before an ethical claim guides work. |
-| Engineering ethics and assurance practice | A method, work plan, architecture move, recommendation, system, or holon can be technically adequate while shifting harm, benefit, responsibility, or coercion elsewhere; technical verification does not settle the ethical claim. |
-| Human-impact, AI governance, and dual-use practice | Fairness, responsibility, alignment, safety, and misuse words need affected parties, context, consequence horizon, evidence, and admissible use before they guide action. |
-| FPF direct-owner discipline | Ethical entry does not absorb evidence, causality, assurance, architecture, or bias-audit owners. |
-
-### D.1:10 - Relations
-
-- Builds on `A.1` and `A.7` for EntityOfConcern and description distinction.
-- Coordinates with `A.10` for evidence, source currentness, and source-use relations.
-- Coordinates with `B.3` when an assurance claim is current.
-- Coordinates with `D.2`, `D.3`, `D.4`, and `D.5` for multilevel entry, conflict structure, mediation, bias audit, causal-fairness audit consumption, and ethical assurance.
-- Coordinates with `C.28` for causal fairness use and with `C.30.ILC` when an architecture residual is current.
-
-### D.1:End
-
-## D.2 - Multilevel Ethics For Holon Work
-
-> **Type:** D-family ethical entry pattern
-> **Status:** Stable
-> **Pattern role:** This compact pattern recognizes multilevel ethical concern and selects the next owner; it does not settle conflict or supply a fixed level ladder.
-
-**Use this when.** Use this pattern when a system, holon, method, work plan, work occurrence, policy, recommendation, architecture move, or publication use may improve one declared level or scope while harming another, or when responsibility is assigned across levels.
-
-**Not this pattern when.** If only the value frame is missing, use `D.1`. If the conflict structure is already current, use `D.3`. If the conflict has to be mediated or used in a decision, use `D.4`. If the current concern is bias, fairness, impact audit, causal-fairness audit consumption, or ethical assurance, use `D.5`.
-
-**What goes wrong if missed.** A local improvement is treated as ethically sufficient while another declared level, scope, or affected holon carries the harm.
-
-**What this buys.** The practitioner names the affected levels or scopes, the current value frame, and the next owner before mediation, assurance, bias audit, or architecture return.
-
-### D.2:1 - Problem Frame
-
-Ethical trouble in system-holon work often appears because the current action is good for one level and bad for another. A person may benefit while a team is damaged. A project may benefit while a community pays the cost. A standard may improve coordination while excluding a minority case. A model may improve one metric while moving harm to a less visible scope.
-
-Do not force these cases into a fixed ladder such as local, group, ecosystem, planetary. The relevant levels and scopes must be declared from the situation: person, team, organization, community, society, polity, economy, built asset, project, environment, episteme family, standard, publication, AI-enabled system, or another admitted holon or context.
-
-### D.2:1.0 - Problem
-
-A change can be beneficial at one declared level or scope while imposing harm, exclusion, risk, or responsibility elsewhere. The failure is to treat the local gain as ethically sufficient before the affected levels, scopes, holons, epistemes, role assignments, work, evidence, and next owner are named.
-
-### D.2:1.1 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Local benefit vs. cross-level harm | A change can improve one declared scope while imposing cost, risk, or exclusion elsewhere. |
-| Situation-defined levels vs. fixed ladders | Multilevel ethics needs declared levels and scopes from the case, not a universal moral hierarchy. |
-| Holons in life vs. descriptions | The affected object may be a system, episteme, publication use, policy, or architecture move; the entry must not collapse these into one document concern. |
-| Early recognition vs. premature mediation | The entry should make the conflict possible to see, while D.3 and D.4 own structure and mediation. |
-| Ethical concern vs. architecture residual | Cross-scope residuals can be architectural, ethical, or both; the next owner must be named by value. |
-
-### D.2:2 - Solution
-
-Open a `MultilevelEthicsEntry@Context`:
-
-```text
-MultilevelEthicsEntry@Context:
-  ethicalConcernRef
-  affectedEntityOfConcernRef
-  boundedContextRef
-  declaredLevelOrScopeRefs
-  affectedHolonRefs
-  affectedEpistemeRefs?
-  roleAssignmentRefs
-  interestOrConcernRefs
-  capabilityOrFunctioningConcernRefs?
-  methodOrWorkRefs?
-  transformationRefs?
-  expectedConsequenceRefs
-  evidenceRefs
-  uncertaintyOrCurrentnessCondition
-  nextOwnerRef
-```
-
-The entry record has one job: recognize that multilevel ethics is live and choose the next owner. It does not itself resolve the conflict.
-
-For this pattern, holon work includes material systems and epistemes when they are the affected EntityOfConcern. An architectural description, standard, model card, policy publication, or research program may be the affected episteme; the pattern still asks which levels, scopes, affected holons, interests, responsibilities, and consequences are live.
-
-### D.2:3 - Recognition Matrix
-
-| Working situation | What to recover | Next owner |
-| --- | --- | --- |
-| A method helps one team meet its target while increasing risk for another team or for users. | Affected holons, role assignments, method, work occurrence, expected consequences, evidence. | `D.3` conflict structure |
-| A public policy helps a city-level goal while making one neighborhood or profession worse off. | Declared scopes, value concerns, responsibility claims, evidence, uncertainty. | `D.3` conflict structure |
-| A technical standard improves interoperability but excludes a minority device, language, publication form, or data source. | Standard or episteme whole, affected systems, publication and use relations, consequence horizon. | `D.3`, with `C.2.1` and `E.17` as needed |
-| A model or metric looks fair at one aggregate level but hides subgroup harm. | Metric, affected groups, causal claim, evidence set, audit condition. | `D.5`, with `C.28` when causal fairness is claimed |
-| An architecture move reduces residual at one holon level while creating cross-scope residual elsewhere. | Architecture structure, selected scopes, residual, affected value concerns. | `C.30.ILC`; use `D.3` if ethical conflict is live |
-
-### D.2:4 - Boundaries
-
-`D.2` is an entry pattern, not a general ethics doctrine and not a conflict solver. It keeps ethics from being omitted when levels and scopes of holons matter. It also keeps multilevel ethics from replacing architecture, assurance, causal, evidence, or publication patterns before the ethical EntityOfConcern is clear.
-
-`D.2` does not create `U.Level`, `U.Frustration`, `U.Emergence`, or a fixed moral scale. Levels and scopes are declared relations in the current situation. If a mathematical lens is needed for scale, frustration, optimization, Pareto comparison, or renormalization-like reasoning, use `C.29` and the owning pattern for the current object.
-
-### D.2:5 - Archetypal Grounding (Worked Slice)
-
-A product team wants to reduce service cost by making a medical device harder to service outside authorized centers. The move may improve manufacturer quality control and reduce liability risk, but harm patients in regions where authorized service is unavailable. `D.2` opens the entry: manufacturer, patients, service organizations, device fleet, and regulatory context are declared as affected scopes; value concerns include safety, access, responsibility, and maintainability; the work plan and expected consequences are named. `D.3` then maps the conflict; `D.4` governs mediation or decision use.
-
-### D.2:5.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Local optimum becomes ethical sufficiency | A benefit at one level is treated as enough while another scope carries harm. | Declare affected levels, scopes, holons, value concerns, and next owner. |
-| Fixed ladder bias | A generic hierarchy such as individual, team, and society replaces the levels present in the case. | Derive levels and scopes from the bounded context and affected EntityOfConcern. |
-| System-only bias | Multilevel ethics is limited to material systems and misses epistemes, standards, publications, or descriptions. | Treat affected systems and epistemes as admitted holons when the case makes them current. |
-| Architecture absorbs ethics | A cross-scope residual is treated only as architecture because it has a structural shape. | Use `C.30.ILC` for architecture residual and `D.3` and `D.4` when value, harm, responsibility, or admissible sacrifice is live. |
-
-### D.2:6 - Conformance Checklist
-
-| ID | Requirement | Purpose |
-| --- | --- | --- |
-| CC-D2-1 | Declared levels or scopes come from the situation and are named by value. | Prevents fixed moral ladders and false `U.Level`. |
-| CC-D2-2 | Affected holons, epistemes, role assignments, method refs, work refs, consequences, and evidence are named when current. | Keeps the entry usable for the next owner. |
-| CC-D2-3 | `nextOwnerRef` is `D.3`, `D.5`, `C.30.ILC`, or another direct owner named by value. | Keeps D.2 as entry recognition, not conflict solver. |
-| CC-D2-4 | Mathematical scale, threshold, optimization, or Pareto reasoning uses `C.29` or the direct measurement owner. | Prevents math wording from becoming ethics ontology. |
-
-### D.2:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | What goes wrong | Repair |
-| --- | --- | --- |
-| One-level ethics | The case is treated as good because one declared level improves. | Name every affected level or scope that changes the ethical claim. |
-| Ladder import | A fixed level list is imported before the case is understood. | Recover the situation-defined scopes first. |
-| Entry as solution | D.2 is used to decide the conflict. | Use D.2 only to open the entry and select D.3, D.4, D.5, C.30.ILC, or another direct owner. |
-| Hidden episteme harm | A standard, model, policy, or architecture description is treated only as a document, not as an affected episteme with use consequences. | Separate the episteme, its publication relation, use relation, and affected systems or people. |
-
-### D.2:7 - Consequences
-
-This pattern makes ethical level structure visible early. It prevents two opposite errors: treating ethics as a late bias audit only, and treating every interlevel residual as architecture without first asking whether value, harm, responsibility, or admissible sacrifice is being claimed.
-
-### D.2:9 - Rationale
-
-`D.2` makes multilevel ethical concern visible before the work jumps to conflict mediation, bias audit, assurance, or architecture. This matters because many cases look technically local but ethically cross-level: a method, standard, architecture move, publication, or work plan can improve one scope while pushing cost, risk, exclusion, or responsibility elsewhere.
-
-The pattern deliberately avoids a fixed ladder. It asks for declared levels and scopes from the situation, then selects the next owner. That keeps FPF holon-aware without making every cross-scope case an architecture residual or every ethical case a bias audit.
-
-### D.2:10 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Multilevel selection and holonic systems thinking | Ethical effects often appear across nested, overlapping, or situation-defined scopes; the case must declare the levels or scopes it uses instead of importing a fixed moral ladder. |
-| Applied ethics and responsibility practice | Responsibility and harm cannot be assigned only at the most local level when a method, work plan, policy, standard, architecture move, or recommendation moves consequences across scopes. |
-| FPF holon and episteme ontology | Affected systems, collections, work occurrences, bounded contexts, disciplines, and epistemes may be current, but descriptions and publication use must not be collapsed into the affected in-life object. |
-| Architecture residual discipline | A cross-scope residual can require architecture repair, ethical conflict structure, or both; D.2 names the next owner instead of treating architecture shape as ethical proof or ethics as architecture by default. |
-
-### D.2:11 - Relations
-
-- Builds on `D.1` for ethical value frame boundary.
-- Builds on `A.1`, `B.1`, and `C.13` for holon, level, scope, and part-whole grounding.
-- Coordinates with `D.3` for interlevel ethical conflict structure and with `D.4` for mediation or decision use.
-- Coordinates with `D.5` for bias, fairness, impact audit, causal-fairness audit consumption, and ethical assurance.
-- Coordinates with `A.15`, `A.3.4`, `C.16`, `C.29`, and `C.30.ILC` when method, work, transformation, measurement, mathematical lens, or architecture residual claims are current.
-
-### D.2:End
-
-## D.3 - Interlevel Ethical Conflict Structure
-
-> **Type:** D-family ethical conflict-structure pattern
-> **Status:** Stable
-> **Pattern role:** This compact pattern owns the structure of an interlevel ethical conflict; mediation, decision use, assurance, causal use, and architecture residuals remain with their direct owners.
-
-**Use this when.** Use this pattern when an ethical conflict spans declared levels or scopes and the conflict structure itself must be made inspectable before mediation, decision, assurance, or architecture return.
-
-**Not this pattern when.** If only the ethical value frame is missing, use `D.1`. If only entry recognition is needed, use `D.2`. If the conflict structure is already mapped and the current question is mediation or decision use, use `D.4`. If the question is bias, fairness, impact audit, causal-fairness audit consumption, or ethical assurance, use `D.5`.
-
-**What goes wrong if missed.** The team debates values or decisions before it has named the levels or scopes, carriers, harms, benefits, evidence, and residuals that actually conflict.
-
-**What this buys.** The conflict becomes an inspectable structure that `D.4`, `D.5`, assurance, causal, and architecture owners can use without guessing.
-
-### D.3:1 - Problem Frame
-
-Interlevel ethical conflict is not just disagreement between people. It may involve a system part and a whole, a person and an organization, one organization and a community, a project and a society, a collection and its members, an episteme family and the decisions it shapes, or an architecture move and the holon levels it affects.
-
-The central move is structural: name what is in conflict, at which declared levels or scopes, through which methods, work, transformations, role assignments, evidence, value concerns, and consequence horizons. Do not turn the conflict into publication wording, assurance claim, or architecture residual unless that is the current governed object.
-
-### D.3:1.0 - Problem
-
-Interlevel ethical conflict is often debated before it is structured. The failure is to argue over values or decisions while the affected objects, declared levels or scopes, value frames, methods, work, transformations, evidence, uncertainty, thresholds, and consequence horizons remain implicit.
-
-### D.3:1.1 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Conflict structure vs. decision use | The conflict must be inspectable before D.4 can mediate, refuse, or authorize a bounded decision. |
-| Level and scope plurality vs. fixed ladder | The case may involve persons, teams, organizations, communities, systems, epistemes, or environments without one universal hierarchy. |
-| Ethical object vs. representation | Tables, graphs, narratives, and formal predicates can describe a conflict, but are not the conflict itself. |
-| Responsibility threshold vs. agency label | Agency or responsibility may depend on thresholds and evidence; a label such as organization, public, market, or AI is not enough. |
-| Architecture residual vs. ethical conflict | A cross-scope structure can be architectural, ethical, or both; owner assignment must follow the current claim. |
-
-### D.3:2 - Solution
-
-Record an `InterlevelEthicalConflictStructure@Context`:
-
-```text
-InterlevelEthicalConflictStructure@Context:
-  conflictConcernRef
-  boundedContextRef
-  affectedEntityOfConcernRefs
-  declaredLevelOrScopeRefs
-  affectedHolonRefs
-  affectedEpistemeRefs?
-  collectionOrMembershipRelationRefs?
-  partWholeRelationRefs?
-  roleAssignmentRefs
-  interestOrConcernRefs
-  valueFrameRefs
-  agencyOrResponsibilityThresholdRefs?
-  methodOrWorkRefs?
-  transformationRefs?
-  evidenceRefs
-  uncertaintyRefs
-  consequenceHorizonRefs
-  conflictRelationRefs
-  nonConflictOverread
-  nextUseOwnerRef
-```
-
-This structure may be represented by a table, graph, formal predicate, narrative case, or another selected description form. The representation is not the conflict itself. If a mathematical lens does work in the claim, cite `C.29`; if the publication form changes admissible use, cite `E.17`.
-
-### D.3:3 - Collection and Episteme Cases
-
-A collection is ethically current only when whole-level characteristics, membership relations, environment-mediated effects, or aggregate consequences matter. Use `A.14` for part-whole and membership relation vocabulary and `C.13` for constructive grounding. Do not assign responsibility to a collection merely because it has a plural name.
-
-An episteme is ethically current when its claim-bearing structure, source-use relation, publication relation, described EntityOfConcern, or model family changes affected systems or decisions. Use `C.2.1` for the episteme slot relation and `E.17` for publication claims. Do not turn every ethical conflict over a theory, standard, architecture description, or policy description into a problem about wording.
-
-### D.3:4 - Boundaries
-
-| Do this in D.3 | Do not do this in D.3 |
-| --- | --- |
-| State the declared levels or scopes that make the conflict interlevel. | Invent `U.Level`, `U.Frustration`, or `U.Emergence`. |
-| Name affected holons, systems, epistemes, collections, roles, methods, work, transformations, evidence, and value concerns. | Treat a source label such as "society", "organization", "AI", "ecosystem", or "standard" as enough. |
-| Keep conflict structure separate from mediation and decision use. | Choose the compromise, refusal, or override. |
-| Return architecture residuals to `C.30.ILC` when architecture structure is current. | Make ethics the owner of every cross-scope architecture problem. |
-| Return bias, fairness, impact audit, and ethical assurance to `D.5`. | Rebuild D.5 inside the conflict map. |
-
-### D.3:5 - Archetypal Grounding (Worked Slices)
-
-**Engineering advice.** A consultant improves the effectiveness of a client's harmful project. The conflict is not only "bad client, good method." `D.3` maps the client organization, affected public, consultant role assignment, method, work occurrence, responsibility threshold, evidence uncertainty, and consequence horizon. `D.4` governs refusal, conditions, escalation, or decision use.
-
-**Collection case.** A fleet-level optimization reduces maintenance cost but increases failure risk for a small subfleet used in harsher conditions. `D.3` names the fleet, subfleet, membership relation, affected users, evidence set, value concerns, and consequence horizon. It does not infer that the fleet is a responsible super-holon unless an admitted pattern allows that claim.
-
-**Episteme case.** A published architecture description normalizes an interface assumption that excludes an alternative implementation option. The ethical conflict may involve the episteme whole, its source-use relation, affected suppliers, and system consequences. `D.3` maps the conflict; `C.30.AD` governs architecture-description adequacy and `E.17` governs publication-use claims.
-
-### D.3:5.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Debate replaces structure | The team argues about values before naming the affected objects and relations. | Fill the conflict structure before mediation. |
-| Representation becomes conflict | A diagram, matrix, or narrative is treated as the ethical conflict itself. | Separate the conflict EntityOfConcern from the selected description form. |
-| Collective name becomes responsibility | Organization, society, public, market, or AI is treated as responsible by label. | Name the holon, collection, role assignment, agency or responsibility threshold, and evidence. |
-| Architecture absorbs ethics | Cross-scope residual wording hides value, harm, responsibility, or admissible sacrifice. | Use architecture owners for selected structures and `D.3` and `D.4` when ethical conflict is current. |
-
-### D.3:6 - Conformance Checklist
-
-| ID | Requirement | Purpose |
-| --- | --- | --- |
-| CC-D3-1 | The conflict names affected EntityOfConcern refs, declared levels or scopes, value frames, evidence, and consequence horizons. | Makes the conflict structure inspectable. |
-| CC-D3-2 | Collection, episteme, part-whole, membership, method, work, and transformation refs use their direct owners when those claims are current. | Prevents ethical conflict from absorbing ontology. |
-| CC-D3-3 | `nextUseOwnerRef` distinguishes mediation, decision use, assurance, causal use, architecture residual, and bias, fairness, or impact audit. | Keeps D.3 separate from neighboring use patterns. |
-| CC-D3-4 | The representation of the conflict is not treated as the conflict itself. | Prevents semio-bias in ethical conflict maps. |
-
-### D.3:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | What goes wrong | Repair |
-| --- | --- | --- |
-| Political label as structure | The conflict is named by a slogan such as society versus innovation. | Name the affected EntityOfConcern refs, levels or scopes, value frames, and evidence. |
-| Actor by plural noun | A collection is made responsible because its name is plural or institutional. | Recover membership, part-whole, role assignment, and agency or responsibility threshold relations. |
-| Description-only conflict | The case becomes a problem about wording of a report, model, or standard. | Keep episteme and publication-use claims with their owners while mapping the affected systems or decisions. |
-| Mediation inside map | The conflict map chooses the compromise. | Stop at structure; D.4 owns mediation or decision use. |
-
-### D.3:7 - Consequences
-
-This pattern gives `D.4`, `D.5`, `B.3`, `C.28`, `A.10`, `C.11`, and `C.30.ILC` a conflict structure they can use without stealing the ethical object. The cost is that conflicts cannot be waved through by a slogan. The gain is that mediation and decision work start from a typed structure rather than from a politically convenient label.
-
-### D.3:9 - Rationale
-
-`D.3` provides the typed structure that ethical mediation, assurance, causal, architecture, and bias-audit patterns can use. Without it, D.4 receives slogans rather than inspectable conflicts; D.5 receives fairness claims without affected scopes; architecture receives value conflict disguised as residual; and evidence patterns receive claims with no declared consequence horizon.
-
-The pattern therefore focuses on the conflict EntityOfConcern: affected objects, declared levels or scopes, value frames, role assignments, methods, work, transformations, evidence, uncertainty, thresholds, and consequence horizons. It keeps descriptions of the conflict useful but secondary.
-
-### D.3:10 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Multilevel ethics and systems thinking | Ethical conflict often crosses declared levels or scopes through methods, work, transformations, role assignments, evidence, value concerns, and consequence horizons; the case must show which relations actually conflict. |
-| Collective agency and responsibility debates | Collection, organization, public, or community names require grounding in holon, membership, role assignment, agency or responsibility threshold, and evidence before responsibility is assigned. |
-| Constructive and episteme ontology | Conflicts can involve systems, collections, work occurrences, bounded contexts, disciplines, and epistemes; description and publication forms remain owners of description and publication claims, not substitutes for affected EntityOfConcern. |
-| FPF architecture-residual discipline | Cross-scope architecture residual and interlevel ethical conflict can coincide; D.3 maps ethical conflict while `C.30.ILC` owns architecture residual triage. |
-
-### D.3:11 - Relations
-
-- Builds on `D.1` and `D.2` for value-frame boundary and multilevel entry.
-- Builds on `A.1`, `A.14`, `B.1`, and `C.13` for holons, part-whole, membership, collections, and constructive grounding.
-- Coordinates with `D.4` for mediation and decision use.
-- Coordinates with `D.5` for bias, fairness, impact audit, causal-fairness audit consumption, and ethical assurance.
-- Coordinates with `C.2.1` and `E.17` for episteme and publication-use claims.
-- Coordinates with `C.30.ILC`, `A.10`, `B.3`, `C.28`, and `C.29` when architecture residual, evidence, assurance, causal, or mathematical-lens claims are current.
-
-### D.3:End
-
-## D.4 - Ethical Mediation and Decision Use
-
-> **Type:** D-family ethical mediation and decision-use pattern
-> **Status:** Stable
-> **Pattern role:** This compact pattern owns the ethical use of an already mapped conflict: mediation, refusal, evidence demand, bounded decision use, and residual handling.
-
-**Use this when.** Use this pattern when an interlevel ethical conflict structure from `D.3` must be used for mediation, refusal, decision, evidence demand, causal return, assurance return, or architecture return.
-
-**Not this pattern when.** If the conflict structure is not yet mapped, use `D.3`. If the issue is only value plurality, use `D.1`. If the issue is only entry recognition, use `D.2`. If the current work is bias, fairness, impact audit, causal-fairness audit consumption, or ethical assurance, use `D.5`.
-
-**What goes wrong if missed.** A mapped ethical conflict is treated as solved, blocked, or decision-ready without naming mediation, refusal, evidence demand, return, accepted residual, or bounded decision use.
-
-**What this buys.** The practitioner can use a `D.3` conflict structure for one admissible mediation action or bounded decision use while keeping evidence, causality, assurance, architecture, and bias-audit claims with their owners.
-
-### D.4:1 - Problem Frame
-
-Once an interlevel ethical conflict is visible, the next risk is premature closure. A team may declare a compromise before evidence is sufficient, turn an assurance input into ethical permission, use one level's value as a trump card, or hide a refusal behind technical language.
-
-`D.4` governs the use of the mapped conflict. It does not make FPF a final moral authority. It asks what move is admissible from the current conflict structure and what must return to evidence, causality, assurance, architecture, decision, or value framing before action is justified.
-
-### D.4:1.0 - Problem
-
-A mapped ethical conflict can still be used badly. The failure is to treat a conflict structure, assurance input, formula, or architecture return as if it already selected a compromise, refusal, evidence demand, accepted residual, or bounded decision use.
-
-### D.4:1.1 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Mapped conflict vs. premature closure | A conflict structure makes action discussable, but does not by itself decide compromise, refusal, or permission. |
-| Evidence demand vs. decision pressure | Work may need a decision, while the ethical claim still needs stronger evidence, causal analysis, assurance, or architecture return. |
-| Mediation vs. universal authority | D.4 can govern one bounded use of a mapped conflict, but cannot become a general decision theory. |
-| Residual acceptance vs. hidden harm | Proceeding under residual harm can be admissible only when residuals, responsibility-bearing role assignments, and return conditions are explicit. |
-| Mathematical allocation vs. ethical decision | A formula or optimization can inform a decision, but it is not the ethical decision by itself. |
-
-### D.4:2 - Solution
-
-Record an `EthicalMediationDecisionUse@Context`:
-
-```text
-EthicalMediationDecisionUse@Context:
-  conflictStructureRef
-  boundedContextRef
-  valueFrameRefs
-  decisionQuestionRef?
-  optionRefs
-  proposedMediationRefs?
-  refusalOrStopCondition?
-  evidenceDemandRefs?
-  causalReturnRefs?
-  assuranceReturnRefs?
-  architectureResidualReturnRefs?
-  acceptedResidualRefs?
-  decisionRecordRefs?
-  admissibleUse
-  inadmissibleOverread
-  strongerSourceReturnCondition
-```
-
-The record names the current ethical use of the conflict: mediate, refuse, continue under explicit residual, demand evidence, ask a causal question, ask for assurance, return to architecture, or make a bounded decision.
-
-### D.4:3 - Mediation Moves
-
-| Current situation | Admissible D.4 move | Neighboring owner |
-| --- | --- | --- |
-| A compromise is proposed but the conflict structure has missing levels, scopes, or affected holons. | Return to `D.3` and complete the conflict structure. | `D.3` |
-| Harm claim depends on causal effect. | Demand the C.28 causal-use evidence value and verdict before ethical decision use. | `C.28` |
-| Evidence is too weak or outdated. | Demand stronger or fresher evidence before mediation. | `A.10`, `C.27` |
-| Assurance claim is being used as ethical permission. | Keep assurance as an assurance or evidence relation, not moral authorization. | `B.3`, `D.5` |
-| Architecture move reduces one residual but creates ethical conflict elsewhere. | Return the architecture residual and keep the ethical conflict distinct. | `C.30.ILC`, `D.3` |
-| A decision must proceed with residual harm. | Record the accepted residual, responsible role assignments, evidence limits, and return condition. | `C.11`, `B.3`, `D.5` as needed |
-
-### D.4:4 - Archetypal Grounding (Worked Slices)
-
-**Fair-share case.** A service outage plan can protect hospitals, households, or industrial customers, but not all at once. `D.3` maps affected scopes and value concerns. `D.4` records the mediation use: options, accepted residuals, evidence demand, role assignments for decision responsibility, and return conditions. A mathematical allocation method may be cited through `C.29`, but the allocation formula is not the ethical decision by itself.
-
-**Override case.** An assurance review says a release has the required technical assurance relation, but `D.3` shows unresolved harm for a subgroup. `D.4` does not let assurance override the ethical conflict. It records whether release is refused, conditioned, delayed for evidence, returned to C.28 causal-use analysis, or allowed with explicit residual and responsibility.
-
-### D.4:5 - Boundaries
-
-`D.4` does not own conflict structure, bias audit, ethical assurance, architecture residual, causal identification, evidence provenance, or decision theory in general. It owns the ethical use of a mapped interlevel conflict.
-
-Do not name a mediation move "calculus" unless a mathematical lens is selected and the lens is actually doing work. Do not name a mediation move "operator" unless the current pattern explicitly governs an operation. Most D.4 use is a bounded decision-use record, not a mathematical object.
-
-### D.4:5.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Conflict map becomes decision | A D.3 structure is treated as if it already selected an action. | Name the D.4 move and its admissible use. |
-| Assurance becomes permission | Technical assurance is read as ethical authorization. | Keep assurance as an assurance or evidence relation and record the ethical use separately. |
-| Formula becomes ethics | Allocation, optimization, or scoring is treated as the ethical decision. | Use `C.29` for the mathematical lens and keep D.4 responsible for bounded ethical use. |
-| Residual harm disappears | Work proceeds while residuals and responsibility-bearing assignments stay unnamed. | Name accepted residuals, role assignments, evidence limits, and return condition. |
-
-### D.4:6 - Conformance Checklist
-
-| ID | Requirement | Purpose |
-| --- | --- | --- |
-| CC-D4-1 | A `conflictStructureRef` from D.3 is present or the use returns to D.3. | Prevents mediation without mapped conflict. |
-| CC-D4-2 | The record names the current admissible move: mediate, refuse, demand evidence, return to causal, assurance, or architecture owner, decide with residual, or stop. | Keeps ethical use explicit. |
-| CC-D4-3 | Evidence, causality, assurance, architecture, and decision claims use their direct owners. | Prevents D.4 from becoming universal decision authority. |
-| CC-D4-4 | Accepted residuals and responsibility-bearing role assignments are named when proceeding under residual harm. | Keeps bounded decision use reviewable. |
-
-### D.4:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | What goes wrong | Repair |
-| --- | --- | --- |
-| Decision-ready by map | The mapped conflict is treated as solved. | Choose a D.4 move: mediate, refuse, demand evidence, return, decide with residual, or stop. |
-| Trump-card level | One level's value automatically overrides all others. | Return to D.3 if the level relation or value frame is incomplete; otherwise record the explicit D.4 use. |
-| Evidence postponement | The team proceeds while saying evidence can be checked after the decision. | Demand evidence, causal analysis, assurance, or architecture return before the decision use, unless residual acceptance is explicit. |
-| Permission by assurance | A passed assurance relation is treated as moral authorization. | Keep B.3 assurance and D.4 ethical use distinct. |
-
-### D.4:7 - Consequences
-
-This pattern makes ethical action reviewable without pretending that every conflict has a clean optimum. It preserves refusal, evidence demand, and residual acceptance as first-class outcomes. It also prevents architecture, assurance, or causal evidence from quietly becoming moral permission.
-
-### D.4:9 - Rationale
-
-`D.4` exists because an inspectable ethical conflict still needs a bounded use. Some uses stop work. Some demand evidence. Some return to causal, assurance, or architecture owners. Some proceed under an accepted residual with named responsibility and return conditions. Without this pattern, teams either freeze because conflict exists or move too fast because the conflict was mapped once.
-
-The pattern keeps refusal, evidence demand, and residual acceptance visible as ordinary outcomes. It also prevents formulas, assurance labels, architecture residual repairs, or causal claims from silently becoming moral authorization.
-
-### D.4:10 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Decision analysis and applied ethics | Mediation and decision use need options, refusal, condition, evidence-demand choices, accepted residuals, responsibility, and return conditions, not only a value slogan. |
-| Safety and assurance practice | Assurance can inform bounded ethical decision use, but does not authorize action under unresolved harm or replace D.3 conflict structure. |
-| Causal and evidence governance | Harm, benefit, and fairness claims depending on causal effect or weak evidence must return to `C.28`, `A.10`, or `B.3` before ethical decision use. |
-| FPF mathematical-lens discipline | Optimization, allocation, scoring, Pareto, and threshold reasoning are selected lenses or measurement claims; they do not replace the D.4 ethical-use record or create a universal optimizer. |
-
-### D.4:11 - Relations
-
-- Builds on `D.3` for the mapped conflict structure.
-- Coordinates with `D.1` and `D.2` when value frame or multilevel entry is incomplete.
-- Coordinates with `D.5` when bias, fairness, impact audit, causal-fairness audit consumption, or ethical assurance is current.
-- Coordinates with `A.10`, `B.3`, `C.11`, `C.28`, `C.29`, and `C.30.ILC` when evidence, assurance, decision, causal, mathematical-lens, or architecture-residual claims are current.
-
-### D.4:End
-
-## D.5 - Bias Audit and Ethical Assurance
-
-> **Type:** D-family bias-audit and ethical-assurance boundary pattern
-> **Status:** Stable
-> **Pattern role:** This compact pattern owns bias, fairness, impact-audit, causal-fairness audit consumption, and ethical-assurance boundary use; it does not replace D.1 through D.4.
-
-**Use this when.** Use this pattern when a model, metric, policy, publication, decision system, recommendation, method, work plan, system, holon, or FPF claim may create bias, unfairness, human or group impact, causal-fairness overclaim, or ethical assurance risk.
-
-**Not this pattern when.** If the ethical value frame is missing, use `D.1`. If the current question is multilevel ethics entry, use `D.2`. If the current question is interlevel ethical conflict structure, use `D.3`. If the current question is mediation or decision use of that conflict, use `D.4`. If the current question is only evidence, causality, assurance, measurement, or architecture residual without bias, fairness, human or group impact, or ethical assurance, use the direct owner.
-
-**What goes wrong if missed.** A model, metric, policy, publication, or decision system passes ordinary evidence or assurance checks while representation, proxy, visibility, metric, language, or human-impact bias remains hidden.
-
-**What this buys.** Bias, fairness, human-impact, causal-fairness, and ethical-assurance concerns become auditable without replacing `D.1` through `D.4`, evidence, causal, measurement, or architecture owners.
-
-### D.5:1 - Problem Frame
-
-Bias and fairness failures often survive ordinary verification. A metric may be accurate while hiding subgroup harm. A model may be predictive while reproducing past exclusion. A policy may look neutral while moving cost to people or groups who were not represented in the evidence. A publication may look technically clear while licensing a harmful use.
-
-`D.5` keeps this audit and assurance question explicit. It does not replace multilevel ethics. It asks whether the current object and its intended use are ethically unsafe because of bias, unfairness, impact, causal fairness without the required C.28 evidence value, or assurance without the required assurance relation.
-
-### D.5:1.0 - Problem
-
-Bias, fairness, human-impact, causal-fairness, and ethical-assurance concerns can remain invisible after ordinary technical verification. The failure is to let the model, metric, policy, publication, method, work plan, system, or holon be treated as admissible for use while the audited EntityOfConcern, intended use, affected people or groups, evidence, mitigation, and residuals are not explicit.
-
-### D.5:1.1 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Ordinary verification vs. subgroup harm | Evidence or accuracy can look strong while representation, proxy, metric, visibility, language, or impact bias remains current. |
-| Lightweight scan vs. consequential use | Local reversible use may need a small register, while release-bearing or repeated use needs a fuller audit report. |
-| Fairness wording vs. causal claim | Metric disparity, associative fairness, interventional fairness, and counterfactual fairness are different claims. |
-| Assurance relation vs. ethical permission | Assurance can record examined evidence and residuals, but cannot turn unresolved bias or harm into moral authorization. |
-| Audit frame vs. neighboring owners | D.5 must keep bias and ethical assurance visible without replacing evidence, causality, measurement, architecture, or D.1 through D.4. |
-
-### D.5:2 - Solution
-
-Open a `BiasAuditAssuranceFrame@Context`:
-
-```text
-BiasAuditAssuranceFrame@Context:
-  auditedEntityOfConcernRef
-  boundedContextRef
-  intendedUseRef
-  affectedPeopleOrGroupRefs?
-  affectedHolonRefs?
-  metricOrModelRefs?
-  policyOrPublicationRefs?
-  biasConcernRefs
-  fairnessClaimRef?
-  impactClaimRef?
-  causalFairnessUseRef?
-  evidenceRefs
-  assuranceClaimRefs?
-  mitigationOrConstraintRefs?
-  acceptedResidualRefs?
-  admissibleUse
-  inadmissibleOverread
-  strongerSourceReturnCondition
-```
-
-The frame is not a universal ethics owner. It is the local audit object used when bias, fairness, impact, or ethical assurance is current.
-
-### D.5:3 - Bias and Fairness Recognition
-
-| Current claim | What D.5 requires | Neighboring owner |
-| --- | --- | --- |
-| "This metric shows the system is fair." | Distinguish metric disparity, proxy choice, subgroup impact, and intended use. | `C.16` for metric construction |
-| "This intervention makes outcomes fair." | Declare the causal fairness use, C.28 evidence value, and causal-use verdict. | `C.28` |
-| "The model is unbiased." | Name represented and missing groups, data-generation limits, model-use limits, and evidence. | `A.10`, `C.16`, `D.5` |
-| "The release is ethically assured." | Separate audit findings, mitigations, accepted residuals, and the assurance or evidence relation. | `B.3`, `D.5` |
-| "The policy is acceptable because it helps the whole." | Check whether a multilevel conflict is live. | `D.2`, `D.3`, `D.4` |
-
-#### D.5:3.1 - Optional Audit Records And Depth
-
-D.5 may use a compact `BiasRegister@Context` when the live need is to keep concerns visible during ordinary work:
-
-```text
-BiasRegister@Context:
-  auditedEntityOfConcernRef
-  intendedUseRef
-  affectedPeopleOrGroupRefs?
-  biasConcernCode
-  evidenceRefs
-  mitigationOrConstraintRef?
-  acceptedResidualRef?
-  nextReviewTrigger?
-```
-
-Use a fuller `BiasAuditReport@Context` only when the object is being released, relied on by other work, exposed to affected people or groups, used for assurance, or used after a material source-currentness, population, context, model, metric, or policy change. The report is a Description episteme or publication-use object; it does not make the audited object fair by existing.
-
-Lightweight scan is enough when the intended use is local, reversible, low-impact, and the scan finds no affected group, proxy, metric, representation, causal-use, or publication-use concern. Deeper review is required when the use is consequential, repeated, automated, cross-context, externally published, safety-relevant, regulatorily or deontically constrained, or when an affected group, missing group, proxy variable, threshold, causal fairness claim, accepted residual, or assurance claim is current.
-
-#### D.5:3.2 - Compact Bias Concern Taxonomy
-
-| Code | Concern | Typical question |
-| --- | --- | --- |
-| REP | Representation, coverage, sampling, proxy choice, missing group, or shifted population. | Who or what is missing, over-weighted, proxied, or moved out of scope? |
-| ALG | Algorithmic, modeling, objective, ranking, optimization, or threshold behavior. | Which model or optimization choice changes outcomes for whom? |
-| VIS | Visibility, interface, dashboard, presentation, or publication framing. | What becomes easy to see, hard to see, or too authoritative by display? |
-| MET | Metric, measurement, scale, comparator, normalization, or threshold. | What does the metric count, hide, compare, or turn into a pass or fail claim? |
-| LNG | Language, naming, category, definition, group label, or claim wording. | Which words change what can be asserted, counted, blamed, or done? |
-
-The codes are only concern locators. They do not replace the governed object, affected people or groups, intended use, evidence, mitigation, or accepted residual.
-
-### D.5:4 - Causal Fairness Boundary
-
-A fairness claim can be associative, interventional, or counterfactual. D.5 records the ethical-audit use of that claim, but `C.28` owns the causal-use question, causality-ladder rung, estimand, identification, realizability, evidence design, `CausalEvidenceSupportBasis`, and causal-use verdict.
-
-Metric-only fallback: if only metric disparity is claimed and no causal fairness use is made, record it as metric or evaluation use. Do not add causal-fairness machinery by vocabulary alone.
-
-Fairness escalation rule: an interventional-action proxy may admit bounded interventional fairness use, but it cannot be published as counterfactual fairness without the needed C.28 evidence value and verdict.
-
-### D.5:5 - Ethical Assurance Boundary
-
-Ethical assurance is not a stamp of moral permission. It is an assurance claim that bias, fairness, impact, and accepted residuals have been examined for the current use.
-
-Use `B.3` for the assurance relation. Use `A.10` for evidence provenance and source currentness. Use `D.3` and `D.4` when the audit exposes an interlevel ethical conflict. Use `C.30.ILC` when the issue is an architecture residual rather than a bias or fairness audit.
-
-### D.5:6 - Archetypal Grounding (Worked Slice)
-
-A hiring-screening model has high aggregate accuracy and an internal note says it is "fair." D.5 first asks what fairness claim is being made. If the claim is only a metric disparity comparison, the audit records the metric, affected groups, intended use, missing evidence, and admissible use. If the team claims the model would have prevented unfair outcomes under an intervention or counterfactual, `C.28` must supply the causal-use evidence value and verdict before D.5 can treat the fairness claim as admissible for that ethical-audit use. If the audit exposes a conflict between company efficiency and applicant harm across declared scopes, `D.3` maps that conflict and `D.4` governs decision use.
-
-### D.5:6.1 - Bias-Annotation
-
-| Bias risk | Failure | Mitigation |
-| --- | --- | --- |
-| Audit as document ritual | A register or report exists but does not change intended use, residuals, or constraints. | Tie each concern to audited EntityOfConcern, intended use, evidence, mitigation, and accepted residual. |
-| Metric fairness overclaim | A metric comparison is published as causal or counterfactual fairness. | Recover the fairness claim kind and use C.28 for causal-use evidence value and verdict. |
-| Assurance as authorization | Ethical assurance is treated as permission to proceed. | Record assurance as assurance or evidence relation and keep `D.4` and `D.5` use separate. |
-| Bias category replaces object | REP, ALG, VIS, MET, or LNG code is treated as the governed object. | Use codes only as concern locators; keep audited EntityOfConcern and intended use explicit. |
-
-### D.5:7 - Conformance Checklist
-
-| ID | Requirement | Purpose |
-| --- | --- | --- |
-| CC-D5-1 | The audited EntityOfConcern, intended use, affected people or groups, bias, fairness, or impact concern, evidence refs, and admissible use are named. | Keeps audit scope inspectable. |
-| CC-D5-2 | Metric, causal fairness, evidence, assurance, publication, and architecture-residual claims use their direct owners. | Prevents D.5 from swallowing neighboring patterns. |
-| CC-D5-3 | Ethical assurance is recorded as assurance or evidence relation, not moral permission. | Keeps assurance from becoming ethical authorization. |
-| CC-D5-4 | If the audit exposes interlevel conflict, D.3 and D.4 become the owners for conflict structure and decision use. | Keeps D.5 connected to the D cluster without replacing it. |
-
-### D.5:3.3 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | What goes wrong | Repair |
-| --- | --- | --- |
-| Ethics ghetto | Bias or fairness is left in a separate ethics note while the model, metric, release, publication, or work plan keeps operating unchanged. | Put the concern on the audited EntityOfConcern and its intended use, then name the mitigation, constraint, or accepted residual. |
-| Checklist charade | A checklist is completed without naming affected people or groups, evidence, current use, or residuals. | Use `BiasRegister@Context` for a light scan or `BiasAuditReport@Context` for deeper review; do not treat a blank checklist as assurance. |
-| Bias whack-a-mole | One disparity is patched while proxy, representation, metric, visibility, or language concerns move elsewhere. | Keep REP, ALG, VIS, MET, and LNG concerns visible until the admissible use and accepted residual are explicit. |
-
-### D.5:8 - Consequences
-
-This pattern keeps bias, fairness, impact, causal-fairness audit consumption, and ethical assurance from being scattered across technical patterns. It also prevents D.5 from swallowing all ethics. The cost is that teams must say which bias or fairness claim they are making. The gain is that ethical assurance becomes a typed assurance or evidence claim rather than a comforting label.
-
-### D.5:9 - Rationale
-
-`D.5` exists because bias, fairness, human-impact, causal-fairness audit consumption, and ethical assurance often survive ordinary technical checks. It keeps those concerns in one audit frame while preserving direct owners: metrics and measurement remain with measurement patterns, causal fairness remains with causal-use patterns, assurance remains an assurance relation, and multilevel ethical conflict remains with D.2 through D.4.
-
-Audit record depth is selected by use, reliance, exposure, source currentness, and residual risk. A compact register is enough for local low-impact use when no live concern remains; a fuller report is required when release, reliance, affected people or groups, source-currentness change, causal fairness, accepted residual, or assurance use is current.
-
-### D.5:10 - SoTA-Echoing
-
-| Source line | Practical implication for this pattern |
-| --- | --- |
-| Fairness and bias audit practice | Representation, proxy, metric, visibility, language, and impact concerns must be tied to intended use, affected groups, source-currentness, and accepted residuals. |
-| Causal fairness and causal inference | Associative, interventional, and counterfactual fairness claims need different evidence values and cannot be interchanged by wording. |
-| Assurance and governance practice | An assurance record can support bounded reliance, but does not grant moral permission under unresolved residual harm or replace D.3 and D.4 when interlevel conflict is exposed. |
-| FPF episteme and publication discipline | Bias registers and reports are descriptions or publication-use objects; they do not make the audited object fair by existing. |
-
-### D.5:11 - Relations
-
-- Builds on `D.1` and coordinates with `D.2`, `D.3`, and `D.4` for value frame, multilevel entry, conflict structure, and mediation or decision use.
-- Coordinates with `A.10` for evidence and source currentness.
-- Coordinates with `B.3` for assurance relation and reliance.
-- Coordinates with `C.16` for metric and measurement construction.
-- Coordinates with `C.28` for causal fairness and causal-use evidence value.
-- Coordinates with `E.17` when publication or publication-use relation changes admissible use.
-
-### D.5:End
-
-# **Part E – The FPF Constitution and Authoring Guides**
-
-## E.1 - Vision & Mission: “Operating System for Thought”
-
-
-### E.1:1 - Problem frame
-Modern engineering, science, and strategy all suffer from **conceptual overload**: dozens of domain tools, drifting vocabularies, and disconnected “best practices” splinter ideas as they travel from napkin sketch to certified deliverable. Stakeholders—*Engineers, Researchers, Learners*—lack a single, evolvable scaffold that can carry an insight across that span.
-
-### E.1:2 - Problem
-Absent such a scaffold, every discipline re‑invents epistemology and systems thinking, spawning silos, steep learning curves, and brittle life‑cycle models. Previous attempts either froze agility in rigid hierarchies or dissolved rigour in tool‑centric jargon.
-
-### E.1:3 - Forces
-
-| Force                           | Tension                                                                 |
-| ------------------------------- | ----------------------------------------------------------------------- |
-| **Conceptual Unity**            | Freedom to evolve ↔ invariant principles that prevent vocabulary drift. |
-| **Rigor vs Agility**            | Formal verifiability ↔ rapid, iterative exploration.                    |
-| **Universality vs Specificity** | Domain‑agnostic kernel ↔ problem‑specific leverage.                     |
-| **Didactic Clarity**            | Human comprehension ↔ abstract purity and density.                      |
-| **Physical Grounding**          | Abstract constructs ↔ a *material Transformer* that proves feasibility.     |
-
-**Mission Statement**
-
-> *Enable any motivated system/actor/agent/transformer — human or AI — to transform a raw idea into a reproducible, auditable change in the physical world through incremental, falsifiable cycles.*
-
-**Vision Statement**
-
-> *Reliable reasoning should be as accessible as version control: clone the conceptual kernel, extend it with domain patterns, and commit decisions that remain traceable across time, scale, and discipline.*
-
-### E.1:4 - Solution — *FPF as an Operating System for Thought*
-FPF delivers a **generative scaffold** realised as:
-
-1. a **Kernel** of non‑derivable, cross‑domain **first principles**;
-2. pluggable **patterns**—Systemic Calculus, Knowledge Dynamics, etc.—that instantiate those principles;
-3. a **pattern language** (*Architectural* ► why/ how; *Definitional* ► what) with embedded **Conformance Checklist (CC)**;
-4. **Design Rationale Records (DRRs)** that govern safe, auditable evolution;
-5. three **core invariants** that every artefact must honour
-
-   * **Evolvability** — change is expected and governed;
-   * **Cross‑Scale Coherence** — the same algebra binds parts to wholes at any level;
-   * **Didactic Transparency** — each element exposes its own reasoning path.
-
-### E.1:5 - ** Conformance Checklist**
-
-| ID              | Requirement                                                                                                                                          | Rationale                                       |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| **CC‑Vision.1** | Every composite artefact **MUST** cite a *material Transformer* that can, in principle, perform the aggregation (`Γ(D,C)`) that produced it.             | Ensures physical feasibility and auditability.  |
-| **CC‑Vision.2** | Every normative rule **MUST** demonstrably support at least one core invariant (*Evolvability, Cross‑Scale Coherence, Didactic Transparency*).       | Keeps the Canon lean and purpose‑driven.        |
-| **CC‑Vision.3** | Conceptual text **MUST NOT** contain tokens black‑listed by the **DevOps Lexical Firewall** (`yaml`, `docker`, …).                                   | Preserves layer purity and tool‑agnostic core.  |
-| **CC‑Vision.4** | A conformant artefact **MUST** state a measurable benefit for at least one of the three roles (*Engineer, Researcher, Learner*) or justify omission. | Aligns success with stakeholder trajectories.   |
-
-### E.1:6 - Consequences
-
-*Positive* — Unified language accelerates cross‑disciplinary discovery; regulators can audit claim lineages; learners acquire concepts through the spec itself.
-*Trade‑offs* — Authors face an initial learning curve and must trace every rule to an invariant; disciplined traceability is required to prevent variant sprawl.
-
-### E.1:7 - Relations & Precedence
-Pattern E.1 governs **E.2 Eleven Pillars** and the Guard‑Rail set **A.5–A.8**; any later pattern that conflicts with E.1 **MUST** be revised via a DRR before entering the Canon.
-
-*“Purpose without a scaffold is wishful thinking; a scaffold without purpose is cargo‑cult—FPF welds the two into disciplined imagination.”*
-
-### E.1:End
-
-## E.2 - The Eleven Pillars
-
-### E.2:1 - Problem frame
-Pattern E.1 set the FPF mission as an **operating system for thought**. To turn that mission into a durable architecture, FPF needs a small, explicit constitution - principles that remain stable while everything built on top of them can evolve. Without such invariants, domain silos, vocabulary drift, and tool-centric shortcuts quickly erode coherence and reproducibility across disciplines.
-
-The pillars are also the first-principles basis of FPF. They are the minimal commitments from which pattern-level work derives: decisive structure, teachability, maturing formality, open kernel, layering, register discipline, practical payoff, cross-scale consistency, explicit state, open-ended evolution, and SoTA renewal. Later patterns can support this basis by making a concrete argument about pillar support more inspectable; they do not replace pillar authority.
-
-### E.2:2 - Problem
-Frameworks without binding first principles wobble between two extremes: rigid dogmas that kill adaptation and amorphous guidelines that invite cognitive chaos. In either case, reasoning fragments, auditability collapses, and physical impact suffers.
-
-### E.2:3 - Forces
-| Force                          | Tension                                                |
-| ------------------------------ | ------------------------------------------------------ |
-| **Foundational Stability**     | Immutable core ↔ perpetual adaptation to new knowledge |
-| **Cognitive Load**             | Minimal elegance ↔ comprehensive coverage              |
-| **Rigor vs Accessibility**     | Formal soundness ↔ intuitive entry for non‑specialists |
-| **Universality vs Modularity** | Domain‑agnostic scope ↔ plug‑in extensibility          |
-| **Pragmatic Grounding**        | Abstract invariants ↔ measurable, falsifiable outcomes |
-
-### E.2:4 - Solution
-FPF rests on **eleven non‑negotiable pillars**. Each pillar is a binding constraint that every artefact, pattern, and design‑rationale record (DRR) **must** honour. Together they form the load‑bearing structure that guarantees evolvability, cross‑scale coherence, and didactic clarity.
-
-| ID       | Pillar                         | Essence                                                                                                                   |
-| -------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| **P‑1**  | **Cognitive Elegance**         | Highlight decisive structure, eliminate ornamental formalism; separate data governance from thinking.                     |
-| **P‑2**  | **Didactic Primacy**           | Human comprehension outranks theoretical or tooling purity.                                                               |
-| **P‑3**  | **Scalable Formality**         | A single artefact can mature step‑by‑step from informal guess to formally assured state without forks or rewrites.        |
-| **P‑4**  | **Open‑Ended Kernel**          | The Kernel contains only meta‑concepts; all domain knowledge lives in external patterns.                       |
-| **P‑5**  | **FPF Layering**           | Patterns are modular, declarative extensions that can be added, replaced, or removed without destabilising the core. |
-| **P-6**  | **Lexical Stratification**     | Every core concept is expressible in four registers: plain name, technical term, admitted U-kind or governed value name, and mathematical symbol.  |
-| **P‑7**  | **Pragmatic Utility**          | Proofs, metrics, and models exist to achieve real‑world objectives; falsification is rewarded over confirmation.          |
-| **P‑8**  | **Cross‑Scale Consistency**    | Composition algebras (aggregation, boundary, emergence) are invariant across material systems, knowledge, and methods.    |
-| **P‑9**  | **State Explicitness**         | Every artefact declares its state (`design‑time`, `run‑time`, etc.); transitions are cheap, traceable, auditable.         |
-| **P‑10** | **Open‑Ended Evolution**       | Every entity is expected to evolve indefinitely; cycles must remain cheap, safe, and cognitively rewarding.               |
-| **P‑11** | **State‑of‑the‑Art Alignment** | The kernel and extension domain-specific patterns track reliable contemporary knowledge and update when the SoTA advances.                     |
-
-When a pillar-impact argument relies on mathematical structure, scale behavior, optimization, uncertainty, invariance, obstruction, or other first-principles modeling support, the applicable mathematical-lens use support path is `C.29`. The pillar claim remains governed by `E.2`; `C.29` only states the mathematical lens, preserved and lost structure, admissible use, neighboring-pattern exits, and stop condition that make the pillar support inspectable.
-
-> Any DRR that contradicts a pillar must first amend this constitutional pattern.
-
-### E.2:5 - Conformance Checklist
-
-| ID         | Requirement                                                                                                                       | Purpose                               |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| **CC‑P‑1** | Every architectural pattern **must** list which pillar(s) it instantiates or refines.                                             | Guarantees constitutional grounding.  |
-| **CC‑P‑2** | Every DRR proposing a normative change **must** include a “Pillar Impact Analysis.”                                               | Makes constitutional review explicit. |
-| **CC‑P‑3** | Tooling and pedagogical artefacts **should** document which pillar(s) shape their design.                                         | Upholds P‑2 (Didactic Primacy).       |
-| **CC‑P‑4** | An pattern is conformant only if its invariants reference **≥ 3** pillars, demonstrating cross‑scale and pragmatic alignment. | Prevents narrow, siloed extensions.   |
-| **CC‑P‑5** | When two lawful approaches exist, authors **SHOULD** prefer methods whose **empirical capability slope** is **non‑negative** over the **audited scale window** (data, compute, **freedom‑of‑action**) and **MUST** justify any exception **via** a **BLP Scale‑Audit** (**BLP‑1**) with **declared tolerances** *(α = budget; δ = assurance; units specified)*. | Embeds Bitter‑Lesson preference; curbs heuristic debt. |
-| **CC‑P‑6** | A pillar-impact analysis that relies on mathematical structure, scale behavior, optimization, uncertainty, invariance, obstruction, or other first-principles modeling support is complete only when that support is ordinary accepted local theory, a cited `C.29` output, or a named neighboring-pattern output for evidence, causal, bridge, assurance, measurement, work, decision, publication, or admission claims. | Keeps mathematical support for pillars inspectable without letting `C.29` revise pillar authority. |
-
-### E.2:6 - Policy — Bitter‑Lesson Preference (BLP)
-
-**Intent.** Favor **general, computation‑leveraged**, and **freedom‑of‑action** methods over hand‑tuned, brittle heuristics *when safety and legality are held constant*. This codifies the empirical trend that methods which scale with **data, compute, and search breadth** outpace bespoke rule‑engineering. **Applicability:** beyond ML, this policy covers **search/optimization**, **control**, **simulation‑based inference**, and other computational sciences where capability improves with scale and exploration. When **NQD/E/E‑LOG** promotes **novelty/coverage (illumination)** telemetry into dominance (via an explicit **CAL** policy; **policy‑id recorded in SCR**), these telemetry metrics are included in BLP comparisons for the audited window.
-
-**BLP‑1 — Scale‑Audit Requirement.** Any DRR that selects a more specialized/hand‑engineered method over a general/scalable alternative **MUST** include a **Scale‑Audit**:
-* (a) **Parity harness**: same **ComparatorSet**, **freshness window**, and **evaluation seeds/replicates**; set-returning evaluation (see **G.5/G.9**). Dominance criterion: **Pareto‑only** by default across the declared objective vector; any alternative requires a documented waiver by **Gov‑CAL** under **E.3** precedence.
-* (b) **Budgets**: sweep **compute** (**steps/tokens/params/time/energy**, as applicable), **data** (size/quality), and **freedom‑of‑action** (from script‑like instructions → minimal prohibitions) **under a fixed risk/safety envelope**. If any parameter cannot be swept, **pin** it and record the invariant.
-* (c) **Slopes & uncertainty**: report ∂quality/∂compute, ∂quality/∂data, and (where applicable) ∂coverage/∂**freedom‑of‑action** and **∂novelty/∂budget**; include **error bars/CI** from multi‑seed trials; publish edition pins and policy‑IDs in SCR/telemetry (**G.11**).
-* (d) **Resources**: publish **Resrc‑CAL** accounts (time/energy/FLOPs) and assurance deltas (B.3).
-* (e) **Objective declaration**: list the **objective vector** (quality, risk, cost, **and any illumination telemetry explicitly promoted into dominance via CAL** with **policy‑id recorded in SCR**) used for Pareto comparison.
-
-**BLP‑2 — Preference Rule.** Given admissibility and comparable assurance (within δ) and budget (within α), prefer the method whose **slope vector** is **Pareto‑dominant** over the audited range (per **BLP‑1c/1e**). If no dominance holds within error bounds, prefer the **more general** method (fewer domain‑specific heuristics, greater transfer via Bridges Φ/Ψ); otherwise resolve via **E/E‑LOG** tie‑breakers declared in policy.
-
-**BLP‑3 — Minimal‑Prescription Default.** Author **rules‑as‑prohibitions** (negative constraints) over step‑by‑step scripts. Encode limits in **Φ policy tables** (and **Φ_plane** where applicable) instead of procedural checklists; allow the agent/system to sequence functions autonomously under those constraints (SoS‑LOG). **Pre/post‑conditions and test harnesses remain permitted**; **scripts** are permissible only when mandated by safety/regulation, or with compelling evidence recorded in the DRR **and reviewed under E.3 precedence / E.5 Guard‑Rails**.
-
-**BLP‑4 — Heuristic‑Debt Register.** Any hand‑tuned rule admitted for pragmatic reasons **MUST** be registered as **Heuristic Debt** with: scope, responsible role, expiry/review window, measurable replacement target under BLP‑2, and a de-hardening/sunset plan. Track in **CalibrationLedger/BCT (Baseline Change Tracker)** and cite in SCR.
-
-**BLP‑5 — Continuous‑Learning Posture.** Where product policy allows, enable **feedback‑driven adaptation** (e.g., preference learning, critique loops) within Guard‑Rails (**E.5**) and privacy/regulatory controls, with appropriate opt‑outs where required. Disabling adaptation requires DRR justification and a review date.
-
-**BLP‑6 — Precedence & Safeguards.** BLP is a **Gov/Arch** policy instantiated by Pillars **P‑10 (Open‑Ended Evolution)**, **P‑11 (SoTA Alignment)**, **P‑7 (Pragmatic Utility)**, and **P‑1 (Cognitive Elegance)**. It does **not** override safety/ethics (**E.5**) **nor** E.3 precedence rulings; where BLP conflicts with Guard‑Rails, **Guard‑Rails prevail**. When **NQD/E/E‑LOG** elevates illumination to dominance for exploration mandates, BLP **adopts that lens** rather than overriding it.
-
-*Informative SoTA contexts (post‑2015):* set-returning selection across **LLM prompt‑programming vs fine‑tuned task models**; **preference‑learning families (RLHF ↔ DPO)**; **QD archives (MAP‑Elites/CMA‑ME/DQD/QDax)**; **open‑ended environment–method co‑evolution (POET‑class)**; **offline RL vs Decision Transformer parity**; and beyond ML, **optimization/control** (model‑based planning vs hand‑tuned controllers) and **simulation‑based inference** in the sciences. These are **illustrative only**; use the parity harness instead of single‑winner leaderboards.
-
-### E.2:7 - Conformance Checklist — BLP
-
-| ID            | Requirement                                                                                                     | Purpose                                       |
-| ------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **CC‑BLP.1**  | Tolerances **α (budget)** and **δ (assurance)** are declared in the DRR or referenced via policy profile.      | Makes BLP decisions reproducible.             |
-| **CC‑BLP.2**  | DRR includes a **Scale‑Audit** (BLP‑1a–e) with published slopes and pinned editions/policy‑IDs.               | Makes scale behavior auditable.               |
-| **CC‑BLP.3**  | Selection decision cites **BLP‑2** and lists the governing pillars and precedence checks.                      | Ties choice to constitution.                  |
-| **CC‑BLP.4**  | Any admitted heuristic is logged as **Heuristic Debt** with expiry/review and de‑hardening plan.               | Prevents silent drift toward brittle rules.   |
-| **CC‑BLP.5**  | Default authoring uses **rules‑as‑prohibitions**; deviations are DRR‑justified and safety‑anchored.            | Preserves agent autonomy under constraints.   |
-| **CC‑BLP.6**  | Resource accounts (time/energy/FLOPs) and assurance deltas are reported via **Resrc‑CAL** and B.3.             | Avoids “free heuristic” illusions.            |
-| **CC‑BLP.7**  | **Replicate counts/seeds** and **confidence intervals** for slope estimates are recorded.                      | Prevents spurious slope inferences.           |
-
-### E.2:8 - Relations
-* **Instantiates pillars:** P‑10, P‑11, P‑7, P‑1.
-* **Depends on:** **G.5/G.9** (admission/comparator/selector & parity harness), **G.11** (refresh telemetry), **C.5** (Resrc‑CAL), **C.18** (NQD‑CAL), **C.19** (E/E‑LOG), **F.7/F.9** (Bridges, CL/Φ/Ψ).
-* **Constrained by:** **E.5** Guard‑Rails (DevOps Lexical Firewall; Notational Independence; Cross‑Disciplinary Bias Audit) and **E.3** precedence.
-
-### E.2:9 - Definitions
-**α (budget tolerance)** may be relative or absolute; declare units (e.g., % cost, wall‑time, energy). **δ (assurance tolerance)** is the permissible delta in assurance under **B.3**; declare measure and floor(s).
-
-### E.2:10 - Consequences
-
-*Positive*
-
-* Provides an explicit “north star” for every contributor.
-* Delivers a falsifiable checklist for evaluating proposals.
-* Builds trust in high‑assurance domains through transparency.
-
-*Trade‑offs*
-
-* Constitutional review adds friction to rapid, informal changes.
-* Amending the pillar set itself demands high‑bar governance.
-
-### E.2:11 - Rationale
-
-The pillars are distilled from systems engineering, philosophy of science, software architecture, and ontology design. They interlock: *Cognitive Elegance* (P‑1) enables *Didactic Primacy* (P‑2); *Open‑Ended Kernel* (P‑4) and *FPF Layering* (P‑5) make *Open‑Ended Evolution* (P‑10) and *SoTA alignment* (P‑11) feasible; *Cross‑Scale Consistency* (P‑8) provides the algebraic backbone for *Scalable Formality* (P‑3). This minimal yet sufficient set balances stability with change, rigor with accessibility, and abstraction with measurable impact.
-
-`C.29` is a downstream support pattern for this constitution when mathematical first-principles structure is part of an argument about pillar support. It makes the structure, loss, and stop condition explicit while `E.2` remains authority over what counts as a pillar.
-
-### E.2:12 - Relations
-
-* **Depends on:** `pat:constitutional/vision` – pillars operationalise the mission.
-* **Refined by:** All subsequent patterns in the Core Specification.
-* **Mathematical support path:** `C.29` supports pillar-impact arguments only for adequacy of mathematical lenses used to express first-principles structure. It does not amend pillar content, priority, or conformance.
-* **Governs:** Every DRR, tool, and pedagogical artefact linked to FPF.
-
-*These pillars are not a cage but the load‑bearing columns of a workshop where ideas can be safely built, dismantled, and evolved.*
-
-### E.2:End
-
-## E.2.DA - FPF Pillar-Adequacy Evaluation CharacteristicSpace
-
-Status: Core.
-
-### E.2.DA:1 - Problem frame
-
-Use `E.2.DA` when the object under improvement is an FPF-level object and the question is whether it realizes the `E.2` Pillars adequately for a declared use. The object can be a monolith edition, selected pattern host set, pattern family, projection set, README/Preface/ToC publication change, access-carrier exposure such as a skill or MCP-backed route, release candidate, or whole-FPF edition.
-
-Use it after a broad cleanup, new pattern family, projection repair, source-use repair, FPF-form change under `E.4.FPF`, or corpus-level improvement when local pattern quality is not enough. A set of good local patterns can still harm FPF entry, naming, layering, source use, projection integrity, or open-ended evolution.
-
-Not this pattern when the evaluated object is one authored pattern version, one `DRR`, one local wording repair, or one pattern-use entry problem. Use `E.21`, `E.9.DA`, `E.10` and its precision-restoration neighbours, or `E.11` for those objects.
-
-First useful move: name the FPF object under improvement by value, declared use, reader family, and qualification window; then evaluate all eleven Pillar coordinates. If a Pillar seems unaffected, give it a value and a short rationale saying what is preserved.
-
-What goes wrong if missed: FPF can become locally polished but globally worse. Readers may find fewer useful entry points, precision repairs may erase the working move, source rows can turn decorative, or several patterns can grow local variants of the same doctrine.
-
-Primary EntityOfConcern in plain terms: the scoped FPF object under improvement as an `E.2` Pillar-realizing language object.
-
-### E.2.DA:2 - Problem
-
-`E.2` gives the Pillars and their constitutional meaning. It does not by itself evaluate whether a concrete FPF object realizes those Pillars well enough for a concrete use. Without `E.2.DA`, corpus-level reviews tend to collapse into local pattern scores, process state, review praise, or broad claims that "FPF improved."
-
-The specific failures are:
-
-1. Local pattern quality is averaged into FPF adequacy.
-2. Entry projections and companion files start carrying semantics beside governing patterns.
-3. Precision repair improves terminology but damages first-use comprehension or changes the FPF kind carried by the repaired text.
-4. Source and SoTA rows are counted rather than checked for changes in FPF moves.
-5. Front-like words such as `all 5s`, `exceptional`, `Pareto`, `SoTA`, `NQD`, or `shortlist` become loose synonyms.
-6. Corpus-level stop claims hide what became worse.
-7. Pillar values become repair targets, so the corpus gains projection proof, entry apparatus, source rows, or review evidence while the FPF object becomes less usable, less layered, or less decisive.
-
-### E.2.DA:3 - Forces
-
-| Force | Tension |
-|---|---|
-| Constitutional meaning vs evaluation | Pillar meanings stay in `E.2`; values over realized adequacy are evaluated here. |
-| Whole-FPF quality vs local quality | One strong pattern can still sit in a weak corpus ecology. |
-| Discoverability vs precision | Real readers search ordinary words, while FPF claims need governing patterns and kinds. |
-| Didactic force vs semantic admissibility | The text must teach the move without smuggling new ontology into examples or projections. |
-| Breadth vs affordability | Eleven Pillars are complete enough for FPF; affordability comes from compact evidence, not omitted coordinates. |
-| Open-ended evolution vs release stop | FPF can improve forever, but one scoped object needs a local stop condition. |
-
-### E.2.DA:4 - Solution
-
-`E.2.DA` is the Pillar-adequacy specialization of `A.19.ECS`. It evaluates one FPF object under improvement against all eleven `E.2` Pillars for a declared use.
-
-There is no smaller `E.2.DA` evaluation. If the caller only needs local pattern quality, `DRR` adequacy, or wording repair, that is a different object-under-improvement evaluation. Once `E.2.DA` is invoked, every Pillar coordinate receives a value, short rationale, evidence locus, and shared evidence basis for the FPF object being evaluated.
-
-#### E.2.DA:4.1 - Local names and kind settlement
-
-| Local name | Kind and use |
-|---|---|
-| `FPFPillarAdequacyEvaluation` | Authored evaluation record over one scoped FPF Pillar-adequacy claim. |
-| `FPFObjectUnderImprovementRef` | FPF object version named by value being evaluated. |
-| `FPFAdequacyUseScope` | Declared FPF-level use the object must serve. |
-| `FPFAdequacyReaderScope` | Primary reader family and working situation for the adequacy claim. |
-| `FPFAdequacyQualificationWindow` | Edition, source-currentness, neighbour, release, or comparison window for which the values hold. |
-| `FPFPillarAdequacyCoordinateSet` | The eleven required Pillar coordinates in this pattern. |
-| `FPFPillarAdequacyEvidenceBasis` | Checked loci named by value in the scoped FPF object: pattern bodies, host or monolith sections, projections, README scenarios, ToC rows, `E.11` entry-distribution loci, `I.2` expanded entry-disambiguation cases, source rows, relation rows, companion files, evaluation results, and missing or unchecked loci that affect values. |
-| `FPFPillarValueRationales` | Required result rows: Pillar coordinate, value, short rationale, and evidence locus named by value. |
-| `PillarAdequacyEvidenceRefs` | Loci named by value in patterns, projections, source rows, entry rows, relation rows, or findings used as value evidence. |
-| `FPFKindRestorationEvidence` | Pre-repair and post-repair object-kind, relation-or-claim-kind, current ontic slot, relation position, use relation, or claim kind when that position or use is part of the changed FPF-governed claim, admissible-use, and scope evidence for broad precision or wording cleanup that affects the scoped FPF object. |
-| `FPFPillarAdequacyStatus` | Admissible-use result for the scoped FPF Pillar-adequacy claim. |
-| `FPFPillarAdequacyFront` | Optional non-dominated set of FPF variants or edit packages under the declared coordinate set. |
-
-These names are local to the evaluation unless `F.18` promotes a durable name. They name FPF content objects and evaluation fields, not release state, review state, or project evidence.
-
-#### E.2.DA:4.2 - Evaluation record
-
-```text
-FPFPillarAdequacyEvaluation:
-  FPFObjectUnderImprovementRef: <object and version named by value>
-  FPFAdequacyUseScope: <entry | authoring | review | project use | source absorption | corpus release | other use named by value>
-  FPFAdequacyReaderScope: <primary reader and working situation>
-  FPFAdequacyQualificationWindow: <edition, source, neighbour, release, or comparison window>
-  FPFPillarAdequacyEvidenceBasis: <checked pattern, host, monolith, projection, README, ToC, E.11, or I.2 entry locus, source, relation, companion, evaluation-result, and missing loci that affect values>
-  FPFPillarAdequacyCoordinateTable: <all eleven coordinates, values, short rationales, evidence loci>
-  FPFKindRestorationEvidence: <when broad wording or precision repair is part of the evaluated change: pre-repair and post-repair kind, relation or claim kind, current ontic slot, relation position, use relation, or claim kind if part of the changed FPF-governed claim, admissible use, scope, governing pattern when another pattern governs the kind under repair, relation, claim, or position, and preserved, split, intentionally changed, or blocker disposition>
-  FPFPillarAdequacyStatus: <status>
-  StopOrRepairCondition: <local stop, first repair, Pillar decision, or architecture decision>
-```
-
-`E.22` may frame the evaluation purpose when the caller needs floor evaluation, exceptional improvement, trade-off inspection, open-question discovery, absorption, or proposal portfolios. `E.23` governs repeated improvement after the evaluation returns findings or candidate proposals.
-
-#### E.2.DA:4.3 - Ordinal coordinate scale
-
-| Value | Label | Meaning |
-|---:|---|---|
-| 0 | `absent` | The Pillar is not realized for the declared FPF object and use. |
-| 1 | `namedOnly` | The Pillar is named but cannot guide the FPF-level use. |
-| 2 | `partiallyExpressedForDeclaredUse` | The Pillar is present but incomplete, fragile, or too local. |
-| 3 | `sufficientlyExpressedForDeclaredUse` | The Pillar is realized enough for the declared use, with known limits visible. |
-| 4 | `wellExpressedForDeclaredUse` | The Pillar is clear across relevant loci and protected from common loss. |
-| 5 | `exceptionallyExpressedForDeclaredUse` | The Pillar is exceptionally realized with reinforcing loci, heterogeneous cases, and no hidden FPF-level loss. |
-
-The values are ordinal content evaluations. They are not a scalar score, maturity ladder, release gate, or proof that development ends.
-
-#### E.2.DA:4.4 - Required Pillar coordinates
-
-| Pillar coordinate | Evaluation question | Good state |
-|---|---|---|
-| `P1CognitiveEleganceAdequacy` | Does the object expose decisive structure without ornamental formalism? | The reader sees the smallest structure that changes the action. |
-| `P2DidacticPrimacyAdequacy` | Does human comprehension stay ahead of formal, tooling, or review purity? | Working situation, recognition reason, first move, and payoff stay visible. |
-| `P3ScalableFormalityAdequacy` | Can informality mature toward formal assurance without forks or rewrites? | Plain, Tech, Formal, and mathematical strengthening remain staged. |
-| `P4OpenEndedKernelAdequacy` | Do kernel concepts stay meta-level while domain knowledge stays in patterns? | New content extends FPF without smuggling domain doctrine into the kernel. |
-| `P5FPFLayeringAdequacy` | Do modular pattern layering and neighbour authority stay intact? | Patterns can be added, replaced, or removed without shadow authority. |
-| `P6LexicalStratificationAdequacy` | Are Plain, Tech, Formal, and mathematical registers recoverable for the declared use? | Decision-governing wording maps to fields named by value, kinds, lenses, or neighbours. |
-| `P7PragmaticUtilityAdequacy` | Do proofs, measures, models, and reviews change real admissible action? | The object changes prediction, decision, diagnosis, design, repair, stop, or assignment. |
-| `P8CrossScaleConsistencyAdequacy` | Do composition, aggregation, boundary, emergence, and method-side relation structures stay consistent across scales? | Cross-scale claims name preserved structure, lost structure, lens or algebraic representation, and boundary. |
-| `P9StateExplicitnessAdequacy` | Are states, transitions, currentness, editions, and qualification windows explicit for the declared use? | Readers can tell what version and state are being used and what changes them. |
-| `P10OpenEndedEvolutionAdequacy` | Can improvement continue cheaply and safely without pretending development ends forever? | Local stop conditions coexist with reopen conditions for new use, source, comparison, or failure evidence. |
-| `P11SoTAAlignmentAdequacy` | Does current knowledge discipline the object without citation theatre? | Current sources change moves, boundaries, examples, checks, or stop rules. |
-
-#### E.2.DA:4.5 - Evidence and coordinate separation
-
-One evidence locus may support several coordinates, but the rationale must say what property it supports in each coordinate. The following distinctions carry most repairs:
-
-| Distinction | Use |
-|---|---|
-| `P1` vs `P2` | smallest decisive structure vs reader comprehension and first move. |
-| `P2` vs `P6` | usable recognition text vs recoverable register mapping. |
-| `P5` vs `P7` | right governing pattern vs useful change in action. |
-| `P7` vs `P11` | practical payoff vs current source contribution. |
-| `P8` vs `P9` | cross-scale invariant vs state, transition, edition, and currentness. |
-| `P10` vs `E.23` | evolvability of the FPF object vs repeated improvement method. |
-
-If a distinction cannot be recovered from the FPF object, lower the affected coordinate and state the first repair. Do not add a new local doctrine table to explain around the missing content.
-
-`E.21` and `E.9.DA` results are evidence loci for `E.2.DA`, not inputs to be averaged. A pattern-quality value can support a Pillar only by pointing to the FPF-level effect it creates or damages.
-
-#### E.2.DA:4.5a - Result-row discipline and calibration
-
-An `E.2.DA` result uses this table shape:
-
-| Pillar coordinate | Value | ShortRationale | EvidenceLocus |
-|---|---:|---|---|
-| `<E.2.DA coordinate>` | `<0..5>` | `<assigned-value basis; why the lower adjacent value would understate the FPF evidence; why the higher adjacent value would overstate it, or for 5 what would lower or reopen>` | `<pattern section, monolith section, host, README scenario, ToC row, E.11 entry-distribution locus, I.2 expanded case, projection, source row, relation row, companion file, evaluation result, or missing locus named by value>` |
-
-A Pillar essay, local-quality average, two-column table, or result whose value depends on unchecked corpus, projection, or source evidence is not an `E.2.DA` result. It is only draft evaluation material. Missing or unchecked evidence lowers the Pillar coordinate that needs it; it does not make the coordinate optional.
-
-Common calibration points:
-
-| Pillar family | `3` | `4` | `5` |
-|---|---|---|---|
-| Entry, usability, and projection Pillars | The object can be used with visible limits, but projection or first-use evidence is partial. | Relevant governing loci and projections are coherent enough for declared use. | The use is replayable across governing text, projection, cold-reader or retrieval evidence, and non-use boundary. |
-| Layering and semantic authority Pillars | Neighbours are plausible, but some authority or shadow-spec risk remains. | Governing patterns named by value and thin projections are distinguishable. | Authority is robust across pattern bodies, relations, projection rows, and anti-fragmentation cases. |
-| Source and evolution Pillars | Source or reopen language exists, but currentness, contribution, or smallest-reopen basis is compact. | Source contribution, currentness window, and reopen condition are explicit for declared use. | Source-front movement and future reopen are replayable without freezing development after a local stop. |
-
-#### E.2.DA:4.6 - Status and stop condition
-
-| Status | Meaning |
-|---|---|
-| `admissibleForDeclaredFPFUse` | All eleven coordinates meet the declared floor for the scoped use. |
-| `repairBeforeFPFUse` | One or more coordinate floors fail for the declared use. |
-| `holdForPillarDecision` | The defect requires an `E.2` Pillar amendment or precedence decision. |
-| `holdForArchitectureDecision` | The defect requires pattern split, object-under-improvement, source-use, projection-use, or naming architecture decision. |
-| `refreshNeeded` | A source, pattern, entry use, projection, relation, or vocabulary change invalidates a previous evaluation. |
-
-The stop condition states the declared floor, values, bounded non-use, smallest reopen locus, and first repair if the declared use is not yet admissible.
-
-#### E.2.DA:4.7 - Compact result form
-
-```text
-E.2.DA result:
-  FPF object under improvement: <FPFObjectUnderImprovementRef>
-  Declared use and reader: <scope>
-  Qualification window: <window>
-  Evidence basis checked: <FPFPillarAdequacyEvidenceBasis>
-  Status: <FPFPillarAdequacyStatus>
-  Coordinate table: <Pillar coordinate | Value | ShortRationale | EvidenceLocus for all eleven Pillars>
-  First repair or stop: <repair | hold | local stop>
-  Reopen if: <smallest changed locus or condition>
-```
-
-For a small release decision, the coordinate table may be compact. It is still complete. Status is not assigned from prose, a checklist count, a local-pattern average, a two-column table, or a result missing evidence loci needed by its values.
-
-When `E.22`, `E.23`, absorption, or exceptional-improvement framing asks for improvement, below-floor Pillar coordinates return findings or repair. Above-floor coordinates receive proposal rows only for substantive non-dominated FPF-level content opportunities inside the declared use: better entry recognition, governing-pattern authority, source-currentness carry-through, projection thinning, corpus-ecology repair, kind-preserving precision restoration, open-ended evolution support, or deletion or relocation of apparatus that weakens the FPF object. Do not treat every value below `5` as a defect. A `4` may be the correct stop value only with loci showing why further Pillar-content movement is dominated, unavailable, or

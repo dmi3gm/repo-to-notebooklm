@@ -410,7 +410,8 @@ The public FPF readme section after the Table of Contents provides fifteen seman
 | A.6.RSIG | **Recognition Signatures for Descriptions** | Stable | description-recognition signature; encountered carrier vs defining `U.Episteme`; API/access description not promise; method applicability note; false neighboring description | `A.6`, `A.6.P`, `F.18`, `E.10` |
 | A.6.B | **Boundary Norm Square (Laws / Admissibility / Deontics / Work-Effects)** | Stable | *Keywords:* boundary norm square, atomic claims, L/A/D/E claim classification, laws vs gates vs commitments vs evidence, admissible use, non-admissible use, claim IDs, triangle decomposition. *Queries:* "What is the Boundary Norm Square in FPF?", "How do I decompose probe-coupled or mixed boundary statements?", "Where do RFC keywords and use conditions belong in FPF patterns?" | **Builds on:** E.8, A.6.0, A.6.1, A.6.3, E.17.0, E.17, A.7, F.18, E.10.D2, E.10 publication face, form, unit, and carrier discipline. **Coordinates with:** A.6, A.6.P, C.26.1, A.10, B.3. |
 | A.6.C | **Contract Unpacking for Boundaries** | Stable | *Keywords:* contract bundle unpacking, SLA/guarantee claim classification, promise content (promise content) ≠ work, promise-act/utterance/commitment separation, Boundary Norm Square (L/A/D/E), MVPK faces “no new semantics”. *Queries:* "How to unpack contract language into promise content / utterance / commitment / work+evidence?", "How to prevent interface-as-agent / contract soup mistakes?", "How to stop MVPK faces becoming ‘second contracts’?", "When contract talk includes service-cluster tokens, what gets unpacked first?" | **Builds on:** A.6, A.6.B, A.6.8, A.7, A.2.3, A.2.8, A.2.9, E.10, E.17. **Coordinates with:** F.12, F.18. |
-| A.6.0 | **U.Signature - Universal, law-governed declaration for a SubjectKind over a RangedValueKind** | Stable | *Keywords:* signature, vocabulary, laws, applicability, bounded context. *Queries:* "What is the universal signature block?", "Where do laws vs. implementations live?" | **Placement:** Kernel; **Coordinates:** A.6.1. |
+| A.6.REL | **Relation Obtaining and Individuated Relation Occurrences** | Stable | Governs when a direct relation obtains, when a named receiving use needs one obtaining occurrence explicitly distinguished, and how assertions, descriptions, designations, references, publication occurrences, and representations remain distinct from the world-side occurrence. | **Builds on:** direct relation patterns for participant meanings, obtaining predicates, and occurrence-identity rules. **Coordinates with:** A.6.0, A.6.5, C.2.1, E.24, E.24.UK, F.18, C.29. |
+| A.6.0 | **U.Signature - Reusable Law-Governed Declaration Episteme** | Stable | Identifies one reusable declaration episteme by its claim content, exact EntityOfConcern, and effective ReferenceScheme; governs vocabulary, laws, applicability, relation-facing RelationSignature use, and only the specialized typed declarations needed by receiving uses. | **Builds on:** A.7, C.2.1, C.3, A.2.6, A.6.5. **Coordinates with:** A.6.REL, A.6.1, A.3.1, A.15.1, C.29, E.24.UK, E.24.PUB. |
 | A.6.1 | **U.Mechanism - Law-governed application to a SubjectKind over a RangedValueKind** | Stable | Keywords: Mechanism, OperationAlgebra, LawSet, AdmissibilityConditions, Transport, Bridge‑only. Queries: "How to define a mechanism like USM/UNM?", "Where do operational guards live?", "How to handle cross‑context transport?" | **Builds on:** A.6.0, E.10.D1. **Instances:** USM (A.2.6), UNM (A.19). |
 | A.6.2 | **`U.EffectFreeEpistemicMorphing` — Effect‑free morphisms of epistemes** | Stable | Effect-free, law-constrained episteme-to-episteme morphisms over ClaimGraph, EntityOfConcern, grounding holon, viewpoint, reference scheme, representation scheme, and metadata; preserve or retarget EntityOfConcern only through declared change mode. | **Builds on:** A.1, A.6.0, A.6.1, A.6.5, C.2.1, E.10.D2, C.3.*. **Used by:** A.6.3, A.6.4, E.17.0, E.17, E.18, KD-CAL mapping rules. |
 | A.6.3 | **`U.EpistemicViewing` — EntityOfConcern-preserving morphism** | Stable | EntityOfConcern-preserving effect-free projection between epistemes: content, representation, viewpoint, or reference scheme may change, but `entityOfConcernRef` stays fixed unless A.6.4 retargeting is explicitly opened. | **Builds on:** A.6.0, A.6.2, A.6.5, A.7, E.10.D2, C.2.1, C.2. **Used by:** E.17.0, E.17, E.17.1, E.17.2, E.18, B.5.3, KD-CAL view operators. |
@@ -424,7 +425,7 @@ The public FPF readme section after the Table of Contents provides fifteen seman
 | A.6.A | **Action-Invitation Precision Restoration (ACT-INV)** | Stable | *Keywords:* affordance, action invitation, action-first language, post-threshold classification, A.15 docking, language-state seam. *Queries:* "How do I repair overloaded affordance language in FPF?", "When does action-guiding language become an action invitation?", "How does A.6.A differ from early cue routing?" | **Builds on:** A.6.P, A.15, C.2.2a, A.16, B.4.1, F.9. **Coordinates with:** C.16.Q, B.5.2.0. |
 | A.6.F | **Function and Functional Precision Restoration (RPR-FUNCTION)** | Stable | *Keywords:* function wording, functional architecture, FunctionalStructure, function-use repair, capability/effect, work/method boundary, module allocation, mathematical function. *Queries:* "When is functional architecture a structure kind rather than a separate ontology?", "How do I repair function-like wording?", "When is a function a capability, method, work, role, quality, module allocation, or mathematical mapping?" | **Builds on:** A.6.P, A.6.5, A.7, C.30, C.30.ASV, C.29. **Coordinates with:** A.6.M, A.15, C.16.Q, A.6.0, A.6.5, A.6.B, A.6.C, A.6.8, E.18, C.30.TFS-REL. |
 | A.6.M | **Module Relation Repair** | Stable | *Keywords:* module relation, component, interface, port, platform, layer, stack, open architecture, substitutability, interface specification. *Queries:* "When is a module relation being claimed?", "How do I keep functional links, signatures, ports, and implemented interfaces distinct?", "When does open architecture require module-interface repair?" | **Builds on:** A.6.P, A.6.5, A.6.B, C.30, C.30.ASV, A.6.F. **Coordinates with:** C.31, C.31.RSA, E.18, C.30.TFS-REL, A.10, B.3, A.20, A.21, C.28, E.20, G.5, C.11. |
-| A.6.5 | **U.RelationSlotDiscipline - SlotKind, ValueKind, RefKind, and slot-operation discipline** | Stable | *Keywords:* slot, argument position, value, reference, signature, substitution, pass-by-value, pass-by-reference. *Queries:* “How do I declare positions and references in relations?”, “How do we stop mixing roles, values and ids in signatures?”, “How does SlotKind/ValueKind/RefKind interact with EntityOfConcern / Description / specification-use and Epistemes?” | **Builds on:** A.6.0 (U.Signature), A.1 (Holon), A.7 (Strict Distinction), E.8 (pattern authoring discipline), E.10 (LEX-BUNDLE; Tech/Plain registers). **Used by:** C.2.1 (U.EpistemeSlotRelation), A.6.2–A.6.4 (episteme morphisms), A.2.1 and F.6 (RoleEnactmentFact and performed-work attribution), C.3.* (Kinds & KindSignature), E.17.0 (U.MultiViewDescribing), discipline-packs for methods/services. |
+| A.6.5 | **Relation-Declaration Slot Discipline - SlotKind, ValueKind, RefKind, and participant-designation discipline** | Stable | Declares reusable relation-participant meanings as exact SlotSpecs inside one RelationSignature while keeping declaration-local SlotKinds, world-side participants, receiving-episteme designations, references, and obtaining occurrences distinct. | **Builds on:** A.6.0 and direct relation patterns. **Coordinates with:** A.6.REL, A.6.P, A.6.RSIR, C.2.1, C.3, C.29, E.24.UK. |
 | A.6.6 | **Base Declaration Discipline - Kind-explicit, scoped, witnessed base declaration discipline (with base-change lexicon)** | Stable | *Keywords:* base declaration, basedness, baseRelation, SWBD, witnesses, scope, Γ_time, anchoring, support-as-basedness, rebase, retime, rescope. *Queries:* "What is base-declaration discipline?", "How to model base-dependence without anchoring?", "When is support really base-dependence?", "What is a ScopedWitnessedBaseDeclaration (SWBD)?" | **Builds on:** A.6.0, A.6.5, A.2.6, A.2.4, A.7, E.8, E.10. **Coordinates with:** A.10, A.14, C.2.1, A.6.3-A.6.4, C.3.3, E.18, F.9, F.15, F.18. **Used by:** base-relative admissibility/calibration/attribution patterns; anchor* and support-as-basedness rewrites into explicit `baseRelation(dependent, base)`. |
 | A.6.7 | **`MechSuiteDescription` — Description of a set of distinct mechanisms** | Stable | *Keywords:* mechanism suite, distinct mechanisms, suite obligations, spec pins, CN-Spec, CG-Spec, P2W, planned baseline, crossing visibility. *Queries:* "What is a MechSuiteDescription?", "How to describe a bundle of distinct mechanisms without using MechFamilyDescription?", "How do suite obligations differ from gate decisions?" | **Builds on:** E.8, A.6.1, A.6.5, E.10, E.19. **Coordinates with:** E.18, A.21. **Used by:** Part G universalization; CHR mechanism stacks. |
 | A.6.8 | **Service Polysemy Unpacking (RPR-SERV)** | Stable | *Keywords:* service polysemy, service situation, interface semantics, promise content, provider principal, service/cell analogy, boundary exchange, viability envelope, API read/export. *Queries:* "How do I unpack service talk in FPF?", "When is an API read interface semantics rather than state evidence?", "When does service viability apply C.26.3?" | **Builds on:** A.6.P, A.6.B, A.6.5, A.2.3, A.2.8, A.2.9, A.15, E.10, F.17, F.18. **Coordinates with:** A.6.C, A.7, C.26.1, C.26.3, F.8, E.15. |
@@ -507,7 +508,7 @@ The public FPF readme section after the Table of Contents provides fifteen seman
 | **Cluster C.I – Core CALs / LOGs / CHRs** | | | | |
 | C.1 | **Physical System State, Conservation, and Resource-Flow Calculus (Sys-CAL)** | Planned | *Keywords:* physical system, composition, conservation law, stock-flow, energy, mass, resource flow, U.System. *Queries:* "How to model physical systems in FPF?", "What conservation or stock-flow claim is being made?", "How do resources move through a system?" | **Builds on:** A.1, A.14, A.22, A.3.4, A.19, C.16. **Coordinates with:** B.1.6, C.5, C.14, C.30. |
 | C.2 | **KD‑CAL** | Stable | *Keywords:* knowledge, epistemic, evidence, trust, assurance, F-G-R, Formality, ClaimScope, Reliability, provenance. *Queries:* "What is F-G-R?", "How does FPF handle evidence and trust?", "How to model a scientific theory?". | **Builds on:** A.1, A.10, B.3. **Prerequisite for:** All patterns using F-G-R. |
-| C.2.1 | **U.Episteme - Epistemes and their slot relation** | Stable | `U.EpistemeSlotRelation` organizes EntityOfConcern, GroundingHolon, ClaimGraph, Viewpoint, View, ReferenceScheme, RepresentationScheme, and related slots for claim-bearing epistemes across symbolic, diagrammatic, latent, and tool-mediated representations. | **Builds on:** C.2, A.1, A.6.5, A.7, E.10.D2. **Used by:** A.6.2-A.6.4, E.17.0-E.17.2, E.17, E.18, B.1.3, KD-CAL/LOG-CAL discipline packs. |
+| C.2.1 | **`U.Episteme`: Constitution, Empirical Grounding, and Edition Relations** | Stable | Identifies one episteme through exact claim content, exact EntityOfConcern, and effective ReferenceScheme under EpistemeConstitutionRelation; governs its empirical-grounding and edition relations while keeping declarations, views, publications, carriers, and representations separate. | **Builds on:** A.1, A.6.REL, A.6.0, A.6.5, A.7, C.29. **Coordinates with:** C.3.2, E.17.0, E.24.UK, E.24.PUB, A.10, B.3, G.11. |
 | C.2.P | **Epistemic Precision Restoration** | Stable | Restores precision for source expression, claim-bearing episteme, publication, view, face, carrier, PublicationUnit, EntityOfConcern, grounding relation, pattern-application wording, and FPF-governed use dispositions without turning files or names into claim objects. | **Builds on:** E.10, C.2.1, A.7, E.17.0, E.17, A.6.P, F.18. **Coordinates with:** E.8, E.12, E.17.AUD, E.17.EFP, E.17.ID.CR, A.10, A.15, A.20, A.21, B.3, C.11. |
 | C.2.2 | **Reliability R in the F–G–R triad** | Stable | *Keywords:* Reliability (R), warrant, evidence-bound, F–G–R, ClaimScope (G), Bridge-only reuse, Congruence Level (CL / CL^k / CL^plane), weakest-link, pathwise justification (PathId), TA/VA/LA lanes, no implicit averaging. *Queries:* "What is R in F–G–R?", "How does FPF propagate reliability?", "How do CL penalties route under transport?", "Bridge-only reuse of claims in FPF". | **Builds on:** C.2, A.2.6, C.2.3, B.3, B.1.3, C.3, F.9. **Coordinates with:** G.6, G.7, E.14, E.18. **Constrains:** any cross-context claim reuse and any publication of `R_eff`. |
 | C.2.2a | **`U.LanguageStateSpace` - Language-state chart over `U.CharacteristicSpace`** | Stable | *Keywords:* language-state chart, characteristic space, position claim, partial coordinates, thresholds, governed episteme publication. *Queries:* "What is the language-state space in FPF?", "How do I publish a position claim before endpoint claim publication?" | **Builds on:** A.19, E.10, F.18. **Used by:** C.2.LS, A.16, B.4.1, C.16.Q, A.6.A. |
@@ -655,10 +656,10 @@ The public FPF readme section after the Table of Contents provides fifteen seman
 | E.21 | **FPF Pattern-Quality Evaluation CharacteristicSpace** | Stable | Evaluates one FPF pattern version for a declared reader, use, and scope with one required coordinate set, ordinal values with short rationales, protected trade-offs, precision-restoration profile, status, and stop or reopen conditions. | **Builds on:** E.8, E.19, C.25, C.16, A.17-A.19, F.18, A.19.ECS. **Coordinates with:** E.22, E.23, E.9.DA, E.2.DA, E.10, F.19, A.6.P, C.2.P, E.11, I.2. |
 | E.22 | **Improvement-Oriented Quality Evaluation Question Framing** | Stable | Frames one quality evaluation over an object version, evaluation use, purpose, floor or aim, protected trade-offs, evidence basis, and result form. Returns typed finding or proposal epistemes without turning proposals into selected repairs, Work, evidence, release, or improvement proof. | **Builds on:** A.19.ECS, E.21, E.9.DA, E.2.DA. **Coordinates with:** E.23, E.19, E.10, C.25, C.17-C.19, G.5, G.9, G.11. |
 | E.23 | **Quality Improvement Loop Method** | Stable | Repeatedly changes one object version and re-evaluates it under one declared evaluation. Uses exact E.22 proposal rows, scale-qualified predicted evaluation-result changes, protected trade-offs, evidence basis, and one loop decision; a visible cycle stays provisional until A.22.CGUS admission. | **Builds on:** E.22, A.19.ECS. **Coordinates with:** E.21, E.9.DA, E.2.DA, A.22.CGUS, C.17-C.19, G.5, G.9, G.11. |
-| E.24 | **U.Ontic and Ontic Introduction Discipline** | Stable | Governs when a repeated FPF construct becomes a durable action-facing ontic with stable identity, typed slot relation, dependent-pattern obligations, local-use-frame alternatives, and publication boundary. | **Builds on:** E.8, E.10, E.10.ARCH, F.18, F.19, C.2.1, A.6.5. **Coordinates with:** E.24.CD, E.24.PUB, A.19.ECS, E.21, E.9.DA, E.2.DA. |
+| E.24 | **U.Ontic and Ontic Introduction Discipline** | Stable | Governs the decision to use one durable connected ontology unit with an explicit subject identity, core direct relation, named neighboring relations, and dependent-pattern reliance; otherwise keeps coordination in direct patterns or a bounded local episteme. | **Builds on:** A.6.REL, A.6.0, A.6.5, C.2.1. **Coordinates with:** E.8, E.10, E.10.ARCH, F.18, E.24.CD, E.24.UK, E.24.PUB, E.17.0, C.29. |
 | E.24.CD | **Ontic Candidate Detection** | Stable | Detects when repeated FPF or project material may need a durable ontic rather than a local record, table, schema, card, publication form, or wording repair; names candidate signals, sufficiency rationale, hidden-form classifications, and non-use boundaries without turning frequency into proof. | **Builds on:** E.24, E.10, E.10.ARCH, F.19, A.19.ECS, C.2.1. **Coordinates with:** E.21, E.9.DA, E.2.DA, F.18. |
 | E.24.PUB | **Ontic Description and Publication Discipline** | Stable | Keeps an ontic, its description episteme, its publication, and the publication form distinct; prevents cards, records, tables, schemas, diagrams, views, pattern hosts, or source packets from becoming the ontic by appearance. | **Builds on:** E.24, C.2.1, E.17, E.8, E.10, F.19. **Coordinates with:** E.24.CD, C.30.AD, E.21, E.9.DA. |
-| E.24.UK | **U-kind Governance and Ontic Settlement Coupling** | Stable | Governs whether a public FPF `U.*`, type, kind, or subkind name is an admitted durable U-kind, a dependent durable value under an existing settlement, a C.3 typed-reasoning value, a slot position, relation structure, record, publication form, lens, local frame, or source wording outside current FPF vocabulary. | **Builds on:** E.24, E.24.CD, E.24.PUB, C.3, C.3.1, A.8, A.11, F.5, F.8, F.18, E.10, A.6.5. |
+| E.24.UK | **U-kind Admission and Ontic Settlement** | Stable | Applies one explicit root or dependent U-kind admission test and returns every non-admitted candidate through exactly one of reuse, local-kind, or reject to its actual governed object and direct owner; a `U.*` spelling alone has no admission force. | **Specializes:** E.24. **Uses:** A.6.REL and each direct relation pattern for relation admission; A.6.0, A.6.5, C.2.1, F.18, and C.29 for neighboring objects. **Coordinates with:** C.3.2, E.24.CD, E.24.PUB, E.17.0, A.8, A.11, E.10. |
 
 **Part F — The Unification Suite (U‑Suite): Concept‑Sets, SenseCells & Contextual Role Assignment**
 
@@ -10541,365 +10542,763 @@ F.18 may supply durable names for recovered terms when naming is current, but it
 
 ### A.6.C:End
 
-## A.6.0 - U.Signature - Universal, law-governed declaration for a SubjectKind over a RangedValueKind
+## A.6.REL - Relation Obtaining and Individuated Relation Occurrences
+
+> **Type:** Architectural (A)
 > **Status:** Stable
-> **Type:** Definitional ontic pattern
+> **Normativity:** Normative unless marked informative
 
-**Status.** Architectural pattern, kernel‑level and universal.
-**Placement.** Part A (Kernel), **before A.6.1** (“U.Mechanism”).
-**Builds on.** **A.2.6** (USM: context slices and scopes), **E.8** (pattern form and section order), **E.10** LEX-BUNDLE (registers, naming, stratification), **E.10.D1** D.CTX (Context discipline).
 
-**Coordinates with.** **A.6.1** (U.Mechanism), **A.6.5** (`U.RelationSlotDiscipline` for n-ary arguments), **E.5.3** (Unidirectional Dependency), **E.10** (LEX-BUNDLE), and **Part F** (harnesses and cross-context transport; naming). Conformance keywords: RFC 2119.
+### A.6.REL:1 - Problem frame
 
-### A.6.0:0 - Use and boundary
+**Plain name.** Relation occurrence.
 
-Use this pattern when you need to publish or check a reusable `U.Signature` declaration for a theory, mechanism family, method family, discipline vocabulary, `U.Signature(profile=FormalSubstrate)`, or `PrincipleFrame`, and the current question is: what subject kind is declared, over what ranged value kind, with which vocabulary, laws, and applicability?
+**Primary EntityOfConcern.** One obtaining relation occurrence of an admitted relation kind when one named receiving use needs that occurrence to remain distinguishable from another.
 
-Do not use this pattern when the claim being made is that some implementation runs, a handler realizes an effect, a method is authorized for work, a gate has passed, evidence supports a result claim, a measurement is comparable, or a bridge preserves enough structure across contexts. Those claims use A.6.1, A.15, gate, evidence, characterization, normalization, bridge, or decision patterns after the signature declaration is stable.
+**Primary working reader.** An engineer who states a direct relation and needs to decide whether a named receiving use justifies exposing one occurrence's identity.
 
-First useful move: write the four-row Signature Block before writing examples or realizations: `SubjectBlock`, `Vocabulary`, `Laws`, `Applicability`. Then add a `SignatureManifest` only when another signature imports this one or downstream text depends on its exported symbols.
+**Working concern and viewpoint.** Preserve the readable direct relation assertion while viewing occurrence identity from the named receiving use that depends on it; do not substitute an epistemic, designation, or representation-side object for the world-side relation.
 
-What goes wrong if missed: a project may treat implementation detail, tutorial prose, bridge policy, measurement comparability, or handler behavior as if it were part of the public declaration. That makes reuse brittle because downstream work cannot tell what law is being reused and what later realization merely happened to satisfy it.
+**Use this when.** Use this pattern when one named receiving use needs to distinguish an obtaining relation occurrence from another occurrence of the same relation kind. A work-attribution assertion may designate one role-assignment occurrence; a reliability comparison may compare two installed-part occurrences; a dependent evaluative relation may have one actual-condition relation occurrence as a participant. Each case needs occurrence identity, not only a sentence that states the direct relation.
 
-What this buys: the same declaration shape can be reused for mechanisms, methods, disciplines, `U.Signature(profile=FormalSubstrate)` declarations, and principle frames, while realizations, measurements, bridges, and work authorization stay in their own governing patterns.
+**First useful move.** Write the direct relation assertion with its named participants. Recover the direct governing pattern, then check that the relation obtains for those participants. In technical terms, those participants jointly satisfy the semantic predicate within the direct relation pattern's declared applicability and temporal conditions. Name the receiving use and apply its direct branch in section 4.2. If that use does not need one occurrence distinguished from another, keep the readable assertion and stop. If it does, apply the direct occurrence-identity rule before assigning an identifier, designating the occurrence in an episteme, or relying on it as a participant of another direct relation.
+
+**What goes wrong if missed.** An epistemic, designation, or representation-side object is treated as what creates the relation it is meant to describe or designate. Repeated assignments or successive assembly episodes with the same participants then collapse into one. At the opposite extreme, every ordinary relational sentence is expanded into a relation-occurrence description episteme even though no receiving use needs that identity.
+
+**What this buys.** Engineers can keep ordinary relation assertions readable. When a receiving use depends on exactly one occurrence, a system performing comparison or evaluation work can distinguish repetition, change, or constitution while assertions, descriptions, designations, representations, and publication occurrences retain their own identities.
+
+**Not this pattern when.** If the wording does not yet identify the direct relation and participants, start with `A.6.P` or `A.6.RSIR`. If the current assertion content is negative, modal, or still unresolved, keep that modality in a relational assertion under `C.2.1`; do not invent an obtaining occurrence. If the question concerns only the SlotSpecs of a reusable relation declaration, apply `A.6.5`. If no named receiving use depends on occurrence identity, stop at the direct relation sentence.
+
+### A.6.REL:2 - Problem
+
+When a later engineering use needs one obtaining relation occurrence to remain distinguishable from another, descriptions often state five different claim contents as if one assertion or identifier established them all. The claims have this dependency order; the order does not turn them into five project-time decisions:
+
+1. the direct relation obtains for the named participants, those participants jointly satisfy its semantic predicate, one occurrence therefore exists, and the direct identity rule governs its reidentification and distinction from another occurrence;
+2. FPF ontology settlement already admits occurrences of that relation kind under `U.Relation`; the direct pattern states the relation-specific participant meanings, obtaining condition, and occurrence-identity rule, while a compatible `RelationSignature` episteme declares corresponding SlotSpecs for reusable descriptions;
+3. a system performing explicit-individuation work applies the admitted identity rule so the named receiving use can recoverably distinguish one occurrence; a separate relation-occurrence description episteme is produced only when the selected receiver needs that description;
+4. an identifier designates that already recoverable occurrence under a reference scheme;
+5. the selected receiving object is either an episteme whose content designates that occurrence, another direct relation that has the occurrence as a participant, or an operation-application assertion episteme whose content designates it as an argument under an A.6.1 `OperationAlgebra` SlotSpec.
+
+The later claim contents do not make the earlier relation obtain. Root `U.Relation` admission is a corpus ontology decision governed by `E.24.UK`. `A.6.REL` supplies the common occurrence discipline, while each direct relation pattern supplies the relation-specific participant meanings, obtaining condition, and occurrence-identity rule used as the admission witness. Project work does not repeat that classification decision. A system performing explicit-individuation work applies the direct identity rule so one existing occurrence is recoverably distinguishable for the current use; that work neither creates the occurrence nor by itself requires a separate description episteme. A system performing naming work may subsequently associate a designator with the occurrence, and a receiving episteme may subsequently contain a reference that designates it.
+
+Relation-heavy work often begins from a table row, graph edge, identifier, or reified statement. An engineer can then mistake the represented row, edge, identifier, or reifier identity for world-side relation identity. Applying this method permits exact use of relation-occurrence identity without reversing representation and ontology and without forcing a relation-occurrence description episteme into every readable sentence.
+
+### A.6.REL:3 - Forces
+
+| Force | Tension |
+|---|---|
+| Readable assertion vs explicit identity | Engineers need short relation sentences, while some later assertion or description epistemes need one stable occurrence as their EntityOfConcern or designated object and receiving direct relations may need it as a participant. |
+| Relation obtaining vs predicate satisfaction | The world-side relation obtains; the actual relation participants, considered under their participant meanings, satisfy the truth-valued condition stated by the semantic predicate. Conflating these substitutes a formal expression for the obtaining relation. |
+| Relation kind vs semantic predicate | A relation kind classifies occurrences under an identity rule; a predicate states a satisfaction condition for the jointly considered participants. One is not a synonym for the other. |
+| Occurrence vs assertion or representation | An occurrence can exist before anyone asserts, describes, explicitly individuates, names, references, or represents it. |
+| Participant identity vs repeated occurrences | Participant identities may suffice for some relation kinds, while repeated assignments, assembly episodes, and exact production, delivery, acceptance, or evaluation relations may need an additional domain discriminator supplied by their own patterns. |
+| Construction vs description | A system can create a relation occurrence while performing constitutive work when the direct construction rule says so; that work occurrence may contribute to identity. Producing a row or description episteme is not constitutive by form. |
+| Cross-domain reuse vs universal reification | Formal, physical, social, and engineering relations do not share one universal truth-maker or representation form. |
+| Stable reference vs false creation | Identifiers enable later reference, but identifier assignment neither creates the occurrence nor makes the direct relation obtain. |
+
+### A.6.REL:4 - Solution
+
+Use progressive relation-occurrence individuation. Start from an obtaining direct relation and stop as soon as the named receiving use is served.
+
+**Local relation-occurrence mantra.** *State the direct relation and recover its governing pattern. Check whether the relation obtains. Name the exact receiving use and its direct branch. If that use does not need occurrence identity, keep the readable assertion and stop. If it does, apply the direct identity rule to individuate the already-existing occurrence; only then designate it in an episteme, recover it as a relation participant, or designate it as an argument of a declared operation. If a system evaluates epistemes connected by a current A.10 evidence relation to an assertion that an object changed, identify that exact changed object and use its own governing pattern.*
+
+This short formula keeps the progressive-individuation Solution in attention; it does not replace sections 4.1-4.7. It is a mnemonic, not a work plan or performed work. When a receiving use instead needs one reusable constraint-governed unfolding structure for those continuations and stops, `A.22.CGUS` governs that structure.
+
+#### A.6.REL:4.1 - Apply the relation-object architecture discipline
+
+**Relation-object architecture discipline** is the rule set in this subsection. It is not another U-kind. Conforming prose keeps the objects around one direct relation distinct, names the direct relation between adjacent objects, and uses a recoverable name for each current object. `A.6.5` specializes only the `SlotSpec` part of this rule set.
+
+**Short use rule.** State the world-side relation and its actual participants first. Add another named object from the relation-object architecture only when the current receiving use depends on that exact object, and state its direct relation to the object already in view. The tables below help select that additional object and relation; they are not a mandatory form for ordinary relation prose.
+
+The world-side relation comes first. An **actual relation participant** is one exact `U.Entity` participating in one obtaining relation occurrence under one relation-participant meaning. Participation leaves the entity under its independently governed intrinsic kind. A **relation occurrence** is the obtaining `U.Relation` occurrence itself. The direct relation obtains when the actual participants satisfy the obtaining predicate; the occurrence-identity rule provides the criteria for reidentification, continuity, and distinction from another occurrence. Signatures, assertions, names, references, and representations retain their separate identities.
+
+##### A.6.REL:4.1.1 - World-side objects
+
+| Canonical FPF name | What this object is | Direct relation to preserve | Naming rule | Direct governing pattern |
+|---|---|---|---|---|
+| **actual relation participant** | one exact `U.Entity`; this is a relation-qualified use of the entity, not a new kind | the entity participates in this relation occurrence under one relation-participant meaning | use the entity's direct kind and current name; use a governed designator only when naming or reference is current; in relation prose add the domain participant meaning, as in `Bearing_B as the installed part` | the participant's direct pattern and the direct relation pattern |
+| **relation occurrence** | one obtaining occurrence admitted under `U.Relation` | the occurrence has the actual participants and is classified by the direct relation kind; it obtains when those participants satisfy the relation obtaining predicate within its applicability | use the readable direct relation sentence until stable occurrence reference is needed; then use a relation-occurrence designator assigned after the identity rule is applicable | the direct relation pattern and `A.6.REL` |
+
+The phrase **actual relation participant** therefore never replaces the entity's own name. It says how that entity participates in this occurrence. Likewise, a readable sentence such as `Bearing_B is installed in Pump_P` can state that the direct relation obtains without first creating a relation-occurrence description episteme.
+
+##### A.6.REL:4.1.2 - Relation-kind settlement
+
+The relation kind is a classificatory distinction over relation occurrences. The accepted ontological settlement stated by the direct relation pattern or its ontic includes the relation-participant meanings, obtaining predicate, and occurrence-identity rule as semantic and rule content. World-side entities participate according to that settlement while retaining their own kinds.
+
+| Canonical FPF name | What this object is | Direct relation to preserve | Naming rule | Direct governing pattern |
+|---|---|---|---|---|
+| **relation kind** | a classificatory distinction whose individuals are relation occurrences; `E.24.UK` admits a durable U-kind only when the direct relation pattern supplies the required witness, while a narrower relation distinction remains governed without automatic `U.*` admission | classifies relation occurrences governed by one obtaining predicate and one occurrence-identity rule | use the accepted domain relation name; a new durable Tech name follows `E.24.UK` admission and `F.18` naming, while morphology alone establishes neither | the direct relation pattern and `A.6.REL`; `E.24.UK` when durable U-kind admission is current |
+| **relation-participant meaning** | relation-local semantic content specifying one domain contribution to the obtaining predicate | says how one actual participant contributes to the obtaining predicate while that participant retains its intrinsic kind | use a domain noun phrase such as `installed part` or `installation site`; keep it local to the direct relation kind | the direct relation pattern |
+| **relation obtaining predicate** | truth-valued rule content over the actual participants considered under their relation-participant meanings | satisfaction of this predicate is the stated criterion for the direct relation obtaining | name it from the domain relation and the exact condition, for example `installed-at obtaining predicate`; notation used to express it keeps its source name under `C.29` | the direct relation pattern |
+| **relation occurrence-identity rule** | rule content for reidentifying one occurrence and distinguishing it from another | a system applies this rule only after obtaining is established and a receiving use needs occurrence identity | name the exact world-side discriminator supplied by the direct relation pattern, such as participant-determined identity or maximal continuous obtaining interval | the direct relation pattern and `A.6.REL` |
+
+**Public name settlement.** The following F.18 NameCard names the already governed root occurrence kind. It neither admits a new kind nor makes a relation obtain.
+
+```text
+NameCard:
+  NameCardId: NC-U-RELATION
+  GovernedValueRef: U.Relation under A.6.REL
+  GoverningPatternRef: A.6.REL
+  ReferenceScheme: FPFCoreReferenceScheme
+  LocalSenseRef: individuable obtaining relation occurrence whose direct pattern supplies participants, obtaining conditions, and identity
+  TechLabel: U.Relation
+  PlainLabel: relation occurrence
+  CandidateSet: U.Relation; U.RelationOccurrence; U.ObtainingRelation; U.IndividuatedRelation
+  RejectedCandidates: longer candidates expose occurrence or obtaining but lose the established root retrieval head; U.Relation remains safe only with the A.6.REL identity discipline
+  SelectionRationale: preserve the root name while distinguishing existence, kind admission, explicit individuation, identifier assignment, and reference use
+  LineageEntries: existing local U.Relation declarations narrowed to individuable obtaining occurrences
+  RefreshCondition: reopen if direct relation patterns cannot supply stable occurrence identity for an admitted relation kind
+```
+
+Use `U.Relation` for the admitted root kind only. A direct relation kind keeps its own governed name, participant meanings, obtaining predicate, and occurrence-identity rule.
+
+In the world-side relation, the actual entities participate directly under the relation-participant meanings. When assertions and descriptions need typed reuse, a reusable declaration episteme declares those meanings without becoming the world-side relation.
+
+##### A.6.REL:4.1.3 - Reusable declaration episteme
+
+| Canonical FPF name | What this object is | Direct relation to preserve | Naming rule | Direct governing pattern |
+|---|---|---|---|---|
+| **`RelationSignature`** | a `U.Signature` declaration episteme whose EntityOfConcern is the direct relation kind | its content states a reusable declaration of the relation-participant meanings, obtaining predicate, applicability, occurrence-identity rule, and only the SlotSpecs needed by receiving typed uses | name it from the accepted relation-kind name, for example `InstalledAtRelationSignature`; the name denotes the declaration episteme, not the relation kind or an occurrence | `A.6.0` |
+| **`SlotSpec`** | a declaration-content component identified inside one exact `RelationSignature` by its declaration-local `SlotKind` | corresponds to one relation-participant meaning and states the actual participant `ValueKind` plus the receiving-episteme designation mode | name the `SlotKind` with a domain noun phrase plus `Slot`, for example `InstalledPartSlot`; refer to the complete component as that SlotSpec in the named RelationSignature | `A.6.5` |
+
+`SlotKind`, `ValueKind`, and `refMode` answer different questions. `SlotKind` identifies the declaration component locally. `ValueKind` is the independently governed kind of the actual relation participant. `refMode` states how a receiving episteme designates that participant. Together they specify one declaration component; world-side entities and occurrences keep their independently governed identities.
+
+##### A.6.REL:4.1.4 - Claim and description epistemes
+
+| Canonical FPF name | What this object is | Direct relation to preserve | Naming rule | Direct governing pattern |
+|---|---|---|---|---|
+| **relation-participant designation** | a value or governed reference in a receiving episteme; it retains its own value kind or RefKind | denotes the actual relation participant corresponding to one SlotSpec | use the SlotKind as the representation field label and the participant's own value or reference designator as the field value; the field value is not renamed as a participant kind | `C.2.1`, `A.6.5`, and `F.18` when durable naming is current |
+| **relational assertion** | a claim-bearing `U.Episteme` | its content states a modality for the direct obtaining predicate with relation-participant designations; a positive assertion may also designate an already individuated occurrence | name the asserted direct relation and its modality; a durable assertion-family name makes the relation kind and assertion reading recoverable | `C.2.1` and the direct claim pattern |
+| **relation-occurrence description episteme** | a `U.Episteme` whose EntityOfConcern is one explicitly individuated relation occurrence | describes that occurrence without replacing it or supplying its identity | use `description of <relation-occurrence designator>` in readable prose; give a reusable description-episteme kind its own governed name only when another use depends on that kind | `C.2.1` |
+
+A receiving episteme can therefore contain a representation field whose label corresponds to a SlotKind and whose value is a relation-participant designation. That designation denotes an actual participant. The actual participant remains a `U.Entity`, and the obtaining relation occurrence remains a `U.Relation`. The receiving episteme keeps its own identity under `C.2.1`.
+
+##### A.6.REL:4.1.5 - Naming, reference, and representation
+
+| Canonical FPF name | What this object is | Direct relation to preserve | Naming rule | Direct governing pattern |
+|---|---|---|---|---|
+| **relation-occurrence designator** | a name associated with one already recoverable relation occurrence under a naming relation and effective reference scheme | designates the occurrence; assignment of the designator does not create or individuate it | apply `F.18`; select a name that exposes enough of the direct relation and identity distinction for its receiving use | `F.18` |
+| **relation-occurrence reference** | a reference value of one exact RefKind under an effective `U.ReferenceScheme` | a system applying the governed resolution method obtains the already recoverable relation occurrence as referent | use the exact governed RefKind whose declared referent range admits this relation kind; a field ending in `Ref` names the reference value, not the occurrence | `F.18` and the direct RefKind pattern |
+| **representation element** | an element of a declared representation under `C.29` | represents an object, claim content, or declaration, or corresponds to one independently governed object in this relation-object architecture | keep the source representation's own name and state an explicit correspondence naming both the source element and the FPF object; do not rename the source element into that object | `C.29` and the applicable representation-transition pattern |
+
+A source-specific term remains the name of its source-side object until an explicit correspondence is stated. That correspondence never identifies a source representation element with the represented FPF object. Representation preservation stays with `C.29` and the selected representation-transition pattern, structural equivalence goes to `C.34`, and cross-context sameness goes to `A.6.9`.
+
+##### A.6.REL:4.1.6 - Use the governing pattern for the current object
+
+| Current question | Governing pattern |
+|---|---|
+| What relation obtains, under which participant meanings, predicate, and identity rule? | the direct relation pattern, with `A.6.REL` for occurrence individuation |
+| What reusable declaration and SlotSpecs are needed? | `A.6.0` and `A.6.5` |
+| What assertion or description episteme is current? | `C.2.1` and the direct claim or description pattern |
+| What durable designator or reference is current? | `F.18` and the direct reference pattern |
+| What selected representation element is current, and what object or claim content does it represent? | `C.29` and the selected representation-transition pattern |
+| Which object is hidden by unresolved source wording? | `A.6.P`, `A.6.RSIR`, and `E.10`, followed by the direct governing pattern recovered there |
+
+Only systems perform authoring, evaluation, individuation, naming, reference-resolution, and representation work. Relation occurrences obtain; epistemes contain declarations, assertions, and descriptions; names and references stand in governed designation relations. This grammar keeps agency with systems without suppressing the semantic relations that make the relation-object architecture useful.
+
+##### A.6.REL:4.1.7 - Name only the minimum current object
+
+The relation-object architecture organizes the distinct objects that may become current; it is not a publication form repeated for every relation sentence. Stable relation-kind semantics belong once in the direct relation pattern or ontic. A reusable declaration belongs once in its `RelationSignature`. A durable name belongs once in its F.18 naming settlement. Later prose names the object current for its use and cites the direct governing pattern for already established neighboring objects.
+
+| Current use | Minimum sufficient text | Add another object only when |
+|---|---|---|
+| ordinary direct relation assertion | one readable direct relation sentence naming the actual participants | predicate interpretation or occurrence identity changes the next engineering move |
+| repeated typed assertion or description episteme | cite the direct `RelationSignature`; use representation field labels corresponding to its SlotKinds with exact relation-participant designations | the declaration, ValueKind, RefKind, or correspondence itself is under examination |
+| occurrence-dependent assertion or description episteme | use the relation-occurrence designator or reference and cite the direct occurrence-identity rule | participant meaning, obtaining, continuity, or repeated-occurrence identity is disputed |
+| representation-dependent use | name the source representation element, the represented FPF object or claim content, and their explicit correspondence | representation preservation or loss is current under `C.29`, structural equivalence is current under `C.34`, or cross-context sameness is current under `A.6.9` |
+| ontology or wording repair | traverse the complete relation-object architecture in this subsection | the repair has not yet recovered a unique current object and direct governing pattern |
+
+In recognition text, prefer the readable direct relation sentence. Put the reusable declaration, occurrence-identity rule, naming settlement, or representation correspondence in nearby Tech or assurance text governed by its direct pattern, and refer to it when another declared use depends on it. Precision comes from recoverable governing patterns and explicit relations between adjacent objects, not from repeating the complete architecture.
+
+This rule keeps elaboration additive. Each new receiving use introduces only the object on which that use depends and the object's direct relation to an already recoverable object. When the use stops at the world-side relation, the prose adds no signature, occurrence-description, naming, or representation apparatus.
+
+#### A.6.REL:4.2 - Apply the receiving-use test
+
+Here **receiving use** is a Plain head, not a common FPF kind. Resolve it to the exact receiving object before applying the test. A receiving assertion or description is an episteme under `C.2.1` and designates the occurrence. A receiving direct relation has the occurrence itself as a world-side participant. For a declared operation, A.6.1 governs the `OperationAlgebra` and argument SlotSpec, while an operation-application assertion episteme designates the occurrence as that argument; any acting system, enacted method, and performed work remain separately governed. Name the exact receiving object and governing pattern.
+
+1. Name the direct relation kind and participants in a readable sentence.
+2. Recover the direct governing pattern, relation obtaining predicate, relation-participant meanings, actual relation participants, applicability, and relation occurrence-identity rule. Cite the established settlement rather than restating it unless this use introduces or changes one of those objects. Recover the `RelationSignature` SlotSpecs only when typed assertion or description reuse is current.
+3. Check whether the direct relation obtains and the named participants jointly satisfy the predicate. If the relational assertion content is negative, modal, or unresolved, no obtaining occurrence is available for individuation; return to the direct claim pattern or `A.6.P`.
+4. Ask whether the named receiving assertion or description episteme, direct relation, or operation-application assertion episteme depends on this occurrence being distinguishable from another.
+5. If not, keep the readable assertion and stop. Do not create a relation-occurrence description episteme for completeness.
+6. If yes, apply the direct identity rule and explicitly individuate one occurrence.
+7. Assign an identifier only when stable reference is needed.
+8. Apply the selected receiving branch: designate the occurrence in the receiving episteme; for a receiving direct relation, verify its obtaining with that occurrence as a participant; or designate the occurrence as an argument in the operation-application assertion episteme according to the A.6.1 SlotSpec.
+
+Occurrence existence depends on the direct relation obtaining. Reidentification and distinction from another occurrence depend on the direct identity rule. Explicit individuation depends on a named receiving use. Identifier assignment and reference use depend on an already recoverable occurrence. None of the later moves makes the earlier relation obtain.
+
+#### A.6.REL:4.3 - Select an identity rule that survives repetition
+
+Use participant-determined identity only when the direct ontology establishes that two distinct occurrences of this relation kind cannot have the same participant identities. The `RelationSignature` SlotSpecs declare how assertion or description episteme content designates those participants; neither the SlotKinds nor any database-row or representation key contributes to world-side identity.
+
+When the same participants can enter more than one occurrence, the direct pattern declares the discriminator that exists in that domain:
+
+| Occurrence-identity condition | Direct identity contribution |
+|---|---|
+| One occurrence is determined by its participants | the direct relation kind and identities of the actual participants jointly determine occurrence identity |
+| The same participants stand in the relation during separate episodes | participant identities together with the maximal continuous obtaining interval or another declared episode boundary determine occurrence identity |
+| Performed constituting work creates a new occurrence | participant identities together with the constituting work occurrence determine occurrence identity |
+| A transformation occurrence rather than its producing work contributes to identity | participant identities together with that transformation occurrence determine occurrence identity, but only when the direct transformation and relation patterns include it in the relation occurrence-identity rule |
+| The relation kind uses another domain identity rule | the exact discriminator supplied by its direct governing pattern |
+
+When a relation occurrence is a constructed result under its direct construction rule, recover the constructing system, its constructor role assignment, the enacted constructor method, input entities, performed construction work, and the identity contribution of that work occurrence. For an installed-part relation, the installer system creates the new assembly episode while performing installation work; the parthood identity rule may use that work occurrence to distinguish the episode. Producing only an epistemic object, designation, or representation does not construct the relation unless the direct ontology states that the corresponding performed work is constitutive.
+
+A changed episteme contributes to occurrence identity only when that episteme itself is a constitutive participant under the direct identity rule. A changed publication occurrence contributes only when that publication occurrence is itself a constitutive participant under the same rule. A system merely learning about the relation, describing it, or publishing an episteme about it changes no world-side occurrence.
+
+#### A.6.REL:4.4 - Separate occurrence, assertion, reifier, relator, description, and publication
+
+A relational assertion is an episteme whose content states that the direct relation obtains, does not obtain, or has another modality. The assertion can be revised or superseded while the world-side relation remains unchanged.
+
+A reifier is a representation-side term or node. A system may use it to represent statements about a proposition, assertion episteme, or relation-occurrence description episteme. Its presence does not make the direct relation obtain and is not a world-side occurrence-identity rule.
+
+A direct material-relation ontology may identify a relator: a dependent material truth-maker through which its participants stand in the relation. Introduce one only when that ontology identifies the relator, its dependence relations to the participants, and its occurrence-identity rule. Do not generalize that relator to relation kinds whose direct ontology does not provide those three settlements.
+
+An episteme can describe a relation occurrence. A second episteme can describe the first episteme. Under a publication-relation occurrence, a selected episteme edition is available to the declared audience and use. If an information carrier is current, `E.17` governs its publication-kit use and `E.24.PUB` governs publication; carrier identity replaces neither episteme identity nor relation-occurrence identity. None of these objects replaces the direct occurrence-identity rule.
+
+#### A.6.REL:4.5 - Use one relation occurrence as a participant of another
+
+Before one relation occurrence participates in another relation, explicitly individuate the first occurrence under its direct identity rule. The receiving direct pattern states a participant meaning whose ValueKind admits `U.Relation` or the exact relation kind; its `RelationSignature` episteme declares the corresponding SlotSpec. In the world-side receiving occurrence, the first occurrence itself is the participant. A participant designation in the receiving assertion or description episteme denotes it by value or through the RefKind declared by that SlotSpec.
+
+This is ordinary typed participation, not a relation-of-relations exception. The first occurrence keeps its kind, participants, obtaining condition, and identity. The receiving relation keeps its participant meanings, obtaining condition, and identity rule; the receiving `RelationSignature` keeps its SlotSpecs. The reference used by an assertion belongs to neither world-side occurrence.
+
+#### A.6.REL:4.6 - Keep ordinary relation use lightweight
+
+Ordinary users write one readable direct relation assertion with named participants and stop when no named receiving assertion or description episteme, direct relation, or declared operation application depends on more. The direct relation pattern states the shared participant meanings, obtaining predicate, and identity rule once; later uses cite that settlement. Add only the independent declaration, occurrence-identity, description, designation, or reference branch consumed by the named receiving use.
+
+This is demand-driven progressive elaboration within the Solution, not a drafting sequence. The branches below share one recovered direct relation; they are not stages, and no branch requires the branch written above it.
+
+```text
+readable direct relation assertion with named participants
+  +-- direct obtaining and predicate-satisfaction check, when positive modality or occurrence use is current
+  +-- RelationSignature and SlotSpecs, when typed reuse matters
+  +-- explicit occurrence individuation, when a named receiving use needs identity
+      +-- relation-occurrence description episteme, when a receiving episteme describes the occurrence
+      +-- identifier assignment, when stable cross-reference matters
+      +-- occurrence as a participant of another direct relation, when that receiving predicate consumes it
+      +-- occurrence designation in a receiving episteme, when that episteme contains a designation of it
+```
+
+This is a C.29 representation of independent optional increases in explicitness. Its branch marks are representation elements, not direct relations or work occurrences. The indentation under explicit occurrence individuation records only that description, identifier assignment, occurrence participation, and later designation require one recoverable occurrence; it does not make a `RelationSignature` prerequisite for occurrence identity. The represented branches are neither a plan nor a method for documentation work and do not construct the world-side relation.
+
+#### A.6.REL:4.7 - Keep world-side change separate from episteme editions
+
+When a system evaluates epistemes connected by a current A.10 evidence relation to an assertion that an object changed, first select that changed object:
+
+| Changed object | Exact move |
+|---|---|
+| direct relation occurrence | evaluate continued identity or a distinct occurrence under the direct identity rule; for a temporally extended occurrence, establish its beginning, continuation, cessation, or split |
+| relational assertion | revise, retract, replace, or supersede the assertion episteme under `C.2.1` |
+| `RelationSignature` | revise the reusable declaration and establish its edition relation under `A.6.0` |
+| identifier assignment | assign, retire, or replace the designator under `F.18` |
+| reference use in an episteme | reinterpret or retarget the designation under `F.18` and the receiving SlotSpec |
+| description episteme | revise the episteme or establish another edition under `C.2.1` |
+| publication occurrence | end the current publication occurrence or establish another under `E.17` and `E.24.PUB` |
+
+A relation occurrence has identity under its direct rule; a temporally extended occurrence also has temporal history under that rule. When a system performs revision work on an episteme, the episteme or its edition changes; no world-side occurrence changes unless a system applies the direct identity rule and establishes cessation, continuation, or another occurrence. Another edition of an assertion, signature, or description episteme, or another publication occurrence, entails no new relation occurrence unless a system applying the direct identity rule separately distinguishes one.
+
+### A.6.REL:5 - Archetypal Grounding
+
+#### A.6.REL:5.1 - Physical assembly through the relation-object architecture
+
+Start with `Bearing_B isPartOf Pump_P` and trace only the objects needed by the current use.
+
+1. **World-side entities and occurrence.** `Bearing_B` and `Pump_P` retain their independently governed holon kinds and names. In this occurrence, the bearing participates under the installed-part meaning and the pump under the assembly-whole meaning. The direct installed-part relation obtains while its domain predicate is satisfied.
+2. **Relation-kind settlement.** The direct parthood pattern contains the two relation-participant meanings, the installed-part obtaining predicate, and the occurrence-identity rule. The identity rule states whether continuity is determined by one maximal continuous installation interval, constituting installation work, or another exact world-side discriminator stated by that pattern.
+3. **Reusable declaration.** When several maintenance assertions use one `InstalledPartRelationSignature`, that signature contains `InstalledPartSlot` and `AssemblyWholeSlot`. Each SlotSpec states `U.Holon` as ValueKind and `U.HolonRef` as RefKind. These SlotKinds are declaration-local names corresponding to the two relation-participant meanings.
+4. **Assertion and relation-participant designations.** A maintenance assertion may use `InstalledPartSlot` as the field label and `Bearing_B_Ref` as its value, and `AssemblyWholeSlot` with `Pump_P_Ref`. The two reference values are relation-participant designations. Resolution under the effective reference scheme yields the bearing and pump; the assertion content claims that the direct relation obtains. If current maintenance work needs no occurrence identity, the engineer stops here.
+5. **Occurrence identity, designator, and reference.** A system performing reliability-analysis work compares the installation before removal with the installation after reinstallation. A system performing relation-identification work applies the direct identity rule and distinguishes two occurrences when the exact world-side discriminator stated by that rule differs. A system performing naming work can then associate a designator such as `Bearing_B installation in Pump_P, episode 2` with the second occurrence. A `U.EntityRef` constrained to the installed-part relation kind may serve as its relation-occurrence reference for a receiving reliability assertion.
+6. **Representation.** A database row or diagram edge may represent the assertion episteme or relation-occurrence description episteme under `C.29`. Its key, fields, and edge endpoints keep their representation-side meanings. A declared C.29 correspondence relates each representation element to the assertion field, relation-participant designation, or occurrence reference used by the receiving episteme; row or edge identity does not replace the direct occurrence-identity rule.
+
+The practical payoff is visible at each stop. Ordinary maintenance work keeps the readable relation sentence. Repeated typed assertions add the signature and designations. A system comparing repeated installation episodes performs explicit-individuation work when the comparison depends on occurrence identity. Stable cross-reference use motivates naming and reference work. No earlier object is renamed as a later one.
+
+#### A.6.REL:5.2 - Repeated role assignment
+
+**Tell.** `Robot_7 holds InspectorRole` is sufficient while the current assignment alone matters.
+
+**Show identity-dependent use.** The robot holds the role during two separated inspection intervals, and later work attribution names the assignment current during the second work occurrence. Under `A.2.1`, each assignment occurrence is identified by its fixed holder, role value, role-taxonomy episteme, effective reference scheme, and one uninterrupted obtaining interval. The demonstrated gap ends the first occurrence; later resumption begins another. The attribution assertion explicitly designates the second occurrence. Assignment-signature, assertion, and roster epistemes may describe the assignment; an evidence relation may connect one of those epistemes to an attribution assertion about the assignment. Under a publication-relation occurrence, one selected edition may be available to its declared audience and use. None constitutes the assignment merely by form.
+
+#### A.6.REL:5.3 - Formal reduced case
+
+The expression `3 < 5` is assertion content written in a mathematical notation. Under the referenced arithmetic structure, the values three and five satisfy the less-than predicate. The expression is not thereby a relation occurrence. No receiving use in this case needs the obtaining less-than relation occurrence explicitly individuated under `U.Relation`, so the engineer stops at the assertion. A graph edge or RDF reifier introduced by tooling remains a representation of the proposition or assertion and is not an occurrence-identity rule in the formal subject domain.
+
+#### A.6.REL:5.4 - Relation occurrence as a participant
+
+`C.22.PFR` has one actual-condition relation occurrence and one problem-criterion-applicability relation occurrence as world-side participants. Each is individuated under its own direct identity rule. The PFR direct pattern states those two participant meanings, its obtaining condition, and its identity rule; the PFR `RelationSignature` episteme declares the corresponding SlotSpecs. A PFR assertion designates the two occurrences according to those SlotSpecs. PFR is a direct relation, not an episteme whose content merely groups two assertions.
+
+#### A.6.REL:5.5 - Description and publication recursion through the relation-object architecture
+
+Let `R1` be an already individuated installed-part relation occurrence between a bearing and a pump.
+
+1. An installation-description episteme `E1` has `R1` as its EntityOfConcern. In the C.2.1 declaration, the entity-of-concern relation-participant meaning corresponds to `EntityOfConcernSlot`. In a card representation of `E1`, the field label `entityOfConcernRef` corresponds to that SlotKind and its `U.EntityRef` value is a relation-participant designation that resolves to `R1`.
+2. A second episteme `E2` contains the result of evaluation work concerning the adequacy of `E1`. Its own `EntityOfConcernSlot` designation resolves to `E1`, not to `R1`. The two epistemes therefore have different EntitiesOfConcern and retain separate C.2.1 identities: `E1` describes `R1`, while `E2` evaluates the adequacy of `E1`.
+3. Under a publication-relation occurrence, the current edition of `E1` is available to a declared audience and use. The selected episteme edition is an actual participant of that publication relation under the publication pattern's participant meaning. The publication form and its representation elements retain their own kinds and correspond to the published episteme only through the declared publication and representation relations.
+
+A system performing revision work can establish another edition of `E1` or `E2`; a system performing publication work can establish another publication-relation occurrence for a selected edition. `R1` continues or ceases only as the installed-part obtaining predicate and occurrence-identity rule determine. This recursive case preserves the distinction: a description episteme can itself become the actual participant or EntityOfConcern of another relation without becoming the relation occurrence it describes.
+
+### A.6.REL:6 - Bias-Annotation
+
+This pattern has an individuation bias because it serves receiving uses that need relation identity. The lightweight stop rule prevents that bias from turning every direct relation into an explicit relation-occurrence description episteme.
+
+The physical and role-assignment cases can over-emphasize participant identities. A direct relation pattern may instead use constituting work or another exact world-side discriminator. The repeated-episode cases can also over-emphasize temporal extent. Time enters an occurrence-identity rule only when the direct pattern states that contribution.
+
+Engineers can easily picture relation instances through data-model examples. The prescribed move therefore begins with direct relation obtaining, predicate satisfaction, and the direct identity rule. A system introduces database rows, graph edges, reifiers, tuples, and data-model objects only afterwards as representations for a declared use.
+
+### A.6.REL:7 - Conformance Checklist
+
+1. Across the direct governing pattern and the current use, the relation kind, relation-participant meanings, relation obtaining predicate, actual relation participants, applicability, relation occurrence-identity rule, and any currently needed `RelationSignature` SlotSpecs are recoverable. An ordinary relation sentence remains complete without repeating that settlement.
+2. The text does not conflate relation obtaining, predicate satisfaction, root-kind admission, explicit-individuation work, identifier assignment, and reference use.
+3. Root `U.Relation` admission is governed by `E.24.UK` from the common `A.6.REL` discipline and the relation-specific witness supplied by each direct relation pattern; project use does not repeat the admission decision.
+4. The current use names one receiving assertion or description episteme, direct relation, or operation-application assertion episteme whose dependence on a distinguishable occurrence makes explicit occurrence identity necessary.
+5. A negative, modal, or unresolved assertion does not create an obtaining occurrence.
+6. The direct governing pattern declares the occurrence-identity rule.
+7. Participant-determined identity is used only when the direct ontology establishes that the same participant identities cannot recur in distinct occurrences of that relation kind.
+8. When the same participants can recur, the direct pattern declares the domain discriminator; maximal continuous obtaining interval and constituting work are possible choices only when that pattern includes them in the occurrence-identity rule.
+9. When construction is constitutive, the constructing system, input entities, performed construction work, and identity contribution are named; representation creation is not substituted for construction.
+10. Each object in the relation-object architecture is reidentified under its direct governing pattern and connected to adjacent objects only by the direct relations stated in section 4.1.
+11. A relation occurrence used as another relation's world-side participant is individuated first; the receiving assertion's reference remains distinct from that participant.
+12. Ordinary use can stop at a readable direct relation sentence when no receiving use needs occurrence identity; when identity is current, the direct identity rule can be applied without first creating a `RelationSignature`.
+13. Another episteme edition, publication occurrence, name association, or reference use is not evidence of another world-side relation occurrence; apply the direct occurrence-identity rule independently.
+
+### A.6.REL:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Failure | Repair |
+|---|---|---|
+| Representation-first relation | A table row, edge, or object identifier is treated as what makes the relation obtain. | State the direct relation, participants, and obtaining condition first; treat the row as a representation unless the direct ontology demonstrates that the corresponding representation-producing work is constitutive. |
+| Predicate-as-relation | A semantic predicate or its expression is treated as the world-side occurrence. | State the direct relation and its actual participants; use the predicate only to state the truth-valued obtaining condition. |
+| Designation treated as occurrence creation | A relation is said to exist only because another assertion designates it. | Establish occurrence existence under the direct pattern; let the named receiving dependency justify only explicit-individuation and reference work. |
+| Participant-identity collapse | Two assignments or part-relation episodes with the same participants become one occurrence. | Apply the direct identity rule and recover its domain discriminator; use a maximal continuous obtaining interval or constituting work only when that rule includes it in occurrence identity. |
+| Observation-window identity | A new measurement or assessment window is treated as a new relation occurrence. | Keep the observation window with its measurement or assessment assertion; recognize another occurrence only when the direct relation ceases and resumes or the direct identity rule supplies another discriminator. |
+| Edition-as-world-change | Another edition of an assertion, signature, or description episteme, or another publication occurrence, is called a new version of the world-side relation. | Select the changed episteme or publication occurrence first, then re-evaluate the world-side relation through the current A.10 evidence relation; recognize a distinct occurrence only under the direct identity rule. |
+| Relator by analogy | A dependent truth-maker is introduced although the direct relation ontology does not identify its dependence relations and occurrence identity. | Introduce a relator only where the direct material ontology identifies the relator, its dependence relations to the participants, and its occurrence-identity rule. |
+| Full occurrence description by default | Simple engineering prose becomes a mandatory signature-and-description exercise. | Apply the receiving-use test and stop after the direct relation sentence when no occurrence identity is consumed. |
+
+### A.6.REL:9 - Consequences
+
+**Benefits.** The content of receiving epistemes can designate repeated relation occurrences stably; receiving relations can have those occurrences as typed participants. The discipline applies to physical composition, role assignment, exact production, delivery, acceptance and evaluation relations, formal relation assertions, and dependent evaluative relations without making their obtaining conditions or identity rules identical. Ordinary prose remains readable because explicit individuation is demand-driven.
+
+**Costs.** A direct relation pattern needs a stated occurrence-identity rule, not only participants, when a receiving assertion, description, direct relation, or declared operation application depends on distinguishing one occurrence from another. A system performing relation-identification work establishes whether participants, temporal extent, constituting work, or another domain discriminator distinguishes repetition. Data schemas that used row identity as ontology may need to expose the domain identity they hid.
+
+**Limits.** `A.6.REL` does not decide whether a particular direct relation obtains, define every relation kind, or prescribe a storage model. It does not supply evidence, comparison, publication, or temporal semantics governed by neighboring patterns. It also does not turn a negative or modal assertion into an obtaining occurrence.
+
+### A.6.REL:10 - Rationale
+
+Applying this method lets an engineer use exact occurrence identity without equating ontology with documentation. A direct relation can obtain for its participants before an FPF episteme states a sentence about it. The actual relation participants, considered under their participant meanings, satisfy the semantic predicate within the direct relation pattern's declared applicability and temporal conditions; an assertion is an episteme whose content states that the relation obtains or has another modality; explicit-individuation work is performed by a system for a named receiving use; and an identifier only enables later reference. Keeping those objects and moves distinct prevents semio-bias in which an episteme is mistaken for the world-side relation.
+
+The identity rule belongs to the direct relation pattern because the direct ontology determines whether participant identities suffice. The same holder and role value can stand in two assignments, and the same component and whole can participate in distinct assembly episodes. Conversely, an ordinary formal order assertion may need no explicit occurrence object in project work. A universal key would be too weak for repetition and too heavy for ordinary use.
+
+Assertion, description, and signature epistemes can have editions; a system performing publication work can establish another publication-relation occurrence for a selected edition. A relation occurrence instead begins, continues, or ceases under its direct rule; when a system applying that rule distinguishes another occurrence, the other occurrence has its own identity. Keeping episteme edition change, publication occurrence, and relation occurrence continuity separate makes repair local and prevents publication history from masquerading as world history.
+
+### A.6.REL:11 - SoTA-Echoing
+
+#### Ontological SoTA and constructional sources
+
+This pattern uses these sources to constrain its account of occurrence existence and identity. Their role here is ontological comparison, not notation selection.
+
+| Ontological source | What it contributes | FPF adoption, mutation, and practical effect |
+|---|---|---|
+| Florio and Linnebo, [Introduction to Constructional Ontology](https://www.utwente.nl/en/eemcs/fois2024/resources/papers/florio-linnebo-introduction-to-constructional-ontology.pdf), 2024 | Separates constructors, constructor inputs, the source account's construction process, and output identity. | **Adopt the construction test and adapt the source process to FPF method and work distinctions.** Section 4.3 asks which system acts as constructor, which method it enacts, which entities are inputs, which work it performs, and how that work occurrence contributes to output or relation identity. Row creation and assertion remain non-constructive unless the direct rule declares the corresponding work constitutive. |
+| Borgo and Righetti, [Towards Applied Constructional Ontology](https://doi.org/10.3233/FAIA250480), 2025 | Tests how constructional analysis could reconstruct existing foundational ontologies and exposes conceptual, structural, completeness, and consistency questions; it is an early applied step, not a finished recipe. | **Adapt as current improvement pressure with that maturity boundary.** Checklist 9 and the physical case require a recoverable construction choice instead of accepting an inherited relation representation or taxonomy. |
+| Partridge, [BORO Ontology](https://borosolutions.net/boro-ontology), C-FORS 2025 presentation | Presents a 4D extensional, categorical, and constructional ontology with an ontology-evolution method. | **Adapt as a current ontological comparison under a boundary.** Sections 4.3 and 5.1 use temporal extent and constituting occurrences when the direct identity rule needs them. FPF rejects universal 4D identity, unrestricted composition, and BORO's category architecture for this pattern. |
+| Almeida, Guizzardi, Sales, and Fonseca, [gUFO](https://arxiv.org/abs/2603.20948), 2026 preprint | Provides a current foundational-ontology implementation with differentiated relational-aspect and reification patterns. | **Adapt its ontological distinctions as a current comparison; reject its OWL implementation as proof of FPF occurrence existence or identity.** Section 4.4 separates direct relation, assertion, reifier, and optional relator without importing the complete category hierarchy. |
+| [OntoUML Relator](https://ontouml.readthedocs.io/en/init-ontouml/classes/sortals/relator/index.html), specification lineage | Models a relator as a dependent truth-maker for a material relation. | **Reject as current competitive SoTA; retain and adapt as a lineage comparison for material relators.** Section 4.4 permits a relator only when the direct material ontology identifies the relator, its dependence relations to the participants, and its occurrence-identity rule. |
+
+#### Representation and implementation stress tests
+
+This pattern uses these sources to test whether the selected ontological distinctions can be represented and used. They do not determine what relation occurrences exist or how they are identified.
+
+| Representation or implementation line | Distinction tested | Bounded use in A.6.REL |
+|---|---|---|
+| [TypeDB 3.x `links` statement](https://typedb.com/docs/typeql-reference/statements/links/) and current relation model | A query can expose a relation variable with named source-language role players, while shorthand remains available when the relation instance need not be referenced. TypeDB role player is not FPF `U.Role`. | **Adapt as a representation stress test; reject as an ontology source.** Sections 4.2, 4.5, and 4.6 preserve a readable direct relation before explicit individuation. TypeDB demonstrates one implementable representation; it does not establish the FPF relation kind, obtaining condition, or identity rule. |
+| [RDF 1.2 Concepts](https://www.w3.org/TR/rdf12-concepts/), Candidate Recommendation Snapshot, 7 April 2026 | Distinguishes a proposition expressed by a triple term, assertion of a triple, and reifiers used for further statements. | **Adapt as a representation stress test; reject graph syntax and reifier identity as world-side identity sources.** Sections 4.4 and 5.3 apply that distinction to proposition, assertion, and reifier separation. |
+
+This pattern uses the ontological sources to constrain its occurrence-existence and occurrence-identity method. It uses the representation sources to test implementability only after those choices are made. The worked cases expose both boundaries outside information-system projects.
+
+### A.6.REL:12 - Relations
+
+- `A.6.0` declares RelationSignature participant SlotSpecs and restates the direct predicate, applicability, and exact identity rule for reuse without making the relation obtain.
+- `A.6.5` separates world-side participants from RelationSignature SlotKinds and from participant designations in assertions or descriptions.
+- `A.6.P` governs restoration of hidden direct relations and participants before occurrence identity is attempted.
+- `A.6.RSIR` governs selection among a direct relation, relation-participant meaning, declaration SlotSpec, `RelationSignature`, and another exact interface object when wording is ambiguous.
+- `A.2.1` governs role-assignment obtaining and identity; `F.6` governs later attribution to performed work.
+- `A.14` and direct mereology patterns govern part-relation identity and part-whole change.
+- `A.15.1` governs work occurrence identity and readable links to separately governed participation, change, operation-result, production, evaluation, delivery, and acceptance claims.
+- `C.2.1` governs assertions and descriptions about relation obtaining, predicate satisfaction, and occurrences; `E.17` and `E.24.PUB` govern publication relations.
+- `C.22.PFR` supplies a worked case with two explicitly individuated relation occurrences participating in one dependent evaluative relation.
+- `C.29` governs a declared mathematical or data-model lens, including graph, tuple, or database representations used to describe relation structure.
+- `E.24` governs ontic settlement and `E.24.UK` governs root `U.Relation` admission. `A.6.REL` supplies the common occurrence discipline, and each direct relation pattern supplies the relation-specific witness. `E.24.CD` dispatches an unsettled ontic candidate only after those exits are recoverable; none replaces the direct occurrence-identity rule.
+- `F.18` governs durable names and identifier use after the relation kind and occurrence identity are settled.
+
+### A.6.REL:End
+
+## A.6.0 - U.Signature - Reusable Law-Governed Declaration Episteme
+> **Type:** Architectural (A)
+> **Status:** Stable
+> **Normativity:** Normative unless marked informative
+
+**Pattern kind.** Ontic declaration pattern.
+
+**Builds on.** A.7 for strict distinction, C.2.1 for episteme identity, C.3 for kinds, A.2.6 for claim scope, and A.6.5 for relation-slot discipline.
+
+**Coordinates with.** A.6.REL for relation occurrences, A.6.1 for mechanisms, C.29 for mathematical-lens use, E.24.UK for durable U-kind admission, and E.24.PUB for publication.
 
 ### A.6.0:1 - Problem frame
 
-FPF already uses “signatures” to stabilise public promises of **reusable extension vocabularies** and, via **A.6.1**, of **mechanisms**. But declaration publishers also need stable, minimal declarations for **theories**, **methods** (operational families), and **disciplines** (regulated vocabularies). Without **one** universal notion of signature:
-* similar constructs proliferate under incompatible names;
-* practitioners cannot tell what is **declared** (EntityOfConcern kind and laws) versus what is **realized** or admitted for specification use;
-* cross-context reuse lacks a canonical place to state **applicability** and **declared admissible vocabularies**.
+An engineer has a vocabulary and a set of laws that need to remain stable across several dependent epistemes, such as model epistemes, method descriptions, and patterns. For example, a physical-modeling team needs one stable declaration of connector variables and conservation laws; a clinical team needs one stable declaration of a dose-response relation and its applicability; a formal-methods team needs one stable declaration of terms, inference forms, and invariants.
 
-E.8 demands one publication voice and section order; E.10 demands lexical discipline across strata. A.6.0 provides the common kernel shape these patterns presuppose.
+Use this pattern when the working question is:
+
+> What reusable declaration episteme identifies its subject, states the vocabulary entries and specialized typed declarations available for reuse, states the declared laws, and bounds where those claims apply?
+
+The primary `EntityOfConcern` of this pattern is the `U.Signature` episteme. Its declaration identifies one exact `EntityOfConcern`, whose kind remains governed independently. A relation kind opens the `RelationSignature` specialization; a mechanism family or formal calculus opens the corresponding A.6.1 or FormalSubstrate declaration; a method kind remains governed by A.3.1.
+
+**Primary working reader and concern.** The reader is an engineer who authors or reuses a declaration and needs stable meaning, applicability, and typed reuse without authoring declaration or occurrence-identity apparatus beyond what the current use needs.
+
+For the lightest useful declaration, name that subject through `SubjectKind` and `RangedValueKind`, add `ResultKind` when the result has another kind, and state `Vocabulary`, `Laws`, and `Applicability`. Add `SliceSet` and `ExtentRule` only when a receiving use depends on varying extension. Add A.6.5 SlotSpecs that declare the direct relation's participant meanings only inside a reusable `RelationSignature`; add operation argument and result declarations under A.6.1 when a mechanism declaration needs them. Add dependency declarations only when another signature relies on provided names or laws.
+
+What goes wrong if this pattern is missed: content about later realization, evaluation, and publication accumulates inside the declaration. A later user cannot tell which names and laws are reusable, where they apply, or whether a changed implementation has changed the declaration.
+
+What this buys: one identifiable declaration can be reused while later realizations and uses change under their own governing patterns.
+
+Do not use this pattern merely to state that a direct relation obtains or that one work occurrence produced a result. State that claim directly. Construct a signature only when reusable declaration content is the current object.
 
 ### A.6.0:2 - Problem
 
-If each family (theories, mechanisms, methods, disciplines) invents its own “signature”:
+FPF uses a signature whenever one independently governed `EntityOfConcern` needs reusable vocabulary, laws, and applicability. Current non-exhaustive uses include theory or `A.3.3 U.Dynamics` epistemes, mechanism or `A.19.SelectorMechanism` declarations, method kinds, formal substrates, and direct relation kinds; these examples create neither a shared subject kind nor a closed family of signature profiles. Without one precise ontic:
 
-1. **Tight coupling.** Private definitions leak as public standards, breaking substitutability.
+1. the signature is confused with the entity it describes;
+2. a relation declaration is confused with an obtaining relation occurrence;
+3. applicability is reduced to an unexplained context label;
+4. every declaration is forced into one rigid table-shaped publication form, even when a readable sentence is enough;
+5. imported names and exported names remain implicit, so dependent declarations cannot be replayed safely.
 
-2. **Lexical drift.** The same lexical label (e.g., *scope*, *normalization*) hides different laws.
-
-3. **Scope opacity.** Applicability (where the words mean what) remains implicit, violating D.CTX.
+The central problem is not missing syntax. It is failure to keep the declaration episteme, its declared subject, the subject's occurrences, and later uses of the declaration as different objects.
 
 ### A.6.0:3 - Forces
 
 | Force | Tension |
-| --- | --- |
-| **Universality vs. fitness** | One shape must fit **Kernel**, **Mechanisms**, **Protocols**, and other specialised signatures, without over‑committing to any one family. |
-| **EntityOfConcern vs. specification use** | Signatures declare **the subject kind and laws**, not recipes or test harnesses. |
-| **Simplicity vs. expressivity** | Keep the kernel small while allowing family-specific header metadata and usable projections (e.g., `imports` and `provides` DAGs, assurance matrices, transport views). |
-| **Locality vs. transport** | Meaning is context‑local (D.CTX); transport must remain explicit and auditable (Part F) without smuggling implementation. |
+|---|---|
+| Reuse and locality | Reusers need stable names and laws, but those claims are meaningful only under an effective reference scheme and bounded applicability. |
+| Light first use and typed reuse | An ordinary receiving use starts from a direct assertion, while repeated use may need relation SlotSpecs under A.6.5, operation declarations under A.6.1, direct relation occurrence-identity rules, and independently governed dependencies. |
+| Declaration and realization | Reusers need to assess a realization against declared laws, while the declaration, realizing entity, evaluation work, result episteme, and evidential reliance retain separate identities and direct relations. |
+| Stable identity and evolution | Reusers need to know whether the same signature remains current, while a change in a realization alone leaves the signature unchanged. |
+| Transdomain form and domain meaning | The same declaration form serves physical engineering, medicine, learning, and formal work while preserving their domain objects. |
 
-### A.6.0:4 - Solution — **Define `U.Signature` once, reuse everywhere**
+### A.6.0:4 - Solution
 
-**Definition.** A **`U.Signature`** is a **public, law-governed declaration** for a named **SubjectKind** over a declared **RangedValueKind**. The Signature **SHALL** expose an explicit **SliceSet** and **ExtentRule**; if quantification is context-independent, the declaration **MUST** use a trivial `SliceSet` (e.g., a singleton) and a constant `ExtentRule` rather than omitting these fields. A Signature (i) introduces a **vocabulary** (value kinds, relations, operators), (ii) states **laws** (axioms and invariants; no operational admissions), and (iii) records **applicability** (where and under which contextual assumptions the declarations hold). Dependencies (**imports**) and exported names (**provides**) are declared in a `SignatureManifest` (see §4.4.1) and are **not** part of the four-row Signature Block. **Discipline for argument-position typing is delegated to A.6.5 `U.RelationSlotDiscipline`: whenever the Vocabulary declares an n-ary relation or operator, SlotSpecs for its parameter positions SHALL be provided as in §4.1.1 and A.6.5.**
+Use `U.Signature` as the dependent durable U-kind for a reusable law-governed declaration episteme. Identify the episteme through its content, exact `EntityOfConcernRef`, and effective `U.ReferenceScheme`. Let the declaration state its vocabulary, laws, and applicability. Keep the declared subject and every later realization under their direct kinds and relations.
 
-Where the **Vocabulary** introduces an **n‑ary relation or morphism**, the Signature **SHALL**, for each parameter position `i`, declare a `SlotSpec_i = ⟨SlotKind_i, ValueKind_i, refMode_i⟩` as defined in **A.6.5 `U.RelationSlotDiscipline`**. SlotSpecs live inside the per‑relation parameter block of the **Vocabulary** row and **MUST NOT** introduce additional rows beyond the four‑row Signature Block.
+**Local signature mantra.** *Name what the declaration is about. State the vocabulary and laws. Bound where those claims apply. Add specialized typed declarations and dependencies only when reuse needs them. Keep realization and later use with their governing patterns.*
 
-**Arrow form (typing for MVPK).** Express a Signature as a **morphism**
-`SigDecl : ⟨SubjectBlock⟩ → ⟨Vocabulary × Laws × Applicability⟩`
-where `SubjectBlock = ⟨SubjectKind, RangedValueKind, SliceSet, ExtentRule, ResultKind?⟩`. This makes `U.Signature` directly consumable by **E.17 MVPK** (publication of morphisms) without adding semantics on faces (no new claims; pins for any numeric content).
+In the mantra, `what the declaration is about` means the exact `EntityOfConcernRef`; `specialized typed declarations` means A.6.5 SlotSpecs that declare a direct relation's participant meanings inside a `RelationSignature`, or A.6.1 operation argument and result declarations for a mechanism; and `dependencies` means actual imports and provided names needed by a dependent signature. The mantra is Plain recall wording. Its imperative grammar does not assert condition-governed continuation. When such executable continuation is current, its object is a Constraint-Governed Unfolding Structure (CGUS) governed by A.22.CGUS.
 
-*Guard clarification (normative).* **Operational guard predicates** (run‑time or admission guards) **BELONG ONLY** to **A.6.1 Mechanisms**. A Signature may express **domain and type constraints** as declaration-level constraints (e.g., restricting an operator’s domain) but **SHALL NOT** encode operational admissions.
+#### A.6.0:4.1 - Admit and identify U.Signature
 
-*Guidance for `profile=FormalSubstrate` signatures.* Signatures that declare a formal-deductive profile (e.g., *FormalSubstrate*) MAY include, **as vocabulary elements**, an **EffectDiscipline** (algebraic, row, or graded effect signatures) and **InferenceKind** enumerations; handler semantics are **out of scope** for Signatures (see §4.3). The universal block remains conceptual and contains **no** run-time admissions or AdmissibilityConditions.
+`U.Signature` is a same-individual dependent durable U-kind under `U.Episteme`. C.2.1 first identifies one episteme through one `EpistemeConstitutionRelation` by its complete claim content, exact independently governed `EntityOfConcern`, and effective `U.ReferenceScheme`. The claim graph and reference scheme are epistemic constituents; the `EntityOfConcern` is not. A.6.0 adds a stable membership condition and practitioner-facing declaration use to that already identified individual. It adds no second constitution relation, identity discriminator, assembly, composition rule, or holon test.
 
-**Naming discipline.** The `Subject` **MUST** be a **single‑sense** noun phrase; avoid synonyms or aliases within the same Signature.
+An already identified episteme is a `U.Signature` exactly when, under its effective `U.ReferenceScheme`, its complete identity-bearing claim content carries a reusable law-governed declaration about its exact `EntityOfConcern` and includes all of the following with substantive meaning:
 
-A `U.Signature` is conceptual: it contains no implementation, no packaging or CI metadata, and no Γ-builders. If a family wants to expose a Γ‑like *builder or aggregator*, publish it **outside** the Signature Block (typically as an **A.6.1** Mechanism‑level operator) and **namespace** it under the Signature id; do not treat Γ as part of the canonical Vocabulary.
+- direct `SubjectKind` and `RangedValueKind` declarations that identify the declared subject and value range;
+- `Vocabulary` that supplies the designators needed to reuse the declaration;
+- `Laws` that state the reusable predicates, equations, invariants, closure conditions, or other declared regularities;
+- `Applicability` that bounds where those claims are used;
+- `ResultKind`, `SliceSet`, `ExtentRule`, and dependency, import, or provided-name declarations only when those distinctions are current for the declaration.
 
-#### A.6.0:4.1 - The **Signature Block (universal form)**
+Judge the complete claim content, not a selected subset or the presence of field names. A minimal directly authored signature may carry the declaration content required by the A.6.0 membership predicate in one claim graph without citing any smaller episteme. A signature may instead cite separately identified source or dependency epistemes, provided its own claim graph names the dependency relation and the declaration meaning thereby reused. Those source epistemes remain separate individuals connected through their governing dependency, source-use, edition, or other direct relations; they are not components assembled into the signature, and their citation alone does not establish signature membership.
 
-The **four conceptual rows** (“SubjectBlock, Vocabulary, Laws, and Applicability”) give a repeatable, holon‑stable pattern across mathematics → physics → engineering:
-* **SubjectBlock** = *what it’s about + how quantified* (axiomatics + domain of interpretation),
-* **Vocabulary and Laws** = *principles and laws* (postulates and constraints),
-* **Applicability** = *where they hold in practice* (bounded context and time).
+E.24.UK governs the one-time public admission of the dependent kind. In project work, authoring a new declaration candidate, or revising a declaration so that its claim content, exact `EntityOfConcern`, or effective `U.ReferenceScheme` changes, yields a resulting C.2.1 discriminator triple. When the one `EpistemeConstitutionRelation` for that triple obtains, C.2.1 identifies the resulting episteme; A.6.0 then judges whether that already identified individual satisfies the `U.Signature` membership predicate, without adding a second constitution occurrence or identity discriminator. An optional separately reviewable membership judgment is another classification-assertion episteme whose exact `EntityOfConcern` is the candidate; that assertion neither creates the candidate nor admits the public kind. Citing, comparing, or reusing an unchanged episteme, or judging its membership without changing a C.2.1 discriminator, creates neither another episteme nor another constitution occurrence.
 
-Every `U.Signature` **SHALL** present a **four‑row conceptual block** (names are universal; family-specific projections are stated below):
+The signature keeps the C.2.1 identity of the same episteme. Two designations resolve to that same individual only while the complete claim content, exact `EntityOfConcern`, and effective `U.ReferenceScheme` are unchanged. Changing any discriminator identifies another `U.Episteme`; call that new individual a `U.Signature` only if it independently satisfies the membership predicate above. State an edition, refinement, or supersession relation only when its own direct predicate obtains.
 
-1. **SubjectBlock** — ⟨**SubjectKind**, **RangedValueKind**, **SliceSet**, **ExtentRule**, **ResultKind?**⟩.
-   *SubjectKind* names the EntityOfConcern kind declared by the signature (C.3); *RangedValueKind* names the kind of values or entities ranged over through C.3 typed reasoning, admitted U-kind governance, Concept-Set evidence, or an imported signature symbol; *SliceSet* addresses the quantification domain (USM; e.g., **ContextSliceSet**); *ExtentRule* computes `Extension(SubjectKind, slice)` (C.3.2); *ResultKind?* (optional) is the output kind when outputs differ from the SubjectKind.
-   **Editorial split (allowed).** Authors **MAY** render the **SubjectBlock** as two adjacent lines — **Subject** *(SubjectKind, RangedValueKind)* and **Quantification** *(SliceSet, ExtentRule, ResultKind?)* — **without changing semantics**. Even when visually split, SubjectBlock counts as **one** conceptual row.
+The declared subject remains the independently governed `EntityOfConcern`, not the signature. A realization of the declaration remains under its direct pattern. A description whose `EntityOfConcern` is the signature is another episteme. Publication occurrence, publication form, `U.PresentationCarrier`, and C.29 representation remain separate objects and relations; publication or visible form establishes neither identity nor membership. G.11 currentness and every later work or use likewise remain neighboring judgments and relations rather than signature identity components.
 
-   **Semantic functions of the SubjectBlock kinds (informative)**
-   * **SubjectKind (EntityOfConcern kind).** The EntityOfConcern kind declared by the signature (C.3.1), ordered by `⊑`. It carries no Scope.
-   * **RangedValueKind (ranged-over value kind).** The value kind over which values or entities are ranged. It is not a separate durable kind or type ontology; use C.3 `U.Kind`, an admitted durable U-kind, a Concept-Set row, or an imported signature symbol as the meaning source.
-   * **SliceSet (addressability).** The addressable set of `U.ContextSlice`s (USM). It identifies where **extent** is computed; it is not a “space” unless CHR.
-   * **ExtentRule (extent).** A rule yielding `Extension(SubjectKind, slice)` (C.3.2); this is the quantifier’s domain, computed per slice.
-   * **ResultKind? (outputs).** Optional: the output kind for operations declared in *Vocabulary* (use when outputs differ in kind from the SubjectKind).
+#### A.6.0:4.2 - Write the minimum declaration content
 
-2. **Vocabulary** — names and sorts of the public **types, relations, and operators** this signature commits to (no handler semantics; no AdmissibilityConditions). For each **n‑ary relation or morphism** in the Vocabulary, parameters **SHALL** be declared via **SlotSpecs** `SlotSpec_i = ⟨SlotKind, ValueKind, refMode⟩` per **A.6.5 `U.RelationSlotDiscipline`**. SlotKinds and RefKinds **MUST** follow the `…Slot` and `…Ref` lexical discipline in **A.6.5** and **E.10 (LEX‑BUNDLE)**; ValueKinds **MUST** remain free of these suffixes.
-   (No additional rows beyond the four‑row Signature Block.)
+The four content groups are semantic components, not a mandatory visual table. A publication form may present them as paragraphs, a table, formal declarations, or another representation. A publication occurrence makes a selected episteme edition available through that form without changing its content.
 
-3. **Laws (Axioms and Invariants)** — equations and order and closure laws that are context‑local truths under the stated Applicability (no proofs here). **Operational guard predicates belong to Mechanisms (A.6.1)**, not to Signatures.
+| Content group | Content and use |
+|---|---|
+| `SubjectKind`, `RangedValueKind`, optional `ResultKind`, `SliceSet`, and `ExtentRule` | Name the declared subject, value range, optional distinct result kind, and any varying extension on which a receiving use depends. No additional container kind is implied. |
+| `Vocabulary` | Declares the public designators for value kinds, relation kinds, operators, and other independently identified declared objects. A `RelationSignature` may include SlotSpecs under A.6.5; each SlotSpec gives a declaration-local SlotKind name and the exact participant ValueKind and designation mode. A mechanism may include operation argument and result declarations under A.6.1. A vocabulary token does not by itself admit a durable U-kind. |
+| `Laws` | States semantic predicates, equations, invariants, closure conditions, and other declared regularities. A.6.1 governs an operation-admission predicate for a mechanism; A.3.1 governs the method, and A.15.1 governs the dated work occurrence that enacts it, including direct `performedBy` to the exact covering `U.RoleAssignment`. Writing the operation-admission predicate as a condition does not make it a signature law. |
+| `Applicability` | States the exact `U.ClaimScope` and any other use qualifiers current for this declaration, such as a relevant time interval or selected `CHR:ReferencePlane`. Cite an optional `modelUseStructureRef : U.StructureRef` only when an independently selected model-use structure changes interpretation. |
 
-4. **Applicability (Scope and Context)** — conditions under which the laws are valid (bounded context, plane, stance, time notions). Applicability **MUST** bind a **`U.BoundedContext`** (D.CTX). Applicability here is the *context of meaning* for the Signature’s vocabulary and laws; it **MUST NOT** be used to encode claim‑level applicability, which remains a **Scope** on claims (`USM` and `C.3.2`). Cross‑context use **MUST NOT** be implicit; if intended, **name** the Bridge (conceptual reference only). When numeric comparability is implied, **bind** legality to **CG‑Spec and MM‑CHR** (normalize‑then‑compare; lawful scales and units).
+`SubjectKind` and `RangedValueKind` are declaration-content components. They do not create a second hierarchy beside C.3 or E.24.UK. A trivial `SliceSet` or constant `ExtentRule` added solely as filler contributes no declaration meaning.
 
-*Mapping to existing families (normative projection correspondences).*
-— **A.6.1 (Mechanism).** *SubjectBlock* ↔ **SubjectKind, RangedValueKind, and the remaining SubjectBlock fields**; *Vocabulary* ↔ **OperationAlgebra**; *Laws* ↔ **LawSet**; *Applicability* remains contextual; **AdmissibilityConditions** — separate field of mechanism (not in the `U.Signature`).
-— **Task, Problem, and Discipline signatures (C.22, G-cluster).** These **SHALL** be introduced as **species of `U.Signature`** that reuse the same four-row Block (SubjectBlock, Vocabulary, Laws, and Applicability); any extra per-family views are projections only (no new conceptual rows).
+Applicability and meaning remain distinct. The effective `U.ReferenceScheme` is part of episteme identity. The exact `U.ClaimScope` delimits use; when current for the declaration, a relevant time interval, selected `CHR:ReferencePlane`, or selected `BoundedModelUseStructure : U.Structure` further delimits or organizes applicability. None replaces the reference scheme or claim scope.
 
-*Optional projection views (normative).* Publications MAY include additional **projection views** (e.g., a Dependency View listing `imports` and `provides`, or an Assurance View listing audit and evidence hooks), but such views:
-1) MUST be mechanically derivable from `SignatureManifest` + the four‑row Block (and referenced ClaimIds where used), and
-2) MUST NOT introduce new semantics, obligations, or “extra rows”.
+#### A.6.0:4.3 - Use RelationSignature for reusable relation declaration
 
-##### A.6.0:4.1.1 - SlotSpec for argument positions (normative; see A.6.5)
+`RelationSignature` is the relation-facing use of one `U.Signature`. It is not a second U-kind.
 
-For every **n‑ary relation or operator** declared in the **Vocabulary** row, the Signature **SHALL** assign, to each argument position, a **SlotSpec** triple:
+Its `EntityOfConcernRef` identifies one already admitted direct relation kind. For an admitted derived relation kind, the direct governor must already supply its obtaining and occurrence-identity laws. A predicate-definition episteme whose `EntityOfConcern` is the reusable predicate definition rather than that admitted relation kind is not a `RelationSignature`. Its content declares:
+
+- the relation-kind designator;
+- one `SlotSpec` for each world-side participant meaning that needs reusable typed declaration;
+- the direct pattern's obtaining predicate and declared laws, restated for reuse without claiming that the predicate is satisfied;
+- applicability of those claims;
+- the occurrence-identity rule supplied by the direct relation pattern, restated for reuse without applying it to any occurrence.
+
+The direct relation pattern remains authoritative for when the relation obtains and how an individuated occurrence keeps identity. The signature declares those rules for reuse; it does not make the predicate true and does not create an occurrence.
+
+A direct relation may obtain before anyone writes a signature. Ordinary prose may therefore stop at:
+
+> Bearing B-17 is installed in pump P-4 at seat S-2.
+
+When many patterns need to reuse `InstalledAtRelationKind`, its three participant meanings, its obtaining predicate, and its occurrence identity, a `RelationSignature` becomes useful: its SlotSpecs declare those three participant meanings for typed assertion and description reuse. When another claim needs to refer to one particular installation occurrence, A.6.REL governs explicit individuation.
+
+#### A.6.0:4.4 - Declare participant meanings and operation parameters under different specializations
+
+For each world-side participant meaning whose reusable declaration is current, a `RelationSignature` declares one A.6.5 SlotSpec. The following code sketch is a compact representation of that declaration, not the world-side relation or its participants:
 
 ```text
-SlotSpec_i := ⟨SlotKind_i, ValueKind_i, refMode_i⟩
+SlotSpec := <SlotKind, ValueKind, refMode>
+refMode := ByValue | RefKind
 ```
 
-where:
-* **SlotKind_i** is a named position in the relation or operator (Tech name with `…Slot` suffix) whose semantics are documented (see A.6.5).
-* **ValueKind_i** is the FPF kind of admissible values at that position: a C.3 `U.Kind`, an admitted durable U-kind, a direct governing-pattern value kind, or an imported signature symbol.
-* **refMode_i** is either `ByValue` or a **RefKind** (e.g., `U.EntityRef`, `U.HolonRef`), indicating whether the episteme stores values directly or references or identifiers.
+| Component | Meaning in a RelationSignature |
+|---|---|
+| `SlotKind` | The declaration-local name by which this `RelationSignature` distinguishes one participant meaning of its EntityOfConcern relation kind. It is not a participant, system role, or mathematical operand. |
+| `ValueKind` | The exact world-side kind admitted for the relation participant. |
+| `refMode` | How a receiving episteme, such as an assertion, description, or occurrence record, carries a participant designation: by value or through one exact governed RefKind. That designation denotes the actual participant. The relation occurrence itself does not store the reference, and the occurrence record is not that occurrence. |
 
-Full discipline and lexical rules for **SlotKind, ValueKind, and RefKind** are given in A.6.5 `U.RelationSlotDiscipline` and E.10 (§8.1). A.6.0 requires that every vocabulary‑level relation or operator that takes arguments **declare** these SlotSpecs; downstream patterns MAY provide templates for common shapes (e.g., episteme slots in C.2.1).
+A.6.5 governs these declarations of participant meanings. Use SlotKind names that expose the participant distinction, such as `InstalledItemSlot`, `InstallationSiteSlot`, and `AssemblySlot`. Do not force SlotSpecs into a one-off assertion that has no receiving typed use.
 
-**Settlement for the `U.*` names in this example.** The example below does not admit new durable U-kinds. Names ending in `Ref`, such as `U.MethodRef`, `U.EntityRef`, `U.CharacteristicRef`, and `U.HolonRef`, are RefKind examples governed by A.6.5 and the direct pattern for the referenced value. `U.ClaimGraph` is used only as a ValueKind for `ClaimGraphSlot`, governed by the episteme slot relation in C.2.1 and A.6.5. A.6.0 only requires the SlotSpec form; if a project needs a new durable `U.*` value, E.24.UK and the direct governing pattern must admit it outside this signature example.
+A formal or mechanism declaration may instead need named operation arguments and a result. A.6.1 governs that `OperationAlgebra`; C.29 governs any mathematical operand order, product, function, or tuple used to represent it. Those operation parameters do not become `RelationSignature` SlotSpecs or SlotKinds merely because the same notation uses angle brackets or numbered arguments. When a relation claim consumes a mathematical representation, state an explicit correspondence between the representation's operands and the independently declared SlotSpecs.
 
-**Mini‑example (informative).** For an episteme kind `ModelEvaluationResultKind`, a simplified episteme might expose:
-* `entityOfConcernRef : U.MethodRef`
-* `datasetRef : U.EntityRef`
-* `metricRef : U.CharacteristicRef`
-* `groundingHolonRef : U.HolonRef`
-* `claimGraph : U.ClaimGraph`
+#### A.6.0:4.5 - Expose real declaration dependencies
 
-A SlotSpec table then states:
+Add a `SignatureManifest` section when this signature uses non-local declared names or when another signature depends on names provided here. The compatible heading is retained for dependent patterns; it names neither another U-kind nor one uniform ontic object. It co-locates entries with three roles: `id` is an identity-neutral display designator; `signatureRef` and its optional `.edition` pin form a governed reference to an already recoverable signature episteme; and `imports` and `provides` may state dependency or name-introduction claims in the signature's exact `U.ClaimGraph` or visibly represent those claims. Co-location makes neither every entry identity-bearing claim content nor any entry a relation occurrence.
 
-| Parameter (episteme field)   | SlotKind              | ValueKind          | refMode                |
-| ---------------------- | --------------------- | ------------------ | ---------------------- |
-| `entityOfConcernRef`   | `EntityOfConcernSlot` | `U.Method`         | `U.MethodRef`          |
-| `datasetRef`           | `DatasetSlot`         | `U.Entity`         | `U.EntityRef`          |
-| `metricRef`            | `MetricSlot`          | `U.Characteristic` | `U.CharacteristicRef`  |
-| `groundingHolonRef`    | `GroundingHolonSlot`  | `U.Holon`          | `U.HolonRef`           |
-| `claimGraph`           | `ClaimGraphSlot`      | `U.ClaimGraph`     | `ByValue`              |
+The compatible section may carry entries with these roles:
 
-This example illustrates the intended interpretation: **parameters are typed twice**—once by their **ValueKind** (what sort of value fills the position) and once by **refMode** (by‑value or which RefKind). SlotKinds (with `…Slot` suffix) give stable names for substitution laws and EntityOfConcern statements across patterns.
+| Entry | Meaning |
+|---|---|
+| `id : SignatureId` | An identity-neutral display designator or representation metadata for one already independently identified signature episteme. It is not a governed reference and does not enter the C.2.1 identity triple. |
+| `signatureRef : U.EpistemeRef` | A governed reference resolving to the already identified signature episteme selected for replay. Changing its serialization preserves the referent only while resolution returns that same episteme under the effective reference scheme. |
+| `signatureRef.edition` | An optional edition pin on `signatureRef` for one already recoverable episteme edition. The pin neither enters the C.2.1 identity triple nor establishes that an `EpistemeEditionRelation` obtains. |
+| `imports` | When the signature's exact `U.ClaimGraph` states that it uses provided names or cited laws from named provider declarations, this entry carries that claim content or visibly represents it. The designators, governed references, or list membership alone establish no dependency or source-use occurrence. |
+| `provides` | When the signature's exact `U.ClaimGraph` states that it introduces public names for dependent use, including public SlotKinds and RefKinds, this entry carries that claim content or visibly represents it. Being listed establishes no consumer dependency by itself. |
 
-#### A.6.0:4.2 - Profile specialisations (normative; structure‑preserving)
-To enable first‑principles signature specializations without minting new Kernel kinds, apply **profiles** to `U.Signature`:
+A change confined to the spelling of `id` or the serialization of `signatureRef` preserves episteme identity only when the reference still resolves to the same episteme and its exact claim content, exact EntityOfConcern, and effective `U.ReferenceScheme` remain unchanged. Changing `signatureRef.edition` selects another already recoverable edition; it does not by itself establish an edition relation, historical continuity, or `U.Signature` membership for the referent. If a C.2.1 identity discriminator changes, A.6.0:4.10 governs the resulting identity.
 
-* **`profile = FormalSubstrate`** — *formal‑deductive specialization*
-  **Vocabulary:** `TermRegister` (ref-only), **InferenceKinds** (ref-only), **EffectDiscipline** (operation and effect signatures).
-  **Laws:** equational and structural axioms of the calculus; **no handler semantics**.
-  **Applicability:** binds a `U.BoundedContext` for conceptual declaration use; **no units, ReferencePlane, or Transport** on faces.
-  **MVPK pins:** **`No‑Realization` pin (mandatory)** on `PlainView` and `TechCard` asserting that handler semantics live only in **A.6.1 `U.Mechanism::U.EffectRealization`**.
-  **Faces:** On MVPK faces, **`InferenceKindsAllowed`** MAY present a **ref‑only subset** of the enumerated **`InferenceKinds`**; Signatures do not add handler semantics.
+Use these dependency-manifest predicates:
 
-* **`profile = PrincipleFrame`** — *postulates + measurability intent (CHR‑binding)*
-  **Vocabulary:** **PostulateSet** (in the calculus imported), **CHR-Binding presence** (ref-only to characteristic or observation profiles), **Ontology references** (ref-only to ontology types or morphisms used to name subject-matter entities).
-  **Laws:** timeless and order-free invariants; **no operational admissions**.
-  **Applicability:** binds a `U.BoundedContext`; **Signatures SHALL NOT publish units, ReferencePlane, ComparatorSet, or Transport** (first mention is in **UNM**).
-  **MVPK pins:** **`NoReferencePlaneOnSignature`** and **`UNM-priority`** (units, planes, comparators, and Transport are declared only by **`U.ContextNormalization`** and cited by edition or ref-id where needed). Do not mint profile-local pin synonyms.
+- **SM-1 Name resolution.** Every referenced non-local declaration name resolves under the effective reference scheme to one named imported provider that declares that name.
+- **SM-2 No redeclaration.** A provided name is not also provided by a transitive import under the same effective reference scheme.
+- **SM-3 Replay order.** When a selected replay method orders the declared import designations from providers to consumers, that order is acyclic. Any graph, cycle check, or ordering notation remains a C.29 representation; replay order does not make a generic dependency relation obtain.
+- **SM-4 Export boundary.** A dependent declaration relies on provided names and cited laws, not on private publication layout or implementation detail.
 
-**Profile morphism discipline.** See §4.6 for the **structure‑preserving morphism** requirements for profile application.
+When interpretation or replay actually depends on another declaration or source, name the already-governed dependency or source-use relation only when its own predicate obtains. A citation, manifest entry, list membership, or replay result can support an assertion about that relation but does not create the relation occurrence. A provider or provider-edition change may require resolution, replay, or currentness review; it changes the consumer signature's identity only when the consumer's own claim content, exact EntityOfConcern, or effective reference scheme changes.
 
-#### A.6.0:4.3 - Effect-discipline and handler-semantics split (normative)
+A governed reference to a separately identified object is not an exported vocabulary name merely because that reference appears in the signature.
 
-If a Signature’s **Vocabulary** includes an **EffectDiscipline** (operation and effect signatures), the Signature **SHALL NOT** declare **handler semantics** or any **EffectRealization**. Such realizations are declared only under **A.6.1 `U.Mechanism`** and cited by **ref-id** on faces where needed. This mirrors the modern algebraic-effects separation between *operation signatures* and *handlers* while keeping A.6.0 purely conceptual.
+#### A.6.0:4.6 - Specialize declaration use without minting another root kind
 
-#### A.6.0:4.4 - Declaration Rules (strict-distinction-aware; lexically disciplined)
+A signature profile is a constrained use of the same `U.Signature` kind. The profile states which content is current and which neighboring patterns govern later use.
 
-* **EntityOfConcern, Description, and specification-use separation.** A signature states the subject kind and laws; Realizations (if any) carry specification-use constraints. Do not mix tutorial text or operational recipes into the Block. Do **not** include **AdmissibilityConditions** or run‑time admissions here.
-* **Context discipline.** Bind Applicability to a **`U.BoundedContext`**. If cross‑context use is intended, **name** the crossing and **reference** the Bridge (Part F and B.3); A.6.0 does **not** prescribe **compatibility and loss tables (CL, including `CL^plane`)** or penalty formulas.
-* **Stratification.** Use LEX‑BUNDLE registers and strata; do not redefine Kernel names in lower strata (no cross‑bleed).
-* **Signature manifest.** If the signature is intended to be imported or reused, publish a `SignatureManifest` immediately above the Block with explicit `id`, `imports`, and `provides` lists (§4.4.1). Keep the universal four‑row Block free of dependency and export metadata.
+**`profile = FormalSubstrate`.** Declare vocabulary and terms, inference kinds, formal laws, applicability, and the actual declaration dependencies carried in the signature's claim content. A.6.1 separately governs `OperationAlgebra`, operation designators, typed argument and result positions, admission conditions, application, and realization. An A.6.1 declaration may cite the FormalSubstrate signature; that citation does not make the operation part of this signature. When a mathematical object is selected as a lens for another entity, C.29 governs the lens-use claim; usefulness does not make the mathematical object a signature.
 
-* **Realization discipline (normative extension point).** If a family publishes any *Realization* of a `U.Signature`, each Realization **MUST** (i) declare which `SignatureId` it implements, (ii) satisfy the Signature’s **Laws** (and imported laws) and **MAY** tighten them but **MUST NOT** relax them, and (iii) treat imported Signatures as **opaque**—it **MUST NOT** depend on their internal structure beyond what is exported via `provides` and cited via ClaimIds. Realization-specific build, tooling, and test metadata belongs to the Realization record or publication, not to the `U.Signature` Block.
+**`profile = PrincipleFrame`.** Declare postulates, invariants, and observability intent. Characteristic definitions, units, and scales remain under A.17, A.18, and C.16; `CHR:ReferencePlane` values remain under CHR; comparison remains under A.19.CPM; and normalization remains under A.19.UNM. The PrincipleFrame cites those independently identified declarations when they are current; their objects do not become extra PrincipleFrame identity components merely by citation.
 
-##### A.6.0:4.4.1 - SignatureManifest (imports and provides; normative)
+A relation between two signatures is stated directly as refinement, conservative extension, equivalence, or another independently governed relation only when that relation's own predicate obtains. A claimed refinement states which vocabulary and laws are preserved, strengthened, or changed. Use a C.29 morphism only when a mathematical structure-preservation claim is actually current.
 
-A `U.Signature` MAY be prefixed with a lightweight manifest that makes boundary dependencies explicit **without** introducing a separate “module system”.
+#### A.6.0:4.7 - Keep declaration, realization, and use under their direct patterns
 
-**SignatureManifest** fields (conceptual; concrete syntax is editorial):
+| Current object or claim | Governing pattern |
+|---|---|
+| Constitution and C.2.1 identity of the exact claim-bearing episteme, including a separately identified relation-occurrence description episteme | C.2.1; the direct object or relation pattern still governs the described EntityOfConcern |
+| Reusable declaration episteme and `U.Signature` membership | A.6.0 |
+| Relation obtaining and explicitly individuated occurrence | Direct relation pattern and A.6.REL |
+| `RelationSignature` SlotSpecs and participant-designation discipline | A.6.5 |
+| Mechanism `OperationAlgebra`, typed argument and result positions, admission conditions, application, and realization | A.6.1 |
+| Method | A.3.1 |
+| Performed work | A.15.1 |
+| Optional source-to-receiving-episteme viewing construction | A.6.3 |
+| Same-EntityOfConcern representation-scheme transition | A.6.3.RT |
+| Cross-reference-scheme, cross-plane, or cross-model-use-structure use with explicit preservation and loss | F.9 for the exact bridge relation; the direct pattern for the affected meaning or structure remains authoritative |
+| Numeric comparison, normalization, units, scales, and measurement | A.19.CPM and A.19.UNM, together with A.17, A.18, C.16, and the direct measurement pattern when each object or relation is current |
+| Actual mathematical or diagrammatic lens, operand mapping, or correspondence use | C.29 |
+| Current representation-factor bundle for governed episteme publication positions | C.2.7 |
+| Publication-face use and the distinct publication occurrence, form, and carrier relations | E.17 for the publication-face use profile; E.24.PUB for the direct occurrence, form, and carrier relations |
+| Evidence-use or status-use relation | A.2.4 |
+| Evidence-provenance graph or path | A.10 |
+| Assurance claim or reliance-safety assurance record | B.3 |
+| Operational gate profile and the decision that uses its result | A.21 and C.11 |
 
-- `id : SignatureId` — stable identifier for cross-references.
-- `version : SemVer` (optional; **required when the signature is imported or reused**).
-- `publicationState : {draft | candidate | stable | deprecated}` (optional).
-- `imports : [SignatureId]` — other signatures whose **provides** are referenced by this signature (directed edges; possibly empty).
-- `provides : [SymbolId]` — the **only** new public symbols minted by this signature that downstream text may depend on (**types, relations, operators, SlotKinds, RefKinds**).
+The rows name the direct patterns that govern these common adjacent objects and claims. Their co-location is only a compact representation and does not change any governing pattern's scope.
 
-**Norms (boundary hygiene):**
+#### A.6.0:4.8 - Add explicit objects only for a named receiving use
 
-- **Acyclicity.** The directed graph induced by `imports` MUST be acyclic.
-- **Stratum dependency.** `imports` **MUST** respect **E.5.3** (Unidirectional Dependency) and **E.10** strata and token-class discipline; do not import from a lower stratum or across a forbidden dependency direction.
-- **No redeclare.** `provides(S)` MUST NOT re‑declare any symbol already provided by any transitive import of `S`.
-- **No ghost dependencies (vocabulary symbols).** Any non-Kernel **SymbolId** referenced in the **SubjectBlock** or **Vocabulary** rows (including `RangedValueKind`, `ResultKind?`, operator names, SlotKinds, ValueKinds, RefKinds) that is **not** provided by this signature MUST be provided by some imported signature. ClaimIds, BridgeIds, policy-ids, and EditionIds are exempt because they identify claims, bridges, policies, or editions rather than vocabulary symbols exported by this Signature.
-- **Law reference.** When downstream text depends on laws or constraints from an imported signature, it SHOULD cite the corresponding **ClaimId** (A.6.B), not paraphrase prose.
+Make three receiving-use decisions while keeping their objects distinct:
 
-The A.6.0 four-row Block remains the canonical meaning locus for Vocabulary, Laws, and Applicability. The manifest only declares dependency edges and exported names.
+1. A readable direct assertion designates the actual participants and states its modality for present work; the direct pattern still determines whether the relation obtains.
+2. Repeated typed use may justify authoring, selecting, or reusing a shared signature declaration for vocabulary, laws, applicability, or dependencies. When a new declaration is authored, its own claim content, exact EntityOfConcern, effective reference scheme, and C.2.1 constitution identify the episteme; A.6.0 then judges whether that same episteme satisfies `U.Signature` membership.
+3. An obtaining `U.Relation` occurrence is explicitly recognized and individuated when a receiving claim or operation consumes that occurrence's identity.
 
-* **Token hygiene.** Do **not** mint new `U.*` tokens inside a Signature without an accepted FPF naming and kind decision; prefer referencing existing governed U-kinds, C.3 `U.Kind` values, Concept-Set rows, or imported signature symbols.
+These decisions concern explicitness for different objects and distinct acts of explicit recognition, not stages that construct a relation or an episteme from need. A receiving need is a reason to author, select, reuse, or explicitly individuate; it is not an identity criterion and creates neither the episteme nor the relation occurrence. A claim about condition-dependent entries, branches, returns, or stops is a CGUS claim governed by A.22.CGUS.
 
-*MVPK publication discipline for Signatures (normative).* When publishing a `U.Signature` via MVPK (E.17), faces **SHALL** be typed projections that add **no new claims**; any numeric or comparable statement **MUST** pin unit, scale, reference-plane, and **EditionId** to **CG-Spec and MM-CHR** where applicable. For `profile=FormalSubstrate` signatures, faces **MUST** carry a **No-Realization pin** (handlers and realizers absent). For Principle-level signatures, faces **MUST NOT** introduce units, ReferencePlane, or Transport (first mention occurs in UNM).
+Stop when the named receiving use is served. Engineers author signature, assertion, and description epistemes only when their receiving uses need them; selecting or reusing an existing episteme leaves its identity unchanged. They assign or use occurrence designators and references separately under F.18 only when another claim or operation needs occurrence identity. Neither episteme authorship nor reference use creates the relation occurrence.
 
-#### A.6.0:4.5 - Specialisation knobs (for downstream patterns)
+#### A.6.0:4.9 - Recover formal-substrate and PrincipleFrame uses by direct governing relation
 
-A.6.0 exposes **three** conceptual knobs; downstream patterns (A.6.1, method or discipline specifications) may **tighten** them:
+| Current claim | Direct governed use |
+|---|---|
+| Author, select, or cite a formal declaration | Use `U.Signature(profile=FormalSubstrate)` with its subject, vocabulary, inference kinds, laws, applicability, and real dependencies. |
+| Use a mathematical object to preserve selected structure while hiding other structure | Use C.29 and state the mathematical-lens relation. |
+| Declare, apply, or realize an operation | Use A.6.1 for the `OperationAlgebra`, typed argument and result positions, admission conditions, application, and realization; cite a FormalSubstrate signature only when that named dependency is current. |
+| Carry an encountered distinction toward later work | Use E.18.1 for the carry-through relation; that relation does not decide signature, operation, or lens adequacy. |
 
-1. **Builder policy.** The Block MUST NOT export Γ-builders. If a family publishes a Γ-like builder or aggregator, it MUST be outside the Block (typically as an **A.6.1** Mechanism-level operator), explicitly marked optional, and namespaced under the Signature id.
+The same independently identified formal object or episteme can participate in these different uses while retaining its own identity and kind. Its identity does not decide which declaration, dependency, operation, lens, or carry-through relation is current.
 
-2. **Transport clause.** If cross-context or cross-plane use is part of the design, the signature **may declare** a conceptual Transport clause; **A.6.1** gives a concrete schema (Bridge, **CL, CL^k, and CL^plane**; Bridges per **F.9**, penalties per **B.3**, **CL^plane** per **C.2.1**), but A.6.0 remains agnostic about penalty shapes.
+For `PrincipleFrame`, write postulates and observability intent first. Cite an independently identified ontology, characteristic, measurement, scale, comparator, or normalization declaration only when that citation is current for the PrincipleFrame's claims. A cited declaration may be superseded, or an independently obtaining dependency relation may cease or be replaced, without retroactively changing the PrincipleFrame's identity. Changing the PrincipleFrame's own citation or dependency claim changes its claim content and therefore identifies another episteme; the same follows when its exact EntityOfConcern or effective reference scheme changes. Any edition, refinement, or supersession relation between the two epistemes must independently obtain.
 
-3. **Morphisms.** Families may define `SigMorph` (refinement, conservative extension, equivalence, quotient, product) to relate signatures; **A.6.1** instantiates this for mechanisms. Where such morphisms, or downstream **substitution and retargeting** laws (e.g., **A.6.2–A.6.4**), act on **n‑ary relations or morphisms**, they **SHALL** express their access, update, and retargeting discipline in terms of **SlotSpecs**  (SlotKind, ValueKind, RefKind) rather than unnamed parameter indices, using **A.6.5 `U.RelationSlotDiscipline`** as the normative slot calculus.
+#### A.6.0:4.10 - Change the exact object that changed
 
-#### A.6.0:4.6 - Profile‑specialisation as a structure‑preserving morphism (normative)
-Profile application `ι_profile : U.Signature → U.Signature(profile=…)` **SHALL** be a **structure‑preserving morphism**:
-— **SubjectBlock** is preserved up to α-renaming (SubjectKind and RangedValueKind unchanged; ResultKind? only added when it exists in the universal intent).
-— **Vocabulary** is **monotone** (adds or refines names and sorts without contradicting existing ones).
-— **Laws** are **monotone** (add or strengthen axioms; never weaken).
-— **Applicability** is **restrictive** (binds or tightens `U.BoundedContext`; never widens implicitly).
-— No **AdmissibilityConditions**, **operational guards**, or **handler semantics** are introduced by the profile (those live under **A.6.1**).
-This makes `profile=FormalSubstrate` and `profile=PrincipleFrame` *morphisms* in the sense of kernel specialisation and enables SigMorph reasoning (refinement or conservative extension).
+Apply C.2.1 first. Every `U.Episteme` is identified by exact claim content carried by one exact `U.ClaimGraph`, one exact EntityOfConcern, and one effective `U.ReferenceScheme`. Changing any member of this mandatory triple identifies another episteme. That episteme is a `U.Signature` only when it independently satisfies A.6.0 membership. A changed discriminator, `SignatureId`, or `signatureRef.edition` value does not by itself establish signature membership or historical continuity.
 
-### A.6.0:5 - Archetypal Grounding (Tell–Show–Show)
+A change to `imports` or `provides` changes the consumer signature's identity only when it changes that signature's own claim content. A changed provider or provider edition can instead leave the consumer episteme unchanged while requiring the named dependency or source-use assertion, resolution result, replay result, or currentness judgment to be reconsidered.
 
-| quartet Element | `U.System` Example — **Grammar of Motions** | `U.Episteme` Example — **Normalization Family** |
-| --- | --- | --- |
-| **SubjectBlock** | **Subject:** SubjectKind=`MotionGrammar`; RangedValueKind=`U.System:TrajectorySpace`. **Quantification:** SliceSet=`ContextSliceSet`; ExtentRule=`admissible motion words per slice (kinematics and domain restrictions)`; ResultKind?=`Language[Segment]`. | **Subject:** SubjectKind=`NormalizationMethod-Class`; RangedValueKind=`U.Episteme:ChartFamily` (one `U.BoundedContext`). **Quantification:** SliceSet=`ContextSliceSet`; ExtentRule=`admissible method instances per slice (edition and validity)`; ResultKind?=`NormalizedChart`. |
-| **Vocabulary** | Types: `Pose`, `Segment`; Operators: `concat`, `reverse`, `sample` (any Γ‑like aggregator is published outside the Signature Block, typically as a Mechanism‑level operator namespaced under the Signature id). | Operators: `apply(method)`, `compose`, `quotient(≡)`. |
-| **Laws (Invariants and Constraints)** | Closure of `concat`; associativity; time-monotone sampling; **`reverse` is declared only for holonomic arms (domain restriction)**. | Ratio→positive-scalar; Interval→affine; Ordinal→monotone; Nominal→categorical; LUT(+uncertainty). |
-| **Applicability (Scope and Context)** | Context: *industrial robotics*; stance: design; time notion: discrete ticks. Cross-context transport not declared. | Context: *clinical metrics*; stance: analysis; validity windows declared; cross-context transport via Bridge (concept only; details per A.6.1). Numeric comparability bound to CHR and CG-Spec. |
+A changed later use does not change the signature unless the change alters one of its C.2.1 identity discriminators. For example, a new mechanism realization remains a new realization, and a new publication layout remains a new publication form.
 
-*Why these two?* E.8 requires pairs from **U.System** and **U.Episteme** to demonstrate trans‑disciplinary universality.
+Connect two different epistemes by `EpistemeEditionRelation`, refinement, supersession, or another independently governed continuity relation only when that relation's own predicate obtains under its direct governor. Revision work, shared title, changed identifier, citation, or sequence alone establishes no such occurrence.
 
-#### A.6.0:5.1 - Near-miss and anti-cases
+When a once-current signature becomes stale while its identity remains recoverable, G.11 governs currentness and selection among recoverable editions. G.11 creates neither a later episteme nor an edition, refinement, or supersession relation.
 
-**Near-miss: handler hidden in a `U.Signature(profile=FormalSubstrate)` declaration.** A `U.Signature(profile=FormalSubstrate)` declaration for an algebraic-effects calculus may list operation symbols, inference kinds, and equational laws. If the same block says how a database handler commits transactions, the text has crossed into A.6.1 `U.Mechanism`: keep the operation and effect signature in A.6.0, and publish the handler realization as a mechanism that cites this signature.
+### A.6.0:5 - Archetypal Grounding
 
-**Near-miss: measurement comparison hidden in a principle frame.** A `PrincipleFrame` may state that a physical model preserves a heat-flow invariant and that observability must be recoverable through CHR. It must not declare units, reference planes, comparator legality, or transport loss as if they were signature laws. Those belong to CHR, UNM, bridge, comparator, and measurement patterns that cite the principle frame.
+#### A.6.0:5.1 - Physical modeling: electrical connector declaration
 
-**Anti-case: implementation manual called a signature.** A document that names build steps, CI checks, tool vendors, or work authorization before it states `SubjectBlock`, `Vocabulary`, `Laws`, and `Applicability` is not a conformant `U.Signature`. Rewrite the declaration first; then place realization, work, evidence, or tooling claims in their governing patterns.
+A multi-domain modeling team repeatedly uses an electrical connector declaration. The signature's `EntityOfConcernRef` identifies the connector-relation kind. Its Vocabulary names potential and flow variables. Its Laws state potential equality and the zero-sum flow condition. Applicability states the modeling assumptions and selected `CHR:ReferencePlane`.
 
-### A.6.0:6 - Bias-Annotation (lenses and defaults)
+A concrete connection assertion among modeled component instances is a later model-side relation claim. A dated equation-generation work occurrence enacts a selected method and has a direct `performedBy` relation to the exact covering `U.RoleAssignment` whose holder is the modeling system; any mechanism realization is a separate A.6.1-governed claim. A diagram is an optional representation episteme; a publication occurrence may make its selected edition available through a diagram-shaped publication form. The signature remains the declaration cited by those later epistemes and work claims.
 
-* **Local‑first meaning.** Laws are **local** to the named Context; cross‑context use must be explicit (Bridge), never implicit.
+Practical payoff: engineers can compare the connector variables and laws in two declaration epistemes irrespective of which tools render them. The direct connection pattern remains authoritative for an actual assembly relation, generated equations remain result epistemes of equation-generation work, and a drawing remains a representation episteme.
 
-* **No illicit scalarisation.** If numbers appear, legal comparability follows **CG-Spec and MM-CHR**; **no ordinal means**, **partial orders return sets**; unit and scale alignment is explicit.
+#### A.6.0:5.2 - Clinical work: dose-response relation
 
-* **Register hygiene.** Keep Tech vs Plain register pairs; avoid tooling or vendor talk in Kernel prose (E.10).
+A clinical modeling group reuses `DoseResponseRelationKind`. The relation signature names `PatientEpisodeSlot`, `InterventionSlot`, `OutcomeCharacteristicSlot`, and `ObservationWindowSlot`. Its Laws declare the response predicate and the temporal-aggregation conditions under which that predicate is evaluated. Applicability identifies the studied population, intervention kind, declared dosing frequency and timing conditions, and observation interval. The effective reference scheme separately fixes how the declaration content is interpreted.
 
-### A.6.0:7 - Conformance Checklist (normative)
+The signature does not assert that one patient responded. A response assertion designates the actual participants and states its modality. An A.2.4 evidence-use relation may relate a selected assay-result episteme to that response assertion under the named claim scope, evidential polarity, relevance window, and provenance constraints; it may thereby make that episteme admissible for the assertion, while the direct response pattern determines independently whether the response relation obtains. A changed assay result or later use leaves the signature unchanged. If the declared outcome characteristic or Applicability changes, the exact claim content carried by the signature's `U.ClaimGraph` changes and C.2.1 identifies another episteme. A.6.0 then judges `U.Signature` membership independently, and any edition, refinement, or supersession relation must separately obtain.
 
-| ID | Requirement |
-| --- | --- |
-| **CC‑A.6.0‑1** | A conformant text labelled **`U.Signature`** **SHALL** expose the **four‑row Signature Block**: *SubjectBlock; Vocabulary; Laws; Applicability*. A visual split of SubjectBlock into **Subject** and **Quantification** lines is allowed; it still counts as **one** conceptual row. |
-| **CC‑A.6.0‑2** |  The Signature Block MUST remain conceptual: no code or CI metadata, no tool bindings, no execution steps, no implementation details, and no Γ-builder exports. Dependency and export metadata belongs in the `SignatureManifest` (§4.4.1), not inside the four-row Block. |
-| **CC‑A.6.0‑3** | Applicability **binds** a `U.BoundedContext`; if cross-context use is intended, a **Transport clause** is *named* (Bridge reference) without re-stating Part F and B.3 details (including any **CL^plane**). |
-| **CC‑A.6.0‑4** | Where numeric comparability is implied, Applicability **binds** to **CG-Spec and MM-CHR** legality (normalize-then-compare; scale and unit alignment). |
-| **CC‑A.6.0‑5** | Families that specialise A.6.0 (e.g., A.6.1, method profiles, or discipline profiles) MAY add extra constraints and projection views, but MUST preserve the four-row Block as the canonical core (no extra semantic rows). |
-| **CC‑A.6.0‑6** | Under E.10 and E.5, tokens MUST respect strata and family segregation: never redefine Kernel tokens in an Extension, Context, or Instance signature; instead, import and align. |
-| **CC‑A.6.0‑7** | The **Laws** row contains **axioms and invariants** only; **AdmissibilityConditions** and operational admissions **MUST** appear only in **A.6.1 Mechanisms** that consume this Signature. |
-| **CC‑A.6.0‑8 (No‑Realization on Signatures with EffectDiscipline).** | If **EffectDiscipline** appears in **Vocabulary**, faces **MUST** carry a **`No‑Realization` pin** and **MUST NOT** publish handler semantics; any **EffectRealization** is referenced (A.6.1) by id only. |
-| **CC‑A.6.0‑9 (CHR‑binding without units or Transport).** | Signatures that declare **measurability intent** (e.g., PrincipleFrame) **SHALL NOT** publish **units, ReferencePlane, ComparatorSet, or Transport**; those are declared only by **UNM** and cited by edition or ref-id where consumers require numeric comparability. |
-| **CC‑A.6.0‑10 (UNM‑priority on faces).** | Any numeric or comparable claim on a Signature face **pins** **CG-Spec and ComparatorSet edition ids** and, where scale or plane conversion occurs, **UNM.TransportRegistry edition** with **CL and CL^plane policy-ids**; **penalties are recorded only in `R` or `R_eff`**. |
-| **CC‑A.6.0‑11 (Bridge‑only crossings).** | Cross-context or cross-plane reuse of Signature claims **MUST** name a **Bridge** (UTS row) and **MUST NOT** imply implicit equivalence by label; losses are recorded via **CL** (penalties → **R**). |
-| **CC‑A.6.0‑12 (Profile conformance).** | If the Signature declares `profile=FormalSubstrate` or `profile=PrincipleFrame`, the corresponding **profile pins** in §4.2 are **mandatory**; failure to emit them makes the Signature **non‑conformant** for that profile. |
-| **CC‑A.6.0‑13 (Profile morphism discipline).** | Applying a profile **SHALL** satisfy §4.6 (structure‑preserving morphism: SubjectBlock preserved, Vocabulary and Laws monotone, Applicability restrictive, no admissibility or handlers). |
-| **CC‑A.6.0‑14 (SlotSpec for argument positions).** | Any `U.Signature` whose **Vocabulary** declares n‑ary relations or operators **SHALL** provide, for each argument position, a **SlotSpec** triple `⟨SlotKind, ValueKind, refMode⟩` (with `refMode ∈ {ByValue \| RefKind}`) as per A.6.5 `U.RelationSlotDiscipline`. |
-| **CC‑A.6.0‑15 (Slot and Ref lexical discipline on signatures).** | Names of SlotKinds and RefKinds used in SlotSpecs **MUST** obey E.10 and A.6.5 lexical guards: tokens ending with **`…Slot`** denote SlotKinds only; tokens ending with **`…Ref`** denote either RefKinds or episteme fields whose type is a RefKind; no ValueKind ends with these suffixes. |
-| **CC‑A.6.0‑16 (SlotSpecs for n‑ary relations).** | Any `U.Signature` whose **Vocabulary** declares an **n‑ary relation or morphism** **SHALL** assign to each parameter position a `SlotSpec_i = ⟨SlotKind, ValueKind, refMode⟩` as defined in **A.6.5 `U.RelationSlotDiscipline`**; SlotSpecs live inside the Vocabulary row’s per‑relation parameter block and **MUST NOT** introduce additional rows beyond the four‑row Block. |
-| **CC‑A.6.0‑17 (SlotSpec-based substitution laws).** | Specialisations of A.6.0 that define **substitution, retargeting, or profile application** over n-ary relations or morphisms (e.g., **A.6.2–A.6.4**) **SHALL** phrase their rules in terms of **SlotSpecs** (SlotKind, ValueKind, and RefKind) rather than unnamed parameter indices and **SHALL** obey the `…Slot` and `…Ref` lexical discipline in **A.6.5** and **F.18**. |
-| **CC‑A.6.0‑18 (Manifest required for reuse).** | If a signature is intended to be imported or reused, it MUST include a `SignatureManifest` (§4.4.1) with explicit `id`, `version`, `imports`, and `provides`. |
-| **CC‑A.6.0‑19 (Imports acyclicity).** | If `imports` is present, it MUST be acyclic (no cycles in the signature import graph). |
-| **CC‑A.6.0‑20 (No redeclare across imports).** | If `imports` is present, `provides(S)` MUST NOT re‑declare any symbol already provided by any transitive import of `S`. |
-| **CC‑A.6.0‑21 (No ghost dependencies).** | If `imports` is present, any non-Kernel **SymbolId** referenced in the **SubjectBlock** or **Vocabulary** rows that is **not** provided by this signature MUST be provided by some imported signature. ClaimIds, BridgeIds, policy-ids, and EditionIds are exempt. |
-| **CC‑A.6.0‑22 (Realization opacity).** | If a family publishes any Realization of a `U.Signature`, that Realization **MUST** treat imported Signatures as **opaque** (depend only on their `provides` symbols and cited ClaimIds), and **MUST NOT** reference internal structure of imported Signatures. |
-| **CC‑A.6.0‑23 (Monotone Realization).** | A Realization **MAY** tighten but **MUST NOT** relax the Signature’s Laws; if weaker laws are needed, publish a new Signature (or publish an explicit refinement morphism) rather than weakening the existing Signature Laws. |
+Practical payoff: protocol authors and analysts can share the relation declaration while keeping patient occurrences, evidence epistemes, and their claim-bound evidence-use relations under their own identities.
 
-### A.6.0:7.1 - Common Anti-Patterns and How to Avoid Them
+#### A.6.0:5.3 - Learning: demonstrated-competence relation
 
-| Anti-pattern | Why it fails | Correct action |
+A curriculum-design team reuses `DemonstratedCompetenceRelationKind` for a learning program. The signature declares `LearnerSlot`, `PerformanceSlot`, `CriterionSlot`, and `AssessmentWindowSlot`. Its laws state how the criterion relates observed performance to the competence claim. Applicability fixes the curriculum edition and assessment conditions.
+
+A learner's performance occurrence and an assessor's claim remain separate. The signature makes the judgment-relation declaration reusable; it does not make the competence claim true.
+
+Practical payoff: changing the publication form or making a new publication occurrence for the course description changes neither the signature episteme nor any demonstrated-competence relation occurrence. A changed declared criterion changes the exact claim content carried by the signature's `U.ClaimGraph` and identifies another episteme; A.6.0 separately judges `U.Signature` membership, and the named continuity predicate must independently obtain before the later episteme is called a continuing signature edition.
+
+#### A.6.0:5.4 - Formal work: dependent operation parameters
+
+A FormalSubstrate signature is used with an operator whose result kind depends on one input. A separate A.6.1 operation declaration names the input arguments, their ValueKinds, the ResultKind, and the dependent law; it cites the FormalSubstrate signature only when that declaration dependency is current. A Lean structure or another dependent-type representation can encode those declarations precisely, but its fields, argument order, and tuple forms remain representation-side.
+
+When an FPF relation claim consumes that formal representation, C.29 states what structure the representation preserves and an explicit correspondence relates its operands to the independently declared `RelationSignature` SlotSpecs. A.6.3.RT governs the representation transition. Neither notation nor correspondence changes either declaration's EntityOfConcern, effective `U.ReferenceScheme`, Applicability, or identity.
+
+Practical payoff: formal-methods engineers can inspect the dependency in the operation declaration and compare another representation without importing mathematical operand order into relation ontology.
+
+#### A.6.0:5.5 - Reduced ordinary-use case
+
+The sentence `Bearing B-17 is installed in pump P-4 at seat S-2` is enough when no later use needs a reusable declaration or occurrence reference. Stopping here serves the named receiving use because neither a reusable declaration nor an occurrence reference is current; it is not an incomplete signature.
+
+### A.6.0:6 - Bias-Annotation
+
+**Scope declaration:** Universal across FPF-governed domains.
+
+- **Gov.** Favors making the direct governor of declaration membership, declared content, and neighboring claims inspectable, together with explicit dependencies. Counter-risk: declaration administration can grow beyond reuse value. Mitigation: add `SignatureManifest` only for actual dependency.
+- **Arch.** Favors a small declaration core with direct neighboring patterns. Counter-risk: the signature becomes a central container. Mitigation: keep realization, work, evaluation, and publication with their direct patterns.
+- **Onto-Epist.** Favors strict separation of declaration episteme, declared subject, obtaining occurrence, assertion, and representation. Counter-risk: excessive explicitness. Mitigation: stop when the named receiving use is served.
+- **Prag.** Favors reusable named SlotSpecs and laws. Counter-risk: one-off work becomes formal paperwork. Mitigation: ordinary direct sentences remain sufficient.
+- **Did.** Favors the four content groups and local mantra. Counter-risk: readers mistake the mnemonic order for executable work. Mitigation: A.22.CGUS governs any claimed executable conditional continuation.
+
+The examples deliberately span physical modeling, medicine, learning, and formal work. Each worked declaration has its own C.2.1 identity, which remains independent of its publication form; the examples do not share one declaration individual.
+
+### A.6.0:7 - Conformance Checklist
+
+1. **Exact declaration object.** The text identifies one `U.Signature` episteme and one exact `EntityOfConcernRef`.
+2. **Identity.** Content, EntityOfConcern, and effective `U.ReferenceScheme` remain recoverable.
+3. **Minimum content.** `SubjectKind` and `RangedValueKind`, together with Vocabulary, Laws, and Applicability, carry semantic content rather than empty publication rows. `ResultKind`, `SliceSet`, and `ExtentRule` appear only when their declared distinctions are current.
+4. **Optional quantification.** SliceSet and ExtentRule appear only when a receiving use depends on varying extension.
+5. **Vocabulary boundary.** A declared token is not treated as durable U-kind admission without E.24.UK and its direct pattern.
+6. **Relation declaration.** A `RelationSignature` identifies one already admitted direct relation kind. An admitted derived relation kind already has obtaining and occurrence-identity laws under its direct governor. A predicate-definition episteme is not treated as that `RelationSignature`, and the declaration does not assert an occurrence.
+7. **Direct relation-pattern governance.** The direct relation pattern governs obtaining and occurrence identity.
+8. **Typed-declaration boundary.** Reused participant meanings are declared inside a `RelationSignature` by A.6.5 SlotSpecs with exact SlotKind, ValueKind, and refMode. Operation arguments and results remain A.6.1 declaration content. Mathematical operands remain C.29 representation elements, with explicit correspondence to `RelationSignature` SlotSpecs only when a relation claim consumes them.
+9. **Semantic locality.** Meaning uses the effective reference scheme; applicability uses the exact claim scope and only qualifiers current for the declaration, such as a relevant time interval, selected `CHR:ReferencePlane`, or genuinely current model-use structure.
+10. **Dependency truth.** Imports and provided names correspond to actual declaration dependencies; SM-1 through SM-4 hold for the claimed use.
+11. **Realization boundary.** Mechanism behavior and admission conditions remain with A.6.1.
+12. **Progressive elaboration.** Explicit signature and relation-occurrence identity appear only for named receiving uses.
+13. **CGUS boundary.** Mnemonic imperatives are not called an executable sequence; any condition-governed unfolding claim uses A.22.CGUS.
+14. **Profile identity.** FormalSubstrate and PrincipleFrame remain profiles of `U.Signature` rather than new root kinds.
+15. **Changed object.** Changed exact claim content carried by the `U.ClaimGraph`, exact EntityOfConcern, or effective reference scheme identifies another episteme. Judge A.6.0 membership for that episteme independently, and assert edition, refinement, supersession, or another continuity relation only when its own predicate obtains. A changed use, identifier, publication form, carrier, provider currentness, or G.11 refresh state does none of those things by itself.
+16. **Cross-domain fit.** The declaration preserves the direct physical, biological, social, and epistemic EntityOfConcern kinds in its worked cases.
+
+### A.6.0:8 - Common Anti-Patterns and How to Avoid Them
+
+| Failure mode | Why it fails | Repair |
 |---|---|---|
-| Signature as implementation manual | Build steps, CI checks, vendors, or work authorization are placed before the public declaration. | State SubjectKind, RangedValueKind, Vocabulary, Laws, and Applicability first; put realization, tooling, work, and evidence in their governing patterns. |
-| Signature as operational gate | Runtime admission predicates are treated as signature laws. | Keep declaration-level constraints in A.6.0 and put operational admissibility conditions in A.6.1 mechanisms. |
-| Signature as measurement or bridge proof | Measurement comparability, cross-context transport, or bridge policy is treated as part of the declared law. | Keep the signature declaration stable and use measurement, bridge, evidence, gate, or decision patterns for those relations. |
-| Signature as U-kind minting shortcut | A vocabulary symbol is treated as a durable U-kind because it appears in the declaration. | Use C.3, E.24.UK, and the relevant ontic pattern before admitting a durable U-kind. |
+| Signature as publication template | Visual rows and publication metadata become signature identity. | Recover the declaration content and C.2.1 identity; govern publication separately. |
+| Relation signature as relation occurrence | Declaring participant meanings and laws is treated as evidence that the relation obtains. | Evaluate the direct predicate for the actual participants, state assertion modality separately, and use A.6.REL only when a receiving use needs occurrence identity. |
+| Applicability as context label | One undefined context word hides reference scheme, claim scope, time, selected `CHR:ReferencePlane`, and model use. | Recover each current qualifier under its direct kind or relation. |
+| Mandatory maximum form | Every sentence receives SlotSpecs, dependencies, editions, and occurrence records. | Name the receiving use and include only the declaration or occurrence-identity objects it needs. |
+| Mnemonic as executable sequence | Imperative wording is treated as a runnable continuation structure. | Keep it as Plain recall or declare the actual condition-governed structure with A.22.CGUS. |
+| Realization inside the declaration | Current mechanism behavior or test outcomes become signature laws. | Keep declared laws here; state the mechanism declaration or realization under A.6.1 and the evaluation claim under its direct evaluation pattern. |
 
-### A.6.0:8 - Consequences
+### A.6.0:9 - Consequences
 
-* **Uniform kernel shape.** Practitioners can define **theory**, **mechanism**, **method**, **discipline**, or other family signatures without inventing new templates.
+**Benefits.**
 
-* **Hard decoupling.** Boundary interfaces stay stable: the A.6.0 Block defines the signature and laws, while mechanisms and realizations can evolve behind it (with monotone strengthening and explicit guard boundaries).
+- Reusable declarations receive one stable episteme identity.
+- `RelationSignature` epistemes can expose named typed SlotSpecs without forcing every relation occurrence into a record.
+- Meaning becomes inspectable through the exact reference scheme; applicability becomes inspectable through the exact claim scope plus any current time interval, selected `CHR:ReferencePlane`, or selected model-use structure.
+- Physical and clinical work retain their world-side entities while using the same declaration discipline.
+- A changed realization can be repaired independently from its declaration.
 
-**Didactic cohesion.** Readers see the same four conceptual rows across the spec, satisfying E.8’s comparability goal.
+**Costs and trade-offs.**
 
-### A.6.0:9 - Rationale
+- Authors recover the exact declared subject and effective reference scheme; a familiar label is not enough.
+- Typed reuse can add authoring effort for A.6.5 relation SlotSpecs or A.6.1 operation declarations, plus A.6.0 dependency declarations when another signature relies on its provided names or laws.
+- A change to exact claim content, EntityOfConcern, or effective reference scheme identifies another episteme even when the publication looks identical; authors must separately judge `U.Signature` membership and any claimed edition, refinement, or supersession relation.
+- The practitioner separately judges whether a receiving use needs a reusable declaration or occurrence identity. The worked cases and checklist make that judgment reviewable.
 
-**Why “SubjectBlock”?** A.6.1 showed that making the **ranged-over value kind explicit** (here: *RangedValueKind*) avoids category mistakes when moving between domains (e.g., *set-algebra on context slices* vs *equivalence-classes of normalisations*). A.6.0 lifts this to the kernel so every signature can declare **what it is about** before saying **what it provides**.
-**Why one universal Block?** Experience with extension and mechanism signatures shows the value of a single canonical shape for Vocabulary, Laws, Applicability, and Alignment; A.6.0 factors that universal core so other families can add headers and views without fragmenting the Kernel.
+### A.6.0:10 - Rationale
 
-### A.6.0:9.1 - SoTA-Echoing
-— **Algebraic effects and handlers** (OCaml 5, Koka, Effekt, Links): *operation signatures and handler laws* mirror **Vocabulary and Laws** while keeping implementations separate.
-— **Session and behavioural types** (2016–2024): protocol and admissibility laws parallel the **Laws** row (at mechanism level).
-— **Graded and row-polymorphic effects** (Granule, row-effects): inform the **EffectDiscipline** vocabulary and equational laws.
+The ontic is needed because the same reusable declaration is cited across work occurrences, publication occurrences, and representations. Treating it as only a table-shaped publication form loses identity; treating it as the declared world-side object collapses episteme and EntityOfConcern.
 
-**Profiles rationale (informative).**
-— **`profile=FormalSubstrate` signature profile.** Captures *mathematical language, inference kinds, and effect signatures* in the **conceptual declaration context**, ensuring the calculus stays independent from handler and realization choices; consuming mechanisms (A.6.1) provide **EffectRealization** only by reference.
-— **PrincipleFrame.** Captures *postulates and invariants plus measurability intent (CHR binding)* without committing to **units, planes, or Transport**, which are declared centrally in **UNM** so that comparisons remain lawful and edition‑pinned.
+The declaration components answer four different engineering questions. `SubjectKind`, `RangedValueKind`, optional `ResultKind`, `SliceSet`, and `ExtentRule` identify what is declared and any varying extension. Vocabulary supplies reusable names and, for a RelationSignature, named participant SlotSpecs; A.6.1 supplies operation arguments and results for a mechanism declaration. Laws state the reusable regularities. Applicability states where those regularities are used. Their conceptual separation is stable even when publication layout changes.
 
-### A.6.0:10 - Relations
+`RelationSignature` is a use of `U.Signature` because it has the same episteme identity and content duties. Introducing a second root kind would duplicate those duties while leaving obtaining and occurrence identity with direct relation patterns anyway.
 
-* **Specialises and is specialised by:** **A.6.1** (adds `OperationAlgebra`, `LawSet`, `AdmissibilityConditions`, and `Transport` for mechanisms) and any domain‑profiled signature publications that preserve the four‑row Block.
-* **Constrained by:** E.10 LEX-BUNDLE (registers, strata); D.CTX for Context binding; **Part F** (Bridges and cross-context transport; naming).
-* **Consumed by (profiles):** **`U.Signature(profile=FormalSubstrate)`** and **`U.Signature(profile=PrincipleFrame)`** specializations in the first-principles use case; **UNM** (Context Normalization) remains the canonical edition source for **CG‑Spec, ComparatorSet, and Transport** editions that Signature consumers pin on faces.
+Progressive elaboration protects didactic primacy. A practitioner can begin with a readable relation sentence and add formal declaration only when reuse creates value. Exactness is increased for a named claim or operation, not for ceremony.
 
-* **Enables:** uniform declaration and comparison of signatures across Part C families, methods, and discipline glossaries (Part F).
+### A.6.0:11 - SoTA-Echoing
 
-### A.6.0:10a - P2W `U.Signature(profile=FormalSubstrate)` Use Relation
+| Current source | What it contributes | FPF disposition and practical implication |
+|---|---|---|
+| The current Modelica 3.8 development specification, Chapter 9, separates connector declarations, concrete connect equations, generated connection sets, and optional graphics. | A reusable declaration can specify named connector variables and laws without becoming the connection occurrence or its diagram. | **Adopt and generalize.** A physical-modeling engineer can compare declarations independently from actual assemblies and generated equations. The source is the current primary language-specification basis, not FPF ontology authority. This disciplines case 5.1. |
+| The current Lean Language Reference, covering Lean `4.33.0-rc1`, describes structures through named fields whose types may depend on earlier fields, while the kernel checks formal terms independently from presentation convenience. | Named formal fields and dependent types make the operation dependency inspectable and reduce reliance on numeric argument convention. | **Adapt as a current dependent-type representation precedent.** A formal-methods engineer can inspect dependent argument and result declarations under A.6.1 while C.29 keeps Lean fields and operand order representation-side; an explicit correspondence is required when a relation claim consumes those operands. Lean remains one representation, not FPF ontology. This disciplines case 5.4. |
+| TypeDB 3.x declares relation types through explicit related role types and can specialize those declarations. | Reusable relation declarations benefit from stable local names for participant meanings. | **Adapt with a stricter boundary.** A schema author can reuse stable participant names through `RelationSignature` SlotSpecs without treating database role types as system roles or world-side participants; relation obtaining remains independent from schema declaration. This disciplines sections 4.3 and 4.4. |
+| For the RDF-validation branch, SHACL 1.2 Core gives the current standards-track answer by separating shapes graphs, evaluated data graphs, validation work, and validation reports; its Working Draft status and 30 June 2026 date are not by themselves the basis for use. | Declared constraints, evaluated entities, and evaluation results remain different objects. | **Adapt as a work-in-progress representation precedent beyond RDF.** A protocol or curriculum author can keep signature laws, governed subjects, evaluation work, evaluation-result epistemes, and later evidence-use relations separate across domains without importing draft SHACL terms as ontology. This disciplines the clinical and learning cases. |
+| For the semantic-web foundational-ontology branch, the March 2026 gUFO preprint gives a current branch answer by using reification patterns for relational aspects; its recency is not by itself the basis for use. | Relation representation makes arity and participant dependence explicit. | **Reject as FPF ontology; retain only as a current stress comparator.** A practitioner can start with a direct relation assertion and introduce a `RelationSignature` or explicit occurrence identity only when a named receiving use needs it, rather than importing gUFO taxonomy. This disciplines sections 4.3 and 4.8. |
 
-When `E.18.1` uses a first-principles or mathematical cue to select, declare, or cite a `U.Signature(profile=FormalSubstrate)` declaration, this pattern governs only that declaration: SubjectBlock, Vocabulary, Laws, Applicability, effect discipline, inference kinds, imported-symbol dependencies, and the no-realization pin. `E.18.1` may carry the cue and select the next admissible relation. `C.29` governs whether a mathematical-lens use is admissible for the stated use.
+Sources:
 
-#### A.6.0:10a.1 - `profile=FormalSubstrate` signature, mathematical object, and lens-use slot discipline
+- Modelica Association, [Connectors and Connections](https://specification.modelica.org/master/connectors-and-connections.html).
+- Lean project, [Inductive Types and Structures](https://lean-lang.org/doc/reference/latest/The-Type-System/Inductive-Types/).
+- TypeDB, [`relates` statement](https://typedb.com/docs/typeql-reference/statements/relates/).
+- W3C, [SHACL 1.2 Core](https://www.w3.org/TR/shacl12-core/).
+- Almeida, Guizzardi, Sales, and Fonseca, [gUFO: A Gentle Foundational Ontology for Semantic Web Knowledge Graphs](https://arxiv.org/abs/2603.20948).
 
-Do not decide whether source wording names a `U.Signature(profile=FormalSubstrate)` declaration, a general `U.Signature` declaration, or a mathematical-lens use by lexical replacement. Decide which relation position is live. The same mathematical object, formalism, or family may fill more than one relation position, but the position changes the admissible claim.
+These sources test the separation among declaration, represented structure, realization, and use. FPF's constructive ontology, C.2.1 episteme identity, A.6.5 relation-slot discipline, A.6.1 operation declaration, and direct relation patterns remain authoritative for the solution.
 
-| Live relation position | Governing pattern | Required recovery | Non-admissible overread |
-|---|---|---|---|
-| `U.Signature(profile=FormalSubstrate)` declaration | `A.6.0` | `U.Signature(profile=FormalSubstrate)` with SubjectBlock, Vocabulary, Laws, Applicability, effect discipline, inference kinds, imports and provides, and no-realization pin. | The declaration is not a mechanism, empirical identity claim, evidence proof, work authorization, gate passage, or mathematical-lens use result. |
-| Mathematical-lens use | `C.29` | Candidate mathematical object or formalism, mapping mode, preserved structure, lost structure, visible payoff, admissible use, non-admissible use, and stop condition. | Lens-use adequacy does not declare the signature profile and does not settle handler semantics, mechanism realization, empirical truth, evidence, work, gate, or decision authority. |
-| Mechanism consumption or realization | `A.6.1` and downstream mechanism patterns | A mechanism cites the signature by import or reference, publishes operation algebra, law set, admissibility conditions, transport, and any monotone realization relation when that relation is being made. | A mechanism does not rewrite the imported signature laws by use, and a realization does not become a new `U.Signature(profile=FormalSubstrate)` declaration unless a new signature is declared. |
-| P2W carry-through cue | `E.18.1` | Source cue, carried distinction, live next relation, selected application, stop condition, and any return trigger. | P2W does not mint `U.SubstrateFormalization`, does not decide mathematical-lens admissibility, and does not replace A.6.0 or C.29. |
+### A.6.0:12 - Relations
 
-Old or source-local wording such as `SubstrateFormalization` recovers as a move to author, select, or cite a `U.Signature(profile=FormalSubstrate)` unless the claim being made is actually a `C.29` mathematical-lens use, an `A.6.1` mechanism relation, or another neighboring relation. In slot terms, the mathematical object can fill a `CandidateMathObject` position in `C.29`, a vocabulary or law position in a `U.Signature(profile=FormalSubstrate)` declaration, or an imported-signature position in a mechanism. Those are relation positions, not separate object kinds and not `U.Role`s.
-
-The Rodin-style lesson used here is constructive rather than slogan-like: formal languages, axioms, rules, and mathematical objects help model a world-facing or episteme-facing EntityOfConcern only when their representational and operational limits are declared. A.6.0 therefore stores the formal-deductive declaration. C.29 stores the declared use of a mathematical lens. A.6.1, bridge, measurement, evidence, work, gate, and decision patterns store the later relations that apply, test, authorize, or use that declaration.
-
-### A.6.0:10b - P2W PrincipleFrame Input Order
-
-When `E.18.1` carries ontology, UTS, kind-relation, identity, context, boundary, characteristic, measurement, scale, comparator, or result-measurement wording toward a `PrincipleFrame`, write the input order explicitly. `PrincipleFrame` publishes postulates plus CHR observability in a bounded context; ontology editions, UTS rows, CHR editions, UNM, comparator, transport, normalization, bridge, and measurement relations stay with their own governing patterns.
-
-### A.6.0:10c - PrincipleFrame And CHR Observability Relation
-
-For P2W use, `PrincipleFrame` may cite CHR observability only after the relevant characteristic, observation, measurement, scale, comparator, normalization, or bridge relation is recoverable. Numeric comparability, characterization admission, parity, selected-set relation, and refresh continue under the current characterization, normalization, comparator, selected-set, parity, or refresh pattern.
-
-### A.6.0:10d - PrincipleFrame Name And Profile Boundary For P2W
-
-For P2W use, the durable object name is `PrincipleFrame`. Plain wording about principle framing may describe writing, selecting, or citing that object, but it does not create `U.PrincipleFraming` or a second profile.
-
-### A.6.0:10e - P2W Boundary Summary For `U.Signature(profile=FormalSubstrate)` And PrincipleFrame
-
-For P2W references to `U.Signature(profile=FormalSubstrate)` and `PrincipleFrame`, first apply the slot discipline in `A.6.0:10a.1`. The signature profile carries only its declaration relation. If a source phrase also claims empirical realization, handler semantics, mechanism operation, work authorization, gate passage, evidence, assurance, result certification, units, reference planes, transport comparison, or downstream work use, recover that additional relation through its governing pattern before relying on the signature reference.
-
-A CHR edition change, ontology edition change, or UNM change does not republish the `PrincipleFrame` by default. Republish, refresh, or changed downstream use requires a relation named by value that states whether the change affects postulates, observability binding, normalization, comparator, transport, measurement, bridge, work, gate, evidence, assurance, or result use.
-
-### A.6.0:11 - Lowering, repair, and refresh conditions
-
-A `U.Signature` remains usable while the four-row Block is stable and all downstream use can recover the same SubjectBlock, Vocabulary, Laws, Applicability, and imported-symbol dependencies.
-
-Repair the signature, or mint a new signature when monotone repair is impossible, if any of these conditions holds:
-
-* a realization, handler, work authorization, evidence proof, bridge policy, or measurement comparison has been written into the Signature Block;
-* a downstream use depends on a symbol, law, policy, or edition not exported by this signature or by an imported signature;
-* a profile application weakens a law, widens Applicability, or adds operational admission;
-* a current SoTA change in algebraic effects, session types, typed effect systems, `profile=FormalSubstrate` signatures, or context normalization changes the declared operation vocabulary, inference kinds, law shape, or no-realization boundary;
-* a renamed SubjectKind, RangedValueKind, SlotKind, RefKind, or exported SymbolId no longer recovers the same FPF kind under E.10 and F.18.
-
-Do not repair the signature merely because a later realization, work plan, measurement run, bridge, or evidence record changed. Repair the object governed by that later relation unless the change alters the signature declaration itself or the exact dependency relation by which the later object cites the signature.
+- **Builds on:** A.7, C.2.1, C.3, A.2.6, and A.6.5.
+- **Governs:** reusable `U.Signature` declaration epistemes, including `RelationSignature` use and the FormalSubstrate and PrincipleFrame profiles.
+- **Coordinates with:** A.6.REL for relation occurrence, A.6.1 for mechanism declaration and realization, A.3.1 for methods, A.15.1 for work, F.9 for explicit bridge use, A.17, A.18, C.16, A.19.CPM, and A.19.UNM for characteristic, scale, comparison, and normalization questions, C.29 for mathematical-lens use, and E.24.UK for durable U-kind admission.
+- **Described and published through:** C.2.1, E.17, and E.24.PUB.
+- **Evolves with:** G.11 for currentness and explicit direct relations between signature editions.
+- **Used by:** C.22 task signatures for A.6.0 declaration identity and content; a changed C.22 discriminator identifies another episteme and establishes an edition only when the direct continuity predicate obtains. Also used by A.19.CPM comparison declarations, A.19.SelectorMechanism selection declarations, C.29 and E.18.1 when their current claim requires a FormalSubstrate declaration, and any pattern that needs reusable vocabulary, laws, applicability, or relation SlotSpecs. Specialized operation declarations remain under A.6.1 rather than A.6.0.
 
 ### A.6.0:End
 
@@ -16874,291 +17273,341 @@ Older or local sources may serve as lineage or worked examples only when the row
 
 ### A.6.M:End
 
-## A.6.5 - U.RelationSlotDiscipline - SlotKind, ValueKind, RefKind, and slot-operation discipline
+## A.6.5 - Relation-Declaration Slot Discipline - SlotKind, ValueKind, RefKind, and participant-designation discipline
 
 > **Type:** Architectural (A)
 > **Status:** Stable
 > **Normativity:** Normative unless marked informative
 
-**Plain name.** Relation slot discipline.
-
-### E.24.UK settlement
-
-`U.RelationSlotDiscipline` is retained as a root durable relation-slot discipline kind. It governs the reusable SlotSpec discipline for relation-bearing structures: local SlotKinds, admitted ValueKinds, and by-value or RefKind filling. It is not `U.Relation`, not a generic interface kind, not a slot position, not a record form, and not a publication form.
-
-**Use this when.** Use this pattern when a relation, operator, record, episteme slot relation, signature vocabulary item, interface specification, method description, service-access description, role assignment, evidence-use relation, status-use relation, or transformation-flow structure needs named positions and typed fillers rather than a loose parameter list.
-
-**Primary EntityOfConcern.** The EntityOfConcern is `U.RelationSlotDiscipline`: the FPF discipline for declaring the positions of a relation-bearing structure, the kinds of values admitted at those positions, and the reference or by-value mode used when a filled instance stores content.
-
-**First useful move.** For the current relation-bearing value, name the governing pattern and write each relevant position as a `SlotSpec = <SlotKind, ValueKind, refMode>`. Then say whether the filled slot instance stores a value by value or stores a reference of a `RefKind`.
-
-**What goes wrong if missed.** Teams treat "role", "argument", "field", "port", "parameter", "endpoint", "holder", "target", "source", "interface", or "ref" as if the word already said whether it is a position, a filler kind, a filled reference, a described object, or a neighboring relation. This creates duplicate ontology: the same project situation becomes a role in one pattern, an interface in another, a slot in a third, and an evidence relation in a fourth.
-
-**What this buys.** A relation-bearing pattern can say exactly which slots it has, what may fill each slot, how filled instances point to or embed those fillers, and which neighboring pattern governs any role, capability, method, work, evidence, status, publication, or interface claim that appears near the relation.
-
-**Not this pattern when.** Do not use `A.6.5` as a generic relation ontology, as a second `U.Signature`, as an interface root kind, as a role ontology, or as a universal wording-repair pattern. Use the direct governing pattern when the current question is relation identity (`A.6.P` or a relation-specific pattern), signature declaration (`A.6.0`), role value (`A.2`), role assignment (`A.2.1`), evidence use (`A.10`, `B.3`, `G.6`), status use (`F.10`), publication or view use (`E.17*`), module interface (`A.6.M` and architecture patterns), functional port or functional structure (`A.6.F`, `E.18`, architecture patterns), or wording-use triage (`E.10`, `E.10.ARCH`, `A.6.RSIR`).
 
 ### A.6.5:1 - Problem frame
 
-FPF relies on n-ary relations and operators throughout the corpus: episteme slot relations, role assignments, method and method-description signatures, evidence-use relations, status-use relations, service-access descriptions, interface specifications, architecture structures, view relations, transformation-flow structures, and formal-substrate declarations.
+**Plain name.** Relation-declaration slot discipline.
 
-The same local phrase can hide three different things:
+**Use this when.** Use this pattern after the direct relation kind has been recovered and a reusable typed declaration of its participants is current for another assertion, comparison, substitution, or reference use. Typical triggers are one relation declaration reused across patterns, another relation referring to an explicitly individuated occurrence, or an engineer checking a proposed replacement participant against the declared ValueKind.
 
-1. a named position in one relation-bearing structure;
-2. the kind of value admitted at that position;
-3. the reference or embedded value placed in one filled relation instance.
+**Primary working reader and concern.** The intended reader is an engineer making one relation declaration reusable while keeping actual relation participants, the `RelationSignature` episteme, relation-participant designations in assertions or descriptions, relation obtaining, and relation occurrence identity distinct.
 
-For example, `EntityOfConcernSlot`, `U.Entity`, and `entityOfConcernRef` are not three spellings for one thing. The first names a slot position. The second names a filler kind. The third is a filled reference field in an instance. When these layers are blurred, substitutions, retargetings, interface claims, role assignments, evidence-use relations, and episteme morphisms become hard to review.
+**Primary EntityOfConcern.** One `SlotSpec` declaration in one exact `RelationSignature`.
 
-The governing distinction is important: `A.6.5` supplies relation-slot discipline. It does not decide what a relation is in general, and it does not replace `U.Signature`. Relation identity remains with the pattern that governs the relation. Signature identity remains with `A.6.0`. `A.6.5` gives both of them a disciplined way to talk about positions and fillers.
+**First useful move.** Write the readable relation sentence, name its direct governing pattern, and identify the relation kind and relation-participant meanings. For every relation-participant meaning whose reusable typed declaration is current, add one SlotSpec to the `RelationSignature`, using the compact declaration notation `SlotSpec = <SlotKind, ValueKind, refMode>`. The angle brackets and ordered entries belong to that notation; they are not parts or participants of the world-side relation. `refMode` states how an assertion or relation-occurrence description episteme carrying a relation-participant designation denotes the actual participant; it does not turn the reference or SlotSpec into that participant. If the direct relation or its relation obtaining predicate is still unclear, stop and return to `A.6.P` or `A.6.RSIR`; declaration notation cannot recover a missing ontology.
+
+**First-minute result.** For `Bearing_B isPartOf Pump_P`, an engineer performing maintenance analysis declares `<PartHolonSlot, U.Holon, U.HolonRef>` and `<WholeHolonSlot, U.Holon, U.HolonRef>` when reusable participant typing is current. The world-side participants remain `Bearing_B` and `Pump_P`; an assertion episteme or relation-occurrence description episteme may designate them through `U.HolonRef` values. The engineer stops there unless a later engineering claim relies on the identity of the part-relation occurrence.
+
+**What goes wrong if missed.** In `Robot_7 holds InspectorRole`, the holder system, the role value, the declaration-local SlotKind, and a participant designation carried by an assertion episteme can collapse into one word such as "role" or "holder". A later claim then cannot tell what may be substituted, what retains identity, or whether it refers to a system, a role value, an assignment occurrence, or an assertion about that occurrence.
+
+**What this buys.** Engineers retain a readable relation sentence while its load-bearing uses gain exact participant typing, unambiguous reference use, and a clear return to the pattern that governs predicate truth and occurrence identity.
+
+**Not this pattern when.** Use `A.6.P` or `A.6.RSIR` first while the relation kind or its participants remain unresolved. Use `A.6.REL` for relation-occurrence identity, `A.6.0` for the containing `U.Signature`, `C.2.1` for an assertion or description, and `C.3` for a local kind needed by typed quantification. In every other case, select the pattern governing the direct relation before applying this slot discipline.
+
+Direct n-ary relations occur across FPF domains, including physical construction, role assignment, epistemes, and formal reasoning. Engineers can often state such a relation in one sentence. When engineers need reusable typed reasoning in assertion or relation-occurrence description epistemes, the content of the `RelationSignature` includes one SlotSpec for each current relation-participant meaning, with a declaration-local SlotKind, the exact ValueKind of the actual participant, and one relation-participant designation mode.
+
+The following governed objects meet at this boundary and remain distinct:
+
+1. an obtaining relation occurrence in the world;
+2. the direct relation kind and its predicate;
+3. a `RelationSignature` episteme whose content includes SlotSpecs corresponding to the direct relation's relation-participant meanings and restates its predicate, applicability, and identity rule for reuse;
+4. a `SlotSpec` containing the declaration-local SlotKind name for one relation-participant meaning, its actual-participant ValueKind, and its designation mode;
+5. an assertion or other episteme claiming that the relation obtains.
+
+Use the `A.6.REL` relation-object architecture. A **relation-participant meaning** is the relation-local semantic content specifying one domain contribution to the obtaining predicate. An **actual relation participant** is the concrete entity participating in an obtaining occurrence under that meaning while retaining its intrinsic kind. A `SlotSpec` is declaration content corresponding to the relation-participant meaning. A **relation-participant designation** is the value or governed reference carried by an assertion or relation-occurrence description episteme to denote the actual participant. Source-specific vocabulary keeps its meaning inside the source representation or ontology until an explicit correspondence relates it to the named FPF object.
+
+The RelationSignature and SlotSpecs are declaration content about reusable relation semantics. The world-side relation obtains under its direct predicate and identity rule independently of those epistemes.
+In Tech register, `SlotKind` is the declaration-local kind by which one `RelationSignature` distinguishes a relation-participant meaning. World-side relation prose names the meaning and actual participant directly; the relation occurrence contains no SlotKind. In an assertion or relation-occurrence description episteme, the corresponding SlotSpec distinguishes a relation-participant designation carried by value or by a reference of the declared RefKind. External representation elements retain their source-specific names. A declared correspondence must relate such an element to a named SlotSpec before an FPF relation claim can reuse it.
 
 ### A.6.5:2 - Problem
 
-Without a shared slot discipline, FPF texts fall into recurring category errors.
+The engineering problem appears when the same relation declaration is used in another claim, substitution, or comparison. A ValueKind that covers participants for which the predicate has different meanings makes typed reuse unsound. A reference value leaves its referent kind unstated. A designator for an actual participant is promoted into a U-kind. A role value is confused with the system that holds it. A verb-shaped predicate is read as proof that the relation is work, a method, a transformation, or an acting holon.
 
-1. **Slot, value, and reference are treated as one object.** A field such as `entityOfConcernRef` is read as the slot, the described object, and the stored reference at the same time.
-2. **Kernel kinds are used as slot names.** Writers say "the `U.Holon` of this relation" when they mean a local slot whose filler has ValueKind `U.Holon`.
-3. **Role words become argument-position words.** "The role of the subject" or "provider role in the relation" may mean an actual `U.Role`, a local SlotKind, an evidence-use position, a service-access relation, or ordinary prose.
-4. **Reference suffixes drift.** A `*Ref` token is sometimes used for a value kind, sometimes for a field, and sometimes for a slot. Downstream readers cannot tell what is being retargeted.
-5. **Substitution rules cannot be localized.** If a text cannot say which SlotKind stays fixed and which ValueKind remains compatible, "replace X with Y" becomes a hand-waved compatibility claim.
-6. **Interface and port wording overgeneralizes.** "Interface" may mean module interface, signature, port, protocol, API description, service-access package, or boundary claim bundle. A.6.5 helps declare slots inside those values, but it does not create a generic `U.Interface`.
-7. **Evidence and status relations are mistaken for roles.** An episteme used as evidence, a standard used as a requirement, or a publication used as a status source is treated as a `U.RoleAssignment` case even though the current claim is evidence use, source use, publication use, assurance use, or status use.
-
-The practical failure is simple: local convenience produces global incoherence.
+These errors do more than blur terminology. They change which substitutions are valid, which object a later claim may reference, what makes the relation obtain, and which direct pattern governs the repair.
 
 ### A.6.5:3 - Forces
 
 | Force | Tension |
 |---|---|
-| Simplicity vs expressiveness | Practitioners need a small vocabulary, but relation-bearing structures must still expose positions, filler kinds, reference modes, and change operations. |
-| Reuse vs false unification | The same SlotSpec discipline should serve epistemes, signatures, role assignments, evidence-use relations, status-use relations, interfaces, services, and transformation-flow structures without pretending those relations are one relation kind. |
-| Role ontology vs slot discipline | `U.Role` must stay a real work-facing role value, while relation positions must not be named as roles merely because they participate in a relation. |
-| Description boundary vs instance filling | A pattern may describe a slot relation, while a project instance fills it. Description, publication, and filled relation values must stay distinct. |
-| Tool alignment vs FPF ontology | Programming, database, type-system, and API practices already use parameters, fields, references, and updates, but FPF must recover their kinds before borrowing their words. |
-| Binding-time clarity vs metaphor | "Early binding", "late binding", "assignment", and "update" are useful only when the affected link is named: name to slot, slot to content, or reference to referent. |
+| Readability and reuse | The first relation sentence stays simple, while later claims may need exact typed SlotSpecs. |
+| Local SlotKind and durable participant | A SlotKind is local to one declaration, while the relation participant keeps the identity and kind governed elsewhere. |
+| Exact range and open-ended ontology | A ValueKind needs enough precision for the predicate without forcing every participant into a newly minted U-kind. |
+| Embedded value and stable reference | Some assertion or relation-occurrence description epistemes designate an actual participant by value; others designate it through a reference to an independently identified entity. The world-side relation occurrence has the participant directly in either case. |
+| Logical form and constructive grounding | Predicate and slot discipline help review a relation, while FPF still needs grounded participants, a relation obtaining predicate, and a relation occurrence-identity rule. |
+| Grammatical verb and ontological kind | A verb can express a relation predicate without turning the relation into work, method, transformation, agency, or a holon. |
 
 ### A.6.5:4 - Solution
 
-`U.RelationSlotDiscipline` says that a relation-bearing structure with named positions uses `SlotSpec` declarations. A `SlotSpec` separates the local position, the admitted filler kind, and the instance reference mode.
+Apply relation-declaration slot discipline only after the direct relation and its relation-participant meanings have been recovered. Give every relation-participant meaning needed by the current typed use one complete `SlotSpec` in the `RelationSignature`, leave relation obtaining and occurrence identity with the direct governing pattern, and follow the `A.6.REL` minimum-current-object rule: a later use adds only its current object and the direct relation to an already recoverable object rather than restating the complete relation-object architecture.
+
+#### A.6.5:4.0 - Ontological status of the discipline
+
+Relation-declaration slot discipline is a rule set, not a durable U-kind. This pattern reuses `RelationSignature`, `SlotSpec`, `SlotKind`, `ValueKind`, and `RefKind` from the existing signature and relation vocabulary; it introduces no U-kind. The notation `U.RelationSlotDiscipline` is not admitted: it has no separate instances, identity rule, grounding rule, constructive assembly, or ontic settlement. The governed object in this pattern is one `SlotSpec` declaration belonging to one exact `RelationSignature`. Operation argument and result declarations remain under `A.6.1`; mathematical operands and their order remain representation elements under `C.29`.
+
+#### A.6.5:4.1 - Keep pattern scope exact
+
+| Governed object | Governing pattern | What A.6.5 contributes |
+|---|---|---|
+| Direct relation kind, relation-participant meanings, and relation obtaining predicate | the direct relation pattern | no replacement; a compatible `RelationSignature` contains corresponding SlotSpecs governed by A.6.5 |
+| Relation occurrence and identity | the direct relation pattern with `A.6.REL` | exact participant ValueKinds; refMode applies only to relation-participant designations in an assertion or relation-occurrence description episteme |
+| `RelationSignature` declaration | `A.6.0` | complete `SlotSpec` declarations inside its vocabulary item |
+| Assertion that a predicate obtains | `C.2.1` and the direct claim pattern | no new assertion kind; the assertion can name exact relation participants |
+| Local derived kind of participants | `C.3` and `C.3.1` | a local kind whose extent rule selects actual participants corresponding to one declared relation-participant meaning; the SlotKind remains declaration-local |
+
+None of these objects gets its identity or truth condition from A.6.5. A.6.5 governs typing discipline at their shared boundary.
+
+#### A.6.5:4.2 - Declare one complete SlotSpec for each relation-participant meaning needed by typed reuse
+
+The following code block is a compact representation of a declaration under `C.29`. Its assignment mark, angle brackets, order, and alternatives are notation elements; the prose below states their FPF meaning.
 
 ```text
 SlotSpec := <SlotKind, ValueKind, refMode>
 refMode := ByValue | RefKind
 ```
 
-This is a discipline over relation-bearing structures. It is not the identity of the relation itself. It is not a new kind for every possible field name. It is not a publication form.
+**SlotKind** is the declaration-local kind by which one exact `RelationSignature` distinguishes one relation-participant meaning. `HolderSystemSlot` in the `U.RoleAssignment` RelationSignature and `PartHolonSlot` in a part-whole RelationSignature are different SlotKinds even when receiving assertions designate both actual participants through entity references. A representation field corresponds to a SlotKind only through an explicit declaration or correspondence. A mathematical operand or numbered argument belongs to its mathematical representation, not to the relation declaration; use C.29 to state the correspondence when a relation claim consumes it.
 
-#### A.6.5:4.1 - SlotKind, ValueKind, and RefKind
+**ValueKind** is the exact world-side kind admitted for the actual participant corresponding to the declared participant meaning. Recover it from an accepted kind declaration under its governing pattern. That declaration may settle a durable U-kind, a current C.3 kind, a Concept-Set entry, or an imported sort whose bridge states the corresponding FPF kind. If one proposed ValueKind hides several kinds for which the predicate has different meaning, recover their real common kind or split the relation kind. A prose list of alternatives does neither.
 
-**SlotKind** names one position in one relation-bearing structure. It is structural and local to a governing relation, operator, record, signature vocabulary item, episteme slot relation, role assignment, interface specification, or other signatured bundle. Examples include `EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `EvidenceTargetClaimSlot`, `RoleValueSlot`, `AssignmentWindowSlot`, `ServiceEndpointSlot`, and `DatasetSlot`.
+**RefKind** is the kind of reference used when a receiving assertion or relation-occurrence description episteme carries a relation-participant designation by reference. A system applying the governed resolution method obtains a participant of the declared ValueKind as referent. `U.EntityRef`, `U.HolonRef`, `U.EpistemeRef`, and `U.StructureRef` are examples only where their direct patterns admit them. The shorthand `byRef` is usable in a compact local sketch only when the exact RefKind is declared next to that sketch; it is not a complete `refMode` by itself.
 
-**ValueKind** names what kind of value may fill that position. Examples include `U.Entity`, `U.Holon`, `U.System`, `U.Role`, `U.Method`, `U.MethodDescription`, `U.Episteme`, `U.ClaimGraph`, `U.Viewpoint`, `U.Characteristic`, and `U.ReferenceScheme`. A ValueKind is governed by its own pattern. It does not become a SlotKind because it fills a slot.
+**ByValue** means that an assertion or relation-occurrence description episteme carries a value as its relation-participant designation. **By reference** means that it carries a reference value of the declared RefKind as that designation. In both cases, the designation denotes the world-side actual participant. The reference value retains its RefKind, its referent retains the declared ValueKind, the SlotSpec remains declaration content, and the relation occurrence retains its direct identity.
 
-**RefKind** names how a filled relation instance points to a value when the value is not embedded by value. Examples include `U.EntityRef`, `U.HolonRef`, `U.SystemRef`, `U.RoleRef`, `U.MethodRef`, `U.EpistemeRef`, `U.ViewpointRef`, and `U.CharacteristicRef`. A RefKind is about references, not about the value itself.
+#### A.6.5:4.3 - Apply the well-formedness constraints
 
-**Slot instance** is the particular position in one filled relation instance. **Slot content** or **slot filler** is what the filled instance stores at that position. The slot content is either an embedded value of the ValueKind or a reference of the RefKind. If it is a reference, resolving it gives a referent value or editioned referent.
-
-#### A.6.5:4.2 - Well-formed SlotSpec discipline
-
-For each named position in a relation-bearing structure:
+The following labelled block represents seven rules for reviewing a declaration episteme. The labels and indentation are presentation elements, not SlotSpecs, relation participants, or work occurrences.
 
 ```text
-Well-formedness constraint A6.5-S1 (SlotSpec completeness):
-  each SlotSpec has exactly one SlotKind, exactly one ValueKind, and exactly one refMode.
+A6.5-S1 CompleteSlotSpec:
+  every relation-participant meaning needed by reusable typed use has one SlotSpec
+  with exactly one SlotKind, one ValueKind, and one refMode.
 
-Well-formedness constraint A6.5-S2 (SlotKind locality):
-  SlotKind is interpreted relative to the governing relation-bearing structure.
+A6.5-S2 LocalSlotKind:
+  SlotKind is interpreted only inside the exact RelationSignature that
+  contains the corresponding SlotSpec.
 
-Well-formedness constraint A6.5-S3 (ValueKind preservation):
-  a substitution at a slot preserves the SlotKind and uses a filler whose kind is the declared ValueKind or an admitted subkind.
+A6.5-S3 ExactParticipantKind:
+  each actual participant corresponding to the declared relation-participant meaning
+  has the declared ValueKind; each receiving-episteme designation denotes such a participant.
+  A C.3 kind ordered by an explicit U.SubkindOf relation may narrow
+  that range only when typed membership or substitution is current.
 
-Well-formedness constraint A6.5-S4 (RefKind honesty):
-  when refMode is a RefKind, the slot content is a reference value, not the referent itself.
+A6.5-S4 HonestReference:
+  when refMode is a RefKind, the receiving assertion or description carries
+  a reference of that RefKind whose resolution denotes a participant
+  of the declared ValueKind. The relation itself does not store it.
+
+A6.5-S5 DirectPredicateGovernance:
+  the direct governing pattern contains statements of the relation predicate,
+  applicability, and any relation occurrence-identity rule.
+
+A6.5-S6 NoHiddenUnion:
+  one ValueKind does not hide participant kinds for which the direct
+  predicate has different semantics. Recover one real common ValueKind or split the relation kind.
+
+A6.5-S7 RepresentationBoundary:
+  a representation or publication form does not become the
+  world-side participant or relation occurrence by form.
 ```
 
-A `U.Signature` uses this discipline when its vocabulary declares an n-ary relation or operator. The SlotSpecs live inside the relevant vocabulary item. They do not add a fifth row to the `A.6.0` Signature Block and do not move operational guards from `A.6.1` or method and work patterns into the signature.
+A system performing typed substitution keeps the SlotSpec fixed and checks a proposed relation-participant designation against the exact ValueKind. A system performing retargeting changes a reference value in an assertion or description while preserving SlotKind, ValueKind, and RefKind. Neither operation changes a world-side participant or establishes that the direct relation obtaining predicate is satisfied. The system separately evaluates that predicate by the direct method and records an assertion with the warranted modality; type compatibility alone never warrants a positive assertion.
 
-#### A.6.5:4.3 - Naming discipline for `*Slot` and `*Ref`
+#### A.6.5:4.4 - Distinguish predicate grammar from holonhood and agency
 
-Use `*Slot` only for SlotKinds. Do not use `*Slot` for ValueKinds, RefKinds, concrete fields, or publication labels.
+A relation predicate is often written as a verb phrase: a system **holds** a role, a part **belongs to** a whole, one claim **supports** another, or one occurrence **results from** work. The grammatical verb only helps express the predicate. It does not settle the ontological kind of what the expression denotes.
 
-Use `*Ref` only for RefKinds or fields whose type is a RefKind. Do not use `*Ref` for SlotKinds or for the value itself.
+Use the direct patterns for that settlement:
 
-ValueKind names do not carry `*Slot` or `*Ref`. If a current source name violates this rule, recover the intended kind before renaming. The repair may split one old token into a SlotKind, a ValueKind, and a RefKind or field.
+- `U.Work` and `U.Method` are admitted holon kinds only because their governing patterns supply the required constructive assembly, composition, identity, and meta-holon-transition conditions. `U.Transformation` is instead a root U-kind under `A.3.4` for one independently grounded actual bounded change. Verb-shaped wording proves neither classification.
+- `U.Role` is a work-facing role value, not a holon. An admitted `U.System` holds it through `U.RoleAssignment`.
+- `U.Relation` is an individuable obtaining relation occurrence under `A.6.REL`. A SlotSpec does not give it constructive parthood or meta-holon transition and does not admit it as a holon.
+- Only an admitted `U.System` acts and holds a role. Work is performed, a method is applied in work, and a transformation occurs or is carried out. The relation, method, work, transformation, role, signature, and structure do not become actors because prose gives them an active verb.
 
-Do not use `Role` as the head noun for a SlotKind. `U.Role` is a role value governed by `A.2`. A relation position that admits a `U.Role` filler can be named `RoleValueSlot`; a position filled by an admitted `U.System` under a role assignment can be named `RoleHolderSlot` or a context-specific refinement. The head remains `Slot`, and the `U.Role` value remains a value.
+When one word could denote a relation predicate or a holon occurrence, first ground the participants and ask what obtaining or occurrence identity rule the receiving claim needs. Then select the direct pattern. Do not decide by part of speech.
 
-#### A.6.5:4.4 - Role assignment under slot discipline
+#### A.6.5:4.5 - Use progressive elaboration
 
-`U.RoleAssignment` is a typed assignment relation value for work-facing roles. It can be expressed with SlotSpecs without reducing roles to slots.
+Start with the lightest object that supports the named engineering use. The branch diagram maps three independent receiving-use thresholds that share one recovered direct relation; none is a prerequisite for either of the others:
 
-Core SlotSpecs for a work-facing role assignment include:
+```text
+readable assertion of the recovered direct relation
+  +-- reusable RelationSignature with SlotSpecs, when several uses need the same participant typing
+  +-- explicit occurrence individuation, when a named claim or direct relation relies on occurrence identity
+      +-- relation-occurrence description episteme, when a receiving episteme describes the occurrence
+      +-- stable relation-occurrence reference, when a receiving episteme contains a designation of it
+  +-- local C.3 kind with an extent rule, when typed quantification over corresponding participants is current
+```
+
+The branch marks are representation edges under `C.29`, not transitions in a drafting process, world-side relations, or work occurrences. They show only which additional object the named use consumes. The diagram does not make a `RelationSignature` prerequisite for explicit occurrence individuation, and it neither makes the direct relation obtain nor supplies occurrence identity. Whether the relation obtains is governed by the direct obtaining predicate; the direct occurrence-identity rule governs which occurrence is being distinguished once obtaining is established.
+
+The local-kind branch does not turn every participant qualification into a kind. It is justified only when membership, substitution, quantification, or `U.SubkindOf` reasoning will be performed.
+
+#### A.6.5:4.6 - Dispatch the world-side fact, claim, and local kind
+
+| Current reading | Governed object | Next pattern |
+|---|---|---|
+| The direct relation obtains for these participants, which satisfy its obtaining predicate | one world-side relation occurrence whose participants retain their own kinds | direct relation pattern, with `A.6.REL` only when occurrence identity is consumed |
+| An assertion designates the participants under declared SlotSpecs and states positive, negative, or unknown modality for the predicate | an assertion episteme about the direct relation; only positive modality may designate an already established occurrence | `C.2.1`, A.6.5, and the direct relation pattern |
+| A typed claim ranges over all actual participants corresponding to one declared participant meaning | local C.3 kind whose extent rule selects those participants | `C.3` and `C.3.1` |
+
+These readings do not leave a fourth object called `RelationDefinedQualification`. Do not introduce that name or `E.24.RC`.
+
+They also do not justify a parallel `S-kind` hierarchy for relation-position readings. Keep the direct relation fact under its relation pattern, the claim under `C.2.1`, and introduce a C.3 local kind only when membership, substitution, quantification, or typed reasoning is current.
+
+Do not replace that split with a generic `KindWitnessedFillerSpec` or filler record. The declaration's exact local `ValueKind` types the participant meaning; when typed quantification is current, a separately governed C.3 local kind and its membership rule supply the reusable classification.
+
+#### A.6.5:4.7 - Read the Role-Assignment SlotSpecs
+
+`A.2.1` directly governs `U.RoleAssignment`. Its direct pattern states the predicate, obtaining condition, and occurrence-identity rule. A compatible `RelationSignature` declares the following SlotSpecs under A.6.5:
 
 | SlotKind | ValueKind | refMode | Meaning |
 |---|---|---|---|
-| `RoleHolderSlot` | admitted `U.System` selected by the governing work, transformation, functioning, or method pattern as system-like performer | `RefKind` selected by the governing context | The system that holds the role in this bounded context. The holder may be a person, team, service, device, motor, pump, component, organism, or other system; role holding does not imply consciousness or responsibility unless a neighboring pattern makes that stronger claim current. |
-| `RoleValueSlot` | `U.Role` | `RefKind` or by-value local role value | The role value being assigned. |
-| `BoundedContextSlot` | `U.BoundedContext` | `RefKind` or by-value context descriptor | The context in which the assignment has meaning. |
-| `AssignmentWindowSlot` | temporal window value governed by the temporal pattern current in the context | `ByValue` or selected RefKind | The time window for the assignment claim. |
-| `AssignmentJustificationSlot` | source, decision, gate, or claim relation governed by its direct pattern | selected by the direct pattern | The relation that justifies the assignment when such justification is current. |
+| `HolderSystemSlot` | `U.System` | `U.EntityRef` | A reference whose referent is the admitted system that holds the role. |
+| `RoleValueSlot` | `U.Role` | `ByValue` | The enactment-facing role value. |
+| `RoleTaxonomyEpistemeSlot` | `U.Episteme` | `U.EpistemeRef` | A reference to the exact role-taxonomy episteme used for interpretation. |
+| `EffectiveReferenceSchemeSlot` | `U.ReferenceScheme` | `ByValue` | The reference-scheme value effective for the assignment. |
 
-Direct work-role patterns may add work-role qualifier slots. Evidence-use, source-use, publication-use, standard-use, requirement-use, assurance-use, and status-use relations do not become RoleAssignment slots merely because their prose says "role of the evidence" or "role of the standard". Those uses are governed by their direct patterns.
 
-`RoleEnactment` is not introduced here as a root ontic. When a named fact is needed, use `RoleEnactmentFact` for the derived fact that a `U.Work` occurrence was performed under a specific `U.RoleAssignment`, or write the direct relation such as `Work.performedBy = RoleAssignment`.
+The four required SlotSpecs declare all participant meanings of generic `U.RoleAssignment`. A selected model-use structure that changes one receiving interpretation is designated in that receiving assertion or use, not in this generic `RelationSignature`.
 
-#### A.6.5:4.5 - Evidence-use and status-use relations are not work roles
+`AssignmentInterval` is not another SlotKind or a ValueKind admitted for a relation participant. It is a local content value in an assignment assertion or relation-occurrence description. The field name `assignmentInterval` states the currently known temporal extent of one occurrence, including an explicit open end when the occurrence is current. Under `A.2.1`, one generic occurrence begins when the assignment predicate starts obtaining for fixed holder, role value, taxonomy episteme, and reference scheme, and continues while it obtains without interruption. Closing an open temporal description refines the same occurrence when continuity holds. A missing-evidence interval remains unknown; only demonstrated non-assignment ends that occurrence. Role state, capability, performed work, and every supporting claim remain under their direct governing patterns.
 
-An episteme may be used as evidence for several claims. This creates evidence-use relation instances, not several roles held by the episteme.
+#### A.6.5:4.8 - Recover interface and port relations before declaring slots
 
-Typical evidence-use SlotKinds include:
+Only then let the `RelationSignature` declare SlotSpecs for the participant meanings needed by the receiving typed use.
 
-| SlotKind | ValueKind | Meaning |
+For a refrigerant transfer relation, the participant meanings may be upstream transformation, downstream transformation, transferred medium, and boundary condition. For a software service relation, they may instead be providing system, receiving system, request episteme, and protocol description. Their different predicates require different relation kinds; the shared word **interface** does not justify one union-like participant kind or a generic `U.Interface`.
+
+#### A.6.5:4.9 - Name the operation by the object that changes
+
+| Operation | Exact change | Governing boundary |
 |---|---|---|
-| `EvidenceEpistemeSlot` | `U.Episteme` or admitted evidence episteme species | The episteme being used as evidence. |
-| `EvidenceTargetClaimSlot` | claim value governed by the claim pattern current in context | The claim to which the evidence-use relation is addressed. |
-| `EvidenceClaimGroundingHolonSlot` | `U.Holon` when the target claim needs grounding | The holon in which the target claim is grounded when current. |
-| `EvidenceClaimScopeSlot` | scope value governed by the claim or evidence pattern | The scope for the evidence-use relation. |
-| `EvidencePolaritySlot` | confirming, rebutting, undercutting, or another locally governed polarity value | The direction of bearing on the target claim. |
-| `EvidenceRelevanceWindowSlot` | temporal or freshness window value | The window in which the evidence-use claim remains usable. |
-| `EvidenceAssuranceUseSlot` | assurance-use relation or assurance input value | The assurance use when current. |
-| `EvidenceWeightModelSlot` | weight, confidence, or calculus value governed by the evidence or assurance pattern | The model used to aggregate or compare evidence when current. |
+| supply a designation under one SlotSpec in an assertion or description | carry a value or reference that designates the actual participant admitted by that SlotSpec | A.6.5 governs designation typing; the direct relation pattern governs the participant meaning and predicate |
+| replace a participant designation in an assertion or description | change the designation associated with one SlotSpec while preserving that SlotSpec | resolve the new designation, then let a system evaluate the direct predicate by its governing method before recording assertion modality |
+| substitute a participant designation in typed reasoning | replace one designation with another while preserving the SlotSpec and testing ValueKind compatibility; this operation does not replace a world-side participant or establish predicate truth | A.6.5, with C.3 only when the reasoning quantifies over a local participant kind |
+| retarget a reference | replace one reference value in an episteme with another of the same RefKind | the receiving episteme's direct pattern governs its changed designation; the effective reference scheme supplies the resolution rules and the direct RefKind pattern constrains the referent range; F.18 enters only when a durable name changes; world-side change is a separate claim |
+| resolve a reference | obtain the designated referent from a reference under its reference scheme | the effective reference scheme supplies the resolution rules and the direct RefKind pattern constrains the referent range; F.18 enters only when durable naming is current |
+| revise or re-edition a referent | change the referred object or episteme under its own continuity rules | direct object and edition patterns |
 
-Status-use relations likewise name the status bearer, status value, status scope, status window, and use relation under the direct status or assurance pattern. They do not create status roles for epistemes.
-
-#### A.6.5:4.6 - Interface, port, and signature wording
-
-`A.6.5` is often needed when a source says "interface", "port", "endpoint", "API", "protocol", or "connector". These words do not select one FPF kind by themselves.
-
-Recover the current EntityOfConcern first:
-
-| Source cue | Common recovery |
-|---|---|
-| interface between modules | module-interface claim, boundary claim, port relation, signature, protocol, or evidence of conformance under `A.6.M` and architecture patterns |
-| port in a functional description | functional port or transformation-flow structure under `A.6.F`, `E.18`, or architecture patterns |
-| API | software API description, service-access description, protocol, publication form, or boundary claim bundle |
-| endpoint | relation endpoint, service endpoint, network endpoint, evidence target, claim target, or ordinary source label |
-| signature | `U.Signature` under `A.6.0`, using A.6.5 SlotSpecs for n-ary vocabulary items |
-
-After the governing EntityOfConcern is selected, use `A.6.5` only to state the SlotSpecs inside that value. Do not mint a generic `U.Interface` or erase interface language when it is the ordinary engineering recognition cue.
-
-#### A.6.5:4.7 - Slot operation lexicon
-
-Use slot-operation words by the link they affect.
-
-| Operation word | Affected link | Use |
-|---|---|---|
-| bind or rebind | identifier or name to SlotKind, slot instance, or language-level value | Use for name binding. Do not use `bind` as a synonym for writing slot content. |
-| fill | slot instance to slot content | Use as the generic verb for providing content to a slot instance. |
-| initialize | first fill | Use when the slot instance previously had no content. |
-| assign, set, or update | subsequent slot-content replacement | Use when replacing content in an already filled slot instance. |
-| retarget | reference slot update, preserving SlotKind and ValueKind | Use when replacing one reference with another reference to another referent. |
-| substitute | typed replacement with explicit compatibility claim | Use when the important claim is ValueKind or admitted-subkind compatibility. |
-| resolve or dereference | reference to referent | Use when a reference is mapped to the value or editioned referent it points to. |
-| revise or issue a re-edition | referent content change under edition discipline | Prefer these words to vague mutation when the referent itself changes across editions. |
-| pass | parameter slot filling at a call or service boundary | Use only when the current relation is a method, service, protocol, or call boundary with parameter slots. |
-
-Avoid person metaphors such as `occupant` for slot content. Use `slot content` or `slot filler`. If a local Plain register uses a metaphor, it cannot carry FPF-governed role, evidence, or status meaning.
-
-#### A.6.5:4.8 - Binding time and currentness of slot operations
-
-"Early binding" and "late binding" are admissible only after the affected link is named.
-
-Use:
-
-- early or late name binding for identifier-to-slot or identifier-to-value links;
-- early or late slot filling for when a slot instance receives content;
-- eager or lazy resolution for when a reference is resolved to a referent;
-- dynamic dispatch only when a method or operation selection relation actually uses runtime context to select the invoked operation.
-
-If the text does not say which link is affected, keep the phrase ordinary or repair it before use.
+Durable name designation is governed by F.18, not by participant-designation substitution or reference resolution. When a system selects a method at run time, use the pattern governing that method family or selector; A.6.5 supplies no method-selection operation. Do not rename that choice with the generic slot `binding` metaphor. If early or late timing matters, name which operation in this table is early or late.
 
 ### A.6.5:5 - Archetypal Grounding
 
-**System case: refrigerator functional architecture.** A refrigerator functional diagram may describe a transformation-flow structure: compressor, condenser, expansion valve, evaporator, sensors, controller, and refrigerant flow. An interface or port in that description is not automatically a generic interface kind. If the current EntityOfConcern is the functional port between evaporator and compressor, recover the functional or transformation-flow relation first, then declare SlotSpecs such as `UpstreamTransformationSlot`, `DownstreamTransformationSlot`, `TransferredMediumSlot`, `BoundaryConditionSlot`, and `ObservedCharacteristicSlot`. The refrigerant, components, controller, and temperature characteristic remain fillers governed by their own patterns.
+#### A.6.5:5.1 - Physical assembly
 
-**Episteme case: model evaluation result.** A `ModelEvaluationResult` episteme can use `EntityOfConcernSlot` with ValueKind `U.Method`, `DatasetSlot` with ValueKind `U.Entity`, `TargetCharacteristicSlot` with ValueKind `U.Characteristic`, `GroundingHolonSlot` with ValueKind `U.Holon`, and `ClaimGraphSlot` with ValueKind `U.ClaimGraph` by value. Retargeting `DatasetSlot` from `Dataset_A` to `Dataset_B` changes a reference filler. Editing the threshold inside `ClaimGraphSlot` changes embedded claim content. Those are different operations.
+`Bearing_B isPartOf Pump_P` can remain a readable part-relation assertion. When an engineer needs reusable participant typing in maintenance analysis, the direct mereology pattern contains the part and whole participant meanings, and its `RelationSignature` contains the `PartHolonSlot` and `WholeHolonSlot` SlotSpecs, each with ValueKind `U.Holon` and RefKind `U.HolonRef`. The actual relation participants are the bearing and pump. An assertion or relation-occurrence description episteme may designate them through references that resolve to those holons. Under A.14 and the direct part-relation identity rule, removal and reinstallation may distinguish repeated part-relation occurrences.
 
-**Role case: inspection work.** A maintenance context assigns `InspectorRole` to `Robot_7` for a window. The role assignment relation can fill `RoleHolderSlot = Robot_7`, `RoleValueSlot = InspectorRole`, `BoundedContextSlot = MaintenanceLine_A`, and `AssignmentWindowSlot = from 2026-06-15T09:00 to 2026-06-15T11:00`. The robot's capability remains `U.Capability`, the inspection method remains `U.Method` or `U.MethodDescription`, the planned inspection remains `U.WorkPlan`, and the performed inspection remains `U.Work`.
+The bearing and pump do not become SlotKinds, and their references do not replace them as participants. Each remains a holon that participates directly in the world-side relation; the `RelationSignature` separately declares the SlotSpec used by receiving epistemes to distinguish its designation.
 
-**Role case: motor in a pump assembly.** A pump-assembly context assigns `DriveMotorRole` to `Motor_M1` for an installed window. The role assignment relation can fill `RoleHolderSlot = Motor_M1`, `RoleValueSlot = DriveMotorRole`, `BoundedContextSlot = WaterPumpAssembly_A`, and `AssignmentWindowSlot = installed-window`. The motor's torque capability, electrical supply, thermal limit, functional-port relation, transformation-flow structure, and dated pumping work stay with their direct governing patterns; the role assignment only says which system bears which role in this context.
+After replacement, changing the `PartHolonSlot` designation from `Bearing_B_Ref` to `Bearing_C_Ref` in a maintenance assertion or relation-occurrence description episteme can be type-correct while `Bearing_C isPartOf Pump_P` is still false because installation has not occurred. Exact SlotSpecs make the proposed designation reviewable; they do not substitute type correctness or reference change for the direct part-relation claim.
 
-**Evidence case: one report for two claims.** One report episteme can be used as evidence for Claim A and Claim B. The episteme is not assigned two evidence roles. FPF creates two evidence-use relations with different `EvidenceTargetClaimSlot` fillers and any distinct scope, polarity, relevance-window, or weight-model fillers.
+#### A.6.5:5.2 - Role-assignment assertion in inspection work
+
+In this worked case, the direct role-assignment predicate already obtains, and the positive assertion is warranted under `A.2.1`. The assertion designates the four required actual participants and may designate the explicitly individuated occurrence; it is not the `RelationSignature` and does not create the occurrence by being recorded. The following field block represents the assertion episteme under `C.29`:
+
+```text
+RoleAssignmentAssertion:
+  participantDesignations:
+    HolderSystemSlot: Robot_7_Ref
+    RoleValueSlot: InspectorRole
+    RoleTaxonomyEpistemeSlot: MaintenanceRoles_2026_Ref
+    EffectiveReferenceSchemeSlot: MaintenanceScheme_A
+  assignmentInterval: [2026-07-13T09:00, 2026-07-13T17:00]
+```
+
+The four labels inside `participantDesignations` correspond to SlotKinds in the `RoleAssignmentRelationSignature`. `assignmentInterval` is a different assertion field: it states the currently known temporal extent and corresponds to no relation-participant SlotSpec. `Robot_7_Ref : U.EntityRef` resolves to `Robot_7 : U.System`; `MaintenanceRoles_2026_Ref : U.EpistemeRef` resolves to the role-taxonomy episteme. `InspectorRole : U.Role` and `MaintenanceScheme_A : U.ReferenceScheme` are carried by value. The assignment is an obtaining relation occurrence independently of this assertion. The robot may later perform inspection work by a method. Neither the role, the assertion, nor the assignment performs that work, and the verb **holds** does not turn any of them into a holon.
+
+#### A.6.5:5.3 - Episteme fields are not relation participants by table shape
+
+An evaluation episteme has an EntityOfConcernRef, contains a ClaimGraph, and states an effective ReferenceScheme under `C.2.1`. A card or tuple view may contain visible fields such as `entityOfConcernRef`, `claimGraph`, and `referenceScheme`. Their co-occurrence in one record does not by itself establish another world-side relation, make the fields participants, or declare SlotSpecs for them.
+
+When a direct relation among an episteme and other entities is current, the governing pattern contains the relation kind, participant meanings, obtaining condition, and occurrence identity, and its compatible `RelationSignature` contains the needed SlotSpecs. A.6.5 governs how a receiving assertion types its participant designations. This prevents a convenient episteme form from becoming a pseudo-relation merely because it can be drawn as a tuple or table.
+
+#### A.6.5:5.4 - Relation-dependent result wording
+
+After machining, the machined component can remain the same physical entity in a changed state. It does not acquire a special result kind. When a receiving claim calls it a *result*, first recover the exact current relation or relation-bearing claim: affected-referent and actual-change facts for a continuing component, an entity-identity-inception claim when a new entity first exists, or the direct measurement, evaluation, delivery, acceptance, or transfer relation when that is what the claim means. Use an entity-identity-inception governor only when a current pattern actually supplies it. If that claim or any other needed relation has no current direct governor, keep an exact missing-governor blocker instead of presuming a generic work-result relation.
+
+Only a selected reusable direct relation receives a compatible `RelationSignature` with one SlotSpec per participant meaning. An assertion episteme may then state that exact relation. A local kind of participating entities is introduced only when typed quantification is current in a receiving use. This case demonstrates the three readings in A.6.5:4.6 without naming a participant after a broad result word.
+
+#### A.6.5:5.5 - Formal reduced case
+
+The expression `3 < 5` is notation carried by a mathematical assertion episteme. Its numeral occurrences, comparison sign, and left and right operand places are representation elements under `C.29`; they are not thereby FPF relation participants or SlotSpecs. When a reusable direct-relation declaration is current in an FPF use, the direct pattern content must identify what entities the numerals designate, the lesser-number and greater-number participant meanings, and the obtaining condition. Its `RelationSignature` may then contain local SlotSpecs such as `LesserNumberSlot` and `GreaterNumberSlot`. An explicit correspondence relates the operand places and their designations to those SlotSpecs. Operand order remains local to the mathematical representation, and the notation alone neither establishes the world-side relation nor individuates an occurrence. No receiving use in this case relies on occurrence identity, so the engineer stops at the typed assertion.
 
 ### A.6.5:6 - Bias-Annotation
 
-This pattern has a typed-structure bias: it prefers explicit positions and filler kinds over conversational shorthand. That bias is intentional because relation-bearing FPF prose must remain reusable across epistemes, signatures, roles, interfaces, methods, evidence, status, and architecture.
+This pattern has a typed-declaration bias because it serves relation uses that depend on reusable participant typing. Progressive elaboration limits that bias: ordinary users stop at a readable relation sentence when no receiving use depends on SlotSpecs.
 
-This pattern also has an episteme-example bias because `C.2.1` is the mature precedent for slot relation discipline. The Solution generalizes beyond epistemes and explicitly includes work-facing role assignments, evidence-use relations, status-use relations, interfaces, ports, and transformation-flow structures.
+It also has a logic-facing bias because predicates and typed declarations make substitution and comparison reviewable. Constructive FPF adds what that logical form alone cannot supply: grounded participants, a direct obtaining condition, and an occurrence identity rule when identity is needed.
 
-The anti-bias guard is that `A.6.5` never makes description or publication the center unless the current EntityOfConcern is itself a description or publication relation. It starts from the relation-bearing EntityOfConcern and only then describes how its slots may be specified or published.
+A declaration episteme describes reusable relation semantics; a separate representation episteme may represent an assertion or relation-occurrence description. Neither episteme is the world-side relation occurrence by form, and publication changes neither identity.
 
 ### A.6.5:7 - Conformance Checklist
 
-1. **SlotSpec completeness.** Every FPF-governed n-ary relation, operator, record, or signature vocabulary item introduced by the pattern names SlotKind, ValueKind, and refMode for each governed position.
-2. **SlotKind locality.** SlotKind is interpreted relative to the governing relation-bearing structure; the same label does not float as a universal kind without a governing pattern.
-3. **ValueKind separation.** ValueKinds remain governed by their own patterns and do not inherit `*Slot` or `*Ref` suffixes.
-4. **RefKind honesty.** A `*Ref` name denotes a reference kind or a field typed by a reference kind, not the referent itself.
-5. **Role boundary.** Role-valued slots may admit `U.Role` fillers, but SlotKinds are not roles and role labels do not create capability, method, status, evidence, or work.
-6. **RoleAssignment boundary.** A work-facing `U.RoleAssignment` uses core SlotSpecs for holder, role value, bounded context, and assignment window; evidence-use and status-use relations are not folded into RoleAssignment.
-7. **Evidence and status direct-pattern use.** Epistemes used as evidence, sources, standards, requirements, definitions, explanations, publications, status bearers, or assurance inputs are governed through direct evidence-use, source-use, publication-use, status-use, or assurance-use patterns, not through `U.RoleAssignment` for epistemes.
-8. **Interface recovery.** Interface, API, port, protocol, connector, or endpoint wording is first recovered to its governing EntityOfConcern; `A.6.5` supplies only the SlotSpecs inside the recovered value.
-9. **Operation verb discipline.** Slot changes use bind, fill, initialize, assign, retarget, substitute, resolve, revise, re-edition, or pass according to the link being changed.
-10. **No generic relation replacement.** A pattern does not cite `A.6.5` as the governing source for relation identity, evidence authority, assurance, gate passage, method admission, work execution, or publication truth.
+1. The direct relation kind and governing pattern are named before SlotSpecs are declared.
+2. Every participant meaning needed by reusable typed use has one complete `<SlotKind, ValueKind, refMode>` SlotSpec in the `RelationSignature`.
+3. Each SlotKind is local to the one exact `RelationSignature` that contains its SlotSpec.
+4. World-side relation prose names participant meanings and actual participants; declaration prose uses `SlotSpec` and `SlotKind`; receiving-episteme prose names participant designations. `Position` and `place` are not alternate FPF names for a declaration slot. An external mathematical operand is related by an explicit correspondence to a named SlotSpec before FPF relies on it.
+5. Each ValueKind is exact enough for the direct predicate and does not combine participant kinds for which the predicate has different semantics.
+6. An assertion or description episteme that designates a participant by reference names the exact RefKind and resolves it to the declared ValueKind.
+7. The actual relation participant, its reference, reference resolution, SlotSpec declaration, participant designation in the assertion, and relation occurrence remain distinct.
+8. A C.3 kind is introduced only for a current typed-quantification, membership, substitution, or subkind use.
+9. A verb-shaped predicate is not used as evidence of work, method, transformation, agency, or holonhood.
+10. Only an admitted `U.System` is the participant admitted for `HolderSystemSlot` and holds `U.Role` through `U.RoleAssignment`.
+11. `U.Work` and `U.Method` rely on their own constructive holon tests, while `U.Transformation` relies on `A.3.4`'s actual-bounded-change identity; A.6.5 admits none of them by grammar.
+12. Relation truth and occurrence identity remain with the direct relation pattern.
+13. A declaration, assertion, description, representation, or publication episteme does not create the world-side relation by form.
+14. Ordinary use can stop before signatures, explicit occurrence identity, or C.3 kind derivation when the receiving use depends on none of them; typed reuse, occurrence identity, and local-kind quantification are independent thresholds, and none is a prerequisite for another.
+15. Relation-declaration slot discipline remains a rule set; its pattern name is not promoted to `U.RelationSlotDiscipline`.
+16. A relation fact, an episteme claim, and a locally derived kind are dispatched to their direct patterns without minting `RelationDefinedQualification` or `E.24.RC`.
 
-### A.6.5:8 - Common Anti-Patterns and How to Avoid Them
+### A.6.5:8 - Common Failure Modes and Repairs
 
-| Anti-pattern | Why it fails | Repair |
+| Failure | Why it matters | Repair |
 |---|---|---|
-| `RoleSlot` as a generic relation position | It can hide whether `role` means `U.Role`, argument position, provider relation, evidence use, or ordinary prose. | Name the actual SlotKind, such as `RoleValueSlot`, `RoleHolderSlot`, or a domain slot, and name the ValueKind separately. |
-| Source label `EvidenceRole` for an episteme | It gives an episteme a work-facing role assignment it does not have. | Use an evidence-use relation with `EvidenceEpistemeSlot`, `EvidenceTargetClaimSlot`, and related slots. |
-| "The API role is provider" | API, provider, role, promise, service, and interface may be different values. | Recover API description, provider role assignment, service promise relation, or interface specification under direct patterns. |
-| `EntityOfConcernRef` used as a value kind | A reference field is treated as the described object. | Split `EntityOfConcernSlot`, ValueKind, and `entityOfConcernRef` or equivalent RefKind field. |
-| "Late binding" without the affected link | The reader cannot tell whether name binding, slot filling, resolution, or method dispatch is late. | Rewrite as late name binding, late slot filling, lazy resolution, or dynamic dispatch with the governing relation named. |
-| `interface` repaired by deleting the word | The useful engineering recognition cue is lost. | Keep interface as ordinary cue, then recover the governing EntityOfConcern and its SlotSpecs. |
+| `U.RelationSlotDiscipline` treated as a root kind | A rule set is promoted into an unsupported world-side entity. | Keep A.6.5 as the governing rules for `SlotSpec`; apply E.24.UK to any future U-kind candidate. |
+| Generic `byRef` without an exact RefKind | A later use cannot tell what referent kind can be resolved. | Declare the exact RefKind, or expand the compact sketch next to its use. |
+| Reference treated as the relation participant | A storage or publication choice changes the claimed world-side ontology. | Keep the referent as participant; state refMode only for the receiving assertion or description episteme that carries the designation. |
+| One SlotSpec contains a ValueKind written as a list of unrelated alternatives | Different predicate semantics are hidden behind one participant meaning. | Recover the real common ValueKind when one exists; otherwise split the relation kind. |
+| A SlotKind in a `RelationSignature` is called a role | A declaration-local SlotKind is confused with work-facing `U.Role`. | Use a `*Slot` name and keep `U.Role` as the ValueKind only when the actual participant is a role value. |
+| Active grammar used as agency evidence | A relation, method, work, structure, or episteme is said to act. | Recover the acting `U.System`; keep relation, work, method, and transformation claims under their direct patterns. |
+| `BoundedContextSlot` or optional `ModelUseStructureSlot` added to generic role assignment | A discarded universal context or use qualifier enters the direct participant declaration. | Use holder system, role value, role-taxonomy episteme, and effective reference scheme; keep any selected model-use structure in the receiving assertion or use. |
+| A participant designation is promoted into a new qualification ontic | A value or reference in an episteme is mistaken for a further world-side object. | Apply the three-way dispatch in A.6.5:4.6: direct relation fact, assertion episteme, or current local participant kind. |
 
 ### A.6.5:9 - Consequences
 
-`A.6.5` adds a small amount of explicit metadata to relation-bearing structures. The payoff is that substitutions, retargetings, evidence-use distinctions, role-assignment boundaries, interface claims, and episteme morphisms become reviewable.
+**Benefits.** Typed relation reuse becomes reviewable without treating an assertion or storage record as the world-side relation. Substitution checks can name the SlotKind and exact participant ValueKind. Reference changes can be distinguished from referent changes. Role values remain separate from role holders, and relation predicates remain separate from work and agency.
 
-It also prevents ontology overgrowth. A value filling a slot does not become a new kind because it is used in that slot. Conversely, a slot label does not become the value. This is the same discipline that keeps `U.Episteme` compact in `C.2.1` and keeps `U.Role` compact in the role `ontologicalNeighborhood`.
+**Costs.** Load-bearing relation patterns need exact participant ValueKinds and designation modes. A proposed ValueKind may require a relation-kind split when the direct predicate has different semantics for different participant kinds. Existing compact `byRef` sketches may need adjacent expansion before another pattern can rely on them.
 
-The cost is naming care. Authors must recover the current governing pattern before accepting a slot name. That is cheaper than maintaining several local ontologies for the same project situation. Reopen the governing pattern, not `A.6.5`, when a current case depends on relation identity, evidence authority, status meaning, role ontology, method admission, work execution, publication use, architecture semantics, or another value that SlotSpec discipline only references.
+**Limits.** A.6.5 is limited to precise SlotSpec declarations and participant-designation typing. Predicate obtaining, occurrence identity, evidence, model-use structure selection, and domain-interface semantics remain with their direct governing patterns.
 
 ### A.6.5:10 - Rationale
 
-FPF needs relations that are strong enough for engineering use but light enough for cross-domain pattern work. The SlotKind, ValueKind, and RefKind separation gives FPF a compact relation-position discipline without turning every relation into a new formal calculus.
+SlotKind, ValueKind, and RefKind answer three different engineering questions about one `RelationSignature`: **which participant meaning does this declaration distinguish**, **what exact world-side kind must the corresponding actual participant have**, and **how does a receiving assertion or description episteme designate that participant**. Keeping the answers separate is enough to support typed substitution and honest reference use without adding a universal relation record.
 
-The key design choice is modularity. `A.6.5` is central because many patterns need SlotSpecs. It remains narrow because relation identity, evidence authority, status meaning, role ontology, method admission, work execution, publication use, and architecture semantics belong to their own patterns.
+The direct relation pattern remains essential. A pair of typed participants does not say whether the relation obtains or whether repeated occurrences with the same participants are identical. Constructive ontology therefore combines logical slot discipline with grounding and domain identity rather than treating a schema as the world.
 
-The role decision is especially important. If every slot position is called a role, `U.Role` loses its work-facing meaning. If every episteme used as evidence gets an evidence role, FPF grows a second role ontology for epistemes. `A.6.5` keeps both errors visible: a role may fill a slot, but slot position labels do not create alternate ontology.
+The predicate boundary prevents a second collapse. Natural language often verbalizes relations, work, methods, and transformations. FPF admits their kinds through direct ontological tests, not through grammar. This keeps only systems as actors and as actual participants corresponding to `HolderSystemSlot`, while preserving the accepted holonhood of work and methods and the separate actual-bounded-change identity of transformations.
 
 ### A.6.5:11 - SoTA-Echoing
 
-| Practice line | FPF adoption |
-|---|---|
-| Typed records, row-polymorphic data, and effect-row practice distinguish field labels from field types and from effects or resources. | Adopt the structural lesson: position labels and filler kinds are separate. Adapt it into SlotKind, ValueKind, and RefKind so the same discipline applies to epistemes, roles, evidence-use relations, interfaces, and transformation-flow structures. |
-| Dependent and refinement type practice makes admissible values depend on declared indices, contexts, and predicates. | Adopt the need to expose the admissibility predicate. In FPF, ValueKind compatibility and context-local subkind admission are named rather than hidden in prose. |
-| Optics and lens practice manipulates focused positions in larger structures under composition laws. | Echo the focus-position idea: SlotKind names the focused position; ValueKind names the admitted filler; RefKind says whether the focused value is embedded or reached through a reference. |
-| Database, protocol, and API schema practice separates schema declarations from records, messages, and runtime handling. | Adopt the declaration-instance separation. A SlotSpec describes a relation position; a filled relation instance, API call, evidence-use relation, or work occurrence is not the SlotSpec itself. |
-| Contemporary architecture and interface practice treats ports, APIs, protocols, and connectors as heterogeneous description and boundary constructs rather than one universal interface type. | Adapt this by refusing generic `U.Interface`; recover the governing EntityOfConcern first, then use SlotSpecs only inside that recovered value. |
+| Current line | What it contributes | FPF adoption and practical effect |
+|---|---|---|
+| [Lean 4 reference: structures and fields](https://lean-lang.org/doc/reference/latest/The-Type-System/Inductive-Types/) | The current official Lean language reference makes each structure field and its type explicit; a later field type may depend on an earlier field. | **Adapt as a formal stress test.** In a SlotSpec, the declaration-local SlotKind and exact participant ValueKind are explicit. FPF does not infer that a Lean structure is a world-side relation or ontic. This disciplines the formal reduced case in A.6.5:5.5, where operand order remains local to the mathematical representation and an explicit correspondence relates operands to `RelationSignature` SlotSpecs before FPF reuse. |
+| [TypeDB `relates` statement](https://typedb.com/docs/typeql-reference/statements/relates/) | In current TypeDB 3.x syntax, each external role type is declared through a named relation type, with explicit scope when equal labels occur under different relation types. | **Adapt the declaration locality.** FPF uses `SlotKind`, not `U.Role`, for the declaration-local name of a participant meaning inside a `RelationSignature`; occurrence identity remains with the direct pattern rather than storage identity. This prevents `HolderSystemSlot` and `InspectorRole` from collapsing in A.6.5:5.2. |
+| [RDF 1.2 Concepts](https://www.w3.org/TR/rdf12-concepts/) | The RDF 1.2 Candidate Recommendation of 7 April 2026 distinguishes triple terms, propositions, asserted triples, and reifiers used in further statements. | **Adopt the separation.** A graph term or reifier may represent an assertion, but it does not replace the world-side relation, direct obtaining condition, or SlotSpec. This is the boundary exercised by the episteme case in A.6.5:5.3. |
+| Almeida, Guizzardi, Sales, and Fonseca, [gUFO](https://arxiv.org/abs/2603.20948), 2026 preprint | The current comparison line exposes relation aspects, reification choices, and higher-order typing pressure. | **Use as a stress comparator.** Keep relation occurrence, signature, assertion, and local typed projection distinct without importing the source taxonomy as FPF ontology. This tests the three-way dispatch in A.6.5:4.6 and the result-qualification case in A.6.5:5.4. |
 
 ### A.6.5:12 - Relations
 
-`A.6.0` governs `U.Signature`; `A.6.5` supplies SlotSpec discipline for n-ary vocabulary items inside signatures.
-
-`A.6.P` governs qualified relation precision restoration; `A.6.5` supplies the slot discipline consumed by relation-restoration patterns.
-
-`E.24` governs ontic introduction. `A.6.5` is one reusable discipline used by ontic introductions, but it does not create a new ontic every time a slot label appears.
-
-`C.2.1` is the mature precedent for slot relation discipline in epistemes. `A.6.5` keeps its `EntityOfConcernSlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, and `ReferenceSchemeSlot` usable across morphisms and publication patterns.
-
-`A.2`, `A.2.1`, `A.2.5`, `A.2.7`, and `A.15` govern role values, role assignments, role-state checks, role relation structure, and role-method-work alignment. `A.6.5` only expresses the SlotSpecs of relations that include role values or role assignments.
-
-`A.10`, `B.3`, `G.6`, `C.28`, and `F.10` govern evidence-use, assurance, causal-use, provenance, and status-use relations. Evidence-role and status-role source wording is governed through typed evidence-use, assurance, causal-use, provenance, or status-use relations, not through work-role assignment.
-
-`A.6.M`, `A.6.F`, `E.18`, `C.30.TFS-REL`, and architecture patterns govern interface, port, functional, and transformation-flow cases. `A.6.5` applies only after the governing EntityOfConcern has been recovered.
-
-`E.10`, `E.10.ARCH`, `F.18`, and `A.6.RSIR` govern wording-use triage and naming. They require each relation, signature, interface, role, slot, capability, method, function, concern, or interest word to be resolved under its direct governing pattern, using `A.6.5` when relation-position discipline is the current issue.
+- `A.6.0` governs `U.Signature` and `RelationSignature`; A.6.5 governs SlotSpecs inside their vocabulary declarations.
+- `A.6.REL` governs explicit relation-occurrence individuation and the progressive threshold for stable reference.
+- `A.6.P` and `A.6.RSIR` recover the direct relation and its participants before slot typing begins.
+- `A.2.1` governs role-assignment predicate, identity, and participant meanings; A.6.5 governs their exact SlotSpec reading.
+- `C.2.1` governs episteme identity, assertion and description content, and their explicit fields. A field corresponds to a relation SlotSpec only when a compatible `RelationSignature` contains that SlotSpec for a participant meaning stated by the direct relation pattern.
+- `C.3` and `C.3.1` govern local participant kinds only when typed quantification or kind order is current.
+- `A.15.1` and `A.3.1` govern the constructive holonhood and identity of work and methods; `A.3.4` governs the actual-bounded-change identity of transformations; `E.18` governs selected transformation-flow structures over those independently governed transformations and adjacent loci.
+- `A.1`, `A.2`, and `A.15` keep acting systems, role values, role assignments, methods, and performed work distinct.
+- `A.2.4` governs compact episteme evidence-use and status-use relation SlotSpecs; `A.10` governs the full evidence-provenance path, and `F.10` governs durable status semantics. A.6.5 does not duplicate those relations or make the episteme a role holder.
+- `C.30` with the exact named architecture-relation subpattern when one is current governs architecture relation semantics. `A.6.M` governs module-interface relation semantics; a non-module interface use remains with the direct pattern named after `A.6.RSIR` recovery. A.6.5 does not duplicate either family.
+- `C.29` governs tuple components, graph nodes and edges, database fields and rows, and mathematical operands used to represent a relation, assertion, signature, or occurrence description.
+- `E.10`, `E.24.UK`, and `F.18` govern wording recovery, U-kind admission, and designation after the object is known.
 
 ### A.6.5:End
 
@@ -31166,781 +31615,4 @@ The gate publishes faces to record **what is declared**, not "how it executes". 
 
 * gate identity, `PathSliceId`, and `PublicationScopeId` when the log is published via a face bundle;
 * each `GateCheckKind`, its `GateCheckRef.edition`, and its folded outcome (`pass|degrade|block|abstain`) including the applied `error|timeout|unknown` fold;
-* rule references and evidence references (SCR or RSCR references plus VALATA bindings); SquareLaw mismatched pins appear only when the crossing check is present;
-* policy-id dependencies used by checks, as `PolicyIdRef` bundles per F.8:8.1; `Φ(CL)`, `Φ_plane`, and `Ψ(CL^k)` appear only when bridge or crossing is present, while gate-local policy ids appear only when consulted by the current `GateProfile`;
-* `GuardFail` events only when guard events exist; if present, they are received from `USM.Guards` and aggregated by the gate referenced by the existing aggregation-assignment field `GuardOwnerGateId` with the applied `GateProfile` rule (`degrade|block`);
-* `EquivalenceWitness` or `EquivalenceWitnessRef` as an `A.21` publication record field, minimally: `{ keys, E⃗, Γ_time(selector), PathSliceId?, ReturnShapeClass, ComparatorSetRef?, GateProfile }`; use `G.6` or `G.11` where evidence-provenance visibility or refresh implications are present;
-* the declared publish reaction for `degrade|block` only when that outcome has a declared publication consequence, including any local "degrade mode" notes when the `GateProfile` permits them;
-* for `RegulatedConformance(X)`, only when `RegulatedConformance(X)` is present: the identity of X and the rule references and edition references used.
-
-#### A.21:4.11 - GateFit check catalog boundary
-
-**Mandatory on LaunchGate.** `FreshnessUpToDate`, `DesignRunTagConsistency`.
-**Declared GateFit check catalog (non-exhaustive, normative minima).**
-
-* `DesignRunTagConsistency` (mandatory on LaunchGate; may appear elsewhere)
-* `FreshnessUpToDate` (mandatory on LaunchGate; may appear elsewhere)
-* `ReferencePlaneCrossing`
-* `ComparatorConstraintRules (CSLC)`
-* `EvidenceCompleteness`
-* `SafetyEnvelope`
-* `RegulatedConformance(X)` (X identity plus edition and rule refs are recorded in `DecisionLog`)
-* `RoleChannelFit` (roles are Kernel `U.Role` tokens; channel fit is a separate check component, not an alias string)
-* `EquivalencePreservation`
-* `OutflowAudit`
-* `SnapshotConsistency`
-
-**Neighboring-governance truth examples (informative).** A.21 names and aggregates the check; it does not decide the domain truth condition. `EvidenceCompleteness` is governed by `A.10`, `G.6`, or `B.3`; `RoleChannelFit` is governed by `A.2`, `A.15`, or `A.2.6`; `ReferencePlaneCrossing` is governed by `E.18`, `F.9`, `F.17`, and UNM; `ComparatorConstraintRules` is governed by `A.19`, `G.0`, `G.5`, `C.18`, `C.19`, `G.9`, or `G.11` where comparator, archive, parity, set-return, or refresh claims are present; `SafetyEnvelope` and `RegulatedConformance(X)` are governed by the safety or regulatory pattern that governs the envelope or rule.
-
-**Forbidden (hard boundary).**
-
-* Modeling CV classes “as GateFit” (CV classes remain CV; GF remains GF).
-* Any “LEX gate checks” or lexical pseudo-checking (lexical views do not participate in decisions).
-
-#### A.21:4.12 - SquareLaw compatibility at crossings
-For every GateCrossing, the SquareLaw constraint holds:
-`gate_out ∘ transfer = transfer' ∘ gate_in`.
-
-Profile selection or inheritance does not weaken this requirement; inconsistency yields `block` or `degrade` within the current `GateProfile` and is recorded in the DecisionLog. LaunchGate is a work-boundary GateCrossing case, so SquareLaw is mandatory there as well.
-
-#### A.21:4.13 - Lexical mediation (optional trace, non-decisional)
-
-A gate publication can include a `LexicalResolutionRef` or `LexicalView` for traceability of alias resolution, but:
-
-* it does **not** participate in aggregation, and
-* it is not a `GateCheck` input and cannot change `GateDecision`.
-
-### A.21:5 - Archetypal Grounding
-
-#### A.21:5.1 - System vignette — “Regulated release gate”
-
-**Show 0 (green cue, no gate decision).** A dashboard tile says “ready” because a source system returned green. No `OperationalGate(profile)`, `GateCheckRef` set, `GateDecision`, or `DecisionLogRef` is named. The tile remains orientation or source-finding only; it is not gate passage and does not establish A.21 decision reuse.
-
-**Tell.** A `PathSlice` includes a `LaunchGate` immediately before performed `U.Work` that can finalize binding. The current `GateProfile` is `RegulatedX`. The gate publishes a single `GateDecision` and a `DecisionLog` explaining the release-crossing decision, without encoding any execution method.
-
-**Show A (CV ✔, GF ✖).** `CV.Status=pass`, activating GateFit. `RegulatedConformance(X)` is present but evidence references are incomplete (`EvidenceCompleteness` folds to `degrade` under `Core` or `RegulatedX` policy), so the join yields `GateDecision=degrade`. The DecisionLog records which `GateCheckRef` caused the fold and the declared publish reaction for degraded release.
-
-**Show B (CV ✖, GF not applicable).** CV aggregate is `degrade`. All GateFit checks return `abstain` by activation, and any GateFit-oriented explanation is inapplicable. The gate’s published decision is driven by CV; the DecisionLog shows CV status and the “inactive GF” boundary rather than a fabricated GF narrative.
-
-#### A.21:5.2 - Episteme vignette — “Cross-plane comparability gate”
-
-**Tell.** A `PathSlice` includes a comparability-critical step (CSLC). The gate publishes `BridgeId + UTS + CLPlane` and edition pins for downstream consumers, and remains stable under the `A.21` equivalence witness.
-
-**Show A (Core, clean crossing).** The gate publishes `EditionPins{CGSpec, ComparatorSet, TransportRegistryPhi}`, `ComparatorSetRef`, `CL` and `CLPlane`, and a `GateDecision=pass` with a rationale that cites the relevant `GateCheckRef`s and editions.
-
-**Show B (SquareLaw mismatch).** A crossing attempts to change plane pins without the commutative-square witness; the SquareLaw check yields `block` (or `degrade` under a profile with a less strict fold policy), and the DecisionLog records the mismatched pins as the reason.
-
-### A.21:6 - Bias-Annotation
-
-The built-in biases of this pattern are stated across the five Principle-Taxonomy lenses (Gov, Arch, Onto-Epist, Prag, Did).
-
-* **Gov.** Bias toward auditability and explicit responsibility (DecisionLog + profile-bound folds). Risk: gate-stewardship roles become de facto governors; mitigation: keep profiles explicit, inheritable, and pinned to `PathSliceId` for reviewable replay.
-* **Arch.** Bias toward a microkernel of checks (pluggable GateChecks + join aggregation). Risk: “check sprawl”; mitigation: scope discipline + forbidden LEX pseudo-checking + CC-based profile minima.
-* **Onto-Epist.** Bias toward a 4-value `GateDecision` lattice and explicit “does not apply” boundaries. Risk: oversimplifying nuanced epistemic uncertainty; mitigation: preserve structured rationales and check-scoped `unknown` policies rather than inventing new global decision values.
-* **Prag.** Bias toward determinism and replayability (cache invalidation by pinned vectors). Risk: higher publication overhead; mitigation: PublishMode=Lite for faces (never for weakening checks).
-* **Did.** Bias toward explicit separation (CV vs GF) and “what is published” clarity. Risk: more concepts to learn; mitigation: archetypal grounding + stable minimal pins across faces.
-
-### A.21:7 - Conformance Checklist
-
-**Conformance use.** This checklist is evidence for the gate-decision publication guidance already stated in the Solution. It is not the first entry text for ordinary use and not a full audit regime by default; a checklist row is applied only when its corresponding gate, check set, decision, crossing, launch, publication, or assurance relation is present. Before applying any row, name the Solution relation it tests; if no such practitioner use is present, treat the row as orientation-only or not applicable rather than expanding the applied assurance or conformance material.
-
-**Conformance groups.** Ordinary gate use starts with the current gate, check set, CV aggregate, `GateDecision`, and `DecisionLogRef`. Crossing and launch rows apply only when the gate is a GateCrossing or `LaunchGate`. Publication and assurance rows apply only when MVPK faces, evidence references, decision stability, or replay are present. Extension and change rows apply only when lexical tokens, profile variants, or neighboring policy or evidence loci are being changed or consumed.
-
-Minimum unified conformance for A.21 and for any `PathSlice` or gate-bearing transformation-flow value where GateFit discipline is asserted:
-
-#### A.21:7.1 - Core gate semantics
-
-* [ ] **CC‑TFS‑06**: all GateCrossings (CtxState changes, and work-boundary crossings via LaunchGate) are mediated by `OperationalGate(profile)` and have a `DecisionLog`.
-* [ ] **CC‑TFS‑07**: CV=>GF activation predicate holds (`CV.Status!=pass => GF=abstain`).
-* [ ] **CC-TFS-21**: decision stability witness is present on the `DecisionLog` record as an `A.21` `EquivalenceWitness` or `EquivalenceWitnessRef`.
-* [ ] **CC‑TFS‑21a**: aggregation is the join on `GateDecision` values `abstain <= pass <= degrade <= block`; `GateDecisionExplanation` is optional and non-decisional.
-* [ ] **CC‑TFS‑22**: `error|timeout` folds are profile-bound; `unknown` folds per GateCheck policy.
-* [ ] **Gate-looking display boundary**: a dashboard state, green tile, readiness badge, conformance label, CV result, safety-envelope note, or release screen is not gate passage unless current `OperationalGate(profile)`, effective `GateCheckRef` set, aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window are recoverable.
-
-#### A.21:7.2 - LaunchGate discipline (pre-run barrier)
-
-* [ ] **CC‑TFS‑08**: every performed `U.Work` launch boundary has one and only one `LaunchGate` with mandatory `FreshnessUpToDate` and `DesignRunTagConsistency`; **pre‑run barrier:** if `ConstraintValidityStatus!=pass` over the declared ingress predecessor set or ingress cut-set for the addressed `PathSlice`, then all LaunchGate GateFit checks are `abstain` and the overall `GateDecision=block` (logged).
-
-* [ ] **Pre‑Run barrier** is satisfied for any `U.Work` where `FinalizeLaunchValues` is possible.
-
-#### A.21:7.3 - Publication and evidence
-
-* [ ] **CC‑TFS‑20**: `PublishMode=Lite` changes face reduction only; required GateChecks remain intact.
-
-* [ ] **CC‑TFS‑25**: AssuranceLane carries `GateProfile`, `GateCheckRef` list, edition pins, `GateDecision`, and `DecisionLogRef` with the two-part evidence scheme (SCR or RSCR plus VALATA).
-
-#### A.21:7.4 - Cross-boundary additions (when the gate is a crossing)
-
-* [ ] **CC‑TFS‑11**: crossings publish `BridgeId + UTS + CLPlane` and `CL^plane`; penalties appear in the R-channel only.
-* [ ] **CC‑TFS‑23**: SquareLaw holds on crossings; mismatch yields `block|degrade` per profile and is logged.
-
-#### A.21:7.5 - Lexical norms (E.10 discipline)
-
-* [ ] Tech names are ASCII and twin-labeled; required token classes are registered under LEX (including `GateProfile`, `GateCheckKind`, `GateCheckRef`, `DecisionLog`).
-* [ ] Any lexical alias view is trace-only and cannot change `GateDecision`.
-
-### A.21:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Why it fails | Correct use |
-|---|---|---|
-| Guard as GateCheck | A guard, status cue, or publication label is treated as a profile-bound gate check. | Declare the `GateCheckRef`, check criteria, fold policy, and governing neighboring truth condition. |
-| Explanation as decision | A readable narrative is treated as the `GateDecision` or `DecisionLog`. | Keep `GateDecision`, `GateDecisionRationale`, optional explanation, and decision record distinct. |
-| Gate pass as performed work | `GateDecision=pass` is read as work occurrence, release action, work-entry readiness, or work authorization. | Use A.21 only for the gate-decision relation; use A.15.5 for work-entry readiness and A.15 or the release-governing pattern for work or authorization claims. |
-| Profile drift by publication mode | `PublishMode=Lite` is read as a weaker `GateProfile`. | Keep publication-face reduction in E.17 and keep `GateProfile` fold policy explicit in A.21. |
-
-### A.21:9 - Consequences
-
-**Benefits**
-
-* **Deterministic gating.** Join-semilattice aggregation makes decisions order-independent and idempotent (modulo declared equivalence), enabling consistent audit and replay.
-* **Clean CV and GF separation.** Activation boundary keeps profile concerns out of mechanism validity.
-* **Profile clarity.** Fold policies (`error|timeout|unknown`) are explicit and profile-bound, making safety review result inspectable.
-* **Publication hygiene.** MVPK faces remain pins and references (no new numeric claims), and DecisionLog captures rationale without procedural commitments.
-
-**Trade-offs**
-
-* **More decision records to publish.** Decisions are not just binary pass-or-fail values: they require rationales, pins, and logs.
-* **Two-stage reasoning.** Users need the rule “GF does not apply until `CV.Status=pass` holds”; mitigated by explicit inapplicability rules and optional narratives only when applicable.
-* **Scope complexity.** Multi-scope merge semantics can feel heavy; mitigated by union + worst-wins + preserved rationales.
-
-### A.21:10 - Rationale
-
-* The microkernel framing preserves a single graph semantics: checks are gate/check loci and decision publications, not an external execution sequence; this keeps a second hidden execution order outside the gate core from appearing.
-* The join lattice provides minimal, monotone aggregation with two useful properties:
-
-  * early absorption at `block` without specifying execution strategy, and
-  * deterministic publication semantics (commutative, associative, and idempotent).
-* CV⇒GF activation is the mechanism that keeps orthogonality strict while still publishing a single gate decision publication: GF results do not replace CV failures.
-* Explicit folds for `error|timeout|unknown` make safety review result inspectable and profile-specific without inventing new decision values.
-
-### A.21:11 - SoTA-Echoing
-
-Source references (post-2015) that this pattern **adopts, adapts, or rejects**, consistent with the transformation-flow goal of assured lanes, open graph composition, and join-semantics.
-
-* **Adopt.** *Join-semilattice aggregation as deterministic, profile-bound merge* (distributed-systems and CRDT literature, e.g., Kleppmann 2017; Kleppmann & Beresford 2017): A.21 uses the algebraic idea only so declared gate-check outcomes fold to the same `GateDecision` under the same current `GateProfile` and equivalence witness. It does not import CRDT architecture or use CRDT as prestige terminology.
-
-* **Adapt.** *Compositional reasoning with commuting diagrams* (applied category theory, e.g., Fong & Spivak 2019): A.21 adapts the intuition by making SquareLaw a gate-audited invariant on crossings, while keeping publications human-first and pin-based.
-* **Adapt.** *Supply-chain provenance and policy gating via attestations* (software supply-chain security, e.g., in-toto 2019; SLSA v1.2 provenance and VSA attestation specification line): A.21 adapts the attestation-shaped evidence discipline as MVPK pins plus `DecisionLog`, not DevOps release procedure, tool-specific methods, or runtime scripts.
-
-* **Reject.** *Narrative-as-authority.* Any approach where human-readable explanations function as decision-bearing records is rejected; in A.21, narratives remain optional derivatives of structured rationales and are explicitly non-decisional.
-
-Gate-publication result in attestation-shaped practice: green tiles, readiness badges, full-kit labels, release screens, conformance labels, safety-envelope notes, CV results, and gate-looking explanations do not become gate passage, release authorization, deontic permission, safety acceptance, work-entry readiness, assurance, work occurrence, or work authorization by appearance. The local A.21 result is a current `OperationalGate(profile)`, current `GateProfile`, effective `GateCheckRef` set, CV aggregate, `GateDecision`, `DecisionLogRef`, scope, currentness, and effective window, or else the display remains a cue, source pointer, CV result, evidence question, or readiness question governed outside A.21. Reopen the gate result when the current `GateProfile`, check set, CV aggregate, decision, rationale, scope, currentness, effective window, equivalence witness, or consuming neighboring relation changes.
-
-### A.21:12 - Relations
-
-* **`E.18` transformation-flow structure →coordinates→ A.21.** GateFit-scoped GateChecks are aggregated by `OperationalGate(profile)`; GateCheck enumeration and publication shape are governed here.
-* **A.20 →couples_to→ A.21 via CV=>GF.** CV is evaluated inside transformations; while `CV.Status!=pass`, GF is `abstain` and GF explanations do not apply.
-* **A.15.5 →separates→ work-entry readiness from gate decision.** Full-kit and work-entry readiness labels may be cited by A.21 only when they are declared GateChecks under a current `GateProfile`; otherwise `WorkEntryReadiness@Context` remains governed by A.15.5.
-* **A.21 GateProfile binding.** A.21 carries the current profile binding, inheritance boundary, and minimum mandatory check-set semantics. Fuller project-local profile matrix material is not separately governing unless a current governing pattern includes it by value.
-* **E.18 and G.11 →provide→ scope and refresh boundaries.** `subflow` scope is bounded and restartable through PathSlice and refresh wiring where present; weakening check sets use a new `PathSlice`.
-* **F.9, F.17, E.17, and E.18 →required_by→ any edition-citing face.** Whenever gate faces cite editions, the compatibility reference (BridgeCard + UTS + `CL` and `CLPlane`) is required for downstream consumption.
-* **A.21, G.6, and G.11 →define→ equivalence for decision stability.** Gate decisions are stable only under the declared equivalence witness; evidence-provenance or refresh implications use `G.6` or `G.11` where present.
-
-### A.21:End
-
-## A.22 - Structure and Structural Views (STRUCT-CAL)
-
-> **Type:** Architectural pattern
-> **Status:** Stable
-> **Normativity:** Normative unless explicitly marked informative
-
-### A.22:1 - Problem frame
-
-Use this pattern when a practitioner needs to select `U.Structure` as the `EntityOfConcern`: the organization, relation class, constraint, invariant, variation class, preserved arrangement, or lost arrangement that changes a next engineering or reasoning action.
-
-The first A.22 question is positive: what is organized, over which bounded context and declared substrate, which relation, constraint, invariant, or variation matters, what is preserved, what is lost or hidden, and which admissible use or stop condition follows.
-
-The first useful move is small:
-
-```text
-StructureQuestionCard@Project:
-  declared structure substrate:
-  bounded context:
-  selected structure:
-  relation, operation, constraint, invariant, or variation class:
-  preserved structure:
-  lost, hidden, or excluded structure:
-  reliance relation, if being claimed:
-  admissible use:
-  non-admissible overread:
-  governingPatternApplicationRefs, if another claim is being made:
-```
-
-`StructureQuestionCard@Project` is a project-side triage aid for this selected-structure use. It is not a new structure kind. Fill the reliance row only when extraction, coarsening, source-description, base-dependence, grounding, evidence, lens, simulation, representation, or action reliance is being claimed; otherwise leave it unused and keep the move on selected structure.
-
-Stop at this card when it makes the next structure use clear. Open heavier records only when a named description, view, publication, extraction, coarsening, comparison, mathematical-lens, architecture-description, or other neighboring claim is being made.
-
-What goes wrong if A.22 is missed: the practitioner reasons from the visible diagram, source publication, source-use record, lens output, generated representation, project record, or architecture description instead of asking which organization is selected and what loss or reliance boundary matters for action.
-
-What A.22 buys in practice: a practitioner can name selected structure, state preserved and lost structure, name source-basis or lens reliance only when it is being claimed, add a `StructureUseReturnCondition` when loss matters, and apply the FPF pattern that governs any non-structure claim being made.
-
-Not this pattern when the question under repair is grounded architecture adequacy, architecture structural-view adequacy, or mathematical-lens use. Use `C.30`, `C.30.ASV`, or `C.29` respectively. For any other claim being made, use the governing FPF pattern and keep A.22 only to the selected-structure portion.
-
-Thin precision-restoration pointer: when the wording still may name a structure, a structure description, an architecture description, a view, a publication form, or another governed claim, use `C.30.P` or `C.30.STRAT` first as triggered. Apply A.22 only after the selected-structure claim or structure-view portion is recoverable.
-
-### A.22:2 - Problem
-
-FPF needs a selected-structure EntityOfConcern that is useful before any one domain ontology, mathematical formalism, architecture notation, or publication form takes over. Working projects often notice that "the structure" is doing real work:
-
-- dependencies repeat across cases;
-- a method or work description hides an invariant relation;
-- a model compresses a trace by preserving one relation class and losing others;
-- a diagram shows an arrangement but is mistaken for the arrangement itself;
-- a mathematical lens exposes preserved structure but is then overread as ontology;
-- an architecture discussion needs selected structure over a holon before it can describe architecture.
-
-How can FPF let a practitioner name structure as an EntityOfConcern while preserving the distinction between:
-
-- selected structure and the source-description relation, source-use relation, evidence relation, lens output, simulation, generated representation, or declared substrate from which it was inferred or declared;
-- structure and a Description episteme or view of that structure;
-- structure and a publication face, diagram, table, graph, or publication form;
-- structure and mathematical-lens application;
-- structure and another FPF claim kind governed by its governing pattern;
-- structure in general and architecture-specific structure selected by `C.30`.
-
-### A.22:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| First-principles structure EntityOfConcern vs ontology inflation | FPF needs a reusable selected-structure EntityOfConcern for relations, constraints, invariants, variation classes, preserved organization, and lost organization, but adding one such EntityOfConcern can accidentally invite many false root kinds. |
-| Useful compression vs structure-use return | Structure makes work easier by compressing cases, but a `StructureUseReturnCondition` is needed when compression, extraction, coarsening, source-description reuse, base-dependence reuse, grounding reuse, evidence reuse, lens reuse, simulation reuse, or representation reuse hides a distinction needed for action. |
-| Description and view usability vs structure confusion | Descriptions and views make structure inspectable, but a useful view can be mistaken for the structure itself. |
-| Mathematical-lens application vs mathematical overread | C.29 lenses can expose structure, but lens output does not become the structure and does not license evidence, causal, assurance, or decision claims by itself. |
-| Architecture dependency vs architecture takeover | Architecture uses selected structure through `C.30`; A.22 does not import architecture as its parent or make every structure an architecture. |
-| Plain engineering speech vs Tech recovery | Words such as structure, graph, architecture, module, function, interface, pattern, block, layer, level, tier, stack, expert, cache, router, and gate can remain in Plain prose, but FPF-governed use needs recoverable Tech fields and FPF pattern applications. Source-label recovery is governed by `C.30.STRAT` before A.22 accepts a selected-structure portion. |
-
-### A.22:4 - Solution
-
-Select `U.Structure` as the A.22 ontic head: a dependent, non-agentive `EntityOfConcern` used when selected organization changes a next engineering or reasoning action.
-
-> `U.Structure` is the organization of typed relations, constraints, invariants, variation classes, and admissible references to operation or dynamics descriptions over a declared substrate, or declared A.6.6 base declaration when base-dependence is being claimed, inside a bounded context and admissible-use frame.
-
-The A.22 ontic head is intentionally narrow. `U.Structure` is the selected organization under concern: typed relations, constraints, invariants, variation classes, operation or dynamics references, preserved organization, and lost organization over a declared substrate in a bounded context. The grounding object may be a `U.Holon`, `U.System`, `U.Episteme`, declared substrate, or another declared substrate, EntityOfConcern type, relation kind, or record kind named by the direct governing pattern; the selected structure remains the structure of or over that object.
-
-The first useful A.22 use is about the selected structure itself: name the bounded context, selected structure, relation, constraint, invariant, variation class, operation or dynamics reference that matters, preserved or lost organization, and the structure-use return condition or governing-pattern application needed for work. Description records, views, publications, diagrams, publication forms, and renderings are aids that make that selected-structure use inspectable, reusable, comparable, or safe to rely on; they do not share the center of the Solution.
-
-`U.Structure` may fill `EntityOfConcern` for a structure description, view, or structure-claim relation. When a structure description or view is being used, `DescriptionContext.EntityOfConcernRef` names the selected structure, structure claim, or relation governed by the governing pattern for that use; publication forms, publication units, and renderings only make the episteme or view available.
-
-A.22 governs `U.Structure` as a dependent, non-agentive ontic head. It works first over selected-structure EntityOfConcern records and structure-claim reliance relations. Structural descriptions, structural views, extracted structural views, structural-aspect descriptions, structural-coarsening descriptions, and structure-use return conditions are subordinate record forms used only when they preserve the selected-structure use, expose loss, enable comparison, or state a reliance boundary. A.22 does not govern architecture descriptions directly; `C.30` and its subpatterns govern architecture as a use of selected structure over a described holon.
-
-#### A.22:4.1 - Selected Structure Object
-
-```text
-U.Structure ::= {
-  structureId,
-  declaredStructureSubstrateRef:
-    U.EntityRef | U.HolonRef | U.EpistemeRef | DeclaredSubstrateRef,
-  boundedContextRef,
-  relationSignatureRefs?,
-  operationOrDynamicsDescriptionRefs?,
-  constraintRefs?,
-  invariantRefs?,
-  symmetryRefs?,
-  topologyOrGeometryRefs?,
-  stateSpaceRefs?,
-  causalOrPredictiveDescriptionRefs?,
-  informationRegularityRefs?,
-  coarseGrainingRefs?,
-  generalStructureAspectKindRefs:
-    functional | mereological | modular | transformationFlow |
-    control | workMethod | roleEnactor | evidenceAssurance |
-    semantic | informational | causalPredictive | dynamical |
-    algebraic | topological | geometric | scaleCoarseGrained |
-    otherDeclared,
-  granularityOrScaleRef?,
-  equivalenceOrIsomorphismCriterion?,
-  variationClassRefs?,
-  preservedUnder?,
-  brokenBy?,
-  admissibleUse,
-  nonAdmissibleUse
-}
-```
-
-The field list is a recovery aid, not a demand to fill every field. The ordinary record names only the fields that carry the next admissible use. When state, dynamics, causality, measurement, bridge, evidence, assurance, gate, work, decision, or mathematical-lens claims are being made, the record names the governing pattern instead of absorbing that claim kind into A.22.
-
-A.22 `generalStructureAspectKindRefs` are general structure-aspect cues. C.30.ASV `ArchitectureStructureKindRef` values are architecture-local structure-kind classifiers for structures selected by `ArchitectureOf@Context`. A matching label does not imply identity. Use a declared mapping when an A.22 aspect is used as an architecture structure kind.
-
-#### A.22:4.1a - Compact auxiliary boundary
-
-Use description, publication, source-use, evidence, work, gate, decision, release, architecture-description, and mathematical-lens patterns when those claims are being made. The A.22 application contains the selected-structure portion and the structure-use return condition that protects that structure use; neighboring claims remain with their governing patterns. A publication, diagram, graph, table, dashboard, file, model card, generated representation, or lens output may make a structural description or view available; it does not become the selected structure or supply neighboring claim authority by appearance.
-
-#### A.22:4.1b - Constraint-governed unfolding structure
-
-Use `A.22.CGUS` when the current A.22 structure is an organization among several governed loci and constraints: admitted starting records, already-current starting structures, relation signatures, constraints, invariants, guarded transitions, preserved and lost structure, admissible next forms, and conditions for stop, return, split, or currentness refresh. This structure specialization is still `U.Structure`; it is not a route, workflow, method, work plan, performed work, decision, evidence relation, gate, architecture description, or publication.
-
-Open `A.22.CGUS` only when the candidate has several loci and cross-locus constraints. A route card, table, graph, README entry, narrative, slide, or happy-path example may describe or demonstrate the unfolding structure, but it is not the structure itself.
-
-#### A.22:4.2 - Structure claim reliance relation selection
-
-
-A.22 does not mint a local generic reliance record. When a structure claim relies on something beyond the selected structure itself, choose the reliance relation kind, name the relation record by value, and name the governing pattern:
-
-| Current reliance relation kind | What is named | Governing ontology to apply |
-| --- | --- | --- |
-| Source-description relation | source episteme, source view, publication form or rendering where relevant, described structure or structure claim, source-basis pins or structure-use return condition, admissible and non-admissible use | `A.7`, `A.6.3`, `E.17`, `E.17.0`, and local source-publication rules |
-| Base-dependence or basedness | `dependent = structure claim or structural description`, `base`, declared `baseRelation`, scope, declared `Γ_time` when temporal scope is claimed, witness refs when witness use is claimed, admissible and non-admissible use | `A.6.6` SWBD or Context-local SWBD specialization |
-| EntityOfConcern or grounding-holon grounding | selected EntityOfConcern, `GroundingHolonSlot` when grounding-holon grounding is being claimed, bounded context, viewpoint, reference plane, observation or witness condition if observation or witness use is being claimed | `C.2.1`, `A.6.4`, `A.6.3.RT`, `A.6.6` only if it is a base-dependence claim |
-| Evidence or witness reliance | evidence-use relation, evidence-provenance relation, claim ref, witness publication or observation record, timespan and freshness; if an evidence graph is current, its graph path remains a mathematical or provenance expression rather than an action route | `A.10`, `A.2.4`, `G.6` |
-| Mathematical-lens reliance | lens candidate, lens card, or lens-use record; primary `EntityOfConcern`; relation record or claim record named by value when lens reliance is being claimed; preserved structure; lost structure; stop condition; `MathLensUseOutputRef`; C.29 lens-use result; or `LensUseAdmissibilityValue` | `C.29`, `C.26`, `F.9`, named mathematical-lens pattern |
-| Simulation, generated representation, model, or extracted trace | source publication or representation publication, extraction method, validation boundary, preserved structure, lost structure, structure-use return condition | source-description and Description-context patterns plus `C.29`, `A.10`, or governing pattern when a claim of that kind is being made |
-
-If no reliance relation kind can be selected, keep the wording as a source-finding note, recognition cue, ordinary help, quote-only wording, or reduced-use cue. Do not create a generic reliance record to make the claim look governed.
-
-`U.Structure` does not carry description, representation, extraction, mathematical-lens, simulation, or generic reliance state as an internal structure field. Those are source-description, source-use, base-dependence, evidence, lens, extraction, simulation, or publication relations about a structure. `PublicationRef` is not an admissible substitute for the source episteme, source view, evidence relation, SWBD, or lens output.
-
-#### A.22:4.3 - Structural descriptions and views
-
-Structural descriptions and views reuse existing episteme and view machinery. Architecture does not define a second ontology of descriptions, views, viewpoint bundles, multi-view descriptions, publications, publication forms, or source-pin sets. Every record whose name ends in `Description@Context` here is a specialization of existing `U.Episteme` governed by `C.2.1` and `E.10.D2`. Every record whose name ends in `View@Context` here is a specialization of existing `U.View` or `U.EpistemicViewing` governed by `A.6.3` and `E.17.0`. `DescriptionContext` is imported, not locally redefined.
-
-```text
-StructuralDescription@Context ::= {
-  descriptionId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  structureRefs: FinSet(U.StructureRef),
-  structureClaimRelianceRefs?: FinSet(U.ScopedWitnessedBaseDeclarationRef | EvidenceRelationRef | EvidenceProvenanceRelationRef | MathLensUseOutputRef | StructureUseReturnConditionRef | NamedClaimGoverningPatternRef),
-  describingEpistemeRef,
-  admissibleUse,
-  nonAdmissibleUse
-}
-
-StructuralView@Context ::= {
-  viewId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  structureRefs: FinSet(U.StructureRef),
-  structuralAspectDescriptionRefs?,
-  selectedRelationsOrOperations,
-  hiddenOrLostStructure,
-  admissibleUse,
-  nonAdmissibleUse
-}
-```
-
-`descriptionContext.ViewpointRef` is the viewpoint field. Do not duplicate it locally under another name unless the governing pattern supplies a more specific view record.
-
-#### A.22:4.4 - Extracted and transformed structural views
-
-Use extracted or transformed structure records when a corpus, trace, model, lens, simulation, generated representation, coarsening pass, observer boundary, or budget boundary produces a view of structure that may hide distinctions.
-
-```text
-ExtractedStructuralView@Context ::= {
-  extractedViewId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  sourceCorpusOrTraceRefs,
-  structureRefs: FinSet(U.StructureRef),
-  extractionDescriptionRef,
-  preservedStructure,
-  lostStructure,
-  validationBoundary,
-  structureUseReturnCondition,
-  admissibleUse,
-  nonAdmissibleUse
-}
-
-StructureExtractionDescription@Context ::= {
-  extractionDescriptionId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  sourceInputKind,
-  lensOrMethodRef,
-  budgetOrObserverBoundary?,
-  preservedStructureKinds,
-  lostStructureKinds,
-  validationBoundary,
-  structureUseReturnCondition,
-  admissibleUse,
-  nonAdmissibleUse
-}
-
-StructuralAspectDescription@Context ::= {
-  aspectDescriptionId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  aspectKindRef,
-  structureRefs: FinSet(U.StructureRef),
-  structureClaimRelianceRefs?: FinSet(U.ScopedWitnessedBaseDeclarationRef | EvidenceRelationRef | EvidenceProvenanceRelationRef | MathLensUseOutputRef | StructureUseReturnConditionRef | NamedClaimGoverningPatternRef),
-  admissibleUse,
-  nonAdmissibleUse
-}
-
-StructuralCoarseningDescription@Context ::= {
-  coarseningDescriptionId,
-  descriptionContext: DescriptionContext(EntityOfConcernRef, BoundedContextRef, ViewpointRef),
-  sourceStructureRefs: FinSet(U.StructureRef),
-  resultStructureRefs: FinSet(U.StructureRef),
-  preservedUnder,
-  brokenBy,
-  lostStructure,
-  structureUseReturnCondition,
-  admissibleUse,
-  nonAdmissibleUse
-}
-```
-
-#### A.22:4.5 - Structure-use return
-
-`StructureUseReturnCondition` is present when compression, extraction, coarsening, evidence reuse, mathematical-lens use, simulation, ML evaluation, bounded exception, many-to-many allocation, or decision reliance hides a distinction needed for action, assurance, causal use, legal review, regulatory review, comparison, or subsequent decision reopening.
-
-Do not make structure-use return mandatory for ordinary local recognition when no hidden distinction is being used for action. The condition is needed only when the repaired text still relies on a hidden selected-structure, source-basis, source-description, evidence, lens, simulation, extraction, or representation distinction.
-
-#### A.22:4.6 - Relation to architecture
-`StructuralAspectDescription@Context` describes one selected structural aspect under A.22. It is not an `ArchitectureStructureKindRef` by itself. `ArchitectureStructuralView@Context` is a C.30.ASV view over structures selected by `ArchitectureOf@Context` and typed by `ArchitectureStructureKindRef`.
-
-A.22 is intentionally upstream of C.30. Architecture uses structure; structure does not import architecture as a parent.
-
-`C.30` uses A.22 by selecting architecture-relevant structures for one described holon through `ArchitectureOf@Context`. `C.30.ASV` then governs architecture structural views over those selected structures. A structure can be used by architecture, but a structure is not an architecture merely because an architecture description refers to it.
-
-Architecture-related records that belong to C.30 or its subpatterns include `ArchitectureOf@Context`, `ArchitectureDescription@Context`, `ArchitectureStructuralView@Context`, `ArchitectureStructureKindRef`, `ArchitectureStructureKindTriage@Project`, `FunctionalStructureView@Context`, `ArchitectureTransformationFlowStructureRelation@Context`, `ControlStructureView@Context`, and `CrossScopeArchitectureResidualTriage@Context`. A.22 may name them as FPF pattern applications. It does not define their architecture-specific conformance.
-
-#### A.22:4.7 - Boundary and repair table
-
-| Tempting collapse | A.22 repair |
-| --- | --- |
-| The reliance relation is treated as the structure. | Name `declaredStructureSubstrateRef` and, when source-description, source-use, base-dependence, grounding, evidence, lens, simulation, extraction, or representation reliance is being claimed, name the reliance relation record by value and name the governing FPF pattern; keep structure as selected organization over the declared substrate and do not turn that reliance relation into structure. |
-| The diagram, graph, table, dashboard, or publication form is the structure. | Treat it as publication, description, view, publication form, source-description relation, base-dependence relation, grounding relation, evidence relation, lens relation, simulation relation, extraction relation, or representation relation only when its relation is explicit. |
-| A transformation-flow graph expression is the structure in every sense. | Use `E.18` for graph, path, crossing, and flow valuation; use A.22 only for the selected structure claim; use `C.30.TFS-REL` when an architecture-to-transformation-flow relation claim is being made. |
-| A mathematical lens output is the structure. | Use `C.29` for lens-use result and admissibility, and cite `MathLensUseOutputRef` only through C.29 lens-use result, preserved structure, lost structure, and stop-condition discipline. |
-| A structure proves evidence, assurance, safety, causality, or gate passage. | Assign those claims to `A.10`, `G.6`, `B.3`, `C.28`, `A.20`, or `A.21`. |
-| A structure is a decision or work record. | Use `C.11`, `A.20`, `A.21`, `A.15`, or the project-side decision pattern that governs the claim being made. |
-| Architecture is a root kind beside structure. | Use `C.30`: architecture is selected structure for a described holon through `ArchitectureOf@Context`. |
-| Function, module, interface, platform, layer, stack, block, expert, cache, router, or gate becomes a root kind by appearing in structure prose. | Use `C.30.STRAT` for source-label recovery, then `A.6.F`, `A.6.M` module-relation repair when a module-interface claim is being made, `A.6.0`, `A.6.5`, `A.6.B`, `A.6.C`, `A.6.8`, `E.18`, `C.30.ASV`, and governing patterns as triggered. |
-
-#### A.22:4.8 - Worked slices
-
-**Architecture kernel slice.** A team says, "the architecture is the graph." A.22 does not accept that sentence as a root-kind claim. The repair is:
-
-```text
-declaredStructureSubstrateRef: TransformationFlowStructureRef under E.18, with mathematical graph description under E.18.2 when that expression is the current claim
-candidate structure: selected transformation-flow structure
-structure-claim reliance relation: selected relation record named by value(
-  sourceDescriptionOrPatternApplicationRef = SourceViewRef, E.18 selected structure or crossing record, or E.18.2 mathematical graph description,
-  governingPatternRef = E.18, A.6.6, A.10, or C.29 when that reliance claim is being made,
-  relationKind = source-description | base-dependence | evidence | lens, selected for this reliance,
-  validationBoundary = graph-path currentness boundary, slice currentness boundary, or crossing currentness boundary
-)
-next FPF pattern application: C.30.TFS-REL when this selected structure is used in an architecture-to-transformation-flow relation
-non-admissible use: graph as whole architecture, work, evidence, gate, or decision
-```
-
-The useful structure use survives: the practitioner can use the graph as a governed reliance relation for selected flow structure without turning it into architecture ontology.
-
-**Extracted code structure slice.** A code-agent relation graph or probe JSON reports imports, calls, registry wiring, and data-flow links. A.22 treats it as an extracted structural view only when the source codebase or publication, extraction method, preserved structure, lost structure, validation boundary, and structure-use return condition are named. The relation graph or probe output is not the codebase architecture itself and is not proof of internal agent belief, assurance, or release readiness.
-
-```text
-ExtractedStructuralView@Context:
-  sourceCorpusOrTraceRefs: repo snapshot, probe outputs, traces
-  preservedStructure: selected typed relation families
-  lostStructure: unexplored regions, dynamic calls, hidden generated code, ambiguous relation kinds
-  validationBoundary: probe coverage and source codebase or publication edition
-  structureUseReturnCondition: when an architecture decision, assurance use, or repair depends on a relation not observed by the extraction
-```
-
-### A.22:5 - Archetypal Grounding
-
-| Tell-Show-Show row | Grounding |
-| --- | --- |
-| Tell | A practitioner sees an arrangement that matters but does not yet know whether it is a diagram, a model, a graph, an architecture claim, a source description, base-dependence relation, evidence relation, lens relation, or decision. A.22 asks first: what organization is being selected, over what declared substrate and with what reliance relation, under what context, and with what loss? |
-| Show: `U.System` | In a plant, vehicle, software system, or neural-network model, the selected structure may be transformation-flow, control, module-interface structure, placement, information, scale, or declared logical structure. The structure record does not become the system and does not prove that the system is safe, maintainable, or ready. |
-| Show: `U.Episteme` | A paper, model, generated relation graph, dashboard, architecture note, or mathematical-lens output can describe selected structure or serve as a source-description or A.6.6 base-dependence relation for a selected-structure claim. The episteme, view, or publication is not the structure itself; it carries a description, view, or reliance relation named by value with validation and structure-use return boundaries. |
-
-### A.22:6 - Bias-Annotation
-
-Lenses tested: **Arch**, **Onto**, **Epist**, **Prag**, **Did**, **Gov**. Scope: universal within FPF structure claims.
-
-| Bias risk | Mitigation |
-| --- | --- |
-| Architecture bias | Do not make architecture the parent of all structure. A.22 stays upstream; C.30 carries grounded architecture and selected-structure adequacy. |
-| Mathematical-formalism bias | A mathematical lens can expose preserved structure and lost structure, but C.29 remains the governing pattern for lens-use result, admissibility, and stop condition. |
-| Diagram bias | A useful diagram or generated relation graph is attractive enough to be mistaken for the structure. description, specification-use, and publication boundaries stay explicit. |
-| Review-only bias | Checks leave a repair action: name the structure, name the structure-claim reliance relation record by value, state a structural view, add a `StructureUseReturnCondition`, or apply the governing FPF pattern. |
-| Didactic-thinning risk | Semantic repair does not leave inert prose. The recognition text keeps the first useful move and the practical payoff visible before the formal records. |
-
-This checklist verifies the preceding guidance after the practitioner has chosen the selected repair action; it is not a required project control form and not a substitute for the card, note, view, relation, or repair guidance above.
-
-### A.22:7 - Conformance Checklist
-
-| ID | Requirement | Failed-check repair |
-| --- | --- | --- |
-| **CC-A22-1 Selected structure EntityOfConcern.** | An FPF-governed structure claim names `U.Structure`, an existing FPF kind, or a relation record named by value; it does not mint an architecture-adjacent root kind. | Replace the broad noun with `U.Structure`, an existing FPF kind, or a relation record named by value. |
-| **CC-A22-2 Non-agentive structure.** | Structure wording does not make the structure act, optimize, prove, decide, warrant, sense, plan, or adapt. | Apply the governing pattern for the agency, proof, decision, or work claim and keep A.22 to selected organization. |
-| **CC-A22-3 Structure-claim reliance relation boundary.** | When source-description, source-use, base-dependence, grounding, evidence, lens, simulation, extraction, or representation reliance is claimed, the governing A.6.6 relation ontology, source-description ontology, evidence ontology, lens ontology, assurance ontology, causal ontology, gate ontology, decision ontology, or publication ontology is named. | Add the governing pattern, relation kind where the relation is being claimed, validation boundary, admissible use, and non-admissible use, or mark the reliance phrase as carrying no admissible reliance. |
-| **CC-A22-4 Description and view separation.** | A structural description, structural view, extracted view, diagram, table, graph, dashboard, or publication face is not treated as the structure itself. | Treat the visible form as description, view, source-description relation, A.6.6 base declaration, publication form, or publication and name the selected structure separately only if selected organization is being claimed. |
-| **CC-A22-5 DescriptionContext reuse.** | Description epistemes and specification-use cases reuse `DescriptionContext`, `U.Episteme`, `U.View`, `A.6.3`, and `E.17` machinery; no second architecture-local description and view ontology is introduced. | Replace local description and view fields with the imported DescriptionContext fields or assign the claim to the existing governing pattern. |
-| **CC-A22-6 Structure-use return.** | `StructureUseReturnCondition` is present when hidden selected-structure, source-basis, source-description, evidence, lens, simulation, extraction, or representation distinctions are used for action, assurance, causal use, legal or regulatory review, comparison, or decision reopening. | Add one structure-use return condition or narrow the record's admissible use so the hidden distinction is not relied on. |
-| **CC-A22-7 Non-structure claim kind.** | Evidence, assurance, gate, release, causal, dynamics, measurement, work, decision, publication, bridge, and mathematical-lens claims are assigned to their governing patterns. | The check passes when the governing FPF pattern and the claim kind being made are named, while the A.22 record remains limited to selected-structure use. |
-| **CC-A22-8 Architecture pattern application.** | Architecture claims use `C.30` and `ArchitectureOf@Context`; A.22 does not treat architecture as a root kind or define C.30-specific records. | Apply C.30 or a C.30 subpattern and keep A.22 only as the selected-structure EntityOfConcern and structure-claim reliance relation. |
-| **CC-A22-9 Plain and Tech recovery.** | Plain structure phrases may remain, but if they carry ontological, evidence, causal, assurance, bridge, gate, work, decision, or admissibility claim, the relevant Tech fields and FPF pattern applications are recoverable. | Add the missing Tech fields or demote the Plain phrase to ordinary recognition wording. |
-| **CC-A22-10 Useful action.** | The repair leaves a remaining admissible practitioner use: name the structure, name the structure-claim reliance relation record by value, state a structural view, add a `StructureUseReturnCondition`, or apply the FPF pattern that governs the claim kind being made. | Restore that use, or classify the phrase as reduced-use cue, quote-only wording, blocked transfer, or incomplete rewrite. |
-| **CC-A22-11 CGUS admission.** | A constraint-governed unfolding claim names several loci, cross-locus constraints, preserved and lost structure, direct governing-pattern exits, admissible next forms, and stop or return conditions. | Use `A.22.CGUS` only after those fields are recoverable; otherwise lower the visible route-shaped artifact to a description, demonstrative slice, README seed, or ordinary cue. |
-
-### A.22:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-| --- | --- | --- |
-| **Structure-as-document** | A diagram, table, dashboard, relation graph, or prose section is called the structure. | Recover publication, publication-form, description, or view relation; name the structure separately only when selected organization is being claimed. |
-| **Reliance-interpretation-as-structure** | A trace used as source basis, benchmark, lens output, model, or simulation is treated as the structure. | Name the governing A.6.6 relation ontology, source-description ontology, evidence ontology, or lens ontology; state relation kind where the relation is being claimed, validation boundary, and non-admissible use. |
-| **Loss-free extraction** | Extracted or coarsened structure is used without lost structure or structure-use return. | Add `preservedStructure`, `lostStructure`, `validationBoundary`, and `structureUseReturnCondition`. |
-| **Architecture root-kind rebound** | Structure work reintroduces `U.Architecture` or treats architecture as parallel to structure. | Use `ArchitectureOf@Context` and C.30; keep A.22 as the upstream selected-structure EntityOfConcern. |
-| **Lens ontology import** | A mathematical lens output becomes the imported ontology. | Use C.29 for the lens, cite it through C.29 lens-use result, preserved structure, lost structure, and stop-condition discipline. |
-| **Sterile precision rewrite** | The text removes overread but no longer tells the practitioner what to do. | Restore the surviving action: structure card, structure-claim reliance relation, Description or view, `StructureUseReturnCondition`, or FPF pattern application. |
-
-### A.22:9 - Consequences
-
-| Benefit | Cost or trade-off |
-| --- | --- |
-| FPF gains a reusable selected-structure EntityOfConcern without minting architecture, module, interface, platform, or graph as root kinds. | A conforming use states context, declared substrate or named reliance relation record, preserved and lost structure, and non-admissible use when the claim has FPF-governed use. |
-| Structural views become usable without confusing the view, publication form, publication, source-use relation, grounding relation, and selected structure EntityOfConcern. | Existing loose prose that says "the structure is the diagram" needs repair. |
-| C.29 mathematical lenses and E.18 transformation-flow structures can supply governed reliance relations for structure claims without becoming structure ontology. | FPF pattern applications are named when evidence, assurance, causal-use, gate, work, or decision claims are being made. |
-| Architecture work can start from selected structure through C.30 instead of forcing architecture to be either a document or a module diagram. | Architecture-specific conformance stays outside A.22, so practitioners can require one extra C.30 application when the architecture claim or durable architecture-description use is being made. |
-
-### A.22:10 - Rationale
-
-FPF needs one general selected-structure EntityOfConcern because many useful project claims depend on organization before they depend on a specific architecture, mathematical, measurement, or publication pattern. The selected-structure entity has to be dependent, non-agentive, and claim-bearing through descriptions or views: it can be described, sourced, compared, coarsened, extracted, or used by architecture, but it does not act or certify.
-
-The selected design keeps A.22 small enough for first use. A practitioner can write one `StructureQuestionCard@Project` and stop. Heavier DescriptionContext, A.6.6 base-dependence, extraction, lens, evidence, and structure-use return records are used only when the next use would otherwise hide loss, source-basis dependence, or non-structure claim kind.
-
-The reason to keep C.30 separate is architectural clarity. Architecture is selected structure for a described holon under context and concern; architecture descriptions are Description epistemes and specification-use cases or views over that claim, while publications only make those epistemes or views available. A.22 supplies the structure substrate, not the architecture ontology.
-
-### A.22:11 - SoTA-Echoing
-
-| Exact practice or source anchor | FPF adoption | Action consequence | Boundary |
-| --- | --- | --- | --- |
-| ISO/IEC/IEEE 42010:2022 architecture-description practice | Adopt the separation of described entity of interest, concern, viewpoint, view, and correspondence as pressure for DescriptionContext separation, mapped here to `EntityOfConcern` and `DescriptionContext` terms. | A.22 structural descriptions and views reuse `DescriptionContext`, viewpoint, view, and correspondence machinery rather than inventing a local display ontology. | ISO 42010 does not make every structure an architecture and does not add evidence, assurance, gate, or decision authority. |
-| OMG SysML v2 view practice | Adapt views-as-queries and model-view discipline as a source for treating views as selected renderings over model content. | A structural view states selected, hidden, or lost structure when the selection changes action. | A view is not the structure and not a proof of the described holon. |
-| C.29 mathematical-lens discipline | Adopt preserved structure, lost structure, lens-use admissibility, and stop-condition discipline when a mathematical lens is used for a structure claim. | Cite C.29 output through C.29 lens-use result, preserved structure, lost structure, stop condition, and structure-use return discipline. | Lens output is not structure, evidence, assurance, causal-use relation, or decision. |
-| arXiv:2603.00601 code-space architecture relation-graph work and related code-probing practice | Adapt partial-observability, typed-relation, uncertainty, and structure-use return pressure for extracted structural views. | Use extracted structural-view records with validation boundaries and an observation value selected from `observed`, `inferred`, or `unknown` where needed, plus structure-use return conditions. | Do not mint `U.CodeSpace` and do not treat probe output, probe JSON, or benchmark output as structure adequacy, assurance, release evidence, or assurance evidence. |
-| Coarsening, compression, and RG-adjacent traditions | Adopt the need to say what structure is preserved and what is lost. | Use `StructuralCoarseningDescription@Context` and `StructureUseReturnCondition` before relying on a coarsened structure for action. | RG, epiplexity, structural information, and equivalence reasoning are governed by C.29, C.16, or another governing pattern named for the claim being made. |
-| GonzoML neural-network architecture discussions as practitioner-language intake | Adapt block replacement, dataflow change, memory placement, cache placement, path-selection, pruning, distillation, and architecture-search wording as general architecture-operation recognition material. | When such wording is used, keep block, cache, expert, router, gate, and similar words as `C.30.STRAT` source labels until changed structure kind, source-description relation, source-use relation, base-dependence relation, evidence relation, lens output, preserved structure, lost structure, and FPF pattern applications are recovered. | Neural-network labels, benchmark results, ablations, or pruning masks do not become structure ontology, architecture decisions, evidence sufficiency, gate passage, assurance, or architecture adequacy by themselves. |
-
-### A.22:12 - Relations
-
-Builds on: `C.2.1`, `A.6.P`, `A.7`, `A.6.2`, `A.6.3`, `A.14`, `C.16`, `C.29`, `E.10.D2`, `E.10`, `C.2.P`, `E.17.0`, `E.17.1`, `E.24`, `E.24.PUB`, and `F.18`.
-
-Coordinates with: `A.22.CGUS`, `C.30.P`, `C.30.STRAT`, `C.30`, `C.30.ASV`, `C.30.TFS-REL`, `C.30.LCA`, `C.30.ILC`, `A.6.F`, `E.18`, `E.18.3`, `A.10`, `G.6`, `B.3`, `A.20`, `A.21`, `C.28`, `A.15`, `C.11`, `C.16`, `C.25`, `G.5`, `C.33`, `C.34`, and `C.35` when architecture-specific structure-capture, preservation, or discovery adequacy claim kinds are being made.
-
-Queue `7b` relation note: `C.33`, `C.34`, and `C.35` govern architecture-specific capture, preservation, and discovery adequacy over selected structures. A.22 keeps the general selected-structure portion; it does not decide architecture use, candidate admission, measurement, evidence, assurance, or decision authority for those adequacy claims.
-
-Does not replace: `C.30.P` or `C.30.STRAT` wording-use precision restoration, `C.30` for grounded architecture adequacy and conditional architecture-description use, `C.29` for mathematical-lens use, `C.16` for measurement and characterization, `C.28` for causal-use relation, `B.3` for assurance, `A.10` and `G.6` for evidence, `A.20` and `A.21` for gates and release, `A.15` for work, `C.11` for decisions, or `E.17` for publication.
-
-### A.22:End
-
-## A.22.CGUS - Constraint-Governed Unfolding Structure
-
-> **Type:** A.22 specialization of `U.Structure`
-> **Status:** Stable
-> **Normativity:** Normative unless explicitly marked informative
-
-### A.22.CGUS:0 - Use This When
-
-Use this when a team has a P2S flow card, a P2W carry-through note, an abductive prompt path, an improvement cycle, a narrative ordering, a typing-grounding trace, or a README first-entry seed, and the visible form helps but also misleads. It looks like a route, loop, chain, table, graph, or story, while the useful engineering question is not "which sequence should everyone follow?" but "which admitted records, current structures, typed positions, relation instances, constraints, and guards make each continuation admissible or inadmissible?"
-
-When that is the live question, name the object as `ConstraintGovernedUnfoldingStructure@Context`: an A.22-governed `U.Structure` whose SlotSpec-grounded positions, relation signatures, exact referenced values, cross-position constraints, invariants, guarded transitions, preserved structures, C.33 adequacy notes, direct governing-pattern exits, admissible next-form kinds, and use boundaries jointly constrain more than one continuation.
-
-Use CGUS only after the candidate structure has more than one typed position and the relations or constraints among those positions affect admissible continuations. A single recommendation, diagram, slogan, pattern list, or document section is not enough.
-
-### A.22.CGUS:1 - Problem Frame
-
-FPF often needs to explain how several admitted records, current structures, typed positions, and relations jointly constrain several admissible next forms without turning that explanation into a workflow. A problem card, `G.2` source pack, architecture concern, candidate set, evaluation result, cue publication, and current `U.Structure` can participate through exact governed relations in pattern-use recommendations, candidate structures, rival hypotheses, evidence work, repair proposals, reader-facing narratives, or structure-use return conditions. The point is the recoverable constraint structure, including relation signatures, guards, preserved structures, C.33 loss notes, and direct governing-pattern exits, not a one-input-one-output conversion.
-
-These structures can be architecture-facing, reasoning-facing, narrative-facing, improvement-facing, typing-grounding-facing, evidence-facing, currentness-facing, or first-use-facing. They share one structural need: typed positions are connected by relations and constrained together, so admissible continuations are recoverable only while the relevant structures, C.33 adequacy notes, guards, exits, and governing-pattern boundaries remain visible.
-
-### A.22.CGUS:2 - Problem
-
-The problem is that a constraint-governed unfolding structure becomes unrecoverable when one route-shaped or loop-shaped description stands in for it.
-
-First, the structure's typed positions, exact relations, constraints, preserved structures, C.33 adequacy notes, stop boundary, and direct governing patterns disappear behind decorative prose. Words such as "flow", "move", "unfold", "loop", or "route" remain, but no reader can recover what constrains a continuation.
-
-Second, one demonstration of the structure becomes a fake workflow. A teaching sequence, diagram, README entry, prompt example, or happy path is treated as the order of real project work. Method, work plan, performed work, evidence, gate, decision, publication, and architecture claims then become unsupported inferences from displayed order.
-
-### A.22.CGUS:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Useful unfolding vs workflow overread | A structured unfolding helps a practitioner see what can come next, but the project sequence may be nonlinear, partial, interrupted, iterative, or delegated to different governing patterns. |
-| Reusable `U.Structure` specialization vs root-kind inflation | FPF needs a reusable A.22 specialization of `U.Structure` for constraint-governed unfolding without minting `U.Route`, `U.Workflow`, `U.Process`, `U.Architecture`, or another root kind by appearance. |
-| Description usefulness vs semio-bias | Route cards, graphs, tables, slides, narratives, and README lines can suggest the structure before admission or present it after admission, but provisional descriptions and admitted demonstrative slices are not the structure itself. |
-| Local claims vs universal calculus | P2W, P2S, abduction, narrative, improvement, grounding, refresh, and option selection need different direct governing patterns; CGUS only carries the shared constraint-governed unfolding structure. |
-| Didactic entry vs shadow navigation | First-entry seed lines help new readers start while remaining publication aids rather than a second specification or navigation authority beside the governing patterns. |
-
-### A.22.CGUS:4 - Solution
-
-Select `ConstraintGovernedUnfoldingStructure@Context <: U.Structure` as a thin A.22 specialization of `U.Structure` for constraint-governed unfolding across typed positions and exact governed relations.
-
-A constraint-governed unfolding structure is a `U.Structure` whose typed positions, relation signatures, referenced relation values, constraints, invariants, guarded transitions, preserved structures, C.33 adequacy notes, and governing-pattern exits jointly constrain admissible next forms. It states how admitted starting records and already-current structures participate through exact relations. It makes no displayed-order claim about real work and fixes no cardinality of starting records, starting structures, or resulting records.
-
-Do not read "unfolding" as a chain by default. The unfolding structure may be branching, merging, cyclic, partially ordered, or graph-shaped, and it may leave several alternative next forms live at once. Before the wider structure passes the admission test, a linear chain, seminar order, prompt path, or happy path remains a `ProvisionalUnfoldingDemonstrationDescription@Context`. After admission, a presentation of one traversal may be a `DemonstrativeUnfoldingSlice@Context` whose EntityOfConcern is that admitted CGUS.
-
-#### A.22.CGUS:4.1 - Constraint-governed unfolding structure
-
-```text
-UnfoldingStructureReferenceKindValue = acceptedStartingRecord | relationInstance | constraint | invariant | guardedTransition | currentness
-UnfoldingStructureBoundaryKindValue = admissibleUse | nonAdmissibleUse | stop | return
-
-ConstraintGovernedUnfoldingStructure@Context <: U.Structure:
-  boundedContextRef: U.BoundedContextRef
-  declaredStructureSubstrateRef: U.EntityRef, referencing one U.Structure
-  entityOfConcernRef: U.EntityRef
-  entityOfConcernKindRef: U.KindRef
-  specializedStructureRef?: U.EntityRef, referencing one narrower U.Structure
-  acceptedStartingRecordReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=acceptedStartingRecord
-  acceptedStartingStructureRefs[]: U.EntityRef, each referencing one U.Structure
-  relationSignatureRefs[]: U.EntityRef, each referencing one U.Signature
-  structurePositionRefs[]: U.EntityRef, each referencing one ConstraintGovernedUnfoldingPosition@Context
-  relationInstanceReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=relationInstance
-  constraintReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=constraint
-  invariantReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=invariant
-  guardedTransitionReferenceRefs[]: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=guardedTransition
-  preservedStructureRefs[]: U.EntityRef, each referencing one U.Structure
-  structureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
-  admissibleNextFormKindRefs[]: U.KindRef
-  demonstrativeSliceRecipeRefs[]?: U.EntityRef, each referencing one U.MethodDescription
-  admissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  nonAdmissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  stopBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  structureUseReturnBoundaryRefs[]: U.EntityRef, each referencing one UnfoldingStructureUseBoundaryCondition@Context
-  currentnessRelationReferenceRefs[]?: U.EntityRef, each referencing one UnfoldingStructureReferencedValueRelation@Context with referenceKind=currentness
-```
-
-The declared substrate is the structure being unfolded, not a topic label or container. `specializedStructureRef` is present only when one narrower `U.Structure` record is current, such as an E.18.3 transformation-flow specialization. That narrower record may point back through its `unfoldingStructureRef`; the reciprocal references state one generic-to-narrower specialization relation and do not create two unrelated unfolding structures. Accepted starting records and accepted starting structures remain different: a record may describe, publish, or evaluate a structure without becoming that structure. Every referenced entity retains its exact kind and direct governing pattern.
-
-#### A.22.CGUS:4.1.1 - Dependent position, reference, and boundary relations
-
-```text
-ConstraintGovernedUnfoldingPosition@Context <: U.Relation:
-  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
-  positionSlotSpecRef: U.EntityRef, referencing one A.6.5 SlotSpec
-  positionFillingRef?: U.EntityRef
-  positionFillingKindRef?: U.KindRef
-  directGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
-  RelationRefKind: U.EntityRef
-  Dependence: bounded-context local to unfoldingStructureRef
-  Identity: <unfoldingStructureRef, positionSlotSpecRef, positionFillingRef if present>
-
-UnfoldingStructureReferencedValueRelation@Context <: U.Relation:
-  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
-  referenceKind: UnfoldingStructureReferenceKindValue
-  referencedValueKindRef: U.KindRef
-  referencedValueRef: U.EntityRef
-  directGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
-  relationSignatureRef?: U.EntityRef, referencing one U.Signature
-  RelationRefKind: U.EntityRef
-  Direction: unfoldingStructureRef -> referencedValueRef
-  Dependence: bounded-context local to unfoldingStructureRef and referencedValueRef editions
-  Identity: <unfoldingStructureRef, referenceKind, referencedValueKindRef, referencedValueRef>
-
-UnfoldingStructureUseBoundaryCondition@Context <: U.Relation:
-  unfoldingStructureRef: U.EntityRef, referencing one ConstraintGovernedUnfoldingStructure@Context
-  boundaryConditionKind: UnfoldingStructureBoundaryKindValue
-  conditionDescriptionRef: U.EpistemeRef
-  affectedStructureRef: U.EntityRef, referencing one U.Structure
-  boundaryGoverningPatternRef: U.EntityRef, referencing one U.MethodDescription
-  conditionalReceivingPatternRef?: U.EntityRef, referencing one U.MethodDescription
-  RelationRefKind: U.EntityRef
-  Dependence: bounded-context local to unfoldingStructureRef and affectedStructureRef editions
-  Identity: <unfoldingStructureRef, boundaryConditionKind, conditionDescriptionRef, affectedStructureRef, conditionalReceivingPatternRef if present>
-```
-
-The two `...KindValue` declarations are local closed enumerations, not U-kinds. Position filling ref and kind are both present or both absent. A relation signature is present when the referenced value is a relation. Every boundary names its governing pattern; only `return` names a conditional receiver.
-
-`StructuralInformationAdequacyNote@Context` under C.33 carries captured, expected-but-uncaptured, lost, and hidden structure for a declared use. CGUS does not mint parallel loss or hiddenness fields. A use boundary is not permission, gate passage, evidence, assurance, or currentness refresh by itself.
-
-#### A.22.CGUS:4.2 - Admission test
-
-A readable chain is not sufficient for admission. Use CGUS only when the current structure recovers all of the following:
-
-| Coordinate | Recovery for CGUS admission | Reduced use when absent |
-| --- | --- | --- |
-| Structure identity | One exact `U.Structure` substrate, bounded context, EntityOfConcern, and kind. | Keep a note, card, description, or method description. |
-| Typed positions | More than one SlotSpec-grounded position and any current filling ref-kind pairs. | Keep a list or seed description. |
-| Connecting relations | Relation signatures and exact referenced relation instances. | Keep an index until connections are recoverable. |
-| Cross-position constraints | Constraints, invariants, guards, branches, joins, cycles, partial orders, or many-to-many dependencies that matter to the use. | Keep a linear presentation as a provisional demonstration description until the wider structure is admitted. |
-| Preserved and omitted structure | Preserved structures and any C.33 adequacy notes needed by the declared use. | Lower the adequacy claim and retain the return. |
-| Admissible next forms | Exact next-form kinds, not one forced next record. | Do not claim a usable unfolding structure. |
-| Direct governing-pattern exits | Each stronger claim points to its direct pattern. | The structure is overreading itself as method, work, evidence, gate, architecture, publication, or refresh authority. |
-| Use boundaries | Admissible, non-admissible, stop, and return conditions are explicit. | Keep the artifact as a provisional explanation. |
-
-Branches or joins that are current remain visible. A cycle shown as "return to the start" is not thereby a chain. One slice may be linear because attention needs one path; the wider structure remains graph-shaped when its relations are graph-shaped.
-
-#### A.22.CGUS:4.3 - Provisional demonstrations, admitted-structure descriptions, and demonstrative slices
-
-A presentation may help discover positions and relations before any CGUS exists. Keep that pre-admission object as a C.2.1-conformant episteme about the actual subject-domain object, question, or proposed continuation set:
-
-```text
-DemonstrationUseModeValue = workedSlice | firstUseExample | actualCaseReplay | variantComparison | otherDeclared
-DemonstrationPresentationFormValue = orderedList | chainDiagram | flowCard | table | narrativePath | slideSequence | promptBlock | graphSlice | otherDeclared
-
-ProvisionalUnfoldingDemonstrationDescription@Context <: U.Episteme:
-  entityOfConcernRef: U.EntityRef, referencing the actual subject-domain object, question, or proposed continuation set
-  entityOfConcernKindRef: U.KindRef
-  boundedContextRef: U.BoundedContextRef
-  viewpointRef: U.ViewpointRef
-  subjectRef: U.SubjectRef, decoding to <entityOfConcernRef, boundedContextRef, viewpointRef>
-  groundingHolonRef?: U.HolonRef
-  claimGraph: U.ClaimGraph by value
-  referenceScheme: U.ReferenceScheme by value
-  editionId
-  demonstrationUseMode: DemonstrationUseModeValue
-  presentationForm: DemonstrationPresentationFormValue
-  provisionalContinuationDescriptionRefs[1..*]: U.EpistemeRef
-  candidatePositionDescriptionRefs[2..*]: U.EpistemeRef
-  candidateRelationDescriptionRefs[]?: U.EpistemeRef
-  unresolvedCGUSAdmissionCoordinateDescriptionRefs[1..*]: U.EpistemeRef
-  admissionTransitionConditionDescriptionRef: U.EpistemeRef
-```
-
-This local declaration form is an episteme, not a structure slice and not a new root kind. Its C.2.1 identity comes from its exact EntityOfConcern, DescriptionContext, optional grounding holon, ClaimGraph, reference scheme, and edition. `entityOfConcernRef` names the subject that the explanation is currently about; it may not point to a not-yet-admitted CGUS. Candidate positions and relations are claims to investigate, not admitted `ConstraintGovernedUnfoldingPosition@Context` or relation instances. At least one unresolved admission coordinate remains present while the description is provisional.
-
-Once every coordinate in `4.2` is recoverable and the wider `ConstraintGovernedUnfoldingStructure@Context` is admitted, describe that structure without selecting a traversal through it by creating this C.2.1-conformant episteme:
-
-```text
-ConstraintGovernedUnfoldingStructureDescription@Context <: U.Episteme:
-  entityOfConcernRef: U.EntityRef, referencing one admitted ConstraintGovernedUnfoldingStructure@Context
-  entityOfConcernKindRef: U.KindRef, referencing ConstraintGovernedUnfoldingStructure@Context
-  boundedContextRef: U.BoundedContextRef
-  viewpointRef: U.ViewpointRef
-  subjectRef: U.SubjectRef, decoding to <entityOfConcernRef, boundedContextRef, viewpointRef>
-  groundingHolonRef?: U.HolonRef
-  claimGraph: U.ClaimGraph by value
-  referenceScheme: U.ReferenceScheme by value
-  editionId
-  preservedStructureRefs[]: U.StructureRef
-  structureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
-  declaredUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  descriptionUseReturnBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-```
-
-Its EntityOfConcern is the admitted CGUS. Its ClaimGraph may describe branches, joins, cycles, partial orders, positions, relations, constraints, and admissible next forms without choosing one route through them. Carrier, diagram form, table layout, or publication location does not determine its identity. A new edition is required when the described CGUS edition, DescriptionContext, applicable grounding, ClaimGraph, reference scheme, preserved-structure account, adequacy account, declared use, or return boundary changes.
-
-When one presentation selects a traversal or ordering through that admitted structure, create a different post-admission episteme:
-
-```text
-DemonstrativeUnfoldingSlice@Context <: U.Episteme:
-  entityOfConcernRef: U.EntityRef, referencing one admitted ConstraintGovernedUnfoldingStructure@Context
-  boundedContextRef: U.BoundedContextRef
-  claimGraph: U.ClaimGraph by value
-  referenceScheme: U.ReferenceScheme by value
-  editionId
-  derivedFromProvisionalDemonstrationRef?: U.EpistemeRef, referencing one ProvisionalUnfoldingDemonstrationDescription@Context
-  demonstrationUseMode: DemonstrationUseModeValue
-  transformationFlowStructureRef?: U.EntityRef, referencing one E.18 TransformationFlowStructure
-  pathSliceId?: E.18 PathSliceId
-  designRunTag?: E.18 DesignRunTag
-  demonstratedPatternUseRowRefs[]: U.EpistemeRef, each referencing one DemonstratedPatternUseRow@Context
-  includedStructurePositionRefs[]: U.EntityRef, each referencing one ConstraintGovernedUnfoldingPosition@Context
-  omittedStructureInformationAdequacyNoteRefs[]?: U.EpistemeRef, each referencing one StructuralInformationAdequacyNote@Context under C.33
-  loopCompressionRuleRef?: U.EntityRef, referencing one U.MethodDescription
-  alternativeSliceRefs[]?: U.EpistemeRef, each referencing one DemonstrativeUnfoldingSlice@Context
-  presentationOrderingRuleRef: U.EntityRef, referencing one U.MethodDescription
-  presentationForm: DemonstrationPresentationFormValue
-  admissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  nonAdmissibleUseRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-  sliceReturnBoundaryRef: U.EntityRef, referencing one UnfoldingStructureUseBoundaryCondition@Context
-```
-
-The transition does not retype the provisional episteme or any subject-domain result. The admitted slice cites the provisional description only as its derivation basis, names the already-admitted CGUS as EntityOfConcern, and replaces candidate position and relation descriptions with exact admitted structure positions and relation references. Its edition changes when that CGUS edition, included positions, omitted-structure account, traversal or ordering rule, alternatives, use boundary, ClaimGraph, or reference scheme changes; carrier or rendering change alone does not. If admission later fails, the provisional explanation may remain useful under its declared use while the slice claim is withdrawn.
-
-The local mode and presentation-form values are enumerations, not CharacteristicSpaces or U-kinds. Presentation form says how the episteme is rendered; it is not a carrier kind. Add an E.17 publication relation only when publication is current.
-
-The E.18 triple is all present or all absent. When present, it locates this post-admission demonstration in one flow valuation and relates pattern-selection, selected-pattern-application, and downstream-subject-work slices without merging their structures, rows, work occurrences, or results.
-
-#### A.22.CGUS:4.3.1 - Demonstrated pattern-use rows
-
-When a local pattern mantra is admitted as a `DemonstrativeUnfoldingSlice@Context`, `mantra move` is bounded Plain wording for one `DemonstratedPatternUseRow@Context` inside that slice. The row consumes A.6.5 SlotSpec discipline, but A.6.5 does not govern the row's identity. The row is not a root U-kind, an operation, or a work occurrence. It shows one result-bearing conditional continuation. A short
+* rule references and evidence references (SCR or RSCR references plus

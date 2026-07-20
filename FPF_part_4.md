@@ -1,4 +1,1985 @@
-picture is a guide to the relation, not the definition; the formal boundary returns in the next step." That line is not decoration. It prevents the selected order from becoming false ontology.
+## G.11 - Telemetry-Driven Refresh and Decay Orchestrator
+
+**Tag.** Architectural pattern (architectural; notation-independent)
+> **Status:** Stable
+**Normativity.** Normative (unless explicitly marked informative)
+
+**Stage.** run-time and maintenance-time (selective re-computation, republication, and controlled deprecation)
+
+**Primary outputs (kit publication units and records).** `RefreshQueue`, `RefreshPlan@Context` (WorkPlanning plan item), `RefreshReport@Context` (Work or Audit record), `DeprecationNotice@Context`, `EditionBumpLog@Context`.
+
+**Primary hooks.** `G.Core` (RSCR trigger catalogue, alias docking, and Default Governing Definition Index), `G.6` (EvidenceGraph; `PathId` and `PathSliceId`), `G.7` (Bridge Sentinels; CL, Φ, and plane policy pins), `G.5` (set-returning selection and dispatch), `G.8` (SoS-LOGBundle telemetry hooks), `G.9` (parity reruns), `G.10` (shipping hooks and pack-level telemetry pins), `G.12` (dashboard telemetry pins), `B.3.4` (freshness and decay), `E.18` (GateCrossing and CrossingBundle visibility), `C.18` and `C.19` archive, front, and live-pool policy pins, `C.23` (SoS-LOG branches and maturity ladders), `C.28` (causal-use support records whose SoTA-sensitive fields can change downstream causal-use results).
+
+**Non-duplication note.**
+`G.11` cites `G.Core` for RSCR trigger-kind meaning, CN and CG admissibility, tri-state guards, penalties, set-return semantics, shipping or harvesting delegation, `RSCRTriggerKindId` values, and default governing definitions.
+Refresh plans and reports cite those governed definitions; they do not create local trigger meanings or default definitions inside the refresh record.
+
+### G.11:0 - Use this when
+
+Use this pattern when a shipped pack, evidence set, dashboard, selected set, archive, front, Q-front, term bridge, descriptor set, or parity result may be stale because telemetry, freshness, edition pins, policy pins, evidence, bridge calibration, or source currentness changed.
+
+#### G.11:0.1 - What goes wrong if missed
+
+The team either rebuilds everything after every small change or keeps using a shipped record whose source, descriptor, edition, policy, bridge, or archive currentness has silently drifted. Refresh then becomes an informal maintenance habit rather than a scoped, reviewable work plan and report.
+
+#### G.11:0.2 - What this buys
+
+The practitioner gets a small refresh kit: name the affected object, currentness object kind, source record, edition or lineage pins, affected scope, governing pattern, planned refresh action, and report. The refresh can stay local while still preserving comparability, selected-set meaning, archive and front meaning, and source-currentness evidence.
+
+#### G.11:0.3 - First output
+For loop, harness, workflow-store, or DPF seed artifacts, a refresh line names the currentness object directly: source pack, evaluator, benchmark, harness edition, workflow edition, pattern seed, PFAD and PFR dependency, selected set, archive, front, or publication carrier. `G.11` records currentness, source decay, edition change, telemetry, scoped refresh action, and report refs; it does not create a local "reopen and refresh" pair and does not decide whether the artifact improved.
+
+Write one `RefreshCurrentnessLine@Context` or one `RefreshPlan@Context` with the affected scope and direct governing pattern named. If the meaning belongs to selected-set publication, archive or front stewardship, cultural evolution, term bridges, evidence, dashboard, or shipping, cite that governing pattern rather than defining the meaning inside the refresh record.
+
+Framework edition pins, source packs, publication-carrier currentness, deprecation, supersession, and source-decay conditions are refresh and currentness claims governed here when currentness is the live question. Record the framework-specific trigger and cite `E.4`, `E.4.PFR`, `E.4.PFAD`, `G.2`, `E.11`, or `E.17` as the direct owner of the affected framework, source, decision, or publication meaning instead of creating a private refresh vocabulary in the framework pattern.
+
+### G.11:1 - Problem frame — Keeping shipped SoTA current without global rebuilds
+
+Part G produces shipped, selector-ready publication units and records: packs, bundles, evidence graphs, parity reports, and dashboards. Once shipped, they are exposed to:
+
+* **telemetry** (illumination and archive changes, parity outcomes, dashboard deltas),
+* **decay** (freshness windows expire; epistemic debt grows),
+* **edition drift** (descriptor, distance, or transfer rules bump; policy pins evolve),
+* **bridge evolution** (CL or plane penalties or calibrations update).
+
+Without an explicit orchestration kit, refresh becomes either:
+
+* a brittle set of ad-hoc “full rerun” rituals, or
+* an audit-only refresh result that silently accumulates drift.
+
+`G.11` is the **Part G governing definition** of the **refresh orchestration kit**: it turns typed refresh causes into **scoped plans** and **auditable execution reports**, while delegating all cause semantics and universal invariants to `G.Core`.
+
+### G.11:2 - Problem — Why naive refresh breaks comparability and admissibility
+
+A refresh loop fails (conceptually) when any of the following happens:
+
+1. **Full-rerun mania.** Minor edits (e.g., a single Bridge calibration) trigger pack-wide rebuilds without a traceable scope rationale.
+2. **Editionless telemetry.** Telemetry signals are recorded without edition pins, making reruns non-comparable and parity-unreplayable.
+3. **Alias-as-semantics.** Local trigger aliases are treated as if they define meaning, fragmenting refresh semantics across patterns.
+4. **Silent crossings.** Refresh actions implicitly change crossing assumptions (UTS, Path, or policy pins) without a visible CrossingBundle.
+5. **Orchestration smuggles semantics.** Refresh introduces new default behaviors (dominance, `PortfolioMode`, or Γ-fold) or coerces partial orders into scalars “for convenience.”
+
+### G.11:3 - Forces — Minimal recomputation under strict invariants
+
+* **Minimal scope vs. completeness.** Refresh must be *as local as possible* (slice-scoped), but still include a defensible dependency closure over evidence and crossings.
+* **Operational urgency vs. auditability.** Refresh is triggered by run-time telemetry and decay, yet must remain auditable as Work (pins, refs, paths), not as opaque “decisions.”
+* **Alias stability vs. semantic unification.** Existing trigger labels must remain usable, but their meaning must be one governing definition and id-based.
+* **Modularity vs. orchestration power.** `G.11` must coordinate harvesting, parity, and shipping without re-implementing them or importing discipline-specific method semantics into core.
+* **Policy-bound behavior vs. “smart defaults.”** Ordering of refresh, priority heuristics, and budget handling are valuable—but must live as policy-bound extensions, not as hidden universal rules.
+
+### G.11:4 - Solution — RSCR-driven refresh as a P2W-scoped orchestration kit
+
+#### G.11:4.1 - G.Core linkage (normative)
+
+**GCoreLinkageManifest (normative; canonical shape per `G.Core`; Nil‑elision permitted).**
+
+`GCoreLinkageManifest := ⟨
+  CoreConformanceProfileIds := {
+    GCoreConformanceProfileId.PartG.AuthoringBase,
+    GCoreConformanceProfileId.PartG.TriStateGuard,
+    GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted,
+    GCoreConformanceProfileId.PartG.ShippingBoundary
+  },
+
+  RSCRTriggerSetIds := {GCoreTriggerSetId.RefreshOrchestration},
+
+  CorePinSetIds := {
+    GCorePinSetId.PartG.AuthoringMinimal,
+    GCorePinSetId.PartG.CrossingVisibilityPins
+  },
+
+  CorePinsRequired := {
+    RSCRTriggerKindId,
+    RSCRTriggerAliasId?,
+    scope: PathSliceId[] | PatternScopeId,
+    payloadPins{…},
+
+    RefreshPlanId,
+    RefreshReportId,
+    DeprecationNoticeId?,
+    EditionBumpLogId?,
+
+    SlotFillingsPlanItemRef[]?
+  },
+
+  DefaultsConsumed := ∅,
+  TriggerAliasMapRef := G.Core.TriggerAliasMap.G11
+⟩`
+
+By the `G.Core` **Expansion rule**, the **effective** conformance ids, trigger kinds, and pin obligations for `G.11` are the manifest expansions (profiles, sets, and pin sets) plus the explicit deltas above.
+
+**TriggerAliasIds (visible; labels only).** `{G.11:T0…T7}` (docked via `TriggerAliasMapRef`; aliases are never semantic authorities).
+
+#### G.11:4.2 - Refresh orchestration kit (pattern-governed; conceptual artefacts)
+
+`G.11` defines a minimal kit of *authoring-plane* artefacts that make refresh explicit and auditable.
+
+1. **`RefreshQueue` (conceptual queue).**
+   A queue of refresh candidates keyed by scope (`PathSliceId` preferred; `PatternScopeId` permitted).
+   Ordering, prioritization, and batching are policy-bound (and therefore extension-scoped), but every queue item carries canonical trigger kind ids.
+
+2. **`RefreshPlan@Context` (WorkPlanning plan item).**
+   A planned refresh is a WorkPlanning object that **does not execute Work** and **does not embed gate decisions**. It declares:
+
+* `RefreshPlanId` (UTS-published id; editioned)
+* `EntityOfConcernRef` and `ReferencePlane` pins (by ref; no implicit widening)
+* `TargetScope := PathSliceId[] | PatternScopeId[]`
+* `PlannedTriggers := RSCRTrigger[]` (canonical trigger kind ids, scope, and payload pins)
+* `PlannedActions := RefreshAction[]` (each action delegates to a governing pattern)
+* `RequiredPins := {EditionPins, PolicyPins, UTS pins, Path pins}` for replayability
+* `PlanItemRefs := SlotFillingsPlanItemRef[]` (when planning baselines or reruns requires explicit planned slot fillings)
+
+3. **`RefreshReport@Context` (Work or audit artefact).**
+   An execution report (Work or Audit artefact) that records:
+
+* `RefreshReportId` (UTS-published id; editioned)
+* `ExecutedActions[]` with links to cited artefacts governed by cited patterns (e.g., new parity report id, new pack id)
+* `ObservedDeltas` (telemetry deltas, admissibility changes, evidence-relation or source-relation changes) as refs and pins, not as untyped prose
+* `RSCRRefs[]` (any RSCR or regression harness artefacts invoked)
+* `EmittedNotices[] := DeprecationNoticeId[]` and `EditionBumpLogId[]`
+* the canonical trigger kinds actually applied (not only aliases)
+
+4. **`DeprecationNotice@Context` and `EditionBumpLog@Context`.**
+   Controlled evolution artefacts that preserve ID-continuity:
+
+* **DeprecationNotice** explains scope, reason class (canonical trigger kind ids), and successor refs.
+* **EditionBumpLog** records edition increments and the pins that justify them.
+
+> *Note (normative by delegation).* ID continuity and alias discipline are governed by `G.Core` (do not restate as local rules here).
+
+#### G.11:4.2a - Selected-set, archive, and cultural-variant currentness
+
+Use this line when refresh currentness concerns a selected set, front, Q-front, archive, portfolio lineage, cultural-variant lineage, style or tradition term bridge, or path slice.
+
+```text
+RefreshCurrentnessLine@Context:
+  governedObjectRef:
+  currentnessObjectKind:
+  sourceRecordRef:
+  editionOrLineagePins:
+  affectedPathSliceOrScope:
+  directGoverningPatternRef:
+  plannedRefreshAction:
+  refreshReportRef?:
+```
+
+`currentnessObjectKind` may name selected set, `Front`, `Q-front`, `ExplorationArchive`, `Archive`, portfolio lineage, cultural-variant lineage, style or tradition term bridge, or path-slice scope. G.11 records the refresh plan, scope, pins, report, and deprecation or edition-bump publication. It does not define selected-set publication, archive or front semantics, cultural-evolution semantics, or term-bridge semantics. Use `G.5`, `C.18`, `C.19`, `C.36`, `F.17`, `F.18`, and `F.9` for those meanings.
+
+Freshness and currentness are handled by `RefreshPlan@Context`, `RefreshReport@Context`, `DeprecationNotice@Context`, and `EditionBumpLog@Context`; do not add a separate ticket kind for the same concern.
+
+#### G.11:4.3 - Orchestration semantics (conceptual; delegating to governing definitions)
+
+
+
+`G.11` turns typed causes into scoped actions without governing the semantics of those actions.
+
+**4.3.1 Ingestion.**
+Consume RSCR triggers from:
+
+* telemetry hooks (e.g., `G.8`, `G.10`, `G.12`),
+* freshness and decay events (`B.3.4`),
+* evidence, bridge, policy, or edition edits (from the respective governing patterns’ publication faces, forms, or units).
+
+Every ingested signal is normalized into an `RSCRTrigger` (canonical id, scope, payload pins), with optional alias labels.
+
+**4.3.2 Scope closure (EvidenceGraph-first).**
+Compute the minimal dependency closure over:
+
+* cited evidence and source relations, with `G.6` `PathId` and `PathSliceId` refs when a graph path slice is the current math-lens expression,
+* declared crossings (`G.7` sentinels; `CrossingBundle` visibility),
+* and pinned references (editions and policies).
+
+The closure is a *planning-time claim* (“these slices are affected”), not a Work-time output.
+
+**4.3.3 Planning (P2W boundary).**
+Produce `RefreshPlan@Context` that schedules actions of the form:
+
+* `RerunHarvest` (delegates to the selected harvest, source-currentness, or SoTA governing definition named by value, such as `G.1` or `G.2`, when that definition is current)
+* `RerunParity` (delegates to `G.9`)
+* `RecomputeSelectionOrSetPublication` (delegates to `G.5`)
+* `RebindBridgeOrCrossing` (delegates to `G.7` and visibility harnesses)
+* `UpdateEvidenceBindings` (delegates to `G.6`)
+* `ReshipPack` (delegates to `G.10`)
+* `UpdateBundle` (delegates to `G.8`)
+* `UpdateDashboardSlice` (delegates to `G.12`)
+* `EmitDeprecationNotice` or `EmitEditionBumpLog` (publication units governed by this pattern)
+
+**4.3.4 Execution and audit.**
+Execute planned actions as Work (or Work-bound audit) and publish `RefreshReport@Context`.
+Gating outcomes (admit, degrade, or abstain) follow `G.Core` tri-state semantics and are recorded through policy ids and cited evidence or source relations, rather than as local bespoke outcomes.
+
+#### G.11:4.3a - Causal-use refresh sentinels
+
+When a shipped pack, parity report, evidence relation, source relation, dashboard slice, fairness audit, policy evaluation, or selector output consumes `C.28`, refresh planning includes causal-use sentinel causes when they can change supported use, unsupported use, support verdict, or downstream assurance:
+
+| Causal-use sentinel | Typical affected C.28 result or related claim | Refresh payload pins |
+| --- | --- | --- |
+| counterfactual-realizability shift | `CounterfactualSamplingRealizabilityProfile`, `realizedCounterfactualSampleSupportBasis`, causal evidence design | profile refs, action-primitive refs, work-plan refs, physical, ethical, and operational constraint refs, target counterfactual distribution refs, admissible-use refs, and unadmissible-use refs |
+| counterfactual-data identification and bounding shift | `CausalIdentificationProfile`, `identifiedCounterfactualEstimateSupportBasis`, bounds or partial-identification result | available data regime set refs, realized counterfactual data refs, counterfactual-data identification method refs, counterfactual-data bound refs, assumption refs |
+| target-trial reporting shift | `TargetTrialProtocolRecord`, `TargetTrialEmulationMappingRecord`, applied intervention-effect support verdict | protocol refs, observational data source refs, eligibility, treatment, time-zero, and assignment mappings, follow-up and outcome mappings, emulation-gap refs, residual-confounding and sensitivity refs and additional-analysis refs |
+| causal-fairness shift | `CausalFairnessUseAuditCard`, causal fairness support verdict, fairness assurance | protected-variable refs, decision-variable refs, and outcome-variable refs, permitted-path refs and prohibited-path refs, fairness estimand refs, causal-use question refs, support basis refs, support record refs and verdict refs |
+| causal-representation-validation shift | `CausalVariableRepresentationRecord`, learned causal-variable admissible use | intervention-validity, mechanism-invariance, abstraction-fidelity, counterfactual-query-preservation, representation-shift refs, OOD refs, supported-causal-variable-use refs, and unsupported-causal-variable-use refs |
+| off-policy or causal-RL evaluation shift | `OffPolicyCausalEvaluationProfile`, causal action-policy admissible use, policy parity | behavior-policy refs and evaluation-policy refs, sequential horizon refs, adaptive policy class refs, unit-history conditioning refs, overlap refs and support-basis refs, policy transportability refs, estimator and uncertainty refs |
+| simulation-validation shift | `simulationOnlyCounterfactualOutputBasis`, bounded model-supported counterfactual use | counterfactual model assumption refs, simulation validation refs, `CausalUseSupportStatement` and `CausalUseUnsupportedStatement` refs, sensitivity and rival-cause refs |
+
+These sentinels do not mint new `RSCRTriggerKindId` values. They are domain-facing payload distinctions carried under the canonical trigger kinds governed by `G.Core`, usually evidence-publication edit, edition-pin change, policy-pin change, telemetry delta, freshness or decay event, or tokenization or name change.
+
+#### G.11:4.4 - Extensions (pattern-scoped; non-core)
+
+Discipline-specific refresh strategies and generator-specific wiring live as `GPatternExtension` blocks. Scheduling, ordering, priority, and budget policy for the refresh queue are not separate extension semantics: `G.11` governs the required policy pins on `RefreshQueue` and `RefreshPlan@Context`, while `A.15` keeps WorkPlanning separate from executed Work.
+
+##### G.11:Ext.TriggerAliases
+
+**PatternScopeId:** `G.11:Ext.TriggerAliases`
+**GPatternExtensionId:** `TriggerAliases`
+**GPatternExtensionKind:** `InteropSpecific` (alias docking)
+**GoverningPatternId:** `G.Core`
+**Uses:** `{G.Core}` (cites `G.Core.TriggerAliasMap.G11`)
+**`⊑` and `⊑⁺`:** `∅`
+**Required pins, edition pins, and policy pins (minimum):**
+
+* `RSCRTriggerKindId[]` (canonical ids recorded on triggers)
+* `RSCRTriggerAliasId?` (e.g., `G.11:T0…T7` as labels only)
+* `scope: PathSliceId[] | PatternScopeId`
+
+**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.CrossingBundleEdit, RSCRTriggerKindId.PenaltyPolicyEdit, RSCRTriggerKindId.MaturityRungChange, RSCRTriggerKindId.EvidencePathOrSourceRelationEdit}`
+**Notes (wiring-only):** This block **does not define** what `T0…T7` mean; it only preserves the labels and requires docking via `G.Core.TriggerAliasMap.G11`.
+
+##### G.11:Ext.DecayAndDebt
+
+**PatternScopeId:** `G.11:Ext.DecayAndDebt`
+**GPatternExtensionId:** `DecayAndDebt`
+**GPatternExtensionKind:** `DisciplineSpecific`
+**GoverningPatternId:** `B.3.4` (freshness and decay semantics)
+**Uses:** `{B.3.4, G.6}`
+**`⊑` and `⊑⁺`:** `∅`
+**Required pins, edition pins, and policy pins (minimum):**
+
+* `FreshnessWindowDeclRef` (or equivalent window pin, as defined by the governing definition)
+* `DecayPolicyIdRef` or `EpistemicDebtBudgetRef` (policy-bound)
+* `PathSliceId[]` (affected evidence carriers)
+
+**RSCRTriggerKindIds:** `{RSCRTriggerKindId.FreshnessOrDecayEvent, RSCRTriggerKindId.EvidencePathOrSourceRelationEdit, RSCRTriggerKindId.BaselineBindingEdit}`
+**Notes (wiring-only):** Any budget or priority logic remains policy-bound; `G.11` only wires decay events to refresh planning.
+
+##### G.11:Ext.QDRefreshWiring
+
+**PatternScopeId:** `G.11:Ext.QDRefreshWiring`
+**GPatternExtensionId:** `QDRefreshWiring`
+**GPatternExtensionKind:** `MethodSpecific`
+**GoverningPatternId:** `C.18` (QD semantics; descriptor, distance, and insertion)
+**Uses:** `{C.18, C.19, G.5, G.8}`
+**`⊑` and `⊑⁺`:** `∅`
+**Required pins, edition pins, and policy pins (minimum):**
+
+* `DescriptorMapRef.edition`, `DistanceDefRef.edition`
+* `CharacteristicSpaceRef.edition?` (required when a domain-family coordinate is declared by the QD governing definition)
+* `InsertionPolicyRef`, `EmitterPolicyRef` (policy-bound)
+* `PathSliceId` (archive or illumination scope) and `policy-id` for emitted telemetry triggers
+
+**RSCRTriggerKindIds:** `{RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.PolicyPinChange}`
+**Notes (wiring-only):** `G.11` does not restate QD semantics; it ensures pins are present so reruns are comparable.
+
+##### G.11:Ext.OEERefreshWiring
+
+**PatternScopeId:** `G.11:Ext.OEERefreshWiring`
+**GPatternExtensionId:** `OEERefreshWiring`
+**GPatternExtensionKind:** `MethodSpecific`
+**GoverningPatternId:** `C.19` (open-ended exploration and exploration-exploitation logistics)
+**Uses:** `{C.19, G.5, G.8, G.9}`
+**`⊑` and `⊑⁺`:** `∅`
+**Required pins, edition pins, and policy pins (minimum):**
+
+* `TransferRulesRef.edition`, `EnvironmentValidityRegion` (when OEE is declared by the governing patterns)
+* `GeneratorFamilyId` and `TransferRulesRef` wiring pins (as published by the governing definitions)
+* telemetry scope pins (`PathSliceId`, `policy-id`)
+
+**RSCRTriggerKindIds:** `{RSCRTriggerKindId.EditionPinChange, RSCRTriggerKindId.TelemetryDelta, RSCRTriggerKindId.PolicyPinChange}`
+**Notes (wiring-only):** Any OEE method semantics live with the governing definition; this module only wires refresh triggers to comparable reruns.
+
+##### G.11:4.4a - Scheduling and priority policy pins
+
+Scheduling strategies (bandit-style allocation, queueing, cadence policies, early stopping, or manual priority rules) may influence the order and budget of refresh work, but they do not define trigger meaning, action semantics, parity semantics, shipping semantics, or Part-G-wide defaults.
+
+`G.11` therefore treats scheduling as policy-bound refresh planning:
+
+* `RefreshPriorityPolicyIdRef` names the policy used to order or prioritize queue items.
+* `BudgetDeclRef` names the time, compute, cost, risk, or cadence boundary for the planned refresh.
+* `RSCRTriggerKindId[]` still comes from `G.Core`; scheduling policy does not mint trigger kinds.
+* planned refresh remains `RefreshPlan@Context` under WorkPlanning; executed refresh remains `RefreshReport@Context` or Work-bound audit.
+
+If no priority or budget policy is declared, no scheduling heuristic is admissible by appearance; the plan must either use the ordinary queue order or state the missing policy pin as a blocker.
+
+### G.11:5 - Archetypal Grounding — System and Episteme (informative; Tell–Show–Show)
+
+**`U.System` illustration — Safety-critical maintenance loop (pump and calibration).**
+A centrifugal pump is serviced under a documented procedure (method description). Sensors report vibration drift (telemetry), and a calibration standard is updated (edition bump). `G.11` does not “rebuild the whole maintenance doctrine”: it emits a refresh plan scoped to the affected inspection slices and publishes a refresh report with pins to the updated standard edition and the evidence or source relations. Deprecation notices are issued for obsolete thresholds in the procedure’s acceptance clauses (by governing pattern), preserving ID continuity.
+
+**`U.Episteme` illustration — Living review and benchmark pack (claims and parity).**
+A claim sheet behind a shipped SoTA pack changes (new evidence, retraction, or revised measurement definition). Bridges are recalibrated, affecting CL or plane penalties. `G.11` ingests canonical trigger kinds, computes the minimal closure over affected `PathSliceId`s, schedules targeted parity reruns, then re-ships the pack through the pattern governing shipping semantics while publishing an edition bump log that makes the evolution replayable.
+
+### G.11:6 - Bias-Annotation (informative)
+
+Lenses tested: **Gov**, **Arch**, **Onto and Epist**, **Prag**, **Did**.
+
+* **Arch bias (toward explicit wiring).** Risk: authors feel “over-pinned.” Mitigation: keep the minimum pin set small; push scheduling sophistication into extensions and policies.
+* **Gov bias (toward audit over speed).** Risk: refresh becomes bureaucratic. Mitigation: the kit is intentionally thin: refresh queue entries, `RefreshPlan@Context`, and `RefreshReport@Context` stay explicit, while action semantics remain delegated to governing definitions.
+* **Onto and Epist bias (toward one governing definition semantics).** Risk: teams try to localize trigger meaning for convenience. Mitigation: alias docking is allowed, but semantics stay in `G.Core`.
+* **Prag bias (toward minimal recomputation).** Risk: under-refresh if closure is too narrow. Mitigation: require closure rationale and allow explicit “scope wideners” as policy-bound pins.
+* **Did bias (toward readable, reusable artefacts).** Risk: oversimplified examples. Mitigation: maintain System and Episteme grounding and keep SoTA-echoing explicit.
+
+### G.11:7 - Conformance Checklist (normative)
+
+| ID                                                    | Requirement                                                                                                                                                                                                                                                                                                                                     | Purpose and Notes                                                                                                            |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **CC‑G11‑CoreRef**                                    | A conforming `G.11` artefact **MUST** satisfy the **effective** core conformance set implied by the `GCoreLinkageManifest` in `G.11:4.1` (profile expansion plus explicit deltas; delegated to `G.Core`).                                                                                                                                       | `G.11` is conformant only if the relevant `G.Core` invariants and trigger discipline are satisfied. |
+| **CC‑G11.1 (Slice-scoped planning).**                 | A conforming `RefreshPlan@Context` **SHALL** be scoped to `PathSliceId[]` (preferred) or `PatternScopeId[]` and **SHALL** record canonical `RSCRTriggerKindId` for each planned cause. Pack-wide reruns **MAY** occur only if the declared dependency closure spans all slices; the closure rationale **SHALL** be recorded.                    | Prevents full-rerun mania while keeping a safety escape hatch explicit and auditable.                                      |
+| **CC‑G11.2 (Edition discipline; QD and OEE wiring).**     | When QD, OEE, or both are active, a conforming `RefreshPlan@Context` and `RefreshReport@Context` **SHALL** satisfy the required pin, edition, and policy wiring of the applicable extension blocks: `G.11:Ext.QDRefreshWiring`, `G.11:Ext.OEERefreshWiring`, or both. **`.edition` SHALL apply only on `…Ref`.** Missing required pins **SHALL** block publication. | Keeps replayability strict while keeping method-specific pin lists inside the applicable extension blocks.                  |
+| **CC‑G11.3 (Telemetry-metric admissibility).**             | If a refresh publishes Illumination, QD, or OEE outcomes, it **SHALL** publish **Q, D, and QD‑score** and any coverage or regret as **telemetry metrics** and **IlluminationSummary** as a **telemetry summary**; these values **SHALL be excluded from dominance** unless a CAL policy explicitly promotes them, and the promoting **policy id SHALL be recorded** in SCR-visible evidence bindings through the cited governing patterns.                                                                                                      | Prevents covert scalarisation and keeps “telemetry vs order” separation explicit.                                          |
+| **CC‑G11.4 (Bridge penalties).**                      | Any refresh reacting to Bridge or plane changes **SHALL** satisfy `CC‑GCORE‑PEN‑1` (delegation), and **SHALL** publish `CL`, `CL^k`, `CL^plane`, and the relevant `Φ`, `Ψ`, and `Φ_plane` policy ids with loss notes so penalties are assigned to `R_eff` only (F and G invariant).                                                                                                                                | Keeps penalty assignment auditable during refresh.                                                                            |
+| **CC‑G11.5 (Selector invariants).**                   | Any orchestrated re‑selection or selected-set or archive update **SHALL** (i) satisfy `CC‑GCORE‑SET‑1` (delegation), and (ii) cite the selector governing definition (`G.5`) under an unchanged admissible `ComparatorSet` (edition‑pinned where applicable), returning **sets** (`Pareto` or `Archive`) and introducing **no scalarisation** inside `G.11`.                                                                                                                       | Prevents refresh from changing order semantics.                                                                            |
+| **CC‑G11.6 (Crossing visibility).**                   | All refresh actions that touch cross-context reuse **SHALL** satisfy `CC‑GCORE‑CROSS‑1` (delegation) and the GateCrossing visibility harness (e.g., `E.18`): `CrossingRef`, BridgeCard, UTS, and `CL` or `Φ_plane` policy ids. Missing or non-conformant crossings **SHALL** block publication.                                                                                                                                 | Prevents “silent crossings” under refresh.                                                                                 |
+| **CC‑G11.7 (Decay governance).**                      | When refresh is triggered by freshness or decay events, the refresh outputs **SHALL** choose and record a governance outcome (**Refresh**, **Deprecate**, or **Waive**) with **budget notes** (policy-bound), and **SHALL** publish the decision through `DeprecationNotice@Context` and related pins plus SCR-visible evidence bindings through `G.6` or cited governing patterns.                                                                                                                                                | Turns epistemic debt into explicit, comparable governance artefacts.                                                       |
+| **CC‑G11.8 (No default smuggling).**                  | A conforming `G.11` refresh artefact **SHALL NOT** introduce new defaults for `PortfolioMode`, dominance, Γ-fold, or guard behavior. If orchestrated steps rely on defaults, the artefact **SHALL** cite each default's governing definition through `G.Core.DefaultGoverningDefinitionIndex` and the applicable governing patterns rather than restating defaults inside `G.11`.                                                                                                                                            | Protects default definition-citation discipline under orchestration pressure.                                                     |
+| **CC‑G11.9 (Targeted RSCR before republication).**    | Before any refresh result is republished downstream (e.g., parity report updates, pack re-shipping, dashboard slice updates), the execution **SHALL** run or cite a targeted RSCR or regression check for the affected scope and record `RSCRRefs[]` or equivalent refs in `RefreshReport@Context`; exceptions **SHALL** be expressed as `degrade` or `abstain` outcomes (policy-bound) rather than silent skips.                                                                                         | Preserves “refresh ≠ vibes” by making regression gating explicit and slice-scoped.                                         |
+| **CC-G11.10 (Causal-use refresh sentinels).**          | When a refreshed publication or output consumes `C.28`, a conforming `RefreshPlan@Context` **SHALL** include causal-use sentinel payload distinctions when counterfactual realizability, counterfactual-data identification and bounding, target-trial reporting, causal fairness, causal representation validation, off-policy and causal-RL evaluation, or simulation validation can change supported use, unsupported use, support verdict, assurance, parity, or downstream selection. | Keeps moving causal SoTA from silently invalidating shipped causal-use results while preserving `G.Core` trigger governance. |
+
+### G.11:8 - Common Anti-Patterns and How to Avoid Them (informative)
+
+| Anti-pattern                       | Symptom                                                           | Why it fails                                             | Repair                                                                            |
+| ---------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Full-rerun mania**               | Any edit triggers a global rebuild                                | Costs explode; drift hides (no scope rationale)          | Enforce slice-scoped plans (CC‑G11.1); require closure rationale for global scope |
+| **Editionless telemetry**          | Telemetry lacks `…Ref.edition`                                    | Reruns are non-comparable; parity breaks                 | Block publication on missing pins (CC‑G11.2)                                      |
+| **Alias-as-semantics**             | `T*` labels are treated as meaning                                | Trigger meaning fragments; regressions become untestable | Dock aliases through `G.Core.TriggerAliasMap.G11`; record canonical ids               |
+| **Silent crossing during refresh** | Refresh changes context or plane assumptions without crossings       | Violates crossing visibility; penalties become hidden    | Require crossing pins and E.18 visibility; block publication (CC‑G11.6)             |
+| **Default smuggling**              | Refresh introduces “helpful” default dominance or `PortfolioMode` behavior | Competing defaults appear; downstream arguments drift    | Cite governing definitions through `G.Core.DefaultGoverningDefinitionIndex` (CC‑G11.8)                              |
+| **Debt-by-prose**                  | “We decided not to refresh” exists only in narrative              | Not comparable; cannot be tested                         | Emit a DeprecationNotice (incl. a Waive outcome, if used) with pins (CC‑G11.7)    |
+
+### G.11:9 - Consequences (informative)
+
+* **Selective, replayable upkeep.** Refresh becomes a controlled planning and execution loop rather than an implicit “maintenance vibe.”
+* **Stable semantics with flexible operations.** Trigger meaning is centralized (`G.Core`), while scheduling sophistication can evolve as policy-bound extensions.
+* **Clear governing-definition assignment boundaries.** Orchestration coordinates governing definitions; it does not redefine their semantics (shipping remains `G.10`, selection remains `G.5`, etc.).
+* **Cost: pin discipline overhead.** Authors must carry enough ids, editions, and policies to make refresh comparable. This is intentional: it replaces hidden drift with explicit wiring.
+
+### G.11:10 - Rationale (informative)
+
+`G.11` is intentionally a **thin orchestration governing definition**:
+
+* The refresh loop is powerful enough to coordinate reruns and republishing, but **too thin to become a second spec**. That is why trigger semantics, invariants, and defaults are delegated to `G.Core`.
+* The kit is split across the **P2W planning-to-work boundary** so that WorkPlanning plan items remain planning references and executed work remains auditably executed work.
+* Alias stability is maintained by allowing trigger aliases (`T0…T7`) while prohibiting them from becoming semantic authorities.
+
+### G.11:11 - SoTA-Echoing — Post‑2015 practices aligned (informative)
+
+Each entry follows: **claim → practice → source → alignment → adoption status**.
+
+0. **Queue-7 QD currentness requires visible survey support.**
+   Practice: current QD work is surveyed as approaches, applications, and challenges, with archive, diversity, descriptor, and evaluator-currentness concerns still live.
+   Source: `A survey on Quality-Diversity optimization: Approaches, applications, and challenges`, Swarm and Evolutionary Computation 2026, DOI `10.1016/j.swevo.2025.102240`.
+   Alignment: `RefreshCurrentnessLine@Context` may name selected set, `Front`, `Q-front`, `ExplorationArchive`, `Archive`, portfolio lineage, descriptor or distance edition, and path-slice scope, while `C.18`, `C.19`, and `G.5` keep archive, pool, and selected-set meanings.
+   Adoption: **Adopt and bound** (survey support changes refresh currentness fields and boundaries; it is not the governing ontology source).
+
+0a. **Open-ended engineering outputs need source and evaluator currentness.**
+   Practice: self-improving-agent, AlphaEvolve-style, and DeepEvolve-style lines use generated variants, external knowledge, evaluators, tests, archives, and empirical validation.
+   Source: Darwin Godel Machine `arXiv:2505.22954`, AlphaEvolve `arXiv:2506.13131`, and DeepEvolve-style deep-research augmentation `arXiv:2510.06056`.
+   Alignment: G.11 refresh records carry source, evaluator, descriptor, policy, edition, lineage, and report refs; generated method text, evaluator success, and archive update keep their governing patterns.
+   Adoption: **Adopt and adapt** (refresh tracks currentness and smallest affected scope; it does not accept generated text as proof, gate passage, or performed work).
+
+1. **Continuous refresh is necessary in deployed evaluation pipelines.**
+   Practice: production ML systems use monitoring, retraining, and reevaluation triggers and insist on reproducibility hooks.
+   Source: Breck et al., *The ML Test Score* (`arXiv:1706.04599`, 2017); Amershi et al., *Software Engineering for Machine Learning* (ICSE-SEIP 2019).
+   Alignment: `G.11` formalizes triggers as typed causes and forces edition and policy pins for replay.
+   Adoption: **Adopt and adapt** (adapted to id-based, PathSlice-scoped refresh rather than “retrain everything”).
+
+2. **Non-stationarity requires explicit drift and decay handling, not ad-hoc updates.**
+   Practice: continual learning emphasizes non-stationarity as a first-class maintenance condition.
+   Source: Parisi et al., *Continual Lifelong Learning with Neural Networks* (`arXiv:1802.07569`, 2019); De Lange et al., *A Continual Learning Survey* (`arXiv:1909.08383`, 2021).
+   Alignment: `B.3.4` supplies decay semantics; `G.11` wires decay events into refresh planning and controlled deprecation.
+   Adoption: **Adapt** (refresh of conceptual artefacts and evidence closures, not untracked model mutation).
+
+3. **Quality-Diversity requires archive semantics and comparability under descriptor and distance evolution.**
+   Practice: QD methods treat the archive as the primary result and track changes under policy and edition conditions.
+   Source: contemporary QD families such as CMA-MAE (`arXiv:2205.10752`) and differentiable QD (`arXiv:2106.03894`).
+   Alignment: QD-specific meaning lives with the governing patterns; `G.11:Ext.QDRefreshWiring` ensures edition pins and scope pins exist so targeted archive refresh is admissible.
+   Adoption: **Adopt** (set and archive preservation; no covert scalarization).
+
+4. **Open-endedness co-evolves environments and agents; transfer rules must be versioned.**
+   Practice: POET-class open-ended systems require explicit transfer rules and environment validity constraints.
+   Source: Wang et al., POET (`arXiv:1901.01753`, 2019); later generator-family claims require a named `G.2` SoTA pack or exact current source.
+   Alignment: `G.11:Ext.OEERefreshWiring` requires `TransferRulesRef.edition` and scope pins so refresh reruns remain comparable and auditable.
+   Adoption: **Adopt and adapt** (adapted to Part G pin and UTS publication discipline).
+
+5. **Efficient orchestration benefits from bandit and early-stopping scheduling, but it must not become semantics.**
+   Practice: modern hyperparameter and experiment scheduling uses bandit-style resource allocation and asynchronous early stopping.
+   Source: ASHA (`arXiv:1810.05934`) and BOHB (`arXiv:1807.01774`) as representative post-2015 scheduling practice.
+   Alignment: scheduling is expressed as `RefreshQueue` and `RefreshPlan@Context` policy pins (`RefreshPriorityPolicyIdRef`, `BudgetDeclRef`) so core semantics remain stable and WorkPlanning stays separate from executed Work.
+   Adoption: **Adapt** (useful practice, but quarantined outside core norms).
+
+### G.11:12 - Relations
+
+**Builds on:** `G.Core` (Part‑G invariants; RSCR trigger catalogue; alias docking; Default Governing Definition Index), `G.6` (EvidenceGraph, `PathId` and `PathSliceId`), `G.7` (Bridge sentinels; CL, Φ, and plane pins), `G.5` (selector and set-return), `G.8` (bundle telemetry hooks), `G.9` (parity), `G.10` (shipping hooks), `B.3.4` (freshness and decay), `E.18` (GateCrossing visibility).
+**Coordinates with:** `G.12` (dashboard telemetry pins), `C.18` and `C.19` archive, front, and live-pool policy pins, `C.32.P2S` when telemetry, decay, or freshness reopens architecture problem-to-structure carry-through, `C.23` (SoS-LOG branches and maturity ladders), `C.28` (causal-use support records, support verdicts, supported-use values, unsupported-use values, and SoTA-sensitive causal-use sentinel payloads), `F.15` (RSCR harness publications, when present).
+**Publishes to:** UTS (refresh plan, refresh report, deprecations, edition bumps), and to the relevant governing patterns’ publication faces, forms, or units through delegated actions.
+
+### G.11:End
+
+## G.12 — DHC Dashboards (Discipline‑Health time‑series; admissible telemetry; generation‑first)
+
+**Tag:** Architectural kit pattern (conceptual; notation‑independent; dashboard‑kit governing definition)
+
+**Stage:** design‑time authoring **→** run‑time computation & publication (series and slices); **refresh/RSCR‑wired**
+
+**Primary hooks:** **G.Core** (core invariants, linkage catalogues, RSCR trigger catalogue, Default Governing Definition Index), **C.21** (DHC slots + `DHCPack` / `DHCMethodSpec` / `DHCSeries` artefacts), **G.6** (EvidenceGraph; `PathId`/`PathSliceId` citation), **G.7** (Bridge calibration / CL & `Φ/Ψ/Φ_plane` policy surfaces; when crossings/plane routing is used), **G.11** (telemetry‑driven refresh/decay orchestration), **G.5** (selector set-result / set‑returning outputs, when dashboard consumes performance trade‑offs), **A.19** (CN‑Spec governance card), **G.0** (CG‑Spec legality gate), **F.17/F.18** (UTS + twin labels), **E.5.2** (notation independence), **E.10** (LEX discipline).
+*(Optional, extension‑gated hooks:* **G.2** (SoTA palette & DHC alignment hooks), **C.18 and C.19** (QD / E‑E / OEE telemetry pins), **G.8** (SoS‑LOG bundle & maturity ladder view), **G.10** (shipping inclusion of dashboard slices).)*
+
+**Why this exists.** **C.21** defines *what* lawful “discipline health” slots are (CHR‑typed; scale/legality aware; freshness‑windowed), but it does not, by itself, provide a **generation‑first** method for producing **edition‑pinned, evidence‑citable DHC time series** that remain refreshable under RSCR.
+**G.12** is that dashboard method: it defines the **dashboard kit surfaces** (`DHCSeries@Context`, `DHCRow@Context`, `DashboardSlice@Context`, telemetry pins) and a pipeline for computing and publishing DHC readings **without shadow specs**, **without illicit arithmetic**, and **without smuggling scalar winners** out of partial orders or telemetry.
+
+**Modularity note.** G.12 governs **dashboard publication units and wiring** only. It **does not** govern CN-Spec, CG-Spec, CHR, CAL, selection semantics, evidence semantics, shipping, or refresh heuristics. It binds to those governing definitions via refs/pins/editions/policy‑ids and keeps any method‑/generator‑specific panels strictly inside **Extensions** (`GPatternExtension` blocks).
+
+### G.12:1 — Intent
+
+Produce **admissible, reproducible, refresh-aware discipline-health dashboards** by turning **C.21** DHC definitions into:
+
+1. a **UTS‑published** time series (`DHCSeries@Context`) whose rows are evidence‑citable by **`PathId`/`PathSliceId`**,
+2. a dashboard slice view (`DashboardSlice@Context`) that is **view‑only** (no hidden re‑aggregation or “new objectives”), and
+3. **telemetry pins** that allow **G.11** to plan **slice‑scoped refresh** (rather than “rerun everything”).
+
+### G.12:2 — Problem frame
+
+Dashboards routinely drift or become illegal when they:
+
+* mix scales (ordinal treated as interval; “average maturity level”),
+* hide normalization and re‑parameterization (“normalized score” with no CN‑Spec pins),
+* silently cross Contexts or planes (implicit reuse without explicit Bridge/Plane routing),
+* fail to pin editions of computation methods, descriptor spaces, or distances,
+* turn selected sets or archives into a single scalar “winner” by dashboard fiat,
+* cannot refresh selectively (no actionable telemetry pins; only narrative “this changed”).
+
+We need a **dashboard kit** that makes the *method of obtaining dashboard values* explicit and auditable, while keeping universal invariants governed in **G.Core**.
+
+### G.12:3 — Forces
+
+* **Legality and comparability are governed by CN-Spec and CG-Spec.** Dashboards must not invent local legality/acceptance/normalization “mini‑specs”; they pin and cite **CN‑Spec** and **CG‑Spec** surfaces as required by **G.Core** conformance.
+* **Ordinal discipline is non‑negotiable.** The most common dashboard failure mode is illicit arithmetic on ranks/categories; the kit must make “compare‑only” enforceable.
+* **Set‑returning discipline survives into views.** Dashboards must not silently scalarize partial orders or selector selected-set results; any scalarization/promotion is an explicit governing-pattern policy cited through **G.Core** conformance; semantics are governed by the relevant pattern or policy.
+* **Edition‑awareness is the difference between “trend” and “drift”.** If the method definition changes, the dashboard must either (i) fork series edition, or (ii) emit telemetry and refresh slices under pinned conditions.
+* **RSCR must be actionable.** Causes are emitted as **canonical ids** (typed trigger kinds + id‑valued pins), not prose.
+
+### G.12:4 — Solution — Compute and publish DHC series admissibly, with RSCR-ready telemetry
+
+#### G.12:4.0 — G.Core linkage (normative)
+
+This pattern is **core‑invariant‑bearing** and therefore binds to **G.Core** by declaration (not by restating invariants here).
+
+**GCoreLinkageManifest (G.12)** *(normative; expands per `G.Core:4.2`)*
+Effective obligations/pins/triggers are computed as **union(expand(sets), explicit deltas)** under `Nil‑elision`.
+
+* `CoreConformanceProfileIds` := {
+  `GCoreConformanceProfileId.PartG.AuthoringBase`,
+  `GCoreConformanceProfileId.PartG.TriStateGuard`,
+  `GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted`,
+  `GCoreConformanceProfileId.PartG.ShippingBoundary`
+  }
+
+* `RSCRTriggerSetIds` := {
+  `GCoreTriggerSetId.BridgeCalibrationKit`
+  }
+
+* `RSCRTriggerKindIds` := {
+  `RSCRTriggerKindId.LegalitySurfaceEdit`
+  }
+  *(Any additional causes required by optional dashboard panels MUST be introduced only by the corresponding `GPatternExtension` blocks in `G.12:4.9`.)*
+
+* `DefaultsConsumed` := `∅`
+  *(Default-citation discipline for `DefaultId.PortfolioMode` and `DefaultId.DominanceRegime` is only relevant when selection outputs with `PortfolioMode` are consumed; see `G.12:Ext.PortfolioTelemetry`.)*
+
+* `CorePinSetIds` := {
+  `GCorePinSetId.PartG.AuthoringMinimal`,
+  `GCorePinSetId.PartG.CrossingVisibilityPins`
+  }
+
+* `CorePinsRequired` *(pattern delta; pin names only; all are id‑valued unless noted)* := {
+  `DHCSeriesId`,
+  `TargetSlice` *(USM tuple; varies only by `Γ_time` across rows; no implicit “latest”)*,
+  `Γ_time` *(time selector / freshness window; required per row; series MAY additionally declare a window‑family spec)*,
+  `DHCSlotId[]` *(typed DHC slots governed by C.21; each resolves to `CharacteristicId` + scale/unit/polarity + reference plane binding + lane discipline)*,
+  `DHCMethodSpecRef.edition`,
+  `DHCMethodRef.edition`,
+  `PathSliceId[]`
+  }
+  *(Nil‑elision applies. All other definition pins are conditional: they MUST appear only when actually used and when their governing pattern/extension is present (e.g., UNM/normalization pins, QD/OEE telemetry pins, transfer rules pins, pack inclusion pins).)*
+
+* `TriggerAliasMapRef` := `∅`
+
+#### G.12:4.1 — Objects (LEX heads; twin‑register discipline)
+
+All objects below are **notation‑independent**; serialisations (if any) live under shipping or interop governance, not here.
+
+**(1) `DHCSeries@Context`** *(UTS‑published dashboard series; C.21‑grounded)*
+A time‑indexed publication of computed DHC readings for a `Discipline × ContextSlice`, aligned with `U.DHCSeries` semantics from **C.21** and pinned to method/governing spec refs.
+
+Minimal fields (conceptual; ids/pins only):
+
+`DHCSeries@Context := ⟨
+  DHCSeriesId,
+  CG-FrameContext,
+  entityOfConcern := ⟨GroundingHolon, ReferencePlane⟩,
+  TargetSlice,                         // USM tuple; time series varies Γ_time across rows (explicit, no implicit “latest”)
+  DHCSlotId[],                         // slot set selected from C.21 (typed DHC slots; not “just Characteristic ids”)
+  DHCPackRef.edition?,
+  DHCMethodSpecRef.edition,
+  WindowSpec?,                         // optional window-family spec used to generate per-row Γ_time
+  CNSpecRef.edition, CGSpecRef.edition,
+  EvidenceGraphId?,                    // if resolvable; else row-level Path pins suffice
+  DashboardSliceId[]?,                 // published view slices (optional)
+  TelemetryPinSetId?                   // wiring to refresh (conceptual)
+⟩`
+
+**(2) `DHCRow@Context`** *(one timepoint / window reading; Work/Audit‑citable)*
+A single computed row of the series.
+
+`DHCRow@Context := ⟨
+  DHCRowId,
+  DHCSeriesId,
+  Γ_time,
+  DesignRunTag = run,
+  DHCSlotId,
+  value, units/scaleRef?, compareOnly?,
+  stance ∈ {pass|degrade|abstain},
+  DHCMethodRef.edition, DHCMethodSpecRef.edition,
+  PathSliceId[], PathId[]?, EvidenceGraphId?,
+  evidenceLaneTags? := {TA|VA|LA},
+  crossingPins? := ⟨BridgeId[], PlaneMapRef.edition?, CL/CL^k/CL^plane?, Φ/Ψ/Φ_plane policy‑ids…⟩
+⟩`
+
+**(3) `DashboardSlice@Context`** *(view; non‑semantic)*
+A view‑friendly grouping over one or more series/rows. It MUST NOT introduce new aggregation/legality semantics; it is a projection over already computed, pinned, citable rows.
+
+`DashboardSlice@Context := ⟨
+  DashboardSliceId(UTS),
+  DHCSeriesId(UTS)[],
+  SliceAnnotations?,                  // labels, grouping metadata, explanatory text
+  ViewSpecId?,                        // view template id (policy‑bound; no semantics implied)
+  IncludedRowIds?
+⟩`
+
+**(4) `DHCTelemetryPin`** *(refresh wiring pin; id‑based causes)*
+A conceptual telemetry pin emitted to refresh/orchestration (governed by **G.11**) with canonical trigger kind ids.
+
+`DHCTelemetryPin := ⟨
+  triggerKindId: RSCRTriggerKindId,
+  scope: PathSliceId[] | PatternScopeId,
+  payloadPins: { …ids… }              // editions, policy‑ids, UTS row ids, window ids, etc.
+⟩`
+
+**Ref discipline.** `.edition` SHALL appear only on `…Ref` (per **E.10**). Dashboard artefacts that mint public ids publish **Tech/Plain twins** (UTS discipline).
+
+#### G.12:4.2 — Method‑of‑Obtaining Output (generation‑first; design‑time → run‑time)
+
+**Stage A — Author & bind (design‑time)**
+
+A1. **Select the DHC slot set (governed by C.21).**
+Choose `DHCSlotId[]` from **C.21** (typed DHC slots), and declare the series scope explicitly as `TargetSlice` (USM tuple) plus an explicit time selector (`Γ_time` per row; optionally a `WindowSpec` that generates the row windows). Do not restate slot semantics in the dashboard kit; cite the C.21 governing definitions.
+
+A2. **Bind governance card and legality gate (governing definitions: A.19, G.0).**
+Pin `CNSpecRef.edition` and `CGSpecRef.edition`. Any normalization or numeric comparability assumptions are expressed by explicit CN‑Spec artefacts (ids/refs) and any numeric legality requirements cite CG‑Spec artefacts (SCP / MinimalEvidence / Γ‑fold pins as applicable). The dashboard does not introduce local “shadow specs”.
+If the dashboard series/slice actually uses cross‑Context or cross‑plane routing, it MUST additionally pin the relevant crossing and penalty‑policy surfaces as ids (Bridge/CL/plane ids, `Φ/Ψ/Φ_plane` policy‑ids, `PlaneMapRef.edition?`) and cite their governing patterns (typically `G.7` for bridge calibration/CL kits, pinned through `G.Core`). The dashboard MUST NOT encode a dashboard‑local “penalty regime”.
+
+A3. **Pin computation methods (governed by C.21).**
+For each slot/method used to compute a time series value, record `DHCMethodSpecRef.edition` and `DHCMethodRef.edition` (table‑backed, per C.21). The dashboard series is edition‑aware: if a method spec changes, the dashboard either forks the series edition or emits telemetry and refreshes under explicit pins.
+
+A4. **Declare optional panels via Extensions only.**
+If the dashboard depends on (i) selector set-result outputs, (ii) QD illumination / archive telemetry, (iii) open‑endedness telemetry, (iv) maturity ladder views, or (v) pack inclusion, then the relevant `GPatternExtension` block(s) in `G.12:4.9` MUST be present and their pins MUST be satisfied.
+
+**Stage B — Compute rows (run‑time; Work/Audit)**
+
+B1. **Resolve evidence by Path (governed by G.6).**
+Compute rows from evidence cited as `PathSliceId[]` (and `PathId[]` when needed), under the declared window/freshness regime. Preserve lane discipline and handle missingness using tri‑state stances governed by **G.Core**.
+
+B2. **Compute slot values using pinned methods (governed by C.21).**
+Compute each slot value by applying the pinned `DHCMethodRef.edition`/`DHCMethodSpecRef.edition` under the pinned governance card and legality gate. Enforce “no illicit arithmetic” for ordinals/categoricals as a dashboard‑kit obligation (see CC‑G12.\*).
+Any cross-Context or cross-plane use is expressed only via explicit crossing pins (Bridge/Plane routing) and policy ids governed by **G.Core**.
+
+B3. **Emit RSCR‑actionable telemetry pins (governing definition: G.11).**
+When any of the declared pins/editions/policies/windows/evidence slices change, emit `DHCTelemetryPin` events with canonical `RSCRTriggerKindId` and payload pins sufficient for **slice‑scoped** refresh planning.
+
+**Stage C — Publish series & slices (run‑time; publication)**
+
+C1. **Publish `DHCRow@Context` and `DHCSeries@Context` as UTS publication units.**
+Mint/publish UTS rows with Tech/Plain twins and include the required pins (window, reference plane, method editions, evidence paths).
+
+C2. **Publish `DashboardSlice@Context` as a view‑only projection.**
+Slices are groupings/annotations over already computed rows; they must not redefine legality, acceptance, or scalarization.
+
+C3. **Wire refresh via telemetry pins (no orchestration governance).**
+Dashboards emit pins; refresh orchestration remains governed by **G.11**.
+
+#### G.12:4.9 — Extensions (pattern‑scoped; non‑core)
+
+> **Extension rule (Phase‑2).** Anything method‑, generator‑, or view‑family‑specific belongs here, as `GPatternExtension` modules. These modules may add **mode‑specific definition pins** and additional RSCR trigger kinds, but MUST NOT redefine Part‑G‑wide invariants or defaults.
+
+##### `G.12:Ext.SoTAPalette` — SoTA palette & DHC alignment hooks (optional)
+
+**PatternScopeId:** `G.12:Ext.SoTAPalette`
+**GPatternExtensionId:** `SoTAPalette`
+**GPatternExtensionKind:** `InteropSpecific`
+**GoverningPatternId:** `G.2` *(SoTA palette + DHC alignment hooks semantics are governed by G.2; G.12 only wires them)*
+**Uses:** `{G.2}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `SoTA_PackRef.edition?`
+* `DHC-SenseCellId[]?` *(when series pins to DHC alignment hooks / sense‑cell inventories)*
+* `DHCAlignmentHookId[]?`
+
+**RSCRTriggerKindIds (delta):** `∅`
+
+##### `G.12:Ext.PortfolioTelemetry` — selector set-result integration panel
+
+**PatternScopeId:** `G.12:Ext.PortfolioTelemetry`
+**GPatternExtensionId:** `PortfolioTelemetry`
+**GPatternExtensionKind:** `MethodSpecific`
+**GoverningPatternId:** `G.5` *(`PortfolioMode` citation plus selected-set semantics and set‑return discipline)*
+**Uses:** `{G.5, G.6}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `TaskSignatureRef?` *(when `PortfolioMode` semantics depend on TaskSignature traits)*
+* `DominanceRegime` *(cite the governing definition for `DefaultId.DominanceRegime`; publish the resolved regime, do not invent a local default)*
+* `PortfolioMode` *(cite the governing definition for `DefaultId.PortfolioMode`; publish the resolved mode)*
+* `SCRId/DRRId` *(or equivalent selector evidence pins, when dashboard row depends on selector outcomes)*
+
+**DefaultsConsumed:** {`DefaultId.DominanceRegime`, `DefaultId.PortfolioMode`} *(cite governing definitions through `G.Core.DefaultGoverningDefinitionIndex`; no local defaults)*
+
+**RSCRTriggerKindIds (delta):** `∅` *(base triggers suffice; any extra triggers must be explicit)*
+
+**Notes (wiring‑only):**
+
+* The dashboard may visualise selected-set / Archive telemetry, but MUST keep set‑returning semantics; any scalar “headline number” is a view projection, not a legality‑bearing decision.
+
+##### `G.12:Ext.QDTelemetry` — illumination / archive telemetry panel
+
+**PatternScopeId:** `G.12:Ext.QDTelemetry`
+**GPatternExtensionId:** `QDTelemetry`
+**GPatternExtensionKind:** `MethodSpecific`
+**GoverningPatternId:** `C.18` *(QD / NQD‑CAL semantics; descriptor/distance/insertion policy)*
+**Uses:** `{C.18, G.5, G.11}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `DescriptorMapRef.edition`
+* `DistanceDefRef.edition`
+* `CharacteristicSpaceSpecRef.edition?` *(iff the descriptor or characteristic space is editioned as a published surface; required for view reproducibility)*
+* `InsertionPolicyRef`
+* `EmitterPolicyRef?`
+* `ArchiveSnapshotRef?` *(id/pin for the published archive snapshot, if any)*
+* `PathSliceId[]` *(scope for refresh; slice‑keyed)*
+
+**RSCRTriggerKindIds (delta):** `∅` *(base trigger set already includes `RSCRTriggerKindId.TelemetryDelta`; add only genuinely additional kinds here)*
+
+**Notes (wiring‑only):**
+
+* Illumination/coverage signals are treated as telemetry. Any promotion of telemetry into selection dominance is governed elsewhere (typically CAL policy; pinned through `G.Core`).
+* If descriptor characteristics are surfaced as published identifiers (not just local UI text), they MUST follow the Tech/Plain twin-label discipline (UTS Name Cards); otherwise they remain non-normative view annotations.
+
+##### `G.12:Ext.OpenEndedTelemetry` — open‑endedness / transfer telemetry panel
+
+**PatternScopeId:** `G.12:Ext.OpenEndedTelemetry`
+**GPatternExtensionId:** `OpenEndedTelemetry`
+**GPatternExtensionKind:** `GeneratorSpecific`
+**GoverningPatternId:** `C.19` *(E/E‑LOG & exploration accounting; generator/transfer telemetry wiring)*
+**Uses:** `{C.19, G.5, G.11}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `TransferRulesRef.edition` *(when transfer rules are part of the telemetry interpretation)*
+* `EnvironmentValidityRegionId?`
+* `ProbeBudgetPolicyId?`
+* `PathSliceId[]`
+
+**RSCRTriggerKindIds (delta):** `∅` *(base trigger set already includes `RSCRTriggerKindId.TelemetryDelta`; add only genuinely additional kinds here)*
+
+**Notes (wiring‑only):**
+
+* Open‑endedness metrics are telemetry‑level artefacts; dashboards must not silently convert them into “dominance objectives”.
+
+##### `G.12:Ext.MaturityLadderPanel` — maturity ladder view (optional)
+
+**PatternScopeId:** `G.12:Ext.MaturityLadderPanel`
+**GPatternExtensionId:** `MaturityLadderPanel`
+**GPatternExtensionKind:** `DisciplineSpecific`
+**GoverningPatternId:** `G.8` *(maturity ladder semantics in SoS‑LOG bundle/maturity cards)*
+**Uses:** `{G.8, G.6, G.11}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `MaturityCardRef`
+* `MaturityRungId?`
+* `PathId/PathSliceId` *(evidence citations for rung claims)*
+
+**RSCRTriggerKindIds (delta):** `{RSCRTriggerKindId.MaturityRungChange}`
+
+##### `G.12:Ext.PackInclusion` — shipping inclusion stub (optional)
+
+**PatternScopeId:** `G.12:Ext.PackInclusion`
+**GPatternExtensionId:** `PackInclusion`
+**GPatternExtensionKind:** `InteropSpecific`
+**GoverningPatternId:** `G.10` *(shipping semantics are governed by G.10)*
+**Uses:** `{G.10}`
+**⊑/⊑⁺:** `∅`
+
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `SoTA‑PackId`
+* `DashboardSliceId(UTS)` *(or `DHCSeriesId(UTS)` when shipping series directly)*
+* `CNSpecRef.edition`, `CGSpecRef.edition` *(as shipped pins, per G.10 wiring)*
+
+**RSCRTriggerKindIds (delta):** `∅`
+
+**Notes (wiring‑only):**
+
+* This module is a wiring stub: it does not define shipping behaviour; it only states which dashboard artefacts may be cited by `SoTA‑Pack(Core)`.
+
+##### `G.12:Ext.ViewFamilySeed` — advanced view families (Phase‑3 seed; governing pattern TBD)
+
+**PatternScopeId:** `G.12:Ext.ViewFamilySeed`
+**GPatternExtensionId:** `ViewFamilySeed`
+**GPatternExtensionKind:** `Phase3Seed`
+**GoverningPatternId:** `governing pattern not yet selected`
+**Uses:** `{}`
+**⊑/⊑⁺:** `∅`
+
+**Notes (Phase‑3 seed; non‑normative):**
+
+* Placeholder for advanced dashboard view families (e.g., embedding‑based similarity panels, predictive drift detectors, change‑point overlays). Any such module must remain policy‑bound and must not introduce new Part‑G‑wide norms.
+
+### G.12:5 — Interfaces (conceptual; kit surface)
+
+| ID  | Interface   | Consumes   | Produces  |
+| --- | ----------- | ---------- | --------- |
+| **G.12‑1 `Create_DHCSeries`** | Create/bind a DHC series scope (C.21‑grounded; edition‑aware) | `DHCSlotId[]`, `DHCPackRef.edition?`, `DHCMethodSpecRef.edition`, `TargetSlice` (USM), `WindowSpec?`, `ReferencePlane`, `CNSpecRef.edition`, `CGSpecRef.edition` | `DHCSeries@Context` (UTS publication unit; edition‑aware) |
+| **G.12‑2 `Update_DHCSeries`** | Compute/update one or more rows under pinned conditions (run‑time; Work/Audit‑citable) | `PathSliceId[]`, `EvidenceGraphId?`, `DHCMethodRef.edition`, `DHCMethodSpecRef.edition`, `Γ_time`, crossing pins (if any) | `DHCRow@Context[]` (UTS publication units; stance and pins; `DesignRunTag = run`) |
+| **G.12‑3 `Integrate_PortfolioTelemetry`** *(extension‑gated)* | Integrate selector set-result evidence into a slice/series | See `G.12:Ext.PortfolioTelemetry` | Extension‑gated fields / telemetry pins |
+| **G.12‑4 `Integrate_QDTelemetry`** *(extension‑gated)* | Integrate QD illumination/archive telemetry | See `G.12:Ext.QDTelemetry` | Extension‑gated fields / telemetry pins |
+| **G.12‑5 `Integrate_OEETelemetry`** *(extension‑gated)* | Integrate open‑endedness / transfer telemetry | See `G.12:Ext.OpenEndedTelemetry` | Extension‑gated fields / telemetry pins |
+| **G.12‑6 `Publish_DashboardSlice`** | Publish a view slice as a projection over computed rows | `DHCSeriesId(UTS)[]`, `DHCRowId(UTS)[]?`, `SliceAnnotations?` | `DashboardSlice@Context` (UTS publication unit; view‑only) |
+| **G.12‑7 `Emit_TelemetryPins`** | Emit RSCR‑actionable telemetry pins for refresh | `RSCRTriggerKindId`, `scope`, `payloadPins` | `DHCTelemetryPin[]` (consumed by `G.11`) |
+
+(*No file formats are introduced here; serialisation recipes live under shipping or interop governance.*)
+
+### G.12:6 — Conformance checklist (CC‑G12, normative)
+
+| CC ID   | Requirement  | Verification notes  |
+| ------- | ------------ | ------------------- |
+| **CC‑G12‑CoreRef** | The pattern satisfies the **effective** `G.Core` obligations declared by `GCoreLinkageManifest (G.12)` (profiles/sets/deltas expanded per `G.Core:4.2`).    | Evidence: the manifest is present; required pins/defaults/triggers are accounted for; no local restatement overrides core governing definitions.  |
+| **CC‑G12.1** | **DHC slot typing (C.21‑grounded).** Every published dashboard value is indexed by a **C.21‑authored** `DHCSlotId` (typed DHC slot: `CharacteristicId` + scale/unit/polarity + reference plane binding + lane discipline) and is scoped by an explicit `TargetSlice` + `Γ_time`. | Evidence: row/series references `DHCSlotId` and pins `ReferencePlane` and `Γ_time` (or a series `WindowSpec` that yields row Γ_time). |
+| **CC‑G12.2** | **Edition discipline (no drift).** Every published time‑series value carries `DHCMethodRef.edition` and any other definition‑pins actually used to obtain it (e.g., `DescriptorMapRef.edition`, `DistanceDefRef.edition`, `UNM_id`, `NormalizationMethodInstanceId[]`, `ComparatorSetRef.edition?`). No free‑text versioning. | Check that `.edition` appears only on `…Ref`; check presence of all definition pins used by the pipeline; extension pins appear only when their extension blocks are present. |
+| **CC‑G12.3** | **Spec citation for numeric operations (no shadow specs; no illicit arithmetic).** Any numeric operation in the dashboard pipeline is legal only under explicit **CG‑Spec** and **CN‑Spec** pins (e.g., `SCPRef.edition`, `MinimalEvidenceRef.edition`, `ΓFoldRef.edition?` when used), and any normalization is explicit (`UNM_id` + `NormalizationMethodInstanceId[]` etc). Ordinal/categorical slots remain **compare‑only** (no illicit arithmetic). | Check that operations cite pinned governing definitions; reject “normalize, then compare” without explicit UNM pins; reject arithmetic over ordinal slots unless the governing definition declares an admissible mapping. |
+| **CC‑G12.4** | **Set‑returning selection is preserved.** If the dashboard consumes selection / set-result outputs, it MUST preserve set‑return semantics and MUST publish the resolved `DominanceRegime` and `PortfolioMode` by citing each default's governing definition (via `G.Core.DefaultGoverningDefinitionIndex`) rather than inventing local defaults. Any promotion of illumination/telemetry into dominance MUST cite the governing-pattern policy (typically CAL) and be auditable via evidence paths. | Check for set-result outputs; check that any scalar headline is view‑only; check citations to default governing definitions/policies. |
+| **CC‑G12.5** | **UTS publication discipline.** `DHCSeries@Context` and its rows (and any published slices) are published as UTS publication units with Tech and Plain twins plus stable identifiers; deprecations and edition bumps follow the canonical UTS discipline. | Check stable ids and twin labels; check that publication does not smuggle `GateDecision` values as authoritative UTS publication content. |
+| **CC‑G12.6** | **Bridge/plane routing is explicit when used.** If a series crosses contexts or planes, the rows MUST cite the Bridge/PlaneMap routing (`BridgeId[]`, `CL/CL^k/CL^plane`, `Φ/Ψ/Φ_plane policy‑ids`, `PlaneMapRef.edition?`) and respect penalty routing to `R_eff` only (semantics pinned through `G.Core`). | Check presence of crossing pins when contexts or planes differ; check that any loss is expressed via R‑lane impact only. |
+| **CC‑G12.7** | **Telemetry sufficiency for slice‑scoped RSCR.** Emitted dashboard telemetry pins MUST (i) use canonical `RSCRTriggerKindId`, (ii) include `scope` (PathSliceId[] or PatternScopeId) and the touched `…Ref.edition`/policy/window pins, and (iii) block publication when required pins are missing. Each published row is evidence‑citable by `PathSliceId[]` under explicit `Γ_time`. | Check: no free‑text causes; payload includes path/window/editions/policies; missing pins block publish; row has PathSliceId[] and Γ_time. |
+| **CC‑G12.8** | **Extension gating.** If any fields and pins governed by the extension appear, the corresponding `G.12:Ext.*` module is present and satisfied. | E.g., QD pins require `G.12:Ext.QDTelemetry`; maturity panel requires `G.12:Ext.MaturityLadderPanel`; SoTA palette hooks require `G.12:Ext.SoTAPalette`; pack inclusion requires `G.12:Ext.PackInclusion`. |
+
+### G.12:7 — Bias‑Annotation (informative)
+
+* **Didactic:** dashboard publication units publish pins and paths first; views second.
+* **Architectural:** no “dashboard‑local governing spec refs”; invariant citation is via `G.Core`.
+* **Pragmatic:** slice‑scoped refresh is enabled by canonical trigger ids + payload pins.
+* **Epistemic:** compare‑only ordinals and explicit provenance prevent “trend‑as‑drift”.
+
+### G.12:8 — Consequences
+
+* **Dashboards become reproducible artefacts, not screenshots.** A `DHCRow@Context` is re‑derivable under pinned editions and evidence windows.
+* **Selective maintenance becomes possible.** Telemetry pins let `G.11` refresh what changed (path slice / window / method edition), rather than rerunning the entire pipeline.
+* **Illicit scalarization is structurally discouraged.** Set‑returning and CN/CG-governed semantics are preserved into the dashboard layer.
+
+### G.12:9 — Relations
+
+**Builds on:** `G.Core`, `C.21`, `G.6`, `G.11`, `A.19`, `G.0`, `F.17/F.18`, `E.5.2`, `E.10`.
+**Coordinates with:** `G.5` *(when selector set-result outputs are consumed)*, `G.7` *(when crossings/plane routing or `CL/Φ/Ψ/Φ_plane` policy pins are used)*, `G.8` *(when maturity ladder view is included)*, `G.10` *(when dashboard slices are shipped)*.
+**Constrains:** dashboard consumers: dashboards are projections over pinned, evidence‑citable rows; they do not mint new governing-spec semantics.
+
+### G.12:10 — Author’s quick checklist
+
+1. Declare the dashboard series scope: `TargetSlice` (USM tuple), `ReferencePlane`, and an explicit `Γ_time` regime (per‑row; optionally a `WindowSpec` that yields the row windows).
+2. Select `DHCSlotId[]` and cite **C.21** (do not restate slot semantics).
+3. Pin `DHCMethodSpecRef.edition` and `DHCMethodRef.edition` for every computed slot/value (plus any other definition pins actually used).
+4. Ensure rows are evidence‑citable by `PathSliceId[]` and include explicit `Γ_time` (row is run‑time: `DesignRunTag = run`).
+5. Publish UTS publication units with twins and the required pins.
+6. Emit canonical telemetry pins (`RSCRTriggerKindId` + scope + payload pins) for `G.11`.
+7. If SoTA palette hooks / selection / QD / OEE / maturity / shipping panels are needed, add the corresponding `G.12:Ext.*` blocks and satisfy their pins.
+
+### G.12:11 — Worked micro‑examples (informative; SoTA‑oriented)
+
+**(A) Decision‑making discipline dashboard (multi‑tradition).**
+Slots (from **C.21**): *ReproducibilityRate* (freshness‑windowed), *StandardisationLevel* (ordinal), *AlignmentDensity* (bridge density over DHC‑SenseCells), *MetaDiversity* (operator family diversity), *DisruptionBalance* (target‑band metric).
+Evidence: citation graphs, benchmark traces, and bridge calibrations are referenced via `PathSliceId[]`.
+Optional panels:
+
+* `G.12:Ext.PortfolioTelemetry` to visualise set‑returning method selected sets without forcing a scalar winner.
+* `G.12:Ext.QDTelemetry` to include illumination/archive telemetry using modern QD families (e.g., CMA‑ME / policy‑gradient QD variants / surrogate‑assisted illumination lines) as telemetry.
+
+**(B) Evolutionary software architecture dashboard (open‑endedness‑aware).**
+Slots: stability/reproducibility metrics, standardisation stages (ordinal), cross‑paradigm alignment density, and disruption balance.
+Optional panels:
+
+* `G.12:Ext.OpenEndedTelemetry` to include open‑endedness telemetry (environment diversity / transfer events) using POET‑style and related post‑2015 open‑ended generation families, while keeping such signals in telemetry unless an explicit governing-pattern policy promotes them.
+
+### G.12:End
+
+## G.13 - External Interop Hooks for SoTA Discipline Packs (conceptual)
+
+**Tag.** Architectural kit pattern (conceptual interop kit; notation‑independent; normative when used)
+**Stage.** *design‑time registration & alignment* → *run‑time ingestion, telemetry, refresh*
+**Primary hooks.** `G.Core` (Part‑G core invariants + trigger catalogue + Default Governing Definition Index), `G.2` (SoTA Synthesis Pack), `G.3` (CHR Pack), `G.4` (CAL Pack), `G.5` (selector & registries), `G.6` (EvidenceGraph + PathId/PathSliceId), `G.7` (BridgeMatrix + CL/planes), `G.8` (SoS‑LOG bundle surfaces), `G.9` (parity harness), `G.10` (shipping), `G.11` (refresh orchestration), `G.12` (dashboards), `A.19` (CN‑Spec), `A.18` (CSLC legality), `G.0` (CG‑Spec), `F.17` (UTS), `F.9` (BridgeCard / CL), `E.17` (publication faces), `E.5.2` (notation independence), `E.18/A.21` (GateCrossing/CrossingBundle checks).
+
+**Status.** Stable (Phase‑2 universalized; `G.Core` linkage explicit)
+**Normativity.** Normative when used (when any `G.13` surface is authored/emitted/consumed); informative otherwise.
+
+**Non‑duplication note (Phase‑2 universalization).** This pattern **does not restate** Part‑G‑wide invariants (CN/CG spec-ref governing-definition assignment, crossing visibility, penalty routing, set‑return discipline, typed RSCR triggers, Default Governing Definition Index, Δ‑discipline). Those are governed in `G.Core` and referenced here via the linkage manifest and CC delegations (*cite, don’t duplicate*).
+
+### G.13:1 - Problem frame
+
+FPF already supports lawful characterization, evidence wiring, selector‑side set returns, parity, shipping, dashboards, and refresh. What remains frictionful in practice is **interoperability with external scholarly indexes and discipline repositories** (concept registries, paper/claim graphs, dataset registries, taxonomy stores, “science‑of‑science” indicator feeds), which teams routinely use as *inputs* when authoring a SoTA discipline pack.
+
+Without an explicit **conceptual interop kit**, authors tend to build one‑off pipelines whose “implied semantics” leak into the framework: edition drift becomes invisible, cross‑plane/context reuse becomes implicit, and external signals quietly start acting like a shadow governing spec ref.
+
+`G.13` provides the missing kit: **conceptual registration, alignment, and telemetry hooks** that let external sources be wired into the Part‑G pipeline (**G.2 → G.5 → G.9 → G.10 → G.11**, and optionally **G.12**) while preserving Part‑G invariants via `G.Core`.
+
+### G.13:2 - Problem
+
+External sources publish **claim‑adjacent signals** (citations, concept graphs, “task/method” tags, replication links, dataset usage, disruption‑style indicators, benchmark metadata). These are useful for *generation* (palette building, declared set-result exploration, candidate bridge discovery), not only for audit. But typical interop practices create predictable failure modes:
+
+* **CN/CG spec-ref leakage.** External numeric signals get treated as if they were lawful “scores” without explicit binding to CHR/CAL/CG surfaces.
+* **Implicit crossings.** Cross‑context and cross‑plane reuse happens through opaque transformations, without explicit exposure of the crossing bundle pins needed downstream.
+* **Edition drift + refresh brittleness.** Snapshots change, schemas drift, indicator definitions get revised; without edition‑pinned interop surfaces and typed trigger causes, parity and dashboard stability degrade.
+* **Evidence disconnect.** “Derived features” are produced without explicit EvidenceGraph anchoring, making later refutation/repair expensive.
+* **Format‑as‑norm.** A convenient serialisation (KG export, JSON schema, RO‑Crate, etc.) becomes treated as the specification, undermining notation independence.
+
+### G.13:3 - Forces
+
+| Force                           | Tension                                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **Notation independence**       | Useful serialisations vs the requirement that conformance is judged on **conceptual** surfaces.        |
+| **Pluralism vs parity**         | Diverse scholarly traditions and indexes vs lawful, edition‑aware comparability and reproducibility.   |
+| **Interop as generation input** | Interop should speed SoTA authoring, not merely decorate audit reports.                                |
+| **Planes & bridges**            | Cross‑plane/context reuse must remain explicit and auditable rather than implicit in “aligners”.       |
+| **Telemetry vs dominance**      | External telemetry should inform exploration and refresh without silently changing selector semantics. |
+| **Operational drift**           | External sources evolve; interop must be refresh‑ready by construction (typed causes + payload pins).  |
+
+### G.13:4 - Solution — Conceptual interop kit: registered sources, alignment cards, feature derivations, and RSCR‑wired telemetry
+
+#### G.13:4.1 - G.Core linkage (normative)
+
+**Builds on:** `G.Core`.
+
+**GCoreLinkageManifest (normative).**
+*(Canonical form, Nil‑elision, and Expansion rule are defined in `G.Core`.)*
+
+`GCoreLinkageManifest := ⟨
+  CoreConformanceProfileIds := {
+    GCoreConformanceProfileId.PartG.AuthoringBase,
+    GCoreConformanceProfileId.PartG.UTSWhenPublicIdsMinted,
+    GCoreConformanceProfileId.PartG.ShippingBoundary
+  },
+  RSCRTriggerSetIds := {GCoreTriggerSetId.SoTAHarvestSynthesis},
+  RSCRTriggerKindIds := {RSCRTriggerKindId.BaselineBindingEdit},   // delta: planned‑baseline linkage edits can be interop‑relevant
+
+  CorePinSetIds := {
+    GCorePinSetId.PartG.AuthoringMinimal,
+    GCorePinSetId.PartG.CrossingVisibilityPins
+  },
+
+  CorePinsRequired := {
+    // Interop pins (G.13‑specific; avoid duplicating `GCorePinSetId.PartG.CrossingVisibilityPins`)
+    ExternalIndexRef.edition,
+    ClaimMapperRef.edition?,
+    MappingPolicyRef?,
+    PlaneMapRef.edition?,
+    ScaleEmbeddingSpecRef.edition?,
+
+    EvidenceGraphId?,
+    InteropSurfaceId?
+  },
+
+  DefaultsConsumed := {DefaultId.PortfolioMode, DefaultId.DominanceRegime}
+⟩`
+
+**Payload‑pin note (informative).** When emitting RSCR triggers for interop‑driven changes, payload pins should include the edited edition/policy identifiers, the impacted scope, and the applicable crossing‑visibility pins (per `GCorePinSetId.PartG.CrossingVisibilityPins`) when crossings/UTS/paths are involved.
+
+#### G.13:4.2 - Interop kit objects & surfaces (pattern-governed; notation‑independent)
+
+All objects below are **conceptual**. Any concrete serialisation belongs to Annex/Interop or tooling notes and is not normative for Part‑G conformance.
+
+* **`ExternalIndexCard@Context`** — registration of an external source and its snapshot.
+
+  **Shape (conceptual):**
+  `⟨ ExternalIndexId, ProviderName?, ExternalIndexType, CoverageScope, Licence?, ExternalEdition, FreshnessWindow?, entityOfConcern := ⟨GroundingHolon, ReferencePlane⟩, Notes? ⟩`
+
+  **Intent.** Create a stable, citable “source card” so downstream artefacts can pin the *card edition* via `ExternalIndexRef.edition`, while the provider snapshot remains visible as `ExternalEdition` (do not echo provider snapshot ids into downstream cards; cite refs instead).
+
+* **`ClaimMapperCard@Context`** — a conceptual “mapping recipe” that yields FPF‑native artefacts from an external source.
+
+  **Shape (conceptual):**
+  `⟨ MapperId, ExternalIndexId, MappingPolicyRef, Targets{ClaimSheet|BridgeHints|SoSFeatureSet|UTSProposals}, PlaneMapRef?, ScaleEmbeddingSpecRef?, EvidenceGraphId?, CSLCProofStubs? ⟩`
+
+  **Notes.**
+
+  * This is **not** a shadow legality gate. It is an interop surface that **cites** governing definitions (`A.19`, `G.0`, `G.3`, `G.4`) and publishes the required pins for downstream audit/refresh.
+  * When cross‑plane or cross‑context reuse is implicated, the alignment outputs must use the existing crossing bundles (see `G.Core` linkage).
+  * Avoid “edition echo”: downstream artefacts cite `ExternalIndexRef.edition` and `ClaimMapperRef.edition` (and optional `PlaneMapRef.edition` / `ScaleEmbeddingSpecRef.edition`) rather than copying snapshot ids/editions as free fields.
+
+* **`SoSFeatureTransform@Context`** — declares how external signals become **CHR‑typed** SoS features (for DHC/dashboard usage and/or SoS‑LOG rule evaluation).
+
+  **Shape (conceptual):**
+  `⟨ SoSFeatureTransformId, Inputs{ClaimSheetId[] | ExternalSignalsRef}, SoSFeatureSetId, FeatureTypingRefs{CharacteristicId/ScaleId/CoordinateId}, ReferencePlane, EvidenceGraphId?, PathSliceId[]?, ProofHooks? ⟩`
+
+  **Notes.**
+
+  * The derivation is a **typing + provenance** surface; it does not introduce new comparators or new governance cards or legality gates.
+
+* **`ScaleEmbeddingSpec@Context`** — optional constraints for representation/space alignment used inside an alignment recipe.
+
+  **Shape (conceptual):**
+  `⟨ ScaleEmbeddingSpecId, IntendedUse, AllowedTransformFamily, RequiredPins{NormalizationMethodRef.edition?}, ProhibitedCoercions ⟩`
+
+  **Design intent.** Make any representation alignment *explicitly constrained* and edition‑pinned, instead of silently “creating a new scale”.
+  **LEX/UTS note (informative).** `ScaleEmbeddingSpec` is a new LEX head; when it mints a public id it must be published to UTS with twin labels (see `G.Core` / UTS profile).
+
+* **`IndexTelemetryPin`** — an emitted refresh input that makes interop changes RSCR‑visible.
+
+  **Shape (conceptual; RSCR‑typed):**
+  `⟨ triggerKindId: RSCRTriggerKindId, scope: PathSliceId[] | PathId[] | PatternScopeId, payloadPins{ExternalIndexId, ExternalIndexRef.edition, ClaimMapperRef.edition?, MappingPolicyRef?, PlaneMapRef.edition?, ScaleEmbeddingSpecRef.edition?, PathId[]?, PathSliceId[]?, UTSRowId[]?, …} ⟩`
+
+  **Publication.** Emitted to `G.11` as refresh input; recorded with canonical `RSCRTriggerKindId` causes.
+
+* **`InteropSurface@Context`** — a selector-facing or dashboard-facing summary of what interop publications and records exist and how they are pinned.
+
+  **Shape (conceptual):**
+  `⟨ InteropSurfaceId, ExternalIndexId, ExternalIndexRef.edition, MapperId?, ClaimMapperRef.edition?, MappingPolicyRef?, SoSFeatureSetId?, EvidenceGraphId?, PathSliceId[]?, PlaneMapRef.edition?, ScaleEmbeddingSpecRef.edition?, UTSRowId[] ⟩`
+
+  **Publication.** Published to UTS with twin labels as applicable.
+
+#### G.13:4.3 - Generation‑first interop flow (notation‑independent; governing-definition delegating)
+
+1. **Register source editions.** Author `ExternalIndexCard@Context` for each external source/snapshot used for SoTA authoring, including `ExternalEdition` and the `entityOfConcern` plane anchor.
+2. **Author mapping recipes.** Create `ClaimMapperCard@Context` describing which FPF artefacts are produced (ClaimSheets, BridgeHints, feature sets, UTS proposals), and which policies/specs constrain the mapping (policy refs + optional `PlaneMapRef` / `ScaleEmbeddingSpecRef`).
+3. **Produce FPF‑native inputs.** Use the alignment recipe outputs as inputs to:
+
+   * `G.2` harvesting (ClaimSheets / operator & object inventories / candidate bridge hints),
+   * `G.3` CHR typing (when numeric signals are formalized as CHR characteristics/scales/coordinates),
+   * `G.4` acceptance/threshold policies (when a downstream decision requires explicit CAL policy rather than telemetry),
+   * `G.12` dashboards (when derived SoS features are used as DHC slots).
+4. **Feed selection/parity/shipping without smuggling semantics.**
+
+   * `G.5` consumes the produced artefacts under its own governing spec refs and returns set‑valued outcomes (selector semantics remain governed by `G.5` + `G.Core`).
+   * `G.9` parity consumes pinned editions/windows and produces traceable parity reports.
+   * `G.10` shipping may include interop surfaces **as cited publications or records**; `G.13` does not govern shipping.
+5. **Emit telemetry and refresh causes.** Any change in external editions, alignment policies, plane maps, or embedding specs emits:
+
+   * a canonical `RSCRTriggerKindId` (per `G.Core`),
+   * a scope (`PathSliceId[]` and/or `PatternScopeId`),
+   * payload pins (editions/policies/UTS rows),
+     enabling `G.11` to plan slice‑scoped refresh.
+
+#### G.13:4.4 - Interfaces — minimal I/O standard (conceptual; kit‑only)
+
+| ID   | Interface   | Consumes  | Produces   |
+| ---- | ----------- | --------- | ---------- |
+| **G.13‑1 `Register_ExternalIndex`**  | Register `ExternalIndexCard@Context` | Provider metadata, scope, **ExternalEdition**, freshness, entityOfConcern anchor   | `ExternalIndexCard@Context` (+ UTS row when published)   |
+| **G.13‑2 `Map_ClaimsToFPF`**   | Apply `ClaimMapperCard@Context`   | `ExternalIndexCard@Context`, `MappingPolicyRef`, optional `PlaneMapRef`/`ScaleEmbeddingSpecRef`, optional EvidenceGraph hooks | `ClaimSheet@Context`, `BridgeHints`, optional `SoSFeatureSet@Context`, optional UTS proposals |
+| **G.13‑3 `Derive_SoSFeatures`**  | Produce CHR‑typed SoS features  | ClaimSheets / external signals refs, CHR typing refs, legality proof hooks | `SoSFeatureSet@Context` (CHR‑typed; provenance pinned)   |
+| **G.13‑4 `Publish_InteropSurface`**  | Publish interop summary | outputs of G.13‑2/‑3, UTS refs | `InteropSurface@Context` (+ UTS rows/twins) |
+| **G.13‑5 `Emit_IndexTelemetryPin`** | Emit refresh input  | edition/policy changes + scope + payload pins  | telemetry to `G.11` (typed causes + payload pins)   |
+| **G.13‑6 `Wire_To_SoTA_Pack`** | Provide shipping hook  | `InteropSurface@Context` + citations to upstream artefacts  | `G.10` pack hooks (as cited payload; no serialisation mandated)  |
+
+### G.13:5 - Extensions (pattern‑scoped; non‑core)
+
+`G.13` keeps provider/method specifics out of the kit core. Any such specificity appears as `GPatternExtension` blocks with stable **PatternScopeId**s. These modules are **wiring‑only**: they bind pins/editions/policies and cite the governing pattern rather than redefining semantics.
+
+#### G.13:5.1 - `G.13:Ext.ExternalIndexProviderWiring` *(Phase‑3 seed)*
+
+**PatternScopeId:** `G.13:Ext.ExternalIndexProviderWiring`
+**GPatternExtensionId:** `ExternalIndexProviderWiring`
+**GPatternExtensionKind:** `Phase3Seed`
+**GoverningPatternId:** `governing pattern not yet selected` *(Annex/Interop or a future dedicated interop-governing pattern)*
+**Uses:** `{G.13}`
+**⊑/⊑⁺:** `∅`
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `ExternalIndexType`
+* `ExternalEdition` *(as published on `ExternalIndexCard@Context`)*
+* `Licence?`
+* `CoverageScope`
+* `ProviderChangePolicyId?` *(if provider‑specific “schema drift” handling exists)*
+
+**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
+**Notes (seed; wiring‑only):**
+
+* Provider‑specific ingestion choices (e.g., OpenAlex‑class, Crossref‑class, ORKG‑class, discipline repositories) **must not** become Part‑G‑wide norms in Phase‑2. This module only records which provider cards exist and which editions/policies are pinned.
+
+#### G.13:5.2 - `G.13:Ext.EmbeddingBasedAlignment` *(Phase‑3 seed; method‑specific wiring stub)*
+
+**PatternScopeId:** `G.13:Ext.EmbeddingBasedAlignment`
+**GPatternExtensionId:** `EmbeddingBasedAlignment`
+**GPatternExtensionKind:** `Phase3Seed`
+**GoverningPatternId:** `governing pattern not yet selected` *(Annex/Interop or a future dedicated interop-governing pattern; Phase-3 governing-pattern decision required)*
+**Uses:** `{G.13, A.19, E.5.2}`
+**⊑/⊑⁺:** `∅`
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `ScaleEmbeddingSpecRef.edition`
+* `NormalizationMethodRef.edition?` *(when a declared normalization/representation transform is used)*
+* `MappingPolicyRef`
+* `EvidenceGraphId?` *(when evidence paths for alignment decisions are published)*
+
+**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
+**Notes (wiring‑only; post‑2015 practice orientation):**
+
+* “Embedding‑based” techniques are treated as **declared transforms** constrained by `ScaleEmbeddingSpec` and/or `NormalizationMethod` references, rather than as implicit semantics.
+* The module binds editions and policies; it does not define what is “similar enough”.
+
+#### G.13:5.3 - `G.13:Ext.EntityResolutionAndAliasDocking` *(interop‑specific; Phase‑3 seed)*
+
+**PatternScopeId:** `G.13:Ext.EntityResolutionAndAliasDocking`
+**GPatternExtensionId:** `EntityResolutionAndAliasDocking`
+**GPatternExtensionKind:** `Phase3Seed`
+**GoverningPatternId:** `governing pattern not yet selected` *(likely UTS-adjacent; requires Phase-3 governing-pattern decision)*
+**Uses:** `{F.17, E.10}`
+**⊑/⊑⁺:** `∅`
+**RequiredPins/EditionPins/PolicyPins (minimum):**
+
+* `UTSRowId[]` *(for externally‑sourced entities that become publicly citable)*
+* `ExternalIdAliasSetId?` *(labels only; canonical ids remain UTS ids)*
+* `TokenizationPolicyId?`
+
+**RSCRTriggerSetIds / RSCRTriggerKindIds:** `∅` *(covered by `G.13:4.1`)*
+**Notes (seed; wiring‑only):**
+
+* This module exists to prevent “ID drift by renaming” for externally sourced entities. It is intentionally a Phase‑3 seed until its governing pattern is selected.
+
+### G.13:6 - Archetypal grounding (informative; SoTA‑oriented)
+
+**System.** *Software architecture portfolio design.*
+Register an external scholarly index edition for “software architecture” concept neighborhoods. Align extracted technique/tactic claims into ClaimSheets and derive a CHR‑typed feature set (e.g., evidence depth, maturity). Use `G.5` to select a **set** of tactics under multi‑objective tradeoffs, and ship a SoTA pack that cites the interop surface.
+
+**Episteme.** *Science‑of‑science discipline dashboard.*
+Align external claim graphs (replication, standardisation, disruption‑style proxies) into CHR‑typed features for DHC series. Publish a dashboard slice that cites the external edition and alignment policy; refresh triggers fire when the external edition updates.
+
+**OEE/QD.** *Open‑ended environment generation.*
+Register external environment/task taxonomies as index cards. Align them into generator‑family registries (as cited publications or records), keeping coverage/regret strictly as telemetry inputs. Use refresh to re‑align when the taxonomy edition changes.
+
+### G.13:7 - Bias‑Annotation (informative)
+
+* **Vendor/tool bias.** The kit names conceptual surfaces only; it avoids vendor‑specific file formats or tooling claims.
+* **Metric‑authority bias.** External indicators are treated as *inputs* that must be typed, pinned, and evidenced; they are not authority by default.
+* **Representation bias.** Representation/embedding choices are forced into explicit `Spec` + edition pins (no hidden semantics).
+* **Discipline bias.** Interop supports pluralism by preserving explicit crossings and versioned alignments instead of forcing a single canonical external ontology.
+
+### G.13:8 - Conformance Checklist (CC‑G13; applies when G.13 surfaces are used)
+
+1. **CC‑G13‑CoreRef.** *(normative)* `G.13` implementations **MUST** satisfy the *effective* `G.Core` obligations declared by `G.13:4.1` (`GCoreLinkageManifest`), including trigger typing, Default Governing Definition Index citation, and crossing‑visibility pin discipline.
+
+2. **CC‑G13‑InteropIsNotASpecRefSurface.** *(delegated)* Interop surfaces **MUST NOT** introduce shadow legality/comparability gates; they cite `CN‑Spec`/`CG‑Spec`/CHR/CAL governing definitions and publish pins instead.
+   → delegate to `CC‑GCORE‑CN‑CG‑1`.
+
+3. **CC‑G13‑CrossingsAreExplicitWhenInteropTouchesPlanesOrContexts.** *(delegated)* Any cross‑plane/context reuse implied by alignment **MUST** be made explicit through the crossing visibility discipline.
+   → delegate to `CC‑GCORE‑CROSS‑1`.
+
+4. **CC-G13-PlanePenaltyPoliciesArePinned.** *(local; governing-definition citing)* If `PlaneMapRef` is used (or alignment implies plane‑level penalties), interop surfaces **MUST** publish the relevant policy‑id pins via the crossing‑visibility discipline, and any such policies **MUST** satisfy the constraints governed by `CG‑Spec` (cite `CC‑G0‑Φ`). Interop surfaces **MUST NOT** define interop‑local penalty functions.
+
+5. **CC‑G13‑SetReturnPreserved.** *(delegated)* Interop **MUST NOT** introduce hidden scalarisation or forced single‑winner selection.
+   → delegate to `CC‑GCORE‑SET‑1`.
+
+6. **CC‑G13‑DefaultClaimsAreCitationsOnly.** *(delegated)* Any mention of defaults (e.g., dominance regime, `PortfolioMode`) is a **citation** to the default's governing definition through `G.Core.DefaultGoverningDefinitionIndex`, not a local default statement.
+   → delegate to `CC‑GCORE‑DEF‑1`.
+
+7. **CC‑G13‑EditionDisciplineForInteropCards.** *(local)* `ExternalIndexCard@Context` and `ClaimMapperCard@Context` **MUST** expose edition pins (`ExternalIndexRef.edition`, `ClaimMapperRef.edition`). Any interop surface published to UTS **MUST** cite the relevant `…Ref.edition` values (incl. `PlaneMapRef.edition?`, `ScaleEmbeddingSpecRef.edition?`) when present.
+   FPF edition keys **MUST** appear only on `…Ref.edition` pins when a reference is present. Provider snapshot labels (e.g., `ExternalEdition` on `ExternalIndexCard@Context`) may exist on the source card, but **MUST NOT** be copied into downstream artefacts as free‑floating “edition fields”; downstream artefacts cite the corresponding `…Ref.edition` pins instead.
+   In particular, interop transforms **MUST NOT** perform illicit arithmetic on ordinal/compare‑only scales (e.g., averaging or subtraction); any aggregation must be via lawful CAL operators with explicit scale legality (cite `A.18` / `CC‑G0‑CSLC`).
+
+8. **CC‑G13‑SoSFeaturesAreCHRTypedAndLegal.** *(local; governing-definition citing)* If `SoSFeatureTransform@Context` is used, produced SoS features **MUST** be CHR‑typed via `FeatureTypingRefs{CharacteristicId/ScaleId/CoordinateId}` (governed by `G.3`) and any legality/units obligations must be satisfied via CSLC/CG governing definitions (cite `A.18` / `G.0` / `G.4`; do not invent interop‑local legality gates).
+
+9. **CC‑G13‑TelemetryEmitsCanonicalTriggerKinds.** *(delegated)* Interop‑driven changes (external edition bumps, mapping policy changes, plane‑map edits, embedding‑spec edits) **MUST** emit canonical `RSCRTriggerKindId` causes with explicit scope and payload pins.
+   → delegate to `CC‑GCORE‑TRIG‑1`, `CC‑GCORE‑TRIG‑2`, `CC‑GCORE‑TRIG‑3`, `CC‑GCORE‑TRIG‑4`.
+
+10. **CC‑G13‑IDContinuityForExternallySourcedIdentifiers.** *(delegated)* Interop publication **MUST** follow Δ‑discipline: no “renaming by meaning”; use aliases/deprecations as required.
+   → delegate to `CC‑GCORE‑ID‑1`, `CC‑GCORE‑ID‑2`.
+
+11. **CC‑G13‑NotationIndependence.** *(local)* Conformance is judged on the conceptual objects in `G.13:4.2`. Any serialisation is non‑normative and must not redefine semantics.
+   *(Cites `E.5.2` for notation independence.)*
+
+### G.13:9 - Common Anti‑Patterns and How to Avoid Them
+
+* **Anti‑pattern: “Format == spec”.** Treating an export schema (KG dump, JSON, RO‑Crate, etc.) as the normative definition.
+  **Remedy:** Keep `ExternalIndexCard` / `ClaimMapperCard` / `InteropSurface` as the conceptual specification; treat serialisation as an appendix/tooling concern.
+
+* **Anti‑pattern: Hidden scale invention.** An embedding similarity becomes a “score” without explicit typing/binding.
+  **Remedy:** Require `ScaleEmbeddingSpecRef` + edition pins and bind any derived features through CHR/CAL governing definitions.
+
+* **Anti‑pattern: Implicit plane/context reuse.** Reusing external concept graphs across contexts without explicit crossing pins.
+  **Remedy:** Publish crossing visibility pins and cite bridge/plane governing definitions; never fuse contexts “inside the aligner”.
+
+* **Anti‑pattern: Edition‑free dashboards.** Feeding externally derived rows into dashboards without pinned editions/policies.
+  **Remedy:** Pin `ExternalIndexRef.edition` and `ClaimMapperRef.edition`; emit RSCR triggers on changes.
+
+* **Anti‑pattern: Interop asserts defaults.** “Interop decides dominance regime / `PortfolioMode`.”
+  **Remedy:** Treat defaults as citations only (the relevant governing definition is cited through `G.Core.DefaultGoverningDefinitionIndex`).
+
+### G.13:10 - Consequences
+
+* **Interop becomes refresh‑ready.** External source drift produces typed RSCR causes with scopes/payload pins; refresh becomes slice‑scoped rather than global guesswork.
+* **Generation‑first authoring becomes cheaper.** External sources become controlled inputs into SoTA synthesis and declared set-result exploration, not ad‑hoc audit decoration.
+* **Conceptual hygiene improves.** Explicit cards + edition pins reduce semantic leakage from tools/formats/providers.
+* **Cross‑tradition reuse becomes auditable.** Plane/context reuse is surfaced as crossings rather than embedded assumptions.
+
+### G.13:11 - Rationale
+
+FPF is a conceptual framework for disciplined creative work, not a data governance system. External scholarly infrastructure is valuable precisely because it provides fast, wide coverage—but without an explicit interop kit, that value is purchased by silently importing semantics (implicit comparisons, unpinned editions, hidden transformations).
+
+`G.13` resolves the tension by turning “interop” into **first‑class conceptual wiring**: cards/surfaces that pin editions, cite governing patterns, expose provenance hooks, and produce typed refresh causes, while leaving domain/tool specifics in `Extensions` (or Phase‑3 governing definitions).
+
+### G.13:12 - SoTA‑Echoing (post‑2015, for orientation; non‑normative)
+
+* **Scholarly claim graphs & open indexes.** Open research KGs and open scholarly indexes encourage claim‑level representations and concept taxonomies as interop substrates (post‑2015 ecosystem: KG‑style contribution graphs; open indexing initiatives). Treat these as *sources* registered via `ExternalIndexCard`, not as governing patterns.
+
+* **Neural representations for scientific text.** Transformer‑based scientific encoders (e.g., SciBERT‑class; citation‑aware paper representations such as SPECTER‑class; later retrieval‑oriented scientific embedding families) are useful as *alignment heuristics*. In FPF terms, they belong behind `ScaleEmbeddingSpec` + pinned editions/policies (see `G.13:Ext.EmbeddingBasedAlignment`).
+
+* **Schema matching & entity resolution (deep‑learning era).** Modern matcher families (deep entity matching, contrastive representation alignment, GNN‑assisted graph alignment) help populate interop cards, but must not become “implicit semantics”; record their use as policy‑bound wiring in extensions.
+
+* **Systematic review process modernisation.** PRISMA‑2020‑class review records (post‑2015 practice) are valuable as evidence anchors and coverage telemetry; treat them as evidenced inputs (EvidenceGraph anchors + pinned editions/windows), not as legality gates.
+
+* **QD / Illumination and OEE declared set results.** Post‑2015 QD (MAP‑Elites successors, CMA‑ME line, differentiable QD toolkits) and OEE (POET‑class and related environment/method co‑evolution lines) often rely on external taxonomies and environment corpora. Interop should expose those as pinned external editions and keep coverage/regret as telemetry inputs—never as implicit dominance.
+
+### G.13:13 - Relations
+
+**Builds on:** `G.Core`.
+**Imports:** `G.2`, `G.3`, `G.4`, `G.5`, `G.6`, `G.7`, `G.9`, `G.10`, `G.11`, `A.19`, `A.18`, `G.0`, `F.17`, `E.5.2`, `E.18`.
+**Publishes to:** UTS (twin labels where applicable); refresh inputs to `G.11`; shipping hook surfaces to `G.10` (as cited publications or records).
+**Relates to:** `G.12` (dashboards), `G.8` (SoS-LOG bundle surfaces) when interop-derived publications or records are consumed there.
+
+### G.13:14 - Author’s quick checklist (informative)
+
+1. Register each external source snapshot as an `ExternalIndexCard@Context` with explicit `ExternalEdition`.
+2. Author a `ClaimMapperCard@Context` with explicit `MappingPolicyRef` and required edition pins.
+3. If you derive SoS features, declare a `SoSFeatureTransform@Context` and cite CHR typing refs and provenance hooks.
+4. Publish an `InteropSurface@Context` that cites all active `…Ref.edition` values and UTS rows.
+5. On any external edition or policy change, emit canonical RSCR trigger causes with explicit scope + payload pins.
+6. Keep provider/tool specifics in `Extensions` (or Phase‑3 seed) and do not let formats redefine semantics.
+
+### G.13:End
+
+# **Part H - Reserved**
+
+# **Part I – Annexes & Extended Tutorials**
+
+| §   | ID & Title                  |  Concise reminder                                                |
+| --- | --------------------------- | --------------------------------------------------------------- |
+| I.2 | Expanded Entry Disambiguation Cases | Expanded entry-disambiguation cases for high-risk or compact-insufficient first-entry comparison; compact `E.11` entry cues plus local Problem frames are complete when enough. |
+
+## I.2 - Expanded Entry Disambiguation Cases
+
+`I.2` is the canonical publication unit for `ExpandedEntryDisambiguationCase`
+entries in this architecture. An `I.2` item expands one compact `E.11`-distributed
+entry cue, README scenario, ToC query cue, or local pattern `Problem frame` when
+first-pattern choice is high-risk, often misclassified, repeatedly failed,
+retrieval-facing, or too dense for compact guidance.
+Its `E.11` use is limited to disambiguation, wrong-pattern rejection,
+entry-load reclassification, and admissible entry stop.
+
+An `ExpandedEntryDisambiguationCase` is a bounded entry case. It is not
+`U.Work`, not a workflow, not a route script, and not an execution trace.
+
+`I.2` carries expanded disambiguation only when README scenarios, ToC query cues,
+`E.11` entry-distribution cues, or local `Problem frame` recognition are
+insufficient for one high-risk, often-misclassified, repeatedly failed,
+retrieval-facing, or materially new first-entry pattern-comparison set. A compact
+entry cue plus the pattern `Problem frame` is a complete admissible entry result
+when it is enough.
+
+Each expanded entry-disambiguation case keeps recoverable:
+
+- `Case signal`
+- `Initial uncertainty`
+- `Plausible candidate patterns`
+- `Tempting wrong pattern, wrong defining episteme, or false family`
+- `Disambiguating fact`
+- `Recognition repair or entry-load reclassification`
+- `Actual governing FPF pattern body or projection role`
+- `Admissible entry stop`
+- `What not to infer`
+
+### I.2.1 - Project alignment
+
+- **Case signal:** "We keep mixing responsibility, method, plan, and what
+  actually happened."
+- **Posture:** compact-index-only is normally sufficient.
+- **Initial uncertainty:** the reader may think FPF starts with the whole
+  specification, but the entry load is narrower: align context, roles, method vocabulary, work vocabulary,
+  and actual execution.
+- **Plausible candidate patterns:** `A.1.1`, `A.15`, `A.15.2`, `A.15.3`,
+  `B.5.1`.
+- **Nearby patterns:** `F.11` for method vocabulary and work vocabulary; `F.9` for bridge
+  discipline; `F.17` for an early term sheet when vocabulary is the live
+  stabilizing result.
+- **Tempting wrong pattern:** treat `F.17` or `E.9` as a universal first stop.
+- **Actual governing FPF pattern body or projection role:** `A.15` and its neighbors govern
+  the role, method, plan, and run split; `F.17` is a stabilizing lexical projection,
+  not the whole alignment governing pattern.
+- **Admissible entry stop:** the reader has opened the right alignment governing pattern or has
+  enough first shared vocabulary to proceed.
+- **What not to infer:** no universal first chain is implied.
+
+### I.2.2 - Partly-said cue and language-state discovery
+
+- **Case signal:** "This phrase matters, but it is not yet a claim."
+- **Initial uncertainty:** the reader can be seeing one cue, one early
+  language-state requirement, one publication seam, or one L/A/D/E-classified claim family.
+- **Plausible candidate patterns:** `C.2.LS`, `A.16`, `A.16.1`, `A.16.2`,
+  `B.4.1`, `B.5.2.0`.
+- **Tempting wrong pattern:** harden the cue into `A.6.P`, `C.16.Q`, `A.6.A`,
+  or `C.25` before it is stable enough to be a claim, action, or quality
+  object.
+- **Disambiguating fact:** the phrase still needs preservation and entry-load
+  typing; it is not yet an endpoint claim.
+- **Decision movement:** if the phrase is still a cue, stay in `C.2.LS` /
+  `A.16`; if it must be preserved across a seam, inspect `A.16.1` / `B.4.1`;
+  if it is already a boundary claim, inspect `A.6.B` / `A.6.C`; if it is being
+  forced into a quality endpoint or action-invitation endpoint too early, reject `C.16.Q`, `A.6.A`, and
+  `C.25` for now.
+
+- **Actual governing FPF pattern body or projection role:** `C.2.LS`, `A.16*`, and
+  `B.4.1` are the first governing patterns for cue preservation and entry plurality;
+  `A.6.B` / `A.6.C` become first governing patterns only after boundary claim structure is
+  actually being made.
+- **Admissible entry stop:** cue preserved, entry plurality opened, or entry-load
+  reclassified into the right boundary-claim pattern.
+- **What not to infer:** do not recast the cue as a finished requirement, work
+  record, quality claim, or action invitation too early.
+
+### I.2.3 - Boundary unpacking and claim decomposition
+
+- **Case signal:** "The API or contract-language description says X."
+- **Initial uncertainty:** the reader may be seeing one boundary description,
+  an admissibility gate, a duty, an evidence claim, an action invitation, or an
+  interface/access note.
+- **Plausible candidate patterns:** `A.6`, `A.6.B`, `A.6.C`.
+- **Nearby patterns:** `A.6.RSIG` if first-contact recognition is still live;
+  `A.6.P` for relation wording; `C.16.Q` for quality wording; `A.6.A` for
+  action invitation wording; `E.17` for publication or view question.
+- **Tempting wrong pattern:** treat an API/access phrase as a promise of
+  downstream effect, or treat one boundary phrase as a complete Contract Bundle.
+- **Disambiguating fact:** the sentence mixes admissibility, gate, duty, evidence, and action-invitation
+  requirements, or the encountered description's defining `U.Episteme` is not yet
+  clear.
+- **Recognition repair or entry-load reclassification:** use `A.6.RSIG` if the
+  first question is "what description is this?"; otherwise inspect `A.6.B`
+  / `A.6.C` for atomic boundary claim structure.
+- **Actual governing FPF pattern body or projection role:** `A.6.B` and `A.6.C` govern
+  L/A/D/E-classified claim decomposition; `A.6.RSIG` only governs first-contact
+  description recognition.
+- **Admissible entry stop:** boundary claim pattern opened, or one Claim Register or
+  L/A/D/E-classified atomic claim set is ready for the next governing FPF pattern.
+- **What not to infer:** one contract-language or API cue does not by itself create one
+  work action, quality claim, or evidence relation.
+
+### I.2.4 - Admissible comparison, candidate-pool policy, selection, and selected-set publication
+
+- **Case signal:** "We need a shortlist, not one winner."
+- **Initial uncertainty:** the live entry load can be comparison substrate,
+  candidate-pool policy, one local choice, call planning, or selected-set
+  publication.
+- **Plausible candidate patterns:** `A.19.CN`, `A.17-A.19`, `C.18`, `C.19`,
+  `G.0`, `G.5`.
+- **Nearby patterns:** `C.11` if the entry load narrows to one local decision
+  doctrine; `C.24` if the next honest artifact is a call plan or checkpoint
+  return; `A.19.CPM` and `A.19.SelectorMechanism` if comparator/selector
+  structure is live.
+- **Tempting wrong pattern:** treat `C.11` as the first governing pattern while the real
+  entry load is candidate-pool policy or selected-set publication.
+- **Disambiguating fact:** the output remains one governed set, shortlist, or
+  selected-set publication question rather than one single winner.
+- **Decision movement:** if the work is still forming a candidate pool, inspect
+  `C.19`; if the set is ready to be published as a governed shortlist, inspect
+  `G.5`; if the question has narrowed to choosing one option under a local
+  decision doctrine, inspect `C.11`; if the missing object is a call plan or
+  planned comparison setup, inspect `C.24`.
+
+- **Actual governing FPF pattern body or projection role:** `C.19` for candidate-pool
+  policy, `G.5` for selected-set publication, `C.11` for local choice,
+  `C.24` for call-planning/checkpoint-return.
+- **Admissible entry stop:** the correct first governing pattern is opened, or an admissible
+  candidate-pattern set is stabilised without implying sequence.
+- **What not to infer:** do not force a one-winner answer when the honest
+  output is still a governed selected set.
+
+### I.2.5 - Generator, SoTA, or Portfolio Kit
+
+- **Case signal:** "We need a reusable search/harvest/portfolio scaffold, not
+  one recommendation."
+- **Posture:** compact-index-only is normally sufficient unless repeated
+  misclassification makes an expanded entry-disambiguation case necessary.
+- **Initial uncertainty:** the reader can confuse generator/scaffold authoring
+  with one-off recommendation, one comparison, one selected-set publication, or
+  tooling choice.
+- **Plausible candidate patterns:** `A.0`, `G.0`, `G.1`, `G.2`, `G.5`.
+- **Nearby patterns:** `B.5.2.1` and `C.17-C.19` when creative search,
+  novelty, or explore/exploit policy is already central; `G.10` or `G.11` when
+  shipping or refresh is live.
+- **Tempting wrong pattern:** jump to `G.5` publication or a local selector
+  before the reusable generator/SoTA scaffold is declared.
+- **Disambiguating fact:** the generator, SoTA, or portfolio kit must be reusable across
+  searches, portfolios, or updates.
+- **Actual governing FPF pattern body or projection role:** `G.1` and `G.2` for generator and
+  SoTA support; `G.5` only when selected-set publication is live.
+- **Admissible entry stop:** scaffold/generator pattern body opened, or portfolio
+  publication pattern identified.
+- **What not to infer:** not every generator/SoTA entry load is a tool implementation or
+  one immediate publication obligation.
+
+### I.2.6 - Same-entity rewrite, explanation, and comparative reading
+
+- **Case signal:** "We need to explain the same EntityOfConcern for another audience."
+- **Initial uncertainty:** explanation, rendering, repair, representation
+  transition, and comparison are all nearby, and the reader can accidentally
+  mint one second EntityOfConcern.
+- **Plausible candidate patterns:** `A.6.3.CR`, `A.6.3.RT`, `E.17.EFP`,
+  `E.17.ID.CR`.
+- **Nearby patterns:** `E.17.AUD.LHR` for pressured-head local repair;
+  `E.17.AUD.OOTD` for `PublicationUnit` stability.
+- **Tempting wrong pattern:** explanation-as-new-object or repair-as-second-rule
+  track.
+- **Disambiguating fact:** the same-EntityOfConcern rewrite/comparative-reading case stays the same; only rendering,
+  reading posture, or explanatory framing changes.
+- **Recognition repair or entry-load reclassification:** move toward same-entity
+  rewrite or explanation-facing rendering while rejecting second-object drift.
+- **Actual governing FPF pattern body or projection role:** `A.6.3.CR` for same-entity
+  retextualization, `A.6.3.RT` for representation transition, `E.17.EFP` for
+  explanation-facing rendering, `E.17.ID.CR` for bounded comparative reading.
+- **Admissible entry stop:** same-entity rewrite opened or explanation-facing
+  rendering stabilized with source pins.
+- **What not to infer:** explanation or comparison does not by itself justify a
+  second semantic track.
+
+### I.2.7 - Temporal claim adequacy: state -> rate -> Dyn2
+
+- **Case signal:** "Adding review capacity for two sprints will double backlog reduction rate."
+- **Initial uncertainty:** the reader may be seeing ordinary prose, one state reading or snapshot, one measured rate, one intervention-sensitive temporal claim, a benchmark claim, a quality claim, a viability claim, a promise, a causal claim, an evaluation claim, a dynamics-law claim, or a residual QL question.
+- **Plausible candidate patterns:** `C.27`, `C.16`, `A.3.3`, `B.1.4`, `B.1.6`, `C.24`, `G.9`, `C.25`, `C.26.3`, `C.26`.
+- **Tempting wrong pattern:** treat every speed or rhythm word as C.27, or treat every C.27 card as benchmark proof, causal proof, service promise, quality claim, viability claim, reusable transition law, or QL activation.
+- **Disambiguating fact:** the phrase changes admissible use only when effort, window, resistance or cost, basis, and reopen condition matter for action.
+- **Recognition repair or question reclassification:** keep a snapshot as Dyn0; keep a measured trend or rate as Dyn1 and inspect `C.16` when measurement construction or comparability is live; use `Dyn2TemporalClaimAdequacyCard` when the intervention-sensitive temporal claim itself changes admissible use; move the other question to the named FPF pattern that governs it.
+- **Actual governing FPF pattern or projection role:** `C.27` carries authored temporal-claim adequacy; `C.16` carries measurement construction and comparability; `A.3.3` carries reusable transition law or formal dynamics model; `G.9` carries benchmark parity; `C.25` carries quality-family adequacy; `C.26.3` carries viability-envelope regulation; `C.26` carries residual QL reading only after ordinary temporal, measurement, work, benchmark, proxy, and dynamics readings are exhausted.
+- **Admissible entry stop:** ordinary prose, Dyn0, Dyn1 with `C.16` when measurement construction or comparability is live, a local `Dyn2TemporalClaimAdequacyCard`, a boundary-crossing `Dyn2TemporalClaimProfile`, or a named neighboring FPF pattern relation.
+- **What not to infer:** faster is not automatically better, a velocity target is not proof of improvement, a dynamic benchmark is not benchmark superiority, and a rhythm or inertia word does not by itself mint a new dynamics object.
+
+### I.2.8 - Causal-use and counterfactual-support repair
+
+- **Case signal:** "This policy would have prevented harm", "this intervention caused the improvement", "this fairness result is causal", "this method is better on counterfactual outcomes", or "these simulated counterfactuals prove the decision".
+- **Initial uncertainty:** the reader may be seeing association, a metric disparity, temporal change, method execution, work-plan use, work occurrence, simulation output, deontic boundary language, or a real causal-use claim.
+- **Plausible candidate patterns:** `C.28`, `A.10`, `B.3`, `C.11`, `C.19`, `C.24`, `C.26`, `C.27`, `D.5`, `G.5`, `G.9`, `A.15`, `A.3.2`, `A.6`, `C.16`.
+- **Tempting wrong pattern:** use `D.5` to treat metric fairness as causal fairness; use `G.9` to compare methods across different causal rungs; use `C.26` to hide causal under quantum-like wording; use `C.27` to treat rate change as causal effect; use `A.15` or `A.3.2` to treat a sampling method, intervention procedure, or target-trial recipe as causal support by itself; use `A.6` to turn causal evidence into a duty or release gate.
+- **Disambiguating fact:** the decisive question is not whether a causal-looking word appears. The decisive question is whether the claim is used to publish, choose, deploy, assure, audit, benchmark, or dispatch a causal use governed by `C.28`: effect, intervention success, counterfactual comparison, causal fairness, policy optimality, causal evidence support, off-policy/causal-RL evaluation, or causal method superiority.
+- **Recognition repair or question reclassification:** if only a measured value is live, repair in `C.16`; if only rate, trend, or temporal adequacy is live, repair in `C.27`; if only method, work, or work-plan structure is live, repair in `A.15` and `A.3.2`; if only boundary duty or agreement language is live, split with `A.6`; if only residual QL modeling language is live, use `C.26` only after ordinary measurement, temporal, work, benchmark, proxy, and dynamics readings are exhausted.
+- **Actual governing FPF pattern body or projection role:** `C.28` carries causal-use question, causality-ladder rung, claim kind, causal estimand, identification, counterfactual sampling realizability, causal evidence support basis, support record and verdict, supported use, and unsupported use. `A.10` carries evidence/provenance path, `B.3` carries assurance consequence, `D.5` carries ethical/fairness audit, `G.5` carries method dispatch, and `G.9` carries benchmark parity only as consumers of `C.28` support.
+- **Admissible entry stop:** a cheap downgrade sentence, a local `CausalUseTriageRecord`, a local or durable `CausalUseEvidenceDesignRecord`, a `CausalUseSupportVerdict`, or a named neighbor-pattern use that cites `C.28` without claiming broader authority.
+- **What not to infer:** a randomized procedure is not automatically counterfactual support; a simulation is not realized counterfactual data; a target-trial phrase is not proof of identification; a fairness metric is not causal fairness; a method benchmark is not comparable if methods sit on different causal rungs or estimands; and a causal support record does not by itself create a duty, promise, commitment, release gate, or admissibility predicate.
+
+### I.2:End
+
+
+# SOURCE_FILE: Narrativization-and-Narrative-Studies-Principles-Framework.md
+---
+# Narrativization and Narrative Studies Principles Framework
+
+> **Framework family:** Domain Principle Framework
+> **Package edition ref:** `NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30`
+> **Dependency:** FPF Core, especially `A.6.3.NAR`, `A.6.3.RT`, `A.6.3.CSC`, `E.17.EFP`, `A.6.P`, `C.2.LS`, `C.2.4` through `C.2.7`, `A.16.1`, `A.16.2`, `C.16.Q`, `E.10`, `F.18`, `C.33`, `C.34`, `C.35`, `D.1` through `D.5`, `A.10`, `B.3`, `B.4`, `A.19.ECS`, `C.16`, `E.4.DPF`, `E.4.PFR`, `G.2`, `E.21`, `E.22`, `E.23`, and `G.11`
+
+Use this package as a small FPF-style Domain Principle Framework publication carrier: table of contents, readme, preface, framework context, pattern bodies, relation records, acceptance cases, and refresh route.
+
+# Table of Contents
+
+Use the Table of Contents when you already know the DPF pattern or support section you need. Use the readme when you are deciding whether narrativization work is the right entry. Use the Preface when you need the cross-cutting ideas that make the pattern set cohere. Pattern bodies contain the action-guiding text.
+
+How maps are reached during work: do not read support maps front-to-back unless you are designing or refreshing the package. During ordinary narrative work, enter a map only when a pattern relation, a low-value repair action, source-return condition, or boundary question points there.
+
+| Work trigger | Map to open | Why |
+| --- | --- | --- |
+| The narrative route is architecture-mediated, uses views and viewpoints, candidate structures, structural-information capture, correspondence, or actual-structure feedback. | Architecture and Narrative Work Bridge | Translate narrative wording into the relevant FPF architecture owners without making Core depend backward on this DPF. |
+| Style, hook, cue, coarsening, explanation, relation wording, quality wording, or precision restoration becomes load-bearing. | Semiotic And Language-Precision Bridge | Find the FPF owner before treating craft vocabulary as ontology or quality. |
+| A source line supports a narratology, cognition, teaching, ethics, or generation claim; the source is absent, stale, or too narrow. | Source Use And Refresh Map | Bound the claim and route refresh through `G.2`/`G.11`. |
+| A local term such as route, viewpoint, actant, epiplexity, engagement, generated plan, or learning route risks becoming a new kind. | DPF Precision Restoration And Owner Map | Recover the kind, owner, use boundary, and blocked overread. |
+| The question is DPF prefix, edition dependency, package relation, or refresh route rather than narrative content. | Name And Edition Route or DPF Relation Records | Check package-level identity and dependency without mixing it into pattern bodies. |
+
+| Locus | Title | Kind | Use |
+| --- | --- | --- | --- |
+| Readme | First practical entries | Informative | Choose the first DPF entry from the working problem. |
+| Preface | Cross-cutting ideas and principles | Informative | Understand narrativization as source-structure-to-sequence work rather than style polish. |
+| Package carrier structure-account note | What this DPF publication carrier exposes, for whom, captured structure, deliberately coarsened or deferred structure, and source-return boundary | Framework-level use note | Check what part of narrative-studies structure this package exposes before treating it as domain coverage. |
+| Framework context | Package boundary and owner routing | Normative package frame | See dependency, owner, and reliance limits. |
+| `NSTD.1` | Source-Structure Intake and Narrative Purpose | DPF pattern | Start from source structures and declared use before message or theme. |
+| `NSTD.2` | Structure-to-Sequence Ordering | DPF pattern | Declare the ordering rule that turns structure into narrative sequence. |
+| `NSTD.3` | Source Mechanism, Event Model, and Coherence | DPF pattern | Preserve mechanism, dependency, event, or state-change reconstruction. |
+| `NSTD.4` | Voice, Focalization, and Agency | DPF pattern | Use viewpoint and protagonist choices without false agency or responsibility. |
+| `NSTD.5` | Engagement, Attention, and Motivation | DPF pattern | Use engagement without turning attention into truth, permission, or authority. |
+| `NSTD.6` | Declared-Use Narrative Rendering Quality Evaluation | DPF evaluation pattern | Evaluate one narrative rendering version for one declared use. |
+| `NSTD.7` | Automated Narrativization and Story Planning | DPF pattern | Split generated carrier, admitted source basis, method, admission, evaluation, evidence, and responsibility. |
+| `NSTD.8` | Learning-Route Narrative Rendering and Reconstruction Return | DPF pattern | Design and evaluate a learning route without moving teaching material into pattern bodies. |
+| Acceptance cases | FPF seminar, franchise continuation, homotopy explanation, live event commentary | Use-test support section | Test the pattern set across heterogeneous narrative work. |
+| Support maps | Architecture bridge, semiotic bridge, source use, precision map, naming and edition route | Reference | Use only when a pattern relation, low-value repair action, source-return condition, or owner-routing doubt points to one of the maps. |
+| PFR records | DPF relation and edition records | Relation-record section | State specialization, source reuse, evaluation, generated-carrier, teaching publication-carrier, and ethics routing relations. |
+| Refresh route | Source, evaluation, and edition refresh | Refresh-route section | State what must return to `G.2`, `E.22`, `E.23`, and `G.11`. |
+
+# Readme - First Practical Entries
+
+Narrativization and Narrative Studies DPF helps when a structure-bearing source must become a sequence that humans can follow, remember, teach, discuss, or generate, while source structure and source return remain recoverable.
+
+Treat this as a problem-solving DPF, not an ontology of narratives and not a guide to chatting about narrative. Its patterns target recurring narrative-work failures: starting from theme before source structure, hiding temporal posture, choosing story order by habit, making events happen because the writer wants them, treating viewpoint as agency, letting engagement become truth or permission, trusting generated fluency, and copying blocked technical structure into a bad learning route. The intended payoff is a set of source-grounded solution moves that make those failures harder.
+
+Use this DPF when the project question is not only "how do we write this nicely?" but one of these:
+
+- a source graph, architecture, proof dependency, event set, mechanism, evidence set, canon, or knowledge base must become a narrative route;
+- a historical, live, or prospective source must be narrated without hiding which temporal posture and uncertainty obligations apply;
+- a learning route must preserve source structure rather than only examples, analogies, mood, or slogans;
+- a generated text or story plan must be admitted, evaluated, and repaired before reliance;
+- engagement or viewpoint helps comprehension but may distort source structure, agency, ethics, evidence, or authority;
+- a team needs to know whether a narrative rendering is good enough for a declared use.
+
+Do not use this DPF when the live issue is only source evidence, publication layout, legal permission, ethics mediation, proof status, generated-carrier admission, or pattern quality. Use the direct FPF owner first, then return here only if source structure is being rendered as narrative.
+
+## First Practical Entry 1 - Turn A Source Structure Into A Narrative Route
+
+Start with `NSTD.1`, then `NSTD.2`. Name the admitted source basis, selected source structures, source temporal posture, rendering mediation mode, narrating or rendering worker, intended reader use, narrative purpose, ordering rule, preserved structure, lost structure, and source-return condition.
+
+Typical first result: one `NarrativePurposeIntake@Context` plus one `NarrativeOrderingRule@Context`.
+
+## First Practical Entry 2 - Repair A Fluent But Misleading Narrative
+
+Start with `NSTD.3`, `NSTD.4`, and `NSTD.5`. Check whether readers can reconstruct events, mechanisms, dependencies, viewpoint, agency, engagement boundary, and source-return limits.
+
+Typical first result: a repair note that lowers causal, agency, engagement, evidence, or assurance claims and points to the owner that can carry them.
+
+## First Practical Entry 3 - Evaluate Rendering Quality For Declared Use
+
+Start with `NSTD.6`. First confirm that the object is an admitted narrative rendering version for one declared use. Then evaluate `NarrativeRenderingEpiplexity`, ordering recoverability, event-mechanism support, viewpoint-agency discipline, engagement boundedness, owner routing, medium fit, and source-return readiness.
+
+Typical first result: `NarrativeRenderingQualityResultRow@Context` rows with values, evidence basis, lowering reason, repair action, owner, and reopen condition.
+
+For repeated improvement, package those rows as `NarrativeRenderingQualityEvaluationResult@Context` and prepare `NarrativeRenderingImprovementLoopInput@Context` for `E.22`/`E.23`. Do not count a style pass, prompt retry, extra drama, or generated variant as improvement until the changed rendering version or declared changed slice is re-evaluated through `NSTD.6`.
+
+## First Practical Entry 4 - Use LLM Or NLG Output Safely
+
+Start with `NSTD.7` and `C.35`. Treat the generated result as a produced carrier until admitted source basis, selected structure, generation method, admission note, losses, evaluation, and human responsibility are explicit.
+
+Typical first result: `AutomatedNarrativizationAdmissionCase@Context`.
+
+## First Practical Entry 5 - Build A Learning Route
+
+Start with `NSTD.8`, then `NSTD.6`. Keep actual lessons, slides, scripts, exercises, seminar notes, and teaching examples in separate teaching or test-run files. Pattern bodies only govern the route, reconstruction tasks, source return, and evaluation.
+
+Typical first result: `LearningNarrativeRoute@Context` plus narrative rendering quality result rows.
+
+# Preface - Cross-Cutting Ideas And Principles
+
+This DPF is not a story-writing manual and not an ontology of narrative. It is an FPF-grounded pattern set for one recurring transformation: selected source structure becomes a sequential narrative rendering for a declared human use. The patterns are organized around problems and repair moves, because the framework is useful only if it helps a narrative worker avoid known failures and choose better routes.
+
+The central distinction is simple. A narrative rendering is not the admitted source basis, not the selected source structure, not evidence, not assurance, not a gate, not a decision, and not work authorization. It is a representation relation with ordering, salience, loss, recoverability, and source-return obligations.
+
+Narrative work has temporal postures. A historical reconstruction, reverse-engineering account, live match commentary, prospective project scenario, future event preview, and fictional continuation can all be narrative renderings, but they do not carry the same admitted source basis, uncertainty, evidence, telemetry, or source-return obligations. This DPF therefore requires the source temporal posture before drafting and before evaluation.
+
+Narrativization has two rendering mediation modes. In the direct source-structure mode, a situation, event stream, proof field, canon, evidence set, or admitted source pack is rendered into narrative without making architecture work the central owner. In the architecture-mediated mode, actual or possible holon structure is first understood through architecture work, architecture descriptions, views, viewpoints, architecture decisions, candidate structures, or telemetry, and then narrated for a declared reader or listener use. The rendering mediation mode decides when `C.33`, `C.34`, and architecture owners stay live.
+
+Direct source-structure work is still structured work. The pattern set must not pretend that a writer's intuition or LLM generation magically selected the needed structures. If selection, reader-use hypothesis, ordering, and loss accounting stay implicit, the result is a candidate carrier or candidate prose, not a checked narrative rendering. Improvement then starts by reconstructing the hidden selection record before changing style, drama, or prompt wording.
+
+Narrative work is role work. The narrator, writer, teacher, commentator, designer, or tool-mediated rendering worker chooses sequence, viewpoint, loss profile, and engagement devices. The intended reader or listener role constrains those choices. A narrative worker cannot ignore reader-role interests, but reader interest also does not create evidence, assurance, ethics, publication permission, or source authority.
+
+Narrativization is similar to serialization in one important way: a non-linear or differently ordered source structure must be made readable as a sequence. That sequence preserves some relations and loses others. The DPF keeps that similarity, then adds narrative-specific concerns: event comprehension, viewpoint, engagement, agency cues, ethics, teaching, generated text, and rendering-quality evaluation.
+
+Sometimes the selected structure to be rendered is a constraint-governed unfolding structure under FPF Core. The admitted source basis may be a `G.2` source pack, an architecture description, a pattern body, a source publication carrier, or another admitted episteme; the selected structure is the `U.Structure` recovered from that admitted source basis for the declared narrative use. A learning route, architecture narrative, generated route card, or story-like explanation may render only a `DemonstrativeUnfoldingSlice@Context` over a wider `A.22.CGUS` or `E.18.3` structure. In those cases this DPF governs narrative intake, ordering, evaluation, generation, and learning-route repair; `A.22.CGUS` or the local FPF governing pattern still governs the selected unfolding structure and its admissible next forms.
+
+Narrative studies is the broad domain label here. Narratology is one source tradition inside it, not the whole domain and not Core ontology. Storycraft, science communication, teaching design, cognitive narrative research, NLG, story planning, and qualitative narrative analysis all supply useful distinctions. The DPF uses those distinctions only after mapping them to FPF owners.
+
+Core boundary decision: this package depends on FPF Core; FPF Core must not depend back on this package. The Core admission from this campaign is the general `A.6.3.NAR` relation: selected source structure is rendered into a sequential narrative rendering for declared use with preservation, loss, admissibility, and source return visible; that rendering may then be carried by a publication or access carrier. The `NSTD.*` patterns stay DPF material because they use narrative-studies, narratology, storycraft, learning-design, NLG, and narrative-evaluation solution moves for narrative-work problems. If a later framework finds one of those moves recurring outside narrative work, it should return through a separate FPF amendment instead of silently treating this DPF as Core.
+
+The first discipline is source return. A good narrative can foreground one route through the admitted source basis and selected source structure, but it must say when the reader needs to return to that basis or to the direct governing pattern again. This matters in architecture explanation, mathematical teaching, science communication, generated story planning, and franchise-continuation storycraft.
+
+The second discipline is owner routing. Engagement is not truth. Viewpoint is not responsibility. Protagonist is not `U.Role`. Actant is not `U.RoleAssignment`. Generated fluency is not admission. A learning route is not the source framework. Each stronger claim goes to the FPF pattern that owns it.
+
+The third discipline is evaluation before improvement. `NSTD.6` does not ask whether a narrative is beautiful in general. It evaluates one admitted narrative rendering version for one declared use under `NarrativeRenderingEpiplexity`, ordering recoverability, source-return readiness, bounded engagement, owner-routed claims, values, evidence basis, missingness rules, repair actions, and reopen conditions.
+
+## Package Carrier Structure-Account Note
+
+This all-in-one package file is a DPF publication carrier: its readme, preface, pattern bodies, and support sections publish a sequential explanatory route through selected narrativization and narrative-studies problem-and-solution structures for FPF users who need to design, evaluate, repair, or govern narrative renderings. The carrier is not a narrative by type, not the domain itself, not the source pack, not a proof that every narrative will work, and not a replacement for the FPF Core patterns it depends on.
+
+This publication carrier is written mainly for FPF authors, teachers, technical communicators, architects, researchers, AI-tool builders, and reviewers who must turn source structures into reader-usable narratives without losing source return. It foregrounds the architecture of recurring narrative-work problems and solution moves: source-structure selection before theme, temporal-posture errors, rendering-mediation choice, ordering-rule failure, event or mechanism reconstruction, viewpoint and agency distortion, engagement overclaim, declared-use quality, generated-output admission, learning-route design, precision repair, ethics routing, and refresh.
+
+The package deliberately coarsens, abstracts, omits, or defers other structures. This is not merely shortening one text into another. A narrative-studies source may first be understood through architecture-like structure selection, views, models, source packs, or examples, and this all-in-one DPF publication carrier then makes that selected structure available again for use. In architecture-mediated narrative-rendering cases, the return chain is `narrative rendering carried by this publication carrier -> architecture description or view -> architecture as selected structures in context -> wider source structures`; when no narrative rendering is present, the first step is `DPF publication carrier -> selected source structures`. Each arrow can lose structure. The carrier does not carry a full history of narratology, a genre-specific storycraft course, a complete learning-sciences curriculum, a full NLG or story-planning survey, legal publication advice, a replacement ethics theory, or all source-pack rows. Those return to the source-use map, upstream FPF patterns, local teaching material, domain sources, or a stronger DPF when the declared use needs them.
+
+For this all-in-one publication carrier, the structure-capture question is qualitative rather than a universal score for narrativity:
+
+```text
+FrameworkCarrierStructureCapture@NarrativizationAndNarrativeStudiesPrinciplesFramework:
+  evaluatedCarrierRef: NarrativizationAndNarrativeStudiesPrinciplesFramework@2026-06-30
+  declaredUse: help FPF users design, evaluate, repair, and govern narrative renderings
+  selectedSourceStructureDenominator: narrativization as source-structure-to-sequence work, with narrative-studies, cognition, learning, ethics, NLG, and FPF architecture/representation owners as source traditions
+  foregroundedStructure: recurring narrative-work problem situations, solution moves, source selection, rendering mediation, ordering, event and mechanism reconstruction, viewpoint and agency, engagement, quality evaluation, generated-output admission, learning-route design, precision repair, source return, and refresh
+  intentionallyCoarsenedAbstractedOmittedOrDeferredStructure: full domain history, genre craft, full pedagogy, full NLG algorithms, legal permissions, complete source pack, and formal metric calibration
+  qualitativeCarrierEpiplexityForDeclaredUse: 4
+  whyNot5: heterogeneous probes show transfer across teaching, franchise continuation, mathematical explanation, and live-event narration, but field use, stronger source-pack discharge, and better accounting of source-to-architecture-to-publication/access coarsening would be needed before claiming near-complete domain capture
+  sourceReturnCondition: return to pattern bodies, FPF governing patterns, source-use map, and local domain material whenever a narrative claim becomes evidence, assurance, ethics, legal permission, pedagogy, generation-method, or domain-expert authority
+```
+
+Read that `4` narrowly. It means this DPF publication carrier makes enough selected structure available for its declared authoring and evaluation use. It does not mean the package exhausts narrative studies, guarantees reader impact, or replaces domain expertise. A `5` would require stronger evidence that the package's selected structures are both sufficient and non-dominated for the declared reader families and acceptance cases, including evidence that important architecture-level or source-level structure was not silently lost in the publication/access route.
+
+## Package Boundary And Owner Routing
+
+
+This package is a Domain Principle Framework for narrativization and narrative studies. Its governed use is narrow: it helps practitioners solve recurring narrative-work problems by rendering selected source structures into narrative renderings for declared reader or listener use, while preserving source return, ethics routing, evidence routing, generated-carrier admission, evaluation, and refresh discipline.
+
+The package does not redefine FPF Core. `A.6.3.NAR` remains the Core owner for the source-to-narrative relation. `NSTD.*` patterns specialize that Core relation for narratology, narrative communication, storycraft, teaching, and generated-narrative work. The DPF adds domain methods, cases, and evaluation scales; it does not mint new Core `U.*` kinds.
+
+Intended readers are FPF authors, teachers, technical communicators, architects, researchers, and tool builders who must make narrative renderings useful without turning narrative fluency into source authority.
+
+Non-use boundary: this package is not FPF Core, not a style guide, not a seminar script, not a storycraft course, not an ethics authority, and not evidence or assurance for generated narratives. Actual seminar outlines, slides, exercises, scripts, session notes, generated outputs, and field-test evidence or publication carriers belong in separate files and may be evaluated by this package.
+
+## Pattern Index
+
+| Pattern id | Pattern title | First use |
+| --- | --- | --- |
+| `NSTD.1` | Source-Structure Intake and Narrative Purpose | Start from selected source structure and declared use before message, theme, or engagement. |
+| `NSTD.2` | Structure-to-Sequence Ordering | Choose and justify the ordering rule that turns source structure into a narrative path. |
+| `NSTD.3` | Source Mechanism, Event Model, and Coherence | Keep mechanism, event, dependency, and update structure intelligible. |
+| `NSTD.4` | Voice, Focalization, and Agency | Govern viewpoint and protagonist choices when they affect comprehension, responsibility, or source loss. |
+| `NSTD.5` | Engagement, Attention, and Motivation | Use engagement without turning attention into truth, permission, or authority. |
+| `NSTD.6` | Declared-Use Narrative Rendering Quality Evaluation | Evaluate one narrative rendering version for one declared use. |
+| `NSTD.7` | Automated Narrativization and Story Planning | Keep generated narrative output grounded, constrained, admitted, evaluated, and repairable. |
+| `NSTD.8` | Learning-Route Narrative Rendering and Reconstruction Return | Design and evaluate a learning route without placing teaching material inside patterns. |
+
+## NSTD.1 - Source-Structure Intake and Narrative Purpose
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativePurposeIntake@Context`, a DPF-local relation record for one narrative rendering case.
+
+### NSTD.1:1 - Problem frame
+
+Use this pattern when a writer, narrator, teacher, architect, researcher, commentator, story designer, or tool starts with a message, lesson, theme, persuasive effect, desired memory, live commentary line, or future scenario before naming the source structures that must survive the narrative rendering.
+
+First useful move: write `NarrativePurposeIntake@Context` with admitted source basis refs, selected source structures, source-structure selection rationale, source temporal posture, rendering mediation mode, narrating or rendering worker, reader-interest or use hypothesis, intended reader or listener role and use, narrative purpose, blocked purpose overread, source-return owner, and any ethics or assurance owner.
+
+What goes wrong if missed: purpose absorbs admitted source basis and selected source structure. The narrative may become memorable, but readers cannot recover which structure was selected, which uncertainty was retained, or which claims need source return.
+
+What this buys: the writer can choose a narrative aim without letting that aim widen evidence, assurance, ethics, policy, or work authority.
+
+Not this pattern when the issue is only publication face, source-pack admission, evidence sufficiency, or ethics mediation. Use the direct owner and return here only when narrative purpose must be tied to selected source structure.
+
+### NSTD.1:2 - Problem
+
+Narrative purpose is useful because a narrative rendering is made for someone and for some use. But ordinary purpose language is often too broad: "make it inspiring", "tell the story", "explain the architecture", "make learners care". Those phrases do not say which structures must be preserved, which distinctions may be coarsened, and which downstream use is blocked.
+
+### NSTD.1:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Reader usefulness vs source discipline | A narrative needs a purpose, but the purpose cannot replace selected source structures. |
+| Motivation vs authority | Motivation helps attention, but it does not create evidence, assurance, ethics clearance, or work permission. |
+| Domain vocabulary vs FPF owners | Narratology and communication terms help design, but source-use, evidence, ethics, and assurance claims have FPF owners. |
+| Writing speed vs replayability | Fast writing starts from message; replayable writing starts from source structure and use. |
+
+### NSTD.1:4 - Solution
+
+Create one intake record before drafting or evaluating the narrative.
+
+```text
+NarrativePurposeIntake@Context:
+  sourceBasisRefs:
+  selectedSourceStructureRefs:
+  unfoldingStructureRefs?:
+  demonstrativeSliceRefs?:
+  sourceStructureSelectionRationale:
+  sourceTemporalPosture:
+  renderingMediationMode: direct-source-structure | architecture-mediated | mixed
+  architectureMediationRef?:
+  sourceStructureOwnerRef?:
+  narratingOrRenderingWorkerRef?:
+  readerOrListenerRoleRefs:
+  readerInterestOrUseHypothesis:
+  intendedReaderOrListenerUse:
+  narrativePurpose:
+  blockedPurposeOverread:
+  sourceReturnOwner:
+  ethicsOrAssuranceOwner?:
+  refreshCondition?:
+```
+
+Use `unfoldingStructureRefs?` only when one selected source structure is governed as a constraint-governed unfolding structure by `A.22.CGUS`, `E.18.3`, or a local FPF block. Use `demonstrativeSliceRefs?` only for the slice the narrative renders for the reader; the slice is not the whole selected structure.
+
+Then apply these moves:
+
+1. Name admitted source basis refs, selected source structures, source-structure selection rationale, and source temporal posture.
+2. Name the rendering mediation mode and any architecture mediation, source-structure owner, or telemetry source that remains live.
+3. Name the narrating or rendering worker, reader-interest or use hypothesis, and intended reader or listener role and use in project terms.
+4. State the narrative purpose as a relation to the selected source structures and reader or listener use.
+5. State what the purpose may not justify: evidence, assurance, policy, work, ethics, or decision use.
+6. Name the source-return owner and any neighboring FPF owner.
+
+Use the intake in four passes, not as one form-filling gesture.
+
+| Pass | Question | Output |
+| --- | --- | --- |
+| Source pass | What admitted source basis or source pack is being rendered, and which selected source structures must remain recoverable for the declared use? | Source-basis refs or source-pack refs, selected source structure refs, and source-return condition. |
+| Use pass | Who will use the narrative, for what work or understanding, and what must they be able to recover or decide not to decide? | Reader or listener role, reader-interest hypothesis, intended use, and non-use boundary. |
+| Mediation pass | Is the work direct source-structure rendering, architecture-mediated rendering, or mixed? What temporal posture changes source obligations? | Rendering mediation mode, temporal posture, architecture mediation refs, and live telemetry or source-return refs. |
+| Authority pass | Which claims are tempting but not granted by the narrative purpose? | Blocked purpose overread plus evidence, assurance, ethics, policy, work, and decision owner exits. |
+
+The intake is good enough to compose only when the selected source structures can be stated without looking at the current prose version. If the only answer is "the important bits are the bits I happened to write about", selection is still hidden. Return to the admitted source basis, name candidate structures, and choose by reader use. If the reader use is also vague, stop at an orientation cue or source-pack note; do not present the carrier-borne content as an admitted narrative rendering.
+
+Use contrast cases before drafting:
+
+- Admissible: "This route helps new FPF readers reconstruct why `EntityOfConcern`, forces, and neighboring-pattern exits matter during pattern use." The selected structures are named and the use is reconstructive.
+- Below floor: "Make the seminar inspiring so people like FPF." Motivation is a possible engagement device, but source structures and reconstruction use are missing.
+- Wrong owner: "Use the narrative to prove FPF is correct." That is evidence or assurance work, not narrative-purpose work.
+
+For prospective or fictional material, the selected source structure may come from a constrained source pack rather than from already-realized facts. The intake must still name the canon references, scenario assumptions, design constraints, or future-state hypotheses admitted for the case. "The story world wants it" is not a source-structure selection rationale; the worker must state which admitted source-pack constraints make the narrative route legitimate for private planning, teaching, or scenario exploration.
+
+When `selectedSourceStructureRefs` includes a constraint-governed unfolding structure, name the Core governing pattern and the selected structure ref before purpose is finalized. The selected structure may be `ConstraintGovernedUnfoldingStructure@Context`, an `E.18.3` transformation-flow unfolding structure, a P2S local block, an improvement-loop block, or a narrative-ordering block under `A.6.3.NAR`. The narrative purpose may choose one `DemonstrativeUnfoldingSlice@Context` for reader use, but it must state what branches, alternatives, loops, constraints, admissible next forms, and direct exits are preserved or lost. The slice is not the whole selected structure and not a work order.
+
+Use role-specific intake prompts when the worker is stuck.
+
+| Worker situation | Prompt | Expected answer |
+| --- | --- | --- |
+| Teacher or trainer | "After the narrative, what should learners reconstruct from source without relying on my story?" | Source spine, reconstruction task, and source-return condition. |
+| Architect or analyst | "Which structure, trade-off, candidate, telemetry, or decision memory must survive the narrative?" | Architecture or source-structure refs plus rendering mediation mode. |
+| Scientist or researcher | "Which mechanism, calculation, failed attempt, source uncertainty, or unresolved tension is being rendered?" | Mechanism or event support, uncertainty, evidence owner, and source return. |
+| Story designer | "Which canon, premise, agency, continuity, or causal plot constraint governs this route?" | Bounded source pack and non-publication boundary when needed. |
+| Live commentator | "Which observation, inference, prediction, and later official source must stay distinguishable?" | Temporal posture, uncertainty markers, and refresh condition. |
+| Tool builder | "Which part is admitted source basis, which part is method, which part is generated carrier, and who admits it?" | Split between admitted source basis, method, generated carrier, and admission owner; generated-carrier admission route; human responsibility. |
+
+If the answer names only mood, audience reaction, style, genre, or desired conclusion, the intake is not ready. Those can be legitimate later choices under `NSTD.4`, `NSTD.5`, `C.2.LS`, or `E.17`, but they cannot select the source structure by themselves.
+
+Minimum worked intake cases:
+
+```text
+NarrativePurposeIntake@FPFLearningRoute:
+  sourceBasisRefs: selected FPF pattern bodies and relation records
+  selectedSourceStructureRefs: EntityOfConcern discipline; problem frame; forces; solution; neighboring exits; quality and improvement loop
+  unfoldingStructureRefs: A.22.CGUS only when the lesson explicitly teaches source-to-next-use unfolding
+  demonstrativeSliceRefs: first seminar route through selected pattern-use positions
+  sourceStructureSelectionRationale: learners must reconstruct how a practitioner chooses and uses a pattern
+  sourceTemporalPosture: prospective planned learning route over current source corpus
+  renderingMediationMode: direct-source-structure unless architecture-of-FPF explanation is opened
+  narratingOrRenderingWorkerRef: teacher or course designer
+  readerOrListenerRoleRefs: new FPF author or reviewer
+  readerInterestOrUseHypothesis: learner needs usable entry, not complete monolith memory
+  intendedReaderOrListenerUse: reconstruct one pattern-use route and apply it to a new case
+  narrativePurpose: orient attention and sequence learning tasks around source-returnable pattern use
+  blockedPurposeOverread: lesson is not evidence that FPF is correct and not replacement for pattern bodies
+  sourceReturnOwner: FPF source patterns and teaching publication-carrier relation
+  refreshCondition: FPF edition, learner telemetry, or route evaluation changes
+```
+
+```text
+NarrativePurposeIntake@HomotopyExplanation:
+  sourceBasisRefs: formal definitions, examples, diagrams, proof-status notes, and selected textbook or lecture source basis
+  selectedSourceStructureRefs: definition dependency; example and counterexample relation; theorem prerequisite; formal-source return
+  sourceStructureSelectionRationale: learner needs an intuitive route that preserves formal boundaries
+  sourceTemporalPosture: retrospective or atemporal explanation over existing mathematical material
+  renderingMediationMode: direct-source-structure unless a teaching architecture is explicitly used
+  narratingOrRenderingWorkerRef: teacher, explainer, or tool-assisted author
+  readerOrListenerRoleRefs: learner who must later distinguish intuition from proof
+  readerInterestOrUseHypothesis: learner needs recoverable dependency order and analogy boundary
+  intendedReaderOrListenerUse: use examples and return to formal statements without treating metaphor as theorem
+  narrativePurpose: make abstractions followable while preserving proof-status boundary
+  blockedPurposeOverread: narrative does not prove the theorem, replace notation, or authorize informal equivalence
+  sourceReturnOwner: mathematical source or proof owner
+  refreshCondition: source correction, learner failure, or changed learning objective
+```
+
+```text
+NarrativePurposeIntake@LiveCommentary:
+  sourceBasisRefs: live observations, official event feed, telemetry, recording, later official result
+  selectedSourceStructureRefs: event order; score state; possession or control changes; actor roles; uncertainty markers
+  sourceStructureSelectionRationale: listener needs orientation during an unfolding event stream
+  sourceTemporalPosture: live unfolding source with later refresh
+  renderingMediationMode: direct-source-structure
+  narratingOrRenderingWorkerRef: commentator or live analyst
+  readerOrListenerRoleRefs: listener following the event and later checking the official event record
+  readerInterestOrUseHypothesis: listener needs distinction between observation, inference, prediction, and official correction
+  intendedReaderOrListenerUse: follow the event without treating provisional interpretation as fact
+  narrativePurpose: maintain orientation and attention under uncertainty
+  blockedPurposeOverread: commentary is not official evidence, blame assignment, or final tactical analysis
+  sourceReturnOwner: event source owner, official record, recording, telemetry
+  refreshCondition: official correction, telemetry, or post-event evidence changes
+```
+
+```text
+NarrativePurposeIntake@FictionalContinuationProbe:
+  sourceBasisRefs: admitted canon or local source pack for private storycraft test
+  selectedSourceStructureRefs: canon constraints; continuity; premise and theme; character agency; causal plot support
+  sourceStructureSelectionRationale: storycraft probe tests whether the DPF protects source constraints under dramatic pressure
+  sourceTemporalPosture: prospective fictional source structure
+  renderingMediationMode: direct-source-structure unless fictional organization or technology architecture is live
+  narratingOrRenderingWorkerRef: story designer or tool-assisted writer
+  readerOrListenerRoleRefs: private reviewer of storycraft plan
+  readerInterestOrUseHypothesis: reviewer needs to see whether continuity and agency survive the route
+  intendedReaderOrListenerUse: private design critique, not publication
+  narrativePurpose: produce a source-returnable continuation route for testing
+  blockedPurposeOverread: no authorization, no exhaustive canon authority, no publication permission
+  sourceReturnOwner: source-pack and canon owner; rights and publication owner when those claims are made
+  refreshCondition: source-pack correction, canon selection change, generated-carrier admission change
+```
+
+### NSTD.1:5 - Archetypal Grounding
+
+#### Mature worked slice: FPF seminar from source spine to admitted route
+
+Start with a weak request: "Tell a motivating story about FPF so people want to use it." This is not yet a narrative purpose intake. The source structure is hidden, the reader use is vague, and motivation is being asked to carry adoption, evidence, and teaching value at once.
+
+Repair it in the intake, not later in style.
+
+```text
+NarrativePurposeIntake@FPFSeminarOrientation:
+  sourceBasisRefs: selected FPF pattern bodies and relation records
+  selectedSourceStructureRefs:
+    - EntityOfConcern discipline
+    - Problem frame and forces
+    - Solution as admissible move under conditions
+    - neighboring-pattern exits
+    - quality and improvement loop entry
+  sourceStructureSelectionRationale: new practitioners fail when they treat patterns as recipes rather than condition-bound moves
+  sourceTemporalPosture: prospective planned learning route over current FPF source corpus
+  renderingMediationMode: direct-source-structure
+  narratingOrRenderingWorkerRef: seminar author
+  readerOrListenerRoleRefs: new FPF practitioner; team lead evaluating local adoption
+  readerInterestOrUseHypothesis: reader wants a first usable route through FPF without learning every pattern first
+  intendedReaderOrListenerUse: reconstruct one pattern-use route and choose the next governing pattern
+  narrativePurpose: orient attention and motivation toward source-returnable pattern use
+  blockedPurposeOverread: not proof that FPF is correct; not replacement for pattern bodies; not authority for a local project
+  sourceReturnOwner: selected FPF pattern body and relation record
+  ethicsOrAssuranceOwner: none unless the seminar makes assurance, policy, or affected-party claims
+  refreshCondition: FPF edition or selected-source pattern changes; learner reconstruction test fails
+```
+
+Now the narrative worker can compose. The first paragraph may be memorable, but every memorable move has a source return. "A pattern is not a recipe" returns to source conditions, forces, and neighboring exits. "Start with the thing being changed" returns to `EntityOfConcern`. "Do not optimize the visible proxy indicator" returns to quality and proxy-risk owners. The seminar publication carrier can be engaging, but the intake prevents it from becoming a local mythology about FPF.
+
+Evaluation through `NSTD.6` later asks whether learners can rebuild the route: identify the source structure, say why the selected order was didactic, name what the story intentionally omitted, and return to the pattern body when they need authority. If learners only repeat the slogan "patterns are not recipes", `NSTD.1` did not select enough source structure for the declared use.
+
+#### Mature worked slice: architecture-mediated narrative
+
+An architect wants a narrative explaining a system's future structure after candidate synthesis. Do not start with "tell the journey from chaos to architecture". Start by deciding whether the narrative is architecture-mediated. If it is, architecture work remains live before narrative work.
+
+```text
+NarrativePurposeIntake@ArchitectureDecisionStory:
+  sourceBasisRefs: architecture candidate set, selected architecture description, decision record, expected characteristics, known residuals
+  selectedSourceStructureRefs:
+    - problem situation and forces
+    - candidate structures considered
+    - selected structure and rejected alternatives
+    - expected architecture characteristics
+    - residual exceptions and developer continuation boundary
+    - telemetry or later actual-structure feedback condition
+  sourceTemporalPosture: prospective future holon structure before implementation
+  renderingMediationMode: architecture-mediated
+  architectureMediationRef: architecture description and candidate synthesis records
+  readerOrListenerRoleRefs: developer team; product steward; later evaluator
+  intendedReaderOrListenerUse: understand what structure to preserve while implementing and what may be locally detailed
+  narrativePurpose: carry structural intent and trade-off rationale into development work
+  blockedPurposeOverread: not the architecture itself; not implementation order; not assurance that realized structure will match
+  sourceReturnOwner: architecture description, architecture decision record, and future telemetry route
+  refreshCondition: candidate set, selected architecture, decision, or actual-structure feedback changes
+```
+
+This case teaches the architecture bridge. The narrative worker is not exempt from architecture owners just because the output is prose. `C.33` is live for structural-information capture and loss; `C.34` is live if correspondence between described and realized structure matters; `E.17` is live if the carrier is published; architecture decision owners remain live for decision authority. `NSTD.1` only binds the narrative purpose to selected structures and reader use.
+
+#### Mature worked slice: franchise continuation probe
+
+For a continuation-style storycraft probe using a well-known space-opera franchise such as `Star Wars`, the selected source is a bounded private source pack. The intake must state canon scope, character-agency constraints, continuity constraints, premise constraints, and non-publication boundary before any scene or plot move is accepted.
+
+A bad intake says: "Write a surprising sequel that feels epic." A repaired intake says: "For private storycraft testing, render a continuation premise that preserves admitted canon constraints, character agency, causal consequence, and theme tension; block publication, rights, and authority claims." If a surprising turn works only because the source pack was ignored, the failure belongs to `NSTD.1` before `NSTD.2` or `NSTD.5` can repair it.
+
+#### Role-specific mature first moves
+
+| Worker | First source-selection move | Common hidden overread | Repair before composing |
+| --- | --- | --- | --- |
+| Teacher | Name the source spine and reconstruction task. | Learner interest means learning occurred. | Add source-return question and later `NSTD.6` row. |
+| Architect | Name selected structures, candidates, residuals, and actual-structure feedback. | Explanatory story is the architecture decision. | Route decision authority to architecture decision owners. |
+| Scientist | Name mechanism, calculation, uncertainty, and proof or evidence boundary. | Story coherence is evidence closure. | Add evidence owner and source-return condition. |
+| Story designer | Name source pack, continuity, agency, and non-use boundary. | Dramatic surprise authorizes source violation. | Reopen source-pack selection before ordering. |
+| Live commentator | Name event stream, provisional interpretation, and later official return. | Live causal claim is settled fact. | Mark uncertainty and telemetry return. |
+| AI-agent operator | Name source plan, schema, admission owner, and evaluation route. | Fluent generated prose is an admitted rendering. | Send carrier to `NSTD.7` and `C.35` before `NSTD.6`. |
+
+#### What this pattern teaches about FPF
+
+`NSTD.1` is often the first place where a narrative worker learns why FPF separates admitted source basis, description, evidence, assurance, ethics, publication, and improvement. The pattern does not ask for more paperwork. It asks the worker to stop one very common collapse: "I have a purpose, therefore I know what the story should say." In FPF terms, a purpose is a relation to an `EntityOfConcern`, a role use, and selected source structures. It is not the admitted source basis, not the authority, and not the quality result.
+
+An FPF seminar route wants learners to understand why pattern use is condition-based rather than recipe following. The selected source structures are `EntityOfConcern`, problem frame, forces, solution, consequences, and neighboring-pattern exits. The purpose is orientation for later reconstruction tasks. It is not permission to replace pattern bodies with seminar slogans. Source return points to the FPF patterns and the seminar publication carrier stays outside this DPF body.
+
+A homotopy explanation starts differently. The admitted source basis is a mathematical corpus: definitions, examples, maps, equivalences, proof-status boundaries, and formal sources. The intended reader is not "any curious person"; it might be an undergraduate who must later distinguish intuitive pictures from formal definitions. The purpose can be "make paths, deformations, and invariants followable", but the blocked overread says that the narrative does not prove the theorem, replace formal notation, or license analogy as definition. The intake therefore protects formal return before any metaphor is selected.
+
+A live football commentary has a live unfolding source posture. The commentator's purpose may be orientation and suspense, but the selected structures are event order, score state, possession changes, player actions, provisional interpretation, and later official source return. The intake blocks the overread that a dramatic prediction, blame cue, or emotional framing is evidence. If later official statistics contradict the live interpretation, the refresh condition is not optional.
+
+A franchise-continuation storycraft test uses a prospective fictional source posture. The source structures are admitted canon constraints, continuity requirements, premise constraints, character-agency constraints, and non-publication boundary. The purpose may be private storycraft testing, not authorized sequel publication. The intake must state that publication rights, exhaustive canon authority, and moral permission are outside this DPF case.
+
+### NSTD.1:6 - Bias-Annotation
+
+This pattern blocks purpose-primacy drift: the message, theme, desired memory, or persuasion effect is allowed to choose source structures after the fact. Treating purpose as the source-selection owner collapses selected source structure, reader use, and authority boundary. Repair by reopening the intake, naming selected structures, and writing the blocked purpose overread before drafting or evaluating. Scope: DPF-local for narrative renderings; it does not govern all communication, evidence, assurance, or publication work.
+
+### NSTD.1:7 - Conformance Checklist
+
+| Check | Passing condition |
+| --- | --- |
+| `CC-NSTD1-1` | Admitted source basis and selected source structures are named before purpose is finalized. |
+| `CC-NSTD1-2` | Source-structure selection rationale explains why these structures are needed for the reader or listener use. |
+| `CC-NSTD1-3` | Source temporal posture and rendering mediation mode are explicit. |
+| `CC-NSTD1-4` | Narrating or rendering worker, reader-interest or use hypothesis, and intended reader or listener role are named. |
+| `CC-NSTD1-5` | Intended use is narrower than general persuasion, inspiration, or entertainment. |
+| `CC-NSTD1-6` | Purpose states non-admissible downstream use. |
+| `CC-NSTD1-7` | Evidence, assurance, ethics, policy, and work claims route to direct owners when made. |
+| `CC-NSTD1-8` | Source-return owner and refresh condition are present when source currentness or hidden distinctions matter. |
+
+### NSTD.1:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | What fails | Repair |
+| --- | --- | --- |
+| Message-first drafting | The theme chooses the structure after the fact. | Reopen intake and name selected source structures before drafting. |
+| Tacit selection as craft | The worker or model foregrounds structures, but no rationale ties them to reader use. | Reconstruct the selection rationale and reader-interest hypothesis before evaluating or improving the narrative. |
+| Motivation as truth support | A moving narrative is treated as stronger evidence. | Route evidence to `A.10` and keep motivation as reader-use support. |
+| Purpose without blocked use | The same narrative is reused for decision, policy, or work. | Add blocked purpose overread and source-return condition. |
+
+### NSTD.1:9 - Consequences
+
+The benefit is early kind stability: admitted source basis, selected structure, narrative rendering, reader use, and authority boundaries stop competing. The cost is one small intake record before drafting.
+
+### NSTD.1:10 - Rationale
+
+Narrative design traditions often begin with audience and communicative aim. FPF keeps that value, but it binds aim to selected source structure. This avoids semio-bias: the narrative is a rendering relation over source structure, not a free-standing communication product.
+
+### NSTD.1:11 - SoTA-Echoing
+
+#### Operational comparison against domain vocabulary
+
+This DPF intentionally translates domain vocabulary into FPF owner work instead of importing it whole. When narratology says story, discourse, and presentation, this package asks: what source structure is selected, what order is chosen, what is foregrounded, and what source return remains? When cognitive narratology says event model, transportation, perspective, or memory, this package asks: which reconstruction target, engagement device, viewpoint, or evaluation characteristic is being changed? When NLG says content planning, discourse planning, and realization, this package asks: what is the source plan, what is the ordering rule, what is the generated carrier, and what admission and evaluation route owns it?
+
+The practical consequence is a repair rule. If a domain term helps the worker choose or repair a narrative move, keep it as DPF vocabulary. If it starts carrying evidence, assurance, ethics, agency, publication, or Core ontology, route the claim to the FPF owner and state the blocked overread.
+
+Hoffmann's "The Tensions of Scientific Storytelling" shows that scientific story construction can organize attempts, mechanisms, and unresolved tensions for readers; Schmid's `Narratology: An Introduction` and Chihaia's `Introductions to Narratology: Theory, Practice and the Afterlife of Structuralism` show that presentation and audience-facing narrative traditions differ by source tradition; Castricato et al.'s "Towards a Formal Model of Narratives" supports explicit narrator-to-reader information flow, reader story-model evolution, and uncertainty; Dahlstrom and Ho's "Ethical Considerations of Using Narrative to Communicate Science" warns that communicative purpose can become persuasion risk. The DPF adapts audience and purpose only after source-structure selection, temporal posture, rendering mediation mode, and role split are named. When a purpose, reader-use, science-storytelling, teaching, future-scenario, or persuasion-risk claim depends on a cited source basis, name that source basis and keep the claim within its boundary.
+
+### NSTD.1:12 - Relations
+
+Uses `A.6.3.NAR` for Core relation ownership, `A.16.1` when the first honest material is only a pre-articulation narrative cue, `C.2.LS` when language-state facets or thresholds shape the intake, `G.2` for source-pack claims, `C.33` when architecture-relevant structural-information capture or loss is current, `NSTD.6` when non-architecture narrative epiplexity is evaluated, `D.1` through `D.5` when affected parties or persuasion are live, `A.10` for evidence, `B.3` for assurance, `E.10` and `F.18` for durable wording or naming repairs, and `G.11` for source and telemetry refresh. Support-map entry: open `Architecture and Narrative Work Bridge` when `renderingMediationMode` is `architecture-mediated` or `mixed`; open `Source Use And Refresh Map` when a cited source basis is relied on or stale; open `DPF Precision Restoration And Owner Map` when a local narrative term threatens to become ontology; open `Name And Edition Route` only for DPF-prefix or edition questions.
+
+### NSTD.1:End
+
+## NSTD.2 - Structure-to-Sequence Ordering
+
+> **Type:** DPF pattern body
+
+> **Primary EntityOfConcern:** `NarrativeOrderingRule@Context`, a DPF-local relation slot set for one narrative rendering.
+
+### NSTD.2:1 - Problem frame
+
+Use this pattern when a graph, mechanism, evidence set, architecture structure, candidate set, mathematical dependency structure, canon structure, or source tradition must be put into a sequence and the sequence changes what readers can recover.
+
+First useful move: name the ordering rule, the source relations it preserves, the source relations it foregrounds, the source relations it coarsens or loses, and the source-return condition.
+
+What goes wrong if missed: the order feels natural, but readers silently infer a different order kind: chronology, proof, causality, importance, decision order, work order, or moral priority.
+
+What this buys: sequence becomes an explicit rendering choice rather than hidden ontology.
+
+### NSTD.2:2 - Problem
+
+Narrative is sequential. Many source structures are not. Trees, graphs, mechanism diagrams, dependency sets, option sets, proof dependencies, and architecture views must be traversed. A chosen order preserves some relations and hides others. If the ordering rule is implicit, a fluent sequence can misrepresent the selected source structure.
+
+### NSTD.2:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Legibility vs structural fidelity | Linear order helps reading but cannot preserve every relation. |
+| Teaching order vs source order | A good learning route may violate publication order or proof order. |
+| Dramatic tension vs dependency truth | Suspense and reveal can hide prerequisites. |
+| Compactness vs source return | The sequence needs to move, but hidden relations need return points. |
+
+### NSTD.2:4 - Solution
+
+Declare the ordering rule before treating the narrative rendering as good enough for declared use.
+
+```text
+NarrativeOrderingRule@Context:
+  narrativeRenderingRef:
+  sourceStructureRefs:
+  unfoldingStructureRef?:
+  demonstrativeSliceRef?:
+  orderingRuleKind:
+  orderRationale:
+  preservedSourceRelations:
+  foregroundedSourceRelations:
+  coarsenedOrLostSourceRelations:
+  sourceReturnCondition:
+  neighboringGoverningPatternRefs:
+```
+
+Admissible ordering-rule kinds include chronology, causality, dependency, discovery, didactic prerequisite, tension, traversal, viewpoint, publication, decision memory, and declared local rule. The name is not enough; the record must say what the rule preserves and loses.
+
+Choose the rule through a four-question ordering test.
+
+| Test | Ask | If unclear |
+| --- | --- | --- |
+| Source topology | Is the source primarily chain, graph, hierarchy, cycle, option set, event stream, proof dependency, architecture view, or canon field? | Return to `NSTD.1`; selected source structure is not ready for sequencing. |
+| Reader traversal | What path should the reader take first for the declared use: prerequisite, tension, discovery, causal, chronological, decision, viewpoint, or recap? | State two candidate rules and choose by reader-use effect, not by author taste. |
+| Loss account | Which source relations become hidden or weaker under this order? | Add coarsened or lost relations and a source-return point before drafting. |
+| Misread risk | What wrong order will readers infer if the rule is not stated? | Add a sentence or marker that blocks that inference. |
+
+The ordering rule can be mixed, but only if the mixture is explicit. A teaching route may start with didactic prerequisites, use one discovery story to motivate a distinction, then return to formal dependency order. A live commentary may use chronological order for observations and causal order in a later recap. A franchise continuation may use reveal order for suspense while preserving an underlying causal or continuity order. The mixed rule must state where each order applies and what it must not imply.
+
+When the selected source structure is a constraint-governed unfolding structure, the narrative order is a traversal or demonstration slice over that structure. The ordering rule must name the selected unfolding structure, the demonstrative slice used for reader orientation, the preserved constraints and invariants, and the branches, alternatives, loops, direct exits, or stop conditions hidden by the slice. The sequence in the narrative is not the whole unfolding structure and not a work order.
+
+Use this repair table when the narrative feels coherent but readers reconstruct the wrong structure.
+
+| Symptom | Likely hidden order | Repair |
+| --- | --- | --- |
+| Readers think the first-mentioned cause is the strongest cause. | Salience order mistaken for causal order. | Mark salience as viewpoint or teaching order; return causal-strength claims to the evidence or source governing pattern. |
+| Learners can retell the lesson but fail formal exercises. | Didactic story order mistaken for proof order. | Add proof-return checkpoints and separate example order from theorem dependency. |
+| Stakeholders think a narrative of architecture choices is the project decision sequence. | Explanation order mistaken for decision or work order. | Route decision claims to the architecture-decision governing pattern and name the explanatory order. |
+| Fans like a reveal but continuity breaks. | Reveal order hides source canon constraints. | Add source-pack return and causal and continuity support before dramatic reveal. |
+| A generated story has plausible steps but no preserved source graph. | Generator realization order mistaken for selected source structure. | Return to `NSTD.7`; recover source plan and selected structure before evaluation. |
+
+Do not evaluate the sequence by elegance first. A beautiful order that hides a critical dependency is below floor for declared use. Evaluate it through `NSTD.6` only after the rule, preserved relations, foregrounded relations, lost relations, and source-return condition are in the record.
+
+### NSTD.2:5 - Archetypal Grounding
+
+#### Mature worked slice: graph-to-sequence serialization without source loss
+
+Use this case when the source is not already a line. A knowledge graph about a domain has concepts, dependencies, counterexamples, evidence links, and practice routes. A narrative rendering must choose a traversal. If the traversal is not named, the reader may treat the story order as ontology, proof order, or historical order.
+
+```text
+NarrativeOrderingRule@HomotopyIntro:
+  narrativeRenderingRef: HomotopyIntroNarrative@v1
+  sourceStructureRefs:
+    - topological space
+    - path
+    - deformation under constraints
+    - invariant
+    - example and counterexample
+    - proof-status boundary
+  orderingRuleKind: didactic prerequisite plus analogy-first cue
+  orderRationale: learner needs visual intuition before formal return, but formal dependency must remain recoverable
+  preservedSourceRelations: prerequisite relation; analogy-to-definition return; example-to-counterexample contrast
+  foregroundedSourceRelations: deformation intuition and invariant question
+  coarsenedOrLostSourceRelations: full proof order; advanced generality; categorical reformulation
+  sourceReturnCondition: any claim about theorem, equivalence, or proof returns to formal statement and proof owner
+  neighboringOwnerRefs: `A.6.3.CSC`, `E.17.EFP`, `A.10`, `NSTD.6`
+```
+
+This is a serialization decision with narrative consequences. The route can begin with a picture-like story about deforming paths, but the story must mark where analogy stops. A mature narrative might say, in ordinary prose, "The picture is a guide to the relation, not the definition; the formal boundary returns in the next step." That line is not decoration. It prevents the selected order from becoming false ontology.
 
 #### Before and after repair: architecture order
 
