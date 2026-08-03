@@ -3098,7 +3098,8 @@ A characteristic is NOT:
 
 Copy this file to create a new method card. Replace all `_TBD_` and `DOMAIN.M.XXX` placeholders.
 
-> **2026-07-11 — ADDITIVE CHANGE:** added optional `Forces` and `Bias-Annotation` sections (WP-448 Ф9). Not breaking — both sections are optional; existing cards remain valid without them.
+> **2026-07-11 — ADDITIVE CHANGE:** added `Forces` and `Bias-Annotation` sections (WP-448 Ф9), initially optional.
+> **2026-07-27 — REQUIRED FOR NEW CARDS (WP-448 Ф12, decision Б):** both sections are now required content for any method card created from this point forward — not headers left as placeholder. This does not retroactively invalidate cards created before 2026-07-27; the backlog of pre-existing cards is migrated separately under WP-448 Ф12 batches, not by this template change.
 
 ---
 
@@ -3138,7 +3139,7 @@ _Why does this method exist? What problem does it address? What does it enable?_
 
 ### Forces
 
-_(Optional) What competing pressures does this method balance? Each force names a tension the method resolves or holds in check — not a step, not a distinction._
+_What competing pressures does this method balance? Each force names a tension the method resolves or holds in check — not a step, not a distinction._
 
 | Force | Tension |
 |-------|---------|
@@ -3181,7 +3182,7 @@ _What conceptual distinctions are essential to performing this method correctly?
 
 ### Bias-Annotation
 
-_(Optional) What systematic distortion does a practitioner risk when applying this method — and in which direction? Name the bias, not a generic warning._
+_What systematic distortion does a practitioner risk when applying this method — and in which direction? Name the bias, not a generic warning._
 
 | Bias | Direction of distortion |
 |------|--------------------------|
@@ -3215,8 +3216,10 @@ _What commonly goes wrong when this method is performed poorly?_
 
 - [ ] ID follows pattern `DOMAIN.M.NNN`
 - [ ] Definition is declarative (not "Step 1: ...")
+- [ ] Forces section filled (≥1 named tension, not a placeholder)
 - [ ] Outputs link to work product cards
 - [ ] Failure modes are listed
+- [ ] Bias-Annotation section filled (≥1 named distortion + direction, not a placeholder)
 - [ ] SoTA status and revision criterion specified
 - [ ] Added to `02C-methods-index.md`
 - [ ] Added to `07-map/`
@@ -5238,10 +5241,12 @@ Required sections:
 | YAML frontmatter | id, name, status, dates |
 | Definition | What the method is (not how to do it) |
 | Purpose | What function it serves |
+| Forces | Competing tensions this method balances (WP-448 Ф12, required since 2026-07-27) |
 | Inputs | What is required |
 | Outputs | What is produced (link to WP) |
 | Applicability | When to use, when not to use |
 | Related distinctions | Which distinctions structure this method |
+| Bias-Annotation | Systematic distortion risked when applying this method (WP-448 Ф12, required since 2026-07-27) |
 | Failure modes | Which failures relate to this method |
 | SoTA | Status and revision criterion |
 
@@ -5368,10 +5373,12 @@ Before committing a new method:
 
 - [ ] Definition describes what, not how
 - [ ] No numbered steps (not a scenario)
+- [ ] Forces filled (≥1 named tension, not a placeholder)
 - [ ] Inputs specified
 - [ ] Outputs specified (linked to WP)
 - [ ] Applicability boundaries stated
 - [ ] At least one related distinction linked
+- [ ] Bias-Annotation filled (≥1 named distortion + direction, not a placeholder)
 - [ ] Failure modes referenced
 - [ ] SoTA status with revision criterion
 - [ ] ID follows convention
@@ -6644,6 +6651,10 @@ File pattern: `/pack/<domain>/03-methods/*.md`
 | **L-M08** | Entry added to `02C-methods-index.md` |
 | **L-M09** | Map updated in `07-map/` |
 | **L-M10** | No didactic language (see [Universal Bans](#universal-bans)) |
+| **L-M11** | Forces section filled — ≥1 named tension, not a placeholder (**Added — new cards only**) |
+| **L-M12** | Bias-Annotation section filled — ≥1 named distortion + direction, not a placeholder (**Added — new cards only**) |
+
+> **Scope of L-M11/L-M12 (WP-448 Ф12, decision Б, 2026-07-27):** these two checks apply only to a method card newly **added** in this change — not to a pre-existing card being merely modified (typo fix, cross-reference update, etc.). The backlog of pre-2026-07-27 cards lacking Forces/Bias-Annotation is migrated separately under WP-448 Ф12 batches; touching an old card for an unrelated edit must not force an ad-hoc migration.
 
 ### CT-2: Work Product Added/Modified
 
@@ -6842,6 +6853,8 @@ When reporting lint results (for AI agents or PR descriptions):
 - [x] L-M08: Index updated
 - [x] L-M09: Map updated
 - [x] L-M10: No didactic language
+- [x] L-M11: Forces filled (new card)
+- [x] L-M12: Bias-Annotation filled (new card)
 
 ### Universal Bans
 - [x] UB-1: No didactic language
@@ -6874,6 +6887,7 @@ These conditions BLOCK commit/merge. No exceptions.
 | **HG-6** | Didactic language detected | Rewrite |
 | **HG-7** | Scenario instead of method | Rewrite as method |
 | **HG-8** | SoTA without revision criterion | Add criterion |
+| **HG-9** | New method card added without filled Forces or Bias-Annotation (WP-448 Ф12, since 2026-07-27; does not apply to modifying a pre-existing card) | Add both sections before commit |
 
 ---
 
