@@ -1,474 +1,4 @@
-ABS control.”
-
-* `F(c1)=F5` because the controller and constraints are expressed as a machine-checkable model plus executable test harness (C.2.3).
-* `G(c1)` has the stated μ/m bounds, but this illustration leaves the speed domain and admissible tire set unspecified. Under A.2.6, those domains and any coupled restrictions are needed to decide membership of a slice satisfying the stated bounds; that membership remains unresolved here. A product set in `(μ, m, speed, tire)` space is justified only if its scope predicate admits every combination of the selected domains.
-* Evidence:
-
-  * VA: model-checking of a simplified plant/controller model (strong, but only for the simplified plant).
-  * LA: HIL simulation + track tests under sampled conditions with recorded telemetry windows (freshness required).
-  * TA: typed alignment between “μ” in simulations, “μ” in the estimation pipeline, and “μ” inferred from real-world sensors.
-
-If track telemetry is used as evidence for the road claim, establish the exact A.10 or B.3 evidence-use and reliance claim, including the road claim, telemetry edition, operating scope, validity window, and intended use. Apply only the fit or loss declared for that evidence reuse; `G(c1)` changes only through a separate A.2.6 scope revision.
-
-#### C.2.2:5.2 - Episteme illustration
-
-**Episteme.** A paper asserts two claims about an algorithm `A`:
-
-* `c2:` “A terminates for all inputs in domain D.” (axiomatic / proof-carrying)
-* `c3:` “A achieves ≥ 0.92 F1 on dataset family F under deployment preprocessing P.” (empirical)
-
-`c2` can achieve high VA with a proof carrier; its LA lane may be N/A, but its TA lane remains relevant because the intended meaning of “domain D” must align with the implementation’s input model.
-`c3` requires LA evidence and a freshness or shift policy because dataset and preprocessing drift can change both scope and warrant. For production use, state the exact dataset/preprocessing relation and the A.10 or B.3 evidence-reuse claim, then apply its declared loss to `R_eff`; change `G` separately if the production claim has another scope.
-
-### C.2.2:6 - Bias-Annotation
-
-Informative; non-binding.
-
-
-* **Onto/Epist bias:** High formality is often mistaken for high warrant (“proof therefore true in the world”). This pattern mitigates by forcing LA/TA visibility and by routing transport loss into R rather than mutating the claim.
-* **Prag bias:** Teams may Goodhart R by narrowing scope or selecting easy tests. This pattern mitigates by requiring explicit scope declaration and by making scope changes first-class (A.2.6).
-* **Gov bias:** Overconfident reuse after a changed scope, scheme, model use, evidence basis, kind, or plane is a recurring failure. This pattern requires the actual relation and its declared loss instead of one generic crossing label.
-* **Did bias:** A single scalar is seductive; it hides what kind of warrant exists. Lane reporting keeps the scalar honest.
-
-### C.2.2:7 - Conformance Checklist
-
-Normative.
-
-| ID                                            | Requirement                                                                                                                                                                                                                 | Purpose                                                                       |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **CC‑C.2.2‑1 (Triad publication).** | Authors of a KD-CAL location SHALL attach formal basis, G, and warrant to one exact claim. A numerical R requires the receiving model; otherwise identify unquantified support and the bounded conclusion. | Keeps warrant attached to its claim without inventing a score. |
-| **CC‑C.2.2‑2 (R-only penalty routing).**      | A conforming implementation of KD‑CAL reuse **SHALL** satisfy **INV‑C2.2‑1**.                                                                                                                                                | Ensures declared relation losses reduce warrant without silently mutating expression or scope. |
-| **CC‑C.2.2‑3 (Support composition).** | A conforming composition SHALL satisfy DEF‑C2.2‑3: identify support roles, compatible scales, and dependencies, and use the justified receiving model or a non-aggregate synthesis. There is no default min or max. | Prevents both overstated assurance and loss of useful complementary support. |
-| **CC‑C.2.2‑4 (Relation visibility for reuse).** | Authors **SHALL** name every scope-translation, kind, plane, notation, source-local, model-use, or evidence-reuse relation traversed by the path and cite the fit or loss rule that affects `R_eff`.                                      | Makes each actual reuse loss auditable without inventing one crossing kind.   |
-| **CC‑C.2.2‑5 (Loss model visibility).** | Any numerical reuse loss SHALL identify its receiving quantity, scale, assumptions, derivation or calibration, and actual functions and versions, including Π where used. | Makes the calculation reproducible and its meaning inspectable. |
-| **CC‑C.2.2‑6 (Type before scope).**           | Authors and validators **SHALL** enforce **WFC‑C2.2‑1** for scope composition operations.                                                                                                                                   | Prevents ill-typed scope algebra from creating incoherent reliability claims. |
-| **CC‑C.2.2‑7 (Evidence binding).**            | Authors **SHALL** bind any asserted `R_eff` to evidence references that enable TA/VA/LA inspection, consistent with the assurance lane discipline (B.3.3) and evidence decay discipline (B.3.4).                            | Keeps R grounded and updateable.                                              |
-| **CC‑C.2.2‑8 (No ordinal arithmetic).** | Validators SHALL reject arithmetic that treats ordinal F, CL, or an ordinal R proxy as ratio-scale values. A receiving conversion model must establish meaning, scale, conversion, and assumptions; a penalty table or rescaling alone is insufficient. Formal validity never supplies empirical reliability by itself. | Preserves scale legality and useful formal conclusions. |
-| **CC‑C.2.2‑9 (Interpretation conditions declared).** | Authors **SHALL** distinguish design- and run-time assurance and declare `ReferencePlane`, effective scheme, model-use basis, working situation, and `validationMode` where each changes the claim or use.                               | Makes interpretation auditable without a generic Context identity field.     |
-| **CC‑C.2.2‑10 (Dependence and scope).** | Authors SHALL expose actual shared premises, data, assumptions, and biases. Any assumed independence must be justified for the model and use; different path labels do not suffice. Keep distinct scope slices and counterevidence visible; do not fall back to minimum for entangled support. | Prevents double-counting without erasing complementary evidence. |
-
-### C.2.2:8 - Common Anti-Patterns and How to Avoid Them
-
-Informative; non-binding.
-
-| Anti-pattern               | Symptom                                                                                       | Why it fails                                                     | How to avoid / repair                                                                                    |
-| -------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| **Unsupported assurance fold** | A mean, minimum, maximum, or weighted sum is reported as confidence without its model | Boundedness and monotonicity do not warrant the input scale or dependency interpretation | Identify support roles and a justified receiving model; otherwise return separate support and a bounded synthesis. |
-| **Truth-by-score**         | `R=0.9` is treated as “the claim is true.”                                                    | R is warrant strength, not ontological truth.                    | Require explicit evidence links and scope; treat R as decision warrant only.                             |
-| **Scope laundering**       | The claim’s applicability grows by wording changes while `G` is unchanged.                    | It silently widens scope, making comparisons meaningless.        | Use A.2.6 operators and treat scope changes as explicit revisions.                                       |
-| **Relation laundering**    | A claim or its evidence is reused after a changed scope, kind, plane, notation, local meaning, model use, or evidence basis, while `R` is carried over unchanged. | It hides the actual change and its relation-specific loss. | Name the direct relation or scope operation and recompute `R_eff` from its declared loss; stop if that relation is missing. |
-| **DesignRunTag chimera**     | Design-time proofs and run-time telemetry are mixed as if they were the same evidence object. | Evidence belongs to different stances and decays differently.    | Separate lanes and validity windows; treat crossings explicitly.                                         |
-| **Ordinal arithmetic** | F or CL ranks become a probability or loss merely by tagging, tabulating, or rescaling them | Ordered categories are not calibrated ratio quantities | Retain the ordinal meaning; any receiving conversion needs its actual model, meaning, scale, and assumptions. |
-| **Counting support labels** | More reports are treated as independent confirmation, or one weak additional study automatically defeats the whole | Duplicates, shared bias, complementary information, and counterevidence contribute differently | Recover their actual dependencies and effects on the claim; use neither study count nor a universal min/max fallback. |
-
-### C.2.2:9 - Consequences
-
-Informative; non-binding.
-
-| Benefits                                                                                                     | Trade-offs and mitigations                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Conditional comparability.** Claims can be compared when their R meanings and models are compatible and F and G are explicit. | **No forced score.** Some useful syntheses retain heterogeneous support rather than invent numerical comparability. |
-| **Auditability.** Relation-specific reuse loss is visible and localised to R.                                | **Overhead.** Declaring the relations actually traversed and the evidence links is work; mitigate with templates and reuse of standard lane schemas. |
-| **Revisable warrant.** New support or counterevidence can change the bounded conclusion under its actual model. | **Scalar temptation.** Keep distinct support contributions and their limitations visible behind any numerical result. |
-
-### C.2.2:10 - Rationale
-
-A triad only works if each coordinate has a single job.
-
-* **G states applicability.** It states where the claim is asserted to apply. If G is implicit, teams argue about “what was meant” instead of updating scope.
-* **F carries checkability.** It states how much the claim’s form supports mechanised scrutiny and reuse. If F is conflated with R, formalisation becomes a rhetorical weapon.
-* **R carries warrant.** It describes support for this exact claim and use under a named meaning and scale. Its inputs must not erase the distinction between a necessary premise, complementary evidence, and a credible contrary result.
-
-Routing a traversed relation's declared congruence loss into **R only** prevents a subtle failure: a change of scope, kind, plane, notation, source-local meaning, model-use basis, or evidence basis cannot silently rewrite the claim or carry its old warrant forward.
-
-No universal fold is conservative for every support model. Minimum can overstate a conjunctive probability and can also suppress useful complementary evidence. The small common rule is to establish input meanings and dependencies, calculate only what they warrant, and otherwise preserve a useful bounded synthesis.
-
-### C.2.2:11 - SoTA-Echoing
-
-Normative.
-
-**SoTA pack binding note.** If a G.2 SoTA Synthesis Pack has sources that bear on reliability under the exact changed claim scope, kind, reference plane, notation, source-local meaning, model use, or evidence basis in this case, cite the relevant ClaimSheet IDs and CorpusLedger entries. Cite a `BridgeMatrix` row only when the current path actually uses an F.9 cross-local semantic Bridge represented by that row. Where no such pack supplies a relied-on result, retain the directly identified sources and support as applicable; no empty pack record is required. Neither a generic Context nor a generic transport package is required.
-
-| Practice claim                                                                                                      | Post‑2015 source anchor                                                                   | Alignment to this pattern                                                                                                                                                           | Adoption status                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Verification and validation should be distinguished and tied to evidence quality, not rhetoric. | ASME V&V 40-2018 (model credibility assessment; historical anchor). | Keep VA and LA separate and attach warrant to evidence, claim, and use. | **Adapt** this distinction; this source is not a justification for a universal KD-CAL minimum. |
-| Trustworthiness depends on intended use, affected risks, operating conditions, and explicit limits.              | NIST AI Risk Management Framework 1.0 (2023).                                             | This pattern makes claim limits explicit through `G` and applies CL penalties only through the actual relation used by a reuse path.                                               | **Adapt**, because FPF treats declared relation loss as an epistemic penalty, not only as an organisational risk statement. |
-| Safety arguments should make claims, evidence, and assumptions explicit and reviewable. | UL 4600 (2020) and related assurance-case practice in autonomous systems. | This pattern treats `R` as an auditable warrant signal whose inputs are explicit evidence items; any reuse names the exact relation traversed and its declared loss. | **Adopt**, while remaining notation-independent and avoiding tool mandates. |
-| Empirical results should be accompanied by structured provenance and usage conditions to enable reuse and critique. | “Datasheets for Datasets” (Gebru et al., 2018) and “Model Cards” (Mitchell et al., 2019). | Scope discipline and lane reporting make empirical warrant reusable only when the exact evidence, claim, use, conditions, and any evidence-reuse or dataset relation are explicit; that relation's declared loss routes to `R_eff` only. | **Adopt**, with relation-specific congruence penalties as the reuse control mechanism. |
-| Reproducibility requires packaging evidence and making it re-checkable by others. | ACM Artifact Review and Badging (updated practices post-2015) and The Turing Way (2019). | This pattern treats evidence as inspectable across TA/VA/LA lanes and lets reliability decay when evidence becomes stale or non-replayable. | **Adapt**, because FPF treats freshness and relation-specific reuse losses as first-class calculus inputs. |
-| Strong inference needs evidence that discriminates against live rival explanations. | Mayo (2018) on severity in statistical inference (historical anchor). | Keep the limitation or rival explanation that a test actually addresses visible. | **Adapt** the methodological concern, not an asserted derivation of minimum or any universal R formula. |
-
-The current methodological comparison is [Gutierrez, Glymour and Davey Smith, *Evidence triangulation in health research* (2025)](https://link.springer.com/article/10.1007/s10654-024-01194-6): compare target questions, design assumptions and possible shared biases; use qualitative synthesis where quantitative combination is unwarranted. **Adapt** those distinctions for heterogeneous support. The paper supplies neither a universal R scale nor a requirement to commission another study for every useful conclusion.
-
-### C.2.2:12 - Relations
-**Builds on:** C.2 (KD-CAL overview), A.2.6 (claim scope and scope revision), C.2.3 (Formality F), B.3 and B.3.3/B.3.4 (assurance, evidence lanes, and refresh), B.1.3 (Γ-fold patterns), C.3.3 (cross-kind use), G.6 (EvidenceGraph PathId discipline), C.29/A.6.3.RT (notation and representation relations), A.1.1 (selected model-use structure), and A.10/B.3 for exact evidence-use and reliance relations. F.9 is used only when an obtaining relation between distinct local meanings, reference schemes, or reference planes is part of the path.
-**Coordinates with:** C.16 for measurement claims, E.14 for working-model assertions, F.17 for optional local-meaning addresses, and E.18/E.17/A.21 when their own transfer, publication, or gate objects are current. G.2 supplies relevant source-pack entries; G.7 remains the conditional calibration path for its declared cross-Tradition/F.9 Bridge use, not a universal calibration owner.
-**Used by:** C.3.3 for cross-kind reuse discipline, guard macro bundles in C.3.A and C.21, and acceptance or gating logic that consumes `R_eff` while preserving `F` and `G`.
-**Clarifies:** the KD-CAL meaning of reliability implicit in C.2:4.1 and the relation-specific reuse claims referenced across B.3 and C.3; it does not create a universal transport relation.
-
-### C.2.2:End
-
-## C.2.2a - `U.LanguageStateSpace` - Language-state chart over `U.CharacteristicSpace`
-
-> **Type:** Architectural (A)
-> **Status:** Stable
-> **Normativity:** Normative unless marked informative
-
-**Plain-name.** Language-state space.
-
-**Builds on.**
-`A.19`, `E.10`, `F.18`.
-
-**Used by.**
-`C.2.LS`, `C.2.3`, `C.2.4`, `C.2.5`, `C.2.6`, `C.2.7`, `A.16.0`, `A.16`, `A.16.1`, `A.16.2`, `B.4.1`, `B.5.2.0`, `F.9.1`, `A.6.P`, `C.16.Q`, `A.6.A`.
-
-**Use this pattern when.** A team is about to route, compare, or publish a note by calling it `early`, `ready`, or `settled`, and the next action depends on what is actually known.
-
-**First question.** What is known or uncertain about each of these five aspects, which readings clear the local threshold, and what may happen next: formality, articulation, closure, anchoring, and representation?
-
-**What goes wrong if missed.** Teams flatten those five aspects, the grounds for judging them, and the publication lane into one maturity adjective. A polished document can then look ready although the claim is still open, or a useful early cue can be rejected because it is not yet polished.
-
-**What this buys.** One small chart row that shows only the distinctions needed by the next action while keeping the episteme publication separate from its grounds, form, face, and carrier.
-
-### C.2.2a:0 - First useful chart
-
-Start with the smallest row that can change the next action:
-
-- the exact episteme publication being positioned;
-- only the currently relevant facet values or intervals; mark a decision-relevant unknown as `unknown`;
-- the grounds for those readings;
-- the local threshold used by the named next action and the action now allowed, blocked, or still undecided;
-- publication form, face, or carrier only when that distinction changes interpretation, preservation, or the next action.
-
-**Filled example.** `Pump-alert-17` is the alerting episteme publication being positioned. Its affected asset and discrepant reading are visible, but the claim structure is not yet complete; rival diagnostic routes remain open; the alert is anchored in the operator loop; and its representation mixes text with telemetry. Formality is omitted because the present routing decision does not depend on it. The grounds are trace `T-17` and operator note `N-4`. The local rule permits routing to the diagnostic-question seam once the affected asset and discrepant reading are explicit; it does not yet permit treating the alert as a Work record. Form, face, and carrier are omitted because none changes that decision.
-
-**Non-use.** If a pinned inherited chart already supplies the current values and threshold for the same next action, cite it instead of publishing another row. If `early` or `ready` is only ordinary prose and no routing, comparison, publication, or threshold decision depends on it, leave it as ordinary prose rather than creating a governed position.
-
-**Practical result.** The row tells the practitioner whether to continue, stop, or route the publication to the pattern that governs the next question; it does not itself authorize that action.
-
-### C.2.2a:1 - Problem frame
-In engineering, inquiry, operator, and management practice, teams often need to say where a governed `U.Episteme` publication currently stands before it has reached an endpoint subject pattern. That governed publication may appear through several cue-bearing, route-bearing, or endpoint-bound publication forms, but the chart claim remains about the governed `U.Episteme` publication rather than about a local alias or a carrier lane.
-
-Cue packs, routed cue sets, abductive prompts, typed route-bounded projection publications, partial normal forms, and endpoint-bound records are not rival positioned items in the space. They are publication forms through which a current position claim is made visible. MVPK faces may render those forms, but faces are not themselves the forms. By contrast, a service disturbance, a model-vs-observation discrepancy, a bodily tension, a telemetry trace, a model output, or a carrier document may trigger, witness, or carry that episteme, but none of those is itself a coordinate in the space.
-
-Practitioners, including engineers, operators, researchers, managers, and engineer-managers, still have to decide where such an episteme currently stands, which thresholds matter next, which publication form is admissible, and what must not yet be claimed. If this domain is described only with folk labels such as `raw`, `early`, `settled`, or `ready`, the real geometry disappears.
-
-### C.2.2a:2 - Problem
-Without an explicit language-state chart:
-
-1. teams collapse several facets into one maturity story;
-2. `F` is silently misused as a surrogate for articulation, closure, anchoring, and representation factors;
-3. thresholds are published as vague readiness statements instead of explicit facet conditions;
-4. source phenomena, governed epistemes, publication forms, publication faces, and carriers are conflated;
-5. bridge and endpoint work inherit under-described upstream states.
-
-### C.2.2a:3 - Forces
-| Force | Tension |
-| --- | --- |
-| **Multi-facet fidelity vs readable publication** | The chart must preserve several independent facets without becoming unreadable. |
-| **Stable basis vs local thresholds** | Basis slots should stay stable across contexts, while thresholds remain context-local. |
-| **Position semantics vs publication semantics** | A position claim is not identical to the source phenomenon, publication form, or carrier through which it is currently expressed. |
-| **Comparability vs non-collapse** | Teams need to compare positions, but not by flattening them into one pseudo-scale. |
-| **Bridge reuse vs local authority** | Cross-context work benefits from a stable upstream chart, yet each context keeps local threshold authority. |
-
-### C.2.2a:4 - Solution
-`U.LanguageStateSpace` is the cluster-local name for the declared language-state chart over `U.CharacteristicSpace` as disciplined by `A.19`.
-
-It is not a second kernel state-space apparatus beside `A.19`. It is the particular declared `U.CharacteristicSpace` whose basis slots are the language-state facets used in this cluster.
-
-#### C.2.2a:4.0a - Kind and chart boundary
-
-`U.LanguageStateSpace` is a dependent durable chart value under `U.CharacteristicSpace` and the episteme language-state boundary, not a new root state-space U-kind. Its identity is the declared characteristic-space chart for governed episteme publication positions. Practitioners can publish or use the chart through score tables, publication forms, local route maps, and carriers, which remain distinct from the chart.
-
-#### C.2.2a:4.1 - Core use
-`U.LanguageStateSpace` gives FPF one explicit declared chart for answering five questions:
-
-- which basis slots define where the governed episteme stands;
-- what a position claim in that chart means;
-- which thresholds are locally declared over those slots;
-- what comparisons are admissible without cross-facet collapse;
-- and how the same position claim stays distinct from the publication form currently expressing it.
-
-#### C.2.2a:4.2 - Position reading under `A.19`
-A language-state position is a partial, slot-explicit coordinate claim in the declared language-state `U.CharacteristicSpace`.
-
-Publish each basis-slot reading as a `ValueSet(slot)`, interval, or other admissible set-valued claim. Early seam publications may leave some slots unknown or wide, but that uncertainty must be declared rather than hidden inside one stage word.
-
-`position` language is therefore admissible here only as shorthand for such slot-explicit `A.19` coordinate claims. It does **not** authorize a rival process-sequence or feature-vector story.
-
-#### C.2.2a:4.3 - Facet basis
-The language-state chart is coordinated by explicit facet subject patterns rather than by an informal master progression. In the current cluster the basis is formed by:
-
-- `C.2.3` for `F`;
-- `C.2.4` for articulation explicitness;
-- `C.2.5` for language-state closure degree;
-- `C.2.6` for language-state anchoring mode;
-- `C.2.7` for the language-state representation-factor bundle.
-
-`C.2.2a` states that these basis slots together define the chart. It does **not** govern the internal scale semantics of the individual facets.
-
-#### C.2.2a:4.4 - Ontological slot groups
-Within this cluster, keep five slot groups distinct:
-
-- **positioned episteme publication** - the governed `U.Episteme` publication whose current position is being claimed;
-- **grounds / witnesses** - disturbances, discrepancies, traces, model outputs, bodily tensions, exemplars, or contrasts that justify the current reading;
-- **publication forms** - cue packs, routed cue sets, prompt forms, typed route-bounded projection publications, partial normal forms, and endpoint-bound records through which the episteme is published;
-- **publication faces** - the existing MVPK faces on which those publication forms are rendered when face typing matters;
-- **carriers** - documents, console notes, cards, trace files, or model carriers that hold or render a publication.
-
-`U.LanguageStateSpace` governs only the coordinate reading of the position claim. It does not collapse that claim into the grounds, publication form, publication face, or carrier.
-
-#### C.2.2a:4.5 - Position publication rule
-
-A published position states the exact episteme publication, the facet readings that matter to the present use, and the grounds for those readings. A decision-relevant unknown is stated as `unknown`; unrelated facets need not be filled merely to complete a form.
-
-Add the local threshold and named next action only when the row is used for movement, routing, comparison, or endpoint entry. Add publication form, MVPK face, carrier, or SCR/RSCR lane only when that distinction affects interpretation, preservation, distribution, or the next action.
-
-The position is reviewable when the named or inherited episteme publication, relevant readings, grounds, and any relied-on threshold are recoverable, and when any form, face, or carrier actually mentioned remains distinct from the positioned episteme publication. A polished note or better carrier does not by itself prove a new chart position.
-
-#### C.2.2a:4.6 - Non-substitution of `F`
-`F` remains one basis slot in the chart, not the whole chart.
-
-A conforming account shall not infer:
-
-- closure from formality alone;
-- anchoring from publication-face format alone;
-- representation factors from articulation alone;
-- or routing admissibility from a lone `F` statement.
-
-Where operationally meaningful thresholds exist, they must be published on the relevant slots rather than being disguised as informal `F` sublevels.
-
-#### C.2.2a:4.7 - Position versus publication form
-A position claim in `U.LanguageStateSpace` is distinct from:
-
-- the underlying governed `U.Episteme`,
-- the source disturbance, discrepancy, or witness,
-- the current publication form,
-- the MVPK face that renders that publication,
-- the carrier that stores or displays it,
-- or the endpoint-subject-qualified publication that may result from it.
-
-These objects are coupled but distinct. `U.LanguageStateSpace` keeps the position claim readable without conflating it with any of them.
-
-#### C.2.2a:4.8 - Threshold publication discipline
-If a threshold is used to justify a move or endpoint entry, that threshold shall be stated on explicit basis slots in the chart. Statements such as `this is now ready`, `this has matured`, or `this is still too early` are non-conformant when they substitute for undeclared slot conditions.
-
-#### C.2.2a:4.9 - Comparison and bridge note
-
-Positions may be compared directly only under one shared chart meaning and the applicable local comparison rule. For cross-context use, first recover the two exact F.17 local senses and test the direct F.9 predicate. Cite a Bridge only when that predicate obtains. State the proposed bounded use and any reliance separately; a loss note is optional and belongs to that use, not to the fact that the contexts differ.
-
-If no Bridge obtains, preserve both local positions. Name the actual comparison or translation relation needed by the receiving use, or return the applicable missing-governor result instead of inventing correspondence.
-
-#### C.2.2a:4.10 - What changes after the row exists
-
-Compare the relevant readings with the local threshold named by the next action. Use the result to decide whether to keep the publication where it is, route it through a seam or prompt pattern, open a facet or endpoint question, or stop because a required reading is unknown. The receiving pattern governs the actual route, comparison, or publication decision; the chart row supplies only the position facts that decision uses.
-
-### C.2.2a:5 - Archetypal Grounding
-**Tell.** One note can have high operator-loop anchoring yet still low closure. Another can be document-mediated and symbol-heavy while still open on route choice. Both notes have positions in one language-state chart, but not on one maturity progression.
-
-**Show (System).** A service disturbance is a system-side phenomenon. The positioned governed `U.Episteme` publication is the alerting episteme published from that disturbance; its position claim may report moderate formality, low closure, high operator-loop anchoring, and mixed representation because terse codes and natural-language hints coexist.
-
-**Show (Episteme).** A model-vs-observation discrepancy is a witness-level tension, not the positioned episteme publication itself. Once preserved as a cue pack, the resulting governed `U.Episteme` may be low in articulation, low in closure, trace-anchored, and only partly symbolic even when rendered into prose.
-
-### C.2.2a:6 - Bias-Annotation
-The pattern deliberately biases authors toward decomposable coordinate claims and away from folk stage vocabularies. That costs some brevity, but it prevents collapse of genuinely different state facets into one adjective.
-
-### C.2.2a:7 - Conformance Checklist
-- `CC-C.2.2a-1` `U.LanguageStateSpace` **SHALL** be treated as the declared language-state chart over `U.CharacteristicSpace`, not as a rival kernel space and not as a disguised `F` progression.
-- `CC-C.2.2a-2` Published positions **SHALL** cite explicit facet subject patterns when those positions matter for movement, routing, or endpoint entry.
-- `CC-C.2.2a-3` Position claims **SHALL** use slot-explicit values, `ValueSet` claims, or intervals; uncertainty **SHALL NOT** be hidden inside stage words such as `ready`, `early`, or `mature`.
-- `CC-C.2.2a-4` A position claim in the chart **MUST NOT** be conflated with the current ground, witness, publication form, publication face, or carrier.
-- `CC-C.2.2a-5` Cross-context use **SHALL** recover the two exact F.17 local senses and test the direct F.9 predicate. Cite a Bridge only when it obtains; keep the bounded-use claim, reliance, and any optional loss note separate. If it does not obtain, keep the local positions distinct and name the missing comparison or translation governor.
-- `CC-C.2.2a-6` Corridor and navigation notes **MUST NOT** be read as relocation of facet, seam, bridge, or downstream subject-pattern semantics into the chart subject-pattern set.
-- `CC-C.2.2a-7` If a position claim is used for routing, endpoint entry, or gate-adjacent reasoning, the threshold note and the bearer-lane distinction between positioned episteme publication, publication form, face, and carrier **SHALL** remain explicit or explicitly inherited from a pinned upstream publication.
-
-### C.2.2a:8 - Common Anti-Patterns and How to Avoid Them
-- **Maturity monism.** Replace five facets with one stage word. Repair by publishing explicit slot placement.
-- **Formality capture.** Use `F` to stand in for articulation, closure, or anchoring. Repair by naming the actual facet subject pattern.
-- **Carrier collapse.** Treat a document, cue pack, or routed note as if it were the position itself. Repair by separating carrier lane, publication form, publication face, and position claim.
-- **Threshold folklore.** Speak of readiness without any explicit threshold declaration. Repair by publishing relevant local threshold notes on explicit slots.
-- **Bridge by vibe.** Similar stage language is treated as equivalence. Recover the two exact F.17 local senses and test F.9; cite a Bridge only when its predicate obtains. Otherwise keep both positions local and route the actual comparison or translation question.
-- **Corridor inflation.** Treat the navigation cluster or corridor map as if it were the subject-pattern set for all downstream semantics. Repair by naming the pattern that governs the current chart, seam, or downstream claim; identify any seam publication form separately.
-
-### C.2.2a:9 - Consequences
-The benefit is that practitioners, including engineers, operators, researchers, managers, and engineer-managers, can speak about where a governed `U.Episteme` stands without hiding the reasons inside vague maturity language. The trade-off is that publication must carry explicit slot and threshold information when decisions depend on it.
-
-### C.2.2a:10 - Rationale
-Language-state work needs one explicit statement of what this chart is before individual facet, move, and endpoint patterns start using it. Without that statement, readers have to reconstruct the same geometry from scattered local rules and examples.
-
-### C.2.2a:11 - SoTA-Echoing
-
-**SoTA note.** This section does not mint a second rule source. It is a load-bearing alignment statement: the Solution, Conformance Checklist, and bearer-lane discipline of this pattern must match the stance stated here or explicitly justify divergence.
-
-**Traditions covered.** This pattern binds itself to architecture-description governance, model-based systems engineering, and risk/governance profiling practice.
-
-| Claim need | SoTA practice (post-2015) | Primary source (post-2015) | Alignment with `C.2.2a` | Adoption status |
-|---|---|---|---|---|
-| Complex technical state should be published through explicit views, viewpoints, and model distinctions rather than one implicit maturity word. | Contemporary architecture-description governance separates source architecture description, view, viewpoint, and correspondence evidence instead of letting one visible adjective stand in for the whole state. | ISO/IEC/IEEE 42010:2022 | `C.2.2a` adopts this by keeping chart position, publication form, face, and carrier in distinct slot groups and by rejecting stage-language as a surrogate coordinate system. | **Adopt.** |
-| Governance-relevant readiness requires context-local profiles and thresholds, not one global adjective. | Current governance and risk frameworks use explicit profiles, thresholds, and scoped conditions rather than one blanket readiness label. | NIST AI RMF 1.0 (2023) | `C.2.2a` adopts the threshold-publication discipline and rejects the popular shortcut where `ready`, `early`, or `mature` replaces explicit slot conditions. | **Adopt/Reject-popular-shortcut.** |
-
-**Architecture-description governance.** `C.2.2a` adopts the discipline that positions, publication forms, faces, and carriers stay explicitly distinct, even when one local rendering makes them look aligned.
-
-**Characteristic-space and profile discipline.** The multi-facet chart is grounded in FPF `A.19` and the current `C.2.3`–`C.2.7` facet patterns; it is not imported from an external modeling language. Current governance practice contributes the narrower discipline of publishing scoped profiles and thresholds.
-
-**Local stance.** The load-bearing architecture decision is FPF-native: governed language-state is a multi-facet chart with explicit thresholds and bearer-lane distinctions, not one maturity progression or one polished publication face. The external rows support the narrower view, publication, profile, and threshold disciplines stated above.
-
-### C.2.2a:12 - Relations
-- Builds on: `A.19`, `E.10`, `F.18`.
-- Coordinates with: `C.2.LS`, `C.2.3`, `C.2.4`, `C.2.5`, `C.2.6`, `C.2.7`, `A.16.0`, `A.16`, `F.9`, `F.9.1`, `E.17.1`.
-- Constrains: threshold publication, positional claims, and anti-collapse discipline across the language-state cluster.
-
-### C.2.2a:13 - Worked Examples
-
-#### C.2.2a:13.1 - Inquiry cue before endpoint capture
-A position claim for a research cue note may state:
-
-- moderate `F`,
-- low articulation explicitness,
-- low closure,
-- strong embodied or trace-based anchoring,
-- and mixed representation factors.
-
-Keep these readings explicit when testing entry into `A.6.P` or `C.25`; the note should remain upstream while the relevant receiving pattern's entry conditions remain unmet, even if its prose happens to look polished.
-
-#### C.2.2a:13.2 - Routed operator alert note
-A routed operational alert may have:
-
-- moderate formality,
-- medium articulation,
-- low closure because several responses remain live,
-- high operator-loop anchoring,
-- and mixed symbolic and natural-language representation.
-
-Keep the live responses explicit in the route-bearing seam publication. Before publishing an endpoint-subject-qualified work record or reliance record, test the applicable downstream pattern's conditions; these chart readings do not decide that result.
-
-#### C.2.2a:13.3 - Viewpoint-bound adequacy note
-A document-mediated adequacy note about an architecture description may be relatively high in formality and articulation, mid-level in closure, document-mediated in anchoring, and symbolic in representation. That position remains within the same language-state chart even though its carrier lane differs from an embodied inquiry cue.
-
-#### C.2.2a:13.4 - Polished prose is not closure
-A prose rewrite may look cleaner, more compact, or more manager-readable than the source cue and still remain low in closure or articulation explicitness. If the underlying slot values, uncertainty, and route plurality remain unchanged, then publication polish changes the rendering or carrier lane, not the chart position by itself.
-
-### C.2.2a:14 - Position Publication Package Discipline
-
-A publishable row contains the exact episteme publication, the decision-relevant facet readings or intervals, their grounds, and any local threshold used by the named next action. Add form, face, carrier, freshness, or inherited pins only when the receiving use relies on them.
-
-Minimum self-check:
-
-1. Does the row name the positioned episteme publication rather than a ground, form, face, or carrier?
-2. Does it state every facet that can change the named next action and mark a relevant unknown honestly?
-3. Are the grounds and any relied-on local threshold recoverable?
-4. Does the row say what action is allowed, blocked, or still undecided without pretending to authorize it?
-5. For cross-context use, was F.9 tested on two exact local senses rather than inferred from similar wording?
-
-### C.2.2a:15 - Extended corridor map
-
-After the first useful row is understood, the wider `Language-State & Semantic Routing Corridor` can be read as a distributed overlay over `C.2.2a`, `C.2.LS`, `C.2.4`–`C.2.7`, `A.16`, `A.16.0`–`A.16.2`, `B.4.1`, and `B.5.2.0`.
-
-`A.16.1 / PreArticulationCuePack` is the earliest durable seam publication form in that corridor. `B.4.1` is the explicit route-bearing seam after cue preservation, and `B.5.2.0` is typed prompt entry. `C.16.Q`, `A.6.A`, `A.6.P`, `B.5.2`, `A.15`, and `C.25` are downstream subject patterns, not members of the language-state chart. The map explains navigation only; it relocates none of their semantics into C.2.2a.
-
-### C.2.2a:End
-
-## C.2.3 - Unified Formality Characteristic F
-
-> **Type:** Definitional (D)
-> **Status:** Stable
-> **Normativity:** Normative unless marked informative
-
-**Plain-name.** Formality characteristic.
-
-**One-line summary.** `C.2.3` defines **Formality (F)** as one ordinal `U.Characteristic` with polarity `up`, anchored by the default ladder `F0...F9`, and declared for normative epistemes. An assurance argument consumes F only when its named use needs rigor of expression.
-
-### C.2.3:1 - Problem frame
-
-Transdisciplinary work needs one shared way to speak about rigor of expression. A research hypothesis in constrained natural language, a software interface specification with explicit invariants, a controller model checked against hybrid obligations, and a proof-bearing formal development are not comparable by domain lore alone. They are comparable by **how strictly the content is expressed**.
-
-Historically, that distinction drifts. Teams mix editorial maturity, organizational status, notation choice, proof support, and scope narrowness into one vague story about something being *more formal*. `C.2.3` removes that drift by giving FPF one explicit `U.Characteristic` for rigor of expression.
-
-### C.2.3:2 - Problem
-
-Without one unified `F` characteristic:
-
-1. **Rigor is narrated inconsistently.**
-   Different contexts invent local mode/tier language with no shared comparability.
-2. **Status and rigor collapse.**
-   Something accepted, published, or approved is mistaken for something precisely expressed.
-3. **Expression changes are hidden.**
-   A move from sketch to predicates or from executable model to proof is not recorded as a distinct content change.
-4. **Composition becomes unsound.**
-   A composite episteme is treated as highly formal because one segment is highly formal, even when essential support still depends on less formal parts.
-5. **Other characteristics are misused as surrogates.**
-   Authors quietly use scope, evidence, or language-state facets as if they were part of one master formality characteristic.
-
-### C.2.3:3 - Forces
-
-| Force | Tension |
-|---|---|
-| **Readability vs precision** | Natural language is fast and legible; formal systems are unambiguous and checkable. F needs a gradient, not a cliff. |
-| **Local freedom vs shared comparability** | Contexts need local exemplars and thresholds, but cross-context reasoning requires one stable characteristic. |
-| **Exploration vs assurance** | Early work must be allowed at low F, while high-assurance work needs explicit higher anchors. |
-| **Notation diversity vs semantic stability** | Different symbol systems may express the same rigor level; notation choice alone must not redefine F. |
-| **Thin characteristic vs rich practice** | The core characteristic should stay simple, while still supporting concrete guidance, examples, and review discipline. |
-
-### C.2.3:4 - Solution - `U.Formality` as one ordinal characteristic
-
-`C.2.3` defines `U.Formality` as the single governing characteristic for rigor of expression in FPF.
-
-#### C.2.3:4.1 - Identity and typing
-
-- **Name:** `U.Formality` (abbreviated `F`)
-- **Type:** `U.Characteristic`
-- **Scale kind:** ordinal
-- **Polarity:** `up`
-- **Carrier:** any `U.Episteme`
-- **Default value family:** `F0...F9`
-
-`F` states **how strictly the content is expressed**. It does not state whether the content is true, well evidenced, widely applicable, or organizationally accepted.
-
-#### C.2.3:4.2 - Place in the typed `F-G-R` tuple
-
-A named assurance argument may consume `F` alongside G or R under B.3. Declaring F for a normative episteme does not itself select an assurance argument or require the current use to consume a universal tuple. The characteristics remain distinct:
-
-- `F` is **not** `G`; scope remains governed by `U.ClaimScope` and other USM structures.
-- `F` is **not** `R`; evidence, warrant strength, and decay remain assurance concerns.
-- Mapping loss is assessed for the actual receiving use. Any effect on R needs its B.3/C.2.2 basis; an ordinal CL value supplies no automatic penalty and does not change F.
-- Changes in notation, carrier, or rendering form do not change `F` if the formal content is preserved.
-
-#### C.2.3:4.3 - Extensibility and local anchors
-
-FPF provides the default anchor ladder `F0...F9`. A context may define sub-anchors or intermediate anchors such as `F4[OCL]` or `F6.5`, but only if:
-
-- global order is preserved,
-- the local anchor is explicitly docked to a parent anchor,
-- the context does not invent a rival ladder or proxy scale.
-
-#### C.2.3:4.4 - Usage obligations
-
-- Every normative episteme shall declare one `F` value.
-- Thresholds that depend on rigor should be written explicitly as `F >= Fk` conditions.
-- Any actual raise or lowering of expression rigor is a content change, not a status-only change. Correcting an erroneous `F` attribution changes the assessment, not necessarily the assessed episteme.
-- `F` remains declaration and reasoning infrastructure; it is not itself a governance process.
-
-### C.2.3:5 - Archetypal Grounding
-
-**Tell.** `F` does not ask whether a claim is correct. It asks how strictly the claim is expressed.
-
-**Show (System).** A system requirement written as controlled natural language with unambiguous acceptance conditions may be `F3`; the same requirement rewritten as explicit typed invariants may become `F4`; a machine-checked proof of a critical invariant may raise the relevant claim core to `F7` or above.
-
-**Show (Episteme).** A research conjecture can begin at `F1-F3`, then gain explicit predicates at `F4`, executable semantics at `F5`, and proof-bearing core content at `F7-F8`, while remaining recognizably the same evolving claim family.
-
-### C.2.3:6 - Bias-Annotation
-
-The pattern biases FPF toward one explicit rigor characteristic and against stories that mix formality with status, publication quality, scope width, or evidence support. That bias is intentional. The price of explicit declaration is smaller than the cost of comparing rigor through folklore.
-
-### C.2.3:7 - Conformance Checklist
-
-- `CC-F-1` Every normative `U.Episteme` **SHALL** declare exactly one `U.Formality` value, either a default anchor or a local sub-anchor explicitly docked to one.
-- `CC-F-2` `F` **SHALL** be treated as an ordinal characteristic; arithmetic over `F` values is invalid.
-- `CC-F-3` Higher `F` **SHALL** mean greater or equal strictness of expression, not greater truth, trust, or scope.
-- `CC-F-4` Contexts **MUST NOT** publish alternative "formality modes" or "tiers" as surrogates for `F`.
-- `CC-F-5` Local sub-anchors **SHALL** preserve the global ordering and the parent anchor meaning.
-- `CC-F-6` For a composite episteme assessed as one expressed claim or argument, its F **SHALL** be bounded by its least-formal essential content or inference on the declared compositional support path. Identify that assessed bearer and support relation. This expression-wide cap does not extend automatically to external evidence cited as warrant.
-- `CC-F-7` Implementations **MUST NOT** average `F` values numerically.
+s numerically.
 - `CC-F-8` Changes in `G`, `R`, or `CL` **SHALL NOT** change `F` unless the expression form itself changes.
 - `CC-F-9` Cross-context transport **SHALL** preserve the attributed `F` when formal content is preserved. If the receiving rewrite changes claim content, EntityOfConcern, or the effective reference scheme under `C.2.1`, the result is a new episteme with its own `F`.
 - `CC-F-10` Translation loss, bridge loss and plane crossings **SHALL** retain their actual receiving-use limitations. Evaluate any assurance effect under its governing model; do not hide it as an F change when the expressed content is preserved.
@@ -2855,7 +2385,9 @@ Model theory and type systems distinguish intensional declarations, satisfaction
 
 > **One-line summary.** A changed practice, source, team, or scheme first triggers a comparison of kind definitions. If the same kind continues, reuse it and evaluate the receiving candidate afresh; no `KindBridge` is needed. When two independently identified kinds are distinct and a directional correspondence predicate holds, one `KindBridge` direct relation may obtain. A separate bridge-assertion episteme states direction, paired declaration editions, preservation or loss, `CL^k`, evidence, and admitted use. It never transfers source classification truth.
 
-**Status.** Normative in **Part C**. Identifier **C.3.3**.
+**Normativity:** Normative in **Part C**. Identifier **C.3.3**.
+
+> **Status:** Stable
 **Audience.** Engineering managers, architects, assurance leads, editors.
 
 **Depends on.**
@@ -3049,7 +2581,9 @@ The obtaining bridge relates source kind `AdultPatient` to independently identif
 
 > **One-line summary.** Use a `KindUseAdaptationDeclaration` when a procedure needs a narrower or differently named use of an existing kind without defining another kind. The declaration pins the base `KindSignature` edition, local candidate constraints or vocabulary bindings, intended guard use, and applicability. Check admissibility before returning `true`, `false`, or `unknown`. A locality change first triggers kind-identity comparison: the same kind needs no `KindBridge`; distinct kinds need one only when its exact correspondence predicate obtains.
 
-**Status.** Normative in **Part C**. Identifier **C.3.4**.
+**Normativity:** Normative in **Part C**. Identifier **C.3.4**.
+
+> **Status:** Stable
 **Audience.** Engineering managers, architects, reviewers, and editors.
 
 ### C.3.4:0 - Use This When
@@ -3260,7 +2794,9 @@ Reviewer questions:
 
 > **One-line summary.** `KindAT` is an informative editorial facet on one local `U.Kind`. Its anchors—K0 Instance, K1 Behavioral Pattern, K2 Formal Kind/Class, and K3 Up-to-Iso—help plan declaration rigor, assurance coverage, bridge expectations, catalog search, and refactoring. KindAT is not a Characteristic: it has no algebra or threshold and never appears in guards or composition. It changes neither the kind, a `KindSignature`, a classification judgment, an extension representation, nor F–G–R.
 
-**Status.** Informative for anchors, heuristics, examples, and guidance; normative only for the usage rules that prohibit guard/composition use and constrain placement.
+**Normativity:** Informative for anchors, heuristics, examples, and guidance; normative only for the usage rules that prohibit guard/composition use and constrain placement.
+
+> **Status:** Stable
 
 **Placement.** Part C (Kinds), identifier **C.3.5**. Audience: engineering managers, architects, editors, and assurance leads.
 
@@ -3419,7 +2955,9 @@ These are planning cues, not default F values, R values, classification results,
 
 > **One-line summary.** These guard macros combine C.3 declaration compatibility, the exact C.3.2 candidate judgment when an actual candidate is current, RoleMask and KindBridge declarations/relations, and A.2.6 Scope without collapsing them. A claim quantified over a kind can be checked at declaration level; applying that claim or a capability to one candidate additionally requires an admissibility check and, for an admissible request, `J(candidate, kind, signatureEdition, slice)`. `true`, `false`, and `unknown` remain classification values, while allow/refuse remains a separate guard disposition. KindAT never appears in a guard.
 
-**Status.** Normative for macro obligations, evaluation order, three-valued/fail-closed discipline, and the conformance checklist; informative for decision trees, examples, and implementation-like skeletons.
+**Normativity:** Normative for macro obligations, evaluation order, three-valued/fail-closed discipline, and the conformance checklist; informative for decision trees, examples, and implementation-like skeletons.
+
+> **Status:** Stable
 
 **Placement.** Part C (Kinds), identifier **C.3.A**. Audience: engineering managers, editors, reviewers, assurance leads, and authors of regulatory, evidence, ESG, and Method–Work checks.
 
@@ -4625,6 +4163,8 @@ Worked-slice discipline from these rows:
 
 ### C.11:12 - Relations
 
+C.11.MV constructs a Method-option worth comparison, preserving the receiving result, present alternative, learning and transition effort, recurring support and distribution of burden. It uses this choice discipline and C.11.DUA where a demanded inquiry or requirement itself needs appraisal.
+
 - **Builds on:** `A.6.P`, `A.6.5`, `A.10`, `A.13`, `A.18`, `A.19`; **coordinates with:** `E.10.LRN` for learning-word recovery, `C.11.CRC` for a missing finite configuration-relative comparison claim, `C.17` for bounded characterization
 - **Read next when candidate work is needed:** `C.38` for forming complete ways of obtaining one result, `C.39` for a missing explanation of how to obtain it, or `C.40` for feasible variation and examination of usable material. Use `C.18` when generation-account or archive/front claims are needed.
 - **Other neighboring questions:** `C.19` for one explicit pool-policy result over exploration or exploitation governance; `C.24` for one enactment-facing call plan or `CheckpointReturn`; `G.5` for the selector-facing result kind that is actually current—retained alternatives, all-member joint use, narrowed handoff, abstain, or escalation; and `C.28` when the choice result depends on causal-use support
@@ -4989,12 +4529,12 @@ The model file need not have changed. A.10.1 would be appropriate for a differen
 
 | Situation | Use of the common preparation and direct continuation |
 | --- | --- |
-| A market observation weakens a growth assumption but leaves a separately grounded commitment intact. | STR.2 localizes the affected premise and preserves independently grounded commitments. STR.12 connects the signal to a current strategic continuation or reconsideration, using the actual choice or commitment and its required evidence and authority. An analyst's recommendation remains distinct from the Board's choice. Use this direct continuation when sufficient; a common overview can cite its results without repeating or replacing it. |
-| A retrofit is complete but the expected service outcome is absent. | EAM.13 compares the realized outcome with the asset-decision premises; the completed intervention remains history. For organization change, OCE.13 supplies the consequence account and OCE.14 the authorized revision. Use these direct Methods when they already supply the needed whole. |
-| Practice evidence changes an explanation of development or transfer. | HCD.14 supplies a bounded development hypothesis. A continuing-arrangement choice uses HCD.15 on that input; a hypothesis alone does not change the arrangement. |
-| A follow-up analyst recommends adjustment. | PSD.14 can supply the complete affordable return. Keep the absent authority-held decision explicit without wrapping its sufficient Method in a second account. |
+| A market observation weakens a growth assumption but leaves a separately grounded commitment intact. | A strategic follow-up Method can localize the affected premise, preserve independently grounded commitments and connect the signal to a strategic continuation or reconsideration, using the actual choice or commitment and its required evidence and authority. An analyst's recommendation remains distinct from the Board's choice. Use this direct continuation when sufficient; a common overview can cite its results without repeating or replacing it. |
+| A retrofit is complete but the expected service outcome is absent. | Use the asset-management Method to compare the realized outcome with the asset-decision premises; the completed intervention remains history. For organization change, use the applicable Methods for the consequence account and any authorized revision. Use these direct Methods when they already supply the needed whole. |
+| Practice evidence changes an explanation of development or transfer. | Use the capability-development revision Method to obtain a bounded development hypothesis. A continuing-arrangement choice uses that input under its own Method; a hypothesis alone does not change the arrangement. |
+| A follow-up analyst recommends adjustment. | A decision-follow-up Method can supply the complete affordable return. Keep the absent authority-held decision explicit without wrapping its sufficient Method in a second account. |
 | A current robotic-maintenance cue already determines the next-action question under the enacted Method. | Use A.15.7 directly. Reconstruct an older recommendation only if a distinct reliance question remains. |
-| A changed source has partly unknown engineering or finance consumers. | Use A.10.1 with SYSE.19 or FIN.17. A sufficient subject result needs no further C.11.DBR pass. |
+| A changed source has partly unknown engineering or finance consumers. | Use A.10.1 with the applicable engineering or finance Method to discover the affected consumers and reconsider their reliance. A sufficient subject result needs no further C.11.DBR pass. |
 
 The shared preparation stops before these domain consequences and decisions. It supplies neither a strategic pivot rule nor a maintenance trial or capability-development assessment.
 
@@ -5038,7 +4578,7 @@ The cheap preservation branch and direct subject exit make the generalization us
 | --- | --- | --- |
 | Current architecture-decision practice: [Microsoft, Maintain an architecture decision record](https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record) | Context, rationale, alternatives and consequences make later reconsideration intelligible; a changed decision is recorded separately, preserving its predecessor. This supplies recoverability, not a test that a later outcome materially changes a particular use. | **Adopt** recoverable reasons and historical continuity in §§4.1 and 4.3. **Adapt** the receiving form to an ordinary statement: this cross-domain Method requires neither an ADR template nor a status log. §§4.2 and 4.4 add the comparison and current-choice connection. |
 | Adaptive management and learning about decision elements: [Williams and Brown, 2018](https://www.usgs.gov/publications/double-loop-learning-adaptive-management-need-challenge-and-opportunity), a theoretical anchor | Revising knowledge of system behavior and revisiting the decision elements are different learning questions. Its renewable-resource setting supplies an explicit account of recognizing and adjusting those elements through experience. | **Adapt** that distinction in §§4.1–4.4: an outcome can alter an assumption, a criterion or a current alternative. Keep the natural-resource models and recurring management arrangement in their subject practice; one useful return here needs no institutional learning programme. |
-| Current finite choice and direct subject follow-up: C.11, STR.2/.12, EAM.13, OCE.13/.14, PSD.14, OPS.16, MNT.13 and HCD.14/.15 | These Methods supply decisions or domain-specific preparation that a general account cannot replace. A sufficient direct follow-up is a serious alternative to reconstructing a generic account. | **Reuse** that direct Method at entry and in §4.4. The extra contribution is needed only while recovering reliance, testing materiality and bounding preserved uses remain unresolved. §5.3 retains the different subject returns. |
+| Current finite choice through C.11 and follow-up Methods in strategy, asset management, organization change, decision practice, operations, maintenance and capability development | These Methods supply decisions or domain-specific preparation that a general account cannot replace. A sufficient direct follow-up is a serious alternative to reconstructing a generic account. | **Reuse** that direct Method at entry and in §4.4. The extra contribution is needed only while recovering reliance, testing materiality and bounding preserved uses remain unresolved. §5.3 retains the different subject returns. |
 
 For the working question in §5.1, a decision log preserves why A was selected but does not align the two-report observation; a current choice comparison needs that alignment already supplied. The present Method obtains it, preserves the independent delivery obligation and supplies only the surviving choice. Once a direct subject treatment supplies those operations, adding this Method again brings no corresponding gain. This comparison concerns the stated use, not a claim of measured superiority over decision records or adaptive management.
 
@@ -5311,6 +4851,255 @@ Compared with demanding the ideal evidence package first, this method can reach 
 - **Leaves with their owners:** authorization, requirement enactment, domain research design, actual Work and its evidence. The recommendation supplies a reasoned continuation; those contributions determine whether and how it can be carried out.
 
 ### C.11.DUA:End
+
+## C.11.MV - Compare the Worth of a Method Option
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+> **Primary working result:** `keep`, `revise`, `replace`, `branch`, or `stop` for one named Method decision, or a retained set with its limitation when the choice remains unresolved. The result makes current alternatives, domain results, burdens, capability and System demands, side effects, opportunity costs, reversibility, evidence strength, and trade-offs explicit. It states what the selected action preserves, creates, or changes and the qualification window. Bounded evidence may inform another Method-repertoire decision without transferring this decision or a broader claim.
+
+### C.11.MV:0 - Use This When
+
+Use this pattern when a practitioner must decide what to do with an admitted Method or status-preserved candidate relative to current alternatives. Use the available basis at its supported strength: observations, credible estimates, domain judgement or a structural constraint can support a present choice. Begin with the decision and alternative set: keep the present Method, revise it, replace it, branch by situation, or stop the Method change or use.
+
+The first useful result is a practical-worth comparison row. It names the Method or candidate status, decision situation and receiver, one current alternative, the available evidence and its limits, domain results, burdens, capability and System demands, direct relations, side effects, opportunity cost, reversibility, evidence strength, unresolved trade-off, and the action the row can support. Include the status quo, stopping, or the next best use of scarce Work when it can change the decision.
+
+Here *practical worth* is Plain practice wording for the situated judgment that a Method-related course is worth keeping, changing, replacing, branching, or stopping relative to named alternatives. It is not a universal score, Method admission, fit result, causal attribution, or organization-wide adoption decision.
+
+Use C.11.DUA §4.3 directly when the whole question is a requirement’s justification; C.39.RQ §4.4 applies it to a situated Method criterion. Return to C.11.MV when a Method-related course also needs comparison. Do not use this pattern when no current alternative or decision receiver is named. Conformance, familiarity, one favourable occurrence or Method popularity alone does not establish comparative worth. A.3.1.QM qualification, A.3.1.CC coherence and A.3.1.FT fit can inform the present comparison; each retains its own scope. A missing stronger empirical result can limit this decision without erasing an independently supported current choice.
+
+#### C.11.MV:0.1 - Working Distinctions
+
+| Item | Working meaning here | Boundary |
+| --- | --- | --- |
+| current alternative | A feasible Method, variant, support change, status quo, stop, or next-slot course available to the named decision within its window. | A historical example or impossible ideal is not a current alternative unless it changes the decision. |
+| domain result | The result in the receiving practice that the Method-related Work is intended to help produce or protect. | A Method task pass, conformance result, or positive report is not automatically the domain result. |
+| burden | Time, cognitive, coordination, resource, maintenance, transition, or evidence burden observed or credibly estimated for the alternative. | Burden is not one scalar unless an explicitly defined aggregation is justified for the decision. |
+| capability demand | The holder, Work family or result class, operating envelope, measures, qualification window, and evidence required for reliance. | Training completion, title, assignment, permission, authority, or one success does not establish capability. |
+| side effect | A result outside the primary intended result that may help or harm the decision. | An unobserved possibility remains a risk or gap, not an effect. |
+| opportunity cost | The named alternative Work, investment, learning, evidence, or receiving result displaced by the choice. | “Cost” without the forgone course is not yet an opportunity-cost claim. |
+| reversibility | The conditions, time, information, and retained alternatives needed to undo or branch the choice. | A reversible tool setting does not make changed Method semantics, lost evidence, or organizational commitment reversible. |
+| evidence strength | The qualified reach of observations, reports, comparisons, contribution or causal claims for this cell and window. | It is not a confidence adjective detached from source, use, and missing basis. |
+| practical-worth decision | A bounded `keep`, `revise`, `replace`, `branch`, or `stop` result with reasons, unresolved trade-offs, and what that action preserves, creates, or changes. | It transfers neither as universal Method rank nor as authority to implement the decision. |
+
+### C.11.MV:1 - Problem Frame
+
+A Method can be coherent and fit a situation yet still demand too much capability, coordination, tooling, confidentiality exposure, recovery Work, or opportunity cost relative to another course. Conversely, a burdensome Method can be worth keeping where it prevents a consequential failure that a lighter alternative misses.
+
+Teams often hide that choice in one score or in Method familiarity. The score erases who bears the burden, which Systems and direct relations are required, what evidence supports each result, and whether an alternative should be retained for another situation. Practical worth must therefore remain a situated comparison with visible trade-offs.
+
+### C.11.MV:2 - Problem
+
+Conformance can become value, fit can become superiority, one positive trial can become effectiveness, and immediate participant preference can become long-term worth. A new Method may be compared with an undefined status quo, while stopping or spending the same effort elsewhere is omitted. Capability, support, authority, confidentiality, recovery, and maintenance demands disappear into a weighted total whose assumptions cannot be recovered.
+
+The resulting decision is hard to challenge and harder to revise. Later evidence cannot show which cell changed, a non-dominated alternative is discarded, and a local `keep` becomes an organization-wide adoption claim.
+
+### C.11.MV:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Decision closure | A team needs an action, while weak or incomparable evidence may justify a set, branch, or stop. |
+| Multiple consequences | Domain results and burdens differ in kind and bearer, while one score promises simplicity. |
+| Current alternatives | A new Method invites comparison with an idealized baseline, while real alternatives have their own gaps and transition costs. |
+| Evidence asymmetry | The incumbent has history and the candidate has focused trials, while neither evidence base is automatically stronger. |
+| Capability and support | They may enable value, while their cost and currentness can dominate the decision. |
+| Reversibility | Experimentation benefits from recoverable choices, while semantic, organizational, or evidence changes can create lock-in. |
+| Local and wider use | A situated branch may be valuable, while sponsors seek one universal winner. |
+
+### C.11.MV:4 - Solution
+
+C.11 and C.11.DUA supply choice and the appraisal of demanded work. The comparison here constructs their Method-option input: the attainable receiving contribution, all relevant bearers of learning, transition and recurring burden, feasible alternatives and the condition under which keeping the current way is preferable.
+
+Compare feasible current alternatives in the named decision situation using separate consequence and evidence positions, preserve incomparability and branch conditions, and return one bounded action with its result-specific follow-up: no repair return for `keep`, a named decision or maintained result to create or change for `revise`, `replace`, or `branch`, and the stopped use plus unresolved trade-off for `stop`.
+
+#### C.11.MV:4.1 - Pattern-Use Unfolding
+
+1. **Name the decision and receiver.** State who will use the result, which Method or candidate account is under decision, the receiving practice and domain result, qualification window, authority boundary, and the action that `keep`, `revise`, `replace`, `branch`, or `stop` would change. The evaluation result supplies no permission or authority by itself.
+2. **Construct the current alternative set.** Include feasible Methods or variants, a support or capability change when it can address the same problem, the status quo, and stopping or the next-slot use of scarce Work when material. Preserve admission and candidate status for every alternative.
+3. **State decision characteristics before comparing.** Name domain results, burdens, capability demands, Systems, Agent-performed Work, direct relations, side effects, adaptability, opportunity costs, reversibility, evidence strength, and any additional situation-specific characteristic. State non-compensable stops and who bears each consequence. When the merits of a protective requirement are disputed, use §4.5; otherwise compare under the applicable criteria.
+4. **Assemble the available basis by alternative.** Use current A.3.1.QM qualification, credible domain estimates or judgement, and structural constraints alongside A.3.1.WT actual Work, A.3.1.CC corrections and A.3.1.FT fit or transfer results where available and relevant. Distinguish observed results from estimates, recover the source and conditions of each relied-on claim, and retain the missing basis that limits the decision. Absence of evidence for one alternative is not evidence of its inferiority.
+5. **Preserve the receiving result and Method contribution boundary.** Record the domain result separately from Method task completion, support use, report, or self-assessment. Distinguish direct observation, association, contribution, and causal claim. If contribution is unknown, compare the observed or estimated bundle at its supported strength and carry the attribution limit where it matters to the recipient.
+6. **Compare capability, System, Work, and relation demands explicitly.** For every alternative, name holder-capability inputs, participating Systems, Agent-performed Work, direct relations, assignments, permissions, authority, access, provider and confidentiality boundaries, maintenance, recovery, and evidence Work that changes the decision. Do not let availability or assignment substitute for capability.
+7. **Keep trade-offs visible.** Show where one alternative improves a domain result but increases burden, side effect, exposure, or opportunity cost. Use current `A.19.CPM` for non-trivial multi-criteria comparison and `A.19.SelectorMechanism` when a set-valued selection is needed. Do not invent a total order or scalar winner.
+8. **Compare branch and further-inquiry options where they matter.** Ask whether alternatives serve different situation families and what information, retained material, capability, support or rollback a branch needs. Name its situation discriminator. Select a further trial or inquiry through C.11.DUA only when its obtainable result could change the choice enough to warrant its full burden, including displaced Work and the available window. An adequate current choice can finish directly.
+9. **Return the strongest supported action.** `keep` retains the present course for the named window; `revise` names the C.39.RP repertoire choice, C.39.RQ requirement, C.32.MWA.PP architecture decision, B.1.5.CM construction result, or A.3.1.MV repertoire entry to reconsider; `replace` names the selected alternative and transition conditions; `branch` names the situation discriminator and retained alternatives; `stop` names the stopped use or change, what happens to current Work, and the unresolved trade-off. If the available basis cannot distinguish the possible actions, return the retained set and the limitation, together with any supported present course. Select a further probe only under step 8. A stronger choice can remain unresolved when no worthwhile inquiry is feasible.
+10. **Route each action according to its kind.** For `revise`, `replace`, or `branch`, name the receiving C.39.RP repertoire choice, C.39.RQ requirement, C.32.MWA.PP architecture decision, B.1.5.CM construction result, or A.3.1.MV entry and the change needed there. If an existing claim is contradicted, identify that claim and reopen only its owning result. If this is a first situated choice or a new applicability distinction, create the needed decision or entry through its owner; do not invent an earlier claim or contradiction. `keep` adds no repair return. `stop` preserves the unresolved trade-off and stopped use without inventing a correction owner. If the comparison exposes a possible A.3.2.DE description, C.37.MP Method representation profile-row, A.15.8.MS support, or directly governed lower representation contradiction, return the bounded evidence to A.3.1.CC; A.3.1.CC identifies and rechecks the maintained correction owner. A worth result does not rewrite that owner automatically.
+11. **Return evidence to another Method-repertoire decision only when needed.** Supply the situated Method-worth evidence and limits needed for a compatible decision in engineering or another subject practice. This return transfers neither the C.11.MV action, authority, Method rank, causal claim, nor evidence beyond its source-use conditions.
+12. **State refresh conditions.** Reopen when alternatives, domain consequences, capability or support demands, direct relations, evidence reach, costs, reversibility, situation fit, or the receiving decision window changes.
+
+#### C.11.MV:4.2 - Record the Result
+
+| Result position | Required content |
+| --- | --- |
+| worth use | Decision receiver, Method or candidate subject, receiving practice and domain result, action, authority boundary, qualification window, and stop. |
+| alternatives | Current feasible alternatives, status quo, stop or next-slot course, statuses, situation branches, and exclusions. |
+| characteristics | Domain results, burdens and bearers, capability demands, Systems, Agent-performed Work, direct relations, side effects, adaptability, opportunity costs, reversibility, evidence strength, and non-compensable stops. |
+| evidence matrix | Per alternative and characteristic: observation or estimate, source, situation and window, evidence reach, missing basis, and whether it is comparable. |
+| disputed requirement, when its merits are the question | Protective contribution, threshold or evidence-demand basis, burden and displaced risk; supported retention or change recommendation, current force and the feasible amendment route or limit. |
+| trade-offs | Non-dominated positions, conflicts, incomparability, branch discriminators, sensitivity to missing evidence, and any selected reversible probe. |
+| decision | `keep`, `revise`, `replace`, `branch`, `stop`, or retained set with its limitation and any supported present course; reasons, unresolved risks, transition or rollback conditions. A selected further inquiry carries its worthwhile obtainable contribution and needed conditions. |
+| action follow-up | For `revise`, `replace`, or `branch`: the named C.39.RP, C.39.RQ, C.32.MWA.PP, B.1.5.CM, or A.3.1.MV result to create or change, and whether the move corrects an identified contradiction or establishes a new situated choice; for `keep`: no repair return; for `stop`: stopped use and unresolved trade-off; possible A.3.2.DE description, C.37.MP Method representation profile-row, A.15.8.MS support, or lower representation contradiction as bounded evidence to A.3.1.CC; unaffected results preserved. |
+| evidence for another repertoire decision | When needed, the bounded evidence, receiving use, source-use conditions, non-transfer, and reopen condition. |
+
+#### C.11.MV:4.3 - What Changes in Practice
+
+Teams stop asking whether a Method is “best” in the abstract. They can see what it changes in the receiving practice, what it demands from people and Systems, which side effects and opportunities matter, what the evidence actually reaches, and why several alternatives may remain.
+
+This also makes stopping constructive. A `stop` can protect scarce Work or avoid an unrecoverable commitment while retaining the evidence and conditions needed to reopen the decision later.
+
+#### C.11.MV:4.4 - Minimal Constructed Worth Replay
+
+Continue the constructed temperature-sensor review case. The decision is how `Calibration-Team-A` should review reports through day D30. Alternative `ALT-M` retains admitted `M-Unit-Review-1`, description edition 4, and the manual conversion table; for the present review decision it uses the representation repaired in A.3.1.CC. Alternative `ALT-L` uses the current lightweight checklist that verifies tolerance but has no explicit unit-normalization step. `ALT-S` stops the proposed Method change and keeps the present release hold until a supported permissible continuation is available.
+
+The evidence for `ALT-M` includes the two earlier admitted A.3.1.WT occurrences of `M-Unit-Review-1` performed by the same qualified `Reviewer-17`: seven minutes on the ordinary same-unit report and twelve minutes plus one table lookup on the mixed-unit report; both decisions were correct and the mixed-unit release was stopped. A separate constructed matched replay of `ALT-L`, admitted as `W-L-Rep-1` and `W-L-Disc-1` under the same holder, team, report pair, and window, took five and six minutes. It accepted the ordinary report but failed to expose the mixed-unit mismatch. The replay supplies no causal claim beyond these occurrences and no evidence about another holder or automated support route. The two earlier A.3.1.WT observations are not trials of the later representation repair in A.3.1.CC.
+
+| Position | `ALT-M` | `ALT-L` | `ALT-S` |
+| --- | --- | --- | --- |
+| domain result | Correct decisions in both observed reports; mixed-unit release stopped. | Correct ordinary decision; mixed-unit mismatch not exposed. | No additional report released; mixed-unit risk remains contained but current release Work stops. |
+| burden | Seven and twelve minutes; one lookup; current capability and table required. | Five and six minutes; lower observed burden. | Delay and missing release result; no new review burden. |
+| side effect and opportunity | More explicit trace and stop; consumes review time. | Faster but leaves the named unit hazard exposed. | Preserves safety while displacing release and comparison Work. |
+| reversibility | Checklist and representation can be reverted while evidence is retained. | Already current; reverting loses no transition Work but retains the exposed hazard. | Reopen after the missing comparison or support basis is supplied. |
+| evidence strength | Two constructed teaching occurrences, not field evidence. | Two constructed teaching occurrences, not field evidence. | Consequence follows from the stated stop; downstream cost is unmeasured. |
+
+Return `branch`: require `ALT-M` for reports whose sources can use different unit systems; retain `ALT-L` for the bounded same-unit situation. The discriminator is recoverable source-unit variability, not reviewer preference. Retain `ALT-S` as the stop when that variability cannot be recovered. No earlier decision about this unit-variability branch is supplied in the constructed case. Return the branch to A.3.1.MV as new applicability entry `APP-UnitReview-TeamA-D30`, recording the three alternatives, the source-unit discriminator and the D30 window. It records when to use the existing alternatives; it changes no Method identity and claims no contradicted predecessor. This result covers the stated conditions through D30. For a later reliance, use A.10.1 to identify which premises remain applicable and which qualification, condition or evidence gap actually needs renewal. A real expiry still limits use; new field investigation is selected for its useful obtainable answer, not merely because the date advanced.
+
+This result does not show that `ALT-M` is universally superior or caused every correct decision. It demonstrates why lower burden alone cannot compensate for the current release stop. The merits of that stop are a separate question when they are disputed; use §4.5 for that appraisal.
+
+##### C.11.MV:4.4.1 - An Adequate Choice Before the Review Window Closes
+
+Suppose the current report sources have an inspectable same-unit schema, the reviewer and support remain qualified for this use, and the existing comparison covers the present release question. Keep ALT-L for that bounded case and preserve the ALT-M branch whenever source-unit variability matters. Another forty-minute replay would displace review of a newly changed report before the deadline without changing this choice. The recommendation is complete on the available basis.
+
+##### C.11.MV:4.4.2 - An Unresolved Alternative with No Obtainable Probe
+
+A proposed automated conversion route might reduce later review effort, but its contribution remains unknown and no permitted test access is available before the current decision. The existing ALT-M route still supplies the required review under its stated conditions. Retain the automation proposal for a later comparison, stop the unsupported present change, and continue the qualified ALT-M course. That decision leaves the automation comparison unresolved. Further investigation can be chosen when its obtainable answer is worth the full burden; retaining the proposal creates no trial commitment.
+
+#### C.11.MV:4.5 - Appraise a Disputed Protective Requirement
+
+Use C.11.DUA §4.3 when the live comparison asks whether a protective criterion, threshold or evidence demand is justified. Identify the protected person, system or result and the particular unwanted outcome. Examine the governed quantity or activity, the measurement and causal basis needed for this question, the threshold’s value choice, and the additional protection under the present conditions. Compare that protection with the burden, delay and displaced protective Work, using the domain methods needed to judge them. Return supported retention, tightening, revision, replacement or removal only among meaningful alternatives.
+
+In the unit-review case, normalization exposes a consequential mismatch that the tolerance-only checklist missed. That supports preserving the protection where source units can vary. Whether every report needs the same extra operation still depends on the actual unit guarantees, what the operation adds and what its burden displaces. The label safety and the fact that a rule is currently binding settle neither that merits question nor the authority to amend it.
+
+Name the disputed protective rule and explain whether it should be retained or changed, what protection your advice preserves, and why the evidence supports it. If you propose a change, identify who can approve it and when it can take effect. End the appraisal with the supported advice and its relevant limits. Approval of a proposed change is a separate decision. Until the rule is changed, select only a way of working that complies with it. If none can deliver the needed result by the deadline, report that consequence. A later change of the rule does not undo the missed opportunity.
+
+### C.11.MV:5 - Archetypal Grounding - Field Evidence and Alternatives
+
+The SSFD study reports 95 examples of evidenced individual benefits across 41 detailed workplace-project reports and distinguishes direct and indirect contribution. Those reports can supply domain-result, process, capability, burden, and evidence-strength positions for a worth comparison. They do not by themselves supply a common current alternative, comparable counterfactual Work, SSFD-only causality, or one universal decision.
+
+Project 11 supplies substantial reported outputs from one by-wire steering application; Project 32 supplies a representation difficulty. Preserve both. A practical-worth result may retain SSFD for one situation, revise its representation or support for another, or return missing alternative evidence. Do not average the difficulty and benefit counts into a score.
+
+The sustainable-design study supplies three families of separate workshop observations: The Natural Step, Whole System Mapping, and Biomimicry across 23 workshops, more than 172 qualified respondents, 27 companies, and three industries. Companies chose which workshops they took; most received two or more, order varied, and participants could differ.
+
+The source reports immediate participant-perceived value of activities and mindsets and warns against theoretical-only recommendations. It does not itself supply one named receiver's feasible current-alternative set, a common decision, matched alternative Work, or a counterfactual basis.
+
+For an C.11.MV use, establish those positions locally, preserve explicit incomparability and the missing counterfactual basis, and retain voluntary-participation selection bias, unmatched timing, immediate self-report, long-term, causal, transfer, and recombination limits before returning a worth action.
+
+The Halogen case can supply evidence about project demands, practitioner skill sets, organization, and cyclic adaptation. It can justify a `branch` or variant question when conditions differ, but one firm's history does not make its repertoire universally preferable.
+
+#### C.11.MV:5.1 - EC-417 Early Stop
+
+The [full EC-417 application](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#fpfreference169---choose-the-smallest-method-development-result-needed-for-release-ec-417) supplies the receiving problem, alternatives, calculations and the distinct limits used below.
+
+In the constructed EC-417 case, the team must release a controller firmware and harness change on `D0`. Its software-integration slot is `D-21`, but signed supplier pinout evidence is expected at `D-8`. The present question is which proposed way to coordinate that release is worth pursuing under the current constraints.
+
+[C.32.MWA.PP §5.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c32mwapp53---possible-future-alternatives-a-b-and-b2) supplies the timing and capacity comparison:
+
+| Alternative | Proposed way of working | Consequence for this decision |
+| --- | --- | --- |
+| A | Wait for signed supplier evidence before integrating the software; hold one final board. | With evidence arriving at `D-8`, the team misses the `D-21` slot. Arrival by `D-21` removes that timing disadvantage. |
+| B | Integrate at `D-21` from a versioned provisional edition and reconcile it with signed evidence at `D-8`. Keep the provisional edition, its uncertainty and its earlier use traceable. The safety engineer performs all `2.00 h` of preparation of the changes between editions. | Estimated peak safety demand is `4.40 h`, above the `3.20 h` limit in an eight-hour day. |
+| B2 | Use B's integration and reconciliation order and retain the same evidence history, but allocate `1.60 h` of that preparation to the supplier-configuration role and `0.40 h` to the safety engineer. | Estimated peak safety demand is `2.80 h`, within the same limit; the supplier's preparation remains part of the total burden. |
+| Stop or next slot | Stop the proposed change or defer the release to an authorized later slot when the required conditions cannot be met. | State the delay or foregone result and the condition needed to reconsider. |
+
+Keep the comparison tied to this decision and make burden, confidentiality, holder capabilities, project, user, provider, repository, PLM and CI Systems, Agent-performed Work, direct relations, recovery, side effects, reversibility, and evidence limits explicit. The three A.15.8.MS support tasks establish their bounded task observations only; the three-release WorkPlan supplies no release-worth evidence.
+
+Keep `C-EC-Release-v2` as a candidate. Preserve the missing A.22 selection basis, untested AI-provider and feedback branches, and unsupported `CUR-EC417-CadenceEffect-1`. The timing and capacity estimates support rejecting B's overloaded safety allocation and retaining B2 as a proposal for at most three trials under its entry conditions. If those conditions cannot be met, return stop/next-slot or the signed-first A alternative with its timing consequence. An actual release or trial entry still needs every applicable capability, assignment, permission and authority condition. If the question is demonstrated release worth, return the missing performed-release and alternative evidence. The observed support-task results, with the tailoring operation still undefined and its permission/authority stop untested, do not establish that stronger result.
+
+#### C.11.MV:5.2 - Use situated evidence in another Method-repertoire decision
+
+Supply evidence to another Method-repertoire decision only when that receiving use is compatible and the following content is recoverable:
+
+| Evidence contribution | Required boundary |
+| --- | --- |
+| source decision | C.11.MV subject and status, receiving practice, domain result, situation family, alternative set, qualification window, and exact action considered. |
+| evidence | Observations and credible estimates distinguished per alternative, with their sources, domain consequences, burdens, capability and System demands, side effects, opportunity costs, reversibility, reach and gaps. Actual Work, performers and direct relations retain their independently supported basis wherever claimed. |
+| supported statement | The smallest situated worth statement that bears on the receiving Method-repertoire decision. |
+| non-transfer | No transfer of the C.11.MV `keep`/`revise`/`replace`/`branch`/`stop` action, implementation authority, universal Method rank, causal claim, or evidence outside the stated source-use conditions. |
+| reopen | Changed Method or candidate status, situation in the receiving practice, alternatives, evidence, capability or platform conditions, direct relations, or receiving repertoire use. |
+
+The receiving practice remains responsible for its Method repertoire and compatibility claims. The contribution supplies evidence for that decision; it does not direct the recipient to take the C.11.MV action.
+
+### C.11.MV:6 - Bias-Annotation
+
+| Recurring bias | Likely drift | Repair |
+| --- | --- | --- |
+| one-score bias | Unlike results, burdens, and evidence are collapsed into one ranking. | Keep cells and non-compensable stops visible; use A.19 for non-trivial comparison. |
+| incumbent-evidence bias | Long history is treated as strong comparable evidence while candidate trials are discounted, or vice versa. | Qualify each source, situation, window, and gap symmetrically. |
+| fit-as-worth bias | A fit result becomes `keep`. | Add current alternatives, receiving consequences, burdens, and opportunity costs. |
+| success-as-causality bias | A favourable occurrence is attributed to the Method. | State association, contribution, causal basis, and missing counterfactual separately. |
+| omitted-stop bias | Only active Method alternatives are compared. | Include status quo, stop, or next-slot Work when it changes the decision. |
+| capability-free bias | Training, expertise, tool support, and maintenance appear costless. | Record holder capability and support demands with bearers and currentness. |
+| universal-winner bias | A local branch or keep becomes organization-wide adoption. | Bound the situation discriminator, window, receiver, and non-transfer. |
+
+### C.11.MV:7 - Conformance Checklist
+
+- [ ] One decision receiver, Method or candidate subject, receiving practice, domain result, action, and qualification window are named.
+- [ ] The alternative set contains only current feasible courses and includes status quo, stop, or next-slot Work when material.
+- [ ] Admission and candidate status are preserved for every Method-related alternative.
+- [ ] Domain results, burdens, capability demands, Systems, Agent-performed Work, direct relations, side effects, opportunity costs, reversibility, and evidence strength remain separate positions.
+- [ ] Qualification, observations, estimates and structural or domain judgement retain their sources, applicable conditions and limits; stronger observed, fit, transfer and causal claims have the evidence they require.
+- [ ] Missing evidence is not converted into inferiority, and one favourable occurrence is not converted into causality.
+- [ ] Trade-offs, non-dominated alternatives, branch discriminators, and non-compensable stops remain visible.
+- [ ] When requirement merits are disputed, the recommendation compares actual protection and burden, retains the threshold or evidence basis needed for that judgement, and separates it from current force and feasible amendment.
+- [ ] The result is a supported `keep`, `revise`, `replace`, `branch`, `stop`, or retained set with its limit and any supported present course. A further probe is selected only for a useful obtainable answer worth its whole burden.
+- [ ] A `revise`, `replace`, or `branch` result names the C.39.RP, C.39.RQ, C.32.MWA.PP, B.1.5.CM, or A.3.1.MV result to create or change and distinguishes a new situated choice from correction of an identified contradiction; `keep` adds no repair return; `stop` preserves the unresolved trade-off and stopped use.
+- [ ] A possible A.3.2.DE description, C.37.MP Method representation profile-row, A.15.8.MS support, or directly governed lower representation contradiction returns as bounded evidence to A.3.1.CC rather than bypassing its owner-specific check.
+- [ ] Any evidence transferred to another repertoire decision states its source-use conditions and non-transfer boundary.
+
+### C.11.MV:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Repair |
+| --- | --- |
+| “It passed verification, so keep it.” | Compare receiving results and current alternatives; coherence is only one input. |
+| “Users preferred it, so it is worth adopting.” | Preserve immediate self-report, alternative set, long-term gaps, and decision boundary. |
+| “The weighted score selected a winner.” | Expose characteristics, weights or order assumptions, incomparability, and non-compensable stops. |
+| “The candidate has no evidence, so the incumbent wins.” | Preserve the evidence asymmetry and retained alternatives. Return the supported present action or limitation; select a reversible probe when its attainable contribution warrants it. |
+| “Another practice must adopt the C.11.MV winner.” | Transfer only bounded evidence; the receiving practice makes its own repertoire decision. |
+
+### C.11.MV:9 - Consequences
+
+Practical-worth decisions become revisable accounts rather than Method rankings. Teams can act while retaining branch conditions, evidence gaps, and stop alternatives, and later evidence can reopen the exact comparison position that changed.
+
+The cost is resisting a convenient scalar answer. Some comparisons leave several alternatives open or justify another probe, and the team must name burdens, capability and support demands, side effects, and opportunity costs that were previously hidden.
+
+### C.11.MV:10 - Rationale
+
+Worth is relational: a Method-related course is worth something for a receiver, situation, domain result, alternative set, and time. Coherence and fit can be necessary inputs to the decision, but they do not settle it. A visible trade-off is more actionable than a score whose composition and evidence reach are hidden.
+
+The five actions distinguish maintenance from change. `Keep` preserves a situated course and adds no repair return; `revise`, `replace`, and `branch` identify the owning decision or entry and distinguish a newly needed choice from correction of an existing claim; `stop` protects against unsupported or dominated continuation while preserving the unresolved trade-off and stopped use without inventing a correction owner. None supplies implementation authority.
+
+### C.11.MV:11 - SoTA-Echoing
+
+| Source | Adopted or adapted contribution | Boundary and practitioner implication |
+| --- | --- | --- |
+| Cash, Daalhuizen, and Hekkert, [method efficacy and effectiveness](https://doi.org/10.1016/j.destud.2023.101204) | Keep practical effect and use conditions separate from internal coherence and one universal Method score. | The source does not make one trial sufficient or supply a universal worth aggregation. |
+| Yildirim, Campean, and Uddin, [function-modeling evaluation in industry practice](https://doi.org/10.1017/dsj.2026.10056) | Adopt workplace results, varied applications, reported limitations, later review, and the distinction between direct and indirect contribution as evidence positions. | One automotive OEM, retrospective reports, and SSFD within a broader methodology establish neither isolated causality nor universal superiority. |
+| Faludi, Yiu, and Agogino, [empirical tests of sustainable-design Methods](https://doi.org/10.1017/dsj.2020.17) | Adopt immediate participant-reported component-value observations from three families of separate workshops across activities, companies, and industries as bounded evidence inputs. | The publication supplies no common receiver, feasible current-alternative set, matched alternative Work, or counterfactual basis; company choice, order, participant differences, voluntary selection, unmatched timing, immediate self-report, long-term effects, causality, transfer, and recombination remain limits. Establish the local decision and comparison basis before returning a worth action. |
+| Schønheyder and Nordby, [design-Method use and evolution in professional practice](https://doi.org/10.1016/j.destud.2018.04.001) | Adopt project demands, skill sets, organization, adaptation, and cyclic evolution as possible branch and burden conditions. | One firm supplies no universal repertoire or causal effect. |
+| Current FPF `A.19.CPM`, `A.19.SelectorMechanism`, `A.2.2`, `A.10`, and direct governors for Work and relations | Reuse non-totalizing comparison, set-valued selection, capability, evidence, Work, and relation semantics. | C.11.MV contributes the Method-specific worth characteristics, five-way action, result-specific follow-up, and bounded evidence for another repertoire decision; it does not redefine the generic kernels. |
+
+Reopen the pattern when a field comparison adds a decision-changing consequence or alternative, when practitioners cannot act without a universal score, when a relied-on evidence transfer loses its bounded receiving use, or when current FPF comparison and selection semantics change the returned action.
+
+### C.11.MV:12 - Relations
+
+- A.3.1.QM can supply a bounded qualification for the present choice. A.3.1.WT supplies actual Work, observations, results, burdens, adaptations, and evidence gaps. A.3.1.CC supplies coherence corrections; A.3.1.FT supplies fit, failure, applicability, and transfer limits. None supplies the practical-worth action.
+- For `revise`, `replace`, or `branch`, C.39.RP owns repertoire choices, C.39.RQ requirements, C.32.MWA.PP architecture decisions, B.1.5.CM construction results, and A.3.1.MV maintained repertoire/applicability entries. Name the result to create or change; identify a contradicted claim only when one exists. `keep` adds no repair return; `stop` preserves the unresolved trade-off and stopped use.
+- A possible A.3.2.DE description, C.37.MP Method representation profile-row, A.15.8.MS support, or directly governed lower representation contradiction returns as bounded evidence to A.3.1.CC, which identifies and rechecks the maintained correction owner.
+- `A.19.CPM` and `A.19.SelectorMechanism` govern non-trivial comparison and selected-set semantics. `A.2.2` governs capability inputs; `A.10` evidence use; `A.15.1` actual Work; direct governors remain authoritative for Systems, Agent-performed Work, relations, assignments, permissions, authority, access, and results.
+- A compatible Method-repertoire decision in another practice may use the bounded Method-worth evidence. This use transfers neither action nor authority and does not establish composition of the supplying and receiving disciplines.
+- A.3.1.MI may consume the resulting bounded decision when introducing or revising a Method in practice; later observations can reopen C.11.MV without retroactively changing the evidence used here.
+
+### C.11.MV:End
 
 ## C.13 — Constructional Mereology (Compose‑CAL)
 > **Status:** Stable
@@ -5914,7 +5703,7 @@ If a mathematical lens depends on a measurement, recover the C.16 measurand, Sca
 
 Use this pattern when you have an indication or a proposed measurement procedure, but the relation between that indication and the property you want to determine is missing or unsuitable. A connected voltmeter can change the voltage. A test response can depend on both capability and the assistance offered. A counter can report the remainder after a wrap rather than the total number of events.
 
-**First useful move.** Follow one indication back through the procedure that produces it. Name the sought property, the conditions under which it is sought, and one interaction or transformation that can make the indication differ from it. Express the relation supplied by that interaction. For an ideal source with open-circuit voltage E and series resistance Rs, a voltmeter of resistance Rm reads V=E*Rm/(Rs+Rm). This already shows why the indication alone need not determine E.
+**First useful move.** Follow one indication back through the procedure that produces it. Name the sought property, the conditions under which it is sought, and one interaction or transformation that can make the indication differ from it. Express the relation supplied by that interaction. For an ideal source with open-circuit voltage E and series resistance Rs, a voltmeter of resistance Rm reads V=E\*Rm/(Rs+Rm). This already shows why the indication alone need not determine E.
 
 The Method constructs a measurement relation: how sought values, the measuring arrangement and relevant influences produce an indication, or how those contributions jointly constrain the sought value. The relation may use laws, an applicable calibration, an empirical response model or their combination. It can be used to plan a measurement or interpret an obtained indication.
 
@@ -6013,7 +5802,7 @@ For Rs=Rm=1 megohm and V=5 volts, the inferred open-circuit voltage is 10 volts.
 
 If the desired quantity were instead the connected terminal voltage, V would already be the value in this ideal model. The measurement question determines which result is needed.
 
-As Rm becomes large relative to Rs, loading becomes small and V approaches E. For a use that needs only a bound on this effect, E-V=V*Rs/Rm supplies it. If Rs/Rm is at most 0.001 and V is 5 volts, the loading correction is at most 0.005 volts. Whether that is negligible depends on the receiving question and the other uncertainties.
+As Rm becomes large relative to Rs, loading becomes small and V approaches E. For a use that needs only a bound on this effect, E-V=V\*Rs/Rm supplies it. If Rs/Rm is at most 0.001 and V is 5 volts, the loading correction is at most 0.005 volts. Whether that is negligible depends on the receiving question and the other uncertainties.
 
 If Rs is unknown, the same relation can expose an unresolved contribution. With V=5 volts, Rm=1 megohm and Rs between 0.8 and 1.2 megohms, E lies between 9 and 11 volts under the ideal assumptions. The interval may be enough. A performed measurement additionally accounts for indication and resistance uncertainty and relevant model inadequacy.
 
@@ -6026,7 +5815,7 @@ Partition the population by the capability. The probability of a positive respon
     q = s*p + f*(1-p)
       = f + (s-f)*p
 
-For s=0.9 and f=0.1, q=0.1+0.8*p. A sample positive fraction of 0.7 gives the estimate p=0.75 obtained by substituting the sample fraction. Its use also depends on sampling uncertainty, uncertainty in s and f and whether those rates apply to this population and procedure. The formula describes the expected response; the sample proportion estimates it.
+For s=0.9 and f=0.1, q=0.1+0.8\*p. A sample positive fraction of 0.7 gives the estimate p=0.75 obtained by substituting the sample fraction. Its use also depends on sampling uncertainty, uncertainty in s and f and whether those rates apply to this population and procedure. The formula describes the expected response; the sample proportion estimates it.
 
 If s=f, q is independent of p and the test does not distinguish the two conditions through this response. The failure is visible in the constructed relation. Further estimates of that same marginal positive rate cannot identify p through this relation.
 
@@ -7675,7 +7464,9 @@ C.16.Q does not define or test articulation-state characteristics, Bridge truth,
 
 ## C.17 - Characterising Generative Novelty and Value
 
-**Status.** Evaluation and measurement-use pattern; normative where stated.
+**Type:** Evaluation and measurement-use pattern; normative where stated.
+
+> **Status:** Stable
 
 **Depends on.** `A.17`, `A.18`, and `A.19` for Characteristics, Scales, and CharacteristicSpaces; `A.19.ECS` for the evaluation-space specification; `C.16` for measurement; `C.2.1` for claim-bearing results and model epistemes; `A.1.1` for model applicability, use, and expression coherence when those relations matter; `A.10` and `B.3` for evidence, reliance, and assurance; and the patterns that define the current objective, acceptance criterion, and must-constraints.
 
@@ -8937,6 +8728,8 @@ Builds on: `C.18`, `C.16`, `A.19.CPM`, `A.19.SelectorMechanism`, and `B.3`. Coor
 ### C.19:End
 
 ## C.19.1 - Bitter‑Lesson Preference (BLP)
+
+> **Status:** Stable
 
 **One-screen purpose (manager-first).**
 State the empirical Bitter Lesson narrowly: in search, learning, planning, and related computational work, general methods able to use increasing compute or data have often displaced hand-engineered special cases. Treat that history as a comparison pressure, not as proof about every bearer. Here *bearer* names the candidate being compared under the scale claim or generality policy. A project may declare an analogous preference for a module, platform, organization design, evidence arrangement, or other bearer only as a separate local policy, with a scale predicate, objective vector, comparison basis, and evidence form appropriate to that bearer. Safety, cost, admissibility, uncertainty, and non-dominance remain visible; the word `general` creates no preference by itself.
@@ -11419,6 +11212,8 @@ For P2W carry-through, use E.18.1 with the accepted problem-side distinctions. F
 ### C.22.2:End
 
 ## C.23 - MethodFamily Evidence & Maturity (Method‑SoS‑LOG)
+
+> **Status:** Stable
 
 *LOG (logic) for deductive shells for admissibility*
 *First use expansion:* **SoS‑LOG = Science‑of‑Science LOG** (LEX short‑form discipline applied).
@@ -17749,7 +17544,7 @@ For a larger differential-algebraic model, obtain the needed consistent-initiali
 
 **State and procedure.** Retain two integer counters: observations read j and ones observed s, initially zero. For each observation x, set s = s+x and j = j+1. After the selected n observations, return p_hat = s/n. The invariant is that s counts the ones in the first j observations. Thus the counters obtain the sample mean without retaining every observation.
 
-**Choose n from the guarantee.** For a binary observation, E[X]=p and Var(X)=p*(1-p) ≤ 1/4. Independence gives E[p_hat]=p and Var(p_hat) ≤ 1/(4*n). On the event |p_hat-p| ≥ epsilon, the squared error is at least epsilon². Therefore
+**Choose n from the guarantee.** For a binary observation, E[X]=p and Var(X)=p\*(1-p) ≤ 1/4. Independence gives E[p_hat]=p and Var(p_hat) ≤ 1/(4\*n). On the event |p_hat-p| ≥ epsilon, the squared error is at least epsilon². Therefore
 
 ~~~text
 epsilon² * P(|p_hat-p| ≥ epsilon)
@@ -22268,7 +22063,7 @@ C.31 turns modularity talk into a small characteristic vector plus repair direct
 | Characteristic plurality vs scalar pressure | Different modularity interpretations have different subjects, scales, evidence, declared measurement or comparison basis, subject-pattern needs, and risks; one score hides that plurality. |
 | Useful proxy vs proxy substitution | A cheap share, count, or graph interpretation can guide local repair, but it may become a false quality, evidence, or decision claim. |
 | Module-interface view vs broader structure | Modularity can involve functions, flows, control, work, evidence, data, placement, or scale, not only modules. |
-| Local repair vs cross-case use | A local diagnosis can stop at report-only use; cross-case comparison needs an exact subject assertion and predicate under C.16, C.25, and G.2. Use G.5 only when selected-set result declaration is current and C.11 for local choice. For publication, use E.17 for a source-backed face and source return and E.24.PUB for the publication occurrence and audience availability. Each source pattern remains only a locator. |
+| Local repair vs cross-case use | A local diagnosis can stop at report-only use; cross-case comparison needs an exact subject assertion and predicate under C.16 and C.25. Use G.5 only when selected-set result declaration is current and C.11 for local choice. For publication, use E.17 for a source-backed face and source return and E.24.PUB for the publication occurrence and audience availability. |
 | Complexity pressure vs complexity ontology | Residual pressure and growth signals are useful, but complexity is not one commensurable architecture characteristic. |
 
 ### C.31:4 - Solution
@@ -23915,7 +23710,7 @@ ArchitectureUnfoldingStructureUse@Project:
   repairOrSupersessionCondition:
 ```
 
-For `ArchitectureUnfoldingStructureUse@Project`, the suffix remains a compatibility and retrieval cue until an exact use is asserted. Every asserted occurrence includes `projectWorkOccurrenceRef` as the exact composite `U.Work` participant; without that Work, keep only the retrieval cue and do not assert the use relation. `architectureQuestionCardRef` may cite the exact C.30 triage episteme, while `architectureBearingHolonRef` names its independently identified subject. `architectureRelationRefs[]` contain only independently obtaining C.30 occurrences; modal architecture content stays in `architectureClaimRefs[]`. `unfoldingStructureRef` names the admitted CGUS or local block being used. `affectedSelectedStructures[]`, `architectureCharacteristicRefs[]`, and `acceptedLosses[]` state why the unfolding structure matters for architecture rather than for a generic route. Method and work refs point to the A.15 family only as realization or feedback linkage. For decisions, descriptions, ADR-like projections, measurements, evals, evidence, gates, publication, and performed work, use the exact subject predicates and treat their patterns only as locators.
+For `ArchitectureUnfoldingStructureUse@Project`, the suffix remains a compatibility and retrieval cue until an exact use is asserted. Every asserted occurrence includes `projectWorkOccurrenceRef` as the exact composite `U.Work` participant; without that Work, keep only the retrieval cue and do not assert the use relation. `architectureQuestionCardRef` may cite the exact C.30 triage episteme, while `architectureBearingHolonRef` names its independently identified subject. `architectureRelationRefs[]` contain only independently obtaining C.30 occurrences; modal architecture content stays in `architectureClaimRefs[]`. `unfoldingStructureRef` names the admitted CGUS or local block being used. `affectedSelectedStructures[]`, `architectureCharacteristicRefs[]`, and `acceptedLosses[]` state why the unfolding structure matters for architecture rather than for a generic route. Method and work refs point to the A.15 family only as realization or feedback linkage. For decisions, descriptions, ADR-like projections, measurements, evals, evidence, gates, publication, and performed work, use the exact subject predicates, consulting their pattern explanations when needed to interpret or apply them.
 
 Stop conditions:
 
@@ -25661,6 +25456,8 @@ Recheck these source uses when a newer applicable architecture-description stand
 
 ### C.32.MWA:12 - Relations
 
+C.32.MWA.PP uses this multi-structure account to construct and compare feasible arrangements of Method performance and provision, including direct performance without an office, shared or specialized provision, federation and external supply. It adds the design of the result joins, combined demand, capability, means and authority needed to realize the selected network.
+
 - **Builds on:** `A.3.1` for Method identity, `B.1.5` for Method order/composition and Work enactment distinctions, `A.15.1` and `F.6` for actual performed Work and attribution when claimed, `A.22` for selected-structure identity, `B.2` for whole reidentification, `C.30` and `C.30.AD` for architecture and architecture-description distinctions, and `C.36` for cultural-change relations.
 - **Coordinates with:** base `C.32` for general architecture candidate synthesis; `C.17` and `C.18` only when NQD generation, novelty/diversity, archive, or front claims are current; `C.30.STRAT` before accepting level, layer, tier, stack, or similar source wording; and `C.30.ILC` plus `C.32.MLAO` when a conflict, residual, or moved burden needs its own treatment.
 - **Provides a result to:** `E.4.PFAD` when several practice structures change a framework-architecture answer; `E.4.DPF` when those structures change DPF identity, scope, pattern organization, first use, or use of named results; `E.4.DPF.DA` when package adequacy needs the resulting two-way sequence-versus-simultaneity evidence; and `E.23.CDI` only when target-practice architecture must be recovered or compared before capability development.
@@ -25671,6 +25468,664 @@ Recheck these source uses when a newer applicable architecture-description stand
 Use `C.32.MWA` to build one readable architecture synthesis for Methods and their use across several structures without turning a source layout, description, future design, local repair, or project choice into more than the current case supports.
 
 ### C.32.MWA:End
+
+## C.32.MWA.PP - Construct and Compare Method Performance and Provision Arrangements
+
+> **Type:** Method pattern
+> **Status:** Stable
+> **Primary working result:** a **Method-architecture decision episteme** explaining how related Methods would be performed and supported together: the decision-changing structures and direct relations, their truth statuses, serious alternatives, joint demands and moved burdens, the selected or rejected arrangement, and the conditions for its realization or reconsideration. Co-used Methods can remain plural; this result need not establish a composite Method.
+
+### C.32.MWA.PP:0 - Use This When
+
+Use this pattern when individually plausible Methods or candidate accounts could be combined or co-used in materially different ways, and the receiving result depends on their composition, Work overlap or order, allocation, relations among the affected Systems and means, descriptions, provider access or cultural relations. A typical practice or development network can supply the intended transformations while leaving their local performance and support unresolved.
+
+The practical question is how the related contributions can become obtainable together. A Method may need a qualified judgement before work begins, while the proposed expert is available only later. A common service may save preparation but delay local decisions. Learning may consume the only expert time needed for current delivery. Assigning names to boxes does not settle these interactions.
+
+Begin with the obtaining or possible-future practice and one result at risk. Follow that result from its subject through the Method that could obtain it to the person, AI or other System that would perform the work. Recover one condition that can defeat the connection: missing competence, time, equipment, evidence, permission, a usable incoming result or an available receiving action. Construct alternatives by changing that connection and completing its consequences through the receiving result.
+
+A comparison uses at least two serious arrangements, including the feasible incumbent where applicable, and exposes local gains and burdens moved across participants, scopes, Systems or times. It can retain an incumbent, select a conditional future arrangement, warrant a bounded attempt, return one exact missing contribution or reject an unavailable promise. It does not itself make proposed relations actual or provide every subject Method needed to realize them.
+
+The intended user can interpret the supplied Methods or obtain qualified interpretation, discuss work with participants, and compare commitments. The user need not possess every supported mastery. The setting can be one person's work with AI, an enterprise, an external provider with clients, independent practitioners or a combination. These examples do not limit the Method to development, offices or one organization.
+
+Use an adequate existing arrangement directly. An isolated access repair, routine assignment under sufficient capacity or qualified supplier comparison need not trigger another architecture exercise. Do not repeat A.3.1.QM's individual connection work. If the only question is whether a named relation or Method composite is supported, use C.30 or B.1.5 and stop with that clarification; there is no C.32.MWA.PP comparison to complete until a materially different arrangement could change the decision. Do not invent a rival merely to enter the pattern.
+
+Use the strategic or subject practice first when the unresolved question is only whether the aim is worthwhile or what the Method should do. Return here when performance and support can change that answer. Project, process, case, lifecycle, table and diagram views are not architecture alternatives unless their underlying proposed relations differ. A mathematical graph is one possible representation when its nodes, edges, semantics and use have been selected; otherwise name the actual structures and relations.
+
+#### C.32.MWA.PP:0.1 - Working Distinctions
+
+| Name used here | Meaning |
+| --- | --- |
+| Method structure | Identified Methods and direct composition, specialization, family, participation, or other selected Method relations with stated truth status. |
+| Work structure | Admitted or intended Work and direct parthood, overlap, order, result-use, or transformation relations. Work order does not by itself establish Method composition. |
+| allocation structure | Responsibility, authority, capability demand, provider dependence, shared capacity, and burden distribution relevant to the alternatives. |
+| Systems, means and access | Systems being changed and Systems performing or contributing work; the means used; and relations through which performers obtain a result, access a means or receive authority to act. Distinguish the Systems, work, results and relations when their configuration changes the decision. |
+| description structure | Epistemes, views, schema correspondences, version relations, and losses used by the decision. Description order is not Work order. |
+| cultural relation | Recognition, transmission, selection, retention, or loss of a Method variant. A chosen project option is not cultural continuation. |
+| simultaneous multigrain contribution | Work at several grains is performed during overlapping intervals. It can include constituent and encompassing Work, the same Work enacting several Methods, or separate Work that only overlaps. Determine the relation; overlap alone neither establishes nor excludes Method composition. |
+| genuine first–then condition | One direct Work, result-use, transformation, evidence, configuration, or authority relation makes a later occurrence or decision depend on an earlier result or condition. |
+| architecture alternative | A possible-future synthesis whose named relations differ materially. Until realized or independently shown to obtain, it remains proposed. |
+
+**Mastery** in the development cases means a person's qualified ability to contribute to a family of tasks under stated conditions. Organization and AI capability claims keep their own holders, mechanisms and evidence. **Support** describes how a specified contribution makes other work possible or changes its conditions. State who performs the supplying work, what it returns, and how the receiving performer uses that result. Identify the means, access and authority separately when they affect the connection. Teaching, an expert's execution, a tool and permission to use it can all matter, but they occupy different positions in that explanation. A change to the supplying performer's capability or Method is another claim, requiring its own result. Cultural continuation concerns how practices are carried, understood, reproduced and changed; installing a procedure does not establish it.
+
+### C.32.MWA.PP:1 - Problem Frame
+
+The practitioner receives identified Methods or candidate accounts, their intended effects and any qualified connections. These may be explained in an ordinary practice account or a typical transformation-flow network. The task is to construct and compare their performance and support arrangement while preserving the supplied contributions, conditions and unresolved gaps.
+
+The pattern considers Methods, Work, descriptions, capability, tools, variants and simultaneous contributions at several scales. Recover the subject of each project, process or case account under `A.15.6` before comparing structures. Several useful structures and descriptions can be connected without sharing a subject or aligning one-for-one.
+
+A project still needs decisions. It must choose which provisional results may be used, which Work may overlap, where authority stays, which support arrangement is acceptable, and where burden moves. The comparison must preserve the several structures while remaining small enough to act on.
+
+When continuing development is the supplied practice, preserve its full contribution: noticing an emerging difficulty or possibility, forming a problem, constructing a worthwhile reachable change, arranging and enacting it, then making a further development choice from the changed position, including after success. Consolidation, ordinary work or ending a particular line can be justified continuations. C.32.MWA.PP receives that practice and arranges its performance; it does not construct the whole development network by default or reduce it to acquiring or introducing a known Method.
+
+### C.32.MWA.PP:2 - Problem
+
+The same drawing is often expected to describe what changes, how it changes, what work occurs, who is competent, which unit employs whom, and who may decide. These are different relations. Turning them into one hierarchy makes missing contributions disappear.
+
+For example, a box for “development” can stand for a Method, a team, a proposed programme, a person's capability or work not yet performed. Naming an expert beside it can conceal unavailable time. Placing the box centrally can conceal missing local knowledge. Distributing it to every workplace can conceal preparation and coordination that nobody supplies. A common portal can appear to own every subject it merely routes to another provider.
+
+Separately plausible arrangements can conflict when combined. The same leader may be needed to run current work, help others and develop their own capability in the same hour. A local incentive to finish quickly can prevent the examination and revision the culture requires. A provider can complete its contracted activity without leaving a client able to continue. More capable AI can invalidate a human bottleneck assumption while leaving permissions, physical access or the learner's own practice unchanged.
+
+The recurring problem is to construct and compare complete arrangements across these relations and scales, then supply an exact decision and requirements for a feasible local enactment. The comparison must be allowed to change the allocation, grouping, means, Method connection or intended remit. Otherwise architecture becomes justification of the first office proposal.
+
+A one-stack account also mistakes Method composition for Work order and description layers. Different views of the same relations can be mistaken for architecture alternatives. The resulting decision can assert obtaining architecture before its relations exist or miss a genuine first–then guard because everything is described as concurrent.
+
+### C.32.MWA.PP:3 - Forces
+
+| Force | Tension that can change the arrangement |
+| --- | --- |
+| Subject integrity and local adaptation | A supplied Method needs its operative conditions preserved, while local work may require a different input, support condition or variation. |
+| Reuse and specialization | Shared preparation and infrastructure can save effort, while subject judgement and local knowledge can remain non-substitutable. |
+| Personal mastery and supplied results | A provider can obtain a correct result without developing the receiver's ability to obtain it. Some uses need one; others need both. |
+| Local autonomy and joint consequences | Local decisions can use timely knowledge, while their effects can consume shared resources or defeat another participant's contribution. |
+| Continuing work and development | Development can improve future capability while temporarily reducing the same performers' current contribution. |
+| Common responsibility and distributed provision | One carrier can arrange access and maintain continuity without employing or performing every specialty. |
+| Actual authority and useful initiative | Someone can recognize and solve a problem without having permission to commit the affected people, resources or Systems. |
+| Cheap intelligence and costly enactment | AI can make search or decisions cheaper while experiments, transitions, attention, integration or physical work remain scarce. |
+| Comparative completeness and decision cost | Missing connections can reverse a decision, while a full model of every relation would cost more than a bounded adequate repair. |
+
+Method-architecture comparison also preserves simultaneous contribution without losing real order, and useful co-use without inventing a Method whole. Several structures can expose different conflicts, while views that cannot change the choice add only cost. Proposed relations are useful design inputs but cannot be reported as obtaining practice.
+
+### C.32.MWA.PP:4 - Solution
+
+C.32.MWA recovers the several structures and their truthful actual or prospective status. The construction here uses that account to design and compare realizable performance and provision: connect each needed result to a Method, make the receiving joins work, and obtain a feasible allocation of capability, time, means and authority. An already adequate architecture account is reused; the detailed comparison below is needed only for the arrangement question it leaves open.
+
+Connect the supplied practice to possible and actual performance, construct materially different arrangements, compare their interactions on one bounded basis, and return an explained decision with exact realization or reconsideration conditions. C.32.MWA supplies the several-structure synthesis, C.30.ASV:4.5a the choice of questions and relations, C.11.CRC the finite comparison, and C.11 or a sufficient domain decision Method the choice.
+
+The sections below explain connected questions, not a fixed production pipeline. An adequate existing result can settle a question. A changed premise can return the work to an earlier question, and independent contributions can proceed separately. The supplied practice retains its genuine dependencies; paragraph order adds none. In a familiar case, follow the result, locate the decisive interaction, compare complete alternatives and retain the necessary continuation. Open the fuller explanation where a connection is unfamiliar or its premise changes.
+
+#### C.32.MWA.PP:4.1 - Recover the supplied network and the result this local arrangement must obtain
+
+Name the obtaining or possible-future practice, situation, configuration, window, decision authority and receiving use. Name the receiving subjects and the change or preserved condition that matters. A customer result, a performer's acquired capability, a reusable Method, an organization's continuing capability and cultural transmission among participants can all matter. Keep them separate when one could be obtained without another.
+
+Recover enough of the supplied practice account to identify:
+
+- what is transformed or kept usable, and which subject continues through the change;
+- the Method or professional operation proposed for that change;
+- the input and receiving conditions that make the result useful;
+- independent branches, repeated or conditional work, and returns from later observations;
+- the continuing work and other contributions the arrangement must protect.
+
+For an E.18 or E.18.NET account, use its qualified positions, members and relation meanings as supplied. A typical diagram is a reusable description, not evidence that those relations already obtain in the local organization. Keep proposed local bindings and future Work prospective until their conditions are met. C.30.TFS-REL governs a stronger architecture use of an exact selected transformation-flow structure or network.
+
+When the question spans several organizations, independent communities or people, do not invent a containing organization to make the picture tidy. Name the participants and the agreements or other relations on which the proposal depends. A network is not the Agent that performs the work or holds all its obligations.
+
+Walk one supplied path forward and one necessary result backward. Forward, ask what the receiver can do with each result. Backward, ask which operation actually supplies the needed condition. Stop at an understood operation or qualified existing result. Where “develop competence”, “create culture” or “provide support” hides the operation, recover it through section 4.2 before allocating its performance.
+
+Keep the remit revisable. A provider may arrange access to every required specialty without claiming to perform all of them. A person may acquire one capability and use another through an AI or expert service. If the proposed local arrangement cannot jointly supply the required results, compare a different way or return the affected promise to its strategic owner; do not quietly remove a difficult result while keeping the same offer.
+
+#### C.32.MWA.PP:4.2 - Establish the Methods and the connections that performance must preserve
+
+Bring in the identified Methods, candidate accounts and individually supported local connections, preserving their prior status and unresolved conditions. A candidate account does not become an admitted Method through allocation. If actual Work is later described as enacting a Method, establish that claim for the Method and occurrence in question.
+
+For each decision-changing contribution, inspect the actual explanation or demonstration, not its name. Identify what material or situation it works on, what a competent performer does, why the action could obtain the result, which conditions are preserved, and where the Method stops.
+
+Try the operation on one representative input or a sufficiently explicit prospective case. The purpose is to locate the first unsupported connection. Different findings require different work:
+
+| Finding in the attempted use | Obtain this contribution before relying on the proposed arrangement |
+| --- | --- |
+| The Method and its receiving result are sufficient; only local access or capacity is missing. | Preserve the Method and design the missing allocation or access relation. |
+| Competent people can perform the decisive judgement, but the learner or another provider cannot recover it. | Obtain a qualified demonstration or reconstruct the missing criterion; design learning separately. |
+| One Method returns a result that the next cannot use. | Construct an adapter, choose a compatible Method or revise the receiving condition with its owner. Explain why the connection works. |
+| No qualified way obtains the requested subject result. | Use C.39 and the relevant subject or research practice to construct a way or return a precise unresolved inquiry. |
+| The proposed activity succeeds, but does not establish the promised mastery or continuing capability. | Obtain the missing personal or collective contribution and its observation; otherwise narrow the promise. |
+| A universal account loses a condition on which one specialty depends. | Retain a justified specialization or change the common boundary rather than forcing the specialty through an unsuitable common procedure. |
+
+C.39 supplies the general missing-way construction: search through the required change, recover a relevant operation, try its receiving use, and construct only the still-missing connection. Keep subject-method development distinct from pedagogical construction. A learning designer may choose a contrast or practice task without inventing a missing scientific criterion. Conversely, a subject expert's correct answer does not supply a teachable route by itself.
+
+If the original difficulty is not yet a usable problem, B.5.PI supplies inquiry from a weak cue or an apparently completed result. C.40.CD can develop a new problem from an achieved result. For continuing development, return their question to the selected development practice, rather than treating question formation as the entire development transition.
+
+Retain distinct sources of change. Revising a Method can change what future performances require. Training can develop a person's capability; a claim of capability change needs suitable performance evidence. Assigning a qualified person identifies an expected contribution; the permissions and authority required for that work need their own grounds. Reuse adequate existing evidence and authorization. Improving a tool can change available means. These repairs can be combined, but none supplies the others merely by being in the same project.
+
+Explain the important joins in ordinary language. For example: “The domain review must return the condition under which the proposed experiment is interpretable before the participant runs it. A general coach can help formulate the question, but cannot substitute for that domain judgement.” This tells the architect what kind of performer and timing are required. “Coach, expert, learner” alone does not.
+
+Do not force every result-use or support relation into Method composition. Use B.1.5 for a proposed whole; B.1.5.CM can resolve its identity. When that is the only unresolved question, finish with the relation or composition result. A materially different way to obtain the receiving result, rather than a larger Method name, creates the architecture comparison here.
+
+#### C.32.MWA.PP:4.3 - Keep the necessary structures distinct and connect their claims
+
+Select only the structures that can change this design. A compact cross-reference is often enough. C.30.ASV:4.5a supplies the Method questions; C.32.MWA:4.1 relates them to distinct accounts of Work, Systems and means, and cultural relations.
+
+| Question | What is being related | What must not be inferred from that relation |
+| --- | --- | --- |
+| What constitutes the Method, or may substitute for a constituent? | Identified Methods, composition, admitted alternatives and receiving conditions. | A chapter, task assignment or team is not thereby a Method part. |
+| What changes and which result can be used elsewhere? | The governed subject, transformation conditions and qualified connections among the supplied flow accounts. | A drawn arrow does not establish an actual transformation, handover or permission. |
+| What work must occur, repeat or overlap? | Intended Work and later actual occurrences, their results, timing and relevant constituent work. | Method order does not determine every work schedule; a plan is not performed Work. |
+| Who or what can perform it under these conditions? | Capability holders, relevant evidence, tools, supports and provider contributions. | A role title, tool installation or successful heavily assisted attempt does not supply the claimed capability. |
+| Which organizational relations make the contribution obtainable? | Parts of actual Systems where established; assignments, interfaces, access, obligations and decision authority. | Working for the same employer is not the same as sharing a Method or having compatible authority. |
+| Which resources and costs interact? | Qualified time, shared means, money, attention, information access and the periods in which they are needed. | A total budget or aggregate headcount does not establish simultaneous availability. |
+| How does the practice continue among carriers? | Participation, learning, example, recognition, transmission, variation, selection, rejection and loss. | Deliberate intervention does not control or prove every cultural process. |
+
+An individual can hold several compatible assignments. Several Systems can jointly obtain a result. A specialist can serve several organizational units. A Method can be used by several independent performers. Keep these actual relations visible rather than forcing one exclusive-parent tree.
+
+For each important connection, make the local claim explicit: this available or proposed holder can supply this contribution, using these means, in this window, under this permission, and the named receiver can use it under these conditions. Keep obtaining, proposed, contradicted and unresolved relation claims distinct. State the evidence, including whether it comes from observation or a qualified provider, and the receiving use it supports. A table is useful when it makes this comparison easier; it is not a substitute for the explanation.
+
+An actual transformation claim needs the subject, boundaries, before/during/after basis and continuity conditions required by A.3.4. An actual Work claim needs its real performer and occurrence. The current synthesis can remain a useful possible-future arrangement without pretending to supply either.
+
+Retain description relations as well. A WorkPlan's intended dates, a reusable MethodDescription and a case account can concern connected but different subjects. Record the needed schema correspondences, version relations and losses rather than treating their similar layout as identity.
+
+At a revealing moment, explain what larger work, if any, is being performed through the selected action and how that whole constrains it. The same action can perform constituent Work while evaluation or adaptation is under way; separate product or support Work can merely overlap it. Use B.1.5.EW when this relation is unclear. Keep genuine first–then guards alongside simultaneous contribution. Section :5.2 shows why an answer-bearing prompt can be appropriate for supported execution but defeat a test of independent recovery of the rule.
+
+#### C.32.MWA.PP:4.4 - Recover the incumbent and the work hidden by the proposal
+
+Describe the current way at the grain needed for this decision. Use an actual representative occurrence where available; for a new use, begin with a prospective case and recover the existing means on which it would rely. Include competent informal help when it is actually available, and its burden. An empty baseline makes any new service look valuable; an idealized baseline makes needed support look unnecessary.
+
+Follow one consequence into each receiving whole that could reverse the choice. An expert's review can support a learner's progress, product assurance and the expert's own professional practice at once. A proposed use of that hour can therefore change several contributions. It does not create three independently available hours.
+
+Recover demands that the proposal might hide:
+
+- preparation, subject interpretation and development of the means;
+- the performer's own work, learning, recovery and contribution to others;
+- access, intake, coordination, exception response and maintenance;
+- local participation, explanation, disagreement and authorization;
+- continuing production or service during the change.
+
+Ask the people or agents who supply and receive the contributions which condition could make the proposed arrangement fail. Their knowledge can change a candidate without giving every participant identical decision rights. Keep unknown voices and evidence material to the choice visible; do not treat a senior sponsor's description as the whole work.
+
+Locate the actual difficulty. If a result is late, determine whether it waits for a scarce judgement, missing input, permission, incompatible priority or an unnecessary handover. These explanations imply different architecture changes. Do not infer that the person lacks mastery from an unusable result whose cause remains unknown.
+
+For human capability, qualify the actual task and permitted help; obtain a separately qualified acquisition or transfer result only when the arrangement needs that capability change or new use. For AI, qualify the relevant configuration, tools, data, permissions and evaluation conditions. For an organizational capability, identify how the contributions become obtainable together and remain available beyond one exceptional performer. Individual competence alone supplies none of the missing interfaces or commitments.
+
+#### C.32.MWA.PP:4.5 - Generate whole alternatives by changing an operative relation
+
+Construct alternatives from the recovered difficulty by developing grouping, allocation, information, decisions and support together. For a stable result, C.38 constructs comparable complete human, AI, internal, external and combined obtaining ways. When different result families or a revised remit remain in question, retain those differences and return the proposed change to the actual purpose and choice owner; the arrangement cannot authorize a different promise by itself.
+
+To generate a materially different candidate, change a premise of the obtaining mechanism:
+
+- When frequent mutual adjustment is limiting, bring the necessary contributors into closer work, or change the result/interface so that less adjustment is needed.
+- When scarce subject expertise is limiting, retain a specialist contribution and improve its access, timing or reuse; alternatively develop another holder or obtain a qualified provider result.
+- When distant decisions lack local information, move information to the decider, delegate a bounded decision to where the information exists, or change the work so the joint decision is no longer needed.
+- When repeated support work is limiting, compare a common means or service with local provision. Retain the subject-specific contribution that the common means cannot supply.
+- When a learning demand consumes essential current capacity, compare a staged acquisition, different provider, changed participation or narrower current commitment.
+- When no holder can perform the Method adequately, construct a capability-development or research contribution; do not merely allocate the same unsupported work more widely.
+
+Complete the changed candidate through its receiving result. Moving judgement locally may require training, data access, an exception boundary and agreement on consequences. A shared tool may require maintenance and a qualified operator. An external service may require a different interface, lawful information access, available response and a usable exit. These are parts of the candidate's burden, not free remedies added after selection.
+
+Compare the whole **without a new office** whenever existing workplaces and support can plausibly provide the result. Describe how self-development, help to others, specialist work, maintaining common means and resolving conflicts would be performed within that arrangement. “Everyone is responsible” leaves the obtaining connections unresolved. A named department is not necessary when those connections are supplied elsewhere.
+
+Similarly construct **AI-based arrangements as whole alternatives**. Qualified agents may notice, formulate, choose within delegated authority, teach, coordinate and execute. An arrangement can combine personal agents with common tools and externally maintained subject services without recreating a human office in software. Give it actual access, authority, support, evaluation and recovery conditions. Preserve a human's own performance only where that is part of the result or a justified constraint.
+
+A common carrier can be responsible for making help obtainable while independent providers perform it. Complete that candidate with how a question reaches a qualified provider, how the receiver recognizes a usable response, who handles refusal or failure, and what keeps access available. A portal with an unfilled request queue supplies only a portal.
+
+When an architecture comparison is warranted, compare at least two serious syntheses whose proposed direct relations differ.
+
+Treat central, local, specialized, federated and external descriptions as properties of the resulting candidates. They are not a catalogue from which the Method starts. One candidate can centralize common tools, distribute performance and retain an external specialist at the same time.
+
+Keep the adequate incumbent and its smallest useful repair in the comparison. Generate further alternatives only while a new mechanism or failure mode can change the choice. Do not manufacture token rivals to a sufficient direct answer.
+
+#### C.32.MWA.PP:4.6 - Expose contradictions across structures, participants and scales
+
+Use *contradiction* here for demands that cannot jointly be met under the proposed conditions, or for claims about the same contribution that cannot jointly hold. A difference in preferences is not automatically such a contradiction. It becomes decision-relevant when a required contribution, legitimate interest, protected condition or resource is affected.
+
+For each claimed gain, perform three connected inquiries.
+
+**Follow the changed contribution outward.** What receives it, what else uses its performer or means, and what later action depends on it? Preserve the relations instead of assuming every receiver belongs to one management hierarchy. A change can cross a personal task, a team, an enterprise, a professional community and a supplier without making them nested parts.
+
+**Ask what was moved.** Did a shorter expert response move interpretation to an unqualified learner? Did local autonomy move risk or integration work to another unit? Did a cheaper office consume unpaid community work? Did a more demanding method improve an individual result while preventing sufficient throughput for the whole service? Keep the affected result and bearer identifiable. A gain reported at one scale does not cancel a loss at another.
+
+**Challenge the combined mechanism.** Hold the stated conditions fixed and ask whether the candidate can obtain all its promised results. Follow a consequential case, including a plausible exception. If a needed contribution is removed, what exactly fails? If local results are obtained, what makes their combination sufficient for the receiving result? Trace the required intermediate results, their receiving operations, interactions and shared conditions. Construct or obtain the missing connection through C.39, and use C.40.JF for unresolved joint reachability. A list of necessary parts does not establish that their combination is sufficient; retain the unsupported whole claim when its obtaining connection is still missing.
+
+Then construct a repair that changes the proposed obtaining relation, not just the wording. Keep a causal hypothesis distinct from a qualified causal conclusion; C.28 governs any causal reliance used in the decision. Possible repairs include altering timing, distributing a decision, adding or replacing a qualified contribution, changing an interface, reserving shared capacity, separating conflicting roles, reducing simultaneous commitments, or revising the remit with its owner. Follow the repair through the same receiving wholes. An extra approval can reduce one error while adding a delay that defeats the useful result.
+
+For example, a local manager is asked to meet a production deadline and release the only qualified worker for the same two-hour development episode. Both commitments may be individually reasonable; together they are unavailable. Naming a development office does not create another qualified worker. The comparison must change a deadline, supply another qualified performer, alter the episode or defer a commitment. Who may authorize each change matters.
+
+Also compare time horizons. Training a second mentor may reduce present help while removing a recurring future bottleneck. Include both periods under the same scenario. Do not count the new mentor's future capacity before qualification or count the training hours as available client support. Conversely, do not reject the investment merely because a one-week comparison excludes its intended return.
+
+C.32.MWA:4.1(7) supplies the moved-burden question. C.11.CRC:4 supplies the finite configuration, horizons, result and resource coordinates, interactions and future-option effects. Use qualitative explanation where it settles the choice. A multi-scale picture is useful only when it makes a decision-changing relation clearer.
+
+#### C.32.MWA.PP:4.7 - Construct the jointly feasible workload and commitments
+
+Turn the serious candidates into possible performance at the scale of the present decision. Begin with the promised result count or range, quality and response conditions. Recover the input demand each Method places on each qualified holder and means.
+
+For a small case, place the required work in actual windows and compare it with available capacity. Ask:
+
+1. Which contribution can be shared once, and which must recur for each participant or case?
+2. Which demands can be combined in one real episode, and which compete for the same performer, device or information access?
+3. Which result must exist before another action begins, and when can the receiver use it?
+4. Which qualification or authority prevents apparently spare capacity from substituting?
+5. What current contribution or later option is displaced by the proposed schedule?
+
+Count common preparation once at the declared scale. Count recurring performance and support wherever they occur. If one group episode obtains several results, credit them only where each required participant contribution and receiving condition is preserved. Neither multiplying shared preparation by every user nor assuming all group learning is free gives a truthful account.
+
+A necessary capacity inequality can expose failure cheaply: total demand for one qualified resource in a window cannot exceed its available capacity. It does not establish an executable schedule. Precedence, simultaneous work, locality, recovery and incompatible access can still defeat the candidate. Use the appropriate operating or scheduling Method when those conditions matter.
+
+For an overload, construct the actual alternatives: reduce starts, stagger work within a still-useful window, obtain another qualified supplier, combine genuinely compatible performance, change the Method or change the promised result. Recalculate the affected recipients and periods. A transfer to another team is unavailable if that team already spends the same capacity elsewhere.
+
+Make the required commitment precise enough for its owner to judge. Name what is to be supplied, when and under what acceptance and failure conditions, which resources would be reserved, and which decisions would be delegated or retained. For an already available arrangement, recover the actual commitments rather than requesting them again. A budget owner, subject assessor, line manager, community participant and service provider can hold different rights. An attractive design is not their agreement.
+
+If the candidate needs changed authority or a new agreement, include the obtainable route and delay in its transition. A future arrangement can be compared on explicit conditional premises before those relations exist. Its dependent enactment cannot begin until the conditions are effective. If a participant may refuse and no contribution is secured, keep that dependency conditional or select a surviving arrangement. Willingness to discuss the proposal is not provision.
+
+#### C.32.MWA.PP:4.8 - Compare complete changes at proportionate effort
+
+Use one current baseline, declared horizons and decision-changing scenarios. Compare each candidate's result and resource consequences, including the transition from the incumbent. C.11.CRC supplies the comparison; C.11 supplies the authorized choice.
+
+First distinguish an unavailable arrangement from a costly but possible one. Then retain the coordinates that could reverse the choice. These can include useful results, capability retention, delay, participant effort, qualified scarce time, money, continuity, autonomy, dependence, error exposure and future flexibility. Compare contributions to their actual receivers. A lower supplier cost that makes client performance impossible is not a cheaper equivalent service.
+
+Do not add unlike ordinal scores to manufacture a winner. A candidate can be worse for one participant or horizon and still be selected through an explicit legitimate trade-off. Protected conditions retain their force. If the options promise materially different results, return to the strategic choice rather than silently treating them as equivalent staffing alternatives.
+
+Challenge the sensitive premise. If common provision appears cheaper only when demand exceeds a certain level, compare lower demand. If local provision works only with a qualified leader, compare their absence. If AI eliminates a bottleneck only with unavailable data or authority, preserve that conditionality. Use the changed condition to revise or reject the candidate, not merely to add a warning.
+
+Separate an ordinary operational check, specialist advice or monitoring, and an independent conclusion required by the receiving decision. Do not add the last contribution merely because another view might be interesting. When it is required, its obtaining conditions belong in the alternatives and their whole cost. Competence and spare time do not establish independence, access or a usable reporting route.
+
+For example, a common service is qualified to support the practice, but its designer also promises an independent conclusion about that service while controlling the evidence released and permission to report a failure. The supported work may remain feasible while that promised conclusion is unavailable. Compare an existing sufficient engagement, an obtainable qualified arrangement with suitable safeguards, or a narrower reliance permitted by the decision's obligations. Outsourcing the report or naming another colleague does not by itself supply those conditions. Section :4.9 gives the corporate case its direct supplier.
+
+Apply C.11.DUA before commissioning more inquiry. Name a plausible answer that would change the arrangement or permitted reliance; compare obtaining it with a smaller reversible start, a narrower promise, existing evidence, delay or stopping. Include the recipient's interruption and transition costs as well as the architect's analysis. A binding assurance obligation remains binding until legitimately changed, but an optional attractive proposal does not entitle its author to an unlimited validation programme.
+
+The decision can select a complete available arrangement, authorize a discriminating bounded attempt, retain alternatives pending one exact supplier result, revise the remit or stop. A comparison is not a decision by format. Preserve the chosen trade-off and the material return condition in the ordinary result needed by the participants.
+
+Keep the decision within its evidence and authority. A non-causal capacity comparison can warrant a bounded trial while an effectiveness claim remains unsupported. Consume a causal-use result only within its verdict boundary. A selected proposal establishes no obtaining ArchitectureRelation, and a possible-future assignment supplies no actual performer occurrence.
+
+Implementation and trial are separate Work choices. Retaining an adequate incumbent, or keeping a proposal available under stated conditions, can finish the comparison. Select additional Work through C.11.DUA only when its obtainable contribution warrants its full burden and the needed access, allocation, authority and window can be supplied. Carry observations that could support or defeat the proposed relations, protected conditions, stop and recovery into that choice. After enactment has begun, recovery preserves performed history; it is not a return to an earlier alternative as though the intervening Work never occurred. Section :5.3 makes that difference explicit.
+
+#### C.32.MWA.PP:4.9 - Give the selected realization its exact contribution and conditions
+
+The architecture result explains what would need to hold and why the arrangement was selected. It can finish the current work without a new implementation or trial. When further realization is selected, give its practitioner a complete receiving contribution and the conditions that remain to obtain. An organization chart or a request to "implement the architecture" does not carry that requirement.
+
+Begin with the useful result and its receiver. Explain which Methods and local actions must contribute, what each receives and returns, the important exception path, permitted variations, ordinary support, protected continuing work, and the decision and authority for the attempt. Include the decisive rejected alternative, accepted trade-off and condition for reconsideration. Keep current evidence beside unestablished relations so the receiving practitioner can reuse what is sufficient.
+
+Participants must be able to understand and challenge the proposal before their contribution is assumed. A provider can reveal an unavailable window; a recipient can expose an unusable intermediate result; a practitioner can show that a suggested action changes the Method's criterion. Return the challenge to the affected comparison. Explanation, discussion, negotiation, facilitation and leadership use their own sufficient Methods where needed. C.32.MWA.PP supplies the arrangement and unresolved question; it does not make all those practices architecture steps. Voluntary participation needs real agreement. An employer's allocation authority has a scope and does not create missing competence or make a subject claim true.
+
+Select the receiving Method from the result still missing.
+
+**For a separately selected organizational realization, use the applicable organization-change Method.** Give its practitioner the selected design or duly authorized bounded attempt, receiving use, participants and configuration, acceptance basis, ordinary and exception paths, support and service consequences. A first comparison can find that an existing implementation or introduction already supplies the required capability; then use that result without another exercise. Otherwise have the practitioner trace crossings with participants, obtain missing conditions through their owners, exercise the complete contribution, repair the defeated crossing and return a bounded capability result. C.32.MWA.PP explains which joint capability is needed; the organization-change Method supplies realization, including a truthful unresolved return. An isolated tool or learning question without an organization-change difficulty uses its direct professional Method.
+
+**For an account or tool that performers cannot use, use A.15.8.MS.** Give it the intended user, task, input, point of failure, required operation and support condition. Request material or tool use that lets the performer recognize the situation, choose a branch, obtain the input, perform the operation, interpret the result and return a failure. A short local instruction can suffice when it preserves the condition that changes the action and gives access to fuller explanation when needed. A.15.8.MS's result concerns use of the Method account and support; it does not establish mastery or continuing organization capability. A changed criterion or missing subject operation returns to its Method owner rather than being hidden inside instructional editing.
+
+**For help with introducing, using and revising a practice, use [A.3.1.MI](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a31mi---introduce-a-method-into-practice-and-decide-what-to-keep-or-change) in FPF Core.** Supply the target Method or candidate account and its status, actual receiving practice, observed difficulty or explicit proposed condition, current introduction/support results, those who can supply and receive help, available means, authority, protected work and intended later use. Keep the target practice distinct from the strategy used to help it become usable. The support practitioner chooses and adapts that strategy to the actual determinant; training is one possible contribution, not the default remedy. Use [A.3.1.MI:4.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a31mi41---pattern-use-unfolding) to perform the selected introduction, examine later actual use and non-use, and return `keep`, `revise`, `branch`, `replace` or `stop` for the target or introduction strategy. Use [A.3.1.MI:4.5](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a31mi45---explain-a-changed-result-before-selecting-an-adaptation) when a changed result or proposed adaptation leaves explanations that would change the next action.
+
+**For a separately selected corporate assurance engagement, use the applicable corporate governance Method to arrange and receive it.** Supply the subject, question, criteria, period and intended reliance. Reuse an adequate existing result; otherwise obtain the appropriate mandate, qualification, access, capacity, safeguards for conflicts and reporting route. Preserve the provider's actual conclusion and its limits for the governing recipient's action, including a route protected from those whose work is examined. The corporate governance Method arranges and receives the contribution; the qualified professional Method governs the examination itself. A non-corporate or profession-specific engagement uses its direct institutional or professional supplier instead of inheriting corporate jurisdiction. This return adds no compulsory audit of every support or learning episode.
+
+These receiving Methods can consume the same competent realization and its results. Compare the available result with the present claim, name the remaining gap and obtain only the additional complete contribution needed to settle it. If human acquisition is missing, give the qualified practitioner of human learning the actual later-work demand, subject criterion and permitted help; obtain the capability result and its supported use rather than crediting instruction or attendance. If work is missing to integrate Systems, supply an input, arrange access or schedule use, obtain that work through the corresponding engineering, administration, provider or operating Method.
+
+The hand-back to C.32.MWA.PP must make local enactment and its limits interpretable. Before dependent work, the receiving practitioner obtains the required inputs and usable means, and secures effective assignments, permissions and commitments through their owners. A prospective walkthrough can show how a real or sufficiently explicit input would pass through local actions: which operation of the supplied Method each action performs, which condition it preserves and how its result becomes usable next. That walkthrough supports a construction claim, not an assertion that the occurrences happened.
+
+When actual performance is examined, compare the actions with the operative conditions as well as with the obtained result. A good result reached by another way can be valuable without demonstrating enactment of the selected Method. An allowed variation can preserve it; a changed criterion or replacement operation can require another subject judgement, Method identity or replacement decision through A.3.1 and B.1.5.RS. Retain that difference in the returned result without demanding detailed fresh observation at every workstation.
+
+Request the observation that answers the relied-on claim. For a delivered result, establish what the receiver could use. For human mastery, establish the person's contribution under the promised help through an appropriate assessment of performance, transfer or retention for that person and Work. For organization capability, use the joined contribution and relevant exception under ordinary provision. For AI capability, retain the qualifying configuration, tools, data, access and limits. For cultural continuation, distinguish availability from another carrier taking up, varying and continuing the Method. A successful episode supports the result and capability claim for which its conditions and evidence are sufficient; it does not by itself establish stable cultural transmission.
+
+For continuing development, the first complete contribution can be an inquiry when the subject way is unknown; it returns what changed in the problem or available possibilities. After success, preserve the supplied connection to a further worthwhile question or justified continuation. Do not close that branch merely because the present implementation succeeded. Its performance and cultural continuation remain questions for the corresponding development and cultural Methods.
+
+Require a usable defect return. If the action did not occur, inspect capability, access, priority or permission. If it occurred but failed locally, inspect its Method and conditions. Adequate local results with a failed receiving whole return to their connection and combination. A result sustained only by unpromised expert rescue requires obtaining that support as part of the arrangement or repairing the intended independence. Retain useful performed results and their limits while reopening the defeated claim. Compatible current evidence can settle these questions without new trials; stronger causal effectiveness claims need their direct research basis.
+
+#### C.32.MWA.PP:4.10 - Change the arrangement while preserving its valid uses
+
+Reopen the smallest affected connection when its basis changes, then follow the consequences far enough to protect receiving uses. A new Method edition can affect subject criteria, materials, tools, provider qualification and interpretation of earlier results. A provider change can leave the Method unchanged while changing access, support or authority. A shift in demand can invalidate capacity without invalidating competence.
+
+Compare the same serious choices again when they become live. Increased local capability can permit less central execution. Recurring specialty failures can warrant separate expertise. Shared tooling can make previously duplicated work reusable. A qualified autonomous AI can make an office unnecessary or make a maintained common service more valuable. None of these changes imposes a universal direction of organizational evolution.
+
+When a local repair repeatedly moves the difficulty elsewhere, reopen the encompassing arrangement or remit. Several individually useful support services may be jointly unaffordable. A provider's promise may be too broad, a recipient may need a different result, or a typical Method connection may need revision. Return the precise reason to the subject, strategy or network-construction owner and retain independently useful work.
+
+Keep deliberate change separate from distributed cultural change. Participants may ignore, adapt or replace what was introduced. Examine that behavior for its effect on the intended practice and for useful new possibilities. Do not equate disagreement with a capability defect or declare cultural success from formal compliance.
+
+Finish when the current recipient has an explained arrangement they can put into use, a warranted selected attempt, or the exact unresolved contribution that changes the decision. A compact result can state the supplied network and local use, proposed or obtaining performers and relations, the decisive interaction, the chosen commitment and the next observation. Maintain only records that are needed for performance, accountability, later change or justified reliance.
+
+#### C.32.MWA.PP:4.11 - Return the architecture decision
+
+Keep the description proportional to the receiving use. A compact decision can suffice when its reader can recover the contribution and the condition that changes reliance.
+
+| Result position | Required content |
+| --- | --- |
+| decision boundary | Obtaining or possible-future practice, result, situation, configuration, window, authority, and use. |
+| retained subjects | Methods, candidate accounts, supplied network, qualified local connections, unchanged statuses and exact missing contributions. |
+| selected structures | Exact structure names, direct relations, truth statuses, correspondences, losses, and evidence. |
+| alternatives | At least two serious syntheses and the named relations by which they differ. |
+| comparison | Shared and recurring work, qualification, combined peak and total demand, simultaneous and first–then conditions, allocation, capacity, provider/access, authority, failure routes, evidence, moved burdens, and causal-use limits as applicable. |
+| decision | Selected/rejected synthesis, basis and rule, accepted losses, preserved constraints, and remaining rivals. |
+| continuation, where it changes the use | Conditions for relying on or reconsidering the decision; selected implementation or trial Work, exact receiving contribution and sufficient supplier, observations, stopped dependent actions and history-preserving recovery. |
+
+Practitioners choose which direct relations should hold for one result, which structures expose the conflict, and who carries the burden. Co-used Methods can remain plural; a proposed architecture can guide a trial without being reported as already real.
+
+### C.32.MWA.PP:5 - Archetypal Grounding
+
+The first case shows a cheaper relation-only stop; the next preserves several work grains and a purpose-sensitive trial; the release comparison separates peak demand, total burden, evidence history and recovery. Later cases develop distributed provision, voluntary participation and qualified AI. They illustrate different uses of the same Method, not stages or its domain boundary.
+
+#### C.32.MWA.PP:5.1 - Cheaper Clarification: Several Methods, No Composite
+
+In a safety-relevant release, `M-HW-Verify`, `M-SW-Integrate`, `M-Supplier-Approve`, and `M-Release-Authorize` are identified Methods. Hardware verification and software integration can contribute during overlapping intervals from differently versioned evidence. Supplier approval produces a signed result later. Release authorization uses the safety result and signed-evidence condition.
+
+The selected structures are:
+
+| Structure | Direct relation and truth |
+| --- | --- |
+| Method structure | Four Methods are co-used; no `methodPartOf` or composite-Method relation is shown to obtain. |
+| Work structure | Some verification and integration Work may overlap; bounded Work set `W-TraceAcceptReject-17` contains one human accept/reject occurrence for every AI suggestion used by the branch; signed evidence and accepted safety result are genuine first–then guards for release authorization. |
+| description structure | the release WorkPlan carries intended dates and allocations; Method accounts carry reusable checks and guards; the case account asks whether the signed pinout meets the release evidence condition. Keep their direct subjects and needed correspondences separate. Different descriptions alone establish no architecture alternatives. |
+| allocation structure | admitted Systems `TraceReviewer-17`, `SafetyReviewer-17`, and `ReleaseDecider-17`; their decision Work; covering assignments `ASG-TraceReview-17`, `ASG-SafetyReview-17`, and `ASG-ReleaseDecision-17`; permission `PERM-TraceAcceptReject-17`; and direct authorities `AUTH-SafetyEvidence-17` and `AUTH-ReleaseDecision-17` remain separate; shared capacity can constrain later alternatives. |
+
+`ARS-EC417-RelationOnly-1` records the smaller clarification: retain the four Methods and their direct result-use, permission, and authority relations without naming a composite. The question here is only whether co-use supports a Method-whole claim. `B.1.5` supplies the composition test; where an architecture claim is made, `C.30` distinguishes the claimed structure from obtaining relations. No composite is established by the evidence shown, and no rival arrangement is at issue. Stop with that clarification, not a completed C.32.MWA.PP comparison. A later choice about provisional supplier evidence opens the genuine alternatives in :5.3; their comparison can also end without creating a Method whole.
+
+#### C.32.MWA.PP:5.2 - Simultaneous Multigrain Contributions with Local First–Then Relations
+
+In a separate five-day Method Engineering case, `ME-W0` is the bounded project adaptation Work. `ME-W1` repertoire-recovery Work, `ME-W2` candidate-account formation Work, `ME-W3` description/tool-proposal Work, and `ME-W4` evaluation Work are parts at the next finer grain; trial Work `ME-W7` is part of `ME-W4`. During the same five-day interval, continuing product-engineering Work `ME-W5` and repository-maintenance Work `ME-W6` overlap `ME-W0` but are not its parts.
+
+The repertoire-recovery Method contributes through `ME-W1`, candidate-account formation through `ME-W2`, description/tool proposal through `ME-W3`, and trial/evaluation Methods through `ME-W7` and `ME-W4`. Product-engineering and repository-maintenance Methods contribute concurrently through `ME-W5` and `ME-W6`. These are contributions at whole-Work, part-Work, nested trial-Work, and separate overlapping-Work grains, not one level sequence.
+
+Two case-local first–then relations remain inside that simultaneous interval: `ME-W1` precedes `ME-W2`, and `ME-W3` precedes the relevant evaluation decision in `ME-W4`. Temporal overlap across the other grains erases neither relation. It establishes neither a universal Method stack nor `methodPartOf`; a teaching tree that presents recovery before evaluation is a description view, not the Work structure.
+
+Consider a minute inside trial Work `ME-W7`. The participant follows the proposed unit-review description, converts a supplied measurement and compares it with the stated tolerance. Performing that comparison is part of carrying out the trial; the trial is part of evaluating the proposed description in `ME-W4`; that evaluation is part of the project adaptation `ME-W0` currently under way. The encompassing evaluation and adaptation are ongoing through this performed action, although their conclusions have not yet been reached. This is a constituent connection, not an inference from the five-day overlap.
+
+The evaluation purpose changes how the trial is performed. If the purpose is to test whether a reader can recover a conversion rule from the description, supplying the rule as a spoken prompt would defeat that use. If the purpose is instead to measure supported execution after instruction, the same prompt may be appropriate. The arithmetic can be correct in both cases while one trial fails its encompassing purpose. Keep the participant's result, the help actually supplied and the evaluation conclusion distinct. B.1.5.EW recovers this connection; B.1.5.RS applies when replacing a shared trial or checking Method across differently intended evaluations.
+
+#### C.32.MWA.PP:5.3 - Possible-Future Alternatives: A, B, and B2
+The EC-417 release scenario later asks how to handle provisional supplier evidence. Three alternatives differ by Work order and allocation:
+
+For this constructed comparison, `2.07 h` is safety-engineer time for traceability and safety-closure work: checking the current requirement–implementation–verification correspondences and preparing or recording the closure disposition. It excludes the separately counted signed-delta preparation and `0.33 h` board, and any additional affected verification or integration rework.
+
+| Alternative | Work and allocation structure | Capacity and consequence |
+| --- | --- | --- |
+| A | wait for signed evidence before software integration; one final board | prospective pre-entry alternative; under baseline signed evidence at `D-8`, misses the `D-21` integration slot |
+| B | integrate from an explicitly versioned provisional edition at `D-21`, preserve that basis and uncertainty, and reconcile it to signed evidence at `D-8`; safety engineer performs all `2.00 h` signed-delta preparation | on the `D-8` peak day: `2.00 + 0.33 + 2.07 = 4.40 h`, or `0.55` of an eight-hour day; exceeds the `0.40` limit |
+| B2 | same Work order and evidence-history rule as B; supplier-configuration role performs `1.60 h` of preparation and safety performs `0.40 h` | on `D-8`: `0.40 + 0.33 + 2.07 = 2.80 h`, or `0.35`; the separate `D-21` board makes per-release safety burden `3.13 h` rather than B's `4.73 h` |
+
+The first 20-minute board is on `D-21`; the second is on `D-8`. They occur on different days. The peak-day comparison and per-release burden are separate measures. Each board remains below the 45-minute meeting limit. Under B or B2, signed evidence supersedes the provisional edition only for safety-closure reliance; the provisional edition, uncertainty, use in `D-21` integration Work, and relation and delta to the signed evidence remain traceable.
+
+`CUR-EC417-CadenceEffect-1` returns `unsupported` for the interventional claim that earlier reconciliation reduces reopenings. `AD-EC417-B2-Trial-1` therefore consumes no positive causal premise. It consumes separately named non-causal `DC-EC417-CadenceMismatch-1`, the capacity comparison, confidentiality, the covering trace/safety/release assignments, `PERM-TraceAcceptReject-17`, the two independently supported direct authority relations, and reversibility to choose only three bounded B2 trials.
+
+At the `D-21` pre-entry checkpoint, `ReleaseDecider-17` performs the branch decision under `ASG-ReleaseDecision-17` and `AUTH-ReleaseDecision-17`, after the required safety-evidence decision under `ASG-SafetyReview-17` and `AUTH-SafetyEvidence-17`. B2 entry also requires `TraceReviewer-17` to perform `W-TraceAcceptReject-17` under `ASG-TraceReview-17` and `PERM-TraceAcceptReject-17` for every AI suggestion used by the branch.
+
+Before entry, choose A when signed evidence is already available or when versioned provisional evidence, supplier preparation, confidentiality, the trace-review assignment or permission, or a safety/release assignment or authority condition for B2 is absent. Once early B2 integration has occurred, A is no longer a possible history for that release.
+
+Missing signed evidence at `D-8` withholds release and starts recovery R. Preserve the performed integration record, exact provisional edition, uncertainty, and earlier use. When signed evidence arrives, record its relation and delta to the provisional edition, re-baseline, and repeat the comparison and affected verification. Retain or roll back/repeat early integration. For a full repeat of these recovery tasks, count `1.60 h` supplier preparation plus `2.80 h` safety preparation, board, and trace/closure work (`0.40 + 0.33 + 2.07`). Count affected verification or integration rework in addition; the case supplies no fixed duration for it. If recovery stops before those tasks finish, record the Work and burden that actually occurred rather than assigning the full repeat cost. Move only to the next authorized slot after repeated decision Work under the covering assignments and authority relations. Every repeated AI suggestion again requires the trace-review Work, assignment, and permission. Signed evidence supersedes provisional evidence for closure reliance without erasing the provisional history.
+
+The architecture decision remains prospective. Implementation and the three trial releases are later Work. If signed evidence becomes available at `D-21`, sensitivity selects A prospectively; it does not rewrite a past B2 release.
+
+In that pre-entry variant, suppose the existing signed-first arrangement has adequate current capability, capacity and release evidence, and the same comparison reveals no useful gain from provisional-first preparation. The team can finish by retaining A on that basis. Planning an extra B2 trial would consume the safety attention needed for the current release without changing this decision. Changed evidence timing or capacity can reopen the comparison. The baseline case still has a thirteen-day mismatch and supports the three bounded B2 trials under their stated conditions.
+
+The cases are constructed to show the synthesis and a changed condition. Their numerical demands and capability premises are stipulated task data, not empirical estimates for every development practice. The three-team case uses a supplied practice account in ordinary language; it does not claim that a diagram alone establishes an E.18.NET network.
+
+#### C.32.MWA.PP:5.4 - Three teams: development in ordinary work without creating a new office
+
+**The supplied practice.** Three engineering teams have adequate Methods for their current technical work. They want both reliable subject review and a culture of continuing development. A recurring pattern has become visible: a team's deliverable passes its own checks, but the receiver repeatedly performs extra interpretation before using it.
+
+The supplied development practice connects several contributions:
+
+1. A participant examines a completed result and its receiving use, notices a consequential difference, and formulates a question. B.5.PI supports the move from the apparently finished deliverable to the receiver's remaining difficulty.
+2. The participant and a coach construct a bounded next attempt. The coach helps problem formation and choice; the relevant technical expert qualifies the subject condition that makes the attempt interpretable.
+3. The participant performs the agreed attempt in a permitted setting, examines what became possible and what failed, and updates the usable means.
+4. After a successful result, the participant formulates a further worthwhile question or gives a reason to consolidate. C.40.CD supports the new problem arising from the achieved result. The coach examines the participant's contribution without silently supplying the promised independent choice.
+5. Another participant can obtain the relevant Method and its limits through the ordinary shared means. Whether it is taken up and continued remains a separate cultural question.
+
+These connections require different competence and authority. The coach cannot approve an unknown technical inference. The technical expert need not own the person's development choice. A team manager can reserve work time but cannot turn an unsupported experiment into valid subject evidence.
+
+**The receiving demand.** The initial ambition is two bounded attempts per team each week: six total. Each normal attempt requires two hours of the participant's own work, one hour of qualified coaching split between initial formulation and examination of the result, and half an hour of the relevant technical expert's review before the attempt. Common access, scheduling and material maintenance require one hour per week. These are the qualified demands assumed for this comparison.
+
+Each team has four approved participant-hours and one hour of its own technical expert's time. Each local leader has one approved hour and the competence to coach one such attempt. A practitioner who already helps several teams has four approved hours for this use. None of these hours may also be spent on protected current delivery.
+
+**Construct alternatives around the difficulty.**
+
+| Candidate | How the contribution would be obtained | Consequence under the stated weekly conditions |
+| --- | --- | --- |
+| Put all coaching and common work with the shared practitioner. | Six coaching-hours plus one common hour use the same qualified person. Local experts retain technical review. | Seven hours are required; four are available. A new office title does not repair the overload. |
+| Put coaching only with the local leaders. | Each leader handles the team's two attempts. | Each needs two hours and has one. The common access and maintenance work also still needs a performer. |
+| Distribute coaching and retain one shared support contribution. | Each leader coaches one local attempt. The shared practitioner coaches the other three and supplies the one common hour. | Local coaching uses three hours; shared coaching and common work use four. Technical review uses one hour in each team. Participant work uses four hours in each team. The normal demand is jointly within the stipulated capacities. |
+| Obtain coaching externally while retaining subject review locally. | A qualified available provider offers six coaching-hours plus its own preparation. The shared practitioner spends two hours on context/receiving work and one on common means. | The provider's stated first-week price is 800 units against an authorized ceiling of 900. This is a feasible monetary alternative under the assumed service and access terms, not a free substitute. It releases local coaching capacity but adds dependence and recipient–provider coordination. |
+
+The distributed candidate does not require a separate organizational unit. The same people perform contributions through their ordinary workplaces, with explicit reservations and shared means. Putting these same assignments under an office label would not change the calculation. A new unit would earn its cost only through an additional needed relation, such as durable responsibility for access or an effective shared-priority decision. Calling this a federation would add no content unless actual independent services and their coordination require that description. If those relations did require a permanent service owner, that would be a further justified architectural choice.
+
+**Check time as well as totals.** Participants prepare their initial questions on Monday. Each coaching-hour is split into half an hour before the technical review and half an hour after the attempt. Local leaders each supply those two half-hours for one case; the shared practitioner supplies three such pairs. Technical reviews occur before the permitted attempts. The participants' two hours cover initial preparation, the attempt and examination of its result. The common hour supplies access and scheduling before those uses.
+
+The allocation preserves who performs the difficult operations. A coach who writes the participant's next question may obtain a better proposal but would change the mastery observation. A technical review arriving after the attempt cannot qualify its prior conditions retrospectively.
+
+The arithmetic only covers normal bounded cases. At six starts, the shared practitioner and technical experts have no reserve for an overrun. It would be misleading to advertise unconditional six-case throughput from these sums.
+
+**Select a first commitment and begin.** For the first week, the authorized managers choose four starts: one locally coached case in each team and one additional case coached by the shared practitioner. That uses three local coaching-hours, one shared coaching-hour and one common hour. The shared practitioner retains two hours for an exception or an observed defect. Technical review demand is one hour in the team with two cases and half an hour in each other team. Participant demand is four, two and two hours respectively. The six-case ambition remains conditional rather than being silently reported as fulfilled.
+
+For this stipulated first-week decision, no deadline requires all six starts. Four complete attempts include every team and are sufficient for the managers' present receiving question. They judge that the two additional starts and released local coaching-hours offered by the external arrangement do not justify its 800-unit price and additional context work. They accept the three reserved leader-hours and slower initial coverage in order to retain the money for other work. This is the case's explicit value judgement, not a claim that distributed provision is generally cheaper or better. A time-critical need for six starts, a more valuable competing use of those leader-hours, an improved external offer or inadequate local coaching would reopen that comparison.
+
+The two-hour reserve belongs to the shared coaching and common-support contribution. It supplies neither extra technical-review capacity in the team with two cases nor additional participant time there. If that technical review cannot be obtained before the attempt, stop the dependent attempt and obtain another qualified contribution or revise its timing and commitment; the coach cannot cover the gap merely by having spare hours.
+
+This bounded start is not selected because four is a universal pilot size. It preserves a complete receiving result while leaving capacity to examine the uncertain normal-demand assumption. If reliable observations already established six-case demand without material exceptions, that additional restriction could be unnecessary.
+
+In the first constructed use, a participant finds that the receiving team has to reconstruct why a parameter was chosen. The relevant technical Method can supply that reason, but the original handover omitted it. The participant changes the handover and tests it with the actual receiver. After successful use, the next question concerns whether the same explanation works when the receiving team uses a different model. That question is not answered by celebrating the first improvement. Its subject relation may require further construction before another attempt is authorized.
+
+The observation can support the performed local result and the participant's demonstrated contribution. It does not by itself establish stable culture across all teams. The shared means make the qualified Method and limitation available to another participant; a later use can examine whether the practice continues without the original coach supplying its decisive choices.
+
+**Change a condition.** Suppose the shared practitioner becomes unavailable for two weeks. The distributed six-case candidate loses a real contribution. Local leaders can still coach three attempts, but common maintenance and the remaining coaching are unprovided. The available external offer can preserve more work if its required receiving/context contribution is assigned and available. Alternatively, the managers can accept a smaller temporary result and supply the common work through another qualified holder. The earlier choice does not survive merely because its organization chart is unchanged.
+
+If the local leaders instead acquire two available coaching-hours each and the common work is already supplied by an existing operations arrangement, six normal attempts may be obtained without the shared practitioner's coaching. That changed competence-and-capacity basis, not a universal preference for decentralization, justifies reducing shared execution.
+
+#### C.32.MWA.PP:5.5 - A voluntary provider community: common access without ownership of every mastery
+
+**The supplied network and the boundary.** A professional association helps independent engineers–managers develop their practice. Its account connects personal development, peer examination, creation of reusable methods, delivery of help and cultural continuation among members. Its provider work is distinct from the members' client work. Members are not employees of the association, and their clients have not delegated authority to it.
+
+One member wants to improve decisions in a familiar project setting. Another encounters an unresolved technical relation in a new professional field. A third has successfully changed a practice and wants to explore the next attainable challenge. These are legitimate entry situations for the selected development practice; they are not three instances of the same course.
+
+The association's coordinator can establish contact and obtain a qualified provider, but cannot certify every technical proposal. Examine these three proposals, retaining the missing contributions that can change the decision.
+
+A universal internal expert team would need subject competence and maintained evidence across all requested fields. Those contributions are presently absent and have a substantial carrying cost. A common portal alone would be cheaper, but would leave questions unresolved after intake. A bounded common access function can instead obtain development facilitation from one provider, technical contributions from selected specialists, and research from another where a qualified Method is missing.
+
+The third arrangement is not complete until a request can reach an available contributor and return in a usable form. For the familiar case, the actual subject Method is supplied, the member retains responsibility for their own project choices, and a coach helps them formulate and examine the next change. The client's permission for an intervention must still be obtained where required. An association membership does not supply that permission.
+
+For the unresolved technical relation, the available specialist explains precisely what is not known and proposes an inquiry that could discriminate between two constructions. The association can offer that bounded research contribution if it is strategically included and resourced. It cannot advertise acquisition of a settled mastery before the subject Method exists. If it elects not to enter that field, it can provide an honest referral or decline the unsupported offer. The member's legitimate need and the association's strategic remit remain different questions.
+
+**Follow the moved burden.** The proposed shared service initially assumes that members will donate unlimited specialist review. Looking from the common provider's scale, the arrangement is inexpensive. Looking from each member's client commitments, the same work displaces paid delivery. No enforceable or voluntary contribution has been obtained.
+
+Repair the arrangement with actual bounded commitments: for example, a willing specialist accepts one named contribution within an agreed window, with the permitted source material and an explicit refusal or failure return. The coordinator can use that contribution under its limits, not promise the specialist's continuing unlimited availability. If the provider cannot sustain the receiving work and compensation or reciprocity, narrow the offer rather than treating participation as a moral debt.
+
+For the successful third member, the next development question is constructed from what the successful change made possible. The member may use peers or AI, but the provider must not covertly decide every next challenge if independent self-development is promised. If the member chooses ongoing expert-led development instead, state that different assistance condition openly.
+
+**Change a condition.** A member asks the association to require the same practice in all member firms. The current voluntary network provides no such authority. The provider can explain the proposal, seek agreements and arrange supported trials. A participating firm can then establish its own local assignments and resources. The association cannot skip those local architecture decisions by declaring a common culture.
+
+This changed condition distinguishes cultural availability from corporate enforcement. It also shows why one shared Method and common access do not make all receiving organizations parts of one provider.
+
+#### C.32.MWA.PP:5.6 - Capable AI changes the whole arrangement, not just the coach's speed
+
+Return to the three-team case in :5.4, but change the available means. Stipulate that appropriately configured agents are qualified to help with problem formation, elicit and examine the participant's own judgement, retrieve the approved subject Methods and perform the relevant bounded technical review. They have authorized access to the needed data and can act within specified experiment limits. These are scenario premises to be established before real reliance; cheap tokens alone do not supply them.
+
+The new candidate does not need to route every case through a central human coach. Participants can work with their own authorized agents at the relevant workplace. A maintained common service supplies Method versions, access, evaluation and recovery. A provider may operate that service; it need not be a new internal office. Local managers retain or delegate the actual allocation decisions according to the current authority.
+
+If the human mastery promise is unchanged, the human still has to perform the contribution to be learned. The agent elicits that judgement before supplying answer-bearing help and examines later use under the promised support conditions. It can provide coaching and technical review without requiring a human to repeat each operation solely because the former arrangement used one. The participants' two hours per case remain in the capacity account; cheap AI has not made their practice free.
+
+A materially different candidate gives the agents responsibility for recognizing opportunities, constructing and selecting bounded changes, conducting authorized work and returning results and exceptions. If the recipient needs an organizational development result rather than every employee's independent mastery, this can be a serious arrangement. It changes the human-learning promise and must be compared at that revised strategic result, not credited with human mastery the people did not acquire.
+
+The central-office option can still be better when subject evaluation, confidential information or expensive shared infrastructure must be maintained once for many receivers. Conversely, trustworthy local agents with available common means can eliminate the original coaching bottleneck and its associated coordination. Compare those complete arrangements; neither “keep people in control” nor “replace the office with agents” supplies the configuration.
+
+**Change a condition.** The agents can generate plausible questions but cannot use the decisive field measurements, and those measurements require a scarce physical facility. The bottleneck moves into access and experiment performance. More autonomous reasoning does not increase facility capacity. Recalculate which attempts can be performed, obtain the required access or choose a different question. The AI-rich arrangement remains useful for some work without supporting the original throughput claim.
+
+If an agent proposes to change the very Method or evaluation means on which its qualification depends, separate that development work from ordinary enactment. Obtain the relevant subject and assurance result before extending the permitted use. The common service's role may change from case-by-case help to maintaining qualified means, while the actual authority and receiving conditions remain explicit.
+
+#### C.32.MWA.PP:5.7 - Obtain a weekly comparison and distinguish the learner's own contribution
+
+The following constructed cases use stipulated requirements, task evidence and effort estimates. They illustrate choices under those premises, not measured savings or a general estimate of AI reliability. Use this Method and its full suppliers when adapting them.
+
+##### C.32.MWA.PP:5.7.1 - Obtain a weekly comparison with limited specialist time
+
+A team needs a comparison of changes in twenty supplier notices before its weekly planning decision. The result must preserve the applicable source version, changed conditions and any unresolved implication. The recipient needs the comparison, not personal mastery of every extraction operation. In this case, representative prior use supports two ways that meet the same acceptance conditions.
+
+| Specialist work for one weekly comparison | Current manual way | Qualified AI-assisted way |
+| --- | --- | --- |
+| Prepare the source comparison | 3 hours | 0.5 hours |
+| Check decision-bearing source claims | 1 hour | 1 hour |
+| Correct, integrate and use the comparison | 1 hour | 1 hour |
+| Total recurring specialist time | 5 hours | 2.5 hours |
+
+The AI-assisted way also requires 1.5 hours of initial setup. The team has three specialist hours available each week after continuing obligations. Under these stipulated estimates, the first assisted cycle needs four hours and cannot fit; later cycles need 2.5. C.32.MWA.PP exposes that timing constraint instead of hiding setup in an average saving. The owner obtains 1.5 hours for setup in the preceding week, without displacing its existing commitments. The selected arrangement now fits its stated resource premise. Two such comparisons with no shared work would need five recurring hours and reopen that premise.
+
+The agent receives the twenty applicable notices and the comparison question. It may read the supplied material and prepare an internal draft; it has no authority in this case to amend supplier terms or publish externally. A source-checking return preserves a notice's condition: a changed lead time applies to new orders after a specified date. The receiver uses that condition to separate new orders from the existing backlog. A draft that applied the new time to every order would fail the receiving use even if generation completed without an error.
+
+The worked arrangement ends with the used comparison and its unresolved items. If a source becomes inaccessible, the affected claim remains unverified; other supported claims can still be used within their limits. If correcting the drafts begins to exceed the estimate, reopen that candidate's effort and qualification. Faster generation alone does not establish the original capacity claim.
+
+##### C.32.MWA.PP:5.7.2 - Change the purpose to the person's own capability
+
+Keep the reporting task, but add a separately chosen purpose: an analyst must learn to identify when a changed source condition alters the comparison. The AI-assisted production arrangement can continue supplying this week's usable result while the learning work is arranged. Include the learning time in the same capacity account.
+
+Use appropriate learning Methods to design representative practice and perform it with feedback and correction. Give the learner a relevant notice and its receiving question, with the assistance permitted for this learning purpose. Ask the learner to identify the condition, show which conclusion it changes and explain why. Feedback addresses the observed omission; a subsequent attempt tests the repaired operation. Giving the answer before an attempt may support production while defeating the particular evidence sought about the learner's own performance.
+
+When the claim concerns unfamiliar work or retained ability, use an assessment Method for that transfer or retention claim under the required support and timing conditions. One successful attempt supports only what was exercised. If the later work permits a source or AI aid, test the person's required contribution with that support instead of silently changing the goal to unaided recall.
+
+Suppose the learner now notices that two apparently comparable notices use different order-date conventions. Recover the conventions from their sources, or ask a domain practitioner for the missing interpretation. Use C.39.MC if the comparison Method needs to change, and preserve comparisons whose premises still hold. Use each result at its supported scope: the report supports this week's decision, the observed learning response informs further practice, and a qualified Method change can be reused under its conditions.
+
+### C.32.MWA.PP:6 - Bias-Annotation
+
+| Recurring bias | Likely drift | Repair |
+| --- | --- | --- |
+| universal-stack bias | Method, Work, support, allocation, description, and culture become one level sequence. | Name each selected structure and direct relation separately. |
+| visual-representation bias | A diagram or mathematical graph is treated as the architecture. | State the structure and relation semantics first; choose a representation only for a named use. |
+| concurrency bias | Overlap erases result-use, evidence, configuration, or authority guards. | Identify genuine first–then conditions directly. |
+| local-efficiency bias | Reduced effort in one role hides burden moved to another role or interval. | Show combined peak and total burdens with receiving scopes. |
+| trial-as-reality bias | A selected possible-future synthesis is reported as obtaining practice. | Keep decision, implementation Work, trial Work, observations, and relation truth distinct. |
+
+This Method starts from an intended contribution and can therefore underrepresent people who bear costs without being named as recipients. Recover affected participants when their workload, autonomy, exposure or legitimate interests can change the design. A sponsor's preferred culture is not the whole account of those consequences.
+
+Existing organizational boundaries bias generation toward moving tasks inside the current chart. Existing framework or professional labels can create the opposite bias: every useful distinction becomes a separate permanent specialty. Test actual contribution and interaction before selecting either boundary.
+
+Common-service advocates can count saved duplication while overlooking local interpretation and integration. Local-autonomy advocates can count responsiveness while overlooking common maintenance, incompatible decisions and loss of specialist depth. Apply the same whole-cost comparison to both.
+
+An AI-rich candidate can appear superior by assuming perfect competence, free access or unchanged human learning. A human-centered candidate can appear necessary by retaining reviews whose contribution is no longer established. Qualify actual capability and permissions, preserve the intended holder's result, and compare the best applicable alternatives.
+
+A successful example can hide a narrow assumption: ready-made Methods, an employer's authority, qualified local leaders or stable demand. The Solution allows those conditions to vary and returns the resulting missing contribution. Renaming the example's organization is not a transfer test.
+
+### C.32.MWA.PP:7 - Conformance Checklist
+
+Use these questions on the arrangement being constructed; they do not require a separate record for every local action.
+
+**Recognition and construction**
+
+- [ ] The result names an obtaining or possible-future practice, receiving result and decision boundary; a supplied typical network is distinct from proposed local bindings and actual performance.
+- [ ] Each Method and candidate account keeps its prior status. A missing subject Method or join is an exact return, not a role or office label.
+- [ ] A consequential result can be followed through its subject, applicable Method, intended Work, capable performer, means, authority and receiving condition.
+- [ ] Each selected structure can change the decision. Method composition or unfolding, Work parthood, overlap and first–then guards, allocation, support, description and cultural relations retain their meanings.
+- [ ] Serious alternatives differ in direct relations, not view or format; they retain the feasible incumbent and applicable ordinary-workplace, common, specialized, federated, external or AI-based provision without requiring a new office.
+- [ ] The comparison exposes the interaction or moved burden that can reverse the choice, including qualified shared resources, recurring work, windows, continuing obligations and the transition.
+- [ ] Commitments distinguish who can assess, assign, authorize, supply and accept. Agreements or changed authority remain conditional until effective.
+- [ ] A sufficient current arrangement or realization is preserved. Additional implementation or trial has a worthwhile contribution, feasible conditions, observations, stop and recovery.
+- [ ] The realization receives the exact remaining contribution and return condition; it distinguishes a supplied result, Method enactment, supported capability and unpromised rescue.
+- [ ] A change to a Method, means, provider, demand or authority reaches affected receiving uses without erasing valid independent work or performed history.
+
+**Assurance at the claimed scope**
+
+An architecture comparison needs a credible basis for its inputs and explicit proposed conditions. A choice needs the relevant decider and authority. Actual performance needs its real occurrence and result. Capability needs evidence for the named holder under its support conditions. A causal-use result is consumed only within its verdict boundary. A possible-future decision establishes no obtaining ArchitectureRelation.
+
+When continuing development is promised, keep the return from an achieved result to a further worthwhile question or justified continuation. When human mastery is promised, examine the human's contribution. When cultural continuation is claimed, examine transmission and further use at the stated scale. These assurance questions apply to their respective claims, not automatically to every technical support arrangement.
+
+### C.32.MWA.PP:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern | Repair |
+| --- | --- |
+| “All methods are layers in one stack.” | Select and name the actual Method, Work, allocation, support, description, and cultural structures. |
+| “These two diagrams are alternatives.” | Compare the underlying relation sets; if they are the same, keep them as views. |
+| “Work overlaps, so the Methods compose.” | State Work overlap and require independent Method identity and composition evidence. |
+| “B2 saves 1.60 hours.” | Name the role and interval from which burden leaves and the role or interval that receives it. |
+| “The trial choice proves the architecture.” | Keep proposed relations, decision, trial Work, observations, and later obtaining claims distinct. |
+| “Recovery means switching to the earlier alternative.” | Preserve already-performed Work and define a separate post-entry recovery branch. |
+
+#### C.32.MWA.PP:8.1 - Performance and support arrangements
+
+| Misuse | Why it fails here | Repair |
+| --- | --- | --- |
+| Choose a CoE, office or federation and allocate the remaining boxes to it. | The form can hide missing Methods, incompatible results or unprovided work. | Recover the network's contributions and the operative difficulty; construct alternative relations before choosing the form. |
+| Treat every Method step as one organizational unit. | Method composition and division of work answer different questions. A performer can use several Methods, and one Method can need several performers. | Preserve the separate structures and explain the necessary correspondences. |
+| Treat every performance difficulty as a skill gap. | Missing access, unsuitable inputs, authority or capacity can defeat competent performance. | Localize the missing contribution before commissioning learning. |
+| Make a shared carrier the universal subject expert. | Routing, maintaining access and scheduling do not supply every professional judgement. | Obtain the actual subject contribution and keep its boundary and failure return visible. |
+| Balance hours while ignoring qualification and timing. | Another person's free hour or a late response may be unusable at the needed point. | Compare qualified demand in the relevant windows and repair the actual overload or incompatibility. |
+| Preserve the promise while cutting the hardest branch. | A cheaper result service can be credited with mastery or cultural continuation it no longer supplies. | Change the commitment explicitly or restore the missing contribution. |
+| Treat a successful pilot as stable cultural reproduction. | One instructed performance can depend on exceptional help and reveal no independent continuation. | Qualify the narrow result and obtain the additional observation only when the broader claim is needed. |
+| Scale participation through assumed authority. | Voluntary members, clients and partner firms may not be subject to the proposed assignments. | Obtain the agreement or other legitimate relation, change provision or narrow the scope. |
+| Automate the old office role by role. | New capability may permit a different organization of the whole work; retained coordination can become unnecessary cost. | Reconstruct the complete AI-enabled alternatives and preserve only justified constraints and contributions. |
+
+### C.32.MWA.PP:9 - Consequences
+
+Architecture choices become concrete enough to realize and reconsider without forcing one universal decomposition. Genuine guards survive concurrency, co-use survives without a fictitious composite, and moved burden is visible before local optimization is accepted. Missing subject Methods, learning needs, provider gaps and authority questions become different actionable returns.
+
+The comparison can expose an unavailable volume, independence level or remit. A smaller complete commitment can be preferable to a broad service that cannot respond. Office creation becomes one possible arrangement choice. A first use can begin while later contributions remain conditional, provided its own conditions and protected work hold.
+
+The cost is attention, consultation, recovery of relevant structures and sometimes modelling or inquiry. Some attractive alternatives remain only proposed. A relation-only stop can be more useful than an unsupported Method whole, and an adequate incumbent can make another comparison or trial wasteful.
+
+Explicit commitments can also make informal help rigid or costly. Preserve useful discretion and change only what the receiving result needs. An architecture description does not itself produce capability, authority or cultural continuation.
+
+### C.32.MWA.PP:10 - Rationale
+
+Method organization, dated Work, subject arrangement, allocation, descriptions, provider support and cultural continuation answer different questions. Treating them as isomorphic loses either useful simultaneous contribution or real dependency. Select the structures that can change the decision and compare their relations in the receiving case.
+
+Project, process and case views provide a practical test: when several views concern the same Work, their labels do not create architecture alternatives. The alternatives begin where proposed direct relations differ.
+
+**Begin with the work's subject and Method because allocation must preserve an obtaining way.** A staffing chart can name a performer for an operation nobody knows how to perform. A service catalogue can promise a result without explaining the transformation that obtains it. Recovering the supplied network first exposes this difference. It does not require a complete description of every Method before a simple available contribution is used.
+
+**Connect several structures because each can defeat the others.** A valid Method can have unavailable performers; competent performers can lack a usable interface; a reasonable local schedule can exhaust a shared expert; an authorized decision can still rest on an unsupported subject claim. C.32.MWA and C.30.ASV provide the governing distinction. The support question needs their connections made practical through exact receiving results, candidate assignments and joint demand.
+
+**Generate by changing mechanisms because named forms are underdetermined.** A centralized office can perform cases, provide common tools or only maintain access. Each has different consequences. Conversely, the same operative allocation can exist in a formal office or ordinary roles. Specialization, proximity, decision placement, provider relations and common means are useful design variables only through the contributions they change.
+
+**Allow the remit to change because feasibility can expose the wrong promise.** Strategic purpose constrains the architecture, but an unavailable or disproportionate obtaining arrangement can properly return a different result, audience or horizon to that purpose. Return the changed contribution, its feasibility or burden and the affected promise to that purpose and choice owner; carry the resulting constraint back into the arrangement. The architecture does not grant itself authority to change the promise; it returns the reason to the relevant choice.
+
+**Keep development and support distinct because their recipients and results differ.** A supplier can improve its capability to help while a client learns nothing. A client can develop through an existing provider without the provider changing. A community can transmit a Method without becoming the employer of its carriers. The network can connect those contributions while their Work, rights and evidence remain independent.
+
+**Use finite comparison and selective detail because the architecture itself consumes resources.** The fullest possible model is not the goal. A contradiction that survives a cheap calculation should be repaired before collecting more data. A consequential uncertainty can justify inquiry when its plausible answer changes the choice. C.11.CRC and C.11.DUA preserve that proportionality.
+
+A direct use of existing organization, service-design or operating Methods is preferable when it already supplies this connected answer. C.32.MWA.PP is useful where the unresolved question is how supplied Methods can be combined or co-used, including their distributed performance and support, without merging their structures or moving a difficulty out of sight. A bigger office model or a longer document has no advantage by itself.
+
+### C.32.MWA.PP:11 - SoTA-Echoing
+
+C.32.MWA, C.30, A.22 and B.1.5 supply several-structure synthesis, architecture truth, selected structures and Method composition. C.32.MWA.PP applies them to construction and bounded comparison of Method arrangements. Organization-design Methods can already supply organizational mechanisms and complete same-result human, AI, internal and external provision; use a sufficient result directly. Organizational realization Methods, A.15.8.MS and the introduction Method described in [A.3.1.MI](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a31mi---introduce-a-method-into-practice-and-decide-what-to-keep-or-change) provide realization at their respective scopes. Section :4.9 gives them the remaining contribution instead of adding another implementation practice.
+
+The practice question is how to make a family of Methods performable through a jointly feasible arrangement while preserving subject competence, recipient results and authority. A useful constructive line combines service/component construction, organization design and context-sensitive support. Its alternatives include selecting a named office model, assuming universal decentralization or reducing every gap to training. The synthesis adopts particular operations from that line; it does not claim a comparative experiment proving one general organizational form.
+
+| Source line | Choice used here, its advantage and its limit |
+| --- | --- |
+| [UK Delivery Model Assessment](https://assets.publishing.service.gov.uk/media/60a387d5e90e07357422eb45/Delivery_model_assessment_guidance_note_May_2021.pdf), especially service components and delivery alternatives | Adapt the component-level provision comparison into §§4.5–4.8. It improves on a whole-office make/buy label. Procurement-specific rules and automatic weighted scoring are not imported; the comparison retains actual authority and distinct consequences. |
+| [Microsoft agent CoE operating models](https://learn.microsoft.com/en-us/agents/center-of-excellence/operating-models) and [Fabric CoE roadmap](https://learn.microsoft.com/en-us/power-bi/guidance/fabric-adoption-roadmap-center-of-excellence) | Adapt their separation of common means, delivery and local expertise. Revisit allocation as capability and controls change. Their IT arrangements are useful candidates, not universal office forms; the local Method and receiving result still govern transfer. |
+| [PMI PMO Value Ring overview](https://pmoga.pmi.org/resources/pmo-value-ring/apps) | Retain recipient value and a revisable mix of services when defining the remit. A service portfolio alone does not supply the transformation network or its execution architecture; §§4.1–4.7 make those additional connections. The public overview is the source used here, not an assumed reading of the entire current guide. |
+| [Implementation Support Practitioner Practice Guide](https://cippro.wpengine.com/wp-content/uploads/2022/10/ISP-Practice-Guide-v1-10.27.22.pdf), co-design, tailoring support, teams and capacity | Adopt adaptable help and linked capacity-building while separating intervention-specific expertise from general support. The source's human-services context does not supply every subject Method. Section 4.2 preserves the unknown-method and research branches rather than converting them into adoption. |
+| [Team Topologies: Key Concepts](https://teamtopologies.com/key-concepts) | Adapt distinct collaboration, facilitating help, persistent specialist provision and common platforms into the interaction choices of §4.5. A fixed team-type taxonomy is unnecessary here; the candidate's actual contribution and interaction burden decide. |
+| [IIA, Three Lines Model: Assurance and Advice to Support Effective Governance](https://www.theiia.org/globalassets/site/resources/statements-of-position/tlm_assurance_advice_support_effective_gov_en.pdf), 2026 | Retain the conditional distinction between management monitoring and independent judgement, including mandate, access, conflicts and a protected receiving route. The applicable corporate governance Method arranges and receives the corporate contribution. The model does not mandate three departments, classify all support as risk management, or establish empirical superiority of an office form. |
+| [FinOps Scopes](https://www.finops.org/framework/scopes/) | Adapt decision-driven boundaries and deliberate treatment of overlap into remit revision. A technology label or broad competency category does not choose the boundary. This is a transferred design move, not evidence about every professional culture. |
+| [MIT CISR, Designing Decision Rights for AI](https://cisr.mit.edu/publication/2026_0601_AIDecisionMatrix_SebastianWeillHaskampVomBrocke), June 2026 | Its distinction among framing, acting and learning makes allocation more precise than “AI assistance.” Adapt that distinction to §§4.5 and 5.6. Interview-informed recommendations for current human accountability are not treated as an invariant allocation for every stronger-AI scenario. |
+| [MIT CISR, Establishing Guardrails on the AI Roller Coaster](https://cisr.mit.edu/publication/2026_0901_AIRollerCoaster_ThorogoodReynoldsGill), September 2026 | Its cases make distributed subject work, common controls and their coordination burden visible. Use those as candidate mechanisms and costs, not proof that a permanent central unit is always necessary. Reopen when capability, risk, access or provider conditions change. |
+
+AI performance and human acquisition need different evidence. The [Cybernetic Teammate primary abstract](https://www.nber.org/papers/w33641) supplies a bounded task-performance result, not whole-organization replacement or durable mastery. [Anthropic's skill-formation study](https://www.anthropic.com/research/AI-assistance-coding-skills) supplies immediate learning observations in one programming setting, not a universal prediction of future human–AI work. These limits motivate the separate promises and conditional capability premises in §5.6.
+
+The source contributions justify candidate operations and useful distinctions. Transfer beyond their original fields depends on the actual Method, holder, result and relations recovered here. Reopen the relevant choice when a developed subject practice supplies a better complete construction, when observed work defeats the claimed connection, or when changed means alter the total contribution.
+
+Reopen when a representative use exposes another non-isomorphic structure that reverses the decision, when moved burden remains hidden, or when an arrangement cannot be realized without changing its selected relation set.
+
+### C.32.MWA.PP:12 - Relations
+
+The Core contributions below support the general construction. The domain entries describe possible separately selected work: obtain the particular result and conditions from the practice that actually governs the receiving case. A reference does not supply an unavailable performer, permission or professional judgement.
+
+| Related contribution | General construction or separate subject use |
+| --- | --- |
+| A.3.1.QM | Supplies individually qualified Methods/accounts and whole-independent local connections, not whole compatibility. Preserve their statuses. |
+| B.1.5 and B.1.5.CM | Establish Method composition or resolve a proposed whole. Co-use can remain plural; a relation-only clarification can finish without B.1.5.CM or an C.32.MWA.PP comparison. |
+| C.32.MWA, *Practice Architecture Synthesis from Several Structures*, :4.1–4.4 | Provides truthful actual/prospective entry, separation of structures, comparison of changed arrangements and moved burden. C.32.MWA.PP supplies the Method-arrangement question, including performance and support, and returns the architecture consequence to the real decider. |
+| C.30.ASV, *Architecture Structural View Adequacy*, :4.5a | Distinguishes composition, result use, order, variation, replacement and separate performance/support structures. Use it when “method architecture” hides the relation being changed. |
+| E.18 and E.18.NET; C.30.TFS-REL:4.4–4.4a | Supply a qualified transformation-flow structure or network and its bounded architecture use. Retain member-local identities and relations; a network is neither the performer nor an automatic containing organization. |
+| A.3.4; A.13 and A.15.1 | Govern actual transformation, performer and Work claims when local enactment is asserted. A prospective configuration can be compared without inventing those actual occurrences. |
+| C.39; B.1.5.EW and B.1.5.RS | Supply missing-way construction and the constituent/encompassing-work or replacement questions. Return the actual missing operation or affected receiving use rather than expanding a task label. |
+| Strategic choice Methods | Construct strategic alternatives and explain contribution, sustaining conditions and joint dependencies. An unavailable local architecture can reopen remit, recipient, horizon or promise through that strategic choice. |
+| Organization design and performance-allocation Methods | Develop organizational mechanisms and compare complete same-result performance arrangements. The selected constraints return to the relevant organization realization and operating practice; comparison is not enactment. |
+| Systems Engineering Methods for needs and provider concepts | Connect concrete receiving use with a provider concept, including partner contributions, continuing Work and authority. Their engineering result does not prove demand, affordability or supplier commitment. |
+| Human learning and capability-assessment Methods | Construct the human learning portion and qualify personal performance, transfer or retention under actual support conditions. These contributions do not substitute for the subject Method or an organization's joined capability. |
+| B.5.PI; C.40.CD; the selected development practice | Supply problem formation before a settled task and new questions after an achieved result. This Method arranges their performance and continuation; it does not reduce development to acquiring a known Method. |
+| C.11.CRC:4, C.11 and C.11.DUA:4 | Supply finite contribution comparison, choice and proportionate inquiry/change. Return one warranted commitment or precise missing condition, not an ungrounded scalar ranking. |
+| Corporate assurance arrangement Methods | Obtain and receive the independent assurance contribution when a corporate decision needs it. Preserve professional scope, access, conflicts and reporting conditions; do not substitute learning assessment or ordinary monitoring. |
+| The applicable community, cultural, governance, operating and subject Methods | Supply participation, transmission, direct rights, continued service and professional adequacy where needed. Their results retain their own bearers, scope and evidence; an architecture proposal does not create them. |
+
+An applicable organization-change Method can realize the bounded organizational case illustrated in :4.9. A.15.8.MS supplies usable Method materials and support, and [A.3.1.MI](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a31mi---introduce-a-method-into-practice-and-decide-what-to-keep-or-change) the complete introduction/use/revision Method. Section :4.9 gives each its exact receiving requirement and reuses sufficient implementation.
+
+C.36 and C.36.RP supply the cultural-practice questions alongside the applicable Community Management Methods for actual community participation. A shared Method can continue among independent carriers without making them one community or organization. Their full Methods and evidence boundaries remain with those suppliers.
+
+A research Method for explaining how a Method architecture differentiated may supply that account and a separate causal-use result. C.28 governs any causal conclusion consumed. C.32.MWA.PP consumes only the reliance allowed by the verdict and keeps its own decision authority.
+
+When a separate mathematical construction is needed, use a mathematical Method to develop the operations, retained information and shared-resource constraints that derive a property or counterexample. A Method for designing work through mathematical transformation can then construct a changed way of working when that is the selected design question. The arrangement consumes only the qualified mathematical result, with its assumptions and limits.
+
+### C.32.MWA.PP:End
 
 ## C.32.FAIL - Architecture Failure Recognition and Repair
 
@@ -25916,731 +26371,3 @@ These rows show how source practice informs C.32.FAIL repair fields, repair fami
 `C.32.FAIL` governs conversion of a recognizable architecture-synthesis failure into one repair action over one architecture object under stress.
 
 ### C.32.FAIL:End
-
-## C.32.PAD - Project Architecture Decision After Candidate Synthesis
-
-> **Type:** Architecture decision pattern under C.32
-> **Status:** Stable
-> **Normativity:** Normative unless explicitly marked informative
-
-### C.32.PAD:1 - Problem frame
-
-Use this pattern when a project has synthesized candidate architecture configurations and must make the project architecture decision that will guide later design, implementation, construction, operation, governance, or change work.
-
-Primary working reader: an architect or architecture-responsible practitioner who has enough candidate synthesis, comparison input, and architecture-characteristic pressure to decide what architecture will be pursued now.
-
-Typical entry phrases:
-
-```text
-"We have three candidate architecture configurations; which one becomes the project decision?"
-"The candidate improves maintainability but worsens evidence reuse; what is the accepted trade-off?"
-"Developers need to know which architectural style, method, or pattern use is now required."
-"The architecture decision must say which structure is fixed by this decision and which refinement remains open."
-"The ADR cannot be written yet because the decision relation is not clear."
-```
-
-**First-minute use slice.** A product-family architect has a C.32 candidate palette with three module, placement, and evidence-structure variants. C.32.ACS names maintainability, substitutability, and evidence reuse as optimization indicators, and C.32.ACE has evaluated the candidates under one parity frame. Using C.32.PAD, the architect records the exact composite project work, selected configuration, affected selected structures, accepted loss in evidence reuse, method-use instruction for product teams, structures fixed by the decision, refinement left open, source-return condition, and reopen trigger. The result is not an ADR file yet; it is the architecture decision relation concerning that project work which an ADR or another publication form can describe.
-
-The primary `EntityOfConcern` is `ArchitectureDecisionRelation@Project`: an architecture decision relation over one bounded architecture question with one exact composite project `U.Work` as a participant. It links that work, the decision subject, candidate basis, selected architecture option, affected structures, architecture characteristics, rationale, accepted losses, consequences, method and work expectations, publication projection, evidence or eval exits, and reopen conditions.
-
-`ArchitectureDecisionRelation@Project` is not a new `U.*` kind. `@Project` is a compatibility and retrieval cue, not the source of project identity or scope. The relation is project-local only when `projectWorkOccurrenceRef` identifies the exact composite `U.Work` that participates in it. When another slot becomes load-bearing as an FPF object, recover the subject pattern for that object.
-
-When this decision designates a **project system-of-interest**, `projectSystemOfInterestRef?` names only an independently admitted existing `U.System`. Before identity inception, keep the intended referent in `intendedProjectSystemClaimRef?` as `U.WorkPlan`, decision, system description, or other claim content. A local kind is named separately in `systemOfInterestKindRef?`, while `systemOfInterestClassificationRef?` cites an independently obtaining classification judgment; neither entails an assignment. A current assignment uses separate species and occurrence refs, and the occurrence's holder is that System. Route any source phrase such as `SystemOfInterestRole` through `E.10.ROLE` before filling these fields. A taxonomy or scheme is not assignment content. Designation, kind, classification, assignment, Work, change, use facts, and the decision remain distinct. The decision neither establishes a compound project-selection truth nor repairs its missing constructor; when that one truth is required, retain every direct fact and record the A.15.6 result `missing-substrate[project-selection-conjunction]`.
-
-When the decision uses a transformation-flow network, `transformationFlowStructureNetworkRef?` names only an independently selected E.18.NET `TransformationFlowStructureNetwork@Context <: U.Structure`; `projectNetworkSelectionResultRef?` may cite the separate C.2.1 judgment about why that network answers the project question, and `architectureTransformationFlowStructureRelationRef?` cites C.30.TFS-REL when architecture use is current. A network record, a C.32.CONWAY frame or exact pair row, and this decision create no network member, cross-flow occurrence, architecture-influence occurrence, architecture relation, or other world-side fact.
-
-What goes wrong if C.32.PAD is missed: a team writes an architecture record, diagram, shortlist, ranking, or local choice without a recoverable architecture decision relation to exact project work. Later workers cannot tell which architecture configuration is selected, which structures are affected, which method they must use, which losses were accepted, or when the decision must be reopened.
-
-What C.32.PAD buys in practice: practitioners performing the project work can turn a candidate palette into one governed decision relation that is strong enough to guide work, publish an ADR-like record, support review, and reopen under architecture evolution.
-
-Ordinary working move: recover the live decision question, cite the candidate basis, select the architecture option or bounded exception, record the trade-off over declared architecture characteristics, then bind the decision to method-use expectations, work split, source-return, and reopen conditions.
-
-Adoption test: after using C.32.PAD, another practitioner can answer: what architecture option was selected, from which candidate basis, for which affected structures, under which architecture-characteristic trade-off, with which method and work consequences, and under which reopen condition.
-
-Not this pattern when the current work is candidate synthesis, architecture-description adequacy, ADR publication projection, adequacy evaluation, evidence, assurance, gate passage, local choice, or performed work. Use the pattern for the next question named in `Relations` for those claims.
-
-The first useful output is `ArchitectureDecisionRelation@Project`:
-
-```text
-ArchitectureDecisionRelation@Project:
-  decisionId:
-  projectWorkOccurrenceRef: U.EntityRef constrained to exact composite U.Work
-  projectSystemOfInterestRef?: U.EntityRef constrained to one independently admitted existing U.System
-  intendedProjectSystemClaimRef?: U.WorkPlan, decision, system-description, or other claim episteme ref before identity inception
-  systemOfInterestKindRef?: U.KindRef resolving to one exact local system-role kind
-  systemOfInterestClassificationRef?: U.RelationRef resolving to the exact classification judgment for projectSystemOfInterestRef under systemOfInterestKindRef
-  systemOfInterestAssignmentSpeciesRef?: U.RelationKindRef constrained under U.SystemRoleAssignment
-  systemOfInterestAssignmentOccurrenceRef?: U.RelationRef constrained to an obtaining occurrence of systemOfInterestAssignmentSpeciesRef, with actual participants, applicability, extent, and projectSystemOfInterestRef as holder recoverable
-  decisionSubjectRef:
-  describedHolonRef:
-  decisionQuestion:
-  intendedDecisionUse:
-  claimScopeRef: U.ClaimScope
-  decisionWindowRef:
-  candidateBasisRefs:
-  comparisonOrSelectionRefs?
-  structuralInformationLensUseRefs?
-  holonTransitionOrBOSCTriggerRefs?
-  architectureInfluenceCorrespondenceRef?: C.32.CONWAY frame or exact pair-row ref
-  transformationFlowStructureNetworkRef?: exact independently selected E.18.NET TransformationFlowStructureNetwork@Context ref
-  projectNetworkSelectionResultRef?: exact C.2.1 result episteme whose EntityOfConcern is transformationFlowStructureNetworkRef
-  architectureTransformationFlowStructureRelationRef?: exact C.30.TFS-REL use/trace ref when architecture uses that network
-  selectedArchitectureOptionRefs:
-  selectedStructureEffects:
-    - structureKindRef:
-      selectedStructureRef:
-      decisionEffect:
-      relationFunctionClaimRef:
-  architectureCharacteristicTradeoffs:
-    - architectureCharacteristicRef:
-      criteriaRowRef?
-      expectedGain:
-      acceptedLoss:
-      evalResultRef?
-      guardrailRef?
-  rationaleRefs:
-  rejectedOptionRefs:
-  consequenceRows:
-  architectureDescriptionRefs:
-  methodUseInstructions:
-    - methodDescriptionRefOrPatternRef:
-      expectedStructureEffect:
-      intendedPerformerSystemRef?: U.EntityRef constrained to U.System
-      intendedPerformerKindRef?: U.KindRef
-      intendedPerformerClassificationRef?: U.RelationRef resolving to an exact classification judgment
-      currentPerformerAssignmentSpeciesRef?: U.RelationKindRef constrained under U.SystemRoleAssignment
-      currentPerformerAssignmentOccurrenceRef?: U.RelationRef constrained to an obtaining occurrence of currentPerformerAssignmentSpeciesRef, with actual participants, applicability, extent, and intendedPerformerSystemRef as holder recoverable
-      intendedAssignmentRequirementRef?: plan, policy, or decision-content ref stating a prospective assignment requirement; does not assert an assignment, commitment, or permission occurrence
-      actualImplementationWorkRef?: U.EntityRef constrained to U.Work
-      actualImplementationWorkAttributionRef?: U.RelationRef constrained to one obtaining F.6 performedUnderAssignment relation, only when the instruction expressly represents attribution
-      responsibilityRelationRef?: U.RelationRef resolving to an independently obtaining admitted domain relation
-      responsibilityMissingGovernor?: exact A.6.RCD result when responsibility is required but no predicate is admitted
-      authorityRelationRef?: U.RelationRef resolving to an independently obtaining admitted domain relation
-      authorityMissingGovernor?: exact A.6.RCD result when authority is required but no predicate is admitted
-      permissionRelationRef?: U.RelationRef resolving to an independently obtaining admitted domain relation
-      permissionMissingGovernor?: exact A.6.RCD result when permission is required but no predicate is admitted
-      commitmentRelationRef?: U.RelationRef resolving to an independently obtaining admitted domain relation
-      commitmentMissingGovernor?: exact A.6.RCD result when commitment is required but no predicate is admitted
-      workBoundaryRef:
-      readinessOrGateExitRef?
-  architectDeveloperSplit:
-    decisionFixedStructureRefs:
-    openRefinementScopeRefs:
-    sourceReturnCondition:
-  publicationProjectionRef?
-  evidenceOrAssuranceExitRefs?
-  governanceExitRefs?
-  reopenConditions:
-  supersedesDecisionRefs?
-  status:
-```
-
-The filled `ArchitectureDecisionRelation@Project` is the decision result. Its selected option, affected structures, criteria and trade-offs, scope, window, consequences, and status make that result recoverable; a second generic result or context record would only duplicate it.
-
-The field names in this first-output form are publication-friendly filled-reference fields. Durable relation positions must be expressible through `A.6.5` SlotSpecs: each position has a local `SlotKind`, an admitted `ValueKind`, and a by-value or concrete `RefKind` filling mode. A field name such as `decisionSubjectRef` is not a SlotKind, not a U-kind, and not an ADR heading; it is the filled-reference field by which this relation record points to the value governed by the slot-bearing relation.
-
-When an instruction cites actual implementation Work, recover each exact actual performer through A.13 and let `actualImplementationWorkRef` name the `U.Work` occurrence independently admitted through A.15.1. Assignment species and occurrence fields remain optional neighboring claims. Add `actualImplementationWorkAttributionRef` only when the instruction or receiving use expressly represents precise assignment-bound attribution through the same obtaining A.13 assignment; missing or failed F.6 leaves the Work ref intact. The decision record creates none of these facts.
-
-### C.32.PAD:2 - Problem
-
-
-Architecture synthesis produces candidates; the Systems performing project Work still need a decision, while any local system-role kind, direct assignment species, authority, or responsibility claim remains a separate fact established through its own pattern. The decision is not the candidate palette, the declared selected-set result, its publication, the architecture description, or the ADR file. It is the architecture decision relation that identifies the composite project Work, says which architecture option is now pursued for it, and records what follows from that selection.
-
-The problem is difficult because architecture decisions sit between structures and Methods. C.30 keeps an obtaining `ArchitectureRelation` with its holon and selected `U.Structure` separate from an `ArchitectureClaim` carrying candidate, required, desired, or expected content. A project architecture decision can tell intended developer Systems which Method description, architectural style, pattern use, or work boundary to follow so that later work aims to produce or preserve the intended structures. For example, "use the client-server style here" is a Method-use instruction whose intended result is a module and interaction structure of the described System. The decision relation must keep actual or modal structure content, intended Systems, local kinds, separate System-classification judgments, assignment requirements and current assignment occurrences, plans and commitments, permissions and authority, and actual Work as separate branches. Route unresolved role wording through `E.10.ROLE`. When C.32.CONWAY supplies an influence-source architecture or selected structure, that source remains non-agentive and does not become the performer.
-
-The problem is also multilevel. The architecture decision may fix selected structures at one holon level while leaving lower-level refinement open. It must therefore say which structure is fixed, which refinement remains open, which source detail must remain recoverable, and which result can reopen the decision. If that boundary is missing, the decision becomes either empty advice or uncontrolled micro-management.
-
-Finally, architecture decisions are evolutionary. They are made under current candidate knowledge, current characteristic criteria, current eval readings, and current organization or tool constraints. They should be explicit enough for present work and cheap enough to supersede when a better candidate, changed characteristic pressure, or architecture-influence/transformed-side fit changes.
-
-C.32.PAD solves the post-synthesis decision problem by making the decision relation explicit before any ADR-like publication projection is written.
-
-### C.32.PAD:3 - Forces
-
-| Force | Tension |
-|---|---|
-| Candidate plurality | Several candidate configurations can be valid under different trade-offs, while project work needs one current direction or a bounded exception. |
-| Trade-off visibility | Architecture characteristics compete; a decision that hides accepted losses cannot be responsibly executed or reopened. |
-| Structure and method coupling | The decision must govern actual or modal structure content for the described or transformed-side holon and may also prescribe developer methods intended to produce or preserve those structures. |
-| Work split | Structures fixed by the decision and refinement left open must be separated without severing source return. |
-| Evolution | A decision must close enough work for now while staying reopenable when context, eval readings, or candidates change. |
-| Publication pressure | Teams often want an ADR file before the decision relation is recoverable. |
-
-### C.32.PAD:4 - Solution
-
-Create `ArchitectureDecisionRelation@Project` before writing an ADR-like publication record. Treat it as the architecture decision relation that includes the exact composite project `U.Work` and binds it to the candidate basis, selected architecture option, affected structures, architecture-characteristic trade-offs, rationale, consequences, method expectations, work split, and reopen conditions.
-
-Work in this order:
-
-1. Name the composite project `U.Work` participant and the decision subject: described holon, decision question, intended use, ClaimScope, decision window, and status. If the decision designates a project system-of-interest, cite the existing `U.System` or the pre-inception intended-system claim. Add a local kind only when it is current, add a separate System-classification judgment only when that judgment independently obtains, and add an assignment only through its separately declared A.2.1 species and obtaining occurrence whose holder is that System. Route `SystemOfInterestRole` source wording through `E.10.ROLE`; establish every Work, change, and use fact through its own predicate and pattern. A decision designation proves no compound project-selection truth; return `missing-substrate[project-selection-conjunction]` when that stronger truth is required.
-2. Cite the candidate basis. Use `C.32` for the candidate palette, `C.32.MLAO` for residual-reducing multilevel candidate frames, `C.32.CONWAY` when an influence-source architecture and transformed-side architecture content shaped the candidate, and `C.32.FAIL` for repaired candidate errors. Cite a C.32.CONWAY synthesis frame while either side is modal or the direct influence relation is unresolved; cite an exact pair row only for its already obtaining direct occurrence and two obtaining C.30 architecture-relation participants.
-3. Cite comparison or selection input only when it exists. Use `A.19.CPM` for explicit comparison, `A.19.SelectorMechanism` for set-returning selection, `G.5` for selected-set result declaration, and `C.11` for local choice. For publication, use `E.17` for a source-backed face and source return and `E.24.PUB` for the publication occurrence and audience availability.
-4. State the selected architecture option or bounded exception. Name the affected selected structures and the subject pattern for each structure claim.
-5. Record the architecture-characteristic trade-off. Use criteria rows from `C.32.ACS`, eval results from `C.32.ACE`, measurement support from `C.16`, Q-Bundles from `C.25`, modularity or scale support from `C.31`, and `C.29` structural-information lens uses for compressed recoverable structure, accepted description loss, hidden dependency, and source-return. None of those lenses, measures, or bundles decides the architecture by itself.
-6. Record rationale, rejected options, accepted losses, and consequences. A rejected option can remain useful as a stepping stone or archive item; do not turn it into a failure unless the receiving failure pattern is triggered.
-7. Bind the decision to architecture descriptions. Use `C.30.AD` for architecture-description adequacy and `C.30.ASV` for selected-structure view adequacy. A diagram, model, file, or view can describe the decision basis; it does not become the decision relation.
-8. Bind the decision to method-use instructions when the architect needs developers to use a method, pattern, style, toolchain step, or work practice so the described or transformed-side holon is intended to gain or preserve the named structure. Use `A.15`, `A.15.1`, `A.15.2`, `A.15.5`, `A.6.M`, `E.8`, `E.11.PUR`, and `C.24` according to the live claim.
-9. State the architecture-to-refinement boundary. Name selected structures fixed by the decision, refinement scopes left open, source-return conditions, readiness exits, and patterns for any later governance question. When the boundary depends on holon level, changed whole, or BOSC-triggered pressure, fill `holonTransitionOrBOSCTriggerRefs?` through `B.2.P` claim-kind recovery or `B.2` whole reidentification instead of leaving a generic level note.
-10. Choose a publication projection only after the decision relation is clear. Use `C.32.ADR` for ADR-like projection, `E.17` for a source-backed publication face and source return, and `E.24.PUB` for the publication occurrence and audience availability.
-11. Add evidence, assurance, gate, and governance exits only when those claims are being made. Use `A.10`, `B.3`, `A.21`, and the local governance pattern rather than adding those statuses to the decision relation by name.
-12. Write reopen and supersession conditions. Reopen when the candidate basis changes, a protected architecture characteristic crosses its guardrail, an independently typed influence-source structure or arrangement no longer fits the transformed-side actual or modal architecture content, a stronger source changes the accepted loss, or the decision's method-use instruction proves unusable.
-
-If one project question uses an E.18.NET network, first preserve that network's independent A.22/E.18.NET selection. A persistent project-network judgment stays in its C.2.1 result episteme under A.15.6, and architecture use docks through C.30.TFS-REL. A C.32.CONWAY exact pair row may be cited in `architectureCorrespondenceRowRefs[]` of a network record, but that citation is only a qualified reading: it adds no network member or cross-flow occurrence, and PAD repeats none of the network's member, relation, constraint, endpoint, or use-frame fields.
-
-#### C.32.PAD:4.1 - Decision readiness
-
-A C.32.PAD decision is ready to draft when the current decision relation identifies the composite project `U.Work` participant and can cite at least one candidate basis, one affected selected structure, one architecture-characteristic trade-off or declared reason for no live trade-off, one expected work consequence, one reopen condition, and any triggered `holonTransitionOrBOSCTriggerRefs?` or `structuralInformationLensUseRefs?` needed to preserve source return. When system-of-interest local-kind, separate System-classification, assignment, architecture-influence, or network fields are present, the applicable A.15.6, A.2 and A.2.1, C.32.CONWAY, E.18.NET, and C.30.TFS-REL preconditions must already be satisfied or the reference remains absent.
-
-If the candidate basis is absent, require `C.32`. If architecture-characteristic rows are absent, require `C.32.ACS` or `C.25`. If the decision only says "the metric is best", require `C.32.ACE`, `C.16`, or `A.19.CPM` before deciding. If the intended work method is not recoverable, require `A.15`. If an existing system, role assignment, project-network judgment, network selection, architecture use, or influence pair is unresolved, require its subject pattern and keep only the truthful designation, modal claim, candidate frame, or explicit stop in PAD.
-
-#### C.32.PAD:4.2 - Constructive architecture decision path
-
-Some architecture decisions are constructive: they prescribe Methods that intended developer Systems are expected to use so that later work aims to produce or preserve intended structures. A decision may name intended Systems, local-kind requirements, separate classification requirements, assignment requirements, plans, commitments, permissions, or authority before any assignment or Work obtains. Admit that path only when the decision keeps those claims separate and names:
-
-- the obtaining architecture relation and selected structure to be preserved, or the exact modal `ArchitectureClaim` stating the intended production or preservation effect;
-- the method description, architectural style, pattern use, or work practice to be used;
-- the intended System when known; an optional local kind and an independently optional System-classification judgment; any current assignment through separate species and obtaining-occurrence refs whose holder is that System; and any merely intended assignment as plan, policy, or decision content rather than an occurrence;
-- any responsibility or authority relation only when its admitted direct predicate, actual participants, applicability, and identity obtain; otherwise record the exact A.6.RCD missing governor instead of calling the system-role kind or assignment responsible;
-- the expected structure effect on the described or transformed-side holon, kept modal until its direct C.30 architecture predicate obtains;
-- the work-planning boundary and readiness or gate exit;
-- the source-return condition and reopen trigger.
-
-These requirements connect the architecture decision to work while keeping its expected structure effect distinct from any independently established actual effect.
-
-#### C.32.PAD:4.3 - Minimum sufficient relation and slot-change impact
-
-A small complete PAD instance can be this short:
-
-```text
-ArchitectureDecisionRelation@OrderFlow:
-  decisionId: OrderFlowArchitectureDecision-2026Q3
-  projectWorkOccurrenceRef: ProductFamilyQ3OrderArchitectureWork, exact admitted composite U.Work
-  decisionSubjectRef: order-integration architecture for product-family Q3
-  describedHolonRef: product-family order-flow system
-  decisionQuestion: which candidate architecture should guide Q3 order-flow implementation?
-  intendedDecisionUse: direct the Q3 implementation work while preserving the stated refinement boundary
-  claimScopeRef: order-flow architecture for ProductFamilyQ3OrderArchitectureWork
-  decisionWindowRef: accepted for Q3 implementation; reopen on a listed trigger or superseding decision
-  candidateBasisRefs: [C32CandidatePalette:order-flow-2026-06]
-  selectedArchitectureOptionRefs: [event-carried integration with payment exception]
-  selectedStructureEffects:
-    - structureKindRef: module structure
-      selectedStructureRef: order events between service modules
-      decisionEffect: preserve service substitutability, accept added event-schema governance
-      relationFunctionClaimRef: C.30.ASV
-  architectureCharacteristicTradeoffs:
-    - architectureCharacteristicRef: substitutability
-      criteriaRowRef: C.32.ACS order-flow substitutability criterion
-      expectedGain: service replacement without order-flow rewrite
-      acceptedLoss: additional schema-version coordination
-      guardrailRef: version-skew eval band
-  methodUseInstructions:
-    - methodDescriptionRefOrPatternRef: event-schema change method
-      expectedStructureEffect: compatible event schemas across service modules
-      intendedPerformerSystemRef: the named service-team System intended by the project decision
-      intendedPerformerKindRef: ServiceTeamDeveloperSystemRole
-      intendedPerformerClassificationRef: the separate classification judgment, when it obtains
-      intendedAssignmentRequirementRef: decision content requiring a suitable service-team assignment before implementation Work
-      workBoundaryRef: schema refinement left open inside the event boundary fixed by the decision
-  architectDeveloperSplit:
-    decisionFixedStructureRefs: [event boundary, payment exception]
-    openRefinementScopeRefs: [schema fields inside approved event boundary]
-    sourceReturnCondition: return to PAD when refinement changes event boundary or version-skew band
-  holonTransitionOrBOSCTriggerRefs?: [B.2.P: no new operational whole claimed for team-local schema refinement]
-  structuralInformationLensUseRefs?: [C.29: event-flow view compresses deployment and rollout structure; source-return keeps model refs recoverable]
-  publicationProjectionRef?: C.32.ADR:order-flow-adr
-  reopenConditions: [payment latency guardrail crossed, schema-version coordination cost guardrail crossed]
-  status: acceptedForDeveloperWork
-```
-
-When a filled field changes, repair the smallest declaration or claim record that carries the changed content:
-
-| Changed filled field | Immediate repair locus |
-|---|---|
-| `candidateBasisRefs` or `selectedArchitectureOptionRefs` | Use `C.32`, `C.32.MLAO`, comparison or selection inputs, then update PAD before ADR projection. |
-| `projectSystemOfInterestRef?`, `intendedProjectSystemClaimRef?`, `systemOfInterestKindRef?`, `systemOfInterestClassificationRef?`, `systemOfInterestAssignmentSpeciesRef?`, or `systemOfInterestAssignmentOccurrenceRef?` | Use A.15.6 for actual-versus-intended designation and the compound-selection stop, C.3/A.2 for the exact local kind and its separate classification judgment, and A.2.1 for the directly declared assignment species and its separately obtaining occurrence. Route unresolved role wording through `E.10.ROLE`. Keep every independently obtaining Work, change, and use fact; remove any reference the decision alone was being used to prove. |
-| `architectureInfluenceCorrespondenceRef?` | Use C.32.CONWAY. Keep a frame for modal or unresolved sides and cite an exact pair row only for the already obtaining direct occurrence and its exact C.30 architecture-relation participants. |
-| `transformationFlowStructureNetworkRef?`, `projectNetworkSelectionResultRef?`, or `architectureTransformationFlowStructureRelationRef?` | Use E.18.NET for exact network identity, A.15.6/C.2.1 for the project-question judgment, and C.30.TFS-REL for architecture use. Update or remove only the affected refs; do not copy or repair network members, relations, constraints, endpoints, or use frame inside PAD. |
-| `selectedStructureEffects` | Repair the architecture claim or selected-structure view in `C.30`, `C.30.AD`, or `C.30.ASV`; then update PAD consequences. |
-| `architectureCharacteristicTradeoffs` | Repair `C.32.ACS`, `C.32.ACE`, `C.25`, `C.16`, or comparison input before relying on the decision. |
-| `methodUseInstructions` or `architectDeveloperSplit` | Repair Method, plan, intended-System, local-kind, separate System-classification, assignment, actual-Work, readiness, and work-boundary claims through their subject patterns. Route unresolved role wording through `E.10.ROLE`; use `A.15`, `E.8`, `E.11.PUR`, or `C.24` only for the claim that pattern defines, constrains, or tests. |
-| `holonTransitionOrBOSCTriggerRefs?` | Use `B.2.P` for wording and claim-kind recovery; use `B.2` only when the decision depends on whole reidentification. |
-| `structuralInformationLensUseRefs?` | Use `C.29` to state which structure is preserved, compressed, hidden, or recoverable; return to source when the accepted loss changes. |
-| `publicationProjectionRef?` | Repair only the projection through `C.32.ADR`, the source-backed publication face and source return through `E.17`, and the publication occurrence and audience availability through `E.24.PUB`; do not rewrite the decision by template pressure. |
-| `reopenConditions` or `supersedesDecisionRefs?` | Update PAD and the active ADR-like projection; old decisions remain historical unless a governed archival policy says otherwise. |
-
-### C.32.PAD:5 - Archetypal Grounding
-
-
-**Software service architecture.** A platform team compares synchronous service calls, event-carried integration, and a bounded shared kernel. The selected option is event-carried integration for order events with a bounded exception for payment authorization. C.32.PAD records affected module and information structures, latency and substitutability trade-offs, the method-use instruction for service teams, the event-schema source-return condition, and the reopen trigger when payment volume crosses the declared eval band.
-
-**Manufacturing fixture architecture.** A production architect compares a dedicated fixture per product, a universal fixture with adapters, and a mixed cell layout. The selected option uses a universal fixture only for products inside a scale window. C.32.PAD records module, placement, maintenance, and evidence-structure effects, the accepted setup-time loss, the method instruction for cell design, and the trigger for returning to candidate synthesis when adapter complexity exceeds the guardrail.
-
-**Project system-of-interest and network.** A plant-modernization decision designates already admitted `PumpUnit-3 : U.System` as the project system-of-interest and cites exact composite `PumpUpgradeWork-7`. The designation does not create a project container or the compound truth that the project selected the pump. The source label `SystemOfInterestRole` is recovered through `E.10.ROLE`. Exact local kind `SystemOfInterestSystemRole` is cited through `systemOfInterestKindRef`, and the separate judgment classifying `PumpUnit-3` under it is cited through `systemOfInterestClassificationRef`. `PumpQualificationSystemOfInterestAssignment` is cited as the directly declared species; `PumpUnit-3-QualificationAssignment-7` is cited separately as its obtaining occurrence with `PumpUnit-3` as holder. A taxonomy or scheme is not an assignment participant, and neither kind, classification, nor assignment establishes Work, responsibility, or authority. Each Work-to-pump, Work-to-change, evaluation, production, or use fact keeps its own subject pattern. An independently selected E.18.NET network may connect production-system change, pump change, and qualification flows for the named project question. PAD cites that exact network, the optional C.2.1 selection judgment, and the C.30.TFS-REL architecture-use trace; it does not recreate network identity or infer cross-flow relations from a record or C.32.CONWAY pair row. If the decision needs the still-unsupported compound project-selection truth, the case returns `missing-substrate[project-selection-conjunction]`.
-
-**Method-family architecture.** The team applies a review Method to compare specialized review contributions, peer rotation, and tool-supported triage. `E.10.ROLE` first recovers any local kind, assignment, direct-relation position, function claim, or ordinary label hidden by role wording. The selected option uses peer rotation plus a tool-supported evidence handoff. C.32.PAD records those exact recovered relations, Method, evidence, and information structures, the trade-off between teachability and evidence custody, and the refinement scope left open for local checklists.
-
-**Architecture influence and transformed-side fit.** An automation project changes both a toolchain and the product it is used to change. C.32.CONWAY supplies a synthesis frame or, only after direct settlement, an exact architecture-influence pair row over the obtaining source-side and transformed-side C.30 architecture relations. C.32.PAD records which toolchain structure is decision-relevant, which product-side structure is selected or intended, which Systems are intended, which assignment requirements and Methods are planned, and which fit change reopens the decision. A current assignment or actual Work appears only when it independently obtains. Performance and actual transformation require their own obtaining relations.
-
-**Digital-twin structural information loss.** A built-asset team publishes a 6D-style digital-twin decision view for construction planning. The view intentionally hides supplier-agreement and temporary-work structures. C.32.PAD records the selected building, placement, schedule, cost, operation, and evidence structures that the decision uses; `C.29` records which hidden structures remain recoverable and which accepted loss reopens the decision. The view count, file, and model do not become the decision authority.
-
-### C.32.PAD:6 - Bias-Annotation
-
-| Risk handled | How C.32.PAD handles it |
-|---|---|
-| Record-before-decision drift | The pattern requires `ArchitectureDecisionRelation@Project` before ADR-like publication projection. |
-| Description-as-decision drift | Architecture descriptions remain `C.30.AD` objects; PAD records the decision relation that may cite them. |
-| Metric-winner drift | Eval readings and metrics can inform trade-offs but do not select or decide by themselves. |
-| Method-structure collapse | Method-use instructions and intended target structures are both recorded and kept distinct. |
-| Work-split loss | Structures fixed by the decision, refinement scopes left open, and source-return conditions are explicit. |
-| Evolution lock-in | Supersession and reopen conditions are part of the decision relation. |
-
-### C.32.PAD:7 - Conformance Checklist
-
-| Requirement | Required result |
-|---|---|
-| `CC-PAD-1` | The exact composite project `U.Work` participant, decision subject, described holon, decision question, intended decision use, ClaimScope, and decision window are explicit. |
-| `CC-PAD-2` | The decision cites candidate basis from `C.32` or a named receiving candidate pattern, or states why no candidate-set question is live. |
-| `CC-PAD-3` | The selected architecture option or bounded exception is named. |
-| `CC-PAD-4` | Affected selected structures are named with subject pattern refs. |
-| `CC-PAD-5` | Architecture-characteristic trade-offs, accepted losses, and guardrails are recorded. |
-| `CC-PAD-6` | Architecture-description refs, method-use instructions, and performed-work boundaries remain distinct. |
-| `CC-PAD-7` | The architect-developer split, source-return condition, and reopen conditions are recorded. |
-| `CC-PAD-8` | Triggered holon-transition or BOSC boundary pressure cites `B.2.P` or `B.2`, and structural-information loss or compression cites `C.29`. |
-| `CC-PAD-9` | ADR-like publication, evidence, assurance, gate, comparison, selection, selected-set result declaration, audience publication, local choice, and work claims exit to their patterns for the next questions. |
-| `CC-PAD-10` | Any project system-of-interest ref denotes one independently admitted existing `U.System`; a pre-inception intended referent stays in claim content. `SystemOfInterestRole` wording is recovered through `E.10.ROLE`; any local kind, separate classification judgment, and separately obtaining A.2.1 assignment are cited independently. Decision designation, kind, classification, assignment, and direct facts neither entail one another nor establish the missing compound project-selection truth. |
-| `CC-PAD-11` | Any network ref resolves to one independently selected E.18.NET structure, its project-question judgment stays in a separate C.2.1 episteme, and architecture use docks through C.30.TFS-REL. A PAD decision, network record, C.32.CONWAY frame, or exact pair row creates no member, cross-flow occurrence, influence occurrence, architecture relation, or actual structure effect. |
-
-### C.32.PAD:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-|---|---|---|
-| `ADRBeforeDecisionRelation` | The team starts from an ADR template and fills prose before the selected option, trade-off, and work consequences are recoverable. | Draft `ArchitectureDecisionRelation@Project` first; then use `C.32.ADR` only as publication projection. |
-| `CandidateWinnerByMetric` | One score, benchmark, or eval reading is treated as the architecture decision. | Use `C.32.ACS`, `C.32.ACE`, `C.16`, and `A.19.CPM`; decide only after trade-offs and accepted losses are recorded. |
-| `StructureOnlyDecision` | The decision names a target structure but gives no Method-use or work-boundary instruction for the Systems intended to realize it. | Add Method-description or pattern-use refs, intended System, optional local kind and independently optional classification judgment, any current assignment species and occurrence or prospective assignment requirement without conflating them, work boundary, readiness exit, and expected structure effect. Add responsibility, authority, permission, or commitment only under its independent direct predicate or exact missing governor. If actual Work is claimed, recover each exact performer through A.13 and let A.15.1 independently admit the `U.Work`. Add an F.6 ref only when precise assignment-bound attribution is expressly consumed; its absence or failure leaves the Work intact. |
-| `MethodOnlyDecision` | The decision says which style, pattern, or tool to use but not which target structures it is expected to produce or preserve. | Name the intended selected structures and architecture-characteristic trade-offs; use `C.30`, `C.30.ASV`, or `C.32` if the structure is not recoverable. |
-| `FrozenArchitectureDecision` | The decision has no source-return or reopen condition. | Add eval guardrails, source-currentness return, architecture-influence/transformed-side fit trigger, or supersession rule. |
-| `LensOrQBundleAsDecisionAuthority` | A view, structural-information lens, measurement row, Q-Bundle, or eval reading is treated as if it selected the architecture. | Use the exact subject predicate for the source: `C.29` for lens use, `C.25` for Q-Bundle, `C.16` for measurement, `C.32.ACE` for eval, and PAD for the actual decision relation. |
-| `GovernanceByImplication` | Teams are expected to follow the decision, but no readiness, gate, evidence, assurance, or governance exit is named. | Add refs to the patterns for the next questions; do not import those statuses into PAD. |
-| `ProjectSelectionOrRoleByDecision` | A PAD field is treated as proof that a project selected a System, or that the System gains a kind, classification, or assignment because the decision names it. | Keep the decision designation and every direct fact; recover role wording through `E.10.ROLE`, apply A.15.6, A.2, and A.2.1 independently, and return `missing-substrate[project-selection-conjunction]` when the compound truth is needed. |
-| `NetworkOrInfluenceByCitation` | A cited network record, C.32.CONWAY frame or pair row, or PAD decision is treated as a network member, cross-flow occurrence, architecture-influence occurrence, performer, or actual structure effect. | Restore the exact E.18.NET network and direct relation patterns, use C.30.TFS-REL for architecture use, and keep expected structure effect modal until C.30 independently establishes the actual architecture relation. |
-
-### C.32.PAD:9 - Consequences
-
-| Consequence | Benefit | Cost |
-|---|---|---|
-| The architecture decision relation to exact composite project work is explicit before publication. | ADRs, design memos, and governance files can describe a recoverable decision rather than inventing one. | The architect performs decision work before publication work. |
-| Structure and method are coupled without collapsing. | Developers can see both intended architecture structures and required methods. | The decision record needs enough detail to avoid empty method instructions. |
-| Trade-offs and accepted losses are recorded. | Later teams can reopen the decision under changed characteristics instead of guessing the original rationale. | Decisions may look less tidy because loss is visible. |
-| Architect-developer split is stated. | Team refinement can proceed without losing source return. | Architecture governance must maintain split and reopen conditions. |
-
-### C.32.PAD:10 - Rationale
-
-Using `C.32`, practitioners synthesize candidate architecture configurations. Using `C.32.PAD`, the architect selects an option or bounded exception for the project work and states the resulting Method-use instructions and work consequences.
-
-The pattern keeps four layers apart: an obtaining C.30 `ArchitectureRelation` over one architecture-bearing holon and selected `U.Structure`; any `ArchitectureClaim` that states actual, negative, unresolved, candidate, required, desired, or expected content about the holon, relation, or structure; `ArchitectureDecisionRelation@Project`, which connects composite project Work to the selected option and declared work consequences; and `ArchitectureDecisionDescription@Project`, which can be published in ADR-like or other forms and whose project use requires the exact composite `U.Work` and an independently obtaining use relation defined by its own pattern. Optional system-of-interest, local-kind, System-classification, assignment-species, assignment-occurrence, architecture-influence, and network references retain their A.15.6, A.2 and A.2.1, C.32.CONWAY, E.18.NET, and C.30.TFS-REL subject patterns. This lets FPF reuse its existing architecture, description, Method, work, evidence, assurance, measurement, publication, project, and network patterns instead of creating a separate architecture-decision ontology for those facts.
-
-The pattern is architecture-reusable across holon kinds, not because every decision target is itself a holon kind. The same decision relation can apply to admitted holons such as systems, organizations-as-systems, built assets, AI-agent setups, epistemes, work occurrences, or disciplines. It can also concern Method, evidence, or an exact object or relation recovered from role wording, provided those values stay under `A.3.1`, `E.10.ROLE`, `A.2.7`, `A.10`, and `A.15` rather than being admitted as holons by label.
-
-### C.32.PAD:11 - SoTA-Echoing
-
-These sources inform the decision-relation fields, boundaries, and reopen conditions used below.
-
-| Source to inspect | Why this source is load-bearing here | Transfer into PAD | Concrete PAD mutation | Blocked overread |
-|---|---|---|---|---|
-| ISO/IEC/IEEE 42010:2022 official standard (`https://www.iso.org/standard/74393.html`; IEEE page `https://standards.ieee.org/ieee/42010/6846/`) | Current official source for architecture-description requirements; it explicitly scopes itself to AD structure and expression, not architecting methods or the architecture itself. | Keep architecture descriptions as description objects and use PAD for the decision relation that may cite them. | PAD has `architectureDescriptionRefs`, selected-structure effects, and source-return conditions rather than treating a view, viewpoint, file, or model as the decision. | ISO 42010 architecture-description structure does not replace C.32 synthesis, A.15 method work, or PAD decision relation. |
-| Michael Nygard, `Documenting Architecture Decisions` (`https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions`) | Practitioner source for small, statused records that preserve context, decision, and consequences across time. | Use context, decision, status, consequences, and supersession as publication-relevant decision-description fields. | PAD requires status, consequences, and supersession or reopen conditions before ADR projection. | ADR records are not the architecture decision relation with its exact project-work participant and do not by themselves ground selected structures. |
-| MADR 4.x (`https://adr.github.io/madr/`) | Current ADR practice with options, outcome, status, links, and confirmation pressure. | Require candidate basis, outcome, decision status, links to related decisions, and confirmation or eval exits. | PAD separates candidate basis, selected option, consequence rows, method-use instruction, and reopen conditions. | MADR's broad "any decision" use is not imported as FPF architecture-decision ontology. |
-| Ford, Parsons, Kua, and Sadalage, `Building Evolutionary Architectures`, 2nd ed. (`https://www.oreilly.com/library/view/building-evolutionary-architectures/9781492097532/`) | Current practitioner source for guided incremental architecture change and source-side fitness-function wording. | Treat eval support as `C.32.ACE` inputs and reopen conditions, not as the decision itself. | PAD requires eval refs, guardrails, and reopen conditions when evolutionary feedback guides the decision. | Fitness-function terminology is not imported as an FPF object name. |
-| Ford, Richards, Sadalage, and Dehghani, `Software Architecture: The Hard Parts` (`https://www.oreilly.com/library/view/software-architecture-the/9781492086888/`) | Current practitioner source for trade-offs, least-worst choices, and architecture characteristics under uncertainty. | Make accepted losses and protected counter-characteristics mandatory decision content. | PAD records architecture-characteristic trade-offs, rejected options, accepted losses, and consequences. | A trade-off discussion does not replace candidate synthesis, comparison, evidence, or governance. |
-| NASA Systems Engineering Handbook, decision analysis and trade-study practice (`https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf`) | Non-software engineering source for alternatives, selection criteria, assumptions, limitations, recommendation, impacts, and final decision documentation. | Generalize PAD beyond software ADR practice by requiring candidate basis, selection criteria or comparison refs, assumptions or accepted losses, impacts, and decision-maker commitment. | PAD carries `candidateBasisRefs`, `comparisonOrSelectionRefs?`, trade-offs, consequence rows, status, and reopen conditions for engineering decisions such as fixtures, vehicles, built assets, or methods. | NASA trade-study process is not imported as FPF architecture ontology and does not by itself decide the architecture. |
-| Conway and Team Topologies source line, mediated through `C.32.CONWAY` | Independently typed influence-source architecture and transformed-side architecture content can constrain candidate fit without making either architecture an actor. | Use a synthesis frame for modal or unresolved sides and an exact pair row only for one already obtaining direct influence occurrence over two obtaining C.30 architecture relations. | PAD may cite `architectureInfluenceCorrespondenceRef?` and reopen when that qualified fit changes. | The frame, pair row, architecture relations, claims, systems, assignments, Work, actual transformation, network, and decision remain separate; citation proves none of their world-side relations. |
-| Current FPF `A.15.6`, `A.2`, `A.2.1`, `E.18.NET`, and `C.30.TFS-REL` | Existing FPF subject patterns for project Work and system-of-interest designation, role interpretation and assignment, selected recursive transformation-flow networks, persistent project-network judgments, and architecture use of those networks. | Let PAD cite already established objects needed by the decision while keeping their identity and truth with those subject patterns. | PAD adds optional system, intended-system-claim, role-assignment, network, project-network-result, and architecture-flow-use refs plus explicit return conditions. | A decision designation establishes no compound project-selection truth; a network, record, or citation creates no member or direct relation occurrence. |
-| Current FPF `A.15`, `E.8`, `E.11.PUR`, `C.30`, `C.30.AD`, `C.32`, `C.32.ACS`, `C.32.ACE`, `C.32.ADR`, and `C.32.ADA` | Existing FPF ontology for actual and modal architecture content, method descriptions, pattern use, architecture descriptions, candidate synthesis, evals, publication projection, and adequacy evaluation. | Keep PAD narrow: decision relation after candidate synthesis. | Relation and conformance rows send neighboring claims to their subject patterns. | PAD does not duplicate FPF architecture, method, publication, evidence, assurance, or pattern-form doctrine. |
-
-**Source-currentness boundary.** Recheck a source row when an ADR template, architecture-description standard, evolutionary-architecture practice, FPF pattern, or project governance practice changes the decision field, method-work boundary, or reopen condition that PAD uses. Reopen only the affected optional docks if A.15.6 changes the actual or intended System or project-selection stop, A.2 or A.2.1 changes the role or assignment boundary, C.32.CONWAY changes its frame or qualified-pair threshold, or E.18.NET or C.30.TFS-REL changes network identity or architecture-use requirements.
-
-### C.32.PAD:12 - Relations
-
-- **Builds on:** `A.15.6`, `A.2`, `A.2.1`, `C.30`, `C.30.ASV`, `C.30.AD`, `C.30.TFS-REL`, `E.18.NET`, `C.32.P2S`, `C.32`, `C.32.MLAO`, `C.32.ACS`, `C.32.ACE`, `C.32.CONWAY`, `C.32.FAIL`, `C.25`, `C.16`, `C.29`, `C.31`, and `C.31.ASAP`.
-- **Comparison and selection boundary:** Use `A.19.CPM` for comparison, `A.19.SelectorMechanism` for set-returning selection, `G.5` for selected-set result declaration, and `C.11` for local choice. When audience availability is current, use `E.17` for a source-backed publication face and return to source and `E.24.PUB` for the publication occurrence, form, carrier, audience, bounded use, and availability. PAD records the architecture decision relation with its exact composite project-work participant after those inputs are sufficient.
-- **Description boundary:** `C.30.AD` and `C.30.ASV` govern architecture-description and selected-structure view adequacy. PAD may cite those descriptions but does not replace them.
-- **Structural-information boundary:** Use `C.33` and `C.34` for captured structure, lost structure, and preservation adequacy used by the decision relation. Use `C.35` for the exact generated or discovered result, the obtaining or proposed organization, its next-use condition, and the limit or return. Resolve representation, publication-form, or carrier questions separately when the decision's use depends on them. Use PAD for the decision relation, rationale, consequences, accepted losses, Method consequences, Work consequences, source return, repair, and supersession claims.
-- **Publication boundary:** Use `C.32.ADR` to project an `ArchitectureDecisionDescription@Project` into ADR-like form, `E.17` for a source-backed publication face and source return, and `E.24.PUB` for the publication occurrence and audience availability.
-- **Adequacy boundary:** `C.32.ADA` evaluates a PAD decision relation, method docking, and publication projection for a declared use.
-- **P2S docking:** P2S reaches PAD only when implementation commitment is live; PAD records the decision relation and returns reopen conditions to P2S when actual structures, eval results, or source-return change the architecture question.
-- **Project system-of-interest boundary:** Use `A.15.6` for composite project Work, actual-versus-intended System designation, independent Work, change and use facts, project-network judgment, and `missing-substrate[project-selection-conjunction]`. `E.10.ROLE` recovers `SystemOfInterestRole` wording; use `A.2` and `A.2.1` separately for local kind, classification, and obtaining assignment. PAD cites those objects only when the architecture decision uses them and proves none of them.
-- **Network and architecture-influence boundary:** use `E.18.NET` to identify the selected network, its members, obtaining cross-flow occurrences, constraints, endpoints, and use frame; `C.30.TFS-REL` defines architecture use; `C.32.CONWAY` is the pattern for the synthesis frame and exact qualified pair row. PAD cites the smallest exact refs and never turns a record or row citation into network membership, a direct relation occurrence, actor identity, performance, or actual structure effect.
-- **Method and work boundary:** `A.15`, `A.15.1`, `A.15.2`, `A.15.5`, `E.8`, `E.11.PUR`, and `C.24` govern method descriptions, work plans, readiness, pattern-use recommendations, and agentic tool-use work.
-- **Evidence, assurance, and gate boundary:** `A.10`, `B.3`, and `A.21` govern evidence relations, assurance calculus, and gate profiles when those claims are current.
-
-### C.32.PAD:13 - Footer marker
-
-C.32.PAD closes when `ArchitectureDecisionRelation@Project` names the composite project `U.Work`, decision subject, candidate basis, selected architecture option or bounded exception, affected structures, architecture-characteristic trade-offs, accepted losses, rationale, consequences, architecture-description refs, Method-use and work-boundary expectations, source-return condition, triggered holon-transition or BOSC refs, triggered structural-information lens uses, publication projection exit, and reopen or supersession conditions. When the decision also cites a project system-of-interest, local kind, separate System-classification judgment, assignment, architecture-influence correspondence, or transformation-flow network, each ref resolves to its separately established object, every actual world-side relation is independently established, and the applicable A.15.6 project-selection stop and E.18.NET and C.30.TFS-REL non-duplication boundaries remain explicit.
-
-### C.32.PAD:End
-
-## C.32.ADR - Architecture Decision Record Projection
-
-> **Type:** Architecture publication pattern under C.32
-> **Status:** Stable
-> **Normativity:** Normative unless explicitly marked informative
-
-### C.32.ADR:1 - Problem frame
-
-Use this pattern when an `ArchitectureDecisionRelation@Project` or equivalent project architecture decision must be published as an ADR-like record, decision memo, trade-study record, certification rationale, or similar decision-description record.
-
-Primary working reader: an architect or architecture-responsible practitioner preparing a decision record for developers, reviewers, maintainers, operators, certifiers, or future architects.
-
-Typical entry phrases:
-
-```text
-"The project decision is made; now we need an ADR that future developers can use."
-"The record must show options, decision, rationale, consequences, and confirmation without becoming the decision itself."
-"This is not a software project; can a trade-study memo play the ADR role?"
-"The ADR package must link to architecture views without duplicating the whole architecture description."
-"A future team must know when this decision is superseded or violated."
-```
-
-**First-minute use slice.** A platform architect has a C.32.PAD decision relation selecting event-carried integration with a bounded exception. Using C.32.ADR, the architect creates an ADR projection with section functions for problem frame, candidate options, decision outcome, rationale, consequences, method-use instruction, work split, confirmation eval, source-return links, and supersession. The file is short enough for developers to read, but it remains a publication projection of the decision description, not the decision relation and not the architecture itself.
-
-The primary `EntityOfConcern` is `ArchitectureDecisionRecordProjection@Project`: a publication projection of `ArchitectureDecisionDescription@Project` into an ADR-like record or package. Select this pattern only when the work is to publish or package that decision description for a declared reader use; generic ADR advice that cannot be mapped to decision-section functions stays outside C.32.ADR.
-
-`ArchitectureDecisionRecordProjection@Project` is not a new `U.*` kind and not a new root publication ontology. It is a project publication projection with filled section-function rows. Use `E.17` and `E.24.PUB` for publication-face and publication-use claims; use `C.32.PAD` for the decision relation.
-
-What goes wrong if C.32.ADR is missed: the project either publishes a record-shaped text that hides the actual architecture decision, or it copies architecture descriptions, diagrams, and method material into a record without telling the reader what decision was made and what work must change.
-
-What C.32.ADR buys in practice: a decision record can be small, readable, updateable, and still tied to candidate synthesis, selected structures, architecture characteristics, method-use instructions, work split, confirmation evals, and source-return.
-
-Ordinary working move: start from a PAD decision relation, select the record's publication scope, map each necessary section to the decision content it carries, then publish only what the reader needs to use, check, or reopen the decision.
-
-Adoption test: after using C.32.ADR, a future reader can recover the decision question, considered options, outcome, rationale, consequences, required method or work change, confirmation or eval path, source links, and supersession condition without mistaking the record for the architecture or the decision relation.
-
-Not this pattern when the decision relation is not yet recoverable, the current work is architecture-description adequacy, the record is a general MVPK publication face, or the claim is evidence, assurance, gate passage, local choice, performed work, or pattern authoring. Use the pattern for the next question named in `Relations`.
-
-The first useful output is `ArchitectureDecisionRecordProjection@Project`:
-
-```text
-ArchitectureDecisionRecordProjection@Project:
-  projectWorkOccurrenceRef?: U.EntityRef constrained to U.Work
-  architectureDecisionRecordProjectUseRelationRef?: U.RelationRef governed by the exact record-use, publication-use, or work-use pattern
-  projectionId:
-  architectureDecisionRelationRef:
-  architectureDecisionDescriptionRef:
-  publicationCarrierRef:
-  publicationScopeRef:
-  intendedReaderRefs:
-  status:
-  sectionFunctionRows:
-    - sectionFunction:
-      sectionHeadingOrCarrierSlot:
-      sourceDecisionSlotRefs:
-      requiredReaderUse:
-      omittedByDesign?
-      sourceReturnCondition?
-  architectureDescriptionRefs:
-  methodAndWorkRefs:
-  confirmationOrEvalRefs:
-  supersedesRecordRefs?
-  supersededByRecordRef?
-  updateOrReopenCondition:
-  publicationUseRefs?
-```
-
-Here `@Project` is a compatibility and retrieval cue only. It does not make the projection a project, project work, or the architecture decision relation. When this record projection is genuinely local to one actual project, `projectWorkOccurrenceRef` identifies the exact composite `U.Work`, while `architectureDecisionRecordProjectUseRelationRef` identifies the direct relation by which the record is published for, relied on by, or otherwise used in that work under the corresponding subject pattern. The decision relation, its description, the publication projection, any publication occurrence, and the composite project work remain separately identifiable.
-
-### C.32.ADR:2 - Problem
-
-ADR practice is useful because it makes architectural decisions small enough to read and update. It is also easy to misuse. A record can become a substitute for the decision relation, a loose essay about architecture, a copied architecture description, or a method prescription with no recoverable target structure.
-
-C.32.ADR treats ADR as a publication projection. The project decision relation belongs to `C.32.PAD`. The architecture description belongs to `C.30.AD` and related view patterns. The method description or pattern-use recommendation belongs to `A.15`, `E.8`, and `E.11.PUR` when those claims are live. The ADR-like record publishes a decision description for a declared reader and use.
-
-For a principle framework, use C.32.ADR only in the exceptional case where the accepted framework-architecture answer is also an exact project architecture decision with the `ArchitectureDecisionRelation@Project` and `ArchitectureDecisionDescription@Project` required by this pattern. Its prior basis may then cite the accepted answer and the exact `E.9` DRR that records it; acceptance remains a separate decision, and `E.4.PFAD` only profiles the framework-specific content. An ADR-like publication may project the question, selected answer, alternatives, rationale, consequences, status, links, and supersession conditions for declared readers. That projection remains separate from the answer, its acceptance, the DRR, framework realization, pattern quality, and publication adequacy. When the principle-framework answer is not an exact project architecture decision, publish the selected decision episteme or a reader-specific projection through `E.17` and `E.24.PUB`; do not use C.32.ADR.
-
-The section question is therefore not "which headings are allowed?" The section question is "which decision functions must a reader recover?" A heading can vary by organization or industry, but the record must carry the decision question, candidate options or reason no candidate set is live, outcome, rationale, consequences, method-use instruction when the decision guides work, work split, confirmation or eval path, source-return, status, and supersession or reopen condition.
-
-ADR-like projection is not software-only. Engineering trade-study records, safety-certification rationale, design review memos, BIM decision logs, method-governance records, and organization-design records can play the same publication role after the project decision relation and record use are typed. The source form may differ; the FPF section functions stay recoverable.
-
-### C.32.ADR:3 - Forces
-
-| Force | Tension |
-|---|---|
-| Reader economy | The record should be short enough to use, but not so short that decision content disappears. |
-| Section variation | ADR templates and engineering memos differ, while the decision functions must remain recoverable. |
-| Publication and decision separation | The record publishes a description of the decision; it does not become the decision relation. |
-| Architecture and method coupling | A record often needs to cite both target structures and required developer methods. |
-| Evolution | Supersession, violation detection, and update conditions must be visible without making the record a governance system. |
-| Cross-domain use | Software ADR practice must generalize to other holon kinds without importing software-only assumptions. |
-
-### C.32.ADR:4 - Solution
-
-Create `ArchitectureDecisionRecordProjection@Project` from an existing `ArchitectureDecisionRelation@Project` and `ArchitectureDecisionDescription@Project`. If the decision relation is missing, require `C.32.PAD` before writing the record.
-
-Work in this order:
-
-1. Name the publication carrier and intended readers. Use a file or other carrier for the Markdown ADR, decision memo, trade-study record, engineering change note, certification rationale, design-review record, or other decision-description form.
-2. Cite the decision relation and decision description. If the record cannot cite them, draft them first.
-3. Choose the smallest record scope that lets intended readers use the decision. Avoid copying architecture descriptions or full method descriptions; cite them by value where possible.
-4. Map section functions to headings or carrier slots. Use local headings if needed, but keep the function rows recoverable.
-5. Carry the candidate basis. Record candidate options from `C.32` or the reason no candidate-set question is live. Do not invent options in the ADR after the decision.
-6. Carry the decision outcome. State the selected architecture option, bounded exception, or supersession relation from PAD.
-7. Carry rationale, accepted losses, and consequences. Include architecture-characteristic trade-offs and guardrails, not only benefits.
-8. Carry method-use instruction and work split when the decision guides developer work. Cite `A.15`, method descriptions, pattern-use refs, readiness exits, and expected structure effects rather than burying them in prose.
-9. Carry confirmation, eval, or violation-detection exits. Use `C.32.ACE`, `C.16`, `A.10`, `B.3`, `A.21`, or governance patterns when those claims are live.
-10. Carry publication and source-return boundaries. Use `E.17` for source-backed publication faces and source return, `E.24.PUB` for publication occurrences and audience availability, and `C.30.AD` for architecture-description claims.
-11. Carry status, supersession, and update conditions. Old records remain useful as history when superseded; the active decision relation tells which one governs current work.
-
-#### C.32.ADR:4.1 - Required section functions
-
-The following section functions are required unless the decision relation states why the function is not live for this record use.
-
-| Section function | What the record must let the reader recover |
-|---|---|
-| Identity and status | Record id, title, status, date or version, relation to superseded or superseding records. |
-| Problem frame and decision question | The bounded architecture question, described holon, context, and current reader use. |
-| Forces and architecture characteristics | The architecture characteristics, constraints, concerns, and trade-offs that made the decision nontrivial. |
-| Candidate options | Candidate options, rejected options, bounded exception, or stated reason no candidate-set question is live. |
-| Decision outcome | The selected architecture option and affected selected structures. |
-| Rationale | Why this outcome is acceptable now, including accepted losses and protected guardrails. |
-| Consequences | Expected effects on structures, methods, teams, costs, risks, evidence, operation, and later change. |
-| Method-use instruction | Required style, pattern use, method description, or work practice, when the decision changes developer work. |
-| Work split | Prospective allocation or instruction content through the plan, policy, commitment, permission, decision, responsibility, authority, or other direct relation that actually states it; otherwise the exact missing governor. Also show readiness or gate exits and the source-return condition. Professional titles are audience cues, not ownership predicates. |
-| Confirmation or eval exit | How the decision can be checked, evaluated, monitored, or found violated. |
-| Publication boundary | Links to architecture descriptions, views, evidence, assurance, and source material without making the ADR the source object. |
-
-#### C.32.ADR:4.2 - ADR package use
-
-When several records form a package, create a package map that names active, proposed, superseded, and related records. A package map is a publication navigation aid. It does not merge decisions, replace PAD relations, or decide record priority by file order alone.
-
-When one decision changes another, use explicit supersession or amendment links. Do not rewrite history by deleting the old record unless the project has a governed archival policy.
-
-### C.32.ADR:5 - Archetypal Grounding
-
-**Software ADR.** A team publishes an ADR for event-carried integration. The record uses local headings, but the function rows recover context, options, selected outcome, rationale, consequences, method-use instruction for event schema work, confirmation eval, and supersession. Developers can see what to implement and when the decision reopens.
-
-**Manufacturing trade-study record.** A fixture decision is published as an engineering trade-study memo rather than a Markdown ADR. The memo carries candidate fixture variants, selected universal-fixture scope, accepted setup-time loss, cell-design method instruction, evidence links, and reopen threshold. C.32.ADR admits the memo because it projects the decision description for the intended reader.
-
-**Certification rationale.** A regulated product records a safety-architecture decision in a certification rationale. The record carries the decision outcome, rationale, evidence refs, architecture-description refs, and confirmation path, while evidence and assurance claims stay in `A.10` and `B.3`.
-
-**Method-use record.** A project decision requires reviewers to use an evidence handoff pattern before final review. The ADR-like record cites the Method description and expected evidence-structure effect; the instruction does not by itself establish performed review Work.
-
-### C.32.ADR:6 - Bias-Annotation
-
-| Risk handled | How C.32.ADR handles it |
-|---|---|
-| Template-first writing | The record starts from a PAD decision relation and section functions, not from a blank template. |
-| Publication-as-decision drift | The ADR projection cites the decision relation and remains a publication object. |
-| Architecture-copy drift | Architecture descriptions are cited through `C.30.AD`; the record carries only decision-relevant references. |
-| Method prose drift | Method-use instruction is typed through `A.15`, `E.8`, or `E.11.PUR` when live. |
-| History loss | Status and supersession are record functions; old records stay recoverable unless governed archival policy says otherwise. |
-| Software-only overread | ADR-like projection is generalized by section function and reader use, not by software tool convention. |
-
-### C.32.ADR:7 - Conformance Checklist
-
-| Requirement | Required result |
-|---|---|
-| `CC-ADR-1` | The record cites an `ArchitectureDecisionRelation@Project` or states the equivalent accepted decision relation by value. |
-| `CC-ADR-2` | The record's publication carrier, intended readers, scope, and status are explicit. |
-| `CC-ADR-3` | Section functions are mapped to headings or carrier slots. |
-| `CC-ADR-4` | Problem frame, forces, candidate options, outcome, rationale, consequences, confirmation or eval exit, and supersession or update condition are recoverable. |
-| `CC-ADR-5` | Method-use instruction and work split are included when the decision guides developer work. |
-| `CC-ADR-6` | Architecture descriptions, views, evidence, assurance, gate, method, work, and publication claims exit to their subject patterns. |
-| `CC-ADR-7` | The record does not create new candidate options, new architecture-description adequacy, or new evidence authority by prose. |
-
-### C.32.ADR:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Symptom | Repair |
-|---|---|---|
-| `BlankTemplateADR` | A template is filled with plausible prose but no PAD relation can be cited. | Draft or recover `ArchitectureDecisionRelation@Project` with `C.32.PAD`; then project it into the record. |
-| `ArchitectureDescriptionDump` | The ADR copies diagrams, views, or model text and the decision outcome is hard to find. | Keep the record small; cite architecture-description refs and restore decision outcome, rationale, consequences, and work effects. |
-| `OptionsInventedInRecord` | The ADR lists options that were not part of candidate synthesis or accepted decision basis. | Use `C.32`, `A.19.CPM`, or PAD; update the decision relation before updating the record. |
-| `MethodInstructionHiddenInRationale` | A decision requires developers to change their practice, but the instruction is buried in rationale prose. | Record the prospective content through the exact plan, policy, commitment, permission, decision, responsibility, authority, or other direct relation that states it, with Method refs, intended Systems, expected structure effect, and readiness or gate exit; otherwise return its exact missing governor. Do not manufacture a current assignment or performed Work. If performance later occurs, recover every precise performer's A.13 core and independently admit the Work under A.15.1; add F.6 only when precise assignment-bound attribution is current, and add only the other direct relations that independently obtain. |
-| `NoConfirmationPath` | Future teams cannot tell whether the decision still holds or has been violated. | Add confirmation, eval, guardrail, source-return, or supersession condition; use the receiving evaluation or governance pattern. |
-| `PackageOrderAsGovernance` | The latest file by number is treated as active without explicit status or supersession. | Add package map or status fields; make active, proposed, superseded, and related relations explicit. |
-
-### C.32.ADR:9 - Consequences
-
-| Consequence | Benefit | Cost |
-|---|---|---|
-| ADR is a publication projection. | Records stay readable while decision authority remains in PAD. | Authors must maintain the relation between record and decision. |
-| Section functions are stable even when headings vary. | Software ADR, engineering memo, and certification rationale can be compared by function. | Local templates must be mapped rather than copied blindly. |
-| Method and work effects are visible. | Developers can act on the decision instead of only reading rationale. | Records may need exact method refs and work-split refs. |
-| Supersession is explicit. | Future readers can distinguish history from current decision. | Record packages need simple upkeep. |
-
-### C.32.ADR:10 - Rationale
-
-ADR practice is valuable when it makes architectural decisions communicable and revisitable. It becomes weak when a record is treated as the decision itself or when a template substitutes for decision work.
-
-C.32.ADR therefore uses the record as a projection. The decision relation is made in `C.32.PAD`; the record publishes a decision description for a declared reader. This preserves the strongest ADR practice, small and updateable records, while adding FPF kind control for architecture descriptions, method descriptions, evidence, assurance, gate, publication, and performed work.
-
-The pattern also generalizes ADR practice beyond software by using section functions rather than software-specific carrier assumptions. A record can be a Markdown file, engineering memo, or certification rationale if it projects the decision description and keeps receiving claims with their subject patterns.
-
-### C.32.ADR:11 - SoTA-Echoing
-
-These sources inform the section functions, projection boundaries, and update conditions used below.
-
-| Source to inspect | Why this source is load-bearing here | Transfer into ADR projection | Concrete ADR mutation | Blocked overread |
-|---|---|---|---|---|
-| Michael Nygard, `Documenting Architecture Decisions` (`https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions`) | Foundational practitioner source for small decision records with context, decision, status, and consequences. | Preserve the small-record and future-reader practice. | C.32.ADR requires status, context, decision outcome, consequences, and supersession or reopen condition. | The ADR record is not the decision relation or the architecture description. |
-| MADR 4.x (`https://adr.github.io/madr/`) | Current Markdown ADR practice with options, outcome, status, links, and confirmation. | Use options, outcome, links, and confirmation as section functions rather than fixed FPF ontology. | Required section functions include candidate options, decision outcome, confirmation or eval exit, and package links. | "Any decision" scope is not imported as architecture-decision kind expansion. |
-| ISO/IEC/IEEE 42010:2022 official standard (`https://www.iso.org/standard/74393.html`; IEEE page `https://standards.ieee.org/ieee/42010/6846/`) with the 42010 companion site as secondary reading (`https://iso-architecture.org/42010/`) | Current official source for architecture descriptions, viewpoints, views, correspondence, and rationale. | Keep architecture views as cited description refs inside the ADR projection. | ADR rows carry `architectureDescriptionRefs` and publication boundary instead of copying view content wholesale. | A 42010 architecture description is not an ADR projection and not a PAD relation. |
-| 2026 ADR violation-detection research (`https://arxiv.org/abs/2602.07609`) | The study reports higher LLM violation-detection accuracy for explicit, code-inferable decisions and lower accuracy for implicit or deployment-oriented decisions that depend on deployment configuration or organizational knowledge. | Make confirmation, violation-detection scope, and non-code source refs explicit. | ADR section functions require confirmation or eval exit, source-return condition, and method or deployment refs when live. | LLM-detectability is not evidence, assurance, or gate passage. |
-| Current FPF `E.8`, `E.17`, `E.24.PUB`, `A.15`, `A.10`, `B.3`, `C.30.AD`, and `C.32.PAD` | Existing FPF patterns define or constrain pattern form, publication, method work, evidence, assurance, architecture description, and decision relation. | Keep ADR projection thin and typed. | The record maps section functions while every neighboring claim retains its exact predicate, defining or constraining ClaimGraph, and non-semantic pattern locator. | ADR projection does not duplicate pattern language, MVPK, method, evidence, assurance, gate, or description doctrine. |
-| NASA Systems Engineering Handbook, decision analysis and trade-study practice (`https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf`) plus domain certification-rationale practice where governed locally | Non-software engineering decisions are commonly recorded through trade studies, engineering memos, review records, safety cases, or certification rationale. NASA supplies a concrete source for alternatives, criteria, assumptions, recommendation, impacts, and decision documentation. | Generalize by record function and reader use rather than by Markdown file convention. | `publicationCarrierRef` identifies the carrier used to present the memo, trade-study record, certification rationale, or design-review record, while section functions still recover problem frame, options, outcome, rationale, consequences, confirmation, source return, status, and supersession. | Non-software record form does not change the PAD decision relation or section functions. |
-
-**Source-currentness boundary.** Recheck a source row when ADR template practice, decision-record tooling, violation-detection practice, architecture-description practice, FPF publication patterns, or project governance changes the section function or update rule used by C.32.ADR.
-
-### C.32.ADR:12 - Relations
-
-- **Builds on:** `C.32.PAD`, `C.32.P2S`, `C.30.AD`, `C.30.ASV`, `E.17`, `E.24.PUB`, `A.15`, `E.8`, `E.11.PUR`, and `C.32.ADA`.
-- **Decision boundary:** Use `C.32.PAD` for the project architecture decision relation. C.32.ADR publishes an `ArchitectureDecisionDescription@Project`; it is not generic ADR guidance and not a second decision authority.
-- **Structural-information boundary:** ADR-like projections may cite `C.33` or `C.34` to show captured structure, lost structure, or preservation adequacy behind the projected decision. Cite `C.35` for the exact generated or discovered result, the obtaining or proposed organization, its next-use condition, and the limit or return. Resolve representation, publication-form, or carrier questions separately when the receiving use depends on them. The ADR projection publishes a decision description; use `C.32.PAD` for the decision relation and `C.35` for the cited result's admissible architecture use.
-- **P2S docking:** P2S may cite an ADR projection as one stage where decision, rationale, method expectation, and source-return are published for readers; ADR does not carry the whole architecturing flow.
-- **Architecture-description boundary:** Use `C.30.AD` and `C.30.ASV` for architecture-description and view adequacy. ADR carries refs and reader-use slices, not full description authority.
-- **Pattern and method boundary:** Use `E.8` when the published object is an FPF pattern, `E.11.PUR` for pattern-use recommendation, and `A.15` for method and work claims.
-- **Publication boundary:** Use `E.17` for MVPK faces and source return, and `E.24.PUB` for publication occurrences, forms, carriers, bounded use, and audience availability.
-- **Evaluation boundary:** Use `C.32.ADA` for decision adequacy; use `C.32.ACE`, `C.16`, `A.10`, `B.3`, or `A.21` for eval, measurement, evidence, assurance, or gate claims.
-- **Package boundary:** A record package map aids navigation among records. It does not decide active architecture by file order; PAD relations and status refs remain governing.
-
-### C.32.ADR:13 - Footer marker
-
-C.32.ADR closes when `ArchitectureDecisionRecordProjection@Project` cites the decision relation and decision description, names carrier, readers, scope, status, section-function mapping, decision outcome, rationale, consequences, method and work refs when live, confirmation or eval exit, publication boundaries, and update or supersession condition.
-
-### C.32.ADR:End
-
-## C.32.ADA - Architecture Decision Adequacy Scales
-
-> **Type:** Architecture evaluation pattern under C.32
-> **Status:** Stable
-> **Normativity:** Normative unless explicitly marked informative
-
-### C.32.ADA:1 - Problem frame
-
-Use this pattern when a project architecture decision, its method docking, or its ADR-like publication projection must be evaluated for adequacy before use, review, handoff, governance, or improvement.
-
-Primary working reader: an architect, reviewer, or architecture-responsible practitioner checking whether a project architecture decision is good enough for a declared use and which repair should happen next.
-
-Typical entry phrases:
-
-```text
-"The decision is written, but can developers actually use it?"
-"The ADR looks complete; is the architecture decision itself adequate?"
-"Which part is weak: candidate basis, trade-off, method instruction, work split, or publication projection?"
-"We need a scale like E.21, but for architecture decisions rather than pattern quality."
-"Do not average the decision; tell us what must be repaired."
-```
-
-**First-minute use slice.** `ArchitectureReviewService-4` first has the A.13 core for decision-adequacy evaluation, and A.15.1 independently admits `DecisionAdequacyEvaluationWork-12` from 10:00 to 10:20 on 2026-08-12. The Work enacts `DecisionAdequacyEvaluationMethod-2` and occurs within the `U.System` named `ProjectArchitectureReviewService-4`. This slice expressly represents evaluator accountability: `ArchitectureReviewerAssignment-6` is an obtaining occurrence of directly declared species `ArchitectureReviewerAssignment`, held by the already recovered performer and covering the Work, and the separate F.6 relation is recorded. A Work-only ADA record would omit those assignment and attribution refs; failed F.6 would leave the evaluation Work intact. One separate result episteme states the declared use and coordinate outcomes. It does not approve the decision; it directs the exact bounded repairs needed before the decision can guide developer Work.
-
-The primary governed object is `ArchitectureDecisionAdequacyEvaluation@Project`: a C.32.ADA-local evaluation record over one `ArchitectureDecisionRelation@Project`, optional `ArchitectureDecisionRecordProjection@Project`, and declared use. It is not the evaluated decision, evaluation Work, or result episteme.
-
-`ArchitectureDecisionAdequacyEvaluation@Project` is a local record form, not a new `U.*` kind, gate, evidence, assurance, pattern-quality evaluation, or replacement for `C.32.PAD`. Its coordinate table expresses the ADA result content; when that result must be a durable claim, one separately identified C.2.1 episteme states it. The dated evaluation remains separate `U.Work`, and any actual evaluation operation application remains with its subject pattern.
-
-What goes wrong if C.32.ADA is missed: a decision can appear complete because it has a record, rationale, or diagram, while it is unusable for the declared work. Weak candidate basis, hidden trade-offs, missing method instructions, absent source-return, and vague supersession conditions remain invisible until implementation or review fails.
-
-What C.32.ADA buys in practice: the project can evaluate architecture decisions by complete coordinate set, keep kinds distinct, and repair the weakest live coordinates without turning adequacy into a single score.
-
-Ordinary working move: declare the evaluation use, evaluate every coordinate with an ordinal value and rationale, then state the repair condition for each weak coordinate and cite the smallest subject-pattern locus containing the required definition or constraint.
-
-Adoption test: after using C.32.ADA, another practitioner can see the declared use, complete coordinate values, rationales, repair targets, and stop condition for the architecture decision.
-
-Not this pattern when the current object is FPF pattern quality, measurement validity, evidence support, assurance, gate passage, candidate synthesis, comparison, selection, local choice, or ADR publication projection itself. Use the pattern for the next question named in `Relations`.
-
-The first useful output is `ArchitectureDecisionAdequacyEvaluation@Project`:
-
-```text
-ArchitectureDecisionAdequacyEvaluation@Project:
-  projectWorkOccurrenceRef?: U.EntityRef constrained to U.Work
-  architectureDecisionEvaluationProjectUseRelationRef?: U.RelationRef governed by the exact evaluation-use or work-use pattern
-  evaluationId:
-  claimScopeRef: U.EntityRef referencing one U.ClaimScope
-  selectedContextSliceRefs:
-  effectiveReferenceScheme:
-  referencePlane?:
-  evaluationWindow:
-  decisionQuestionInputProjectionRef:
-  evaluatorSystemRef?: U.EntityRef constrained to U.System
-  evaluatorSystemRoleKindRef?: U.KindRef
-  evaluatorSystemRoleClassificationJudgmentRef?: U.RelationRef
-  evaluatorAssignmentSpeciesRef?: U.RelationKindRef constrained under U.SystemRoleAssignment
-  evaluatorAssignmentOccurrenceRef?: U.RelationRef constrained to U.SystemRoleAssignment
-  evaluationWorkRef?: U.EntityRef constrained to U.Work
-  evaluationPerformedUnderAssignmentRef?: U.RelationRef constrained to one obtaining F.6 performedUnderAssignment relation
-  evaluationOperationApplicationRefs?: subject-pattern relation or A.6.1 application references
-  adequacyResultEpistemeRef?: U.EpistemeRef
-  declaredUse:
-  architectureDecisionRelationRef:
-  architectureDecisionRecordProjectionRef?:
-  coordinateValues:
-    - coordinateRef:
-      triggerStatus: evaluated | notTriggered
-      notTriggeredReason?: required only for notTriggered
-      value?: 0|1|2|3|4|5; required only for evaluated
-      valueLabel?: absent|namedOnly|partiallyExpressedForDeclaredUse|sufficientlyExpressedForDeclaredUse|wellExpressedForDeclaredUse|exceptionallyExpressedForDeclaredUse; required only for evaluated
-      adjacentValueRationale?: required only for evaluated
-      evidenceOrSourceRefs?
-      repairPatternRef?
-      repairInstruction:
-  strongestBlockingCoordinates:
-  noAveragePolicy: true
-  stopCondition:
-  reevaluationTrigger:
-```
-
-Here `@Project` is a compatibility and retrieval cue only. A project-local ADA record names both the composite `U.Work` in `projectWorkOccurrenceRef` and the obtaining record-use relation in `architectureDecisionEvaluationProjectUseRelationRef`; the evaluated decision's own project relation, the suffix, or either field alone is insufficient. `evaluatorSystemRoleKindRef` and `evaluatorSystemRoleClassificationJudgmentRef` remain optional and separate. When actual evaluation is claimed, the evaluator first has its A.13 core and `evaluationWorkRef` names Work independently admitted under A.15.1. Assignment species, occurrence, and `evaluationPerformedUnderAssignmentRef` are optional and appear only when the record or receiving use expressly represents precise assignment-bound attribution; any present F.6 ref uses the same obtaining A.13 assignment, and its absence or failure leaves the Work intact. Any operation application and result episteme remain separate. Kind, classification, assignment, Work, attribution, application, responsibility, and result do not substitute for one another.
-
-### C.32.ADA:2 - Problem
-
-Architecture-decision adequacy concerns several distinct objects. A decision relation can be strong while its ADR projection is weak. A record can be readable while the decision lacks candidate traceability. A candidate basis can be strong while method docking is absent. A method instruction can be clear while the architecture-characteristic trade-off is hidden.
-
-A single overall grade or average score hides these differences. Adequacy must be evaluated by coordinates tied to the declared use. "Ready for internal architecture review", "ready for developer work", "ready for ADR publication", and "ready for governance enforcement" can require different stop conditions, but each use still needs complete coordinate inspection.
-
-C.32.ADA supplies an E.21-shaped ordinal evaluation pattern for architecture decisions. It uses the E.21 value domain and labels directly, then defines architecture-decision coordinates over PAD relation, method docking, publication projection, structural description, characteristic trade-off, and evolution. Weak coordinates point back to `C.32.PAD`, `C.32.ADR`, `C.30.AD`, `A.15`, `C.32.ACS`, `C.32.ACE`, `C.16`, `C.25`, or another subject pattern.
-
-### C.32.ADA:3 - Forces
-
-| Force | Tension |
-|---|---|
-| Decision complexity | One architecture decision carries candidate, structure, characteristic, method, work, publication, and evolution content. |
-| Declared use | A decision can be adequate for discussion and inadequate for developer work or governance. |
-| Repair focus | Review must point to the smallest repair locus, not produce a general complaint. |
-| No average | A strong rationale cannot compensate for absent work split or missing source-return. |
-| Kind precision | Eval results, evidence, assurance, gates, and publication records must stay distinct from adequacy evaluation. |
-| Evolution | The evaluation must expose reopen and supersession weakness before the decision becomes stale. |
-
-### C.32.ADA:4 - Solution
-
-Create `ArchitectureDecisionAdequacyEvaluation@Project` for one declared use. Evaluate the complete coordinate set. Do not average coordinate values. Use the weakest live coordinate to choose the next repair.
-
-#### C.32.ADA:4.1 - Shared value meanings
-
-Use the same ordinal value domain and labels as `E.21`. ADA specializes what counts as expression for architecture-decision adequacy; it does not create a second scale.
-
-| Value | Label | Architecture-decision adequacy meaning |
-|---:|---|---|
-| `0` | `absent` | The coordinate is not expressed for the declared architecture-decision use. |
-| `1` | `namedOnly` | The coordinate is named or implied, but cannot support reliance, action, evaluation, or repair. |
-| `2` | `partiallyExpressedForDeclaredUse` | The coordinate is present but incomplete, fragile, misplaced, or too narrow for the declared use. |
-| `3` | `sufficientlyExpressedForDeclaredUse` | The coordinate can support the declared use in the current project, with limits visible. |
-| `4` | `wellExpressedForDeclaredUse` | The coordinate has clear refs, boundaries, source-return, and repair path for likely project changes. |
-| `5` | `exceptionallyExpressedForDeclaredUse` | The coordinate is well expressed and transferable across another team, later slice, or adjacent holon kind with minimal recovery work and no hidden neighbor loss. |
-
-Values are ordinal content evaluations. They are not measures, averages, votes, maturity ladder names, evidence weights, assurance levels, gate statuses, or implementation approval.
-
-The result-bearing coordinate row uses the E.21 label domain with an architecture-decision coordinate:
-
-| Coordinate | Value | Label | ShortRationale |
-|---|---:|---|---|
-| `<ADA coordinate>` | `<0..5>` | `<E.21 label>` | `<for 1..4, why the lower adjacent value would understate the expressed content and the higher adjacent value would overstate it; for 0, why 1 would overstate it and what would raise or reopen; for 5, what makes 4 too weak and what would lower or reopen>` |
-
-`5` is not required for every use. Stop conditions are declared before evaluation. A lower diagnostic floor may be used for exploration or internal discussion, but it does not make the decision ready for developer work, implementation commitment, or governance enforcement.
-
-#### C.32.ADA:4.2 - Complete coordinate set
-
-Evaluate every coordinate. If a coordinate is not live, mark it `notTriggered` only with a short reason grounded in the declared use.
-
-| Coordinate | What is evaluated | Repair when weak |
-|---|---|---|
-| `BoundedDecisionQuestionRecoverability` | Decision subject, described holon, exact `U.ClaimScope`, relevant A.2.6 `U.ContextSlice` membership, effective reference scheme and plane, evaluation window, status, and decision question can be recovered; a selected `BoundedModelUseStructure` is named only when it independently changes interpretation. | Repair the exact missing decision-subject, scope, slice, or model-use-structure assertion using `C.32.PAD`, A.2.6, or A.1.1. |
-| `CandidateBasisAndSelectionTraceability` | Candidate palette, residual frame, comparison, selection, selected set, or reason no candidate-set question is live is recoverable. | Repair the missing candidate, comparison, or selection assertion using the exact applicable content in `C.32`, `C.32.MLAO`, `A.19.CPM`, `A.19.SelectorMechanism`, `G.5`, or `C.11`. |
-| `AffectedStructureAndDescriptionAdequacy` | Affected selected structures, views, architecture descriptions, correspondence, structural-information lens uses, and source-return are recoverable. | Repair the exact missing structure, description, correspondence, or lens-use assertion using `C.30`, `C.30.ASV`, `C.30.AD`, `A.6.F`, `A.6.M`, or `C.29`. |
-| `ArchitectureCharacteristicTradeoffA
