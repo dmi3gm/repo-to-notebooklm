@@ -6,11 +6,21 @@
 
 A task can finish with a sufficient analysis, design, recommendation or justified decision to keep the current arrangement. An actual system change requires evidence of that change; approving a model or specification does not establish it.
 
-Framework and method links open readable text on fpf.tools; **Markdown** links open the repository source. GitHub previews can truncate large files. Check the [displayed source edition](https://fpf.tools/status) when the version matters.
+Links to fpf.tools open readable text; **Markdown** links and the CAD entries below open the repository source. GitHub previews can truncate large files. Check the [displayed source edition](https://fpf.tools/status) when the version matters.
 
 ## How this Suite is organized and why
 
-**[Read the Engineering Architectural Reference](ENGINEERING-DPF-SUITE-REFERENCE.md).** It explains how systems engineering, maintenance, knowledge access and semantic integration fit together, why organizational and human specializations have their own Suites, and how these contributions meet in a working system. Read it for the overall design and its alternatives; use a familiar sufficient method directly when that is all your task needs.
+**[Read the Engineering Architectural Reference](ENGINEERING-DPF-SUITE-REFERENCE.md).** It explains how systems engineering, maintenance, knowledge access, semantic integration and control architecture design fit together, why organizational and human specializations have their own Suites, and how these contributions meet in a working system. Read it for the overall design and its alternatives; use a familiar sufficient method directly when that is all your task needs.
+
+## Keep the project reasoning together
+
+The **[system-thinking long mantra (FPF A.1.STM)](https://fpf.tools/A.1.STM)** connects the intended use and common target to functioning, construction, ways of obtaining the system, capable creators and their cooperation. Its questions hold large areas of knowledge together: a good component, capable team and approved plan still have to fit the same project.
+
+Use the [connected explanation in Engineering.Reference:0.5](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference05---the-system-thinking-long-mantra-across-engineering-contributions) to see how the Suite's contributions constrain one another. The mantra's order helps explain and remember the reasoning; actual work can begin at any consequential question and return as answers change. The full Methods supply the knowledge needed to answer those questions.
+
+## Reduce avoidable work and repeated firefighting
+
+A faster operation can still produce an unneeded result, repeat an error or leave the result waiting elsewhere. Use **FPF C.42, Reduce Avoidable Work While Preserving the Needed Result**, to construct a worthwhile change, compare its complete burden and make it usable in later work. Its elegance mantra connects these questions without imposing one work sequence. The **[engineering application](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference06---the-elegance-mantra-and-reducing-repeated-firefighting)** explains how systems engineering, operations and method introduction contribute.
 
 ## Choose an entry
 
@@ -18,6 +28,7 @@ Framework and method links open readable text on fpf.tools; **Markdown** links o
 | Your question | Open |
 | --- | --- |
 | How do we design a new system and choose its architecture? | [Develop linked use and system concepts (SYSE.2)](https://fpf.tools/SYSE.2), [construct functional and implementation alternatives (SYSE.5)](https://fpf.tools/SYSE.5), and [decide the architecture and when to reopen it (SYSE.6)](https://fpf.tools/SYSE.6). |
+| Which observations, memory, commands and execution conditions can make a control design feasible? | [Choose observations and internal state (CAD.5)](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md#cad5---choose-observations-and-internal-state-for-control); use the [planning-and-feedback branch (CAD.1–CAD.4)](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md#cadreference4---the-layered-planning-and-feedback-branch) when that separation is useful. |
 | Should we build, buy, commission, reuse or combine ways to obtain a result? | [Compare ways to obtain the result (SYSE.24)](https://fpf.tools/SYSE.24), including integration, capability, support and eventual replacement. |
 | How do we keep a system fit for use or restore it after a failure? | [Maintenance Engineering and Management](https://fpf.tools/MNT). |
 | How do we make a changing body of knowledge usable in real work? | [Knowledge-Corpus Access Engineering](https://fpf.tools/KCAE). |
@@ -31,18 +42,19 @@ The [Engineering Architectural Reference](ENGINEERING-DPF-SUITE-REFERENCE.md) he
 
 | Framework | What you can work on | Patterns | Text, M characters |
 | --- | --- | ---: | ---: |
-| [Systems Engineering (SYSE)](https://fpf.tools/SYSE) · [Markdown](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Define the system and intended use; compare designs and ways to obtain them; realize, integrate, qualify and change the result. | 53 | 1.780 |
-| [Maintenance Engineering and Management (MNT)](https://fpf.tools/MNT) · [Markdown](MAINTENANCE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Select maintenance policy from condition and failure knowledge; prepare interventions, restore functioning and qualify return to use. | 16 | 0.244 |
-| [Knowledge-Corpus Access Engineering (KCAE)](https://fpf.tools/KCAE) · [Markdown](KNOWLEDGE-CORPUS-ACCESS-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Engineer arrangements for finding, reading and using documentary knowledge, including links back to source passages, delivery and coherent updates. | 11 | 0.241 |
-| [Semantic Integration Engineering (SIE)](https://fpf.tools/SIE) · [Markdown](SEMANTIC-INTEGRATION-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Make separately governed meanings usable together through models, mappings, interfaces, validation and response to change. | 12 | 0.276 |
+| [Systems Engineering (SYSE)](https://fpf.tools/SYSE) · [Markdown](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Define the system and intended use; compare designs and ways to obtain them; realize, integrate, qualify and change the result. | 54 | 1.834 |
+| [Maintenance Engineering and Management (MNT)](https://fpf.tools/MNT) · [Markdown](MAINTENANCE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Select maintenance policy from condition and failure knowledge; prepare interventions, restore functioning and qualify return to use. | 16 | 0.252 |
+| [Knowledge-Corpus Access Engineering (KCAE)](https://fpf.tools/KCAE) · [Markdown](KNOWLEDGE-CORPUS-ACCESS-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Engineer arrangements for finding, reading and using documentary knowledge, including links back to source passages, delivery and coherent updates. | 11 | 0.242 |
+| [Semantic Integration Engineering (SIE)](https://fpf.tools/SIE) · [Markdown](SEMANTIC-INTEGRATION-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Make separately governed meanings usable together through models, mappings, interfaces, validation and response to change. | 13 | 0.315 |
+| [Control Architecture Design (CAD) — Markdown](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md) | Choose observations and memory; construct a planning-and-feedback arrangement when useful; connect information error, command limits and execution conditions. | 5 | 0.149 |
 
 **Patterns** counts full pattern bodies. **Text, M characters** measures each complete Markdown framework, including its embedded Architectural Reference, in millions of Unicode characters with spaces and original line breaks, rounded to three decimals. These are scope indicators, not a required reading load.
 
-These four frameworks are the current direct coverage, not a claim to cover all engineering branches. Platform Engineering is developed within Systems Engineering. The organizational specialization has its own [Management Suite](../Management%20DPF%20Suite/); the human specialization has its own [Human Capability Engineering Suite](../Human%20Capability%20Engineering%20DPF%20Suite/).
+These five frameworks are the current direct coverage, not a claim to cover all engineering branches. Platform Engineering is developed within Systems Engineering. The organizational specialization has its own [Management Suite](../Management%20DPF%20Suite/); the human specialization has its own [Human Capability Engineering Suite](../Human%20Capability%20Engineering%20DPF%20Suite/).
 
 ## Connect the contributions
 
-Consider a laboratory introducing an automated measurement service. Systems Engineering connects the instrument, software, operator and receiving experiment. Semantic Integration makes sample identities, units and reported results agree across interfaces. Knowledge-Corpus Access makes the applicable procedures and evidence retrievable. Maintenance establishes how the measurement capability will remain available.
+Consider a laboratory introducing an automated measurement service. Systems Engineering connects the instrument, software, operator and receiving experiment. If controlled motion or temperature is needed, Control Architecture Design connects observations, permitted commands and execution limits for that loop. Semantic Integration makes sample identities, units and reported results agree across interfaces. Knowledge-Corpus Access makes the applicable procedures and evidence retrievable. Maintenance establishes how the measurement capability will remain available.
 
 The project may also need Organization Change Engineering to establish who accepts a sample or releases a result, and Human Capability Development to develop the operator's missing ability. Those methods come from their specialized Suites. Somatic Movement Modeling matters only if bodily coordination limits the work. This is one possible combination, not a required sequence or a requirement to use every contribution.
 
@@ -103,9 +115,9 @@ The [Foundational Thinking Architectural Reference](FOUNDATIONAL-THINKING-DPF-SU
 | Framework | What you can work on | Patterns | Text, M characters |
 | --- | --- | ---: | ---: |
 | [Mathematical Thinking (MATH)](https://fpf.tools/MATH) · [Markdown](MATHEMATICAL-PRACTICE-DPF.md) | Construct mathematical objects, operations and alternatives; derive consequences and meet proof obligations. | 20 | 0.480 |
-| [Mathematical Modeling (MMP)](https://fpf.tools/MMP) · [Markdown](MATHEMATICAL-MODELING-PRACTICE-DPF.md) | Relate a subject question to mathematics; infer, predict, compare interventions, design observations and revise or combine models. | 17 | 0.575 |
+| [Mathematical Modeling (MMP)](https://fpf.tools/MMP) · [Markdown](MATHEMATICAL-MODELING-PRACTICE-DPF.md) | Relate a subject question to mathematics; infer, predict, compare interventions, design observations and revise or combine models. | 17 | 0.574 |
 | [Physical Thinking (PHY)](https://fpf.tools/PHY) · [Markdown](PHYSICAL-THINKING-DPF.md) | Construct and test physical accounts; select interactions and idealizations, derive consequences and distinguish them by observation. | 10 | 0.305 |
-| [Computational Thinking (CMP)](https://fpf.tools/CMP) · [Markdown](COMPUTATIONAL-THINKING-DPF.md) | Construct algorithms that obtain the required answer within correctness, resource and interaction conditions. | 15 | 0.371 |
+| [Computational Thinking (CMP)](https://fpf.tools/CMP) · [Markdown](COMPUTATIONAL-THINKING-DPF.md) | Construct algorithms that obtain the required answer within correctness, resource and interaction conditions. | 16 | 0.438 |
 | [Notational Engineering (NOT)](https://fpf.tools/NOT) · [Markdown](NOTATIONAL-ENGINEERING-DPF.md) | Design expressions, interpretations and transformations that make operations usable and changes recoverable. | 8 | 0.221 |
 
 **Patterns** counts full pattern bodies. **Text, M characters** measures each complete Markdown framework, including its embedded Architectural Reference, in millions of Unicode characters with spaces and original line breaks, rounded to three decimals. These are scope indicators, not a required reading load.
@@ -162,7 +174,7 @@ Read the full conditions and cases, including the competence needed to provide t
 
 | Framework | What you can work on | Patterns | Text, M characters |
 | --- | --- | ---: | ---: |
-| [Human Capability Development (HCD)](https://fpf.tools/HCD) · [Markdown](HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md) | Connect later work to capability demand, personal programmes, learning products, individual and shared practice, feedback, assessment, transfer and retention. | 29 | 1.140 |
+| [Human Capability Development (HCD)](https://fpf.tools/HCD) · [Markdown](HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md) | Connect later work to capability demand, personal programmes, learning products, individual and shared practice, feedback, assessment, transfer and retention. | 29 | 1.138 |
 | [Somatic Movement Modeling (SOM)](https://fpf.tools/SOM) · [Markdown](SOMATIC-MOVEMENT-MODELING-PRINCIPLES-FRAMEWORK.md) | Connect bodily experience, regulated effort and coordinated movement; adapt within a familiar movement practice as support or load changes. | 5 | 0.069 |
 
 **Patterns** counts full pattern bodies. **Text, M characters** measures each complete Markdown framework, including its embedded Architectural Reference, in millions of Unicode characters with spaces and original line breaks, rounded to three decimals. These are scope indicators, not a required reading load.
@@ -212,29 +224,37 @@ Framework and method links open readable text on fpf.tools; **Markdown** links o
 | Your question | Open |
 | --- | --- |
 | Which direction and investment are worth pursuing? | [Strategy](https://fpf.tools/STR). |
-| Can current work meet its promises with the available capacity? | [Operations Management](https://fpf.tools/OPS); use [Organization Administration](https://fpf.tools/ADM) for permissions, provision and obligations. |
+| How can production or service be arranged, and current work meet its promises? | [Operations Management](https://fpf.tools/OPS); use [Organization Administration](https://fpf.tools/ADM) for permissions, provision and obligations. |
 | How do we answer different clients without losing repeatability or scale? | [Manage client variation and develop repeatable offerings (CUST.1)](https://fpf.tools/CUST.1). Its constituent methods also work for a bounded offering, delivery or transition question. |
-| How do we establish contributions and sustain a shared practice? | [Leadership](https://fpf.tools/LDR) and [Community Management](https://fpf.tools/CB), according to the missing result. |
+| How do we direct personal action, establish joint direction and sustain participation? | [Leadership](https://fpf.tools/LDR) and [Community Management](https://fpf.tools/CB), according to the missing result. |
 | Do roles, authority or capability allocations need to change? | [Organization Change Engineering](https://fpf.tools/OCE). |
 
-For a connected case, the [Management Architectural Reference](MANAGEMENT-DPF-SUITE-REFERENCE.md) follows both a [voluntary practice network (Management.Reference:5.1)](MANAGEMENT-DPF-SUITE-REFERENCE.md#managementreference51---a-voluntary-practice-development-network) and [a new order in an operating business (Management.Reference:5.2)](MANAGEMENT-DPF-SUITE-REFERENCE.md#managementreference52---a-new-order-in-an-operating-business). These are contrasting uses, not the limits of the field.
+For a connected case, the [Management Architectural Reference](MANAGEMENT-DPF-SUITE-REFERENCE.md) follows both a [voluntary practice network (Management.Reference:5.1)](MANAGEMENT-DPF-SUITE-REFERENCE.md#managementreference51---a-voluntary-practice-development-network) and [a new order in an operating business (Management.Reference:5.2)](MANAGEMENT-DPF-SUITE-REFERENCE.md#managementreference52---a-new-order-in-an-operating-business).
+
+## Keep strategic decisions connected
+
+The **[strategizing mantra (STR.18)](https://fpf.tools/STR.18)** connects **strategic question → worthwhile contribution → explained way → feasible contributions and means → justified choice and commitment → realization, use and renewed questions**. An attractive direction can lack an obtaining way; individually affordable initiatives can compete for the same people; a useful preparation can finish without authorizing implementation. The developed account explains how to assemble and revise these answers, including when a technological possibility comes first or an existing answer is enough.
+
+## Keep operating decisions connected
+
+The **[operational mantra (OPS.23)](https://fpf.tools/OPS.23)** connects local work to the result the operation must deliver: **accepted result → route and readiness → limiting conditions → release and feasible order → service, money and human conditions → observed result and changed conditions**. Its developed account explains the grounds, branches and returns. Increasing a team's activity can leave delivery unchanged; a changed resource window can require revising both starts and promises. Read this account when those decisions need to be made together, rather than treating the phrase order as a work schedule.
 
 ## Frameworks in this Suite
 
 | Framework | What you can work on | Patterns | Text, M characters |
 | --- | --- | ---: | ---: |
-| [Strategy (STR)](https://fpf.tools/STR) · [Markdown](STRATEGY-PRINCIPLES-FRAMEWORK.md) | Find a worthwhile direction; compare options, capabilities, investments and business models; revise commitments when conditions change. | 17 | 0.530 |
-| [Operations Management (OPS)](https://fpf.tools/OPS) · [Markdown](OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Organize flow, queues, capacity, admission, quality and simultaneous work under actual operating conditions. | 28 | 0.903 |
+| [Strategy (STR)](https://fpf.tools/STR) · [Markdown](STRATEGY-PRINCIPLES-FRAMEWORK.md) | Find a worthwhile direction; compare options, capabilities, investments and business models; revise commitments when conditions change. | 18 | 0.550 |
+| [Operations Management (OPS)](https://fpf.tools/OPS) · [Markdown](OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Understand, construct and revise operating arrangements; manage work, provision, service and improvement under actual conditions. | 29 | 0.951 |
 | [Organization Administration (ADM)](https://fpf.tools/ADM) · [Markdown](ORGANIZATION-ADMINISTRATION-PRINCIPLES-FRAMEWORK.md) | Make requests, permissions, obligations, provision, records and provider coordination effective without unnecessary burden. | 15 | 0.302 |
-| [Corporate Governance (CGOV)](https://fpf.tools/CGOV) · [Markdown](CORPORATE-GOVERNANCE-PRINCIPLES-FRAMEWORK.md) | Constitute and exercise corporate powers, decisions, controls and accountability under applicable governing rules. | 17 | 0.274 |
-| [Management Accounting (MA)](https://fpf.tools/MA) · [Markdown](MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md) | Construct cost and capacity accounts, forecasts and explanations that inform organizational choices. | 9 | 0.163 |
-| [Corporate Finance (FIN)](https://fpf.tools/FIN) · [Markdown](CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md) | Arrange financing, liquidity and capital allocation; compare value, exposure and financial consequences. | 22 | 0.584 |
-| [Marketing (MKT)](https://fpf.tools/MKT) · [Markdown](MARKETING-PRINCIPLES-FRAMEWORK.md) | Investigate customers and markets; design, communicate and sustain feasible offers and relationships. | 14 | 0.384 |
-| [Customization and Productization Management (CUST)](https://fpf.tools/CUST) · [Markdown](CUSTOMIZATION-AND-PRODUCTIZATION-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Handle client differences while developing repeatable offerings, delivery and compatible transitions for existing clients. | 8 | 0.184 |
-| [Engineering Asset Management (EAM)](https://fpf.tools/EAM) · [Markdown](ENGINEERING-ASSET-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Compare use, renewal, replacement and other asset changes over time, including shared risk, cost and capacity. | 16 | 0.265 |
-| [Leadership (LDR)](https://fpf.tools/LDR) · [Markdown](LEADERSHIP-PRINCIPLES-FRAMEWORK.md) | Obtain feasible agreement and contributions to joint work, including preparation through first useful work. | 3 | 0.128 |
-| [Community Management (CB)](https://fpf.tools/CB) · [Markdown](COMMUNITY-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Develop useful participation, relationships, shared practices and contributions in organizations or voluntary communities. | 16 | 0.526 |
-| [Organization Change Engineering (OCE)](https://fpf.tools/OCE) · [Markdown](ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Construct and qualify organizational changes to contributions, roles, authority, interfaces, capabilities and culture. | 17 | 0.697 |
+| [Corporate Governance (CGOV)](https://fpf.tools/CGOV) · [Markdown](CORPORATE-GOVERNANCE-PRINCIPLES-FRAMEWORK.md) | Constitute and exercise corporate powers, decisions, controls and accountability under applicable governing rules. | 17 | 0.272 |
+| [Management Accounting (MA)](https://fpf.tools/MA) · [Markdown](MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md) | Explain costs, capacity and economic consequences; forecast outcomes; develop activity designs from economic requirements and arrange how accounting information is used. | 10 | 0.211 |
+| [Corporate Finance (FIN)](https://fpf.tools/FIN) · [Markdown](CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md) | Understand financial relations, construct financing terms and group arrangements, and compare value, liquidity, capital uses and exposure. | 23 | 0.643 |
+| [Marketing (MKT)](https://fpf.tools/MKT) · [Markdown](MARKETING-PRINCIPLES-FRAMEWORK.md) | Connect customer inquiry, offers, advertising, acquisition, distribution and use; construct workable provision and revise it from experience. | 14 | 0.411 |
+| [Customization and Productization Management (CUST)](https://fpf.tools/CUST) · [Markdown](CUSTOMIZATION-AND-PRODUCTIZATION-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Handle client differences while developing repeatable offerings, delivery and compatible transitions for existing clients. | 8 | 0.178 |
+| [Engineering Asset Management (EAM)](https://fpf.tools/EAM) · [Markdown](ENGINEERING-ASSET-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Compare use, renewal, replacement and other asset changes over time, including shared risk, cost and capacity. | 16 | 0.262 |
+| [Leadership (LDR)](https://fpf.tools/LDR) · [Markdown](LEADERSHIP-PRINCIPLES-FRAMEWORK.md) | Direct personal action; develop joint direction, participation and responsibility; obtain feasible contributions and first useful work. | 4 | 0.185 |
+| [Community Management (CB)](https://fpf.tools/CB) · [Markdown](COMMUNITY-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) | Develop useful participation, relationships, shared practices and contributions in organizations or voluntary communities. | 16 | 0.524 |
+| [Organization Change Engineering (OCE)](https://fpf.tools/OCE) · [Markdown](ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Construct and qualify organizational changes to contributions, roles, authority, interfaces, capabilities and culture. | 17 | 0.726 |
 
 **Patterns** counts full pattern bodies. **Text, M characters** measures each complete Markdown framework, including its embedded Architectural Reference, in millions of Unicode characters with spaces and original line breaks, rounded to three decimals. These are scope indicators, not a required reading load.
 
@@ -265,7 +285,7 @@ Anatoly Levenchuk, with AI-assisted development and review. These publications c
 ---
 # Domain Principle Frameworks
 
-**Find a field's methods for the result you need.** These 33 frameworks explain domain practice through connected patterns, with conditions, worked cases and source grounds. Use them for a current task or as contributions to continuing development; applying a method once does not require a development programme.
+**Find a field's methods for the result you need.** These 34 frameworks explain domain practice through connected patterns, with conditions, worked cases and source grounds. Use them for a current task or as contributions to continuing development; applying a method once does not require a development programme.
 
 If you know the field, choose a Suite or framework below. If you only know the difficulty, describe it in ordinary words and search the texts; [Using FPF Library](../USING-FPF.md#choose-what-to-read) explains how to find and connect useful contributions. The [Library introduction](../) gives the overall purpose and a first-use route.
 
@@ -282,10 +302,10 @@ A Suite brings together constituent disciplines and explains how their knowledge
 
 | Suite | Working subject | DPFs | Patterns | Text, M characters |
 | --- | --- | ---: | ---: | ---: |
-| [Engineering](Engineering%20DPF%20Suite/) | Designing, realizing, changing and maintaining systems; knowledge access and semantic integration. | 4 | 92 | 2.541 |
-| [Management](Management%20DPF%20Suite/) | Direction, commitments, operations, resources, markets, communities and organizational change. | 12 | 182 | 4.941 |
-| [Foundational Thinking](Foundational%20Thinking%20DPF%20Suite/) | Mathematical and physical accounts, models, algorithms and usable notation. | 5 | 70 | 1.951 |
-| [Human Capability Engineering](Human%20Capability%20Engineering%20DPF%20Suite/) | Human learning and somatic change, connected to capability in later work. | 2 | 34 | 1.209 |
+| [Engineering](Engineering%20DPF%20Suite/) | Designing, realizing, changing and maintaining systems; knowledge access, semantic integration and control architecture design. | 5 | 99 | 2.791 |
+| [Management](Management%20DPF%20Suite/) | Direction, commitments, operations, resources, markets, communities and organizational change. | 12 | 187 | 5.216 |
+| [Foundational Thinking](Foundational%20Thinking%20DPF%20Suite/) | Mathematical and physical accounts, models, algorithms and usable notation. | 5 | 71 | 2.017 |
+| [Human Capability Engineering](Human%20Capability%20Engineering%20DPF%20Suite/) | Human learning and somatic change, connected to capability in later work. | 2 | 34 | 1.207 |
 
 ## Further domain frameworks
 
@@ -293,16 +313,16 @@ These ten fields have their own files here. They are not a fifth Suite: research
 
 | Framework | What you can work on | Patterns | Text, M characters |
 | --- | --- | ---: | ---: |
-| [Decision Design (PSDA)](https://fpf.tools/PSDA) · [Markdown](DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md) | Formulate a decision problem, construct alternatives, compare consequences and uncertainty, and connect a recommendation to its use. | 18 | 0.792 |
-| [Research Method Practice (RMP)](https://fpf.tools/RMP) · [Markdown](RESEARCH-METHOD-PRACTICE-PRINCIPLES-FRAMEWORK.md) | Frame and design research, obtain and criticize evidence, synthesize sources, and return a warranted knowledge contribution. | 11 | 0.555 |
+| [Decision Design (PSDA)](https://fpf.tools/PSDA) · [Markdown](DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md) | Formulate a decision problem, construct alternatives, compare consequences and uncertainty, and connect a recommendation to its use. | 19 | 0.843 |
+| [Research Method Practice (RMP)](https://fpf.tools/RMP) · [Markdown](RESEARCH-METHOD-PRACTICE-PRINCIPLES-FRAMEWORK.md) | Frame and design research, obtain and criticize evidence, synthesize sources, and return a warranted knowledge contribution. | 11 | 0.557 |
 | [Explanation Design (EXD)](https://fpf.tools/EXD) · [Markdown](EXPLANATION-DESIGN-PRINCIPLES-FRAMEWORK.md) | Design an explanation, worked example or dialogue that helps its recipient understand and perform the needed operation. | 6 | 0.135 |
-| [Narrativization and Narrative Studies (NSTD)](https://fpf.tools/NSTD) · [Markdown](Narrativization-and-Narrative-Studies-Principles-Framework.md) | Turn source material into a followable account while retaining the relations, uncertainty and links back to the source passages the reader needs. | 8 | 0.306 |
+| [Narrativization and Narrative Studies (NSTD)](https://fpf.tools/NSTD) · [Markdown](Narrativization-and-Narrative-Studies-Principles-Framework.md) | Develop and interpret followable narratives; construct working accounts and fictional or hypothetical events; preserve relations, uncertainty and useful returns to source material. | 10 | 0.364 |
 | [Implementation Facilitation (IS)](https://fpf.tools/IS) · [Markdown](IMPLEMENTATION-FACILITATION-PRINCIPLES-FRAMEWORK.md) | Help participants put an evidence-informed practice to use under local conditions, adapt the assistance and develop their capacity for further change. | 7 | 0.194 |
 | [Economic Reasoning and Coordination (ECO)](https://fpf.tools/ECO) · [Markdown](ECONOMIC-REASONING-AND-COORDINATION-PRINCIPLES-FRAMEWORK.md) | Reason about exchange, commitments, incentives, shared resources and coordination under changing information and demand. | 10 | 0.133 |
 | [Financial Domain Modeling (FDM)](https://fpf.tools/FDM) · [Markdown](FINANCIAL-DOMAIN-MODELING-PRINCIPLES-FRAMEWORK.md) | Model financial positions, rights, obligations, events and payment flows without confusing their different effects. | 5 | 0.105 |
 | [Defense and Transmission Modeling (DTM)](https://fpf.tools/DTM) · [Markdown](DEFENSE-AND-TRANSMISSION-MODELING-DPF.md) | Explain how practices persist and spread, how they help or impair work, and how protective action changes those outcomes. | 9 | 0.158 |
 | [Embodied Rhythmics (RHY)](https://fpf.tools/RHY) · [Markdown](EMBODIED-RHYTHMICS-PRINCIPLES-FRAMEWORK.md) | Recognize, represent, alter and perform rhythmic relations; coordinate sound, movement, reference and simultaneous layers. | 14 | 0.271 |
-| [Music and Dance Practice Engineering (MDPE)](https://fpf.tools/MDPE) · [Markdown](MUSIC-AND-DANCE-PRACTICE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Create, configure, perform, learn and transmit music and dance practices, including changes in tools, environments and styles. | 22 | 0.974 |
+| [Music and Dance Practice Engineering (MDPE)](https://fpf.tools/MDPE) · [Markdown](MUSIC-AND-DANCE-PRACTICE-ENGINEERING-PRINCIPLES-FRAMEWORK.md) | Create, configure, perform, learn and transmit music and dance practices, including changes in tools, environments and styles. | 28 | 1.031 |
 
 **Patterns** counts full pattern bodies. **Text, M characters** measures each complete Markdown framework, including its embedded Architectural Reference, in millions of Unicode characters with spaces and original line breaks, rounded to three decimals. These are scope indicators, not a required reading load. Suite totals sum their constituent frameworks and exclude the separate Suite Reference.
 
@@ -337,7 +357,7 @@ You can also use one method for one calculation, design, decision or learning ne
 
 ## How the Library is organized and why
 
-**[Read the Library Architectural Reference](FPF-LIBRARY-REFERENCE.md).** It explains why general methods belong to Core, why some disciplines form Suites while others have standalone frameworks, and how their contributions work together. Use it to get an overview, understand an apparent overlap or judge a proposed change. It is the explanation of the Library’s design, not a catalogue of filenames.
+**[Read the Library Architectural Reference](FPF-LIBRARY-REFERENCE.md).** It explains why general methods belong to Core, why some disciplines form Suites while others have standalone frameworks, and how their contributions work together. Use it to get an overview, understand an apparent overlap or judge a proposed change.
 
 For a familiar task, you can go straight to a suitable method below.
 
@@ -357,6 +377,14 @@ You do not need to read the Library from beginning to end. Bring a situation, th
 
 Before applying a method, read [Using FPF Library](USING-FPF.md). It explains how to find a useful contribution, read its conditions, connect it to the rest of the work and distinguish a source citation from a direction to apply another method. An adequate known answer can be used directly; a larger question may need several connected methods. Their order in a file is not an instruction to perform them all.
 
+## Keep connected reasoning in view
+
+**Long mantras** help recall how answers to related questions depend on one another. For a project, the **[system-thinking long mantra (FPF A.1.STM)](https://fpf.tools/A.1.STM)** connects intended use, a common target, functioning, construction, ways of obtaining it, capable creators and their cooperation. Its full explanation shows why those answers must fit and what to revisit when one changes.
+
+The **[control mantra (FPF C.43)](https://fpf.tools/C.43)** connects assessment of the situation, possible continuations, comparison and choice, realization, examination of what happened and revision. Its full Method explains how observations can change later choices, how means and timing constrain them, and how an intervention can develop the capability to address further problems. Technical control, economic choices and developmental recommendation retain their particular mechanisms.
+
+A mantra is a logical teaching unfolding, not a fixed order of thinking or work. The [Library's account of connected reasoning (Library.Reference:1.1)](FPF-LIBRARY-REFERENCE.md#libraryreference11---long-mantras-and-connected-reasoning) leads to developed connections in several fields. Read the full account to understand and adapt the method; use the short formula to recall it.
+
 ## From a useful result to further development
 
 Suppose a team can deliver its current product, but a more demanding order is beyond its capabilities. Buying a specialist's result might meet the immediate need. Learning to produce it would change what the team can do. Learning how to recognize the next limitation, obtain or invent a needed method and organize its acquisition would change how the team can continue developing. These are different results, with different evidence.
@@ -367,16 +395,16 @@ The general methods are in **Core**: [connect development work (C.40.OD)](https:
 
 ## What is available
 
-**FPF Core** contains 397 patterns in 17.628 million characters. It supplies transdisciplinary concepts and methods, including methodological work and open-ended development. **33 Domain Principle Frameworks (DPFs)** supply subject-specific methods: 23 belong to four Suites, and ten have their own files directly in the DPF catalogue.
+**FPF Core** contains 400 patterns in 17.697 million characters. It supplies transdisciplinary concepts and methods, including methodological work and open-ended development. **34 Domain Principle Frameworks (DPFs)** supply subject-specific methods: 24 belong to four Suites, and ten have their own files directly in the DPF catalogue.
 
 A DPF describes one field through a connected pattern language. A **Suite** describes a composite discipline through its constituent fields and their relations. An **Architectural Reference** explains how the relevant language is arranged and why: within a framework, across a Suite, or across the Library.
 
 | DPF Suite | Working subject | DPFs | Patterns | Text, M characters |
 | --- | --- | ---: | ---: | ---: |
-| [Engineering](DPFs/Engineering%20DPF%20Suite/) | Designing, realizing, changing and maintaining systems; knowledge access and semantic integration. | 4 | 92 | 2.541 |
-| [Management](DPFs/Management%20DPF%20Suite/) | Direction, commitments, operations, resources, markets, communities and organizational change. | 12 | 182 | 4.941 |
-| [Foundational Thinking](DPFs/Foundational%20Thinking%20DPF%20Suite/) | Mathematical and physical accounts, models, algorithms and usable notation. | 5 | 70 | 1.951 |
-| [Human Capability Engineering](DPFs/Human%20Capability%20Engineering%20DPF%20Suite/) | Human learning and somatic change, connected to capability in later work. | 2 | 34 | 1.209 |
+| [Engineering](DPFs/Engineering%20DPF%20Suite/) | Designing, realizing, changing and maintaining systems; knowledge access, semantic integration and control architecture design. | 5 | 99 | 2.791 |
+| [Management](DPFs/Management%20DPF%20Suite/) | Direction, commitments, operations, resources, markets, communities and organizational change. | 12 | 187 | 5.216 |
+| [Foundational Thinking](DPFs/Foundational%20Thinking%20DPF%20Suite/) | Mathematical and physical accounts, models, algorithms and usable notation. | 5 | 71 | 2.017 |
+| [Human Capability Engineering](DPFs/Human%20Capability%20Engineering%20DPF%20Suite/) | Human learning and somatic change, connected to capability in later work. | 2 | 34 | 1.207 |
 
 The [DPF catalogue](DPFs/) lists the ten further frameworks and opens each Suite's files. Suite totals sum their constituent framework texts; separate Suite References and README pages are excluded. Character counts include spaces and original line breaks. Counts describe the available material, not how much you must read before using it.
 
@@ -386,7 +414,7 @@ The Library does not claim to exhaust the disciplines it covers: the current Hum
 
 Read [Core on fpf.tools](https://fpf.tools/FPF), or choose a [domain publication](https://fpf.tools/publications) and open the required pattern. The first method links above open that reading service. GitHub cannot display the complete Core and may truncate large DPFs; a link to a valid heading does not remove that limit.
 
-For the source, open the [Core Markdown file and its history](FPF-Spec.md) or [download Core as raw Markdown](https://raw.githubusercontent.com/ailev/FPF/main/FPF-Spec.md). Framework tables on these pages pair online reading with a Markdown source link. On fpf.tools, **Copy and source** identifies the repository edition behind the displayed passage. Check [source editions and update status](https://fpf.tools/status) when the version matters; the service may lag behind GitHub. [Search](https://fpf.tools/search) and [MCP connection instructions](https://fpf.tools/connect) provide other ways to reach the material.
+For the source, open the [Core Markdown file and its history](FPF-Spec.md) or [download Core as raw Markdown](https://raw.githubusercontent.com/ailev/FPF/main/FPF-Spec.md). Framework tables on these pages provide Markdown source links and, where available, online reading links. On fpf.tools, **Copy and source** identifies the repository edition behind the displayed passage. Check [source editions and update status](https://fpf.tools/status) when the version matters; the service may lag behind GitHub. [Search](https://fpf.tools/search) and [MCP connection instructions](https://fpf.tools/connect) provide other ways to reach the material.
 
 For local use, download or clone this repository. Keep `FPF-Spec.md`, `FPF-LIBRARY-REFERENCE.md`, `USING-FPF.md`, the licensing files and `DPFs/` in their existing arrangement. A selected subset is also usable: include the actual supplying frameworks needed by your question, not just links to unavailable files. [Using FPF Library](USING-FPF.md#make-the-publications-available) explains access and selection.
 
@@ -432,7 +460,7 @@ For a specific claim or method, add the publication, edition and complete Patter
 
 A domain pattern language for constructing problem formulations, decision alternatives and models, and qualifying their interpretation and use in bounded inquiry, including professional participation and advice.
 
-Anatoly Levenchuk, with AI-assisted development. [Working edition, 12 October 2026](#psdasources2---citation-and-limits). Original and adapted framework text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party sources retain their own terms.
+Anatoly Levenchuk, with AI-assisted development. [Working edition, 24 October 2026](#psdasources2---citation-and-limits). Original and adapted framework text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party sources retain their own terms.
 
 Bring the missing result: a useful formulation, model, alternative, comparison, participation arrangement or qualified return. Use an adequate current answer directly. The Readme gives independent entries; the Architectural Reference explains their connections and limits. Complete patterns carry the operations, cases and source comparisons. One inquiry need not use the whole repertoire.
 
@@ -499,12 +527,15 @@ Bring the missing result: a useful formulation, model, alternative, comparison, 
 | 16 | [PSDA.17 - Reconcile Simultaneous Problem-Structuring and Decision-Support Work](#psda17---reconcile-simultaneous-problem-structuring-and-decision-support-work) | Stable | simultaneous inquiry, coupling, interference, facilitation. Which arrangement preserves a threatened result at acceptable burden? | PSDA.3, PSDA.4, PSDA.13 where their contributions interact; FPF C.32.MWA for needed several-structure synthesis. |
 | 17 | [PSDA.18 - Deliberately Continue and Change Problem-Structuring and Decision-Support Culture](#psda18---deliberately-continue-and-change-problem-structuring-and-decision-support-culture) | Stable | cultural continuation, interpretation, retention, mediation. What changes across practitioners beyond publication or local performance? | PSDA.16 and PSDA.17 when current; FPF C.20 and C.36 for their direct cultural claims. |
 | 18 | [PSDA.19 - Bound the Development-Direction Advising Engagement](#psda19---bound-the-development-direction-advising-engagement) | Stable | development advice, recipient, service scope, holder premises, refusal. What can responsibly be recommended for this recipient? | PSDA.11, PSDA.14; qualified PSDA results; actual subject practice and professional service conditions. |
+| 19 | [PSDA.20 - Explore a Situation through Goals and Dependencies](#psda20---explore-a-situation-through-goals-and-dependencies) | Stable | goals, dependencies, provision, model inquiry. What does this proposal require from others, and which question does that reveal? | Relevant participant accounts and domain knowledge; PSDA.8:4.2.1 for qualitative analysis; PSDA.3, PSDA.5 and PSDA.12 when their contributions are needed. |
 
 # Readme
 
 ## Start with the missing result
 
 Two people can use the same word for different problems; two models can answer different questions despite displaying the same measure. PSDA.1 and PSDA.2 make the formulation and boundary examinable. PSDA.3 constructs complementary model claims. A clear question with adequate models needs none of that work again: it can enter directly at an alternative, value, uncertainty or comparison result.
+
+When a promising change leaves other participants' work unexplained, use [PSDA.20](#psda20---explore-a-situation-through-goals-and-dependencies). Start from the actual episode and trace one needed provision through its recipient, purpose and provider. The inquiry can return an omitted condition or a new question before a comparison is ready; its car-park case follows the return from a favorable model result to conflicting assignments.
 
 When familiar proposals cannot obtain a desired consequence, start with [PSDA.5](#psda5---generate-decision-alternatives). Its constructive return through PSDA.6 and PSDA.8 helps build a different combination of means and test it under the same conditions.
 
@@ -613,7 +644,9 @@ PSDA.5 constructs a live alternative set. PSDA.6 represents values without infer
 
 B.5.SD makes the connection between supplied claims and the receiving answer itself a working object. This Core Method can use the relevant formulation, model, analytical or professional contribution when it is missing. A source-supported explanation, a proposed experiment and a recommendation have different completion conditions. Construct and examine the inference using the relevant subject Methods and grounds.
 
-These are result dependencies and conditional uses, not eighteen compulsory phases. Pattern numbers identify full Methods. The same occasion may enact several Methods, but a claim that they form one composite Method needs explicit whole action, parts, joins and permitted variation under PSDA.4 and FPF B.1.5.
+[PSDA.20](#psda20---explore-a-situation-through-goals-and-dependencies) supplies one separately usable inquiry through participants' goals and dependencies. It connects the working question, required provision, model views, analysis assumptions and the interpreted answer; an unexpected result can reveal a different problem. PSDA.3 and PSDA.8 remain independently usable model and consequence Methods. Use this whole inquiry only when those connections are part of the missing result.
+
+These are result dependencies and conditional uses, not nineteen compulsory phases. Pattern numbers identify full Methods. The same occasion may enact several Methods, but a claim that they form one composite Method needs explicit whole action, parts, joins and permitted variation under PSDA.4 and FPF B.1.5.
 
 In a professional engagement, formulation and model construction can change which question is worth answering, whose consequences are considered, what counts as the problem and which interventions become plausible. Decision support uses suitably qualified formulations, alternatives, value accounts and evidence to help a receiving decision. A problem formulation can be a complete useful return before a recommendation is possible; a well-formed question can also enter comparison directly.
 
@@ -733,7 +766,7 @@ Reconsider the affected arrangement when a simpler Method supplies the same usef
 
 ### PSDA.Reference:5.3 - Decision theory, model construction and engineering trade studies
 
-A chooser may already have adequate options, a consequence model and an evaluative basis. FPF C.11 supplies the choice-theory construction for that situation, including a partial comparison, rejection of the available set or a worthwhile probe. PSDA addresses work that those premises can still need: constructing formulations and alternatives, eliciting and representing preferences, retaining uncertainty at its supported kind, building consequence accounts, and composing a return for its actual use. Apply a sufficient C.11 result directly when the premises are already adequate. The mathematical choice rule is not developed again in this framework.
+A chooser may already have adequate options, a consequence model and an evaluative basis. FPF C.11 supplies the choice-theory construction for that situation, including a partial comparison, rejection of the available set or a worthwhile probe. PSDA addresses work that those premises can still need: constructing formulations and alternatives, eliciting and representing preferences, retaining uncertainty at its supported kind, building consequence accounts, and composing a return for its actual use. Apply a sufficient C.11 result directly when the premises are already adequate. PSDA.6 develops the preference input where it is missing, including a finite lottery-based construction in :4.5.6; PSDA.8 connects it to the subject's consequence model. C.11 retains the general choice question. For a probabilistic information question, MMP.16 develops the comparison of actions before and after the actual observation, and PSDA.9 applies that result to the engagement.
 
 The general construction suppliers also retain their own questions. C.38 constructs comparable ways to obtain one result; PSDA.5 can construct alternatives that pursue different results or answer different formulations. C.39 develops a missing obtaining operation or connection. C.40 develops branching search from reusable material, while C.40.OCN connects opportunity inquiry, problems, directions and conditional reachability. A PSDA inquiry supplies the actual formulation, elicitation, modelling and professional operations. A general supplier does not supply a missing subject result merely because its scope includes that question.
 
@@ -759,19 +792,15 @@ This subject is narrower than either a comprehensive science of decisions or the
 
 Separate problem-structuring and model-construction frameworks could make independent source communities and change boundaries more visible. Here their connected inquiry account remains in one language, while direct entries and source-specific revision conditions preserve useful independence. A broader Suite account becomes useful when a supported disciplinary whole explains additional model/intervention connections that the current user needs, or when separately maintained languages provide a material advantage. The useful formulation, model and professional contributions remain available without first settling that wider arrangement.
 
-The present language can supply qualified formulations, value and uncertainty accounts, comparisons and bounded advice to a wider inquiry. Engineering, management, policy and personal decision work can use those results. Such use establishes the supplying and receiving questions, not membership of the entire field in Engineering or Management. Domain architecture, scientific inference, implementation and the authorized choice retain their own Methods. An adequate specialist result is an available direct entry, not a reason to repeat all eighteen Methods.
+The present language can supply qualified formulations, value and uncertainty accounts, comparisons and bounded advice to a wider inquiry. Engineering, management, policy and personal decision work can use those results. Such use establishes the supplying and receiving questions, not membership of the entire field in Engineering or Management. Domain architecture, scientific inference, implementation and the authorized choice retain their own Methods. An adequate specialist result is an available direct entry, not a reason to repeat all nineteen Methods.
 
 ## PSDA.Reference:6 - Continue and change the practice
 
-A changed source or receiving condition reopens only the dependent claims until evidence warrants a wider revision. Preserve useful earlier results within their actual scope. A professional organization can use PSDA.16, PSDA.17, PSDA.18 for repertoire, simultaneous service work and cultural continuation; an independent intellectual inquiry can use the general Method-development and cultural-reproduction guidance directly. Neither path is a compulsory tail to one calculation.
+A changed source or receiving condition reopens the claims that depend on it; preserve useful earlier results within their actual scope. A corrected concern, altered access condition or new model configuration can require the responsible practitioner to reconsider the answer. Obtain and interpret the relevant observation before choosing a response: a notice that a configuration changed does not establish that it is safe or effective.
 
-The useful change in practice is the ability to reconstruct a consequential distinction, obtain the right model or comparison, and tell what conclusion it actually supports. Successful communication, accepted advice and realized outcomes remain separate results. The next inquiry starts from the changed knowledge and its actual question, not from an obligation to repeat every pattern.
+Use [PSDA.16](#psda16---decide-whether-and-how-to-change-problem-structuring-and-decision-support-methods) when a professional repertoire needs a justified change, [PSDA.17](#psda17---reconcile-simultaneous-problem-structuring-and-decision-support-work) when simultaneous inquiry activities interfere, and [PSDA.18](#psda18---deliberately-continue-and-change-problem-structuring-and-decision-support-culture) when a practice must be continued or changed across practitioners. An independent intellectual inquiry can use the general Method-development and cultural-reproduction guidance directly. These uses are conditional; a sufficient calculation or recommendation can finish without them.
 
-A corrected concern, altered access condition or new model configuration can change the current result. Identify the claims that depend on the change and ask the responsible practitioner to reconsider them. Obtain and interpret the relevant observation before choosing a response; the mere arrival of a notice is not evidence that the new configuration is safe or effective.
-
-A different problem concerns how inquiry itself is conducted. Use [PSDA.16](#psda16---decide-whether-and-how-to-change-problem-structuring-and-decision-support-methods) when the professional repertoire needs a justified change, [PSDA.17](#psda17---reconcile-simultaneous-problem-structuring-and-decision-support-work) when simultaneous inquiry activities interfere, and [PSDA.18](#psda18---deliberately-continue-and-change-problem-structuring-and-decision-support-culture) when a practice must be continued or changed across practitioners. These are conditional uses, not a required tail on every recommendation.
-
-Contemporary source comparisons belong with the pattern claims they support. Earlier traditions remain valuable where their limits are understood. Neither a fashionable school nor an old success is enough to establish the present Method's fit. What changes in practice is the reader's ability to return a useful answer with visible limits—and to change that answer, or the way of obtaining it, when the actual basis changes.
+The useful gain is the ability to reconstruct a consequential distinction, obtain the model or comparison the question needs, and state the conclusion it supports. Successful communication, accepted advice and realized outcomes remain separate results. Continue from the changed knowledge and the actual question. Compare contemporary sources with the claims they support, and retain earlier traditions where their limits are understood: neither a fashionable school nor an old success establishes a Method's present fit.
 
 ## PSDA.Reference:7 - Whose conditions and evidence shape the answer
 
@@ -812,7 +841,7 @@ A real application must qualify the relied-on content for the stated subject, co
 
 ## PSDA.Reference:10 - What this framework covers
 
-Decision Design serves practitioners and assisting agents constructing and using problem formulations and decision models, including professional help for another's inquiry or decision. Its complete Methods cover formulations, boundaries, complementary models, Method selection and combination, alternatives, values, uncertainty, consequences and robustness, together with engagement, participation and representation, protected facilitation, qualified recommendation, follow-up, repertoire, simultaneous inquiry, cultural continuation and development-direction advice. A recommendation, request, narrowed answer or reasoned abstention can complete that work without taking the recipient's later choice.
+Decision Design serves practitioners and assisting agents constructing and using problem formulations and decision models, including professional help for another's inquiry or decision. Its complete Methods cover formulations, boundaries, complementary models, inquiry through goals and dependencies, Method selection and combination, alternatives, values, uncertainty, consequences and robustness, together with engagement, participation and representation, protected facilitation, qualified recommendation, follow-up, repertoire, simultaneous inquiry, cultural continuation and development-direction advice. A recommendation, request, narrowed answer or reasoned abstention can complete that work without taking the recipient's later choice.
 
 Core C.11 supplies the decision-theory construction, C.40.OCN supplies general opportunity construction, and B.5.SD supplies joint substantive answer construction. The practitioner obtains their results when those questions are live and qualifies the joined use. Their availability does not require repeating them as additional PSDA Methods.
 
@@ -1247,7 +1276,7 @@ A later board asks whether the same result establishes readiness for the flood s
 
 ### PSDA.2:7 - Conformance Checklist
 
-- [ ] The boundary is tied to one receiving use, subject, horizon, and authority boundary.
+- [ ] The boundary is tied to one receiving use, subject and horizon, with the authority boundary stated where that use has one.
 - [ ] Current formulations and material participation or affected-System inputs are recoverable.
 - [ ] Included bearers, concerns, relations, conditions, evidence, horizons, and intervention families are stated only at the needed grain.
 - [ ] Material exclusions and unknowns retain reasons, consequences of error, and reopen observations.
@@ -1354,7 +1383,7 @@ Select the smallest set that covers the material questions. A qualitative model 
 
 A concern map can already complete the task of making participants' concerns discussable. When another material question asks what causes an outcome or what an intervention would change, use an adequate causal model directly. If the causal relations still need to be constructed or compared, `C.28.CM` helps turn the relevant subject knowledge and mechanism accounts into explicit models for that question. Return their assumptions, conditional consequences and unresolved alternatives to the combined account. Keep each existing model for the question it can answer; the constructed causal model still needs the claim-specific assurance in :4.5.
 
-When the question concerns participants' intentions, their dependence on one another and possible alternatives, the Reference's [goals-and-dependencies walkthrough (Engineering.Reference:20)](Engineering%20DPF%20Suite/ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference20---explore-a-situation-through-goals-and-dependencies) develops an actors-and-goals model from a service difficulty. It explains how to select what a view reveals, turn a question into analysis assumptions, interpret the answer and return to an omitted assignment when the result exposes a conflict. Use that connected account when these joins need explanation; a sufficient existing model can be used directly.
+When the question concerns participants' intentions, their dependence on one another and possible alternatives, [PSDA.20](#psda20---explore-a-situation-through-goals-and-dependencies) develops the whole inquiry from a working difficulty. It explains how to construct the actors-and-goals model, select what a view reveals, turn a question into analysis assumptions, interpret the answer and return to an omitted assignment when the result exposes a conflict. Use that Method when these joins are missing; a sufficient existing model can be used directly in the present multi-model account.
 
 #### PSDA.3:4.3 - Make each model's use intelligible
 
@@ -1596,7 +1625,7 @@ Supply this result to facilitated inquiry or the reconciliation of simultaneous 
 
 #### PSDA.4:4.7 - What changes in practice
 
-The practitioner can explain why this way of working fits, which simpler alternative was considered, and where the arrangement would fail. Adaptation becomes a reasoned change of action and conditions instead of an unexamined mixture of workshop exercises.
+The practitioner can explain why this way of working fits, how it compares with the alternatives considered, and where the arrangement would fail. Adaptation becomes a reasoned change of action and conditions instead of an unexamined mixture of workshop exercises.
 
 ### PSDA.4:5 - Archetypal Grounding
 
@@ -1634,14 +1663,14 @@ An operations team has an agreed question, a current qualified calculation Metho
 
 **Scope:** selection and bounded composition of Methods for problem structuring and decision analysis. **Lenses:** **Prag** tests fitness and effort; **Onto/Epist** separates Method, description, plan, enactment, and evidence; **Arch** exposes real joins; **Gov** preserves participation and authority conditions; **Did** makes the reusable action explicit.
 
-Facilitator-familiarity bias favors the method the team can already run. Brand bias mistakes a school name for an identified way of doing. Integration bias treats more techniques as broader competence. Time-pressure bias hides omitted contributions. Counter these with one serious simpler alternative, a result-based contribution comparison, and the exact fragile premise that could reverse selection.
+Facilitator-familiarity bias favors the method the team can already run. Brand bias mistakes a school name for an identified way of doing. Integration bias treats more techniques as broader competence. Time-pressure bias hides omitted contributions. Counter these with a serious alternative, retaining any sufficient simpler route, a result-based contribution comparison, and the fragile premise that could reverse selection.
 
 ### PSDA.4:7 - Conformance Checklist
 
 - [ ] The selection names the missing result and current subject, scope, conditions, and receiving use.
 - [ ] Needed model, participation, expertise, and authority premises are qualified or explicitly missing.
 - [ ] Candidate Methods are recoverable reusable ways, not merely titles, descriptions, plans, or reported workshops.
-- [ ] A serious simpler alternative and the selected trade-off are explicit.
+- [ ] A serious alternative, any sufficient simpler route, and the selected trade-off are explicit.
 - [ ] Each additional Method supplies a distinct material contribution.
 - [ ] Passed results preserve meaning, scope, and limits; conversions requiring new evidence are not hidden.
 - [ ] Real dependence and possible overlap are distinguished from document and calendar order.
@@ -1815,7 +1844,7 @@ Incumbency, sponsor anchoring, technology availability, and novelty bias can eac
 
 ### PSDA.5:7 - Conformance Checklist
 
-- [ ] The recipient question, holder or subject, current arrangement, horizon, and separate choice boundary are recoverable.
+- [ ] The receiving question, holder or subject, current arrangement and horizon are recoverable; the recipient and separate choice boundary are stated where that use requires them.
 - [ ] Formulations, models, and inquiry claims contribute only where they change the candidates.
 - [ ] Alternatives differ in decision-changing contents, not merely names.
 - [ ] The no-change case includes its actual continuing obligations and consequences.
@@ -1941,7 +1970,7 @@ Some thresholds are preference choices rather than prohibitions: an aspiration l
 
 Ask the value holder to compare concrete consequence profiles, with the same people, horizon and conditions in view. Record whether one profile is **no worse**, **strictly better**, or **indifferent** to another, or whether the holder leaves the comparison open. Retain the profiles and the reason given. An open comparison imposes no equality. Use actual alternatives or understandable hypothetical profiles within the declared ranges; a fictitious combination is useful only if the holder can judge its meaning.
 
-The numerical construction below concerns preferences over known consequences. Preferences over uncertain outcomes also need a suitable account of risk and uncertainty; the deterministic trade-off alone does not supply it. Start with §4.5.1 to choose the form, then use the branch whose conditions the value account supports.
+Sections 4.5.1–4.5.5 construct preferences over known consequences. Section 4.5.6 develops a finite expected-utility branch when the receiving comparison concerns uncertain outcomes: it obtains lottery judgements, retains all compatible utility functions and connects them to the consequence probabilities. Choose the form from the holder's comparisons and the distinctions the receiving work needs; deterministic trade-offs alone do not determine preferences over uncertain outcomes.
 
 ##### PSDA.6:4.5.1 - Choose and challenge the representation
 
@@ -1998,6 +2027,32 @@ If the question asks for a best alternative, keep the quantifiers together. A ne
 A further judgement by the same holder on the same profiles adds a constraint to the existing family. Intersect, check nonemptiness again, and recalculate the dependent comparisons. A correction replaces its old row and every restriction derived from it; retaining the superseded row could manufacture a conflict. Preserve consequence measurements, protected conditions and comparisons whose grounds remain valid.
 
 A changed holder, horizon, range, consequence meaning or compensation rule can invalidate the representation itself. Reconsider that premise before intersecting parameters in the old form. State which results depend on it and which remain usable. Stop when the receiving comparison is settled to the needed strength or the missing judgement, form or authority is clear enough to obtain.
+
+##### PSDA.6:4.5.6 - Construct preferences over finite uncertain outcomes
+
+Use this branch when the comparison needs a preference between uncertain consequences and the holder accepts an expected-utility representation for the stated use. A *lottery* here is a probability distribution over described consequences; eliciting it means asking about those distributions, not exposing anyone to an actual gamble. Start with the consequence meanings, the holder and the receiving decision. An outcome can be a complete profile of cost, delay and service, rather than one numerical score.
+
+**Choose the representation before estimating it.** Expected utility evaluates a lottery `P` by `sum_x P(x) u(x)`. Its utility values describe the holder's comparisons of lotteries. A function that merely orders certain outcomes need not do that: any increasing transformation preserves a certain-outcome ordering, but generally changes the ordering of expected values.
+
+Ask whether mixing each of two compared lotteries with the same third lottery, in the same proportions, should preserve the comparison. For example, if L is preferred to M, would the holder retain that preference between a half chance of L plus a half chance of H and a half chance of M plus a half chance of H? Challenge this premise with material cases, including a move from certainty to a chance of failure. Ask whether small changes in probabilities should permit small changes in the comparison, or whether a strict priority or threshold must prevail. These questions make the representation's commitments discussable; finitely many answers cannot validate it for every lottery. If a common-mixture reversal, a noncompensatory rule or a material dependence on how the uncertainty is presented defeats the proposed form, retain the expressed comparisons and obtain a representation that preserves that feature. A probability-weighting or other non-expected-utility model needs its own construction; changing utility numbers alone cannot repair every failed form.
+
+**Build one joint family.** For an accepted finite use, enumerate the complete consequence profiles appearing in the alternatives and elicitation questions. Obtain two intelligible reference consequences, w and b, that the holder treats as worst and best over this set and strictly distinguishes. Normalize `u(w) = 0` and `u(b) = 1`; require `0 <= u(x) <= 1` for the other represented profiles. This chooses an origin and unit, not the utility of an intermediate consequence. If common anchors are not supported, do not manufacture them: retain the direct comparisons or obtain a different representation. If every consequence is indifferent, return that simpler relation.
+
+For each profile x, compare receiving x for certain with a lottery giving b with probability p and w otherwise. Stated indifference gives `u(x) = p`. If x is no worse than the lottery at p, add `u(x) >= p`; if the lottery at q is no worse than x, add `u(x) <= q`. Thus the holder can bound a comparison without identifying one exact probability of indifference. The probabilities in these questions describe the hypothetical lottery. They are not estimates of the real intervention's chance of success.
+
+Retain all answers on the same utility variables. A comparison of two finite lotteries L and M adds `sum_x L(x) u(x) >= sum_x M(x) u(x)` when L is no worse, equality for indifference, or a strict inequality for strict preference. A comparison left open adds no equality. Certain-outcome comparisons are the special case with probability one on one consequence. These are linear constraints in the unknown utilities; use the feasibility and strictness treatment in §4.5.3 and the conflicting-subset diagnosis in §4.5.4. An inconsistent family calls for correcting the question or its interpretation, revisiting a judgement with its holder, or changing the form. It does not justify silently dropping a judgement.
+
+This construction assigns utilities to complete profiles and requires no additive decomposition across their attributes. An additive multiattribute utility can reduce elicitation effort when its additional assumptions fit; the deterministic value model in §4.5.3 alone does not establish those assumptions for lotteries. Keep different holders' families separate unless the receiving work supplies a justified collective rule.
+
+**Connect preference to the consequence model.** For each alternative a, obtain the distribution `P_a(x)` over these same profiles from the subject's probability model. Preserve shared causes, decision-dependent outcomes and the evidence limits described in PSDA.7 and PSDA.8. With one probability model and one utility function, compute `EU(a) = sum_x P_a(x) u(x)`. Comparing expected utility is generally different from applying utility to an average physical consequence.
+
+When probabilities or utilities remain imprecise, retain the set K of compatible complete accounts `(P,u)`. Here P supplies a distribution for every alternative, and u is one utility function used across them. Use all combinations of the probability and utility families only when no joint restriction excludes them. If the meaning of a consequence, a model parameter or an elicited judgement links the two families, carry that restriction in K. Do not mix one alternative's favorable model with another's unfavorable model.
+
+For each pair a and b, compare `D(P,u) = EU(a) - EU(b)` over K. Alternative a is necessarily no worse when every compatible account gives `D >= 0`; it is possibly no worse when at least one does. A contrary account defeats necessity; a feasible witness establishes possibility. The common-witness rule for possible best in §4.5.4 still applies. If K is empty, repair the failed basis before drawing a preference conclusion. No probability distribution over K follows from having retained it.
+
+For fixed probabilities, D is linear in the utilities, so the finite constraint method can find a bound or witness. If both probabilities and utilities vary, their products generally make the problem bilinear; separate interval bounds or one linear-programming call are not automatically an exact solution. Use direct algebra, a complete finite enumeration or an appropriate bounding method under MMP.10 and MATH.20. Report a computed bound only over the domain it actually covers. With strict constraints, distinguish an attained witness from an unattained limiting value.
+
+Return the supported preference, conditional alternatives or unresolved pair, with the consequence meanings, elicited comparisons and form assumptions that determine it. A new probability estimate updates the consequence side; a new or corrected lottery comparison updates the utility family. Recompute the affected relations while retaining the other supported contributions. Stop when the receiving decision has the preference information it needs. If an open preference can change that decision, ask the distinguishing question; further factual measurement cannot supply the holder's answer.
 
 #### PSDA.6:4.6 - Return the account and its exact incompleteness
 
@@ -2090,6 +2145,22 @@ Ask whether the equal-increment assumption still expresses the manager's values.
 
 If the manager withdraws constant time increments but retains addition, §4.5.3 constructs the whole compatible monotone family at the relevant levels. If the manager instead states the noncompensatory two-hour rule in §4.5.1, that different value account prefers A to B and C directly. Either change needs its stated basis; neither is a convenient parameter adjustment inside the old affine model. If no clarification is available, retain the attributed comparisons, D's independently established exclusion and the exact failed form. Return the numerical ranking as unresolved.
 
+#### PSDA.6:5.7 - Separate an uncertain result from its value
+
+A team compares two ways to obtain optional machine time in a ten-hour window. Existing provision covers required service; this comparison concerns additional usable hours, with other material consequences held equal. S supplies four hours for certain. R supplies ten hours if a trial succeeds and zero otherwise. The team prefers more usable hours, but that ordering does not yet compare S with R.
+
+For a success probability of one half, utility `u(x) = x/10` gives `EU(S) = 0.4` and `EU(R) = 0.5`; R is preferred. Utility `u(x) = sqrt(x/10)` preserves the same ordering of certain hours but gives `EU(S) = sqrt(0.4)`, approximately 0.632, and `EU(R) = 0.5`; S is preferred. These two constructed functions show why the certain-outcome ordering is insufficient. Neither is an elicited preference.
+
+The team accepts the expected-utility form for this bounded comparison and uses zero and ten hours as its reference consequences. Let `q = u(4)`, with `u(0) = 0` and `u(10) = 1`. Asked about hypothetical chances, the team says that four certain hours are no worse than a 40 percent chance of ten hours, but a 70 percent chance of ten hours is no worse than four certain hours. Each lottery otherwise gives zero hours. These answers yield `0.4 <= q <= 0.7`; they supply no point estimate.
+
+Separately, engineering evidence bounds R's success probability by `0.45 <= p <= 0.55`. In this constructed case the probability estimate and preference restrictions impose no additional joint constraint. Thus `EU(R) - EU(S) = p - q` ranges from `-0.25` to `0.15`. Neither alternative is necessarily no worse. The accounts `(p,q) = (0.55,0.4)` and `(0.45,0.7)` witness opposite preferences. The unresolved comparison is useful: a more precise success estimate alone need not settle what the team values.
+
+The team can answer one further preference question: four certain hours are no worse than a 60 percent chance of ten hours, otherwise zero. Intersecting that answer with the previous family gives `0.6 <= q <= 0.7`. The difference now ranges from `-0.25` to `-0.05`, so S is strictly preferred throughout the joint family. No midpoint utility or invented probability over utility functions was needed.
+
+A changed engineering result can reverse that conclusion without changing the preference account. If a genuinely different trial design raises the supported success range to `0.8 <= p <= 0.9`, while the consequence meanings and other consequences stay the same, the difference ranges from `0.1` to `0.3`: R is now strictly preferred. If the redesign also changes cost, timing or the meaning of usable hours, those omitted consequences must first enter the profiles; the old one-attribute calculation would no longer answer the whole comparison.
+
+The construction concerns one attributed preference account. It neither aggregates conflicting team members' views nor establishes that the trial has the assumed success probability. Those are separate inputs whose absence would leave a different question open.
+
 ### PSDA.6:6 - Bias-Annotation
 
 **Scope:** value representation for one bounded comparison. **Lenses:** **Onto/Epist** separates concern, measure, preference, and obligation; **Prag** preserves decision relevance; **Gov** exposes representation and authority; **Did** makes trade-offs concrete.
@@ -2106,6 +2177,7 @@ Template bias imports irrelevant criteria. Proxy bias rewards what is easy to co
 - [ ] Value transformations and weights have declared ranges and an elicitation basis; the chosen form is justified separately from fitting its parameters.
 - [ ] The numerical family preserves the joint judgements, has a checked feasibility result, and distinguishes incomplete information from contradictory judgements or a failed form.
 - [ ] Necessary and possible comparisons retain their quantifiers, ties and dependence on the same compatible model. A changed judgement reopens only dependent results unless it changes the form itself.
+- [ ] For a finite expected-utility comparison, lottery judgements and the chosen representation justify the utility account; probability estimates come from the consequence model. Joint variation uses one compatible account across alternatives, and an unresolved preference is not filled by averaging unknown utilities.
 - [ ] Interactions and refusals to compensate are preserved.
 - [ ] Any collective aggregation has an explicit basis; incompatible accounts remain visible otherwise.
 - [ ] The return states partiality, dissent, direct-source gaps, and exact reopen conditions.
@@ -2136,6 +2208,7 @@ Value representation makes consequences decision-relevant without confusing desc
 | --- | --- | --- | --- | --- | --- |
 | How can objectives be concise without omitting what matters? | Inspect means–ends structure, relevance, overlaps, and sensitivity to simplification. | Retain an exhaustive descriptive hierarchy, or delete criteria by correlation alone. | **Adapt:** :4.2–:4.3 keep a small consequence-led account and test any lost distinction. More analyst attention is accepted where it prevents double counting; small clear cases remain short. | Marttunen et al.'s [2019 objectives-hierarchy study](https://doi.org/10.1016/j.ejor.2019.02.039) supplies the comparative methods and retrospective environmental cases. It supports disciplined simplification, not one optimal hierarchy or a statistical license to discard values. | Reopen when a removed distinction can reverse the comparison or a lighter structure preserves the same concerns. |
 | Must incomplete preferences become one weighted score? | Construct the preference model from consequence comparisons and use all compatible instances. | Fit one additive score, average weights, or retain a noncompensatory rule when that better expresses the judgement. | **Adapt:** :4.5.1–:4.5.5 develop form selection, joint constraints, feasibility, necessary/possible comparison and local revision; :5.5–:5.6 show a complete use and failure of the affine form. The trade-off is a potentially less decisive answer for less invented precision. | Greco, Słowiński and Wallenius's [2025 MCDA review](https://doi.org/10.1016/j.ejor.2024.07.038), especially §3.1.2 and §7.1 ([accessible author-hosted PDF](https://www.iris.unict.it/retrieve/cb6fc63a-f16d-4c14-a163-46b863c27dc9/1-s2.0-S0377221724005988-main.pdf)), supplies preference assessment and robust ordinal regression. Its rules and non-additive families remain serious alternatives. The two-criterion derivation and service cases here are bounded applications, not its empirical findings or a universal additive-representation theorem. | Reopen when new judgement changes the compatible set, an interaction defeats the form, or the holder, range or governing condition changes. |
+| How can incomplete risk preferences become a usable comparison? | Elicit finite lottery comparisons, construct the compatible utility family and compare expected utilities over compatible probability and utility accounts. | Assume risk neutrality from a certain-outcome score, fit one curve despite open judgements, or retain a different explicit preference rule. | **Adapt:** :4.5.6 supplies the general construction and :5.7 shows elicitation, an open result and a changed comparison. More elicitation or computation is warranted only when it can change the receiving decision. | [Sahlin, Troffaes and Edsman (2021), §§3.3–3.5 and Appendix B](https://arxiv.org/html/2103.04721v1) demonstrate imprecise lottery-based elicitation with imprecise consequence probabilities. Their additive environmental model is not assumed here. [McCarthy, Mikkola and Thomas (2021)](https://arxiv.org/abs/2102.06898) develop the representation question for incomplete mixture preferences; retaining a family does not remove independence and continuity premises. [Breig and Feldman (2026, online 2025)](https://doi.org/10.1007/s11238-025-10089-1) test expected-utility consistency in a specific elicitation design, supporting scrutiny of the form rather than universal use. The finite profile construction and machine-time calculation here are explicit adaptations, not empirical findings from those studies. | Reopen when lottery judgements conflict with the form, a consequence is omitted, the probability model or holder changes, or an unresolved joint restriction changes the comparison. |
 | Can common coordinates perform the value judgement? | Declare meanings and scales separately from preference, comparison, and selection. | Treat a dashboard or normalized vector as the decision model. | **Adopt:** :4.3 uses A.19 only for the declared space or predicate and leaves value elicitation here. The distinction adds little effort to an existing table and prevents a false consumer result. | Current `A.19`, `C.16`, and the direct comparison patterns supply the relevant typing and operation boundaries. They do not elicit the engagement's values or authorize a trade-off. | Reopen when the scale, predicate, consequence range, or receiving use changes. |
 
 ### PSDA.6:12 - Relations
@@ -2414,7 +2487,7 @@ Use this branch when the important consequences are understandable in ordinary t
 
 Use ordinary prose categories appropriate to the subject. If a named language or solver is used, declare its version, propagation rules, treatment of unknown and conflicting evidence, and structural restrictions. A solver's satisfying assignment is a model result, not a commitment by participants or evidence that the arrangement will work.
 
-For an inquiry that also needs to construct and question the underlying actors-and-goals model, the Reference's [goals-and-dependencies walkthrough (Engineering.Reference:20)](Engineering%20DPF%20Suite/ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference20---explore-a-situation-through-goals-and-dependencies) connects this branch to the inquiry's purpose, model views, explicit initial assumptions and a return from unexpected results to new source questions. It follows a staffing conflict through a revised allocation and its limited use. The present branch supplies the consequence analysis within that larger inquiry.
+For an inquiry that also needs to construct and question the underlying actors-and-goals model, [PSDA.20](#psda20---explore-a-situation-through-goals-and-dependencies) connects this branch to the inquiry's purpose, model views, explicit initial assumptions and a return from unexpected results to new source questions. Its car-park case follows a staffing conflict through a revised allocation and its limited use. The present branch supplies the consequence analysis within that larger inquiry.
 
 #### PSDA.8:4.3 - Construct a consequence account before aggregating
 
@@ -2443,6 +2516,8 @@ Use the current value account for any compensatory score, priority rule, thresho
 Use `A.19.CPM` when its profile, comparator, admissibility, and evidence conditions obtain. Its set-valued comparison outcome remains distinct from the application and evidence account, a result episteme, selection, or permission. Use the appropriate direct comparison Method otherwise; a table alone does not assert a CPM application.
 
 Distinguish three important outcomes. Two alternatives can be tied under a rule, incomparable because of supported conflicting consequences, or not yet comparable because a necessary input is missing. Preserve the difference. If no candidate meets a protected condition, return that failure rather than ranking the least nonconforming candidate as acceptable.
+
+For finite probabilistic consequences, PSDA.6:4.5.6 constructs the missing utility input from comparisons of lotteries and shows how to compare expected utilities over a compatible family. Supply this pattern's common consequence meanings and probability model to that construction. Use the scenario or noncompensatory comparison directly when it already answers the question; the probabilistic branch is not compulsory.
 
 #### PSDA.8:4.6 - Return the relation and what would change it
 
@@ -2674,7 +2749,7 @@ The result may be a robust retained set, a conditional preference, several non-d
 
 Ask what feasible observation, experiment, calculation, or interpretation could move the comparison across a material boundary. Distinguish “this factor changes the output a lot” from “this attainable result could change the decision”.
 
-Where a qualified probabilistic and value model permits information-value analysis, include the possible decisions after the information, the informativeness of the actual probe, and its cost and delay. Perfect-information value can be an upper bound; it is not the value of an imperfect test. Information values from several sources are not automatically additive.
+When the consequence probabilities and preferences support an expected-utility comparison, use MMP.16:4.2–4.5 to construct the value of the actual observation: model the records it can produce, determine the available action after each record, and average those resulting values before the record is known. Include the probe's cost, delay and changed opportunities in the consequences of the compared continuations before applying the utility account. Subtract a cost directly from expected utility only when its additive value on the same scale is justified and has not already been included in those consequences. PSDA.6:4.5.6 supplies a finite utility construction when that preference input is missing. For several compatible probability and utility accounts, carry out the information comparison within each account and retain the supported range or conditional choice; averaging those accounts requires a separate basis. Perfect-information value can be an upper bound under the same available actions and other conditions; it is not the value of an imperfect test. MMP.16 also distinguishes learning from an observation that changes the system. Information values from several sources are not automatically additive.
 
 Where probabilities are not defensible, state the discriminating conditions and what a probe could resolve without inventing expected value. Some uncertainty will remain; a broad research programme is not the default response.
 
@@ -3030,7 +3105,7 @@ Generic FPF patterns already govern outside-practice results, evidence, permissi
 
 | Practice question | Best-known line | Serious alternative or default | Defect overcome and pattern mutation | Source roles and limits | Reopen condition |
 | --- | --- | --- | --- | --- | --- |
-| How should a practitioner open an ill-structured or contested decision-support situation? | The best-known line is to bind inquiry to a named receiving use while keeping framing plural, contextual, and revisable before committing to one PSM, model, or formulation. | A fixed sponsor brief or Method-first workshop is the serious default; an unbounded “include everything” inquiry is the opposite default. | Both defaults hide the decision-support return: one naturalizes the first frame, the other cannot stop. **Adapt:** `PSDA.11:4.1`–`4.4`, the flood-pump case, and the first seven checklist rows require a receiving use, provisional boundary, plural-formulation return, and local reopen before Method choice. | Smith and Shaw's [2019 PSM review](https://doi.org/10.1016/j.ejor.2018.05.003) is a best-known-line candidate for the continuing PSM branch and its differing characteristics; Kogetsidis's [2025 review](https://doi.org/10.1108/IJOA-08-2024-4746) is an application comparator. Kelly and Gero's [2022 framing review](https://doi.org/10.1017/dsj.2022.25), Litster, Cardoso, and Hurst's [2024 systems-mapping study](https://doi.org/10.1017/S089006042400012X), and Nickel, Hurst, and Duimering's [2024 contextual trade-off study](https://doi.org/10.1017/dsj.2024.34) support explicit candidate framing, contextual comparison, and revision. The reviews are non-exhaustive; the studies establish neither one framing ontology, universal Method, shared frame, prevalence, nor superiority. | Reopen if comparative practice shows a lower-effort opening that preserves the same receiving-use, plurality, authority, stop, and revision value, or if a source changes the conditions under which framing must be reopened. |
+| How should a practitioner open an ill-structured or contested decision-support situation? | The best-known line is to bind inquiry to a named receiving use while keeping framing plural, contextual, and revisable before committing to one PSM, model, or formulation. | A fixed sponsor brief or Method-first workshop is the serious default; an unbounded “include everything” inquiry is the opposite default. | Both defaults hide the decision-support return: one naturalizes the first frame, the other cannot stop. **Adapt:** `PSDA.11:4.1`–`4.4`, the flood-pump case, and the first seven checklist rows require a receiving use and provisional boundary, with plural-formulation and local reopening branches where they can change Method choice. | Smith and Shaw's [2019 PSM review](https://doi.org/10.1016/j.ejor.2018.05.003) is a best-known-line candidate for the continuing PSM branch and its differing characteristics; Kogetsidis's [2025 review](https://doi.org/10.1108/IJOA-08-2024-4746) is an application comparator. Kelly and Gero's [2022 framing review](https://doi.org/10.1017/dsj.2022.25), Litster, Cardoso, and Hurst's [2024 systems-mapping study](https://doi.org/10.1017/S089006042400012X), and Nickel, Hurst, and Duimering's [2024 contextual trade-off study](https://doi.org/10.1017/dsj.2024.34) support explicit candidate framing, contextual comparison, and revision. The reviews are non-exhaustive; the studies establish neither one framing ontology, universal Method, shared frame, prevalence, nor superiority. | Reopen if comparative practice shows a lower-effort opening that preserves the same receiving-use, plurality, authority, stop, and revision value, or if a source changes the conditions under which framing must be reopened. |
 | How should decision-support advice remain useful without becoming the later choice? | The best-known current FPF line is result-first and authority-bounded: name the receiving decision, reuse or request only the outside-practice result it needs, return the recommendation as a premise, and let the authorized chooser produce the separate `ChoiceResult`. | Expert-report, approval, score, or model-output language treated as the decision is the serious default. | The default transfers authority by format and hides blockers. **Adopt:** `PSDA.11:4.1`, `4.2`, `4.5`, the development-direction case, and the authority checks keep performer, recipient, holder, outside-result owner, and choice owner distinct. | Current `A.15.9` supplies the smallest bounded-result return and supplier/receiver authority split; current `C.11` supplies choice over an already-available option set. Neither pattern bounds a professional problem-structuring and decision-support engagement or selects its next field-specific branch. | Reopen if direct choice or outside-result guidance gains the complete engagement-boundary move at equal or lower effort, or if practitioner use shows that the current separation prevents rather than improves a necessary authorized combined role. |
 
 ### PSDA.11:12 - Relations
@@ -3855,8 +3930,8 @@ Outcome bias can rewrite the earlier advice as obviously correct or wrong after 
 | --- | --- |
 | Distinct results | Recommendation, later authorized decision, intended work, implementation and observation are separately established or explicitly unknown. |
 | Material observation | Each selected observation can change a named premise, claim, alternative, condition or boundary; any threshold has a qualified meaning. |
-| Design choice | Feasible arrangements were compared by coverage, delay, burden and receiving use; a PSDA.17 constraint did not preselect the answer. |
-| Viability | Observation, interpretation and return have the necessary performers, access, resources, timing, protection and failure route. |
+| Design choice | When a follow-up arrangement needs to be designed, feasible alternatives were compared by coverage, delay, burden and receiving use; a PSDA.17 constraint did not preselect the answer. |
+| Viability | Any observation, interpretation and return relied on here have the necessary performers, access, resources, timing, protection and failure route. |
 | Current evidence | The actual evidence fits its subject, configuration, interval and intended use; absence or silence is not favourable evidence. |
 | Local consequence | Unchanged, narrowed, blocked, reopened-contributor and later-recommendation conclusions name their exact affected scopes and gaps. |
 | Authority and closure | Operational change and recipient choice retain their direct authority; the follow-up return has a bounded continuation or end condition. |
@@ -4517,7 +4592,7 @@ The following questions help keep different claims apart. Open only those that c
 | Retention or loss | Evidence over the stated interval and relevant opportunities that a contribution continued, changed or ceased to be usable or enacted. | Silence, a missing publication or no opportunity to use the Method does not by itself establish loss. |
 | Mediation | The actual tool, platform, community or publication arrangement and the visibility, interpretation, recognition or selection relation it changes. | A prominent display, recommender output or high access count does not establish value, control or cultural success. |
 
-Keep claim scope smaller than or equal to the observed population and period. A workshop account may show one useful adaptation. A review of published applications may reveal cases to inspect. Neither establishes how every practitioner in a country works.
+State observations for the population and period actually covered. A wider transfer, population or forecast claim needs its own stated basis and uncertainty. A workshop account may show one useful adaptation. A review of published applications may reveal cases to inspect. Neither establishes how every practitioner in a country works.
 
 The `PSDA.16` repertoire supplies a variant, lineage or bounded evidence only when it changes this cultural decision. Its offering status is not evidence of transmission. The `PSDA.17` arrangement result can similarly supply a local change or observation; resolution of one interference is not evidence that another team learned it. If either input is absent, stale, out of scope or incompatible, obtain a compatible result that supports the particular cultural link being claimed, or leave that link unproved.
 
@@ -4940,7 +5015,7 @@ Check whose question is being answered, which disclosure is actually permitted, 
 3. **MUST** bound the offered service, actual competence, applicable professional conditions, exclusions, and referral or closure requirements.
 4. **MUST** establish the relevant participation and information-use basis without inferring consent, capacity, or disclosure permission from a title, payment, or form alone.
 5. **MUST** address material conflicts before relying on the requested advice; disclosure must not substitute for the treatment actually required.
-6. **MUST** distinguish AI assisting the adviser from AI as the developing subject and preserve the respective professional and technical qualification.
+6. When AI is involved, **MUST** distinguish AI assisting the adviser from AI as the developing subject and preserve the respective professional and technical qualification.
 7. **MUST** use qualified external results for specialist premises and state the precise scope blocked when a result is missing.
 8. **MUST** distinguish an admissible engagement question from a warranted recommendation and each later authorized choice or realization.
 9. **MUST** preserve actual professional duties after delivery without inventing an indefinite follow-up service.
@@ -4996,6 +5071,239 @@ Separating the two questions makes a useful partial return possible: the service
 - **Uses PSDA.15:** a genuinely needed follow-up arrangement and affected recommendation return.
 
 ### PSDA.19:End
+
+## PSDA.20 - Explore a Situation through Goals and Dependencies
+
+> **Type:** Method pattern body
+> **Status:** Stable
+>
+> **Primary working result:** a usable answer about a proposed change, an explained new difficulty, or a precise next inquiry question, with the participants' reasons, required provision, analysis assumptions and remaining limits connected.
+
+### PSDA.20:1 - Problem frame
+
+**Use this when** a proposed change looks useful from one participant's position, but you cannot explain what it would require or change for the others. It develops an early inquiry using participants' intentions, provision and alternatives. The result may be a comparison, a newly discovered difficulty or a precise question for investigation. A diagram is useful when it makes those relationships easier to inspect; a list of goals alone supplies no analysis.
+
+Start with one actual episode or proposal. Ask who needs an answer and which difference would change what they do; then trace one provision on which the proposed improvement depends. The first useful result may be an omitted contributor or an unsupported condition, before a complete model or comparison is available.
+
+Use an already adequate model or qualified answer directly. **Do not use this pattern** for a lone technical calculation whose subject and conditions are settled, or merely to draw a more elaborate picture. If only the consequence comparison is missing, use PSDA.8; if several adequate models need their contributions reconciled, use PSDA.3. A settled choice or the actual allocation of work belongs to its responsible decision or performing practice.
+
+An analyst, practitioner or assisting agent can conduct this inquiry for their own work or with others. Access to the relevant accounts and enough preparation to interpret the selected relationships are needed. A separate adviser, a workshop, a formal notation and a solver are not prerequisites. When another person's intention or a specialist relationship cannot be established, retain that limit rather than supply it on their behalf.
+
+### PSDA.20:2 - Problem
+
+A proposal can improve one visible result while relying on work that nobody has provided. A replacement sensor may improve a count without settling who keeps the service operating during installation. A diagram can make the dependency visible yet still conceal its purpose, timing or competing assignment. Evaluating the diagram as if those conditions already held produces an answer to a different question.
+
+The reverse difficulty also matters. An unexpected model result can reveal that the original problem was incomplete. Continuing to rank the initial proposals then misses a useful change in question: perhaps the immediate obstacle is a joint staffing arrangement rather than the proposed technology. The practitioner needs a way to move between the working situation, the model question and the interpreted answer while preserving what earlier reasoning still establishes.
+
+### PSDA.20:3 - Forces
+
+| Force | Tension |
+| --- | --- |
+| Local reasons and joint work | A change can help one participant while its provision or burden prevents another necessary contribution. |
+| Useful simplification and omitted conditions | A small model can expose the next question, but hiding a provider or assignment can make an unavailable arrangement look adequate. |
+| Exploration and reliance | Conditional analysis can be useful before every input is known; a stronger claim needs the corresponding evidence and actual conditions. |
+| Required results and freedom of means | Naming the needed provision leaves room for another method; prescribing a task can narrow that freedom deliberately or accidentally. |
+| Revision and continuity | A discovered conflict can change the problem, while independent relationships and earlier conditional answers remain usable. |
+
+### PSDA.20:4 - Solution
+
+Connect the receiving question to participants' reasons and required provision, use the model to answer a stated conditional question, and interpret that answer back in the working situation. If the answer exposes an omitted condition, revise the affected model and question. Stop with the result that the receiving work can use.
+
+The connected contributions are [PSDA.12](#psda12---recover-participants-concerns-and-affected-systems-for-a-decision-support-inquiry) for whose concerns enter, [PSDA.3](#psda3---construct-complementary-situation-and-option-models) for what the model can answer, [PSDA.5](#psda5---generate-decision-alternatives) for alternatives, and [PSDA.8:4.2.1](#psda8421---construct-and-question-a-qualitative-consequence-network) for qualitative analysis. Enter at the unresolved question and retain usable answers. If a current direct calculation or an already qualified comparison settles it, use that result.
+
+The sections below develop one complete car-park inquiry alongside the general moves. They are not compulsory stages. A current model can supply the needed relationships; an already precise question can enter analysis; an unexpected result can return directly to the missing provider or condition. Preserve those adequate inputs rather than rebuilding them to follow the exposition. The other case in :5 starts from a different kind of constraint.
+
+#### PSDA.20:4.1 - Let the question determine what to model
+
+Begin with an episode, proposal or unexplained result. Ask who needs an answer, what they could do with it and which difference would change that action. Obtain relevant participants' accounts where possible; otherwise use attributable interviews, documents and observations, retaining unanswered questions for those who know the work. Participation in constructing the model can help correct it, but attendance does not establish agreement with a proposal.
+
+Consider a car park whose unreliable sensors sometimes send drivers towards occupied floors. Attendants walk the floors and correct the displayed counts. Management proposes replacing the entire system, since the sensors cannot simply be exchanged in the current design. The initial inquiry is: **does replacement address the service difficulty better than continuing manual correction?** This is an adaptation of the parking exercise in the [iStar tutorial, slide 57](https://zenodo.org/records/10637477/files/iStar-tutorial-online.pdf?download=1). The following participants, conditions and judgements are constructed for this walkthrough.
+
+Include drivers because the guidance affects finding a place; attendants because correction requires their work; the operations manager because staffing and service arrangements are theirs to decide; and the technical supplier because replacement feasibility and installation depend on its contribution. Management cares about operating cost and reputation. Drivers care about usable guidance and protection of their cars. An attendant's account of an assignment is evidence about that work, not a statement of every driver's preferences.
+
+Keep the questions distinct. What would make the displayed count trustworthy? Can the work supply it when needed? How would the alternatives affect cost and the concerns behind reputation? A model of intentions can expose these questions before it has the technical estimates needed to answer all of them.
+
+#### PSDA.20:4.2 - Connect provision to the reasons on both sides
+
+Separate a desired state, an action, a required entity and a quality. “Current guidance is available” states a desired result. “Walk each floor and enter a corrected count” prescribes work. The count is information used in producing the display. Accuracy concerns whether that information represents the occupied and available spaces well enough for the intended guidance. A completed round does not by itself establish that accuracy.
+
+For each important provision, connect five positions: the receiving participant, why that participant needs it, what must be provided, the provider, and how the provider proposes to obtain it. For example:
+
+> The operations manager needs a checked floor count from the attendant so that the service can issue current guidance; the attendant obtains the count by inspecting the floor and entering the result before the next update.
+
+Keep the attendant's checking task, the supplied count and the manager's need as distinct parts of this statement. If the checking method or update deadline is unknown, leave that question visible. Describing a dependency does not establish that the provider has accepted the work or can perform it.
+
+Requiring a count with stated fitness conditions leaves room to choose its production method. Requiring a specified inspection task restricts that choice. State which relationship the work needs. Similarly, two recipients needing information called “the floor count” may need different intervals or accuracy; matching names do not establish interchangeable provision.
+
+Now recover the internal relationships that explain the alternatives. Current guidance needs a suitable count and a working way to publish it. A count might come from supported automatic sensing or from a sufficiently recent manual inspection. These are candidate means; neither is adequate merely because it appears under an “or”. Manual correction also needs staff time and access. Replacing the system needs a qualified design, installation and an operating arrangement. A technical supplier's future delivery is an external dependency, not a task the attendant can perform.
+
+For each arrow, state whether it means a necessary condition, a sufficient alternative, a favorable or adverse contribution, or a quality of something. Accuracy can help reputation without guaranteeing it: the manager also relates reputation to protection of parked cars. An arrow saying that protection matters does not establish that it is provided.
+
+#### PSDA.20:4.3 - Show the part of the model needed for the current question
+
+
+
+A view showing only participants and external provision helps locate a missing supplier. Opening the manager's and attendant's internal reasons exposes why the count is needed and what work supports it. Opening the supplier's proposed arrangement becomes useful when installation or later maintenance can change the answer.
+
+In iStar these are the strategic dependency view, strategic rationale view and selective combinations of them. They show different amounts of one model. They are not required stages, and a hidden detail is not an absent condition. Preserve the same identified dependency when changing views; otherwise a convenient simplification can silently replace the thing being examined.
+
+For this car park, an overview can show “attendant supplies count”. To examine availability during a shift, open the checking task and its staffing conditions. To compare whole cost, obtain the relevant cost account; opening more circles does not calculate it. The [iStar 2.0 Guide, §§2–8](https://arxiv.org/html/1605.07767v3) supplies the notation, distinctions and integrity rules when an actual iStar model is wanted. This prose walkthrough uses those distinctions without claiming to be a solver-ready model.
+
+#### PSDA.20:4.4 - Turn a working question into an analysis, then recover its meaning
+
+
+
+Define one alternative precisely enough to tell which work and assumptions change. Alternative A retains the existing displays and uses manual correction. Alternative B installs the proposed replacement and uses its automatic counts. For the initial comparison, suppose staffing for A is available and the supplier has described a technically plausible B, while B's installation interval and whole cost remain unknown. Do not compare A in its troublesome current state with B in an unexplained ideal state.
+
+An initial analysis value expresses an observation or an assumption in this particular question. To ask what B would change *if installed and operating as proposed*, provisionally assume that installation and specified sensing performance hold. Mark both as assumptions. Keep the unresolved installation and cost questions attached to the investment decision. A conditional service comparison can proceed without pretending those inputs have been obtained.
+
+Likewise, leaving manual rounds out of B means they are not part of that proposed arrangement. It is not evidence that attendants cannot inspect a floor. An uninvestigated element stays uninvestigated; an investigated effect may remain unknown; opposed grounds may remain in conflict. Neither omission nor uncertainty means a negative observation.
+
+Carry each alternative through the relationships using [PSDA.8:4.2.1](#psda8421---construct-and-question-a-qualitative-consequence-network). Keep the initial assumptions and intermediate judgements with its result. For A, a sufficiently recent and correctly performed round supports a corrected count; publication still needs the working display. For B, the stipulated sensing performance supports the count conditionally; it does not establish the installation date or remove all future maintenance work.
+
+Contributions require the relevant person's or specialist's judgement when the incoming grounds do not settle the answer. Here management judges that fewer misleading indications would help reputation. It cannot infer satisfactory reputation from that improvement alone while the protection concern remains unanswered. The same extra staff work that supports accurate guidance also adds operating burden. Do not cancel these effects by counting favorable and adverse arrows.
+
+Return an answer in the language of the original inquiry:
+
+| Question | A: retained system with manual correction | B: proposed replacement |
+| --- | --- | --- |
+| Can it provide useful counts? | Supported only while the stated inspection, freshness, staffing and publication conditions hold. | Supported conditionally on the proposed installation and sensing performance. |
+| What happens to work and cost? | Inspection remains a recurring demand. | Some inspection may be displaced, but acquisition, transition and operating costs remain to be established. |
+| Does it meet the concerns behind reputation? | Better count information addresses one concern; protection of cars needs its own grounds. | The same limit applies; a better sensor is not evidence of protection. |
+
+This comparison does not yet justify the investment. It identifies what the proposal can improve and which missing facts can change the choice. Obtain a bounded installation and whole-cost answer if its expected contribution warrants the work; otherwise retain the conditional comparison or defer the choice. The answer is not “B has more satisfied goals”.
+
+#### PSDA.20:4.5 - Use surprising results to discover a different problem
+
+An unexpected answer raises two questions: whether the model or its analysis needs correction, and whether the proposed work has a problem that the original question omitted. Trace the answer back to the relations and premises that produced it. Check the inference against its analysis rules and compare the material premises with the participants' accounts and operating conditions. Correct a misrepresented relationship or mistaken premise, then reconsider the affected conclusions. If this resolves the surprise, continue the original inquiry using the repaired model.
+
+When the original question omits a necessary contribution, restate the required joint result and its conditions. A question about improving one contribution can thereby become a question about obtaining several contributions together. Explain that change to the participants: it follows from a dependency of their desired result, rather than from the analyst's preference for a larger model.
+
+Work backward from the joint result to the provisions and conditions that would make it possible. Construct alternatives by changing a provider, the means of producing a provision, its timing or the support available to it. Use PSDA.5 when generating the alternatives needs further development. A proposed relaxation of the required result returns to the people whose need or obligation it changes.
+
+Then work forward through each promising arrangement, checking the contributions together under the same conditions, including competing assignments and shared resources. Revise the affected conclusions when a premise changes; retain relationships and conditional answers whose grounds still hold. The result is a changed problem with a reason for the change and a candidate answer, rejection or next inquiry that its participants can use.
+
+
+Suppose the first model gave A an unqualified favorable result because it represented the round but omitted other assignments. Ask what must be true for that result to hold. Inspecting the rota now reveals that the same attendant must be at the security desk from 10:00 to 10:15, while the modeled correction requires leaving it for a round from 10:00 to 10:10. No substitute is assigned. These stipulated facts defeat the simultaneous arrangement.
+
+The discovery changes the model and the problem. Add the required desk coverage and its relation to the attendant's available work; then revise A's count availability for this interval. The earlier claim that a completed, timely inspection can supply a count still holds. B's separate technical hypothesis also survives. What fails is the premise that A's work can coexist with the retained service obligations.
+
+The next question is now: **how can current guidance and desk coverage both be obtained in this interval?** Another discussion asking the attendant to agree with the plan supplies no missing time or replacement. The manager who controls assignments must examine a different allocation or contributor. [OCE.11](Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce11---coordinate-organization-change-work-with-continuing-service) develops that coordination when change work competes with continuing service.
+
+Work backward from the joint requirement. Current guidance needs an adequate count and publication; desk coverage needs a person at the desk. One candidate is a separately allocated competent checker while the attendant remains at the desk. Test it forward: can that person obtain the count, update the display in time and do so without abandoning another necessary assignment? Naming a replacement is not that test. Until these conditions are established, the candidate is a question for the manager, not an available solution.
+
+For a bounded continuation, suppose the manager assigns a competent relief worker for this interval, verifies that no other required assignment overlaps, and provides the permitted access and existing checking procedure. In the stipulated trial the relief worker obtains and publishes a count meeting the agreed freshness and accuracy conditions, while the attendant remains at the desk. Both required contributions are supplied in this interval. The added staffing cost belongs in A's cost account. If relief is available only today, retain today's result and reopen the staffing question before promising tomorrow's service; the earlier investment question remains open.
+
+A different candidate might change the update interval or the information promised to drivers. That changes the service requirement, so return to whether the altered guidance remains useful and acceptable. Do not weaken the criterion silently to make the diagram succeed. An incompatible candidate can be rejected without proving that all possible arrangements fail; an unsupported candidate stays conditional.
+
+Keep the unsuccessful combination and the reason it failed so that the next attempt does not repeat it. In a formal backward analysis, ask which supported conditions and judgements produce the incompatibility. A solver's failure can concern its encoding, restrictions or current assumptions; it is not a proof that the real organization has no remedy.
+
+#### PSDA.20:4.6 - Stop with a usable answer and preserve the right return
+
+The manager now has a useful result: replacement is not yet justified by the conditional service comparison; the original staffing proposal cannot provide both services; and the revised allocation has supplied them in the stipulated interval. The immediate allocation question and the longer investment question have different owners and inputs. A repaired rota can settle the first without settling the second. A completed cost comparison does not itself allocate a checker.
+
+Stop when the inquiry's purpose has been met at its declared strength: an adequate comparison is available, the decision-changing incompatibility is explained, or the next useful investigation is precise. Do not enlarge the model simply to fill every possible actor boundary. Conversely, a final label is not sufficient when the recipient cannot understand which action or missing premise it implies.
+
+When a new fact arrives, identify which assumption, relation or judgement changes. Reconsider the alternatives and consequences that depend on it, including their shared conditions, while retaining independent results. If a technical question needs dynamics, accuracy bounds or failure probabilities that this model cannot establish, use an appropriate technical model and bring its qualified answer back. More qualitative arrows do not supply those quantities.
+
+When the analysis itself is difficult, try a small interpretable question whose expected result can be explained from the modeled relationships. Inspect unreached intentions and omitted providers before taking coverage for granted. The authors' later suggestions include extreme hypothetical settings and realistic alternatives as ways to question a model. Such settings are diagnostic questions, not feasible plans or a compulsory checklist. Preparation in the chosen language and help interpreting a model may be needed; neither a completed diagram nor this walkthrough establishes independent modeling capability.
+
+### PSDA.20:5 - Archetypal Grounding
+
+#### PSDA.20:5.1 - A searchable exhibition whose material cannot simply be published
+
+A community archive proposes automatic transcription for a public website so that visitors can search thirty oral-history stories in either of two languages before an exhibition opens. The access rules, source states and capacities below are stipulated for this constructed example.
+
+The curator needs visitors to find the relevant approved story. Speakers have agreed to public use of approved excerpts; the raw recordings remain restricted. The proposed service requires an approved excerpt in both languages for each of the thirty stories. Those are conditions of this proposal, not preferences that can be compensated by faster search. The question is initially: would transcribing and publishing the recordings provide the promised service?
+
+Recover the provision before choosing software. The curator needs approved bilingual excerpts from an editorial contributor. That contributor needs permitted access to source material, a usable translation and the approval required for that use. The archive custodian can supply permitted material, while the speakers supply approval under the stipulated arrangement. A transcription tool can propose text; it does not supply permission, translation competence or the speakers' approval.
+
+An overview showing “archive supplies stories” hides these differences. Open the editorial contribution only as far as the current question needs. Distinguish producing a transcript, producing a translation and obtaining approval. Connect fidelity to the speaker's account with the visitor's ability to understand the excerpt; do not treat a readable transcript as evidence that its meaning or permitted use has been preserved.
+
+Now examine two proposed arrangements. Publishing searchable raw transcripts conflicts with the stated access rule even if the transcripts are accurate. Publishing an index of approved bilingual excerpts could meet the rule, but only if the needed excerpts can be supplied. This comparison neither rejects automatic transcription as an internal aid nor silently relaxes the required public use.
+
+Suppose the first model gave the second arrangement a favorable result because it represented an editor as available. On asking what that assumption includes, the curator finds that approved bilingual excerpts exist for ten stories and the available editorial work can complete five more before opening. No supplier is yet identified for the remaining fifteen. The model had combined “some editorial help is available” with “all thirty contributions will be supplied.” The latter claim is unsupported. The ten existing excerpts and their publication permission remain usable. Completion of the next five remains conditional on the planned editorial work.
+
+The next question becomes: can the remaining approved bilingual material be obtained within the opening conditions? Work backward from that joint requirement. An existing approved translation held by a contributor is one candidate provision; a newly commissioned translation with the necessary review is another. Test any candidate forward for source fitness, access, permitted publication, capacity and timely approval. Naming a translator or obtaining a file does not establish all of these conditions. A smaller public collection would change the promised scope and needs its own authorized decision; it is not a repair made by relabelling an unknown result.
+
+For a further change, suppose a contributor supplies suitable translations for the fifteen stories that lacked a supplier, but their permission covers display inside the exhibition only. The content and translation claims need not be discarded. What changes is the proposed online publication. Return that restriction to the access arrangement and the curator's decision. An on-site search arrangement would change the proposed access route, so the curator must decide whether it would still meet the receiving need. Public web access is not established. The inquiry can stop with that precise distinction and next question without claiming that the service has been implemented.
+
+Unlike the car-park allocation in :4.5, this continuation does not stipulate a completed remedy. It demonstrates a useful bounded return when a missing provision or use condition remains unresolved. It also shows why a requirement expressed as a quality cannot be weakened merely to obtain a favorable analysis label.
+
+#### PSDA.20:5.2 - A sufficient direct answer
+
+The archive already has a current, qualified answer covering the exact approved excerpts, languages, access route and opening period. The remaining task is to apply the settled publication instruction. Use that answer and the responsible publishing practice. Reconstructing the goals model adds no missing result.
+
+### PSDA.20:6 - Bias-Annotation
+
+**Scope:** early inquiry through participants' intentions and dependencies. **Lenses:** **Onto/Epist** keeps participants, work, model content and evidence distinct; **Prag** selects the answer that changes the receiving action; **Arch** exposes necessary provision and competing assignments; **Gov** preserves actual permission and allocation; **Did** separates a readable account from demonstrated modeling capability.
+
+Proposal bias treats the suggested technology as the problem's boundary. Agreement bias mistakes participants' recognition of a diagram for acceptance or feasibility of the work. Favorable-label bias hides unknown provision or offsets a protected condition against another benefit. Ask what each relied-on relationship means and which actual condition supports it; keep a contrary account or missing premise visible.
+
+### PSDA.20:7 - Conformance Checklist
+
+- The inquiry identifies who needs an answer, what action it can inform and what would make the present result sufficient.
+- A relied-on provision distinguishes its recipient, purpose, supplied result, provider and proposed way of obtaining it. Unknown availability or acceptance is not replaced by a dependency label.
+- A view preserves the modeled relationships relevant to the question; omitted display detail is not treated as an absent condition.
+- Initial analysis assumptions remain distinguishable from observations, model relationships and unknown or conflicting grounds.
+- The analysis result is interpreted in the original working terms, with its limited use and any newly discovered problem stated.
+- A backward candidate is tested as a whole under the same requirements; an unsupported combination remains conditional and an incompatible one does not prove that all remedies fail.
+- Changed assumptions or evidence reopen their dependent answers while independent results remain available. A sufficient result permits stopping.
+- When a notation or solver is chosen, its language and analysis rules are compatible and its restrictions are preserved. Actual allocation, performance, permission and empirical effects retain their own grounds.
+
+### PSDA.20:8 - Common Anti-Patterns and How to Avoid Them
+
+| Misuse | Why it fails and what to do instead |
+| --- | --- |
+| Start by drawing every actor and goal. | A large picture can still miss the consequential question. Begin with the receiving use and add a relationship when it can change the answer. |
+| Count favorable arrows or satisfied goals. | Counts hide the meaning and strength of the grounds, necessary combinations and protected conditions. Use the qualified consequence analysis and explain the returned profile. |
+| Treat a supplier name as delivered work. | A named role can lack access, time, ability or an accepted assignment. Establish the provision needed for the proposed use. |
+| Interpret an assumption as a result. | “If installed” cannot establish an installation date. Retain the assumption with the conditional answer and return the missing investment or operating premise. |
+| Repair a failed model by weakening the recipient's criterion. | This changes the problem without the required decision. Compare another means or make the proposed requirement change explicit. |
+| Rebuild everything after one change. | Independent results can remain valid. Follow the changed relation and its downstream reliance, reopening the boundary only when the new question requires it. |
+
+### PSDA.20:9 - Consequences
+
+The inquiry can yield a useful result before a whole decision is possible: an explained incompatibility, a bounded comparison or a question that a particular source can answer. It can also reveal a different problem while preserving earlier conditional knowledge.
+
+The cost is obtaining and interpreting the relevant accounts and relationships. Large or technical questions can exceed a manual model's useful reach. Reuse a suitable domain result, obtain competent help or narrow the present claim when that is the better way to answer the question. The Method does not by itself improve service, establish participant agreement or demonstrate independent modeling capability.
+
+### PSDA.20:10 - Architectural Rationale
+
+Participants' intentions matter here because the same supplied entity can serve different purposes and require different conditions. Connecting provision to reasons on both sides explains why substituting a task, supplier or output can change the inquiry. The model is useful when those distinctions alter an answer; it need not become a complete representation of the organization.
+
+Forward analysis examines what follows from a proposed arrangement. Backward inquiry constructs possible means for a needed joint result. Neither alone settles the working question: initial assumptions and intermediate judgements must be interpreted, and a proposed combination must survive its joint conditions. Returning an unexpected answer to an omitted source question allows the problem and the candidate response to change together.
+
+PSDA.3 remains the Method for making complementary model contributions usable. PSDA.8 remains the Method for comparing consequences, including its developed qualitative branch. The present Method supplies the broader inquiry in which a question, an actors-and-goals model and an interpreted answer develop together. It can use either constituent without making all Decision Design Methods mandatory. Where a sufficient model and a settled comparison already exist, the narrower direct contribution is preferable.
+
+### PSDA.20:11 - SoTA-Echoing
+
+The iStar Guide defines a language; the [PoEM 2009 treatment](https://www.cs.toronto.edu/~jenhork/Papers/Horkoff_PoEM_2009l.pdf) develops interactive modeling and forward evaluation. The [ER 2010 procedure](https://www.cs.toronto.edu/~jenhork/Papers/ER_Horkoff.pdf) adds formal backward search with human judgements and backtracking under stated structural restrictions. The manual backward question used here is an adaptation, not an implementation of that algorithm. If a named solver is used, select compatible language and analysis versions and preserve their restrictions, rather than applying older propagation tables to iStar 2.0 without a justified mapping.
+
+The [subsequent systematic-versus-ad-hoc study](https://www.cs.toronto.edu/~jenhork/Papers/PoEM10_Horkoffetal.pdf) gives reasons to attend to interpretation, coverage and training. It does not establish that a systematic procedure uniquely produces better understanding or more useful new questions. Use the model and its analysis for the contribution they can actually supply, then establish the domain evidence and decisions needed for reliance.
+
+The comparison concerns this manual, question-led inquiry rather than unrestricted formal analysis or the empirical effectiveness of a consulting intervention.
+
+| Source contribution or alternative | Adoption and limit for this Method |
+| --- | --- |
+| iStar 2.0 language and its dependency/rationale views | Use the distinctions and integrity rules when that notation is chosen. The inquiry can also use prose; language conformance does not supply the domain facts. |
+| Interactive forward evaluation and human judgement | Adapt the connection between a working question, stated initial values, relationships and an interpreted answer. Unresolved or conflicting grounds remain possible results. |
+| Formal backward search | Retain the useful backward question and whole-candidate forward test. Do not claim an implementation or transfer old formal rules to a different language version without a justified mapping. |
+| A sufficient technical model or qualified comparison | Use it directly for the question it answers. More intentional modeling is not a substitute for missing dynamics, accuracy bounds, probabilities or actual operating evidence. |
+
+The car-park continuation and the exhibition case are constructed applications. Their stipulated allocations, capacities and permissions illustrate the reasoning; they are not new evidence that the Method improves outcomes. A stronger empirical or solver claim needs its own qualified basis.
+
+### PSDA.20:12 - Relations
+
+- [PSDA.12](#psda12---recover-participants-concerns-and-affected-systems-for-a-decision-support-inquiry) supplies participant and affected-subject recovery when those contributions are missing. [PSDA.13](#psda13---facilitate-decision-support-inquiry-and-preserve-material-dissent) supplies professional facilitation where its conditions obtain.
+- [PSDA.1](#psda1---generate-plural-problem-formulations) and [PSDA.2](#psda2---set-and-reopen-the-problem-boundary) support a changed formulation or boundary. A source-supported local question need not repeat those Methods.
+- [PSDA.3](#psda3---construct-complementary-situation-and-option-models) makes several model contributions and their limits usable. [PSDA.5](#psda5---generate-decision-alternatives) receives a newly constructed candidate without inheriting feasibility or ranking.
+- [PSDA.8:4.2.1](#psda8421---construct-and-question-a-qualitative-consequence-network) supplies the qualitative forward and backward analysis used here. The whole inquiry retains its purpose, initial assumptions, interpretation and return to the source situation.
+- FPF C.40.CD develops the general relation between a changed problem and a changed way. FPF B.5.SD supplies substantive discussion when constructing the answer with others is the missing contribution.
+- [OCE.11](Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce11---coordinate-organization-change-work-with-continuing-service) supplies organizational coordination when change work competes with continuing service. An inquiry result does not itself allocate that work.
+- [PSDA.14](#psda14---prepare-and-return-a-decision-support-recommendation) can use the qualified answer for a recommendation. The actual choice, performance and any effect claim retain their direct competent owners.
+
+### PSDA.20:End
 
 # Development-direction advising
 
@@ -5332,7 +5640,7 @@ These are model values, not monetary prices, measured municipal performance or a
 
 [PSDA.6](#psda6---represent-values-and-trade-offs) keeps the declared value scheme separate from a participant's concern. [PSDA.7](#psda7---represent-decision-relevant-uncertainty-and-evidence-limits) distinguishes an assumed road-loss probability from an established one. [PSDA.8](#psda8---compare-consequences-of-decision-alternatives) can compare the stated consequences, and [PSDA.9](#psda9---test-robustness-and-sensitivity-of-decision-alternatives-and-their-comparison) exposes a possible reversal rather than hiding it.
 
-In this deliberately stated weighted-loss model, let `p` be the assumed road-loss probability and `λ` the declared cost weight. The two totals are `2 + p + 8λ` for F and `1 + 8p + 5λ` for M. F is lower only when `7p > 1 + 3λ`. With `λ = 0.5`, `p = 0.2` favors M; `p = 0.6` favors F. Neither probability nor the weight has been established for the board's decision. When the missing contribution is a trade-off from expressed consequence comparisons, use PSDA.6:4.5 and its worked construction in :5.5. That deterministic value account alone does not supply preferences over uncertain outcomes.
+In this deliberately stated weighted-loss model, let `p` be the assumed road-loss probability and `λ` the declared cost weight. The two totals are `2 + p + 8λ` for F and `1 + 8p + 5λ` for M. F is lower only when `7p > 1 + 3λ`. With `λ = 0.5`, `p = 0.2` favors M; `p = 0.6` favors F. Neither probability nor the weight has been established for the board's decision. When the missing contribution is a trade-off from expressed consequence comparisons, use PSDA.6:4.5 and its worked construction in :5.5. When an expected-utility comparison is needed, PSDA.6:4.5.6 elicits lottery comparisons and joins the resulting utility family to a probability model. The weighted-loss slice here is a declared modelling assumption, not a consequence of deterministic value elicitation.
 
 The result therefore identifies a decision-bearing uncertainty and a conditional comparison. It does not prove that a probability obtains, that assistance is reachable, that a protected condition can be traded away, or that F or M should be bought. More decimal places would not close those gaps.
 
@@ -5828,11 +6136,11 @@ When a feasible arrangement has been chosen and authorized, the teams still have
 
 ## PSDA.Sources:1 - Source arguments and refresh
 
-Each full pattern preserves its adopted contribution, serious alternatives, trade-offs and source limitations in SoTA-Echoing. Those arguments govern reuse more precisely than a publication year or an author list. The PSM and decision-analysis studies supply their examined claims and settings; professional sources qualify their own relationships; constructed examples supply transparent demonstrations, not effect estimates.
+Each pattern's SoTA-Echoing section gives the working question, adopted contribution, serious alternatives, trade-offs, source limits and the observation that would reopen its argument. Use that argument before relying on a citation. The map below locates these arguments; it neither surveys the whole field nor independently confirms the cited sources.
 
-Use a source result only for its actual subject, configuration and question. When a source or condition changes, recover which inference depended on it, preserve independent grounds and obtain the smallest further result that can change the answer. FPF A.10 qualifies a known reliance; A.10.1 revalidates affected uses when a changed source requires their discovery; G.11 governs the selected currentness question. Actual scientific, legal, engineering and professional conclusions remain with their practices.
+PSM and decision-analysis studies support the claims and settings they examined; professional sources qualify their own relationships; constructed examples demonstrate reasoning without estimating effects.
 
-Each pattern's SoTA-Echoing section owns its substantive comparison: the working question, selected move, serious rival, trade-off, source limits and observation that would reopen it. Use that argument before relying on a citation. The following map is a return aid, not a second source doctrine, a field census or independent confirmation of the sources it condenses.
+Use a source result for its subject, configuration and question. When a source or condition changes, recover the inferences that depended on it and preserve independent grounds. Obtain a further result only when its attainable contribution to the receiving answer warrants the whole acquisition burden. FPF A.10 qualifies a known reliance; A.10.1 revalidates affected uses when a changed source requires their discovery; G.11 governs the selected currentness question. Actual scientific, legal, engineering and professional conclusions remain with their practices.
 
 | Source-informed contribution | Source line used and substantive limit | Return when the answer changes |
 | --- | --- | --- |
@@ -5851,18 +6159,18 @@ Publication years identify sources; they do not by themselves identify a qualifi
 
 ## PSDA.Sources:2 - Citation and limits
 
-For this working edition, cite Anatoly Levenchuk, *Decision Design Principles Framework*, 12 October 2026, the named PatternID and the actual publication used. This working text contains eighteen complete Methods and the explanations needed to select and combine their contributions. A pattern address identifies a contribution within that publication; its Markdown fragment follows the actual heading. A changed title or source requires checking its maintained return rather than assuming a title-independent URL.
-
-Cite the title, PatternID and edition actually used, with a permanent link or stored copy when the exact wording matters:
+Cite the edition and publication actually used. For this working edition, use:
 
 ```text
 Anatoly Levenchuk, with AI-assisted development and review.
 Decision Design Principles Framework.
-Working edition, 12 October 2026.
+Working edition, 24 October 2026.
 GitHub repository: https://github.com/ailev/FPF
 ```
 
-For a particular pattern, add its PatternID and title, for example: PSDA.14 - Prepare and Return a Decision-Support Recommendation. Retain the release date, and include a permanent link or stored copy when the exact wording matters.
+For a particular contribution, add its PatternID and title—for example, PSDA.14 - Prepare and Return a Decision-Support Recommendation. Keep that edition's date and include a permanent link or stored copy when the exact wording matters.
+
+This edition contains nineteen complete Methods and the explanations needed to select and combine them. Markdown fragments follow the actual headings; when a title or source changes, check its maintained address.
 
 ## PSDA.Sources:3 - Source responsibility and references
 
@@ -7769,7 +8077,7 @@ Compared with a fixed suppression term, an endogenous response can reveal costs,
 > A pattern language for connecting different plans and knowledge with scarce means through calculation, exchange, commitments and economic arrangements.
 
 - **Author:** Anatoly Levenchuk, with AI-assisted development and review
-- **Version:** 22 September 2026
+- **Version:** 24 October 2026
 - **License:** © 2026 Anatoly Levenchuk. Original framework text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party material retains its own terms.
 
 Begin with the contribution your work cannot yet obtain. The Table of Contents locates individual methods; the Readme demonstrates connected uses; the Architectural Reference explains the language, prerequisites and limits. **ECO** is the reference code. Pattern numbers identify methods, while Parts organize reading.
@@ -7918,7 +8226,7 @@ The ten methods form four connected groups. These groups organize explanation; t
 | Shared and extended coordination: ECO.7–.9 | Connect use and renewal, relate direct cooperation to wider orders, and change rules through their practices. | Physical bounds, affected interests and obtainable capabilities constrain what arrangement can work. |
 | Efficiency and demand: ECO.10 | Follow a unit saving through changes in feasible use and demand. | Return conditional total effects to the purpose and existing comparison or portfolio methods. |
 
-The operation and its description remain different. Applying guidance can produce a proposal, a calculation, an agreement or a performed contribution, depending on what the practitioner actually does and what conditions hold. A possible arrangement is not an existing one. The cases below and in the patterns are constructed demonstrations of reasoning; they do not assert observed field effectiveness.
+The operation and its description remain different. Applying guidance can produce a proposal, a calculation, an agreement or a performed contribution, depending on what the practitioner actually does and what conditions hold. Describing a possible arrangement does not establish that it exists. The cases below and in the patterns are constructed demonstrations of reasoning; they do not assert observed field effectiveness.
 
 ### ECO.Reference:3.1 - Calculation rests on economic relationships
 
@@ -8544,7 +8852,7 @@ Compare suitable contractual and relational arrangements: reciprocal commitments
 
 Consider common ownership or a changed organization when decision rights, incentives and adaptation costs make that a serious alternative. Include the costs of organizing and directing work after the change. OCE and CGOV supply the actual organization or corporate construction; an economic preference does not itself establish it.
 
-#### ECO.6:4.3 - Choose the smallest sufficient arrangement
+#### ECO.6:4.3 - Choose an arrangement for the required adaptations
 
 Compare like intended service and disturbance conditions, including investment exposure, operating performance, delay, enforcement and exit. Use conditional comparisons when a future disturbance cannot be assigned a defensible probability.
 
@@ -8841,7 +9149,7 @@ A constructed cooperative shop has a working practice: trusted customers can pay
 
 The useful old contribution is short-term access supported by local knowledge, not the paper notebook itself. The cooperative compares universal prepayment with limited credit accounts. Its authorized manager can offer a two-week trial to ten consenting customers, including newcomers, with a €20 balance limit each. The cooperative has €200 available above its other commitments; a trained worker has two hours each week for these accounts. The manager also has two contingency hours available to complete the trial's scheduled account work if needed. That worker checks the agreed payment date against the customer's expected receipts and unpaid purchases, using the same conditions for newcomers and existing users.
 
-The manager chooses this trial because it can preserve later payment while testing whether the proposed account work is affordable. Existing obligations and the terms of customers outside the trial remain unchanged. At each weekly settlement, the existing account records show overdue balances; the worker can also report time spent and any refused purchase. Extend the trial or start routine service only if the weekly account work fits the continuing two-hour capacity, overdue balances stay within the trial's €20 allowance and customers retain the intended access. Complete the already agreed trial service using the available contingency capacity when needed. If account work takes three hours in the first week, the manager uses one contingency hour, stops new enrolment and reserves the other hour for the final settlement. Expansion is deferred until continuing capacity or a less demanding procedure is available; the trial customers retain the agreed service. This is a feasible trial plan under constructed assumptions, not a report that the trial has occurred.
+The manager chooses this trial because it can preserve later payment while testing whether the proposed account work is affordable. Existing obligations and the terms of customers outside the trial remain unchanged. At each weekly settlement, the existing account records show overdue balances; the worker can also report time spent and any refused purchase. Extend the trial or start routine service only if the weekly account work fits the continuing two-hour capacity, the trial customers' combined overdue balance does not exceed €20 and customers retain the intended access. Complete the already agreed trial service using the available contingency capacity when needed. If account work takes three hours in the first week, the manager uses one contingency hour, stops new enrolment and reserves the other hour for the final settlement. Expansion is deferred until continuing capacity or a less demanding procedure is available; the trial customers retain the agreed service. This is a feasible trial plan under constructed assumptions, not a report that the trial has occurred.
 
 If the old arrangement also favours the shopkeeper's friends and excludes similarly situated newcomers, preserving it unchanged does not satisfy the access purpose. The revised arrangement needs an attainable way to assess new entrants. If nobody can perform that work, the proposal remains incomplete.
 
@@ -8993,7 +9301,7 @@ ECO.2 supplies price responses; ECO.3 identifies new feasible exchanges; ECO.7/.
 > A pattern language for recognizing, representing, shaping, performing, learning and observing rhythmic relations.
 
 - **Author:** Anatoly Levenchuk, with AI-assisted development and review
-- **Version:** 7 October 2026 · [Edition and reuse](#edition-and-reuse)
+- **Version:** 24 October 2026 · [Edition and reuse](#edition-and-reuse)
 - **License:** © 2026 Anatoly Levenchuk. Original framework text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party material retains its own terms.
 
 Begin with the passage and the result you need. The Table of Contents supports direct use; the Readme shows selected combinations; the Architectural Reference explains their conditions, sources and architectural reasons. **RHY** is this framework's reference code. Its pattern numbers are addresses; the Parts group reading rather than prescribe work order.
@@ -10506,7 +10814,7 @@ Toussaint's *The Geometry of Musical Rhythm* (2020), chapters 21 and 31, supplie
 
 Cha's Takadimi critique, discussed in RHY.5–RHY.6, makes a transformation's input completeness consequential: omitted sustain or silent reference positions can change the result. A timed demonstration, a score or an accompanying beat gesture can supply information absent from a bare syllable string.
 
-The three cases above are transparent constructions from stipulated inputs. The combined method—retained relations, rhythmic construction, fit with the whole and a qualified return to performance—is a synthesis; empirical claims remain limited to their own sources and observations.
+The three cases above are constructions from stipulated inputs. The combined method—retained relations, rhythmic construction, fit with the whole and a qualified return to performance—is a synthesis; empirical claims remain limited to their own sources and observations.
 
 ### RHY.8:12 - Relations
 
@@ -11551,7 +11859,7 @@ For a concrete comparison, consider choosing between two passages when the sessi
 
 A single holistic judgement remains adequate when that is the actual choice criterion; ask only the one specific question when the other response cannot change the decision. If the claim concerns coordinated movement, use an appropriate movement observation instead. This accepts its greater preparation and performance burden only for that different claim. Reconsider the chosen response task when the aim, participants or meaningful distinctions change.
 
-The event-matching and continuous-course instructions form a methodological synthesis. Their calculations and observation limits are explicit; no universal detector, response scale or rhythm-quality measure is selected. Revisit a source or procedure when a new material, observation task, population or detector behaviour changes the relevant comparison.
+The event-matching and continuous-course instructions form a methodological synthesis. No universal detector, response scale or rhythm-quality measure is selected. Revisit a source or procedure when a new material, observation task, population or detector behaviour changes the relevant comparison.
 
 ### RHY.14:12 - Relations
 
@@ -11570,6 +11878,1474 @@ Original framework text is available under [CC BY 4.0](https://creativecommons.o
 ## RHY.Edition:End
 
 
+# SOURCE_FILE: DPFs/Engineering DPF Suite/CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md
+---
+# Control Architecture Design Principles Framework
+
+**Edition:** [CAD, 23 October 2026](#cadreference8---names-and-continuing-references).
+
+Use this framework when a control design must reconcile what can be observed in time, what the controller must remember, how decisions are divided, which commands remain feasible, and what the implementation can execute. It helps construct and compare those arrangements for an engineered dynamical system, including the choice to keep one sufficient controller.
+
+The quantitative methods principally cover sampled linear models with bounded uncertainty and specified feedback-law candidates. The planning-and-feedback branch also states a separate conditional continuous-time error-bound construction. This is a bounded practice within control engineering; identification, unrestricted controller synthesis and physical qualification require their own methods.
+
+# Table of Contents
+
+- [Readme](#control-architecture-design-principles-framework-readme)
+- [Control Architecture Design Architectural Reference](#control-architecture-design-architectural-reference)
+  - [CAD.Reference:1 - What the language helps obtain](#cadreference1---what-the-language-helps-obtain)
+  - [CAD.Reference:2 - The objects and independently useful contributions](#cadreference2---the-objects-and-independently-useful-contributions)
+  - [CAD.Reference:3 - Information, tracking and execution must describe the same loop](#cadreference3---information-tracking-and-execution-must-describe-the-same-loop)
+    - [CAD.Reference:3.1 - How information changes a command margin](#cadreference31---how-information-changes-a-command-margin)
+    - [CAD.Reference:3.2 - A complete joint design and a changed delay](#cadreference32---a-complete-joint-design-and-a-changed-delay)
+  - [CAD.Reference:4 - The layered planning-and-feedback branch](#cadreference4---the-layered-planning-and-feedback-branch)
+    - [CAD.Reference:4.1 - The recurring whole problem](#cadreference41---the-recurring-whole-problem)
+    - [CAD.Reference:4.2 - Why these four contributions belong together](#cadreference42---why-these-four-contributions-belong-together)
+    - [CAD.Reference:4.3 - Connect dynamics, decisions and computation by their actual quantities](#cadreference43---connect-dynamics-decisions-and-computation-by-their-actual-quantities)
+    - [CAD.Reference:4.4 - Reuse the external foundations without losing the subject transition](#cadreference44---reuse-the-external-foundations-without-losing-the-subject-transition)
+    - [CAD.Reference:4.5 - Several legitimate entries and their returns](#cadreference45---several-legitimate-entries-and-their-returns)
+      - [CAD.Reference:4.5.1 - Keep a qualified loop and govern its commands](#cadreference451---keep-a-qualified-loop-and-govern-its-commands)
+    - [CAD.Reference:4.6 - Worked joint revision](#cadreference46---worked-joint-revision)
+    - [CAD.Reference:4.7 - Recognition, assurance and the cost of the arrangement](#cadreference47---recognition-assurance-and-the-cost-of-the-arrangement)
+    - [CAD.Reference:4.8 - Source boundaries, bias and future change](#cadreference48---source-boundaries-bias-and-future-change)
+  - [CAD.Reference:5 - What is covered and what must be supplied](#cadreference5---what-is-covered-and-what-must-be-supplied)
+  - [CAD.Reference:6 - Why one language, with independent uses](#cadreference6---why-one-language-with-independent-uses)
+  - [CAD.Reference:7 - Sources, external suppliers and consequential change](#cadreference7---sources-external-suppliers-and-consequential-change)
+  - [CAD.Reference:8 - Names and continuing references](#cadreference8---names-and-continuing-references)
+
+## A. Choose the information available to control
+
+| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
+| --- | --- | --- | --- | --- |
+| A.1 | [CAD.5 - Choose Observations and Internal State for Control](#cad5---choose-observations-and-internal-state-for-control) | Stable | Delayed observation; partial sensing; action history; information state; set estimation. “Which sensors and memory let this controller act within its limits?” “Can any action work with these observations?” | Uses A.3.3.PI and C.32.LCA; the main use is self-contained. CAD.2–CAD.4 are conditional receivers of :4.7. |
+
+## B. Design a planning-and-feedback architecture
+
+| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
+| --- | --- | --- | --- | --- |
+| B.1 | [CAD.1 - Derive a Control Decomposition from the Whole Problem](#cad1---derive-a-control-decomposition-from-the-whole-problem) | Stable | Control decomposition; information; horizon; computational burden. “Should these decisions be separated?” | Uses C.39 and MMP.9; CAD.2 develops the selected exchange; CAD.4 compares whole candidates. |
+| B.2 | [CAD.2 - Construct the Planning and Feedback Interface](#cad2---construct-the-planning-and-feedback-interface) | Stable | Reference meaning; state reconstruction; sample-and-hold; reset; tracking dynamics. “What does the lower loop actually receive?” | Uses the selected decomposition and MMP.18; CAD.5:4.7 supplies the estimate-based branch. |
+| B.3 | [CAD.3 - Construct a Jointly Admissible Command Domain](#cad3---construct-a-jointly-admissible-command-domain) | Stable | Invariant error; input reserve; constraint tightening; continuation. “Which commands can remain feasible?” | Uses CAD.2's connected dynamics; CAD.5:4.7 when state is estimated; returns to CAD.1 or CAD.2 on incompatibility. |
+| B.4 | [CAD.4 - Co-design and Realize the Whole Control Architecture](#cad4---co-design-and-realize-the-whole-control-architecture) | Stable | Model order; gains; rates; deadlines; whole-candidate comparison. “Which feasible arrangement should be realized?” | Receives applicable CAD.1–CAD.3 and CAD.5 results; uses MMP.22; supplies the broader SYSE.6 decision. |
+
+# Control Architecture Design Principles Framework Readme
+
+Within FPF Library, **CAD** is the reference code and document identifier for the **Control Architecture Design Principles Framework**. A reference such as `CAD.5:4.5` identifies a pattern section; `CAD.Reference:3.2` identifies the Architectural Reference's joint example. The local pattern numbers are addresses, not an execution order.
+
+**Suite:** [Engineering DPF Suite](https://github.com/ailev/FPF/blob/main/DPFs/Engineering%20DPF%20Suite/ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference0---engineering-specialization-and-maintenance) — control knowledge and design Methods for constructing, changing and sustaining engineered dynamical systems.
+
+## Enter from the control question
+
+| Your working difficulty | Obtain first | Direct entry |
+| --- | --- | --- |
+| A useful observation arrives after the action deadline, or different channels reveal different parts | An observation and memory arrangement, its error bound and the actions it permits; or a precise information limitation | [CAD.5](#cad5---choose-observations-and-internal-state-for-control) |
+| One calculation cannot use the needed horizon, information and execution time together | Competing decompositions and the couplings each would remove | [CAD.1](#cad1---derive-a-control-decomposition-from-the-whole-problem) |
+| Planner and feedback code use a “reference” with different timing or meaning | The actual exchange and its derived error dynamics | [CAD.2](#cad2---construct-the-planning-and-feedback-interface) |
+| A stable controller cannot follow the requested command within state or actuator limits | A jointly admissible command/error domain with continuation, or a specific incompatibility | [CAD.3](#cad3---construct-a-jointly-admissible-command-domain) |
+| A more accurate model, faster planner or extra sensor competes for limited resources | A comparison of complete feasible arrangements and the conditions of their realization | [CAD.4](#cad4---co-design-and-realize-the-whole-control-architecture) |
+
+An engineer can use CAD.5 without introducing a planner or multiple layers. An engineer with a qualified lower loop can retain it and change command admission. If a current complete observation and a simple controller already meet the task, they remain a serious stopping alternative. Read the [Architectural Reference](#control-architecture-design-architectural-reference) when several results must fit together or a change reopens their conditions.
+
+The intended reader can work with state-space models, feedback laws, bounded sets and elementary optimization. A reader who lacks those means needs instruction or a qualified control-engineering contributor. The examples are mathematical constructions. Before relying on a physical installation, establish its model, uncertainty and execution premises.
+
+# Control Architecture Design Architectural Reference
+
+## CAD.Reference:1 - What the language helps obtain
+
+A controller acts on information that can be partial, old or costly to obtain. Its chosen action must affect the plant before another decision is due, fit the available actuation and leave an acceptable continuation. When planning and feedback are separated, their different models and time scales add another coupling: an attractive nominal command may be impossible for the lower loop to realize.
+
+The useful result is a control architecture whose information, command meanings, error allowances and execution conditions are mutually consistent for the required task. The result may instead be a reasoned rejection: no tested realization fits, a sufficient enclosure is too coarse, or indistinguishable states make the required action impossible. These conclusions call for different next work.
+
+There are two directly useful branches. CAD.5 constructs the information available to a specified controller. CAD.1–CAD.4 develop a planning-and-feedback arrangement when separation has a useful reason. Their quantitative results connect where an estimate, command or timing claim is actually used. The language does not require every design to use both branches.
+
+Its recurring tensions are concrete. A precise delayed sensor leaves recent disturbances unknown. A larger model can reduce modeling error while missing the deadline. A gain that reduces tracking error can consume more input authority. Conservative sets can protect a guarantee while excluding a useful design. All of these must be judged against the same task; a smaller isolated error measure is not automatically a better control result.
+
+FPF C.43 supplies the common Method for connecting observation, choice and action in ongoing control. Apply it when the available assessment, alternatives and execution conditions still need to become one coherent continuation; an adequate architecture can remain unchanged. CAD specializes the engineering construction of the information, command and timing relations. Its state sets, error bounds and feasible commands give quantitative answers under declared models; they do not by themselves settle the legitimacy of a goal, the economics of competing resource uses or a developing subject's next worthwhile problem. Conversely, a common control mantra does not replace these calculations. A changed information delay returns to CAD.5 and its dependent bounds; an unavailable correction can reopen CAD.3 or the architecture choice; a changed goal first changes the task against which those results are used.
+
+FPF C.43:4.5.1 also supplies the common construction of required temporal relations without imposing a periodic schedule. CAD.2 makes that construction executable through event ordering, behavior between updates and reset rules; CAD.5 preserves sample phase, information age and observation gaps, and CAD.4 qualifies the shared implementation schedule. An action can vary its timing while another required contribution continues, provided their joint resource and dynamic conditions still hold. Changing one of these relations reopens the dependent calculation; equal update frequencies alone do not preserve it.
+
+## CAD.Reference:2 - The objects and independently useful contributions
+
+The plant, sensors, actuators and controller computers are systems. A dynamical model is a mathematical description of selected behavior. A feedback law prescribes how to choose an input; an implementation performs that calculation and applies an actual input. A design Method constructs or assesses an arrangement; one run of that Method is design work. The framework describes Methods and their relations. A model or feedback-law revision can change the required computation without requiring a different physical plant; changing a processor can change timing without changing the law.
+
+In CAD.5, a *channel* is a realizable observation alternative with a measurement meaning, uncertainty, sample times, arrival conditions and resource demands. An *information state* retains what is needed to update the compatible possibilities and choose the next action. It can be a history, a sufficient recursive state or a conservative set representation; it is not necessarily another sensor or a physical control layer. The estimate \(\hat x\), the true model state \(x\), estimation error \(\eta=x-\hat x\), nominal state \(z\) and tracking error \(e=x-Pz\) have different meanings.
+
+In CAD.1–CAD.4, *planner*, *tracker* and *layer* identify contributions in a selected control organization. They do not automatically identify processor boundaries, physical parts or system-role assignments. Different functions can share a processor; one function can be distributed. Their order is not a ranking of people.
+
+| Recurring design question | What its Method constructs | Why the result can be needed independently |
+| --- | --- | --- |
+| Information sufficient for action | CAD.5: channel/timing alternatives, sufficient memory and update, estimation uncertainty and admissible action or impossibility | A single controller may need better observations without a different decomposition. |
+| Useful separation of decisions | CAD.1: alternative decompositions, reasons for each split and exposed losses | A timing or horizon problem can change the split while sensing remains adequate. |
+| Meaning and behavior of an exchange | CAD.2: reconstruction, command, hold/interpolation/reset rules and error dynamics | A communication or reference representation can change without replacing either controller. |
+| Feasible command and continuation | CAD.3: compatible error and command sets, state/input margins and continuation conditions | A larger demand can exceed a previously useful domain while the architecture remains unchanged. |
+| Realizable whole choice | CAD.4: feasible configurations, comparison under common demands, execution and revision conditions | A processor, solver or scheduling change can alter the preferred realization. |
+
+These are connected problem families with independent uses. CAD.4 constructs the comparison of whole layered candidates; CAD.5:4.8 compares information arrangements. This Reference explains the quantities shared by those Methods and the conditions under which their results can be combined.
+
+## CAD.Reference:3 - Information, tracking and execution must describe the same loop
+
+### CAD.Reference:3.1 - How information changes a command margin
+
+CAD.5 constructs compatible state histories from the measurements actually available before the action. Past inputs must be the inputs actually applied; a planned input or a measured value treated as current can produce a different information set. A run-wide bound \(V_\eta\) must cover startup and every allowed delivery mode, not only a favorable observation window.
+
+When the interface is
+
+$$
+u=K(\hat x-Pz)+Qz+Rv,
+$$
+
+CAD.5:4.7 derives the estimate-based version of CAD.2's tracking equation:
+
+$$
+e^+=Fe+Hz+Gv+w-BK\eta.
+$$
+
+CAD.3 therefore receives the effective forcing \(W\oplus(-BK)V_\eta\). For every admitted nominal state and command, its state and input tests become
+
+$$
+\{Pz\}\oplus E\subseteq X,\qquad
+\{Qz+Rv\}\oplus KE\oplus(-K)V_\eta\subseteq U.
+$$
+
+The separate set sums are sufficient enclosures, not assertions that tracking and estimation errors are independent. A tighter joint representation may recover a useful design that these separate margins reject. A failure of a sufficient enclosure is consequently different from CAD.5's indistinguishability proof that no action can meet the demand.
+
+This is a two-way design connection. A tighter required command domain can require fresher observations. A sensor or estimator change can enlarge \(V_\eta\), shrink the usable command domain and invalidate a nominal performance claim. CAD.4 includes the cost of obtaining and updating that information. If a larger planner delays the estimator or communication, the old age bound is no longer a premise of the same realization. Reuse an unaffected result, but return the changed timing to CAD.5 and the resulting error to CAD.3.
+
+### CAD.Reference:3.2 - A complete joint design and a changed delay
+
+Consider the constructed scalar plant
+
+$$
+x_{k+1}=x_k+u_k+w_k,\qquad |w_k|\le .005,
+$$
+
+with \(|x|\le .65\), \(|u|\le .06\), initial \(x_0=z_0=0\), and a requested nominal motion satisfying \(|z|\le .5\), \(|z_{k+1}-z_k|\le .04\). The required tracking bound is \(|x-z|\le .11\), including intervals in which the nominal command uses the full rate \(.04\). The lower law is \(u=-.5(\hat x-z)\). Assume its update is completed every fast tick. The planner needs two fast ticks to calculate a new segment and supplies one every four ticks. Each calculation starts at least two ticks before its segment takes effect, and each new segment starts at the preceding segment's terminal nominal state. Hold \(z=0\) until the first segment is available. These timing and joining conditions are premises to establish for an actual realization.
+
+A complete scalar sensor has error radius \(.005\) and gives the controller a sample at most two ticks old. CAD.5 propagates that sample through the actual intervening inputs, giving
+
+$$
+|\eta|\le r=.005+2(.005)=.015.
+$$
+
+Known \(x_0\) gives a startup radius at most \(.01\) before the first two-tick-old sample is usable. Thus the uniform radius \(.015\) covers startup as well. A current complete observation would need less memory and give a smaller radius; the delayed sensor is considered here because it is an available realization, not because delay is desirable.
+
+CAD.2 models the timed segment by \(d_k=z_{k+1}-z_k\), so
+
+$$
+e_{k+1}=.5e_k-d_k+w_k+.5\eta_k.
+$$
+
+CAD.3 obtains the invariant radius
+
+$$
+E=\frac{.04+.005+.5(.015)}{1-.5}=.105.
+$$
+
+The initial error is inside it. The input bound is \(.5(E+r)=.06\); the state bound is \(.5+E=.605\le .65\); the required tracking bound is met. At the end of a nominal motion, holding \(z\) sets \(d=0\), which stays inside the same admitted increment set and preserves the continuation. The conclusion is conditional on the stated sample, plant and timing bounds.
+
+This also explains the decomposition and interface choice. Asking the two-tick planner for a fresh result every tick misses its assumed deadline. Sending a held target that jumps by \(4(.04)=.16\) can fail immediately: from exact initial alignment and zero estimation error, that jump requests input \(.08>.06\). Sending a joined segment at the same four-tick planning rate preserves the requested nominal rate and the bound above. CAD.4 compares this whole realization with a faster planner, another controller or a current sensor, including their actual costs; the input margin alone does not rank them.
+
+Now suppose shared computation increases the maximum observation age to four ticks. CAD.5 gives \(r=.025\); the same construction gives \(E=.115\) and input allowance \(.07\). It no longer establishes the required tracking or input limits. Reducing the allowed increment to \(.03\) gives \(E=.095\) and input allowance \(.06\), but does not satisfy the unchanged request for the full \(.04\) rate. Recovering the old age bound, using a more timely observation, changing the interface or controller, or obtaining a less conservative joint bound are different repairs to compare. This failed sufficient calculation is not a proof that every controller with four-tick-old observations is impossible.
+
+The example crosses the information, exchange, feasibility and implementation questions without inventing a new control law synthesis theorem. It is an application of CAD.5:4.5–4.7, CAD.2's substitution and timing construction, CAD.3's invariance test and CAD.4's whole-candidate comparison. The larger task determines whether a smaller command domain remains useful.
+
+## CAD.Reference:4 - The layered planning-and-feedback branch
+
+This branch applies when separate planning and feedback decisions are worth considering. Its exact-state construction remains useful when the state is actually available. The estimate-based connection is in CAD.5:4.7 and CAD.Reference:3; use it wherever the implemented law acts on an estimate. The following sections develop the reasons, quantities, alternatives and returns within the layered branch.
+
+### CAD.Reference:4.1 - The recurring whole problem
+
+A layered control architecture divides decisions while controlling one connected behavior. The division is useful when it lets different calculations use appropriate information, horizons and execution resources. It becomes harmful when each calculation relies on a behavior that the others do not supply.
+
+The difficult question is therefore not just which operation follows another. It is whether the chosen decomposition, models, command meanings, error bounds, feasible commands and execution arrangement can all be true of the same closed loop. A later result can change an earlier design premise. The four Methods are separately usable because these questions arise independently; their results must still agree wherever one receives another.
+
+**Extended reminder.** A useful control split preserves the whole task by making its lost interactions explicit. The exchanged command and its timing determine the error that the lower behavior must contain; the containment consumes state clearance and actuator authority, so it limits what the upper decision may request. Those limits reshape the useful model, horizon and decomposition, while the resources needed to compute and execute them change timing again. Compare and realize this connected choice under one demand, and return a changed condition to the premise it invalidates.
+
+This reminder names a coupled argument. It does not prescribe four approval stages, prove a bound, or replace the constructions below.
+
+### CAD.Reference:4.2 - Why these four contributions belong together
+
+CAD.1 answers a functional design question: which decisions should become distinct and why? Its result determines which interactions are no longer solved together. A long-horizon optimizer and a fast feedback law are useful only if their separation addresses a real difficulty, such as calculation time or unequal access to information.
+
+CAD.2 answers a modeling and realization question: what behavior does that separation actually produce? It turns a selected command into an exchange with units, time, interpolation, feedback and reset semantics, then derives the joint evolution. This can reveal that a presumed “same reference” is a different signal after implementation. The result constrains the decomposition: an upper model that cannot be related to the lower dynamics under useful conditions is a reason to retain more state, change the command or abandon that split.
+
+CAD.3 answers a feasibility question: which behaviors can be requested without contradicting the conditions of their realization? Error is not merely a quality score. It consumes physical clearance and correction authority. A command envelope that makes the bound large can leave no useful actuation range; a smaller envelope can restore feasibility but prevent the required task. This result therefore constrains both the interface and the original functional choice. It also distinguishes a possible next action from a domain in which operation can continue.
+
+CAD.4 answers a whole engineering choice: which mutually consistent configuration is worth realizing under the actual demand and resources? It compares the outputs of the other Methods, but it also changes their inputs. A different processor, horizon, model order or scheduling arrangement changes what can be computed on time and therefore which error dynamics and command domain are relevant.
+
+The relation is not that every engineer must perform these Methods in this textual order. The relation is that a claim used by another part must be available with the conditions that make it useful. An inherited result can supply it. A changed condition can withdraw it. A missing result can block one architecture while leaving another usable.
+
+### CAD.Reference:4.3 - Connect dynamics, decisions and computation by their actual quantities
+
+The common quantities make the reasoning inspectable. The task sets a demanded progression, cost or reachability condition. A candidate command class S says what the planner may send. The interface yields an error evolution, such as $e^+=Fe+Hz+Gv+w$. S and the mismatch domain bound its forcing. An invariant E bounds the difference between nominal and realized behavior. The inclusions $Pz+E\subseteq X$ and $Qz+Rv+KE\subseteq U$ then restrict S. These are the exact-state formulas. When feedback uses an estimate, CAD.5:4.7 adds estimation error to both the forcing and the input allowance.
+
+These are mutually constraining statements, not independent labels. Enlarging S can enlarge E, which can make the proposed S inadmissible. Reducing E by changing a gain can increase the size of KE and consume more actuator authority. Reducing the planning model can shorten computation while increasing H or the mismatch set. A longer update interval can fit the computation and enlarge the change the tracker must absorb. A bigger model can remove an important residual but leave no time to use the result.
+
+Thus “more accurate”, “faster” and “more robust” are incomplete comparisons until their quantities and costs are named. A more accurate nominal prediction does not imply a smaller implemented error if it arrives late. A smaller tracking error does not imply a better task result if the permitted command range becomes too small. A feasible computation does not imply safe execution if its output is applied at the wrong instant.
+
+The mathematical construction does not eliminate the engineering choice. It makes the choice explicit: accept a smaller envelope, change an interface, spend more computation, use another sensor or actuator, or revise an impossible requirement. SYSE.6 remains the place for that larger system decision.
+
+### CAD.Reference:4.4 - Reuse the external foundations without losing the subject transition
+
+C.39 supplies the reasoning from a needed result back to necessary operations and forward through their joins. Here that reasoning asks whether the result called “a feasible controller” includes a realizable command, its timing and a continued path, rather than stopping at the existence of a feedback gain.
+
+MMP.9 supplies the account of what model reduction removes. CAD.1 and CAD.2 consume that account at a specific control decision: does the missing state create memory or forcing that the planner must retain or the tracker must absorb? Calling the lower loop “fast” does not establish that its omitted dynamics are negligible.
+
+MMP.18 supplies the general construction of compatible exchanges and scales. CAD.2 fills its control-specific content: which signal is held, which state is propagated, what resets, and how a reference change enters the error. A well-typed exchange still needs this behavior.
+
+MMP.22 supplies the transformation from mathematical operations to workable performance. CAD.4 consumes it when choosing what to precompute, what data are available at the deadline, what resource is shared and which result can actually arrive. The computation is part of realizing the selected control behavior; successful algebra alone does not enact it.
+
+C.30.LCA then helps describe the resulting control structure adequately. It can expose an unrepresented latency or lower guarantee. It does not establish the guarantee's truth. Conversely, a valid error calculation does not ensure that a view shows the assumptions needed by the next engineer.
+
+These foundations remain useful outside control engineering. The subject contribution here is their specific connection to control decisions, error dynamics, admissible commands and execution. Neither collection of general references nor a single numerical example supplies that connection by itself.
+
+### CAD.Reference:4.5 - Several legitimate entries and their returns
+
+An engineer replacing a communication interface can start at CAD.2. Preserve the task, qualified model and existing controller law if they remain unchanged. Derive what the new delay or interpolation does to their connection, then return only the affected error and command assumptions to CAD.3. If the new interface cannot support any useful domain, the change reaches CAD.1 or the system architecture decision.
+
+An engineer asked to increase speed can start at CAD.3. Hold the implementation and model fixed while testing the enlarged command class. If correction authority is exhausted, CAD.2 can investigate a continuous segment instead of a larger jump. CAD.4 compares that repair with a changed gain, faster planner or different plant arrangement. The order follows the uncertainty that matters, not a mandatory restart.
+
+An engineer moving the same software onto shared computing hardware starts at CAD.4. A model of independent task execution is no longer the implementation premise. Establish the shared scheduling and communication behavior; if it changes the admitted timing, return that timing to CAD.2. A new hardware name alone does not require every control theorem to be reproved, but an unbounded delay removes the old timing-dependent conclusion.
+
+An engineer with a simple controller already meeting the requirement can stop before any of these expansions. A framework that always recommends more layers has lost its baseline. Conversely, a proven lower law does not justify stopping when the upper layer can issue commands outside its qualified envelope.
+
+#### CAD.Reference:4.5.1 - Keep a qualified loop and govern its commands
+
+When an existing loop already tracks and rejects disturbances adequately, but abrupt or excessive commands violate constraints, command admission can be the remaining problem. [Garone, Di Cairano and Kolmanovsky's survey, §2.1 and §6.1](https://merl.com/publications/docs/TR2016-102.pdf) develops reference and command governors as additions before a stabilized loop. They modify commands using the current closed-loop state and predicted constraint admissibility, rather than merely applying a fixed low-pass filter.
+
+For the basic held-command construction, use a model whose state includes the plant and controller. Obtain a set of state-command pairs from which holding the selected command satisfies the constraints at all claimed future instants. A scalar reference governor selects the largest admitted step along the line from the previous command toward the desired one; a command governor can optimize the command vector. The previous command supplies continuation only under the construction's admissibility and initialization conditions. Scalar search is smaller, while the restricted search direction can sacrifice response.
+
+This is a candidate within the control architecture question, not an opposing field. It can preserve a qualified lower controller and avoid introducing a reduced planning model. Compare its reference distortion, progress and computation with the required task. If filtering makes the requested arrival time unattainable, constraint satisfaction alone has not solved that task. If the lower controller, sensor or timing changes, its governor model and admissible sets must change with it.
+
+Later constructions change different premises: observer-dependent domains in CAD.2–CAD.3, online cost adaptation in CAD.1, and inexact computation or controller switching in CAD.4. Use those developments only with their corresponding models and conditions.
+
+### CAD.Reference:4.6 - Worked joint revision
+
+The running example begins with two different concerns: a planner needs two fast ticks of computation, while an inexpensive feedback law runs every tick. CAD.1 makes the reason for separation explicit. The separation does not yet decide the command: a held target and a timed segment remain alternatives.
+
+CAD.2 derives how their meanings change the error. A held target creates a boundary jump; a joined segment supplies bounded increments at every fast tick. CAD.3 turns that difference into actuator reserve. At the doubled demand, the four-tick held target has a direct violating first input; the joined-segment command has a sufficient input bound of 0.05 under the toy model. Its limited reference interval also has an explicit continuation by holding the reference.
+
+CAD.4 returns the result to the practical choice. The segment design fits the declared computation arrangement but requires a clocked generator, continuity at handover and an admitted initial error. The engineer cannot keep only its attractive input number and omit that realization. If physical actuation is later found to be delayed, the error derivation changes and the bound must be reopened. The reason for separating planning from feedback can remain useful even while that specific realization fails.
+
+During the calculation of an error margin, the immediate mathematical work contributes to constructing a command domain, which contributes to choosing a viable control architecture, which contributes to the engineered system's required behavior. A changed whole requirement alters what counts as a useful local margin. This connection explains why a numerically correct sub-result can still fail to resolve the engineering problem.
+
+### CAD.Reference:4.7 - Recognition, assurance and the cost of the arrangement
+
+A layered diagram recognizes a candidate organization. A plausible trace recognizes a candidate behavior. Mathematical invariance establishes a conditional property; a real model, disturbance envelope and execution arrangement must support its premises before physical reliance. These are different results, and the full use needs whichever the intended claim actually consumes.
+
+The primary trade-off is between cheaper or more specialized local decisions and the burden of maintaining their coupling. More patterns or more formal interface declarations do not settle that trade-off. The arrangement earns its cost when separate decisions remain useful and their conditions can be made compatible. A direct controller or direct existing Method remains preferable when it already serves the task.
+
+A whole-use inspection therefore asks whether the selected split has a useful reason, whether the derived exchange is the one realized, whether its command/error dependence closes, whether continuation and performance are distinguished, and whether implementation conditions fit. These questions use the full constructions of CAD.1–CAD.4; they are not an alternative checklist proof.
+
+### CAD.Reference:4.8 - Source boundaries, bias and future change
+
+The constructions compared in the patterns answer different quantitative questions. The reader should not assemble their conclusions into a theorem that none states. The cost-elimination branch, sampled linear margins, continuous error-based safety transfer, reference governing and a specific two-layer co-design each retain their own models and qualifications. The direct derivations and explicit returns here make a first use possible without claiming complete coverage of control engineering.
+
+The running linear case makes computations transparent but can bias intuition toward easy matching, full-state access and deterministic timing. Its general lesson is to derive and reconnect the consequences of a split. Its numerical margins, feasible domain and fallback remain local to the stated model.
+
+When a source revises a relied-on condition, reopen that condition and its consumers. When a physical model or execution fact changes, reopen the claims that use it even if no source publication changed. A new paper can improve a method; a failed application can expose a missing family of problems. Either can justify revising the framework's scope, while an unchanged adequate supplier remains available.
+
+## CAD.Reference:5 - What is covered and what must be supplied
+
+The first quantitative use needs a usable plant model, initial conditions, uncertainty sets, candidate channels and delivery conditions, a specified feedback law or finite family, required state/input limits, and a control objective. CAD.5 develops information and action constructions for that class. CAD.1–CAD.4 add planning models, command reconstruction, error sets, joint constraints and execution choices when their assumptions fit.
+
+The methods do not promise arbitrary nonlinear or learned-controller synthesis, identification of an unknown plant, security of a communication channel, or certification of a physical installation. Those are real neighboring tasks: an unsupported disturbance envelope or an unbounded communication delay can defeat a mathematically correct conclusion here. Obtain the missing model or guarantee, restrict the intended use, or retain the negative result. The separate continuous-time branch in CAD.3:4.5 needs its stated derivative, Lipschitz and forward-containment premises; sampled constraints do not establish intersample safety.
+
+A proposed architecture, a mathematically qualified model and a physically qualified implementation support different claims. The practitioner should be able to answer which observation times and executed inputs were used, which error bound holds over the allowed run, which one action works for all compatible states, what preserves continuation, and how computation realizes those conditions. The full patterns supply these tests; the questions here do not replace their derivations.
+
+The examples favor transparent linear calculations and explicitly bounded uncertainties. Exact sets can be expensive and outer sets conservative. A stochastic expected-cost task may justify a different estimator and schedule; CAD.5:11 compares that alternative. An unqualified biological analogy or a component score cannot replace the chosen model and control criterion.
+
+## CAD.Reference:6 - Why one language, with independent uses
+
+The information and layered branches share a control-engineering question: which implemented arrangement can produce the required behavior under the available information, actuation, time and resources? Their shared state, error and timing meanings make a result from one branch usable by the other. Keeping those connections explicit reduces the amount a reader must privately derive when a sensor, command or processor changes.
+
+The language is narrower than systems engineering. SYSE.5 constructs the engineered system's functional organization and bearer alternatives; SYSE.6 decides the broader architecture. A control result is one input to those decisions. Putting all specialist derivations inside their general explanations would not remove the need to learn control modeling or maintain its source conditions. Conversely, a control engineer changing one sensor need not reopen the whole system design when its interfaces and required effects remain satisfied.
+
+Two separate framework accounts could expose the same Methods, but would still need to maintain the common estimation/tracking/input/timing connection. One account with direct entries keeps that connection available while allowing independent change. Quantization can change CAD.5 and the bounds that consume its result without changing a valid decomposition. A new command governor can change CAD.3 or CAD.4 without changing an adequate information state. A common file does not require a common calculation or a fresh pass through every Method.
+
+The gain is an obtainable connected explanation and localized adaptation, not a measured reduction in learning time or engineering cost. The costs remain substantial: modeling, set computation, numerical qualification, physical evidence and the effort to understand the selected branch. A direct existing controller, a suitable external design or a competent provider can be the cheaper sufficient route. Where the complete needed method is already known, use its result rather than recreate it for this framework.
+
+## CAD.Reference:7 - Sources, external suppliers and consequential change
+
+The full source comparisons belong with the affected Methods. CAD.5:11 distinguishes the historical diversity-enabled sweet-spot model, internal prediction and applied-action feedback, bounded-set estimation and stochastic sensor scheduling. DeSS compares complementary components under a task and resource model; IFP concerns a controller's reuse of internal information. Neither establishes the other. The selected bounded-set construction is used because the stated task asks for hard sampled constraints, not because it is universally superior.
+
+CAD.1–CAD.4:11 compare decomposition, reduced-model interfaces, invariant margins, governors, safety filters, inexact computation and switching under their different conditions. A reference governor can preserve a qualified loop; a safety filter changes the applied control law and therefore the error calculation; separate stable switching modes do not establish a common invariant domain. A more recent result matters when it changes the usable construction or comparison, not merely because it has a later date.
+
+| External supplying publication | Contribution used here | Receiving use and return |
+| --- | --- | --- |
+| [FPF Core](https://github.com/ailev/FPF/blob/main/FPF-Spec.md), C.32.LCA | General construction of complete control-architecture alternatives and their joint conditions | CAD supplies the specialized numerical constructions. A changed general architecture requirement reopens the affected framing, not an unchanged algebraic identity. |
+| FPF Core, C.30.LCA | Adequacy of a control-structure view | A view must expose the information, authority, timing and lower guarantees needed for its use. Its adequacy does not prove a control bound. |
+| FPF Core, A.3.3.PI | Retaining information needed by future prediction and update | CAD.5 constructs a particular sufficient internal state and explains what a reduction must preserve. |
+| FPF Core, C.39 and C.32 | Construction of useful connected ways and whole architecture alternatives | CAD.1 and CAD.4 use those general operations with control-specific models, alternatives and constraints. |
+| [Systems Engineering DPF](https://github.com/ailev/FPF/blob/main/DPFs/Engineering%20DPF%20Suite/SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md), SYSE.5 and SYSE.6 | Functional organization, bearer alternatives and the system architecture decision | CAD results can supply that wider work. Control feasibility neither chooses every system bearer nor settles the whole project. |
+| [Mathematical Modeling DPF](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/MATHEMATICAL-MODELING-PRACTICE-DPF.md), MMP.9, MMP.18 and MMP.22 | Model reduction, compatible coupled models, and transformation of mathematical operations into workable performance | CAD.1–CAD.4 provide the control-specific receiving operations. A changed model exchange or computational realization reopens the error or deadline premise that uses it. |
+
+These remain external contributions. Core does not require this DPF for its own applications. Select an obtainable edition of a supplying publication and the exact relied-on content before applying it; a locator or title alone is not that content. If a relied-on premise changes, revisit its receiving use. If only the carrier or publication date changes, inspect compatibility rather than assuming either breakage or preservation.
+
+For the domain construction, a changed plant, measurement model, uncertainty, command objective, admitted switching, timing or resource arrangement reopens the dependent calculation. A source correction reopens the particular claim imported from it. Unchanged information, interface or model results remain usable under their original conditions.
+
+## CAD.Reference:8 - Names and continuing references
+
+This is the **23 October 2026** edition of **Control Architecture Design Principles Framework (CAD)**, a constituent of the Engineering DPF Suite in FPF Library. Cite the framework and edition together with the full PatternID and section needed for the particular claim or calculation.
+
+*Control architecture design* here means designing the organization of observations, retained information, control decisions, exchanges and execution for the engineered dynamical behavior stated in CAD.Reference:1–2. It does not mean that every controller needs layers. **CAD** is a local reference code for this named framework in FPF Library, not the general engineering abbreviation for computer-aided design.
+
+Each complete Method has one body below. This Reference explains the framework and its conditional connections.
+
+## CAD.Reference:End
+
+# A. Choose the information available to control
+
+## CAD.5 - Choose Observations and Internal State for Control
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+### CAD.5:1 - Problem frame
+
+**Use this when** an engineered controller has to act before a complete, accurate observation is available. A rapid channel may reveal only part of the situation; a more complete channel may describe an earlier state. You need to choose the channels and their timing, determine what the controller must remember or predict, and establish what control those arrangements can support.
+
+For example, an inspection result can arrive after two control updates while a simpler sensor reports one critical quantity immediately. Adding both sensors is not yet a solution: the controller must relate their observations to the same evolving system, account for actions already performed, and retain uncertainty about unobserved disturbances.
+
+This is a specialized method for **sampled linear control with bounded uncertainty**. It constructs a sufficient information arrangement for a specified control task and a given state-feedback law or a finite set of such laws. It also supplies a stronger negative result when indistinguishable situations require incompatible actions. It does not synthesize arbitrary nonlinear controllers, identify an unknown plant, or infer biological mechanisms from a control analogy.
+
+The intended practitioner can use state-space models, bounded sets and feedback laws. Start with the required controlled quantities, admissible state and input sets, operating horizon, a usable plant model, and realizable sensor and execution alternatives. The first useful result is a comparison that connects **available information → one executable action → the required continuation**, with the internal state and update needed to maintain that connection.
+
+Retain a simpler qualified arrangement when it already works. A current complete observation can remove the need to reconstruct a delayed state. An unobserved but sufficiently bounded component can remove the need for a sensor. If the only question is whether a diagram represents an already constructed control structure adequately, use C.30.LCA.
+
+### CAD.5:2 - Problem
+
+An accurate observation of the past is not an accurate observation of the present. Between sampling and acting, the plant has evolved under known commands and unknown disturbances. Combining the latest values from several channels can therefore create a state that never existed. A point estimate can also hide alternatives that demand different actions.
+
+Choosing the smallest estimation error does not by itself solve the control problem. Error in a harmless direction may cost more to remove than error in a direction that exhausts an actuator margin. Conversely, a low average error can coexist with an unacceptable possible trajectory.
+
+The design problem is to obtain enough timely information for the required action and continuation, at an acceptable sensing, communication, memory and computation cost. Neither maximum observation nor minimum memory is the goal by itself.
+
+### CAD.5:3 - Forces
+
+| Force | Consequential tension |
+| --- | --- |
+| Freshness and completeness | A rapid partial observation may constrain the next action more usefully than a delayed complete one; neither dominates without a plant and a task. |
+| Prediction and unobserved disturbance | Known actions allow a past observation to be propagated, but prediction cannot reconstruct disturbances that no available channel distinguishes. |
+| Compact internal state and retained dependence | A small representation is cheaper; discarding correlation, sample time or applied-input history can invalidate its next update. |
+| Estimation and control | A sensor can improve estimation while leaving the limiting action unchanged. A smaller error bound can enlarge the set of feasible commands. |
+| Rigorous bounds and execution cost | Exact feasible sets can be expensive. An outer approximation is usable if its additional uncertainty still permits control before the deadline. |
+| A chosen realization and architectural necessity | Removing one internal path tests that realization. It does not establish that every controller without that path fails. |
+
+### CAD.5:4 - Solution
+
+Construct the possible current states from the information actually available at the action time. Determine whether **one action**, chosen with that information, works for all those states and admits the required continuation. Use failures of that construction to change the observation, its timing, the internal representation or the control demand. Compare complete alternatives under the same demand.
+
+#### CAD.5:4.1 - Fix the action time and the control-relevant distinctions
+
+Use the sampled plant model
+
+$$
+x_{k+1}=A x_k+B u^a_k+w_k,\qquad w_k\in W,\qquad x_0\in X_0.
+$$
+
+Here \(u^a_k\) is the input actually applied during the update, not merely the requested command. Specify state or output constraints, input limits and the duration for which they must hold. The discrete guarantee covers sample instants; physical constraints between samples require a qualified intersample model and bound. A tracking problem can use deviation coordinates about a known reference; changes of that reference must remain in the model.
+
+For the direct construction below, \(A,B,W,X_0\) are known, \(W\) and \(X_0\) are bounded, and the executed input is available to the estimator. Known actuator queues can first be included in the plant state. Unknown actuation error must be bounded and included in the model; an unbounded discrepancy between requested and applied input defeats the stated guarantee.
+
+State what is available **before** selecting \(u_k\). A packet that arrives after that selection cannot support that action. Include sampling phase, transmission, computation and actuation timing in this account. Specify a maximum age of usable observations and a maximum gap between required samples: a delivery-delay bound alone does not guarantee that a sensor samples often enough.
+
+Ask which possible situations the controller must distinguish. If two situations consistent with all available information require disjoint admissible action sets, no deterministic causal controller using only that information can meet the requirement for both. Conversely, do not demand that every state coordinate be accurately observed if their remaining differences do not prevent an acceptable action and continuation.
+
+Begin with the least elaborate plausible arrangement. Include a qualified current sensor, a fixed observer already meeting the task, or no observation of a harmless stable component. These are substantive alternatives, not merely baselines to be defeated.
+
+#### CAD.5:4.2 - Form realizable observation and timing alternatives
+
+For each offered channel \(j\), specify its observed quantity \(C_jx\), error model, sampling rule, delivery rule and resource demand. For a nonsaturating bounded-error channel, a packet contains
+
+$$
+(j,\tau,y),\qquad y=C_jx_\tau+v,\qquad v\in V_j,
+$$
+
+where \(\tau\) is the sample time and \(k-\tau\) is its age when used. The channel's constraint on the sampled state is the set
+
+$$
+M(j,\tau,y)=\{x_\tau:y-C_jx_\tau\in V_j\}.
+$$
+
+A quantized symbol instead denotes its whole quantizer cell, including the noise bound. A saturated extreme cell may be unbounded; do not replace it with a small symmetric error interval. For adaptive thresholds, retain or communicate the thresholds used for that particular sample.
+
+Construct a finite set of feasible channel-and-schedule alternatives. Include the resource coupling that can change their timing: two sensors sharing a bus, for example, need not retain their isolated delivery bounds. State which loss and delay combinations are allowed. A fixed periodic schedule or an explicitly bounded family of allowed modes supplies timing conditions for the error calculation. The number of cases and the cost of set propagation still have to fit the design and execution effort. Arbitrary online sensing policies require a separate policy construction.
+
+A rapid narrow channel, a slow complete channel and their combination are useful candidates when the problem suggests them. They are not compulsory categories. Future-disturbance preview is different from a delayed observation of the current plant; give it its own prediction model rather than treating its timestamp as negative measurement delay.
+
+Do not assume a universal law exchanging accuracy for speed. Obtain that relation from the proposed device, encoding, bandwidth, energy or other physical constraint. If a fast complete channel fits the same total budget, it may remove the reason for a heterogeneous arrangement.
+
+#### CAD.5:4.3 - Construct an internal state that can be updated
+
+Let \(D\) be the largest allowed measurement age. A general sufficient representation retains the compatible joint set of recent states
+
+$$
+\xi_k=(x_k,x_{k-1},\ldots,x_{k-D}),\qquad \xi_k\in\Xi_k,
+$$
+
+together with the applied-input history, sample identities and the schedule or arrival mode needed for subsequent updates. At startup retain only states at nonnegative times and use \(X_0\); do not invent a prehistory. The set \(\Xi_k\) represents states compatible with the initial condition, model, applied inputs and all observations already incorporated.
+
+Predict the joint set by the map
+
+$$
+T(\xi_k,u^a_k,w_k)
+ =(A x_k+B u^a_k+w_k,\;x_k,\ldots,x_{k-D+1}).
+$$
+
+For a packet arriving at the next action time, intersect this predicted set with the measurement constraint on its **historical component** \(x_\tau\). With several packets, intersect all their valid constraints. The projection onto the first component gives the possible current states \(X_k=\pi_0\Xi_k\).
+
+This is a constructive sufficient internal state, not a claim of minimum order. It preserves the correlation between a past observation and the present through intervening dynamics and actions. Separate marginal intervals need not preserve that correlation; using them as a Cartesian outer approximation is safe only when the ensuing larger uncertainty is carried into control.
+
+A practical realization can use a replay buffer, an observer with equivalent sufficient memory, or a recursive outer set such as an interval, polytope or zonotope. In each case, the represented set must contain every state compatible with the stated model and data. Approximation may enlarge that set; it may not discard a possible state merely to obtain a feasible control.
+
+#### CAD.5:4.4 - Preserve the information needed by the next update
+
+At each action time, use the following causal order:
+
+1. Propagate the previous representation using the input actually executed and the allowed disturbance.
+2. Incorporate each newly available packet at its sample time, then obtain the current-state projection.
+3. Choose the estimate or set-based action from that projection, apply it by the qualified deadline, and retain the input information needed by the next update.
+
+A state older than \(D\) can be projected out once no allowed future packet refers to it. This is different from throwing away the dependence between retained states. Duplicate packets do not supply additional independent information. In a bounded-set construction, independent noise need not be assumed: common error sources must be represented jointly or enclosed conservatively. With an uncertain timestamp, use the union of the admissible timestamp hypotheses, not their intersection.
+
+If the compatible set becomes empty, the current model, bounds, packet, timestamp or executed-input record is inconsistent. Do not silently reset to a convenient point. Use a separately qualified fallback, obtain a new trusted initialization, or declare the demanded continuation unsupported. Packet loss or delay outside the allowed family likewise invalidates the relevant bound until a qualified recovery applies.
+
+Reduce the internal representation when its update and control use remain sufficient. One exact reduction is available when \(s=T_rx\) has closed dynamics \(T_rA=A_rT_r\), the needed observations factor as \(C_j=C_{rj}T_r\), and the control law and constrained quantities depend only on \(s\). Then use \(s^+=A_rs+T_rB u^a+T_rw\) and the corresponding observation sets. If an omitted component influences a required future quantity, its influence must instead be retained or bounded.
+
+Thus two histories may be merged only when the merged representation still supports every required future update and action under the allowed future observations and disturbances. Equal current estimates are not enough. A.3.3.PI develops this general sufficiency test; here the joint-state construction provides a direct control-specific realization.
+
+#### CAD.5:4.5 - Obtain a usable error bound
+
+Choose a representative \(\hat x_k\) and compute an enclosure \(V_{\eta,k}\) such that
+
+$$
+x_k=\hat x_k+\eta_k,\qquad \eta_k\in V_{\eta,k}.
+$$
+
+The enclosure can be obtained directly from \(X_k-\hat x_k\). To qualify a continuing controller, obtain a bound valid over the whole allowed run, including startup, admissible delays, sample gaps and loss modes. A bound from one favorable packet sequence is insufficient.
+
+For scalar propagation from a measurement of age \(d\), with coefficient \(a\), measurement-error radius \(\epsilon\), disturbance radius \(q\) and known intervening inputs, a sufficient radius is
+
+$$
+r(d)=|a|^d\epsilon+q\sum_{i=0}^{d-1}|a|^i.
+$$
+
+The propagated center includes every executed input. The second term is uncertainty about unobserved disturbances; a more accurate old sample does not remove it.
+
+For a multidimensional plant, a finite-window construction gives a sufficient bound without requiring every sensor to observe every coordinate. Take available samples with times \(\tau_i\in[k-L,k]\), subtract their known input responses, and stack them:
+
+$$
+r_i=y_i-C_i\sum_{s=k-L}^{\tau_i-1}A^{\tau_i-1-s}B u^a_s,\qquad
+r=O x_{k-L}+n,\qquad O_i=C_i A^{\tau_i-(k-L)}.
+$$
+
+The stacked noise has components
+
+$$
+n_i=C_i\sum_{s=k-L}^{\tau_i-1}A^{\tau_i-1-s}w_s+v_i.
+$$
+
+Obtain \(N\) by applying these linear maps to the allowed joint disturbance and measurement-error set; separate component bounds give a conservative enclosure if the joint set is unavailable. Retain shared disturbances when practical. If \(O\) has full column rank, choose a left inverse \(J\), \(JO=I\), and form
+
+$$
+\hat x_k=A^LJr+\sum_{s=k-L}^{k-1}A^{k-1-s}B u^a_s.
+$$
+
+A sufficient error enclosure is
+
+$$
+V_\eta=\left(\bigoplus_{s=k-L}^{k-1}A^{k-1-s}W\right)
+       \oplus(-A^LJ)N.
+$$
+
+The Minkowski sum \(\oplus\) adds all allowed elements of its operands. This enclosure may be conservative because the same disturbances occur in both terms; it does not assume their independence. Enumerate the admissible window and schedule modes, include the initial transient from \(X_0\), and enclose their errors. Poor conditioning of \(O\) can make a full-rank window useless for the required control margin.
+
+Full-state observability is sufficient for this particular construction, not necessary for the task. A stable hidden component may have a small enough reachable set; a reduced state from :4.4 may suffice. If the window has no left inverse, return to the compatible-set construction and the required actions rather than declaring every such design impossible.
+
+#### CAD.5:4.6 - Establish control under that information
+
+First test whether the information permits a common action. In the following calculation, the selected \(u\) is executed as represented by the plant model; any bounded execution discrepancy must already be included in its disturbance or augmented state. For a required next-state set \(R_{\mathrm{next}}\), the robust admissible inputs are
+
+$$
+\mathcal U(X_k)=
+\{u\in U:A X_k\oplus\{Bu\}\oplus W\subseteq R_{\mathrm{next}}\}.
+$$
+
+The quantifiers are “choose one \(u\), then allow every \(x\in X_k\) and \(w\in W\),” not “for every possible state, choose a different action.” For a halfspace \(h^\top x\le b\) of \(R_{\mathrm{next}}\), the test is
+
+$$
+\sup_{x\in X_k}h^\top Ax+h^\top Bu+\sup_{w\in W}h^\top w\le b.
+$$
+
+This provides a direct calculation for polytopes and support-function representations. When the test fails on an outer approximation, refine the approximation or change the design before claiming impossibility. A negative result for one chosen controller is weaker still.
+
+One feasible step does not establish a continuing guarantee. A sufficient construction for a specified feedback \(u=K\hat x+g\), with constant \(g\) in the selected operating mode, uses \(F=A+BK\):
+
+$$
+x_{k+1}=F x_k+B g+w_k-BK\eta_k.
+$$
+
+Find a set \(R\), containing the allowed initial states and contained in the required state set, for which
+
+$$
+F R\oplus\{Bg\}\oplus W\oplus(-BK)V_\eta\subseteq R,
+\qquad
+K(R\oplus(-V_\eta))\oplus\{g\}\subseteq U.
+$$
+
+Together with a valid uniform error bound, these conditions prove state and input admissibility by induction. For a stable \(F\), one constructive candidate is the reachable sum of the forcing set \(D_f=\{Bg\}\oplus W\oplus(-BK)V_\eta\):
+
+$$
+R_\infty=\bigoplus_{i=0}^{\infty}F^i D_f.
+$$
+
+Use a finite outer approximation with a bounded tail, and enlarge it for the specified initial set if necessary; verify the inclusions after enlargement. For example, if an induced norm satisfies \(\|F\|\le q_F<1\) and \(D_f\) lies in a ball of radius \(d_f\), the ball of radius \(d_f/(1-q_F)\), enlarged to contain the initial ball, is invariant. A Euclidean norm larger than one does not prove that no other norm or set works.
+
+These are sufficient conditions, not a universal synthesis algorithm. A stable hidden mode may be handled without measurement; an unstable or tightly constrained uncertain direction may exhaust the input or state margin. Failure can mean excessive approximation, a poor given feedback, an infeasible information arrangement, or an infeasible demand. Distinguish them.
+
+A decisive impossibility witness consists of two admissible histories producing the same available packets and internal information but requiring disjoint actions, or an unavoidable uncertainty width larger than the permitted state interval. Such a witness rules out all causal controllers under those observation conditions, not merely the proposed feedback. Section :5 supplies both a positive construction and such a negative result.
+
+#### CAD.5:4.7 - Connect the information result to a layered control construction
+
+The method can be used without a layered architecture. When CAD.2 supplies a nominal state \(z\), command \(v\), projection \(P\) and control interface, replace its exact-state feedback by the implemented estimate:
+
+$$
+u=K(\hat x-Pz)+Qz+Rv,\qquad e=x-Pz,\qquad \eta=x-\hat x.
+$$
+
+For \(x^+=Ax+Bu+w\) and \(z^+=A_pz+B_pv\), the derived error dynamics are
+
+$$
+e^+=F e+H z+G v+w-BK\eta,
+$$
+
+where \(F=A+BK\), \(H=AP+BQ-PA_p\), and \(G=BR-PB_p\). The additional forcing \(-BK\eta\) is the effect of acting on the estimate.
+
+Use the effective disturbance set \(W\oplus(-BK)V_\eta\) in CAD.3's invariant-error construction. For every allowed nominal state and command, state admissibility requires \(\{Pz\}\oplus E\subseteq X\), while the implemented input requires
+
+$$
+\{Qz+Rv\}\oplus K E\oplus(-K)V_\eta\subseteq U.
+$$
+
+These sums are conservative enclosures, not assertions that tracking and estimation errors are independent. A joint set can retain their correlation when the separate bounds are too costly.
+
+CAD.4 then compares whole arrangements using the estimator's memory, communication, worst-case completion time, admissible packet timing and resulting error set. A new sensor changes \(V_\eta\), which can change the tracking-error set \(E\), the allowed nominal motion and the value of the whole architecture. A larger planner can also increase sensing or estimation latency through a shared resource, requiring the same calculation in reverse.
+
+The added result is the construction of observation availability, internal information state and estimation uncertainty. CAD.1–4 continue to own decomposition, operational interfaces, tracking bounds and whole architectural comparison; this method does not replace them.
+
+#### CAD.5:4.8 - Compare whole alternatives and return to the failed dependence
+
+For each serious channel-and-schedule alternative, obtain the information update, its cost and delay, the error bound and the control conclusion. Keep the demanded behavior, initialization and resource accounting the same. Compare the alternatives that meet the demand; distinguish a proof of impossibility from failure of a sufficient bound.
+
+Choose a sufficient arrangement with an explained cost and margin. A comparison can establish the best member of a stated finite family only when the objective is comparable and every potentially better member is evaluated decisively. Otherwise return the best qualified member found and the unresolved alternatives. A stochastic design can instead minimize an explicitly selected expected cost, but its covariance or a finite successful simulation is not a deterministic bound for this method's hard constraints.
+
+Return according to what failed:
+
+| Observed failure | Useful design return |
+| --- | --- |
+| Two compatible histories need different actions before any distinguishing packet arrives | Change what is observed, the sampling or delivery time, the actuator or the required behavior. Extra computation on the same information cannot distinguish them. |
+| A feasible set is too large only after coarse approximation | Retain a useful correlation or use a tighter representation; include its execution cost. |
+| Estimation uncertainty fits, but the given feedback violates an input limit | Change or requalify the feedback and its continuation, or change the physical limit or demand. Do not label this a sensor impossibility. |
+| A longer observation gap or shared-resource delay breaks the bound | Restore a qualified timing arrangement or recalculate the information and control sets for the changed timing. |
+| A stable unobserved component fits the task without intervention | Remove an unnecessary channel and its associated internal history. |
+| A mode switch changes the permitted error or invariant set | Prove that the actual state and information representation enter the new qualified set, or retain a common valid bound. Nominal mode labels do not establish this. |
+
+#### CAD.5:4.9 - Make the result executable and reusable
+
+Return the selected and rejected complete arrangements with the controlled task, plant and uncertainty conditions, channel meanings and timing, initialization, internal state and update, control law, and the admissibility calculation. Make the unresolved distinction explicit if no candidate has a sufficient guarantee.
+
+For implementation, connect sample timestamps and identities, actually executed inputs and the estimator's update to real producers and consumers. Qualify computation and transport deadlines under the proposed shared load. Select an already qualified behavior for missing data, inconsistent data and late completion; “hold the last command” is not automatically safe.
+
+What changes in practice is the choice of the information the controller obtains and retains. The engineer can explain why a channel matters to an action, what must be remembered while waiting for another channel, and which changed condition invalidates the resulting control. A diagram, estimator score or list of sensors alone cannot supply that explanation.
+
+### CAD.5:5 - Archetypal Grounding
+
+#### CAD.5:5.1 - A rapid partial observation and a delayed complete observation
+
+Consider two normalized deviation coordinates:
+
+$$
+x_{k+1}=
+\begin{bmatrix}1.2&0\\0&0.8\end{bmatrix}x_k+u_k+w_k,\qquad
+|w_{1,k}|\le0.04,\quad |w_{2,k}|\le0.02.
+$$
+
+The initial state is known to be zero. At every sample the requirement is \(|x_1|\le0.08\), \(|x_2|\le0.06\), with \(|u_1|\le0.12\), \(|u_2|\le0.08\). Inputs are executed without delay and their executed values are available. All specified packets and computations finish before the relevant input selection. These are assumptions of a mathematical design case, not measurements of a physical installation.
+
+The offered sensor packages are:
+
+| Package | Observation available before \(u_k\) | Error bound | Sensor-resource cost |
+| --- | --- | --- | --- |
+| F | Current \(x_{1,k}\) only | \(0.01\) | 1 |
+| S | Both coordinates at \(k-2\), at every tick after startup | \(0.005\) per coordinate | 1 |
+| H | Both current coordinates | \(0.005\) per coordinate | 3 |
+
+The sensor budget is 2. Estimator execution and transport capacity are assumed separately qualified for F+S; the sensor cost is not a claim about total implementation cost. Compare F, S and F+S under this budget, and retain H as the simpler alternative if the budget changes.
+
+With F+S, use F for the first coordinate. Propagate S's second coordinate using the executed inputs:
+
+$$
+\hat x_{2,k}=0.8^2y_{2,k-2}+0.8u_{2,k-2}+u_{2,k-1}.
+$$
+
+The required internal state includes the two applicable input values and the delayed packet's sample time. The uncertainty bound is
+
+$$
+r_1=0.01,\qquad
+r_2=0.8^2(0.005)+(1+0.8)(0.02)=0.0392.
+$$
+
+Before the first delayed packet arrives, propagate the known initial state and inputs; the second-coordinate uncertainty is at most \(0.02\) after one update and \(0.036\) after two. The same bound \(0.0392\) therefore covers startup. Incorporating S's first-coordinate information as an additional intersection is permissible but unnecessary for the following guarantee.
+
+Choose \(u_i=-a_i\hat x_i\), with \(a_1=1.2,a_2=0.8\). Then \(x_i^+=a_i\eta_i+w_i\), so
+
+$$
+|x_1^+|\le1.2(0.01)+0.04=0.052<0.08,
+\qquad
+|x_2^+|\le0.8(0.0392)+0.02=0.05136<0.06.
+$$
+
+Whenever the required state bounds hold,
+
+$$
+|u_1|\le1.2(0.08+0.01)=0.108<0.12,
+\qquad
+|u_2|\le0.8(0.06+0.0392)=0.07936<0.08.
+$$
+
+The initial state is admissible, and these inequalities establish the state and input requirements for every subsequent tick and every disturbance and measurement error within the stated bounds. This is a continuing conditional guarantee, not an inference from a plotted trajectory.
+
+One particular run makes the internal information visible. Let measurement errors be zero and take \(w_1=0.04,w_2=0.02\) at every update. At \(k=1\), \(x_2=0.02\), but no S packet has arrived and its prediction is zero. At \(k=2\), \(x_2=0.036\), while S reports \(x_{2,0}=0\). At \(k=3\), S reports \(x_{2,1}=0.02\); the propagated center is \(0.0128\), not the current \(x_{2,3}=0.0488\). The difference \(0.036\) is due to the two unobserved disturbances. The controller applies \(u_{2,3}=-0.01024\). On the next tick its prediction includes this executed input. Reusing the old observation without that input would no longer implement the qualified update.
+
+#### CAD.5:5.2 - Why the individual channels do not suffice
+
+With F alone, the second coordinate is never observed and does not influence the observed first coordinate. Consider two runs with opposite second-coordinate disturbances and otherwise identical information. The controller chooses the same second-coordinate commands in both. After five updates, half their separation is
+
+$$
+0.02(1+0.8+0.8^2+0.8^3+0.8^4)=0.067232>0.06.
+$$
+
+No common center can place both states inside the required interval. This excludes every causal controller using F alone under the stated assumptions, not just \(u=-A\hat x\).
+
+With S alone, the latest two first-coordinate disturbances are unobserved when the next command is chosen. Even with perfect older observations, the next first-coordinate interval has unavoidable half-width
+
+$$
+0.04(1+1.2+1.2^2)=0.1456>0.08.
+$$
+
+The same indistinguishability argument rules out the required all-time bound. Improving the old measurement's accuracy cannot recover these disturbances before their consequences matter.
+
+F+S is therefore sufficient where either offered channel alone is insufficient, under the same sensor budget and timing assumptions. This establishes a task-dependent benefit of combining channels. It does not establish that all heterogeneous sensing is superior or that the offered catalog is globally optimal.
+
+#### CAD.5:5.3 - Increase the delay, then change the design or the demand
+
+Suppose bus contention changes S's age from two ticks to four, while F and the requirements remain unchanged. The reconstructed second-coordinate radius becomes
+
+$$
+r_2(4)=0.8^4(0.005)+0.02(1+0.8+0.8^2+0.8^3)=0.061088.
+$$
+
+The same controller's next-state bound is \(0.8r_2(4)+0.02=0.0688704\), which exceeds \(0.06\). More decisively, four unobserved disturbances plus the next one yield the half-width \(0.067232\) from :5.2 even if S's old measurement is exact. F still reveals nothing about the second coordinate. Thus a different filter or gain using the same available information cannot restore this hard bound.
+
+The engineer must change a consequential condition. Restore the qualified two-tick transport arrangement, obtain a timely observation of the second coordinate, or revise the task or physical dynamics. If the sensor budget becomes 3, H alone supports the same feedback with next-state bounds \(0.046\) and \(0.024\); its input bounds are \(0.102\) and \(0.052\). H needs no delayed-observation reconstruction. It is now a simpler sufficient choice.
+
+A different task can also justify less information. If the allowed second-coordinate deviation becomes \(0.12\), retain F and set \(u_2=0\). The unobserved stable second coordinate has the invariant bound
+
+$$
+|x_2|\le\frac{0.02}{1-0.8}=0.1<0.12.
+$$
+
+S, its delayed packet processing and its input-history reconstruction are then unnecessary. This is sufficient for the changed task; it is not a cheaper solution to the original \(0.06\) requirement.
+
+#### CAD.5:5.4 - What an internal-path ablation does and does not establish
+
+For the scalar noiseless plant \(x_{k+1}=a x_k+u_k\), with a one-tick delayed observation \(y_k=x_{k-1}\), the predictor
+
+$$
+\hat x_k=a y_k+u_{k-1},\qquad u_k=-a\hat x_k
+$$
+
+uses the executed-input history. Removing that input term while retaining the remaining gains gives \(u_k=-a^2x_{k-1}\). At \(a=1.2\), the resulting characteristic polynomial is \(\lambda^2-1.2\lambda+1.44\); its roots have modulus \(1.2\), so this ablation is unstable.
+
+It does not prove that every controller lacking that input-history path is unstable. Retuning the memoryless delayed-output law to \(u_k=-0.6x_{k-1}\) gives roots of \(\lambda^2-1.2\lambda+0.6\), both with modulus \(\sqrt{0.6}<1\). The latter establishes stabilization of this noiseless model, not the original predictor's performance or a bounded-disturbance constraint guarantee.
+
+Use the first comparison to explain why a particular realization depends on its internal path. Use an impossibility argument such as :5.2–:5.3 when claiming that the available information cannot meet a requirement under any controller in the stated class.
+
+#### CAD.5:5.5 - Recover two coupled coordinates from observations at different times
+
+The general construction in :4.5 is not a coordinate-by-coordinate delay correction. Consider
+
+$$
+A=\begin{bmatrix}6/5&1/5\\1/10&4/5\end{bmatrix},\qquad B=I,
+$$
+
+with disturbance radii \((.04,.02)\) and measurement-error radius \(.005\). At time \(k=2\), use a first-coordinate observation sampled at time 0 and a second-coordinate observation sampled at time 1. Both samples and the actually applied \(u_0,u_1\) are available before this estimate is used. After subtracting the known input response,
+
+$$
+r=\begin{bmatrix}y_{1,0}\\y_{2,1}-[0\ \ 1]u_0\end{bmatrix},
+\quad
+O=\begin{bmatrix}1&0\\1/10&4/5\end{bmatrix},
+\quad
+J=O^{-1}=\begin{bmatrix}1&0\\-1/8&5/4\end{bmatrix}.
+$$
+
+Thus \(\hat x_2=A^2Jr+A u_0+u_1\). The second measurement contains \(w_{02}\), the second coordinate of the first disturbance, so it is related to the uncertainty in the subsequent propagation. Writing \(w_0=(w_{01},w_{02})\), \(w_1=(w_{11},w_{12})\), and the two measurement errors as \(v_1,v_2\), substitution gives
+
+$$
+\eta_1=\frac65w_{01}-\frac3{10}w_{02}+w_{11}
+       -\frac{141}{100}v_1-\frac12v_2,
+$$
+
+$$
+\eta_2=\frac1{10}w_{01}-\frac1{40}w_{02}+w_{12}
+       -\frac{47}{400}v_1-\frac{33}{40}v_2.
+$$
+
+The exact coordinate radii for the stated box of original uncertainties are \((.10355,.0292125)\). Using the separate Minkowski enclosure in :4.5 gives the larger radii \((.11155,.0612125)\): the same \(w_{02}\) was allowed to vary separately in two occurrences. Both enclosures are valid; retaining the shared variable can save a margin that a conservative test would spend.
+
+This calculation supplies a finite-window error set, not a controller or an all-time guarantee for this new plant. The next use is :4.6 with the required actions and continuation, or :4.7 when a planning-and-feedback interface is already selected. Repeated use also needs the other allowed sample windows and startup to be covered.
+
+### CAD.5:6 - Bias-Annotation
+
+The finite model and channel catalog can omit a better physical realization. Sensor-resource prices are contextual, and error or delay bounds need engineering grounds. An exact mathematical result cannot establish those grounds.
+
+The bounded-set construction favors robust guarantees and can be conservative. A stochastic expected-cost problem may favor a different sensor schedule or estimator. Neither answer should be presented as the optimum for the other's criterion.
+
+A compelling biological or organizational analogy can suggest a useful design question without supplying the engineered plant, uncertainty set or execution guarantee. Internal information reuse also admits different mathematical and physical realizations; a chosen block diagram is not evidence of a unique anatomy.
+
+### CAD.5:7 - Conformance Checklist
+
+- The controlled task, action time, initialization and allowed uncertainty are explicit, including the meaning of an actually executed input.
+- Each observation constrains the state at its sample time; admissible sample gaps, delivery modes and resource coupling are included.
+- The internal representation can be updated without discarding a control-relevant dependence; approximations enclose all compatible states.
+- The control conclusion uses one action for the available information, and a continuing guarantee includes a valid error bound and continuation argument.
+- Serious simpler alternatives are compared under the same demand; a changed demand is not disguised as a cheaper equivalent solution.
+- A changed delay, observation or internal-state reduction returns to the affected calculation.
+- An ablation, a failed sufficient bound and an information-based impossibility have different stated scopes.
+
+### CAD.5:8 - Common Anti-Patterns and How to Avoid Them
+
+| Failure | Repair |
+| --- | --- |
+| Treating the most recently received values as simultaneous current state | Retain sample times and propagate their constraints through actual intervening inputs and disturbances. |
+| Selecting sensors solely by total estimation error | Calculate the actions, constraints and continuation that the remaining uncertainty permits. |
+| Assuming a complete delayed observation removes uncertainty | Retain the disturbances accumulated since the sample; test whether any action can tolerate them. |
+| Keeping only an estimate and losing the means to update it | Construct sufficient history or an equivalent recursive state; verify the next update after the proposed reduction. |
+| Turning a smaller covariance or successful simulation into a hard bound | Use the stated stochastic conclusion or derive a separate bounded-set guarantee. |
+| Calling a conservative test failure a physical impossibility | Refine the enclosure or provide indistinguishable histories with incompatible consequences. |
+| Removing an internal path, keeping all gains, and concluding the path is universally necessary | Retune the competing architecture under the same requirement, or use an information-based impossibility proof. |
+| Adding a second sensor without including shared transport and compute load | Recalculate timing and the resulting error under the joint realization. |
+
+### CAD.5:9 - Consequences
+
+The result connects observation selection to admissible control rather than to an isolated estimator score. It can justify a combination of channels, a retained internal history, a tighter representation, or the removal of unnecessary sensing.
+
+The cost is explicit modeling and calculation. Exact joint sets can grow too expensive, and robust outer sets can reject useful designs conservatively. The result remains conditional on the model, bounds, timing and implementation. It supplies neither a general guarantee for learned perception nor a complete treatment of nonlinear, state-dependent sensing and actuation.
+
+### CAD.5:10 - Rationale
+
+Information matters through distinctions the next action must respect. A measurement can refine an old state while leaving recent disturbances unresolved. Applied-input history makes predictable change available to the controller; it does not create missing information about unpredictable change.
+
+The method therefore joins three constructions: compatible state histories, a sufficient internal update, and a common action with a qualified continuation. The two-channel example works because the rapid channel restricts a direction whose uncertainty grows too quickly, while the delayed complete channel is sufficient for the slower direction. The simpler changed-task case works because an unobserved direction remains bounded without intervention.
+
+This separates two ideas often discussed together. **Diversity-enabled sweet spots (DeSS)** concern a favorable whole arrangement of components with different limitations under a specified task and resource model. **Internal feedback pathways (IFP)** concern reuse of internal action, prediction or state information in a controller's realization. One does not prove the other; the information and control calculations must establish their particular connection.
+
+### CAD.5:11 - SoTA-Echoing
+
+The precise question here is how to choose realizable observations and sufficient internal memory for bounded-error sampled control. The method joins state estimation and robust control constructions through their information, timing and admissibility conditions.
+
+- [Nakahira, Liu, Sejnowski and Doyle, 2021, “Diversity-enabled sweet spots in layered architectures and speed–accuracy trade-offs in sensorimotor control”](https://doi.org/10.1073/pnas.1916367118) supplies a historical model of complementary pathways. Retain its demand for a whole-task and resource comparison; do not universalize its particular speed–accuracy relation or infer IFP from that DeSS model.
+- [“Internal Feedback in Biological Control: Architectures of Diversity and Delays,” 2022 version](https://arxiv.org/pdf/2109.11752v3) supplies a related mathematical contrast between fast partial and delayed observations. Its selected-model and ablation comparisons do not establish necessity across all retuned architectures. Sections :4.6 and :5.4 retain that distinction.
+- [Li, Sarma, Sejnowski and Doyle, 2023, “Internal feedback in the cortical perception–action loop enables fast and accurate behavior”](https://doi.org/10.1073/pnas.2300445120), especially its estimation and attention constructions, makes the role of internally available actions and predictions explicit. Adapt that mechanism, with its stated model limits. Do not adopt its asserted scalar no-IFP optimum: in the one-tick-delay, unit-white-noise model of pp.3/11 at \(a=1\), the proposed gain \(k_1=-1/4\) yields stationary state variance \(80/27\), while \(k_1=-1/2\) yields \(12/5\); both closed loops are stable. This comparison uses the article's state-only cost, not a control-effort penalty. The guarantees here use the separately stated bounded-disturbance criterion.
+- [Casini, Garulli and Vicino, “Adaptive Threshold Selection for Set Membership State Estimation with Quantized Measurements,” author copy linked to the 2025 publication](https://www3.diism.unisi.it/casini/pdf/TAC_2025.pdf), §§3–6, develops feasible-set updates and adaptive quantization ([IEEE Transactions on Automatic Control](https://doi.org/10.1109/TAC.2025.3545704)). Adopt the set interpretation and explicit outer-approximation cost. Its higher-dimensional threshold choice targets output uncertainty, so control constraints and heterogeneous delivery timing still need the construction here. In particular, output uncertainty and its asymptotic boundedness are not the same requirement as the all-time state and input constraints in :4.6.
+- [Dutta, Wilde and Smith, 2023 version, “A Unified Approach to Optimally Solving Sensor Scheduling and Sensor Selection Problems in Kalman Filtering”](https://arxiv.org/pdf/2304.02692v2), §§II–IV, is a serious alternative when the selected criterion is weighted expected estimation or LQG cost under finite-horizon resource constraints. Its mixed-integer construction can compare schedules under that stochastic formulation. Do not relabel its covariance result as a hard feasible-state bound; use it when its criterion is the required one.
+
+Choose between these approaches by the required conclusion, permitted uncertainty model and executable cost. A fixed observer or current complete observation can remain preferable. Reopen the construction when the demanded constraint, admissible timing, sensor model, available computation or a relevant stronger result changes the design conclusion; a later publication date alone does not establish dominance.
+
+### CAD.5:12 - Relations
+
+[SYSE.5](https://github.com/ailev/FPF/blob/main/DPFs/Engineering%20DPF%20Suite/SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse5---develop-an-engineered-systems-functional-organization-and-bearer-alternatives) develops the engineered system's functional organization and bearer alternatives. This method supplies a specialized construction for its observation, internal information and control-use contributions. Its qualified alternatives and limitations can enter SYSE.6's broader architecture decision; they do not decide that whole architecture.
+
+C.32.LCA supplies the general construction and comparison of a control architecture. This specialized method develops the mathematical information construction for the bounded class stated in :1; it does not revise the general method's scope. C.30.LCA qualifies the corresponding control-structure view rather than deriving the estimator or controller.
+
+A.3.3.PI supplies the general test for retaining information needed by future prediction and update. Sections :4.3–:4.5 construct sufficient internal state and error bounds for the present control problem.
+
+[CAD.1–4](#cad1---derive-a-control-decomposition-from-the-whole-problem) supply the connected quantitative construction of decomposition, interfaces, tracking bounds and whole control alternatives. Section :4.7 provides the explicit composition: estimator error enters their forcing and input constraints, while their execution arrangement constrains this method's observation age and computation time.
+
+### CAD.5:End
+
+# B. Design a planning-and-feedback architecture
+
+## CAD.1 - Derive a Control Decomposition from the Whole Problem
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+### CAD.1:1 - Problem frame
+
+**Use this when** a control problem seems to call for different planning and reaction times, but “add a strategic, tactical and operational layer” does not tell you which decisions belong where. You may also have an inherited hierarchy whose purpose is no longer clear.
+
+Start by writing one consequential behavior that the entire closed loop must produce, together with the available observations, actuators and execution limits. Then identify the decision that prevents a direct solution. The first useful result is a candidate split and an account of what its parts must jointly preserve.
+
+If one qualified controller already meets the task and implementation constraints, retain it. Layering needs an identified benefit; it is not a requirement for accuracy or sophistication.
+
+### CAD.1:2 - Problem
+
+A hierarchy can divide a diagram while leaving the original difficulty untouched. A planner assumes commands can be realized, a tracker assumes commands change slowly, and neither assumption follows from the split. Conversely, trying to solve every decision at the fastest rate can make a good control formulation impossible to execute.
+
+The design problem is to change the organization of decisions while retaining enough of their interactions to obtain the required behavior.
+
+### CAD.1:3 - Forces
+
+| Force | Consequential tension |
+| --- | --- |
+| Long-horizon choice and rapid correction | A larger look-ahead can improve a plan while consuming time needed for reaction. |
+| Simplification and lost interaction | An easier subproblem can omit actuator limits, memory or coupling that determines feasibility. |
+| Local improvement and whole performance | A better isolated planner can issue commands that make the combined system worse. |
+| Functional separation and realization | Different decision rates do not require different processors; shared processors introduce interference. |
+
+### CAD.1:4 - Solution
+
+#### CAD.1:4.1 - Formulate the unsplit question
+
+State the controlled quantities, objective or preference, hard constraints, operating domain, relevant disturbances, measurements and available actions. Distinguish three time quantities: the dynamics and disturbance times, the horizon over which a choice matters, and the time needed to obtain and execute that choice. A fast update is useful only if observations, computation and actuation support it.
+
+Use a centralized mathematical formulation when it helps reveal coupling, even if that formulation is too expensive to run. It can be a finite-horizon objective with dynamics and constraints, a reach-and-avoid problem, or a reference-following requirement. It is the common comparison basis, not a promise that one optimizer must solve everything.
+
+Retain a feasible simple controller as a baseline where available. State what it cannot achieve at acceptable effort: for example obstacle look-ahead, preview-dependent economy or long-horizon allocation. If the baseline's actual limitation is unknown, test that uncertainty before adding layers.
+
+When a qualified existing loop has adequate tracking and disturbance rejection but requested commands violate constraints, compare adding a reference or command governor before redesigning that loop. Use the joint plant-controller model, admissible initial conditions and qualified command-update rule described in [CAD.Reference:4.5.1](#cadreference451---keep-a-qualified-loop-and-govern-its-commands). Check whether the resulting command delay or distortion still meets the task. If it does, retain that candidate; if it does not, identify the unmet requirement that a different interface, planner or controller must address.
+
+#### CAD.1:4.2 - Separate decisions because their information and effects differ
+
+For each consequential decision, ask what it changes, which information it needs, how long its effect persists, how quickly a wrong choice becomes harmful, and what resources its computation consumes. Cluster decisions only when those answers support one useful calculation or law.
+
+A slow planning decision might choose a route, reference segment or allocation. A faster decision might reject local disturbance or track that reference. This does not imply that the faster model is less detailed: a tracking model may retain actuator dynamics omitted by a planning model.
+
+Generate materially different candidates. Compare a single loop, a planning-and-feedback split, or another separation motivated by the problem. Do not add a third layer merely because the source diagram contains three. A communication boundary can matter more than a time-scale boundary, and a faster processor can make a proposed split unnecessary.
+
+#### CAD.1:4.3 - Expose what the split removes
+
+A useful way to derive a candidate is to introduce separate variables for decisions that were coupled in the whole problem. Initially constrain them to agree. For example, let a planner choose a nominal trajectory z while the plant state is x; keep the relation that says what plant behavior z represents. Only then relax that relation to obtain separately solvable subproblems.
+
+For each relaxation, recover its price. Replacing equality by tracking allows an error; removing full dynamics requires a realizability condition; replacing continuous interaction by periodic exchange introduces stale information and intersample evolution. Removing future disturbance information requires a prediction or uncertainty treatment. These are concrete missing relations, not a generic “integration risk”.
+
+Use MMP.9 when reduction is involved: derive the retained evolution and identify terms depending on omitted state, past inputs or unresolved quantities. A term does not disappear because the upper model has fewer states. Decide whether it is retained through memory, bounded as mismatch, supplied by a lower closed loop, or left as an unresolved limitation.
+
+The first candidate is complete enough to continue when every removed interaction has a proposed receiving treatment in CAD.2 or CAD.3. A treatment may fail; naming it does not establish it.
+
+#### CAD.1:4.4 - Make the slow decision account for fast consequences
+
+Do not optimize the slow part as if the faster part were free. Eliminate or approximate the fast response inside the slow objective when the model permits it.
+
+For example, suppose a particular linear design starts at x = 0 and keeps x at zero by choosing a fast action f after observing w, while a slow action s remains fixed for a block. If the fast input matrix is invertible, the required correction is
+
+$$
+f=-B_f^{-1}(B_s s+w).
+$$
+
+Substitution gives a slow objective containing both the cost of s and the anticipated cost of these corrections. With a block of k forecast values, a possible norm-cost objective is
+
+$$
+k\|s\|_s+\sum_{i=1}^{k}\|B_f^{-1}(B_s s+\widehat w_i)\|_f.
+$$
+
+This is a derivation under a particular model, not a general recipe for plants with saturation or delay. When fast actions are limited, retain their feasibility condition as well as their cost. When an exact elimination is unavailable, use a qualified response model, a bound or joint optimization; label the remaining approximation and compare the actual combined result.
+
+#### CAD.1:4.5 - Preserve the whole question through the next design move
+
+Pass each candidate's controlled behavior, separation reason and lost interactions to CAD.2. A command's type alone is insufficient: a target position, a timed trajectory and a velocity segment imply different problems for the tracking layer.
+
+Keep candidates comparable under the same task, disturbance class and resource limits. A slower update with a smaller demanded reference change may look better only because the task was weakened. Retain a whole alternative until its decisive incompatibility or disadvantage is understood.
+
+### CAD.1:5 - Archetypal Grounding
+
+A constructed actuator model is $x_{k+1}=x_k+u_k$, with $|x|\leq1$ and $|u|\leq0.06$. An existing fast law follows a reference. A planning calculation takes two fast sampling periods on a dedicated resource, so it cannot produce a new result every fast tick. Planning remains useful because it chooses future reference segments; the fast law supplies inexpensive execution.
+
+One candidate sends a new held value every four ticks. Another sends a timed segment whose intermediate values the fast task can generate. They differ in the interaction removed by planning: the first assumes a jump can be tracked within the input limit; the second assumes a known continuous segment and a reliable clock. CAD.2 derives those consequences. Neither candidate has yet earned a safety claim.
+
+As a non-use case, suppose the only task is stabilization around one fixed equilibrium and the existing fast law meets every limit. A slow planner adds no demonstrated decision benefit; keep the simpler controller.
+
+### CAD.1:6 - Bias-Annotation
+
+Organizational hierarchies and biological analogies make layered pictures persuasive. They do not determine a control decomposition. The linear example favors a tractable model; nonlinear or partially observed plants can require a different split and different assurance.
+
+### CAD.1:7 - Conformance Checklist
+
+- The unsplit behavior, constraints, information and resource conditions are recoverable.
+- Each separation has a decision-specific reason and a serious alternative.
+- Removed interactions have explicit receiving treatments or remain visible gaps.
+- Slow choices include material fast consequences.
+- The compared candidates serve the same demand.
+
+### CAD.1:8 - Common Anti-Patterns and How to Avoid Them
+
+“Slow is accurate; fast is inaccurate” merges optimization quality, model fidelity and tracking error. State the quantity and comparison. “Three layers are necessary” replaces construction with a diagram; derive only the separations the problem needs. A planner that ignores actuator feasibility hands its original problem to the tracker; retain that interaction in the next construction.
+
+### CAD.1:9 - Consequences
+
+The result is a smaller set of explainable architecture candidates. Some apparently attractive splits will be rejected before controller tuning. The cost is retaining the original problem long enough to compare whole behavior instead of judging each box independently.
+
+### CAD.1:10 - Architectural Rationale
+
+The method starts from coupled behavior because a decomposition is a change to that coupling. Introducing agreement before relaxing it makes the lost condition recoverable. This gives later error and feasibility work a specific obligation rather than an open-ended request to integrate components.
+
+### CAD.1:11 - SoTA-Echoing
+
+**When should the decisions be separated?** The selected line derives the split from the whole problem and keeps a qualified existing loop, with a governor if needed, and a single constrained controller as serious alternatives in :4.1–4.3. Separation earns its additional interface and assurance work when differences in information, prediction horizon or execution resources prevent those simpler arrangements from meeting the same demand. If a single MPC formulation can retain the relevant coupling and meet the deadline, decomposition still has to offer a gain that outweighs maintaining its interfaces.
+
+The method adopts the problem-decomposition and coupling-relaxation move in [Matni, Ames and Doyle, §2.2](https://arxiv.org/html/2401.15185), while treating its particular layer arrangement as a choice. It adapts [Goel, Chen and Wierman's construction, §§II–IV](https://arxiv.org/html/1704.07785v2) in :4.4 to include fast consequences in the slow decision. That fixed two-rate, prediction-dependent cost result does not select a layer count or cover actuator limits. The corresponding price is explicit here: a split that saves computation still owes an error and feasibility construction.
+
+A contemporary alternative is to keep the stabilized dynamics fixed and combine online optimization of references with a governor. [Nonhoff, Al Torshan and Müller, 2026 preprint, §§II–IV](https://arxiv.org/html/2601.23160v1) construct this combination for disturbed linear systems under strong convexity of the steady-state costs, compact convex constraints and their bounded-disturbance and initialization assumptions. Their performance statement concerns regret against varying optimal steady states; it is not a solution for arbitrary trajectory or mission objectives. Retain that alternative when changing costs, rather than preview-dependent motion, create the upper decision. The governor comparison in [CAD.Reference:4.5.1](#cadreference451---keep-a-qualified-loop-and-govern-its-commands) explains when the existing loop can remain.
+
+Reopen the split when measured computation, required preview, available observations or permitted command distortion changes. A newly feasible single-loop or governor solution can remove the reason for a larger architecture; a missed task requirement can justify developing it.
+
+### CAD.1:12 - Relations
+
+C.39 supplies the general construction of a way to obtain a result; CAD.1 supplies the control-specific decomposition. MMP.9 supplies model reduction. CAD.2 consumes the selected candidate and makes its exchanges operational. CAD.4 compares whole candidates, including the unsplit alternative. SYSE.5 consumes the resulting functional organization when developing the engineered system.
+
+### CAD.1:End
+
+## CAD.2 - Construct the Planning and Feedback Interface
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+### CAD.2:1 - Problem frame
+
+**Use this when** a planner and a lower controller have been chosen, but their combined behavior is not determined by their separate models. A reference jump, stale state estimate, model reset or held input may be the event that makes the connection fail.
+
+Start with one command actually received by the lower computation: what quantity it represents, when it applies and how it becomes an actuator action. The first useful result is the connected evolution of plant, planning state and interface error, including the events between updates.
+
+If a qualified interface already supplies this evolution under the current timing and command conditions, reuse it. A diagram or a matching data type is not that result.
+
+### CAD.2:2 - Problem
+
+Models can agree at one exchange instant while diverging between exchanges. A planning state can be initialized from the plant without representing every relevant plant state. A controller can track a smooth signal yet fail when the implemented interface replaces it by steps.
+
+The interface must therefore be designed as behavior over time, not just as a list of variables.
+
+### CAD.2:3 - Forces
+
+| Force | Consequential tension |
+| --- | --- |
+| Simpler planning state and hidden behavior | Projection removes quantities that can still affect control. |
+| Sparse exchange and timely correction | Holding information saves work while increasing mismatch. |
+| Reinitialization and continuity | A fresh estimate can improve planning while creating a command jump. |
+| Convenient implementation and faithful semantics | Units, frames, clocks and interpolation can change the implemented law. |
+
+### CAD.2:4 - Solution
+
+#### CAD.2:4.1 - Define the exchanged behavior
+
+Use MMP.18 to establish meanings, units, coordinate frames, observation times, validity intervals and the operation performed between messages. A target, an input, an output trajectory and a constraint are different commands. State which one the lower computation receives.
+
+Choose how the upper model represents the lower behavior. For a planning state z and plant state x, a reconstruction $Pz$ can define an error $e=x-Pz$. A measured projection $z=\Pi x$ is a different map. Even if $\Pi P=I$, initializing $z=\Pi x$ leaves $e=(I-P\Pi)x$, which need not vanish.
+
+If the controlled quantity is $y=Cx$ and the planner predicts $y_p=C_pz$, then
+
+$$
+y-y_p=Ce+(CP-C_p)z.
+$$
+
+Output agreement requires the second term to vanish or be included in the bound. State reconstruction, output matching and physical identity are separate questions.
+
+#### CAD.2:4.2 - Derive the error instead of assuming tracking
+
+For a useful linear branch, express both models at the fast sampling instants:
+
+$$
+x^+=Ax+Bu+w,\qquad z^+=A_pz+B_pv.
+$$
+
+Here w is an admitted bounded mismatch or disturbance, not a name for all unknown behavior. Select an interface law
+
+$$
+u=K(x-Pz)+Qz+Rv.
+$$
+
+Substitute $x=Pz+e$ before simplifying. The actual error equation is
+
+$$
+e^+=Fe+Hz+Gv+w,
+\quad
+F=A+BK,\quad H=AP+BQ-PA_p,\quad G=BR-PB_p.
+$$
+
+This calculation makes three design choices visible. K changes error correction; P and Q determine whether the nominal state evolution can match; R determines input matching. Solving $H=0$ is useful when possible but is not automatically possible or necessary. If it fails, retain $Hz$ and bound or redesign it. A stable F does not remove forced error from H, G or w.
+
+Use MMP.9 to construct and qualify a reduced model before relying on it here. A fitted upper model with unexamined hidden-state memory is not made adequate by a convenient matrix dimension.
+
+#### CAD.2:4.3 - Add the clock, held values and reset events
+
+Specify the fast interval, slow update interval, which variables evolve between slow updates, and the event order at a shared instant: observation, computation, command acceptance and actuation. Derive the state just before and just after each event.
+
+For example, if z and v are held for N fast steps, first derive the held-z mode by setting $A_p=I, B_p=0$ in the residual equation. With F, H and G for that mode, repeated substitution gives
+
+$$
+e_N=F^Ne_0+\sum_{i=0}^{N-1}F^i(Hz+Gv+w_{N-1-i}).
+$$
+
+When the next planning state is $z_{\mathrm{new}}$, the same physical x gives
+
+$$
+e_{\mathrm{new}}=e_N+P(z-z_{\mathrm{new}}).
+$$
+
+A reset is thus an error input, even when the tracker is stable. If the planner instead propagates z every fast step, use that evolution in :4.2; do not also treat z as held.
+
+Model a known delay through the state and commands actually available to the controller. Replacing $x_k$ by $x_{k-d}$ changes the law; augmenting the state with the necessary history is one way to derive its dynamics. If an estimator supplies x, include estimation error and its qualification. A full-state result cannot simply be relabeled output feedback.
+
+A variable delay or missed update needs an explicit admissible timing set and an error model covering it. A bound for one fixed period does not establish a bound for arbitrary switching among periods.
+
+#### CAD.2:4.4 - Return an interface that can be tested and changed
+
+Give CAD.3 the combined evolution, initial-error condition, admissible command class, mismatch class and exact moments at which each required constraint must hold. Retain the meaning and time convention of every exchanged quantity. These are engineering design values; no special record format is required.
+
+A failed error bound has several possible repairs: change the reconstruction, retain an omitted mode, alter feedforward, reduce command jumps, supply an interpolated segment, shorten latency or choose another split. The error equation identifies which change addresses the failure. Do not reflexively raise every update rate.
+
+Test the actual exchange implementation with boundary events: simultaneous update, maximum permitted delay, reset, command reversal and missing command. These tests can falsify the model of the interface; they do not prove its physical assumptions.
+
+### CAD.2:5 - Archetypal Grounding
+
+#### CAD.2:5.1 - A held reference
+
+For the constructed plant $x_{k+1}=x_k+u_k$, choose
+
+$$
+u_k=(1-a)(r_k-x_k),\qquad a=\tfrac12.
+$$
+
+With a held reference r, $e_{k+1}=ae_k$. Let the reference change by $\Delta r_j$ at the start of each N-step block. The error immediately after that change obeys
+
+$$
+e_{j+1,0}=a^Ne_{j,0}-\Delta r_j.
+$$
+
+For $|\Delta r_j|\leq\delta$, the interval $|e|\leq E$ is invariant at block starts if
+
+$$
+E\geq a^NE+\delta,\quad\text{hence}\quad E=\frac{\delta}{1-a^N}.
+$$
+
+It also bounds intermediate fast instants because $|a|\leq1$. The initialization condition is $|e_{0,0}|\leq E$. With $N=4,\delta=0.1$, $E=8/75$. The reference jump, not instability of the fast law, determines this worst-case envelope.
+
+#### CAD.2:5.2 - A continuous reference segment
+
+Now let the fast computation generate r from a timed segment and let $d_k=r_{k+1}-r_k$, with $|d_k|\leq v_{\max}$. The same plant and gain give
+
+$$
+e_{k+1}=ae_k-d_k,\qquad
+E=\frac{v_{\max}}{1-a}.
+$$
+
+The planner can still update every four ticks. What changed is the command trajectory between updates. At $v_{\max}=0.05$, $E=0.1$. Segment endpoints must join continuously; an additional jump would add to d and invalidate the bound.
+
+If a new segment is unavailable, holding the current reference gives $d=0$, which remains within this command class. This is an error-bound argument for that fallback, not evidence that holding position satisfies every mission requirement.
+
+### CAD.2:6 - Bias-Annotation
+
+A common output makes unlike models appear interchangeable. Check the mapping and missing dynamics. The linear branch makes exact substitution easy; nonlinear models need the same semantic work but may require set propagation or different Lyapunov constructions.
+
+### CAD.2:7 - Conformance Checklist
+
+- The command's meaning, applicability time and between-update behavior are explicit.
+- Projection, reconstruction and controlled-output comparison are distinguished.
+- Combined error dynamics include mismatch and every update or reset mode.
+- The stated initial set and timing class match the implementation being considered.
+- Estimation or delay is represented wherever the law uses it.
+
+### CAD.2:8 - Common Anti-Patterns and How to Avoid Them
+
+Matching array dimensions does not match quantities; recover their meanings and maps. Resetting the upper model does not reset the plant; derive the new error. Using a continuous reference in analysis and a held target in code changes the architecture; analyze the implemented exchange. Independent stability of two components does not establish stability of their connection.
+
+### CAD.2:9 - Consequences
+
+The interface becomes a design object whose consequences can be calculated and tested. A small change to interpolation or initialization may replace an expensive change to controller bandwidth. The cost is modeling events and time conventions that a block diagram suppresses.
+
+### CAD.2:10 - Architectural Rationale
+
+The reconstructed state provides a mathematical reference for comparing the planning model with plant behavior. Substitution exposes both the desired correspondence and the residual terms. Making update events part of the same evolution allows feasibility to be established for the connected system.
+
+### CAD.2:11 - SoTA-Echoing
+
+**Which relation between planning and realization is sufficient to use?** For the stated linear branch, the selected construction is an explicit state reconstruction and tracking interface, followed by residual and event equations. It adopts the tracking-law form used by [Stamouli, Tsiamis, Morari and Pappas, §3.2, Theorem 1](https://arxiv.org/html/2504.10461): feedback on the reconstructed-state error with nominal and input feedforward terms. The serious matching-model alternative is a discrete-time simulation-function construction; its usable output-distance guarantee still needs a verified invariant sublevel set, not only decrease outside it. Section :4.2 adapts the law by retaining nonzero nominal mismatch H and bounded w; :4.1 also retains the output-matching residual. These substitutions do not inherit the source theorem: CAD.3 derives the bound for the resulting equation.
+
+This choice makes a failed exact match actionable, at the cost of bounding more forcing and possibly shrinking the usable command domain. If the existing closed-loop model already supports a governor, use that whole model as explained in [CAD.Reference:4.5.1](#cadreference451---keep-a-qualified-loop-and-govern-its-commands); adding a reduced planning model and P is unnecessary unless it supplies a useful decision or computational gain. The held-value and continuous-segment cases in :5 are constructed applications of the residual equation, not interchangeable implementations of one reference.
+
+For partial observations, [Castroviejo-Fernandez and colleagues, §§3–6](https://arxiv.org/html/2401.02054v1) provide a developed alternative: state and disturbance estimation with time-dependent error bounds for reference governing. Adopt their requirement to carry observer error into constraint predictions when choosing that branch; its extra observer and set computations replace the full-state premise, not merely the notation x. Section :4.3 therefore returns an estimator-based implementation to the connected-dynamics derivation. Reopen the interface when its measured quantities, reconstruction, hold, interpolation, reset or delay changes; compare bounds and computation under the same actual exchange before choosing between these constructions.
+
+### CAD.2:12 - Relations
+
+CAD.1 supplies the decomposition and lost interactions. MMP.9 supplies a qualified reduction; MMP.18 supplies exchange and scale compatibility. CAD.3 consumes the derived error and timing modes. CAD.4 returns implementation changes that require this derivation to be reopened. C.30.LCA can then test whether a control-structure view exposes the relations that the construction actually uses.
+
+CAD.5:4.7 supplies the estimate-based version of the interface when exact state is unavailable. It derives the additional forcing from estimation error; the observation model and timing must describe the same implemented loop.
+
+### CAD.2:End
+
+## CAD.3 - Construct a Jointly Admissible Command Domain
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+### CAD.3:1 - Problem frame
+
+**Use this when** a connected controller must respect state, output or actuator limits while following commands from another computation. The upper plan may be feasible in its own model while leaving too little authority for correction below.
+
+Start with the actual connected dynamics from CAD.2 and one limiting constraint. Derive the deviation that consumes its margin. The first useful result is a command domain with an invariant error bound and an admissible continuation, or a specific failure that returns the design for revision.
+
+A simulation that stayed within bounds is useful evidence about that run. It is not the invariant command domain constructed here.
+
+### CAD.3:2 - Problem
+
+The layers can make mutually inconsistent promises. The tracker guarantees a small error only for modest commands, while the planner assumes that error before restricting its commands. Tightening an upper constraint by an arbitrary tolerance conceals that circular dependence. A feasible first command can also lead to a state from which no later command is feasible.
+
+The construction must close both the simultaneous compatibility question and the continuation question.
+
+### CAD.3:3 - Forces
+
+| Force | Consequential tension |
+| --- | --- |
+| Planning freedom and correction authority | Aggressive nominal commands consume input needed for error rejection. |
+| Tight bounds and defensible bounds | A smaller assumed error enlarges the command domain but can invalidate its own premise. |
+| One feasible step and continued operation | Current feasibility does not ensure a viable successor. |
+| Sampled evidence and continuous constraints | A bound at update instants can miss a violation between them. |
+
+### CAD.3:4 - Solution
+
+#### CAD.3:4.1 - Construct an invariant error set
+
+For the linear interface of CAD.2, write
+
+$$
+e^+=Fe+Hz+Gv+w.
+$$
+
+Choose a proposed command set S of pairs $(z,v)$, a bounded mismatch set W, and an error set E containing the admitted initial error. A sufficient one-step condition is
+
+$$
+FE\ \oplus\ \{Hz+Gv:(z,v)\in S\}\ \oplus\ W\ \subseteq E.
+$$
+
+Here $\oplus$ is addition of sets. This is a property to establish, not a consequence of naming E an error tube. Substitution and induction then keep the error in E for every permitted command sequence. Preserve correlations between z and v when they materially reduce conservatism; replacing S by a Cartesian product can enlarge the forcing unnecessarily.
+
+One usable construction takes a positive-definite M and the norm $\|e\|_M=\sqrt{e^\mathsf{T}Me}$. Verify
+
+$$
+q=\|M^{1/2}FM^{-1/2}\|_2<1,\qquad
+d\geq\sup_{(z,v)\in S,\ w\in W}\|Hz+Gv+w\|_M.
+$$
+
+The triangle inequality gives $\|e^+\|_M\leq q\|e\|_M+d$. Therefore
+
+$$
+E=\{e:\|e\|_M\leq\varepsilon\},\qquad
+\varepsilon\geq\max\{\|e_0\|_M,d/(1-q)\}
+$$
+
+is invariant. For a stable fixed F, a positive-definite solution of a discrete Lyapunov equation is a candidate M; verify the displayed norm inequality for the actual values used. Failure of this sufficient construction does not prove that no controller or invariant set exists.
+
+For multiple timing modes, one sufficient condition for arbitrary admissible switching is a common set E containing the initial error and preserved by every admitted mode and reset map. This includes resets caused by a changed reference or error coordinate. Each step then starts in the same E, so induction covers any admitted sequence.
+
+Separate invariant sets for the frozen modes are not sufficient by themselves. With mode-dependent or within-period phase sets $E_i$, prove that every allowed transition from mode or phase i to j, including its reset, sends the admitted part of $E_i$ into $E_j$ for all admitted commands and disturbances. Include initialization and the evolution within each phase. A boundary-map proof can use this construction, but a bound only at period boundaries leaves the intermediate phases uncovered.
+
+#### CAD.3:4.2 - Translate error into planner and actuator constraints
+
+With $x=Pz+e$ and $u=Qz+Rv+Ke$, require
+
+$$
+Pz+E\subseteq X,\qquad Qz+Rv+KE\subseteq U.
+$$
+
+These constraints reserve physical room and actuator authority for correction. For an output constraint use the actual output map, including the mismatch term in CAD.2:4.1.
+
+For example, if $X=\{x:Lx\leq b\}$ and E is the ellipsoid above, each row must satisfy
+
+$$
+L_iPz+\varepsilon\sqrt{L_iM^{-1}L_i^\mathsf{T}}\leq b_i.
+$$
+
+If $U=\{u:Du\leq f\}$, the input row becomes
+
+$$
+D_i(Qz+Rv)+
+\varepsilon\sqrt{D_iKM^{-1}K^\mathsf{T}D_i^\mathsf{T}}\leq f_i.
+$$
+
+Thus the amount of tightening comes from the connected dynamics and geometry. It is not a universal safety percentage.
+
+Enforce these conditions at every instant covered by the claim. If z evolves between slow updates, an upper constraint checked only at those updates does not bound $Qz$ at every fast instant. Propagate the nominal trajectory or bound its intermediate states. Continuous-time constraints require a continuous evolution argument, not denser-looking sampled plots.
+
+#### CAD.3:4.3 - Close the dependence between commands and error
+
+The proposed command domain determines d, while the resulting E restricts the command domain. Solve this compatibility deliberately. Start with a desired command envelope, construct a valid E, then test the actual state and input inclusions. If they fail, choose a smaller envelope or change the interface, gains, model or timing, and repeat the affected derivation.
+
+A more direct formulation searches for S and E satisfying the error inclusion and the physical constraints together. For finite-dimensional parameterizations this can be an optimization or feasibility problem. No generic solver or convergence guarantee follows from writing that problem.
+
+Do not treat repeated tightening as automatic convergence. A mapping that sends candidate planning sets to newly permitted sets can reverse inclusion: larger commands produce larger errors and smaller permitted commands. Alternating bounds may remain separated. Establish a nonempty self-consistent pair and its inclusions; do not use a numerically stationary iteration as the proof.
+
+When a bound is conservative, try retaining command correlation, phase-dependent sets or a better model before weakening a hard constraint. For a fixed qualified loop, compare a joint state-command admissible set with the separate command and error envelopes used here; [CAD.Reference:4.5.1](#cadreference451---keep-a-qualified-loop-and-govern-its-commands) gives the governor entry, and :11 identifies a construction using time-dependent estimation bounds. Establish its successor conditions for the actual command rule before replacing this sufficient construction. If the required command is physically impossible, return that incompatibility to the system requirement or architecture decision.
+
+#### CAD.3:4.4 - Construct a continuation, not only one permitted command
+
+A permissible pair $(z,v)$ must also lead somewhere from which work can continue. For the nominal update $z^+=A_pz+B_pv$, seek a set Z such that every admitted z has at least one permitted v with $z^+\in Z$.
+
+One direct construction repeatedly removes states without such a successor:
+
+$$
+Z_{n+1}=
+\{z\in Z_n:\exists v,\ (z,v)\in S,\ A_pz+B_pv\in Z_n\}.
+$$
+
+An exact fixed point is controlled invariant under the stated model. A finite iteration gives an outer candidate, not automatically an invariant set; test the successor condition before relying on it. Gridding a continuous set needs an approximation-error argument.
+
+An alternative is to exhibit a smaller terminal set T and an explicit admissible terminal law. A finite plan ending in T then has a feasible continuation by appending that law. For receding-horizon use, the standard shift argument also needs the actual next nominal state, retained feasible tail, modeled uncertainty and implementation to match the argument. A measurement-based reset must preserve the initialization and feasibility conditions or use an independently qualified recovery.
+
+If a new optimization fails or misses its deadline, continuing a previously feasible tail can be legitimate only while its assumptions still hold. “Use the previous plan” is not a universal fallback.
+
+#### CAD.3:4.5 - Use a continuous-time branch only with its stronger premises
+
+Let D be the domain of the connected continuous state on which the model and the bounds below apply, including the reference and any controller state on which the argument depends. Start the trajectory in D and suppose a differentiable function V satisfies, throughout D under the admitted input law,
+
+$$
+V\geq c_e\|x-Pz\|^2,\qquad
+\dot V\leq-\alpha V+\beta\|w\|^2,
+$$
+
+with positive $c_e,\alpha$, nonnegative $\beta$, and $\|w(t)\|\leq\bar w$. Let $\tau_D$ be the first exit time from D, with $\tau_D=\infty$ if there is no exit. For every $0\leq t<\tau_D$ on which the solution exists, integration gives
+
+$$
+V(t)\leq e^{-\alpha t}V(0)
++\frac{\beta\bar w^2}{\alpha}(1-e^{-\alpha t}).
+$$
+
+Consequently $\|x-Pz\|\leq\varepsilon$ on that interval, where
+$\varepsilon^2=\max\{V(0),\beta\bar w^2/\alpha\}/c_e$.
+If h is Lipschitz with constant $L_h$ on a state domain containing both x(t) and Pz(t), requiring
+$h(Pz(t))\geq L_h\varepsilon$ implies $h(x(t))\geq0$ on the same interval.
+
+To claim the conclusion for all future time, separately establish continued existence and containment of the connected trajectory in D under the allowed reference evolution and disturbances, for example through a forward-invariant subset of D containing the admitted initial states. A tracking-error bound alone does not prevent the reference and plant from leaving the region where the derivative or Lipschitz bound is valid.
+
+This is a sufficient construction for a particular connected dynamics and admissible input law. Obtain V and verify its derivative, domain, actuator feasibility and treatment of the moving reference; their existence is not supplied by the formula. Sampling, estimation, saturation and delay must either occur in that dynamics or be covered by its perturbation bound.
+
+#### CAD.3:4.6 - Separate recognition, mathematical assurance and physical reliance
+
+A shrinking error trace or plausible margin recognizes a promising design. The invariance and continuation arguments establish conditional properties of a mathematical model. Model validation, parameter and disturbance bounds, execution timing and physical tests determine whether those properties support the intended engineering use.
+
+A decrease condition that applies only outside a threshold does not, in discrete time, prevent a jump from inside to outside. Use an actual invariant-set inclusion or a one-step bound valid on the entire proposed set. Likewise, a small average error is not a worst-case constraint bound.
+
+### CAD.3:5 - Archetypal Grounding
+
+For the held-reference case of CAD.2, $a=1/2,N=4,\delta=0.1$ give $E=8/75$. Since $|u|=(1-a)|e|$, a sufficient input bound is $4/75\approx0.05333<0.06$. Requiring $|r|\leq1-E=67/75$ also suffices for $|x|\leq1$. This position tightening is conservative: the scalar convex update can support less restrictive position arguments. It is not claimed to be the maximal command domain.
+
+Now double the requested average progression from 0.025 to 0.05 per fast tick while retaining four-tick held updates. Then $\delta=0.2$, $E=16/75$, and the sufficient input bound is $8/75\approx0.10667$. More decisively, an initial jump from $x=r=0$ to $r=0.2$ commands $u=0.1$, directly violating the limit. Merely saturating u changes the error dynamics and requires a new analysis.
+
+For continuous joined segments with $|d_k|\leq0.05$, $E=0.1$ and $|u|\leq0.05$. Choose $|r_k|\leq0.9$ and initialize $|x_0-r_0|\leq0.1$. Then the stated state and input limits hold at every fast sample. Generate the next reference by clipping $r_k+d_k$ to the interval $[-0.9,0.9]$, with $|d_k|\leq0.05$. The choice $d=0$ is always available, so the reference domain has an explicit continuation. This proves model feasibility even at a boundary; it does not promise arrival at every requested target or continuous physical safety between samples.
+
+### CAD.3:6 - Bias-Annotation
+
+Robust envelopes can be unnecessarily restrictive, especially when correlations are discarded. Conversely, nominal examples can make the operating domain look larger than the evidence warrants. Keep sufficiency, necessity, conservatism and empirical observation distinct.
+
+### CAD.3:7 - Conformance Checklist
+
+- The bound covers the actual initial condition, command class, mismatch and timing modes.
+- Switching uses a common invariant set or proved transitions between the admitted mode or phase sets.
+- A continuous-time claim ends at the first exit from its proof domain unless continued existence and containment in that domain are established.
+- Every claimed constraint is tied to the instants or continuous intervals actually covered.
+- Nominal commands leave justified correction authority.
+- The command/error dependence closes without a circular assumption.
+- There is a feasible continuation or an explicit limit on the duration of the claim.
+- Physical reliance is no broader than the model and implementation evidence.
+
+### CAD.3:8 - Common Anti-Patterns and How to Avoid Them
+
+A tolerance selected first and justified afterward can consume imaginary authority; derive it with the command domain. A nonempty feasible set can contain dead ends; test successors. A sampled safe plan is not a continuous safety argument. A stable controller plus actuator saturation is a different closed loop from the unsaturated proof.
+
+### CAD.3:9 - Consequences
+
+The designer obtains commands that the whole architecture can support under stated conditions, or a precise reason to revise it. Some planning freedom is exchanged for dependable correction. The result may be conservative and computationally expensive; those costs belong in CAD.4.
+
+### CAD.3:10 - Architectural Rationale
+
+The lower guarantee and upper assumption concern the same connected behavior. Error propagation and constraint propagation therefore form one coupled construction. Adding continuation prevents a one-step solution from being mistaken for an operating strategy.
+
+### CAD.3:11 - SoTA-Echoing
+
+**How can a command domain support continued constrained operation?** The selected line is robust error containment, constraint tightening and a separate continuation argument in :4.1–4.4. It adapts [Stamouli and colleagues' constraint-propagation construction, §§4–5](https://arxiv.org/html/2504.10461). Their reported output-constraint guarantee is at slow samples; the all-fast-sample input extension has an additional condition. Here each claimed time interval is explicit, and direct set inclusion establishes invariance without extending a decrease-only condition into a global bound. The price is a sufficient domain that may exclude useful commands.
+
+A serious alternative for a fixed qualified loop is a governor's joint state-command admissible set ([CAD.Reference:4.5.1](#cadreference451---keep-a-qualified-loop-and-govern-its-commands)). It can retain relations discarded by one common error envelope. [Castroviejo-Fernandez and colleagues, §§4–6, especially Proposition 2](https://arxiv.org/html/2401.02054v1) further use observer-error bounds and a sequence of admissible sets with a proved successor relation. Adapt that idea when a worst-case constant disturbance envelope is unnecessarily restrictive; the extra assumptions on estimation and disturbance variation, and the set computation, must be worth the enlarged domain. This motivates the return in :4.3 rather than weakening a hard constraint.
+
+A predictive safety filter is another alternative when the requested object is a plant input and a finite backup trajectory can be computed. [Milios, Wabersich, Berkel and Schwenkel, §§II–IV](https://arxiv.org/html/2404.05496v2) distinguish recursive constraint satisfaction from additional stability guarantees and supply separate stabilizing conditions. Adopt that distinction in :4.4 and CAD.4:4.2. Such a filter needs its model, terminal ingredients and online computation; inserting it after the tracker changes the law analyzed in CAD.2.
+
+For continuous dynamics, the [Matni–Ames–Doyle treatment, §4.5](https://arxiv.org/html/2401.15185) supplies a distinct safety-transfer line. Section :4.5 adapts the connection through an explicit error margin, conditional on remaining in the derivative and Lipschitz domains; it does not assume that every nonlinear controller supplies those premises. Reopen the selected containment construction when conservatism prevents the task, the admitted switching or disturbance changes, or the intended claim changes from constraint satisfaction to convergence or completion.
+
+### CAD.3:12 - Relations
+
+CAD.2 supplies the exact connected dynamics. CAD.1 is the return when no useful command domain exists for the selected split. CAD.4 uses the size and cost of the feasible domain in whole-candidate comparison. MMP.18 supplies general compatibility reasoning; this pattern supplies the control-specific invariance, margin and continuation construction.
+
+For feedback on an estimated state, CAD.5:4.7 supplies the extra forcing and input allowance. Use its run-wide error bound, including startup and allowed delivery modes, before qualifying the resulting command domain.
+
+### CAD.3:End
+
+## CAD.4 - Co-design and Realize the Whole Control Architecture
+
+> **Type:** Method pattern
+> **Status:** Stable
+
+### CAD.4:1 - Problem frame
+
+**Use this when** several control architectures appear feasible, or a change of model, hardware, rate or operating demand can invalidate an existing arrangement. Tuning each controller independently does not decide which complete arrangement should be built.
+
+Start with the same required behavior and resource boundary for every candidate. The first useful result is a feasible whole configuration, its comparison with serious alternatives, and the conditions under which its implementation and later use remain justified.
+
+For a fixed, qualified architecture requiring only a local parameter adjustment, use the relevant controller-design method directly and reopen the whole only if that adjustment changes a relied-on interface, resource or constraint.
+
+### CAD.4:2 - Problem
+
+A detailed planning model may improve prediction but miss its deadline. A faster tracker can use more computation or amplify measurement noise. A longer planning interval can save resources while increasing command mismatch. A design assembled from individually preferred choices may have no feasible joint setting.
+
+The problem is to choose and realize a configuration whose control, model and resource assumptions can hold together.
+
+### CAD.4:3 - Forces
+
+| Force | Consequential tension |
+| --- | --- |
+| Fidelity, horizon and execution time | More planning information can arrive too late to be useful. |
+| Strong correction and implementation limits | A gain that shrinks error can increase input, noise sensitivity or computation. |
+| Feasibility and performance | Staying within limits does not establish progress, optimality or adequate tracking. |
+| Design model and running system | A proven nominal schedule may differ from actual latency, sharing and failure behavior. |
+
+### CAD.4:4 - Solution
+
+#### CAD.4:4.1 - Form complete candidates
+
+Use C.39 to connect the required result to its supplying operations and C.32/SYSE.6 to retain whole alternatives. A candidate specifies the decomposition, model and its operating domain, exchanged command, timing and reset semantics, controller law, feasible command domain, planning continuation and implementation resources.
+
+Keep architecture choices separate from tunable parameters without pretending that the separation is absolute. The number of layers, model order, kind of command, sampling periods, planning horizon and processor arrangement can change the problem being solved. Gains, weights and numeric tolerances tune a selected construction. Changing either group can reopen the other.
+
+CAD.1–CAD.3 supply the positive construction, not merely a screening list. Existing qualified results can replace repeated design work. If the interface law changes, the old error bound is not a reusable result for that new law.
+
+#### CAD.4:4.2 - Evaluate feasibility before ranking attractive scores
+
+For each candidate, establish the connected error behavior, physical constraints and continuation under its own admitted conditions. Include initialization, transitions, planned modes and fallback behavior. A candidate with a missing load-bearing condition is unresolved, not numerically inferior.
+
+Then evaluate the behavior the task actually values: tracking envelope, settling, progress, resource consumption, disturbance rejection or cost. Use the same demand and perturbation class across candidates. An average objective cannot compensate for violating a hard constraint.
+
+Boundedness and convergence are distinct. For example, if the nominal law makes $z_k\to z_*$ and $v_k\to v_*$, the linear error equation has forcing $g_k=Hz_k+Gv_k+w_k$. With a contractive F, $g_k\to0$ implies $e_k\to0$: the contribution of any fixed finite past decays, and the remaining tail is bounded by its shrinking forcing divided by $1-q$. If $Hz_*+Gv_*\neq0$, even zero disturbance can leave a steady bias. A bounded command domain alone establishes neither nominal progress nor zero error.
+
+When the performance claim requires optimality, robust stability or task completion beyond these arguments, supply the corresponding result for the actual connected model. Do not infer it from the presence of MPC, a Lyapunov function for one component, or an optimizer's successful return.
+
+#### CAD.4:4.3 - Include execution in the design equations
+
+Use MMP.22 to turn the mathematical operation into a workable computation. Identify the data needed when the operation starts, the work that can be prepared ahead, the result required at its deadline, and what must happen if it is unavailable.
+
+A necessary timing comparison is
+
+$$
+C_{\mathrm{fast}}\leq T_{\mathrm{fast}},\qquad
+C_{\mathrm{plan}}\leq T_{\mathrm{plan}},
+$$
+
+where C bounds execution under the selected implementation. These isolated inequalities are not sufficient on a shared processor: blocking, interference, communication and scheduling must fit the deadlines together. An operation count or mean runtime is not a worst-case execution bound.
+
+If planning finishes one period after its observation, model that delay and the command that controls the intervening period. Preparing a future segment can make the delay harmless for a predetermined reference but not automatically for a newly observed obstacle. Increasing the processor speed changes the feasible architecture set; increasing the assumed speed in a spreadsheet does not.
+
+Use the implementation to test unit conversions, numerical tolerances, update order, saturation and reset behavior. A numerical optimizer's constraint tolerance belongs in the margin analysis if it can consume physical clearance. Verify that the lower law actually executed is the law used in CAD.2.
+
+If an online solver returns only a partial iterate, separate the time spent solving from the test that permits applying its output. A qualified acceptance rule may allow a feasible inexact result and otherwise keep an admissible prior command or plan. Include the cost of that test and the conditions for progress; a timeout says nothing about admissibility, and feasibility alone does not establish progress. The command-governor alternative in :11 is one developed construction, not a fallback rule for every optimizer.
+
+#### CAD.4:4.4 - Search jointly, with bounded conclusions
+
+A practical first search can enumerate a small number of architecture choices and, within each, solve or tune the continuous parameters. Recompute the error and command domain for every material change. Reject a setting whose necessary constraints fail; retain unresolved settings separately from feasible ones.
+
+Compare feasible candidates through task-relevant trade-offs and costs. Do not collapse incompatible obligations into an invented scalar score. A Pareto comparison can expose choices where one candidate is faster but more resource intensive. If the search covered only a grid, selected controller class or local optimizer, state that reach; it does not prove global architectural optimality.
+
+Investigate the active limitation. If actuator reserve fails, altering the reference interface may help more than enlarging the processor. If timing fails, a reduced model or shorter horizon may help more than increasing gain. If a reduced model loses an important mode, a larger controller budget may be unavoidable. This is the constructive feedback from the whole evaluation to CAD.1–CAD.3.
+
+#### CAD.4:4.5 - Qualify the realization and its revision conditions
+
+Separate mathematical consequence, model qualification and implementation observation. Simulation can reveal an omitted mode or a bad reset. Tests on the target execution arrangement can expose deadline misses. Physical experiments can challenge the model, disturbance envelope and actuator assumptions. None automatically establishes every other claim.
+
+Before relying on the design, identify the operating conditions that support it and the observations that can invalidate them. Examples are a larger reference jump, changed disturbance envelope, delayed sensor, actuator derating, altered model order or shared computing load. Reopen the specific equation, inclusion or comparison using the changed premise.
+
+Choose detection and fallback behavior for the actual failure mode. A reference hold is justified in the running model because it lies within the admitted command class; in another plant it may be unsafe or mission-defeating. For an unexplained timing overrun or model residual beyond the admitted W, stop claiming the old bound and use only a separately qualified response.
+
+The resulting control architecture returns to SYSE.6 with its feasible domain, performance, resource needs and unresolved constraints. That system decision can change sensors, actuators, plant structure or requirements rather than forcing every problem into controller tuning.
+
+### CAD.4:5 - Archetypal Grounding
+
+#### CAD.4:5.1 - Compare rates at the same requested progression
+
+For the discrete actuator example, assume a dedicated planner resource needs two fast ticks per result. The fast controller has a separate resource. Commands are prepared for their applicability interval; initialization supplies the first segment. This is a declared toy resource model, not measured processor performance.
+
+At progression 0.025 per fast tick, a held reference changes by $\delta=N/40$. At progression 0.05 it changes by $\delta=N/20$. The sufficient error and input bounds are derived from CAD.2, with $a=1/2$.
+
+| Command and demand | N | Error bound E | Input bound | Two-tick planning time fits? |
+| --- | ---: | ---: | ---: | --- |
+| Held, 0.025 per tick | 1 | 0.05 | 0.025 | No |
+| Held, 0.025 per tick | 2 | 0.066667 | 0.033333 | Yes |
+| Held, 0.025 per tick | 4 | 0.106667 | 0.053333 | Yes |
+| Held, 0.05 per tick | 1 | 0.1 | 0.05 | No |
+| Held, 0.05 per tick | 2 | 0.133333 | 0.066667 | Yes |
+| Held, 0.05 per tick | 4 | 0.213333 | 0.106667 | Yes |
+| Joined segment, increment at most 0.05 per tick | 4 | 0.1 | 0.05 | Yes |
+
+At the original demand, two held-command arrangements pass this sufficient input test; their compute use and tracking behavior can be compared. At doubled demand, neither of the considered held arrangements that fits the planning time passes it. The N=4 case also has the direct violating first jump shown in CAD.3. For N=2, two successive positive changes of 0.1 from rest produce an input of 1/16 = 0.0625 at the second change, also above the limit.
+
+The segment arrangement admits the higher demand under the stated sampled model and margins. It adds a clocked reference generator and continuity checks. It does not demonstrate that this arrangement dominates all possible controllers or that more than two layers would help.
+
+#### CAD.4:5.2 - Carry the mathematical result into execution
+
+The planner proposes a next endpoint and applicability time. The reference generator checks that the segment starts at the current reference, remains in $[-0.9,0.9]$, and advances by at most 0.05 per fast tick. The fast law uses that generated reference, not the endpoint held for four ticks. An unavailable segment leaves the reference unchanged; the initialization error must already satisfy the bound.
+
+A hardware test that reveals a one-tick delay in actuation changes $x_{k+1}=x_k+u_k$ into a model with an input delay. The table is no longer sufficient evidence. Return to CAD.2 to derive the delayed dynamics and to CAD.3 for the resulting margins. Retain the comparison of command meanings and the source-independent arithmetic; do not retain the unqualified physical feasibility conclusion.
+
+### CAD.4:6 - Bias-Annotation
+
+A convenient cost model can favor the hardware already at hand. A small parameter search can make its winner look universal. State the tested choices and preserve alternatives whose decisive conditions remain unknown. The running case demonstrates an interface repair, not an empirical prevalence claim.
+
+### CAD.4:7 - Conformance Checklist
+
+- Complete candidates are compared under the same task and constraints.
+- Connected feasibility and continuation are established before performance ranking.
+- A convergence or optimality claim has its own applicable grounds.
+- Execution, communication and scheduling assumptions fit the implemented arrangement.
+- Search limits and unresolved candidates are visible.
+- Changed-condition and fallback behavior return to the premise that actually changed.
+
+### CAD.4:8 - Common Anti-Patterns and How to Avoid Them
+
+Optimizing each layer and connecting the winners can destroy feasibility; compare complete settings. Choosing rates from “fast” and “slow” labels hides dynamics and execution costs; derive their effects. A predicted runtime is not a deadline guarantee. A fallback that was never part of the model does not inherit its bound.
+
+### CAD.4:9 - Consequences
+
+The choice can change model order, command representation, rates, controller parameters and hardware together. This broadens the search but can avoid tuning an infeasible arrangement. A declared bounded search yields a defensible local decision, not a universal optimum.
+
+### CAD.4:10 - Architectural Rationale
+
+Control behavior and execution are coupled: computation changes latency, latency changes error, and error changes admissible commands. The whole design must therefore be the unit of comparison. Keeping each intermediate result explicit lets an implementation change reopen only the dependent reasoning.
+
+### CAD.4:11 - SoTA-Echoing
+
+**What should change when a complete control arrangement misses its demand or resource limit?** The selected line compares coupled architecture and tuning choices, while retaining a qualified fixed loop with local command modification as a serious alternative. It adopts the joint-choice formulation in [Verhoek, Stamouli, Pappas and Matni, 2026 preprint, §§3–7](https://arxiv.org/html/2610.20900v1): model dimensions, sampling ratios, horizons and controller parameters affect the same feasibility problem. That construction fixes a two-layer LTI setting and specified delay and controller classes; efficient general optimization remains open. Sections :4.1–4.4 adapt the comparison to a bounded candidate search and require implementation timing rather than treating a computation-cost proxy as a deadline bound. The gain is avoiding incompatible local optima; the cost is a larger search and repeated qualification of coupled choices.
+
+When the lower loop already has the required local performance, first compare changing its command admission or solver. [Garone and Kolmanovsky, §§3–4 and Algorithm 1](https://arxiv.org/html/2111.10234) develop command-governor logic permitting inexact optimization and a non-invariant inner admissible set, with stated feasibility and progress conditions. Adopt the separation between accepting a computed command and merely obtaining a solver output in :4.3; neither an arbitrary partial iterate nor an unqualified hold inherits that result. This can be preferable to buying faster computation or redesigning the tracker, but command progress and admissible-set computation remain costs to compare.
+
+Switching among existing controllers is also a genuine architectural alternative. [Wang, Di Cairano and Sanfelice, 2024, §§III–V](https://www.merl.com/publications/docs/TR2024-091.pdf) combine mode-specific admissible sets with explicit switching and Lyapunov conditions. Adapt that comparison when a fast transient and a less oscillatory final approach favor different controllers; carry the guards and transitions into :4.2 and CAD.3:4.1. Separate stable modes alone do not supply the switched guarantee. Reopen the choice when task demand, computing interference or the cost of maintaining those mode conditions changes.
+
+### CAD.4:12 - Relations
+
+CAD.1, CAD.2 and CAD.3 supply candidate decomposition, connected dynamics and admissible commands. Their results are dependencies of the whole comparison, not mandatory fresh work for every application. C.39 supplies general Method construction; MMP.22 supplies the mathematical-to-practical transformation. SYSE.6 receives the control result within the system architecture decision. C.30.LCA tests the resulting view's coverage, not the control theorem.
+
+CAD.5 supplies observation, internal-state and estimator alternatives with their error and execution conditions. Shared computation can change their observation age, so a different implementation can reopen that information result and the dependent CAD.3 margins.
+
+### CAD.4:End
+
+# License
+
+Copyright (c) Anatoly Levenchuk. This framework's original text and worked examples are licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). Cited third-party works retain their own terms.
+
+
 # SOURCE_FILE: DPFs/Engineering DPF Suite/ENGINEERING-DPF-SUITE-REFERENCE.md
 ---
 # Engineering DPF Suite Architectural Reference
@@ -11579,13 +13355,13 @@ Original framework text is available under [CC BY 4.0](https://creativecommons.o
 > Understand the Engineering Suite’s composition and boundaries, find a method for your working question, and see how methods from different fields contribute to one decision.
 
 - **Author:** Anatoly Levenchuk, with AI-assisted development and review
-- **Version:** 12 October 2026
+- **Version:** 24 October 2026
 - **Status:** Eternal alpha: a working reference, revised as the Suite and its applications develop.
 - **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) for original framework content; third-party material retains its own terms.
 - **Publication:** [FPF Library repository](https://github.com/ailev/FPF)
 - **Suite scope:** [Constituent disciplines and their connections (Engineering DPF Suite — Constituent DPFs and their different contributions)](README.md#constituent-dpfs-and-their-different-contributions)
 
-Use this Reference while working on a problem. Section 0 explains the Suite's composition, specialized disciplines and their connections; the worked cases explain how that architecture affects use. The question index points to a pattern and the result it can help you obtain. The cases explain how to combine contributions when one field cannot answer the whole question. The Engineering Suite edition includes four direct DPFs: Systems Engineering, Maintenance Engineering and Management, Knowledge-Corpus Access Engineering and Semantic Integration Engineering. Management describes the organizational specialization, including Organization Change Engineering; Human Capability Engineering has its own specialized Suite. Some other suppliers are independent DPFs or belong to Foundational Thinking. Following a useful result does not by itself decide a field's disciplinary membership.
+Use this Reference while working on a problem. Section 0 explains the Suite's composition, specialized disciplines and their connections; the worked cases explain how that architecture affects use. The question index points to a pattern and the result it can help you obtain. The cases explain how to combine contributions when one field cannot answer the whole question. The Engineering Suite edition includes five direct DPFs: Systems Engineering, Maintenance Engineering and Management, Knowledge-Corpus Access Engineering, Semantic Integration Engineering and Control Architecture Design. Management describes the organizational specialization, including Organization Change Engineering; Human Capability Engineering has its own specialized Suite. Some other suppliers are independent DPFs or belong to Foundational Thinking. Following a useful result does not by itself decide a field's disciplinary membership.
 
 If you are new to the Suite, the [README (Engineering DPF Suite)](README.md) explains what a DPF is, what is available, and how to begin with colleagues or an AI assistant. Here, open the nearest question, then read the relevant pattern's Problem frame, Solution and example. The pattern's full conditions apply to your case.
 
@@ -11598,6 +13374,9 @@ Section addresses use `Engineering.Reference:n` and nested numbers. They identif
   - [Engineering.Reference:0.2 - Maintenance engineering and management](#engineeringreference02---maintenance-engineering-and-management)
   - [Engineering.Reference:0.3 - Specialization and use across Suite boundaries](#engineeringreference03---specialization-and-use-across-suite-boundaries)
   - [Engineering.Reference:0.4 - Capability development and wider performing practices](#engineeringreference04---capability-development-and-wider-performing-practices)
+  - [Engineering.Reference:0.5 - The system-thinking long mantra across engineering contributions](#engineeringreference05---the-system-thinking-long-mantra-across-engineering-contributions)
+  - [Engineering.Reference:0.6 - The elegance mantra and reducing repeated firefighting](#engineeringreference06---the-elegance-mantra-and-reducing-repeated-firefighting)
+  - [Engineering.Reference:0.7 - Control architecture design](#engineeringreference07---control-architecture-design)
 - [Engineering.Reference:1 - Find a starting pattern](#engineeringreference1---find-a-starting-pattern) — System or method? Architecture, alternatives, evidence, organizational change, development advice, music and dance. What useful result should I obtain first?
   - [Engineering.Reference:1.1 - Begin before anyone asks for help](#engineeringreference11---begin-before-anyone-asks-for-help) — Ordinary work, successful adaptations, an unformulated objection, early cues, useful questions and attainable continuations.
   - [Engineering.Reference:1.2 - Understand a problem and prepare a recommendation](#engineeringreference12---understand-a-problem-and-prepare-a-recommendation)
@@ -11710,7 +13489,7 @@ Section addresses use `Engineering.Reference:n` and nested numbers. They identif
   - [Engineering.Reference:19.14 - Can development proceed while current work is blocked?](#engineeringreference1914---can-development-proceed-while-current-work-is-blocked)
     - [Engineering.Reference:19.14.1 - Descriptive relations selected by Gd](#engineeringreference19141---descriptive-relations-selected-by-gd)
   - [Engineering.Reference:19.15 - Available construction is different from a qualified result](#engineeringreference1915---available-construction-is-different-from-a-qualified-result)
-- [Engineering.Reference:20 - Explore a situation through goals and dependencies](#engineeringreference20---explore-a-situation-through-goals-and-dependencies) — Build and question an actors-and-goals model; choose a view; interpret qualitative results; discover conflicting assignments; revise the model and the work.
+- [Engineering.Reference:20 - Explore a situation through goals and dependencies](#engineeringreference20---explore-a-situation-through-goals-and-dependencies) — Use PSDA.20 for the whole inquiry; connect model questions and results to engineering, organizational coordination and actual work.
   - [Engineering.Reference:20.1 - Let the question determine what to model](#engineeringreference201---let-the-question-determine-what-to-model)
   - [Engineering.Reference:20.2 - Connect provision to the reasons on both sides](#engineeringreference202---connect-provision-to-the-reasons-on-both-sides)
   - [Engineering.Reference:20.3 - Show the part of the model needed for the current question](#engineeringreference203---show-the-part-of-the-model-needed-for-the-current-question)
@@ -11774,18 +13553,53 @@ Section addresses use `Engineering.Reference:n` and nested numbers. They identif
   - [Engineering.Reference:26.3 - Prepare experience that can change the intended choice](#engineeringreference263---prepare-experience-that-can-change-the-intended-choice)
   - [Engineering.Reference:26.4 - Compute the update and use the changed rule](#engineeringreference264---compute-the-update-and-use-the-changed-rule)
     - [Engineering.Reference:26.4.1 - Learn from interleaved actions and observations](#engineeringreference2641---learn-from-interleaved-actions-and-observations)
+      - [Engineering.Reference:26.4.1.1 - Keep the generated choices and their available histories](#engineeringreference26411---keep-the-generated-choices-and-their-available-histories)
+      - [Engineering.Reference:26.4.1.2 - Calculate an outcome update and consume it](#engineeringreference26412---calculate-an-outcome-update-and-consume-it)
+      - [Engineering.Reference:26.4.1.3 - Obtain a separate reason to credit a call](#engineeringreference26413---obtain-a-separate-reason-to-credit-a-call)
+      - [Engineering.Reference:26.4.1.4 - Supply preparation and preference inputs when those branches are selected](#engineeringreference26414---supply-preparation-and-preference-inputs-when-those-branches-are-selected)
+      - [Engineering.Reference:26.4.1.5 - Change the learned objective deliberately](#engineeringreference26415---change-the-learned-objective-deliberately)
     - [Engineering.Reference:26.4.2 - Allocate training attempts and select the update](#engineeringreference2642---allocate-training-attempts-and-select-the-update)
+      - [Engineering.Reference:26.4.2.1 - Obtain a measure that can support the proposed decision](#engineeringreference26421---obtain-a-measure-that-can-support-the-proposed-decision)
+      - [Engineering.Reference:26.4.2.2 - Allocate attempts and reserve the work needed to finish them](#engineeringreference26422---allocate-attempts-and-reserve-the-work-needed-to-finish-them)
+      - [Engineering.Reference:26.4.2.3 - Execute the selected continuations and prepare their learning records](#engineeringreference26423---execute-the-selected-continuations-and-prepare-their-learning-records)
+      - [Engineering.Reference:26.4.2.4 - Select modulation and the backward operation separately](#engineeringreference26424---select-modulation-and-the-backward-operation-separately)
+      - [Engineering.Reference:26.4.2.5 - Run the finite construction and use the changed policy](#engineeringreference26425---run-the-finite-construction-and-use-the-changed-policy)
+      - [Engineering.Reference:26.4.2.6 - Compare another modulation and assess the complete arrangement](#engineeringreference26426---compare-another-modulation-and-assess-the-complete-arrangement)
     - [Engineering.Reference:26.4.3 - Learn a strategy together with its execution](#engineeringreference2643---learn-a-strategy-together-with-its-execution)
+      - [Engineering.Reference:26.4.3.1 - Choose what the strategy score is meant to improve](#engineeringreference26431---choose-what-the-strategy-score-is-meant-to-improve)
+      - [Engineering.Reference:26.4.3.2 - Construct the two learning comparisons](#engineeringreference26432---construct-the-two-learning-comparisons)
+      - [Engineering.Reference:26.4.3.3 - Generate attempts, update and use the result](#engineeringreference26433---generate-attempts-update-and-use-the-result)
+      - [Engineering.Reference:26.4.3.4 - Change the inference when success is not controllable](#engineeringreference26434---change-the-inference-when-success-is-not-controllable)
     - [Engineering.Reference:26.4.4 - Learn actions whose value persists across sessions](#engineeringreference2644---learn-actions-whose-value-persists-across-sessions)
+      - [Engineering.Reference:26.4.4.1 - Obtain continuation credit at the session boundary](#engineeringreference26441---obtain-continuation-credit-at-the-session-boundary)
+      - [Engineering.Reference:26.4.4.2 - Execute continuations, obtain a first update and retain its result](#engineeringreference26442---execute-continuations-obtain-a-first-update-and-retain-its-result)
+      - [Engineering.Reference:26.4.4.3 - Recalculate recurrence and the reliability of help](#engineeringreference26443---recalculate-recurrence-and-the-reliability-of-help)
+      - [Engineering.Reference:26.4.4.4 - Choose a different estimator or a different learned memory operation](#engineeringreference26444---choose-a-different-estimator-or-a-different-learned-memory-operation)
     - [Engineering.Reference:26.4.5 - Transfer a procedure through teacher-guided learning](#engineeringreference2645---transfer-a-procedure-through-teacher-guided-learning)
+      - [Engineering.Reference:26.4.5.1 - Recover the procedure and the observations it needs](#engineeringreference26451---recover-the-procedure-and-the-observations-it-needs)
+      - [Engineering.Reference:26.4.5.2 - Choose the teaching target and its probability domain](#engineeringreference26452---choose-the-teaching-target-and-its-probability-domain)
+      - [Engineering.Reference:26.4.5.3 - Fit a first policy and use the fresh return](#engineeringreference26453---fit-a-first-policy-and-use-the-fresh-return)
+      - [Engineering.Reference:26.4.5.4 - Compute guidance on histories reached by the student](#engineeringreference26454---compute-guidance-on-histories-reached-by-the-student)
+      - [Engineering.Reference:26.4.5.5 - Repair the premise that failed](#engineeringreference26455---repair-the-premise-that-failed)
+      - [Engineering.Reference:26.4.5.6 - Compare the transferred result and retained support](#engineeringreference26456---compare-the-transferred-result-and-retained-support)
     - [Engineering.Reference:26.4.6 - Select what to learn and reassess the support that remains](#engineeringreference2646---select-what-to-learn-and-reassess-the-support-that-remains)
+      - [Engineering.Reference:26.4.6.1 - Compare an intervention that can answer the question](#engineeringreference26461---compare-an-intervention-that-can-answer-the-question)
+      - [Engineering.Reference:26.4.6.2 - Turn selected guidance into a qualified learning target](#engineeringreference26462---turn-selected-guidance-into-a-qualified-learning-target)
+      - [Engineering.Reference:26.4.6.3 - Run the changed performer with its joint remaining support](#engineeringreference26463---run-the-changed-performer-with-its-joint-remaining-support)
+      - [Engineering.Reference:26.4.6.4 - Retain useful external resources and spend effort on the missing contribution](#engineeringreference26464---retain-useful-external-resources-and-spend-effort-on-the-missing-contribution)
+      - [Engineering.Reference:26.4.6.5 - Decide whether the change is worth obtaining](#engineeringreference26465---decide-whether-the-change-is-worth-obtaining)
+      - [Engineering.Reference:26.4.6.6 - Obtain the human development and provision results separately](#engineeringreference26466---obtain-the-human-development-and-provision-results-separately)
   - [Engineering.Reference:26.5 - Derive an audit policy from the real decision times](#engineeringreference265---derive-an-audit-policy-from-the-real-decision-times)
   - [Engineering.Reference:26.6 - Recalculate when auditing is fallible](#engineeringreference266---recalculate-when-auditing-is-fallible)
   - [Engineering.Reference:26.7 - Obtain the measurements and enact the audit](#engineeringreference267---obtain-the-measurements-and-enact-the-audit)
   - [Engineering.Reference:26.8 - Follow the changed condition to the affected method](#engineeringreference268---follow-the-changed-condition-to-the-affected-method)
 - [Engineering.Reference:27 - Construct and reuse an exchange for a receiving decision](#engineeringreference27---construct-and-reuse-an-exchange-for-a-receiving-decision) — Agreed meaning, interpreted or generated routines, consumption, changed conditions and useful reuse.
+  - [Engineering.Reference:27.1 - Work backward from the needed contribution](#engineeringreference271---work-backward-from-the-needed-contribution)
+  - [Engineering.Reference:27.2 - Agree an interpretation, then obtain its implementation](#engineeringreference272---agree-an-interpretation-then-obtain-its-implementation)
+  - [Engineering.Reference:27.3 - Consume a qualified return](#engineeringreference273---consume-a-qualified-return)
+  - [Engineering.Reference:27.4 - Follow a changed meaning through the calculation](#engineeringreference274---follow-a-changed-meaning-through-the-calculation)
+  - [Engineering.Reference:27.5 - Choose reuse and the next supplier by the whole work](#engineeringreference275---choose-reuse-and-the-next-supplier-by-the-whole-work)
 - [Engineering.Reference:28 - Citation](#engineeringreference28---citation) — Cite this Reference or a particular pattern application.
-
 
 ## Engineering.Reference:0 - Engineering, specialization and maintenance
 
@@ -11823,7 +13637,7 @@ New equipment, evidence or task technology can change the policy while preservin
 
 ### Engineering.Reference:0.3 - Specialization and use across Suite boundaries
 
-This Engineering Suite edition directly includes Systems Engineering, Maintenance Engineering and Management, Knowledge-Corpus Access Engineering and Semantic Integration Engineering. OCE has its complete home in Management, where organizational relations, authority and capability participate in the construction of supportable commitments. Each DPF retains its full Methods, cases, sources and limits. A reader reaches the same full contribution through a cross-Suite return when the work needs it.
+This Engineering Suite edition directly includes Systems Engineering, Maintenance Engineering and Management, Knowledge-Corpus Access Engineering, Semantic Integration Engineering and Control Architecture Design. OCE has its complete home in Management, where organizational relations, authority and capability participate in the construction of supportable commitments. Each DPF retains its full Methods, cases, sources and limits. A reader reaches the same full contribution through a cross-Suite return when the work needs it.
 
 The alternative of using a field without including it as a direct constituent retains access to its full Methods. An engineering practitioner can perform OCE's organizational construction through Management; a manager can perform MNT's policy or programme Method through Engineering. Neither use requires commissioning another performer. OCE's direct place in Management follows its organizational target and the continuing relations explained above. MNT's policy, provision and programme serve the distinct maintenance subject: preserving or restoring required functioning through failure and condition knowledge. Their usefulness to management does not require including the whole maintenance field there.
 
@@ -11833,7 +13647,7 @@ Cross-Suite use requires keeping both sides of a changed dependency available. A
 
 ### Engineering.Reference:0.4 - Capability development and wider performing practices
 
-[Human Capability Engineering (Human Capability Engineering DPF Suite)](../Human%20Capability%20Engineering%20DPF%20Suite/README.md) is the specialized engineering discipline concerned with the deliberate formation, change, restoration and maintenance of a person's capabilities. Its first, incomplete Suite edition supplies the full HCD and SOM descriptions. The four direct DPFs of this Engineering edition connect to that specialized Suite; this publication arrangement leaves the human field's engineering contribution intact.
+[Human Capability Engineering](../Human%20Capability%20Engineering%20DPF%20Suite/) is the specialized engineering discipline concerned with the deliberate formation, change, restoration and maintenance of a person's capabilities. Its first, incomplete Suite edition supplies the full HCD and SOM descriptions. The five direct DPFs of this Engineering edition connect to that specialized Suite; this publication arrangement leaves the human field's engineering contribution intact.
 
 [Human Capability Development (HCD)](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md) describes deliberate change of a human holder's capability for intended later Work. Its knowledge of learning, practice, feedback and transfer constrains capability targets, programmes, learning products and development arrangements. Evidence of what the person can actually do can revise the target or arrangement and can change which human contribution a system design may rely on. This continuing connection of knowledge, construction and use supplies its engineering contribution. A course, a capability model and a person's realized capability remain different results; adequate existing capability, changed support or an external contribution can remove the need for development.
 
@@ -11850,6 +13664,48 @@ The human holder whose capability is to change, the person or AI supplying instr
 [Embodied Rhythmics (RHY)](../EMBODIED-RHYTHMICS-PRINCIPLES-FRAMEWORK.md) has rhythmic relations as its subject: attacks and rests, continuous movement, accents, timing, grouping, a common reference and coordination. Its Methods support recognizing, representing, altering, performing, teaching and observing those relations. Some uses develop a person's capability, and some constrain a performing configuration; the full field is not limited to either contribution. Its overlap with bodily learning therefore does not make it a specialization of SOM.
 
 MDPE and RHY retain complete independent descriptions in the Library. Engineering can use the specific constructions and constraints just described while their other results keep their own conditions. The direct returns preserve these engineering contributions without making construction the complete subject of either field. A future change in the described fields or their continuing relations could change this composition; a new performance project or a different physical performer alone does not.
+
+### Engineering.Reference:0.5 - The system-thinking long mantra across engineering contributions
+
+A project can contain sound answers about a design, a production method, maintenance and information access yet still lack a workable whole. Each answer may rely on conditions that another answer removes. The **system-thinking long mantra** keeps the common target and its use connected to functioning, construction, ways of obtaining it, capable creators and their cooperation. FPF A.1.STM:4.1–4.3.1 explains why those questions belong together and how partial answers can be revised. [SYSE.Reference:1.1](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#sysereference11---the-system-thinking-long-mantra-in-engineering) develops the connections inside Systems Engineering.
+
+Across this Suite, the maintenance answer constrains more than a later service schedule. Access, detection, replacement and qualified return to functioning can change the construction that should be chosen. Conversely, a changed construction or operating condition can invalidate a failure model or intervention policy. MNT supplies the maintenance reasoning; the resulting conditions return to the engineering choice rather than remain an independent maintenance document.
+
+Semantic integration similarly constrains what the system can do: compatible message formats do not establish that two participants use the same referent, unit or interpretation. SIE develops the meanings, mappings and validation needed by the receiving operation. A revised interpretation can change an interface or invalidate an earlier system-level conclusion. KCAE supplies access to the documentary knowledge needed for these decisions. Finding a source is insufficient when its conditions or edition cannot be recovered; a correct design argument cannot be used reliably if the evidence it relies on is unavailable or misunderstood. These contributions connect through the actual receiving operation, not merely because all four disciplines appear in the Suite.
+
+The creators' cooperation can require organizational or human-capability contributions from the specialized Suites described above. Those results bring their own conditions: an acquired ability does not itself grant authority, and an organizational assignment does not establish technical capability. A changed division of work can alter the feasible design; a changed design can require different cooperation. The project account has to accommodate both directions.
+
+The reminder's order helps teach these dependencies. It does not prescribe a succession of departments, documents or work stages. Begin with the consequential question, recover the supported answers it relies on, and compare alternatives that can be true together. Use the full supplying Methods where an answer is missing. Neither a repeated formula nor a diagram of links supplies the subject knowledge needed to make the answers fit.
+
+### Engineering.Reference:0.6 - The elegance mantra and reducing repeated firefighting
+
+When engineering or operating work repeatedly needs urgent correction, or a local efficiency gain leaves the receiving work no better off, use **FPF C.42, Reduce Avoidable Work While Preserving the Needed Result**, for the general method. Its **elegance mantra** connects the questions below. This section explains their engineering application. Here *elegance* concerns reducing avoidable work while preserving the needed result and its necessary conditions. Reducing repeated firefighting means changing what recreates a difficulty, alongside any immediate response needed to protect current work.
+
+> Keep the needed result in view; remove unneeded work, prevent avoidable rework, distinguish waiting from processing, change the cause worth changing, and carry the change into the next performance.
+
+These questions connect through the result and the effort needed to obtain it. Their order helps explain the reasoning; work can begin at a consequential question whose answer is already needed. Supported partial answers remain useful. An unknown cause can leave one proposed change undecided while another adequately supported response remains available.
+
+**Establish what is needed in use.** A faster way of producing an unneeded result consumes resources without supplying the missing contribution. [FPF A.1.STM:4.1–4.3.1](../../FPF-Spec.md#a1stm---connect-project-reasoning-system-thinking-long-mantra) connects intended use to what must function and how it can be obtained. Removing work requires checking what would be lost, including protection, maintenance or needed knowledge. An experiment that rules out a plausible design can supply such knowledge; its negative result is not by itself avoidable rework. If the need changes, reconsider the work justified by it, with the people who can change the affected commitments.
+
+**Prevent the particular rework.** A mismatch between the required configuration and the one actually made can force correction, repeated manufacture and renewed checking. [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) establishes the configuration identity and applicability needed by the decision. [OPS.18:5.5](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops1855---an-unresolved-cause-need-not-delay-a-supported-correction) shows the connection: a customer approves proof P2, but the work station supplies P1. The available authorized correction retrieves the approved proof, checks its edition at the station and requires first-article acceptance. Catching P1 before printing protects the order without spoiled booklets. A small check can therefore reduce total work. Compare additional control with the remaining exposure and the work it would add. The full case distinguishes applying this protection from establishing which failure caused the mismatch and from observing recurrence over later orders.
+
+**Separate waiting from processing.** Elapsed time includes both. Faster processing can leave the receiving result late when it still waits for a ready input, resource or decision. [OPS.8](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops8---coordinate-queues-and-buffers) and [OPS.9](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops9---diagnose-and-treat-the-current-operating-constraint) recover those mechanisms and compare changes against the accepted result. OPS.9:5.4 shows why the deadline for a first result and sustained output can favour different changes. Removing a required acceptance decision, or moving a queue outside the measured boundary, does not establish an improvement for the receiving work.
+
+**Choose a change that acts on the loss.** Ending an unnecessary operation, preventing a configuration error, changing a handoff and improving processing are different possibilities. A technology change may address several causes at once; it need not wait for every other question to close. Compare the obtainable gain over the relevant period with construction, introduction, support and exception handling, including effort shifted to other participants. Keeping an adequate manual method can be the better choice, as the [handover case](#engineeringreference2---why-examine-a-handover-that-arrives-on-time) explains. [SYSE.39](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse39---decide-whether-and-how-to-reduce-the-total-burden-of-repetitive-platform-work) develops this comparison for repetitive software-platform work. For a recurring operating method, [OPS.16](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops16---decide-whether-and-how-to-change-an-operating-method) connects the proposed change to a supported trial; changing responsibility or authority requires the corresponding organizational decision.
+
+**Return the change to work and work to the explanation.** [FPF A.3.1.MI](../../FPF-Spec.md#a31mi---introduce-a-method-into-practice-and-decide-what-to-keep-or-change) distinguishes the changed method, its introduction, actual performance and later use. Make the applicable instruction and support available, develop missing capability where needed, and examine what happens in the next performance. [OCE.10](../Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce10---choose-a-response-to-participation-or-working-culture-difficulties-in-the-target-organization) helps when access, workload or participation conditions explain a difficulty. A recurrence can reopen the configuration account; a new queue can reopen the capacity diagnosis; changed receiving needs can reopen which work is worth retaining. Preserve answers whose grounds still hold. Publishing a revised instruction alone establishes none of these performance results.
+
+This connected account concerns avoidable effort for a needed contribution. Development can instead create new knowledge, purposes and capabilities worth pursuing. The [system-thinking account](#engineeringreference05---the-system-thinking-long-mantra-across-engineering-contributions) connects a changed target to the wider project; the [method-development entry](#engineeringreference17---improve-a-method-or-an-organization) leads to work on the way of obtaining it. Reducing present effort is one possible contribution to that continuation.
+
+### Engineering.Reference:0.7 - Control architecture design
+
+[Control Architecture Design (CAD)](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md) connects knowledge of dynamics, observations, uncertainty and actuation to a realizable control arrangement. Use it when a design must reconcile what the controller can know, which commands it can issue and when those commands can actually take effect. A changed sensor delay, actuator limit or execution rate can require a different design.
+
+Systems Engineering supplies the wider system question. [SYSE.5](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse5---develop-an-engineered-systems-functional-organization-and-bearer-alternatives) develops functional and implementation alternatives; [SYSE.6](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse6---decide-and-reopen-the-engineering-architecture) makes the architecture decision. CAD contributes the control arrangements and feasibility conditions those alternatives can actually support. An information limit can change sensor provision; a tracking or input limit can change the admissible command; a missed timing condition can reopen processor provision or the decomposition. The receiving system design retains its other obligations and qualification needs. CAD is a direct Engineering constituent; using its results elsewhere does not add another membership or make it a Core dependency.
+
+[CAD.5](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md#cad5---choose-observations-and-internal-state-for-control) can be used independently to choose observations and retained state for a specified controller. It does not require a planner or multiple layers. [CAD.1–CAD.4](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md#cadreference4---the-layered-planning-and-feedback-branch) develop a planning-and-feedback arrangement when separating those contributions is useful. A sufficient existing simple controller remains an alternative. The quantitative Methods principally cover sampled linear models with bounded uncertainty and specified feedback-law candidates, with a separate conditional continuous-time error-bound construction. They do not supply unrestricted controller synthesis, identification or physical qualification.
+
+[CAD.Reference:3.2](CONTROL-ARCHITECTURE-DESIGN-PRINCIPLES-FRAMEWORK.md#cadreference32---a-complete-joint-design-and-a-changed-delay) works through a joint design and a changed delay. The estimation error, tracking margin, input reserve and timing conditions describe the same loop; a result established for one observation or execution arrangement cannot simply be combined with a result established for another.
 
 ## Engineering.Reference:1 - Find a starting pattern
 
@@ -11871,6 +13727,7 @@ Use an existing subject answer directly when it suffices. If the way of working 
 | --- | --- | --- |
 | What advice is being requested, for whom, and who will decide? | [Bound the Decision-Support Engagement and Authority Boundary (PSDA.11)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda11---bound-the-decision-support-engagement-and-authority-boundary) | An agreed question and scope for the inquiry, with the participants' authority clear. |
 | Are people describing different problems? Whose concern is missing? | [Recover Participants, Concerns, and Affected Systems for a Decision-Support Inquiry (PSDA.12)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda12---recover-participants-concerns-and-affected-systems-for-a-decision-support-inquiry), [Generate Plural Problem Formulations (PSDA.1)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda1---generate-plural-problem-formulations), [Set and Reopen the Problem Boundary (PSDA.2)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2---set-and-reopen-the-problem-boundary) | The affected participants, several consequential problem formulations, and a justified boundary for the inquiry. |
+| What does a promising change require from other participants? | [Explore a Situation through Goals and Dependencies (PSDA.20)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda20---explore-a-situation-through-goals-and-dependencies) | An interpreted answer, an explained new difficulty or a precise next question, with required provision and assumptions visible. |
 | How can different models or problem-structuring methods help? | [Construct Complementary Situation and Option Models (PSDA.3)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda3---construct-complementary-situation-and-option-models), [Select Problem-Structuring Methods and Combine Them When Needed (PSDA.4)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda4---select-problem-structuring-methods-and-combine-them-when-needed), [Facilitate Decision-Support Inquiry and Preserve Material Dissent (PSDA.13)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda13---facilitate-decision-support-inquiry-and-preserve-material-dissent) | Models chosen for their questions and limits, a suitable method or justified combination, and an inquiry that preserves material disagreement. |
 | What could we do besides the first proposed option? | [Generate Decision Alternatives (PSDA.5)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda5---generate-decision-alternatives) | Alternatives that differ in how they would address the problem. |
 | What matters in the choice, and what might change the comparison? | [Represent Values and Trade-Offs (PSDA.6)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda6---represent-values-and-trade-offs), [Represent Decision-Relevant Uncertainty and Evidence Limits (PSDA.7)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda7---represent-decision-relevant-uncertainty-and-evidence-limits), [Compare Consequences of Decision Alternatives (PSDA.8)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda8---compare-consequences-of-decision-alternatives), [Test Robustness and Sensitivity of Decision Alternatives and Their Comparison (PSDA.9)](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda9---test-robustness-and-sensitivity-of-decision-alternatives-and-their-comparison) | Explicit values and trade-offs, useful uncertainty statements, compared consequences, and sensitivity to assumptions. |
@@ -12178,7 +14035,7 @@ The [archive case](#engineeringreference9---how-can-two-archive-services-share-s
 
 ### Engineering.Reference:1.16 - Explain resource use, costs and operating accounts
 
-Management Accounting helps a controller, accountant or manager explain how work uses resources and how that use appears in money, forecasts and performance accounts. Begin with the decision or account that needs a better explanation. A small model of the relevant work can be sufficient.
+Management Accounting helps a controller, accountant or manager explain how work uses resources and how that use appears in money, forecasts and performance accounts. It also uses economic requirements to develop changes to the product, process and provision together with their responsible disciplines. Select the needed account, forecast, activity design or use of information from the engineering question; a small model of the relevant work can be sufficient.
 
 | Working question | Start with | Result |
 | --- | --- | --- |
@@ -12190,7 +14047,8 @@ Management Accounting helps a controller, accountant or manager explain how work
 | Is this number a forecast, a target, a request or an authorization? | [Separate Forecasts, Targets and Resource Requests (MA.6)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma6---separate-forecasts-targets-and-resource-requests) | Separate expectations, targets and resource requests, with the authorized amount distinguished. |
 | What explains this cost or margin difference? | [Explain a Cost or Margin Difference (MA.7)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma7---explain-a-cost-or-margin-difference) | An explanation that separates volume, mix, usage and price contributions, with limits on causal claims. |
 | How do customer or product economics change over time? | [Account for Customer and Product Economics Over Time (MA.8)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma8---account-for-customer-and-product-economics-over-time) | An account of acquisition, retention, support and scale over the relevant horizon; finance supplies a needed valuation. |
-| What behavior does this account or target encourage? | [Examine the Behavioral Effects of Management Accounting Information (MA.9)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma9---examine-the-behavioral-effects-of-management-accounting-information) | An account of consequences and distortions, such as inventory building or hidden forecast changes. |
+| How should accounting information be used in decisions and coordination, and what behavior does that use encourage? | [Design and Examine the Use of Management Accounting Information (MA.9)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma9---design-and-examine-the-use-of-management-accounting-information) | A proposed or revised use connected to decisions, authority and timing, with its effects on joint work examined. |
+| Which changes to the offering, product, process and provision could meet this economic requirement? | [Develop an Activity Design from an Economic Requirement (MA.10)](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma10---develop-an-activity-design-from-an-economic-requirement) | An economically examined activity design with related resource, payment and performance conditions. |
 
 [Operations Management (OPS)](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md) uses these accounts for operating comparisons. A forecast can inform a resource decision while the authorization remains a separate result. The [repair cooperative case](#engineeringreference7---how-should-we-set-a-target-and-judge-a-miss-after-conditions-change) connects these accounts to the construction of a meaningful aim and later performance interpretation through OPS.21–22.
 
@@ -12212,7 +14070,7 @@ Use [Semantic Integration Engineering (SIE)](SEMANTIC-INTEGRATION-ENGINEERING-PR
 
 ### Engineering.Reference:1.18 - Value investments, arrange finance and manage liquidity
 
-[Corporate Finance (FIN)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md) provides methods for valuing investments, arranging finance, preserving liquidity and managing financial exposure.
+[Corporate Finance (FIN)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md) provides methods for valuing investments, arranging finance, preserving liquidity and managing financial exposure. It also explains the financial relations of the activity and constructs financing terms and connections between group entities. The resulting claims and payment paths return to the investment and operating choices they enable.
 
 Choose the question you need to answer, then open the linked method and check its conditions of use.
 
@@ -12239,7 +14097,8 @@ Choose the question you need to answer, then open the linked method and check it
 
 | Working question | Start with | Result |
 | --- | --- | --- |
-| Which financing terms fit the corporation's funding need? | [Design Financing Instruments and Terms (FIN.10)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin10---design-financing-instruments-and-terms) | A comparison of arrangements by proceeds, future payments, rights and conditions of access. |
+| Which financing contributions and terms can meet the need and be acceptable to their participants? | [Design Financing Instruments and Terms (FIN.10)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin10---design-financing-instruments-and-terms) | A constructed or compared proposal with net proceeds, future service, rights, participant consequences and conditions for funding. |
+| How should financing and support connect the group's entities? | [Construct Financing Arrangements Across Group Entities (FIN.23)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin23---construct-financing-arrangements-across-group-entities) | A financial arrangement with entity cash paths, internal and external claims, loss consequences and transition conditions. |
 | What mix of debt and equity is feasible and useful? | [Select Capital Structure (FIN.11)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin11---select-capital-structure) | A proposed financing mix compared under cash, tax, control, access and distress conditions. |
 | Could covenants or refinancing remove access to funds? | [Preserve Covenant Headroom and Financing Flexibility (FIN.12)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin12---preserve-covenant-headroom-and-financing-flexibility) | The applicable covenant or funding test, remaining headroom and available responses. |
 | How much capital should we retain or return to owners? | [Decide How Much Capital to Retain or Return (FIN.21)](../Management%20DPF%20Suite/CORPORATE-FINANCE-PRINCIPLES-FRAMEWORK.md#fin21---decide-how-much-capital-to-retain-or-return) | A comparison of retention, dividends or repurchases, with an amount and form supported by the funding conditions. |
@@ -12626,7 +14485,7 @@ Follow the relations within the work as well as its timing. While a specialist i
 
 ### Engineering.Reference:6.2 - Resolve the conflict at the relation that failed
 
-One person may design and integrate if the combined work fits their capability, assignment and available time. Under this case's independent-acceptance rule, that designer cannot also supply the required independent judgement. A senior technician proposed as a replacement test performer must fit the actual test and its admission conditions; seniority alone supplies no substitution basis. FPF [FPF E.10.ROLE](../../FPF-Spec.md#e10role---recovering-what-role-means-in-the-current-claim) and [FPF A.2.7](../../FPF-Spec.md#a27---systemrolekindrelationstructure---relations-among-system-role-kinds) help unpack “combined role”: which assignments may share a holder, which require different holders, and how the Methods or work combine. Use these relations instead of treating role labels as parts of the person or project.
+One person may design and integrate if the combined work fits their capability, assignment and available time. Under this case's independent-acceptance rule, that designer cannot also supply the required independent judgement. A senior technician proposed as a replacement test performer must fit the actual test and its admission conditions; seniority alone supplies no substitution basis. [FPF E.10.ROLE](../../FPF-Spec.md#e10role---recovering-what-role-means-in-the-current-claim) and [FPF A.2.7](../../FPF-Spec.md#a27---systemrolekindrelationstructure---relations-among-system-role-kinds) help unpack “combined role”: which assignments may share a holder, which require different holders, and how the Methods or work combine. Use these relations instead of treating role labels as parts of the person or project.
 
 Now suppose the returned report concerns configuration C6, preceding the interface repair. The receiver needs applicable evidence for the C7 claim. Another reviewer appointment cannot make that report applicable. Preserve any results whose conditions still fit, and obtain only the missing evidence or justified applicability account.
 
@@ -12724,7 +14583,7 @@ The coordinator compares feasible responses and asks two customers with standard
 
 The financial account changes with the same arrangement. The extra block is retained and paid. Materials for the two deferred repairs, costing 40, are bought later. The agreed advance of 300 applies to the ten repairs still due this month, whose remaining receipts are 700 on day 25. Current outflows are 400 + 200 + 200 + 180 = 980; cash is 170 after them and 870 after the remaining receipts. The later account carries materials of 40 and receipts of 200 for the two deferred repairs, together with whatever provision that later work actually needs. It is not a completed gain in the current month. If materials had already been purchased or an advance had to be refunded, those different conditions would require a different dated account.
 
-Now introduce a management conflict. The local review treats any downward forecast revision as poor performance, and the manager initially asks to keep reporting twelve. [MA.6](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma6---separate-forecasts-targets-and-resource-requests) keeps the target, forecast, resource request and authorization distinct; [MA.9](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma9---examine-the-behavioral-effects-of-management-accounting-information) exposes what the consequence rule encourages. Those distinctions still need an effective response.
+Now introduce a management conflict. The local review treats any downward forecast revision as poor performance, and the manager initially asks to keep reporting twelve. [MA.6](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma6---separate-forecasts-targets-and-resource-requests) keeps the target, forecast, resource request and authorization distinct; [MA.9](../Management%20DPF%20Suite/MANAGEMENT-ACCOUNTING-PRINCIPLES-FRAMEWORK.md#ma9---design-and-examine-the-use-of-management-accounting-information) exposes what the consequence rule encourages. Those distinctions still need an effective response.
 
 In this cooperative the manager may change the local review and recognition rule, while a separate committee retains decisions about pay. Using [OCE.10](../Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce10---choose-a-response-to-participation-or-working-culture-difficulties-in-the-target-organization), the manager changes the operative local instruction: retain the ambition and honest current outlook together; judge reporting on its grounds and timeliness; examine the response and actual result before assigning recognition. The next review actually uses the forecast of ten to arrange the deferred work. This establishes the stipulated local change, not a change to the committee's pay rule. If the manager lacked that power, the proposed rule change would have to reach its holder; an adviser or meeting facilitator could not supply the authority.
 
@@ -13153,7 +15012,7 @@ FPF A.3.1.MR explains recovery of candidate methods; C.39 supplies construction 
 
 Six engineering teams use an analysis assistant. Existing review makes its routine outputs usable. A new assignment requires changing a model assumption and explaining the resulting construction; only two shared specialists can currently supply that contribution. Should the practice developer promote the assistant to more teams? The following facts are stipulated for this example, not measured effects of an intervention.
 
-**Recover what the next work needs.** The Draft pattern [FPF C.36.RP](../../FPF-Spec.md#c36rp---sustain-and-renew-shared-ways-of-working) separates obtaining a checked answer from being able to alter its method. The specialists are a valid current supplier; the teams need not all become specialists. Determine who must recognize an unsuitable answer, who must reconstruct the changed model and which contributions can be obtained elsewhere. There is no evidence here that the teams previously had and then lost this ability. If a retention or tool-dependence claim would change the decision, use [HCD.13](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md#hcd13--test-human-capability-retention-and-dependence-on-tools-or-other-support) with its required comparison. A new demand alone does not establish decline.
+**Recover what the next work needs.** [FPF C.36.RP](../../FPF-Spec.md#c36rp---sustain-and-renew-shared-ways-of-working) separates obtaining a checked answer from being able to alter its method. The specialists are a valid current supplier; the teams need not all become specialists. Determine who must recognize an unsuitable answer, who must reconstruct the changed model and which contributions can be obtained elsewhere. There is no evidence here that the teams previously had and then lost this ability. If a retention or tool-dependence claim would change the decision, use [HCD.13](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md#hcd13--test-human-capability-retention-and-dependence-on-tools-or-other-support) with its required comparison. A new demand alone does not establish decline.
 
 **Follow uptake into the next contribution.** A demonstration, an attempted procedure, a checked result and an ability to help another team are different events. [DTM.2](../DEFENSE-AND-TRANSMISSION-MODELING-DPF.md#dtm2---build-a-transmission-law-from-exposure-and-uptake) recovers what the recipient obtains, including a changed construction; [DTM.3](../DEFENSE-AND-TRANSMISSION-MODELING-DPF.md#dtm3---couple-change-within-carriers-to-spread-between-them) connects that change to subsequent transmission. Use a quantitative model only if its result can change the choice. Counting demonstrations would miss both the receiving work and the demand on specialists.
 
@@ -13433,7 +15292,7 @@ Use this reminder to resume the explanation, then open the question that matters
 | The same supplied brief leads participants toward different interpretations or contributions. | [Understand the collaborator](#engineeringreference196---understand-a-collaborator-before-choosing-the-next-contribution): construct the alternatives that change the next work, obtain a useful distinguishing return, and revise the explanation or division through [SYSE.44](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse44---divide-and-recombine-work-across-agents). | Keep unresolved alternatives when evidence does not separate them; stop modeling when the supported action is the same. A reported plan supplies neither a completed check nor permission. |
 | Delayed consequences could change today's action. | [MMP.8.SD](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/MATHEMATICAL-MODELING-PRACTICE-DPF.md#mmp8sd---construct-a-sequential-decision-model-from-information-and-consequences) constructs the decision model; [MMP.17](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/MATHEMATICAL-MODELING-PRACTICE-DPF.md#mmp17---construct-a-surrogate-for-selected-model-responses) and, if learning is selected, [CMP.7](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/COMPUTATIONAL-THINKING-DPF.md#cmp7---construct-a-learner-from-examples-and-feedback) supply a qualified approximation. [SYSE.10](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse10---assess-research-model-and-trial-results-for-an-engineering-decision) bounds reliance. [FPF A.15.7](../../FPF-Spec.md#a157---situation-responsive-work-steering-and-next-action-selection) or [FPF C.11](../../FPF-Spec.md#c11---decision-theory-decsn-cal) uses the comparison; [SYSE.47](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse47---construct-and-revise-an-agents-execution-procedure) binds it into execution. | Return a defeated current-state or error premise to the model/observation supplier. A predicted effect does not replace actual execution under [SYSE.42](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse42---use-a-selected-tool-and-apply-its-result). |
 | Repeated wrong decisions suggest another arrangement. | The [development case](#engineeringreference197---develop-the-arrangement-across-attempts) obtains allocation evidence, compares complete changes with [FPF C.38](../../FPF-Spec.md#c38---construct-comparable-ways-to-obtain-one-result), [FPF C.11.CRC](../../FPF-Spec.md#c11crc---configuration-relative-contribution-comparison) and [FPF C.11](../../FPF-Spec.md#c11---decision-theory-decsn-cal), and selects a trial by stability, recurrence, whole burden and retained runtime needs. [SYSE.50](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse50---construct-and-calibrate-an-agents-assistance-policy), [SYSE.52](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse52---prepare-working-material-and-tools-for-an-agents-next-step) and [SYSE.47](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse47---construct-and-revise-an-agents-execution-procedure) repair assistance choice, next input and control; [SYSE.51](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse51---construct-adaptive-control-of-reasoning-and-tool-effort) supplies effort allocation. Memory, division, operators or learning enter when their change is selected. | Use the selected construction and its actual suppliers. A shorter horizon or costly qualification can leave the manual way preferable; unavailable training leaves fixed-model repairs open. |
-| The needed operator or informative experience does not exist. | In Case C, an engineer uses [SYSE.48](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse48---construct-and-maintain-reusable-tools-and-procedures) to recover the operation from traces and task requirements, construct and test it. A.15.8.MS and A.3.1.MV supplies discovery and repertoire maintenance; SYSE.26/.27 supplies the supported interface and compatibility. In Case A3, [SYSE.49](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) constructs discriminating tasks and feedback with SYSE.33's provision/reset. | Use the returned operator or experience in its receiving work. Return missing result or feedback meaning to its actual domain supplier. |
+| The needed operator or informative experience does not exist. | In Case C, an engineer uses [SYSE.48](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse48---construct-and-maintain-reusable-tools-and-procedures) to recover the operation from traces and task requirements, construct and test it. A.15.8.MS and A.3.1.MV supply discovery and repertoire maintenance; SYSE.26/.27 supply the supported interface and compatibility. In Case A3, [SYSE.49](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) constructs discriminating tasks and feedback with SYSE.33's provision/reset. | Use the returned operator or experience in its receiving work. Return missing result or feedback meaning to its actual domain supplier. |
 | The proposed change appears to help. | [SYSE.46](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse46---test-an-agent-and-its-support-in-representative-work) compares matched cases without optional support, with supplied support and with the agent's own selection. Separate support benefit from assistance choice, invocation and use; retain result, verification, stopping and total burden. | Return failed contributions to their constructors. Add delayed/shifted tests for the corresponding reliance; an unknown intervening update can leave attribution unresolved. |
 | A person's recognition, coordination or interpretation is missing. | [HCD.7](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md#hcd7---arrange-providers-access-tools-and-ai-support-for-human-capability-development) supplies feasible help; [HCD.12](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md#hcd12--test-transfer-to-unfamiliar-work-or-learning-from-a-new-source) and [HCD.13](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md#hcd13--test-human-capability-retention-and-dependence-on-tools-or-other-support) test the selected transfer and retention claims. [SOM.2](../Human%20Capability%20Engineering%20DPF%20Suite/SOMATIC-MOVEMENT-MODELING-PRINCIPLES-FRAMEWORK.md#som2---make-a-bodily-change-distinguishable), [SOM.4](../Human%20Capability%20Engineering%20DPF%20Suite/SOMATIC-MOVEMENT-MODELING-PRINCIPLES-FRAMEWORK.md#som4---build-and-recall-a-coordinated-bodily-change), [SOM.5](../Human%20Capability%20Engineering%20DPF%20Suite/SOMATIC-MOVEMENT-MODELING-PRINCIPLES-FRAMEWORK.md#som5---adapt-bodily-coordination-to-changing-support-and-load), [RHY.9](../EMBODIED-RHYTHMICS-PRINCIPLES-FRAMEWORK.md#rhy9---arrange-rhythmic-actions-and-timing-cues) and [RHY.13](../EMBODIED-RHYTHMICS-PRINCIPLES-FRAMEWORK.md#rhy13---test-transfer-retention-and-support-dependence-of-rhythmic-capability) supply bodily contrast, coordinated performance, timely cue and support-sensitive tests. | Keep experienced sensation, observed motion and technical telemetry distinct. A generated explanation supplies no bodily response. |
 | A successor must obtain and adapt the contribution. | [FPF A.15.8.MS](../../FPF-Spec.md#a158ms---configure-methodological-support-for-work) and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) retain usable discovery and repertoire meaning; [FPF C.36.RP](../../FPF-Spec.md#c36rp---sustain-and-renew-shared-ways-of-working) preserves explanation and renewal across participants. | A changed source or lost support reopens affected uses. Retain independently useful contributions and an available fallback. |
@@ -14017,104 +15876,37 @@ Changing feedback truth, a live contribution or candidate availability changes t
 
 ## Engineering.Reference:20 - Explore a situation through goals and dependencies
 
-Use this account when a proposed change looks useful from one participant's position, but you cannot explain what it would require or change for the others. It develops an early inquiry using participants' intentions, provision and alternatives. The result may be a comparison, a newly discovered difficulty or a precise question for investigation. A diagram is useful when it makes those relationships easier to inspect; a list of goals alone supplies no analysis.
+Use [PSDA.20 — Explore a Situation through Goals and Dependencies](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda20---explore-a-situation-through-goals-and-dependencies) when a proposed change looks useful from one participant's position but its required contributions and consequences for others remain unexplained. The full Method develops the actors-and-goals inquiry, including the complete car-park case, a different publication-access case and its source limits. This section explains how that inquiry connects the Suite's work to Decision Design and to actual operating changes.
 
-The connected contributions are [PSDA.12](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda12---recover-participants-concerns-and-affected-systems-for-a-decision-support-inquiry) for whose concerns enter, [PSDA.3](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda3---construct-complementary-situation-and-option-models) for what the model can answer, [PSDA.5](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda5---generate-decision-alternatives) for alternatives, and [PSDA.8:4.2.1](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda8421---construct-and-question-a-qualitative-consequence-network) for qualitative analysis. Enter at the unresolved question and retain usable answers. If a current direct calculation or an already qualified comparison settles it, use that result.
-
+An intentional model can reveal a service, staffing or technical question without answering all of them. Systems Engineering, organizational coordination and direct technical modeling retain their own results. A useful question or conditional comparison can complete the present inquiry; it is not already a design decision or a changed operating arrangement.
 
 ### Engineering.Reference:20.1 - Let the question determine what to model
 
-Begin with an episode, proposal or unexplained result. Ask who needs an answer, what they could do with it and which difference would change that action. Obtain relevant participants' accounts where possible; otherwise use attributable interviews, documents and observations, retaining unanswered questions for those who know the work. Participation in constructing the model can help correct it, but attendance does not establish agreement with a proposal.
-
-Consider a car park whose unreliable sensors sometimes send drivers towards occupied floors. Attendants walk the floors and correct the displayed counts. Management proposes replacing the entire system, since the sensors cannot simply be exchanged in the current design. The initial inquiry is: **does replacement address the service difficulty better than continuing manual correction?** This is an adaptation of the parking exercise in the [iStar tutorial, slide 57](https://zenodo.org/records/10637477/files/iStar-tutorial-online.pdf?download=1). The following participants, conditions and judgements are constructed for this walkthrough.
-
-Include drivers because the guidance affects finding a place; attendants because correction requires their work; the operations manager because staffing and service arrangements are theirs to decide; and the technical supplier because replacement feasibility and installation depend on its contribution. Management cares about operating cost and reputation. Drivers care about usable guidance and protection of their cars. An attendant's account of an assignment is evidence about that work, not a statement of every driver's preferences.
-
-Keep the questions distinct. What would make the displayed count trustworthy? Can the work supply it when needed? How would the alternatives affect cost and the concerns behind reputation? A model of intentions can expose these questions before it has the technical estimates needed to answer all of them.
-
+An engineering proposal can raise different receiving questions: what the service needs, whose contribution supplies it, or which technical alternative meets a stated condition. [PSDA.20:4.1](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2041---let-the-question-determine-what-to-model) develops the episode and participant accounts needed to distinguish those questions. PSDA.12 can supply missing participation or affected-subject contributions; it does not turn an attributed concern into technical evidence. Use an adequate direct answer where it settles the current question.
 
 ### Engineering.Reference:20.2 - Connect provision to the reasons on both sides
 
-Separate a desired state, an action, a required entity and a quality. “Current guidance is available” states a desired result. “Walk each floor and enter a corrected count” prescribes work. The count is information used in producing the display. Accuracy concerns whether that information represents the occupied and available spaces well enough for the intended guidance. A completed round does not by itself establish that accuracy.
-
-For each important provision, connect five positions: the receiving participant, why that participant needs it, what must be provided, the provider, and how the provider proposes to obtain it. For example:
-
-> The operations manager needs a checked floor count from the attendant so that the service can issue current guidance; the attendant obtains the count by inspecting the floor and entering the result before the next update.
-
-Keep the attendant's checking task, the supplied count and the manager's need as distinct parts of this statement. If the checking method or update deadline is unknown, leave that question visible. Describing a dependency does not establish that the provider has accepted the work or can perform it.
-
-Requiring a count with stated fitness conditions leaves room to choose its production method. Requiring a specified inspection task restricts that choice. State which relationship the work needs. Similarly, two recipients needing information called “the floor count” may need different intervals or accuracy; matching names do not establish interchangeable provision.
-
-Now recover the internal relationships that explain the alternatives. Current guidance needs a suitable count and a working way to publish it. A count might come from supported automatic sensing or from a sufficiently recent manual inspection. These are candidate means; neither is adequate merely because it appears under an “or”. Manual correction also needs staff time and access. Replacing the system needs a qualified design, installation and an operating arrangement. A technical supplier's future delivery is an external dependency, not a task the attendant can perform.
-
-For each arrow, state whether it means a necessary condition, a sufficient alternative, a favorable or adverse contribution, or a quality of something. Accuracy can help reputation without guaranteeing it: the manager also relates reputation to protection of parked cars. An arrow saying that protection matters does not establish that it is provided.
-
+A requirement for a supplied result and a prescription of the provider's task allow different engineering choices. [PSDA.20:4.2](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2042---connect-provision-to-the-reasons-on-both-sides) keeps the recipient's purpose, provision and proposed production distinct. This matters when design or organizational work substitutes a supplier or method: preserving a label such as “floor count” need not preserve its needed interval or accuracy. The model identifies the dependence; actual acceptance, capability and allocation still require their own grounds.
 
 ### Engineering.Reference:20.3 - Show the part of the model needed for the current question
 
-A view showing only participants and external provision helps locate a missing supplier. Opening the manager's and attendant's internal reasons exposes why the count is needed and what work supports it. Opening the supplier's proposed arrangement becomes useful when installation or later maintenance can change the answer.
-
-In iStar these are the strategic dependency view, strategic rationale view and selective combinations of them. They show different amounts of one model. They are not required stages, and a hidden detail is not an absent condition. Preserve the same identified dependency when changing views; otherwise a convenient simplification can silently replace the thing being examined.
-
-For this car park, an overview can show “attendant supplies count”. To examine availability during a shift, open the checking task and its staffing conditions. To compare whole cost, obtain the relevant cost account; opening more circles does not calculate it. The [iStar 2.0 Guide, §§2–8](https://arxiv.org/html/1605.07767v3) supplies the notation, distinctions and integrity rules when an actual iStar model is wanted. This prose walkthrough uses those distinctions without claiming to be a solver-ready model.
-
+Dependency and rationale views can expose different parts of one intentional model. They are not a required sequence or substitutes for the technical model a question needs. [PSDA.20:4.3](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2043---show-the-part-of-the-model-needed-for-the-current-question) explains that choice. PSDA.3 becomes useful when the inquiry also needs to reconcile contributions from models with different subjects or assumptions, such as an intentional account and a cost or capacity model.
 
 ### Engineering.Reference:20.4 - Turn a working question into an analysis, then recover its meaning
 
-Define one alternative precisely enough to tell which work and assumptions change. Alternative A retains the existing displays and uses manual correction. Alternative B installs the proposed replacement and uses its automatic counts. For the initial comparison, suppose staffing for A is available and the supplier has described a technically plausible B, while B's installation interval and whole cost remain unknown. Do not compare A in its troublesome current state with B in an unexplained ideal state.
-
-An initial analysis value expresses an observation or an assumption in this particular question. To ask what B would change *if installed and operating as proposed*, provisionally assume that installation and specified sensing performance hold. Mark both as assumptions. Keep the unresolved installation and cost questions attached to the investment decision. A conditional service comparison can proceed without pretending those inputs have been obtained.
-
-Likewise, leaving manual rounds out of B means they are not part of that proposed arrangement. It is not evidence that attendants cannot inspect a floor. An uninvestigated element stays uninvestigated; an investigated effect may remain unknown; opposed grounds may remain in conflict. Neither omission nor uncertainty means a negative observation.
-
-Carry each alternative through the relationships using PSDA.8's qualitative branch. Keep the initial assumptions and intermediate judgements with its result. For A, a sufficiently recent and correctly performed round supports a corrected count; publication still needs the working display. For B, the stipulated sensing performance supports the count conditionally; it does not establish the installation date or remove all future maintenance work.
-
-Contributions require the relevant person's or specialist's judgement when the incoming grounds do not settle the answer. Here management judges that fewer misleading indications would help reputation. It cannot infer satisfactory reputation from that improvement alone while the protection concern remains unanswered. The same extra staff work that supports accurate guidance also adds operating burden. Do not cancel these effects by counting favorable and adverse arrows.
-
-Return an answer in the language of the original inquiry:
-
-| Question | A: retained system with manual correction | B: proposed replacement |
-| --- | --- | --- |
-| Can it provide useful counts? | Supported only while the stated inspection, freshness, staffing and publication conditions hold. | Supported conditionally on the proposed installation and sensing performance. |
-| What happens to work and cost? | Inspection remains a recurring demand. | Some inspection may be displaced, but acquisition, transition and operating costs remain to be established. |
-| Does it meet the concerns behind reputation? | Better count information addresses one concern; protection of cars needs its own grounds. | The same limit applies; a better sensor is not evidence of protection. |
-
-This comparison does not yet justify the investment. It identifies what the proposal can improve and which missing facts can change the choice. Obtain a bounded installation and whole-cost answer if its expected contribution warrants the work; otherwise retain the conditional comparison or defer the choice. The answer is not “B has more satisfied goals”.
-
+[PSDA.8:4.2.1](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda8421---construct-and-question-a-qualitative-consequence-network) owns the qualitative consequence analysis. [PSDA.20:4.4](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2044---turn-a-working-question-into-an-analysis-then-recover-its-meaning) connects it to the working question and interprets its conditional answer. Assuming that an installation works can support a service comparison; it does not establish the installation interval or investment cost. The wider engineering decision takes only the contribution actually obtained.
 
 ### Engineering.Reference:20.5 - Use surprising results to discover a different problem
 
-Suppose the first model gave A an unqualified favorable result because it represented the round but omitted other assignments. Ask what must be true for that result to hold. Inspecting the rota now reveals that the same attendant must be at the security desk from 10:00 to 10:15, while the modeled correction requires leaving it for a round from 10:00 to 10:10. No substitute is assigned. These stipulated facts defeat the simultaneous arrangement.
-
-The discovery changes the model and the problem. Add the required desk coverage and its relation to the attendant's available work; then revise A's count availability for this interval. The earlier claim that a completed, timely inspection can supply a count still holds. B's separate technical hypothesis also survives. What fails is the premise that A's work can coexist with the retained service obligations.
-
-The next question is now: **how can current guidance and desk coverage both be obtained in this interval?** Another discussion asking the attendant to agree with the plan supplies no missing time or replacement. The manager who controls assignments must examine a different allocation or contributor. [OCE.11](../Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce11---coordinate-organization-change-work-with-continuing-service) develops that coordination when change work competes with continuing service.
-
-Work backward from the joint requirement. Current guidance needs an adequate count and publication; desk coverage needs a person at the desk. One candidate is a separately allocated competent checker while the attendant remains at the desk. Test it forward: can that person obtain the count, update the display in time and do so without abandoning another necessary assignment? Naming a replacement is not that test. Until these conditions are established, the candidate is a question for the manager, not an available solution.
-
-For a bounded continuation, suppose the manager assigns a competent relief worker for this interval, verifies that no other required assignment overlaps, and provides the permitted access and existing checking procedure. In the stipulated trial the relief worker obtains and publishes a count meeting the agreed freshness and accuracy conditions, while the attendant remains at the desk. Both required contributions are supplied in this interval. The added staffing cost belongs in A's cost account. If relief is available only today, retain today's result and reopen the staffing question before promising tomorrow's service; the earlier investment question remains open.
-
-A different candidate might change the update interval or the information promised to drivers. That changes the service requirement, so return to whether the altered guidance remains useful and acceptable. Do not weaken the criterion silently to make the diagram succeed. An incompatible candidate can be rejected without proving that all possible arrangements fail; an unsupported candidate stays conditional.
-
-Keep the unsuccessful combination and the reason it failed so that the next attempt does not repeat it. In a formal backward analysis, ask which supported conditions and judgements produce the incompatibility. A solver's failure can concern its encoding, restrictions or current assumptions; it is not a proof that the real organization has no remedy.
-
+A favorable service model can conceal incompatible assignments. [PSDA.20:4.5](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2045---use-surprising-results-to-discover-a-different-problem) follows the car-park conflict from simultaneous checking and desk coverage to a revised allocation and its limited result. [OCE.11](../Management%20DPF%20Suite/ORGANIZATION-CHANGE-ENGINEERING-PRINCIPLES-FRAMEWORK.md#oce11---coordinate-organization-change-work-with-continuing-service) supplies organizational coordination when change work competes with continuing service. An analysis can identify that need without supplying the person, time or permission.
 
 ### Engineering.Reference:20.6 - Stop with a usable answer and preserve the right return
 
-The manager now has a useful result: replacement is not yet justified by the conditional service comparison; the original staffing proposal cannot provide both services; and the revised allocation has supplied them in the stipulated interval. The immediate allocation question and the longer investment question have different owners and inputs. A repaired rota can settle the first without settling the second. A completed cost comparison does not itself allocate a checker.
-
-Stop when the inquiry's purpose has been met at its declared strength: an adequate comparison is available, the decision-changing incompatibility is explained, or the next useful investigation is precise. Do not enlarge the model simply to fill every possible actor boundary. Conversely, a final label is not sufficient when the recipient cannot understand which action or missing premise it implies.
-
-When a new fact arrives, identify which assumption, relation or judgement changes. Reconsider the alternatives and consequences that depend on it, including their shared conditions, while retaining independent results. If a technical question needs dynamics, accuracy bounds or failure probabilities that this model cannot establish, use an appropriate technical model and bring its qualified answer back. More qualitative arrows do not supply those quantities.
-
-When the analysis itself is difficult, try a small interpretable question whose expected result can be explained from the modeled relationships. Inspect unreached intentions and omitted providers before taking coverage for granted. The authors' later suggestions include extreme hypothetical settings and realistic alternatives as ways to question a model. Such settings are diagnostic questions, not feasible plans or a compulsory checklist. Preparation in the chosen language and help interpreting a model may be needed; neither a completed diagram nor this walkthrough establishes independent modeling capability.
-
+An immediate allocation question and a longer investment question can have different owners, inputs and completion conditions. [PSDA.20:4.6](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2046---stop-with-a-usable-answer-and-preserve-the-right-return) develops the sufficient stop and dependent return. Preserve an adequate local answer while the wider question remains open. A changed operating condition can reopen that answer; it does not invalidate an independent technical claim merely because both appeared in one discussion.
 
 ### Engineering.Reference:20.7 - Language, analysis and evidence have different limits
 
-The iStar Guide defines a language; the [PoEM 2009 treatment](https://www.cs.toronto.edu/~jenhork/Papers/Horkoff_PoEM_2009l.pdf) develops interactive modeling and forward evaluation. The [ER 2010 procedure](https://www.cs.toronto.edu/~jenhork/Papers/ER_Horkoff.pdf) adds formal backward search with human judgements and backtracking under stated structural restrictions. The manual backward question used here is an adaptation, not an implementation of that algorithm. If a named solver is used, select compatible language and analysis versions and preserve their restrictions, rather than applying older propagation tables to iStar 2.0 without a justified mapping.
-
-The [subsequent systematic-versus-ad-hoc study](https://www.cs.toronto.edu/~jenhork/Papers/PoEM10_Horkoffetal.pdf) gives reasons to attend to interpretation, coverage and training. It does not establish that a systematic procedure uniquely produces better understanding or more useful new questions. Use the model and its analysis for the contribution they can actually supply, then establish the domain evidence and decisions needed for reliance.
+Notation, analysis rules and domain evidence support different claims. [PSDA.20:11](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2011---sota-echoing) preserves the source comparison and restrictions of the manual adaptation and formal backward analysis. [PSDA.20:4.6](../DECISION-DESIGN-PRINCIPLES-FRAMEWORK.md#psda2046---stop-with-a-usable-answer-and-preserve-the-right-return) also explains when interpretation help or preparation is needed. A conforming model does not establish participant agreement, independent modeling capability or an effective engineering intervention.
 
 
 
@@ -14228,13 +16020,13 @@ These are examples of contributions selected by the difficulty, not a complete c
 
 For each connection, say what result the receiver needs, what contribution supplies it and which conditions must hold. State what the explanation or demonstration leaves untested. A buyer's corrected explanation gives colleagues a proposition they can examine; the group still makes its own comparison and authorised commitment. A practice retry can show a corrected action with stated assistance; a launch still needs that assistance to be allowed and available. A provider's commitment backed by access and capacity can establish a support arrangement; delivery must then make the promised input available, and the receiver must use it. Observe what was produced and how it was used before concluding that the promised result was obtained. Keep observed improvement, its causal explanation and a claim of acquired capability distinct.
 
-Distinguish actions that make up the work of preparing a handover report from work and conditions that enable that preparation. Checking entries and recording unresolved items are parts of the report-preparation work. The report is the result used by the next supervisor. Granting access is separate work that supplies an enabling condition; a purchase decision can precede the preparation. [FPF B.1.5.EW](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b15ew---recover-how-constituent-actions-enact-encompassing-work), currently a Candidate, develops this distinction when the relation to encompassing work needs recovery. The reporting rule and the evidence of what was performed still come from the reporting practice.
+Distinguish actions that make up the work of preparing a handover report from work and conditions that enable that preparation. Checking entries and recording unresolved items are parts of the report-preparation work. The report is the result used by the next supervisor. Granting access is separate work that supplies an enabling condition; a purchase decision can precede the preparation. [FPF B.1.5.EW](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b15ew---recover-how-constituent-actions-enact-encompassing-work) develops this distinction when the relation to encompassing work needs recovery. The reporting rule and the evidence of what was performed still come from the reporting practice.
 
 The ordinary branch of [A.22.CGUS (FPF A.22.CGUS:4.1)](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22cgus41---ordinary-branch) makes available, blocked and unknown continuations explicit. [FPF E.18.3:4.0](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e18340---ordinary-start-and-conditional-formal-recovery) helps identify what changes, the situations being connected and the continuation that depends on the change. Distinguish what is required to start, what must remain available during the work and what the receiving work consumes. Check shared people and time as well as the feasibility of each contribution separately. Keep an unverified prerequisite unresolved until evidence supports it; obtain further information when its effect on a worthwhile next action warrants the burden.
 
 Availability does not by itself choose between several complete ways to obtain one result. Use a direct domain comparison when it already answers that question. If proposed alternatives are fragments such as “use local staff” and “obtain a service”, [FPF C.38](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c38---construct-comparable-ways-to-obtain-one-result) develops comparable ways with the same receiving result, use and acceptance basis. Include the permissions, inputs, execution, checking, support and burdens that could change the choice; keep proposed or unknown conditions visible. [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) then supports a choice, retained tie, rejection of the set or worthwhile further inquiry. A sufficient existing set of alternatives can go directly to that choice.
 
-If no adequately explained way is available, [FPF C.39](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c39---find-and-develop-a-way-to-obtain-a-result), currently a Draft, offers guidance for recovering a relevant practice's operations and constructing the missing connection on the receiving material. Its explained candidate still needs the domain support required for the intended use. A known operation blocked only by missing permission returns to the permission owner.
+If no adequately explained way is available, [FPF C.39](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c39---find-and-develop-a-way-to-obtain-a-result) offers guidance for recovering a relevant practice's operations and constructing the missing connection on the receiving material. Its explained candidate still needs the domain support required for the intended use. A known operation blocked only by missing permission returns to the permission owner.
 
 
 ### Engineering.Reference:21.6 - Purchase case: agreement survives the loss of support
@@ -14995,7 +16787,7 @@ Use this application when a policy makes several decisions during an attempt, to
 
 The earlier conversion example has one learned choice. Here the choices are separated by an observation. [CMP.7](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/COMPUTATIONAL-THINKING-DPF.md#cmp7---construct-a-learner-from-examples-and-feedback) supplies the learner construction, [SYSE.45:4.2 through SYSE.45:4.3](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse4542---obtain-experience-with-interpretable-feedback) the experience transformation and selected training intervention, and [SYSE.49](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) the qualification of tasks and feedback. The calculation makes their connection explicit. For an actual calculator service, a direct arithmetic controller is the obvious competing way to obtain the answer; use this deliberately small learner to understand and test the update construction.
 
-##### Keep the generated choices and their available histories
+##### Engineering.Reference:26.4.1.1 - Keep the generated choices and their available histories
 
 The task is to return `(n*m)+k`. The supplied calculator evaluates multiplication or addition exactly. A finite policy has two trainable scalar logits, initially zero. The first chooses `n*m` with probability `sigmoid(z1)` and `n+m` otherwise. After receiving the calculator's return `o`, the second chooses the answer `o+k` with probability `sigmoid(z2)` and `o+k+1` otherwise. The second logit is shared across these histories, but its answer still consumes the actual observation. The input supplies `n`, `m`, `k` and the calculator's meaning. The arithmetic operations and the available choices are provided capabilities; only their choice probabilities are being learned.
 
@@ -15012,7 +16804,7 @@ For B, the first learning record contains the request, tool meaning, selected mu
 
 Select the two generated decisions as policy-output positions. The calculator return stays in the second decision's input and has no policy-output target of its own. For a language model, the same distinction concerns generated tokens and externally supplied tokens; the selected trainer must implement both the mask and the intended loss normalization. A tag that the model can forge does not authenticate a tool result. Obtain observations through the execution interface and preserve their provenance. A missing or altered return requires repairing the experience or defining the resulting different input condition.
 
-##### Calculate an outcome update and consume it
+##### Engineering.Reference:26.4.1.2 - Calculate an outcome update and consume it
 
 Choose a mean of separate generated-decision terms. Let `A_i` be episode i's reward minus the group mean, divided by the population standard deviation. Use zero advantages for a zero-deviation group. For this group the advantages are `(sqrt(3), -1/sqrt(3), -1/sqrt(3), -1/sqrt(3))`. Each episode has two generated decisions. A complete surrogate for this finite adaptation is:
 
@@ -15093,7 +16885,7 @@ Aggregation changes that construction. Including the tool return as a third item
 
 For further training, evaluate current-to-old ratios, clipping and any selected regularization under the actual trainer. Resample under a new rollout policy when that recipe requires it. This first-step derivative cannot be repeated as though every later ratio stayed 1. Retain a recoverable baseline, decide when learned parameters persist or reset, and assess changed and older useful behavior on separate cases as in section 26.4.
 
-##### Obtain a separate reason to credit a call
+##### Engineering.Reference:26.4.1.3 - Obtain a separate reason to credit a call
 
 If the work needs a positive assessment of B's first call, select what that assessment means and obtain its grounds. Three different inputs can support three different operations:
 
@@ -15107,7 +16899,7 @@ The first two rows assess a call against a checked subresult or a qualified anno
 
 [ToolRL, NeurIPS 2025, §§2.1–2.4 and Appendix C](https://papers.nips.cc/paper_files/paper/2025/file/97c5b2707228e7e3fb67e4ecc2e0e607-Paper-Conference.pdf) supplies an annotated-call branch. It turns multi-step records into next-step tasks with preceding history, compares predicted and gold call sets using maximum matching over tool names, parameter keys and values, and normalizes the attainable score before scaling correctness to −3 through +3 and adding format reward. Group-relative advantages feed clipped policy optimization. Thus the first engineering input is a history with qualified call annotations. The source's exact scoring and trainer consume it. If only the four terminal rewards are available, either construct and qualify the additional annotations or continue with the outcome branch; silently calling those rewards gold calls would change the evidence. Call agreement still needs a separate check of the resulting effect in the receiving work.
 
-##### Supply preparation and preference inputs when those branches are selected
+##### Engineering.Reference:26.4.1.4 - Supply preparation and preference inputs when those branches are selected
 
 When the starting policy rarely produces a usable tool interaction, demonstrations can make subsequent exploration feasible. Obtain successful executions with available task inputs, actual observations and checked outcomes. From A, construct a supervised pair from the initial history to the multiplication call, and another from the resulting history including 323 to answer 328. Fit the generated actions; supply the return in the later input. A corrected first call in C would need its own execution or other qualified consequence evidence. A label for that correction may be usable before such evidence exists, but it does not inherit C's return 36. The correction of B's final answer can instead use the already available 323 if the stated method warrants it.
 
@@ -15127,7 +16919,7 @@ Set beta to 0.3. At the reference policy, gradient descent with rate 0.1 changes
 
 [Tool-Star v1, §3.2, Algorithm 1 and Appendices B–E](https://arxiv.org/html/2505.16410v1) combines preparation, masked group-relative training and preference updates. It separates direct successes, tool-assisted successes and intended harder failed questions, then samples candidates after GRPO and uses scores at least 1 for preferred outputs and below 1 for rejected outputs. Keep the actual contrasting candidates and the executable reward grounds. The source's earlier correct-trace filter leaves the supply of both-failed questions underspecified; retaining their question IDs before filtering is an explicit receiving repair. Its printed negative DPO loss and ascent wording also conflict. The finite example above descends that loss: reversing the sign would reduce the preferred answer's probability to 0.496250. These repairs state how this application works without claiming what the authors' code did.
 
-##### Change the learned objective deliberately
+##### Engineering.Reference:26.4.1.5 - Change the learned objective deliberately
 
 A policy may first need to learn the interaction protocol and later to solve the task. Label the stage and its objective when preparing feedback. [R1-Searcher v2, §§2–3](https://arxiv.org/html/2503.05592v2) first gives 0.5 for using retrieval at least once and 0.5 for acceptable format, with no answer reward. Its second stage removes the retrieval bonus, uses answer F1 and penalizes format violations by −2. This is a change in what receives reinforcement. The later policy still needs retrieval and its external evidence; a protocol reward has not taught all the reasoning required for the answer.
 
@@ -15148,7 +16940,7 @@ Use this application when an engineer can collect more interaction experience, b
 
 The construction below connects an affordable allocation to executed continuations, qualified feedback, a masked update and subsequent action. It specializes [ARPO, ICLR 2026, §§2–3 and Algorithm 1](https://proceedings.iclr.cc/paper_files/paper/2026/file/1c58e53bdf1fb045440256fd567531ae-Paper-Conference.pdf) and [AEPO, WWW 2026, §4 and Appendix A](https://playbigdata.ruc.edu.cn/dou/publication/2026_WWW_AEPO.pdf), with explicit receiving choices. The finite calculator and ordinary learning construction are those of [26.4.1](#engineeringreference2641---learn-from-interleaved-actions-and-observations). [SYSE.49](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) supplies the task and feedback arrangement; SYSE.45 and CMP.7 connect that experience to the chosen learner. The engineer needs probability access and an update implementation in addition to an interface that executes tools. A text-only generation endpoint can still help collect experience. Obtain full distributions and a parameter-update operation through facilities that provide them.
 
-##### Obtain a measure that can support the proposed decision
+##### Engineering.Reference:26.4.2.1 - Obtain a measure that can support the proposed decision
 
 At a model-generated position t, obtain the complete next-token distribution conditioned on the actual history: `p_t(v) = softmax(logits_t / temperature)[v]`. Fix the tokenizer, vocabulary, temperature and history used for the comparison. Shannon entropy in nats is `H_t = -sum_v p_t(v)*log(p_t(v))`, with zero-probability terms taken as zero. It concerns that conditional distribution. For example, several possible phrasings can raise it while all phrasings express the same known answer. The external return belongs in the next history; counting the characters or tokens of that return does not obtain the policy's next-token entropy.
 
@@ -15156,7 +16948,7 @@ Obtain the logits or a facility that returns a qualified estimate before using t
 
 A selected-token log-probability can suffice for a recorded action's importance ratio and still be insufficient for entropy. Suppose a four-outcome interface reports only that the selected outcome had probability 0.5. Its surprisal is one bit. If q is the normalized distribution over the other three outcomes, the complete entropy is `1 + 0.5*H_bits(q)`, between 1 and 1.792481 bits. Both `(0.5, 0.49, 0.005, 0.005)` and `(0.5, 1/6, 1/6, 1/6)` fit the log, but their entropies differ. The same selected probabilities at two histories therefore cannot establish their entropy order. Obtain the missing distribution or a qualified estimator; otherwise retain a feasible fixed or randomized allocation.
 
-##### Allocate attempts and reserve the work needed to finish them
+##### Engineering.Reference:26.4.2.2 - Allocate attempts and reserve the work needed to finish them
 
 Separate a count of complete training trajectories from resource limits such as generated tokens, tool calls and elapsed time. Set aside resources to finish and qualify the original attempts before admitting branches. For example, two extra trajectory places, six extra tool calls and an upper bound of three calls per continuation admit at most two new continuations. With three calls left, at most one fits. Include retries, probability extraction and any pilot in the resource account. Shared prefixes may save work, but their existence does not bound the cost of their continuations. SYSE.51's budgeting principles help retain completion resources; the training sampler described here is a further selected construction.
 
@@ -15168,7 +16960,7 @@ AEPO also proposes choosing the split with a pilot. With B available training tr
 
 The pilot must be affordable before it can inform that choice. Suppose the whole budget permits 48 calls, the completed pilot used three, and each retained training trajectory may require up to three further calls. A conservative count bound is now B=15, so the same rule gives seven starts and eight branch places. Sixteen trajectories plus that pilot would need capacity for 51 calls. This bound deliberately forgoes possible shared-prefix savings; a more precise allocation can use qualified remaining costs. When the pilot or probability extraction cannot fit, the fixed split remains an available baseline. The finite run below uses that fixed split and needs no pilot.
 
-##### Execute the selected continuations and prepare their learning records
+##### Engineering.Reference:26.4.2.3 - Execute the selected continuations and prepare their learning records
 
 Use the same task `(n*m)+k` and exact calculator as in 26.4.1. For this run, the old policy selects multiplication with probability 0.9 and the unshifted answer `observed+k` with probability 0.5. Each choice is one generated position with a binary vocabulary. The first-position entropy is 0.325082973 nats; the answer-position entropy after the tool return is 0.693147181. With K=1 and V=2, delta_H is 0.184032104. The analytic policy supplies both full distributions; no sampled look-ahead or extra tool execution is needed to obtain them in this fixture.
 
@@ -15187,7 +16979,7 @@ Two calculator executions supplied four completed trajectories. A shared prefix 
 
 Choose a mean over the two generated decisions of each of these four trajectories. Keep the actual return in the answer decision's history and exclude it from both the output loss and this denominator. Use the population-standard-deviation convention of 26.4.1: rewards `(1,0,0,0)` give advantages `(sqrt(3),-1/sqrt(3),-1/sqrt(3),-1/sqrt(3))`. The code uses zero advantages when reward dispersion is at most 1e-12, including equal rewards. This convention differs from a sample-standard-deviation implementation, which gives `(1.5,-0.5,-0.5,-0.5)`. Choose one with the learning rate and aggregation that consume it. Reweighting a shared prefix or retaining it only once also changes this construction; averaging descendant advantages is not generally equivalent under signed clipping and unequal lengths.
 
-##### Select modulation and the backward operation separately
+##### Engineering.Reference:26.4.2.4 - Select modulation and the backward operation separately
 
 A later training checkpoint may already differ from the sampling policy. For the same records, take current multiplication probability 0.9 and current unshifted-answer probability 0.65. Keep the old probabilities and reward advantages fixed. For each generated position let r be its current selected-action probability divided by its old selected-action probability. The ordinary contribution to the maximized objective is `min(r*A, clip(r,1-epsilon_low,1+epsilon_high)*A)`. Its sign matters: moving a negative advantage outside the minimum changes the operation.
 
@@ -15215,7 +17007,7 @@ This is an explicitly selected update rule, not ordinary differentiation of an u
 
 Keep the two clipping widths separate. For adjusted advantage −1.2, ratio 0.75, epsilon_low=0.2 and epsilon_high=0.28, the selected term is −0.96 and its gradient is zero. The lower test uses 0.8. Substituting the high width would test against 0.72 and incorrectly allow an update. This receiving case follows the lower-width condition in AEPO's appendix and the displayed objective. For a positive advantage above the upper bound, the ordinary rule has a plateau while the selected backward alternative continues to reinforce it. Preserving that distinction does not establish which intervention improves the receiving task.
 
-##### Run the finite construction and use the changed policy
+##### Engineering.Reference:26.4.2.5 - Run the finite construction and use the changed policy
 
 The code executes the two calculator calls and four answer continuations, checks the results and constructs the reward-relative update. Its two bits are the selected generated positions; the actual return remains in their record and contributes no output term. It keeps the population convention, mean over eight terms, detached modulation and ascent rate 0.1 stated above. The repeated proposal is at the same saved prefix; its changed counter, rather than new probability evidence, changes admission. Terminal children need no further counter decisions in this fixture.
 
@@ -15345,7 +17137,7 @@ Both changed policies still use the calculator. With the new request `(12,13,5)`
 
 Change the probability-access condition before generalizing the example. The binary full distributions above make its entropy calculations possible. If a four-outcome API instead supplies only selected probabilities, the earlier one-bit example shows why an entropy ranking may become unavailable even while recorded action ratios remain usable. Preserve the available outcome update or fixed allocation, and obtain the missing information only if the intended intervention justifies its cost. Change the branch history separately: the same measured delta_H can admit an unbranched lineage and reject another with l=1. These are different reasons for changing the next action.
 
-##### Compare another modulation and assess the complete arrangement
+##### Engineering.Reference:26.4.2.6 - Compare another modulation and assess the complete arrangement
 
 The direction and unit of entropy weighting are design choices. [AEM v3, 8 May 2026, §§3–5 and Algorithm 1](https://arxiv.org/abs/2605.00425v3) proposes a different one: average token entropy within each response ending before an environment transition, then compare those response averages across a prompt's rollout group. With range at least 0.1, min-max normalize the means to u, calculate `w = exp(-u/temperature)`, and divide each weight by the group's mean weight. Hold the resulting positive coefficients fixed and multiply a qualified advantage, using the same coefficient for the response's generated tokens. For example, retain the episode's terminal advantage on those positions; weighting it supplies no new judgement of that response's correctness. A range below 0.1 gives coefficients one. Select numerical stabilizers and response boundaries in the actual implementation.
 
@@ -15364,7 +17156,7 @@ The construction requires a policy that exposes a generated strategy, repeatable
 
 [StraTA v2, §§3–4](https://arxiv.org/pdf/2605.06642v2) supplies the particular combination used here: generate several natural-language strategies from the initial task, keep each strategy fixed during its executions, compare strategies across that task, compare actions within each strategy, and train both. The plan is an input to execution. If observations require changing it during an episode, obtain a revision operation through [SYSE.47](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse47---construct-and-revise-an-agents-execution-procedure); the fixed-plan construction does not perform that revision.
 
-##### Choose what the strategy score is meant to improve
+##### Engineering.Reference:26.4.3.1 - Choose what the strategy score is meant to improve
 
 Begin with the later use. If deployment makes one attempt, its expected return includes the execution policy actually available then. If deployment selects the best of several attempts, retain those attempts, selection facilities and costs in the comparison. Training can use an optimistic score to explore a strategy whose execution may improve, while the receiving assessment still measures ordinary single-use performance.
 
@@ -15374,7 +17166,7 @@ Select the strategy statistic. The mean over all M outcomes estimates performanc
 
 The top-K statistic combines execution opportunity, uncontrolled variation and selection over attempts. To interpret a favorable tail as something the learner can acquire, obtain a discriminating intervention or a qualified consequence model. [MMP.8.SD:4.2 through MMP.8.SD:4.4](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/MATHEMATICAL-MODELING-PRACTICE-DPF.md#mmp8sd42---construct-how-an-action-changes-the-world-and-the-available-information) compares actions with their available continuations. [FPF C.40:4.7](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c4047---develop-a-way-by-what-its-use-produces) requires performing allowed inner learning before crediting a candidate with the result it would produce after that learning. Specify that learning procedure and allowance, execute it, then compare its later policy. Declaring a better future action probability supplies no such learning.
 
-##### Construct the two learning comparisons
+##### Engineering.Reference:26.4.3.2 - Construct the two learning comparisons
 
 Let `R_ij` be execution j's reward under strategy i, and `B_i` its chosen strategy statistic. Standardize the N values B to obtain strategy advantages `A_strategy_i`. Separately standardize the M rewards within each strategy to obtain `A_action_ij`. This application uses population standard deviations and zero advantages when dispersion is at most `1e-12`. A group with no variation supplies no relative preference; obtain discriminating experience when that missing preference matters.
 
@@ -15392,7 +17184,7 @@ J = mean_over_N_strategies[f(strategy_ratio, A_strategy)]
 
 Maximize J, keeping the two groupings intact. Their coefficients are both 1 here, with no reference-policy penalty. For a token implementation of this application, replace each strategy term by the mean of f over that strategy's generated tokens, and each execution term by the mean over all its generated action tokens. External observations condition later tokens and contribute no optimized position. This explicitly chosen reduction gives each strategy and each of its completed executions the stated weight. The source trainer's per-step, token-sum reduction is a different choice when lengths vary; select one implementation and carry its actual weighting into the comparison.
 
-##### Generate attempts, update and use the result
+##### Engineering.Reference:26.4.3.3 - Generate attempts, update and use the result
 
 Consider two supplied strategies P and Q, each admitting actions a and b. In the qualified deterministic fixture, P,a returns 1, P,b returns 0, and either Q action returns 0.4. Three independent logits determine `p=Pr(P)`, `s=Pr(a|P)` and `t=Pr(a|Q)`. All start at zero, so the probabilities are 0.5. The choices and their meanings are supplied capabilities; the learner changes how often it selects them.
 
@@ -15487,7 +17279,7 @@ The gradient is `(0.5,sqrt(3)/8,0)`. One ascent step of 0.3 gives `(p,s,t)=(0.53
 
 This run consumes two strategy generations and eight task executions before the two displayed later executions. A language-model trial must also budget generated tokens, resets, feedback and any selected judges. [26.4.2](#engineeringreference2642---allocate-training-attempts-and-select-the-update) makes that allocation explicit. Embedding-based strategy selection or a self-judge adds its own computation and qualification; neither facility is needed by this finite version. Continue training with the actual current-to-old ratios and chosen clipping rule, refreshing rollout policy and experience when required by the recipe.
 
-##### Change the inference when success is not controllable
+##### Engineering.Reference:26.4.3.4 - Change the inference when success is not controllable
 
 Now suppose qualified environment evidence says that P succeeds with probability 0.25 independently of a or b, while Q still returns 0.4. The same eight observations remain possible. The top-half update remains numerically the same, but single-use expected return is now `U=0.4-0.15*p`: it falls from 0.325 to 0.3193855232. Changing P's action distribution cannot raise its success probability under this model.
 
@@ -15505,7 +17297,7 @@ Use this application when a present action costs effort but changes information 
 
 The immediate target here is a policy parameter controlling whether to consult. The consultation supplies an answer, a memory operation retains it, and a later controller uses it when applicable. [SYSE.50](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse50---construct-and-calibrate-an-agents-assistance-policy) qualifies the help and its availability; [SYSE.43](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse43---maintain-external-memory-for-continuing-work) supplies retained information and its further use. Parameter learning uses SYSE.45 and CMP.7. Keeping a new answer in memory can change performance with unchanged weights; train only when that additional intervention is warranted.
 
-##### Obtain continuation credit at the session boundary
+##### Engineering.Reference:26.4.4.1 - Obtain continuation credit at the session boundary
 
 Select the horizon and reward meaning through MMP.8.SD. A session boundary may clear working context while retaining memory. Save the information needed to continue: memory contents and applicability, the next-session information already available, remaining resources and horizon. Two identical text memories can have different values when one has more opportunities for use or a different validity condition. Reset only what the intended later arrangement actually resets.
 
@@ -15522,7 +17314,7 @@ Here `V_old(state)` is expected remaining reward under the frozen old continuati
 
 Partition the collected attempts into sessions with those boundary states. Supply the signal to the generated decisions in the session, preserving their historical inputs and old probabilities. Use a specified update, such as the clipped generated-position mean in [26.4.1](#engineeringreference2641---learn-from-interleaved-actions-and-observations), then recollect experience or refit values as the selected training procedure requires. Sessions remain related through retained state; cutting the transcript into pieces does not make their observations independent. If a discounted criterion is chosen, derive the boundary discount for the elapsed duration instead of reusing the undiscounted equation unchanged.
 
-##### Execute continuations, obtain a first update and retain its result
+##### Engineering.Reference:26.4.4.2 - Execute continuations, obtain a first update and retain its result
 
 The finite fixture has two sessions. In either, the supplied self-answering operation succeeds with probability 0.75. Consulting in the first session obtains a correct answer at cost 0.3 and stores a verified entry. Only this action writes memory. After context reset, the second question is related with probability 0.4. A fixed controller uses the stored answer if related; otherwise it self-answers. There are no other costs or discounts. The learned logit controls only the first consultation probability, initially 0.5; answer generation, retrieval and applicability recognition are supplied operations.
 
@@ -15601,7 +17393,7 @@ The gradient 0.0125 changes the consultation probability to 0.5009374989. Under 
 
 The updated probability persists into the later run; context clears at the boundary and the stored answer persists. That separation is essential when checking which contribution changed. An experiment that removes the expert or changes memory retrieval at the same time needs a comparison that includes those different conditions.
 
-##### Recalculate recurrence and the reliability of help
+##### Engineering.Reference:26.4.4.3 - Recalculate recurrence and the reliability of help
 
 When no later question is related, both after-states have continuation value 0.75. Consulting then totals 1.45 and self-answering 1.5. The code performs a separate update from the original probability, with gradient −0.0125 and result 0.4990625011. Repeatedly paying for information that will not be used has no future benefit in this model. A different horizon, retention cost or query population changes the same continuation calculation.
 
@@ -15617,7 +17409,7 @@ At `s=0.75, r=0.4, c=0.3, q=0.9`, consultation has value 1.41, below 1.5. The co
 
 When the consultation advantage is small compared with plausible value-estimation error, retain a supported baseline or obtain a discriminating continuation sample if its value warrants the work. Qualification of the expert alone cannot settle recurrence, and accurate recall cannot make an inapplicable answer useful.
 
-##### Choose a different estimator or a different learned memory operation
+##### Engineering.Reference:26.4.4.4 - Choose a different estimator or a different learned memory operation
 
 AGILE Appendix B.4 uses a heuristic instead of an estimated continuation value: when a later similar question exists in the training sequence, give bonus `beta/(n+1)`, where n counts previous similar stored questions. In the initial fixture, beta=0.1 and n=0 give consultation proxy 0.8 against self-answering 0.75. With n=3 the proxy is 0.725; with no later recurrence it is 0.7. This bonus is a choice of training signal, not a measured future gain. Use it as an alternative to the value construction, or derive a justified combined objective; adding it to an already credited future benefit would count that presumed benefit twice. Later questions can supply training labels while remaining unavailable during live action selection.
 
@@ -15648,7 +17440,7 @@ The construction needs qualified interaction records, access to change the stude
 
 [FPF C.40:4.7](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c4047---develop-a-way-by-what-its-use-produces) supplies the loop of executing the student, obtaining teaching targets on its reached histories, fitting it and executing again. [CMP.7](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/COMPUTATIONAL-THINKING-DPF.md#cmp7---construct-a-learner-from-examples-and-feedback) constructs the learner; CMP.6 supplies finite update calculation. [MMP.8.SD](https://github.com/ailev/FPF/blob/main/DPFs/Foundational%20Thinking%20DPF%20Suite/MATHEMATICAL-MODELING-PRACTICE-DPF.md#mmp8sd---construct-a-sequential-decision-model-from-information-and-consequences) determines which information is available before each decision. The additional work here is selecting and connecting hard targets, teacher distributions, outcome feedback and changes to the teaching arrangement.
 
-##### Recover the procedure and the observations it needs
+##### Engineering.Reference:26.4.5.1 - Recover the procedure and the observations it needs
 
 Suppose an assistant must report the checked status of a job. A read-only service returns `pending` or `committed`. A report of completion requires the latter observation; a request to inspect the job is not that observation. If the supplied interface has become obsolete, it returns `schema_error`. A supported recovery can obtain the current interface and inspect again.
 
@@ -15675,7 +17467,7 @@ The job-status example uses four decision histories. It deliberately aggregates 
 
 Each row has its own scalar logit θ_i and probability `p_i = sigmoid(θ_i)` of choice 1. The runner binds the job identifier and implements the supported calls; the policy chooses among the stated actions. Learning argument syntax, identifying a trustworthy service or obtaining permission for a mutation would require additional inputs and operations.
 
-##### Choose the teaching target and its probability domain
+##### Engineering.Reference:26.4.5.2 - Choose the teaching target and its probability domain
 
 Use the information actually supplied:
 
@@ -15701,7 +17493,7 @@ Decide which histories to collect before choosing a curriculum. With a sufficien
 
 When demonstration selection is the difficulty, [SmartAD, §3](https://aclanthology.org/2026.findings-acl.1349.pdf) offers a concrete hard-target alternative: generate several teacher executions per question, admit those passing the chosen correctness/tool checks, score them with the frozen initial student, and select the lowest NLL per question. Average token NLL within each assistant response, then average responses. Its training weights reasoning, intermediate code and final code by 1, 1.5 and 2, normalized by the sum of supervised-token weights. This needs no teacher logits, but requires extra generation and scoring. Low NLL measures compatibility, not correctness. Its tool-failure filter would remove the job-status recovery above; preserve that needed behavior through a revised admission/selection rule.
 
-##### Fit a first policy and use the fresh return
+##### Engineering.Reference:26.4.5.3 - Fit a first policy and use the fresh return
 
 For the four histories, stipulate teacher probabilities of choice 1 `q=(.8,.05,.9,.85)`. The service contract supports these target directions. Generate and qualify the three demonstrations above, then retain one representative per sufficient history. This four-row training set removes duplicate start/pending rows. SmartAD instead selects a demonstration per question by its stated NLL score.
 
@@ -15798,7 +17590,7 @@ With equal probabilities of pending and committed in this stipulated later popul
 
 The printed pending episode uses the same draws (.49,.49). The old policy inspects and falsely reports completion; the soft-trained policy inspects and reports pending. With a fresh committed observation it instead reports complete. In the changed-interface episode, draws (.49,.505,.49) make the old policy repeat the failed call, while the soft-trained policy obtains the current interface, inspects again and reports pending. The repair is performed by the supported runner; the learned decision selects it. The expected probabilities describe the stipulated population.
 
-##### Compute guidance on histories reached by the student
+##### Engineering.Reference:26.4.5.4 - Compute guidance on histories reached by the student
 
 A student can reach histories absent from a fixed teacher dataset. Execute its calls, retain the resulting observations, and score the actions it actually sampled. A teacher's proposed replacement action does not inherit the old action's next observation; SYSE.45:5.2 supplies that return. Keep the rollout probabilities, teacher scores and task outcomes separately.
 
@@ -15856,7 +17648,7 @@ Within the failed episode, the useful inspection still gets combined advantage �
 
 The first-step derivative in the code is specific to theta=theta_old. For another optimization step on this batch, evaluate the stated clipped objective with the stored old probabilities and frozen advantages; do not keep using that initial derivative. For a fresh rollout, recollect histories, outcomes and teacher scores. The finite construction uses pure correctness reward. To reproduce the published SOD recipe, supply its prepared SFT student, selected teacher, tool-turn outcome shaping and overlength penalties.
 
-##### Repair the premise that failed
+##### Engineering.Reference:26.4.5.5 - Repair the premise that failed
 
 Distinguish teacher disagreement from teacher error. The SOD score is an absolute sampled log-ratio statistic, not a calibrated error probability or an ordering of full conditional KL. Its first step always gets weight 1; constant high divergence also gets weight 1 throughout. Confident agreement on a common mistake creates no warning. A meaningful tool error can be useful evidence, and later valid recovery should remain eligible.
 
@@ -15872,7 +17664,7 @@ Choose a different teaching arrangement when it addresses that actual cause:
 
 When collection latency is the problem, [ActFirst-OPD v1, §§3–4](https://arxiv.org/pdf/2609.36608v1) supplies a conditional asynchronous alternative. Fast action-only proposals follow reference next observations while transitions remain compatible; a mismatch permanently switches that rollout to autonomous action-only collection. At each frozen collected context, the student separately generates a full thought/action response without the reference observation, and the teacher scores it. That sampled action may differ from the executed fast action and is not executed. Keep it distinct from the transition and outcome that produced the context. Forced decoding tokens remain context but are excluded from loss and normalization. The optimizer accepts the current or immediately preceding behavior version with stored probabilities and detached signals. Sampling is on-policy conditional on those contexts, while their distribution need not be the deployment policy's. Adopt this construction only with compatible references, transition checks and sufficient serving concurrency; include preparation beyond the reported collection timing.
 
-##### Compare the transferred result and retained support
+##### Engineering.Reference:26.4.5.6 - Compare the transferred result and retained support
 
 Return the trained policy together with its input meaning, action representation, runner and applicable observation/checking conditions. Compare the first learned result and consequential branches through SYSE.45:4.4 and SYSE.46. Count obtaining and qualifying demonstrations, probability queries, scoring candidate demonstrations, training, failed attempts and later execution. For the finite offline construction there are three teacher episodes, seven generated decisions and five service/interface calls; four selected histories receive the update. The online construction separately collects two student episodes with four decisions and two status calls, and scores those four choices with the teacher. Later tests are additional execution.
 
@@ -15886,7 +17678,7 @@ Preserve a direct rule, unweighted learning or an adequate fixed dataset as a se
 
 Start with one receiving result and the contribution that currently limits it. Keep the task population, performer, guide library, routing, execution and result criterion visible. Use C.38/C.11.CRC for the complete alternatives and [SYSE.45](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse45---train-an-llm-policy-from-qualified-interaction-experience) for a selected parameter change. A changing fact needs a current source; a stable interpretation or operation may be a learning target. An inexpensive adequate aid or a one-off task can make further development unnecessary.
 
-##### Compare an intervention that can answer the question
+##### Engineering.Reference:26.4.6.1 - Compare an intervention that can answer the question
 
 Consider a read-only setup assistant. It must express a requested duration in seconds, obtain the current permitted range and report the converted value, rule revision and whether the request is within that range. The duration interpretation recurs; the permitted range can change. The runner supplies arithmetic operations and a current-rule read. Both remain available through the comparison.
 
@@ -15907,7 +17699,7 @@ For an operating comparison, select the intervention before collecting its data.
 
 The primary techniques make different choices at this point. [SKILL0 v2, §3](https://arxiv.org/pdf/2604.02268v2) ranks guidance under a budget scheduled to reach zero; its whole-bank and individual-removal formulations need to be distinguished when implementing the comparison. A zero endpoint can remove still-useful help. [SLIM v2, §3](https://arxiv.org/pdf/2605.10923v2) instead uses exposure, smoothed removal differences and repeated low contribution before retirement, and can add guidance for persistent failures. Freeze the comparison composition, or deliberately assess the changed bundle after each mutation. Neither rule makes individual retirement proof of acquired capability or protects it from later forgetting.
 
-##### Turn selected guidance into a qualified learning target
+##### Engineering.Reference:26.4.6.2 - Turn selected guidance into a qualified learning target
 
 Choose the recurring *operation*, not merely a file with a favorable score. Here `a` and `b` are alternative suppliers of the same interpretation. Retain one while developing that interpretation; keep the current range read and arithmetic execution. Recover a useful action at a history where the intended learner has the inputs that warrant it. Qualify the action against the unit definition and required report. A guide may help a teacher produce that target; its presence does not qualify every resulting action.
 
@@ -15942,7 +17734,7 @@ The target also determines which trace positions enter the loss. Consider a trac
 
 [daVinci-Dev, ICML 2026, §§2–3](https://proceedings.mlr.press/v306/zeng26d.html) uses full-sequence mid-training followed by action-masked fine-tuning. Such a target switch changes what the fit means. A failed attempt can supply a recorded sequence without supplying actions to imitate as successful conduct. Retain whether its context was observed during the attempt or reconstructed with hindsight. A predicted rule remains a prediction; the current-report task consumes an actual current rule. The finite update here fits the two selected interpretation actions.
 
-##### Run the changed performer with its joint remaining support
+##### Engineering.Reference:26.4.6.3 - Run the changed performer with its joint remaining support
 
 Before testing withdrawal, bind the learned actions to the actual runner and define the assistance rule. For the two familiar unit classes, the candidate uses its learned interpretation. A new unit returns the need for its current definition. Every report still needs an applicable current-rule observation; once that evidence is supplied for the task, further retrieval can stop. Use SYSE.50 for the help decision, SYSE.51 for useful effort and completion reserve, and SYSE.47/.52 for the implemented continuation and input. Requalify those decisions when their performer, input or support changes.
 
@@ -16033,7 +17825,7 @@ The learned interpretation produces `15` seconds from `15000 ms`. Under revision
 
 Test the whole candidate on the declared task population and final support conditions through SYSE.46. In the finite model, the two correct-action probabilities can be enumerated exactly. With sampled operating data, retain the sampling, dependence and uncertainty that qualify a claimed rate. Include failed reports, unrecognized inputs, inaccurate help, a changed definition and a formerly retained guide that later becomes necessary. Restore the contribution whose grounds failed; avoid changing the learner merely because the whole report failed.
 
-##### Retain useful external resources and spend effort on the missing contribution
+##### Engineering.Reference:26.4.6.4 - Retain useful external resources and spend effort on the missing contribution
 
 A deployed arrangement may keep a substantial resource after learning. [TInR, ACL 2026, §3](https://aclanthology.org/2026.acl-long.2077.pdf) first selects learned tool tokens, retrieves the selected tools' current descriptions and parameters, then generates arguments. Preserve that document lookup with the executor. [SkillRL v1, §3](https://arxiv.org/pdf/2602.08234v1) trains a policy with a retrieved library and expands it from failures. [SkillForge v1, §3](https://arxiv.org/pdf/2608.24747v1) makes requesting guidance an action and later revises guidance from experience. Return content before the action that needs it: guidance delivered alongside an already executed action can inform only its continuation. SYSE.48 constructs the usable resource, .52 exposes it and .47 consumes the return. Separate bad retrieval, ignored guidance and a faulty instruction before deciding which to repair.
 
@@ -16057,7 +17849,7 @@ Now supply a qualified current snapshot before the effort choice. Finishing from
 
 A direct rule can make one read when current evidence is missing and finish when it is supplied. The following cost comparison uses that rule. If an effort learner is selected for a broader task, include its attempt collection, fitting and assessment in the whole cost.
 
-##### Decide whether the change is worth obtaining
+##### Engineering.Reference:26.4.6.5 - Decide whether the change is worth obtaining
 
 Compare the complete arrangements over the same horizon. Charge discovering and checking a withdrawal schedule, guided targets, teacher or creator work, fitting, failed alternatives, adaptive trials, final assessment and maintenance. C.11.DUA selects further inquiry only when its possible effect on this choice warrants that burden. C.11.MV supplies the situated Method-worth comparison.
 
@@ -16071,7 +17863,7 @@ For the finite fixture, a deterministic converter is also available as a constru
 
 Under the stipulated floor and cost objective, retain the guide for two tasks and obtain the converter for 100. The learned candidate demonstrates an obtainable update and successful later use, but the converter dominates it on these supplied costs and result rates. Keep that alternative when the relevant input envelope really admits it. A broader interpretation problem, unavailable implementation or different preparation burden reopens the comparison. If the evidence needed to choose a withdrawal costs more than retaining adequate help, retain the help for the current horizon.
 
-##### Obtain the human development and provision results separately
+##### Engineering.Reference:26.4.6.6 - Obtain the human development and provision results separately
 
 For a person doing the same preparation, use [HCD.9, HCD.10, HCD.12 and HCD.13](../Human%20Capability%20Engineering%20DPF%20Suite/HUMAN-CAPABILITY-DEVELOPMENT-PRINCIPLES-FRAMEWORK.md) for the actual attempt, help, correction, support change and later use. C.2.8 can compare how much selected Method-description structure the person recovers under the stated preparation, access, help and budget. Recovery of the sequence, performance with a cue and later uncued performance provide different evidence. HCD.18/.19 connect instruction recovery with development practice.
 
@@ -16416,7 +18208,7 @@ A support engineer asks how to stop a recurring export failure. The manual calls
 
 Knowledge access sits within the broader work of obtaining and using justified contributions. This framework governs the engineered access arrangement: sources and their editions, readable and searchable representations, finding and assessment operations, delivery to particular readers, and the maintenance and observation that keep those operations available. It explains how an engineer constructs and changes that arrangement. It does not determine whether every source claim is true, replace the receiving profession's judgement, or promise discovery of every future relevant distinction.
 
-The practical gain is a way to diagnose which operation is missing and construct the connection that supplies it. A reader can build a source reader, a persistent additional search route, a bounded assessment service or an event-to-inquiry arrangement; connect them into a larger use; compare credible alternatives; and revise only the results affected by change. Software implementation still requires the ordinary engineering capability stated in the Readme. Domain approval, suitable evidence and actual deployment remain properties to obtain in the receiving setting.
+The practical gain is a way to diagnose which operation is missing and construct the connection that supplies it. A reader can build a source reader, a persistent additional search route, a bounded assessment service or an event-to-inquiry arrangement; connect them into a larger use; compare credible alternatives; and revise only the results affected by change. Software implementation still requires the ordinary engineering capability stated in the Readme. The receiving use determines which domain approvals, evidence and deployment work are needed.
 
 ## KCAE.Reference:2 - Why changing questions defeat fixed representations
 
@@ -16490,22 +18282,22 @@ For FPF Library, retrieval returns material to the existing pattern-use and appl
 
 The Readme and index select entry; this Architectural Reference explains the whole; the patterns supply repeatable operations; the applications expose connected use; the profiles and references preserve source returns and replaceable engineering choices. The overview deliberately omits implementation detail and per-use evidence. Return to the named pattern when constructing an operation, to the application when a connection is unfamiliar, and to the source when a claimed mechanism or limit changes the design.
 
-Change the smallest explanation whose promise has changed. A new source format reopens extraction and addressing. A model change reopens its question/threshold qualification. A new privacy constraint can eliminate a remote route. An altered work event can invalidate an observer. A demonstrated new kind of useful question can justify another representation or a revised recognition cue. Preserve unchanged results, and test the receiving use after the change. The edition's refresh route is KCAE.Reference:4.
+Change the smallest explanation whose promise has changed. A new source format reopens extraction and addressing. A model change reopens its question/threshold qualification. A new privacy constraint can eliminate a remote route. An altered work event can invalidate an observer. A demonstrated new kind of useful question can justify another representation or a revised recognition cue. Preserve unchanged results, and test the receiving use after the change. KCAE.Reference:12 explains when to revise the framework and its uses.
 
 ## KCAE.Reference:9 - Source contributions and comparison boundaries
 
-This is a practitioner synthesis with constructed applications. Primary research and implementation documentation supply mechanisms and bounded observations; they do not establish empirical effectiveness of a KCAE installation. The profiles above link the exact contributions used. Primary web material was inspected on 3 October 2026. A retrieval date identifies this reading; it is not an assurance that a later implementation is unchanged.
+This is a practitioner synthesis with constructed applications. Primary research and implementation documentation supply mechanisms and bounded observations; they do not establish empirical effectiveness of a KCAE installation. KCAE.Profiles links the source contributions used by each engineering profile. Primary web material was inspected on 3 October 2026. A retrieval date identifies this reading; it is not an assurance that a later implementation is unchanged.
 
 | Source line | Receiving contribution | Deliberate boundary and return |
 | --- | --- | --- |
-| [Bates, 1989, the berrypicking account](https://pages.gseis.ucla.edu/faculty/bates/berrypicking.html), especially the evolving-search model | Questions evolve and useful information is gathered by several techniques; informs KCAE.SEARCH and MEMORY. | Historical conceptual lineage. Does not rank modern retrieval engines. Return when the interface makes the original episode or changing question unrecoverable. |
+| [Bates, 1989, the berrypicking account](https://pages.gseis.ucla.edu/faculty/bates/berrypicking.html), especially the evolving-search model | Questions evolve and useful information is gathered by several techniques; informs KCAE.SEARCH and KCAE.MEMORY. | Historical conceptual lineage. Does not rank modern retrieval engines. Return when the interface makes the original episode or changing question unrecoverable. |
 | [Introduction to Information Retrieval, ranked evaluation](https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html) | A mathematical basis for ranked retrieval measures and their dependence on query/relevance judgements. | Historical algorithmic reference; component relevance is not whole-work benefit. KCAE.EVAL adds that receiving comparison. |
-| BM25, RRF, HNSW, ColBERT and HyDE, linked in Profiles:1 | Implementable lexical, fusion, approximate-vector, late-interaction and generated-query mechanisms. | Distinct operations with historical evidence. Select current realizations by use; source figures and parameter choices are not universal defaults. |
-| Contextual Retrieval, GraphRAG, RAPTOR and LazyGraphRAG, linked in Profiles:1 | Different retained context, levels of abstraction and preparation/query cost arrangements. | Serious alternatives, not an ordinal maturity ladder. Preserve originals and inspect update and rare-distinction losses. |
-| TypeSafe documentation and cookbooks, linked in Profiles:2 | Bounded typed screening, progressive candidate inspection and error-driven question development. | Provider mechanisms and demonstrations. Do not inherit synthetic accuracy, English performance, thresholds or explanatory-method exclusions. |
-| Typed-decision audits, linked in Profiles:2.3 | Comparative-design and logical-coherence failure questions. | Early bounded evidence. Neither universal failure nor universal superiority follows. Reopen with changed models and better matched comparisons. |
+| BM25, RRF, HNSW, ColBERT and HyDE, linked in KCAE.Profiles:1 | Implementable lexical, fusion, approximate-vector, late-interaction and generated-query mechanisms. | Distinct operations with historical evidence. Select current realizations by use; source figures and parameter choices are not universal defaults. |
+| Contextual Retrieval, GraphRAG, RAPTOR and LazyGraphRAG, linked in KCAE.Profiles:1 | Different retained context, levels of abstraction and preparation/query cost arrangements. | Serious alternatives, not an ordinal maturity ladder. Preserve originals and inspect update and rare-distinction losses. |
+| TypeSafe documentation and cookbooks, linked in KCAE.Profiles:2 | Bounded typed screening, progressive candidate inspection and error-driven question development. | Provider mechanisms and demonstrations. Do not inherit synthetic accuracy, English performance, thresholds or explanatory-method exclusions. |
+| Typed-decision audits, linked in KCAE.Profiles:2.3 | Comparative-design and logical-coherence failure questions. | Early bounded evidence. Neither universal failure nor universal superiority follows. Reopen with changed models and better matched comparisons. |
 | [AgentRetrievalBench](https://arxiv.org/html/2607.24882v1), especially natural no-gold analysis and limitations | A concrete test of how retrieval rejection behaves on naturally unsupported requests versus artificial wrong-corpus controls. | Code-retrieval evidence, not downstream task success or a support-corpus rate. Include natural no-use cases in KCAE.EVAL. |
-| Provider, VibeVM and storage documentation in Profiles:3; CodeNib v2 | Available access forms, source identities, runtime loading and update guarantees at their stated scope. | Interface and bounded implementation evidence. It cannot establish that an installed reader used the source or that users benefited. Requalify the relevant contract after a version change. |
+| Provider, VibeVM and storage documentation in KCAE.Profiles:3; CodeNib v2 | Available access forms, source identities, runtime loading and update guarantees at their stated scope. | Interface and bounded implementation evidence. It cannot establish that an installed reader used the source or that users benefited. Requalify the relevant contract after a version change. |
 
 The best arrangement is unresolved until the receiving workload and comparison make the alternatives decidable. This publication adopts a source-returning, condition-aware construction because it supports those comparisons and local repairs. It rejects a universal requirement to begin with lexical-only retrieval, a universal preference for embedding/graph retrieval and a universal prohibition of dynamic loading. It also rejects treating retained bytes as sufficient access or a high retrieval score as justified use. These choices follow from the differing operations and failure cases developed in the methods, rather than from a claim that every technology has already been tested together.
 
@@ -16515,15 +18307,15 @@ The compatible public supplier set for the uses below is [FPF Library edition d4
 
 | Supplier and exact section | Result received here | Use and limit |
 | --- | --- | --- |
-| [FPF-Spec.md](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/FPF-Spec.md), F.1:4.1–4.2 | An inspected question-relative source cut with roles, gaps and reopen conditions. | KCAE.USE/SOURCE select source bases. F.1's optional search policy is attention guidance; KCAE does not presuppose an unprovided future finding method. |
-| Same Core publication, A.6.3.RT:4.1 and C.2.8:4.1–4.3 | A representation-change account and reader-relative recovery of selected structure. | KCAE.SOURCE/DELIVER preserve consequential conditions and diagnose loss. A vector view is not declared a meaning-preserving translation without its own basis. |
-| Same Core publication, C.11.DUA:4.1–4.2.1 | A worthwhile, attainable continuation with full recipient burden. | KCAE.USE, SEARCH, ENCOUNTER and EVAL compare inquiry and advice with serious alternatives. It supplies no domain permission. |
-| Same Core publication, C.39:4.2–4.4 | Construction from a needed result through neighboring contributions, explained joins, forward application and repair of failed connections. | KCAE.COMPOSE specializes this general construction for bounded search over partial arrangements, source-dependent joins and changing conditions. A failed candidate calls for a constructive continuation, not just a lower score. |
-| Same Core publication, B.5.PI:4.1–4.6 and A.15.11:4.1–4.7 | Inquiry opened from actual work and a useful method cue with an attainable next operation. | KCAE.ENCOUNTER/MEMORY construct the access and observation support. A stored cue is not an actual encounter. |
-| Same Core publication, E.11.PUR:4.1–4.3 and E.11.PUA:4.1 | Applicability, recommendation, coordination and ordinary pattern use. | KCAE.Application:3 returns FPF use to these owners. General knowledge access does not require every contribution to be a pattern. |
-| [Method Engineering](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Engineering%20DPF%20Suite/METHOD-ENGINEERING-PRINCIPLES-FRAMEWORK.md), ME.4:4, ME.5:4, ME.6:4 and ME.13:4 | Source-faithful method recovery, individual qualification, comparison of whole arrangements and bounded fit/transfer claims. | KCAE.ASSESS/COMPOSE and Application:3 consume these when the material is a method repertoire. A proposed connection or worked illustration remains distinct from observed enactment and transfer. |
-| [Notational Engineering](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Foundational%20Thinking%20DPF%20Suite/NOTATIONAL-ENGINEERING-DPF.md), NOT.5:4.1–4.5 | A translation tied to a receiving operation, with collapsed distinctions and a usable return. | Use for tables, notation changes and the method-library example when those distinctions matter. It does not make every extraction a new notation-design project. |
-| [Computational Thinking](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Foundational%20Thinking%20DPF%20Suite/COMPUTATIONAL-THINKING-DPF.md), CMP.10:4.1–4.6 and CMP.4:4.1–4.6 | Representation choice from reads/updates/full cost, and computational search with justified exclusions. | Additional construction support for KCAE.INDEX/CHANGE and finite combination search in COMPOSE. A heuristic ordering is not a sound exclusion or an optimality proof. |
+| [FPF-Spec.md](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/FPF-Spec.md), F.1:4.1–F.1:4.2 | An inspected question-relative source cut with roles, gaps and reopen conditions. | KCAE.USE and KCAE.SOURCE select source bases. F.1's optional search policy is attention guidance; KCAE does not presuppose an unprovided future finding method. |
+| Same Core publication, A.6.3.RT:4.1 and C.2.8:4.1–C.2.8:4.3 | A representation-change account and reader-relative recovery of selected structure. | KCAE.SOURCE and KCAE.DELIVER preserve consequential conditions and diagnose loss. A vector view is not declared a meaning-preserving translation without its own basis. |
+| Same Core publication, C.11.DUA:4.1–C.11.DUA:4.2.1 | A worthwhile, attainable continuation with full recipient burden. | KCAE.USE, KCAE.SEARCH, KCAE.ENCOUNTER and KCAE.EVAL compare inquiry and advice with serious alternatives. It supplies no domain permission. |
+| Same Core publication, C.39:4.2–C.39:4.4 | Construction from a needed result through neighboring contributions, explained joins, forward application and repair of failed connections. | KCAE.COMPOSE specializes this general construction for bounded search over partial arrangements, source-dependent joins and changing conditions. A failed candidate calls for a constructive continuation, not just a lower score. |
+| Same Core publication, B.5.PI:4.1–B.5.PI:4.6 and A.15.11:4.1–A.15.11:4.7 | Inquiry opened from actual work and a useful method cue with an attainable next operation. | KCAE.ENCOUNTER and KCAE.MEMORY construct the access and observation support. A stored cue is not an actual encounter. |
+| Same Core publication, E.11.PUR:4.1–E.11.PUR:4.3 and E.11.PUA:4.1 | Applicability, recommendation, coordination and ordinary pattern use. | KCAE.Application:3 returns FPF use to these owners. General knowledge access does not require every contribution to be a pattern. |
+| [Method Engineering](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Engineering%20DPF%20Suite/METHOD-ENGINEERING-PRINCIPLES-FRAMEWORK.md), ME.4:4, ME.5:4, ME.6:4 and ME.13:4 | Source-faithful method recovery, individual qualification, comparison of whole arrangements and bounded fit/transfer claims. | KCAE.ASSESS and KCAE.COMPOSE consume these results when the material is a method repertoire; KCAE.Application:3 shows that use. A proposed connection or worked illustration remains distinct from observed enactment and transfer. |
+| [Notational Engineering](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Foundational%20Thinking%20DPF%20Suite/NOTATIONAL-ENGINEERING-DPF.md), NOT.5:4.1–NOT.5:4.5 | A translation tied to a receiving operation, with collapsed distinctions and a usable return. | Use for tables, notation changes and the method-library example when those distinctions matter. It does not make every extraction a new notation-design project. |
+| [Computational Thinking](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/Foundational%20Thinking%20DPF%20Suite/COMPUTATIONAL-THINKING-DPF.md), CMP.10:4.1–CMP.10:4.6 and CMP.4:4.1–CMP.4:4.6 | Representation choice from reads/updates/full cost, and computational search with justified exclusions. | These contributions support representation and update choices in KCAE.INDEX and KCAE.CHANGE, and finite combination search in KCAE.COMPOSE. A heuristic ordering is not a sound exclusion or an optimality proof. |
 | [USING-FPF.md](https://github.com/ailev/FPF/blob/d4f6b0ba1a4db119fecf8d5b9d2b526633f2e58a/USING-FPF.md) | The ordinary practical entry to finding and reading Library contributions. | Access instruction for that distribution, not this domain's universal implementation policy. Follow the instruction applicable to the distribution being used. |
 
 These dependencies run from this DPF to its suppliers. Core remains usable independently. KCAE's software and service choices are its own engineering profiles; an organization supplies its own local installation, operating instructions and authority rules. No citation creates a deployment, role assignment, permission or positive evaluation result.
@@ -16599,7 +18391,7 @@ Select a finite horizon and identify who bears each cost. Build and extraction c
 
 #### KCAE.USE:4.4 - Compare complete feasible arrangements
 
-Construct at least the credible existing or simple arrangement and the proposed alternative at the same receiving result. A small dossier can use full reading with a cache. A large evolving corpus can use full-text plus semantic retrieval and independent block inspection. A structured codebase can use qualified symbol navigation. Include what each needs for source preparation, assessment, delivery, updates and recovery. An unsupported capability such as history deletion makes an arrangement unavailable until that capability is supplied.
+Construct credible alternatives at the same receiving result, including an existing or simpler arrangement when it could provide that result. A small dossier can use full reading with a cache. A large evolving corpus can use full-text plus semantic retrieval and independent block inspection. A structured codebase can use qualified symbol navigation. Include what each needs for source preparation, assessment, delivery, updates and recovery. An unsupported capability such as history deletion makes an arrangement unavailable until that capability is supplied.
 
 Eliminate a choice that violates a hard condition before comparing cheaper variants. Then compare quality and cost by workload segment. An untested semantic route can be a reasonable initial design hypothesis for frequent cross-language questions; it does not need an artificial history of lexical failures to be considered. Equally, a graph is not earned by its name: identify the relations its intended queries actually require and the cost of maintaining them.
 
@@ -16619,7 +18411,7 @@ Logs favour questions users already know how to ask. Include episodes where they
 
 ### KCAE.USE:7 - Conformance Checklist
 
-Can the named recipient obtain the stated result with the supplied preparation and tools? Is source authority obtained independently of ranking? Are private data flows explicit? Does the comparison include a credible simpler arrangement and the same required quality? Are forecasts and unknowns marked where they affect selection?
+Can the named recipient obtain the stated result with the supplied preparation and tools? Is source authority obtained independently of ranking? Are private data flows explicit? Are credible alternatives compared at the same required quality, including an existing or simpler arrangement when it could meet that requirement? Are forecasts and unknowns marked where they affect selection?
 
 ### KCAE.USE:8 - Common Anti-Patterns and How to Avoid Them
 
@@ -16720,7 +18512,7 @@ The source remains the basis for later questions, while retrieval units optimize
 
 ### KCAE.SOURCE:11 - SoTA-Echoing
 
-The practice question is how to retrieve small passages without making them contextless. Anthropic's 2024 Contextual Retrieval is a useful historical mechanism: attach context to chunks before indexing. This pattern adapts that idea by retaining generated context separately and exposing its source dependencies; it does not adopt the reported corpus-wide gains as a forecast. Full-section indexing is a simpler rival with greater per-hit reading cost. Reopen the unit design when an actual miss depends on omitted context or when expansion overwhelms the reader. NOT.5 supplies a fuller translation/loss method where notation changes; ordinary file parsing alone is not an A.6.3.RT semantic translation claim.
+The practice question is how to retrieve small passages without making them contextless. Anthropic's 2024 Contextual Retrieval is a useful historical mechanism: attach context to chunks before indexing. This pattern adapts that idea by retaining generated context separately and exposing its source dependencies; it does not adopt the reported corpus-wide gains as a forecast. Indexing complete sections can avoid chunk expansion within a section; compare its finding performance and per-hit reading cost with smaller units. Reopen the unit design when an actual miss depends on omitted context or when expansion overwhelms the reader. NOT.5 supplies a fuller translation/loss method where notation changes; ordinary file parsing alone is not an A.6.3.RT semantic translation claim.
 
 ### KCAE.SOURCE:12 - Relations
 
@@ -16975,7 +18767,7 @@ The current gap connects earlier reading to the next operation. Preserving both 
 
 Bates's developed historical comparator already permits changing questions, several techniques and movement among sources. This pattern adopts that inquiry, rather than claiming iteration as its invention. Its engineering addition connects each unresolved contribution to available versioned routes, reading capacity, source-return operations and truthful stop states. A fixed retrieval call remains a smaller alternative when the need is stable and it suffices.
 
-The contemporary [BRIGHT-Pro study, section 6.3](https://aclanthology.org/2026.acl-long.1705.pdf), provides bounded agentic-search failure evidence: rewritten queries can repeat unhelpful evidence, new documents can cover only one aspect, and exploration can continue after sufficient evidence was found. KCAE.SEARCH:4.2–4.5 addresses those distinct failures through contribution tracking, selector revision and a receiving-result stop. These are proposed repairs to compare in the intended workload, not a claim that this publication was tested in that study. Reopen the route policy when it repeatedly misses valuable material or spends effort without changing the result.
+The contemporary [BRIGHT-Pro study, section 6.3](https://aclanthology.org/2026.acl-long.1705.pdf), provides bounded agentic-search failure evidence: rewritten queries can repeat unhelpful evidence, new documents can cover only one aspect, and exploration can continue after sufficient evidence was found. KCAE.SEARCH:4.2–KCAE.SEARCH:4.5 addresses those distinct failures through contribution tracking, selector revision and a receiving-result stop. These are proposed repairs to compare in the intended workload, not a claim that this publication was tested in that study. Reopen the route policy when it repeatedly misses valuable material or spends effort without changing the result.
 
 ### KCAE.SEARCH:12 - Relations
 
@@ -17078,7 +18870,7 @@ Current typed-decision practice offers cheap bounded outputs, but the Jev docume
 
 ### KCAE.ASSESS:12 - Relations
 
-KCAE.SEARCH supplies candidates and coverage limits; KCAE.SOURCE supplies context; KCAE.COMPOSE consumes qualified contributions; KCAE.DELIVER conveys the result. For FPF methods, E.11.PUR remains the owner of fit, recommendation and coordination judgement; A.3.1.DR, A.3.1.QM and C.32.MWA.PP and A.3.1.FT supply their declared method-recovery and transfer contributions.
+KCAE.SEARCH supplies candidates and coverage limits; KCAE.SOURCE supplies context; KCAE.COMPOSE consumes qualified contributions; KCAE.DELIVER conveys the result. For FPF methods, E.11.PUR remains the owner of fit, recommendation and coordination judgement; A.3.1.DR, A.3.1.QM, C.32.MWA.PP and A.3.1.FT supply their declared method-recovery and transfer contributions.
 
 ### KCAE.ASSESS:End
 
@@ -17103,7 +18895,7 @@ Searching every subset is expensive. Pruning by a familiar category can remove t
 
 ### KCAE.COMPOSE:4 - Solution
 
-C.39:4.2–4.4 supplies the general construction: recover a neighboring contribution, work backward from the needed result, explain the joins, then follow the proposed way forward and refine only consequential gaps. The domain work here is to obtain those contributions from a changing corpus, retain several source-qualified partial arrangements, and revise them when a missing contribution or failed connection changes the search.
+C.39:4.2–C.39:4.4 supplies the general construction: recover a neighboring contribution, work backward from the needed result, explain the joins, then follow the proposed way forward and refine only consequential gaps. The domain work here is to obtain those contributions from a changing corpus, retain several source-qualified partial arrangements, and revise them when a missing contribution or failed connection changes the search.
 
 #### KCAE.COMPOSE:4.1 - Work backward from the receiving result
 
@@ -17184,7 +18976,7 @@ Source material, situated relations and execution are separate because each can 
 
 ### KCAE.COMPOSE:11 - SoTA-Echoing
 
-A.3.1.DR, A.3.1.QM and C.32.MWA.PP and A.3.1.FT supply recovery, qualification, architecture comparison and transfer methods for method repertoires. This pattern consumes their results in an access arrangement and develops the retrieval-to-connection interface, bounded combination search and source-dependent reuse. Computational search is a serious implementation choice when a finite candidate space and constraints can be stated; a conversational proposer is another, with an explicit inspection burden. Neither receives an optimality claim from plausible output. Reopen the choice when the candidate population or cost of missed combinations changes.
+A.3.1.DR, A.3.1.QM, C.32.MWA.PP and A.3.1.FT supply recovery, qualification, architecture comparison and transfer methods for method repertoires. This pattern consumes their results in an access arrangement and develops the retrieval-to-connection interface, bounded combination search and source-dependent reuse. Computational search is a serious implementation choice when a finite candidate space and constraints can be stated; a conversational proposer is another, with an explicit inspection burden. Neither receives an optimality claim from plausible output. Reopen the choice when the candidate population or cost of missed combinations changes.
 
 ### KCAE.COMPOSE:12 - Relations
 
@@ -17645,7 +19437,7 @@ Real episodes have greater practical relevance and less convenient labels. Whole
 
 #### KCAE.EVAL:4.1 - State the decision and serious alternatives
 
-Recover the receiving use, population, corpus editions, permitted data flows and adoption consequence from KCAE.USE. Choose an incumbent that a capable practitioner would actually use. It may be manual reading, exact/lexical search, a current hybrid retriever, an established long-context workflow or a competent existing agent. A weak toy baseline makes an addition easy to justify and hard to trust.
+Recover the receiving use, population, corpus editions, permitted data flows and adoption consequence from KCAE.USE. Choose a credible comparison arrangement that a capable practitioner would actually use; include the incumbent with its current limits when one exists. It may be manual reading, exact/lexical search, a current hybrid retriever, an established long-context workflow or a competent existing agent. A weak toy baseline makes an addition easy to justify and hard to trust.
 
 State the proposed difference and the expected useful change. Compare complete feasible arrangements, including required extraction, source reading, assessment and delivery. Keep common components, instructions and sources equal when the question is one component's contribution; disclose changes when equality is impossible. A provider comparison confounded by different prompts or missing tools does not isolate the provider's effect.
 
@@ -17700,7 +19492,7 @@ Use executable calculation for counts, ratios, confidence intervals or cost arit
 
 #### KCAE.EVAL:4.6 - Make the adoption and refresh decision
 
-Relate observed gains and losses to the original use. Keep the incumbent when the addition does not earn its build and maintenance burden. Adopt a narrower profile when it helps one stratum but not another. Change the source preparation, route, assessor, delivery, observer or memory indicated by the evidence. A source gap may require obtaining a source rather than improving retrieval.
+Relate observed gains and losses to the original use. Keep the incumbent when it still meets the receiving requirements and the proposed change does not earn its build and maintenance burden. Adopt a narrower profile when it helps one stratum but not another. Change the source preparation, route, assessor, delivery, observer or memory indicated by the evidence. A source gap may require obtaining a source rather than improving retrieval.
 
 Name what the evidence supports, what it leaves untested and which condition reopens the decision. A changed corpus, model, language population, authority rule, workload or privacy constraint can defeat the original comparison. Preserve an operational fallback and observation during a bounded rollout if that is the selected use. A favorable laboratory result alone is not deployment or human benefit.
 
@@ -17818,7 +19610,7 @@ If the configuration report shows that certification is absent, the prior v2 pro
 
 An existing authorized handover can expose the compensating-work episode without a new background observer. A later ticket-hook implementation needs its own subscription, projection, retry and receipt behavior. It must remain quiet for an event whose current manual arrangement is adequate or whose benefit does not justify interruption. Remember the original cue, missing protocol/certification questions and conditional source connections within permitted retention, so that a later source or case change can reopen them.
 
-Before selecting this architecture for actual operation, compare it with the capable incumbent on independently obtained support episodes. Use the complete useful response and maintenance cost. Oracle candidates can isolate a finding failure; fixed candidates can isolate assessment; fixed qualified contributions can isolate delivery. Try changed sources, persisted reload and permission withdrawal. The construction above supplies testable behavior and arithmetic, not a claim that CedarBench has been deployed or outperforms another arrangement.
+Before selecting this architecture for actual operation, compare it with credible alternatives on independently obtained support episodes, including the incumbent when one exists. Use the complete useful response and maintenance cost. Oracle candidates can isolate a finding failure; fixed candidates can isolate assessment; fixed qualified contributions can isolate delivery. Try changed sources, persisted reload and permission withdrawal. The construction above supplies testable behavior and arithmetic, not a claim that CedarBench has been deployed or outperforms another arrangement.
 
 ## KCAE.Application:2 - A historical inquiry with no external processing
 
@@ -17842,7 +19634,7 @@ For FPF, the current applicable USING-FPF instruction supplies the ordinary find
 
 Consider a constructed team that reports every handover on time because one experienced engineer silently translates ambiguous equipment names. Someone asks for better deadline reminders. Preserve that proposal and the underlying episode separately. Searching only deadline labels can miss the missing identity correspondence. Searching for receiving use, repeated manual compensation and notation translation can obtain an explanatory example in B.5.PI and a method in NOT.5.
 
-Read B.5.PI's operative inquiry, not merely its example. The first contribution is to compare the successful handover with what the recipient can actually identify. If the notation mapping is then live, NOT.5 supplies the translation and lost-distinction question. Obtain the actual authoritative naming source and location context. Ten labels may map uniquely while two require building identity. The result can be a repaired correspondence and two explicit unresolved inputs, not a universal replacement of every abbreviation.
+Read B.5.PI's operative inquiry, not merely its example. The first contribution is to compare the successful handover with what the recipient can actually identify. If the notation mapping is then live, NOT.5 supplies the translation and lost-distinction question. Obtain the actual authoritative naming source and location context. Ten labels may already identify equipment unambiguously, while two still require establishing which equipment they denote. The result can be a repaired correspondence and two explicit unresolved inputs, not a universal replacement of every abbreviation.
 
 The episode does not prove a general need for more training. A direct correction, an available mapping, a maintained aid and a suitable learning method are different continuations. Compare them at the actual receiving use and burden. If the recipient already understands both notations and the retyping is cosmetic, the claimed identity problem disappears.
 
@@ -17898,7 +19690,7 @@ Explicit section containment, definitions and references are useful low-cost str
 
 A direct original-block pass is useful when the question needs distinctions outside prepared selectors, or when the corpus is small enough that preparation would not pay. Enumerate blocks from the source inventory, supply the bounded state and criterion, retain plausible and unresolved blocks, and inspect their reading closures. The TypeSafe [semantic-find cookbook](https://docs.typesafe.ai/cookbooks/semantic_find) demonstrates addressed clause selection over a supplied document with a separate adequacy question. Its Jev 1.12 example is a bounded mechanism, not evidence of exhaustive semantic search in an arbitrarily large corpus.
 
-Long-context reading can supply another direct profile, especially for a small stable dossier or repeated cached use. The [Gemini long-context documentation](https://ai.google.dev/gemini-api/docs/long-context) treats caching as a cost option and warns that multiple-item retrieval performance can vary. Compare actual model/version behavior and full lifecycle cost. A large accepted input window neither ensures every relevant relation is recovered nor makes a changed source cache current. KCAE.DELIVER remains necessary even when the whole dossier fits.
+Long-context reading can supply another direct profile, especially for a small stable dossier or repeated cached use. The [Gemini long-context documentation](https://ai.google.dev/gemini-api/docs/long-context) treats caching as a cost option and warns that multiple-item retrieval performance can vary. Compare actual model/version behavior and full lifecycle cost. A large accepted input window neither ensures every relevant relation is recovered nor makes a changed source cache current. Even when the dossier fits, use KCAE.DELIVER if the recipient still lacks material, context or access needed for the intended contribution.
 
 ## KCAE.Profiles:2 - Typed assessors and generative readers
 
@@ -17981,43 +19773,43 @@ Search for the maintenance difficulty or result you need. Dependencies identify 
 | [MNT.Sources:1](#mntsources1---source-roles-and-scope-of-reliance) | Source roles and scope of reliance |
 | [MNT.Application - Cross-Pattern Applications](#cross-pattern-applications) | Follow PS17, the fleet comparison and shared-resource coordination. |
 | [Maintenance Engineering and Management Principles Framework Sources and Edition Notes](#maintenance-engineering-and-management-principles-framework-sources-and-edition-notes) | Recover source contributions and their applicable limits. |
-| [MNT.Boundary - Framework Boundary and Refresh](#mntreference10---framework-boundary-and-revision) | Understand scope, pattern continuity and action-changing refresh. |
+| [MNT.Reference:10 - Framework boundary and revision](#mntreference10---framework-boundary-and-revision) | Understand scope, pattern continuity and action-changing refresh. |
 
 **Part A - Maintained Use, Policy, Failure, and Condition**
 
 | § | ID & Title | Status | Keywords & Search Queries | Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | [MNT.1 - Identify the Maintained System, Use, and Permission Boundary](#mnt1---identify-the-maintained-system-use-and-permission-boundary) | Stable | *Keywords:* equipment identity, required function, configuration, control. *Query:* "Which System and use does this maintenance question concern?" Bound the question and its operating and permission conditions. | FPF [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system), [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition); [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) |
-| 2 | [MNT.2 - Select and Reopen the Maintenance Policy](#mnt2---select-and-reopen-the-maintenance-policy) | Stable | *Keywords:* maintenance policy, corrective, preventive, condition-based, failure-finding. *Query:* "Which task should be retained or changed for this failure?" Compare applicable tasks and response conditions without a technology ladder. | [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority); FPF [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) |
-| 3 | [MNT.3 - Establish Degradation and Failure Evidence for Maintenance](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) | Stable | *Keywords:* failure evidence, mechanism, cause, exposure, censoring. *Query:* "What does the failure history actually support?" Separate observation, diagnosis and consequence at the resolution needed by the decision. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity); FPF [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph), [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
-| 4 | [MNT.4 - Monitor and Interpret System Condition for Maintenance](#mnt4---monitor-and-interpret-system-condition-for-maintenance) | Stable | *Keywords:* condition monitoring, alarm, baseline, forecast, remaining life. *Query:* "What does this signal mean under the actual operating conditions?" Return a qualified condition account or the precise interpretation limit. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance); FPF [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
+| 1 | [MNT.1 - Identify the Maintained System, Use, and Permission Boundary](#mnt1---identify-the-maintained-system-use-and-permission-boundary) | Stable | *Keywords:* equipment identity, required function, configuration, control. *Query:* "Which System and use does this maintenance question concern?" Bound the question and its operating and permission conditions. | [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system), [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition); [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) |
+| 2 | [MNT.2 - Select and Reopen the Maintenance Policy](#mnt2---select-and-reopen-the-maintenance-policy) | Stable | *Keywords:* maintenance policy, corrective, preventive, condition-based, failure-finding. *Query:* "Which task should be retained or changed for this failure?" Compare applicable tasks and response conditions without a technology ladder. | [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority); [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) |
+| 3 | [MNT.3 - Establish Degradation and Failure Evidence for Maintenance](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) | Stable | *Keywords:* failure evidence, mechanism, cause, exposure, censoring. *Query:* "What does the failure history actually support?" Separate observation, diagnosis and consequence at the resolution needed by the decision. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity); [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph), [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
+| 4 | [MNT.4 - Monitor and Interpret System Condition for Maintenance](#mnt4---monitor-and-interpret-system-condition-for-maintenance) | Stable | *Keywords:* condition monitoring, alarm, baseline, forecast, remaining life. *Query:* "What does this signal mean under the actual operating conditions?" Return a qualified condition account or the precise interpretation limit. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance); [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
 
 **Part B - Readiness, Intervention Choice, Coordination, and Protection**
 
 | § | ID & Title | Status | Keywords & Search Queries | Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
-| 5 | [MNT.5 - Prepare Maintenance Service Capability, Spares, Tools, and Authority](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) | Stable | *Keywords:* spare applicability, tools, competence, readiness, lead time. *Query:* "Can the selected maintenance task obtain usable support in time?" Establish task-specific readiness or its action-changing deficiency. | [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response); [SYSE.12](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work); FPF [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) |
-| 6 | [MNT.6 - Diagnose Condition and Choose a Maintenance Response](#mnt6---diagnose-condition-and-choose-a-maintenance-response) | Stable | *Keywords:* diagnosis, repair, replace, defer, restriction, recommendation. *Query:* "What maintenance response is supported now?" Compare plausible maintenance responses and finish sufficient advice without compulsory physical work. | [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); FPF [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) |
+| 5 | [MNT.5 - Prepare Maintenance Service Capability, Spares, Tools, and Authority](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) | Stable | *Keywords:* spare applicability, tools, competence, readiness, lead time. *Query:* "Can the selected maintenance task obtain usable support in time?" Establish task-specific readiness or its action-changing deficiency. | [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response); [SYSE.12](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work); [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) |
+| 6 | [MNT.6 - Diagnose Condition and Choose a Maintenance Response](#mnt6---diagnose-condition-and-choose-a-maintenance-response) | Stable | *Keywords:* diagnosis, repair, replace, defer, restriction, recommendation. *Query:* "What maintenance response is supported now?" Compare plausible maintenance responses and finish sufficient advice without compulsory physical work. | [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance), [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) |
 | 7 | [MNT.7 - Coordinate Maintenance Intervention and Continuing Operation](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) | Stable | *Keywords:* outage, service capacity, preparation, testing, restoration, contingency. *Query:* "Does the whole intervention fit the operating commitment?" Compare complete elapsed demand with the qualified service envelope. | [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response); [OPS.10](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops10---qualify-operating-capacity-under-variability) |
-| 8 | [MNT.8 - Isolate, Make Safe, and Authorize the Maintenance Intervention](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) | Stable | *Keywords:* isolation, energy, protection, intervention permission, scope. *Query:* "What supports beginning this protected intervention?" Establish applicable actual protection and bounded authority, or return the unmet condition. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); FPF [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) |
+| 8 | [MNT.8 - Isolate, Make Safe, and Authorize the Maintenance Intervention](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) | Stable | *Keywords:* isolation, energy, protection, intervention permission, scope. *Query:* "What supports beginning this protected intervention?" Establish applicable actual protection and bounded authority, or return the unmet condition. | [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) |
 
 **Part C - Performed Intervention, Functioning, and Return to Use**
 
 | § | ID & Title | Status | Keywords & Search Queries | Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
-| 9 | [MNT.9 - Perform and Record the Maintenance Intervention](#mnt9---perform-and-record-the-maintenance-intervention) | Stable | *Keywords:* performed maintenance, deviation, interruption, actual parts, work record. *Query:* "What work actually occurred and in what resulting state?" Perform within operative conditions and preserve useful intervention evidence. | [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response), [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention); FPF [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum), [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) |
-| 10 | [MNT.10 - Verify Restored Functioning after Maintenance](#mnt10---verify-restored-functioning-after-maintenance) | Stable | *Keywords:* restored function, representative load, verification, test limits. *Query:* "What required functioning does the evidence support?" Check the actual resulting configuration and return qualified functioning evidence. | [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention); FPF [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph), [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
-| 11 | [MNT.11 - Hand Back and Authorize Resumed Use after Maintenance, with Certification Where Required](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) | Stable | *Keywords:* hand-back, release, certification, control, resumed use. *Query:* "Who can resume which use of the returned System?" Reconcile functioning, state and applicable release conditions while transferring control. | [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention), [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention), [MNT.10](#mnt10---verify-restored-functioning-after-maintenance); FPF [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) |
+| 9 | [MNT.9 - Perform and Record the Maintenance Intervention](#mnt9---perform-and-record-the-maintenance-intervention) | Stable | *Keywords:* performed maintenance, deviation, interruption, actual parts, work record. *Query:* "What work actually occurred and in what resulting state?" Perform within operative conditions and preserve useful intervention evidence. | [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response), [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention); [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum), [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) |
+| 10 | [MNT.10 - Verify Restored Functioning after Maintenance](#mnt10---verify-restored-functioning-after-maintenance) | Stable | *Keywords:* restored function, representative load, verification, test limits. *Query:* "What required functioning does the evidence support?" Check the actual resulting configuration and return qualified functioning evidence. | [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention); [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph), [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) |
+| 11 | [MNT.11 - Hand Back and Authorize Resumed Use after Maintenance, with Certification Where Required](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) | Stable | *Keywords:* hand-back, release, certification, control, resumed use. *Query:* "Who can resume which use of the returned System?" Reconcile functioning, state and applicable release conditions while transferring control. | [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention), [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention), [MNT.10](#mnt10---verify-restored-functioning-after-maintenance); [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) |
 
 **Part D - Information, Programme, Methods, Simultaneous Work, and Culture**
 
 | § | ID & Title | Status | Keywords & Search Queries | Dependencies |
 | :--- | :--- | :--- | :--- | :--- |
 | 12 | [MNT.12 - Maintain Maintenance Information and Configuration Continuity](#mnt12---maintain-maintenance-information-and-configuration-continuity) | Stable | *Keywords:* maintenance history, serial unit, configuration, effectivity, event coding. *Query:* "Which history and description apply to this installed state?" Restore event and configuration continuity for the receiving decision. | [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity); [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance), [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) |
-| 13 | [MNT.13 - Coordinate the Maintenance Programme and Fleet Learning](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) | Stable | *Keywords:* fleet, programme, failure rate, exposure, support, improvement. *Query:* "What programme decision does comparable fleet evidence support?" Return a qualified programme decision with its population and causal limits. | [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity); FPF [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) |
+| 13 | [MNT.13 - Coordinate the Maintenance Programme and Fleet Learning](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) | Stable | *Keywords:* fleet, programme, failure rate, exposure, support, improvement. *Query:* "What programme decision does comparable fleet evidence support?" Return a qualified programme decision with its population and causal limits. | [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity); [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) |
 | 14 | [MNT.14 - Compare Maintenance Methods for Retention or Change](#mnt14---compare-maintenance-methods-for-retention-or-change) | Stable | *Keywords:* Method comparison, predictive maintenance, practical worth, variant, refresh. *Query:* "Should this way of obtaining maintenance results be retained or replaced?" Compare the same use and whole burden, with conditional trials and useful retain decisions. | [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning); [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option), [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) |
-| 15 | [MNT.15 - Reconcile Simultaneous Maintenance, Operation, and Support Work](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) | Stable | *Keywords:* simultaneous work, shared specialist, overload, fallback, coordination. *Query:* "Why do individually feasible jobs fail together?" Resolve shared demands and moved burden at the whole-combination scope. | [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); FPF [FPF C.32.MWA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c32mwa---synthesize-an-architecture-account-of-methods-and-their-use); [FPF C.32.MWA.PP](../../FPF-Spec.md#c32mwapp---construct-and-compare-method-performance-and-provision-arrangements) |
-| 16 | [MNT.16 - Deliberately Continue and Change Maintenance Culture](#mnt16---deliberately-continue-and-change-maintenance-culture) | Stable | *Keywords:* maintenance culture, transmission, enactment, recognition, retention. *Query:* "Is the practice actually being continued or changed?" Separate availability, actual use and effects, and select a supported continuation. | [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning), [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change); FPF [FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) |
+| 15 | [MNT.15 - Reconcile Simultaneous Maintenance, Operation, and Support Work](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) | Stable | *Keywords:* simultaneous work, shared specialist, overload, fallback, coordination. *Query:* "Why do individually feasible jobs fail together?" Resolve shared demands and moved burden at the whole-combination scope. | [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response), [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation); [FPF C.32.MWA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c32mwa---synthesize-an-architecture-account-of-methods-and-their-use); [FPF C.32.MWA.PP](../../FPF-Spec.md#c32mwapp---construct-and-compare-method-performance-and-provision-arrangements) |
+| 16 | [MNT.16 - Deliberately Continue and Change Maintenance Culture](#mnt16---deliberately-continue-and-change-maintenance-culture) | Stable | *Keywords:* maintenance culture, transmission, enactment, recognition, retention. *Query:* "Is the practice actually being continued or changed?" Separate availability, actual use and effects, and select a supported continuation. | [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning), [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change); [FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) |
 
 # Maintenance Engineering and Management Principles Framework Readme
 
@@ -18171,7 +19963,7 @@ The selected line combines mechanism-sensitive task choice, evidence interpreted
 
 The professional sources shape this synthesis selectively. Their claims are not copied as complete procedures or universal optima. A research model's gain remains bounded to its assumptions; a regulator's text remains bounded to its jurisdiction and scope. The source account below gives direct returns, inspected scope and the change that should prompt reconsideration.
 
-The strongest common contributions are already available in FPF: [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system) for System recognition; [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) for evidence and measurement; [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) for comparison, advice and evidence demands; [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) for capability; [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) for permission; [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus) for assurance; [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) for improvement; [FPF C.32.MWA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c32mwa---synthesize-an-architecture-account-of-methods-and-their-use) for a needed cross-structure synthesis; and [FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) for cultural relations. MNT uses their results where needed rather than requiring their complete records at every entry.
+The following general contributions are available in FPF: [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system) for System recognition; [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) for evidence and measurement; [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) for comparison, advice and evidence demands; [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) for capability; [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) for permission; [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus) for assurance; [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) for improvement; [FPF C.32.MWA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c32mwa---synthesize-an-architecture-account-of-methods-and-their-use) for a needed cross-structure synthesis; and [FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) for cultural relations. MNT uses their results where needed rather than requiring their complete records at every entry.
 
 The supporting DPF results have concrete receiving uses. [SYSE.12](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work) helps develop the enabling arrangement consumed by MNT.5. [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) supplies the identity and effectivity basis used by MNT.12. [OPS.10](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops10---qualify-operating-capacity-under-variability) supplies qualified capacity used in MNT.7. [FPF C.32.MWA.PP](../../FPF-Spec.md#c32mwapp---construct-and-compare-method-performance-and-provision-arrangements) supports a real cross-structure conflict in [MNT.15](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work), while [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option) and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) support practical-worth and Method-variant questions in MNT.14. These result exchanges do not require reading every sibling edition first.
 
@@ -18279,7 +20071,7 @@ The practice question is which boundary makes maintenance advice useful. This pa
 
 ### MNT.1:12 - Relations
 
-[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) uses the bounded functioning question to select a policy; [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) use it to interpret failure and condition. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) develop the action-specific permission and return-to-use results. FPF [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system) supports System recognition, [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) supports permission and [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) supplies configuration identity and effectivity. [OPS.10](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops10---qualify-operating-capacity-under-variability) supplies an operating capacity result when the maintenance question consumes it.
+[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) uses the bounded functioning question to select a policy; [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) use it to interpret failure and condition. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) develop the action-specific permission and return-to-use results. [FPF A.1.SCR](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a1scr---finding-the-acting-or-changed-system) supports System recognition, [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) supports permission and [SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) supplies configuration identity and effectivity. [OPS.10](../Management%20DPF%20Suite/OPERATIONS-MANAGEMENT-PRINCIPLES-FRAMEWORK.md#ops10---qualify-operating-capacity-under-variability) supplies an operating capacity result when the maintenance question consumes it.
 
 ### MNT.1:End
 
@@ -18338,6 +20130,22 @@ For a condition-based candidate, place detection and response on one time basis.
 
 For a hidden protective function, relate the test interval to the period during which the failed function could remain undiscovered and the consequences of a demand during that period. The test's coverage, any exposure it creates and the relevant failure-and-demand account determine whether the interval is acceptable. Continuing normal production supplies no observation of that protective function.
 
+##### MNT.2:4.1.1 - Build and improve a predictive maintenance option
+
+Use this branch to develop a maintenance policy whose response depends on a forecast or other conditional estimate. An adequate existing estimate and decision rule can be used directly. A competent practitioner's condition assessment can supply the estimate; fitting a statistical model is one possible means.
+
+Start with the decisions the estimate should improve. Determine the available interventions and windows, what continued operation may lose, and what an earlier intervention consumes or disrupts. Connect observations available at the decision time to an estimate of the relevant failure or functioning, then to an intervention rule. This makes the forecast useful through the action it permits and the functioning that action can obtain.
+
+Apply each candidate rule to the supported histories described above. Compare the resulting functioning and burden, including consequential early interventions, missed failures and delays. Examine which differences between estimates change the chosen response. A smaller prediction error that leaves every consequential action unchanged may add little maintenance value; an error near an action boundary can reverse the choice. Keep the required service and other binding conditions in that comparison.
+
+Construct a better response where an obtainable support change makes it possible. Use [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) to establish how the needed part, provider and preparation can be obtained, and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) to construct a feasible window and service arrangement. Bring the required lead times, commitments and burdens back into the candidate. Advance preparation can shorten the delay between warning and intervention; another window can make a previously unusable warning actionable. Compare this complete arrangement with the current one, including preparation and recurring support. Recalculate the response rule when those returned conditions change.
+
+When the forecasting or response rule itself needs development, use FPF C.40:4.7. Supply the permitted variations, the observations each variant may use, its feasible interventions and the maintenance consequences by which its use will be judged. Use the consequences to identify estimate errors that change a useful action, then vary the relevant assessment, trigger or response rule. Compare those revisions through the maintenance consequences of their selected actions. Return the forecasting or assessment rule together with its response rule and support conditions. A small comparison of expert assessments or rules can suffice.
+
+If model fitting is useful, one implementation tunes the prognostic model using a loss derived from the interventions selected by a chosen policy. Keep that policy's windows and consequences with the fitted model. Such tuning can improve maintenance decisions while worsening a prediction score; any required probability calibration claim still needs its own support. Use [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) for a supported failure and task-effect account, including lifetimes censored by replacement. Keep consequences estimated through that account distinct from outcomes observed in maintenance.
+
+Select a feasible change when the current observations, applicable model or reasoned expert estimate make its expected benefit worth its complete burden under the relevant uncertainty. Use ranges, scenarios or a qualitative comparison when they are sufficient. Return the policy and the next executable preparation or intervention decision, with the assumptions whose change could reverse the choice. New data or a trial are needed only when their attainable contribution warrants the burden; absence of an already observed improvement does not by itself prevent acting on a reasonable estimate.
+
 #### MNT.2:4.2 - Compare recurring age-replacement costs when that model fits
 
 Suppose replacement restores the component to an as-new state, successive lifetimes `X` are independent with the same distribution, intervention duration is negligible, expected cycle duration is positive and finite, and costs cover the relevant consequences. For replacement at age `a` or earlier failure, derive the two possible endings from the lifetime model, counting a failure at age `a` as corrective:
@@ -18363,7 +20171,7 @@ In the 48-pump fleet example, the operating exposures differ, and policy selecti
 
 #### MNT.2:5.1 - Construct an age rule from a failure model
 
-In a separate constructed comparison, a replaceable component lasts 6 or 10 operating-time units, each with probability one half. Replacements meet the assumptions in section 4.2. The three available candidates are replacement at age 4, at age 8, or at failure. All are admissible for this use. Planned replacement costs 2 units and corrective replacement costs 10, including the case's failure consequences.
+In a separate constructed comparison, a replaceable component lasts 6 or 10 operating-time units, each with probability one half. Replacements meet the assumptions in MNT.2:4.2. The three available candidates are replacement at age 4, at age 8, or at failure. All are admissible for this use. Planned replacement costs 2 units and corrective replacement costs 10, including the case's failure consequences.
 
 At age 4 every cycle ends with planned replacement: cost per operating-time unit is `2/4 = 0.5`. At age 8, half the cycles fail at 6 and half reach planned replacement at 8: expected cost is `0.5*10 + 0.5*2 = 6`, expected duration is `0.5*6 + 0.5*8 = 7`, and the rate is `6/7`, approximately 0.857. At failure the rate is `10/[0.5*6 + 0.5*10] = 1.25`. Age 4 is preferred among these three candidates on the declared cost criterion; this comparison has not searched all possible ages.
 
@@ -18374,6 +20182,23 @@ Now change only corrective cost to 3. The rates become `0.5`, `2.5/7`, approxima
 In another constructed case, the supported warning bound `W` is 8 hours and the subsequent response demand `L`, including its uncertainty allowance, is 5 hours. Observation every 4 hours gives a bound of `4 + 5 = 9` hours and cannot meet that warning. Every 2 hours gives `2 + 5 = 7`, so it passes this timing comparison. The remaining choice includes the burden of more frequent observation and the alternative of reducing response demand.
 
 If support delay raises `L` to 6.5 hours, the two-hour candidate no longer fits: `2 + 6.5 = 8.5`. Reconsider sampling, support or another admissible policy. The failure threshold has not moved, and the old timing result supplies no permission to extend use. These quantities illustrate construction from a supplied equipment model; they are not operating limits.
+
+#### MNT.2:5.3 - Obtain a useful response from a conditional estimate
+
+Consider a constructed ten-day service horizon. The current arrangement replaces a component on day 5; obtaining a compatible spare and an agreed access window permits replacement on day 1. Suppose untreated failure is on day 2 with conditional probability `p`, and otherwise after day 10. For this comparison, replacement prevents that failure for the remaining horizon. Both options meet the other binding requirements. All distinguishing costs are included: day-5 replacement costs 20 if the component survives, while failure before it costs 100 in total. Day-1 replacement costs 20 plus 10 for advance support and early intervention.
+
+The expected cost of the current arrangement is `100p + 20(1-p) = 20 + 80p`; the prepared early response costs 30. A condition estimate `p = 0.20` therefore favours the new arrangement: 36 versus 30. Even a supported range `0.15 <= p <= 0.25` leaves the current arrangement at 32–40. MNT.5 establishes the spare's readiness and MNT.7 obtains the window; their result makes the day-1 response available. The selected move is to arrange that support and replace on day 1, without requiring another experiment merely because the benefit is still an estimate. An adequate expert condition estimate can supply this input.
+
+To examine improvement of the estimating rule, take two equally common condition groups with probabilities 0.10 and 0.20 in the comparison model. Both forecasting variants use information available before the choice; their development and use costs are equal here. Each selects the lower expected-cost action using its own probability estimate and the same available responses.
+
+| Forecasting variant | Estimates for the two groups | Mean absolute probability error | Selected responses | Mean cost under the comparison model |
+| --- | --- | --- | --- | --- |
+| A | 0.11; 0.12 | 0.045 | Day 5; day 5 | `(28 + 36) / 2 = 32` |
+| B | 0.02; 0.18 | 0.050 | Day 5; day 1 | `(28 + 30) / 2 = 29` |
+
+B has the larger prediction error but selects the more useful response in the second group. Comparing the consequences therefore favours B for this use; it does not establish B as the better probability model for other uses. The probabilities supplying this examination are stipulated model inputs, not information assumed available during a real intervention.
+
+If the added cost of the early arrangement rises from 10 to 25, its total becomes 45. At `p = 0.20`, the day-5 arrangement's 36 now wins. Reopen the response and forecast comparison with that changed support cost, or construct another obtainable arrangement. Under the changed costs, both forecasting variants choose day 5 for both groups and have mean model cost 32, so their earlier cost ranking disappears. These calculations illustrate the construction and return; they are not measured field savings.
 
 ### MNT.2:6 - Bias-Annotation
 
@@ -18405,9 +20230,11 @@ The task alternatives remain plural because failure visibility, mechanism, conse
 
 For the question “Which task is worth performing for this failure?”, this pattern adapts the applicable/effective task reasoning of NASA's historical 2008 RCM guide and the mechanism-plus-decision-model line discussed by Arts and colleagues in 2025. It rejects a technology ladder as the policy rule: the comparison table and complete-response reasoning preserve corrective, hidden-function and support-limited cases that the ladder obscures. More demanding models remain useful when their decision gain warrants their effort. Neither source supplies a universal interval or permission rule. Reopen when failure behaviour, warning time, restoration effectiveness or the operating consequence changes. See the [RCM task discussion](https://www.nasa.gov/wp-content/uploads/2023/06/nasa-rcmguide.pdf) and [maintenance optimization account](https://orbilu.uni.lu/bitstream/10993/61558/1/1-s2.0-S0377221724005241-main.pdf).
 
+For improving forecasts through the decisions they induce, [Xie, Abdin and Fang (2025), §§2–5](https://arxiv.org/html/2506.19698v1) supply one ML realization: fine-tune a prognostic model against maintenance consequences under a selected policy and given windows. Their numerical evidence uses NASA C-MAPSS FD001 simulation, not universal field superiority. The extension to changing obtainable support in MNT.2:4.1.1 combines MNT.5 and MNT.7 with this pattern's policy construction; it is not a result established by that study. FPF C.40:4.7 supplies the general Method of developing a way by what its use produces.
+
 ### MNT.2:12 - Relations
 
-[MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) supplies failure evidence and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supplies condition interpretation. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) qualify response feasibility; [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) selects the present intervention. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) uses policy consequences across a fleet and [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compares Method changes. FPF [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) supports comparison, and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs a disputed evidence demand or requirement appraisal.
+[MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) supplies failure evidence and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supplies condition interpretation. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) qualify response feasibility; [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) selects the present intervention. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) uses policy consequences across a fleet and [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compares Method changes. [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) supports comparison, and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs a disputed evidence demand or requirement appraisal.
 
 ### MNT.2:End
 
@@ -18494,11 +20321,11 @@ Mechanism, observed condition and consequence are connected in one account becau
 
 ### MNT.3:11 - SoTA-Echoing
 
-The practice question is how much failure knowledge is sufficient for a maintenance choice. The selected line combines physical explanation with qualified observation and decision relevance. It adapts the failure-mechanism emphasis in the [2025 maintenance optimization account](https://orbilu.uni.lu/bitstream/10993/61558/1/1-s2.0-S0377221724005241-main.pdf) and uses FPF [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) for evidential and measurement claims. Against fault-code counting or mandatory exhaustive root-cause analysis, this Method uses the separated claims, observation limits and conditional inquiry in the Solution. The trade-off is an explicitly narrower causal answer in exchange for useful timely action. Reopen when new failure or exposure evidence can distinguish a consequential alternative.
+The practice question is how much failure knowledge is sufficient for a maintenance choice. The selected line combines physical explanation with qualified observation and decision relevance. It adapts the failure-mechanism emphasis in the [2025 maintenance optimization account](https://orbilu.uni.lu/bitstream/10993/61558/1/1-s2.0-S0377221724005241-main.pdf) and uses [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) for evidential and measurement claims. Against fault-code counting or mandatory exhaustive root-cause analysis, this Method uses the separated claims, observation limits and conditional inquiry in the Solution. The trade-off is an explicitly narrower causal answer in exchange for useful timely action. Reopen when new failure or exposure evidence can distinguish a consequential alternative.
 
 ### MNT.3:12 - Relations
 
-[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies the functioning question, [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supplies current condition observations, and [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) supports the relevant configuration and history. [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) consume the resulting failure account for different decisions. FPF [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) qualifies evidence, [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) governs measurement and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs the contribution and burden of further inquiry.
+[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies the functioning question, [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supplies current condition observations, and [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) supports the relevant configuration and history. [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy), [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) consume the resulting failure account for different decisions. [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) qualifies evidence, [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) governs measurement and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs the contribution and burden of further inquiry.
 
 ### MNT.3:End
 
@@ -18589,7 +20416,7 @@ For the question “Does this monitoring arrangement improve the maintenance dec
 
 ### MNT.4:12 - Relations
 
-[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies required functioning, [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) distinguishes failure and causal claims, and [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) consumes condition for the current intervention choice. [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) can use it to reopen policy. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) establish whether an indicated response is feasible. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) and [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compare the worth of monitoring at programme and Method scale. FPF [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) govern measurement, evidence and conditional evidence demands.
+[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies required functioning, [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) distinguishes failure and causal claims, and [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) consumes condition for the current intervention choice. [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) can use it to reopen policy. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) establish whether an indicated response is feasible. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) and [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compare the worth of monitoring at programme and Method scale. [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) govern measurement, evidence and conditional evidence demands.
 
 ### MNT.4:End
 
@@ -18660,7 +20487,7 @@ A complete support checklist is imposed on a simple recommendation. Limit readin
 
 ### MNT.5:9 - Consequences
 
-The plan uses support that can actually contribute to maintenance. Some apparent quick fixes become infeasible; some preparation can proceed without consuming the outage. The cost is explicit attention to readiness and replenishment where nominal resource counts were previously enough.
+The plan uses support that can actually contribute to maintenance. Some apparent quick fixes become infeasible; some preparation can proceed without consuming the outage. The added work is checking readiness and replenishment where planning previously relied on nominal resource counts.
 
 ### MNT.5:10 - Architectural Rationale
 
@@ -18672,7 +20499,7 @@ The question is how to turn nominal resources into a feasible maintenance respon
 
 ### MNT.5:12 - Relations
 
-[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) and [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) identify task needs; [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) and [MNT.15](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) consume readiness in coordination. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) establishes permission for the actual protected work. [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) supplies configuration and history where applicability depends on them. [SYSE.12](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work) supplies enabling-arrangement development, and FPF [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) supports capability-envelope claims.
+[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) and [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) identify task needs; [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) and [MNT.15](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) consume readiness in coordination. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) establishes permission for the actual protected work. [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) supplies configuration and history where applicability depends on them. [SYSE.12](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work) supplies enabling-arrangement development, and [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) supports capability-envelope claims.
 
 ### MNT.5:End
 
@@ -18760,11 +20587,11 @@ Diagnosis and present intervention choice belong together because the required d
 
 ### MNT.6:11 - SoTA-Echoing
 
-The practice question is how condition knowledge becomes an actionable maintenance answer. This pattern adapts the prediction-to-action gap identified in the 2025 prescriptive-maintenance synthesis into explicit diagnosis, alternative comparison and feasibility returns. Against automatic repair from a prediction, the Solution adds the action-changing uncertainty test and a sufficient-recommendation stop. The source's abstract-level contribution does not establish a deployed autonomous algorithm or a particular repair rule. FPF [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) supplies the general conditional-inquiry reasoning. Reopen when a new mechanism, feasible alternative or consequence changes the answer. See [the author-deposited source](https://orbilu.uni.lu/handle/10993/65591).
+The practice question is how condition knowledge becomes an actionable maintenance answer. This pattern adapts the prediction-to-action gap identified in the 2025 prescriptive-maintenance synthesis into explicit diagnosis, alternative comparison and feasibility returns. Against automatic repair from a prediction, the Solution adds the action-changing uncertainty test and a sufficient-recommendation stop. The source's abstract-level contribution does not establish a deployed autonomous algorithm or a particular repair rule. [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) supplies the general conditional-inquiry reasoning. Reopen when a new mechanism, feasible alternative or consequence changes the answer. See [the author-deposited source](https://orbilu.uni.lu/handle/10993/65591).
 
 ### MNT.6:12 - Relations
 
-[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supply the bounded question, failure account and condition. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) qualify feasible performance. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) governs actual intervention permission; [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention)–[MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply performance, functioning and hand-back results when selected. FPF [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) supports comparison and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) supports advice and evidence-demand appraisal.
+[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary), [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) supply the bounded question, failure account and condition. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) qualify feasible performance. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) governs actual intervention permission; [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention)–[MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply performance, functioning and hand-back results when selected. [FPF C.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11---decision-theory-decsn-cal) supports comparison and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) supports advice and evidence-demand appraisal.
 
 ### MNT.6:End
 
@@ -18850,7 +20677,7 @@ Rate adjustment and more advanced scheduling remain options, not compulsory tool
 
 ### MNT.7:11 - SoTA-Echoing
 
-The practice question is whether maintenance can fit the real operating commitment. This pattern adapts preparation-before-intervention and flexible timing as candidate choices from the bounded scheduling work of Gan and colleagues and Kasuya and Jin. Against repair-duration-only planning, the Method uses the complete elapsed-demand comparison and conditional operating return above. Their models do not supply these constructed times, field effectiveness or permission to change duty. The selected arithmetic is preferable at comparable effort when it already settles fit; optimization becomes useful for a harder unresolved choice. Reopen when demand, preparation dependency or operating capacity changes. See [preparation-aware scheduling](https://journals.sagepub.com/doi/abs/10.1177/09544054251350538) and [flexible-timing research](https://www.sciencedirect.com/science/article/abs/pii/S095183202600342X).
+The practice question is whether maintenance can fit the real operating commitment. This pattern adapts preparation-before-intervention and flexible timing as candidate choices from the bounded scheduling work of Gan and colleagues and Kasuya and Jin. Against repair-duration-only planning, the Method uses the complete elapsed-demand comparison and conditional operating return above. Their models do not supply these constructed times, field effectiveness or permission to change duty. The complete elapsed-time comparison is sufficient when it settles the receiving question. Use optimization or another scheduling model when its attainable improvement in the arrangement or decision warrants the effort. Reopen when demand, preparation dependency or operating capacity changes. See [preparation-aware scheduling](https://journals.sagepub.com/doi/abs/10.1177/09544054251350538) and [flexible-timing research](https://www.sciencedirect.com/science/article/abs/pii/S095183202600342X).
 
 ### MNT.7:12 - Relations
 
@@ -18933,11 +20760,11 @@ A generic framework cannot enumerate every equipment hazard or jurisdictional ex
 
 ### MNT.8:11 - SoTA-Echoing
 
-For the question “What supports beginning this protected intervention?”, this pattern adapts the actual-control and verification logic illustrated by [OSHA 1910.147](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147). Against a stop-command or permit-only default, the Method adds verified protection, bounded permission and controlled changes of state. The source is an operative US example within its scope, not a universal maintenance law; the local application needs its actual current requirements. FPF [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) distinguish permission from requirement merits. Reopen when work, configuration, exposure, personnel transition or the applicable rule changes.
+For the question “What supports beginning this protected intervention?”, this pattern adapts the actual-control and verification logic illustrated by [OSHA 1910.147](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147). Against a stop-command or permit-only default, the Method adds verified protection, bounded permission and controlled changes of state. The source is an operative US example within its scope, not a universal maintenance law; the local application needs its actual current requirements. [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) distinguish permission from requirement merits. Reopen when work, configuration, exposure, personnel transition or the applicable rule changes.
 
 ### MNT.8:12 - Relations
 
-[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) identifies the relevant unit, use and control. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) establish support and timing; [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) selects the proposed work. [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) performs within the resulting conditions, while [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) use controlled testing and restoration for their different results. FPF [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) governs permission, [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) capability and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) a requirement-merits appraisal.
+[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) identifies the relevant unit, use and control. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) establish support and timing; [MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) selects the proposed work. [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) performs within the resulting conditions, while [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) use controlled testing and restoration for their different results. [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) governs permission, [FPF A.2.2](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a22---system-capability-conditions-measures-and-fit) capability and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) a requirement-merits appraisal.
 
 ### MNT.8:End
 
@@ -19020,7 +20847,7 @@ The practice question is how to preserve reliable continuation when work differs
 
 ### MNT.9:12 - Relations
 
-[MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) supplies the selected intervention, [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) its support and [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) its operative protection and permission. [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) and [MNT.15](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) handle changed timing or shared work. [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) consumes performed-work and configuration evidence; [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) preserves its useful history. FPF [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum) and [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) govern precise performer and performed-Work claims when those stronger claims are made.
+[MNT.6](#mnt6---diagnose-condition-and-choose-a-maintenance-response) supplies the selected intervention, [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) its support and [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) its operative protection and permission. [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) and [MNT.15](#mnt15---reconcile-simultaneous-maintenance-operation-and-support-work) handle changed timing or shared work. [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) consumes performed-work and configuration evidence; [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) preserves its useful history. [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum) and [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) govern precise performer and performed-Work claims when those stronger claims are made.
 
 ### MNT.9:End
 
@@ -19101,11 +20928,11 @@ Claim-specific checking permits adequate prior evidence to remain useful. It als
 
 ### MNT.10:11 - SoTA-Echoing
 
-The practice question is what evidence warrants a restored-functioning claim after maintenance. This pattern adapts FPF [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus)'s use-specific assurance and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr)'s measurement discipline to intervention-induced failure and operating-envelope checks. Against task-sign-off or indiscriminate retesting, the Method selects checks for the functioning claims and reuses adequate evidence for unaffected claims. The PS17 comparison under load illustrates this reasoning. The trade-off is retaining an explicitly limited immediate-use result instead of claiming lifetime restoration. Equipment procedures supply the concrete acceptance criteria; this synthesis does not establish universal test values. Reopen when configuration, required duty, consequence or the earlier evidence's applicability changes.
+The practice question is what evidence warrants a restored-functioning claim after maintenance. This pattern adapts [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus)'s use-specific assurance and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr)'s measurement discipline to intervention-induced failure and operating-envelope checks. Against task-sign-off or indiscriminate retesting, the Method selects checks for the functioning claims and reuses adequate evidence for unaffected claims. The PS17 comparison under load illustrates this reasoning. The trade-off is retaining an explicitly limited immediate-use result instead of claiming lifetime restoration. Equipment procedures supply the concrete acceptance criteria; this synthesis does not establish universal test values. Reopen when configuration, required duty, consequence or the earlier evidence's applicability changes.
 
 ### MNT.10:12 - Relations
 
-[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies the required functioning and [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) the performed intervention and resulting state. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) governs test protection; [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) includes its time. [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) consumes the supported functioning claim for hand-back. [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) retains the useful evidence and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) addresses later recurrence learning. FPF [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) support assurance, evidence and measurement.
+[MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) supplies the required functioning and [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) the performed intervention and resulting state. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) governs test protection; [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) includes its time. [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) consumes the supported functioning claim for hand-back. [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) retains the useful evidence and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) addresses later recurrence learning. [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus), [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) support assurance, evidence and measurement.
 
 ### MNT.10:End
 
@@ -19186,7 +21013,7 @@ The practice question is what a maintenance completion claim permits the receive
 
 ### MNT.11:12 - Relations
 
-[MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) supplies performed-work evidence and [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) qualified functioning. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) supplies the protection and restoration conditions that remain applicable; [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) preserves configuration continuity. [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) identifies the operating control boundary. FPF [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) governs permission and [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus) supports claim-specific assurance.
+[MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) supplies performed-work evidence and [MNT.10](#mnt10---verify-restored-functioning-after-maintenance) qualified functioning. [MNT.8](#mnt8---isolate-make-safe-and-authorize-the-maintenance-intervention) supplies the protection and restoration conditions that remain applicable; [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) preserves configuration continuity. [MNT.1](#mnt1---identify-the-maintained-system-use-and-permission-boundary) identifies the operating control boundary. [FPF A.2.8.PER](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a28per---granted-permission-exercise-and-non-prohibition) governs permission and [FPF B.3](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#b3---is-this-claim-supported-for-this-use--trust-and-assurance-calculus) supports claim-specific assurance.
 
 ### MNT.11:End
 
@@ -19287,7 +21114,7 @@ Condition, policy and hand-back decisions can refer to the same actual maintenan
 
 ### MNT.12:10 - Architectural Rationale
 
-General configuration identity belongs in SYSE.13. Maintenance adds event meaning, exposure intervals and continuity across service replacements. Keeping that domain contribution here avoids both duplicating the configuration Method and leaving fleet learning dependent on uninterpretable work-order counts.
+General configuration identity belongs in SYSE.13. Maintenance adds event meaning, exposure intervals and continuity across service replacements. Fleet learning needs those distinctions to interpret work-order counts.
 
 ### MNT.12:11 - SoTA-Echoing
 
@@ -19295,7 +21122,7 @@ The practice question is which information is sufficient for a maintenance decis
 
 ### MNT.12:12 - Relations
 
-[SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) supplies configuration identity and effectivity. [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) consume failure and condition history; [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) uses applicability; [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention)–[MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply intervention, functioning and hand-back facts. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) uses comparable population history. FPF [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) supports evidential qualification.
+[SYSE.13](SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md#syse13---establish-configuration-identity-variants-and-effectivity) supplies configuration identity and effectivity. [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) and [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance) consume failure and condition history; [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) uses applicability; [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention)–[MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply intervention, functioning and hand-back facts. [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) uses comparable population history. [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) supports evidential qualification.
 
 ### MNT.12:End
 
@@ -19378,7 +21205,7 @@ The question is how fleet evidence should change a maintenance programme. This p
 
 ### MNT.13:12 - Relations
 
-[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) supplies policies, [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) support and [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) usable history. [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) qualifies failure claims; [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compares Method changes and [MNT.16](#mnt16---deliberately-continue-and-change-maintenance-culture) addresses actual continuation in the practice. FPF [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) supplies improvement, [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) measurement and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) conditional inquiry. Engineering Asset Management receives the specific investment or retirement question when maintenance cannot settle it.
+[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) supplies policies, [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) support and [MNT.12](#mnt12---maintain-maintenance-information-and-configuration-continuity) usable history. [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) qualifies failure claims; [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) compares Method changes and [MNT.16](#mnt16---deliberately-continue-and-change-maintenance-culture) addresses actual continuation in the practice. [FPF E.23](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#e23---quality-improvement-loop-method) supplies improvement, [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) measurement and [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) conditional inquiry. Engineering Asset Management receives the specific investment or retirement question when maintenance cannot settle it.
 
 ### MNT.13:End
 
@@ -19409,9 +21236,13 @@ State the maintenance result and conditions for the comparison. Recover the fail
 
 Describe the action-changing difference. Is the candidate a different task, a changed trigger, another diagnostic interpretation, a revised response rule or only a different description or software implementation? Keep those objects distinct when continuity, training or evaluation depends on them. A useful Method change should alter what the practitioner notices, decides, does, needs or obtains.
 
+When a useful predictive alternative still has to be constructed, use [MNT.2:4.1.1](#mnt2411---build-and-improve-a-predictive-maintenance-option) to connect the estimate, intervention rule and obtainable support. Bring back an executable option and its consequence comparison. This can include changing preparation or access, or improving the forecasting rule through the interventions it selects. Use already adequate alternatives directly.
+
 Compare practical worth over a relevant horizon. Include preparation, acquisition, configuration, competence, interpretation, false responses, missed conditions, maintenance of the tool, supplier dependence and exit where they matter. Use [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option) for the practical-worth comparison and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) when variant identity or maintenance of the repertoire needs that more general Method.
 
 Test the candidate against a consequential unlike case. A Method useful for a visible degradation trend may not expose a hidden protection failure. An online predictor may improve timing while remaining unusable where the support lead time is longer than its warning. These differences can justify branching the repertoire instead of replacing one Method everywhere.
+
+Choose a feasible change when current observations, an applicable model or a reasoned expert estimate make its expected improvement worth the transition and continuing burden. Name the first executable move and obtain the support it needs. A sufficient comparison can justify beginning the change before its eventual benefit has been observed; retain the distinction between that expected benefit and the outcome subsequently obtained.
 
 Use existing evidence first. If it already establishes that the candidate cannot support the needed response, reject it for that use without a trial. If it supports retaining the current Method, return that decision. When an uncertainty could change the choice, assess what a feasible trial or analysis could actually discriminate and the whole burden of obtaining that result. Do not turn a possible study design into an obligatory next task.
 
@@ -19431,11 +21262,11 @@ In PS17, long-horizon recurrence remains unresolved after the local repair. The 
 
 ### MNT.14:6 - Bias-Annotation
 
-Technology labels and benchmark accuracy favour visible novelty. Familiarity favours the incumbent. Compare both at the same maintenance result and burden, including effects outside the team purchasing the tool.
+Technology labels and benchmark accuracy favour visible novelty. Familiarity favours the incumbent. Compare both for the same maintenance result, including burdens and effects outside the team purchasing the tool.
 
 ### MNT.14:7 - Conformance Checklist
 
-Are the compared Methods and their practical differences identifiable? Do they answer the same maintenance question at comparable conditions and effort? Are implementation, transition and continuing burdens included where material? Does the decision preserve unlike uses through an appropriate retain, branch or replacement result?
+Are the compared Methods and their practical differences identifiable? Do they answer the same maintenance question under comparable conditions? Are their differing implementation, transition and continuing burdens compared where material? Does the decision preserve unlike uses through an appropriate retain, branch or replacement result?
 
 Any trial has an attainable decision-changing purpose. A supported comparison can close without new experimentation or adoption.
 
@@ -19451,7 +21282,7 @@ The maintenance repertoire changes where practical evidence warrants it and rema
 
 ### MNT.14:10 - Architectural Rationale
 
-Method refresh is distinct from changing one policy parameter or executing one repair. It concerns the reusable way of obtaining results and its continued usefulness. Reusing [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option) and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) prevents duplication of general comparison and variant reasoning; the failure, support and service conditions remain this pattern's domain contribution.
+Method refresh concerns the reusable way of obtaining results and its continued usefulness. Adjusting a policy parameter within that way's declared range, or executing one repair, need not change the Method. A changed trigger, response rule or applicability can require the comparison above even when it is expressed by changing one parameter.
 
 ### MNT.14:11 - SoTA-Echoing
 
@@ -19459,7 +21290,7 @@ The practice question is when a new maintenance approach is worth adopting. This
 
 ### MNT.14:12 - Relations
 
-[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) supplies policy questions; [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance)/4 supply failure and condition knowledge; [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority)/7 supply response feasibility; [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) supplies programme consequences. [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option) supplies practical-worth comparison and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) Method-variant maintenance. FPF [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs a demanded trial's contribution and burden, while [FPF G.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#g11---decide-whether-and-how-to-refresh-sota-packs-and-related-results-telemetry-and-decay) supports selective refresh.
+[MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) supplies policy questions; [MNT.3](#mnt3---establish-degradation-and-failure-evidence-for-maintenance) supplies failure knowledge and MNT.4 supplies condition knowledge; [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority) and MNT.7 supply response feasibility; [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) supplies programme consequences. [FPF C.11.MV](../../FPF-Spec.md#c11mv---compare-the-worth-of-a-method-option) supplies practical-worth comparison and [FPF A.3.1.MV](../../FPF-Spec.md#a31mv---construct-and-maintain-a-method-variant) Method-variant maintenance. [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs a demanded trial's contribution and burden, while [FPF G.11](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#g11---decide-whether-and-how-to-refresh-sota-packs-and-related-results-telemetry-and-decay) supports selective refresh.
 
 ### MNT.14:End
 
@@ -19512,7 +21343,7 @@ If an unplanned extension would leave the specialist unable to perform the later
 
 For a broader conflict, suppose both jobs rely on the same standby equipment while each plan treats it as independent fallback. The decision now needs the System and operating-dependency structures as well as time. That is a reason to expand the comparison, not to derive an architecture from the schedule's page layout.
 
-The common standby can also affect an action inside a job while the job is under way. Suppose taking a diagnostic reading requires temporarily taking the standby out of service, while that reading is part of locating a fault during service restoration. The broader operating commitment requires the standby to remain available. The diagnostic action is therefore constrained through the restoration and service arrangement; assigning two labels to the same interval would not reveal this conflict. Recover the connection with B.1.5.EW, then compare an applicable alternative diagnostic Method, another supported window or a changed service arrangement. Instrument handling and diagnostic interpretation must both be available; the example supplies no equipment-specific procedure or permission.
+The common standby can also affect an action inside a job while the job is under way. Suppose taking a diagnostic reading requires temporarily taking the standby out of service, while that reading is part of locating a fault during service restoration. The broader operating commitment requires the standby to remain available. The diagnostic action is therefore constrained through the restoration and service arrangement; assigning two labels to the same interval would not reveal this conflict. Recover the connection with FPF B.1.5.EW, then compare an applicable alternative diagnostic Method, another supported window or a changed service arrangement. Instrument handling and diagnostic interpretation must both be available; the example supplies no equipment-specific procedure or permission.
 
 ### MNT.15:6 - Bias-Annotation
 
@@ -19577,7 +21408,7 @@ State the maintenance population, period and receiving question. Identify the re
 
 Recover the cultural relations that the available basis supports. A manual can transmit a description; a mentor can demonstrate a technique; practitioners can enact it in actual work; peers or supervisors can recognize and reward it; the population can retain or abandon it. These are different claims. Use [FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) when their distinction changes the account.
 
-Connect an enactment claim to actual practitioners, work and maintained Systems at the scope needed for that claim. A selected class of technicians or a training plan does not supply an observed occurrence. If a precise performed-Work claim is needed, FPF [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum) and [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) govern the performer and occurrence; assignment-bound attribution is added only when that relation is actually consumed.
+Connect an enactment claim to actual practitioners, work and maintained Systems at the scope needed for that claim. A selected class of technicians or a training plan does not supply an observed occurrence. If a precise performed-Work claim is needed, [FPF A.13](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a13---the-agential-role--agency-spectrum) and [FPF A.15.1](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a151---uwork-dated-performed-work-occurrence) govern the performer and occurrence; assignment-bound attribution is added only when that relation is actually consumed.
 
 Compare plausible explanations for the current pattern of use. A variant may persist because it works under local conditions, because suitable tools are available, because reporting rewards it or because another variant cannot be enacted with the available time. Retain hypotheses at their actual support. A population-wide causal explanation may remain unresolved while a bounded current account is complete.
 
@@ -19629,7 +21460,7 @@ The question is how to choose a useful maintenance-culture intervention from lim
 
 ### MNT.16:12 - Relations
 
-[FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) supplies cultural-relation and intervention distinctions. [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) supplies the Method-variant question and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) programme effects. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply maintenance support, performance and hand-back situations in which variants are enacted. FPF [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs conditional inquiry, [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) evidence and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) measurement. Claims about a changed practice or its effects retain their own support.
+[FPF C.36](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c36---cultural-evolution-and-cultural-evolution-engineering) supplies cultural-relation and intervention distinctions. [MNT.14](#mnt14---compare-maintenance-methods-for-retention-or-change) supplies the Method-variant question and [MNT.13](#mnt13---coordinate-the-maintenance-programme-and-fleet-learning) programme effects. [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) and [MNT.11](#mnt11---hand-back-and-authorize-resumed-use-after-maintenance-with-certification-where-required) supply maintenance support, performance and hand-back situations in which variants are enacted. [FPF C.11.DUA](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c11dua---make-advice-and-evidence-demands-worth-their-burden) governs conditional inquiry, [FPF A.10](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#a10---evidence-graph-referring-claim-bound-evidence-and-provenance-graph) evidence and [FPF C.16](https://github.com/ailev/FPF/blob/main/FPF-Spec.md#c16---measurement--metrics-characterization-mmchr) measurement. Claims about a changed practice or its effects retain their own support.
 
 ### MNT.16:End
 
@@ -19691,16 +21522,16 @@ This framework is an original selective synthesis, not a replacement edition or 
 | Source return | Contribution used here | Limit that changes reliance |
 | --- | --- | --- |
 | [NASA, Reliability-Centered Maintenance Guide, 2008](https://www.nasa.gov/wp-content/uploads/2023/06/nasa-rcmguide.pdf), task-selection discussion | Historical task-applicability and effectiveness reasoning in MNT.2. | This is not a current universal standard or a universal interval source. |
-| [Arts, Boute, Loeys and van Staden, Fifty years of maintenance optimization, 2025](https://orbilu.uni.lu/bitstream/10993/61558/1/1-s2.0-S0377221724005241-main.pdf), EJOR 322(3), 725–739, DOI 10.1016/j.ejor.2024.07.002 | Coupled physical-failure and decision reasoning in [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy)/3; support remains part of feasible response. | Models and the source's data-oriented maturity account do not rank every maintenance practice. |
-| [Dadfarnia, Sharp and Herrmann, Comprehensive evaluations of condition monitoring-based technologies in industrial maintenance, 2025](https://www.nist.gov/publications/comprehensive-evaluations-condition-monitoring-based-technologies-industrial), JMS 82, 449–477 | Receiving-use consequences in [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance)/13/14. | Heterogeneous study evidence does not supply a universal effectiveness estimate. |
+| [Arts, Boute, Loeys and van Staden, Fifty years of maintenance optimization, 2025](https://orbilu.uni.lu/bitstream/10993/61558/1/1-s2.0-S0377221724005241-main.pdf), EJOR 322(3), 725–739, DOI 10.1016/j.ejor.2024.07.002 | Coupled physical-failure and decision reasoning in [MNT.2](#mnt2---select-and-reopen-the-maintenance-policy) and MNT.3; support remains part of feasible response. | Models and the source's data-oriented maturity account do not rank every maintenance practice. |
+| [Dadfarnia, Sharp and Herrmann, Comprehensive evaluations of condition monitoring-based technologies in industrial maintenance, 2025](https://www.nist.gov/publications/comprehensive-evaluations-condition-monitoring-based-technologies-industrial), JMS 82, 449–477 | Receiving-use consequences in [MNT.4](#mnt4---monitor-and-interpret-system-condition-for-maintenance), MNT.13 and MNT.14. | Heterogeneous study evidence does not supply a universal effectiveness estimate. |
 | [Orošnjak, Saretzky and Kedziora, Prescriptive Maintenance, 2025](https://orbilu.uni.lu/handle/10993/65591), Applied Sciences 15(15), 8507 | The condition-to-action question used in MNT.6. | The inspected abstract and synthesis do not warrant adopting a particular deployed algorithm. |
-| [Gan and colleagues, preparation-aware scheduling](https://journals.sagepub.com/doi/abs/10.1177/09544054251350538), 2026 issue, first online July 2025 | Preparation overlap as a candidate choice in [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority)/7/15. | The inspected abstract's scheduling model supplies neither plant-wide proof nor these case times. |
-| [Kasuya and Jin, flexible decision timing, 2026](https://www.sciencedirect.com/science/article/abs/pii/S095183202600342X), DOI 10.1016/j.ress.2026.112528 | Operating-rate and maintenance-timing alternatives in [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation)/14. | The inspected abstract/introduction concerns modeled systems, not universal field transfer. |
+| [Gan and colleagues, preparation-aware scheduling](https://journals.sagepub.com/doi/abs/10.1177/09544054251350538), 2026 issue, first online July 2025 | Preparation overlap as a candidate choice in [MNT.5](#mnt5---prepare-maintenance-service-capability-spares-tools-and-authority), MNT.7 and MNT.15. | The inspected abstract's scheduling model supplies neither plant-wide proof nor these case times. |
+| [Kasuya and Jin, flexible decision timing, 2026](https://www.sciencedirect.com/science/article/abs/pii/S095183202600342X), DOI 10.1016/j.ress.2026.112528 | Operating-rate and maintenance-timing alternatives in [MNT.7](#mnt7---coordinate-maintenance-intervention-and-continuing-operation) and MNT.14. | The inspected abstract/introduction concerns modeled systems, not universal field transfer. |
 | [GFMAM, The Maintenance Framework, second edition, 2021](https://www.gfmam.org/sites/default/files/2021-02/GFMAM%20Maintenance%20Framework%20-%202nd%20Edition%20Final.pdf), §6 | Breadth of task, support, information and programme concerns. | Its subject inventory is not copied as a compulsory Method sequence. |
 | [IAM, An Anatomy of Asset Management, version 4, 2024](https://theiam.org/media/5615/iam-anatomy-version-4-final.pdf), §§7.5.9 and 7.7.5 | Maintained function and the relation to value-oriented decisions about an individual asset, an asset System or a portfolio. | Comparing continued use, renewal, replacement, repurposing or withdrawal by value, costs, risks and service effects is broader than MNT's maintained-functioning result; portfolio scale is not compulsory. |
 | [OSHA, 29 CFR 1910.147](https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147) | A bounded example of operative energy-control, verification and restoration requirements. | Actual use requires the applicable current rules, scope and equipment procedure. |
 | [EASA, September 2025 Part-145 guidance](https://www.easa.europa.eu/en/document-library/easy-access-rules/online-publications/easy-access-rules-continuing-airworthiness?erules-id=ERULES-1963177438-272), 145.A.50 and GM1 145.A.50(a) | Distinguishing specified maintenance certification from a broader use claim in MNT.11. | This is a dated illustration; the [edition notice](https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-continuing-airworthiness) identifies missing later requirements. |
-| [CASA, maintenance-activities risk profile: Fatigue, 24 April 2026](https://www.casa.gov.au/operations-safety-and-travel/safety-management-systems/sector-safety-risk-profiles/maintenance-activities-sector-safety-risk-profile/fatigue) | A human-performance counterexample to attention-only responses in [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention)/16. | An aviation account does not supply a universal threshold or quantified causal effect. |
+| [CASA, maintenance-activities risk profile: Fatigue, 24 April 2026](https://www.casa.gov.au/operations-safety-and-travel/safety-management-systems/sector-safety-risk-profiles/maintenance-activities-sector-safety-risk-profile/fatigue) | A human-performance counterexample to attention-only responses in [MNT.9](#mnt9---perform-and-record-the-maintenance-intervention) and MNT.16. | An aviation account does not supply a universal threshold or quantified causal effect. |
 
 The [Architectural Reference](#maintenance-engineering-and-management-principles-framework-architectural-reference) explains the connected language and the consequences of these sources for its use.
 
@@ -19716,8 +21547,8 @@ The [Architectural Reference](#maintenance-engineering-and-management-principles
 > A domain pattern language for making separately governed meanings and representations usable together for a named receiving use.
 
 - **Author:** Anatoly Levenchuk, with AI-assisted development and review
-- **Version:** 20 September 2026
-- **Status:** Eternal alpha: the complete twelve-pattern first edition, open to correction as methods, sources, and applications change. The Methods support use-qualified model reuse or construction, semantic interfaces, affected-use revalidation, and modular semantic commons.
+- **Version:** 20 October 2026
+- **Status:** Eternal alpha, open to correction as methods, sources, and applications change. The thirteen Methods support construction of a receiving-use integration, model reuse or development, semantic interfaces, affected-use revalidation, and modular semantic commons.
 - **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) for original framework content; third-party material retains its own terms.
 - **Publication:** [FPF Library repository](https://github.com/ailev/FPF)
 
@@ -19725,7 +21556,7 @@ Use the Readme to enter from a working difficulty, or the Table of Contents to o
 
 # Table of Contents
 
-Use the Readme to follow several methods through a receiving-use problem. Use this Table of Contents when you know the result you need. The 12 included bodies are the authoritative Methods for this first edition.
+Use the Readme to follow several methods through a receiving-use problem. Use this Table of Contents when you know the result you need. The 13 included bodies describe the Methods and their individual status.
 
 `SIE.*` is the PatternID namespace. Numbers are stable addresses, not a Work sequence.
 
@@ -19734,7 +21565,7 @@ Use the Readme to follow several methods through a receiving-use problem. Use th
 | Unit | Reader use |
 | :--- | :--- |
 | [Semantic Integration Engineering Principles Framework Readme](#semantic-integration-engineering-principles-framework-readme) | Follow connected inspection, provider and semantic-commons uses, including changed premises and partial results. |
-| [Citation](#citation) | Cite this first edition or one pattern with its PatternID and date. |
+| [Citation](#citation) | Cite this edition or one pattern with its PatternID and date. |
 | [Semantic Integration Engineering Principles Framework Architectural Reference](#semantic-integration-engineering-principles-framework-architectural-reference) | Understand how the contributions connect, why their boundaries matter, and which combined results the repertoire can support. |
 | [SIE.Reference:1](#siereference1---meanings-identifiers-claims-carriers-and-world-side-referents-remain-distinct) | Meanings, identifiers, claims, carriers, and world-side referents remain distinct |
 | [SIE.Reference:2](#siereference2---source-authority-and-receiving-authority-remain-separate) | Source authority and receiving authority remain separate |
@@ -19758,7 +21589,7 @@ Use the Readme to follow several methods through a receiving-use problem. Use th
 | [SIE.Reference:18](#siereference18---publication-boundary) | Publication boundary |
 | [SIE.Sources:1](#siesources1---source-use-and-currentness) | Source use and currentness |
 | [SIE.Sources:2](#siesources2---edition-return) | Edition return |
-| [Authoritative Pattern Bodies](#sie1---bound-the-receiving-use-and-semantic-contract) | Use the twelve SIE bodies under their own entry conditions; PatternID order is not a lifecycle. |
+| [Authoritative Pattern Bodies](#sie1---bound-the-receiving-use-and-semantic-contract) | Use the thirteen SIE bodies under their own entry conditions; PatternID order is not a lifecycle. |
 | [SIE.Application - Cross-Pattern Application](#cross-pattern-application) | Inspect AP242/QIF, semiconductor identity, quality/provenance, high-change-provider, and semantic-commons cases. |
 | [Semantic Integration Engineering Principles Framework Sources and Edition Notes](#semantic-integration-engineering-principles-framework-sources-and-edition-notes) | Check package anatomy, availability, sources, neighboring modeling work, owners, and edition limits. |
 
@@ -19778,10 +21609,14 @@ Use the Readme to follow several methods through a receiving-use problem. Use th
 | 10 | [SIE.10 - Validate a Semantic Integration Result for Its Receiving Use](#sie10---validate-a-semantic-integration-result-for-its-receiving-use) | Stable | What does the evidence settle about the named receiving use, and which claimed premises still need validation? | SIE.1 or equivalent use; relevant SIE.2-SIE.9 results; direct domain and receiver acceptance criteria |
 | 11 | [SIE.11 - Trace Semantic Change and Revalidate Affected Uses](#sie11---trace-semantic-change-and-revalidate-affected-uses) | Stable | Which receiving results depend on the changed semantic premise, and what can now continue? | Changed relied-on premise; relevant SIE.2-SIE.10 results; FPF A.10.1 when discovery is needed |
 | 12 | [SIE.12 - Govern Modular Semantic Commons without Universal Authority](#sie12---govern-modular-semantic-commons-without-universal-authority) | Stable | How can actual users maintain and rely on shared semantic modules and their changes? | Actual shared-module uses; SIE.3, SIE.4, and SIE.11 when their results are needed |
+| 13 | [SIE.13 - Construct a Semantic Integration for a Named Receiving Use](#sie13---construct-a-semantic-integration-for-a-named-receiving-use) | Stable | How do we obtain and connect the required contributions, choose the next missing result, and supply an answer that works under their joint conditions? | Receiving need and available results; SIE.1–SIE.11 where their contributions are needed; SIE.12 for actual commons work |
 
 # Semantic Integration Engineering Principles Framework Readme
 
 ## Practical entries
+
+To construct a semantic integration from several contributions, use [SIE.13](#sie13---construct-a-semantic-integration-for-a-named-receiving-use): receiving need → required meanings and contributions → valid connections and joint conditions → next missing result → supplied receiving answer → affected return after change. Reuse adequate results and finish a sufficient local question directly; this connection is not a requirement to execute the full repertoire. The [worked construction](#sie135---archetypal-grounding) explains why these moves produce a usable whole.
+
 
 Start from the query, decision, or operation that needs a cross-source answer. The constructed connections below show how meanings, identity, executable rules, and receiving use constrain one another. They are selected examples, not a catalogue or a required sequence. Reuse supplied results when their use and conditions still match; open the [Table of Contents](#table-of-contents) for another question or the [pattern-selection guide](#siereference14---pattern-selection-and-first-returned-result) for a missing result.
 
@@ -19840,7 +21675,7 @@ If you use this edition, cite:
 ```text
 Anatoly Levenchuk, with AI-assisted development and review.
 Semantic Integration Engineering Principles Framework.
-20 September 2026. First edition.
+20 October 2026.
 GitHub repository: https://github.com/ailev/FPF
 ```
 
@@ -19895,6 +21730,8 @@ The first useful whole is `SemanticIntegrationPackage@Use`. It is a connected, i
 
 The package references any SIE.3 model qualification on which it relies. Preserve identity premises where the answer depends on them; explain their non-use only when it affects interpretation or later reliance. A package may return explicit conflict or non-comparability. Positive validation requires matching evidence for every load-bearing premise of the claimed whole use or contract-permitted subset.
 
+[SIE.13](#sie13---construct-a-semantic-integration-for-a-named-receiving-use) supplies the Method for constructing this whole: derive the needed contributions from the answer, connect their use conditions, obtain the next missing result, and bring the permitted combination into receiving use. The following sections explain the architecture and applications of that Method.
+
 ## SIE.Reference:5 - Use the repertoire at the scale of the missing result
 
 The [package anatomy](#siereference13---package-anatomy-and-direct-result-relations) states what must be inspectable when the promised result is a whole semantic interface package. Use the Methods whose results are missing or whose qualifications need reopening. With a supplied use contract and qualified source meanings, [SIE.4](#sie4---judge-cross-source-correspondences-and-their-permitted-uses) can return one warranted correspondence or an incompatibility and stop. With an existing interface and its premises, [SIE.10](#sie10---validate-a-semantic-integration-result-for-its-receiving-use) can identify a failed receiving-use obligation without rebuilding that interface. Reuse an available result when its subject, source editions, use, and conditions still match; reopen the contribution whose premise changed.
@@ -19905,11 +21742,13 @@ A bounded interface package needs adequate models, its other load-bearing premis
 
 If a required distinction cannot be expressed, SIE.3 reuses, extends, or constructs the needed semantic content. An unresolved source definition still limits the dependent mapping or interface claim. SIE.11 compares changed reliance and obtains the affected domain results; its wider account is conditional on a receiving need. SIE.12 supplies shared-module maintenance and decision arrangements where actual users require them. The source, implementation, and receiving owners retain their respective returns.
 
+Use [SIE.13:4.1–4.4](#sie1341---establish-what-would-let-the-receiver-continue) when the missing contribution is not yet known or the available results still need to be connected into the receiving answer. It retains these local entries and sufficient stops.
+
 ## SIE.Reference:6 - Qualify the combined arrangement
 
 Three questions remain distinct. Is each source meaning, correspondence, identity disposition, or composition rule supported? Does that result permit the particular use made of it? Can all relied-on results and their realization satisfy the receiving contract together? A true relation may be too lossy for one transformation. Two individually current sources may concern different effectivity intervals. Several feasible components may exceed a shared access limit. The relevant bodies answer their local questions; the whole-use conclusion also needs these joins and common conditions.
 
-For the combination, bind the same receiving question and the actual subjects, grain, intervals, source and rule versions, accepted losses, authority, and failure branches. Where contributions use shared requests, credentials, storage, time, or operating support, compare their total demand with the applicable conditions, including required trace and recovery behavior. A permission to query does not imply permission to replicate or disclose. Keep a common source or derivation visible when several results rely on it; repeated citations or passing tests of the same premise are not independent support for a different claim. The comparison belongs in [SIE.8, Solution](#sie84---solution) and the bounded validation in [SIE.10, Solution](#sie104---solution).
+For the combination, bind the same receiving question and the actual subjects, grain, intervals, source and rule versions, accepted losses, authority, and failure branches. Where contributions use shared requests, credentials, storage, time, or operating support, compare their total demand with the applicable conditions, including required trace and recovery behavior. A permission to query does not imply permission to replicate or disclose. Keep a common source or derivation visible when several results rely on it; repeated citations or passing tests of the same premise are not independent support for a different claim. The realization comparison belongs in [SIE.8, Solution](#sie84---solution) and the bounded validation in [SIE.10, Solution](#sie104---solution). [SIE.13:4.2–4.6](#sie1342---derive-the-required-contributions-from-the-answer) constructs the required connections, obtains missing contributions and returns their combined result to the receiving use.
 
 ### SIE.Reference:6.1 - A shared request limit changes the provider result
 
@@ -19936,7 +21775,6 @@ The language is organized around the results that make a receiving use possible.
 | Make a materialized knowledge graph the standard result | Permitted copying, a suitable refresh and correction arrangement, and reproducible queries meet the contract. | A graph is one realization. The live-provider case forbids replication, and useful incompatibility must remain expressible. Conversely, live federation is unsuitable when its access, availability, or repeatability cannot meet the use. |
 | Use one canonical enterprise model and master identity | A responsible domain or MDM authority has supplied a bounded common model, identity, or authoritative-value result that the use can rely on. | Integration alone cannot grant that authority or erase local grains, versions, claims, and incompatible meanings. SIE preserves the supplied result's scope and the source identifiers that make correction possible. |
 | Collapse the work into one prescribed lifecycle | A local team may use a repeatable plan for a recurring, stable situation. | A direct identity question, realization decision, or validation failure has different inputs and stops. The pattern language preserves those entries and conditional result relations; the local plan remains one use of it. |
-| Separate Ontology Engineering, Knowledge Graph Engineering, and Semantic Integration into independent languages | A substantially independent first use, result chain, practitioner community, and source-refresh need would justify reconsidering the split. | The represented uses share receiving contracts, correspondence and mapping work, authority boundaries, and whole-use validation. A different technology or familiar professional name alone does not separate that work. |
 
 The complete repertoire joins model adequacy, semantic interfaces, changed reliance, and commons maintenance through their actual results. Completing a small model or interface question remains useful on its own. A continuing service requires its operational results, and a commons requires the rights and dependencies of its actual users.
 
@@ -19956,7 +21794,7 @@ Terminology and registry practice, including [ISO 704:2022](https://www.iso.org/
 
 [LOT](https://doi.org/10.1016/j.engappai.2022.104755) contributes ontology requirements, development, publication, and maintenance to SIE.3. Sufficient model reuse remains a completed result. [LOT4KG](https://lot.linkeddata.es/LOT4KG/) distinguishes ontology work from graph construction and relates changes to dependent mappings, constraints, and validation; SIE.11 uses those relationships for graph realizations. [OBO Foundry principles](https://obofoundry.org/principles/fp-000-summary.html) contribute scoped module, term-stability, maintenance, and communication practices to SIE.12, with their community-specific rules qualified in the source account.
 
-Reconsider the affected choice when a simpler qualified contribution supplies the same result, a represented use repeatedly needs a missing Method, or a source or case defeats a relied-on boundary. When the need is a reusable Method repertoire, [FPF C.39.RP](../../FPF-Spec.md#c39rp---organize-a-repertoire-for-method-development) returns inspectable alternatives, source contributions, relations, and gaps for that comparison; the integration-specific question stays in SIE. A substantially independent practice remainder can reopen the field split described above.
+Reconsider the affected choice when a simpler qualified contribution supplies the same result, a represented use repeatedly needs a missing Method, or a source or case defeats a relied-on boundary. When the need is a reusable Method repertoire, [FPF C.39.RP](../../FPF-Spec.md#c39rp---organize-a-repertoire-for-method-development) returns inspectable alternatives, source contributions, relations, and gaps for that comparison; the integration-specific question stays in SIE.
 
 ## SIE.Reference:8 - Costs, perspectives, and correction
 
@@ -19981,7 +21819,7 @@ These questions address the failures in the applications: field-name equivalence
 
 ## SIE.Reference:10 - Intended use and ordinary non-use
 
-Use this framework when the working result must make separately governed meanings, identities, claims, or representations usable together for a named receiver. Use one pattern or a small cooperating set and stop at the first decision-changing result or honest blocker.
+Use this framework when the working result must make separately governed meanings, identities, claims, or representations usable together for a named receiver. Use one pattern or a small cooperating set and stop at the first decision-changing result or blocker.
 
 Do not use SIE for local modeling with no cross-source receiving-use question, physical data movement, pipeline operation, one application's schema design, master-data authority, product configuration or release, generic representation choice, or the receiver's operational decision. Obtain those results from their owning practices. A local mapping inside one source can remain local unless it changes a cross-source semantic result.
 
@@ -19991,15 +21829,20 @@ Do not use SIE for local modeling with no cross-source receiving-use question, p
 
 ## SIE.Reference:12 - Supplied pattern repertoire
 
-The complete first edition supplies `SIE.1`–`SIE.12`. The model, change, and commons entries return these domain results:
+The repertoire supplies `SIE.1`–`SIE.13`. The model, change, commons and whole-construction entries return these domain results:
 
 - `SIE.3 - Construct or Reuse a Semantic Model for a Named Use`: adequate reuse or the semantic development required by a demonstrated gap.
 - `SIE.11 - Trace Semantic Change and Revalidate Affected Uses`: direct affected-use results, with a common account when a receiver needs it.
 - `SIE.12 - Govern Modular Semantic Commons without Universal Authority`: a working shared-module arrangement for actual users.
+- `SIE.13 - Construct a Semantic Integration for a Named Receiving Use`: the connected semantic integration, including acquisition of missing contributions, joint conditions and its bounded receiving result.
+
 
 A supplied Method guides the work; an inaccessible source, unresolved meaning, missing right, or absent implementation result can still limit a particular use.
 
 ## SIE.Reference:13 - Package anatomy and direct result relations
+
+[SIE.13](#sie13---construct-a-semantic-integration-for-a-named-receiving-use) constructs the whole from the required contributions below. The table identifies results to connect or reuse, not a required new deliverable from every pattern.
+
 
 | Package part | Supplying body or return | Minimum inspectable content |
 | --- | --- | --- |
@@ -20018,6 +21861,7 @@ A supplied Method guides the work; an inaccessible source, unresolved meaning, m
 
 | Working question | Start or return | First result |
 | --- | --- | --- |
+| How can the required contributions supply the receiving answer together? | `SIE.13` | `SemanticIntegrationPackage@Use`, a permitted partial result, or an exact unresolved question or stop |
 | What use and loss boundary govern the integration? | `SIE.1` | `SemanticIntegrationUseContract@Use` |
 | What does each source mean and own? | `SIE.2` | `SourceSemanticInventory@Use` |
 | Are the available models adequate, or what content must change? | `SIE.3` when adequacy is unsettled | `UseFitSemanticModel@Use` or exact blocker |
@@ -20062,7 +21906,7 @@ The five applications are constructed method demonstrations, not evidence of a p
 
 ## SIE.Reference:18 - Publication boundary
 
-This publication combines twelve authoritative pattern bodies with the shared reader account. The bodies govern their Methods; the Readme, Architectural Reference, applications, Table of Contents, and boundary account help readers find and combine them.
+This publication combines thirteen pattern bodies with the shared reader account. The bodies govern their Methods; the Readme, Architectural Reference, applications, Table of Contents, and boundary account help readers find and combine them.
 
 Use an instructional Guide for sequenced learning and memory formation. Use the Engineering DPF Suite Reference for cross-framework discovery. Neither publication replaces the pattern bodies or supplies a missing SIE result.
 
@@ -20083,7 +21927,7 @@ For source qualifications, citation and edition information, see the [Sources an
 
 ### SIE.1:1 - Problem Frame
 
-**Use this when** a request says “integrate the data”, “align the models”, “build the knowledge graph”, or “make one source of truth”, but the intended receiver and decision-changing answer are not yet explicit. The recognizable failure is a technically impressive integration whose values cannot be interpreted, trusted, or used safely by the Work that requested it.
+**Use this when** a request says “integrate the data”, “align the models”, “build the knowledge graph”, or “make one source of truth”, but the intended receiver and decision-changing answer are not yet explicit. The recognizable failure is an integration whose values cannot be interpreted, trusted, or used safely by the Work that requested it.
 
 The primary EntityOfConcern is one semantic-integration use: a named receiver performing a named query, decision, operation, or engineering workflow under stated conditions. The first move is to state that use and the answer claims it needs. The first result is a bounded contract that lets later workers decide which semantic loss, source age, unresolved row, and test outcome are acceptable.
 
@@ -20105,7 +21949,7 @@ Technology then supplies the hidden contract. A graph platform encourages graph-
 | Freshness and latency | Query-time access can be current but slow or fragile; copied data can be fast but stale and harder to govern. |
 | Authority | Source owners, integrators, and receivers contribute different decisions; visibility or custody does not transfer authority. |
 | Assurance | A finite representative test is needed now, while no test establishes universal semantic correctness. |
-| Reuse | A broad contract appears reusable, while a small contract is easier to validate and honestly reopen. |
+| Reuse | A broad contract appears reusable, while a small contract is easier to validate and reopen. |
 
 ### SIE.1:4 - Solution
 
@@ -20198,11 +22042,11 @@ The cost is early negotiation about the receiver, evidence, loss, and stop condi
 
 ### SIE.1:10 - Rationale
 
-Semantic adequacy is relative to a use, but relativity does not make it arbitrary. A receiver, answer claim, source context, permitted loss, authority, and representative test together constrain what counts as a successful integration. Beginning there prevents a carrier choice from becoming an implicit ontology, authority model, and acceptance rule.
+Semantic adequacy is relative to a use. A receiver, answer claim, source context, permitted loss, authority, and representative test together constrain what counts as a successful integration. Beginning there prevents a carrier choice from becoming an implicit ontology, authority model, and acceptance rule.
 
 ### SIE.1:11 - SoTA-Echoing
 
-The best-known line for this question combines use-bounded representation selection, situational Method criteria, quality-for-use, and explicit source/provenance practice. The serious default alternative is technology- or source-led integration. Its defect is not the use of a graph, warehouse, or federation; it is allowing that choice to define the answer and loss boundary. SIE.1 mutates the line by making the whole semantic contract, including authorities and legitimate unresolved branches, the first domain result.
+The best-known line for this question combines use-bounded representation selection, situational Method criteria, quality-for-use, and explicit source/provenance practice. The serious default alternative is technology- or source-led integration. Its defect is not the use of a graph, warehouse, or federation; it is allowing that choice to define the answer and loss boundary. SIE.1 applies these contributions by making the whole semantic contract, including authorities and legitimate unresolved branches, the first domain result.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -20271,7 +22115,7 @@ Recover source semantics at the smallest grain that can change the receiving ans
 6. **Separate claims, data, and provenance.** Record which claim a data item represents, its scope and time, how it was derived, who or what supplied it, and which uncertainty or status accompanies it. Provenance does not make the claim true.
 7. **Recover authority and access.** Name who may define the scheme, issue identifiers, decide authoritative values, approve local extensions, grant access, and authorize receiving use. Mark unsupported assumptions.
 8. **Assess currentness and use adequacy.** Compare the source premise with the contract. State whether it is adequate, adequate only under conditions, unresolved, obsolete for this use, inaccessible, or missing.
-9. **Return an inadequate model honestly.** If the required distinction cannot be expressed in the available source or supplied semantic model, request `UseFitSemanticModel@Use`; do not hide the gap in a mapping rule.
+9. **Return an inadequate model.** If the required distinction cannot be expressed in the available source or supplied semantic model, request `UseFitSemanticModel@Use`; do not hide the gap in a mapping rule.
 10. **Record dependencies and next results.** Identify the exact definitions, editions, authority facts, and gaps consumed by `SIE.4`–`SIE.10`, plus observations that reopen this inventory.
 
 #### SIE.2:4.2 - Record the Result
@@ -20289,7 +22133,7 @@ Recover source semantics at the smallest grain that can change the receiving ans
 
 #### SIE.2:4.3 - What Changes in Practice
 
-The team stops mapping from field names. A later correspondence or transformation can point to exact source-local endpoints and editions, and a failure can return to the owner of the missing meaning, authority, access, or model. An inventory row can be useful even when its disposition is unresolved or inaccessible.
+Mappings are grounded in the recovered source meanings. A later correspondence or transformation can point to exact source-local endpoints and editions, and a failure can return to the owner of the missing meaning, authority, access, or model. An inventory row can be useful even when its disposition is unresolved or inaccessible.
 
 ### SIE.2:5 - Archetypal Grounding - AP242 and QIF Source Cut
 
@@ -20656,13 +22500,13 @@ The set records endpoint editions and counterexamples such as a non-dimensional 
 
 ### SIE.4:9 - Consequences
 
-The correspondence set gives mapping and interface work explicit semantic premises and preserves honest negative results. It makes version and loss dependencies visible and allows a narrow use to proceed while other rows remain unresolved.
+The correspondence set gives mapping and interface work explicit semantic premises and preserves negative results. It makes version and loss dependencies visible and allows a narrow use to proceed while other rows remain unresolved.
 
 The cost is row-level judgment and counterexample work. Automated matchers remain useful for candidate discovery but cannot close the relation or its receiving-use qualification alone.
 
 ### SIE.4:10 - Rationale
 
-A direct relation and permission to use that relation answer different questions. Keeping them separate allows a true relation to be rejected for a loss-sensitive use and a qualified narrow relation to support one operation without being promoted globally. This is the smallest structure that protects both semantic truth and practical action.
+A direct relation and permission to use that relation answer different questions. Keeping them separate allows a true relation to be rejected for a loss-sensitive use and a qualified narrow relation to support one operation without being promoted globally.
 
 ### SIE.4:11 - SoTA-Echoing
 
@@ -20681,7 +22525,7 @@ Reopen when an endpoint meaning or edition changes, a counterexample defeats the
 ### SIE.4:12 - Relations
 
 - `SIE.2` supplies exact endpoint senses, editions, profiles, authority limits, and model gaps.
-- `SIE.3` is a conditional external return when available models cannot express a required endpoint distinction.
+- `SIE.3` is a conditional return when available models cannot express a required endpoint distinction.
 - `SIE.5` consumes rows that expose a load-bearing cross-source identity question.
 - `SIE.6` uses correspondences to decide which source claims are comparable or composable without erasing scope or conflict.
 - `SIE.7` consumes only accepted rows under their stated use and loss conditions; it adds executable transformation semantics.
@@ -20709,7 +22553,7 @@ The payoff is that the integration can join only warranted cases, return exact u
 
 The same real-world item can carry manufacturer, supplier, enterprise, lot, serial, package, event, and temporary process identifiers. Conversely, the same character string can be reused by different issuers or at different times. Version, configuration, part-whole, and alternate-description relations can be mistaken for identity because they support some joins.
 
-If an integration collapses those distinctions, provenance becomes decorative: the merged record no longer shows which identifier asserted what, when, or under whose rules. Contradictory events appear to concern one thing without evidence, and a master key silently becomes a domain decision.
+If an integration collapses those distinctions, provenance becomes decorative: the merged record no longer shows which source made each claim, the identifier it used, or the time and issuer rules that qualify that use. Contradictory events appear to concern one thing without evidence, and a master key silently becomes a domain decision.
 
 ### SIE.5:3 - Forces
 
@@ -20811,11 +22655,11 @@ The cost is domain evidence and authority work. Some convenient global keys rema
 
 ### SIE.5:10 - Rationale
 
-Identifiers are governed signs, not entities. Cross-source identity is therefore a relation claim that depends on scheme, grain, interval, evidence, and use. Preserving source identifiers and authority makes the claim reversible and prevents integration convenience from becoming a master-data or domain decision.
+Identifier schemes govern how signs identify entities. Cross-source identity is therefore a relation claim that depends on scheme, grain, interval, evidence, and use. Retaining source identifiers lets the claim be revised without losing its source basis. Master-data and domain decisions remain with their responsible authorities.
 
 ### SIE.5:11 - SoTA-Echoing
 
-The best-known line combines explicit identifier ownership and restrictions, provenance-qualified alternate/specialization relations, and domain traceability practice. The serious default is entity resolution that optimizes a match score or golden record. Its defect is not probabilistic matching itself; it is allowing the score or merged record to erase grain, issuer, interval, and decision authority. SIE.5 mutates the line into a bounded disposition consumed explicitly by downstream semantic results.
+The best-known line combines explicit identifier ownership and restrictions, provenance-qualified alternate/specialization relations, and domain traceability practice. The serious default is entity resolution that optimizes a match score or golden record. Its defect is not probabilistic matching itself; it is allowing the score or merged record to erase grain, issuer, interval, and decision authority. SIE.5 uses these contributions to return a bounded disposition for the work that relies on identity.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -20850,7 +22694,7 @@ Reopen when an identifier scheme or issuer rule changes, new event/configuration
 
 **Use this when** a receiving answer must combine claims from separately governed sources and a simple union, priority rule, average, overwrite, or “golden record” would hide differences in meaning, subject, time, authority, or uncertainty. The recognizable failure is one clean value whose provenance can be displayed but whose conflict or non-comparability can no longer be recovered.
 
-The primary EntityOfConcern is one source-qualified claim composition for a named receiving question. The first move is to state the exact source claims and the subject relation the receiving question requires. The first result is either a qualified view with explicit derivation or an honest conflict, non-comparability, or unresolved branch.
+The primary EntityOfConcern is one source-qualified claim composition for a named receiving question. The first move is to state the exact source claims and the subject relation the receiving question requires. The first result is either a qualified view with explicit derivation or a conflict, non-comparability, or unresolved branch.
 
 The payoff is an answer the receiver can interpret without pretending that integration owns truth or preference. Do not use SIE.6 to decide domain truth, authoritative value, survivorship, risk acceptance, or action. A domain authority or receiving decision may consume the composition and choose; SIE preserves what that choice depends on.
 
@@ -20955,7 +22799,7 @@ The interface can return two qualified provider rows, explicit non-comparability
 
 ### SIE.6:9 - Consequences
 
-Receivers obtain explainable views and honest conflict branches. Corrections can target the source claim, identity premise, composition rule, or receiving use without reconstructing an opaque golden record. Different receivers may lawfully obtain different bounded views from the same preserved claims.
+Receivers obtain explainable views and conflict branches. Corrections can target the source claim, identity premise, composition rule, or receiving use without reconstructing an opaque golden record. Different receiving uses can justify different bounded views of the same preserved claims.
 
 The cost is richer output and explicit rule ownership. Some applications must handle plural, incomplete, or conflicting results instead of one scalar value.
 
@@ -21054,7 +22898,7 @@ Specify semantic mapping rules separately from their implementation. Bind every 
 
 #### SIE.7:4.3 - What Changes in Practice
 
-Semantic decisions leave code and configuration comments and become an independently reviewable specification. Data Engineering can optimize or replace an implementation while preserving the mapping behavior, and a failed output can be traced to a source premise, rule, implementation discrepancy, or receiving-use change.
+Semantic rules and their premises become independently reviewable. Data Engineering can optimize or replace an implementation while preserving the mapping behavior, and a failed output can be traced to a source premise, rule, implementation discrepancy, or receiving-use change.
 
 ### SIE.7:5 - Archetypal Grounding - AP242/QIF Mapping Rules
 
@@ -21098,7 +22942,7 @@ Positive examples cover one known configuration/feature/characteristic/result ch
 
 | Anti-pattern | Repair |
 | --- | --- |
-| SQL is the mapping | Extract the semantic rule, premises, loss, errors, and tests; treat SQL as one implementation. |
+| SQL execution treated as semantic justification | Recover the semantic rule, premises, loss, errors, and tests; check the SQL implementation against them. |
 | Crosswalk equals transformation | Add selection, direction, cardinality, conversions, defaults, errors, trace, and examples. |
 | Null for every failure | Define distinct semantic and operational states and their receiver behavior. |
 | Latest record wins | Use the direct configuration/effectivity or justified interval rule. |
@@ -21117,7 +22961,7 @@ A semantic correspondence states a relation; an executable mapping states how so
 
 ### SIE.7:11 - SoTA-Echoing
 
-The best-known line combines declarative mapping languages, model transformation, traceability, and representation-preservation checks. The serious default is code-first ETL. Code is necessary in many realizations, but as the sole specification it hides semantic premises and loss. SIE.7 adapts the line into a technology-independent, receiving-use mapping contract with explicit negative states.
+The best-known line combines declarative mapping languages, model transformation, traceability, and representation-preservation checks. The serious default is code-first ETL that leaves semantic premises and loss implicit. SIE.7 makes the receiving-use mapping contract independently recoverable, including its negative states. Code and its documentation can carry that contract when the semantic requirements and their grounds remain distinguishable from the implementation being tested.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -21125,7 +22969,7 @@ The best-known line combines declarative mapping languages, model transformation
 | [R2RML](https://www.w3.org/TR/r2rml/) | adapt | Demonstrates declarative relational-to-RDF mapping structures; RDF and relational sources are optional technology families. |
 | [OMG QVT 1.3](https://www.omg.org/spec/QVT/) | adapt | Contributes model-query/view/transformation and trace forms; MOF/QVT is not mandatory. |
 | [PROV-O](https://www.w3.org/TR/prov-o/) | adapt | Supports derivation and activity/agent/entity trace; provenance does not prove semantic preservation. |
-| code-first ETL as sole contract | reject as sufficient | Execution can be tested only against an independently recoverable rule, loss, and branch contract. |
+| code-first ETL with implicit semantic premises | reject as sufficient | Execution must be checked against an independently recoverable rule, loss, and branch contract. |
 
 Reopen when an input or target scheme changes, a correspondence/identity/composition premise changes, a counterexample defeats the rule, the receiver changes accepted loss, or implementations cannot satisfy the preservation predicate.
 
@@ -21282,7 +23126,7 @@ That rejection completes the Method when it answers the requested question. The 
 
 ### SIE.8:9 - Consequences
 
-The realization becomes a reversible bounded decision with visible source, semantic, and operating trade-offs. Interface designers receive explicit currentness and error behavior, while implementers receive a clear invariant to preserve.
+The bounded realization decision exposes source, semantic, and operating trade-offs and the conditions for reconsidering it. Interface designers receive explicit currentness and error behavior, while implementers receive a clear invariant to preserve.
 
 The cost is comparison beyond the preferred platform and coordination with operational owners. A selected candidate may still stop because access, security, service, provider, or cost evidence is missing.
 
@@ -21292,7 +23136,7 @@ Virtual and materialized are not merely deployment choices: they change when and
 
 ### SIE.8:11 - SoTA-Echoing
 
-The best-known line combines declarative mappings, virtual knowledge-graph systems, data federation, materialized integration, and operational data-product practice. The serious default alternatives are “materialize one canonical graph” and “federate everything live”. Each can be correct under conditions; each is defective as a universal answer because it hides a different set of currentness, access, provenance, and recovery obligations. SIE.8 mutates the line into a whole-arrangement choice around one semantic result.
+The best-known line combines declarative mappings, virtual knowledge-graph systems, data federation, materialized integration, and operational data-product practice. The serious default alternatives are “materialize one canonical graph” and “federate everything live”. Each can be correct under conditions; each is defective as a universal answer because it hides a different set of currentness, access, provenance, and recovery obligations. SIE.8 uses these contributions to compare whole arrangements that supply the same semantic result.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -21446,7 +23290,7 @@ An integration result has practical value only when it crosses into receiving Wo
 
 ### SIE.9:11 - SoTA-Echoing
 
-The best-known line combines explicit API/data-contract practice, data-on-the-Web provenance/version guidance, event interfaces, and standards-based engineering exchange. The serious default is transport-first interface design. Its defect is that success is reduced to reachability and schema conformance. SIE.9 mutates the line by making semantic branches, currentness, provenance, and challenge paths part of the receiving contract.
+The best-known line combines explicit API/data-contract practice, data-on-the-Web provenance/version guidance, event interfaces, and standards-based engineering exchange. The serious default is transport-first interface design. Its defect is that success is reduced to reachability and schema conformance. SIE.9 uses these contributions to make semantic branches, currentness, provenance, and challenge paths part of the receiving contract.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -21615,11 +23459,11 @@ The cost is several kinds of evidence and collaboration with domain and receivin
 
 ### SIE.10:10 - Rationale
 
-Semantic integration is a claim chain. Different links require different evidence, and the receiver depends on their composition. Layered validation preserves this structure: no lower layer proves a higher one, while a positive conclusion requires support for every load-bearing premise of the claimed whole use or contract-permitted subset.
+Semantic integration is a claim chain. Different links require different evidence, and the receiver depends on their composition. Layered validation keeps the scope of each test result explicit. A positive conclusion requires support for every load-bearing premise of the claimed whole use or contract-permitted subset.
 
 ### SIE.10:11 - SoTA-Echoing
 
-The best-known line combines constraint validation, ontology-alignment evaluation, provenance, data-quality models, quality management, and user/task validation. The serious defaults are conformance-only testing and aggregate quality scoring. Their defect is not automation or measurement; it is using one layer as a proxy for the whole use. SIE.10 mutates the line into a dependency-aware account with categorical bounded dispositions and representative Work replay.
+The best-known line combines constraint validation, ontology-alignment evaluation, provenance, data-quality models, quality management, and user/task validation. The serious defaults are conformance-only testing and aggregate quality scoring. Their defect is not automation or measurement; it is using one layer as a proxy for the whole use. SIE.10 combines these contributions in a dependency-aware account with categorical bounded dispositions and representative Work replay.
 
 | Source line | Adopt, adapt, or reject | Role and limit |
 | --- | --- | --- |
@@ -21784,7 +23628,7 @@ Finding hidden reliance and interpreting source changes can require domain and r
 
 ### SIE.11:10 - Architectural Rationale
 
-The changed proposition, rather than the changed carrier, determines semantic impact. Direct domain Methods decide the affected result; discovery determines where those questions arise. Keeping those contributions distinct permits reuse, independent completion, and honest limits on wider conclusions.
+The changed proposition, rather than the changed carrier, determines semantic impact. Direct domain Methods decide the affected result; discovery determines where those questions arise. Keeping those contributions distinct permits reuse, independent completion, and limits on wider conclusions.
 
 ### SIE.11:11 - SoTA-Echoing
 
@@ -21857,9 +23701,9 @@ Define the smallest shared module arrangement that serves the actual users. Make
 2. **Set module boundaries.** State the module's domain, concepts and relations, intended uses, material exclusions, and relation to local extensions. Use SIE.3 for content that needs model development and SIE.4 for qualified correspondences between different module meanings.
 3. **Establish identification and dependencies.** Choose namespaces or identification practices that let consumers recover the intended term or module meaning. Identify editions and the dependencies each supported use needs. A permitted version range must have a semantic compatibility basis for its claimed use.
 4. **Assign the decisions and communication.** State who may propose changes, decide module content, release an edition, resolve a disagreement under the community's rules, and communicate with users. Record the actual remit of each responsibility. A source owner retains its source meaning and issuance authority.
-5. **Make contribution workable.** Give a proposer enough guidance to supply the changed meaning, rationale, examples, affected modules, and known consumer consequences. Route the proposal to the people authorized to decide it. Keep an unresolved disagreement explicit and permit a scoped local extension or alternative module when it can serve its users honestly.
+5. **Make contribution workable.** Give a proposer enough guidance to supply the changed meaning, rationale, examples, affected modules, and known consumer consequences. Route the proposal to the people authorized to decide it. Keep an unresolved disagreement explicit and permit a scoped local extension or alternative module when it can serve its users.
 6. **Prepare the release for its consumers.** Identify material semantic changes and use SIE.11 for affected reliance. Provide the edition, access, dependency conditions, and migration or deprecation information needed by those users. Distinguish a clarification from a changed meaning; preserve a way to identify the earlier meaning when consumers still rely on it.
-7. **Notify and maintain at the agreed scope.** Give affected users notice that permits the action required by their dependency and the community agreement. Maintain a responsive contact and a workable path for corrections. An urgent correction may require immediate qualified publication and notification; describe the resulting limits honestly.
+7. **Notify and maintain at the agreed scope.** Give affected users notice that permits the action required by their dependency and the community agreement. Maintain a responsive contact and a workable path for corrections. An urgent correction may require immediate qualified publication and notification; describe the resulting limits.
 8. **Return the usable arrangement.** Show how the named participants can obtain a module, propose a change, decide and release it, and interpret the effect on their supported uses. An unresolved decision right or dependency limits the part of the commons that can be claimed as governed.
 
 These responsibilities can fit a small agreement for a small commons. Broader participation adds work only where additional semantic dependence or decision needs arise.
@@ -22004,2267 +23848,73 @@ Reopen the arrangement comparison when one supported use requires a joint editio
 ### SIE.12:End
 
 
-# Cross-Pattern Application
+## SIE.13 - Construct a Semantic Integration for a Named Receiving Use
 
-
-
-## SIE.Application:1 - APP-SIE-01 - AP242 and QIF product-lifecycle query
-
-A quality engineer asks: “For released product-definition revision and configuration `R`, which QIF inspection plan and result concern feature `F` at effectivity `E`?” The AP242 and QIF sources use different models and identifiers. SIE may connect their qualified claims; Systems Engineering and authorized quality Work retain configuration, release, applicability, and acceptance decisions.
-
-The application uses the repertoire as follows:
-
-| Contribution | Constructed application result |
-| --- | --- |
-| `SIE.1` | The constructed contract in SIE.1:5 names the engineer, workflow, answer columns and effectivity. It supplies the 24-hour QIF observation window and two-second response limit and permits qualified evidence with separately visible unresolved local-extension and unknown-unit branches. Authority, negative cases and stops remain explicit. |
-| `SIE.2` | A source inventory records AP242:2025 edition 4 at stage 90.92, “to be revised”, the applicable QIF edition, source models, identifiers, configuration/effectivity meanings, owners, and unresolved local extensions. |
-| `SIE.3`, when needed | Qualify an existing model, or extend it to distinguish an inspection requirement from an observation of the applicable configured feature. The plan and an observation of another configuration provide counterexamples. |
-| `SIE.4` | Correspondence rows distinguish product feature, inspection characteristic, plan applicability, configuration, and result relations; unsupported equivalence and incompatible-feature rows remain explicit. |
-| `SIE.5` | Feature and characteristic identities are disposed at the required revision, configuration, and effectivity grain; source identifiers and issuers remain visible. |
-| `SIE.6` | AP242 definition/effectivity claims and QIF plan/result claims are composed with source, interval, authority, and conflict branches preserved. |
-| `SIE.7` | Executable rules select the released configuration, map accepted endpoint relations, preserve identifiers, reject unsupported joins, and trace every output row to its premises. |
-| `SIE.8` | A virtual or hybrid realization is selected against freshness, access, latency, provenance, and recovery rather than because a graph store is preferred. |
-| `SIE.9` | The receiving interface returns matched, unmatched, incompatible, stale, and source-error branches with their interpretations and provenance. |
-| `SIE.10` | Layered tests cover carrier/schema, source semantics, correspondence, identity/effectivity, composition, transformations, provenance/currentness, quality, and the representative query. SIE.10:5.1 applies the stated freshness, response and partial-answer criteria while keeping excluded branches visible. |
-
-The constructed package returns the contract-permitted qualified row set, with unmatched or incompatible results and the unresolved local-extension and unknown-unit branches visible separately. It stops if configuration/effectivity or feature identity is unresolved, a load-bearing source edition cannot be qualified, a conflict is hidden, or the receiving query fails. It supplies evidence to the applicable `SYSE.7`, `SYSE.13`, `SYSE.14`, or quality owner; it does not choose the released revision or accept the inspection result.
-
-
-
-## SIE.Application:2 - APP-SIE-02 - Semiconductor identity and traceability
-
-A recall-triage query crosses SEMI device/substrate identifiers, GS1 events, supplier identifiers, and enterprise master data. The package preserves wafer, die, device, package, lot, and event grains. `SIE.5` records same, different, part, version, variant, alternate, or unresolved dispositions with each scheme and issuer. `SIE.6` retains event time, source authority, contradictory events, and absent links. `SIE.10` tests positive, reused-identifier, split/merge, contradictory-event, and missing-link cases.
-
-The interface can return a bounded trace, unresolved branch, or prohibited-disclosure stop. MDM and domain stewards retain authoritative identity and value decisions; quality, safety, and recall authorities retain action.
-
-
-
-## SIE.Application:3 - APP-SIE-03 - End-to-end quality and provenance
-
-A data pipeline is syntactically healthy, yet an analytic may be unsafe because a source version is stale, a unit conversion is wrong, a default hides absence, a mapping omits one category, or derivation is missing. The contract selects only quality dimensions and thresholds that can change this use. The source manifest and mapping specification expose versions, units, defaults, error branches, and provenance. The claim composition keeps governed inputs and contradictions visible. Validation can return a usable subset, an explicit failure, or an unresolved measurement need.
-
-A mapping that returns 1 millimetre for an input of 1 metre fails the required conversion to 1000 millimetres. That probe can finish a bounded failure; unrelated layers remain unexamined. Conversely, an unchanged JSON field can carry a new future-horizon meaning while the receiver still reads “available now”. Its structural pass cannot preserve the earlier use claim.
-
-For a positive whole-use or permitted subset result, SIE.10 covers every load-bearing premise, including receiving interpretation, with new or matching earlier evidence. Pipeline defects return to Data Engineering, mapping defects to SIE.7, and source defects to their owners. A quality vocabulary or process certificate cannot supply missing evidence for the receiving claim.
-
-
-
-## SIE.Application:4 - APP-SIE-04 - High-change provider availability without a materialized graph
-
-Two providers expose current availability through governed APIs. One field means “on hand”; the other means “available to promise”. Neither permits replication. The contract requires a purchasing comparison with timestamps and explicit incomplete results. `SIE.4` keeps the meanings distinct and accepts only narrower qualified relations. `SIE.6` composes rows where supported and returns non-comparability otherwise. `SIE.8` excludes copying from the providers' existing prohibition, then selects query-time virtual mappings subject to the receiving latency, trace, and failure conditions. The excluded copying alternative needs no implementation, recovery, or exit design. The interface exposes timeouts, source errors, timestamps, and incompatible rows.
-
-SIE.3 can finish by reusing a model that distinguishes the two quantities, their attribution, unit, time, and horizon. If a provider later changes its promise horizon, SIE.11 finds which mappings and receiving interpretations depend on that meaning; unaffected product descriptions can retain their qualification. The purchasing application decides what to do with incomplete or non-comparable results.
-
-
-
-## SIE.Application:5 - APP-SIE-05 - A Modular Equipment-Classification Commons
-
-Two manufacturers and a service partner share equipment classes to interpret service observations. Local modules retain product-specific distinctions; qualified correspondences state how they relate to the shared core. SIE.12 identifies the actual users, module scope, dependencies, content and release rights, and contact.
-
-A proposal changes a shared class's criterion from equipment with a replaceable drive to equipment serviced through a replaceable drive module. Examples show which equipment changes classification. The authorized maintainers decide the shared content; the community's identification rules keep the earlier and replacement meanings recoverable. In the worked disposition, the earlier `equip:DriveReplaceable` class keeps its meaning and the new `equip:DriveModuleServiceable` class receives a distinct identifier. SIE.11 follows the change to affected service queries and local correspondences. The service partner's module-planning query adopts the new class: equipment X with only a separately replaceable drive is excluded, while equipment Y with the supported drive-module service arrangement is included. Manufacturer A retains its spare-drive query and matching evidence under the earlier class. The identified release keeps both meanings recoverable and supplies the migration and notice those users need; these two results do not establish every user's migration.
-
-The contact communicates and routes questions. Source owners retain their product descriptions; consumers decide whether a module edition supports their use. Incompatible local criteria can remain in scoped modules with supported correspondences. A pair that needs only one availability interface can finish its model and interface agreement without creating this commons.
-
-## SIE.Application:End
-
-
-# Semantic Integration Engineering Principles Framework Sources and Edition Notes
-
-## SIE.Sources:1 - Source use and currentness
-
-The source contributions guide particular actions and qualifications. Each body states what a source contributes and what remains outside its authority.
-
-| Source family | Contribution used here | Qualification and reopen |
-| --- | --- | --- |
-| Current FPF | source-local meaning, episteme identity, direct Bridge truth, bounded representation use, claim/provenance reliance, representation transition, currentness and affected-use distinctions | FPF retains the generic concepts and assurance law. A changed relied-on result reopens only its SIE consumer. |
-| Current Core Method-development patterns | situational criteria and the separate repertoire, variant, introduction, and revision Methods in `C.39.RP`, `A.3.1.MV`, `A.3.1.MI` and `C.36.MC` | SIE supplies domain content; it does not duplicate Method identity or lifecycle decisions. |
-| Current Systems Engineering | engineering-description, configuration/effectivity, change, release, integration, and assurance results | SIE can supply a qualified semantic premise; SYSE retains engineering decisions. |
-| [ISO 704:2022](https://www.iso.org/standard/79077.html) and [ISO/IEC 11179-3:2023](https://www.iso.org/standard/78915.html) | distinguish objects, concepts, definitions, designations, registry items, versions, and mapping metadata | do not establish cross-source identity, truth, or receiving-use fitness |
-| [LOT](https://doi.org/10.1016/j.engappai.2022.104755), [maintained LOT resources](https://github.com/oeg-upm/LOT-resources), and [LOT4KG](https://lot.linkeddata.es/LOT4KG/) | competency/use questions, domain-participant validation, qualified reuse or development, and dependencies between an ontology and a selected graph realization | reuse can finish the model question; LOT4KG's maintained activities do not establish a final peer-reviewed edition or a measured advantage |
-| [OWL 2](https://www.w3.org/TR/owl2-overview/) and the public [ISO/IEC 21838-1:2021](https://www.iso.org/standard/71954.html) description | explicit language semantics and profile choices when formalization is useful; a deliberately selected top-level basis when coherence needs it | formal validity does not supply domain adequacy; no universal ontology or full-standard conformance is required or claimed |
-| [OBO Foundry principles](https://obofoundry.org/principles/fp-000-summary.html), including [term stability](https://obofoundry.org/principles/fp-019-term-stability.html), [contact responsibility](https://obofoundry.org/principles/fp-011-locus-of-authority.html), and [notification](https://obofoundry.org/principles/fp-013-notification.html) | actual module users, stable identification, scoped shared content, reachable responsibility, and notice of changes affecting reliance | adapt to the particular commons; contact does not itself assign content or release rights, and an OBO-specific notice interval is not universal |
-| [SKOS](https://www.w3.org/TR/skos-reference/), [SSSOM 1.0](https://mapping-commons.github.io/sssom/1.0/spec-model/), and [OAEI 2025](https://oaei.ontologymatching.org/2025/results/) | correspondence kinds, reusable mapping metadata, and task-dependent alignment evidence | a label, similarity score, or matcher output remains a candidate premise |
-| [ISO 8000-115:2024](https://www.iso.org/standard/88847.html?browse=tc), [PROV-O](https://www.w3.org/TR/prov-o/), [SEMI traceability](https://www.semi.org/en/products-services/standards/traceability), and [GS1 EPCIS 2.0.1](https://ref.gs1.org/standards/epcis/2.0.1/) | identifier-owner/use-restriction inputs, provenance relations, and domain identity/traceability probes | they create no cross-source equivalence, master identity, authoritative value, or receiving action |
-| [R2RML](https://www.w3.org/TR/r2rml/), [OMG QVT 1.3](https://www.omg.org/spec/QVT/), and [Ontop](https://ontop-vkg.org/research/publications.html) | bounded executable mapping and virtual/materialized realization forms | no mandatory RDF, MOF, graph store, or source authority |
-| [SHACL](https://www.w3.org/TR/shacl/), [DQV](https://www.w3.org/TR/vocab-dqv/), [Data on the Web Best Practices](https://www.w3.org/TR/dwbp/), [ISO/IEC 25012:2008](https://www.iso.org/standard/35736.html), and [ISO 8000-61:2016](https://www.iso.org/standard/63086.html) | distinct validation, quality, provenance/version, and quality-management questions | no one layer or score proves receiving-use adequacy |
-| [ISO 10303-242:2025](https://www.iso.org/standard/84300.html?browse=tc) and [ISO 23952:2020](https://www.iso.org/standard/77461.html) | versioned product-definition/configuration and manufacturing-quality source cases | AP242 edition 4 is at stage 90.92, “to be revised”; a changed relied-on successor reopens the affected source, mapping, interface, and case only |
-
-The foundation source cut was qualified on 4 September 2026. The model, evolution, and commons contributions were qualified on 8 September using LOT, the maintained LOT4KG description, OWL 2, and the selected OBO principles. LOT4KG's site cites an under-review manuscript and contains mixed date metadata; its inspected activities supply method guidance rather than proof of a final peer-reviewed edition or measured advantage. The earlier [2024 joint-methodology proposal](https://2024.eswc-conferences.org/wp-content/uploads/2024/05/77770275.pdf) is historical background; its future-work account does not describe the maintained method's current evolution activities. The public ISO/IEC 21838-1:2021 description and stage 90.20 systematic review since 15 July 2026 delimit its use here; no full-standard conformance is claimed. Reopen only choices affected by changed relied-on content or use conditions.
-
-## SIE.Sources:2 - Edition return
-
-**Semantic Integration Engineering Principles Framework — First Edition, 20 September 2026** designates the source, twelve authoritative pattern bodies, and deterministic carrier of the complete twelve-pattern first edition. The publication supplies practitioner guidance and constructed examples. An implemented service, maintained commons, or receiving decision needs the corresponding actual work and evidence.
-
-The [Architectural Reference](#semantic-integration-engineering-principles-framework-architectural-reference) explains the connected language and the consequences of these sources for its use.
-
-## SIE.Sources:End
-
-
-# SOURCE_FILE: DPFs/Engineering DPF Suite/SYSTEMS-ENGINEERING-PRINCIPLES-FRAMEWORK.md
----
-# Systems Engineering Principles Framework
-
-**DocID:** `SYSE` within **FPF Library**.
-
-> A domain pattern language for bringing about and changing engineered Systems, from their intended use and architecture to realization, assurance, and continuing development.
-
-- **Author:** Anatoly Levenchuk, with AI-assisted development and review
-- **Version:** 12 October 2026
-- **Status:** Eternal alpha: a published working framework, already used in analyses and worked applications, while continuing to evolve.
-- **License:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) for original framework content; third-party material retains its own terms.
-- **Publication:** [FPF Library repository](https://github.com/ailev/FPF)
-
-Begin with the engineering question that blocks your project: the project System and its use, an architecture choice, a realization branch, an integration result, or the evidence needed for a decision.
-
-Use the Table of Contents below to search by a familiar term or working question and find the relevant PatternID. Open the pattern and apply its Problem frame, Solution, worked cases, and checklist to the actual System, configuration, or engineering decision. Follow dependencies when a needed result is missing; engineering Work may otherwise overlap or begin from an already available result.
-
-The Readme follows worked connections between patterns for larger engineering questions. The Architectural Reference explains the recurring distinctions. The full Table of Contents also serves questions outside the examples, and the pattern bodies supply the working moves, conditions, and stops across kinds of engineered System.
-
-
-# Table of Contents
-
-Search the Keywords & Search Queries column for the engineering difficulty, subject, or result you recognize. Each row explains the pattern's contribution and links to its full body. The Readme offers selected starting examples; use the complete index for other working questions. Dependencies name result relations, not a mandatory entry order.
-
-## Public units
-
-| Unit | Reader use |
-| :--- | :--- |
-| [Systems Engineering Principles Framework Readme](#systems-engineering-principles-framework-readme) | Follow connected methods from an engineering difficulty to a usable result and its changed conditions. |
-| [Agent work and support](#syse-llm-path--choose-and-use-a-way-to-complete-the-task) | Choose and use an available way for the current task, or find the construction needed to repair recurring misallocation. |
-| [Citation](#citation) | Cite this framework or one pattern with its author, title, release date, and publication address. |
-| [Systems Engineering Principles Framework Architectural Reference](#systems-engineering-principles-framework-architectural-reference) | Understand how 53 patterns connect common Systems Engineering, Platform Engineering, selected software Methods and engineering of agent work and support. |
-| [SYSE.Reference:1](#sysereference1---choose-a-useful-result-and-combine-its-needed-contributions) | Choose a useful result and combine its needed contributions |
-| [SYSE.Reference:2](#sysereference2---one-system-can-appear-in-several-engineering-structures) | One System can appear in several engineering structures |
-| [SYSE.Reference:3](#sysereference3---use-and-system-concepts-stay-linked) | Use and System concepts stay linked |
-| [SYSE.Reference:4](#sysereference4---realization-is-recursive-and-continuous) | Realization is recursive and continuous |
-| [SYSE.Reference:5](#sysereference5---common-platform-work-and-software-specific-methods) | Common platform work and software-specific Methods |
-| [SYSE.Reference:5.1](#sysereference51---improve-an-agents-choice-and-use-of-support) | Improve an agent's choice and use of support |
-| [SYSE.Reference:5.2](#sysereference52---construct-and-change-a-software-delivery-and-recovery-path) | Construct and change a software delivery and recovery path |
-| [SYSE.Reference:6](#sysereference6---configuration-and-evidence-travel-with-continuing-change) | Configuration and evidence travel with continuing change |
-| [SYSE.Reference:7](#sysereference7---a-method-has-several-structures-work-can-be-simultaneous) | A Method has several structures; Work can be simultaneous |
-| [SYSE.Reference:8](#sysereference8---how-project-work-contributes-to-engineering-culture) | How project Work contributes to engineering culture |
-| [SYSE.Reference:9](#sysereference9---architectural-rationale) | Architectural Rationale |
-| [SYSE.Reference:10](#sysereference10---check-the-combined-engineering-answer) | Check the combined engineering answer |
-| [SYSE.Reference:11](#sysereference11---scope-and-specialist-boundaries) | Scope and specialist boundaries |
-| [SYSE.Reference:12](#sysereference12---intended-use-and-non-use-boundary) | Intended use and non-use boundary |
-| [SYSE.Reference:13](#sysereference13---patternid-discipline) | PatternID discipline |
-| [SYSE.Reference:14](#sysereference14---source-use-and-epistemic-status) | Source use and epistemic status |
-| [SYSE.Reference:15](#sysereference15---shared-engineering-sources-and-architectural-choices) | Shared engineering sources and architectural choices |
-| [SYSE.Reference:16](#sysereference16---dependence-on-fpf-and-neighbouring-products) | Dependence on FPF and neighbouring products |
-| [SYSE.Reference:17](#sysereference17---edition-scope-and-refresh) | Edition scope and refresh |
-| [SYSE.Sources:1](#sysesources1---project-focus-research-sources) | Project-focus research sources |
-| [SYSE.Sources:2](#sysesources2---professional-source-coverage-for-this-edition) | Professional source coverage for this edition |
-| [SYSE.Application - Cross-Pattern Applications](#cross-pattern-applications) | Use two navigation walkthroughs and four worked applications in software, cyber-physical equipment and manufacturing. |
-| [Systems Engineering Principles Framework Sources and Edition Notes](#systems-engineering-principles-framework-sources-and-edition-notes) | Check professional source coverage, trace claims back to their sources, and find remaining profile obligations; [edition scope and refresh](#sysereference17---edition-scope-and-refresh) explains the publication's scope and reconsideration conditions. |
-
-**Part I - Project Focus, Environment, Consequences, and Problem/System-Family Development**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 1 | [SYSE.1 - Choose and Reopen the Project System-of-Interest](#syse1---choose-and-reopen-the-project-system-of-interest) |  Stable  | *Keywords:* project system-of-interest, intended System, project focus, product, solution, project boundary, outside effect. *Queries:* "Which System is this project actually changing or bringing about?" "Why is this the useful focus now, and what could reopen it?" Establish a shared project-system choice that lets later use, architecture, realization, and assurance decisions refer to the same subject. | FPF A.1.SCR, C.11 |
-| 2 | [SYSE.16 - Recover the Systems and Conditions Needed for a Use Decision](#syse16---recover-the-systems-and-conditions-needed-for-a-use-decision) |  Stable  | *Keywords:* operational environment, suprasystem, using System, neighbours, interactions, operating conditions, context diagram. *Queries:* "Which surrounding Systems and conditions matter to this use decision?" "What containing, using, interacting, or boundary-crossing relations must the engineering account distinguish?" Recover the decision-relevant use context across its functional, constructive, interaction, and operating claims so the next concept or architecture choice has a grounded basis. | SYSE.1; FPF A.22 |
-| 3 | [SYSE.17 - Find Systems That May Bear Engineering Consequences](#syse17---find-systems-that-may-bear-engineering-consequences) |  Stable  | *Keywords:* affected Systems, consequences, bystander, future operator, maintainer, ecological System, direct relation, possible path. *Queries:* "Who or what may undergo a consequence of this engineering change?" "Which supported relation or possible path makes that bearer relevant?" Discover and qualify consequence-bearing Systems while the project can still change its concept, constraint, alternative, probe, or stop decision. | SYSE.1, SYSE.16; FPF A.1.CSD, C.28, A.10 |
-| 4 | [SYSE.2 - Develop Linked Use and System Concepts](#syse2---develop-linked-use-and-system-concepts) |  Stable  | *Keywords:* use concept, System concept, Concept of Operations, use case, scenario, user story, requirements, outside effect. *Queries:* "How will this System be used in a concrete situation?" "Which candidate System concept could support that use?" Link use claims to System-concept claims with their relevant neighbours, conditions, consequences, and uncertainty; expose the next architecture question or the missing use premise. | SYSE.1, SYSE.16, SYSE.17; FPF C.17 |
-| 5 | [SYSE.22 - Coevolve Engineering Problems and System-Family Options](#syse22---coevolve-engineering-problems-and-system-family-options) | Stable | *Keywords:* problem formulation, System family, option generation, exploration, experiment, lineage, current alternatives. *Queries:* "How should the problem change when a prototype or operating observation reveals a new possibility?" "Which System-family options should remain under comparison now?" Develop problem formulations and possible System solutions together, preserving their lineage and returning new observations only to the choices they can change. | SYSE.1, SYSE.2, SYSE.6, SYSE.13; FPF C.11, C.17-C.19, G.11 |
-
-**Part II - Architecture, Descriptions, Offerings, and Professional Contributions**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 6 | [SYSE.5 - Develop an Engineered System's Functional Organization and Bearer Alternatives](#syse5---develop-an-engineered-systems-functional-organization-and-bearer-alternatives) |  Stable  | *Keywords:* function, functional organization, bearer, allocation, interface, operating mode, placement, redundancy. *Queries:* "Which different organizations could produce the required outside effect?" "How could Systems share or alternate the functional contributions?" Develop functional and constructive alternatives together with their proposed allocations, interfaces, integration dependencies, and evidence, giving the architecture decision materially different structures to compare. | SYSE.2, SYSE.16; FPF A.6.F, A.22 |
-| 7 | [SYSE.6 - Decide and Reopen the Engineering Architecture](#syse6---decide-and-reopen-the-engineering-architecture) |  Stable  | *Keywords:* architecture decision, functional allocation, module boundary, interface, control, redundancy, product family, trade-off. *Queries:* "Which engineering architecture should the project choose for this use?" "Which evidence or changed condition would reopen that choice?" Select the decision-relevant structures, compare materially different alternatives and accepted losses, and state the constraints that later realization and specialist decisions must respect. | SYSE.2, SYSE.5; FPF C.30, C.32 |
-| 8 | [SYSE.7 - Keep Engineering Descriptions Usable Together for Decisions](#syse7---keep-engineering-descriptions-usable-together-for-decisions) |  Stable  | *Keywords:* engineering descriptions, model, requirement, CAD, simulation, digital twin, configuration, correspondence, contradiction. *Queries:* "Which claims across our models and records support this decision?" "Do they concern compatible subjects, configurations, intervals, and interpretations?" Maintain a usable ensemble of descriptions with explicit links to sources and returned evidence, justified correspondences, and identified contradictions that can change the engineering answer. | SYSE.6; FPF C.29, A.10 |
-| 9 | [SYSE.8 - Develop an Integrated Offering and Provider Concept for Using an Engineered Result](#syse8---develop-an-integrated-offering-and-provider-concept-for-using-an-engineered-result) |  Stable  | *Keywords:* integrated offering, provider concept, service, access, consumables, maintenance, support, financing, risk allocation. *Queries:* "What provider arrangement could fulfil this offering in its intended use?" "How do provider, access, and support choices change the technical concept and allocation of risk?" Develop the offering and provider concept alongside the System concept, naming the needed Systems, Work, promises, and supported contributions. | SYSE.2; FPF A.2.3 |
-| 10 | [SYSE.9 - Use or Request Specialist Engineering Results](#syse9---use-or-request-specialist-engineering-results) |  Stable  | *Keywords:* specialist result, engineering contribution, receiving decision, safety, calculation, authority, evidence limits. *Queries:* "Which exact specialist answer could change this whole-System decision?" "What subject, configuration, conditions, and evidence must that answer address?" Use an adequate qualified specialist result or return its material limit. Select a new request only when its attainable contribution warrants the whole acquisition burden for the engineering choice; preserve the supplier Method and authority. | SYSE.2, SYSE.6; FPF A.15.9, C.11.DUA, A.6.REL, E.10.ROLE |
-| 11 | [SYSE.10 - Assess Research, Model, and Trial Results for an Engineering Decision](#syse10---assess-research-model-and-trial-results-for-an-engineering-decision) |  Stable  | *Keywords:* research result, engineering model, simulation, experiment, prototype, field trial, formal proof, validity. *Queries:* "What can this research, model, or trial result support in our engineering decision?" "Which implementation correspondence or untested condition limits that use?" Assess what the result supports, its remaining uncertainty, and any need for further observation, so the decision uses partial knowledge within its justified limits. | SYSE.6, SYSE.7; FPF A.10, C.16 |
-
-**Part III - Obtaining Engineering Results, Recursive Realization, Platforms, Independent Constituents, and Evolvability**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 12 | [SYSE.24 - Choose How the Project Will Obtain a Needed Engineering Result](#syse24---choose-how-the-project-will-obtain-a-needed-engineering-result) | Stable | *Keywords:* make or buy, reuse, supplier, outsourcing, provider, AI assistance, integration burden, migration, exit, platform obtaining, repair, retain, share, build or buy. *Queries:* "How can the project obtain the same needed engineering result in different ways?" "Which arrangement includes the real assurance, support, capability, and exit costs?" Construct comparable whole arrangements and return a bounded choice, retained alternatives, worthwhile probe, or the premise that prevents comparison. | SYSE.1, SYSE.2; FPF C.11, C.18 |
-| 13 | [SYSE.3 - Plan the Next System-Realization Action (Recursive Realization Network)](#syse3---plan-the-next-system-realization-action-recursive-realization-network) |  Stable  | *Keywords:* realization network, builder System, fabrication, adaptation, installation, qualification, build the builder, feasibility. *Queries:* "Which Systems and Work can realize the selected architecture?" "What is the first unsupported branch, including the means needed to build or change a builder?" Recover the bounded realization arrangement and select the next enabling action or the smallest earlier answer that infeasibility requires revisiting. | SYSE.6, SYSE.8; FPF E.18.NET, A.15 |
-| 14 | [SYSE.11 - Integrate a System for One Bounded Use](#syse11---integrate-a-system-for-one-bounded-use) |  Stable  | *Keywords:* integration, bounded use, usable increment, installed interface, configuration, operating evidence, fallback. *Queries:* "Which actual configuration is usable for the intended purpose now?" "What still prevents locally completed parts or changes from working together?" Select one integration boundary, connect the contributing changes, observe the System in its resulting configuration during the named use, and return a configuration-specific result with evidence, limits, and fallback for the next decision. | SYSE.3, SYSE.12, SYSE.13, SYSE.18; FPF A.3.4 |
-| 15 | [SYSE.12 - Develop or Retain an Engineering Platform for Practitioner Work](#syse12---develop-or-retain-an-engineering-platform-for-practitioner-work) |  Stable  | *Keywords:* engineering platform, practitioner Work, model repository, manufacturing cell, test bench, AI assistant, evidence store, support, platform development, readiness, later use. *Queries:* "What must enable the engineers' actual modeling, building, testing, release, and observation Work?" "Which platform arrangement helps one Work family and obstructs another?" Choose whether to retain or change the enabling arrangement, and assess its contribution to practitioner tasks and the engineered result. | SYSE.15, SYSE.20; FPF A.2.2 |
-| 16 | [SYSE.18 - Decide Whether and How to Integrate Systems Governed by Different Agents](#syse18---decide-whether-and-how-to-integrate-systems-governed-by-different-agents) |  Stable  | *Keywords:* independent constituents, system of systems, interoperability, authority, interface, commitment, independent evolution, platform federation. *Queries:* "How can Systems governed by different Agents work together for this use?" "Which contribution or interface may change outside the integrating project's control?" Choose the bounded coordination alternative, identifying who governs each constituent and with what authority, how it may evolve, its operating conditions, and the evidence available. Name any agreements or observations still needed. | SYSE.6; FPF E.18.NET |
-| 17 | [SYSE.23 - Choose What to Change So Later System Changes Become Easier](#syse23---choose-what-to-change-so-later-system-changes-become-easier) | Stable | *Keywords:* evolvability, future change, modularity, configurable family, builder platform, change lead time, test capability. *Queries:* "What should we change now so valuable later changes become easier?" "Is the limiting condition in the project System, its builders, the platform, or their joint arrangement?" Compare targeted changes against the stated future-change needs, dependencies, burden, and evidence for their expected contribution. | SYSE.22, SYSE.3, SYSE.6, SYSE.12, SYSE.20; FPF C.11, C.25, C.30, C.32 |
-
-**Part IV - Configuration, Continuing Change, and Source Continuity**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 18 | [SYSE.13 - Establish Configuration Identity, Variants, and Effectivity](#syse13---establish-configuration-identity-variants-and-effectivity) |  Stable  | *Keywords:* configuration identity, unit, variant, version, baseline, effectivity, installed state, bill of material. *Queries:* "Which actual or proposed configuration does this claim concern?" "For which units, conditions, and intervals does the evidence apply?" Establish the decision-relevant identities, differences, and effectivity links across engineering, manufacturing, operating, and maintenance descriptions, with evidence connecting records to the System. | SYSE.6; FPF A.22, C.2.1, C.27.TA |
-| 19 | [SYSE.14 - Make a Release Decision for Named Engineering Work or Use](#syse14---make-a-release-decision-for-named-engineering-work-or-use) |  Stable  | *Keywords:* engineering change, release, release for build, release to service, configuration, permission, evidence continuity. *Queries:* "What may be released for which named Work or use?" "Which changed claims and evidence support that exact release decision?" Distinguish the release subject and authority, carry configuration-specific evidence, and return the bounded decision, conditions, or unresolved premise to the intended receiver. | SYSE.13, SYSE.19; FPF C.11, A.10, B.3 |
-| 20 | [SYSE.19 - Revalidate Engineering Decisions When a Relied-on Source Changes](#syse19---revalidate-engineering-decisions-when-a-relied-on-source-changes) | Stable | *Keywords:* source change, supplier revision, standard, research correction, relied-on premise, impact analysis, revalidation. *Queries:* "Which engineering decisions relied on the claim that changed?" "Does the change affect current use, configuration, or release evidence?" Trace the changed source claims to actual reliance, preserve earlier source editions and decisions, and revalidate only the affected engineering answers and their dependent uses. | SYSE.7, SYSE.10; FPF C.2.1, A.10, G.11 |
-
-**Part V - Assurance, Method and Work Architecture, Repertoire, and Cultural Continuation**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 21 | [SYSE.4 - Decide Whether and How to Challenge an Engineering Claim](#syse4---decide-whether-and-how-to-challenge-an-engineering-claim) |  Stable  | *Keywords:* engineering assurance, claim, challenge, test, measurement, inspection, evidence use, validity boundary. *Queries:* "Which challenge could change reliance on this engineering claim?" "What configuration, conditions, uncertainty, and time limit the returned evidence?" Reuse compatible evidence or select a challenge; qualify the evidence use and identify the earlier focus, concept, architecture, realization, or specialist answer that must be reassessed when reliance changes. | SYSE.10, SYSE.11, SYSE.14; FPF A.10, B.3 |
-| 22 | [SYSE.15 - Choose and Refresh the Engineering Methods Needed by a Project](#syse15---choose-and-refresh-the-engineering-methods-needed-by-a-project) |  Stable  | *Keywords:* engineering Method, repertoire, situation, application profile, variant, trial, qualification, refresh. *Queries:* "Which engineering Methods are needed to obtain this project's results?" "What evidence would justify keeping, changing, or rejecting a Method variant?" Select and refresh the repertoire for the actual System and engineering situation, retaining specialist Methods and the distinction between engineering and the System's operating Methods. | FPF A.3.2, C.36, E.23 |
-| 23 | [SYSE.20 - Reconcile Overlapping Engineering Work and Required Order](#syse20---reconcile-overlapping-engineering-work-and-required-order) | Stable | *Keywords:* overlapping engineering Work, concurrency, required order, result dependency, Method structure, configuration, coordination. *Queries:* "Which modeling, implementation, trial, and review Work can overlap?" "Which result or released configuration really must exist before another use?" Reconcile the relevant Method, Work, System, representation, and support structures, returning the bounded choice, further inquiry, or unresolved question for the current engineering decision. | SYSE.15; FPF A.15.1, A.22.CGUS, E.18.NET |
-| 24 | [SYSE.21 - Decide Whether and How to Change Systems Engineering Culture](#syse21---decide-whether-and-how-to-change-systems-engineering-culture) | Stable | *Keywords:* Systems Engineering culture, Method variant, practitioner population, transmission, retention, branching, intervention. *Queries:* "Should this engineering practice continue, change, branch, or stop across the relevant population?" "What evidence distinguishes visibility, local enactment, and wider continuation?" Recover the enacted Method variant and supported cultural relations for a bounded population and period; return the qualified current account or continuation choice, selecting further inquiry or intervention only when warranted. | SYSE.20; FPF C.36, G.11 |
-
-**Part VI - Platform Engineering: Supported Use and Continuing Change**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 25 | [SYSE.25 - Decide Whether and How to Improve a Platform from Practitioner-Task Evidence](#syse25---decide-whether-and-how-to-improve-a-platform-from-practitioner-task-evidence) | Stable | *Keywords:* platform improvement, practitioner tasks, failed attempts, transferred burden, competing hypotheses. *Queries:* "Which platform difficulty should we address next?" "What observation could reject this proposed improvement?" Observe successful, failed and assisted task attempts for one user population, then compare improvement mechanisms and total user/provider burden. Return a bounded choice to retain or change provision, a discriminating probe or the specific missing premise; use SYSE.24 when complete obtaining arrangements compete. | SYSE.12; SYSE.24 for whole obtaining; SYSE.36 for software task measures |
-| 26 | [SYSE.26 - Design a Supported Platform-Use Path](#syse26---design-a-supported-platform-use-path) | Stable | *Keywords:* supported use, request and result, variants, retry, cancellation, support. *Queries:* "What must the user supply to obtain a usable engineering result?" "What is safe after an interrupted request?" Design one supported interaction from its required inputs through waiting, completion and failure, with a capable support provider. Return a supported-use description with a trial or missing provision identified; distinguish description, actual operation and readiness to rely on it. | SYSE.12, SYSE.13; SYSE.8 if the provider concept is missing |
-| 27 | [SYSE.27 - Evolve Platform Interfaces and Contribution Paths](#syse27---evolve-platform-interfaces-and-contribution-paths) | Stable | *Keywords:* interface evolution, compatibility, units, defaults, physical connections, adapters, contribution, versioned change. *Queries:* "Does this change preserve the consumer's promised result?" "How can a contributor test and maintain an extension?" Compare implementation change, extension, adapter, explicit break and refusal by their effects on the behavior consumers rely on. Return a bounded evolution decision with consumer effects, a way to test the contribution and the maintenance/support arrangement or gap; send required migration to SYSE.29. | SYSE.13, SYSE.26; OCE.4/OCE.6 when organizational results are missing |
-| 28 | [SYSE.28 - Place Qualified Controls in a Supported Platform-Use Path](#syse28---place-qualified-controls-in-a-supported-platform-use-path) | Stable | *Keywords:* control placement, evidence reach, subject identity, reuse, unavailable checker, authorized exception. *Queries:* "Where can this property change before it is relied on?" "What stops when the required check is unavailable?" For a supplied constraint, trace where the relevant property can change, then place verification or enforcement to protect the dependent action. Return the placement, outcome meanings, applicability and remaining gaps, preserving separate domain qualification and decision authority. | SYSE.4, SYSE.13, SYSE.26; SYSE.32 for artifacts; applicable control authority |
-| 29 | [SYSE.29 - Decide Whether and How to Migrate or Retire a Supported Platform Path](#syse29---decide-whether-and-how-to-migrate-or-retire-a-supported-platform-path) | Stable | *Keywords:* platform migration, retirement, retained state, infrequent consumers, coexistence, recovery. *Queries:* "Can users complete the required work through the receiving path?" "What must remain after the old interface stops serving?" Recover affected uses and obligations and compare transition choices. Exercise a selected increment with its failure branch. Return a bounded decision, its next increment when needed, or the exact missing premise, with remaining uses and obligations accounted for. | SYSE.13, SYSE.18, SYSE.27; SYSE.34 for software/data |
-| 30 | [SYSE.53 - Resolve a Usable Composition of Independently Released Components](#syse53---resolve-a-usable-composition-of-independently-released-components) | Stable | *Keywords:* independent releases, package composition, typed dependencies, shared meaning, isolation, resolver, conflict, unknown premise. *Queries:* "Which available releases can support this joint use?" "What must change when the preferred update conflicts?" Derive requirements and sharing scopes from actual consumption, obtain a supported selection or an explained conflict or unresolved premise, and return exact inputs to realization. | SYSE.13, SYSE.27; SIE.2/.4/.6 for semantic premises; CMP.4 for search; SYSE.30/.33 for realization |
-
-**Part VII - Software Platform Engineering**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 31 | [SYSE.30 - Make Software Builds Repeatable and Traceable](#syse30---make-software-builds-repeatable-and-traceable) | Stable | *Keywords:* software builds, resolved inputs, clean execution, byte reproducibility, timestamps, caches. *Queries:* "Which inputs produced the tested artifact?" "Can the specified package be reconstructed byte for byte?" Recover actual source, dependencies, instructions, toolchain and environment, then construct the specified output and, when needed, compare fresh executions under the declared reproducibility criterion. Return the procedure, input/output account and any required comparison result, or name the uncontrolled input or unexplained difference. | SYSE.13, SYSE.31, SYSE.33 for qualified inputs and conditions |
-| 32 | [SYSE.31 - Keep Software Feedback and Continuous Integration Fast and Trustworthy](#syse31---keep-software-feedback-and-continuous-integration-fast-and-trustworthy) | Stable | *Keywords:* software feedback, test meaning, flaky failures, quarantine, continuous integration, mainline. *Queries:* "Does this green check answer the current engineering question?" "Why do passing branches fail when combined?" Bind checks to the exercised artifact and conditions, preserve necessary slow or human evidence, and direct failures to their actual repairers. Return a usable feedback arrangement, or use the named DORA CI Method to obtain a checked shared-mainline revision for an already testable change awaiting integration. | SYSE.30, SYSE.33; exact DORA CI Method when integration is missing |
-| 33 | [SYSE.32 - Promote Verified Artifacts without Rebuilding](#syse32---promote-verified-artifacts-without-rebuilding) | Stable | *Keywords:* artifact promotion, artifact identity, provenance, consumer trust, destination configuration, verification. *Queries:* "Does the received package still carry the tested artifact's evidence?" "What does a valid signature leave unestablished?" Preserve the selected artifact across transfer, separate destination configuration and apply the named SLSA verification Method with the consumer's configured expectations when authenticity is required. Return an applicable promotion basis or a specific identity, evidence or trust gap; actual runtime deployment remains a separate result. | SYSE.13, SYSE.28, SYSE.30, SYSE.31; SLSA v1.2 verification |
-| 34 | [SYSE.33 - Provide Reconstructible Software Development and Test Environments](#syse33---provide-reconstructible-software-development-and-test-environments) | Stable | *Keywords:* development environment, test environment, reconstruction, infrastructure as code, isolation, state reconciliation, cleanup. *Queries:* "Can another user reconstruct an environment that actually supports this task?" "What should happen after partial provisioning or a failed retry?" Specify required resources, data, access and operating conditions, then reconstruct and exercise the environment. The first result is an observed usable environment with its limits, or a reconstructible description with the precise missing resource, permission or data source. | SYSE.13, SYSE.26; SYSE.34 for persistent state |
-| 35 | [SYSE.34 - Change Software and Persistent Data with a Recovery Boundary](#syse34---change-software-and-persistent-data-with-a-recovery-boundary) | Stable | *Keywords:* persistent data, schema migration, compatible coexistence, concurrent writes, backfill, idempotence, recovery, information loss. *Queries:* "Can old and new software safely use the same changing data?" "What remains recoverable after a partial or lossy migration?" Define the data contracts, writers and intermediate states; qualify the transition and recovery actions against concurrent updates and partial effects. The first result is a bounded change and recovery procedure with its operating limits, decision holder and unresolved conditions. | SYSE.13, SYSE.27, SYSE.33; engine-qualified change/recovery Methods |
-| 36 | [SYSE.35 - Control Software Release Exposure with User-Relevant Signals](#syse35---control-software-release-exposure-with-user-relevant-signals) | Stable | *Keywords:* release exposure, canary, representative tasks, control population, attribution, delayed outcomes, feature activation, recovery. *Queries:* "What evidence justifies widening use of a deployed candidate?" "When is a canary inconclusive rather than successful?" Select the population, task, observation interval and authorized exposure; compare outcomes while accounting for shared effects and state compatibility. The first result defines the comparison, decision conditions and qualified recovery action; observations then support a bounded proceed, stop or inconclusive result. | SYSE.34, SYSE.36, SYSE.41; SYSE.14 release authority |
-| 37 | [SYSE.36 - Measure User Tasks and Set Software-Service Reliability Objectives](#syse36---measure-user-tasks-and-set-software-service-reliability-objectives) | Stable | *Keywords:* user task, service level indicator, service level objective, SLI, SLO, eligibility, missing outcomes, error budget. *Queries:* "Does this measurement count successful user tasks or only healthy components?" "What denominator and objective should govern this service?" Define eligible attempts, timely correct results and observation gaps before choosing telemetry; when an SLO is needed, agree the objective and response policy with the relevant users, providers and decision holders. The first result is a task measurement definition and exercised instrumentation, or an exact measurement gap. | SYSE.4; subject owner, task meaning and suitable instrumentation |
-| 38 | [SYSE.37 - Alert on Actionable Software-Service Reliability Risk](#syse37---alert-on-actionable-software-service-reliability-risk) | Stable | *Keywords:* actionable alert, error budget, burn rate, multiple windows, sparse traffic, missing data, response capacity. *Queries:* "Does this reliability signal require action soon enough to justify an alert?" "Will the alert reach someone able to respond?" Choose an alert rule for actionable task failure, budget risk or lost observation, deriving budget-risk rules from the matching task, objective and consumption. Test evaluation, delivery, acknowledgement and the permitted response together. The first result is an exercised alert rule with its response and blind spots, or a precise observation or response gap. | SYSE.36; SYSE.38 for response; actual responder authority |
-| 39 | [SYSE.38 - Diagnose and Restore a Failed Software-Platform Task](#syse38---diagnose-and-restore-a-failed-software-platform-task) | Stable | *Keywords:* failed platform task, diagnosis, incident response, safe mitigation, partial effects, competing causes, restoration, specialist request. *Queries:* "Which stage of this user attempt failed, and what can restore useful work now?" "What observation would distinguish the remaining causes?" Establish actual impact and state, compare causes, and test a permitted mitigation without repeating unknown effects. The first result is a restored task or usable limited result, or a narrowed cause question naming the result needed from a specialist. | SYSE.26, SYSE.34, SYSE.36, SYSE.40, SYSE.41; OPS.3/OPS.4 when needed |
-| 40 | [SYSE.39 - Decide Whether and How to Reduce the Total Burden of Repetitive Platform Work](#syse39---decide-whether-and-how-to-reduce-the-total-burden-of-repetitive-platform-work) | Stable | *Keywords:* repetitive platform work, toil, automation, task simplification, transferred burden, maintenance, exceptions, horizon. *Queries:* "Will this change reduce total work or move it to users?" "When does automation repay its construction and operating cost?" Compare retaining the method, simplifying the task, removing its cause, improving the supported interaction and automation using user effort, provider effort, waiting and risk over a stated horizon. The first result is a justified choice about the recurring activity. For a selected intervention, state how total burden will be compared after use. | SYSE.25, SYSE.26, SYSE.36; SYSE.24 for whole obtaining |
-| 41 | [SYSE.40 - Protect Software Platform Capacity and Isolate Failure](#syse40---protect-software-platform-capacity-and-isolate-failure) | Stable | *Keywords:* platform capacity, workload classes, admission control, bounded queues, isolation, deadlines, retry budget, serialization, recovery capacity. *Queries:* "Which shared limit lets one workload delay or disable another?" "Can the platform recover while demand remains excessive?" Compare capacity and execution changes, then exercise admission, isolation, bounded waiting and retries across shared dependencies. The first result is a tested protection arrangement for a stated envelope, with observed admitted, delayed and refused work and recovery limits, or the conditions that remain unqualified. | SYSE.26, SYSE.33, SYSE.36; SYSE.34/SYSE.41 for stateful recovery |
-| 42 | [SYSE.41 - Deploy a Verified Software Artifact with the Target Configuration and Handle Partial Failure](#syse41---deploy-a-verified-software-artifact-with-the-target-configuration-and-handle-partial-failure) | Stable | *Keywords:* verified artifact, deployment, effective configuration, runtime readback, dependency test, partial failure, unknown effects, recovery. *Queries:* "Did the intended software and configuration become usable on each target?" "What may be retried after an interrupted deployment?" Prepare, install, configure and test the candidate against observed target state; reconcile partial outcomes before continuing. The first result is an observed runtime configuration with its test, interval and limits, or a precise failed or unknown partial state; exposure and release remain separate. | SYSE.13, SYSE.32, SYSE.33, SYSE.34; SYSE.11/SYSE.35 as receivers |
-
-**Part VIII - Engineering Agent Work and Support**
-
-| § | ID & Title | Status | Keywords & Search Queries | Dependencies |
-| :--- | :--- | :--- | :--- | :--- |
-| 43 | [SYSE.42 - Use a Selected Tool and Apply Its Result](#syse42---use-a-selected-tool-and-apply-its-result) | Stable | *Keywords:* selected aid, input binding, calculator, invocation, uncertain effect, receiving use. *Queries:* "Did we apply the tool to the intended input?" "How does its result enter the task?" Bind, perform, qualify and use the selected contribution; recover uncertain effects under the actual interface. | C.38/C.11; A.15.7/.15.9; C.24; SYSE.26–28/.43/.46/.47/.52 |
-| 44 | [SYSE.43 - Maintain External Memory for Continuing Work](#syse43---maintain-external-memory-for-continuing-work) | Stable | *Keywords:* worksheet, episode, provenance, conditional index, retrieval, reorganization, retirement. *Queries:* "Which relation did the record lose?" "Should these episodes share a summary?" Construct recording and retrieval, qualify reorganization against contrary experience and verify the receiving continuation. | A.15.8; A.15.8.MS; SYSE.42/.46/.47/.48/.52 |
-| 45 | [SYSE.44 - Divide and Recombine Work across Agents](#syse44---divide-and-recombine-work-across-agents) | Stable | *Keywords:* participant brief, contribution, shared premise, dependency, integration, source error. *Queries:* "Does this division repay its handovers?" "Which return became stale?" Compare complete ways, prepare participant-specific material, reconcile returns and reopen affected dependencies. | A.15.9; C.38/C.11; SYSE.9/.18/.20/.46/.47 |
-| 46 | [SYSE.45 - Train an LLM Policy from Qualified Interaction Experience](#syse45---train-an-llm-policy-from-qualified-interaction-experience) | Stable | *Keywords:* policy training, adapters, demonstrations, feedback, distillation, retained support. *Queries:* "Which stable contribution should the policy learn?" "What must remain externally available?" Qualify experience, choose the matching learning mechanism and compare the actual later configuration against the unchanged baseline. | CMP.7; E.23.CDI; SYSE.49/.46; SYSE.47 for a fixed-model alternative |
-| 47 | [SYSE.46 - Test an Agent and Its Support in Representative Work](#syse46---test-an-agent-and-its-support-in-representative-work) | Stable | *Keywords:* performing arrangement, matched support regimes, selection, result use, restraint, burden, persistence. *Queries:* "Does support help, and does the agent choose it well?" "What changed in the whole task?" Obtain bounded evidence with input, action, return and use distinguished; test delay or shift for the reliance claimed. | SYSE.10/.4/.33/.49; A.15.8; E.23.CAE; HCD.12/.13 |
-| 48 | [SYSE.47 - Construct and Revise an Agent's Execution Procedure](#syse47---construct-and-revise-an-agents-execution-procedure) | Stable | *Keywords:* operative sequence, consumed return, transition, written procedure, controller, recovery, stop. *Queries:* "Why does available material fail to advance the task?" "What sequence can this performer actually enact?" Connect supplied operations through usable inputs, progress, recovery and completion. | SYSE.25/.26–28/.40/.42–46/.48–52; C.32.MWA.PP and B.1.5.CM; MMP.8.SD/.17 |
-| 49 | [SYSE.48 - Construct and Maintain Reusable Tools and Procedures](#syse48---construct-and-maintain-reusable-tools-and-procedures) | Stable | *Keywords:* candidate operation, worksheet, parameterization, new input, defeating case, discovery, variant. *Queries:* "Which operation can be recovered from these attempts?" "Will the aid work on another input?" Construct and qualify the aid, expose its use and consolidate only demonstrated overlap. | A.15.8.MS and A.3.1.MV; F.0.2.MA for allocation; SYSE.26/.27/.39/.42/.46/.47/.49/.52 |
-| 50 | [SYSE.49 - Construct Informative Tasks and Feedback Environments for Agent Work](#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) | Stable | *Keywords:* informative experience, practice material, fixture, feedback, shared error, transfer. *Queries:* "Which interaction exposes this failure?" "Could the task and its judge share a mistake?" Construct the needed material/state, qualified feedback and usable experience for a named consumer. | HCD.6/.7/.11–13; SYSE.33/.45–48/.50/.51; MMP.17; SYSE.10; CMP.7 |
-| 51 | [SYSE.50 - Construct and Calibrate an Agent's Assistance Policy](#syse50---construct-and-calibrate-an-agents-assistance-policy) | Stable | *Keywords:* assistance, accessible signal, benefit, need, confidence, calibration, fallback. *Queries:* "Which observable condition should change the help decision?" "Can an aid be worthwhile despite unaided ability?" Construct and test a performer-relative assistance rule with qualified grounds and costs. | C.38/C.11; A.15.7/.15.9; SYSE.45–47/.49/.51/.52; HCD |
-| 52 | [SYSE.51 - Construct Adaptive Control of Reasoning and Tool Effort](#syse51---construct-adaptive-control-of-reasoning-and-tool-effort) | Stable | *Keywords:* further reasoning, tool effort, time, samples, branches, completion reserve, early stop. *Queries:* "Which further move can improve this result?" "Can we still finish after it?" Construct an observable allocation rule and compare complete success and burden with fixed/manual allocation. | C.11/.DUA; CMP.4; SYSE.39/.40/.45–47/.49/.50/.52 |
-| 53 | [SYSE.52 - Prepare Working Material and Tools for an Agent's Next Step](#syse52---prepare-working-material-and-tools-for-an-agents-next-step) | Stable | *Keywords:* readable layout, carry, working input, summary, pointer, evidence loss, tool view, recovery. *Queries:* "What must the next step actually receive?" "Did selection hide a decisive condition?" Prepare usable material and tools, exercise the continuation and restore consequential omissions. | SYSE.42/.43/.46/.47/.50/.51; EXD.1/.3/.6; HCD |
-
-# Systems Engineering Principles Framework Readme
-
-This framework helps engineers and managers bring about or change engineered Systems. Use its patterns to
-connect intended use and problem formulations with System-family options, architecture, realization,
-configuration, and evidence. The patterns also connect these decisions to the engineering platform,
-evolvability, and continuing Method development. The framework applies across kinds of engineered System.
-The framework also supplies a common Platform Engineering language and a selected Software Platform
-Engineering repertoire for service software. It also supplies Methods for engineering agent work and support, with human and technical realizations and a bounded LLM-learning branch. The selected repertoire is not complete software engineering.
-Software, electrical, ship, building, medical-device, cyber-physical, and other application profiles retain
-the specialist Methods and sources that differ because their engineered Systems differ.
-
-Start from a working difficulty. Engineering Work can overlap: a team can
-refine use, architecture, realization, configuration, assurance, and its engineering Method during the same
-bounded project interval. A logical dependency still matters when one result cannot be used before another
-exists. Use the patterns to recover the actual result dependency; do not turn the order of this file into a prescribed
-project sequence.
-
-The [Architectural Reference](#systems-engineering-principles-framework-architectural-reference) explains how the common engineering Methods, Platform Engineering and the selected
-software profile fit together. Use [Architectural Rationale](#sysereference9---architectural-rationale) when choosing or adapting
-that combination, and [Check the combined engineering answer](#sysereference10---check-the-combined-engineering-answer) when
-several contributions must support one decision. These explanations reuse the full patterns and the existing
-applications; the Table of Contents remains the direct route to any individual Method.
-
-You can ask an assisting agent to explain or apply these methods in the language of your work, without FPF jargon, while preserving the distinctions needed for the question.
-
-When independently released components have to work together, begin with [SYSE.53](#syse53---resolve-a-usable-composition-of-independently-released-components). It derives the requirements and sharing scopes that support one usable composition, or returns the conflict or missing premise. Its software and corpus cases distinguish selection from construction and provision.
-
-## Practical entries
-
-The following selected examples show how an engineering answer depends on results from several methods. Enter with what the project already knows; obtain the missing contribution and return it to the decision that needs it. A changed use, configuration or observation can reopen an earlier choice. These examples are not a complete catalogue or a boundary of the framework's coverage, and they do not prescribe a project lifecycle. For questions outside these examples, use the Table of Contents and the PatternID and title for direct help with one method.
-
-### SYSE-CARD-01 — Release a mixed physical-and-software change without losing service, configuration, or evidence
-
-- **Situation:** A pump-station change combines equipment, control software and operating limits while the district-heating service must continue.
-- **Question:** What connects local design and test results to a defensible decision about using the changed station?
-- **First useful result or blocker:** A recommendation for a named configuration and operating use, carrying what the available results support and what still prevents release.
-- **Start with:** SYSE.1 for the project system and SYSE.2 for its intended use, or the first missing result if these are already understood.
-- **Stop or return:** Return the recommendation to the release authority when it can decide. Reopen only the conclusions affected by a changed configuration, use, source or observation.
-
-In [APP-SYSE-01](#syseapplication1---app-syse-01--navigation-walkthrough-release-a-vibration-control-change-for-a-district-heating-pump-station), the station's configuration PS17-C42 combines a pump-train modification and software changes. SYSE.16 identifies the surrounding heating arrangement; SYSE.17 finds the systems that may bear consequences, including connected users and maintainers. Their results let SYSE.2 describe the proposed operating use and the station arrangement that could support it.
-
-SYSE.5 uses that account to develop different functional allocations and physical or software bearers. SYSE.6 compares these alternatives and selects the structures on which realization will depend. If no complete way of obtaining an included result is available, SYSE.24 compares arrangements such as adapting existing equipment or obtaining a supplied contribution, including integration and continued support. SYSE.3 then develops the required realization work and its means. An unsupported branch can return the project to the architecture choice.
-
-SYSE.11 integrates the realized contributions and observes the increment in its named use. SYSE.13 identifies the resulting configuration and where it applies. These results give SYSE.4 a subject for interpreting the component, station and downstream observations. Component evidence supports only the claim and conditions for which it was qualified; it does not settle the station-use question. SYSE.14 consumes the configuration and qualified evidence to prepare the release decision, retaining the deciding authority and any separate permission.
-
-The example's recommendation remains conditional on a restored-function check and unresolved safety permission. A new component version reopens the claims affected by that version; it need not invalidate unrelated evidence. If the trial also used a new AI-assisted analysis method, SYSE.15 addresses its further use for the supported claim classes. SYSE.21 becomes relevant only when the question concerns transmission and retention across practitioners. A local trial and a claim about later cultural continuation need different results.
-
-The same connections apply to other engineered systems. [APP-SYSE-03](#syseapplication3---app-syse-03--worked-application-choose-and-bound-an-authentication-service-migration) gives a software-only case with displayed alternatives and four limits: its one surviving architecture supports a specified canary, not unrestricted release. The specialist security result remains a premise supplied by that practice.
-
-### SYSE-CARD-02 — Develop a problem portfolio and System family without freezing either
-
-- **Situation:** A prototype or operating observation changes which problem is worth solving, while an attractive system option may be difficult to realize with the available means.
-- **Question:** Should the next change concern the problem, the system option, its builder arrangement, or a combination?
-- **First useful result or blocker:** Comparable options and a choice, a worthwhile probe, rejection of the set, or the missing question or authority.
-- **Start with:** SYSE.22 when project focus and use are understood. Resolve an ambiguous system through SYSE.1 and incomparable configurations through SYSE.13.
-- **Stop or return:** Stop at a useful option decision if realization does not change it. Use SYSE.23 when the relation between the option and its builder changes the next investment or reconfiguration choice.
-
-[APP-SYSE-02](#syseapplication2---app-syse-02--navigation-walkthrough-develop-a-district-heating-inspection-system-family-while-the-damage-detection-problem-changes) considers inspection systems whose relevant problems include early damage, false alarms, inaccessible locations and interruption of operation. SYSE.22 keeps the problem formulations connected to, but distinct from, the system-family options. SYSE.2 supplies their intended uses; SYSE.5 and SYSE.6 supply materially different arrangements; SYSE.7 and SYSE.13 keep descriptions and configurations comparable. SYSE.10 interprets what a prototype or trial actually supports.
-
-These contributions allow SYSE.22 to choose among surviving options, reject them, or select a feasible probe whose result could change the choice enough to justify its cost. For example, a trial revealing inaccessible locations can change the use question and the relevant sensing options. Repeating the old ranking with unchanged acceptance conditions would miss that change. The new question returns to the linked use and system concepts before their architectures are compared again.
-
-A surviving option can instead be blocked by the arrangement that builds or supports it. SYSE.3 makes that dependency explicit; SYSE.12 identifies the platform contribution. SYSE.23 then compares changing the option, changing the builder arrangement, changing both, and retaining the present arrangement. The next result is an investment or reconfiguration choice. SYSE.20 distinguishes work that can overlap from contributions that must be available first. Developing a problem, a system and its builder therefore need not become three consecutive project stages.
-
-A source change returns through SYSE.19 to the decisions that relied on it.
-
-### SYSE-PLATFORM-PATH — Make an engineering task easier without losing its usable result
-
-- **Situation:** Practitioners repeatedly reconstruct inputs, reconcile results or wait for help even though individual tools and providers work.
-- **Question:** Which supported way of working would remove that burden while preserving the result its user needs?
-- **First useful result or blocker:** A supported interaction for a named task, including its failure return and the professional results still needed to compare or qualify the production arrangements.
-- **Start with:** SYSE.25 for the practitioner's difficulty; SYSE.24 when the whole obtaining arrangement is undecided.
-- **Stop or return:** Use the improvement when its receiving task is supported. Pass the observed failure, uncertainty or missing professional result to the practitioner who can address it. Continue independently supported interface or planning work.
-
-In [APP-SYSE-06](#syseapplication6---app-syse-06---worked-application-qualify-a-machining-path-with-an-external-operation), planners cannot reliably connect returned coated parts with their drawing, lot, fixture and program. SYSE.25 selects the practitioner improvement; SYSE.24 compares internal production, external finished-part supply and a mixed arrangement. The comparison includes waiting, transport, rejected lots, support and exit as well as price.
-
-The example explores the mixed arrangement; choosing it for production still requires the missing professional results and comparison with the other arrangements. SYSE.26 constructs a request, clarified input, authorized operation and returned result that the practitioner can follow. SYSE.13 carries the configuration relations through it. The example request names fixture B but supplies a program qualified only for A: the receiving interaction exposes that mismatch before machining. Correcting the association permits interface qualification to continue; qualification of the B program's machining behavior remains a professional contribution. SYSE.18 handles the independently controlled coating provider, and SYSE.9 connects the dimensional and process results to the receiving engineering decision.
-
-[APP-SYSE-05](#syseapplication5---app-syse-05---worked-application-construct-a-supported-software-build-and-delivery-path) works an analogous connection for software. Its constructed candidate B retains the unresolved comparison with candidate A. SYSE.31 constructs trustworthy shared-mainline feedback, SYSE.30 addresses build inputs when they prevent it, and the runtime, data and recovery methods supply their own contributions. Data change, alerting and failed-task diagnosis can also start directly at SYSE.34, SYSE.37 and SYSE.38. The manufacturing case does not acquire these software prerequisites; both cases use the common methods to connect a practitioner's task to supported results.
-
-
-
-### SYSE-LLM-PATH — Choose and use a way to complete the task
-
-- **Situation:** A person or technical agent has several ways to obtain a required result, or repeatedly wastes effort, misses needed support or fails to use its return.
-- **Question:** Which complete available way should be used now, and what should change when the difficulty recurs?
-- **First useful result or blocker:** A supported choice followed by the performed operation and used result, or a worthwhile probe or exact missing condition that prevents choice or completion.
-- **Start with:** The receiving result and its conditions. Use C.38/C.11 for an unsettled choice; obtain discriminating evidence through SYSE.46 when it is missing for a recurring difficulty.
-- **Stop or return:** Stop at the used result when the current way suffices. For recurring failure, compare complete repairs and enter only the needed construction. Return missing domain meaning, access or authority to its supplier.
-
-Start with the result someone needs and the complete available ways to obtain it. Compare only what can change the choice: supported performance, available means, setup, checking, receiving use and total burden. C.38 supplies the comparable ways; C.11 applies the evidence and preference, or selects a worthwhile probe.
-
-For six lots of 347 items, suppose comparable evidence supports mental decomposition, no intermediate record is required, and paper or calculator would need setup. Under the preference for the least added burden among adequate ways, choose 350 × 6 − 3 × 6. Calculate 2100 − 18, check that the subtraction removes the extra three items per lot, and report 2082. If intermediate digit operations must be retained, a ready column layout can become the least burdensome adequate way. If a calculator is already open and frees working attention needed elsewhere, it can be worthwhile despite retained mental ability: enter and check 347 × 6, obtain 2082 and use it. These are constructed conditions, not measured performance comparisons. The [Reference (Engineering.Reference:19.3)](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference193---choose-and-perform-a-way-to-complete-the-current-task) works the changed conditions and worthwhile-probe return.
-
-That current task can end with its used result. Repeated wrong choices open a different question. For example, an agent repeatedly retrieves a maintenance procedure. If it sees the applicable premise yet asks again without a need, [SYSE.50](#syse50---construct-and-calibrate-an-agents-assistance-policy) constructs the assistance rule. If the next input lost a needed observation or unresolved effect, [SYSE.52](#syse52---prepare-working-material-and-tools-for-an-agents-next-step) restores the working material. If the input and return are usable but the controller routes back to retrieval, [SYSE.47](#syse47---construct-and-revise-an-agents-execution-procedure) repairs that transition. [SYSE.42](#syse42---use-a-selected-tool-and-apply-its-result) still binds the call, reconciles an uncertain effect and uses the actual state; a generated prediction supplies no observation.
-
-[SYSE.46](#syse46---test-an-agent-and-its-support-in-representative-work) obtains the discriminating evidence and tests the changed arrangement. Compare matched work without optional documentation, with the source operation supplied, and with the agent choosing whether to obtain it. Keep required execution and checks common. The trace distinguishes an omitted necessary call from a malformed call, lost input or ignored return. Fewer calls is useful only with correct result use, necessary access and appropriate stopping. [SYSE.49](#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work) constructs missing informative experience. These tests can qualify a fixed-model repair; training and division of work remain separately selected alternatives.
-
-Choose the body that supplies the missing operation:
-| Needed contribution | Full Method and first result |
-| --- | --- |
-| Apply the selected aid and use its result | [SYSE.42](#syse42---use-a-selected-tool-and-apply-its-result): used contribution or rejected/unresolved input, effect or result condition. |
-| Retain and recover needed records and experience | [SYSE.43](#syse43---maintain-external-memory-for-continuing-work): resumed use with qualified recording, organization and retrieval, or the localized failure. |
-| Divide contributions and recombine them | [SYSE.44](#syse44---divide-and-recombine-work-across-agents): used combined result or the precise dependency, conflict or source gap. |
-| Change model parameters or adapters | [SYSE.45](#syse45---train-an-llm-policy-from-qualified-interaction-experience): qualified changed-policy candidate or missing training contribution. |
-| Qualify the agent and support in use | [SYSE.46](#syse46---test-an-agent-and-its-support-in-representative-work): bounded result and decision evidence, supported use limit or qualification gap. |
-| Build or revise the execution procedure | [SYSE.47](#syse47---construct-and-revise-an-agents-execution-procedure): performable written, supervised or software candidate and its bounded comparison. |
-| Construct the rule for useful assistance | [SYSE.50](#syse50---construct-and-calibrate-an-agents-assistance-policy): performer-relative rule, qualified need/benefit evidence and applicable fallback. |
-| Construct a reusable tool or procedural aid | [SYSE.48](#syse48---construct-and-maintain-reusable-tools-and-procedures): tested, obtainable candidate and its conditions or construction gap. |
-| Construct informative interaction experience | [SYSE.49](#syse49---construct-informative-tasks-and-feedback-environments-for-agent-work): usable task/interaction and qualified feedback for the named construction, with its transfer limits. |
-| Allocate further reasoning and tool effort | [SYSE.51](#syse51---construct-adaptive-control-of-reasoning-and-tool-effort): an observable rule with sufficient-result stop and completion reserve. |
-| Prepare the next working material and tools | [SYSE.52](#syse52---prepare-working-material-and-tools-for-an-agents-next-step): a usable human view or bounded model input with decisive evidence and a tested recovery path. |
-
-Use an adequate current way and its result. Enter only the construction the task needs; these results are not compulsory stages. Return unknown domain meaning or missing authority to its supplier. The [connected Reference answer (Engineering.Reference:19)](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference19---make-an-available-contribution-work-in-the-whole-task) works the current choice and then the development comparison, retaining the actual predictive, reusable-calculation and human-learning contributions.
-
-## Citation
-
-If you use this framework, cite it as below and add the version date shown above:
-
-```text
-Levenchuk, Anatoly. Systems Engineering Principles Framework.
-GitHub repository: https://github.com/ailev/FPF
-```
-
-For a particular pattern, add its PatternID and title, for example: Systems Engineering Principles Framework, SYSE.6 - Decide and Reopen the Engineering Architecture. Retain the release date, and include a permanent link or stored copy when the exact wording matters.
-
-# Systems Engineering Principles Framework Architectural Reference
-
-Systems Engineering changes or brings about engineered Systems through explicit reasoning about use, problem
-formulations, System families, architecture, realization, configuration, evidence, evolvability, and the
-engineering arrangement itself. The phrase is not a synonym for *engineering of systems*. Software engineering,
-electrical engineering, ship engineering, building engineering, medical-device engineering, and other profiles
-concern different kinds of engineered System and retain specialist Methods, evidence, laws, tools, and sources.
-This framework provides the common Systems Engineering layer that materially changes their Work, together
-with selected service-software platform Methods and engineering of agent work and support. That selection does not replace the remaining professional
-Methods or make one application profile universal.
-
-FPF supplies the transdisciplinary distinctions used here: holons and Systems, parts and relations, Methods and
-MethodDescriptions, Work and results, architecture as selected structures, evidence and assurance, decisions and
-authority, cultural evolution, and precise plain language. This DPF applies them in engineering-specific moves: choosing a project system-of-interest, relating use and System concepts,
-developing a problem portfolio and System-family options together, developing functional and bearer
-alternatives, deciding engineering architecture, coordinating specialist returns, realizing recursively through
-builder Systems, developing the platform used by practitioners, maintaining configuration and release evidence,
-choosing changes to the project system-of-interest, its System-family option, the builder arrangement, or both for evolvability, and continuing engineering Methods.
-
-## SYSE.Reference:1 - Choose a useful result and combine its needed contributions
-
-Use SYSE when local engineering answers leave an important connection unresolved: a component works but the
-intended use is unsupported, an architecture is attractive but its realization is missing, or a test result
-does not identify the configuration and decision it can support. Seek the result that changes the next
-engineering move. Depending on the question, obtain a selected alternative, a bounded usable increment,
-a justified reliance decision, a discriminating trial, or an exact missing contribution.
-
-The patterns describe a repertoire of Methods. A project can use one Method directly or combine several.
-Start with the System, receiving use and decision that matter now. Reuse adequate concepts, configurations,
-specialist conclusions and evidence. Follow a further pattern when its result is needed, and return the result
-to the engineering decision that consumes it. For example, an obtaining comparison in `SYSE.24` can expose a
-missing provider commitment for `SYSE.18`; an actual integration result from `SYSE.11` can support, but does
-not make, the release decision in `SYSE.14`. The following sections explain these connections.
-
-A provisional project focus can support individual concept work. Before joint work relies on a common focus,
-`SYSE.1` makes participants' referents, interests and contribution connections visible through a
-concrete use. The result may be sufficient common understanding for the current decision, an unresolved
-coordination condition, or distinct projects with a defined receiving contribution. A shared project name or
-written account cannot supply that result by itself.
-
-The choice of Methods must accommodate useful effects, cost and time, available evidence, and consequences for
-other Systems. Preserving an option can be worth more than completing a design early; a faster local operation
-can transfer delay or risk to integration, maintenance or a user. Compare the complete arrangements that would
-produce the required result, including the work and support each retains. Use `SYSE.20` when shared resources,
-conflicting conditions or actual dependencies determine what work can overlap.
-
-If a current specialist Method or available result already answers the whole question, use it directly.
-Common Systems Engineering becomes useful when the question crosses those local answers or changes their
-receiving use. Stop when the bounded answer is sufficient; a missing premise holds only the conclusion or
-action that depends on it.
-
-## SYSE.Reference:2 - One System can appear in several engineering structures
-
-An engineered System can be the project focus, a part of a using or containing System, the bearer of functions,
-the result of realization Work, one configuration in a product family, a participant in operation, and the subject
-of evidence. Each position expresses a different relation. Each pattern states that relation and the decision
-for which it matters. Ownership does not prove parthood; interaction does not prove membership; a description is not
-the described System; a release record is not the released configuration; and a passed component test does not establish an
-outside benefit.
-
-Describe the operational environment through the containing, using, neighbouring, and interacting Systems
-and the conditions that matter to the current use. Call a System a suprasystem only when the engineered System under discussion is its proper part. `SYSE.16` restores those relations; `SYSE.17` follows the
-planned use, realization, operation, maintenance, misuse, and change to Systems that can bear benefit, harm, or
-another engineering consequence.
-
-## SYSE.Reference:3 - Use and System concepts stay linked
-
-A concept of use says how actual or intended Systems participate in an operating situation and what effects are
-expected. A System concept says what engineered System arrangement could participate that way. Either can expose
-a defect in the other. `SYSE.2` therefore guides an Agent in developing linked use-concept and System-concept
-candidate families rather than letting one preferred technical solution determine the use story after the fact.
-An available construction can also start the inquiry: develop a plausible use, follow its consequential
-behaviour, and let the failed assumption change the required functioning or proposed bearer. The next result
-can be a grounded architecture question while the proposed use remains conditional.
-
-Functional organization and constructive organization answer different questions. A function claim concerns a
-contribution under conditions. A bearer claim concerns an actual System or intended System referent that could
-make that contribution. `SYSE.5` guides the Agent in developing alternatives for both and making allocation and
-interface choices explicit. Then use `SYSE.6` to compare the candidates
-for the current engineering use, record the selected result, and state the evidence and conditions that would
-reopen the choice.
-
-## SYSE.Reference:4 - Realization is recursive and continuous
-
-Concept and architecture Work can continue during realization. Agents change engineered Systems by
-performing Work with Methods. Those Agents rely on
-builder and enabling Systems that may themselves require platforms, capabilities, resources, suppliers,
-facilities, models, software, data, and further engineering. `SYSE.3` makes this recursive realization
-arrangement visible. Use `SYSE.11` to obtain and modernize bounded usable increments.
-
-The engineering platform is also an engineered System when it is deliberately developed to enable named
-practitioner Work. `SYSE.12` starts from that Work—modeling, computation, build, integration, test, release,
-observation, or another engineering activity—and asks which actual capability, service condition, access, data,
-tool, automation, facility, or provider contribution is needed. Buying a tool or naming a platform does not
-establish that engineers can perform the Work.
-
-Independently governed constituent Systems require another distinction. Their authority, operation,
-configuration, or evolution can remain partly independent even when a higher-level use depends on them.
-Use `SYSE.18` to coordinate commitments, interfaces, configurations, decisions, and evidence while respecting
-those limits on the integrating project's control.
-
-## SYSE.Reference:5 - Common platform work and software-specific Methods
-
-Platform Engineering concerns an enabling arrangement for named practitioner work. Its common language asks
-what task should improve, how a supported interaction works, how interfaces and contributions change, where
-already justified controls apply, and how users and obligations move when an old path is retired.
-`SYSE.25`–`SYSE.29` supply those Methods. The platform's user can be a software developer, a production
-planner, a laboratory practitioner or another engineer; the required professional means are not interchangeable.
-
-[SYSE.53](#syse53---resolve-a-usable-composition-of-independently-released-components) addresses independently released digital components before their selected composition is realized. Actual shared meaning or interface use determines which requirements must hold together and where qualified isolation is possible. Its result supplies the selected inputs and bindings to configuration, construction and environment provision.
-
-A supported path includes usable inputs, results, failure returns and actual support. State which path is
-described, what is currently provided, and what observations establish about the practitioner's task.
-Use `SYSE.12` to assess the enabling arrangement, distinguishing evidence available before reliance from
-observations of later use. `SYSE.8` develops a providing-System concept when
-missing; `SYSE.18` handles independent provider decisions; `SYSE.24` compares whole obtaining arrangements.
-Sharing, self-service and a portal remain alternatives to test, not default winners.
-
-At this common Platform scope, standardizing an interaction competes with legitimate user variation;
-improving one user's task can increase provider or maintainer work. A control can reduce one risk while
-delaying feedback or blocking an authorized exception. Compare those effects for the actual user population
-and undertaking. A one-off tool use whose result and support are already adequate need not become a shared
-platform path.
-
-The Software Platform Engineering branch supplies selected professional Methods in `SYSE.30`–`SYSE.41`.
-They construct repeatable builds and trustworthy feedback; preserve verified artifacts; reconstruct environments;
-manage compatible data change; produce and test actual runtime configurations; and govern bounded exposure,
-task-relevant reliability, alerts, diagnosis, repetitive burden and resource pressure. A platform service and
-the application it delivers have different users and success meanings. The same measurement Method can be used
-for each when its conditions fit, without combining their evidence or error budgets.
-
-Faster feedback must preserve meaningful tests, appropriate environment isolation, identified build inputs and
-compatible retained state within available execution capacity. The software profile supplies the technical
-moves needed to investigate those trade-offs: for example, `SYSE.30` identifies and controls build inputs,
-while `SYSE.34` qualifies which application and data states can coexist or be recovered. A general request
-for trustworthy evidence would leave those different working moves unresolved.
-
-Enter the Method for the missing result and retain compatible existing results. Runtime deployment needs
-its own observations and deployment test after artifact verification. Application behavior and permission
-for wider exposure need the application's acceptance criteria and the release holder's decision. Recovery
-with an old executable requires data compatible with its contract. These dependencies determine which
-results are needed for the current engineering move.
-
-The software profile is a selection for particular uses, or a bounded-use projection of the SYSE repertoire.
-It reuses the common configuration, evidence, obtaining and provider Methods and adds the software Methods
-whose inputs, operations or stops differ. Common Platform Engineering applies beyond software; it is not
-obtained by renaming software objects. The eight Parts group the publication. A Method's participation in
-a profile does not by itself make it a part of another Method.
-
-Profiles can overlap. A laboratory with a software-supported instrument may need both the software build
-Methods and separate instrument, sample and measurement Methods. A further profile is useful when it changes
-what a practitioner can do, obtain or qualify in the same situation, or saves necessary source reconstruction.
-State that difference and reuse the sufficient common answer. If a narrower label changes nothing in use,
-the existing Method remains enough. This publication supplies the declared service-software and agent-engineering repertoires;
-the professional filling for further profiles remains with its domain sources.
-
-The professional boundary remains concrete. A machining path can use the common interaction and provider
-Methods, but it still needs qualified tooling, changeover, metrology, capability and nonconforming-material
-Methods. A software path still needs application behavior, security and other specialist results not supplied
-by this selection. Obtain missing professional results from the relevant practitioners and merge, release,
-production-acceptance or organization-change decisions from their authorized holders.
-
-### SYSE.Reference:5.1 - Improve an agent's choice and use of support
-
-Part VIII supplies engineering Methods for a person or technical agent whose work can use tools, records, other contributors and procedures. The common question is which complete way to use now and what to change when decisions repeatedly waste effort, miss needed support or fail to use its return. The [first use](#syse-llm-path--choose-and-use-a-way-to-complete-the-task) reaches the chosen and used answer 2082. Existing C.38/C.11 retain comparison and choice. Ten Methods have common operations with unlike human and technical realizations; SYSE.45 supplies the particular construction of learned LLM parameters or adapters. Human capability development uses E.23.CDI and HCD, including the bodily Methods when needed.
-
-When the comparison basis is missing, SYSE.46 obtains qualified performance and support contrasts; SYSE.50 constructs a bounded assistance rule from signals available before the decision; SYSE.51 constructs effort and stopping rules with sufficient completion means. A confident answer alone supplies neither need nor expected benefit. SYSE.42, .52 and .47 make the chosen contribution effective by binding the operation, preparing its next input and consuming its actual return.
-
-Keep the changed subject precise. SYSE.43 retains and reorganizes external records; SYSE.44 constructs a division and recombination of contributions; SYSE.48 constructs a reusable operation; SYSE.49 constructs informative tasks and feedback for development. Changing the next input, a durable record, a procedure or model parameters produces different results. A team or device can supply a contribution without becoming part of the same System merely because the workflow uses it.
-
-The [development explanation (Engineering.Reference:19.7)](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference197---develop-the-arrangement-across-attempts) compares complete manual, explicit-rule and learning arrangements by stability, recurrence, preparation, qualification failure, runtime support and maintenance. It selects a rule trial under constructed conditions, while a shorter horizon selects manual work. Needed current facts, execution, verification and control remain available at runtime. The prediction, reusable-calculation and bodily cases retain their actual suppliers and mechanisms.
-
-Recognition and construction precede assurance. SYSE.46 compares matched support regimes, result, selection, invocation, use, restraint and total burden. A claim about persistence also needs the relevant delayed and shifted tests with configuration and support identity. A current success establishes none of those wider claims by itself. Enter only a needed construction, stop at an adequate used result, and reopen the affected contribution when its source or conditions change.
-
-### SYSE.Reference:5.2 - Construct and change a software delivery and recovery path
-
-Use this connected application when a software change must become a usable service and the existing build, test, environment, deployment and operating arrangements do not yet work together. It governs the means of constructing, changing and recovering that service. These independently usable Methods connect through their results and shared conditions; enter at the missing contribution and retain qualified existing parts. Application acceptance meaning, information meaning, security decisions and release authority still come from their responsible practices. A working path whose relevant conditions are already established can be reused; a small change does not require rebuilding the whole arrangement.
-
-Start at the receiving result and work backward to the first contribution that is missing. A developer may need an identified candidate runtime for a test; an application user needs a correct and timely task result; an operator may need a recoverable deployment after interruption. Those are different results even when one platform helps supply all of them. SYSE.13 identifies the configuration and evidence needed for the decision. SYSE.25–SYSE.29 establish the task to improve, supported interaction, interface obligations, qualified controls and the transition from an older path. They need not prescribe a particular CI product or hosting architecture.
-
-Construct a first complete path around a small useful change. Work backward from the user task to its actual runtime, required information and dependencies, then to the artifact, feedback and build inputs that can produce it. Work forward through the same joins to establish that each result is usable by its consumer. A test result for one package cannot qualify a rebuilt package merely because their source label matches. An environment description cannot supply absent data or expired access. A working installation cannot supply unobserved application behavior. This backward construction and forward exercise finds missing contributions that a list of individually green tools can hide.
-
-On the construction side, use SYSE.30 to recover the build dependency graph and control the inputs needed for the chosen reconstruction claim. Use SYSE.31 to integrate small compatible changes against the current mainline and obtain actionable feedback on the resulting combination. Retain the resulting artifact and connect its own observations to its actual identity through SYSE.32. Choose a faster check or reuse valid evidence when it answers the next question; keep an unresolved slower question visible rather than rebuilding or retesting everything by habit.
-
-Prepare the conditions in which that artifact will be used. SYSE.33 derives environment fidelity from the task and establishes actual resources, information and access. Those contributions must be available together for long enough to complete the task: a short-lived environment that expires while data or permission is still being prepared is not a usable supported path. SYSE.34 constructs the application/data transition by comparing old and new readers, writers, retained state and in-flight work. Choose a compatible expansion, adapter, qualified synchronization or planned interruption from the actual need; establish the return or forward-repair boundary before depending on it.
-
-SYSE.41 makes the artifact/configuration combination real on named targets and tests its bounded use. Its result is an observed runtime, including partial or unknown targets where those remain. The deployment arrangement can separate candidate construction from ordinary exposure when the architecture supports that separation. If starting a worker already consumes live work, construct the exposure protection and obtain its authority before startup. SYSE.35 then supplies a comparison and stopping action for the permitted exposure unit. Wider rollout consumes the evidence and authority for that wider use; it is not a side effect of a green deployment job.
-
-Construct observation and recovery while designing that path, not after all delivery steps are complete. SYSE.36 defines the relevant task outcome, observation and agreed reliability use. SYSE.37 derives actionable alerts from consequential loss and the time available to respond. SYSE.38 follows a failed task through its actual effects, mitigates within a known boundary and distinguishes plausible causes. SYSE.40 keeps admission, waiting, dependency pressure and recovery within a qualified resource envelope. These Methods can change earlier design choices: a candidate that cannot be stopped, an unobservable write or a recovery path starved by test jobs may require a different deployment or interface arrangement.
-
-For a constructed example, ParcelWorks changes a one-field address editor to a first-line/tail form. First make the old and new use compatible through one authoritative stored value and the lossless correspondence in SYSE.34; preserve absence versus an empty tail. Integrate that preparatory change and the form in usable increments. Obtain a retained artifact from the combined mainline and run the relevant transformation, database and browser feedback. Reconstruct a candidate environment with the qualified data and access, then observe the actual artifact and effective configuration under SYSE.41. This establishes a bounded runtime result while the old serving pool remains usable.
-
-Next exercise complete edit attempts in a permitted cohort. General page visits do not qualify the changed form; a successful platform deployment does not qualify the application's edit result. If the new form hides a non-empty tail, stop the relevant exposure and verify the qualified old path against current data. If the deployment request instead timed out after h2 started with c1, recover that partial target and correct or return it under the known compatibility conditions. Do not create a new operation solely because its predecessor's response was lost. If build workers were unavailable throughout, the deployed old application can remain reliable while the developer-facing path fails. Each observation reaches its own task, objective and responsible decision.
-
-Adapt the whole by following the changed condition. A scheduled importer needs whole-job exposure and completion observations rather than short request windows. A stateful migration can retain a forward-repair path after exact return becomes impossible. A rare critical task may need a direct failure response rather than a high-volume burn rule. A new expensive test class may require different admission and dependency limits. Reuse build and promotion results whose subjects and conditions survive; repair the specific affected join and exercise the resulting path.
-
-Finally examine the work that the path repeatedly creates. SYSE.39 compares cause removal, simplification, automation and retaining the current method across user effort, provider support, exceptions and maintenance. Faster individual stages or fewer tickets can leave the whole task slower or more expensive. Use observed total burden and user results to choose the next improvement through SYSE.25. This closes a learning loop without turning every delivery attempt into another platform redesign.
-
-The strong professional comparison is the [Continuous Delivery deployment pipeline](https://continuousdelivery.com/implementing/patterns/) together with the [SRE Workbook](https://sre.google/workbook/table-of-contents/). These already connect delivery, operational reliability and learning. This application makes their selected technical contributions usable with SYSE's configuration, obtaining, provider and supported-path Methods. Use those sources for their detailed professional treatments and obtain the implementation practice for the selected technology. The useful result here is a path whose joins, alternatives and change conditions the engineer can construct and explain.
-
-## SYSE.Reference:6 - Configuration and evidence travel with continuing change
-
-Engineering identity is decision-relative but not arbitrary. A product-family item, actual unit, installed
-configuration, software realization, description edition, baseline, variant, state, and effectivity range can
-differ. `SYSE.13` supplies the configuration basis needed by a named decision. `SYSE.14` connects a proposed or
-performed world-side change to that basis, its deciding System, permission, implementation, release, cited
-evidence, and unresolved conditions.
-
-Evidence supports a stated claim only for the receiving decision and conditions to which that evidence applies. A model, experiment,
-trial, test, certificate, review, or observation supports only the claims for which it is applicable. `SYSE.10` connects
-research and trial results to engineering claim assessments. Use `SYSE.4` to reuse compatible current results,
-qualify evidence use and revise reliance. Select further challenge Work when its attainable contribution justifies
-the burden or the selected use requires it. A narrower supported answer or a justified stop may already settle
-the question. Return the result to the Agent responsible for the earliest answer it could change. Safety, security, legal, ethical, financial, certification,
-acceptance, permission, and release decisions keep their specialist criteria and authority.
-
-A source change is not automatically a world-side System change. A changed model, standard, requirement,
-MethodDescription, architecture description, or supplier claim first changes an episteme. `SYSE.19` traces the
-claims and engineering decisions that relied on it and revalidates only the affected uses.
-
-## SYSE.Reference:7 - A Method has several structures; Work can be simultaneous
-
-An engineering Method can be described through several non-isomorphic structures. Its constructive composition
-asks which Methods or method parts make up a larger Method. Its unfolding asks which results and dependencies
-permit a next move. A Work account asks which Work occurrences overlap, participate in a larger Work whole, or
-must occur in a real order. A provider or build-the-builder account asks which enabling Systems and capabilities
-must exist. A cultural account asks how Method variants are generated, transmitted, enacted, recognized,
-selected, retained, changed, and lost across a practitioner population.
-
-Do not call every vertical list a level stack. A *first–then* relation normally describes an unfolding or Work
-order. Simultaneous participation at different holonic or scale positions is different: physical computation,
-model use, architecture judgement, configuration coordination, and assurance can all contribute during the same
-bounded engineering Work while remaining different Methods or Work wholes. Use `SYSE.20` to recover those
-overlaps, conflicts, dependencies, and required orders.
-
-`SYSE.15` guides development of a decision-usable engineering Method repertoire. A standard, branded framework,
-model-based recipe, toolchain, or AI workflow is a candidate contribution, not *the Method* by title. The
-repertoire records fit, evidence, exclusions, branches, and reopen conditions. `SYSE.21` guides a different
-decision: how an authorized Agent deliberately continues or changes the Systems Engineering culture of a named
-practitioner population. One team choice or one successful project does not prove transmission, retention, or
-cultural change.
-Claims of later enactment and engineering consequences need their appropriate observations. A qualified current account or supported continuation may instead finish on existing evidence; a new study is selected only when its attainable contribution warrants its whole burden. Keep the deciding and affected Systems explicit.
-
-**Constituent actions in ongoing work.** For example, while a technician acquires a measurement, an engineer may be conducting a requirement-verification trial through that measurement, within an ongoing system-acceptance exercise. Recover the constitutive connection rather than infer it from matching timestamps. If the requirement concerns a short transient, a setting adequate for a steady reading may no longer support verification. Instrument-operation skill and knowledge of the requirement can both be present while the intermediate skill of choosing a suitable acquisition arrangement is missing. Supply that capability or qualified assistance before relying on the trial. The obtained reading is still only a constituent result; it does not by itself authorize acceptance. FPF B.1.5.EW helps recover this vertical; SYSE.20 addresses a consequential conflict in its arrangement.
-
-For a connected application, [Connect contributions, concerns and consequences across a whole project (Engineering.Reference:6)](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference6---connect-contributions-concerns-and-consequences-across-a-whole-project) follows two module teams, independent acceptance and a shared laboratory into a project that changes the supplying organization. It shows which general engineering questions transfer, which specialist results are needed, and how lost provision, authority or capability changes the next work.
-
-## SYSE.Reference:8 - How project Work contributes to engineering culture
-
-A gadget release, a subsystem architecture decision, a platform improvement, or an assurance account is a
-bounded project result. The Systems Engineering Discipline is a continuing cultural phenomenon: Method variants,
-terms, examples, tools, criteria, institutions, and practitioner habits are reproduced and changed across many
-Work occurrences. A project can generate a candidate variant, enact it, produce consequences, and influence
-selection. Cultural retention requires evidence across that practitioner population.
-
-Most users should stop with the project pattern that resolves
-their current difficulty. Open `SYSE.21` only when the receiving question is deliberately to continue or change a
-Systems Engineering Method variant across a named practitioner population. Open the FPF cultural-evolution
-patterns when the claim is transdisciplinary rather than Systems-Engineering-specific.
-
-## SYSE.Reference:9 - Architectural Rationale
-
-The common language connects use, architecture, realization and evidence at the engineering decisions that
-need them together. A proposed System can have an attractive functional organization yet lack a viable
-builder arrangement; a realized configuration can pass its tests yet fail the receiving use. The repertoire
-therefore separates independently useful results and states how one result constrains or enables another.
-Observations from realization or use can reopen an earlier assumption. A project phase plan remains usable
-when it preserves those returns and the orders required by actual dependencies, physical operations and
-governing decisions.
-
-FPF distinctions and a curated standards or handbook route are a useful smaller answer when they already
-supply the needed engineering move. SYSE adds the domain work of constructing linked use and System concepts,
-complete obtaining arrangements, recursive realization and configuration-bound engineering judgements.
-Its common layer does not replace the specialist procedure that determines a material, software or regulated
-result. The [shared source account](#sysereference15---shared-engineering-sources-and-architectural-choices) explains the
-different roles of process scope, engineering practice and professional procedures.
-
-SYSE.21–24 address different questions in continuing engineering. SYSE.21 connects a proposed practice
-change to the configured results, assurance, support and receiving enactment that it must preserve. When
-changed use or a new means makes the old problem–solution pair doubtful, SYSE.22 develops the problem and
-feasible System-family options together. It returns supported correspondences, unresolved conditions and a
-bounded choice. When the difficulty concerns which target or builder change is worth making for later
-changes, SYSE.23 compares interventions across that arrangement, including transition, evidence and
-continuing burden. Its investment choice is a proposal with expected consequences; obtaining the means and
-observing later Work support different, stronger claims. SYSE.24 constructs ways of obtaining the needed
-result by changing what is supplied and completing the remaining receiving Work. An unsupported provider
-condition can return the choice to that construction without invalidating an unaffected technical Method.
-These Methods can be entered independently. Connecting their results requires compatible configurations,
-use conditions, horizons, authority and shared resources. SYSE.2 supplies a missing linked use–concept
-construction, SYSE.3 the realization branch, and SYSE.6 a needed architecture decision. Their numbers do not
-prescribe the order of Work.
-
-Platform Engineering retains `SYSE.12` for the enabling-System question and reuses `SYSE.24` for obtaining
-alternatives and `SYSE.18` for independent provider decisions. The supported-interaction, interface-change,
-control-placement and migration Methods have different first results; putting them all into one large
-platform Method would make a narrow question harder to answer. The same reason supports direct software
-bodies for a build, data change, alert or restoration question. Their detail is useful because it changes the
-operation or evidence, not because each topic needs another title.
-
-Use a developed professional account directly when it already supplies the required technical operation
-or complete arrangement under the receiving conditions. Continuous Delivery and SRE already explain
-connected delivery and reliability Methods; SLSA supplies artifact verification. The software profile
-retains that professional basis. Where a receiving connection remains unresolved,
-[§5.2](#sysereference52---construct-and-change-a-software-delivery-and-recovery-path) develops the whole path
-through artifact identity, environments, data, provider limits, task observations and release authority,
-with contributions from SYSE.30–41. When only one result is missing, its direct source or pattern can suffice;
-performing the complete path would add no necessary result.
-
-Choosing a platform's architecture requires comparing the available arrangements. Retaining repaired local provision, sharing
-a bounded contribution, obtaining external provision and adding an interface can each be appropriate.
-[APP-SYSE-05](#syseapplication5---app-syse-05---worked-application-construct-a-supported-software-build-and-delivery-path)
-keeps the repaired local and thin shared arrangements tied after their matched initial trial; developing
-the shared candidate further does not select it. This preserves a serious alternative to treating shared
-provision or a portal as the inevitable outcome of Platform Engineering.
-
-The common and software Methods are available together so that a reader can follow these real result
-dependencies without duplicating the common Methods in every profile. A focused profile can reuse that
-content while explaining its own changed conditions. Further physical and software profiles need their
-professional filling: recoverable software state, irreversible material processing and an instrument's
-measurement validity require different procedures. A new source or an unlike use that defeats a purportedly
-common move should change that move's scope or the affected profile, while the other usable contributions
-remain available.
-
-## SYSE.Reference:10 - Check the combined engineering answer
-
-Recognizing a situation, finding a Method and constructing a candidate answer do not establish that the
-System is usable or that a change is authorized. The worked applications show how to obtain and limit an
-answer; their stipulated observations are not evidence about the reader's own project. Before relying on
-a combination, ask the following questions about the intended decision.
-
-- **Do the contributions concern compatible subjects and uses?** Recover the project System and the relevant
-  configuration, variant, interval and operating conditions through the existing answers for `SYSE.1`,
-  `SYSE.13` and the patterns being used. Resolve any interpretation difference that changes whether the
-  results can be used together.
-- **Is each needed result available at the strength the decision requires?** A usable MethodDescription tells
-  the practitioner how to obtain a result. A supplied observation, model conclusion or permission must have
-  its own applicable basis. Use `SYSE.9` for a missing professional contribution; keep independent work moving.
-- **Can the required contributions hold together for this undertaking?** Reconcile interfaces, shared
-  resources, permissions, retained state and the receiving deadline. Over the same receiving horizon, count
-  all work using the same constrained capacity, including support, rework and changeover; distinguish
-  independent resources. Compatible pairs do not by themselves establish that the complete arrangement
-  can produce the required result.
-- **Whose result improves, and who bears the remaining burden or consequence?** At whole-SYSE scope, use
-  `SYSE.16` and `SYSE.17` for the relevant surrounding and affected Systems. At Platform scope, include failed,
-  abandoned and unsupported practitioner attempts in `SYSE.25`'s task evidence. In the software profile,
-  `SYSE.36` keeps platform and application users, task success and missing observations separate.
-- **What action does the evidence and authority permit now?** Reuse the applicable `SYSE.4` and `SYSE.10`
-  evidence judgements and retain `SYSE.14`'s release boundary. Software artifact verification, actual runtime
-  deployment, compatible data recovery and wider exposure need the distinct results in `SYSE.32`,
-  `SYSE.41`, `SYSE.34` and `SYSE.35` when that action depends on them. A physical path instead needs its
-  actual process, measurement, material disposition and production-acceptance results.
-
-The whole-arrangement condition is visible in
-[APP-SYSE-06](#syseapplication6---app-syse-06---worked-application-qualify-a-machining-path-with-an-external-operation).
-Its nominal 143 machining cycles do not establish delivery of 120 acceptable brackets: measurement,
-yield, rework, coating and transport still determine the end-to-end result. The supported interface can
-nevertheless be improved while the production claim remains open. The software application likewise
-distinguishes a constructed supported path from its unresolved obtaining choice and application-exposure
-result. Each application returns the particular missing contribution rather than discarding every useful part.
-
-The examples foreground deliberate engineering projects with identifiable decisions and access to relevant
-observations. A sponsor's or provider's account may omit a future operator, an infrequent user or a System
-bearing harm. Missing access limits the conclusion; it does not make the omitted consequence harmless.
-Software-practice sources also give stronger detail for software work than for physical production. Retain
-that difference when using a common Platform Method in another domain.
-
-These questions are inherited by the common Platform language and the software profile. Reuse a sufficient
-answer when its subject, conditions and receiving use still match; examine the profile-specific difference
-when they do not. Use the affected pattern's reopen condition when a project condition changes. When a
-relied-on source changes, use `SYSE.19` to find the dependent conclusions. The practical gain is a usable
-engineering answer with a bounded next move. The cost
-is the work of reconciling contributions and obtaining the missing evidence; an isolated direct result
-should not acquire that cost unless its receiving use needs the combination.
-
-## SYSE.Reference:11 - Scope and specialist boundaries
-
-The framework groups its common-engineering patterns in five connected problem families (Parts I–V): project focus, use, and joint
-problem/System-family development; architecture and professional contributions; obtaining engineering results,
-recursive realization, engineering platforms, independent constituents, and evolvability across the project system-of-interest and builder arrangement;
-configuration and continuing change; and assurance, Method-and-Work architecture, repertoire, and cultural
-continuation. Part VI adds the common supported-use and continuing-change Platform Engineering Methods.
-Part VII adds the selected Software Platform Engineering Methods. Part VIII supplies eleven Methods for engineering agent work and support: ten common operations with human and technical realizations, and the bounded LLM-learning construction in SYSE.45. The Readme starts with current choice and use; Architectural Reference §5.1 connects that use to diagnosis and development when needed.
-
-The 53 pattern bodies provide the authoritative descriptions of engineering Methods, cases,
-checks, source uses, and relations. The Readme provides selected entries. This Architectural Reference explains the distinctions
-that make the entries cohere. Two navigation walkthroughs show result dependencies. Four worked applications demonstrate joint use in
-software, cyber-physical equipment and manufacturing, including filled values, reopen conditions,
-inconclusive results and missing professional Methods, without defining a lifecycle.
-The framework leaves the remaining specialist application-profile Methods, a full history of Systems Engineering,
-curricula for developing human capability, organization design, general operations management, corporate governance,
-finance, law, safety, security, ethics, and detailed domain standards to their own patterns, DPFs, or sources.
-Return there when those results change the engineering decision.
-The boundary prevents common language and a bounded software repertoire from replacing a specialist answer
-with a vague analogy.
-
-## SYSE.Reference:12 - Intended use and non-use boundary
-
-Use this framework for recurring common Systems Engineering difficulties that materially change decisions about
-an engineered System, its use and operational environment, problem formulations and System-family options,
-architecture, realization, enabling platform, configuration, evidence, evolvability, continuing change, or
-engineering Method. It also supplies the common Platform Engineering Methods in Part VI and the selected
-service-software platform Methods in Part VII and agent work and support Methods in Part VIII.
-It is intended for engineers, engineering
-managers, architects, technical leads, specialist contributors, and assisting agents able to use the required
-FPF distinctions and domain evidence.
-
-Do not use this framework as a complete application profile or a substitute for specialist decisions.
-The software selection covers the build-and-delivery and reliability questions named in its pattern bodies,
-not all application algorithms, software architecture, compiler construction, distributed-data mechanisms or
-software engineering. It does not supply cryptographic design, security threat models, privacy decisions or
-security-incident authority merely by providing artifact, deployment or technical-recovery Methods.
-
-Manufacturing still needs operative process/tooling and changeover design, measurement-system qualification
-and uncertainty, sustained capability, acceptable-part delivery capacity and nonconforming-material recovery.
-Other physical and regulated profiles likewise retain their professional Methods. Electrical design rules,
-naval architecture, structural calculations, medical regulation, safety cases, legal or financial decisions,
-certification and organization change remain outside this selection.
-
-Further profiles can retain the common use, configuration, provider and evidence answers while requiring
-different professional results. Robotics needs the relevant simulation-to-real, calibration, operating-envelope,
-physical recovery and fleet-maintenance Methods. Laboratories need instrument and Method qualification,
-sample identity and handling, uncertainty, contamination control and scientific-validity judgements.
-Administrative enabling paths need the actual finance, personnel or procurement procedures, access and
-authority conditions. These are remaining professional obligations, not additional Methods supplied by
-a common platform description.
-
-The selected software repertoire also leaves deeper mobile and embedded toolchains, foundation-model pretraining,
-distributed storage, identity and secret infrastructure, comprehensive security design and further service classes
-to their own Methods. Part VIII supplies tool use, external memory, work division, qualified experience,
-procedure and operator construction, assistance decisions, adaptive effort and working-material preparation.
-Its human and technical realizations keep their own mechanisms; SYSE.45 supplies bounded LLM policy learning.
-It does not supply every human-acquisition, ML-evaluation, robotics-control or task-domain Method. A narrower
-profile may reuse appropriate existing bodies and add a warranted difference; this framework sets no fixed
-final depth for such useful specialization.
-For each missing result, recover the relevant practitioner, qualified Method and deciding authority.
-An omission blocks only the dependent claim or action, not every independent engineering move.
-
-## SYSE.Reference:13 - PatternID discipline
-
-`SYSE.*` provides addresses for the authoritative pattern bodies in this Systems Engineering Principles
-Framework. The eight Parts and four ordinary worked connections group patterns for
-reading. These groups do not establish semantic parentage, Method composition, or project order.
-
-## SYSE.Reference:14 - Source use and epistemic status
-
-Each pattern carries its own source-use decisions, adopted payload, rejected shortcuts, evidence limits, and
-reopen conditions. Standards, textbooks, academic attention, vendor claims, institutional promotion, and press
-coverage can identify candidate Methods or terminology. They do not by themselves show actual project use,
-causal effectiveness, widespread retention, or state of the art. When direct prevalence evidence is unavailable,
-label the value as an expert estimate and state its uncertainty.
-
-## SYSE.Reference:15 - Shared engineering sources and architectural choices
-
-
-The working synthesis combines common engineering reasoning with procedures that produce a particular
-professional result. These sources shape several patterns together, while their evidence limits determine
-what can be inherited by a profile.
-
-[ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html) supplies process scope that includes acquisition
-and supply within or outside an organization. The historical
-[NASA Systems Engineering Handbook, Rev 2 (2016)](https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf)
-distinguishes realization through purchase, making, coding and reuse, together with enabling products,
-integration and verification. The synthesis retains those connected questions but makes the needed result,
-rather than a process-list position, select the next Method. `SYSE.24`'s
-[source comparison](#syse2411---sota-echoing) explains why the
-complete obtaining arrangement is compared, including internal work, provider contributions and continuing
-burden. Neither a standard's process scope nor NASA's programme setting settles a local supplier, contract
-or release decision.
-
-`SYSE.12`'s [source comparison](#syse1211---sota-and-source-use) relates task-oriented software-platform
-practice and qualified software-work evidence to manufacturing arrangements with different participants,
-physical means and information-use conditions. It qualifies their contribution to the named practitioner Work;
-professional operations and their qualification remain profile-specific.
-
-DORA and CNCF's platform lines, detailed below, provide a direct task-and-product treatment of internal
-software provision, including composition over existing capability providers. `SYSE.12` adopts that answer
-where it fits and compares it with retaining competent local provision. For mixed physical and software Work,
-its authored synthesis adds the capability, provider and evidence qualifications needed by the relying
-decision, accepting their maintenance cost. The pump case compares that cost with repeated manual
-reconciliation; its observed user saving leaves total burden open. The software profile then combines locally
-described build, environment, data, deployment and observation Methods with exact source procedures where
-appropriate.
-SLSA's procedure addresses consumer verification under a configured trust basis; artifact verification does
-not establish application correctness. Runtime deployment must be performed and observed, and release needs
-its authorized decision. The source table keeps these contributions and limits visible; one branded
-practice or toolchain does not supply the whole supported use.
-
-The historical SRE lines remain useful for the particular operating distinctions and conditions retained
-here. Implementation documentation can expose a missing outcome, such as an
-inconclusive exposure result, or constrain an alert's lookback; its recency does not validate every historical
-recommendation. Use each source at the scope stated below and in the receiving body. Reopen a shared choice
-when a better-supported alternative changes the working move, or when an unlike application defeats the
-assumption being carried across profiles.
-
-## SYSE.Reference:16 - Dependence on FPF and neighbouring products
-
-FPF remains the source for transdisciplinary ontology, holons and Systems, Method and Work distinctions,
-architecture, evidence, assurance, decisions, cultural evolution, precision restoration, pattern form, and DPF
-publication form. This framework specializes those moves for common Systems Engineering and its selected
-service-software platform and agent work and support branches. A relied-on FPF result remains external to this DPF.
-
-External application-profile frameworks and direct specialist sources keep their own product boundaries;
-the selected Methods in Parts VII–VIII do not import their entire repertoires. Another DPF may use a named
-Systems Engineering result only when the subject, conditions, edition or current state, receiving use, and
-availability fit. Co-listing in a collection or Guide does not establish dependency, compatibility, currentness,
-or authority.
-
-For the organizational gap in SYSE.27, open the Organization Change Engineering Principles Framework (OCE):
-*OCE.4 - Design an Organization's Contribution Architecture*
-for a contribution-architecture decision, or
-*OCE.6 - Establish Holder Assignments and Enabling Relations for Organization Change*
-for obtaining actual holder assignments and separately effective enabling relations. OCE.4 needs a
-compatible focus, current account and organization-concept comparison or equivalent content. OCE.6
-needs the actual authority and applicable relation predicates; naming an owner does not supply them.
-
-For the shared operating account needed by SYSE.38, open the Operations Management Principles Framework (OPS):
-*OPS.3 - Distinguish Operating Subjects, Cases, Queues, Resources, and Records*
-to obtain the bounded subject/account distinctions, and
-*OPS.4 - Keep Current Operating State Recoverable Across Participants*
-for a participant-usable current account with evidence, uncertainty, permissions and next decisions.
-A record or shared display does not establish the underlying subject or the truth of its visible state.
-
-For the resource comparison in SYSE.15, use OPS.11.1 to construct the relevant operating account, reconcile
-shared resources and existing assignments, and compare allocation alternatives. This can change the use of
-bench time without redesigning who may request, promise or accept the work.
-
-Use equivalent current local content when it already suffices; no repeated application of a neighbouring
-pattern is then required. Before relying on either return, check the supplying source's availability and
-current governing claim, the receiving subject and conditions, and the actual assignment/authority or
-state evidence needed now. Reopen only the affected return when these change; a missing result stops its
-dependent use. These source texts and the organizational or operating results remain external to SYSE:
-availability of a pattern is neither an obtained local assignment nor an established current operating account.
-
-For Part VIII, MMP.8.SD supplies an action-conditioned decision model, MMP.17 a qualified approximation when needed, and CMP.7 learner construction. The engineer recovers candidate reusable operations; F.0.2.MA reconciles or allocates already recovered contributions, while A.3.1.MV and A.15.8.MS retain semantic repertoire and usable discovery. HCD, SOM and RHY retain human practice, learning, observation and timed bodily coordination; an LLM-generated account supplies no bodily response. C.38/C.11 retain complete-way comparison and choice. The [Reference (Engineering.Reference:19)](ENGINEERING-DPF-SUITE-REFERENCE.md#engineeringreference19---make-an-available-contribution-work-in-the-whole-task) gives direct access and worked returns for these separate contributions.
-
-## SYSE.Reference:17 - Edition scope and refresh
-
-This publication contains the 53 `SYSE.*` pattern bodies indexed across eight reading Parts,
-the Readme, this Architectural Reference, two navigation walkthroughs, four worked cross-pattern applications, and the
-Sources and Edition Notes with their professional source coverage. Boundary and refresh explanations belong to this
-Architectural Reference. The bodies remain the authority for working moves; the Readme, Architectural Reference, ToC,
-and applications help readers find and combine them.
-For an engineer using this language, a changed premise can affect reliance in several ways:
-
-- An FPF dependency that changes a kind, relation, evidence, architecture, Method, Work, culture, or publication rule
-  used by a pattern puts in question the pattern's use of that distinction or rule.
-- A direct source that changes a load-bearing engineering claim or exposes a better current Method puts in question
-  the affected claim or the reason for using the current Method.
-- A project case that shows a pattern's first result, stop, authority boundary, or specialist return is wrong puts
-  that particular guidance in question.
-- Repeated use showing that two patterns duplicate the same move or that one recurring Systems Engineering problem
-  family remains uncovered puts the repertoire's useful division or coverage in question.
-- An application profile showing a common specialization that changes the cross-profile working move puts the
-  shared move and its applicability in question.
-- A publication that no longer preserves the pattern bodies, first entries, cross-pattern use, source return, or
-  framework boundary for its intended readers no longer supplies those affected instructions or limits adequately.
-
-For a current engineering use, reconsider the smallest affected claim, move, result, or receiving relation.
-Contributions whose conditions still hold remain usable.
-
-When the required work is revision of the SYSE framework, its author uses
-[FPF E.4.DPF](../../FPF-Spec.md#e4dpf---domain-and-local-principle-frameworks-whether-and-how-to-author-and-publish)
-for framework construction and publication, and
-[FPF E.19](../../FPF-Spec.md#e19---pattern-quality-gates-review-and-refresh-profiles) for the affected review and refresh.
-The author first refreshes the smallest affected unit. The framework architecture is reopened only when evidence changes the
-promised field, selected problem families, pattern split, material result relations, publication form, or maintenance boundary.
-
-For source qualifications, citation and edition information, see the [Sources and Edition Notes](#systems-engineering-principles-framework-sources-and-edition-notes).
-
-## SYSE.Reference:End
-
-
-# Part I - Project Focus, Environment, Consequences, and Problem/System-Family Development
-
-## SYSE.1 - Choose and Reopen the Project System-of-Interest
-
+> **Type:** Method pattern
 > **Status:** Stable
+> **Normativity:** Normative method guidance within SIE; examples are constructed and non-normative.
+>
+> **Primary working result:** a `SemanticIntegrationPackage@Use` whose required semantic contributions, implementation and evidence support one receiving use together, or a bounded partial result, unresolved question or stop that states what the receiver can now do.
 
-### SYSE.1:1 - Problem frame
+### SIE.13:1 - Problem Frame
 
-Use this pattern when a project is already discussed through a familiar name—for example, a product, solution,
-tool, provider, organization, component, desired effect, or broad programme—but no defensible current decision
-yet identifies which System the project is intended to change or bring about. The choice matters because it
-changes later questions about use, boundary, architecture, realization Work, evidence, and specialist decisions.
+**Use this when** a query, decision or operation needs separately governed information to work together, but obtaining the individual meanings, correspondences or mappings still leaves the receiving answer unavailable. A team may already have good source inventories, a model, mapping rules and working endpoints. The remaining question is how to connect those results, obtain the missing contributions and make an answer usable under their joint conditions.
 
-The first result is a **project-system choice account**: claim-bearing project decision content that names the
-selected actual System or intended referent, the current reason for the choice, and what may reopen it.
+The working object is one semantic integration for a named receiving use. Its whole result is the connected package described in [SIE.Reference:4](#siereference4---the-first-whole-result): a use contract, source premises, warranted semantic relations and claim composition, mapping behavior, realization and interface, with validation of the claimed use. Identity premises and model development enter where the answer depends on them. The package can reference existing results; it need not be one document, database or graph.
 
-First useful move: name one candidate actual System or intended referent, state the present use or change reason
-for choosing it, and write the main unresolved assumption. An individual can use this provisional choice to ask
-the next use-and-system concept question. Before coordinated Work relies on a common focus, compare the
-participants' intended referents and how their contributions connect, as in §4.4.1. Expand the account only when
-disagreement, a valuable alternative, or a later answer can change its use.
+Start with the action the receiver must be able to perform and the information that could change that action. Compare the available contributions with what that answer requires. The practical gain is a way to choose the next useful piece of work and know when the connected result is sufficient, rather than completing every SIE pattern in numerical order.
 
-If the choice is missed, participants can work competently on different projects while using the same project
-name. A supplier optimizes a component, an integrator changes an operating assembly, and a client expects an
-outside effect, yet each assumes that the familiar noun names the same project system-of-interest.
+**Ordinary non-use.** Use the individual Method directly when its result finishes the question: SIE.4 can settle one correspondence, SIE.8 can reject a prohibited realization, and SIE.10 can identify a decisive defect in a supplied interface. An already adequate package can be used without reconstructing it. SIE.13 is needed when those local results still have to be made usable together. It does not select product configuration, establish master-data authority, operate a pipeline, authorize a purchase or accept a physical inspection result.
 
-The payoff is a defensible provisional choice and, when participants have established the needed common
-understanding, a shared focus for the current coordination. Evidence from use, architecture, realization,
-operation, or a participant's different understanding can reopen the claim on which that coordination relies.
+### SIE.13:2 - Problem
 
-Use this pattern only when project coordination needs a System designation. If the decision already concerns
-another recognized subject—for example Work, a Method, a capability, a state, a material portion, a
-description, a collection, a structure, or a transformation—keep that subject under the pattern that defines
-or constrains its claim. If the issue is only whether a named entity is a System, use `A.1.SCR`. If the System
-has already been selected and the live question is how it participates in use, continue with `SYSE.2`.
+Local correctness does not compose automatically. A relation may be true but too lossy for the intended substitution. A mapping may preserve a meaning while consuming an identity disposition for another configuration. Two sources may be individually fresh yet concern different periods. Separately feasible retrievals may compete for one request allowance. A correct response can still be read as the wrong kind of claim.
 
-At the first consequential use of source wording such as *system of interest*, *target system*, *our system*,
-*product*, or *solution*, ask one question: **is the project choosing which actual System or intended referent
-it will change?** If yes, state the candidate and its current use or change reason. *Project
-system-of-interest* names the designation made for this project; it is not another System kind.
+The opposite failure is to treat the complete repertoire as a mandatory lifecycle. A practitioner repeats qualified source work, builds an ontology that already exists, or develops an excluded realization before answering a small question. This spends effort without supplying the missing connection.
 
-### SYSE.1:2 - Problem
+Neither a list of completed tasks nor a collection of approved descriptions establishes a usable integration. Someone must determine which contributions the receiving answer depends on, whether their conditions match, what remains to obtain, and how the supplied result reaches the receiver.
 
-Project names are chosen early, often before outside use, engineering boundaries, and realization constraints
-are understood. The first plausible referent then becomes an unstated premise in later decisions. A tool
-is selected as the project system-of-interest merely because it is purchased; a provider System is selected
-merely because its people perform the Work; or a desired state is forced into a System because the project is organized around achieving
-it.
+### SIE.13:3 - Forces
 
-The opposite error is also common: a useful tool, software product, or component is excluded by a slogan even
-when its own product project legitimately selects it. Compare referents for the current project and keep the
-choice revisable as understanding of the problem and solution changes together.
-
-### SYSE.1:3 - Forces
-
-| Force | Tension |
+| Force | Working consequence |
 | --- | --- |
-| Coordination and revision | Contributors need one usable focus now, while new evidence may change it. |
-| Outside use and technical discovery | Outside use justifies the choice, while architecture and realization discoveries can revise the use and boundary. |
-| Actual and intended Systems | Brownfield work can concern an existing System, while new development may only have an intended referent in decision or plan content. |
-| One project and related projects | Related parties—for example, a client, supplier, integrator, provider, and operator—may share components and evidence while their projects select different Systems. |
-| Candidate breadth and decision cost | A single familiar candidate hides alternatives, while an exhaustive catalogue delays the next useful question. |
-| Stable language and ontic precision | A shared designation aids communication, while its name, description, or agreement does not establish System identity or the designation itself. |
+| Sufficient answer and wider reuse | The present contract bounds construction; a useful local answer need not anticipate every future consumer. |
+| Source autonomy and combined meaning | Preserve source meanings and authority while establishing the relations the receiving use actually needs. |
+| Reuse and changed conditions | Reuse a qualified result where its premises still match; a familiar result under a different interval or permission can need reopening. |
+| Local feasibility and joint performance | Include shared limits and dependencies that no component can settle alone. |
+| Useful partial result and misleading omission | Narrow only under the receiving contract, keeping excluded or unresolved branches interpretable. |
+| Assurance and acquisition cost | Obtain evidence that can settle the current claim; a decisive rejection can finish without completing unrelated positive checks. |
 
-### SYSE.1:4 - Solution
+### SIE.13:4 - Solution
 
-#### SYSE.1:4.1 - State the current project decision
+Construct the integration by working backward from the receiving answer and forward through the contributions that can supply it. At each connection, establish what one result permits the next operation to do, under which conditions. Obtain or repair the missing contribution, bring its result back into the combination, and test the claimed receiving use. Revisit only dependencies affected by a changed premise.
 
-Begin with the project whose coordination is current. State:
+The organization is conditional. Several contributions may be available already; one result can expose a different question; and construction can end with a warranted stop. The sections below explain these moves, not a compulsory sequence of completed forms.
 
-1. what change or later use this project is meant to enable;
-2. which plan or decision needs a shared project-system designation now; and
-3. which subject is presently proposed as the System to be changed or brought about.
+#### SIE.13:4.1 - Establish what would let the receiver continue
 
-Keep related projects separate. A manufacturer's planning-improvement project, a software vendor's product
-project, and an integration provider's deployment project may use the same software and evidence without making
-the same project-system choice. A programme or portfolio may coordinate shared matters—for example, priority,
-resources, investment, risk, or evidence—without thereby becoming a composite acting System.
+Name the receiver's question and the next action or judgement that the answer must support. Recover the required answer claims and the circumstances in which a partial, conflicting or unavailable answer is still useful. If these are unsettled, use [SIE.1:4](#sie14---solution) to obtain the receiving-use contract. Otherwise use the supplied contract and reopen only a condition that no longer fits.
 
-#### SYSE.1:4.2 - Recover the direct subject before forcing a System choice
+Distinguish the answer from its downstream authority. “These inspection observations concern this configured feature” can be a needed integration result; “release this product” remains an engineering or quality decision. This distinction determines which premises the integration must supply and which judgement remains with the receiving decision owner.
 
-Use `A.15.6` when project, process, or case wording hides whether the current subject is performed Work, a
-reusable Method, a selected structure, a transformation-flow structure, a changed referent, or another claim.
-If that direct subject answers the decision, stop this pattern use and keep the subject under its own FPF
-pattern.
+Compare the current available result with that continuation. If it already suffices, return it with its applicable limits. If only one correspondence or one failed conversion matters, obtain that result from its Method and finish the bounded question. When the receiver still lacks a usable combination, retain the whole receiving need while identifying a smaller next contribution.
 
-When the decision does need a System, distinguish two cases:
+#### SIE.13:4.2 - Derive the required contributions from the answer
 
-- For an actual System, use `A.1.SCR` when recognition is unresolved. Its constructive criterion supplies the
-  tested System identity and boundary used in the comparison.
-- For a System that does not yet exist, keep the intended referent in the current plan, decision, or description.
-  Do not describe it as an already acting System.
+Take each answer claim that can change the receiving action and ask how it would be obtained. Follow it to the source meanings, represented claims, relations and transformations it relies on. For a query row, for example, recover why the selected records belong together, what each value means, which rule produces the output, and how an unavailable or incompatible input is represented. For a semantic exchange between organizations, recover the corresponding interpretation and use of each supplied statement.
 
-Recognition and project designation remain different claims. Recognizing an actual System does not select it
-for the project; selecting an intended referent does not make it physically present.
+Use the following returns where that dependency occurs:
 
-#### SYSE.1:4.3 - Generate and criticize materially different referents
-
-Generate alternatives from the working situation under the actual-System and intended-referent conditions in
-§4.2. Use its direct-subject exit when a System designation is unnecessary.
-
-Examples include a product or tool System, an engineering platform, an operating or provider System, a containing
-or organization System, and intended counterparts. Retain only candidates that would change a later decision.
-
-For each candidate, compare the claims that matter now:
-
-- the outside use or change the candidate is expected to support;
-- the project boundary and the relation to related projects;
-- the participating and affected Systems;
-- the boundary, interaction, constituent, containment, ownership, authority, or other direct relations that
-  actually change the choice;
-- the important characteristics, constraints, feasibility branches, evidence, and uncertainty; and
-- the assumption or observation that would defeat the candidate.
-
-Treat familiar project facts—payment, delivery, ownership, enterprise boundary, a diagram, the transformer that
-performs realization Work, or the subject visibly changed by a tool—as evidence about candidates or project
-boundaries. Choose the project system-of-interest through the project's stated use and decision.
-
-Retain several candidates when later learning can change their order or when different candidates preserve
-valuable options. Let the current decision, available resources, and named stop determine the candidate count
-and comparison effort. Stop when the current choice is good enough to ask the next consequential question and
-its reopening evidence is named.
-
-#### SYSE.1:4.4 - Record the smallest useful choice account
-
-The cheap first result contains only:
-
-```text
-Project-system choice account:
-  current project and decision:
-  selected actual System or intended referent:
-  current use or change reason:
-  main unresolved assumption:
-  reopen condition:
-```
-
-Use any readable form for this content. Add further content—for example, comparison
-grounds, candidate alternatives, boundary and participation claims, affected Systems, authority, realization,
-or evidence—only when it changes the current choice or a downstream use.
-
-Stop when the project can ask a concrete use-and-system concept question about the named referent for the stated
-reason. The resulting account supplies that referent, reason, boundary question, alternatives, and reopen
-condition to `SYSE.2`.
-
-##### SYSE.1:4.4.1 - Establish enough common focus for the current coordination
-
-When the next decision relies on several contributors working on the same project System, compare their
-understanding through one concrete use or change. Include the people whose contributions, receiving use, or
-limits can change that decision. Existing compatible exchanges may already supply the answer.
-
-Ask each contributor to point to the actual System or intended referent they mean, explain what matters to them
-in the project, and trace how their contribution would help change or use that referent. Follow a contribution
-across its next dependency: have the person relying on it explain what they expect to receive and how it supports
-the proposed use. A short conversation, annotated example, or asynchronous exchange can expose the connection;
-no particular meeting or form is required.
-
-For example, “install the planning software” and “produce a feasible production plan” may initially share a
-project name. Following one changed order reveals whether installation, current stock information, capacity
-decisions, and the planner's use actually connect. Compare the decision-changing differences under §4.3.
-Distinguish different accounts of one proposed project from legitimate separate projects that must exchange
-contributions.
-
-Resolve a material mismatch through the project's actual decision authority and the contributions available.
-Explain the selected referent and the reason for selecting it; then ask the affected contributors to apply that
-choice to the same example. The current coordination has enough common focus when those relying on it can
-identify the selected referent, connect the contributions on which their next action depends, and state the
-unresolved condition that limits that action. They may retain different interests and preferred alternatives.
-Common understanding supplies neither permission to act nor a commitment to perform Work; obtain those when
-the next action requires them.
-
-If the participants still mean different referents or cannot connect a needed contribution, preserve the
-individual choice as provisional and hold the joint claim that depends on the unresolved connection. Name the
-difference and the answer needed to resolve it. Independently supported work can continue. If the apparent
-disagreement instead comes from separate projects, keep their designations and coordinate the receiving result
-between them; use `SYSE.8` for a provider-use arrangement or `SYSE.9` for a specialist contribution when that
-question is current.
-
-Keep the choice account aligned with this result: provisional individual choice, sufficient common focus for a
-named decision, unresolved mismatch, or coordination between distinct projects. The account makes the result
-recoverable; writing it does not produce agreement or establish that an intended System already exists.
-
-#### SYSE.1:4.5 - Reopen the choice from the answer that failed
-
-Reopen the account when one of these changes the comparison:
-
-- observed or expected use crosses the assumed boundary;
-- authority or permission makes the intended change unavailable;
-- an architecture candidate moves important functioning to another System;
-- no feasible realization branch supports the selected referent;
-- operating or assurance evidence defeats the reason for the choice; or
-- a related project is separated, combined, or reoriented in a way that changes the current project decision.
-
-An observed mismatch between contributors reopens the common-focus claim in §4.4.1 even when the individual
-choice remains defensible. Repeat only the exchange affected by that mismatch; reconsider the designation if
-its reason or boundary has changed.
-
-Return to the smallest failed claim. A changed use assumption may require `SYSE.2` before the project focus
-changes. A failed bearer or architecture candidate may return through `C.30` or `C.32`. Reopen the
-project-system designation only when the evidence changes which System should orient this project or where
-the project boundary lies.
-
-### SYSE.1:5 - Archetypal Grounding
-
-
-#### SYSE.1:5.1 - Pumping station under flood risk
-
-
-A flood-reduction project starts with the phrase “new pump”. The engineer compares the pump unit, the pumping
-station, the drainage-control System, and a provider arrangement. Flood-control use crosses the pump-unit
-boundary: positioning, power, control, discharge conditions, and downstream exposure belong to the station's
-current use question. The engineer selects the pumping station and records:
-
-```text
-selected referent: intended pumping station
-current reason: move water under the selected flood load as part of flood-control use
-main unresolved assumption: downstream exposure remains acceptable
-reopen: use, architecture, realization, or operating evidence changes that assumption or boundary
-```
-
-`SYSE.2` can now link the flood-load use claim to a station concept.
-Later discovery that the proposed station increases downstream harm changes the linked use claim. It reopens
-the project-system choice only when that changed claim defeats the reason or boundary used by the choice account.
-
-
-#### SYSE.1:5.2 - Manufacturer and ERP vendor
-
-
-A manufacturer opens a “new ERP” project because production plans repeatedly fail. Its engineering lead compares
-the software product, the planning organization, an intended deployed planning System, and the wider
-production-control System. She provisionally selects the deployed planning System because the project is meant
-to improve production-planning use, with data quality as the main assumption. That choice is enough for her
-first concept question.
-
-Before assigning joint work, she asks the contributors to follow one order moved to an earlier date. The IT lead
-means the installed ERP runtime by “our system”; his contribution is software installation and data interfaces.
-The production planner means an arrangement that produces feasible commitments; she needs current stock and
-capacity information and a way to resolve conflicts. The stock controller expects the existing overnight update
-to remain sufficient. The vendor means its software product and wants to preserve a supportable standard
-configuration.
-
-Tracing the intended contributions exposes a mismatch. IT can deliver the interface and the vendor can supply
-rescheduling, but the planner would receive a new schedule based on stock information that predates the moved
-order. No contribution yet supplies the missing current information. Recording the lead's choice again would
-leave the same joint plan unsupported.
-
-In this worked case, the manufacturer's authorized project owner retains the intended deployed planning System
-as the focus. The stock controller and planner agree to investigate current-information and confirmation
-arrangements; IT identifies what each would require from the software interface. Each explains how that
-contribution would support the moved-order decision, and the planner identifies what she would still need
-before treating a proposed schedule as a production commitment. The common next decision is now to compare
-those arrangements in `SYSE.2`. Software installation alone is no longer their completion claim. This establishes
-enough common focus for that investigation, while feasibility, implementation permission and the eventual
-production benefit remain to be established.
-
-If the stock-information contribution cannot be obtained or participants still disagree about the proposed
-referent, the shared planning-change claim remains open. The lead's provisional designation and independently
-supported interface investigation can remain useful; the missing contribution prevents reliance on the joint
-change. If the manufacturer authorizes only a software deployment project, that is a different bounded
-designation whose completion cannot establish the planning benefit.
-
-The vendor's product project continues to select the ERP software product. The parties coordinate its
-contribution to the manufacturer's use without merging their projects or requiring identical interests.
-“Software is always the project system-of-interest” and “software is never the project system-of-interest”
-would both erase this distinction. Their respective choice accounts retain the shared software, different
-referents and receiving use.
-
-
-#### SYSE.1:5.3 - Continuing building through several projects
-
-
-For example, design, construction, operating retrofit, and heritage-restoration Work can concern one continuing building
-while using different plans, transformer Systems, access arrangements, and evidence. In an occupied retrofit,
-the engineer selects the continuing building because its occupied performance is being changed and records
-access during use as the main unresolved assumption.
-
-Several descriptions of the building do not create several Systems or projects. Conversely, one programme does
-not become the performer of all Work. Each project account states its own reason for selecting the building and
-can reopen that choice without inventing a birth-to-retirement order.
-
-### SYSE.1:6 - Biases to Watch
-
-Two recurring biases matter in this decision. **System inflation** forces every important project subject into
-`U.System`; use `A.1.SCR` and the direct-subject exit before choosing. **First-candidate lock-in** turns the first
-plausible referent into permanent project scope; retain material alternatives and state the reopen condition.
-
-### SYSE.1:7 - Conformance Checklist
-
-| ID | Requirement |
-| --- | --- |
-| `CC-SYSE1-1` | A conforming use SHALL name the current project and the decision that needs a project-system choice. |
-| `CC-SYSE1-2` | It SHALL retain a direct non-System subject when System designation is not needed, and SHALL use `A.1.SCR` when actual System recognition remains load-bearing. |
-| `CC-SYSE1-3` | It SHALL distinguish an actual System from an intended referent in plan, decision, or description content. |
-| `CC-SYSE1-4` | The first useful account SHALL name the selected referent, current use or change reason, main unresolved assumption, and reopen condition. |
-| `CC-SYSE1-5` | When materially different actual Systems or intended System referents remain plausible, the account SHALL compare their decision-relevant claims and SHALL keep every non-System subject under its direct pattern rather than admit it as a candidate referent for the project system-of-interest. |
-| `CC-SYSE1-6` | Additional account content SHALL be added only when it changes the current choice or a downstream use. |
-| `CC-SYSE1-7` | A stop SHALL make the next use-and-system concept question askable; a reopen SHALL name evidence or a changed project condition that can alter the choice. |
-| `CC-SYSE1-8` | Related projects SHALL keep their own designation decisions even when they share Systems, Work, resources, descriptions, or evidence. |
-| `CC-SYSE1-9` | Before coordinated Work relies on a shared focus, the relevant contributors SHALL establish a common referent and the contribution connections needed for that decision, or identify the unresolved mismatch and limit the dependent coordination. A written account alone SHALL NOT establish this result. |
-
-### SYSE.1:8 - Common Anti-Patterns and How to Avoid Them
-
-| Anti-pattern | Working symptom | Repair |
+| The receiving answer depends on… | Contribution to obtain or reuse | What returns to the construction |
 | --- | --- | --- |
-| Project-name shortcut | The noun in a charter or backlog is used as the selected System without a use or change reason. | State the current project decision, generate plausible referents, and compare how each changes the next question. |
-| Tool or provider substitution | The most visible tool or the System performing realization Work replaces the System whose use the project changes. | Keep tool, transformer, provider, changed subject, and project designation as separate claims; compare them as candidates only when each could orient this project. |
-| Account-as-agreement | A clear choice written by one person is treated as the participants' shared project focus. | Follow a concrete use through contributors and receivers; resolve the material mismatch or limit the coordination that depends on it. |
-| First-candidate freeze | Work has started, so later use or feasibility evidence is treated as irrelevant to project focus. | Record the main assumption and reopen condition with the first choice; return evidence to that claim when it changes. |
-| Important-subject inflation | A desired state, Work result, description, collection, capability, or transformation is called a System because the project centres on it. | Keep the direct subject and use its FPF pattern. Open `SYSE.1` only if a System designation is required for the current project decision. |
-| Programme-as-performer | Shared resources or one programme plan are treated as proof of one composite acting System. | Use the programme or portfolio grouping for its coordination decision and establish any System composition separately. |
-
-### SYSE.1:9 - Consequences
-
-The project gains a defensible provisional focus and a way to establish how far contributors can rely on it
-together. An unresolved mismatch becomes a bounded coordination question. Related projects can share resources
-and evidence while retaining their own designations. Architecture and realization discoveries can change the
-project focus without being treated as late exceptions.
-
-The cost is visible uncertainty and, for a shared claim, the work of comparing participants' understanding.
-Several candidates may remain open, and changed assumptions require a return. Spend that effort where an
-unresolved difference could redirect architecture or realization; a compatible existing result needs no repeated
-elicitation.
-
-### SYSE.1:10 - Rationale
-
-Systems Engineering needs a project focus because architecture, realization, and assurance questions require a
-referent. That focus is a decision under uncertainty, not a fact supplied by the project name or by System
-recognition alone. Separating actual System identity, intended reference, project designation, and the account
-that describes the choice lets practitioners coordinate without confusing an episteme with the physical or
-operational System.
-
-Ask about outside use when comparing candidates because it tests why each candidate matters. This check does
-not prescribe the calendar order of project Work. Problem framing, candidate development, architecture,
-realization, and evidence can change one another; the explicit reopen condition makes that movement normal.
-
-### SYSE.1:11 - SoTA-Echoing
-
-The practice question is how to establish a defensible, shared and revisable project focus for the next
-engineering decision. The selected answer combines explicit framing and valuable alternatives with the
-contribution comparison in §4.4.1. The following research lines support parts of that synthesis; they do not
-establish its comparative effectiveness as a whole. Exact work titles, primary identifiers and evidence limits
-are in the public [project-focus research sources](#sysesources1---project-focus-research-sources).
-
-
-| Current practice line | What changes in this pattern | Source and use | Adoption status |
-| --- | --- | --- | --- |
-| Design framing treats what matters to a design problem as revisable while problem and solution understanding develop together. | The Solution makes the project-system choice revisable and requires the use, assumptions, and contextual relations behind it. | Kelly and Gero (2022), Litster, Cardoso, and Hurst (2024), and Nickel, Hurst, and Duimering (2024). These conceptual and small empirical studies support explicit framing and revision, not one framing ontology or universal Method. | **Adopt and bound.** Adopt co-development and contextual comparison; let the project decision select the focus and establish actual System identity separately. |
-| Set-based design retains alternatives while learning can change feasibility or trade-offs. | The Solution asks for materially different referents and preserves valuable alternatives when the decision needs them. | Toche, Pellerin, and Fortin (2020) review the set-based line; Al Handawi et al. (2024) demonstrate margin-based exploration in one aeroengine-component case. | **Adapt.** Retain alternatives and narrow them by evidence; let the receiving project determine candidate count and decision choreography. |
-| Decision making under deep uncertainty uses robust alternatives, staged commitments, monitoring, and revision rather than prediction alone. | The first account carries an unresolved assumption and a reopen condition; later evidence can change the choice. | Haasnoot et al. (2013), Marchau et al. (2019), Lempert et al. (2024), and Akse (2024), mainly in climate, infrastructure, policy, and sociotechnical-transition settings. | **Adapt.** Use staged commitment and explicit reopening; let the receiving project establish its scenarios, thresholds, triggers, and decision Method. |
-| Entrepreneurial-action research treats available means, commitments, contingencies, prediction, and judgement as context-dependent complements. | Candidate generation may use available Systems and commitments without treating them as proof of the project referent or of success. | Chen, Liu, and Chen (2021), Zhang et al. (2023), and Rapp, Olbrich, and Packard (2026). Meta-analytic associations and conceptual synthesis do not establish one causal engineering Method. | **Adapt narrowly.** Keep contingent action and revision as candidate pressure; leave business and Strategy decisions with their practices. |
-
-The serious practice alternative is the NASA handbook's
-[Stakeholder Expectations Definition](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/).
-Its iterative treatment uses operating scenarios to refine expectations, develop mutual understanding and
-obtain commitments. Those operations are useful here; its broader programme baseline is not required for
-every provisional choice.
-
-Compare both ways on the ERP case at the same effort: the same contributors examine one moved order and its
-receiving use. A bounded expectations-and-scenario discussion can expose the stale-information gap. The
-§4.4.1 contribution comparison can expose it too. SYSE makes the designation question explicit alongside that
-discovery: does the decision need a System designation, which actual System or intended referent is selected,
-and which contributions belong to separate projects? Its direct-subject exit remains available in §4.2.
-
-For this next concept decision, the selected result is a revisable focus and the unresolved connection.
-It deliberately leaves a complete expectations set and broader commitments unprovided. When the receiving
-decision needs those results, obtain them through the expectations treatment. When an existing scenario exchange
-already establishes the needed focus and connections, reuse it. The small account saves no participant work that
-is actually necessary, and the comparison establishes no general time or outcome advantage.
-
-Reopen this methodological choice when contributors can repeat the designation but apply incompatible
-contribution paths, or when a bounded scenario or facilitated framing treatment resolves the same mismatch with
-less reconstruction. Repair the failed connection or use the better-suited treatment. Reconsider the retained
-research contribution when its evidence or transfer conditions no longer support the receiving use; keep the
-affected project's assumptions and return in view.
-
-These sources support comparing and revising project focus. Actual System recognition uses the FPF `U.System`
-criterion. Choosing an actual System or intended referent for the project uses the project's decision and case
-facts, as in the pump, ERP, and building cases above.
-
-### SYSE.1:12 - Relations
-
-- `A.15.6` distinguishes project Work, process, case, Method, transformation, selected structure, and project
-  system-of-interest wording before the practitioner uses this pattern to make a System choice.
-- `A.1.SCR` supplies the constructive recognition result when the comparison depends on whether a candidate is
-  an actual acting or changed System. It also supplies the direct-subject exit when systemhood is not
-  load-bearing.
-- `SYSE.16`, `SYSE.17`, `SYSE.2`, and `SYSE.8` may use the project-system choice account when their question
-  concerns the same subject, configuration, decision, and evidence window. That use identifies the engineering
-  focus for the receiving question; it imposes no temporal order.
-- An engineer uses `SYSE.2` to develop linked use and concept claims whose failure may revise the choice. The
-  resulting linked proposal helps frame the architecture question. `C.30` defines that question and `C.32`
-  guides candidate synthesis; infeasibility or harm returns
-  through the smallest linked claim and reopens this pattern only when project focus changes.
-- `A.1.STM` provides the wider systems-mantra traversal when a practitioner must reconnect this local choice to
-  outside use, architecture, realization Work, change, and recursive transformer Systems. It adds no project
-  designation or fixed Work order.
-- The applicable FPF decision, authority, evidence, value, harm, temporal, and direct-relation patterns define
-  or constrain those claims when they become current; this pattern does not replace them.
-
-### SYSE.1:End
-
-## SYSE.16 - Recover the Systems and Conditions Needed for a Use Decision
-
-> **Status:** Stable
-
-### SYSE.16:0 - Use This When
-
-Use this pattern when an engineering decision concerns an actual System or intended-system designator selected as the project system-of-interest, but everything outside it
-has been reduced to one box called *environment*, *stakeholders*, *users*, *the business*, or *the platform*.
-The decision needs to know which larger Systems contain it, which other Systems interact with it, which
-transformation flows and interfaces matter, and which outside conditions can change the result.
-
-Begin with one use situation and one receiving engineering decision. Recover only the Systems, direct relations,
-selected structures, conditions, evidence, and assumptions that can change that decision.
-
-The first useful result is a **bounded engineering-use account**. It describes how an actual System participates,
-or how an intended System is expected to participate, in one named use situation. The account is an episteme used
-by the decision. The situation, actual Systems, containing wholes, and other obtaining relations remain its
-world-side subjects.
-
-Do not use this pattern merely to draw a context diagram or inventory every nearby object. Use the governing FPF
-pattern directly when one already-known relation—such as parthood, interface, interaction, flow, or an architecture
-relation—answers the question. If the project system-of-interest designation is still unclear, use `SYSE.1` first.
-
-#### SYSE.16:0.1 - Terms and Distinctions
-
-| Name in this pattern | What it denotes |
-| --- | --- |
-| project system-of-interest | A project-relative designation in plan or decision content. It names either an actual System or an intended-system designator. The designation, actual System identity, intended referent, and existence are separate claims. |
-| use situation | A bounded actual situation in which the System participates, or a described possible-future situation in which the intended referent would participate. A scenario or diagram is a description of that situation. |
-| containing whole | An actual System of which the selected System is a proper part under a stated relation, or a possible-future whole in a proposed proper-part claim. One System can belong to several relevant wholes under different relations. |
-| suprasystem | Optional source wording for a containing whole. Use it only when the proper-part claim is stated. |
-| other System in the use situation | An actual System, or intended referent, connected by a named non-part relation that matters to the decision. Examples include an interaction or transfer between named Systems; observation of one System by another; access granted by a provider System to a receiving System; supply of a named result from provider to receiver; receipt or use of that result; a commitment between named Agents; or a consequence relation. Each example names its own relation. |
-| operating condition | A decision-relevant condition—for example, temperature, load, connectivity, price, an applicable regulation, or an available resource. A condition is a System only when it independently meets the System criteria. |
-| functional organization | Selected transformation flows, interactions, and contributions, with the actual Systems that bear or participate in them. |
-| constructive organization | Selected actual or proposed parts, bearers, modules, interfaces, and connections. Establish its parthood and connection relations independently of functional contribution. |
-| engineering-use account | The episteme returned here: selected Systems, relations, structures, conditions, evidence, unsupported assumptions, and reopen conditions for one use decision. |
-
-### SYSE.16:1 - Problem Frame
-
-Engineering choices—such as choices about System functions, architecture, interfaces, offerings, assurance,
-or change—depend on larger working situations. Teams nevertheless often begin with an inside representation,
-such as a product boundary, organization chart, component list, requirement set, or model repository. Outside
-Systems appear only as labels around a box.
-
-The decision needs several selected structures: functional
-transformation and interaction, constructive parts and interfaces, direct relations across the selected boundary,
-operating conditions, and claims about what may change. One context diagram or tree cannot carry all of them.
-
-### SYSE.16:2 - Problem
-
-A generic environment box hides incompatible claims. A customer can own a System without operating it. An
-operator can interact with it without containing it. A building can spatially contain a device while another
-System whole receives the result of its functioning. A cloud service can sit outside a product boundary while
-remaining part of an offering arrangement. A regulator can constrain Work without being part of the operational
-System.
-
-When those relations remain implicit, a plausible concept can fail in use, an interface can be assigned to the
-wrong bearer, a provider can promise a result no arrangement can deliver, or later evidence can have no clear
-decision to reopen.
-
-### SYSE.16:3 - Forces
-
-Recurring tensions include:
-
-- A small use account helps early decisions; an exhaustive world model is neither possible nor useful.
-- Project boundaries simplify Work, while outside Systems and conditions can still change the engineering choice.
-- One System can participate in several wholes and selected structures at once.
-- Functional transformation and constructive structure must correspond without being collapsed.
-- Design choices concern possible futures; actual participation and observed conditions concern what obtains.
-- Relevant surroundings continue to change—for example, providers, users, infrastructure, rules, competing
-  offerings, or operating conditions.
-- Existing vocabulary helps communication but can import ownership, lifecycle, or stakeholder assumptions that do
-  not match the current relation.
-
-### SYSE.16:4 - Solution
-
-Recover the smallest set of Systems, structures, relations, and conditions that makes one use decision
-well-grounded. Begin with the actual System or intended-system designator selected as the project system-of-interest and a named use situation; stop when the account
-exposes a material mismatch, alternative, evidence gap, or reopen condition.
-
-Reuse an adequate existing account or direct relation result for the same decision and conditions.
-Use the bounded recovery below when a missing connection prevents that answer. If the operating situations
-themselves need development or agreement, use a suitable scenario or concept-of-operations Method;
-obtain any missing specialist result from its domain before relying on it.
-
-#### SYSE.16:4.1 - Perform the Move
-
-1. **Bound the use and decision.** State the actual System or intended-system designator selected as the project system-of-interest,
-   the use situation, configuration or variant, decision, relevant place, interval or horizon, and the description
-   sources being used. Keep the descriptions separate from the Systems and situation.
-2. **Find containing and receiving Systems.** Identify every larger System that matters because the selected
-   System is, or would be, its proper part, and every System that receives or would receive a result of its
-   functioning. State each direct relation and whether it is actual or proposed; retain several wholes when
-   the decision depends on them.
-3. **Recover functional organization.** Identify the transformation flows, interactions, and contributions in
-   which the System participates, including the changed or receiving Systems and conditions. Use `A.6.F` for
-   function-like claims and `E.18.NET` when a transformation-flow network is needed.
-4. **Recover constructive organization.** Identify the structures that matter to this use—for example, parts,
-   bearers, modules, interfaces, or connections. Use `A.22` for each selected structure and `A.6.M` only when
-   module or interface claims obtain. Do not infer constructive parthood from a functional contribution.
-5. **Add other Systems and conditions.** Include only a System or condition whose named relation can alter the use
-   result or engineering choice. State that relation and its participants or state the relevant condition. Examples
-   include a transfer from a named supplier System to a named receiver, access granted by a provider System, a
-   permission or commitment between named participants, an available resource, or an operating constraint. When
-   performed provider Work matters, identify the dated Work occurrence, performer Agent, and applied Method
-   separately. For proposed provider Work, identify the intended Work, performer and Method, and the commitment
-   or capability evidence actually available. Then name only the direct relations used by the decision: Agent
-   participation in the Work, result production, supply or access from provider to receiver, receipt or use of
-   the result, a commitment, or another governed provision relation. Distinguish obtaining relations from
-   proposed ones; a commitment does not establish that Work or delivery occurred. Do not hide these objects or
-   relations under *environment*.
-6. **Separate future choices from present facts.** Mark descriptions as observations, predictions, design choices,
-   commitments, or unsupported assumptions. A proposed interface or whole does not obtain merely because a model
-   contains it.
-7. **Test outside change.** Ask which relevant outside factors—for example, Systems, conditions, interfaces,
-   providers, uses, or regulations—can change during the relevant horizon and which change would reopen the
-   concept, architecture, offering, assurance, or configuration decision.
-8. **Return the decision-changing result.** Supply the mismatch, alternative, evidence need, or qualified
-   assumption to the receiving engineering Work. Leave unrelated surroundings out.
-
-The numbered steps explain the Method. Determine Work order from the actual dependencies. Observation,
-concept development, architecture development and trials can overlap and recur while outside Systems change.
-
-#### SYSE.16:4.2 - Record the Result
-
-| Field | Required content |
-| --- | --- |
-| focus and decision | Project System-of-interest as an actual System or intended referent, project designation, use situation, receiving decision, configuration, place when relevant, and horizon. |
-| containing and receiving Systems | Each larger or receiving System and the proper-part, transfer, interaction, or other direct relation that matters. |
-| functional organization | Selected transformations, flows, interactions, contributions, changed or receiving Systems, and operating conditions. |
-| constructive organization | Selected parts, bearers, interfaces, modules, and connections needed by the use. |
-| other Systems and conditions | Providers, users, resources, constraints, and their stated obtaining or possible-future relations. |
-| epistemic status | Observation, evidence-backed claim, prediction, design choice, commitment, or unsupported assumption. |
-| co-change and return | Outside changes that reopen the decision, evidence that would reveal them, and the mismatch, alternative, or missing result supplied to receiving Work. |
-
-A thin first-use account needs only one decision-changing containing or neighbouring System, one named relation
-or condition, its epistemic status, and one result for that decision. For an unknown that can change the result,
-state which decision it blocks. Use several representations when needed, keeping them distinct from the use
-situation and System whole they describe.
-
-#### SYSE.16:4.3 - What Changes in Practice
-
-The engineer stops asking only what lies outside a product box and asks which Systems, structures, direct
-relations, and conditions make this use work. Functional transformation and constructive structure stay
-separate, outside change becomes an engineering input, and unsupported assumptions become visible results rather
-than hidden context.
-
-### SYSE.16:5 - Worked Case: Upgrading an Occupied Building's Heat-Pump Plant
-
-An engineering team is deciding whether to add a new controller configuration to an existing heat-pump plant for
-the next heating season. The decision asks whether occupied rooms can remain within the selected thermal range
-while the plant responds to grid signals.
-
-The decision-sized engineering-use account distinguishes these structures and relations:
-
-- **Actual System and containing whole.** The heat-pump plant is an actual System and a proper part of the
-  building heating System. The proposed controller is still an intended referent. The occupied building and its
-  heating System are not assumed to be the same whole.
-- **Functional transformation and transfers.** An electricity-distribution System transfers electrical energy
-  through the feeder. A signal channel transmits demand-response information. The plant transfers thermal energy
-  to the hydronic loop, and the loop and radiators transfer it to room air. Envelope heat transfer and occupant
-  control actions also change room temperature.
-- **Constructive organization.** The feeder, sensors and controller cabinet are physical bearers. The account
-  also identifies the hydronic connections, proposed controller interface and signal channel. Required clearance
-  around the cabinet is a spatial condition on its location and maintenance access. Establish the part and
-  connection relations independently of the functional-flow description.
-- **Maintenance supply, access, and Work.** Under `MaintenanceCommitment-14`, maintenance company `HeatCare-7` commits to supply `ControllerInspectionResult-14` to building operator `BuildingOperator-1` before the controller-configuration decision. The building operator grants `HeatCare-7` plant-room access during stated windows. Technician `T-4` is the intended Agent for `ControllerInspectionWork-14`; that Work has not occurred. If it occurs, the Work produces the inspection result, `HeatCare-7` supplies the result to `BuildingOperator-1`, and the operator receives it for the controller-configuration decision.
-- **Systems that may bear consequences.** Residents in a nearby building may experience increased low-frequency
-  noise during night cycling. A model supports this possible consequence; no night measurement yet establishes
-  an observed effect.
-- **Unsupported assumptions.** Sensor latency and occupant override behaviour are unknown at the required load. A
-  planned insulation change may alter the thermal model. Cabinet clearance is supported by a drawing but has not
-  been checked in the plant room.
-
-For the cabinet-location choice, the next result is confirmation of the required and available clearance under
-the installation and access conditions. If those conditions already determine the required clearance, the team
-can answer that spatial question directly. If occupant and grid-control behaviour leave the operating situation
-unsettled, develop the relevant scenarios before relying on that use.
-
-The account changes three next decisions. The Agent applying `SYSE.17` uses the possible acoustic-exposure and
-maintenance-access consequences. The Agent applying `SYSE.8` uses the maintenance commitment, provider and access
-relations, and the need for the inspection result. The Agent applying `SYSE.2` uses the revised use claims and
-low-noise and cabinet-location alternatives. If the team also considers remote monitoring, that is a proposed
-offering: this account establishes neither its provider commitment nor its authority. The dependent remote-
-monitoring claim remains conditional. The team can act on the supported inputs.
-**When the full pattern is unnecessary.** If the current question is only whether one already identified sensor
-is a proper part of one known controller under an admitted relation, use the direct System and parthood patterns.
-A broader engineering-use account adds no value.
-
-### SYSE.16:6 - Bias Annotation
-
-A source or representation—such as an official context diagram, stakeholder list, standard, or organization
-chart—does not by itself establish that a relation obtains or a Method is effective. Any capable and authorized
-Agent may develop the account; professional title, substrate, and organization label have their own evidence.
-Specialist Methods and evidence remain with their domains—for example, electrical, building, safety, legal,
-environmental, or financial practice. Agents with the relevant authority make the corresponding decisions.
-
-### SYSE.16:7 - Conformance Checklist
-
-- [ ] The actual System or intended-system designator selected as the project system-of-interest, use situation, receiving decision,
-      configuration, and horizon are stated.
-- [ ] Actual Systems and intended referents remain distinct from accounts, models, scenarios, and diagrams.
-- [ ] *Suprasystem* is used only with a stated actual or possible-future proper-part relation.
-- [ ] Functional transformation remains separate from constructive parts, bearers, and interfaces.
-- [ ] Other Systems and conditions appear only when a named relation can change the decision.
-- [ ] Observations, predictions, design choices, commitments, and unsupported assumptions remain distinct.
-- [ ] Outside changes and evidence that reopen the decision are stated.
-- [ ] The account returns a mismatch, alternative, evidence need, or qualified assumption rather than an
-      exhaustive inventory.
-
-### SYSE.16:8 - Common Failures and Repairs
-
-These recurring abstractions hide a relation that changes the engineering decision:
-
-| Failure | Repair |
-| --- | --- |
-| Everything outside becomes one environment box | Recover only the wholes, other Systems, conditions, and direct relations used by the decision. |
-| Stakeholders stand for operational structure | Identify actual Systems and relations; use `SYSE.17` for consequence-bearing Systems. |
-| Every larger or influential object is called suprasystem | Require a proper-part claim or use the actual relation. |
-| Function is treated as a component | Keep transformation flows and constructive structures separate and state their correspondence. |
-| Diagram is treated as reality | Keep the representation, subject, currentness, and evidence distinct. |
-| Outside Systems are held constant | Record co-change and reopen evidence for the relevant horizon. |
-| Environment analysis becomes an early phase | Revisit the account when concepts, architecture, evidence, configuration, or outside Systems change. |
-| The team models the whole world | Stop at the smallest account that changes the receiving decision or exposes a missing result. |
-
-### SYSE.16:9 - Consequences
-
-Engineering alternatives become comparable in the use that gives them meaning. Interface choices expose their
-bearers and receiving Systems, outside changes gain reopen conditions, and System or offering concepts no longer
-rely on an unexplained environment label.
-
-The cost is maintaining the selected structures, conditions and their correspondence. A bounded account
-accepts incomplete coverage of other uses; broaden the work when an omitted situation can change the decision.
-
-### SYSE.16:10 - Rationale
-
-Systems matter through particular part, interaction, transformation, interface, transfer, and consequence
-relations under conditions. FPF supplies the general ontology for those claims. The engineering specialization is
-the repeatable move from one use decision to the smallest outside structure that can change concept,
-architecture, offering, assurance, configuration, or continuing development.
-
-### SYSE.16:11 - SoTA and Source Use
-
-**Working question:** Which Method should an engineer use when different relations hidden inside an
-"environment" label prevent one use decision?
-
-The selected answer depends on what is missing. Use an adequate existing account or the direct relation
-Method when it settles the question. Use this bounded recovery when the needed result depends on connecting
-several Systems, relations and conditions. A developed concept-of-operations (ConOps) Method is an
-alternative when operational situations or agreement about intended use still need to be constructed.
-It develops and challenges scenarios; identifying a few relations cannot supply that broader result.
-
-The bounded connection accepts limited coverage in exchange for concentrating the account on one decision.
-It still needs the applicable evidence and specialist contributions. Section :4 makes this choice at entry;
-steps 1–6 recover the missing connections, and steps 7–8 return changed conditions to the affected decision.
-The thin :4.2 result is sufficient only within that use. In :5, cabinet location returns a spatial-evidence
-question, whereas unsettled occupant/grid behaviour returns scenario development. An adequate earlier answer
-can be reused in either branch.
-
-| Source answer and comparison role | Disposition, operative contribution and limit |
-| --- | --- |
-| Current FPF `A.22:4.1`, with the direct subject patterns named in :12: a supplying Method and a direct-use alternative | **Adopt** independent constituent, relation, constraint and use identification. **Adapt** that selection to the engineering decision in steps 1–6 and the :4.2 account. A spatial condition keeps its own meaning even when the same decision also needs a bearer or interface. The engineering-use account connects these selections to the receiving decision. |
-| [NASA Systems Engineering Handbook, §4.1.1.2.2–4.1.1.2.5](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/): a developed professional alternative | **Adapt** elicitation, operational scenarios and agreement about use when those results are missing at :4's entry. Follow significant nominal and off-nominal situations into interfaces and operator/support contributions. The handbook's mission-specific organization is not imposed on every thin account. |
-
-Reopen the Method choice when
-a sufficient account becomes available, an omitted condition defeats the receiving use, the question expands
-to other scenarios, or a supported alternative offers a preferable combination of coverage and effort.
-Retain qualified evidence for unaffected claims while revising the dependent conclusions.
-
-### SYSE.16:12 - Relations
-
-- `SYSE.1` supplies the System designation, decision, boundary question, alternatives, and reopen evidence needed
-  here. Its result creates no temporal order.
-- `A.1.SCR` distinguishes an actual acting or changed System from a designation, role word, description, process,
-  or organization label.
-- `A.22` governs each selected structure. `A.6.F` restores function, bearer, capability, Work, and
-  MethodDescription distinctions; `A.6.M` applies only to an obtaining module or interface claim.
-- `E.18.NET` applies when the use needs a transformation-flow network. The network is a representation of
-  selected transformations and dependencies, not the containing whole or a lifecycle.
-- Agents applying `SYSE.17`, `SYSE.8`, or `SYSE.2` can use the account's consequence, provider, or concept
-  results. Each Agent rechecks subject, configuration, horizon, evidence, and compatibility for the receiving use.
-- Application profiles retain domain Methods and evidence—for example, Methods and results for operating physics,
-  safety, legal compliance, medical use, finance, software, electrical systems, buildings, or ships.
-
-### SYSE.16:End
-
-## SYSE.17 - Find Systems That May Bear Engineering Consequences
-
-> **Status:** Stable
-
-### SYSE.17:0 - Use This When
-
-Use this pattern when a decision about a proposed System, configuration, or use change already names some
-participants—for example, users, owners, operators, or interacting Systems—but may still omit bearers of
-consequences. Their states or decision-relevant characteristics could change through Work or events such as
-realization, operation, maintenance, misuse, failure, recovery, retirement, or later modification. Retain existing
-bearers even when their identities are only partly known. Qualify not-yet-present bearers as intended System
-referents in modal claims.
-
-Begin with one proposed engineering alternative or change and the decision that can still alter it. If an existing
-account already covers the material consequences at the needed scope and evidence strength, use that answer.
-Otherwise trace possible consequences beyond the current contractual, organizational, and technical-interface
-boundaries. Keep obtaining relations, modal path claims, observed changes, value judgements, and specialist
-decisions separate. When the missing result is a person's preference, an agreement, or an account of how a proposed
-operation would work, use a corresponding elicitation or scenario result, or return that missing input to the
-decision. Tracing consequences alone cannot supply it.
-
-The first useful result is a **bounded engineering consequence account**. It identifies material consequence
-bearers as far as the evidence permits, preserves unresolved identity or existence questions, qualifies each
-consequence, and connects it to an action or unresolved need in the receiving decision—for example, a constraint,
-alternative, probe, safeguard, specialist question, monitoring condition, or explicit gap. The account is an
-episteme; the Systems and changes it describes remain world-side. Add a value or representation claim only when
-the receiving decision uses it and its own grounding is available.
-`A.1.CSD` supplies the general discovery move. This pattern specializes it for engineering choices: start from a
-proposed System, configuration, or use change and connect qualified consequences to the named engineering
-decision.
-Use `C.28` when one already identified causal claim is the whole question. Obtain a result from the applicable
-specialist practice whenever the decision relies on authority outside Systems Engineering.
-
-#### SYSE.17:0.1 - Terms and Distinctions
-
-| Name in this pattern | What it denotes |
-| --- | --- |
-| focus of inquiry | A proposed engineering alternative or change, together with the actual System or intended System referent and configuration to which it applies. If an observed result prompts the inquiry, use it as evidence for a newly stated change question. |
-| consequence-bearing System | An actual System whose state or decision-relevant characteristic may change under the proposed alternative or change. Its identity may be only partly known. A not-yet-present bearer remains an intended System referent inside a modal claim. |
-| unresolved bearer reference | A reference whose identity, boundary, or existence is not established to the extent needed by the decision. State which question is unknown. Unknown personal identity does not erase evidence that someone was present. |
-| supported obtaining relation occurrence | An actual relation occurrence under stated conditions, supported by evidence about its participants and predicate. Preserve any limits on participant identification: an observed encounter can be supported while personal identities remain unknown. A line in a diagram is only a representation. |
-| modal consequence-path claim | An episteme describing relations and changes that may connect the proposed alternative or change to a bearer, with candidate participants, conditions, evidence, uncertainty, and the limit that matters to the receiving decision. A probe is conditional on its selected contribution. Establish every world-side relation occurrence in the path separately. |
-| consequence claim | A claim about a possible or observed change, bearer, conditions, direction, time, evidence, uncertainty, and causal status. The claim and its world-side change have separate identities. |
-| value-qualified consequence claim | A descriptive consequence plus a stated value judgement—for example, benefit, harm, burden, or opportunity—under a named value frame, bearer, scope, and evidence. |
-| affected-System claim | A consequence claim that identifies the System bearing the possible or observed change. It supports that bearer–consequence statement; establish any project assignment, authority, or other relation separately when the decision needs it. |
-| unresolved decision need | An episteme naming a result or relation that the receiving decision needs but does not yet have—for example, additional evidence, a specialist result, an authority relation, an authorized representative, or a safeguard. |
-| engineering consequence account | The episteme returned here: focus, examined situations, bearer references, supported obtaining relations, modal path claims, consequence claims, evidence, uncertainty, decision contributions, unresolved needs, and reopen conditions. |
-
-Test System identity when the claim relies on treating a bearer as one System—for example, when attributing a
-consequence to a population as a whole. Candidate bearers include people, organizations, technical Systems, and
-ecological Systems. Preserve evidence of an actual bearer even when its name or full boundary is unknown. Use an
-intended System referent for a not-yet-present bearer, and state uncertainty explicitly when existence itself is
-unestablished. A project assignment or decision authority requires its own grounding.
-
-### SYSE.17:1 - Problem Frame
-
-Engineering decisions and descriptions guide realization, operation, maintenance, and modernization Work. The
-resulting changes can reach Systems outside the project's influence and formal organization—for example, a
-downstream resident, future operator, maintenance provider, ecological System, supplier, bystander, competing
-resource user, or later user. Discover such a bearer from the consequence claim rather than from a stakeholder
-label.
-
-The engineering problem is to discover enough consequence-bearing Systems, qualify the claims about them, and
-return unresolved consequences while the receiving engineering decision can still be altered.
-
-### SYSE.17:2 - Problem
-
-Stakeholder lists are commonly built from cues such as visibility, power, contracts, interfaces, or organization
-charts. Those cues can miss, for example, quiet, weakly represented, future, indirect, non-human, or cross-boundary
-consequence bearers.
-The opposite error is to call every mentioned party affected without naming a change, evidence basis, or decision
-use.
-
-Diagrams create another error: a plausible arrow from a proposed change to a possible bearer is reported as an
-actual relation or causal effect. Treat the arrow as a representation and ground its participants and predicate
-separately. Scale words such as *person*, *team*, *organization*, *society*, and *ecosystem* provide candidate
-scopes; recover actual Systems, whole–part relations, causal relations, and observed changes from their own
-evidence.
-
-Too little discovery exports cost or harm. Unbounded discovery makes action impossible because every imaginable
-consequence appears equally real and authoritative.
-
-### SYSE.17:3 - Forces
-
-Recurring tensions include:
-
-- Consequences can cross, for example, contractual, ownership, organizational, interface, and project boundaries.
-- Early choices need expert judgement; exhaustive measurement is often unavailable or uneconomic.
-- A weakly supported possibility can justify a cheap probe or reversible design, but not an observed-effect claim.
-- A descriptive consequence claim, a value judgement, and a deontic or governance claim use different predicates
-  and evidence.
-- Constituent, containing, neighbouring, and later reidentified Systems can change differently; aggregates can
-  hide those distributions.
-- Specialist safeguards must inform the engineering decision without Systems Engineering claiming authority it
-  does not have.
-
-### SYSE.17:4 - Solution
-
-Apply the general affected-System discovery move to one proposed engineering alternative or change. First compare
-the available account with the receiving decision: does it cover the material bearers, consequences, conditions,
-and evidence needed now? Reuse a sufficient answer. If a missing consequence or bearer could change the choice,
-perform the bounded discovery below. If the choice instead needs preferences, agreement, or developed operating
-situations, use an available elicitation or scenario result, or assess its acquisition under step 8. Return a
-needed but unavailable result as an explicit gap.
-
-Retain consequence claims that change or hold open the named engineering decision, and state what supports each.
-This bounded account can support a choice with explicit uncertainty; it does not promise complete preferences,
-representation, or operational scenarios.
-
-#### SYSE.17:4.1 - Perform the Move
-
-1. **Name the focus and receiving decision.** State the proposed alternative or change, the actual System or
-   intended System referent and configuration to which it applies, the use situation, relevant scope and horizon,
-   and the engineering decision that can use the result.
-2. **Generate consequence-producing situations.** Consider Work and events that may expose the alternative's
-   consequences—for example, realization, intended use, maintenance, plausible misuse, failure, recovery,
-   retirement, or later modification. Retain only situations whose consequences could alter the receiving decision;
-   these examples do not impose a lifecycle.
-3. **Trace outward without promoting hypotheses to facts.** Follow supported obtaining relation occurrences
-   separately from modal consequence-path claims. For each modal path, name candidate participants and proposed
-   relation kinds—for example, material transfer, energy transfer, information transfer, exposure, access, resource
-   use, an economic relation, or an institutional relation—together with conditions, evidence, uncertainty, and
-   the useful consequence or limit for this decision. A modal path does not itself select a probe.
-4. **Identify the bearer to the extent needed by the claim.** Keep an observed participant actual even if its
-   name or full identity is unknown; refer to the observation, place, and time that support the claim. Keep a
-   not-yet-present bearer as an intended System referent in a modal claim. If existence itself is uncertain,
-   retain that uncertainty. Test System identity and boundary when the consequence claim depends on that
-   classification, especially for a collection treated as one whole. A role label or representative cannot supply
-   that evidence. Return any unresolved recognition question that matters to the decision.
-5. **Qualify the consequence.** State the characteristic or condition that may change, bearer, configuration,
-   conditions, direction or magnitude cue when known, interval, and uncertainty. Distinguish an observed occurrence
-   from a modal claim. State the evidence basis—for example, observation, measurement, simulation, model-based
-   prediction, or a bounded expert estimate—and its limits. Use `C.28` when reliance depends on a causal,
-   intervention, or counterfactual claim.
-6. **Add value and specialist claims only when needed.** Name the bearer and value frame for a value-qualified
-   consequence—for example, a claimed benefit, harm, burden, opportunity, or accepted loss. Preserve conflicts and
-   distributions. Select any specialist acquisition through A.15.9 and C.11.DUA before sending the question with
-   its System, claim, evidence, and receiving decision; keep the returned authority boundary visible.
-7. **Change the engineering choice.** Add or revise a decision contribution—for example, a constraint, alternative,
-   probe, safeguard, monitoring condition, reversible step, refusal, or escalation. When that contribution relies
-   on permission, authority, responsibility, or representation, establish the required relation separately.
-8. **Finish with the useful answer and its material uncertainty.** A qualified consequence account, constraint,
-   alternative, or explicit unknown can complete this use. Select a further discovery action through C.11.DUA
-   only when its obtainable contribution warrants the full preparation, access, performer, interpretation,
-   delay, displacement, and downside. Compare observations separately and together against shared resources
-   and the decision window. Retain the residual and reopen condition that matter to the receiver; an unselected
-   inquiry needs no proposal or omission certificate. Reopen the account when a new bearer, changed configuration
-   or use, conflicting value claim, failed premise, or required missing authority could change the decision. If
-   discovery reveals that the operating situation or affected people's requirements are insufficiently understood,
-   reconsider broader elicitation or scenario work against that missing result and its attainable contribution.
-
-Discovery, design, trial, specialist inquiry, and consequence observation can overlap and reopen one another.
-A receiving decision still needs the claims and evidence on which it relies. An observed encounter can support an
-account before personal identities are known; a claimed future consequence remains conditional on its path and
-conditions. Select any further inquiry separately from identifying that possible consequence.
-
-#### SYSE.17:4.2 - Record the Result
-
-| Field | Required content |
-| --- | --- |
-| focus and receiver | Proposed alternative or change; actual System or intended System referent and configuration to which it applies; use, scope, horizon, and receiving engineering decision. |
-| examined situations | Consequence-producing Work or events retained because their consequences could alter the decision. |
-| bearer references | Actual bearers with the evidence and limits of identification; intended System referents for not-yet-present bearers; explicit unknowns where identity, boundary, or existence remains unresolved. Include a System-recognition basis when the consequence claim relies on that classification. |
-| relations and modal paths | Supported obtaining relation occurrences; separately stated modal consequence-path claims; conditions, evidence, uncertainty, any selected probes, and missing-relation blockers. |
-| consequence claims | Changed characteristic or condition, bearer, configuration, time, direction or magnitude cue, observed-or-modal status, evidence basis, uncertainty, and causal status. |
-| value and specialist results | Current value judgement and value-frame source, any conflict, the required specialist result, and its authority boundary. |
-| engineering decision contribution | A named change to or unresolved need in the receiving decision—for example, a constraint, alternative, probe, safeguard, monitoring condition, reversible step, refusal, escalation, authorized representative, or protection result. |
-| residual and reopen | Missing bearer references or modal paths and the concrete change that matters to a later receiving use. Include a further action only when its obtainable contribution warrants the complete inquiry burden. |
-
-An initial account can contain one qualified consequence and one named uncertainty—for example, an
-unidentified bearer, unsupported relation, or missing specialist result—when they already change the decision. A
-bounded expert estimate is usable when better evidence is not affordable; label it as judgement with its basis and
-uncertainty rather than measurement or prevalence evidence.
-
-#### SYSE.17:4.3 - What Changes in Practice
-
-Visibility, influence, contract, and project role stop being the entry criteria. Engineers trace a proposed
-alternative or change to consequence bearers, retaining supported occurrences even when identities remain
-partly unknown. They distinguish obtaining relations from modal path claims and feed uncertain but material
-consequences back into decisions while change remains affordable.
-
-### SYSE.17:5 - Worked Cases
-
-#### SYSE.17:5.1 - Quiet Consequence Bearers of a Heat-Pump Upgrade
-
-The engineering-use account from `SYSE.16` describes an existing heat-pump plant, a proposed controller, the next
-heating season, and the architecture decision. The team examines consequences of the proposed controller for
-Systems not captured by the original user-and-owner list:
-
-| Possible bearer and change | Claim and evidence status | Engineering decision contribution |
-| --- | --- | --- |
-| Heat-pump plant: increased compressor cycling and wear | The current command relation obtains. Manufacturer data support a conditional wear estimate; the proposed configuration has not run for a heating season. | Add a cycle-rate constraint and monitored-service condition. |
-| Maintenance-provider organization: higher expected inspection workload and less remaining recovery capacity | Service records and the current agreement identify the provider organization and the maintenance Work it performs. The additional workload remains an estimate, and no current commitment covers it. | Keep remote monitoring conditional; use `SYSE.8` or `SYSE.24` to settle provider capacity and commitment. |
-| Maintenance technician: reduced cabinet clearance and greater exposure during inspection | Current geometry is described by drawings; the reduction under the proposed cabinet position remains unmeasured. | Hold the cabinet-location choice open pending a plant-room measurement and specialist safety result. |
-| Individual residents in a nearby building: increased low-frequency night noise | An acoustic model supports a possible increase; no night measurement establishes an observed effect or its distribution among residents. | Retain a low-noise alternative and the conditional noise/distribution claim; a stronger release claim still needs its applicable acoustic basis. The model settles neither legal compliance nor ethical acceptability. |
-| Individual building occupants: room-temperature deviation during grid load shifting | Current thermal relations are supported, but sensor latency, override behaviour, and the distribution of deviations among occupants remain unresolved. | Retain an override-safe concept branch and the latency limit; select a trial when its obtainable result warrants the burden for the decision. |
-| Electricity-distribution System: changed peak-load contribution | Meter history supports the baseline; the proposed controller effect is simulated. | Keep the grid-response claim conditional; commission measurement only when its obtainable contribution warrants the work. |
-
-Each row links a possible or observed change to a named System and supports only the stated consequence and
-decision contribution. Ground any authority or representation used later with separate evidence. The team can
-make a bounded architecture choice using these qualified contributions while keeping measurement gaps explicit.
-For example, suppose a plant-room measurement and competent safety interpretation are available before layout
-freeze; their combined result could rule out an unsafe irreversible placement at a burden justified by that gain.
-Select that acquisition. An unavailable seasonal noise study is a different proposal: retain the low-noise
-alternative and the conditional noise claim without making the study a condition of this narrower return.
-The resulting account grants neither release permission nor evidence of an observed improvement.
-
-#### SYSE.17:5.2 - Observed Pedestrians and a Not-Yet-Installed Locker
-
-A team must decide tomorrow whether to fix the geometry of an east-side delivery-cart route across an existing
-public footpath. Its participant list names the operator, supplier, and customer. Video shows people crossing
-between 07:30 and 08:00, but their names are unknown. A maintenance log records a van using the loading bay at
-07:45. The proposed locker has not been built or installed, and the carts have not operated there. A simulation
-predicts short cart queues near the proposed locker; a west-side route is only a sketch.
-
-The people and van were actual participants in the recorded events. Their presence identifies a footpath and
-access use that the engineering decision must retain, without requiring personal names. Possible obstruction or
-delay from future carts remains a modal consequence. For the not-yet-built locker, retain an intended System
-referent: a claim that queues could impede its replenishment depends on its eventual position and operation.
-Neither the observations nor the simulation establish that future interaction as an obtaining relation. No claim here depends on recognizing the
-pedestrians as one collective System.
-
-The account now connects two missing consequences to the layout decision: preserve pedestrian and maintenance
-access, and examine the proposed replenishment access. It returns the observations, the conditional queue claim,
-and the unresolved geometry. These inputs do not yet rank the east and west alternatives or establish physical
-clearance. The team can compare a layout that preserves room for later access correction, if feasible, with
-deferring the irreversible geometry choice; operating approval remains a separate decision.
-
-Suppose the only qualified engineer has 45 minutes before the decision. A proposed 30-minute geometry walkthrough
-is attainable only if access, preparation, and interpretation also fit that window. If entry requires a
-70-minute induction, withdraw that proposal and return the qualified account already available. A larger inquiry
-is warranted only for a result the receiving decision needs: for example, elicitation if footpath-priority
-requirements remain unsettled, or scenario development if replenishment and crossing arrangements are not yet
-defined. Those results may expose further bearers and revise the layout alternatives; they do not replace the
-missing physical-clearance evidence. If an existing qualified geometry and access account already settles the
-narrow choice, use it directly.
-
-**When the full pattern is unnecessary.** If the available account already answers the decision at its required
-scope and strength, return that answer. If one identified causal claim about one already identified System is
-the whole question, use `C.28` and the direct subject pattern.
-
-### SYSE.17:6 - Bias Annotation
-
-Trace consequences from proposed engineering alternatives and changes rather than institutional visibility.
-Quiet or unidentified people can bear consequences. Preserve their supported involvement without inventing
-preferences, representatives, or agreement.
-
-Use affordable evidence. A bounded expert estimate, simulation, or modal path claim can justify a reversible probe;
-an observed-effect claim needs observation. Include any actual System or intended System referent whose qualified
-consequence can change the decision; specialist authority remains with the applicable practice.
-
-### SYSE.17:7 - Conformance Checklist
-
-- [ ] One proposed alternative or change, its actual System or intended System referent, configuration, use,
-      horizon, and receiving decision are stated.
-- [ ] Bearers are found by tracing the proposed alternative or change. Observed participants remain actual when
-      personal identity is unknown; not-yet-present bearers remain intended referents in modal claims.
-- [ ] Unknown identity, boundary, or existence is explicit where it matters. System recognition is performed when
-      the consequence claim relies on that classification.
-- [ ] Supported obtaining relation occurrences remain distinct from modal consequence-path claims and
-      missing-relation blockers.
-- [ ] Every affected-System claim states the qualified consequence and bearer; every further relation used by the
-      decision is grounded separately.
-- [ ] Every material claim states bearer, changed characteristic or condition, configuration, time, evidence,
-      uncertainty, and causal status.
-- [ ] Every value-qualified consequence names its bearer and value frame, and any conflict remains explicit.
-- [ ] Each retained consequence changes or holds open an engineering choice through a named decision contribution.
-- [ ] The account retains the residual uncertainty and reopen condition needed by its recipient. Further inquiry
-      is selected for attainable value against its whole burden, including the combined programme; no action or
-      omission record is required merely because a gap remains.
-
-### SYSE.17:8 - Common Failures and Repairs
-
-These recurring failures hide a bearer, relation, claim status, or decision contribution:
-
-| Failure | Repair |
-| --- | --- |
-| Only purchasers, owners, formal roles, or influential participants appear | Trace the proposed alternative or change outward and challenge the current boundary. |
-| An affected-System claim is read as a project role | State the System and consequence; add a role or assignment only when that separate relation obtains. |
-| A System is ignored because it cannot object | Discover bearers from possible consequences, whether or not they can object or are represented in project governance. |
-| A diagram arrow becomes an actual relation | Keep it as a modal path claim until the represented relation occurrences and conditions are supported. |
-| Scale labels become a System hierarchy | Recover actual Systems and the relations used to organize them; a scale label is only a search cue. |
-| Every mentioned party is called affected | Require a decision-relevant possible or observed change under stated conditions. |
-| Consequence list becomes an ethical verdict | Send actual value conflicts and authority questions to their governing practices. |
-| Simulation becomes causal proof | Use `C.28` and retain the narrower supported claim. |
-| Inquiry produces no usable result until definitive research exists | Use a bounded expert estimate or uncertainty claim when it improves a reversible choice. |
-| An unidentified observed person becomes an intended future bearer | Preserve the observed occurrence and the identity gap; qualify the possible future consequence separately. |
-
-### SYSE.17:9 - Consequences
-
-Engineering decisions become harder to optimize for visible participants while exporting consequences elsewhere.
-Quiet and future bearers enter through qualified consequence claims. Those claims can change the decision through,
-for example, a probe, safeguard, specialist result, monitoring condition, or unresolved decision need.
-
-The cost is additional inquiry and maintenance of uncertain claims. Every retained bearer or modal path claim must
-change a decision, evidence need, probe, or reopen condition so the account does not grow without bound.
-
-### SYSE.17:10 - Rationale
-
-`A.1.CSD` supplies the transdisciplinary discovery action. Systems Engineering adds a recurring subject-specific
-move: start from a proposed System, configuration, or use change, examine physical and operational consequences,
-and connect qualified claims to the engineering decision that can still change the choice.
-
-Questions that need specialist authority remain with the applicable practice.
-
-### SYSE.17:11 - SoTA and Source Use
-
-The practice question is how much consequence discovery an engineering choice needs when the visible participant
-list may omit those who bear its effects. Three approaches answer different missing questions:
-
-| Approach | Use when | Result and tradeoff |
-| --- | --- | --- |
-| Use an adequate existing account | Its bearers, configuration, use, horizon, and evidence answer the current decision. | Reuse the qualified answer. Its scope must still fit the choice; a familiar participant list alone is insufficient. |
-| Bounded consequence discovery in this pattern | A possible omitted bearer or consequence could change a named engineering choice, while enough is known about the alternative and use to trace that consequence. | Return supported occurrences, modal paths, and a decision contribution or explicit gap. Accept residual uncertainty without claiming complete preferences, representation, or operating scenarios. |
-| Broader stakeholder elicitation and operational-scenario development | Requirements, conflicting expectations, agreement, or the way an operation would work are themselves missing inputs. | Develop those inputs and revisit the consequence account. The broader work can expose alternatives and consequences that a narrow trace misses; its access, participant effort, and delay must be justified for the receiving decision. |
-
-NASA's [Stakeholder Expectations Definition](https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/),
-especially §§4.1.1.2.1–4.1.1.2.4, connects stakeholder identification and elicitation with expectations, agreement,
-and nominal and off-nominal operational scenarios. Adopt its attention to affected participants and operating
-situations. Adapt that broader practice to the present question: stop with a sufficient bounded answer when it
-settles the engineering use, and request elicitation or scenario development when that is the missing result.
-Consequence tracing cannot establish someone's preference or agreement.
-
-`A.1.CSD` supplies the discovery and claim distinctions: actual occurrences, intended future referents, and
-unresolved recognition questions remain separate from modal consequences. This pattern adapts that move to
-configuration choices and physical and operational situations. `A.15.9` and `C.11.DUA` govern acquiring further
-results: compare attainable decision contributions with the complete burden, including competing use of the
-same people and decision window.
-
-The research contributions qualify how the account is used. [Volden and Welde](https://doi.org/10.1016/j.ijproman.2022.06.006)
-distinguish delivery performance from outcomes and wider effects, with context-dependent indicators and valuations.
-Carry relevant valuation differences into step 6 before any aggregation selected for the decision.
-[Williams et al.](https://doi.org/10.1080/09537287.2023.2256287) examine changing interpretations and continuing benefits
-in three public projects; use that contribution to reconsider beneficiaries and consequences when use changes,
-without assuming the same evolution in every project. [Thabit, Sancino, and Mora](https://doi.org/10.1111/puar.13877)
-synthesize public-administration work on representation and benefit distribution. Preserve those as distinct
-questions in step 6 and in any later authority claim; that review does not supply a complete engineering-harm
-discovery method.
-
-Apply the comparison at entry and when deciding whether to continue discovery: a sufficient direct account can
-finish the use, a material bearer gap opens bounded discovery, and an unsettled operating situation can require
-broader work. In the cart case, the
-observations already restore omitted access uses; the unavailable walkthrough supplies no further result.
-Reopen only the affected claims when a new bearer, changed use, conflicting concern, required authority, or failed
-premise changes what the decision needs.
-
-### SYSE.17:12 - Relations
-
-- `A.1.CSD` supplies the general discovery move and bounded consequence account. This pattern adds engineering
-  alternatives, configuration, physical and operational situations, decision contributions, and specialist
-  interfaces.
-- `SYSE.1` supplies the System and candidate boundary; `SYSE.16` supplies use structures, other Systems,
-  conditions, and unsupported assumptions. Equivalent qualified direct sources can be used without implying a
-  temporal order.
-- `A.1`, `A.14`, `B.1`, `B.1.2`, and `C.13` govern Systems, wholes, collections, delimitation, crossings, and
-  constructive facts. Treat a scale word only as a cue until those objects and relations are grounded.
-- `C.28` qualifies a causal-use claim. The Agent performing consequence-discovery Work applies this pattern to
-  identify the Systems that may bear consequences and supplies the resulting account to the receiving engineering
-  decision.
-- `D.1`–`D.5` govern value frames, actual conflicts, mediation, and audits when those questions arise. An
-  affected-System claim states the qualified consequence and bearer.
-- A compatible consequence account can inform `SYSE.2`, `SYSE.8`, `SYSE.4`, `SYSE.6`, `SYSE.10`, `SYSE.14`, and
-  specialist practices. Each receiver rechecks focus, configuration, use, horizon, evidence, and authority.
-- Application profiles retain their own consequence-discovery Methods—for example, safety, security, medical,
-  ecological, legal, economic, software, electrical, building, or transport specializations.
-
-### SYSE.17:End
-
-## SYSE.2 - Develop Linked Use and System Concepts
-
-> **Status:** Stable
-
-### SYSE.2:1 - Problem frame
-
-Use this pattern when a project has selected an actual System, retained an intended System referent, or bounded
-another engineering subject, but the proposed concept cannot yet be defended through concrete use. The team may
-have, for example, an internal block diagram, requirement set, component list, product concept, or preferred
-technical solution while phrases such as *environment*, *suprasystem*, *using system*, *Concept of Operations*, *use case*,
-*scenario*, *requirement*, or *user story* stand in for several Systems, intended System referents, conditions,
-relations, and effects. A compatible `SYSE.16` use-context account supplies decision-relevant operational
-structures, neighbours, conditions, and outside changes. A compatible `SYSE.17` affected-system account supplies
-qualified consequence claims and unresolved bearers. Use only result claims compatible with the current decision.
-
-The result is a **linked use-and-system concept proposal**: bounded claim content that connects a concrete
-use situation with a candidate System concept and states their main uncertainty. One or more descriptions may
-carry the claims; no document form is required.
-
-First useful move: link one concrete use claim to one candidate system-concept claim and state their main
-uncertainty. This is enough to expose a grounded architecture question. Add further content—for example,
-another use situation, structure, participant, failure, effect, or representation—only when it can change the
-candidate or its boundary.
-
-If this link is missing, internal elegance can substitute for usefulness. A pump passes a component test but
-worsens downstream flooding; planning software is installed but cannot support production decisions with the
-available data; a retrofit design works in an empty building but cannot be realized while the building is
-occupied.
-
-The payoff is a revisable account that keeps outside use connected to the concept for the selected subject.
-Evidence about use can change that concept, while architecture and realization findings can change the use,
-boundary, or affected-System claims.
-
-Use this pattern while a concrete use claim and a candidate System concept still need to be developed together.
-Use `C.30` and `C.32` when the current question is grounded architecture and candidate synthesis, `A.3.4` when
-the question is whether one actual bounded change occurred, and the applicable Operations Management pattern
-for continuing Work. Return to `SYSE.1` when evidence changes which System should orient the project.
-
-At the first consequential use of source wording, ask: **does this claim connect the concept for the selected
-subject with a concrete use situation, participating or affected Systems, conditions, and outside effects?** If yes, name those
-subjects and relations and use this pattern. A representation—for example, a ConOps, use case, scenario,
-requirement, user story, diagram, or model—presents some of these claims. Its form establishes neither their
-truth nor the required form for the proposal.
-
-### SYSE.2:2 - Problem
-
-A project-system choice does not determine the useful boundary or organization of the selected actual System or
-intended referent. The same desired effect can be achieved through different actual or proposed changes—for
-example, changes to the designated System, an external System, an interface, a
-Work arrangement, or several sides together. A containing System may matter, but parthood must be established
-directly. Use, interaction, placement, ownership, authority, affectedness, and shared environment are other
-relation kinds and require their own grounds.
-
-One-way handoffs make this worse. A supposedly complete use description is handed to concept development, then
-architecture or realization discovers that the use cannot be supported. Conversely, one attractive technical
-concept narrows the use description until only its successes remain visible. The recurring engineering problem
-is to develop the use claims and system concepts together while preserving the distinctions needed to return a
-failed claim.
-
-### SYSE.2:3 - Forces
-
-| Force | Tension |
-| --- | --- |
-| Outside effect and project boundary | Use justifies the System concept, while the useful change may cross the assumed boundary. |
-| Several environment Systems and one simple story | A compact scenario helps reasoning, while one hierarchy can hide non-nested participants and affected Systems. |
-| Function and feasible bearer | Required functioning guides concept development, while a function word or diagram does not supply a bearer. |
-| Working descriptions and physical grounding | Models and scenarios keep claims inspectable, while their form does not establish use, transformation, architecture, or evidence. |
-| Early usefulness and completeness | One linked claim can expose the next question, while a fixed comprehensive form delays learning. |
-| Continuing revision and decision stability | Use and concept claims must change with evidence, while each downstream architecture question needs a stated current basis. |
-
-### SYSE.2:4 - Solution
-
-#### SYSE.2:4.1 - Start with one decision-changing use situation
-
-Take the selected actual System or intended System referent and current reason from the project-system choice
-account, or state the bounded engineering subject when no project-system choice is needed. If that choice is
-needed but no compatible `SYSE.1` account is available for the same subject and decision, use a qualified direct
-source for the focus claim or record the missing project-focus result and stop only the linked claim
-it blocks. An individual can explore a linked proposal from a provisional focus. When its use depends on
-joint action, use `SYSE.1:4.4.1` to establish the common referent and contribution connections for that action,
-or retain the unresolved coordination condition. For an actual System, describe an actual or possible-future
-situation in which it participates. For a not-yet-present referent, keep the
-intended participation in modal plan, decision, or description content; do not assert an actual System or
-participation relation before identity inception. State:
-
-1. the subject that relies on, uses, changes, or is affected by the proposal;
-2. the direct relation by which that subject enters the use;
-3. the condition or change expected;
-4. the outside effect that matters to the current decision; and
-5. the uncertainty that could change the concept.
-
-Name the relying subject under its admitted kind; a person and a System are only two possible kinds. State the
-direct relation by which it enters the use—for example, reliance, participation, performed Work, or affectedness.
-Include affected Systems or intended System referents whenever their qualified consequence claims can change the
-decision; participation in or ownership of the designated System is not required.
-
-#### SYSE.2:4.2 - Name the subjects and direct relations hidden by environment language
-
-Start from compatible current `SYSE.16` and `SYSE.17` results for the same subject, configuration, use, horizon,
-and decision. If either result is unavailable, recover only the subjects and direct relations needed for the first
-linked claim. Use `SYSE.16` when the decision needs several operational structures or a co-change boundary, and
-`SYSE.17` when it needs active discovery of consequence-bearing Systems. A neighbouring System may matter, for
-example, through constructive parthood, placement, interface, interaction, causal participation, use,
-transformation, collection membership, assignment, ownership, permission, authority, or affectedness. State
-only relations that are current and apply the FPF pattern that defines or constrains each claim.
-
-Use `A.1.SCR` when the System status of a proposed participant or containing whole is unresolved. Use `A.22`
-when the current question selects an organization among independently identified constituents and obtaining
-relations for a named use. Keep several non-nested structures when one decomposition would hide a relevant
-claim—for example, an interaction, control relation, affected System, or source-return condition.
-
-Authority constrains who may change a System; it does not draw the System boundary. Ownership can matter to a
-decision without establishing containment. A containing whole matters when its actual or proposed proper-part
-relations and whole-level consequences change the use or concept. Distinguish supported actual relations from
-proposed relations and qualified predictions; a future whole need not already exist for its proposed
-arrangement to affect the concept.
-
-#### SYSE.2:4.3 - Develop the use claim and candidate system concept together
-
-Write one outside-facing use claim and one inside-facing concept claim:
-
-```text
-Linked use-and-system concept proposal:
-  concrete use claim:
-  candidate system-concept claim:
-  main uncertainty:
-  architecture question exposed:
-  reopen condition:
-```
-
-Use any readable form for this content. The use claim names participating or affected Systems,
-conditions, expected transformations or behavior, and outside effects only as far as the current decision
-needs. The system-concept claim names what the proposed concept needs—for example, a boundary, functioning,
-interface, resource, constraint, or placement—while leaving full architecture selection open.
-
-When an available construction starts the inquiry, ask who could use it, in what situation, and for what
-outside effect. Follow one consequential behaviour path from the triggering change through the participating
-Systems to that effect. Try the condition most likely to defeat the proposal. Use the resulting success or
-failure to revise the functioning, bearer, interface or use claim that made the difference. Expand the path
-only when another condition could change the concept; no complete scenario set is needed for the first link.
-
-Use `A.6.F` when function-like wording carries a claim. Name the required functioning and its proposed bearer.
-Any remaining question—for example, about function, capability, Method, Work, module, interface, evidence, or
-architecture—stays under the pattern that defines or constrains it. Use `A.6.M` only when an actual module or interface claim is
-current. If no feasible bearer can support required functioning, revise the concept or use claim before
-admitting an architecture candidate.
-
-Use `A.3.4` for an actual observed transformation only after the continuing subject, boundaries,
-before/during/after facts, and continuity rule are available. A required, intended, or simulated transformation
-remains modal claim content; its description does not establish that the change occurred.
-
-A functional or transformation-flow description of relevant environment structure can support the linked
-proposal by showing selected functioning or flow relations for a named use. The proposal also states which use situation matters, which Systems participate or are affected, which outside
-effect changes the decision, which candidate System concept is being considered, and what remains uncertain.
-Model only the environment structure needed by those claims.
-
-#### SYSE.2:4.4 - Compare changes on either side of the boundary
-
-Develop alternatives when changing a different subject would change the engineering answer. Compare, for
-example:
-
-- an actual or proposed change to the designated System;
-- a change to an external System or operating arrangement;
-- a changed interface, placement, or resource relation; or
-- coordinated changes on several sides.
-
-Use a compatible `SYSE.8` provider-arrangement account when its supported provider-arrangement claims
-or design constraints change the use, candidate System or intended referent, boundary, interfaces, realization
-needs, or evidence. Consume only the compatible claims named for this use. Without a compatible current
-`SYSE.8` account, use a qualified direct source for the needed provider-arrangement claim or record the missing
-result and stop only the linked claim it blocks. Either account
-may need revision when a shared claim changes; that dependency does not prescribe the order of engineering Work.
-Obtain other decision-changing results from the specialist practice that owns them—for example, organization
-change, Operations Management, Platform Engineering, Governance, safety, security, ethics, law, or finance. Keep each result claim linked to the
-use or concept claim that consumes it.
-
-For example, when source material names a product-service system, digital twin, digital thread, MBSE, PDM, PLM,
-eXperience platform, or Multi-D arrangement, recover the actual contribution before using the umbrella term. A
-concrete contribution—for example, a maintained model, configuration relation, simulation, observation return,
-integration capability, or change decision—can enter the linked proposal through its direct claim. The umbrella
-name alone does not decide whether this pattern, architecturing, realization, assurance, or a specialist practice
-is the next use.
-
-#### SYSE.2:4.5 - Expand only when another claim can change the candidate
-
-The cheap first result is one linked use claim, one candidate concept claim, and their main uncertainty.
-Reuse an adequate scenario or use-case slice as the proposal: retain its compatible use and concept claims and
-add only the missing relation, consequence or uncertainty needed for this decision. The progressive-slice
-comparison in §11 helps choose when to continue toward implemented, tested behaviour.
-
-Expand
-when further content—for example, another use situation, load, failure, participant, affected System, harm,
-benefit, or representation—could change the candidate. Add only the relevant:
-
-- environment structures and obtaining relations;
-- transformations, interactions, conditions, and effects;
-- functioning, interface, placement, resource, and constraint claims;
-- correspondence between a representation and the represented claims;
-- alternatives, assumptions, evidence limits, and specialist returns.
-
-If source words such as *operational system*, *system in operation*, *operations*, or *operational flow* are
-current, distinguish two questions. Use this pattern for a System's participation in use and the concept that
-supports it. Use Operations Management when the difficulty is managing continuing Work, queues, policies, or
-flows. An operational adjective does not settle that choice.
-
-#### SYSE.2:4.6 - Stop at a grounded architecture question and reopen from failed support
-
-Stop when the current use claim and candidate concept expose a grounded architecture question and their main
-uncertainty. The linked proposal supplies required functioning, operating conditions, outside effects,
-decision-relevant environment structures, assumptions, and evidence limits to `C.30` and `C.32`.
-
-Use `C.30.ASV` only when a structural description and its adequacy for a selected architecture use are current.
-Do not open a full view or architecture-description apparatus merely because a sketch helped the discussion.
-
-Reopen the smallest linked claim when:
-
-- the use claim and concept claim no longer support each other;
-- a candidate architecture lacks a feasible bearer or hides a harmful effect;
-- realization evidence defeats an interface, resource, placement, or capability assumption;
-- operating observation changes a condition or effect; or
-- a specialist result changes permission, feasibility, harm, value, or the participating Work arrangement.
-
-Return to `SYSE.1` only when the failed claim changes which System should orient the project or where the project
-boundary lies.
-
-### SYSE.2:5 - Archetypal Grounding
-
-
-#### SYSE.2:5.1 - Pumping station under flood risk
-
-
-In the preceding `SYSE.1` use, the engineer retains the intended referent `PumpingStation-P1` in decision content
-and records downstream exposure as unresolved. No actual `PumpingStation-P1` exists yet. The first linked proposal
-says:
-
-```text
-use claim: the intended referent would move water under the selected flood load without unacceptable downstream harm
-system-concept claim: the description assigns pumping, positioning, power, control, and discharge functioning to the intended station referent
-main uncertainty: downstream conditions may make the proposed discharge harmful
-architecture question: which selected structures and possible bearers could support the claim
-```
-
-This is enough to use `C.30` and `C.32`. A component pump test can contribute evidence about an actual bearer,
-but it establishes neither the not-yet-present station nor its outside effect. The engineer uses downstream-harm evidence to revise the use claim. The project-system choice reopens only if
-the station referent no longer supports the project decision.
-
-
-#### SYSE.2:5.2 - Manufacturer's ERP-enabled planning change
-
-An available construction starts this concept question: deployed `ERP-Runtime-E3` offers automatic rescheduling
-when an order date changes. The manufacturer considers using that facility to revise production commitments.
-Its usefulness depends on what the planners would receive and could act on.
-
-The manufacturer keeps `PlanningSystem-P1` as an intended System referent in its project decision; actual System
-identity remains unestablished. Actual person Systems `Planner-A` and `Planner-B` perform `PlanningWork-PW1`.
-They use `ERP-Runtime-E3` and demand, capacity, material, and production-order records as resources and evidence.
-The records are epistemes; `PlanningAPI-PA2` and the user interface are separately identified interfaces.
-The common-focus exchange in `SYSE.1:5.2` has made the missing stock-information contribution visible.
-
-The first linked proposal lets the software reschedule a moved order and release the revised production
-commitment. Its use claim is that the planners could promise the earlier date from the resulting plan; its
-main assumption is that the runtime's material and capacity information supports that commitment.
-
-Follow the proposed behaviour. When an order needs six units, ten are recorded and actually available, and the
-needed capacity is available, the proposed schedule has support for those constraints. Now try a failure path:
-the imported record still shows ten unreserved units, but eight have since been allocated elsewhere. The moved
-order needs
+| A source's meaning, applicability or authority | [SIE.2:4](#sie24---solution) | Qualified source-local premises and the gaps that limit their use. |
+| A distinction the available model may not express | [SIE.3:4](#sie34---solution) | Sufficient model reuse, an extension or a different model, qualified for the required questions. |
+| A relation between source meanings | [SIE.4:4](#sie44---solution) | A warranted relation, difference or incompatibility, with its permitted operations and loss. |
+| Records concerning the same entity | [SIE.5:4](#sie54---solution) | An identity disposition at the required grain and interval, retaining source identifiers and authority. |
+| Several source claims contributing to an answer | [SIE.6:4](#sie64---solution) | A qualified composition, conflict, non-comparability or unresolved branch. |
+| Executable extraction or transformation | [SIE.7:4](#sie74---solution) | Rules tied to those premises, including selection, conversion, absence, errors, loss and trace. |
+| Obtaining and presenting the result in practice | [SIE.8:4](#sie84---solution), [SIE.9:4](#sie94---solution) and the implementation supplier | A feasible realization choice, the implementation obtained from its supplier, and a receiving interface with defined interpretations. |
+
+This is a dependency account, not a demand to perform every row. For example, two already distinguished subjects can retain separately attributed claims without a cross-source identity merge. A qualified existing model can supply the required distinction without new model construction. A supplied mapping may already carry the relevant source and correspondence references.
+
+For each required contribution, determine whether it is available under the needed conditions, unavailable, or not yet qualified. An inaccessible definition, a missing distinc
